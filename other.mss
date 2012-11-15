@@ -3297,38 +3297,25 @@
       <LineSymbolizer stroke-linejoin="bevel" stroke="#6c70d5" stroke-width="4" stroke-dasharray="0,15,1,158"/>
     </Rule>
 </Style>
-<Style name="boundary">
-    <Rule>
-      &maxscale_zoom7;
-      &minscale_zoom9;
-      <PolygonSymbolizer fill-opacity="0.05" fill="green"/>
-      <LineSymbolizer stroke="green" stroke-width="1.5" stroke-dasharray="4,2" stroke-opacity="0.15"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom10;
-      &minscale_zoom12;
-      <PolygonSymbolizer fill-opacity="0.05" fill="green"/>
-      <LineSymbolizer stroke="green" stroke-width="3" stroke-dasharray="6,2" stroke-opacity="0.15"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom13;
-      &minscale_zoom18;
-      <LineSymbolizer stroke="green" stroke-width="3" stroke-dasharray="6,2" stroke-opacity="0.15"/>
-    </Rule>
-    <Rule>
-      <Filter>[way_area] &gt;= 200000000</Filter>
-      &maxscale_zoom8;
-      &minscale_zoom9;
-      <TextSymbolizer size="8" fill="#9c9" fontset-name="bold-fonts" halo-radius="1" wrap-width="14">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      &maxscale_zoom10;
-      &minscale_zoom11;
-      <TextSymbolizer size="11" fill="#9c9" fontset-name="bold-fonts" halo-radius="1" wrap-width="14">[name]</TextSymbolizer>
-    </Rule>
-</Style>
 
 */
+
+#misc-boundaries {
+  [zoom >= 7] {
+    [zoom < 14] {
+      polygon-opacity: 0.05;
+      polygon-fill: green;
+    }
+    line-color: green;
+    line-width: 1.5;
+    line-dasharray: 4,2;
+    line-opacity: 0.15;
+    [zoom >= 10] {
+      line-width: 3;
+      line-dasharray: 6,2;
+    }
+  }
+}
 
 #theme-park {
   [tourism = 'theme_park'][zoom >= 13] {
