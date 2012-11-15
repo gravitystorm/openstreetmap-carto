@@ -55,26 +55,18 @@
   }
 }
 
-/*
-
-<Style name="glaciers-text">
-    <Rule>
-      <Filter>[way_area] &gt;= 10000000</Filter>
-      &maxscale_zoom10;
-      <TextSymbolizer size="9" fill="#99f" fontset-name="book-fonts" halo-radius="1" wrap-width="20">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[way_area] &gt;= 5000000 and [way_area] &lt; 10000000</Filter>
-      &maxscale_zoom11;
-      <TextSymbolizer size="9" fill="#99f" fontset-name="book-fonts" halo-radius="1" wrap-width="20">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[way_area] &lt; 5000000</Filter>
-      &maxscale_zoom12;
-      <TextSymbolizer size="9" fill="#99f" fontset-name="book-fonts" halo-radius="1" wrap-width="20">[name]</TextSymbolizer>
-    </Rule>
-</Style>
-*/
+#glaciers-text {
+  [way_area >= 10000000][zoom >= 10],
+  [way_area >= 5000000][way_area < 10000000][zoom >= 11],
+  [way_area < 5000000][zoom >= 12] {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: #99f;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 20;
+  }
+}
 
 #water-lines-casing {
   [waterway='stream'],
@@ -316,19 +308,6 @@
       <TextSymbolizer size="8" fill="#6699cc" spacing="600" placement="line" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
     </Rule>
 </Style>
-
-<Layer name="glaciers-text" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>glaciers-text</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,name,way_area
-      from &prefix;_polygon
-      where "natural"='glacier' and building is null
-      order by way_area desc
-      ) as glaciers</Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
 
 <Layer name="water_lines" status="on" srs="&osm2pgsql_projection;">
     <StyleName>water_lines</StyleName>
