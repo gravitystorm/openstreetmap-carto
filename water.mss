@@ -46,15 +46,17 @@
   }
 }
 
+#water-areas-overlay {
+  [natural = 'marsh'],
+  [natural = 'wetland'] {
+    [zoom >= 13] {
+      polygon-pattern-file: url('symbols/marsh.png');
+    }
+  }
+}
+
 /*
 
-<Style name="water-areas-overlay">
-    <Rule>
-      &maxscale_zoom13;
-      <Filter>[natural] = 'marsh' or [natural] = 'wetland'</Filter>
-      <PolygonPatternSymbolizer file="&symbols;/marsh.png" />
-    </Rule>
-</Style>
 <Style name="glaciers-text">
     <Rule>
       <Filter>[way_area] &gt;= 10000000</Filter>
@@ -315,20 +317,6 @@
     </Rule>
 </Style>
 
-
-<!-- Make sure overlay styles are always rendered on top of solid areas. -->
-<Layer name="water-areas-overlay" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>water-areas-overlay</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,"natural"
-      from &prefix;_polygon
-      where "natural" in ('marsh','wetland') and building is null
-      order by z_order,way_area desc
-      ) as water_areas</Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
 <Layer name="glaciers-text" status="on" srs="&osm2pgsql_projection;">
     <StyleName>glaciers-text</StyleName>
     <Datasource>
