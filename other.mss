@@ -3342,19 +3342,6 @@
     </Rule>
 </Style>
 
-
-
-<Layer name="tunnels" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>tunnels-casing</StyleName>
-    <StyleName>tunnels-fill</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,highway from &prefix;_line where highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified') and tunnel in ('yes','true','1') order by z_order) as roads
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-&layer-citywall;
 <Layer name="landuse_overlay" status="on" srs="&osm2pgsql_projection;">
     <StyleName>landuse_overlay</StyleName>
     <Datasource>
