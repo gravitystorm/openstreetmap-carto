@@ -8,7 +8,7 @@ A project to re-implement the standard OpenStreetMap mapnik style, in CartoCSS
 
 # Notes on conversion
 
-* Always specify zoom levels as either >= or < . Don't use either = or =<
+* Always specify zoom levels as either >= or < . Don't use = or =< or >
 * Open curly braces on the same line, and close on an empty line.
 * One space before and after =  etc
 * Two space indents. No tabs.
