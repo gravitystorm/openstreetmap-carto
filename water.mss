@@ -78,6 +78,15 @@
   }
 }
 
+#water-lines-low-zoom {
+  [waterway = 'river'][zoom >= 8][zoom < 12] {
+    line-color: #b5d0d0;
+    line-width: 0.7;
+    [zoom >= 9] { line-width: 1.2; }
+    [zoom >= 10] { line-width: 1.6; }
+  }
+}
+
 /*
 
 
@@ -334,18 +343,6 @@
       where "natural"='glacier' and building is null
       order by way_area desc
       ) as glaciers</Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-
-<Layer name="water-lines-low-zoom" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>water-lines-low-zoom</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,waterway
-      from &prefix;_line
-      where waterway='river'
-      ) as water_lines</Parameter>
       &datasource-settings;
     </Datasource>
 </Layer>
