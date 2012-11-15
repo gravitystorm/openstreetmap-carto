@@ -3342,63 +3342,8 @@
     </Rule>
 </Style>
 
-&layer-power;
-<Layer name="roads-text-ref-low-zoom" status="on" srs="&osm2pgsql_projection;">
-     <StyleName>roads-text-ref-low-zoom</StyleName>
-     <Datasource>
-      <Parameter name="table">
-      (select way,highway,ref,char_length(ref) as length
-       from &prefix;_roads
-       where highway in ('motorway','trunk','primary','secondary')
-         and ref is not null
-         and char_length(ref) between 1 and 8
-      ) as roads
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="highway-junctions" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>highway-junctions</StyleName>
-    <Datasource>
-     <Parameter name="table">
-     (select way,ref,name
-      from &prefix;_point
-      where highway='motorway_junction'
-     ) as junctions
-     </Parameter>
-     &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="roads-text-ref" status="on" srs="&osm2pgsql_projection;">
-     <StyleName>roads-text-ref</StyleName>
-     <Datasource>
-      <Parameter name="table">
-      (select way,highway,aeroway,ref,char_length(ref) as length,
-       case when bridge in ('yes','true','1') then 'yes'::text else bridge end as bridge
-       from &prefix;_line
-       where (highway is not null or aeroway is not null)
-         and ref is not null
-         and char_length(ref) between 1 and 8
-      ) as roads
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="roads-text-name" status="on" srs="&osm2pgsql_projection;">
-     <StyleName>roads-text-name</StyleName>
-     <Datasource>
-      <Parameter name="table">
-      (select way,highway,name
-       from &prefix;_line
-       where waterway IS NULL
-         and leisure IS NULL
-         and landuse IS NULL
-         and name is not null
-      ) as roads
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
+
+
 <Layer name="text" status="on" srs="&osm2pgsql_projection;">
     <StyleName>text</StyleName>
     <Datasource>
