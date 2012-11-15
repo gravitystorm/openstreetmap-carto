@@ -91,101 +91,72 @@
   }
 }
 
+#water-lines {
+  [waterway = 'weir'][zoom >= 15] {
+    line-color: #aaa;
+    line-width: 2;
+    line-join: round;
+    line-cap: round;
+  }
+
+  [waterway = 'wadi'][zoom >= 13] {
+    line-color: #b5d0d0;
+    line-width: 1;
+    line-dasharray: 4,4;
+    line-cap: round;
+    line-join: round;
+    [zoom >= 16] { line-width: 2; }
+  }
+
+  [waterway = 'river'][zoom >= 12] {
+    line-color: #b5d0d0;
+    line-width: 2;
+    line-cap: round;
+    line-join: round;
+    [zoom >= 13] {
+      line-width: 3;
+      text-name: "[name]";
+      text-face-name: @book-fonts;
+      text-placement: line;
+      text-fill: #6699cc;
+      text-spacing: 400;
+      text-size: 9;
+      text-halo-radius: 1;
+    }
+    [zoom >= 14] {
+      line-width: 5;
+      text-size: 10;
+    }
+    [zoom >= 15] {
+      line-width: 6;
+    }
+    [zoom >= 17] {
+      line-width: 10;
+    }
+    [zoom >= 18] {
+      line-width: 12;
+    }
+  }
+
+  [waterway = 'canal'][zoom >= 12][zoom < 14] {
+    line-color: #b5d0d0;
+    line-width: 3;
+    line-cap: round;
+    line-join: round;
+    [zoom >= 13] {
+      line-width: 4;
+      text-name: "[name]";
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-size: 8;
+      text-placement: line;
+      text-fill: #6699cc;
+    }
+  }
+}
+
 /*
 
-
-<Style name="water-lines-low-zoom">
-    <Rule>
-      <Filter>[waterway]='river'</Filter>
-      &maxscale_zoom8;
-      &minscale_zoom8;
-      <LineSymbolizer stroke="#b5d0d0" stroke-width="0.7"/>
-    </Rule>
-    <Rule>
-      <Filter>[waterway]='river'</Filter>
-      &maxscale_zoom9;
-      &minscale_zoom9;
-      <LineSymbolizer stroke="#b5d0d0" stroke-width="1.2"/>
-    </Rule>
-    <Rule>
-      <Filter>[waterway]='river'</Filter>
-      &maxscale_zoom10;
-      &minscale_zoom11;
-      <LineSymbolizer stroke="#b5d0d0" stroke-width="1.6"/>
-    </Rule>
-</Style>
-
-<Style name="water_lines">
-    <Rule>
-      <Filter>[waterway]='weir'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom18;
-      <LineSymbolizer stroke-linejoin="round" stroke="#aaa" stroke-width="2" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[waterway]='wadi'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom15;
-      <LineSymbolizer stroke-linejoin="round" stroke-dasharray="4,4" stroke="#b5d0d0" stroke-width="1" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[waterway]='wadi'</Filter>
-      &maxscale_zoom16;
-      <LineSymbolizer stroke-linejoin="round" stroke-dasharray="4,4" stroke="#b5d0d0" stroke-width="2" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[waterway]='river'</Filter>
-      &maxscale_zoom12;
-      &minscale_zoom12;
-      <LineSymbolizer stroke-linejoin="round" stroke="#b5d0d0" stroke-width="2" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[waterway]='river'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom13;
-      <LineSymbolizer stroke-linejoin="round" stroke="#b5d0d0" stroke-width="3" stroke-linecap="round"/>
-      <TextSymbolizer size="9" fill="#6699cc" placement="line" spacing="400" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[waterway]='river'</Filter>
-      &maxscale_zoom14;
-      &minscale_zoom14;
-      <LineSymbolizer stroke-linejoin="round" stroke="#b5d0d0" stroke-width="5" stroke-linecap="round"/>
-      <TextSymbolizer size="10" fill="#6699cc" placement="line" spacing="400" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule><Rule>
-      <Filter>[waterway]='river'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom16;
-      <LineSymbolizer stroke-linejoin="round" stroke="#b5d0d0" stroke-width="6" stroke-linecap="round"/>
-      <TextSymbolizer size="10" fill="#6699cc" placement="line" spacing="400" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[waterway]='river'</Filter>
-      &maxscale_zoom17;
-      &minscale_zoom17;
-      <LineSymbolizer stroke-linejoin="round" stroke="#b5d0d0" stroke-width="10" stroke-linecap="round"/>
-      <TextSymbolizer size="10" fill="#6699cc" placement="line" spacing="400" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[waterway]='river'</Filter>
-      &maxscale_zoom18;
-      &minscale_zoom18;
-      <LineSymbolizer stroke-linejoin="round" stroke="#b5d0d0" stroke-width="12" stroke-linecap="round"/>
-      <TextSymbolizer size="10" fill="#6699cc" placement="line" spacing="400" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[waterway]='canal' and not [disused]='yes'</Filter>
-      &maxscale_zoom12;
-      &minscale_zoom12;
-      <LineSymbolizer stroke-linejoin="round" stroke="#b5d0d0" stroke-width="3" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[waterway]='canal' and not [disused]='yes'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom13;
-      <LineSymbolizer stroke-linejoin="round" stroke="#b5d0d0" stroke-width="4" stroke-linecap="round"/>
-      <TextSymbolizer size="8" fill="#6699cc" placement="line" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
     <Rule>
       <Filter>[waterway]='stream' or [waterway]='ditch' or [waterway]='drain'</Filter>
       &maxscale_zoom13;
@@ -309,18 +280,4 @@
     </Rule>
 </Style>
 
-<Layer name="water_lines" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>water_lines</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,waterway,disused,lock,name,
-      case when tunnel in ('yes','true','1') then 'yes'::text else tunnel end as tunnel
-      from &prefix;_line
-      where waterway in ('weir','river','canal','derelict_canal','stream','drain','ditch','wadi')
-        and (bridge is null or bridge not in ('yes','true','1','aqueduct'))
-      order by z_order
-      ) as water_lines</Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
 */
