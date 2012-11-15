@@ -1,43 +1,53 @@
-/* <Style name="water_areas">
-    <Rule>
-      <Filter>[natural] = 'glacier'</Filter>
-      &maxscale_zoom6;
-      &minscale_zoom7;
-      <LineSymbolizer stroke="#9cf" stroke-width="1.5" stroke-dasharray="4,2"/>
-      <PolygonPatternSymbolizer file="&symbols;/glacier.png" />
-    </Rule>
-    <Rule>
-      <Filter>[natural] = 'glacier'</Filter>
-      &maxscale_zoom8;
-      <LineSymbolizer stroke="#9cf" stroke-width="1.5" stroke-dasharray="4,2"/>
-      <PolygonPatternSymbolizer file="&symbols;/glacier2.png" />
-    </Rule>
-    <Rule>
-      <Filter>[waterway] = 'dock' or [waterway] = 'mill_pond' or [waterway]='canal'</Filter>
-      &maxscale_zoom9;
-      <PolygonSymbolizer gamma=".75" fill="#b5d0d0"/>
-    </Rule>
-    <Rule>
-      <Filter>[landuse] = 'basin'</Filter>
-      &maxscale_zoom7;
-      <PolygonSymbolizer gamma=".75" fill="#b5d0d0"/>
-    </Rule>
-    <Rule>
-      <Filter>[natural] = 'lake' or [natural] = 'water' or [landuse] = 'reservoir' or [waterway] = 'riverbank' or [landuse] = 'water' or [natural]='bay'</Filter>
-      &maxscale_zoom6;
-      <PolygonSymbolizer gamma=".75" fill="#b5d0d0"/>
-    </Rule>
-    <Rule>
-      <Filter>[natural] = 'mud'</Filter>
-      &maxscale_zoom13;
-      <PolygonPatternSymbolizer file="&symbols;/mud.png" />
-    </Rule>
-    <Rule>
-      <Filter>[natural] = 'land'</Filter>
-      &maxscale_zoom10;
-      <PolygonSymbolizer fill="#f2efe9"/>
-    </Rule>
-</Style>
+#water-areas {
+  [natural = 'glacier']::natural {
+    [zoom >= 6] {
+      line-dasharray: 4,2;
+      line-width: 1.5;
+      line-color: #9cf;
+      polygon-pattern-file: url('symbols/glacier.png');
+      [zoom >= 8] {
+        polygon-pattern-file: url('symbols/glacier2.png');
+      }
+    }
+  }
+
+  [waterway = 'dock'],
+  [waterway = 'mill_pond'],
+  [waterway = 'canal'] {
+    [zoom >= 9]::waterway {
+      polygon-gamma: 0.75;
+      polygon-fill: #b5d0d0;
+    }
+  }
+
+  [landuse = 'basin'][zoom >= 7]::landuse {
+    polygon-gamma: 0.75;
+    polygon-fill: #b5d0d0;
+  }
+
+  [natural = 'lake']::natural,
+  [natural = 'water']::natural,
+  [landuse = 'reservoir']::landuse,
+  [waterway = 'riverbank']::waterway,
+  [landuse = 'water']::water,
+  [natural = 'bay']::natural {
+    [zoom >= 6] {
+      polygon-fill: #b5d0d0;
+      polygon-gamma: 0.75;
+    }
+  }
+
+  [natural = 'mud'][zoom >= 13]::natural {
+    polygon-pattern-file: url('symbols/mud.png');
+  }
+
+  [natural = 'land'][zoom >= 10]::natural {
+    polygon-fill: #f2efe9;
+  }
+}
+
+/*
+
 <Style name="water-areas-overlay">
     <Rule>
       &maxscale_zoom13;
@@ -306,21 +316,6 @@
 </Style>
 
 
-<Layer name="water_areas" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>water_areas</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,"natural",waterway,landuse,name
-      from &prefix;_polygon
-      where (waterway in ('dock','mill_pond','riverbank','canal')
-         or landuse in ('reservoir','water','basin')
-         or "natural" in ('lake','water','land','glacier','mud','bay'))
-         and building is null
-      order by z_order,way_area desc
-      ) as water_areas</Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
 <!-- Make sure overlay styles are always rendered on top of solid areas. -->
 <Layer name="water-areas-overlay" status="on" srs="&osm2pgsql_projection;">
     <StyleName>water-areas-overlay</StyleName>
