@@ -300,43 +300,23 @@
   }
 }
 
-/*
+#sports-grounds {
+  [leisure = 'sports_centre'],
+  [leisure = 'stadium'] {
+    [zoom >= 10] {
+      polygon-fill: #33cc99;
+    }
+  }
 
-<Style name="sports_grounds">
-    <Rule>
-      <Filter>[leisure] = 'sports_centre' or [leisure] = 'stadium'</Filter>
-      &maxscale_zoom10;
-      <PolygonSymbolizer fill="#33cc99"/>
-    </Rule>
-    <Rule>
-      <Filter>[leisure]='track'</Filter>
-      &maxscale_zoom10;
-      <PolygonSymbolizer fill="#74dcba"/>
-      <LineSymbolizer stroke="#888" stroke-width="0.5"/>
-    </Rule>
-    <Rule>
-      <Filter>[leisure] = 'pitch'</Filter>
-      &maxscale_zoom10;
-      <PolygonSymbolizer fill="#8ad3af"/>
-      <LineSymbolizer stroke="#888" stroke-width="0.5"/>
-    </Rule>
-</Style>
+  [leisure = 'track'][zoom >= 10] {
+    polygon-fill: #74dcba;
+    line-width: 0.5;
+    line-color: #888;
+  }
 
-<Layer name="sports_grounds" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>sports_grounds</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,leisure,
-       case when leisure='pitch' then 2
-            when leisure='track' then 1
-            else 0 end as prio
-       from &prefix;_polygon
-       where leisure in ('sports_centre','stadium','pitch','track')
-       order by z_order,prio,way_area desc
-      ) as sports_grounds
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-
-*/
+  [leisure = 'pitch'][zoom >= 10] {
+    polygon-fill: #8ad3af;
+    line-width: 0.5;
+    line-color: #888;
+  }
+}
