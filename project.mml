@@ -1144,6 +1144,121 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
       "name": "bridges-directions4"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "      (select way,highway,aeroway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '5'\n       order by z_order\n      ) as roads",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "gis"
+      },
+      "id": "bridges-layer5",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "bridges-layer5"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "      (select way,access,highway,\n       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text end as service\n       from planet_osm_line\n       where access is not null and highway is not null\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '5'\n      ) as access",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "gis"
+      },
+      "id": "bridges-access5",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "bridges-access5"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "      (select way,\n       case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway\n       from planet_osm_line\n       where oneway is not null\n         and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '5'\n      ) as directions",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "gis"
+      },
+      "id": "bridges-directions5",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "bridges-directions5"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way,railway,bridge from planet_osm_line where railway='tram' and (tunnel is null or tunnel not in ('yes','true','1'))) as trams",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "gis"
+      },
+      "id": "trams",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "trams"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way from planet_osm_line where highway='bus_guideway' and (tunnel is null or tunnel not in ('yes','true','1'))) as guideways",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "gis"
+      },
+      "id": "guideways",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "guideways"
     }
   ],
   "scale": 1,

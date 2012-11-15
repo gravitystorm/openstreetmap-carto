@@ -3343,77 +3343,7 @@
 </Style>
 
 
-<Layer name="bridges_layer5" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>bridges_casing</StyleName>
-    <StyleName>bridges_casing2</StyleName>
-    <StyleName>bridges_fill</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,highway,aeroway,horse,bicycle,foot,tracktype,
-       case when railway in ('spur','siding')
-              or (railway='rail' and service in ('spur','siding','yard'))
-            then 'INT-spur-siding-yard'::text else railway end as railway
-       from &prefix;_line
-       where (highway is not null
-              or aeroway in ('runway','taxiway')
-              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))
-         and bridge in ('yes','true','1','viaduct')
-         and layer = '5'
-       order by z_order
-      ) as roads
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="bridges_access5" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>access</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,access,highway,
-       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text end as service
-       from &prefix;_line
-       where access is not null and highway is not null
-         and bridge in ('yes','true','1','viaduct')
-         and layer = '5'
-      ) as access
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="bridges_directions5" status="on" srs="&osm2pgsql_projection;">
-     <StyleName>directions</StyleName>
-     <Datasource>
-      <Parameter name="table">
-      (select way,
-       case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway
-       from &prefix;_line
-       where oneway is not null
-         and (highway is not null or railway is not null or waterway is not null)
-         and bridge in ('yes','true','1','viaduct')
-         and layer = '5'
-      ) as directions
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="trams" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>trams</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,railway,bridge from &prefix;_line where railway='tram' and (tunnel is null or tunnel not in ('yes','true','1'))) as trams
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="guideways" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>guideways</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way from &prefix;_line where highway='bus_guideway' and (tunnel is null or tunnel not in ('yes','true','1'))) as guideways
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
+
 &layer-admin;
 &layer-placenames;
 &layer-amenity-stations;
