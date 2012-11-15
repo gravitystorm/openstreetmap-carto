@@ -3343,67 +3343,6 @@
 </Style>
 
 
-
-<Layer name="text" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>text</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,amenity,shop,access,leisure,landuse,man_made,"natural",place,tourism,ele,name,ref,military,aeroway,waterway,historic,'yes'::text as point
-       from &prefix;_point
-       where amenity is not null
-          or shop in ('supermarket','bakery','clothes','fashion','convenience','doityourself','hairdresser','department_store','butcher','car','car_repair','bicycle','florist')
-          or leisure is not null
-          or landuse is not null
-          or tourism is not null
-          or "natural" is not null
-          or man_made in ('lighthouse','windmill')
-          or place='island'
-          or military='danger_area'
-          or aeroway='gate'
-          or waterway='lock'
-          or historic in ('memorial','archaeological_site')
-      ) as text
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="text-poly" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>text</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,aeroway,shop,access,amenity,leisure,landuse,man_made,"natural",place,tourism,NULL as ele,name,ref,military,waterway,historic,'no'::text as point
-       from &prefix;_polygon
-       where amenity is not null
-          or shop in ('supermarket','bakery','clothes','fashion','convenience','doityourself','hairdresser','department_store', 'butcher','car','car_repair','bicycle')
-          or leisure is not null
-          or landuse is not null
-          or tourism is not null
-          or "natural" is not null
-          or man_made in ('lighthouse','windmill')
-          or place='island'
-          or military='danger_area'
-          or historic in ('memorial','archaeological_site')
-      ) as text
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="area-text" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>area-text</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,way_area,name
-       from &prefix;_polygon
-       where name is not null
-         and (waterway is null or waterway != 'riverbank')
-         and place is null
-       order by way_area desc
-      ) as text
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-&layer-addressing;
 <Layer name="misc_boundaries" status="on" srs="&osm2pgsql_projection;">
     <StyleName>boundary</StyleName>
     <Datasource>
