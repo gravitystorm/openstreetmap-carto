@@ -67,32 +67,4 @@
     </Rule>
 </Style>
 
-<Layer name="amenity-stations" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>stations</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,name,railway,aerialway,disused
-      from &prefix;_point
-      where railway in ('station','halt','tram_stop','subway_entrance')
-         or aerialway='station'
-      ) as stations
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="amenity-stations-poly" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>stations</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,name,railway,aerialway,disused
-      from &prefix;_polygon
-      where railway in ('station','halt','tram_stop')
-         or aerialway='station'
-      ) as stations
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-
-
 */

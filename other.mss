@@ -3342,10 +3342,6 @@
     </Rule>
 </Style>
 
-
-&layer-amenity-stations;
-&layer-amenity-symbols;
-&layer-amenity-points;
 &layer-power;
 <Layer name="roads-text-ref-low-zoom" status="on" srs="&osm2pgsql_projection;">
      <StyleName>roads-text-ref-low-zoom</StyleName>

@@ -1420,6 +1420,141 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
       "name": "placenames-small"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "      (select way,name,railway,aerialway,disused\n      from planet_osm_point\n      where railway in ('station','halt','tram_stop','subway_entrance')\n         or aerialway='station'\n      ) as stations",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "gis"
+      },
+      "id": "stations",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "stations"
+    },
+    {
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "      (select way,name,railway,aerialway,disused\n      from planet_osm_polygon\n      where railway in ('station','halt','tram_stop')\n         or aerialway='station'\n      ) as stations",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "gis"
+      },
+      "id": "stations-poly",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "stations-poly"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select *\n      from planet_osm_point\n      where aeroway in ('airport','aerodrome','helipad')\n         or barrier in ('bollard','gate','lift_gate','block')\n         or highway in ('mini_roundabout','gate')\n         or man_made in ('lighthouse','power_wind','windmill','mast')\n         or (power='generator' and (\"generator:source\"='wind' or power_source='wind'))\n         or \"natural\" in ('peak','volcano','spring','tree','cave_entrance')\n         or railway='level_crossing'\n      ) as symbols",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "gis"
+      },
+      "id": "amenity-symbols",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "amenity-symbols"
+    },
+    {
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select *\n      from planet_osm_polygon\n      where aeroway in ('airport','aerodrome','helipad')\n         or barrier in ('bollard','gate','lift_gate','block')\n         or highway in ('mini_roundabout','gate')\n         or man_made in ('lighthouse','power_wind','windmill','mast')\n         or (power='generator' and (\"generator:source\"='wind' or power_source='wind'))\n         or \"natural\" in ('peak','volcano','spring','tree')\n         or railway='level_crossing'\n      ) as symbols",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "gis"
+      },
+      "id": "amenity-symbols-poly",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "amenity-symbols-poly"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way,amenity,shop,tourism,highway,man_made,access,religion,waterway,lock,historic,leisure\n      from planet_osm_point\n      where amenity is not null\n         or shop is not null\n         or tourism in ('alpine_hut','camp_site','caravan_site','guest_house','hostel','hotel','motel','museum','viewpoint','bed_and_breakfast','information','chalet')\n         or highway in ('bus_stop','traffic_signals','ford')\n         or man_made in ('mast','water_tower')\n         or historic in ('memorial','archaeological_site')\n         or waterway='lock'\n         or lock='yes'\n         or leisure in ('playground','slipway')\n      ) as points",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "gis"
+      },
+      "id": "amenity-points",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "amenity-points"
+    },
+    {
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way,amenity,shop,tourism,highway,man_made,access,religion,waterway,lock,historic,leisure\n      from planet_osm_polygon\n      where amenity is not null\n         or shop is not null\n         or tourism in ('alpine_hut','camp_site','caravan_site','guest_house','hostel','hotel','motel','museum','viewpoint','bed_and_breakfast','information','chalet')\n         or highway in ('bus_stop','traffic_signals')\n         or man_made in ('mast','water_tower')\n         or historic in ('memorial','archaeological_site')\n         or leisure='playground'\n      ) as points",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "gis"
+      },
+      "id": "amenity-points-poly",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "amenity-points-poly"
     }
   ],
   "scale": 1,
