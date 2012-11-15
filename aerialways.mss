@@ -1,17 +1,20 @@
-/*
-<Style name="aerialways">
-    <Rule>
-      <Filter>[aerialway] = 'cable_car' or [aerialway]='gondola' or [aerialway]='goods'</Filter>
-      &maxscale_zoom12;
-      &minscale_zoom18;
-      <LinePatternSymbolizer file="&symbols;/cable_car.png"/>
-    </Rule>
-    <Rule>
-      <Filter>[aerialway] = 'chair_lift' or [aerialway]='drag_lift' or [aerialway]='t-bar' or [aerialway]='j-bar' or [aerialway]='platter' or [aerialway]='rope_tow'</Filter>
-      &maxscale_zoom12;
-      &minscale_zoom18;
-      <LinePatternSymbolizer file="&symbols;/chair_lift.png"/>
-    </Rule>
-</Style>
+#aerialways {
+  [aerialway = 'cable_car'],
+  [aerialway = 'gondola'],
+  [aerialway = 'goods'] {
+    [zoom >= 12] {
+      line-pattern-file: url('symbols/cable_car.png');
+    }
+  }
 
-*/
+  [aerialway = 'chair_lift'],
+  [aerialway = 'drag_lift'],
+  [aerialway = 't-bar'],
+  [aerialway = 'j-bar'],
+  [aerialway = 'platter'],
+  [aerialway = 'rope_tow'] {
+    [zoom >= 12] {
+      line-pattern-file: url('symbols/chair_lift.png');
+    }
+  }
+}
