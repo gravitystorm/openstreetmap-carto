@@ -142,54 +142,5 @@
     </Rule>
 </Style>
 
-<Layer name="placenames-large" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>country</StyleName>
-    <StyleName>state</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,place,name,ref
-       from &prefix;_point
-       where place in ('country','state')
-      ) as placenames</Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="placenames-capital" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>capital</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,place,name,ref
-       from &prefix;_point
-       where place in ('city','metropolis','town') and capital='yes'
-      ) as placenames</Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="placenames-medium" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>city</StyleName>
-    <StyleName>town</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,place,name
-      from &prefix;_point
-      where place in ('city','metropolis','town','large_town','small_town')
-        and (capital is null or capital != 'yes')
-      ) as placenames</Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="placenames-small" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>suburb</StyleName>
-    <StyleName>village</StyleName>
-    <StyleName>hamlet</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,place,name
-      from &prefix;_point
-      where place in ('suburb','village','large_village','hamlet','locality','isolated_dwelling','farm')
-      ) as placenames</Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
 
 */

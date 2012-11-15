@@ -3343,9 +3343,6 @@
 </Style>
 
 
-
-&layer-admin;
-&layer-placenames;
 &layer-amenity-stations;
 &layer-amenity-symbols;
 &layer-amenity-points;
