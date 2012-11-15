@@ -2,6 +2,10 @@
 
 A project to re-implement the standard OpenStreetMap mapnik style, in CartoCSS
 
+# Dependencies
+
+* carto >= 0.9.3 (we're using instances with cascading rules)
+
 # Notes on conversion
 
 * Always specify zoom levels as either >= or < . Don't use either = or =<
