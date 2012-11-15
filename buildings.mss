@@ -1,55 +1,46 @@
-/*
-<Style name="buildings-lz">
-    <Rule>
-      <Filter>[railway] = 'station' or [building] = 'station'</Filter>
-      &maxscale_zoom10;
-      <PolygonSymbolizer fill="#d4aaaa"/>
-    </Rule>
-    <Rule>
-      <Filter>[building] = 'supermarket'</Filter>
-      &maxscale_zoom10;
-      <PolygonSymbolizer fill-opacity="0.5" fill="pink"/>
-    </Rule>
-    <Rule>
-      <Filter>[amenity] = 'place_of_worship'</Filter>
-      &maxscale_zoom10;
-      &minscale_zoom14;
-      <PolygonSymbolizer fill-opacity="0.5" fill="#777"/>
-    </Rule>
-    <Rule>
-      <Filter>[amenity] = 'place_of_worship'</Filter>
-      &maxscale_zoom15;
-      <PolygonSymbolizer fill-opacity="0.9" fill="#aaa"/>
-      <LineSymbolizer stroke="#111" stroke-width="0.3"/>
-    </Rule>
-</Style>
+#buildings-lz {
+  [zoom >= 10] {
+    [railway = 'station']::railway,
+    [building = 'station'] {
+      polygon-fill: #d4aaaa;
+    }
 
-<Style name="buildings">
-    <Rule>
-      <Filter>[building] = 'INT-light'</Filter>
-      &maxscale_zoom12;
-      <PolygonSymbolizer fill-opacity="0.7" fill="#bca9a9"/>
-    </Rule>
-    <Rule>
-      <Filter>[building] != 'INT-light' and [building] != ''</Filter>
-      &maxscale_zoom12;
-      <PolygonSymbolizer fill-opacity="0.9" fill="#bca9a9"/>
-    </Rule>
-    <Rule>
-      <Filter>[building] != 'INT-light' and [building] != ''</Filter>
-      &maxscale_zoom16;
-      <LineSymbolizer stroke="#330066" stroke-width="0.2"/>
-    </Rule>
-    <Rule>
-      <Filter>[aeroway] = 'terminal'</Filter>
-      &maxscale_zoom12;
-      <PolygonSymbolizer fill="#cc99ff"/>
-    </Rule>
-    <Rule>
-      <Filter>[aeroway] = 'terminal'</Filter>
-      &maxscale_zoom14;
-      <LineSymbolizer stroke="#330066" stroke-width="0.2"/>
-    </Rule>
-</Style>
+    [building = 'supermarket'] {
+      polygon-fill: pink;
+      polygon-opacity: 0.5;
+    }
 
-*/
+    [amenity = 'place_of_worship']::amenity {
+      polygon-opacity: 0.5;
+      polygon-fill: #777;
+      [zoom >= 15] {
+        polygon-opacity: 0.9;
+        polygon-fill: #aaa;
+        line-width: 0.3;
+        line-color: #111;
+      }
+    }
+  }
+}
+
+#buildings {
+  [building = 'INT-light'][zoom >= 12] {
+    polygon-fill: #bca9a9;
+    polygon-opacity: 0.7;
+  }
+  [building != 'INT-light'][building != ''][zoom >= 12] {
+    polygon-fill: #bca9a9;
+    polygon-opacity: 0.9;
+    [zoom >= 16] {
+      line-color: #330066;
+      line-width: 0.2;
+    }
+  }
+  [aeroway = 'terminal'][zoom >= 12]::aeroway {
+    polygon-fill: #cc99ff;
+    [zoom >= 14] {
+      line-color: #330066;
+      line-width: 0.2;
+    }
+  }
+}
