@@ -3327,30 +3327,17 @@
       <TextSymbolizer size="11" fill="#9c9" fontset-name="bold-fonts" halo-radius="1" wrap-width="14">[name]</TextSymbolizer>
     </Rule>
 </Style>
-<Style name="theme_park">
-<Rule>
-      &maxscale_zoom13;
-      &minscale_zoom14;
-      <Filter>[tourism]='theme_park'</Filter>
-      <LineSymbolizer stroke="#734a08" stroke-width="1.5" stroke-dasharray="9,3" stroke-opacity="0.6"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom15;
-      &minscale_zoom18;
-      <Filter>[tourism]='theme_park'</Filter>
-      <LineSymbolizer stroke="#734a08" stroke-width="2.5" stroke-dasharray="9,3" stroke-opacity="0.6"/>
-    </Rule>
-</Style>
 
-
-<Layer name="misc_boundaries" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>boundary</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,way_area,name,boundary from &prefix;_polygon where boundary='national_park' and building is null) as boundary
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="theme_park" status="on" srs="&osm2pgsql_projection;">
 */
+
+#theme-park {
+  [tourism = 'theme_park'][zoom >= 13] {
+    line-color: #734a08;
+    line-width: 1.5;
+    line-dasharray: 9,3;
+    line-opacity: 0.6;
+    [zoom >= 15] {
+      line-width: 2.5;
+    }
+  }
+}
