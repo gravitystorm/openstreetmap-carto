@@ -11,14 +11,4 @@
     </Rule>
 </Style>
 
-<Layer name="ferry-routes" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>ferry-routes</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way from &prefix;_line where route='ferry' ) as routes
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-
 */

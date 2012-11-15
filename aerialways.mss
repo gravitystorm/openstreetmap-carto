@@ -14,13 +14,4 @@
     </Rule>
 </Style>
 
-<Layer name="aerialways" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>aerialways</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,aerialway from &prefix;_line where aerialway is not null) as aerialways
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
 */

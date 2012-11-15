@@ -3342,46 +3342,7 @@
     </Rule>
 </Style>
 
-&layer-ferry-routes;
-&layer-aerialways;
-<Layer name="roads" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>roads</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,highway,
-       case when tunnel in ('yes','true','1') then 'yes'::text else tunnel end as tunnel,
-       case when railway='preserved' and service in ('spur','siding','yard') then 'INT-preserved-ssy'::text else railway end as railway
-       from &prefix;_roads
-       where highway is not null
-          or (railway is not null and railway!='preserved' and (service is null or service not in ('spur','siding','yard')))
-          or railway='preserved'
-       order by z_order
-      ) as roads
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="waterway-bridges" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>waterway-bridges</StyleName>
-    <Datasource>
-      <Parameter name="table">(select way,name from &prefix;_line where waterway='canal' and bridge in ('yes','true','1','aqueduct') order by z_order) as water</Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="access-pre_bridges" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>access</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,access,highway,
-       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text end as service
-       from &prefix;_line
-       where access is not null and highway is not null
-         and (bridge is null or bridge not in ('yes','true','1','viaduct'))
-      ) as access
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
+
 <Layer name="direction_pre_bridges" status="on" srs="&osm2pgsql_projection;">
      <StyleName>directions</StyleName>
      <Datasource>
