@@ -1,14 +1,11 @@
-/*
-<Style name="ferry-routes">
-    <Rule>
-      &maxscale_zoom7;
-      &minscale_zoom10;
-      <LineSymbolizer stroke="#66f" stroke-width="0.4" stroke-dasharray="4,4"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom11;
-      <LineSymbolizer stroke="#66f" stroke-width="0.8" stroke-dasharray="6,6"/>
-    </Rule>
-</Style>
-
-*/
+#ferry-routes {
+  [zoom >= 7] {
+    line-color: #66f;
+    line-width: 0.4;
+    line-dasharray: 4,4;
+    [zoom >= 11] {
+      line-width: 0.8;
+      line-dasharray: 6,6;
+    }
+  }
+}
