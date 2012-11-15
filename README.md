@@ -1,5 +1,6 @@
 # OpenStreetMap Carto
 
+A project to re-implement the standard OpenStreetMap mapnik style, in CartoCSS
 
 # Notes on conversion
 
@@ -9,3 +10,4 @@
 * Two space indents. No tabs.
 * space after : but no before
 * If there is a `&minscale_zoom18;`, ignore it. These really mess up any attempts to run the style at z19
+* Dashes, not underscores, in layer names
