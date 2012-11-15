@@ -52,43 +52,4 @@
     </Rule>
 </Style>
 
-<!-- Render only select building types starting at z10. -->
-<Layer name="buildings-lz" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>buildings-lz</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,building,railway,amenity from &prefix;_polygon
-       where railway='station'
-          or building in ('station','supermarket')
-          or amenity='place_of_worship'
-       order by z_order,way_area desc) as buildings
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-
-<!-- Render the other building types. Some sql filtering is needed to exclude
-     any type not already specifically rendered in buildings-lz. -->
-<Layer name="buildings" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>buildings</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,aeroway,
-        case
-         when building in ('residential','house','garage','garages','detached','terrace','apartments') then 'INT-light'::text
-         else building
-        end as building
-       from &prefix;_polygon
-       where (building is not null
-         and building not in ('no','station','supermarket','planned')
-         and (railway is null or railway != 'station')
-         and (amenity is null or amenity != 'place_of_worship'))
-          or aeroway = 'terminal'
-       order by z_order,way_area desc) as buildings
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-
-
 */

@@ -3342,60 +3342,6 @@
     </Rule>
 </Style>
 
-&layer-buildings;
-<Layer name="tracks-notunnel-nobridge" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>tracks-notunnel-nobridge</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,tracktype from &prefix;_line where highway='track' and (bridge is null or bridge in ('no','false','0')) and (tunnel is null or tunnel in ('no','false','0'))) as tracks
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="minor-roads-fill" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>minor-roads-fill-links</StyleName>
-    <StyleName>minor-roads-fill</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,highway,horse,bicycle,foot,construction,aeroway,
-       case when tunnel in ('yes','true','1') then 'yes'::text else tunnel end as tunnel,
-       case when bridge in ('yes','true','1','viaduct') then 'yes'::text else bridge end as bridge,
-       case when railway in ('spur','siding')
-              or (railway='rail' and service in ('spur','siding','yard'))
-            then 'spur-siding-yard'::text else railway end as railway,
-       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else service end as service
-       from &prefix;_line
-       where highway is not null
-          or aeroway in ('runway','taxiway')
-          or railway in ('light_rail','narrow_gauge','funicular','rail','subway','tram','spur','siding','platform','disused','abandoned','construction','miniature','turntable')
-       order by z_order) as roads
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="turning_circle-fill" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>turning_circle-fill</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select distinct on (p.way) p.way as way,l.highway as int_tc_type
-       from &prefix;_point p
-       join &prefix;_line l
-        on ST_DWithin(p.way,l.way,&dwithin_node_way;)
-       join (values
-        ('tertiary',1),
-        ('unclassified',2),
-        ('residential',3),
-        ('living_street',4),
-        ('service',5)
-       ) as v (highway,prio)
-        on v.highway=l.highway
-       where p.highway='turning_circle'
-       order by p.way,v.prio
-      ) as turning_circle
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
 &layer-ferry-routes;
 &layer-aerialways;
 <Layer name="roads" status="on" srs="&osm2pgsql_projection;">
