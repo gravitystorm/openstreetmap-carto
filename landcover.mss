@@ -288,19 +288,20 @@
   }
 }
 
+#landcover-line {
+  [zoom >= 14] {
+    line-width: 3;
+    line-join: round;
+    line-cap: square;
+    line-color: #f2efe9;
+    [zoom >= 16] {
+      line-width: 6;
+    }
+  }
+}
+
 /*
 
-<Style name="landcover_line">
-    <Rule>
-      &maxscale_zoom14;
-      &minscale_zoom15;
-      <LineSymbolizer stroke-linejoin="round" stroke="#f2efe9" stroke-width="3" stroke-linecap="square"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <LineSymbolizer stroke-linejoin="round" stroke="#f2efe9" stroke-width="6" stroke-linecap="square"/>
-    </Rule>
-</Style>
 <Style name="sports_grounds">
     <Rule>
       <Filter>[leisure] = 'sports_centre' or [leisure] = 'stadium'</Filter>
@@ -321,18 +322,6 @@
     </Rule>
 </Style>
 
-<Layer name="landcover_line" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>landcover_line</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way
-       from &prefix;_line
-       where man_made='cutline'
-      ) as leisure
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
 <Layer name="sports_grounds" status="on" srs="&osm2pgsql_projection;">
     <StyleName>sports_grounds</StyleName>
     <Datasource>
