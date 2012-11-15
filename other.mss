@@ -3342,50 +3342,7 @@
     </Rule>
 </Style>
 
-<Layer name="landuse_overlay" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>landuse_overlay</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,landuse,leisure
-       from &prefix;_polygon
-       where (landuse = 'military' or leisure='nature_reserve') and building is null
-      ) as landuse_overlay
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="turning_circle-casing" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>turning_circle-casing</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select distinct on (p.way) p.way as way,l.highway as int_tc_type
-       from &prefix;_point p
-       join &prefix;_line l
-        on ST_DWithin(p.way,l.way,&dwithin_node_way;)
-       join (values
-        ('tertiary',1),
-        ('unclassified',2),
-        ('residential',3),
-        ('living_street',4),
-        ('service',5)
-       ) as v (highway,prio)
-        on v.highway=l.highway
-       where p.highway='turning_circle'
-       order by p.way,v.prio
-      ) as turning_circle
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
-<Layer name="footbikecycle-tunnels" status="on" srs="&osm2pgsql_projection;">
-    <StyleName>footbikecycle-tunnels</StyleName>
-    <Datasource>
-      <Parameter name="table">
-      (select way,highway,horse,foot,bicycle from &prefix;_line where highway in ('bridleway','footway','cycleway','path') and tunnel in ('yes','true','1') order by z_order) as roads
-      </Parameter>
-      &datasource-settings;
-    </Datasource>
-</Layer>
+
 <Layer name="tracks-tunnels" status="on" srs="&osm2pgsql_projection;">
     <StyleName>tracks-tunnels</StyleName>
     <Datasource>
