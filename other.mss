@@ -1463,229 +1463,184 @@
       line-join: round;
     }
   }
+
+  [highway = 'tertiary'],
+  [highway = 'residential'],
+  [highway = 'unclassified'],
+  [highway = 'road'] {
+    [zoom >= 10][zoom < 13] {
+      line-width: 1;
+      line-color: #bbb;
+    }
+  }
+
+  [highway = 'road'][zoom >= 13] {
+    line-width: 2;
+    line-color: #ddd;
+    line-join: round;
+    line-cap: round;
+    [zoom >= 14] { line-width: 3; }
+    [zoom >= 15] { line-width: 6.5; }
+    [zoom >= 16] { line-width: 9.4; }
+    [zoom >= 17] { line-width: 13; }
+  }
+
+  [highway = 'residential'],
+  [highway = 'unclassified'] {
+    [zoom >= 13][tunnel != 'yes'] {
+      line-width: 2;
+      line-color: #fff;
+      line-cap: round;
+      line-join: round;
+      [zoom >= 14] { line-width: 3; }
+      [zoom >= 15] { line-width: 6.5; }
+      [zoom >= 16] { line-width: 9.4; }
+      [zoom >= 17] { line-width: 13; }
+    }
+  }
+
+  [highway = 'living_street'][zoom >= 12] {
+    line-width: 1.5;
+    line-color: #ccc;
+    line-join: round;
+    line-cap: round;
+    [zoom >= 14] { line-width: 3; }
+    [zoom >= 15] { line-width: 4.7; }
+    [zoom >= 16] { line-width: 7.4; }
+    [zoom >= 17] { line-width: 13; }
+  }
+
+  [highway = 'tertiary'][tunnel != 'yes'][zoom >= 13] {
+    line-width: 4.5;
+    line-color: #ffffb3;
+    line-join: round;
+    line-cap: round;
+    [zoom >= 14] { line-width: 6; }
+    [zoom >= 15] { line-width: 9.4; }
+    [zoom >= 17] { line-width: 13; }
+  }
+
+  [highway = 'service'][service = 'INT-normal'][zoom >= 13] {
+    line-width: 1;
+    line-color: #bbbbbb;
+    [zoom >= 14] {
+      line-width: 2;
+      line-color: white;
+    }
+    [zoom >= 16] { line-width: 6; }
+  }
+
+  [highway = 'service'][service = 'INT-minor'][zoom >= 16] {
+    line-width: 3;
+    line-color: #fff;
+  }
+
+  [highway = 'pedestrian'][zoom >= 13] {
+    line-width: 1.5;
+    line-color: #ededed;
+    line-join: round;
+    line-cap: round;
+    [zoom >= 14] { line-width: 3; }
+    [zoom >= 15] { line-width: 5.5; }
+    [zoom >= 16] { line-width: 8; }
+  }
+
+  [highway = 'platform'],
+  [railway = 'platform'] {
+    [zoom >= 16] {
+      line-join: round;
+      line-width: 6;
+      line-color: grey;
+      line-cap: round;
+    }
+  }
+
+  [railway = 'turntable'][zoom >= 16] {
+    line-width: 1.5;
+    line-color: #999;
+  }
+
+  [highway = 'steps'][zoom >= 13][zoom < 15] {
+    line-width: 6;
+    line-color: #fff;
+    line-opacity: 0.4;
+  }
+
+  [highway = 'steps'][zoom >= 15] {
+    line-width: 5.0;
+    line-color: salmon;
+    line-dasharray: 2,1;
+  }
+
+  [highway = 'bridleway'],
+  [highway = 'path'][horse = 'designated'] {
+    [zoom >= 13][tunnel != 'yes'] {
+      line-width: 3;
+      line-color: #fff;
+      line-cap: round;
+      line-join: round;
+      line-opacity: 0.4;
+      b/line-color: green;
+      b/line-width: 1.2;
+      b/line-dasharray: 4,2;
+    }
+  }
+
+  [highway = 'footway'],
+  [highway = 'path'][foot = 'designated'] {
+    [zoom >= 13][tunnel != 'yes'] {
+      line-width: 4;
+      line-color: #fff;
+      line-opacity: 0.4;
+      line-cap: round;
+      line-join: round;
+      b/line-width: 1.5;
+      b/line-color: salmon;
+      b/line-dasharray: 1,3;
+      b/line-cap: round;
+      b/line-join: round;
+    }
+  }
+
+  [highway = 'cycleway'],
+  [highway = 'path'][bicycle = 'designated'] {
+    [zoom >= 13][tunnel != 'yes'] {
+      line-width: 3;
+      line-color: white;
+      line-join: round;
+      line-cap: round;
+      line-opacity: 0.4;
+      b/line-width: 1.2;
+      b/line-dasharray: 1,3;
+      b/line-color: blue;
+      b/line-join: round;
+      b/line-cap: round;
+    }
+  }
+
+  /*
+   * The above defininitions should override this when needed
+   * given the specitivity precedence.
+   */
+  [highway = 'path'][tunnel != 'yes'] {
+    [zoom >= 13] {
+      line-width: 1.0;
+      line-color: white;
+      line-opacity: 0.4;
+      line-cap: round;
+      line-join: round;
+      b/line-width: 0.5;
+      b/line-dasharray: 6,3;
+      b/line-color: black;
+      b/line-join: round;
+      b/line-cap: round;
+    }
+  }
 }
 
 /*
 <Style name="minor-roads-fill">
 
-    <Rule>
-      <Filter>[highway] = 'tertiary' or [highway] = 'residential' or [highway] = 'unclassified' or [highway] = 'road'</Filter>
-      &maxscale_zoom10;
-      &minscale_zoom12;
-      <LineSymbolizer stroke="#bbb" stroke-width="1"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'road'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom13;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ddd" stroke-width="2" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'road'</Filter>
-      &maxscale_zoom14;
-      &minscale_zoom14;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ddd" stroke-width="3" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'road'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom15;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ddd" stroke-width="6.5" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'road'</Filter>
-      &maxscale_zoom16;
-      &minscale_zoom16;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ddd" stroke-width="9.4" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'road'</Filter>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ddd" stroke-width="13" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>([highway] = 'residential' or [highway] = 'unclassified') and not [tunnel] = 'yes'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom13;
-      <LineSymbolizer stroke-linejoin="round" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>([highway] = 'residential' or [highway] = 'unclassified') and not [tunnel] = 'yes'</Filter>
-      &maxscale_zoom14;
-      &minscale_zoom14;
-      <LineSymbolizer stroke-linejoin="round" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>([highway] = 'residential' or [highway] = 'unclassified') and not [tunnel] = 'yes'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom15;
-      <LineSymbolizer stroke-linejoin="round" stroke="#fff" stroke-width="6.5" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>([highway] = 'residential' or [highway] = 'unclassified') and not [tunnel] = 'yes'</Filter>
-      &maxscale_zoom16;
-      &minscale_zoom16;
-      <LineSymbolizer stroke-linejoin="round" stroke="#fff" stroke-width="9.4" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>([highway] = 'residential' or [highway] = 'unclassified') and not [tunnel] = 'yes'</Filter>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <LineSymbolizer stroke-linejoin="round" stroke="#fff" stroke-width="13" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'living_street'</Filter>
-      &maxscale_zoom12;
-      &minscale_zoom13;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ccc" stroke-width="1.5" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'living_street'</Filter>
-      &maxscale_zoom14;
-      &minscale_zoom14;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ccc" stroke-width="3" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'living_street'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom15;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ccc" stroke-width="4.7" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'living_street'</Filter>
-      &maxscale_zoom16;
-      &minscale_zoom16;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ccc" stroke-width="7.4" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'living_street'</Filter>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ccc" stroke-width="13" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'tertiary' and not [tunnel]='yes'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom13;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ffffb3" stroke-width="4.5" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'tertiary' and not [tunnel]='yes'</Filter>
-      &maxscale_zoom14;
-      &minscale_zoom14;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ffffb3" stroke-width="6" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'tertiary' and not [tunnel]='yes'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom16;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ffffb3" stroke-width="9.4" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'tertiary' and not [tunnel]='yes'</Filter>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ffffb3" stroke-width="13" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'service' and not [service]='INT-minor'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom13;
-      <LineSymbolizer stroke="#bbbbbb" stroke-width="1"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'service' and not [service]='INT-minor'</Filter>
-      &maxscale_zoom14;
-      &minscale_zoom15;
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="2" stroke-linecap="round"/>
-   </Rule>
-   <Rule>
-      <Filter>[highway] = 'service' and not [service]='INT-minor'</Filter>
-      &maxscale_zoom16;
-      &minscale_zoom18;
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="6" stroke-linecap="round"/>
-   </Rule>
-   <Rule>
-      <Filter>[highway] = 'service' and [service]='INT-minor'</Filter>
-      &maxscale_zoom16;
-      &minscale_zoom18;
-      <LineSymbolizer stroke-linejoin="round" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
-   </Rule>
-   <Rule>
-      <Filter>[highway] = 'pedestrian'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom13;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ededed" stroke-width="1.5" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'pedestrian'</Filter>
-      &maxscale_zoom14;
-      &minscale_zoom14;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ededed" stroke-width="3" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'pedestrian'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom15;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ededed" stroke-width="5.5" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'pedestrian'</Filter>
-      &maxscale_zoom16;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ededed" stroke-width="8" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-       <Filter>[highway] = 'platform' or [railway] = 'platform'</Filter>
-       &maxscale_zoom16;
-       <LineSymbolizer stroke-linejoin="round" stroke="grey" stroke-width="6" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[railway] = 'turntable'</Filter>
-      &maxscale_zoom16;
-      <LineSymbolizer stroke="#999" stroke-width="1.5"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'steps'</Filter>
-      &maxscale_zoom15;
-      <LineSymbolizer stroke="salmon" stroke-width="5.0" stroke-dasharray="2,1"/>
-    </Rule>
-    <Rule>
-      <Filter>([highway] = 'bridleway' or ([highway] = 'path' and [horse] = 'designated')) and not [tunnel]='yes'</Filter>
-      &maxscale_zoom13;
-      <LineSymbolizer stroke-linejoin="round" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-opacity="0.4"/>
-      <LineSymbolizer stroke="green" stroke-width="1.2" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>([highway] = 'footway' or ([highway] = 'path' and [foot] = 'designated')) and not [tunnel]='yes'</Filter>
-      &maxscale_zoom13;
-      <LineSymbolizer stroke-linejoin="round" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-opacity="0.4"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="salmon" stroke-width="1.5" stroke-dasharray="1,3" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'path' and not ([bicycle] = 'designated' or [foot] = 'designated' or [horse] = 'designated') and not [tunnel] = 'yes'</Filter>
-      &maxscale_zoom13;
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="1.0" stroke-linecap="round" stroke-opacity="0.4"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="black" stroke-width="0.5" stroke-dasharray="6,3" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-       <Filter>[highway] = 'platform' or [railway] = 'platform'</Filter>
-       &maxscale_zoom16;
-       <LineSymbolizer stroke-linejoin="round" stroke="#bbbbbb" stroke-width="4" stroke-linecap="round"/>
-     </Rule>
-    <Rule>
-      <Filter>[highway] = 'steps'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom14;
-      <LineSymbolizer stroke="#fff" stroke-width="6" stroke-opacity="0.4"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="salmon" stroke-width="2.0" stroke-dasharray="1,3" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>([highway] = 'cycleway' or ([highway] = 'path' and [bicycle] = 'designated')) and not [tunnel] = 'yes'</Filter>
-      &maxscale_zoom13;
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="3" stroke-linecap="round" stroke-opacity="0.4"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="blue" stroke-width="1.2" stroke-dasharray="1,3" stroke-linecap="round"/>
-    </Rule>
     <Rule>
       <Filter>[highway] = 'byway'</Filter>
       &maxscale_zoom13;
