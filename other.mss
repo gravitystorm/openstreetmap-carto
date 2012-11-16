@@ -3232,55 +3232,45 @@
       <TextSymbolizer size="11" fill="#000" placement="line" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
     </Rule>
 </Style>
-<Style name="cliffs">
-     <Rule>
-      &maxscale_zoom13;
-      &minscale_zoom14;
-      <Filter>[natural] = 'cliff'</Filter>
-      <LinePatternSymbolizer file="&symbols;/cliff.png"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom15;
-      <Filter>[natural] = 'cliff'</Filter>
-      <LinePatternSymbolizer file="&symbols;/cliff2.png"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom15;
-      <Filter>[man_made] = 'embankment'</Filter>
-      <LinePatternSymbolizer file="&symbols;/cliff.png"/>
-    </Rule>
-</Style>
-<Style name="barriers_area">
-    <Rule>
-      <Filter>[natural]='hedge' or [barrier] = 'hedge'</Filter>
-      &maxscale_zoom16;
-      <PolygonSymbolizer fill="#aed1a0"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <Filter>[barrier] != '' and not [barrier] = 'hedge'</Filter>
-      <LineSymbolizer stroke="#444" stroke-width="0.4"/>
-    </Rule>
-</Style>
-<Style name="barriers">
-    <Rule>
-      &maxscale_zoom14;
-      <Filter>[barrier] = 'embankment'</Filter>
-      <LineSymbolizer stroke="#444" stroke-width="0.4"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <Filter>[natural]='hedge' or [barrier] = 'hedge'</Filter>
-      <LineSymbolizer stroke="#aed1a0" stroke-width="3"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <Filter>[barrier] != '' and not ([barrier] = 'hedge' or [barrier] = 'embankment')</Filter>
-      <LineSymbolizer stroke="#444" stroke-width="0.4"/>
-    </Rule>
-</Style>
 
 */
+
+.cliffs {
+  [natural = 'cliff'][zoom >= 13] {
+    line-pattern-file: url('symbols/cliff.png');
+    [zoom >= 15] {
+      line-pattern-file: url('symbols/cliff2.png');
+    }
+  }
+  [man_made = 'embankment'][zoom >= 15]::man_made {
+    line-pattern-file: url('symbols/cliff.png');
+  }
+}
+
+#barriers_area {
+  [zoom >= 16] {
+    line-color: #444;
+    line-width: 0.4;
+    [barrier = 'hedge'] {
+      polygon-fill: #aed1a0;
+    }
+  }
+}
+
+.barriers {
+  [zoom >= 16] {
+    line-width: 0.4;
+    line-color: #444;
+  }
+  [barrier = 'embankment'][zoom >= 14] {
+    line-width: 0.4;
+    line-color: #444;
+  }
+  [barrier = 'hedge'][zoom >= 16] {
+    line-width: 3;
+    line-color: #aed1a0;
+  }
+}
 
 .directions {
   [zoom >= 16] {
