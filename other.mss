@@ -3279,26 +3279,49 @@
       <LineSymbolizer stroke="#444" stroke-width="0.4"/>
     </Rule>
 </Style>
-<Style name="directions">
-    <Rule>
-      <Filter>[oneway] = 'yes'</Filter>
-      &maxscale_zoom16;
-      <LineSymbolizer stroke-linejoin="bevel" stroke="#6c70d5" stroke-width="1" stroke-dasharray="0,12,10,152"/>
-      <LineSymbolizer stroke-linejoin="bevel" stroke="#6c70d5" stroke-width="2" stroke-dasharray="0,12,9,153"/>
-      <LineSymbolizer stroke-linejoin="bevel" stroke="#6c70d5" stroke-width="3" stroke-dasharray="0,18,2,154"/>
-      <LineSymbolizer stroke-linejoin="bevel" stroke="#6c70d5" stroke-width="4" stroke-dasharray="0,18,1,155"/>
-    </Rule>
-    <Rule>
-      <Filter>[oneway] = '-1'</Filter>
-      &maxscale_zoom16;
-      <LineSymbolizer stroke-linejoin="bevel" stroke="#6c70d5" stroke-width="1" stroke-dasharray="0,12,10,152"/>
-      <LineSymbolizer stroke-linejoin="bevel" stroke="#6c70d5" stroke-width="2" stroke-dasharray="0,13,9,152"/>
-      <LineSymbolizer stroke-linejoin="bevel" stroke="#6c70d5" stroke-width="3" stroke-dasharray="0,14,2,158"/>
-      <LineSymbolizer stroke-linejoin="bevel" stroke="#6c70d5" stroke-width="4" stroke-dasharray="0,15,1,158"/>
-    </Rule>
-</Style>
 
 */
+
+.directions {
+  [zoom >= 16] {
+    [oneway = 'yes'] {
+      a/line-width: 1;
+      a/line-dasharray: 0,12,10,152;
+      a/line-color: #6c70d5;
+      a/line-join: bevel;
+      b/line-width: 2;
+      b/line-dasharray: 0,12,9,153;
+      b/line-color: #6c70d5;
+      b/line-join: bevel;
+      c/line-width: 3;
+      c/line-dasharray: 0,18,2,154;
+      c/line-color: #6c70d5;
+      c/line-join: bevel;
+      d/line-width: 4;
+      d/line-dasharray: 0,18,1,155;
+      d/line-color: #6c70d5;
+      d/line-join: bevel;
+    }
+    [oneway = '-1'] {
+      a/line-width: 1;
+      a/line-dasharray: 0,12,10,152;
+      a/line-color: #6c70d5;
+      a/line-join: bevel;
+      b/line-width: 2;
+      b/line-dasharray: 0,13,9,152;
+      b/line-color: #6c70d5;
+      b/line-join: bevel;
+      c/line-width: 3;
+      c/line-dasharray: 0,14,2,158;
+      c/line-color: #6c70d5;
+      c/line-join: bevel;
+      d/line-width: 4;
+      d/line-dasharray: 0,15,1,158;
+      d/line-color: #6c70d5;
+      d/line-join: bevel;
+    }
+  }
+}
 
 #misc-boundaries {
   [zoom >= 7] {
