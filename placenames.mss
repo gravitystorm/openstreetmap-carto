@@ -1,146 +1,148 @@
-/*
-<Style name="continent">
-    <Rule>
-      <Filter>[place] = 'continent'</Filter>
-      &maxscale_zoom1;
-      &minscale_zoom2;
-      <TextSymbolizer size="10" fill="#9d6c9d" dy="0" fontset-name="book-fonts" halo-radius="1" wrap-width="20">[name]</TextSymbolizer>
-    </Rule>
-</Style>
-<Style name="country">
-    <Rule>
-      <Filter>[place] = 'country'</Filter>
-      &maxscale_zoom2;
-      &minscale_zoom3;
-      <TextSymbolizer size="8" fill="#9d6c9d" dy="0" fontset-name="book-fonts" halo-radius="1" wrap-width="20">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[place] = 'country'</Filter>
-      &maxscale_zoom4;
-      &minscale_zoom6;
-      <TextSymbolizer size="10" fill="#9d6c9d" dy="0" fontset-name="book-fonts" halo-radius="1" wrap-width="20">[name]</TextSymbolizer>
-    </Rule>
-</Style>
-<Style name="state">
-    <Rule>
-      <Filter>[place] = 'state'</Filter>
-      &maxscale_zoom4;
-      &minscale_zoom4;
-      <TextSymbolizer size="9" fill="#9d6c9d" dy="0" fontset-name="oblique-fonts" halo-radius="1" wrap-width="0">[ref]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[place] = 'state'</Filter>
-      &maxscale_zoom5;
-      &minscale_zoom6;
-      <TextSymbolizer size="9" fill="#9d6c9d" dy="0" fontset-name="oblique-fonts" halo-radius="1" wrap-width="0">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[place] = 'state'</Filter>
-      &maxscale_zoom7;
-      &minscale_zoom8;
-      <TextSymbolizer size="11" fill="#9d6c9d" dy="0" fontset-name="oblique-fonts" halo-radius="1" wrap-width="0">[name]</TextSymbolizer>
-    </Rule>
-</Style>
-<Style name="capital">
-     <Rule>
-      &maxscale_zoom5;
-      &minscale_zoom5;
-      <TextSymbolizer size="9" fill="#000" dy="0" fontset-name="book-fonts" halo-radius="1" wrap-width="0">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      &maxscale_zoom6;
-      &minscale_zoom8;
-      <TextSymbolizer size="11" fill="#000" dy="0" fontset-name="book-fonts" halo-radius="1" wrap-width="0">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      &maxscale_zoom9;
-      &minscale_zoom10;
-      <TextSymbolizer size="11" fill="#000" dy="0" fontset-name="book-fonts" halo-radius="1" wrap-width="0">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      &maxscale_zoom11;
-      &minscale_zoom14;
-      <TextSymbolizer size="14" fill="#000" dy="0" fontset-name="book-fonts" halo-radius="1" wrap-width="0">[name]</TextSymbolizer>
-    </Rule>
-</Style>
-<Style name="city">
-    <Rule>
-      <Filter>[place] = 'city' or [place]='metropolis'</Filter>
-      &maxscale_zoom6;
-      &minscale_zoom8;
-      <TextSymbolizer size="8" fill="#000" dy="0" fontset-name="book-fonts" halo-radius="1" wrap-width="0">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[place] = 'city' or [place]='metropolis'</Filter>
-      &maxscale_zoom9;
-      &minscale_zoom10;
-      <TextSymbolizer size="11" fill="#000" dy="0" fontset-name="book-fonts" halo-radius="1" wrap-width="0">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[place] = 'city' or [place]='metropolis'</Filter>
-      &maxscale_zoom11;
-      &minscale_zoom14;
-      <TextSymbolizer size="14" fill="#000" dy="0" fontset-name="book-fonts" halo-radius="1" wrap-width="0">[name]</TextSymbolizer>
-    </Rule>
-</Style>
-<Style name="town">
-    <Rule>
-      <Filter>[place] = 'town' or [place]='large_town' or [place]='small_town'</Filter>
-      &maxscale_zoom9;
-      &minscale_zoom10;
-      <TextSymbolizer size="8" fill="#000" fontset-name="book-fonts" halo-radius="1" wrap-width="20">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[place] = 'town' or [place]='large_town' or [place]='small_town'</Filter>
-      &maxscale_zoom11;
-      &minscale_zoom13;
-      <TextSymbolizer size="10" fill="#000" fontset-name="book-fonts" halo-radius="1" wrap-width="20">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[place] = 'town' or [place]='large_town' or [place]='small_town'</Filter>
-      &maxscale_zoom14;
-      <TextSymbolizer size="14" fill="#777777" fontset-name="book-fonts" halo-radius="1" wrap-width="20">[name]</TextSymbolizer>
-    </Rule>
-</Style>
-<Style name="suburb">
-    <Rule>
-      <Filter>[place] = 'suburb'</Filter>
-      &maxscale_zoom12;
-      &minscale_zoom13;
-      <TextSymbolizer size="10" fill="#000" fontset-name="book-fonts" halo-radius="1" wrap-width="0">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[place] = 'suburb'</Filter>
-      &maxscale_zoom14;
-      <TextSymbolizer size="13" fill="#777777" fontset-name="book-fonts" halo-radius="1" wrap-width="0">[name]</TextSymbolizer>
-    </Rule>
-</Style>
-<Style name="village">
-    <Rule>
-      <Filter>[place] = 'village' or [place]='large_village'</Filter>
-      &maxscale_zoom12;
-      &minscale_zoom14;
-      <TextSymbolizer size="9" fill="#000" fontset-name="book-fonts" halo-radius="1" wrap-width="0">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[place] = 'village' or [place]='large_village'</Filter>
-      &maxscale_zoom15;
-      <TextSymbolizer size="12" fill="#777777" fontset-name="book-fonts" halo-radius="1" wrap-width="0">[name]</TextSymbolizer>
-    </Rule>
-</Style>
-<Style name="hamlet">
-    <Rule>
-      <Filter>[place] = 'hamlet' or [place] = 'locality' or [place] = 'isolated_dwelling' or [place] = 'farm'</Filter>
-      &maxscale_zoom14;
-      &minscale_zoom15;
-      <TextSymbolizer size="8" fill="#000" fontset-name="book-fonts" halo-radius="1" wrap-width="0">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[place] = 'hamlet' or [place] = 'locality' or [place] = 'isolated_dwelling' or [place] = 'farm'</Filter>
-      &maxscale_zoom16;
-      <TextSymbolizer size="11" fill="#777777" fontset-name="book-fonts" halo-radius="1" wrap-width="0">[name]</TextSymbolizer>
-    </Rule>
-</Style>
+#continent {
+  [place = 'continent'][zoom >= 1][zoom < 3] {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: #9d6c9d;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 20;
+  }
+}
 
+.country {
+  [place = 'country'][zoom >= 2][zoom < 6] {
+    text-name: "[name]";
+    text-size: 8;
+    text-fill: #9d6c9d;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 20;
+    [zoom >= 4] {
+      text-size: 10;
+    }
+  }
+}
 
-*/
+.state {
+  [place = 'state'][zoom >= 4][zoom < 9] {
+    text-name: "[ref]";
+    text-size: 8;
+    text-fill: #9d6c9d;
+    text-face-name: @oblique-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 0;
+    [zoom >= 5] {
+      text-name: "[name]";
+    }
+    [zoom >= 7] {
+      text-size: 11;
+    }
+  }
+}
+
+#placenames-capital {
+  [zoom >= 5][zoom < 15] {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: #000;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    [zoom >= 6] {
+      text-size: 11;
+    }
+    [zoom >= 11] {
+      text-size: 14;
+    }
+  }
+}
+
+.city {
+  [place = 'city'],
+  [place = 'metropolis'] {
+    [zoom >= 6][zoom < 15] {
+      text-name: "[name]";
+      text-size: 8;
+      text-fill: #000;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      [zoom >= 9] {
+        text-size: 11;
+      }
+      [zoom >= 11] {
+        text-size: 14;
+      }
+    }
+  }
+}
+
+.town {
+  [place = 'town'],
+  [place = 'large_town'],
+  [place = 'small_town'] {
+    [zoom >= 9] {
+      text-name: "[name]";
+      text-size: 8;
+      text-fill: #000;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 20;
+    }
+    [zoom >= 11] {
+      text-size: 10;
+    }
+    [zoom >= 14] {
+      text-size: 14;
+      text-fill: #777777;
+    }
+  }
+}
+
+.suburb {
+  [place = 'suburb'][zoom >= 12] {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: #000;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    [zoom >= 14] {
+      text-size: 13;
+      text-fill: #777777;
+    }
+  }
+}
+
+.village {
+  [place = 'village'],
+  [place = 'large_village'] {
+    [zoom >=12] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: #000;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      [zoom >= 15] {
+        text-size: 12;
+        text-fill: #777777;
+      }
+    }
+  }
+}
+
+.hamlet {
+  [place = 'hamlet'],
+  [place = 'locality'],
+  [place = 'isolated_dwelling'],
+  [place = 'farm'] {
+    [zoom >= 14] {
+      text-name: "[name]";
+      text-size: 8;
+      text-fill: #000;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+    }
+    [zoom >= 16] {
+      text-size: 11;
+      text-fill: #777777;
+    }
+  }
+}
