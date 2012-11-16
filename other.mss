@@ -3141,99 +3141,100 @@
       <TextSymbolizer size="10" fill="#333" spacing="750" placement="line" minimum-distance="18" fontset-name="book-fonts" halo-radius="1">[ref]</TextSymbolizer>
     </Rule>
 </Style>
-<Style name="roads-text-name">
-    <Rule>
-      <Filter>[highway] = 'trunk' or [highway] = 'primary'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom13;
-      <TextSymbolizer size="8" fill="black" placement="line" fontset-name="book-fonts" halo-radius="0">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'secondary'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom13;
-      <TextSymbolizer size="8" fill="black" placement="line" fontset-name="book-fonts" halo-radius="1" halo-fill="#fed7a5">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'trunk' or [highway] = 'primary'</Filter>
-      &maxscale_zoom14;
-      &minscale_zoom14;
-      <TextSymbolizer size="9" fill="black" placement="line" fontset-name="book-fonts" halo-radius="0">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'trunk' or [highway] = 'primary'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom18;
-      <TextSymbolizer size="10" fill="black" placement="line" fontset-name="book-fonts" halo-radius="0">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'secondary'</Filter>
-      &maxscale_zoom14;
-      &minscale_zoom14;
-      <TextSymbolizer size="9" fill="black" placement="line" fontset-name="book-fonts" halo-radius="1" halo-fill="#fed7a5">[name]</TextSymbolizer>
-    </Rule><Rule>
-      <Filter>[highway] = 'secondary'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom18;
-      <TextSymbolizer size="10" fill="black" placement="line" fontset-name="book-fonts" halo-radius="1" halo-fill="#fed7a5">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'tertiary'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom16;
-      <TextSymbolizer size="9" fill="#000" placement="line" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'tertiary'</Filter>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <TextSymbolizer size="11" fill="#000" placement="line" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      &maxscale_zoom13;
-      &minscale_zoom15;
-      <Filter>[highway] = 'proposed' or [highway]='construction'</Filter>
-      <TextSymbolizer size="9" fill="#000" placement="line" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      &minscale_zoom18;
-      <Filter>[highway] = 'proposed' or [highway]='construction'</Filter>
-      <TextSymbolizer size="11" fill="#000" placement="line" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'unclassified' or [highway] = 'residential'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom15;
-      <TextSymbolizer size="8" fill="#000" spacing="300" placement="line" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'unclassified' or [highway] = 'residential'</Filter>
-      &maxscale_zoom16;
-      &minscale_zoom16;
-      <TextSymbolizer size="9" fill="#000" spacing="300" placement="line" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'unclassified' or [highway] = 'residential'</Filter>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <TextSymbolizer size="11" fill="#000" spacing="400" placement="line" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <ElseFilter/>
-      &maxscale_zoom15;
-      &minscale_zoom16;
-      <TextSymbolizer size="9" fill="#000" placement="line" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <ElseFilter/>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <TextSymbolizer size="11" fill="#000" placement="line" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-</Style>
 
 */
+
+#roads-text-name {
+  [highway = 'trunk'],
+  [highway = 'primary'] {
+    [zoom >= 13] {
+      text-name: "[name]";
+      text-size: 8;
+      text-fill: black;
+      text-placement: line;
+      text-face-name: @book-fonts;
+      text-halo-radius: 0;
+    }
+    [zoom >= 14] {
+      text-size: 9;
+    }
+    [zoom >= 15] {
+      text-size: 10;
+    }
+  }
+  [highway = 'secondary'] {
+    [zoom >= 13] {
+      text-name: "[name]";
+      text-size: 8;
+      text-fill: black;
+      text-placement: line;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-halo-fill: #fed7a5;
+    }
+    [zoom >= 14] {
+      text-size: 9;
+    }
+    [zoom >= 15] {
+      text-size: 10;
+    }
+  }
+  [highway = 'tertiary'] {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: #000;
+      text-placement: line;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+    }
+    [zoom >= 17] {
+      text-size: 11;
+    }
+  }
+  [highway = 'proposed'],
+  [highway = 'construction'] {
+    [zoom >= 13] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: #000;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+    }
+    [zoom >= 16] {
+      text-size: 11;
+    }
+  }
+  [highway = 'residential'],
+  [highway = 'unclassified'] {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 8;
+      text-spacing: 300;
+      text-placement: line;
+      text-halo-radius: 1;
+      text-face-name: @book-fonts;
+    }
+    [zoom >= 16] {
+      text-size: 9;
+    }
+    [zoom >= 17] {
+      text-size: 11;
+    }
+  }
+  /* Other roads */
+  [zoom >= 15] {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: #000;
+    text-placement: line;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+  }
+  [zoom >= 17] {
+      text-size: 11;
+  }
+}
 
 .cliffs {
   [natural = 'cliff'][zoom >= 13] {
