@@ -1205,161 +1205,93 @@
       <LineSymbolizer stroke-linejoin="round" stroke="#ffffb3" stroke-width="13" stroke-linecap="round"/>
     </Rule>
 </Style>
+
+*/
+
+#minor-roads-fill {
+
+  /*
+   * The construction rules for small roads are strange, since if construction is null its assumed that
+   * it's a more major road. The line-width = 0 could be removed by playing with the query to set a construction
+   * string for non-small roads.
+   */
+  [highway = 'proposed'],
+  [highway = 'construction'] {
+    [zoom >= 12] {
+      line-width: 2;
+      line-color: #9cc;
+      b/line-width: 2;
+      b/line-dasharray: 4,2;
+      b/line-color: white;
+      [zoom >= 13] {
+        line-width: 4;
+        b/line-width: 3.5;
+        b/line-dasharray: 6,4;
+      }
+      [zoom >= 13] {
+        line-width: 8;
+        b/line-width: 7;
+        b/line-dasharray: 8,6;
+      }
+      [construction = 'motorway'],
+      [construction = 'motorway_link'] {
+        line-color: #809bc0;
+      }
+      [construction = 'trunk'],
+      [construction = 'trunk_link'] {
+        line-color: #a9dba9;
+      }
+      [construction = 'primary'],
+      [construction = 'primary_link'] {
+        line-color: #ec989a;
+      }
+      [construction = 'secondary'],
+      [construction = 'secondary_link'] {
+        line-color: #fed7a5;
+      }
+      [construction = 'tertiary'],
+      [construction = 'tertiary_link'] {
+        line-color: #ffffb3;
+        [zoom < 13] {
+          line-width: 0;
+          b/line-width: 0;
+        }
+      }
+      [construction = 'residential'],
+      [construction = 'unclassified'],
+      [construction = 'living_street'] {
+        line-color: #aaa;
+        [zoom < 13] {
+          line-width: 0;
+          b/line-width: 0;
+        }
+      }
+      [construction = 'service'] {
+        line-color: #aaa;
+        [zoom < 14] {
+          line-width: 0;
+          b/line-width: 0;
+        }
+      }
+      [construction = 'cycleway'] {
+        [zoom < 14] {
+          line-width: 0;
+          b/line-width: 0;
+        }
+        line-color: white;
+        line-width: 3;
+        line-opacity: 0.4;
+        b/line-width: 1.2;
+        b/line-color: #69f;
+        b/line-dasharray: 2,6;
+      }
+    }
+  }
+}
+
+/*
 <Style name="minor-roads-fill">
-    <Rule>
-      &maxscale_zoom12;
-      &minscale_zoom12;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and not [construction] != ''</Filter>
-      <LineSymbolizer stroke="#9cc" stroke-width="2"/>
-      <LineSymbolizer stroke="white" stroke-width="2" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom12;
-      &minscale_zoom12;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and ([construction]='motorway' or [construction]='motorway_link')</Filter>
-      <LineSymbolizer stroke="#809bc0" stroke-width="2"/>
-      <LineSymbolizer stroke="white" stroke-width="2" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom12;
-      &minscale_zoom12;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and ([construction]='trunk' or [construction]='trunk_link')</Filter>
-      <LineSymbolizer stroke="#a9dba9" stroke-width="2"/>
-      <LineSymbolizer stroke="white" stroke-width="2" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom12;
-      &minscale_zoom12;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and ([construction]='primary' or [construction]='primary_link')</Filter>
-      <LineSymbolizer stroke="#ec989a" stroke-width="2"/>
-      <LineSymbolizer stroke="white" stroke-width="2" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom12;
-      &minscale_zoom12;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and ([construction]='secondary' or [construction]='secondary_link')</Filter>
-      <LineSymbolizer stroke="#fed7a5" stroke-width="2"/>
-      <LineSymbolizer stroke="white" stroke-width="2" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom13;
-      &minscale_zoom15;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and not [construction] != ''</Filter>
-      <LineSymbolizer stroke="#9cc" stroke-width="4"/>
-      <LineSymbolizer stroke="white" stroke-width="3.5" stroke-dasharray="6,4"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom13;
-      &minscale_zoom15;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and ([construction]='motorway' or [construction]='motorway_link')</Filter>
-      <LineSymbolizer stroke="#809bc0" stroke-width="4"/>
-      <LineSymbolizer stroke="white" stroke-width="3.5" stroke-dasharray="6,4"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom13;
-      &minscale_zoom15;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and ([construction]='trunk' or [construction]='trunk_link')</Filter>
-      <LineSymbolizer stroke="#a9dba9" stroke-width="4"/>
-      <LineSymbolizer stroke="white" stroke-width="3.5" stroke-dasharray="6,4"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom13;
-      &minscale_zoom15;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and ([construction]='primary' or [construction]='primary_link')</Filter>
-      <LineSymbolizer stroke="#ec989a" stroke-width="4"/>
-      <LineSymbolizer stroke="white" stroke-width="3.5" stroke-dasharray="6,4"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom13;
-      &minscale_zoom15;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and ([construction]='secondary' or [construction]='secondary_link')</Filter>
-      <LineSymbolizer stroke="#fed7a5" stroke-width="4"/>
-      <LineSymbolizer stroke="white" stroke-width="3.5" stroke-dasharray="6,4"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom13;
-      &minscale_zoom15;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and ([construction]='tertiary' or [construction]='tertiary_link')</Filter>
-      <LineSymbolizer stroke="#ffffb3" stroke-width="4"/>
-      <LineSymbolizer stroke="white" stroke-width="3.5" stroke-dasharray="6,4"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom13;
-      &minscale_zoom15;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and ([construction]='residential' or [construction]='unclassified' or [construction]='living_street')</Filter>
-      <LineSymbolizer stroke-linejoin="round" stroke="#aaa" stroke-width="4"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="3.5" stroke-dasharray="6,4"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom14;
-      &minscale_zoom15;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and [construction]='service'</Filter>
-      <LineSymbolizer stroke-linejoin="round" stroke="#aaa" stroke-width="2.5"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="2" stroke-dasharray="6,4"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      &minscale_zoom18;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and not [construction] != ''</Filter>
-      <LineSymbolizer stroke="#9cc" stroke-width="8"/>
-      <LineSymbolizer stroke="white" stroke-width="7" stroke-dasharray="8,6"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      &minscale_zoom18;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and ([construction]='motorway' or [construction]='motorway_link')</Filter>
-      <LineSymbolizer stroke="#809bc0" stroke-width="8"/>
-      <LineSymbolizer stroke="white" stroke-width="7" stroke-dasharray="8,6"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      &minscale_zoom18;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and ([construction]='trunk' or [construction]='trunk_link')</Filter>
-      <LineSymbolizer stroke="#a9dba9" stroke-width="8"/>
-      <LineSymbolizer stroke="white" stroke-width="7" stroke-dasharray="8,6"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      &minscale_zoom18;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and ([construction]='primary' or [construction]='primary_link')</Filter>
-      <LineSymbolizer stroke="#ec989a" stroke-width="8"/>
-      <LineSymbolizer stroke="white" stroke-width="7" stroke-dasharray="8,6"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      &minscale_zoom18;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and ([construction]='secondary' or [construction]='secondary_link')</Filter>
-      <LineSymbolizer stroke="#fed7a5" stroke-width="8"/>
-      <LineSymbolizer stroke="white" stroke-width="7" stroke-dasharray="8,6"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      &minscale_zoom18;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and ([construction]='tertiary' or [construction]='tertiary_link')</Filter>
-      <LineSymbolizer stroke="#ffffb3" stroke-width="8"/>
-      <LineSymbolizer stroke="white" stroke-width="7" stroke-dasharray="8,6"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      &minscale_zoom18;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and ([construction]='residential' or [construction]='unclassified' or [construction]='living_street')</Filter>
-      <LineSymbolizer stroke-linejoin="round" stroke="#aaa" stroke-width="8"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="7" stroke-dasharray="8,6"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      &minscale_zoom18;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and [construction]='service'</Filter>
-      <LineSymbolizer stroke-linejoin="round" stroke="#aaa" stroke-width="7"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="6" stroke-dasharray="8,6"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom14;
-      &minscale_zoom18;
-      <Filter>([highway] = 'proposed' or [highway]='construction') and [construction]='cycleway'</Filter>
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="3" stroke-linecap="round" stroke-opacity="0.4"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="#69f" stroke-width="1.2" stroke-dasharray="2,6" stroke-linecap="round"/>
-    </Rule>
+
     <Rule>
       <Filter>[highway] = 'motorway' and not [tunnel] = 'yes'</Filter>
       &maxscale_zoom12;
