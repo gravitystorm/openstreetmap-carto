@@ -1663,24 +1663,29 @@
     b/line-cap: round;
     b/line-join: round;
   }
+
+  [highway = 'unsurfaced'][zoom >= 13] {
+    line-width: 3.5;
+    line-color: #fff;
+    line-opacity: 0.4;
+    line-join: round;
+    line-cap: round;
+    b/line-width: 2.5;
+    b/line-color: #debd9c;
+    b/line-dasharray: 2,4;
+    b/line-cap: round;
+    b/line-join: round;
+    [zoom >= 14] {
+      line-width: 5;
+      b/line-width: 4;
+      b/line-dasharray: 4,6;
+    }
+  }
 }
 
 /*
 <Style name="minor-roads-fill">
 
-    <Rule>
-      <Filter>[highway] = 'unsurfaced'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom13;
-      <LineSymbolizer stroke-linejoin="round" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-opacity="0.4"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="#debd9c" stroke-width="2.5" stroke-dasharray="2,4" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'unsurfaced'</Filter>
-      &maxscale_zoom14;
-      <LineSymbolizer stroke-linejoin="round" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-opacity="0.4"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="#debd9c" stroke-width="4" stroke-dasharray="4,6" stroke-linecap="round"/>
-    </Rule>
     <Rule>
       <Filter>[aeroway] = 'runway'</Filter>
       &maxscale_zoom11;
