@@ -1,371 +1,363 @@
-/*
-<Style name="points">
-     <Rule>
-      &maxscale_zoom13;
-      <Filter>[tourism]='alpine_hut'</Filter>
-      <PointSymbolizer file="&symbols;/alpinehut.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <Filter>[amenity]='shelter'</Filter>
-      <PointSymbolizer file="&symbols;/shelter2.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='atm'</Filter>
-      <PointSymbolizer file="&symbols;/atm2.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='bank'</Filter>
-      <PointSymbolizer file="&symbols;/bank2.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='bar'</Filter>
-      <PointSymbolizer file="&symbols;/bar.p.20.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='bicycle_rental'</Filter>
-      <PointSymbolizer file="&symbols;/rental_bicycle.p.20.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      &minscale_zoom16;
-      <Filter>[amenity]='bus_stop' or [highway]='bus_stop'</Filter>
-      <PointSymbolizer file="&symbols;/bus_stop_small.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='bus_stop' or [highway]='bus_stop'</Filter>
-      <PointSymbolizer file="&symbols;/bus_stop.p.12.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <Filter>[amenity]='bus_station'</Filter>
-      <PointSymbolizer file="&symbols;/bus_station.n.16.png" allow-overlap="false" placement="interior"/>
-    </Rule>
-    <Rule>
-    &maxscale_zoom17;
-    <Filter>[highway]='traffic_signals'</Filter>
-    <PointSymbolizer file="&symbols;/traffic_light.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='cafe'</Filter>
-      <PointSymbolizer file="&symbols;/cafe.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <Filter>[tourism]='camp_site'</Filter>
-      <PointSymbolizer file="&symbols;/camping.n.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <Filter>[highway]='ford'</Filter>
-      <PointSymbolizer file="&symbols;/transport_ford.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <Filter>[tourism]='caravan_site'</Filter>
-      <PointSymbolizer file="&symbols;/caravan_park.p.24.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <Filter>[amenity]='car_sharing'</Filter>
-      <PointSymbolizer file="&symbols;/car_share.p.16.png" allow-overlap="false" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[tourism]='chalet'</Filter>
-      <PointSymbolizer file="&symbols;/chalet.p.16.png" placement="interior"/>
-    </Rule>
-     <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='cinema'</Filter>
-      <PointSymbolizer file="&symbols;/cinema.p.24.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='fire_station'</Filter>
-      <PointSymbolizer file="&symbols;/firestation.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='fuel'</Filter>
-      <PointSymbolizer file="&symbols;/fuel.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[tourism]='guest_house'</Filter>
-      <PointSymbolizer file="&symbols;/guest_house.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[tourism]='bed_and_breakfast'</Filter>
-      <PointSymbolizer file="&symbols;/bandb.p.20.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom15;
-      <Filter>[amenity]='hospital'</Filter>
-      <PointSymbolizer file="&symbols;/hospital.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[tourism]='hostel'</Filter>
-      <PointSymbolizer file="&symbols;/hostel.p.20.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[tourism]='hotel'</Filter>
-      <PointSymbolizer file="&symbols;/hotel2.p.20.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[tourism]='motel'</Filter>
-      <PointSymbolizer file="&symbols;/motel.p.20.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <Filter>[tourism]='information'</Filter>
-      <PointSymbolizer file="&symbols;/information.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='embassy'</Filter>
-      <PointSymbolizer file="&symbols;/embassy.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='library'</Filter>
-      <PointSymbolizer file="&symbols;/library.p.20.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='courthouse'</Filter>
-      <PointSymbolizer file="&symbols;/amenity_court.p.20.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom15;
-      <Filter>[waterway]='lock' or [lock]='yes'</Filter>
-      <PointSymbolizer file="&symbols;/lock_gate.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[man_made]='mast'</Filter>
-      <PointSymbolizer file="&symbols;/communications.p.20.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[tourism]='museum'</Filter>
-      <PointSymbolizer file="&symbols;/museum.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom15;
-      <Filter>[amenity] = 'parking' and ([access] = 'public' or [access] = 'yes' or not [access] != '')</Filter>
-      <PointSymbolizer file="&symbols;/parking.p.16.png" allow-overlap="false" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom15;
-      <Filter>[amenity] = 'parking' and ([access] != '' and not [access] = 'public' and not [access] = 'yes')</Filter>
-      <PointSymbolizer file="&symbols;/parking_private.p.16.png" allow-overlap="false" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='pharmacy'</Filter>
-      <PointSymbolizer file="&symbols;/pharmacy.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <Filter>[amenity]='place_of_worship' and [religion] = 'christian'</Filter>
-      <PointSymbolizer file="&symbols;/christian3.p.14.png" allow-overlap="false" placement="interior"/>
-     </Rule>
-     <Rule>
-      &maxscale_zoom16;
-      <Filter>[amenity]='place_of_worship' and [religion] = 'muslim'</Filter>
-      <PointSymbolizer file="&symbols;/islamic3.p.16.png" allow-overlap="false" placement="interior"/>
-     </Rule>
-     <Rule>
-      &maxscale_zoom16;
-      <Filter>[amenity]='place_of_worship' and [religion] = 'sikh'</Filter>
-      <PointSymbolizer file="&symbols;/sikh3.p.16.png" allow-overlap="false" placement="interior"/>
-     </Rule>
-     <Rule>
-      &maxscale_zoom16;
-      <Filter>[amenity]='place_of_worship' and [religion] = 'jewish'</Filter>
-      <PointSymbolizer file="&symbols;/jewish3.p.16.png" allow-overlap="false" placement="interior"/>
-     </Rule>
-     <Rule>
-      &maxscale_zoom16;
-      <Filter>[amenity]='place_of_worship'</Filter>
-      <PointSymbolizer file="&symbols;/place_of_worship3.p.16.png" allow-overlap="false" placement="interior"/>
-     </Rule>
-     <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='police'</Filter>
-      <PointSymbolizer file="&symbols;/police.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='post_box'</Filter>
-      <PointSymbolizer file="&symbols;/post_box.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='post_office'</Filter>
-      <PointSymbolizer file="&symbols;/post_office.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <Filter>[amenity]='pub'</Filter>
-      <PointSymbolizer file="&symbols;/pub.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <Filter>[amenity]='biergarten'</Filter>
-      <PointSymbolizer file="&symbols;/biergarten.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <Filter>[amenity]='recycling'</Filter>
-      <PointSymbolizer file="&symbols;/recycling.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='restaurant'</Filter>
-      <PointSymbolizer file="&symbols;/restaurant.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='fast_food'</Filter>
-      <PointSymbolizer file="&symbols;/fast_food.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='telephone'</Filter>
-      <PointSymbolizer file="&symbols;/telephone.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='emergency_phone'</Filter>
-      <PointSymbolizer file="&symbols;/sosphone.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='theatre'</Filter>
-      <PointSymbolizer file="&symbols;/theatre.p.20.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='toilets'</Filter>
-      <PointSymbolizer file="&symbols;/toilets.p.20.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[amenity]='drinking_water'</Filter>
-      <PointSymbolizer file="&symbols;/food_drinkingtap.p.20.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <Filter>[amenity]='prison'</Filter>
-      <PointSymbolizer file="&symbols;/amenity_prison.p.20.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <Filter>[tourism]='viewpoint'</Filter>
-      <PointSymbolizer file="&symbols;/view_point.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[man_made]='water_tower'</Filter>
-      <PointSymbolizer file="&symbols;/tower_water.p.20.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[historic]='memorial'</Filter>
-      <PointSymbolizer file="&symbols;/tourist_memorial.p.20.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <Filter>[historic]='archaeological_site'</Filter>
-      <PointSymbolizer file="&symbols;/tourist_archaeological2.glow.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <Filter>[shop]='supermarket'</Filter>
-      <PointSymbolizer file="&symbols;/shop_supermarket.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[shop]='bakery'</Filter>
-      <PointSymbolizer file="&symbols;/shop_bakery.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[shop]='butcher'</Filter>
-      <PointSymbolizer file="&symbols;/shop_butcher.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[shop]='clothes' or [shop]='fashion'</Filter>
-      <PointSymbolizer file="&symbols;/shop_clothes.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[shop]='convenience'</Filter>
-      <PointSymbolizer file="&symbols;/shop_convenience.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <Filter>[shop]='department_store'</Filter>
-      <PointSymbolizer file="&symbols;/department_store.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[shop]='doityourself'</Filter>
-      <PointSymbolizer file="&symbols;/shop_diy.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[shop]='florist'</Filter>
-      <PointSymbolizer file="&symbols;/florist.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[shop]='hairdresser'</Filter>
-      <PointSymbolizer file="&symbols;/shop_hairdresser.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[shop]='car'</Filter>
-      <PointSymbolizer file="&symbols;/shopping_car.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[shop]='car_repair'</Filter>
-      <PointSymbolizer file="&symbols;/shopping_car_repair.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[shop]='bicycle'</Filter>
-      <PointSymbolizer file="&symbols;/shopping_bicycle.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[leisure]='playground'</Filter>
-      <PointSymbolizer file="&symbols;/playground.p.20.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      <Filter>[amenity]='picnic_site'</Filter>
-      <PointSymbolizer file="&symbols;/picnic.p.16.png" placement="interior"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[leisure]='slipway'</Filter>
-      <PointSymbolizer file="&symbols;/transport_slipway.p.20.png" placement="interior"/>
-    </Rule>
-</Style>
+.points {
+  [tourism = 'alpine_hut'][zoom >= 13]::tourism {
+    point-file: url('symbols/alpinehut.p.16.png');
+    point-placement: interior;
+  }
 
-*/
+  [amenity = 'shelter'][zoom >= 16]::amenity {
+    point-file: url('symbols/shelter2.p.16.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'atm'][zoom >=17]::amenity {
+    point-file: url('symbols/atm2.p.16.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'bank'][zoom >= 17]::amenity {
+    point-file: url('symbols/bank2.p.16.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'bar'][zoom >=17]::amenity {
+    point-file: url('symbols/bar.p.20.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'bicycle_rental'][zoom >= 17]::amenity {
+    point-file: url('symbols/rental_bicycle.p.20.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'bus_stop']::amenity,
+  [highway = 'bus_stop']::highway {
+    [zoom >= 16] {
+      point-file: url('symbols/bus_stop_small.png');
+      point-placement: interior;
+    }
+    [zoom >= 17] {
+      point-file: url('symbols/bus_stop.p.12.png');
+    }
+  }
+
+  [amenity = 'bus_station'][zoom >= 16]::amenity {
+    point-file: url('symbols/bus_station.n.16.png');
+    point-placement: interior;
+  }
+
+  [highway = 'traffic_signals'][zoom >= 17]::highway {
+    point-file: url('symbols/traffic_light.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'cafe'][zoom >=17]::amenity {
+    point-file: url('symbols/cafe.p.16.png');
+    point-placement: interior;
+  }
+
+  [tourism = 'camp_site'][zoom >= 16]::tourism {
+    point-file: url('symbols/camping.n.16.png');
+    point-placement: interior;
+  }
+
+  [highway = 'ford'][zoom >= 16]::highway {
+    point-file: url('symbols/transport_ford.p.16.png');
+    point-placement: interior;
+  }
+
+  [tourism = 'caravan_site'][zoom >= 16]::tourism {
+    point-file: url('symbols/caravan_park.p.24.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'car_sharing'][zoom >= 16]::amenity {
+    point-file: url('symbols/car_share.p.16.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'chalet'][zoom >= 17]::amenity {
+    point-file: url('symbols/chalet.p.16.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'cinema'][zoom >= 17]::amenity {
+    point-file: url('symbols/cinema.p.24.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'fire_station'][zoom >= 17]::amenity {
+    point-file: url('symbols/firestation.p.16.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'fuel'][zoom >= 17]::amenity {
+    point-file: url('symbols/fuel.p.16.png');
+    point-placement: interior;
+  }
+
+  [tourism = 'guest_house'][zoom >= 17]::tourism {
+    point-file: url('symbols/guest_house.p.16.png');
+    point-placement: interior;
+  }
+
+  [tourism = 'bed_and_breakfast'][zoom >= 17]::tourism {
+    point-file: url('symbols/bandb.p.20.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'hospital'][zoom >= 15]::amenity {
+    point-file: url('symbols/hospital.p.16.png');
+    point-placement: interior;
+  }
+
+  [tourism = 'hostel'][zoom >= 17]::tourism {
+    point-file: url('symbols/hostel.p.20.png');
+    point-placement: interior;
+  }
+
+  [tourism = 'hotel'][zoom >= 17]::tourism {
+    point-file: url('symbols/hotel2.p.20.png');
+    point-placement: interior;
+  }
+
+  [tourism = 'motel'][zoom >= 17]::tourism {
+    point-file: url('symbols/motel.p.20.png');
+    point-placement: interior;
+  }
+
+  [tourism = 'information'][zoom >= 16]::tourism {
+    point-file: url('symbols/information.p.16.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'embassy'][zoom >= 17]::amenity {
+    point-file: url('symbols/embassy.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'library'][zoom >= 17]::amenity {
+    point-file: url('symbols/library.p.20.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'courthouse'][zoom > 17]::amenity {
+    point-file: url('symbols/amenity_court.p.20.png');
+    point-placement: interior;
+  }
+
+  [waterway = 'lock']::waterway,
+  [lock = 'yes']::lock {
+    [zoom >= 15] {
+      point-file: url('symbols/lock_gate.png');
+      point-placement: interior;
+    }
+  }
+
+  [man_made = 'mast'][zoom >= 17]::man_made {
+    point-file: url('symbols/communications.p.20.png');
+    point-placement: interior;
+  }
+
+  [tourism = 'museum'][zoom >= 17]::tourism {
+    point-file: url('symbols/museum.p.16.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'parking'][zoom >= 15]::amenity {
+    point-file: url('symbols/parking.p.16.png');
+    point-placement: interior;
+    [access != ''][access != 'public'][access != 'yes'] {
+      point-file: url('symbols/parking_private.p.16.png');
+    }
+  }
+
+  [amenity = 'pharmacy'][zoom >= 17]::amenity {
+    point-file: url('symbols/pharmacy.p.16.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'place_of_worship'][zoom > 16]::amenity {
+    point-file: url('symbols/place_of_worship3.p.16.png');
+    point-placement: interior;
+    [religion = 'christian'] {
+      point-file: url('symbols/christian3.p.14.png');
+    }
+    [religion = 'muslim'] {
+      point-file: url('symbols/islamic3.p.16.png');
+    }
+    [religion = 'sikh'] {
+      point-file: url('symbols/sikh3.p.16.png');
+    }
+    [religion = 'jewish'] {
+      point-file: url('symbols/jewish3.p.16.png');
+    }
+  }
+
+  [amenity = 'police'][zoom >= 17]::amenity {
+    point-file: url('symbols/police.p.16.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'post_box'][zoom >= 17]::amenity {
+    point-file: url('symbols/post_box.p.16.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'post_office'][zoom >= 17]::amenity {
+    point-file: url('symbols/post_office.p.16.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'pub'][zoom >= 16]::amenity {
+    point-file: url('symbols/pub.p.16.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'biergarten'][zoom >= 16]::amenity {
+    point-file: url('symbols/biergarten.p.16.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'recycling'][zoom >= 16]::amenity {
+    point-file: url('symbols/recycling.p.16.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'restaurant'][zoom >= 17]::amenity {
+    point-file: url('symbols/restaurant.p.16.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'fast_food'][zoom >= 17]::amenity {
+    point-file: url('symbols/fast_food.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'telephone'][zoom >= 17]::amenity {
+    point-file: url('symbols/telephone.p.16.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'emergency_phone'][zoom >= 17]::amenity {
+    point-file: url('symbols/sosphone.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'theatre'][zoom >= 17]::amenity {
+    point-file: url('symbols/theatre.p.20.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'toilets'][zoom >= 17]::amenity {
+    point-file: url('symbols/toilets.p.20.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'drinking_water'][zoom >= 17]::amenity {
+    point-file: url('symbols/food_drinkingtap.p.20.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'prison'][zoom >= 17]::amenity {
+    point-file: url('symbols/amenity_prison.p.20.png');
+    point-placement: interior;
+  }
+
+  [tourism = 'viewpoint'][zoom >= 16]::tourism {
+    point-file: url('symbols/view_point.p.16.png');
+    point-placement: interior;
+  }
+
+  [man_made = 'water_tower'][zoom >= 17]::man_made {
+    point-file: url('symbols/tower_water.p.20.png');
+    point-placement: interior;
+  }
+
+  [historic = 'memorial'][zoom >= 17]::historic {
+    point-file: url('symbols/tourist_memorial.p.20.png');
+    point-placement: interior;
+  }
+
+  [historic = 'archaeological_site'][zoom >= 16]::historic {
+    point-file: url('symbols/tourist_archaeological2.glow.16.png');
+    point-placement: interior;
+  }
+
+  [shop = 'supermarket'][zoom >= 16]::shop {
+    point-file: url('symbols/shop_supermarket.p.16.png');
+    point-placement: interior;
+  }
+
+  [shop = 'bakery'][zoom >= 17]::shop {
+    point-file: url('symbols/shop_bakery.p.16.png');
+    point-placement: interior;
+  }
+
+  [shop = 'butcher'][zoom >= 17]::shop {
+    point-file: url('symbols/shop_butcher.png');
+    point-placement: interior;
+  }
+
+  [shop = 'clothes']::shop,
+  [shop = 'fashion']::shop {
+    [zoom >= 17] {
+      point-file: url('symbols/shop_clothes.p.16.png');
+      point-placement: interior;
+    }
+  }
+
+  [shop = 'convenience'][zoom >= 17]::shop {
+    point-file: url('symbols/shop_convenience.p.16.png');
+    point-placement: interior;
+  }
+
+  [shop = 'department_store'][zoom >= 16]::shop {
+    point-file: url('symbols/department_store.p.16.png');
+    point-placement: interior;
+  }
+
+  [shop = 'doityourself'][zoom >= 17]::shop {
+    point-file: url('symbols/shop_diy.p.16.png');
+    point-placement: interior;
+  }
+
+  [shop = 'florist'][zoom >= 17]::shop {
+    point-file: url('symbols/florist.p.16.png');
+    point-placement: interior;
+  }
+
+  [shop = 'hairdresser'][zoom >= 17]::shop {
+    point-file: url('symbols/shop_hairdresser.p.16.png');
+    point-placement: interior;
+  }
+
+  [shop = 'car'][zoom >= 17]::shop {
+    point-file: url('symbols/shopping_car.p.16.png');
+    point-placement: interior;
+  }
+
+  [shop = 'car_repair'][zoom >= 17]::shop {
+    point-file: url('symbols/shopping_car_repair.p.16.png');
+    point-placement: interior;
+  }
+
+  [shop = 'bicycle'][zoom >= 17]::shop {
+    point-file: url('symbols/shopping_bicycle.p.16.png');
+    point-placement: interior;
+  }
+
+  [leisure = 'playground'][zoom >= 17]::leisure {
+    point-file: url('symbols/playground.p.20.png');
+    point-placement: interior;
+  }
+
+  [amenity = 'picnic_site'][zoom >= 16]::amenity {
+    point-file: url('symbols/picnic.p.16.png');
+    point-placement: interior;
+  }
+
+  [leisure = 'slipway'][zoom >= 17]::leisure {
+    point-file: url('symbols/transport_slipway.p.20.png');
+    point-placement: interior;
+  }
+}
