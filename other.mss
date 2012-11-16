@@ -45,66 +45,54 @@
   }
 }
 
+#turning-circle-fill {
+  [int_tc_type = 'tertiary'][zoom >= 15] {
+    point-file: url('symbols/turning_circle-tert-fill.16.png');
+    point-allow-overlap: true;
+    point-ignore-placement: true;
+    [zoom >= 17] {
+      point-file: url('symbols/turning_circle-tert-fill.22.png');
+    }
+  }
+  [int_tc_type = 'residential'],
+  [int_tc_type = 'unclassified'] {
+    [zoom >= 15] {
+      point-file: url('symbols/turning_circle-uncl-fill.12.png');
+      point-allow-overlap: true;
+      point-ignore-placement: true;
+      [zoom >= 16] {
+        point-file: url('symbols/turning_circle-uncl-fill.16.png');
+      }
+      [zoom >= 17] {
+        point-file: url('symbols/turning_circle-uncl-fill.22.png');
+      }
+    }
+  }
+
+  [int_tc_type = 'living_street'][zoom >= 15] {
+    point-file: url('symbols/turning_circle-livs-fill.12.png');
+    point-allow-overlap: true;
+    point-ignore-placement: true;
+    [zoom >= 16] {
+      point-file: url('symbols/turning_circle-livs-fill.16.png');
+    }
+    [zoom >= 17] {
+      point-file: url('symbols/turning_circle-livs-fill.22.png');
+    }
+  }
+
+  [int_tc_type = 'service'][zoom >= 16] {
+    point-file: url('symbols/turning_circle-uncl-fill.12.png');
+    point-allow-overlap: true;
+    point-ignore-placement: true;
+    [zoom >= 17] {
+      point-file: url('symbols/turning_circle-uncl-fill.14.png');
+    }
+  }
+}
+
 /*
 
-<Style name="turning_circle-fill">
-    <Rule>
-      &maxscale_zoom15;
-      &minscale_zoom16;
-      <Filter>[int_tc_type]='tertiary'</Filter>
-      <PointSymbolizer file="&symbols;/turning_circle-tert-fill.16.png" allow-overlap="true" ignore-placement="true"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom15;
-      &minscale_zoom15;
-      <Filter>[int_tc_type]='residential' or [int_tc_type]='unclassified'</Filter>
-      <PointSymbolizer file="&symbols;/turning_circle-uncl-fill.12.png" allow-overlap="true" ignore-placement="true"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom15;
-      &minscale_zoom15;
-      <Filter>[int_tc_type]='living_street'</Filter>
-      <PointSymbolizer file="&symbols;/turning_circle-livs-fill.12.png" allow-overlap="true" ignore-placement="true"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      &minscale_zoom16;
-      <Filter>[int_tc_type]='residential' or [int_tc_type]='unclassified'</Filter>
-      <PointSymbolizer file="&symbols;/turning_circle-uncl-fill.16.png" allow-overlap="true" ignore-placement="true"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      &minscale_zoom16;
-      <Filter>[int_tc_type]='service'</Filter>
-      <PointSymbolizer file="&symbols;/turning_circle-uncl-fill.12.png" allow-overlap="true" ignore-placement="true"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom16;
-      &minscale_zoom16;
-      <Filter>[int_tc_type]='living_street'</Filter>
-      <PointSymbolizer file="&symbols;/turning_circle-livs-fill.16.png" allow-overlap="true" ignore-placement="true"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[int_tc_type]='tertiary'</Filter>
-      <PointSymbolizer file="&symbols;/turning_circle-tert-fill.22.png" allow-overlap="true" ignore-placement="true"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[int_tc_type]='residential' or [int_tc_type]='unclassified'</Filter>
-      <PointSymbolizer file="&symbols;/turning_circle-uncl-fill.22.png" allow-overlap="true" ignore-placement="true"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[int_tc_type]='service'</Filter>
-      <PointSymbolizer file="&symbols;/turning_circle-uncl-fill.14.png" allow-overlap="true" ignore-placement="true"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      <Filter>[int_tc_type]='living_street'</Filter>
-      <PointSymbolizer file="&symbols;/turning_circle-livs-fill.22.png" allow-overlap="true" ignore-placement="true"/>
-    </Rule>
-</Style>
 <Style name="highway-area-casing">
    <Rule>
       <Filter>[highway] = 'residential' or [highway]='unclassified'</Filter>
