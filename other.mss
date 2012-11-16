@@ -1636,24 +1636,38 @@
       b/line-cap: round;
     }
   }
+
+  [highway = 'byway'][zoom >= 13] {
+    line-width: 4;
+    line-color: white;
+    line-opacity: 0.4;
+    line-join: round;
+    line-cap: round;
+    b/line-width: 1.5;
+    b/line-dasharray: 3,4;
+    b/line-color: #ffcc00;
+    b/line-join: round;
+    b/line-cap: round;
+  }
+
+  /* Todo re-unite this with the rest of the track definitions */
+  [highway = 'track'][zoom >= 13][zoom < 14] {
+    line-color: white;
+    line-width: 2.5;
+    line-opacity: 0.4;
+    line-join: round;
+    line-cap: round;
+    b/line-width: 1.2;
+    b/line-color: #996600;
+    b/line-dasharray: 3,4;
+    b/line-cap: round;
+    b/line-join: round;
+  }
 }
 
 /*
 <Style name="minor-roads-fill">
 
-    <Rule>
-      <Filter>[highway] = 'byway'</Filter>
-      &maxscale_zoom13;
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="4" stroke-linecap="round" stroke-opacity="0.4"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="#ffcc00" stroke-width="1.5" stroke-dasharray="3,4" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'track'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom13;
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.4"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="#996600" stroke-width="1.2" stroke-dasharray="3,4" stroke-linecap="round"/>
-     </Rule>
     <Rule>
       <Filter>[highway] = 'unsurfaced'</Filter>
       &maxscale_zoom13;
