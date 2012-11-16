@@ -42,6 +42,7 @@ judgement. The work done in v1.0 and v2.0 will make it much easier to process th
 * space after : but no before
 * If there is a `&minscale_zoom18;`, ignore it. These really mess up any attempts to run the style at z19
 * Dashes, not underscores, in layer names
+* Avoid restating defaults, e.g. don't add `point-allow-overlap = false`
 
 [trac]: https://trac.openstreetmap.org/query?component=mapnik&status=!closed&order=changetime&desc=1&max=500
 [cleverness]: https://github.com/openstreetmap/mapnik-stylesheets/blob/master/inc/settings.xml.inc.template#L16
