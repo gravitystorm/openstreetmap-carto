@@ -764,154 +764,84 @@
   }
 }
 
+#tunnels.casing {
+  [highway = 'motorway'],
+  [highway = 'motorway_link'] {
+    [zoom >= 12] {
+      line-width: 3;
+      line-color: #506077;
+      line-dasharray: 4,2;
+    }
+    [zoom >= 13] { line-width: 6.5; }
+    [zoom >= 15] { line-width: 10; }
+    [zoom >= 17] { line-width: 13; }
+  }
+
+  [highway = 'trunk'],
+  [highway = 'trunk_link'] {
+    [zoom >= 12] {
+      line-width: 4;
+      line-color: #477147;
+      line-dasharray: 4,2;
+    }
+    [zoom >= 13] { line-width: 8; }
+    [zoom >= 15] { line-width: 11; }
+    [zoom >= 17] { line-width: 14; }
+  }
+
+  [highway = 'primary'],
+  [highway = 'primary_link'] {
+    [zoom >= 12] {
+      line-width: 4;
+      line-color: #8d4346;
+      line-dasharray: 4,2;
+    }
+    [zoom >= 13] { line-width: 8; }
+    [zoom >= 15] { line-width: 11; }
+    [zoom >= 17] { line-width: 14; }
+  }
+
+  [highway = 'secondary'],
+  [highway = 'secondary_link'] {
+    [zoom >= 12] {
+      line-width: 4;
+      line-dasharray: 4,2;
+      line-color: #a37b48;
+    }
+    [zoom >= 13] { line-width: 10; }
+    [zoom >= 15] { line-width: 12; }
+    [zoom >= 17] { line-width: 17; }
+  }
+
+  [highway = 'tertiary'],
+  [highway = 'tertiary_link'] {
+    [zoom >= 13] {
+      line-width: 6;
+      line-dasharray: 4,2;
+      line-color: #999;
+    }
+    [zoom >= 14] { line-width: 7.5; }
+    [zoom >= 15] { line-width: 11; }
+    [zoom >= 17] { line-width: 16; }
+  }
+
+  [highway = 'residential'],
+  [highway = 'unclassified'],
+  [highway = 'road'] {
+    [zoom >= 13] {
+      line-width: 3;
+      line-color: #999;
+      line-dasharray: 4,2;
+    }
+    [zoom >= 14] { line-width: 4.5; }
+    [zoom >= 15] { line-width: 8; }
+    [zoom >= 16] { line-width: 11; }
+    [zoom >= 17] { line-width: 16; }
+  }
+}
+
 /*
 
-<Style name="tunnels-casing">
-    <Rule>
-      <Filter>[highway] = 'motorway' or [highway]='motorway_link'</Filter>
-      &maxscale_zoom12;
-      &minscale_zoom12;
-      <LineSymbolizer stroke="#506077" stroke-width="3" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'motorway' or [highway]='motorway_link'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom14;
-      <LineSymbolizer stroke="#506077" stroke-width="6.5" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'motorway' or [highway]='motorway_link'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom16;
-      <LineSymbolizer stroke="#506077" stroke-width="10" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'motorway' or [highway]='motorway_link'</Filter>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <LineSymbolizer stroke="#506077" stroke-width="13" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'trunk' or [highway] = 'trunk_link'</Filter>
-      &maxscale_zoom12;
-      &minscale_zoom12;
-      <LineSymbolizer stroke="#477147" stroke-width="4" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'trunk' or [highway] = 'trunk_link'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom14;
-      <LineSymbolizer stroke="#477147" stroke-width="8" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-     <Filter>[highway] = 'trunk' or [highway] = 'trunk_link'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom16;
-      <LineSymbolizer stroke="#477147" stroke-width="11" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-     <Filter>[highway] = 'trunk' or [highway] = 'trunk_link'</Filter>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <LineSymbolizer stroke="#477147" stroke-width="14" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'primary' or [highway] = 'primary_link'</Filter>
-      &maxscale_zoom12;
-      &minscale_zoom12;
-      <LineSymbolizer stroke="#8d4346" stroke-width="4" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'primary' or [highway] = 'primary_link'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom14;
-      <LineSymbolizer stroke="#8d4346" stroke-width="8" stroke-dasharray="4,2"/>
-    </Rule>
-   <Rule>
-      <Filter>[highway] = 'primary' or [highway] = 'primary_link'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom16;
-      <LineSymbolizer stroke="#8d4346" stroke-width="11" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'primary' or [highway] = 'primary_link'</Filter>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <LineSymbolizer stroke="#8d4346" stroke-width="14" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'secondary' or [highway] = 'secondary_link'</Filter>
-      &maxscale_zoom12;
-      &minscale_zoom12;
-      <LineSymbolizer stroke="#a37b48" stroke-width="4" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'secondary' or [highway] = 'secondary_link'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom14;
-      <LineSymbolizer stroke="#a37b48" stroke-width="10" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'secondary' or [highway] = 'secondary_link'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom16;
-      <LineSymbolizer stroke="#a37b48" stroke-width="12" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'secondary' or [highway] = 'secondary_link'</Filter>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <LineSymbolizer stroke="#a37b48" stroke-width="17" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'tertiary' or [highway]='tertiary_link'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom13;
-      <LineSymbolizer stroke="#999" stroke-width="6" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'tertiary' or [highway]='tertiary_link'</Filter>
-      &maxscale_zoom14;
-      &minscale_zoom14;
-      <LineSymbolizer stroke="#999" stroke-width="7.5" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'residential' or [highway] = 'unclassified' or [highway] = 'road'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom13;
-      <LineSymbolizer stroke="#999" stroke-width="3" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'residential' or [highway] = 'unclassified' or [highway] = 'road'</Filter>
-      &maxscale_zoom14;
-      &minscale_zoom14;
-      <LineSymbolizer stroke="#999" stroke-width="4.5" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'residential' or [highway] = 'unclassified' or [highway] = 'road'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom15;
-      <LineSymbolizer stroke="#999" stroke-width="8" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'residential' or [highway] = 'unclassified' or [highway] = 'road'</Filter>
-      &maxscale_zoom16;
-      &minscale_zoom16;
-      <LineSymbolizer stroke="#999" stroke-width="11" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'tertiary' or [highway]='tertiary_link'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom16;
-      <LineSymbolizer stroke="#999" stroke-width="11" stroke-dasharray="4,2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'tertiary' or [highway]='tertiary_link' or [highway] = 'residential' or [highway] = 'unclassified' or [highway] = 'road'</Filter>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <LineSymbolizer stroke="#999" stroke-width="16" stroke-dasharray="4,2"/>
-    </Rule>
-</Style>
 <Style name="tunnels-fill">
     <Rule>
       <Filter>[highway] = 'motorway' or [highway]='motorway_link'</Filter>
