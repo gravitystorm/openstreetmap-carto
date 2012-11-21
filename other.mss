@@ -232,204 +232,356 @@
   }
 }
 
+#text {
+  [place = 'island'][zoom >= 12]::place {
+    text-name: "[name]";
+    text-fill: #000;
+    text-size: 9;
+    text-face-name: @oblique-fonts;
+    text-halo-radius: 1;
+    text-placement: interior;
+  }
+
+  [amenity = 'pub']::amenity,
+  [amenity = 'restaurant']::amenity,
+  [amenity = 'cafe']::amenity,
+  [amenity = 'fast_food']::amenity,
+  [amenity = 'beirgarten']::amenity {
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-fill: #734a08;
+      text-size: 10;
+      text-dy: 9;
+      text-face-name: @bold-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 34;
+      text-placement: interior;
+    }
+  }
+
+  [amenity = 'bar'][zoom >= 17]::amenity {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: #734a08;
+    text-dy: 11;
+    text-face-name: @bold-fonts;
+    text-halo-radius: 1;
+    text-placement: interior;
+  }
+
+  [amenity = 'library']::amenity,
+  [amenity = 'theatre']::amenity,
+  [amenity = 'courthouse']::amenity {
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: 10;
+      text-fill: #734a08;
+      text-dy: 12;
+      text-face-name: @bold-fonts;
+      text-halo-radius: 1;
+      text-placement: interior;
+    }
+  }
+
+  [amenity = 'cinema'][zoom >= 17]::amenity {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: #734a08;
+    text-dy: 14;
+    text-face-name: @bold-fonts;
+    text-halo-radius: 1;
+    text-placement: interior;
+  }
+
+  [amenity = 'parking'][zoom >= 17]::amenity {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: #0066ff;
+    text-dy: 9;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 34;
+    text-placement: interior;
+    [access != ''][access != 'public'][access != 'yes'] {
+      text-fill: #66ccaf;
+    }
+  }
+
+  [amenity = 'police'][zoom >= 17]::amenity {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: #734a08;
+    text-dy: 10;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 30;
+    text-placement: interior;
+  }
+
+  [amenity = 'fire_station'][zoom >= 17]::amenity {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: #734a08;
+    text-dy: 9;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 30;
+    text-placement: interior;
+  }
+
+  [amenity = 'place_of_worship'][zoom >= 17]::amenity {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: #000033;
+    text-dy: 11;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 30;
+    text-placement: interior;
+  }
+
+  [natural = 'wood'][zoom >= 15]::natural {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: #000;
+    text-face-name: @book-fonts;
+    text-halo-radius: 2;
+    text-wrap-width: 10;
+    text-placement: interior;
+  }
+
+  [natural = 'peak']::natural,
+  [natural = 'volcano']::natural {
+    [zoom >= 13] {
+      text-name: "[name]";
+      text-size: 10;
+      text-fill: brown;
+      text-dy: 5;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-placement: interior;
+      ele/text-name: "[ele]";
+      ele/text-size: 9;
+      ele/text-fill: brown;
+      ele/text-dy: 6;
+      ele/text-face-name: @oblique-fonts;
+      ele/text-halo-radius: 1;
+      ele/text-placement: interior;
+      [name != ''] {
+        ele/text-dy: 18;
+      }
+    }
+  }
+
+  [natural = 'cave_entrance'][zoom >= 15]::natural {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: brown;
+    text-dy: 9;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 20;
+    text-placement: interior;
+  }
+
+  [historic = 'memorial']::historic,
+  [historic = 'archaeological_site']::historic {
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: brown;
+      text-dy: 12;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 20;
+      text-placement: interior;
+    }
+  }
+
+  [natural = 'water']::natural,
+  [natural = 'lake']::natural,
+  [landuse = 'reservoir']::landuse,
+  [landuse = 'basin']::landuse {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 10;
+      text-fill: #6699cc;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 20;
+      text-placement: interior;
+    }
+  }
+
+  /* Hmmm */
+  [point = 'yes'][leisure != '']::point,
+  [point = 'yes'][landuse != '']::point {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: #000;
+      text-face-name: @book-fonts;
+      text-halo-radius: 2;
+      text-wrap-width: 10;
+    }
+  }
+
+  [natural = 'bay'][zoom >= 14]::natural {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: #6699cc;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 20;
+    text-placement: interior;
+  }
+
+  [natural = 'spring'][zoom >= 16]::natural {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: #6699cc;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 20;
+    text-placement: interior;
+  }
+
+  [tourism = 'alpine_hut'][zoom >= 15]::tourism {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: #6699cc;
+    text-dy: 10;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-placement: interior;
+    [zoom >= 16] {
+      ele/text-name: "[ele]";
+      ele/text-size: 8;
+      ele/text-fill: #6699cc;
+      ele/text-dy: 22;
+      ele/text-face-name: @oblique-fonts;
+      ele/text-halo-radius: 1;
+      ele/text-placement: interior;
+    }
+  }
+
+  [amenity = 'shelter'][zoom >= 17]::amenity {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: #6699cc;
+    text-dy: 10;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-placement: interior;
+    ele/text-name: "[ele]";
+    ele/text-size: 8;
+    ele/text-fill: #6699cc;
+    ele/text-dy: 22;
+    ele/text-face-name: @oblique-fonts;
+    ele/text-halo-radius: 1;
+    ele/text-placement: interior;
+  }
+
+  [amenity = 'bank'][zoom >= 17]::amenity {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: black;
+    text-dy: 9;
+    text-halo-radius: 1;
+    text-placement: interior;
+    text-face-name: @book-fonts;
+  }
+
+  [tourism = 'hotel']::tourism,
+  [tourism = 'hostel']::tourism,
+  [tourism = 'chalet']::tourism {
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: 10;
+      text-fill: #0066ff;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-placement: interior;
+    }
+  }
+
+  [amenity = 'embassy'][zoom >= 17]::amenity {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: #0066ff;
+    text-dy: 8;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-placement: interior;
+  }
+
+  [tourism = 'guest_house'][zoom >= 17]::tourism {
+    text-name: "[name]";
+    text-size: 8;
+    text-fill: #0066ff;
+    text-dy: 9;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-placement: interior;
+  }
+
+  [tourism = 'bed_and_breakfast'][zoom >= 17]::tourism {
+    text-name: "[name]";
+    text-size: 8;
+    text-fill: #0066ff;
+    text-dy: 7;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-placement: interior;
+  }
+
+  [amenity = 'fuel']::amenity,
+  [amenity = 'bus_station']::amenity {
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: #0066ff;
+      text-dy: 9;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+    }
+  }
+
+  [tourism = 'camp_site'][zoom >= 17]::tourism {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: #0066ff;
+    text-dy: 15;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 70;
+  }
+
+  [tourism = 'caravan_site'][zoom >= 17]::tourism {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: #0066ff;
+    text-dy: 19;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 70;
+  }
+
+  [waterway = 'lock'][zoom >= 15]::waterway {
+    text-name: "[name]";
+    text-size: 9;
+    text-dy: 10;
+    text-fill: #0066ff;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 70;
+  }
+}
 /*
 
-<Style name="highway-junctions">
-    <Rule>
-      &maxscale_zoom11;
-      &minscale_zoom11;
-      <TextSymbolizer size="9" fill="#6666ff" minimum-distance="2" fontset-name="oblique-fonts" halo-radius="1" wrap-width="12">[ref]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      &maxscale_zoom12;
-      &minscale_zoom14;
-      <TextSymbolizer size="9" fill="#6666ff" minimum-distance="2" fontset-name="oblique-fonts" halo-radius="1" wrap-width="12">[ref]</TextSymbolizer>
-      <TextSymbolizer size="8" fill="#6666ff" dy="-8" minimum-distance="2" fontset-name="oblique-fonts" halo-radius="1" wrap-width="2" wrap-character=";">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      &maxscale_zoom15;
-      <TextSymbolizer size="12" fill="#6666ff" minimum-distance="2" fontset-name="oblique-fonts" halo-radius="1" wrap-width="12">[ref]</TextSymbolizer>
-      <TextSymbolizer size="11" fill="#6666ff" dy="-10" minimum-distance="2" fontset-name="oblique-fonts" halo-radius="1" wrap-width="2" wrap-character=";">[name]</TextSymbolizer>
-    </Rule>
-</Style>
+
 <Style name="text">
-    <Rule>
-      <Filter>[place] = 'island'</Filter>
-      &maxscale_zoom12;
-      &minscale_zoom18;
-      <TextSymbolizer size="9" fill="#000" dy="0" fontset-name="oblique-fonts" halo-radius="1" wrap-width="0" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[amenity]='pub' or [amenity]='restaurant' or [amenity]='cafe' or [amenity]='fast_food' or [amenity]='biergarten'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="10" fill="#734a08" dy="9" fontset-name="bold-fonts" halo-radius="1" wrap-width="34" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[amenity]='bar'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="10" fill="#734a08" dy="11" fontset-name="bold-fonts" halo-radius="1" wrap-width="0" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[amenity]='library' or [amenity]='theatre' or [amenity]='courthouse'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="10" fill="#734a08" dy="12" fontset-name="bold-fonts" halo-radius="1" wrap-width="0" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[amenity]='cinema'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="10" fill="#734a08" dy="14" fontset-name="bold-fonts" halo-radius="1" wrap-width="0" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[amenity]='parking' and ([access] = 'public' or not [access] != '')</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="9" fill="#0066ff" dy="9" fontset-name="book-fonts" halo-radius="1" wrap-width="34" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[amenity]='parking' and ([access] != '' and not [access] = 'public')</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="9" fill="#66ccaf" dy="9" fontset-name="book-fonts" halo-radius="1" wrap-width="34" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-     <Rule>
-      <Filter>[amenity] = 'police'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="10" fill="#734a08" dy="10" fontset-name="book-fonts" halo-radius="1" wrap-width="30" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[amenity] = 'fire_station'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="10" fill="#734a08" dy="9" fontset-name="book-fonts" halo-radius="1" wrap-width="30" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-     <Rule>
-      <Filter>[amenity] = 'place_of_worship'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="10" fill="#000033" dy="11" fontset-name="book-fonts" halo-radius="1" wrap-width="30" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[natural] = 'wood'</Filter>
-      &maxscale_zoom15;
-      <TextSymbolizer size="10" fill="#000" fontset-name="book-fonts" halo-radius="2" wrap-width="10" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[natural] = 'peak'</Filter>
-      &maxscale_zoom13;
-      <TextSymbolizer size="10" fill="brown" dy="5" fontset-name="book-fonts" halo-radius="1" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[natural] = 'peak' and not [name] != ''</Filter>
-      &maxscale_zoom14;
-      <TextSymbolizer size="9" fill="brown" dy="6" fontset-name="oblique-fonts" halo-radius="1" placement="interior">[ele]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[natural] = 'peak' and [name] != ''</Filter>
-      &maxscale_zoom14;
-      <TextSymbolizer size="9" fill="brown" dy="18" fontset-name="oblique-fonts" halo-radius="1" placement="interior">[ele]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[natural] = 'volcano'</Filter>
-      &maxscale_zoom13;
-      <TextSymbolizer size="10" fill="brown" dy="5" fontset-name="book-fonts" halo-radius="1" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[natural] = 'volcano' and not [name] != ''</Filter>
-      &maxscale_zoom14;
-      <TextSymbolizer size="9" fill="brown" dy="6" fontset-name="oblique-fonts" halo-radius="1" placement="interior">[ele]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[natural] = 'volcano' and [name] != ''</Filter>
-      &maxscale_zoom14;
-      <TextSymbolizer size="9" fill="brown" dy="16" fontset-name="oblique-fonts" halo-radius="1" placement="interior">[ele]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[natural] = 'cave_entrance'</Filter>
-      &maxscale_zoom15;
-      <TextSymbolizer size="10" fill="brown" dy="9" fontset-name="book-fonts" halo-radius="1" wrap-width="20" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[historic] = 'memorial' or [historic]='archaeological_site'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="9" fill="brown" dy="12" fontset-name="book-fonts" halo-radius="1" wrap-width="20" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[natural] = 'water' or [natural] = 'lake' or [landuse] = 'reservoir' or [landuse] = 'basin'</Filter>
-      &maxscale_zoom15;
-      <TextSymbolizer size="10" fill="#6699cc" fontset-name="book-fonts" halo-radius="1" wrap-width="20" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>([leisure] != '' or [landuse] != '') and [point] = 'yes'</Filter>
-      &maxscale_zoom15;
-      <TextSymbolizer size="9" fill="#000" fontset-name="book-fonts" halo-radius="2" wrap-width="10">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[natural] = 'bay'</Filter>
-      &maxscale_zoom14;
-      <TextSymbolizer size="10" fill="#6699cc" fontset-name="book-fonts" halo-radius="1" wrap-width="20" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[natural] = 'spring'</Filter>
-      &maxscale_zoom16;
-      <TextSymbolizer size="8" fill="#6699cc" dy="10" fontset-name="book-fonts" halo-radius="1" wrap-width="20" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[tourism] = 'alpine_hut'</Filter>
-      &maxscale_zoom15;
-      <TextSymbolizer size="9" fill="#6699cc" dy="10" fontset-name="book-fonts" halo-radius="1" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[tourism] = 'alpine_hut'</Filter>
-      &maxscale_zoom16;
-      <TextSymbolizer size="8" fill="#6699cc" dy="22" fontset-name="oblique-fonts" halo-radius="1" placement="interior">[ele]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[amenity]='shelter'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="9" fill="#6699cc" dy="10" fontset-name="book-fonts" halo-radius="1" placement="interior">[name]</TextSymbolizer>
-      <TextSymbolizer size="8" fill="#6699cc" dy="22" fontset-name="oblique-fonts" halo-radius="1" placement="interior">[ele]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[amenity] = 'bank'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="9" fill="black" dy="9" fontset-name="book-fonts" halo-radius="1" wrap-width="0" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[tourism] = 'hotel' or [tourism]='hostel' or [tourism]='chalet'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="10" fill="#0066ff" dy="11" fontset-name="book-fonts" halo-radius="1" wrap-width="0" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[amenity] = 'embassy'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="9" fill="#0066ff" dy="8" fontset-name="book-fonts" halo-radius="1" wrap-width="0" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[tourism]='guest_house'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="8" fill="#0066ff" dy="9" fontset-name="book-fonts" halo-radius="1" wrap-width="0" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[tourism]='bed_and_breakfast'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="8" fill="#0066ff" dy="7" fontset-name="book-fonts" halo-radius="1" wrap-width="0" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[amenity] = 'fuel' or [amenity]='bus_station'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="9" fill="#0066ff" dy="9" fontset-name="book-fonts" halo-radius="1" wrap-width="0" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[tourism] = 'camp_site'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="10" fill="#0066ff" dy="15" fontset-name="book-fonts" halo-radius="1" wrap-width="70" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[tourism] = 'caravan_site'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="10" fill="#0066ff" dy="19" fontset-name="book-fonts" halo-radius="1" wrap-width="70" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[waterway] = 'lock'</Filter>
-      &maxscale_zoom15;
-      <TextSymbolizer size="9" fill="#0066ff" dy="10" fontset-name="book-fonts" halo-radius="1" wrap-width="70" placement="interior">[name]</TextSymbolizer>
-    </Rule>
+
     <Rule>
       <Filter>[leisure] = 'marina'</Filter>
       &maxscale_zoom15;
