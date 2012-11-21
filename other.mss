@@ -1119,132 +1119,67 @@
   }
 }
 
-/*
-</Style>
-<Style name="minor-roads-fill-links">
-    <Rule>
-      <Filter>[highway]='motorway_link' and not [tunnel] = 'yes'</Filter>
-      &maxscale_zoom12;
-      &minscale_zoom12;
-      <LineSymbolizer stroke="#809bc0" stroke-width="0.5"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'motorway_link' and not [tunnel] = 'yes'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom14;
-      <LineSymbolizer stroke-linejoin="round" stroke="#809bc0" stroke-width="3" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'motorway_link' and not [tunnel] = 'yes'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom16;
-      <LineSymbolizer stroke-linejoin="round" stroke="#809bc0" stroke-width="6.5" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'motorway_link' and not [tunnel] = 'yes'</Filter>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <LineSymbolizer stroke-linejoin="round" stroke="#809bc0" stroke-width="9" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'trunk_link' and not [tunnel] = 'yes'</Filter>
-      &maxscale_zoom12;
-      &minscale_zoom12;
-      <LineSymbolizer stroke-linejoin="round" stroke="#a9dba9" stroke-width="2.5" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'trunk_link' and not [tunnel] = 'yes'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom14;
-      <LineSymbolizer stroke-linejoin="round" stroke="#a9dba9" stroke-width="7" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'trunk_link' and not [tunnel] = 'yes'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom16;
-      <LineSymbolizer stroke-linejoin="round" stroke="#a9dba9" stroke-width="11" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'trunk_link' and not [tunnel] = 'yes'</Filter>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <LineSymbolizer stroke-linejoin="round" stroke="#a9dba9" stroke-width="15.5" stroke-linecap="round"/>
-   </Rule>
-   <Rule>
-      <Filter>[highway] = 'primary_link' and not [tunnel] = 'yes'</Filter>
-      &maxscale_zoom12;
-      &minscale_zoom12;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ec989a" stroke-width="2.5" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'primary_link' and not [tunnel] = 'yes'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom14;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ec989a" stroke-width="7" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'primary_link' and not [tunnel] = 'yes'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom16;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ec989a" stroke-width="11" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'primary_link' and not [tunnel] = 'yes'</Filter>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ec989a" stroke-width="15.5" stroke-linecap="round"/>
-    </Rule>
-   <Rule>
-      <Filter>[highway] = 'secondary_link' and not [tunnel]='yes'</Filter>
-      &maxscale_zoom12;
-      &minscale_zoom12;
-      <LineSymbolizer stroke-linejoin="round" stroke="#fed7a5" stroke-width="2" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'secondary_link' and not [tunnel]='yes'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom14;
-      <LineSymbolizer stroke-linejoin="round" stroke="#fed7a5" stroke-width="8" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'secondary_link' and not [tunnel]='yes'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom16;
-      <LineSymbolizer stroke-linejoin="round" stroke="#fed7a5" stroke-width="11" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'secondary_link' and not [tunnel]='yes'</Filter>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <LineSymbolizer stroke-linejoin="round" stroke="#fed7a5" stroke-width="15.5" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'tertiary_link' and not [tunnel]='yes'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom13;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ffffb3" stroke-width="4.5" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'tertiary_link' and not [tunnel]='yes'</Filter>
-      &maxscale_zoom14;
-      &minscale_zoom14;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ffffb3" stroke-width="6" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'tertiary_link' and not [tunnel]='yes'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom16;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ffffb3" stroke-width="9.4" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'tertiary_link' and not [tunnel]='yes'</Filter>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <LineSymbolizer stroke-linejoin="round" stroke="#ffffb3" stroke-width="13" stroke-linecap="round"/>
-    </Rule>
-</Style>
+#minor-roads-fill::links {
+  [highway = 'motorway_link'][tunnel != 'yes'] {
+    [zoom >= 12] {
+      line-width: 0.5;
+      line-color: #809bc0;
+      line-cap: round;
+      line-join: round;
+    }
+    [zoom >= 13] { line-width: 3; }
+    [zoom >= 15] { line-width: 6.5; }
+    [zoom >= 17] { line-width: 9; }
+  }
 
-*/
+  [highway = 'trunk_link'][tunnel != 'yes'] {
+    [zoom >= 12] {
+      line-width: 2.5;
+      line-color: #a9dba9;
+      line-join: round;
+      line-cap: round;
+    }
+    [zoom >= 13] { line-width: 7; }
+    [zoom >= 15] { line-width: 11; }
+    [zoom >= 17] { line-width: 15.5; }
+  }
+
+  [highway = 'primary_link'][tunnel != 'yes'] {
+    [zoom >= 12] {
+      line-width: 2.5;
+      line-color: #ec989a;
+      line-join: round;
+      line-cap: round;
+    }
+    [zoom >= 13] { line-width: 7; }
+    [zoom >= 15] { line-width: 11; }
+    [zoom >= 17] { line-width: 15.5; }
+  }
+
+  [highway = 'secondary_link'][tunnel != 'yes'] {
+    [zoom >= 12] {
+      line-width: 2;
+      line-color: #fed7a5;
+      line-cap: round;
+      line-join: round;
+    }
+    [zoom >= 13] { line-width: 8; }
+    [zoom >= 15] { line-width: 11; }
+    [zoom >= 17] { line-width: 15.5; }
+  }
+
+  [highway = 'tertiary_link'][tunnel != 'yes'] {
+    [zoom >= 13] {
+      line-width: 4.5;
+      line-color: #ffffb3;
+      line-cap: round;
+      line-join: round;
+    }
+    [zoom >= 14] { line-width: 6; }
+    [zoom >= 15] { line-width: 9.4; }
+    [zoom >= 17] { line-width: 13; }
+  }
+}
 
 #minor-roads-fill {
 
