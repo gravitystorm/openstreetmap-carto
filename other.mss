@@ -91,72 +91,89 @@
   }
 }
 
+#highway-area-casing {
+  [highway = 'residential'],
+  [highway = 'unclassified'] {
+    [zoom >= 14] {
+      line-color: #999;
+      line-width: 1;
+    }
+  }
+
+  [highway = 'pedestrian'],
+  [highway = 'service'],
+  [highway = 'footway'],
+  [highway = 'path'] {
+    [zoom >= 14] {
+      line-color: grey;
+      line-width: 1;
+    }
+  }
+
+  [highway = 'track'][zoom >= 14] {
+    line-color: #996600;
+    line-width: 2;
+  }
+
+  [highway = 'platform'],
+  [railway = 'platform']::railway {
+    [zoom >= 16] {
+      line-color: grey;
+      line-width: 2;
+      line-cap: round;
+      line-join: round;
+    }
+  }
+}
+
+#highway-area-fill {
+  [highway = 'living_street'][zoom >= 14] {
+    polygon-fill: #ccc;
+  }
+
+  [highway = 'residential'],
+  [highway = 'unclassified'],
+  [highway = 'service'] {
+    [zoom >= 14] {
+      polygon-fill: #fff;
+    }
+  }
+
+  [highway = 'pedestrian'],
+  [highway = 'footway'],
+  [highway = 'path'] {
+    [zoom >= 14] {
+      polygon-fill: #ededed;
+    }
+  }
+
+  [highway = 'track'][zoom >= 14] {
+    polygon-fill: #dfcc66;
+  }
+
+  [highway = 'platform'],
+  [railway = 'platform']::railway {
+    [zoom >= 16] {
+      polygon-fill: #bbbbbb;
+      polygon-gamma: 0.65;
+    }
+  }
+
+  [aeroway = 'runway'][zoom >= 11]::aeroway {
+    polygon-fill: #bbc;
+  }
+
+  [aeroway = 'taxiway'][zoom >= 13]::aeroway {
+    polygon-fill: #bbc;
+  }
+
+  [aeroway = 'helipad'][zoom >= 16]::aeroway {
+    polygon-fill: #bbc;
+  }
+}
+
 /*
 
-<Style name="highway-area-casing">
-   <Rule>
-      <Filter>[highway] = 'residential' or [highway]='unclassified'</Filter>
-      &maxscale_zoom14;
-      <LineSymbolizer stroke="#999" stroke-width="1"/>
-   </Rule>
-   <Rule>
-      <Filter>[highway] = 'pedestrian' or [highway]='service' or [highway]='footway' or [highway]='path'</Filter>
-      &maxscale_zoom14;
-      <LineSymbolizer stroke="grey" stroke-width="1"/>
-   </Rule>
-   <Rule>
-      <Filter>[highway] = 'track'</Filter>
-      &maxscale_zoom14;
-      <LineSymbolizer stroke="#996600" stroke-width="2"/>
-   </Rule>
-    <Rule>
-      <Filter>[highway] = 'platform' or [railway] = 'platform'</Filter>
-      &maxscale_zoom16;
-      <LineSymbolizer stroke-linejoin="round" stroke="grey" stroke-width="2" stroke-linecap="round"/>
-    </Rule>
-</Style>
-<Style name="highway-area-fill">
-    <Rule>
-      <Filter>[highway] = 'living_street'</Filter>
-      &maxscale_zoom14;
-      <PolygonSymbolizer fill="#ccc"/>
-   </Rule>
-   <Rule>
-      <Filter>[highway] = 'residential' or [highway]='unclassified' or [highway]='service'</Filter>
-      &maxscale_zoom14;
-      <PolygonSymbolizer fill="#fff"/>
-   </Rule>
-   <Rule>
-      <Filter>[highway] = 'pedestrian' or [highway]='footway' or [highway]='path'</Filter>
-      &maxscale_zoom14;
-      <PolygonSymbolizer fill="#ededed"/>
-   </Rule>
-   <Rule>
-      <Filter>[highway] = 'track'</Filter>
-      &maxscale_zoom14;
-      <PolygonSymbolizer fill="#dfcc66"/>
-   </Rule>
-    <Rule>
-      <Filter>[highway] = 'platform' or [railway] = 'platform'</Filter>
-      &maxscale_zoom16;
-      <PolygonSymbolizer gamma=".65" fill="#bbbbbb"/>
-    </Rule>
-    <Rule>
-      <Filter>[aeroway] = 'runway'</Filter>
-      &maxscale_zoom11;
-      <PolygonSymbolizer fill="#bbc"/>
-    </Rule>
-    <Rule>
-      <Filter>[aeroway] = 'taxiway'</Filter>
-      &maxscale_zoom13;
-      <PolygonSymbolizer fill="#bbc"/>
-    </Rule>
-    <Rule>
-      <Filter>[aeroway] = 'helipad'</Filter>
-      &maxscale_zoom16;
-      <PolygonSymbolizer fill="#bbc"/>
-    </Rule>
-</Style>
 <Style name="landuse_overlay">
     <Rule>
       &maxscale_zoom10;
