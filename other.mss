@@ -576,105 +576,196 @@
     text-halo-radius: 1;
     text-wrap-width: 70;
   }
+
+  [leisure = 'marina'][zoom >= 15]::leisure {
+    text-name: "[name]";
+    text-size: 8;
+    text-fill: blue;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 30;
+    text-placement: interior;
+    [zoom >= 17] {
+      text-size: 10;
+    }
+  }
+
+  [tourism = 'theme_park'][zoom >= 14]::tourism {
+    text-name: "[name]";
+    text-size: 8;
+    text-fill: #734a08;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 30;
+    text-placement: interior;
+    [zoom >= 16] {
+      text-size: 10;
+    }
+  }
+
+  [tourism = 'museum'][zoom >= 17]::tourism {
+    text-name: "[name]";
+    text-size: 10;
+    text-dy: 10;
+    text-fill: #734a08;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-placement: interior;
+  }
+
+  [amenity = 'prison'][zoom >= 17]::amenity {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: #734a08;
+    text-dy: 16;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-placement: interior;
+  }
+
+  [tourism = 'attraction'][zoom >= 16]::tourism {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: #660033;
+    text-face-name: @book-fonts;
+    text-halo-radius: 2;
+    text-wrap-width: 10;
+    text-placement: interior;
+  }
+
+  [amenity = 'university'][zoom >= 15]::amenity {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: #000033;
+    text-face-name: @bold-fonts;
+    text-halo-radius: 2;
+    text-wrap-width: 16;
+    text-placement: interior;
+  }
+
+  [amenity = 'school']::amenity,
+  [amenity = 'college']::amenity {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: #000033;
+      text-face-name: @bold-fonts;
+      text-halo-radius: 2;
+      text-wrap-width: 14;
+      text-placement: interior;
+    }
+  }
+
+  [amenity = 'kindergarten'][zoom >= 16]::amenity {
+    text-name: "[name]";
+    text-size: 8;
+    text-fill: #000033;
+    text-face-name: @bold-fonts;
+    text-halo-radius: 2;
+    text-wrap-width: 14;
+    text-placement: interior;
+  }
+
+  [man_made = 'lighthouse'][zoom >= 15]::man_made {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: #000033;
+    text-dy: 16;
+    text-face-name: @book-fonts;
+    text-halo-radius: 2;
+    text-wrap-width: 12;
+    text-placement: interior;
+  }
+
+  [man_made = 'windmill'][zoom >= 17]::man_made {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: #734a08;
+    text-dy: 12;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 20;
+    text-placement: interior;
+  }
+
+  [amenity = 'hospital'][zoom >= 16]::amenity {
+    text-name: "[name]";
+    text-size: 8;
+    text-dy: 10;
+    text-face-name: @book-fonts;
+    text-halo-radius: 2;
+    text-wrap-width: 24;
+    text-placement: interior;
+  }
+
+  [amenity = 'pharmacy'][zoom >= 17]::amenity {
+    text-name: "[name]";
+    text-size: 8;
+    text-fill: #da0092;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 12;
+    text-placement: interior;
+  }
+
+  [shop = 'bakery']::shop,
+  [shop = 'clothes']::shop,
+  [shop = 'fashion']::shop,
+  [shop = 'convenience']::shop,
+  [shop = 'doityourself']::shop,
+  [shop = 'hairdresser']::shop,
+  [shop = 'butcher']::shop,
+  [shop = 'car']::shop,
+  [shop = 'car_repair']::shop,
+  [shop = 'bicycle']::shop,
+  [shop = 'florist']::shop {
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: 8;
+      text-fill: #939;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 12;
+      text-placement: interior;
+    }
+  }
+
+  [shop = 'supermarket']::shop,
+  [shop = 'department_store']::shop {
+    [zoom >= 16] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: #939;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 20;
+      text-placement: interior;
+    }
+  }
+
+  [military = 'danger_area'][zoom >= 12]::military {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: pink;
+    text-face-name: @bold-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 10;
+    text-placement: interior;
+  }
+
+  [aeroway = 'gate'][zoom >= 17]::aeroway {
+    text-name: "[ref]";
+    text-size: 10;
+    text-fill: #aa66cc;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 10;
+    text-placement: interior;
+  }
 }
+
 /*
 
-
-<Style name="text">
-
-    <Rule>
-      <Filter>[leisure] = 'marina'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom16;
-      <TextSymbolizer size="8" fill="blue" fontset-name="book-fonts" halo-radius="1" wrap-width="30" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[leisure] = 'marina'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="10" fill="blue" fontset-name="book-fonts" halo-radius="1" wrap-width="30" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[tourism] = 'theme_park'</Filter>
-      &maxscale_zoom14;
-      &minscale_zoom15;
-      <TextSymbolizer size="8" fill="#734a08" fontset-name="book-fonts" halo-radius="1" wrap-width="30" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[tourism] = 'theme_park'</Filter>
-      &maxscale_zoom16;
-      <TextSymbolizer size="10" fill="#734a08" fontset-name="book-fonts" halo-radius="1" wrap-width="30" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[tourism]='museum'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="10" fill="#734a08" dy="10" fontset-name="book-fonts" halo-radius="1" wrap-width="0" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[amenity]='prison'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="10" fill="#734a08" dy="16" fontset-name="book-fonts" halo-radius="1" wrap-width="0" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[tourism] = 'attraction'</Filter>
-      &maxscale_zoom16;
-      <TextSymbolizer size="10" fill="#660033" fontset-name="book-fonts" halo-radius="2" wrap-width="10" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[amenity] = 'university'</Filter>
-      &maxscale_zoom15;
-      <TextSymbolizer size="9" fill="#000033" fontset-name="bold-fonts" halo-radius="1" wrap-width="16" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[amenity] = 'school' or [amenity] = 'college'</Filter>
-      &maxscale_zoom15;
-      <TextSymbolizer size="9" fill="#000033" fontset-name="book-fonts" halo-radius="1" wrap-width="14" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[amenity] = 'kindergarten'</Filter>
-      &maxscale_zoom16;
-      <TextSymbolizer size="8" fill="#000033" fontset-name="book-fonts" halo-radius="1" wrap-width="14" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[man_made] = 'lighthouse'</Filter>
-      &maxscale_zoom15;
-      <TextSymbolizer size="9" fill="#000033" dy="16" fontset-name="book-fonts" halo-radius="2" wrap-width="12" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[man_made] = 'windmill'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="9" fill="#734a08" dy="12" fontset-name="book-fonts" halo-radius="1" wrap-width="20" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[amenity] = 'hospital'</Filter>
-      &maxscale_zoom16;
-      <TextSymbolizer size="8" fill="#da0092" dy="10" fontset-name="book-fonts" halo-radius="2" wrap-width="24" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[amenity] = 'pharmacy'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="8" fill="#da0092" dy="9" fontset-name="book-fonts" halo-radius="1" wrap-width="12" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[shop]='bakery' or [shop]='clothes' or [shop]='fashion' or [shop]='convenience' or [shop]='doityourself' or [shop]='hairdresser' or [shop]='butcher' or [shop]='car' or [shop]='car_repair' or [shop]='bicycle' or [shop]='florist'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="8" fill="#939" dy="9" fontset-name="book-fonts" halo-radius="1" wrap-width="12" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[shop]='supermarket' or [shop]='department_store'</Filter>
-      &maxscale_zoom16;
-      <TextSymbolizer size="9" fill="#939" dy="9" fontset-name="book-fonts" halo-radius="1" wrap-width="20" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[military] = 'danger_area'</Filter>
-      &maxscale_zoom12;
-      <TextSymbolizer size="9" fill="pink" fontset-name="bold-fonts" halo-radius="1" wrap-width="10" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[aeroway] = 'gate'</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="10" fill="#aa66cc" fontset-name="book-fonts" halo-radius="1" wrap-width="10" placement="interior">[ref]</TextSymbolizer>
-    </Rule>
-</Style>
 <Style name="tunnels-casing">
     <Rule>
       <Filter>[highway] = 'motorway' or [highway]='motorway_link'</Filter>
