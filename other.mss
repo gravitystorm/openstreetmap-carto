@@ -1700,59 +1700,84 @@
       <LineSymbolizer stroke="#bbc" stroke-width="6"/>
     </Rule>
 </Style>
-<Style name="access">
-     <Rule>
-      <Filter>[access] = 'permissive' and ([highway]='unclassified' or [highway]='residential' or [highway]='footway')</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom15;
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.5" stroke="#cf9" stroke-linecap="round" stroke-dasharray="6,8" stroke-width="6"/>
-    </Rule>
-     <Rule>
-      <Filter>[access] = 'permissive' and ([highway] = 'service' and not [service] = 'INT-minor')</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom15;
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.5" stroke="#cf9" stroke-linecap="round" stroke-dasharray="6,8" stroke-width="3"/>
-    </Rule>
-     <Rule>
-      <Filter>[access] = 'permissive' and ([highway]='unclassified' or [highway]='residential' or [highway]='footway' or [highway]='service')</Filter>
-      &maxscale_zoom16;
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.5" stroke="#cf9" stroke-linecap="round" stroke-dasharray="6,8" stroke-width="6"/>
-    </Rule>
-    <Rule>
-      <Filter>[access]='destination' and ([highway]='unclassified' or [highway]='residential')</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom15;
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.5" stroke="#c2e0ff" stroke-linecap="round" stroke-dasharray="6,8" stroke-width="6"/>
-    </Rule>
-    <Rule>
-      <Filter>[access]='destination' and ([highway] = 'service' and not [service] = 'INT-minor')</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom15;
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.5" stroke="#c2e0ff" stroke-linecap="round" stroke-dasharray="6,8" stroke-width="3"/>
-    </Rule>
-    <Rule>
-      <Filter>[access]='destination' and ([highway]='unclassified' or [highway]='residential' or [highway]='service')</Filter>
-      &maxscale_zoom16;
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.5" stroke="#c2e0ff" stroke-linecap="round" stroke-dasharray="6,8" stroke-width="6"/>
-    </Rule>
-    <Rule>
-      <Filter>([access] = 'private' or [access] = 'no') and not [highway] = 'service'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom15;
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.5" stroke="#efa9a9" stroke-linecap="round" stroke-dasharray="6,8" stroke-width="6"/>
-    </Rule>
-    <Rule>
-      <Filter>([access] = 'private' or [access] = 'no') and ([highway] = 'service' and not [service] = 'INT-minor')</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom15;
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.5" stroke="#efa9a9" stroke-linecap="round" stroke-dasharray="6,8" stroke-width="3"/>
-    </Rule>
-    <Rule>
-      <Filter>[access] = 'private' or [access] = 'no'</Filter>
-      &maxscale_zoom16;
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.5" stroke="#efa9a9" stroke-linecap="round" stroke-dasharray="6,8" stroke-width="6"/>
-    </Rule>
-</Style>
+
+*/
+
+/* This is a good target for refactoring */
+.access {
+  [access = 'permissive'] {
+    [highway = 'unclassified'],
+    [highway = 'residential'],
+    [highway = 'footway'] {
+      [zoom >= 15] {
+        line-width: 6;
+        line-color: #cf9;
+        line-dasharray: 6,8;
+        line-cap: round;
+        line-join: round;
+        line-opacity: 0.5;
+      }
+    }
+    [highway = 'service'][service = 'INT-normal'][zoom >= 15],
+    [highway = 'service'][zoom >= 16] {
+      line-width: 3;
+      line-color: #cf9;
+      line-dasharray: 6,8;
+      line-cap: round;
+      line-join: round;
+      line-opacity: 0.5;
+      [zoom >= 16] { line-width: 6; }
+    }
+  }
+  [access = 'destination'] {
+    [highway = 'unclassified'],
+    [highway = 'residential'] {
+      [zoom >= 15] {
+        line-width: 6;
+        line-color: #c2e0ff;
+        line-dasharray: 6,8;
+        line-cap: round;
+        line-join: round;
+        line-opacity: 0.5;
+      }
+    }
+    [highway = 'service'][service = 'INT-normal'][zoom >= 15],
+    [highway = 'service'][zoom >= 16] {
+      line-width: 3;
+      line-color: #c2e0ff;
+      line-dasharray: 6,8;
+      line-cap: round;
+      line-join: round;
+      line-opacity: 0.5;
+      [zoom >= 16] { line-width: 6; }
+    }
+  }
+  [access = 'private'],
+  [access = 'no'] {
+    [highway != 'service'] {
+      [zoom >= 15] {
+        line-width: 6;
+        line-color: #efa9a9;
+        line-dasharray: 6,8;
+        line-opacity: 0.5;
+        line-join: round;
+        line-cap: round;
+      }
+    }
+    [highway = 'service'][service = 'INT-normal'][zoom >= 15],
+    [highway = 'service'][zoom >= 16] {
+      line-width: 3;
+      line-color: #efa9a9;
+      line-dasharray: 6,8;
+      line-opacity: 0.5;
+      line-join: round;
+      line-cap: round;
+      [zoom >= 16] { line-width: 6; }
+    }
+  }
+}
+
+/*
 <Style name="footbikecycle-tunnels">
     <Rule>
       <Filter>[highway] = 'bridleway' or ([highway] = 'path' and [horse] = 'designated')</Filter>
