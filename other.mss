@@ -172,52 +172,40 @@
   }
 }
 
+#landuse-overlay {
+  [landuse = 'military'][zoom >= 10]::landuse {
+    polygon-pattern-file: url('symbols/military_red_hz2.png');
+    line-color: #f55;
+    line-width: 3;
+    line-opacity: 0.329;
+  }
+  [leisure = 'nature_reserve'][zoom >= 10] {
+    polygon-pattern-file: url('symbols/nature_reserve5.png');
+    line-color: #6c3;
+    line-width: 0.5;
+    [zoom >= 14] {
+      polygon-pattern-file: url('symbols/nature_reserve6.png');
+      line-width: 1;
+    }
+  }
+}
+
+#area-text {
+  [way_area >= 150000][zoom >= 14],
+  [way_area >= 80000][zoom >= 15],
+  [way_area >= 20000][zoom >= 16],
+  [zoom >= 17] {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: #000033;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 20;
+  }
+}
+
 /*
 
-<Style name="landuse_overlay">
-    <Rule>
-      &maxscale_zoom10;
-      &minscale_zoom18;
-      <Filter>[landuse]='military'</Filter>
-      <PolygonPatternSymbolizer file="&symbols;/military_red_hz2.png" />
-      <LineSymbolizer stroke="#f55" stroke-width="3" stroke-opacity="0.329"/>
-    </Rule>
-    <Rule>
-      <Filter>[leisure] = 'nature_reserve'</Filter>
-      &maxscale_zoom10;
-      &minscale_zoom13;
-      <PolygonPatternSymbolizer file="&symbols;/nature_reserve5.png" />
-      <LineSymbolizer stroke="#6c3" stroke-width="0.5"/>
-    </Rule>
-    <Rule>
-      <Filter>[leisure] = 'nature_reserve'</Filter>
-      &maxscale_zoom14;
-      <PolygonPatternSymbolizer file="&symbols;/nature_reserve6.png" />
-      <LineSymbolizer stroke="#6c3" stroke-width="1"/>
-    </Rule>
-</Style>
-<Style name="area-text">
-    <Rule>
-      <Filter>[way_area] &gt;= 150000</Filter>
-      &maxscale_zoom14;
-      <TextSymbolizer size="10" fill="#000033" fontset-name="book-fonts" halo-radius="1" wrap-width="20" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[way_area] &gt;= 80000 and [way_area] &lt; 150000</Filter>
-      &maxscale_zoom15;
-      <TextSymbolizer size="10" fill="#000033" fontset-name="book-fonts" halo-radius="1" wrap-width="20" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[way_area] &gt;= 20000 and [way_area] &lt; 80000</Filter>
-      &maxscale_zoom16;
-      <TextSymbolizer size="10" fill="#000033" fontset-name="book-fonts" halo-radius="1" wrap-width="20" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[way_area] &lt; 20000</Filter>
-      &maxscale_zoom17;
-      <TextSymbolizer size="10" fill="#000033" fontset-name="book-fonts" halo-radius="1" wrap-width="20" placement="interior">[name]</TextSymbolizer>
-    </Rule>
-</Style>
 <Style name="highway-junctions">
     <Rule>
       &maxscale_zoom11;
