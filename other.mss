@@ -1508,6 +1508,8 @@
   [highway = 'service'][service = 'INT-minor'][zoom >= 16] {
     line-width: 3;
     line-color: #fff;
+    line-join: round;
+    line-cap: round;
   }
 
   [highway = 'pedestrian'][zoom >= 13] {
