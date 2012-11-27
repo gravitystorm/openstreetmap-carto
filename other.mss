@@ -1076,7 +1076,7 @@
         line-width: 2.5;
         line-cap: round;
       }
-      [zoom >= 16] { line-width: 11; }
+      [zoom >= 16] { line-width: 7; }
     }
     [service = 'INT-minor'][tunnel != 'yes'] {
       [zoom >= 16] {
@@ -1497,6 +1497,8 @@
     line-width: 1;
     line-color: #bbbbbb;
     [zoom >= 14] {
+      line-join: round;
+      line-cap: round;
       line-width: 2;
       line-color: white;
     }
