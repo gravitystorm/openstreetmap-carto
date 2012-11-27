@@ -2031,22 +2031,7 @@
 }
 
 /*
-<Style name="waterway-bridges">
-    <Rule>
-      &maxscale_zoom14;
-      &minscale_zoom16;
-      <LineSymbolizer stroke-linejoin="round" stroke="#000" stroke-width="7"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="#b5d0d0" stroke-width="6" stroke-linecap="round"/>
-      <TextSymbolizer size="9" fill="#6699cc" placement="line" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <LineSymbolizer stroke-linejoin="round" stroke="#000" stroke-width="11"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="#b5d0d0" stroke-width="10" stroke-linecap="round"/>
-      <TextSymbolizer size="9" fill="#6699cc" placement="line" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-</Style>
+
 <Style name="bridges_casing">
      <Rule>
       <Filter>[highway] = 'motorway' or [highway]='motorway_link'</Filter>

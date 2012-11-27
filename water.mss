@@ -288,3 +288,25 @@
 </Style>
 
 */
+
+#waterway-bridges {
+  [zoom >= 14] {
+    line-width: 7;
+    line-color: #000;
+    line-join: round;
+    b/line-width: 6;
+    b/line-color: #b5d0d0;
+    b/line-cap: round;
+    b/line-join: round;
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: #6699cc;
+    text-face-name: @book-fonts;
+    text-placement: line;
+    text-halo-radius: 1;
+    [zoom >= 17] {
+      line-width: 11;
+      b/line-width: 10;
+    }
+  }
+}
