@@ -1856,90 +1856,181 @@
   }
 }
 
+#tracks-notunnel-nobridge {
+  [tracktype = 'grade1'][zoom >= 14] {
+    line-width: 3.5;
+    line-color: white;
+    line-opacity: 0.4;
+    b/line-width: 2;
+    b/line-color: #b37700;
+    b/line-opacity: 0.7;
+  }
+
+  [tracktype = 'grade2'][zoom >= 14] {
+    line-width: 3;
+    line-color: white;
+    line-opacity: 0.4;
+    line-join: round;
+    line-cap: round;
+    b/line-color: #a87000;
+    b/line-width: 1.5;
+    b/line-dasharray: 9,4;
+    b/line-opacity: 0.8;
+    b/line-join: round;
+    b/line-cap: round;
+  }
+
+  [tracktype = 'grade3'][zoom >= 14] {
+    line-width: 3;
+    line-color: white;
+    line-opacity: 0.4;
+    line-cap: round;
+    line-width: round;
+    b/line-color: #996600;
+    b/line-width: 1.5;
+    b/line-dasharray: 3,4;
+    b/line-opacity: 0.8;
+    b/line-join: round;
+    b/line-cap: round;
+  }
+
+  [tracktype = 'grade4'][zoom >= 14] {
+    line-width: 3;
+    line-color: white;
+    line-opacity: 0.4;
+    line-join: round;
+    line-cap: round;
+    b/line-color: #996600;
+    b/line-width: 2;
+    b/line-dasharray: 4,7,1,5;
+    b/line-opacity: 0.8;
+    b/line-join: round;
+    b/line-cap: round;
+  }
+
+  [tracktype = 'grade5'][zoom >= 14] {
+    line-width: 3;
+    line-color: white;
+    line-opacity: 0.4;
+    line-join: round;
+    line-cap: round;
+    b/line-width: 2;
+    b/line-color: #996600;
+    b/line-dasharray: 1,5;
+    b/line-opacity: 0.8;
+    b/line-join: round;
+    b/line-cap: round;
+  }
+
+  /* tracks with no tracktype */
+  [zoom >= 14] {
+    line-width: 3;
+    line-color: white;
+    line-opacity: 0.4;
+    line-join: round;
+    line-cap: round;
+    b/line-width: 1.5;
+    b/line-color: #996600;
+    b/line-dasharray: 3,4;
+    b/line-cap: round;
+    b/line-join: round;
+  }
+}
+
+#tracks-tunnels {
+  [tracktype = 'grade1'][zoom >= 14] {
+    line-width: 4;
+    line-color: grey;
+    line-dasharray: 4,2;
+    b/line-width: 3.5;
+    b/line-color: white;
+    c/line-width: 2;
+    c/line-color: #b37700;
+    c/line-opacity: 0.5;
+  }
+
+  [tracktype = 'grade2'][zoom >= 14] {
+    line-width: 4.5;
+    line-color: grey;
+    line-dasharray: 4,2;
+    b/line-width: 3;
+    b/line-color: white;
+    b/line-join: round;
+    b/line-cap: round;
+    c/line-width: 1.5;
+    c/line-color: #a87000;
+    c/line-opacity: 0.5;
+    c/line-dasharray: 3,4;
+    c/line-join: round;
+    c/line-cap: round;
+  }
+
+  [tracktype = 'grade3'][zoom >= 14] {
+    line-width: 4.5;
+    line-color: grey;
+    line-dasharray: 4,2;
+    b/line-width: 3.5;
+    b/line-color: white;
+    b/line-join: round;
+    b/line-cap: round;
+    c/line-width: 2;
+    c/line-color: #996600;
+    c/line-opacity: 0.5;
+    c/line-cap: round;
+    c/line-join: round;
+  }
+
+  [tracktype = 'grade4'][zoom >= 14] {
+    line-width: 4.5;
+    line-color: grey;
+    line-dasharray: 4,2;
+    b/line-width: 3;
+    b/line-color: white;
+    b/line-join: round;
+    b/line-cap: round;
+    c/line-width: 2;
+    c/line-color: #996600;
+    c/line-dasharray: 4,7,1,5;
+    c/line-opacity: 0.5;
+    c/line-join: round;
+    c/line-cap: round;
+  }
+
+  [tracktype = 'grade5'][zoom >= 14] {
+    line-width: 4.5;
+    line-color: grey;
+    line-dasharray: 4,2;
+    b/line-width: 3;
+    b/line-color: white;
+    b/line-cap: round;
+    b/line-join: round;
+    c/line-width: 2;
+    c/line-color: #996600;
+    c/line-dasharray: 1,5;
+    c/line-opacity: 0.5;
+    c/line-join: round;
+    c/line-cap: round;
+  }
+
+  /* tracks with no tracktype */
+  [zoom >= 14] {
+    line-width: 4.5;
+    line-color: grey;
+    line-dasharray: 4,2;
+    b/line-width: 3;
+    b/line-color: white;
+    b/line-cap: round;
+    b/line-join: round;
+    c/line-width: 1.5;
+    c/line-color: #996600;
+    c/line-dasharray: 3,4;
+    c/line-opacity: 0.5;
+    c/line-join: round;
+    c/line-cap: round;
+  }
+}
+
 /*
-</Style>
-<Style name="tracks-notunnel-nobridge">
-    <Rule>
-      <Filter>[tracktype]='grade1'</Filter>
-      &maxscale_zoom14;
-      <LineSymbolizer stroke="white" stroke-width="3.5" stroke-opacity="0.4"/>
-      <LineSymbolizer stroke="#b37700" stroke-width="2" stroke-opacity="0.7"/>
-    </Rule>
-    <Rule>
-      <Filter>[tracktype]='grade2'</Filter>
-      &maxscale_zoom14;
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="3" stroke-linecap="round" stroke-opacity="0.4"/>
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.8" stroke="#a87000" stroke-linecap="round" stroke-dasharray="9,4" stroke-width="1.5"/>
-    </Rule>
-    <Rule>
-      <Filter>[tracktype]='grade3'</Filter>
-      &maxscale_zoom14;
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="3" stroke-linecap="round" stroke-opacity="0.4"/>
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.8" stroke="#996600" stroke-linecap="round" stroke-dasharray="3,4" stroke-width="1.5"/>
-    </Rule>
-    <Rule>
-      <Filter>[tracktype]='grade4'</Filter>
-      &maxscale_zoom14;
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="3" stroke-linecap="round" stroke-opacity="0.4"/>
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.8" stroke="#996600" stroke-linecap="round" stroke-dasharray="4,7,1,5" stroke-width="2"/>
-    </Rule>
-    <Rule>
-      <Filter>[tracktype]='grade5'</Filter>
-      &maxscale_zoom14;
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="3" stroke-linecap="round" stroke-opacity="0.4"/>
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.8" stroke="#996600" stroke-linecap="round" stroke-dasharray="1,5" stroke-width="2"/>
-    </Rule>
-    <Rule>
-      <ElseFilter/>
-      &maxscale_zoom14;
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="3" stroke-linecap="round" stroke-opacity="0.4"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="#996600" stroke-width="1.5" stroke-dasharray="3,4" stroke-linecap="round"/>
-     </Rule>
-</Style>
-<Style name="tracks-tunnels">
-    <Rule>
-      <Filter>[tracktype]='grade1'</Filter>
-      &maxscale_zoom14;
-      <LineSymbolizer stroke="grey" stroke-width="5" stroke-dasharray="4,2"/>
-      <LineSymbolizer stroke="white" stroke-width="3.5"/>
-      <LineSymbolizer stroke="#b37700" stroke-width="2" stroke-opacity="0.5"/>
-    </Rule>
-    <Rule>
-      <Filter>[tracktype]='grade2'</Filter>
-      &maxscale_zoom14;
-      <LineSymbolizer stroke="grey" stroke-width="4.5" stroke-dasharray="4,2"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="3" stroke-linecap="round"/>
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.5" stroke="#a87000" stroke-linecap="round" stroke-dasharray="3,4" stroke-width="1.5"/>
-    </Rule>
-    <Rule>
-      <Filter>[tracktype]='grade3'</Filter>
-      &maxscale_zoom14;
-      <LineSymbolizer stroke="grey" stroke-width="4.5" stroke-dasharray="4,2"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="#996600" stroke-width="2" stroke-linecap="round" stroke-opacity="0.5"/>
-    </Rule>
-    <Rule>
-      <Filter>[tracktype]='grade4'</Filter>
-      &maxscale_zoom14;
-      <LineSymbolizer stroke="grey" stroke-width="4.5" stroke-dasharray="4,2"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="3" stroke-linecap="round"/>
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.5" stroke="#996600" stroke-linecap="round" stroke-dasharray="4,7,1,5" stroke-width="2"/>
-    </Rule>
-    <Rule>
-      <Filter>[tracktype]='grade5'</Filter>
-      &maxscale_zoom14;
-      <LineSymbolizer stroke="grey" stroke-width="4.5" stroke-dasharray="4,2"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="3" stroke-linecap="round"/>
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.5" stroke="#996600" stroke-linecap="round" stroke-dasharray="1,5" stroke-width="2"/>
-    </Rule>
-    <Rule>
-      <ElseFilter/>
-      &maxscale_zoom14;
-      <LineSymbolizer stroke="grey" stroke-width="4.5" stroke-dasharray="4,2"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="3" stroke-linecap="round"/>
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.5" stroke="#996600" stroke-linecap="round" stroke-dasharray="3,4" stroke-width="1.5"/>
-     </Rule>
-</Style>
 <Style name="waterway-bridges">
     <Rule>
       &maxscale_zoom14;
