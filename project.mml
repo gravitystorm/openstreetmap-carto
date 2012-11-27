@@ -43,7 +43,7 @@
         179.99999692067183,
         83.66933299999998
       ],
-      "id": "shoreline300",
+      "id": "world",
       "class": "",
       "Datasource": {
         "file": "/usr/local/share/mapnik/shape-resources/world_boundaries/shoreline_300.shp"
@@ -51,7 +51,79 @@
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "shoreline300"
+      "name": "world"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        -179.99999692067183,
+        -85.051,
+        179.99999692067183,
+        83.66933299999998
+      ],
+      "id": "coast-poly",
+      "class": "",
+      "Datasource": {
+        "file": "/usr/local/share/mapnik/shape-resources/world_boundaries/processed_p.shp"
+      },
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "coast-poly"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        -179.12960815429688,
+        -52.982724914179855,
+        178.4432525634766,
+        70.87402746981634
+      ],
+      "id": "builtup",
+      "class": "",
+      "Datasource": {
+        "file": "/usr/local/share/mapnik/shape-resources/world_boundaries/builtup_area.shp"
+      },
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "builtup"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        -140.99778,
+        -54.89681,
+        141.03385176001382,
+        70.16419
+      ],
+      "id": "necountries",
+      "class": "",
+      "Datasource": {
+        "file": "/usr/local/share/mapnik/shape-resources/world_boundaries/ne_110m_admin_0_boundary_lines_land.shp"
+      },
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "advanced": {},
+      "name": "necountries"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        -179.58997888396897,
+        -85.051,
+        179.38330358817018,
+        82.48332318035943
+      ],
+      "id": "nepopulated",
+      "class": "",
+      "Datasource": {
+        "file": "/usr/local/share/mapnik/shape-resources/world_boundaries/ne_10m_populated_places.shp"
+      },
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "advanced": {},
+      "name": "nepopulated"
     },
     {
       "extent": [
