@@ -2675,101 +2675,143 @@
   }
 }
 
-/*
-<Style name="roads-text-ref-low-zoom">
-    <Rule>
-      <Filter>[highway] = 'motorway' and [length] le 6</Filter>
-      &maxscale_zoom10;
-      &minscale_zoom12;
-      <ShieldSymbolizer size="10" fill="#fff" placement="line" file="&symbols;/mot_shield[length].png" spacing="750" minimum-distance="30" fontset-name="bold-fonts">[ref]</ShieldSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'motorway' and [length] = 7</Filter>
-      &maxscale_zoom10;
-      &minscale_zoom12;
-      <ShieldSymbolizer size="10" fill="#fff" placement="line" file="&symbols;/mot_shield6.png" spacing="750" minimum-distance="30" fontset-name="bold-fonts">[ref]</ShieldSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'motorway' and [length] = 8</Filter>
-      &maxscale_zoom10;
-      &minscale_zoom12;
-      <ShieldSymbolizer size="10" fill="#fff" placement="line" file="&symbols;/mot_shield7.png" spacing="750" minimum-distance="30" fontset-name="bold-fonts">[ref]</ShieldSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'trunk'</Filter>
-      &maxscale_zoom11;
-      &minscale_zoom12;
-      <ShieldSymbolizer size="10" fill="#fff" placement="line" file="&symbols;/tru_shield[length].png" spacing="750" minimum-distance="30" fontset-name="bold-fonts">[ref]</ShieldSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'primary'</Filter>
-      &maxscale_zoom11;
-      &minscale_zoom12;
-      <ShieldSymbolizer size="10" fill="#fff" placement="line" file="&symbols;/pri_shield[length].png" spacing="750" minimum-distance="30" fontset-name="bold-fonts">[ref]</ShieldSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'secondary'</Filter>
-      &maxscale_zoom12;
-      &minscale_zoom12;
-      <ShieldSymbolizer size="10" fill="#fff" placement="line" file="&symbols;/sec_shield[length].png" spacing="750" minimum-distance="40" fontset-name="bold-fonts">[ref]</ShieldSymbolizer>
-    </Rule>
-</Style>
-<Style name="roads-text-ref">
-    <Rule>
-      <Filter>[highway] = 'motorway' and [length] le 6</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom18;
-      <ShieldSymbolizer size="10" fill="#fff" placement="line" file="&symbols;/mot_shield[length].png" spacing="750" minimum-distance="30" fontset-name="bold-fonts">[ref]</ShieldSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'motorway' and [length] = 7</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom18;
-      <ShieldSymbolizer size="10" fill="#fff" placement="line" file="&symbols;/mot_shield6.png" spacing="750" minimum-distance="30" fontset-name="bold-fonts">[ref]</ShieldSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'motorway' and [length] = 8</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom18;
-      <ShieldSymbolizer size="10" fill="#fff" placement="line" file="&symbols;/mot_shield7.png" spacing="750" minimum-distance="30" fontset-name="bold-fonts">[ref]</ShieldSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'trunk'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom18;
-      <ShieldSymbolizer size="10" fill="#fff" placement="line" file="&symbols;/tru_shield[length].png" spacing="750" minimum-distance="30" fontset-name="bold-fonts">[ref]</ShieldSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'primary'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom18;
-      <ShieldSymbolizer size="10" fill="#fff" placement="line" file="&symbols;/pri_shield[length].png" spacing="750" minimum-distance="30" fontset-name="bold-fonts">[ref]</ShieldSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'secondary' and not [bridge]='yes'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom18;
-      <ShieldSymbolizer size="10" fill="#fff" placement="line" file="&symbols;/sec_shield[length].png" spacing="750" minimum-distance="40" fontset-name="bold-fonts">[ref]</ShieldSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'tertiary' and not [bridge]='yes'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom18;
-      <ShieldSymbolizer size="10" fill="#fff" placement="line" file="&symbols;/ter_shield[length].png" spacing="750" minimum-distance="40" fontset-name="bold-fonts">[ref]</ShieldSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>([highway] = 'unclassified' or [highway]='residential') and not [bridge]='yes'</Filter>
-      &maxscale_zoom15;
-      <TextSymbolizer size="10" fill="#000" spacing="750" minimum-distance="18" fontset-name="bold-fonts" halo-radius="1">[ref]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>([aeroway] = 'runway' or [aeroway]='taxiway') and not [bridge]='yes'</Filter>
-      &maxscale_zoom15;
-      <TextSymbolizer size="10" fill="#333" spacing="750" placement="line" minimum-distance="18" fontset-name="book-fonts" halo-radius="1">[ref]</TextSymbolizer>
-    </Rule>
-</Style>
+#roads-text-ref-low-zoom {
+  [highway = 'motorway'][length < 9] {
+    [zoom >= 10][zoom < 13] {
+      shield-name: "[ref]";
+      shield-size: 10;
+      shield-fill: #fff;
+      shield-placement: line;
+      shield-file: url("symbols/mot_shield[length].png");
+      shield-spacing: 750;
+      shield-min-distance: 30;
+      shield-face-name: @bold-fonts;
+      [length = 7] { shield-file: url('symbols/mot_shield6.png'); }
+      [length = 8] { shield-file: url('symbols/mot_shield7.png'); }
+    }
+  }
 
-*/
+  [highway = 'trunk'][zoom >= 10][zoom < 13] {
+    shield-name: "[ref]";
+    shield-size: 10;
+    shield-fill: #fff;
+    shield-placement: line;
+    shield-file: url("symbols/tru_shield[length].png");
+    shield-spacing: 750;
+    shield-min-distance: 30;
+    shield-face-name: @bold-fonts;
+  }
+
+  [highway = 'primary'][zoom >= 11][zoom < 13] {
+    shield-name: "[ref]";
+    shield-size: 10;
+    shield-fill: #fff;
+    shield-placement: line;
+    shield-file: url("symbols/pri_shield[length].png");
+    shield-spacing: 750;
+    shield-min-distance: 30;
+    shield-face-name: @bold-fonts;
+  }
+
+  [highway = 'secondary'][zoom >= 12][zoom < 13] {
+    shield-name: "[ref]";
+    shield-size: 10;
+    shield-fill: #fff;
+    shield-placement: line;
+    shield-file: url("symbols/sec_shield[length].png");
+    shield-spacing: 750;
+    shield-min-distance: 30;
+    shield-face-name: @bold-fonts;
+  }
+}
+
+#roads-text-ref {
+  [highway = 'motorway'][length < 9] {
+    [zoom >= 13] {
+      shield-name: "[ref]";
+      shield-size: 10;
+      shield-fill: #fff;
+      shield-placement: line;
+      shield-file: url("symbols/mot_shield[length].png");
+      shield-spacing: 750;
+      shield-min-distance: 30;
+      shield-face-name: @bold-fonts;
+      [length = 7] { shield-file: url('symbols/mot_shield6.png'); }
+      [length = 8] { shield-file: url('symbols/mot_shield7.png'); }
+    }
+  }
+
+  [highway = 'trunk'][zoom >= 13] {
+    shield-name: "[ref]";
+    shield-size: 10;
+    shield-fill: #fff;
+    shield-placement: line;
+    shield-file: url("symbols/tru_shield[length].png");
+    shield-spacing: 750;
+    shield-min-distance: 30;
+    shield-face-name: @bold-fonts;
+  }
+
+  [highway = 'primary'][zoom >= 13] {
+    shield-name: "[ref]";
+    shield-size: 10;
+    shield-fill: #fff;
+    shield-placement: line;
+    shield-file: url("symbols/pri_shield[length].png");
+    shield-spacing: 750;
+    shield-min-distance: 30;
+    shield-face-name: @bold-fonts;
+  }
+
+  [highway = 'secondary'][bridge = 'no'][zoom >= 13] {
+    shield-name: "[ref]";
+    shield-size: 10;
+    shield-fill: #fff;
+    shield-placement: line;
+    shield-file: url("symbols/sec_shield[length].png");
+    shield-spacing: 750;
+    shield-min-distance: 30;
+    shield-face-name: @bold-fonts;
+  }
+
+  [highway = 'tertiary'][bridge = 'no'][zoom >= 13] {
+    shield-name: "[ref]";
+    shield-size: 10;
+    shield-fill: #fff;
+    shield-placement: line;
+    shield-file: url("symbols/ter_shield[length].png");
+    shield-spacing: 750;
+    shield-min-distance: 30;
+    shield-face-name: @bold-fonts;
+  }
+
+  [highway = 'unclassified'],
+  [highway = 'residential'] {
+    [zoom >= 15][bridge = 'no'] {
+      text-name: "[ref]";
+      text-size: 10;
+      text-fill: #000;
+      text-face-name: @bold-fonts;
+      text-min-distance: 18;
+      text-halo-radius: 1;
+      text-spacing: 750;
+    }
+  }
+
+  [aeroway = 'runway'],
+  [aeroway = 'taxiway'] {
+    [zoom >= 15][bridge = 'no'] {
+      text-name: "[ref]";
+      text-size: 10;
+      text-fill: #333;
+      text-spacing: 750;
+      text-placement: line;
+      text-min-distance: 18;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+    }
+  }
+}
 
 #roads-text-name {
   [highway = 'trunk'],
