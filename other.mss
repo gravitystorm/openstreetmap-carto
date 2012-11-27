@@ -1659,24 +1659,25 @@
     }
   }
 
-  [aeroway = 'runway'][zoom >= 11][zoom < 14] {
+  /* these are aeroway tags */
+  [highway = 'runway'][zoom >= 11][zoom < 14] {
     line-width: 2;
     line-color: #bbc;
     [zoom >= 12] { line-width: 4; }
     [zoom >= 13] { line-width: 7; }
   }
 
-  [aeroway = 'runway'][bridge = 'no'][zoom >= 14] {
+  [highway = 'runway'][bridge = 'no'][zoom >= 14] {
     line-width: 18;
     line-color: #bbc;
   }
 
-  [aeroway = 'taxiway'][zoom >= 11][zoom < 14] {
+  [highway = 'taxiway'][zoom >= 11][zoom < 14] {
     line-width: 1;
     line-color: #bbc;
   }
 
-  [aeroway = 'taxiway'][bridge = 'no'][zoom >= 14] {
+  [highway = 'taxiway'][bridge = 'no'][zoom >= 14] {
     line-width: 4;
     line-color: #bbc;
     [zoom >= 15] {
@@ -2410,12 +2411,13 @@
       [zoom >= 16] { line-width: 8; }
     }
 
-    [aeroway = 'runway'][zoom >= 14] {
+    /* these are aeroway tags */
+    [highway = 'runway'][zoom >= 14] {
       line-width: 18;
       line-color: #bbc;
     }
 
-    [aeroway = 'taxiway'][zoom >= 14] {
+    [highway = 'taxiway'][zoom >= 14] {
       line-width: 4;
       line-color: #bbc;
       [zoom >= 15] { line-width: 6; }
