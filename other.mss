@@ -2535,179 +2535,114 @@
   }
 }
 
-/*
+#roads {
+  [highway = 'motorway'],
+  [highway = 'motorway_link'] {
+    [zoom >= 5][zoom < 12] {
+      line-width: 0.5;
+      line-color: #809bc0;
+      [zoom >= 7] { line-width: 1; }
+      [zoom >= 9] { line-width: 1.4; }
+      [zoom >= 10] { line-width: 2; }
+      [zoom >= 11] { line-width: 2.5; }
+    }
+  }
 
-<Style name="roads">
-    <Rule>
-      <Filter>[highway] = 'motorway' or [highway] = 'motorway_link'</Filter>
-      &maxscale_zoom5;
-      &minscale_zoom6;
-      <LineSymbolizer stroke="#809bc0" stroke-width="0.5"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'motorway' or [highway] = 'motorway_link'</Filter>
-      &maxscale_zoom7;
-      &minscale_zoom8;
-      <LineSymbolizer stroke="#809bc0" stroke-width="1"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'motorway' or [highway] = 'motorway_link'</Filter>
-      &maxscale_zoom9;
-      &minscale_zoom9;
-      <LineSymbolizer stroke="#809bc0" stroke-width="1.4"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'motorway' or [highway] = 'motorway_link'</Filter>
-      &maxscale_zoom10;
-      &minscale_zoom10;
-      <LineSymbolizer stroke="#809bc0" stroke-width="2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'motorway' or [highway] = 'motorway_link'</Filter>
-      &maxscale_zoom11;
-      &minscale_zoom11;
-      <LineSymbolizer stroke="#809bc0" stroke-width="2.5"/>
-    </Rule>
-    <!-- TRUNK -->
-    <Rule>
-      <Filter>[highway] = 'trunk' or [highway] = 'trunk_link'</Filter>
-      &maxscale_zoom5;
-      &minscale_zoom6;
-      <LineSymbolizer stroke="#a9dba9" stroke-width="0.4"/>
-    </Rule>
-   <Rule>
-      <Filter>[highway] = 'trunk' or [highway] = 'trunk_link'</Filter>
-      &maxscale_zoom7;
-      &minscale_zoom8;
-      <LineSymbolizer stroke="#97d397" stroke-width="1"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'trunk' or [highway] = 'trunk_link'</Filter>
-      &maxscale_zoom9;
-      &minscale_zoom10;
-      <LineSymbolizer stroke="#97d397" stroke-width="2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'trunk' or [highway] = 'trunk_link'</Filter>
-      &maxscale_zoom11;
-      &minscale_zoom11;
-      <LineSymbolizer stroke="#97d397" stroke-width="2.5"/>
-    </Rule>
-   <!-- PRIMARY-->
-   <Rule>
-      <Filter>[highway] = 'primary' or [highway] = 'primary_link'</Filter>
-      &maxscale_zoom7;
-      &minscale_zoom8;
-      <LineSymbolizer stroke="#ec989a" stroke-width="0.5"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'primary' or [highway] = 'primary_link'</Filter>
-      &maxscale_zoom9;
-      &minscale_zoom9;
-      <LineSymbolizer stroke="#ec989a" stroke-width="1.2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'primary' or [highway] = 'primary_link'</Filter>
-      &maxscale_zoom10;
-      &minscale_zoom10;
-      <LineSymbolizer stroke="#ec989a" stroke-width="2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'primary' or [highway] = 'primary_link'</Filter>
-      &maxscale_zoom11;
-      &minscale_zoom11;
-      <LineSymbolizer stroke="#ec989a" stroke-width="2.5"/>
-    </Rule>
-    <!-- SECONDARY -->
-    <Rule>
-      <Filter>[highway] = 'secondary' or [highway] = 'secondary_link'</Filter>
-      &maxscale_zoom9;
-      &minscale_zoom10;
-      <LineSymbolizer stroke="#fecc8b" stroke-width="1"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'secondary' or [highway] = 'secondary_link'</Filter>
-      &maxscale_zoom11;
-      &minscale_zoom11;
-      <LineSymbolizer stroke="#fecc8b" stroke-width="2"/>
-    </Rule>
-    <!-- RAIL -->
-    <Rule>
-      &maxscale_zoom6;
-      &minscale_zoom8;
-      <Filter>[railway] = 'rail'</Filter>
-      <LineSymbolizer stroke="#aaa" stroke-width="0.6"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom9;
-      &minscale_zoom9;
-      <Filter>[railway] = 'rail' and not [tunnel]='yes'</Filter>
-      <LineSymbolizer stroke="#aaa" stroke-width="1"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom9;
-      &minscale_zoom9;
-      <Filter>[railway] = 'rail' and [tunnel]='yes'</Filter>
-      <LineSymbolizer stroke="#aaa" stroke-width="1" stroke-dasharray="5,2"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom8;
-      &minscale_zoom9;
-      <Filter>[railway] = 'tram' or [railway] = 'light_rail' or [railway] = 'narrow_gauge' or [railway]='funicular'</Filter>
-      <LineSymbolizer stroke="#ccc" stroke-width="1"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom10;
-      &minscale_zoom12;
-      <Filter>[railway] = 'rail' and not [tunnel]='yes'</Filter>
-      <LineSymbolizer stroke="#aaa" stroke-width="2"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom10;
-      &minscale_zoom12;
-      <Filter>[railway] = 'rail' and [tunnel]='yes'</Filter>
-      <LineSymbolizer stroke="#aaa" stroke-width="2" stroke-dasharray="5,2"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom10;
-      &minscale_zoom12;
-      <Filter>[railway] = 'tram' or [railway] = 'light_rail' or [railway] = 'narrow_gauge' or [railway]='funicular'</Filter>
-      <LineSymbolizer stroke="#aaa" stroke-width="1"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom12;
-      &minscale_zoom12;
-      <Filter>[railway] = 'preserved'</Filter>
-      <LineSymbolizer stroke-linejoin="round" stroke="#aaa" stroke-width="1.5"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom13;
-      &minscale_zoom18;
-      <Filter>[railway] = 'preserved'</Filter>
-      <LineSymbolizer stroke-linejoin="round" stroke="#999999" stroke-width="3"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="1" stroke-dasharray="0,1,8,1"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom12;
-      &minscale_zoom12;
-      <Filter>[railway] = 'INT-preserved-ssy'</Filter>
-      <LineSymbolizer stroke-linejoin="round" stroke="#aaa" stroke-width="1"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom13;
-      &minscale_zoom18;
-      <Filter>[railway] = 'INT-preserved-ssy'</Filter>
-      <LineSymbolizer stroke-linejoin="round" stroke="#999999" stroke-width="2"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="0.8" stroke-dasharray="0,1,8,1"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom14;
-      &minscale_zoom18;
-      <Filter>[railway]='monorail'</Filter>
-      <LineSymbolizer stroke-linejoin="round" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-opacity="0.4"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="#777" stroke-width="3.0" stroke-dasharray="2,3" stroke-linecap="round"/>
-    </Rule>
-</Style>
+  [highway = 'trunk'],
+  [highway = 'trunk_link'] {
+    [zoom >= 5][zoom < 12] {
+      line-width: 0.4;
+      line-color: #a9dba9;
+      [zoom >= 7] { line-width: 1; }
+      [zoom >= 9] { line-width: 2; }
+      [zoom >= 11] { line-width: 2.5; }
+    }
+  }
+
+  [highway = 'primary'],
+  [highway = 'primary_link'] {
+    [zoom >= 7][zoom < 12] {
+      line-width: 0.5;
+      line-color: #ec989a;
+      [zoom >= 9] { line-width: 1.2; }
+      [zoom >= 10] { line-width: 2; }
+      [zoom >= 11] { line-width: 2.5; }
+    }
+  }
+
+  [highway = 'secondary'],
+  [highway = 'secondary_link'] {
+    [zoom >= 9][zoom < 12] {
+      line-width: 1;
+      line-color: #fecc8b;
+      [zoom >= 11] { line-width: 2; }
+    }
+  }
+
+  [railway = 'rail'][zoom >= 6][zoom < 13] {
+    line-width: 0.6;
+    line-color: #aaa;
+    [zoom >= 9] { line-width: 1; }
+    [zoom >= 10] { line-width: 2; }
+    [tunnel = 'yes'] {
+      line-dasharray: 5,2;
+    }
+  }
+
+  [railway = 'tram'],
+  [railway = 'light_rail'],
+  [railway = 'narrow_gauge'],
+  [railway = 'funicular'] {
+    [zoom >= 8][zoom < 13] {
+      line-width: 1;
+      line-color: #ccc;
+      [zoom >= 10] { line-color: #aaa }
+    }
+  }
+
+  [railway = 'preserved'][zoom >= 12] {
+    line-width: 1.5;
+    line-color: #aaa;
+    line-join: round;
+    [zoom >= 13] {
+      line-width: 3;
+      line-color: #999999;
+      b/line-width: 1;
+      b/line-color: white;
+      b/line-dasharray: 0,1,8,1;
+      b/line-join: round;
+    }
+  }
+
+  [railway = 'INT-preserved-ssy'][zoom >= 12] {
+    line-width: 1;
+    line-color: #aaa;
+    line-join: round;
+    [zoom >= 13] {
+      line-width: 2;
+      line-color: #999999;
+      b/line-width: 0.8;
+      b/line-color: white;
+      b/line-dasharray: 0,1,8,1;
+      b/line-join: round;
+    }
+  }
+
+  [railway = 'monorail'][zoom >= 14] {
+    line-width: 4;
+    line-color: #fff;
+    line-opacity: 0.4;
+    line-cap: round;
+    line-join: round;
+    b/line-width: 3;
+    b/line-color: #777;
+    b/line-dasharray: 2,3;
+    b/line-cap: round;
+    b/line-join: round;
+  }
+}
+
+/*
 <Style name="trams">
     <Rule>
       <Filter>[railway] = 'tram'</Filter>
