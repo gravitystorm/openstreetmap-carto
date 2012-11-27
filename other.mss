@@ -2642,43 +2642,40 @@
   }
 }
 
+#trams {
+  [railway = 'tram'][zoom >= 13] {
+    line-color: #444;
+    line-width: 1;
+    [zoom >= 15] {
+      line-width: 2;
+      [bridge = 'yes'] {
+        line-width: 5;
+        line-color: black;
+        b/line-width: 4;
+        b/line-color: white;
+        c/line-width: 2;
+        c/line-color: #444;
+      }
+    }
+  }
+}
+
+#guideways {
+  [zoom >= 13] {
+    line-width: 3;
+    line-color: #6666ff;
+    line-join: round;
+    b/line-width: 1;
+    b/line-color: white;
+    b/line-dasharray: 8,12;
+    b/line-join: round;
+  }
+  [zoom >= 14] {
+    b/line-dasharray: 0,11,8,1;
+  }
+}
+
 /*
-<Style name="trams">
-    <Rule>
-      <Filter>[railway] = 'tram'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom14;
-      <LineSymbolizer stroke="#444" stroke-width="1"/>
-    </Rule>
-    <Rule>
-      <Filter>[railway] = 'tram' and not [bridge]='yes'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom18;
-      <LineSymbolizer stroke="#444" stroke-width="2"/>
-    </Rule>
-    <Rule>
-      <Filter>[railway] = 'tram' and [bridge]='yes'</Filter>
-      &maxscale_zoom15;
-      &minscale_zoom18;
-      <LineSymbolizer stroke="black" stroke-width="5"/>
-      <LineSymbolizer stroke="white" stroke-width="4"/>
-      <LineSymbolizer stroke="#444" stroke-width="2"/>
-    </Rule>
-</Style>
-<Style name="guideways">
-<Rule>
-      &maxscale_zoom13;
-      &minscale_zoom13;
-      <LineSymbolizer stroke-linejoin="round" stroke="#6666ff" stroke-width="3"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="1" stroke-dasharray="8,12"/>
-    </Rule>
-    <Rule>
-      &maxscale_zoom14;
-      &minscale_zoom18;
-      <LineSymbolizer stroke-linejoin="round" stroke="#6666ff" stroke-width="3"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="1" stroke-dasharray="0,11,8,1"/>
-    </Rule>
-</Style>
 <Style name="roads-text-ref-low-zoom">
     <Rule>
       <Filter>[highway] = 'motorway' and [length] le 6</Filter>
