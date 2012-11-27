@@ -1777,36 +1777,86 @@
   }
 }
 
+#footbikecycle-tunnels {
+  [highway = 'bridleway'],
+  [highway = 'path'][horse = 'designated'] {
+    [zoom >= 13] {
+      line-width: 5;
+      line-color: grey;
+      line-dasharray: 4,2;
+      b/line-width: 3;
+      b/line-color: #fff;
+      b/line-cap: round;
+      b/line-join: round;
+      c/line-width: 2;
+      c/line-color: green;
+      c/line-opacity: 0.5;
+      c/line-dasharray: 4,2;
+      c/line-join: round;
+      c/line-cap: round;
+    }
+  }
+
+  [highway = 'footway'],
+  [highway = 'path'][foot = 'designated'] {
+    [zoom >= 13] {
+      line-width: 5.5;
+      line-color: grey;
+      line-dasharray: 4,2;
+      b/line-width: 3.5;
+      b/line-color: #fff;
+      b/line-join: round;
+      b/line-cap: round;
+      c/line-width: 2.5;
+      c/line-color: salmon;
+      c/line-dasharray: 1,3;
+      c/line-opacity: 0.5;
+      c/line-join: round;
+      c/line-cap: round;
+    }
+  }
+
+  [highway = 'cycleway'],
+  [highway = 'path'][bicycle = 'designated'] {
+    [zoom >= 13] {
+      line-width: 5;
+      line-color: grey;
+      line-dasharray: 4,2;
+      b/line-width: 3;
+      b/line-color: white;
+      b/line-join: round;
+      b/line-cap: round;
+      c/line-width: 2;
+      c/line-color: blue;
+      c/line-opacity: 0.5;
+      c/line-dasharray: 1,3;
+      c/line-join: round;
+      c/line-cap: round;
+    }
+  }
+
+  /*
+  * The above defininitions should override this when needed
+  * given the specitivity precedence.
+  */
+  [highway = 'path'][zoom >= 13] {
+    line-width: 5.5;
+    line-color: grey;
+    line-dasharray: 4,2;
+    b/line-width: 1;
+    b/line-color: white;
+    b/line-opacity: 0.4;
+    b/line-join: round;
+    b/line-cap: round;
+    c/line-width: 0.5;
+    c/line-color: black;
+    c/line-dasharray: 6,3;
+    c/line-cap: round;
+    c/line-join: round;
+  }
+}
+
 /*
-<Style name="footbikecycle-tunnels">
-    <Rule>
-      <Filter>[highway] = 'bridleway' or ([highway] = 'path' and [horse] = 'designated')</Filter>
-      &maxscale_zoom13;
-      <LineSymbolizer stroke="grey" stroke-width="5" stroke-dasharray="4,2"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.5" stroke="green" stroke-linecap="round" stroke-dasharray="4,2" stroke-width="2"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'footway' or ([highway] = 'path' and [foot] = 'designated')</Filter>
-      &maxscale_zoom13;
-      <LineSymbolizer stroke="grey" stroke-width="5.5" stroke-dasharray="4,2"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.5" stroke="salmon" stroke-linecap="round" stroke-dasharray="1,3" stroke-width="2.5"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'path' and not ([bicycle] = 'designated' or [foot] = 'designated' or [horse] = 'designated')</Filter>
-      &maxscale_zoom13;
-      <LineSymbolizer stroke="grey" stroke-width="5.5" stroke-dasharray="4,2"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="1.0" stroke-linecap="round" stroke-opacity="0.4"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="black" stroke-width="0.5" stroke-dasharray="6,3" stroke-linecap="round"/>
-    </Rule>
-    <Rule>
-      <Filter>[highway] = 'cycleway' or ([highway] = 'path' and [bicycle] = 'designated')</Filter>
-      &maxscale_zoom13;
-      <LineSymbolizer stroke="grey" stroke-width="5" stroke-dasharray="4,2"/>
-      <LineSymbolizer stroke-linejoin="round" stroke="white" stroke-width="3" stroke-linecap="round"/>
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.5" stroke="blue" stroke-linecap="round" stroke-dasharray="1,3" stroke-width="2"/>
-    </Rule>
 </Style>
 <Style name="tracks-notunnel-nobridge">
     <Rule>
