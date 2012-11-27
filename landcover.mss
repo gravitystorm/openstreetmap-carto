@@ -47,7 +47,7 @@
 
   [landuse = 'cemetery']::landuse,
   [landuse = 'grave_yard']::landuse,
-  [amenity = 'grave_yard']::landuse {
+  [amenity = 'grave_yard']::amenity {
     [zoom >= 10][zoom < 15] {
       polygon-fill: #aacbaf;
     }
