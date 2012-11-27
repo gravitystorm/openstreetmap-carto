@@ -222,72 +222,59 @@
       }
     }
   }
+
+  [waterway = 'canal'][zoom >= 14] {
+    line-width: 7;
+    line-color: #b5d0d0;
+    line-join: round;
+    line-cap: round;
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: #6699cc;
+    text-placement: line;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    [zoom >= 17] { line-width: 11; }
+    [tunnel = 'yes'] {
+      line-dasharray: 4,2;
+      b/line-width: 3;
+      b/line-color: white;
+      [zoom >= 17] { line-width: 7; }
+    }
+    [lock = 'yes'] {
+      text-placement: point;
+      text-wrap-width: 20;
+    }
+  }
+
+  [waterway = 'derelict_canal'],
+  [waterway = 'canal'][disused = 'yes'] {
+    [zoom >= 12] {
+      line-width: 1.5;
+      line-color: #b5e4d0;
+      line-dasharray: 4,4;
+      line-opacity: 0.5;
+      line-join: round;
+      line-cap: round;
+    }
+    [zoom >= 13] {
+      line-width: 2.5;
+      line-dasharray: 4,6;
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: #80d1ae;
+      text-face-name: @book-fonts;
+      text-placement: line;
+      text-spacing: 600;
+      text-halo-radius: 1;
+    }
+    [zoom >= 14] {
+      line-width: 4.5;
+      line-dasharray: 4,8;
+      text-size: 10;
+    }
+  }
 }
-
-
-/*
-
-    <Rule>
-      <Filter>[waterway]='canal' and [tunnel] = 'yes'</Filter>
-      &maxscale_zoom14;
-      &minscale_zoom16;
-      <LineSymbolizer stroke="#b5d0d0" stroke-width="7" stroke-dasharray="4,2"/>
-      <LineSymbolizer stroke="white" stroke-width="3"/>
-      <TextSymbolizer size="9" fill="#6699cc" placement="line" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[waterway]='canal' and not ([tunnel] = 'yes' or [disused]='yes')</Filter>
-      &maxscale_zoom14;
-      &minscale_zoom16;
-      <LineSymbolizer stroke-linejoin="round" stroke="#b5d0d0" stroke-width="7" stroke-linecap="round"/>
-      <TextSymbolizer size="9" fill="#6699cc" placement="line" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[waterway]='canal' and [tunnel] = 'yes'</Filter>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <LineSymbolizer stroke="#b5d0d0" stroke-width="11" stroke-dasharray="4,2"/>
-      <LineSymbolizer stroke="white" stroke-width="7"/>
-      <TextSymbolizer size="9" fill="#6699cc" placement="line" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[waterway]='canal' and not ([tunnel] = 'yes' or [disused]='yes' or [lock]='yes')</Filter>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <LineSymbolizer stroke-linejoin="round" stroke="#b5d0d0" stroke-width="11" stroke-linecap="round"/>
-      <TextSymbolizer size="9" fill="#6699cc" placement="line" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[waterway]='canal' and not ([tunnel] = 'yes' or [disused]='yes') and [lock]='yes'</Filter>
-      &maxscale_zoom17;
-      &minscale_zoom18;
-      <LineSymbolizer stroke-linejoin="round" stroke="#b5d0d0" stroke-width="7" stroke-linecap="round"/>
-      <TextSymbolizer size="9" fill="#6699cc" fontset-name="book-fonts" halo-radius="1" wrap-width="20">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[waterway]='derelict_canal' or ([waterway]='canal' and [disused]='yes')</Filter>
-      &maxscale_zoom12;
-      &minscale_zoom12;
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.5" stroke="#b5e4d0" stroke-linecap="round" stroke-dasharray="4,4" stroke-width="1.5"/>
-    </Rule>
-    <Rule>
-      <Filter>[waterway]='derelict_canal' or ([waterway]='canal' and [disused]='yes')</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom13;
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.5" stroke="#b5e4d0" stroke-linecap="round" stroke-dasharray="4,6" stroke-width="2.5"/>
-      <TextSymbolizer size="9" fill="#80d1ae" spacing="600" placement="line" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-    <Rule>
-      <Filter>[waterway]='derelict_canal' or ([waterway]='canal' and [disused]='yes')</Filter>
-      &maxscale_zoom14;
-      &minscale_zoom18;
-      <LineSymbolizer stroke-linejoin="round" stroke-opacity="0.5" stroke="#b5e4d0" stroke-linecap="round" stroke-dasharray="4,8" stroke-width="4.5"/>
-      <TextSymbolizer size="10" fill="#80d1ae" spacing="600" placement="line" fontset-name="book-fonts" halo-radius="1">[name]</TextSymbolizer>
-    </Rule>
-
-</Style>
-
-*/
 
 #waterway-bridges {
   [zoom >= 14] {
