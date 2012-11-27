@@ -1654,54 +1654,32 @@
       b/line-dasharray: 4,6;
     }
   }
+
+  [aeroway = 'runway'][zoom >= 11][zoom < 14] {
+    line-width: 2;
+    line-color: #bbc;
+    [zoom >= 12] { line-width: 4; }
+    [zoom >= 13] { line-width: 7; }
+  }
+
+  [aeroway = 'runway'][bridge = 'no'][zoom >= 14] {
+    line-width: 18;
+    line-color: #bbc;
+  }
+
+  [aeroway = 'taxiway'][zoom >= 11][zoom < 14] {
+    line-width: 1;
+    line-color: #bbc;
+  }
+
+  [aeroway = 'taxiway'][bridge = 'no'][zoom >= 14] {
+    line-width: 4;
+    line-color: #bbc;
+    [zoom >= 15] {
+      line-width: 6;
+    }
+  }
 }
-
-/*
-<Style name="minor-roads-fill">
-
-    <Rule>
-      <Filter>[aeroway] = 'runway'</Filter>
-      &maxscale_zoom11;
-      &minscale_zoom11;
-      <LineSymbolizer stroke="#bbc" stroke-width="2"/>
-    </Rule>
-    <Rule>
-      <Filter>[aeroway] = 'runway'</Filter>
-      &maxscale_zoom12;
-      &minscale_zoom12;
-      <LineSymbolizer stroke="#bbc" stroke-width="4"/>
-    </Rule>
-    <Rule>
-      <Filter>[aeroway] = 'runway'</Filter>
-      &maxscale_zoom13;
-      &minscale_zoom13;
-      <LineSymbolizer stroke="#bbc" stroke-width="7"/>
-    </Rule>
-    <Rule>
-      <Filter>[aeroway] = 'runway' and not [bridge]='yes'</Filter>
-      &maxscale_zoom14;
-      <LineSymbolizer stroke="#bbc" stroke-width="18"/>
-    </Rule>
-    <Rule>
-      <Filter>[aeroway] = 'taxiway'</Filter>
-      &maxscale_zoom11;
-      &minscale_zoom13;
-      <LineSymbolizer stroke="#bbc" stroke-width="1"/>
-    </Rule>
-    <Rule>
-      <Filter>[aeroway] = 'taxiway' and not [bridge]='yes'</Filter>
-      &maxscale_zoom14;
-      &minscale_zoom14;
-      <LineSymbolizer stroke="#bbc" stroke-width="4"/>
-    </Rule>
-    <Rule>
-      <Filter>[aeroway] = 'taxiway' and not [bridge]='yes'</Filter>
-      &maxscale_zoom15;
-      <LineSymbolizer stroke="#bbc" stroke-width="6"/>
-    </Rule>
-</Style>
-
-*/
 
 /* This is a good target for refactoring */
 .access {
