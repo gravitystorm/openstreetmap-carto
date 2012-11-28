@@ -101,8 +101,8 @@
     }
   }
 
-  [landuse = 'park']::landuse,
-  [landuse = 'recreation_ground']::landuse {
+  [leisure = 'park']::leisure,
+  [leisure = 'recreation_ground']::leisure {
     [zoom >= 10] {
       polygon-fill: #b6fdb6;
       polygon-opacity: 0.6;
