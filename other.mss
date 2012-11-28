@@ -2277,7 +2277,6 @@
     [railway = 'rail'][zoom >= 13] {
       line-width: 5;
       line-color: white;
-      line-cap: round;
       line-join: round;
     }
 
