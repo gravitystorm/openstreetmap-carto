@@ -1060,7 +1060,10 @@
         line-cap: round;
       }
       [zoom >= 14] { line-width: 4.5; }
-      [zoom >= 15] { line-width: 8; }
+      [zoom >= 15] {
+        line-width: 8;
+        line-color: #bbb;
+      }
       [zoom >= 16] { line-width: 11; }
       [zoom >= 17] { line-width: 16; }
     }
@@ -2531,12 +2534,9 @@
     [railway = 'construction'] { /*  and not [highway] != '' */
       [zoom >= 13] {
         line-width: 2;
-        line-color: #999999;
+        line-color: grey;
+        line-dasharray: 2,4;
         line-join: round;
-        b/line-width: 0.8;
-        b/line-color: white;
-        b/line-dasharray: 0,8,11,1;
-        b/line-join: round;
       }
     }
 
