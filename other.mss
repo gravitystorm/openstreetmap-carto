@@ -2287,10 +2287,12 @@
     [railway = 'disused'],
     [railway = 'abandoned'],
     [railway = 'construction'] { /* and not [highway] != '' */
-      line-width: 4.5;
-      line-color: white;
-      line-join: round;
-      line-cap: round;
+      [zoom >= 13] {
+        line-width: 4.5;
+        line-color: white;
+        line-join: round;
+        line-cap: round;
+      }
     }
 
     [highway = 'track'][zoom >= 14] {
