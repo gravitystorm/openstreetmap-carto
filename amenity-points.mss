@@ -176,7 +176,7 @@
     point-placement: interior;
   }
 
-  [amenity = 'place_of_worship'][zoom > 16]::amenity {
+  [amenity = 'place_of_worship'][zoom >= 16]::amenity {
     point-file: url('symbols/place_of_worship3.p.16.png');
     point-placement: interior;
     [religion = 'christian'] {
