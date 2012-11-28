@@ -1529,6 +1529,10 @@
       line-width: 6;
       line-color: grey;
       line-cap: round;
+      b/line-width: 4;
+      b/line-color: #bbbbbb;
+      b/line-cap: round;
+      b/line-join: round;
     }
   }
 
