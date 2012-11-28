@@ -241,7 +241,7 @@
       b/line-color: white;
       [zoom >= 17] { line-width: 7; }
     }
-    [lock = 'yes'] {
+    [lock = 'yes'][zoom >= 17] {
       text-placement: point;
       text-wrap-width: 20;
     }
