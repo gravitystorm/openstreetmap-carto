@@ -2852,8 +2852,8 @@
     }
   }
 
-  [aeroway = 'runway'],
-  [aeroway = 'taxiway'] {
+  [highway = 'runway'],
+  [highway = 'taxiway'] {
     [zoom >= 15][bridge = 'no'] {
       text-name: "[ref]";
       text-size: 10;
