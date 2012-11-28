@@ -48,10 +48,10 @@
   [landuse = 'cemetery']::landuse,
   [landuse = 'grave_yard']::landuse,
   [amenity = 'grave_yard']::amenity {
-    [zoom >= 10][zoom < 15] {
+    [zoom >= 10][zoom < 14] {
       polygon-fill: #aacbaf;
     }
-    [zoom >= 15] {
+    [zoom >= 14] {
       [religion = 'jewish'] { polygon-pattern-file: url('symbols/cemetery_jewish.18.png'); }
       [religion = 'christian'] { polygon-pattern-file: url('symbols/grave_yard.png'); }
       [religion = 'INT-generic'] { polygon-pattern-file: url('symbols/grave_yard_generic.png'); }
