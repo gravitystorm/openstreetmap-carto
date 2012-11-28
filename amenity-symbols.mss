@@ -26,13 +26,13 @@
 
   [aeroway = 'aerodrome'][zoom >= 10][zoom < 13]::aeroway {
     [zoom < 11] {
-      point-file: url('symbols/aerodrom.p.16.png');
+      point-file: url('symbols/aerodrome.p.16.png');
       text-dy: -12;
     }
     text-name: "[name]";
     text-size: 8;
     text-fill: #6692da;
-    text-face-name: oblique-fonts;
+    text-face-name: @oblique-fonts;
     text-halo-radius: 1;
     text-placement: interior;
   }
@@ -52,27 +52,27 @@
 
   [natural = 'peak'][zoom >= 11]::natural {
     point-file: url('symbols/peak.png');
-    placement: interior;
+    point-placement: interior;
   }
 
   [natural = 'volcano'][zoom >= 11]::natural {
     point-file: url('symbols/volcano.png');
-    placement: interior;
+    point-placement: interior;
   }
 
   [natural = 'cave_entrance'][zoom >= 15]::natural {
     point-file: url('symbols/poi_cave.p.16.png');
-    placement: interior;
+    point-placement: interior;
   }
 
   [natural = 'spring'][zoom >= 14]::natural {
     point-file: url('symbols/spring.png');
-    placement: interior;
+    point-placement: interior;
   }
 
   [natural = 'tree'][zoom >= 16]::natural {
     point-file: url('symbols/tree.png');
-    point-ignore-placment: true;
+    point-ignore-placement: true;
     point-placement: interior;
     [zoom >= 17] {
       point-file: url('symbols/tree2.png');
@@ -113,12 +113,14 @@
 
   [barrier = 'lift_gate'][zoom >= 16]::barrier {
     point-file: url('symbols/liftgate.png');
-    placement: interior;
+    point-placement: interior;
   }
 
   [barrier = 'bollard'],
   [barrier = 'block'] {
-    point-file: url('symbols/bollard.png');
-    placement: interior;
+    [zoom >= 16] {
+      point-file: url('symbols/bollard.png');
+      point-placement: interior;
+    }
   }
 }

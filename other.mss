@@ -2601,7 +2601,10 @@
     [zoom >= 5][zoom < 12] {
       line-width: 0.4;
       line-color: #a9dba9;
-      [zoom >= 7] { line-width: 1; }
+      [zoom >= 7] {
+        line-width: 1;
+        line-color: #97d397;
+      }
       [zoom >= 9] { line-width: 2; }
       [zoom >= 11] { line-width: 2.5; }
     }
@@ -2739,7 +2742,7 @@
     }
   }
 
-  [highway = 'trunk'][zoom >= 10][zoom < 13] {
+  [highway = 'trunk'][zoom >= 11][zoom < 13] {
     shield-name: "[ref]";
     shield-size: 10;
     shield-fill: #fff;
