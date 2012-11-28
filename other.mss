@@ -2107,12 +2107,13 @@
       [zoom >= 16] { line-width: 9.5; }
     }
 
-    [aeroway = 'runway'][zoom >= 14] {
+    /* actually aeroway */
+    [highway = 'runway'][zoom >= 14] {
       line-width: 19;
       line-color: black;
     }
 
-    [aeroway = 'taxiway'][zoom >= 14] {
+    [highway = 'taxiway'][zoom >= 14] {
       line-width: 5;
       line-color: black;
       [zoom >= 15] { line-width: 7; }
