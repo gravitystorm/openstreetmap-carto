@@ -56,7 +56,7 @@
   }
 }
 
-.city {
+#placenames-medium::city {
   [place = 'city'],
   [place = 'metropolis'] {
     [zoom >= 6][zoom < 15] {
@@ -75,7 +75,7 @@
   }
 }
 
-.town {
+#placenames-medium::town {
   [place = 'town'],
   [place = 'large_town'],
   [place = 'small_town'] {
@@ -97,7 +97,7 @@
   }
 }
 
-.suburb {
+#placenames-small::suburb {
   [place = 'suburb'][zoom >= 12] {
     text-name: "[name]";
     text-size: 10;
@@ -111,7 +111,7 @@
   }
 }
 
-.village {
+#placenames-small::village {
   [place = 'village'],
   [place = 'large_village'] {
     [zoom >=12] {
@@ -128,7 +128,7 @@
   }
 }
 
-.hamlet {
+#placenames-small::hamlet {
   [place = 'hamlet'],
   [place = 'locality'],
   [place = 'isolated_dwelling'],
