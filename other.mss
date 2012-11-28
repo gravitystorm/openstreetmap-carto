@@ -1090,7 +1090,7 @@
       line-color: #999;
       line-width: 2.5;
       line-dasharray: 4,2;
-      [zoom >= 16] { line-width: 9; }
+      [zoom >= 16] { line-width: 7; }
     }
   }
 
