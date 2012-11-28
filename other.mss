@@ -1545,6 +1545,11 @@
     line-width: 6;
     line-color: #fff;
     line-opacity: 0.4;
+    b/line-width: 2;
+    b/line-color: salmon;
+    b/line-dasharray: 1,3;
+    b/line-cap: round;
+    b/line-join: round;
   }
 
   [highway = 'steps'][zoom >= 15] {
