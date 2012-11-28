@@ -2019,7 +2019,7 @@
 
 .bridges {
   ::bridges_casing {
-    [highway = 'motorway']
+    [highway = 'motorway'],
     [highway = 'motorway_link'] {
       [zoom >= 12] {
         line-width: 3;
