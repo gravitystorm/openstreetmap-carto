@@ -232,7 +232,7 @@
   }
 }
 
-#text {
+.text {
   [place = 'island'][zoom >= 12]::place {
     text-name: "[name]";
     text-fill: #000;
