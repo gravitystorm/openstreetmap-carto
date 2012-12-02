@@ -118,7 +118,7 @@
       "id": "nepopulated",
       "class": "",
       "Datasource": {
-        "file": "/usr/local/share/mapnik/shape-resources/world_boundaries/ne_10m_populated_places.shp"
+        "file": "/usr/local/share/mapnik/shape-resources/world_boundaries/ne_10m_populated_places_fixed.shp"
       },
       "srs-name": "WGS84",
       "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
