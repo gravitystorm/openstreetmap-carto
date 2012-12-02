@@ -28,7 +28,7 @@
 
 #piers-area {
   [zoom >= 12] {
-    polygon-fill: #f2efe9;
+    polygon-fill: @land-color;
   }
 }
 
@@ -48,7 +48,7 @@
   }
   [man_made = 'pier'][zoom >= 11] {
     line-width: 1.5;
-    line-color: #f2efe9;
+    line-color: @land-color;
     [zoom >= 13] { line-width: 3; }
     [zoom >= 16] { line-width: 7; }
   }

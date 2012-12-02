@@ -18,13 +18,13 @@
 
 #world {
   [zoom >= 0][zoom < 10] {
-    polygon-fill: #f2efe9;
+    polygon-fill: @land-color;
   }
 }
 
 #coast-poly {
   [zoom >= 10] {
-    polygon-fill: #f2efe9;
+    polygon-fill: @land-color;
   }
 }
 

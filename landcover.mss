@@ -288,12 +288,13 @@
   }
 }
 
+/* man_made=cutline */
 #landcover-line {
   [zoom >= 14] {
     line-width: 3;
     line-join: round;
     line-cap: square;
-    line-color: #f2efe9;
+    line-color: @land-color;
     [zoom >= 16] {
       line-width: 6;
     }
