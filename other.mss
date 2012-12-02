@@ -2897,8 +2897,7 @@
       text-fill: black;
       text-placement: line;
       text-face-name: @book-fonts;
-      text-halo-radius: 1;
-      text-halo-fill: #fed7a5;
+      text-halo-radius: 0;
     }
     [zoom >= 14] {
       text-size: 9;
@@ -2914,7 +2913,7 @@
       text-fill: #000;
       text-placement: line;
       text-face-name: @book-fonts;
-      text-halo-radius: 1;
+      text-halo-radius: 0;
     }
     [zoom >= 17] {
       text-size: 11;
