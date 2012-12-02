@@ -1,6 +1,6 @@
 #landcover {
  [leisure = 'swimming_pool'][zoom >= 14]::leisure {
-    polygon-fill: #b5d0d0;
+    polygon-fill: @water-color;
     line-color: blue;
     line-width: 0.5;
   }

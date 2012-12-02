@@ -16,13 +16,13 @@
   [waterway = 'canal'] {
     [zoom >= 9]::waterway {
       polygon-gamma: 0.75;
-      polygon-fill: #b5d0d0;
+      polygon-fill: @water-color;
     }
   }
 
   [landuse = 'basin'][zoom >= 7]::landuse {
     polygon-gamma: 0.75;
-    polygon-fill: #b5d0d0;
+    polygon-fill: @water-color;
   }
 
   [natural = 'lake']::natural,
@@ -32,7 +32,7 @@
   [landuse = 'water']::water,
   [natural = 'bay']::natural {
     [zoom >= 6] {
-      polygon-fill: #b5d0d0;
+      polygon-fill: @water-color;
       polygon-gamma: 0.75;
     }
   }
@@ -80,7 +80,7 @@
 
 #water-lines-low-zoom {
   [waterway = 'river'][zoom >= 8][zoom < 12] {
-    line-color: #b5d0d0;
+    line-color: @water-color;
     line-width: 0.7;
     [zoom >= 9] { line-width: 1.2; }
     [zoom >= 10] { line-width: 1.6; }
@@ -96,7 +96,7 @@
   }
 
   [waterway = 'wadi'][zoom >= 13] {
-    line-color: #b5d0d0;
+    line-color: @water-color;
     line-width: 1;
     line-dasharray: 4,4;
     line-cap: round;
@@ -105,7 +105,7 @@
   }
 
   [waterway = 'river'][zoom >= 12] {
-    line-color: #b5d0d0;
+    line-color: @water-color;
     line-width: 2;
     line-cap: round;
     line-join: round;
@@ -136,7 +136,7 @@
       [zoom >= 14] {
         a/line-width: 6;
         a/line-dasharray: 4,2;
-        a/line-color: #b5d0d0;
+        a/line-color: @water-color;
         b/line-width: 4;
         b/line-color: white;
         text-min-distance: 200;
@@ -156,7 +156,7 @@
   }
 
   [waterway = 'canal'][zoom >= 12][zoom < 14] {
-    line-color: #b5d0d0;
+    line-color: @water-color;
     line-width: 3;
     line-cap: round;
     line-join: round;
@@ -176,13 +176,13 @@
   [waterway = 'drain'] {
     [zoom >= 13][zoom < 15] {
       line-width: 1;
-      line-color: #b5d0d0;
+      line-color: @water-color;
     }
   }
 
   [waterway = 'stream'][zoom >= 15] {
     line-width: 2;
-    line-color: #b5d0d0;
+    line-color: @water-color;
     text-name: "[name]";
     text-size: 8;
     text-face-name: @book-fonts;
@@ -202,7 +202,7 @@
   [waterway = 'ditch'] {
     [zoom >= 15] {
       line-width: 1;
-      line-color: #b5d0d0;
+      line-color: @water-color;
       text-name: "[name]";
       text-face-name: @book-fonts;
       text-size: 8;
@@ -221,7 +221,7 @@
 
   [waterway = 'canal'][zoom >= 14] {
     line-width: 7;
-    line-color: #b5d0d0;
+    line-color: @water-color;
     line-join: round;
     line-cap: round;
     text-name: "[name]";
@@ -278,7 +278,7 @@
     line-color: #000;
     line-join: round;
     b/line-width: 6;
-    b/line-color: #b5d0d0;
+    b/line-color: @water-color;
     b/line-cap: round;
     b/line-join: round;
     text-name: "[name]";
