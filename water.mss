@@ -40,10 +40,6 @@
   [natural = 'mud'][zoom >= 13]::natural {
     polygon-pattern-file: url('symbols/mud.png');
   }
-
-  [natural = 'land'][zoom >= 10]::natural {
-    polygon-fill: #f2efe9;
-  }
 }
 
 #water-areas-overlay {
