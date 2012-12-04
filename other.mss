@@ -2133,31 +2133,6 @@
       [zoom >= 16] { line-width: 9.5; }
     }
 
-    /* actually aeroway */
-    [highway = 'runway'][zoom >= 14] {
-      line-width: 19;
-      line-color: black;
-    }
-
-    [highway = 'taxiway'][zoom >= 14] {
-      line-width: 5;
-      line-color: black;
-      [zoom >= 15] { line-width: 7; }
-    }
-
-    [railway = 'subway'][zoom >= 14] {
-      line-width: 5.5;
-      line-color: black;
-    }
-
-    [railway = 'light_rail'],
-    [railway = 'narrow_gauge'] {
-      [zoom >= 14] {
-        line-width: 5.5;
-        line-color: #555;
-      }
-    }
-
     [highway = 'unsurfaced'][zoom >= 13] {
       line-width: 5;
       line-color: black;
@@ -2198,6 +2173,27 @@
       line-color: black;
     }
 
+    [highway = 'track'][zoom >= 14] {
+      line-width: 4.5;
+      line-color: black;
+      [tracktype = 'grade1'] {
+        line-width: 5;
+      }
+    }
+
+    [railway = 'subway'][zoom >= 14] {
+      line-width: 5.5;
+      line-color: black;
+    }
+
+    [railway = 'light_rail'],
+    [railway = 'narrow_gauge'] {
+      [zoom >= 14] {
+        line-width: 5.5;
+        line-color: #555;
+      }
+    }
+
     [railway = 'rail'][zoom >= 13] {
       line-width: 6.5;
       line-color: black;
@@ -2219,29 +2215,20 @@
       }
     }
 
-    [highway = 'track'][zoom >= 14] {
-      line-width: 4.5;
+    /* actually aeroway */
+    [highway = 'runway'][zoom >= 14] {
+      line-width: 19;
       line-color: black;
-      [tracktype = 'grade1'] {
-        line-width: 5;
-      }
+    }
+
+    [highway = 'taxiway'][zoom >= 14] {
+      line-width: 5;
+      line-color: black;
+      [zoom >= 15] { line-width: 7; }
     }
   }
 
   ::bridges-casing2 {
-    [railway = 'subway'][zoom >= 14] {
-      line-width: 4;
-      line-color: white;
-    }
-
-    [railway = 'light_rail'],
-    [railway = 'narrow_gauge'] {
-      [zoom >= 14] {
-        line-width: 4;
-        line-color: white;
-      }
-    }
-
     [highway = 'unsurfaced'][zoom >= 13] {
       line-width: 4;
       line-color: white;
@@ -2296,6 +2283,14 @@
       line-cap: round;
     }
 
+    [highway = 'track'][zoom >= 14] {
+      line-width: 3;
+      line-color: white;
+      line-join: round;
+      line-cap: round;
+      [tracktype = 'grade1'] { line-width: 3.5; }
+    }
+
     [railway = 'rail'][zoom >= 13] {
       line-width: 5;
       line-color: white;
@@ -2320,12 +2315,17 @@
       }
     }
 
-    [highway = 'track'][zoom >= 14] {
-      line-width: 3;
+    [railway = 'subway'][zoom >= 14] {
+      line-width: 4;
       line-color: white;
-      line-join: round;
-      line-cap: round;
-      [tracktype = 'grade1'] { line-width: 3.5; }
+    }
+
+    [railway = 'light_rail'],
+    [railway = 'narrow_gauge'] {
+      [zoom >= 14] {
+        line-width: 4;
+        line-color: white;
+      }
     }
   }
 
@@ -2439,31 +2439,6 @@
       [zoom >= 16] { line-width: 8; }
     }
 
-    /* these are aeroway tags */
-    [highway = 'runway'][zoom >= 14] {
-      line-width: 18;
-      line-color: #bbc;
-    }
-
-    [highway = 'taxiway'][zoom >= 14] {
-      line-width: 4;
-      line-color: #bbc;
-      [zoom >= 15] { line-width: 6; }
-    }
-
-    [railway = 'subway'][zoom >= 14] {
-      line-width: 2;
-      line-color: #999;
-    }
-
-    [railway = 'light_rail'],
-    [railway = 'narrow_gauge'] {
-      [zoom >= 14] {
-        line-width: 2;
-        line-color: #666;
-      }
-    }
-
     [highway = 'unsurfaced'][zoom >= 13] {
       line-width: 3;
       line-dasharray: 2,4;
@@ -2520,40 +2495,6 @@
       line-join: round;
     }
 
-    [railway = 'rail'][zoom >= 13] {
-      line-width: 3;
-      line-color: #999999;
-      line-join: round;
-      b/line-width: 1;
-      b/line-color: white;
-      b/line-dasharray: 8,12;
-      b/line-join: round;
-      [zoom >= 14] {
-        b/line-dasharray: 0,11,8,1;
-      }
-    }
-
-    [railway = 'INT-spur-siding-yard'][zoom >= 13] {
-      line-width: 2;
-      line-color: #999999;
-      line-join: round;
-      b/line-width: 0.8;
-      b/line-color: white;
-      b/line-dasharray: 0,8,11,1;
-      b/line-join: round;
-    }
-
-    [railway = 'disused'],
-    [railway = 'abandoned'],
-    [railway = 'construction'] { /*  and not [highway] != '' */
-      [zoom >= 13] {
-        line-width: 2;
-        line-color: grey;
-        line-dasharray: 2,4;
-        line-join: round;
-      }
-    }
-
     [highway = 'track'][tracktype = 'grade1'][zoom >= 14] {
       line-width: 2;
       line-color: #b37700;
@@ -2601,6 +2542,65 @@
       line-dasharray: 3,4;
       line-join: round;
       line-cap: round;
+    }
+
+    [railway = 'rail'][zoom >= 13] {
+      line-width: 3;
+      line-color: #999999;
+      line-join: round;
+      b/line-width: 1;
+      b/line-color: white;
+      b/line-dasharray: 8,12;
+      b/line-join: round;
+      [zoom >= 14] {
+        b/line-dasharray: 0,11,8,1;
+      }
+    }
+
+    [railway = 'INT-spur-siding-yard'][zoom >= 13] {
+      line-width: 2;
+      line-color: #999999;
+      line-join: round;
+      b/line-width: 0.8;
+      b/line-color: white;
+      b/line-dasharray: 0,8,11,1;
+      b/line-join: round;
+    }
+
+    [railway = 'disused'],
+    [railway = 'abandoned'],
+    [railway = 'construction'] { /*  and not [highway] != '' */
+      [zoom >= 13] {
+        line-width: 2;
+        line-color: grey;
+        line-dasharray: 2,4;
+        line-join: round;
+      }
+    }
+
+    [railway = 'subway'][zoom >= 14] {
+      line-width: 2;
+      line-color: #999;
+    }
+
+    [railway = 'light_rail'],
+    [railway = 'narrow_gauge'] {
+      [zoom >= 14] {
+        line-width: 2;
+        line-color: #666;
+      }
+    }
+
+    /* these are aeroway tags */
+    [highway = 'runway'][zoom >= 14] {
+      line-width: 18;
+      line-color: #bbc;
+    }
+
+    [highway = 'taxiway'][zoom >= 14] {
+      line-width: 4;
+      line-color: #bbc;
+      [zoom >= 15] { line-width: 6; }
     }
   }
 }
