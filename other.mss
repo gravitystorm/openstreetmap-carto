@@ -1525,7 +1525,19 @@
     [zoom >= 16] { line-width: 8; }
   }
 
-  [highway = 'platform'],
+  [highway = 'platform'] {
+    [zoom >= 16] {
+      line-join: round;
+      line-width: 6;
+      line-color: grey;
+      line-cap: round;
+      b/line-width: 4;
+      b/line-color: #bbbbbb;
+      b/line-cap: round;
+      b/line-join: round;
+    }
+  }
+
   [railway = 'platform'] {
     [zoom >= 16] {
       line-join: round;
