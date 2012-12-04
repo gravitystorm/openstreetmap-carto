@@ -2181,37 +2181,39 @@
       }
     }
 
-    [railway = 'subway'][zoom >= 14] {
-      line-width: 5.5;
-      line-color: black;
-    }
-
-    [railway = 'light_rail'],
-    [railway = 'narrow_gauge'] {
-      [zoom >= 14] {
+    ::railway {
+      [railway = 'subway'][zoom >= 14] {
         line-width: 5.5;
-        line-color: #555;
-      }
-    }
-
-    [railway = 'rail'][zoom >= 13] {
-      line-width: 6.5;
-      line-color: black;
-      line-join: round;
-    }
-
-    [railway = 'INT-spur-siding-yard'][zoom >= 13] {
-      line-width: 5.7;
-      line-color: black;
-      line-join: round;
-    }
-
-    [railway = 'disused'],
-    [railway = 'abandoned'],
-    [railway = 'construction'] { /* and not [highway] != '' */
-      [zoom >= 13] {
-        line-width: 6;
         line-color: black;
+      }
+
+      [railway = 'light_rail'],
+      [railway = 'narrow_gauge'] {
+        [zoom >= 14] {
+          line-width: 5.5;
+          line-color: #555;
+        }
+      }
+
+      [railway = 'rail'][zoom >= 13] {
+        line-width: 6.5;
+        line-color: black;
+        line-join: round;
+      }
+
+      [railway = 'INT-spur-siding-yard'][zoom >= 13] {
+        line-width: 5.7;
+        line-color: black;
+        line-join: round;
+      }
+
+      [railway = 'disused'],
+      [railway = 'abandoned'],
+      [railway = 'construction'] { /* and not [highway] != '' */
+        [zoom >= 13] {
+          line-width: 6;
+          line-color: black;
+        }
       }
     }
 
@@ -2291,40 +2293,42 @@
       [tracktype = 'grade1'] { line-width: 3.5; }
     }
 
-    [railway = 'rail'][zoom >= 13] {
-      line-width: 5;
-      line-color: white;
-      line-join: round;
-    }
+    ::railway {
+      [railway = 'rail'][zoom >= 13] {
+        line-width: 5;
+        line-color: white;
+        line-join: round;
+      }
 
-    [railway = 'INT-spur-siding-yard'][zoom >= 13] {
-      line-width: 4;
-      line-color: white;
-      line-join: round;
-      line-cap: round;
-    }
-
-    [railway = 'disused'],
-    [railway = 'abandoned'],
-    [railway = 'construction'] { /* and not [highway] != '' */
-      [zoom >= 13] {
-        line-width: 4.5;
+      [railway = 'INT-spur-siding-yard'][zoom >= 13] {
+        line-width: 4;
         line-color: white;
         line-join: round;
         line-cap: round;
       }
-    }
 
-    [railway = 'subway'][zoom >= 14] {
-      line-width: 4;
-      line-color: white;
-    }
+      [railway = 'disused'],
+      [railway = 'abandoned'],
+      [railway = 'construction'] { /* and not [highway] != '' */
+        [zoom >= 13] {
+          line-width: 4.5;
+          line-color: white;
+          line-join: round;
+          line-cap: round;
+        }
+      }
 
-    [railway = 'light_rail'],
-    [railway = 'narrow_gauge'] {
-      [zoom >= 14] {
+      [railway = 'subway'][zoom >= 14] {
         line-width: 4;
         line-color: white;
+      }
+
+      [railway = 'light_rail'],
+      [railway = 'narrow_gauge'] {
+        [zoom >= 14] {
+          line-width: 4;
+          line-color: white;
+        }
       }
     }
   }
@@ -2544,50 +2548,52 @@
       line-cap: round;
     }
 
-    [railway = 'rail'][zoom >= 13] {
-      line-width: 3;
-      line-color: #999999;
-      line-join: round;
-      b/line-width: 1;
-      b/line-color: white;
-      b/line-dasharray: 8,12;
-      b/line-join: round;
-      [zoom >= 14] {
-        b/line-dasharray: 0,11,8,1;
-      }
-    }
-
-    [railway = 'INT-spur-siding-yard'][zoom >= 13] {
-      line-width: 2;
-      line-color: #999999;
-      line-join: round;
-      b/line-width: 0.8;
-      b/line-color: white;
-      b/line-dasharray: 0,8,11,1;
-      b/line-join: round;
-    }
-
-    [railway = 'disused'],
-    [railway = 'abandoned'],
-    [railway = 'construction'] { /*  and not [highway] != '' */
-      [zoom >= 13] {
-        line-width: 2;
-        line-color: grey;
-        line-dasharray: 2,4;
+    ::railway {
+      [railway = 'rail'][zoom >= 13] {
+        line-width: 3;
+        line-color: #999999;
         line-join: round;
+        b/line-width: 1;
+        b/line-color: white;
+        b/line-dasharray: 8,12;
+        b/line-join: round;
+        [zoom >= 14] {
+          b/line-dasharray: 0,11,8,1;
+        }
       }
-    }
 
-    [railway = 'subway'][zoom >= 14] {
-      line-width: 2;
-      line-color: #999;
-    }
-
-    [railway = 'light_rail'],
-    [railway = 'narrow_gauge'] {
-      [zoom >= 14] {
+      [railway = 'INT-spur-siding-yard'][zoom >= 13] {
         line-width: 2;
-        line-color: #666;
+        line-color: #999999;
+        line-join: round;
+        b/line-width: 0.8;
+        b/line-color: white;
+        b/line-dasharray: 0,8,11,1;
+        b/line-join: round;
+      }
+
+      [railway = 'disused'],
+      [railway = 'abandoned'],
+      [railway = 'construction'] { /*  and not [highway] != '' */
+        [zoom >= 13] {
+          line-width: 2;
+          line-color: grey;
+          line-dasharray: 2,4;
+          line-join: round;
+        }
+      }
+
+      [railway = 'subway'][zoom >= 14] {
+        line-width: 2;
+        line-color: #999;
+      }
+
+      [railway = 'light_rail'],
+      [railway = 'narrow_gauge'] {
+        [zoom >= 14] {
+          line-width: 2;
+          line-color: #666;
+        }
       }
     }
 
@@ -2652,66 +2658,68 @@
     }
   }
 
-  [railway = 'rail'][zoom >= 6][zoom < 13] {
-    line-width: 0.6;
-    line-color: #aaa;
-    [zoom >= 9] { line-width: 1; }
-    [zoom >= 10] { line-width: 2; }
-    [tunnel = 'yes'] {
-      line-dasharray: 5,2;
+  ::railway {
+    [railway = 'rail'][zoom >= 6][zoom < 13] {
+      line-width: 0.6;
+      line-color: #aaa;
+      [zoom >= 9] { line-width: 1; }
+      [zoom >= 10] { line-width: 2; }
+      [tunnel = 'yes'] {
+        line-dasharray: 5,2;
+      }
     }
-  }
 
-  [railway = 'tram'],
-  [railway = 'light_rail'],
-  [railway = 'narrow_gauge'],
-  [railway = 'funicular'] {
-    [zoom >= 8][zoom < 13] {
+    [railway = 'tram'],
+    [railway = 'light_rail'],
+    [railway = 'narrow_gauge'],
+    [railway = 'funicular'] {
+      [zoom >= 8][zoom < 13] {
+        line-width: 1;
+        line-color: #ccc;
+        [zoom >= 10] { line-color: #aaa }
+      }
+    }
+
+    [railway = 'preserved'][zoom >= 12] {
+      line-width: 1.5;
+      line-color: #aaa;
+      line-join: round;
+      [zoom >= 13] {
+        line-width: 3;
+        line-color: #999999;
+        b/line-width: 1;
+        b/line-color: white;
+        b/line-dasharray: 0,1,8,1;
+        b/line-join: round;
+      }
+    }
+
+    [railway = 'INT-preserved-ssy'][zoom >= 12] {
       line-width: 1;
-      line-color: #ccc;
-      [zoom >= 10] { line-color: #aaa }
+      line-color: #aaa;
+      line-join: round;
+      [zoom >= 13] {
+        line-width: 2;
+        line-color: #999999;
+        b/line-width: 0.8;
+        b/line-color: white;
+        b/line-dasharray: 0,1,8,1;
+        b/line-join: round;
+      }
     }
-  }
 
-  [railway = 'preserved'][zoom >= 12] {
-    line-width: 1.5;
-    line-color: #aaa;
-    line-join: round;
-    [zoom >= 13] {
-      line-width: 3;
-      line-color: #999999;
-      b/line-width: 1;
-      b/line-color: white;
-      b/line-dasharray: 0,1,8,1;
+    [railway = 'monorail'][zoom >= 14] {
+      line-width: 4;
+      line-color: #fff;
+      line-opacity: 0.4;
+      line-cap: round;
+      line-join: round;
+      b/line-width: 3;
+      b/line-color: #777;
+      b/line-dasharray: 2,3;
+      b/line-cap: round;
       b/line-join: round;
     }
-  }
-
-  [railway = 'INT-preserved-ssy'][zoom >= 12] {
-    line-width: 1;
-    line-color: #aaa;
-    line-join: round;
-    [zoom >= 13] {
-      line-width: 2;
-      line-color: #999999;
-      b/line-width: 0.8;
-      b/line-color: white;
-      b/line-dasharray: 0,1,8,1;
-      b/line-join: round;
-    }
-  }
-
-  [railway = 'monorail'][zoom >= 14] {
-    line-width: 4;
-    line-color: #fff;
-    line-opacity: 0.4;
-    line-cap: round;
-    line-join: round;
-    b/line-width: 3;
-    b/line-color: #777;
-    b/line-dasharray: 2,3;
-    b/line-cap: round;
-    b/line-join: round;
   }
 }
 
