@@ -14,7 +14,7 @@ mkdir -p data/processed_p
 echo "dowloading world_boundaries..."
 wget -q -P data/ http://tile.openstreetmap.org/world_boundaries-spherical.tgz
 echo "expanding world_boundaries..."
-tar -xzf data/world_boundaries-spherical.tgz -C data/world_boundaries/
+tar -xzf data/world_boundaries-spherical.tgz -C data/
 
 # shoreline_300
 echo "dowloading shoreline_300..."
