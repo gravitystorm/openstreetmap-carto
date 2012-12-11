@@ -57,8 +57,19 @@ judgement. The work done in v1.0 and v2.0 will make it much easier to process th
 
 # Dependencies
 
-* carto >= 0.9.3 (we're using instances with cascading rules)
-* mapnik >= 2.0.0 (we might move to 2.1 in the near term)
+* [TileMill](mapbox.com/tilemill) - This is a TileMill project you can copy (or symlink directly into you Mapbox/project directory)
+
+OR
+
+* [carto](https://github.com/mapbox/carto) >= 0.9.3 (we're using instances with cascading rules) 
+* [mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 2.0.0 (we might move to 2.1 in the near term
+
+---
+
+* [osm2pgsql](http://wiki.openstreetmap.org/wiki/Osm2pgsql) to import you data into a PostGIS database
+* [PostgeSQL](http://www.postgresql.org/)
+* [PostGIS](http://postgis.refractions.net/)
+
 
 # Notes on conversion
 
