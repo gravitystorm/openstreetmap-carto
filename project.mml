@@ -46,7 +46,7 @@
       "id": "world",
       "class": "",
       "Datasource": {
-        "file": "data/world_boundaries/shoreline_300.shp"
+        "file": "data/shoreline_300/shoreline_300.shp"
       },
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
@@ -64,7 +64,7 @@
       "id": "coast-poly",
       "class": "",
       "Datasource": {
-        "file": "data/world_boundaries/processed_p.shp"
+        "file": "data/processed_p/processed_p.shp"
       },
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
@@ -100,7 +100,7 @@
       "id": "necountries",
       "class": "",
       "Datasource": {
-        "file": "data/world_boundaries/ne_110m_admin_0_boundary_lines_land.shp"
+        "file": "data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp"
       },
       "srs-name": "WGS84",
       "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
@@ -118,7 +118,7 @@
       "id": "nepopulated",
       "class": "",
       "Datasource": {
-        "file": "data/world_boundaries/ne_10m_populated_places_fixed.shp"
+        "file": "data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp"
       },
       "srs-name": "WGS84",
       "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
