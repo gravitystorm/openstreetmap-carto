@@ -57,7 +57,7 @@ judgement. The work done in v1.0 and v2.0 will make it much easier to process th
 
 # Dependencies
 
-* [TileMill](mapbox.com/tilemill) - This is a TileMill project you can copy (or symlink directly into you Mapbox/project directory)
+* [TileMill](mapbox.com/tilemill) - This is a TileMill project you can copy (or symlink) directly into your Mapbox/project directory
 
 OR
 
@@ -69,7 +69,7 @@ OR
 * [osm2pgsql](http://wiki.openstreetmap.org/wiki/Osm2pgsql) to import you data into a PostGIS database
 * [PostgeSQL](http://www.postgresql.org/)
 * [PostGIS](http://postgis.refractions.net/)
-
+* [ogr2ogr](http://www.gdal.org/) command line GDAL utility for processing vecotr data. here we use it to work around a encoding bug in the Nautral Earth data.
 
 # Notes on conversion
 
