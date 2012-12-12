@@ -4,8 +4,13 @@ A project to re-implement the standard OpenStreetMap mapnik style, in CartoCSS
 
 # Setup
 
-You need OpenStreetMap data loaded into a PostGIS database. These stylesheets currently work
-only with the osm2pgsql defaults (i.e. database name is 'gis', table names are 'planet_osm_point' etc).
+You need OpenStreetMap data loaded into a PostGIS database (see below for [dependencies](https://github.com/gravitystorm/openstreetmap-carto#dependencies)). These stylesheets currently work only with the osm2pgsql defaults (i.e. database name is 'gis', table names are 'planet_osm_point' etc).
+
+It's probably easiest to grab an PBF of OSM data from [metro.teczno.com](http://metro.teczno.com/) or [geofabrik](http://download.geofabrik.de/). Once you've set up your PostGIS database, import with osm2pgsql:
+
+```
+osm2pgsql -d gis ~/path/to/data.osm.pbf
+```
 
 Additionally you need some shapefiles.
 
@@ -46,7 +51,7 @@ See https://github.com/mapnik/mapnik/issues/1605 for more details.
 
 OR
 
-* [carto](https://github.com/mapbox/carto) >= 0.9.3 (we're using instances with cascading rules) 
+* [carto](https://github.com/mapbox/carto) >= 0.9.3 (we're using instances with cascading rules)
 * [mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 2.0.0 (we might move to 2.1 in the near term
 
 ---
