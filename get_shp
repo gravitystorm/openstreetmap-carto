@@ -18,7 +18,7 @@ tar -xzf data/world_boundaries-spherical.tgz -C data/
 
 # shoreline_300
 echo "dowloading shoreline_300..."
-curl -o data/shoreline_300.tar.bz2 http://tile.openstreetmap.org/shoreline_300.tar.bz2
+curl -L -o data/shoreline_300.tar.bz2 http://tile.openstreetmap.org/shoreline_300.tar.bz2
 echo "expanding shoreline_300..."
 tar -xjf data/shoreline_300.tar.bz2 -C data/shoreline_300/
 
@@ -36,7 +36,7 @@ unzip -qq data/ne_10m_populated_places.zip -d data/ne_10m_populated_places/
 
 # processed_p
 echo "dowloading processed_p..."
-curl -o data/processed_p.tar.bz2 http://tile.openstreetmap.org/processed_p.tar.bz2
+curl -L -o data/processed_p.tar.bz2 http://tile.openstreetmap.org/processed_p.tar.bz2
 echo "expanding processed_p..."
 tar -xjf data/processed_p.tar.bz2 -C data/processed_p/
 
