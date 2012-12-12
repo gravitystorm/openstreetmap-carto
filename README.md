@@ -7,7 +7,19 @@ A project to re-implement the standard OpenStreetMap mapnik style, in CartoCSS
 You need OpenStreetMap data loaded into a PostGIS database. These stylesheets currently work
 only with the osm2pgsql defaults (i.e. database name is 'gis', table names are 'planet_osm_point' etc).
 
-Additionally you need some shapefiles, at the following paths:
+Additionally you need some shapefiles.
+
+## Scripted download
+
+To download the shapefiles you can run the following script from this directory. No further steps should be needed as the data has been processed and placed in the requisite directories.
+
+```
+sh get_data
+```
+
+## Manual download
+
+You can also download them maunally at the following paths:
 
 * `shoreline_300.shp` [download](http://tile.openstreetmap.org/shoreline_300.tar.bz2)
 * `processed_p.shp` [download](http://tile.openstreetmap.org/processed_p.tar.bz2)
@@ -15,9 +27,9 @@ Additionally you need some shapefiles, at the following paths:
 * `ne_110m_admin_0_boundary_lines_land.shp` [download](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip)
 * `ne_10m_populated_places_fixed.shp` [download](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_populated_places.zip) (and see below)
 
-Put these shapefiles at /usr/local/share/mapnik/shape-resources/world_boundaries/
+Put these shapefiles at path/to/opentreetmap-carto/data
 
-## Populated places shapefile
+### Populated places shapefile
 
 The Natural Earth 2.0 populated places shapefile contains data that triggers a bug in mapnik. As
 a workaround we run the shapefile through ogr2ogr to clean up the data.
