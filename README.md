@@ -40,6 +40,22 @@ ogr2ogr ne_10m_populated_places_fixed.shp ne_10m_populated_places.shp
 
 See https://github.com/mapnik/mapnik/issues/1605 for more details.
 
+## Dependencies
+
+* [TileMill](mapbox.com/tilemill) - This is a TileMill project you can copy (or symlink) directly into your Mapbox/project directory
+
+OR
+
+* [carto](https://github.com/mapbox/carto) >= 0.9.3 (we're using instances with cascading rules) 
+* [mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 2.0.0 (we might move to 2.1 in the near term
+
+---
+
+* [osm2pgsql](http://wiki.openstreetmap.org/wiki/Osm2pgsql) to import you data into a PostGIS database
+* [PostgreSQL](http://www.postgresql.org/)
+* [PostGIS](http://postgis.refractions.net/)
+* [ogr2ogr](http://www.gdal.org/) command line GDAL utility for processing vector data. here we use it to work around a encoding bug in the Nautral Earth data.
+
 # Roadmap
 
 ## Initial Release (v1.0)
@@ -66,22 +82,6 @@ much more suitable for further development, and/or forking for third-parties to 
 There are over [400 open requests][trac] on trac, some that have been open for years. These need
 reviewing and dividing into obvious fixes, or additional new features that need some cartographic
 judgement. The work done in v1.0 and v2.0 will make it much easier to process these.
-
-# Dependencies
-
-* [TileMill](mapbox.com/tilemill) - This is a TileMill project you can copy (or symlink) directly into your Mapbox/project directory
-
-OR
-
-* [carto](https://github.com/mapbox/carto) >= 0.9.3 (we're using instances with cascading rules) 
-* [mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 2.0.0 (we might move to 2.1 in the near term
-
----
-
-* [osm2pgsql](http://wiki.openstreetmap.org/wiki/Osm2pgsql) to import you data into a PostGIS database
-* [PostgreSQL](http://www.postgresql.org/)
-* [PostGIS](http://postgis.refractions.net/)
-* [ogr2ogr](http://www.gdal.org/) command line GDAL utility for processing vector data. here we use it to work around a encoding bug in the Nautral Earth data.
 
 # Notes on conversion
 
