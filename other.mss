@@ -499,6 +499,7 @@
       text-name: "[name]";
       text-size: 10;
       text-fill: #0066ff;
+      text-dy: 11;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-placement: interior;
@@ -701,6 +702,7 @@
   [amenity = 'pharmacy'][zoom >= 17]::amenity {
     text-name: "[name]";
     text-size: 8;
+    text-dy: 9;
     text-fill: #da0092;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
@@ -722,6 +724,7 @@
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 8;
+      text-dy: 9;
       text-fill: #939;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
@@ -735,6 +738,7 @@
     [zoom >= 16] {
       text-name: "[name]";
       text-size: 9;
+      text-dy: 9;
       text-fill: #939;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
