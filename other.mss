@@ -649,7 +649,7 @@
       text-name: "[name]";
       text-size: 9;
       text-fill: #000033;
-      text-face-name: @bold-fonts;
+      text-face-name: @book-fonts;
       text-halo-radius: 2;
       text-wrap-width: 14;
       text-placement: interior;
@@ -660,7 +660,7 @@
     text-name: "[name]";
     text-size: 8;
     text-fill: #000033;
-    text-face-name: @bold-fonts;
+    text-face-name: @book-fonts;
     text-halo-radius: 2;
     text-wrap-width: 14;
     text-placement: interior;
