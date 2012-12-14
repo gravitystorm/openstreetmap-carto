@@ -1866,72 +1866,6 @@
 }
 
 #tracks-notunnel-nobridge {
-  [tracktype = 'grade1'][zoom >= 14] {
-    line-width: 3.5;
-    line-color: white;
-    line-opacity: 0.4;
-    b/line-width: 2;
-    b/line-color: #b37700;
-    b/line-opacity: 0.7;
-  }
-
-  [tracktype = 'grade2'][zoom >= 14] {
-    line-width: 3;
-    line-color: white;
-    line-opacity: 0.4;
-    line-join: round;
-    line-cap: round;
-    b/line-color: #a87000;
-    b/line-width: 1.5;
-    b/line-dasharray: 9,4;
-    b/line-opacity: 0.8;
-    b/line-join: round;
-    b/line-cap: round;
-  }
-
-  [tracktype = 'grade3'][zoom >= 14] {
-    line-width: 3;
-    line-color: white;
-    line-opacity: 0.4;
-    line-cap: round;
-    line-width: round;
-    b/line-color: #996600;
-    b/line-width: 1.5;
-    b/line-dasharray: 3,4;
-    b/line-opacity: 0.8;
-    b/line-join: round;
-    b/line-cap: round;
-  }
-
-  [tracktype = 'grade4'][zoom >= 14] {
-    line-width: 3;
-    line-color: white;
-    line-opacity: 0.4;
-    line-join: round;
-    line-cap: round;
-    b/line-color: #996600;
-    b/line-width: 2;
-    b/line-dasharray: 4,7,1,5;
-    b/line-opacity: 0.8;
-    b/line-join: round;
-    b/line-cap: round;
-  }
-
-  [tracktype = 'grade5'][zoom >= 14] {
-    line-width: 3;
-    line-color: white;
-    line-opacity: 0.4;
-    line-join: round;
-    line-cap: round;
-    b/line-width: 2;
-    b/line-color: #996600;
-    b/line-dasharray: 1,5;
-    b/line-opacity: 0.8;
-    b/line-join: round;
-    b/line-cap: round;
-  }
-
-  /* tracks with no tracktype */
   [zoom >= 14] {
     line-width: 3;
     line-color: white;
@@ -1943,85 +1877,35 @@
     b/line-dasharray: 3,4;
     b/line-cap: round;
     b/line-join: round;
+    [tracktype = 'grade1'] {
+      line-width: 3.5;
+      b/line-width: 2;
+      b/line-color: #b37700;
+      b/line-opacity: 0.7;
+      b/line-dasharray: 100,0; /* i.e. none, see https://github.com/mapbox/carto/issues/214 */
+    }
+    [tracktype = 'grade2'] {
+      b/line-color: #a87000;
+      b/line-dasharray: 9,4;
+      b/line-opacity: 0.8;
+    }
+    [tracktype = 'grade3'] {
+      b/line-opacity: 0.8;
+    }
+    [tracktype = 'grade4'] {
+      b/line-width: 2;
+      b/line-dasharray: 4,7,1,5;
+      b/line-opacity: 0.8;
+    }
+    [tracktype = 'grade5'] {
+      b/line-width: 2;
+      b/line-dasharray: 1,5;
+      b/line-opacity: 0.8;
+    }
   }
 }
 
 #tracks-tunnels {
-  [tracktype = 'grade1'][zoom >= 14] {
-    line-width: 4;
-    line-color: grey;
-    line-dasharray: 4,2;
-    b/line-width: 3.5;
-    b/line-color: white;
-    c/line-width: 2;
-    c/line-color: #b37700;
-    c/line-opacity: 0.5;
-  }
-
-  [tracktype = 'grade2'][zoom >= 14] {
-    line-width: 4.5;
-    line-color: grey;
-    line-dasharray: 4,2;
-    b/line-width: 3;
-    b/line-color: white;
-    b/line-join: round;
-    b/line-cap: round;
-    c/line-width: 1.5;
-    c/line-color: #a87000;
-    c/line-opacity: 0.5;
-    c/line-dasharray: 3,4;
-    c/line-join: round;
-    c/line-cap: round;
-  }
-
-  [tracktype = 'grade3'][zoom >= 14] {
-    line-width: 4.5;
-    line-color: grey;
-    line-dasharray: 4,2;
-    b/line-width: 3.5;
-    b/line-color: white;
-    b/line-join: round;
-    b/line-cap: round;
-    c/line-width: 2;
-    c/line-color: #996600;
-    c/line-opacity: 0.5;
-    c/line-cap: round;
-    c/line-join: round;
-  }
-
-  [tracktype = 'grade4'][zoom >= 14] {
-    line-width: 4.5;
-    line-color: grey;
-    line-dasharray: 4,2;
-    b/line-width: 3;
-    b/line-color: white;
-    b/line-join: round;
-    b/line-cap: round;
-    c/line-width: 2;
-    c/line-color: #996600;
-    c/line-dasharray: 4,7,1,5;
-    c/line-opacity: 0.5;
-    c/line-join: round;
-    c/line-cap: round;
-  }
-
-  [tracktype = 'grade5'][zoom >= 14] {
-    line-width: 4.5;
-    line-color: grey;
-    line-dasharray: 4,2;
-    b/line-width: 3;
-    b/line-color: white;
-    b/line-cap: round;
-    b/line-join: round;
-    c/line-width: 2;
-    c/line-color: #996600;
-    c/line-dasharray: 1,5;
-    c/line-opacity: 0.5;
-    c/line-join: round;
-    c/line-cap: round;
-  }
-
-  /* tracks with no tracktype */
   [zoom >= 14] {
     line-width: 4.5;
     line-color: grey;
@@ -2036,6 +1920,29 @@
     c/line-opacity: 0.5;
     c/line-join: round;
     c/line-cap: round;
+    [tracktype = 'grade1'] {
+      line-width: 4;
+      b/line-width: 3.5;
+      c/line-width: 2;
+      c/line-color: #b37700;
+      c/line-dasharray: 100,0; /* i.e. none, see https://github.com/mapbox/carto/issues/214 */
+    }
+    [tracktype = 'grade2'] {
+      c/line-color: #a87000;
+    }
+    [tracktype = 'grade3'] {
+      b/line-width: 3.5;
+      c/line-width: 2;
+      c/line-dasharray: 100,0; /* yes, weird but true */
+    }
+    [tracktype = 'grade4'] {
+      c/line-width: 2;
+      c/line-dasharray: 4,7,1,5;
+    }
+    [tracktype = 'grade5'] {
+      c/line-width: 2;
+      c/line-dasharray: 1,5;
+    }
   }
 }
 
@@ -2499,53 +2406,37 @@
       line-join: round;
     }
 
-    [highway = 'track'][tracktype = 'grade1'][zoom >= 14] {
-      line-width: 2;
-      line-color: #b37700;
-      line-opacity: 0.7;
-    }
-
-    [highway = 'track'][tracktype = 'grade2'][zoom >= 14] {
-      line-width: 1.5;
-      line-color: #a87000;
-      line-opacity: 0.8;
-      line-dasharray: 3,4;
-      line-join: round;
-      line-cap: round;
-    }
-
-    [highway = 'track'][tracktype = 'grade3'][zoom >= 14] {
-      line-width: 2;
-      line-color: #996600;
-      line-opacity: 0.7;
-      line-join: round;
-      line-cap: round;
-    }
-
-    [highway = 'track'][tracktype = 'grade4'][zoom >= 14] {
-      line-width: 2;
-      line-color: #996600;
-      line-dasharray: 4,7,1,5;
-      line-opacity: 0.8;
-      line-join: round;
-      line-cap: round;
-    }
-
-    [highway = 'track'][tracktype = 'grade5'][zoom >= 14] {
-      line-width: 2;
-      line-color: #996600;
-      line-dasharray: 1,5;
-      line-opacity: 0.8;
-      line-cap: round;
-      line-join: round;
-    }
-
     [highway = 'track'][zoom >= 14] {
       line-width: 1.5;
       line-color: #996600;
       line-dasharray: 3,4;
       line-join: round;
       line-cap: round;
+      [tracktype = 'grade1'] {
+        line-width: 2;
+        line-color: #b37700;
+        line-dasharray: 100,0; /* i.e. none */
+        line-opacity: 0.7;
+      }
+      [tracktype = 'grade2'] {
+        line-color: #a87000;
+        line-opacity: 0.8;
+      }
+      [tracktype = 'grade3'] {
+        line-width: 2;
+        line-opacity: 0.7;
+        line-dasharray: 100,0; /* strange but true */
+      }
+      [tracktype = 'grade4'] {
+        line-width: 2;
+        line-dasharray: 4,7,1,5;
+        line-opacity: 0.8;
+      }
+      [tracktype = 'grade5'] {
+        line-width: 2;
+        line-dasharray: 1,5;
+        line-opacity: 0.8;
+      }
     }
 
     ::railway {
