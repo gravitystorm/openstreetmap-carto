@@ -691,6 +691,7 @@
 
   [amenity = 'hospital'][zoom >= 16]::amenity {
     text-name: "[name]";
+    text-fill: #da0092;
     text-size: 8;
     text-dy: 10;
     text-face-name: @book-fonts;
