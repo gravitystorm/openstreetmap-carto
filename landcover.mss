@@ -236,7 +236,7 @@
 
   [natural = 'scrub']::natural {
     [zoom >= 10][zoom < 14] {
-      polygon-fill: #c6e4b4;
+      polygon-fill: #b5e3b5;
     }
     [zoom >= 14] {
       polygon-pattern-file: url('symbols/scrub.png');
