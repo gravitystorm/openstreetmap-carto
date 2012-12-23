@@ -2883,12 +2883,14 @@
 
 .cliffs {
   [natural = 'cliff'][zoom >= 13] {
+    line-width: 0;
     line-pattern-file: url('symbols/cliff.png');
     [zoom >= 15] {
       line-pattern-file: url('symbols/cliff2.png');
     }
   }
   [man_made = 'embankment'][zoom >= 15]::man_made {
+    line-width: 0;
     line-pattern-file: url('symbols/cliff.png');
   }
 }
