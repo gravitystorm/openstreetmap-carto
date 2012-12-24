@@ -4,10 +4,27 @@ A project to re-implement the standard OpenStreetMap mapnik style, in CartoCSS
 
 # Setup
 
-You need OpenStreetMap data loaded into a PostGIS database. These stylesheets currently work
-only with the osm2pgsql defaults (i.e. database name is 'gis', table names are 'planet_osm_point' etc).
+You need OpenStreetMap data loaded into a PostGIS database (see below for [dependencies](https://github.com/gravitystorm/openstreetmap-carto#dependencies)). These stylesheets currently work only with the osm2pgsql defaults (i.e. database name is 'gis', table names are 'planet_osm_point' etc).
 
-Additionally you need some shapefiles, at the following paths:
+It's probably easiest to grab an PBF of OSM data from [metro.teczno.com](http://metro.teczno.com/) or [geofabrik](http://download.geofabrik.de/). Once you've set up your PostGIS database, import with osm2pgsql:
+
+```
+osm2pgsql -d gis ~/path/to/data.osm.pbf
+```
+
+Additionally you need some shapefiles.
+
+## Scripted download
+
+To download the shapefiles you can run the following script from this directory. No further steps should be needed as the data has been processed and placed in the requisite directories.
+
+```
+sh get_data
+```
+
+## Manual download
+
+You can also download them maunally at the following paths:
 
 * `shoreline_300.shp` [download](http://tile.openstreetmap.org/shoreline_300.tar.bz2)
 * `processed_p.shp` [download](http://tile.openstreetmap.org/processed_p.tar.bz2)
@@ -15,9 +32,9 @@ Additionally you need some shapefiles, at the following paths:
 * `ne_110m_admin_0_boundary_lines_land.shp` [download](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip)
 * `ne_10m_populated_places_fixed.shp` [download](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_populated_places.zip) (and see below)
 
-Put these shapefiles at /usr/local/share/mapnik/shape-resources/world_boundaries/
+Put these shapefiles at path/to/opentreetmap-carto/data
 
-## Populated places shapefile
+### Populated places shapefile
 
 The Natural Earth 2.0 populated places shapefile contains data that triggers a bug in mapnik. As
 a workaround we run the shapefile through ogr2ogr to clean up the data.
@@ -27,6 +44,22 @@ ogr2ogr ne_10m_populated_places_fixed.shp ne_10m_populated_places.shp
 ```
 
 See https://github.com/mapnik/mapnik/issues/1605 for more details.
+
+## Dependencies
+
+* [TileMill](mapbox.com/tilemill) - This is a TileMill project you can copy (or symlink) directly into your Mapbox/project directory
+
+OR
+
+* [carto](https://github.com/mapbox/carto) >= 0.9.3 (we're using instances with cascading rules)
+* [mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 2.0.0 (we might move to 2.1 in the near term
+
+---
+
+* [osm2pgsql](http://wiki.openstreetmap.org/wiki/Osm2pgsql) to import you data into a PostGIS database
+* [PostgreSQL](http://www.postgresql.org/)
+* [PostGIS](http://postgis.refractions.net/)
+* [ogr2ogr](http://www.gdal.org/) command line GDAL utility for processing vector data. here we use it to work around a encoding bug in the Nautral Earth data.
 
 # Roadmap
 
@@ -54,11 +87,6 @@ much more suitable for further development, and/or forking for third-parties to 
 There are over [400 open requests][trac] on trac, some that have been open for years. These need
 reviewing and dividing into obvious fixes, or additional new features that need some cartographic
 judgement. The work done in v1.0 and v2.0 will make it much easier to process these.
-
-# Dependencies
-
-* carto >= 0.9.3 (we're using instances with cascading rules)
-* mapnik >= 2.0.0 (we might move to 2.1 in the near term)
 
 # Notes on conversion
 
