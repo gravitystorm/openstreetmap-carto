@@ -12,7 +12,7 @@ mkdir -p data/processed_p
 
 # world_boundaries
 echo "dowloading world_boundaries..."
-curl  -o data/world_boundaries-spherical.tgz http://tile.openstreetmap.org/world_boundaries-spherical.tgz
+curl -L -o data/world_boundaries-spherical.tgz http://tile.openstreetmap.org/world_boundaries-spherical.tgz
 echo "expanding world_boundaries..."
 tar -xzf data/world_boundaries-spherical.tgz -C data/
 
