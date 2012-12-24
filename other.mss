@@ -2881,7 +2881,7 @@
   }
 }
 
-.cliffs {
+#cliffs {
   [natural = 'cliff'][zoom >= 13] {
     line-pattern-file: url('symbols/cliff.png');
     [zoom >= 15] {
