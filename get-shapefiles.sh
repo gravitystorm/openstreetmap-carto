@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e -u
 
-# create and populate data dir  
+# create and populate data dir
 
 mkdir -p data/
 mkdir -p data/world_boundaries
