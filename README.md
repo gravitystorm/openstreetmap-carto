@@ -24,7 +24,7 @@ sh get-shapefiles.sh
 
 ## Manual download
 
-You can also download them maunally at the following paths:
+You can also download them manually at the following paths:
 
 * `shoreline_300.shp` [download](http://tile.openstreetmap.org/shoreline_300.tar.bz2)
 * `processed_p.shp` [download](http://tile.openstreetmap.org/processed_p.tar.bz2)
@@ -49,7 +49,7 @@ See https://github.com/mapnik/mapnik/issues/1605 for more details.
 
 * [TileMill](mapbox.com/tilemill) - This is a TileMill project you can copy (or symlink) directly into your Mapbox/project directory
 
-OR
+If you aren't using TileMill, you can compile the CartoCSS stylesheets into Mapnik XML using the command-line `carto` command.
 
 * [carto](https://github.com/mapbox/carto) >= 0.9.3 (we're using instances with cascading rules)
 * [mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 2.0.0 (we might move to 2.1 in the near term
