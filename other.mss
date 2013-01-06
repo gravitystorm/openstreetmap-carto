@@ -2925,36 +2925,44 @@
       a/line-dasharray: 0,12,10,152;
       a/line-color: #6c70d5;
       a/line-join: bevel;
+      a/line-clip: false;
       b/line-width: 2;
       b/line-dasharray: 0,12,9,153;
       b/line-color: #6c70d5;
       b/line-join: bevel;
+      b/line-clip: false;
       c/line-width: 3;
       c/line-dasharray: 0,18,2,154;
       c/line-color: #6c70d5;
       c/line-join: bevel;
+      c/line-clip: false;
       d/line-width: 4;
       d/line-dasharray: 0,18,1,155;
       d/line-color: #6c70d5;
       d/line-join: bevel;
+      d/line-clip: false;
     }
     [oneway = '-1'] {
       a/line-width: 1;
       a/line-dasharray: 0,12,10,152;
       a/line-color: #6c70d5;
       a/line-join: bevel;
+      a/line-clip: false;
       b/line-width: 2;
       b/line-dasharray: 0,13,9,152;
       b/line-color: #6c70d5;
       b/line-join: bevel;
+      b/line-clip: false;
       c/line-width: 3;
       c/line-dasharray: 0,14,2,158;
       c/line-color: #6c70d5;
       c/line-join: bevel;
+      c/line-clip: false;
       d/line-width: 4;
       d/line-dasharray: 0,15,1,158;
       d/line-color: #6c70d5;
       d/line-join: bevel;
+      d/line-clip: false;
     }
   }
 }
