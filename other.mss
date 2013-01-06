@@ -1209,7 +1209,7 @@
         b/line-width: 3.5;
         b/line-dasharray: 6,4;
       }
-      [zoom >= 13] {
+      [zoom >= 16] {
         line-width: 8;
         b/line-width: 7;
         b/line-dasharray: 8,6;
