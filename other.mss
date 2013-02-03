@@ -1242,18 +1242,6 @@
           b/line-width: 0;
         }
       }
-      [construction = 'cycleway'] {
-        [zoom < 14] {
-          line-width: 0;
-          b/line-width: 0;
-        }
-        line-color: white;
-        line-width: 3;
-        line-opacity: 0.4;
-        b/line-width: 1.2;
-        b/line-color: #69f;
-        b/line-dasharray: 2,6;
-      }
       b/line-width: 2;
       b/line-dasharray: 4,2;
       b/line-color: white;
@@ -1266,6 +1254,18 @@
         line-width: 8;
         b/line-width: 7;
         b/line-dasharray: 8,6;
+      }
+      [construction = 'cycleway'] {
+        [zoom < 14] {
+          line-width: 0;
+          b/line-width: 0;
+        }
+        line-color: white;
+        line-width: 3;
+        line-opacity: 0.4;
+        b/line-width: 1.2;
+        b/line-color: #69f;
+        b/line-dasharray: 2,6;
       }
     }
   }
