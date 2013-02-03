@@ -1195,6 +1195,12 @@
    * The construction rules for small roads are strange, since if construction is null its assumed that
    * it's a more major road. The line-width = 0 could be removed by playing with the query to set a construction
    * string for non-small roads.
+   *
+   * Also note that these rules are quite sensitive to re-ordering, since the instances end up swapping round
+   * (and then the dashes appear below the fills). See
+   * https://github.com/gravitystorm/openstreetmap-carto/issues/23
+   * https://github.com/mapbox/carto/issues/235
+   * https://github.com/mapbox/carto/issues/237
    */
   [highway = 'proposed'],
   [highway = 'construction'] {
