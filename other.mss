@@ -1201,19 +1201,7 @@
     [zoom >= 12] {
       line-width: 2;
       line-color: #9cc;
-      b/line-width: 2;
-      b/line-dasharray: 4,2;
-      b/line-color: white;
-      [zoom >= 13] {
-        line-width: 4;
-        b/line-width: 3.5;
-        b/line-dasharray: 6,4;
-      }
-      [zoom >= 16] {
-        line-width: 8;
-        b/line-width: 7;
-        b/line-dasharray: 8,6;
-      }
+
       [construction = 'motorway'],
       [construction = 'motorway_link'] {
         line-color: #809bc0;
@@ -1265,6 +1253,19 @@
         b/line-width: 1.2;
         b/line-color: #69f;
         b/line-dasharray: 2,6;
+      }
+      b/line-width: 2;
+      b/line-dasharray: 4,2;
+      b/line-color: white;
+      [zoom >= 13] {
+        line-width: 4;
+        b/line-width: 3.5;
+        b/line-dasharray: 6,4;
+      }
+      [zoom >= 16] {
+        line-width: 8;
+        b/line-width: 7;
+        b/line-dasharray: 8,6;
       }
     }
   }
