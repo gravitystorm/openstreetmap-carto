@@ -2850,6 +2850,7 @@
       text-name: "[name]";
       text-size: 9;
       text-fill: #000;
+      text-placement: line;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
     }
