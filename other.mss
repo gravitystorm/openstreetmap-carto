@@ -116,7 +116,7 @@
   }
 
   [highway = 'platform'],
-  [railway = 'platform']::railway {
+  [railway = 'platform'] {
     [zoom >= 16] {
       line-color: grey;
       line-width: 2;
@@ -152,7 +152,7 @@
   }
 
   [highway = 'platform'],
-  [railway = 'platform']::railway {
+  [railway = 'platform'] {
     [zoom >= 16] {
       polygon-fill: #bbbbbb;
       polygon-gamma: 0.65;
@@ -1544,7 +1544,6 @@
     }
   }
 
-  ::railway {
     [railway = 'rail'][tunnel = 'yes'][zoom >= 13],
     [railway = 'spur-siding-yard'][tunnel = 'yes'][zoom >= 13] {
       a/line-width: 3;
@@ -1688,7 +1687,6 @@
       line-width: 1.5;
       line-color: #999;
     }
-  }
 
   /* these are aeroway tags */
   [highway = 'runway'][zoom >= 11][zoom < 14] {
@@ -2093,7 +2091,6 @@
       }
     }
 
-    ::railway {
       [railway = 'subway'][zoom >= 14] {
         line-width: 5.5;
         line-color: black;
@@ -2127,7 +2124,6 @@
           line-color: black;
         }
       }
-    }
 
     /* actually aeroway */
     [highway = 'runway'][zoom >= 14] {
@@ -2205,7 +2201,6 @@
       [tracktype = 'grade1'] { line-width: 3.5; }
     }
 
-    ::railway {
       [railway = 'rail'][zoom >= 13] {
         line-width: 5;
         line-color: white;
@@ -2242,7 +2237,6 @@
           line-color: white;
         }
       }
-    }
   }
 
   ::bridges_fill {
@@ -2444,7 +2438,6 @@
       }
     }
 
-    ::railway {
       [railway = 'rail'][zoom >= 13] {
         line-width: 3;
         line-color: #999999;
@@ -2491,7 +2484,6 @@
           line-color: #666;
         }
       }
-    }
 
     /* these are aeroway tags */
     [highway = 'runway'][zoom >= 14] {
@@ -2554,7 +2546,6 @@
     }
   }
 
-  ::railway {
     [railway = 'rail'][zoom >= 6][zoom < 13] {
       line-width: 0.6;
       line-color: #aaa;
@@ -2616,7 +2607,6 @@
       b/line-cap: round;
       b/line-join: round;
     }
-  }
 }
 
 #trams {
