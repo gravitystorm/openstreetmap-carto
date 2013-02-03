@@ -234,6 +234,10 @@
     polygon-fill: #c6e4b4;
   }
 
+  [feature = 'natural_rock'][zoom >= 10] {
+    polygon-fill: #dddddd;
+  }
+
   [feature = 'natural_scrub'] {
     [zoom >= 10][zoom < 14] {
       polygon-fill: #b5e3b5;
