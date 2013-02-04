@@ -2581,7 +2581,7 @@
       }
     }
 
-    [highway = 'railway_INT-preserved-ssy'][zoom >= 12] {
+    [highway = 'INT-preserved-ssy'][zoom >= 12] {
       line-width: 1;
       line-color: #aaa;
       line-join: round;
