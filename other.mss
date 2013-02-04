@@ -2610,7 +2610,7 @@
 }
 
 #trams {
-  [highway = 'railway_tram'][zoom >= 13] {
+  [railway = 'tram'][zoom >= 13] {
     line-color: #444;
     line-width: 1;
     [zoom >= 15] {
