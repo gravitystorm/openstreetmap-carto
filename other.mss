@@ -1661,7 +1661,7 @@
 
     [highway = 'railway_disused'],
     [highway = 'railway_abandoned'],
-    [highway = 'railway_construction'] { /* and not [highway] != '' <- todo */
+    [highway = 'railway_construction'] {
       [zoom >= 13] {
         line-color: grey;
         line-width: 2;
@@ -2118,7 +2118,7 @@
 
       [highway = 'railway_disused'],
       [highway = 'railway_abandoned'],
-      [highway = 'railway_construction'] { /* and not [highway] != '' */
+      [highway = 'railway_construction'] {
         [zoom >= 13] {
           line-width: 6;
           line-color: black;
@@ -2216,7 +2216,7 @@
 
       [highway = 'railway_disused'],
       [highway = 'railway_abandoned'],
-      [highway = 'railway_construction'] { /* and not [highway] != '' */
+      [highway = 'railway_construction'] {
         [zoom >= 13] {
           line-width: 4.5;
           line-color: white;
@@ -2463,7 +2463,7 @@
 
       [highway = 'railway_disused'],
       [highway = 'railway_abandoned'],
-      [highway = 'railway_construction'] { /*  and not [highway] != '' */
+      [highway = 'railway_construction'] {
         [zoom >= 13] {
           line-width: 2;
           line-color: grey;
