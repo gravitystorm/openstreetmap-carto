@@ -704,7 +704,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,highway,railway from planet_osm_polygon\n       where highway in ('residential','unclassified','pedestrian','service','footway','track','path','platform')\n          or railway='platform'\n       order by z_order,way_area desc) as roads",
+        "table": "(select way,coalesce(highway, case when railway='platform' then 'railway_platform'::text else null end) as highway,railway from planet_osm_polygon\n       where highway in ('residential','unclassified','pedestrian','service','footway','track','path','platform')\n          or railway='platform'\n       order by z_order,way_area desc) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -749,7 +749,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,highway,railway,aeroway from planet_osm_polygon\n       where highway in ('residential','unclassified','pedestrian','service','footway','living_street','track','path','platform','services')\n          or railway='platform'\n          or aeroway in ('runway','taxiway','helipad')\n       order by z_order,way_area desc) as roads",
+        "table": "      (select way,coalesce(highway, case when railway='platform' then 'railway_platform'::text else null end) as highway,railway,aeroway from planet_osm_polygon\n       where highway in ('residential','unclassified','pedestrian','service','footway','living_street','track','path','platform','services')\n          or railway='platform'\n          or aeroway in ('runway','taxiway','helipad')\n       order by z_order,way_area desc) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -839,7 +839,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,\n       coalesce(highway,aeroway) as highway,\n       horse,bicycle,foot,construction,\n       case when tunnel in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel,\n       case when bridge in ('yes','true','1','viaduct') then 'yes'::text else 'no'::text end as bridge,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'spur-siding-yard'::text else railway end as railway,\n       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service\n       from planet_osm_line\n       where highway is not null\n          or aeroway in ('runway','taxiway')\n          or railway in ('light_rail','narrow_gauge','funicular','rail','subway','tram','spur','siding','platform','disused','abandoned','construction','miniature','turntable')\n       order by z_order) as roads",
+        "table": "      (select way,\n case when layer in ('-5', '-4', '-3', '-2', '-1', '0', '1', '2', '3', '4', '5') then (layer::int) else 0 end as layer,\n       coalesce(highway, \n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'spur-siding-yard'::text\n            when railway in ('light_rail','narrow_gauge','funicular','rail','subway','tram','spur','siding','platform','disused','abandoned','construction','miniature','turntable')\n            then ('railway_'::text || railway)\n            else null end,\n           aeroway) as highway,\n       horse,bicycle,foot,construction,railway,\n       case when tunnel in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel,\n       case when bridge in ('yes','true','1','viaduct') then 'yes'::text else 'no'::text end as bridge,\n       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service\n       from planet_osm_line\n       where highway is not null\n          or aeroway in ('runway','taxiway')\n          or railway in ('light_rail','narrow_gauge','funicular','rail','subway','tram','spur','siding','platform','disused','abandoned','construction','miniature','turntable')\n       order by layer, z_order) as roads\n",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -931,7 +931,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,highway,\n       case when tunnel in ('yes','true','1') then 'yes'::text else tunnel end as tunnel,\n       case when railway='preserved' and service in ('spur','siding','yard') then 'INT-preserved-ssy'::text else railway end as railway\n       from planet_osm_roads\n       where highway is not null\n          or (railway is not null and railway!='preserved' and (service is null or service not in ('spur','siding','yard')))\n          or railway='preserved'\n       order by z_order\n      ) as roads",
+        "table": "      (select way,coalesce(highway, case when railway in ('rail','tram','light_rail','narrow_gauge','preserved','monorail') then ('railway_'::text || railway) else null end, case when railway='preserved' and service in ('spur','siding','yard') then 'INT-preserved-ssy'::text else railway end) as highway,\n       case when tunnel in ('yes','true','1') then 'yes'::text else tunnel end as tunnel,\n       case when railway='preserved' and service in ('spur','siding','yard') then 'INT-preserved-ssy'::text else railway end as railway\n       from planet_osm_roads\n       where highway is not null\n          or (railway is not null and railway!='preserved' and (service is null or service not in ('spur','siding','yard')))\n          or railway='preserved'\n       order by z_order\n      ) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1023,7 +1023,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,coalesce(highway,aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and (layer is null or layer = '0')\n       order by z_order\n      ) as roads",
+        "table": "      (select way,coalesce(highway,\n              case when railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction') then ('railway_'::text || railway) else null end,\n              aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and (layer is null or layer = '0')\n       order by z_order\n      ) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1092,7 +1092,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,coalesce(highway,aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '1'\n       order by z_order\n      ) as roads",
+        "table": "(select way,coalesce(highway,\n              case when railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction') then ('railway_'::text || railway) else null end,\n              aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '1'\n       order by z_order\n      ) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1161,7 +1161,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,coalesce(highway,aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '2'\n       order by z_order\n      ) as roads",
+        "table": "      (select way,coalesce(highway,\n              case when railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction') then ('railway_'::text || railway) else null end,\n              aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '2'\n       order by z_order\n      ) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1230,7 +1230,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,coalesce(highway,aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '3'\n       order by z_order\n      ) as roads",
+        "table": "      (select way,coalesce(highway,\n              case when railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction') then ('railway_'::text || railway) else null end,\n              aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '3'\n       order by z_order\n      ) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1299,7 +1299,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,coalesce(highway,aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '4'\n       order by z_order\n      ) as roads",
+        "table": "      (select way,coalesce(highway,\n              case when railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction') then ('railway_'::text || railway) else null end,\n              aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '4'\n       order by z_order\n      ) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1368,7 +1368,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,coalesce(highway,aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '5'\n       order by z_order\n      ) as roads",
+        "table": "      (select way,coalesce(highway,\n              case when railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction') then ('railway_'::text || railway) else null end,\n              aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '5'\n       order by z_order\n      ) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
