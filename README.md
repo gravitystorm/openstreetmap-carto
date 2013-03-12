@@ -81,4 +81,4 @@ If you aren't using TileMill, you can compile the CartoCSS stylesheets into Mapn
 
 # Bugs ?
 
-[trac-fr]: https://trac.openstreetmap.fr/query?style%20osmfr&status=!closed&order=changetime&desc=1&max=500
+https://trac.openstreetmap.fr/query?style%20osmfr&status=!closed&order=changetime&desc=1&max=500
