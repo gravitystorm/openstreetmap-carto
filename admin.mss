@@ -67,7 +67,7 @@
       line-color: purple;
       line-width: 2;
       line-dasharray: 2,3;
-      line-opacity: 0.3;
+      line-opacity: 0.2;
     }
   }
 }

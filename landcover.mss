@@ -1,8 +1,9 @@
 #landcover {
  [feature = 'leisure_swimming_pool'][zoom >= 14] {
-    polygon-fill: @water-color;
+    polygon-fill: #9ff2fa;
     line-color: blue;
-    line-width: 0.5;
+    line-width: 0.2;
+    line-opacity: 0.5;
   }
 
   [feature = 'leisure_playground'][zoom >= 13] {
@@ -134,12 +135,16 @@
     }
   }
 
+  [feature = 'natural_wood'],
+  [feature = 'landuse_wood'],
   [feature = 'landuse_forest'] {
     [zoom >= 8][zoom < 14] {
       polygon-fill: #8dc56c;
+      [wood='coniferous'] { polygon-fill: #74b551; }
     }
     [zoom >= 14] {
       polygon-pattern-file: url('symbols/forest.png');
+      [wood='coniferous'] { polygon-pattern-file: url('symbols/fr/forest-dark.png'); }
     }
   }
 
@@ -174,6 +179,7 @@
   }
 
   [feature = 'landuse_industrial'],
+  [feature = 'landuse_harbour'],
   [feature = 'landuse_railway'] {
     [zoom >= 10] {
       polygon-fill: #dfd1d6;
@@ -211,13 +217,6 @@
     }
   }
 
-  [feature = 'natural_wood'],
-  [feature = 'landuse_wood'] {
-    [zoom >= 8] {
-      polygon-fill: #aed1a0;
-    }
-  }
-
   [feature = 'natural_desert'][zoom >= 8] {
     polygon-fill: #e3b57a;
   }
@@ -246,6 +245,7 @@
   [feature = 'amenity_university'],
   [feature = 'amenity_college'],
   [feature = 'amenity_school'],
+  [feature = 'landuse_school'],
   [feature = 'amenity_hospital'],
   [feature = 'amenity_kindergarten'] {
     [zoom >= 10] {

@@ -7,13 +7,22 @@
 }
 
 #housenumbers {
-  [zoom >= 17] {
+  [zoom = 17] {
     text-name: "[addr:housenumber]";
     text-placement: interior;
-    text-min-distance: 1;
+    text-min-distance: 2;
     text-wrap-width: 0;
     text-face-name: @book-fonts;
-    text-fill: #444;
+    text-fill: #666;
+    text-size: 7;
+  }
+  [zoom >= 18] {
+    text-name: "[addr:housenumber]";
+    text-placement: interior;
+    text-min-distance: 2;
+    text-wrap-width: 0;
+    text-face-name: @book-fonts;
+    text-fill: #666;
     text-size: 9;
   }
 }

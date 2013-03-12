@@ -1,16 +1,16 @@
 #power-line {
   [zoom >= 14] {
-    line-width: 1;
+    line-width: 0.5;
     line-color: #777;
   }
   [zoom >= 16] {
-    line-width: 1.5;
+    line-width: 1;
   }
 }
 
 #power-minorline {
   [zoom >= 16] {
-    line-width: 0.5;
+    line-width: 0.25;
     line-color: #777;
   }
 }

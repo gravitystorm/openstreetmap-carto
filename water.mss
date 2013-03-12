@@ -112,12 +112,13 @@
     [zoom >= 13] {
       line-width: 3;
       text-name: "[name]";
-      text-face-name: @book-fonts;
+      text-face-name: @oblique-fonts;
       text-placement: line;
       text-fill: #6699cc;
       text-spacing: 400;
       text-size: 9;
       text-halo-radius: 1;
+      [cemt='IV'],[cemt='V'] {text-size: 12;}
     }
     [zoom >= 14] {
       line-width: 5;

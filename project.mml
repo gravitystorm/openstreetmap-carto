@@ -1,19 +1,19 @@
 {
   "bounds": [
-    -180,
-    -85.05112877980659,
-    180,
-    85.05112877980659
+    -179,
+    -80,
+    179,
+    80
   ],
   "center": [
-    0,
-    0,
-    4
+    2.3912,
+    48.8274,
+    19
   ],
   "format": "png",
   "interactivity": false,
-  "minzoom": 0,
-  "maxzoom": 22,
+  "minzoom": 1,
+  "maxzoom": 19,
   "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
   "Stylesheet": [
     "style.mss",
@@ -46,7 +46,7 @@
       "id": "world",
       "class": "",
       "Datasource": {
-        "file": "data/shoreline_300/shoreline_300.shp",
+        "file": "/data/work/mapnik/data/shoreline_300/shoreline_300.shp",
         "type": "shape"
       },
       "srs-name": "900913",
@@ -65,7 +65,7 @@
       "id": "coast-poly",
       "class": "",
       "Datasource": {
-        "file": "data/processed_p/processed_p.shp",
+        "file": "/data/work/mapnik/data/processed_p/processed_p.shp",
         "type": "shape"
       },
       "srs-name": "900913",
@@ -84,7 +84,7 @@
       "id": "builtup",
       "class": "",
       "Datasource": {
-        "file": "data/world_boundaries/builtup_area.shp",
+        "file": "/data/work/mapnik/data/world_boundaries/builtup_area.shp",
         "type": "shape"
       },
       "srs-name": "mercator",
@@ -103,7 +103,7 @@
       "id": "necountries",
       "class": "",
       "Datasource": {
-        "file": "data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp",
+        "file": "/data/work/mapnik/data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp",
         "type": "shape"
       },
       "srs-name": "WGS84",
@@ -122,7 +122,7 @@
       "id": "nepopulated",
       "class": "",
       "Datasource": {
-        "file": "data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp",
+        "file": "/data/work/mapnik/data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp",
         "type": "shape"
       },
       "srs-name": "WGS84",
@@ -139,11 +139,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way, religion,\ncoalesce (aeroway, amenity, landuse, leisure, military, \"natural\", power, tourism, highway) as feature from (\nselect way,\n('aeroway_' || (case when aeroway in ('apron', 'aerodrome') then aeroway else null end)) as aeroway,\n('amenity_' || (case when amenity in ('parking', 'university', 'college', 'school', 'hospital', 'kindergarten', 'grave_yard') then amenity else null end)) as amenity,\n('landuse_' || (case when landuse in ('quarry', 'vineyard', 'orchard', 'cemetery', 'grave_yard', 'residential', 'garages', 'field', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farm', 'farmyard', 'recreation_ground', 'conservation', 'village_green', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'greenfield', 'construction', 'wood') then landuse else null end)) as landuse,\n('leisure_' || (case when leisure in ('swimming_pool', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'golf_course') then leisure else null end)) as leisure,\n('military_' || (case when military in ('barracks', 'danger_area') then military else null end)) as military,\n('natural_' || (case when \"natural\" in ('field','beach','desert','heath','mud','grassland','wood','sand','scrub') then \"natural\" else null end)) as \"natural\",\n('power_' || (case when power in ('station','sub_station','generator') then power else null end)) as power,\n('tourism_' || (case when  tourism in ('attraction', 'camp_site', 'caravan_site', 'picnic_site', 'zoo') then tourism else null end)) as tourism,\n('highway_' || (case when highway in ('services', 'rest_area') then highway else null end)) as highway,\ncase when religion in ('christian','jewish') then religion else 'INT-generic'::text end as religion\n       from planet_osm_polygon\n       where landuse is not null\n          or leisure is not null\n          or aeroway in ('apron','aerodrome')\n          or amenity in ('parking','university','college','school','hospital','kindergarten','grave_yard')\n          or military in ('barracks','danger_area')\n          or \"natural\" in ('field','beach','desert','heath','mud','grassland','wood','sand','scrub')\n          or power in ('station','sub_station','generator')\n          or tourism in ('attraction','camp_site','caravan_site','picnic_site','zoo')\n          or highway in ('services','rest_area')\n       order by z_order,way_area desc\n      ) as landcover\n) as features",
+        "table": "(select way, religion, wood, coalesce (aeroway, amenity, landuse, leisure, military, \"natural\", power, tourism, highway) as feature from (\nselect way,wood,\n('aeroway_' || (case when aeroway in ('apron', 'aerodrome') then aeroway else null end)) as aeroway,\n('amenity_' || (case when amenity in ('parking', 'university', 'college', 'school', 'hospital', 'kindergarten', 'grave_yard') then amenity else null end)) as amenity,\n('landuse_' || (case when landuse in ('quarry', 'vineyard', 'orchard', 'cemetery', 'grave_yard', 'residential', 'garages', 'field', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farm', 'farmyard','farmland', 'recreation_ground', 'conservation', 'village_green', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'greenfield', 'construction', 'wood', 'school', 'harbour') then landuse else null end)) as landuse,\n('leisure_' || (case when leisure in ('swimming_pool', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'golf_course') then leisure else null end)) as leisure,\n('military_' || (case when military in ('barracks', 'danger_area') then military else null end)) as military,\n('natural_' || (case when \"natural\" in ('field','beach','desert','heath','mud','grassland','wood','sand','scrub') then \"natural\" else null end)) as \"natural\",\n('power_' || (case when power in ('station','sub_station','generator') then power else null end)) as power,\n('tourism_' || (case when  tourism in ('attraction', 'camp_site', 'caravan_site', 'picnic_site', 'zoo') then tourism else null end)) as tourism,\n('highway_' || (case when highway in ('services', 'rest_area') then highway else null end)) as highway,\ncase when religion in ('christian','jewish') then religion else 'INT-generic'::text end as religion\n       from planet_osm_polygon\n       where landuse is not null\n          or leisure is not null\n          or aeroway in ('apron','aerodrome')\n          or amenity in ('parking','university','college','school','hospital','kindergarten','grave_yard')\n          or military in ('barracks','danger_area')\n          or \"natural\" in ('field','beach','desert','heath','mud','grassland','wood','sand','scrub')\n          or power in ('station','sub_station','generator')\n          or tourism in ('attraction','camp_site','caravan_site','picnic_site','zoo')\n          or highway in ('services','rest_area')\n       order by z_order,way_area desc\n      ) as landcover\n) as features",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "landcover",
       "class": "",
@@ -166,7 +170,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "landcover-line",
       "class": "",
@@ -188,7 +195,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "sports-grounds",
       "class": "",
@@ -211,7 +221,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "water-lines-casing",
       "class": "",
@@ -234,7 +247,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "water-lines-low-zoom",
       "class": "",
@@ -252,11 +268,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,\"natural\",waterway,landuse,name\n      from planet_osm_polygon\n      where (waterway in ('dock','mill_pond','riverbank','canal')\n         or landuse in ('reservoir','water','basin')\n         or \"natural\" in ('lake','water','land','glacier','mud','bay'))\n         and building is null\n      order by z_order,way_area desc\n      ) as water_areas",
+        "table": "      (select way,\"natural\",waterway,landuse,coalesce(tags->'name:fr',name) as name\n      from planet_osm_polygon\n      where (waterway in ('dock','mill_pond','riverbank','canal')\n         or landuse in ('reservoir','water','basin')\n         or \"natural\" in ('lake','water','land','glacier','mud','bay'))\n         and building is null\n      order by z_order,way_area desc\n      ) as water_areas",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "water-areas",
       "class": "",
@@ -278,7 +297,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "water-areas-overlay",
       "class": "",
@@ -296,11 +318,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,name,way_area\n      from planet_osm_polygon\n      where \"natural\"='glacier' and building is null\n      order by way_area desc\n      ) as glaciers",
+        "table": "      (select way,coalesce(tags->'name:fr',name) as name,way_area\n      from planet_osm_polygon\n      where \"natural\"='glacier' and building is null\n      order by way_area desc\n      ) as glaciers",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "glaciers-text",
       "class": "",
@@ -319,11 +344,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,waterway,disused,lock,name,\n      case when tunnel in ('yes','true','1') then 'yes'::text else tunnel end as tunnel\n      from planet_osm_line\n      where waterway in ('weir','river','canal','derelict_canal','stream','drain','ditch','wadi')\n        and (bridge is null or bridge not in ('yes','true','1','aqueduct'))\n      order by z_order\n      ) as water_lines",
+        "table": "      (select way,waterway,disused,lock,coalesce(tags->'name:fr',name) as name,\n      case when tunnel in ('yes','true','1') then 'yes'::text else tunnel end as tunnel, tags->'CEMT' as cemt\n      from planet_osm_line\n      where waterway in ('weir','river','canal','derelict_canal','stream','drain','ditch','wadi')\n        and (bridge is null or bridge not in ('yes','true','1','aqueduct'))\n      order by z_order\n      ) as water_lines",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "water-lines",
       "class": "",
@@ -342,11 +371,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,name from planet_osm_line where waterway='dam') as dam",
+        "table": "(select way,coalesce(tags->'name:fr',name) as name from planet_osm_line where waterway='dam') as dam",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "dam",
       "class": "",
@@ -368,7 +400,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "marinas-area",
       "class": "",
@@ -390,7 +425,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "piers-area",
       "class": "",
@@ -413,7 +451,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "piers",
       "class": "",
@@ -436,7 +477,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "locks",
       "class": "",
@@ -455,11 +499,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,highway from planet_osm_line where highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified') and tunnel in ('yes','true','1') order by z_order) as roads",
+        "table": "(select way, highway, junction from planet_osm_line where highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified') and tunnel in ('yes','true','1') order by z_order) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "tunnels",
       "class": "",
@@ -482,7 +529,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "citywalls",
       "class": "",
@@ -505,7 +555,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "castlewalls",
       "class": "castlewalls",
@@ -527,7 +580,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "castlewalls-poly",
       "class": "castlewalls",
@@ -549,7 +605,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "landuse-overlay",
       "class": "",
@@ -572,7 +631,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "turning-circle-casing",
       "class": "",
@@ -591,11 +653,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,highway,horse,foot,bicycle from planet_osm_line where highway in ('bridleway','footway','cycleway','path') and tunnel in ('yes','true','1') order by z_order) as roads",
+        "table": "(select way,highway,horse,foot,bicycle,junction from planet_osm_line where highway in ('bridleway','footway','cycleway','path') and tunnel in ('yes','true','1') order by z_order) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "footbikecycle-tunnels",
       "class": "",
@@ -618,7 +683,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "tracks-tunnels",
       "class": "",
@@ -637,11 +705,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way, barrier from planet_osm_line where barrier is not null) as roads",
+        "table": "(select way, barrier, junction from planet_osm_line where barrier is not null) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "line-barriers",
       "class": "barriers",
@@ -660,11 +731,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,\"natural\",man_made from planet_osm_line where \"natural\" = 'cliff' or man_made = 'embankment') as roads",
+        "table": "(select way,\"natural\",man_made, junction from planet_osm_line where \"natural\" = 'cliff' or man_made = 'embankment') as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "cliffs",
       "class": "",
@@ -686,7 +760,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "polygon-barriers",
       "class": "barriers",
@@ -704,11 +781,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,highway,railway from planet_osm_polygon\n       where highway in ('residential','unclassified','pedestrian','service','footway','track','path','platform')\n          or railway='platform'\n       order by z_order,way_area desc) as roads",
+        "table": "(select way,highway,railway,tunnel,junction from planet_osm_polygon\n       where highway in ('residential','unclassified','pedestrian','service','footway','track','path','platform')\n          or railway='platform'\n       order by z_order,way_area desc) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "highway-area-casing",
       "class": "",
@@ -727,11 +808,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,highway,\n       case when tunnel in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel,\n       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service\n       from planet_osm_line\n       where highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified','road','service','pedestrian','raceway','living_street')\n       order by z_order) as roads",
+        "table": "(select way,highway,junction, \n       case when tunnel in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel,\n       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service\n , cast(regexp_replace(tags->'width','[^0-9]','','g') as integer) as width, cast(regexp_replace(tags->'lanes','[^0-9]','','g') as integer) as lanes , !pixel_width! as pixels from planet_osm_line\n       where highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified','road','service','pedestrian','raceway','living_street')\n       order by z_order) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "minor-roads-casing",
       "class": "",
@@ -749,11 +833,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,highway,railway,aeroway from planet_osm_polygon\n       where highway in ('residential','unclassified','pedestrian','service','footway','living_street','track','path','platform','services')\n          or railway='platform'\n          or aeroway in ('runway','taxiway','helipad')\n       order by z_order,way_area desc) as roads",
+        "table": "      (select way,highway,junction,railway,aeroway,tunnel /* ,case when highway in ('motorway','motorway_link') then '1' when highway in ('trunk','trunk_link') then '2' when highway in ('primary','primary_link') then '3' when highway in ('secondary','secondary_link') then '4' when highway in ('tertiary','tertiary_link') then '5' when highway in ('residential','unclassified') then '6' else '7' end as prio */ from planet_osm_polygon\n       where highway in ('residential','unclassified','pedestrian','service','footway','living_street','track','path','platform','services')\n          or railway='platform'\n          or aeroway in ('runway','taxiway','helipad')\n       order by z_order, way_area desc) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "highway-area-fill",
       "class": "",
@@ -771,11 +859,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,building,railway,amenity from planet_osm_polygon\n       where railway='station'\n          or building in ('station','supermarket')\n          or amenity='place_of_worship'\n       order by z_order,way_area desc) as buildings",
+        "table": "      (select way,building,railway,amenity,shop from planet_osm_polygon\n       where railway='station'\n          or building in ('station','supermarket')\n          or amenity in ('place_of_worship', 'public_building','townhall','court_house','police')\nor shop in ('mall','department_store')\n       order by z_order,way_area desc) as buildings",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "buildings-lz",
       "class": "",
@@ -793,11 +885,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,aeroway,\n        case\n         when building in ('residential','house','garage','garages','detached','terrace','apartments') then 'INT-light'::text\n         else building\n        end as building\n       from planet_osm_polygon\n       where (building is not null\n         and building not in ('no','station','supermarket','planned')\n         and (railway is null or railway != 'station')\n         and (amenity is null or amenity != 'place_of_worship'))\n          or aeroway = 'terminal'\n       order by z_order,way_area desc) as buildings",
+        "table": "      (select way,aeroway,amenity,\n        case\n         when building in ('residential','house','garage','garages','detached','terrace','apartments') then 'INT-light'::text\n         else building\n        end as building\n       from planet_osm_polygon\n       where (building is not null\n         and building not in ('no','station','supermarket','planned')\n         and (railway is null or railway != 'station')\n         and (amenity is null or amenity not in ('place_of_worship', 'public_building','townhall','court_house','police')))\n          or aeroway = 'terminal'\n       order by z_order,way_area desc) as buildings",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "buildings",
       "class": "",
@@ -820,7 +916,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "tracks-notunnel-nobridge",
       "class": "",
@@ -839,11 +938,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,\n       coalesce(highway,aeroway) as highway,\n       horse,bicycle,foot,construction,\n       case when tunnel in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel,\n       case when bridge in ('yes','true','1','viaduct') then 'yes'::text else 'no'::text end as bridge,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'spur-siding-yard'::text else railway end as railway,\n       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service\n       from planet_osm_line\n       where highway is not null\n          or aeroway in ('runway','taxiway')\n          or railway in ('light_rail','narrow_gauge','funicular','rail','subway','tram','spur','siding','platform','disused','abandoned','construction','miniature','turntable')\n       order by z_order) as roads",
+        "table": "      (select way,junction,\n       coalesce(highway,aeroway) as highway,\n       horse,bicycle,foot,construction,\n       case when tunnel in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel,\n       case when bridge in ('yes','true','1','viaduct') then 'yes'::text else 'no'::text end as bridge,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'spur-siding-yard'::text else railway end as railway,\n       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service\n   , cast(regexp_replace(tags->'width','[^0-9]','','g') as integer)*13 as width, cast(regexp_replace(tags->'lanes','[^0-9]','','g') as integer) as lanes ,  !pixel_width! as pixels    from planet_osm_line\n       where highway is not null\n          or aeroway in ('runway','taxiway')\n          or railway in ('light_rail','narrow_gauge','funicular','rail','subway','tram','spur','siding','platform','disused','abandoned','construction','miniature','turntable')\n       order by z_order) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "minor-roads-fill",
       "class": "",
@@ -866,7 +968,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "turning-circle-fill",
       "class": "",
@@ -889,7 +994,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "ferry-routes",
       "class": "",
@@ -912,7 +1020,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "aerialways",
       "class": "",
@@ -931,11 +1042,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,highway,\n       case when tunnel in ('yes','true','1') then 'yes'::text else tunnel end as tunnel,\n       case when railway='preserved' and service in ('spur','siding','yard') then 'INT-preserved-ssy'::text else railway end as railway\n       from planet_osm_roads\n       where highway is not null\n          or (railway is not null and railway!='preserved' and (service is null or service not in ('spur','siding','yard')))\n          or railway='preserved'\n       order by z_order\n      ) as roads",
+        "table": "      (select way,highway,junction,\n       case when tunnel in ('yes','true','1') then 'yes'::text else tunnel end as tunnel,\n       case when railway='preserved' and service in ('spur','siding','yard') then 'INT-preserved-ssy'::text else railway end as railway\n       from planet_osm_roads\n       where highway is not null\n          or (railway is not null and railway!='preserved' and (service is null or service not in ('spur','siding','yard')))\n          or railway='preserved'\n       order by z_order\n      ) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "roads",
       "class": "",
@@ -954,11 +1068,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,name from planet_osm_line where waterway='canal' and bridge in ('yes','true','1','aqueduct') order by z_order) as water",
+        "table": "(select way,coalesce(tags->'name:fr',name) as name from planet_osm_line where waterway='canal' and bridge in ('yes','true','1','aqueduct') order by z_order) as water",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "waterway-bridges",
       "class": "",
@@ -981,7 +1098,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "access-pre-bridges",
       "class": "access",
@@ -1000,11 +1120,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,\n       case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway\n       from planet_osm_line\n       where oneway is not null\n         and (highway is not null or railway is not null or waterway is not null)\n         and (bridge is null or bridge not in ('yes','true','1','viaduct'))\n      ) as directions",
+        "table": "(select way,tunnel,\n       case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway\n       from planet_osm_line\n       where oneway is not null\n         and (highway is not null or railway is not null or waterway is not null)\n         and (bridge is null or bridge not in ('yes','true','1','viaduct'))\n      ) as directions",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "direction-pre-bridges",
       "class": "directions",
@@ -1023,11 +1147,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,coalesce(highway,aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and (layer is null or layer = '0')\n       order by z_order\n      ) as roads",
+        "table": "      (select way,junction,coalesce(highway,aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and (layer is null or layer = '0')\n       order by z_order\n      ) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "bridges-layer0",
       "class": "bridges",
@@ -1050,7 +1177,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "bridges-access0",
       "class": "access",
@@ -1069,11 +1199,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,\n       case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway\n       from planet_osm_line\n       where oneway is not null\n         and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and (layer is null or layer in ('-5','-4','-3','-2','-1','0'))\n      ) as directions",
+        "table": "      (select way,tunnel,\n       case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway\n       from planet_osm_line\n       where oneway is not null\n         and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and (layer is null or layer in ('-5','-4','-3','-2','-1','0'))\n      ) as directions0",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "bridges-directions0",
       "class": "directions",
@@ -1092,11 +1226,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,coalesce(highway,aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '1'\n       order by z_order\n      ) as roads",
+        "table": "(select way,junction,coalesce(highway,aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '1'\n       order by z_order\n      ) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "bridges-layer1",
       "class": "bridges",
@@ -1119,7 +1256,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "bridges-access1",
       "class": "access",
@@ -1138,11 +1278,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,\n       case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway\n       from planet_osm_line\n       where oneway is not null\n         and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '1'\n      ) as directions",
+        "table": "      (select way,tunnel,\n       case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway\n       from planet_osm_line\n       where oneway is not null\n         and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '1'\n      ) as directions1",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "bridges-directions1",
       "class": "directions",
@@ -1161,11 +1305,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,coalesce(highway,aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '2'\n       order by z_order\n      ) as roads",
+        "table": "      (select way,junction,coalesce(highway,aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '2'\n       order by z_order\n      ) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "bridges-layer2",
       "class": "bridges",
@@ -1188,7 +1335,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "bridges-access2",
       "class": "access",
@@ -1207,11 +1357,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,\n       case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway\n       from planet_osm_line\n       where oneway is not null\n         and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '2'\n      ) as directions",
+        "table": "      (select way,tunnel,\n       case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway\n       from planet_osm_line\n       where oneway is not null\n         and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '2'\n      ) as directions2",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "bridges-directions2",
       "class": "directions",
@@ -1230,11 +1384,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,coalesce(highway,aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '3'\n       order by z_order\n      ) as roads",
+        "table": "      (select way,junction,coalesce(highway,aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '3'\n       order by z_order\n      ) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "bridges-layer3",
       "class": "bridges",
@@ -1257,7 +1414,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "bridges-access3",
       "class": "access",
@@ -1276,11 +1436,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,\n       case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway\n       from planet_osm_line\n       where oneway is not null\n         and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '3'\n      ) as directions",
+        "table": "      (select way,tunnel,\n       case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway\n       from planet_osm_line\n       where oneway is not null\n         and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '3'\n      ) as directions3",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "bridges-directions3",
       "class": "directions",
@@ -1299,11 +1463,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,coalesce(highway,aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '4'\n       order by z_order\n      ) as roads",
+        "table": "      (select way,junction,coalesce(highway,aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '4'\n       order by z_order\n      ) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "bridges-layer4",
       "class": "bridges",
@@ -1326,7 +1493,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "bridges-access4",
       "class": "access",
@@ -1345,11 +1515,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "     (select way,\n       case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway\n       from planet_osm_line\n       where oneway is not null\n         and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '4'\n      ) as directions",
+        "table": "     (select way,tunnel,\n       case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway\n       from planet_osm_line\n       where oneway is not null\n         and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '4'\n      ) as directions4",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "bridges-directions4",
       "class": "directions",
@@ -1368,11 +1542,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,coalesce(highway,aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '5'\n       order by z_order\n      ) as roads",
+        "table": "      (select way,junction,coalesce(highway,aeroway) as highway,horse,bicycle,foot,tracktype,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'INT-spur-siding-yard'::text else railway end as railway\n       from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '5'\n       order by z_order\n      ) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "bridges-layer5",
       "class": "bridges",
@@ -1395,7 +1572,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "bridges-access5",
       "class": "access",
@@ -1414,11 +1594,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,\n       case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway\n       from planet_osm_line\n       where oneway is not null\n         and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '5'\n      ) as directions",
+        "table": "      (select way, tunnel,\n       case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway\n       from planet_osm_line\n       where oneway is not null\n         and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '5'\n      ) as directions5",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "bridges-directions5",
       "class": "directions",
@@ -1426,6 +1610,33 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
       "name": "bridges-directions5"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        -179.99999979528076,
+        -85.051,
+        179.99378812475413,
+        85.051
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select osm_id, ST_GeometryN(st_union(way),1) as way, max(angle)-min(angle) as angle_diff, avg(angle) as angle from (select p.osm_id, p.way as way, cast(90+degrees(ST_Azimuth(st_line_interpolate_point(ST_Intersection(st_buffer(p.way,0.1), h.way),0),st_line_interpolate_point(ST_Intersection(st_buffer(p.way,0.1), h.way),1))) as integer) % 180 as angle from planet_osm_point p join planet_osm_line h on (st_intersects(p.way,h.way) and h.highway is not null and h.highway not in ('footway','cycleway','path','pedestrian','steps','service')) where (p.highway='crossing' or p.tags->'crossing' in ('traffic_signals','uncontrolled')) and p.way && !bbox!) as crossing group by osm_id ) as highway_crossings",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "-20037508.32,-20061906.38,20036816.84,20061906.38",
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
+      },
+      "id": "highway_crossings",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "highway_crossings"
     },
     {
       "geometry": "linestring",
@@ -1441,7 +1652,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "trams",
       "class": "",
@@ -1464,7 +1678,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "guideways",
       "class": "",
@@ -1487,7 +1704,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "admin-01234",
       "class": "",
@@ -1510,7 +1730,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "admin-5678",
       "class": "",
@@ -1533,7 +1756,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "admin-other",
       "class": "",
@@ -1552,11 +1778,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,place,name,ref\n       from planet_osm_point\n       where place in ('country','state')\n      ) as placenames",
+        "table": "(select way,place,coalesce(tags->'short_name:fr',tags->'name:fr',tags->'short_name',name) as name, osm_id, cast(regexp_replace(population,'[^0-9]','','g') as integer) as pop, ref,0 as way_area from planet_osm_point where place  in ('country','state') order by place, pop desc ) as placenames",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "placenames-large",
       "class": "country state",
@@ -1575,11 +1805,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,place,name,ref\n       from planet_osm_point\n       where place in ('city','metropolis','town') and capital='yes'\n      ) as placenames",
+        "table": "(select way,place,coalesce(tags->'name:fr',name) as name,ref\n       from planet_osm_point\n       where place in ('city','metropolis','town') and capital in ('yes','2')\n      ) as placenames",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "placenames-capital",
       "class": "",
@@ -1598,11 +1832,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,place,name\n      from planet_osm_point\n      where place in ('city','metropolis','town','large_town','small_town')\n        and (capital is null or capital != 'yes')\n      ) as placenames",
+        "table": "(select way,place,coalesce(tags->'name:fr',name) as name, cast(regexp_replace(population,'[^0-9]','','g') as integer) as pop \n      from planet_osm_point\n      where place in ('city','metropolis','town','large_town','small_town')\n        and (capital is null or capital not in ('yes','2'))\n  order by pop desc    ) as placenames",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "placenames-medium",
       "class": "",
@@ -1621,11 +1859,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,place,name\n      from planet_osm_point\n      where place in ('suburb','village','large_village','hamlet','locality','isolated_dwelling','farm')\n      ) as placenames",
+        "table": "(select way,place,coalesce(tags->'name:fr',name) as name\n      from planet_osm_point\n      where place in ('suburb','village','large_village','hamlet','locality','isolated_dwelling','farm')\n      ) as placenames",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "placenames-small",
       "class": "",
@@ -1635,7 +1877,6 @@
       "name": "placenames-small"
     },
     {
-      "geometry": "point",
       "extent": [
         -179.99999692067183,
         -84.96651228427099,
@@ -1644,33 +1885,18 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,name,railway,aerialway,disused\n      from planet_osm_point\n      where railway in ('station','halt','tram_stop','subway_entrance')\n         or aerialway='station'\n      ) as stations",
+        "table": "      (select way,coalesce(tags->'name:fr',name) as name,railway,aerialway,disused,highway, amenity, tags->'type:RATP' as type_ratp, operator, '' as l_operator, '' as l_type, '' as l_ref1, tags->'network' as network, case when railway='station' then 2  when railway='halt' then 1  else 0 end as prio, coalesce(tags->'usage','') as usage \n      from planet_osm_polygon\n      where railway in ('station','halt','tram_stop')\n         or aerialway='station'\n     order by prio desc ) as stations",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
-      },
-      "id": "stations",
-      "class": "stations",
-      "srs-name": "900913",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "stations"
-    },
-    {
-      "extent": [
-        -179.99999692067183,
-        -84.96651228427099,
-        179.99999692067183,
-        84.96651228427098
-      ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "      (select way,name,railway,aerialway,disused\n      from planet_osm_polygon\n      where railway in ('station','halt','tram_stop')\n         or aerialway='station'\n      ) as stations",
-        "extent": "-20037508,-19929239,20037508,19929239",
-        "key_field": "",
-        "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto",
+        "id": "stations-poly",
+        "project": "osmfr",
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
       },
       "id": "stations-poly",
       "class": "stations",
@@ -1689,11 +1915,41 @@
       ],
       "Datasource": {
         "type": "postgis",
+        "table": " (select s.way as way,coalesce(s.tags->'name:fr',s.name) as name,s.railway as railway,s.aerialway as aerialway,s.disused as disused ,s.highway as highway, s.amenity as amenity, s.tags->'type:RATP' as type_ratp,  s.operator as operator, l.operator as l_operator , l.route as l_type, substring(l.ref,1,1) as l_ref1, s.tags->'network' as network, coalesce(s.tags->'type:RATP', case when s.railway='station' then '5'  when s.railway='halt' then '4' when s.railway='tram_stop' then '3' when s.amenity='bus_station' then '2' when s.amenity='bus_stop' then '1' else '0' end) as prio, coalesce(s.tags->'usage','') as usage \n      from planet_osm_point s LEFT JOIN planet_osm_rels r ON (r.parts @> ARRAY[s.osm_id] AND r.members @> ARRAY[concat('n',s.osm_id)]) LEFT JOIN planet_osm_line l ON (l.osm_id=-r.id AND l.route is not null) \n      where s.way && !bbox! and (s.railway in ('station','halt','tram_stop','subway_entrance')\n         or s.aerialway='station' \nor s.highway = 'bus_stop'\nor s.amenity='bus_station')\norder by prio desc\n     ) as stations",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
+      },
+      "id": "stations",
+      "class": "stations",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "stations"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
         "table": "(select *\n      from planet_osm_point\n      where aeroway in ('airport','aerodrome','helipad')\n         or barrier in ('bollard','gate','lift_gate','block')\n         or highway in ('mini_roundabout','gate')\n         or man_made in ('lighthouse','power_wind','windmill','mast')\n         or (power='generator' and (\"generator:source\"='wind' or power_source='wind'))\n         or \"natural\" in ('peak','volcano','spring','tree','cave_entrance')\n         or railway='level_crossing'\n      ) as symbols",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "amenity-symbols",
       "class": "symbols",
@@ -1715,7 +1971,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "amenity-symbols-poly",
       "class": "symbols",
@@ -1723,6 +1982,32 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
       "name": "amenity-symbols-poly"
+    },
+    {
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way,amenity,shop,tourism,highway,man_made,access,religion,waterway,lock,historic,leisure,operator, tags->'ref:FR:LaPoste' as ref_laposte, tags->'emergency' as emergency, substring('******',1,cast(concat('0',regexp_replace(tags->'stars','[^0-9]','','g')) as integer)) as stars,\ncase when amenity='townhall' then 2  when amenity='post_office' then 1  else 0 end as prio\n      from planet_osm_polygon\n      where amenity is not null\n         or shop is not null\n         or tourism in ('alpine_hut','camp_site','caravan_site','guest_house','hostel','hotel','motel','museum','viewpoint','bed_and_breakfast','information','chalet')\n         or highway in ('bus_stop','traffic_signals')\n         or man_made in ('mast','water_tower')\n         or historic in ('memorial','archaeological_site','castle')\n         or leisure='playground'\n      order by prio desc ) as points",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
+      },
+      "id": "amenity-points-poly",
+      "class": "points",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "amenity-points-poly"
     },
     {
       "geometry": "point",
@@ -1734,11 +2019,18 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,amenity,shop,tourism,highway,man_made,access,religion,waterway,lock,historic,leisure\n      from planet_osm_point\n      where amenity is not null\n         or shop is not null\n         or tourism in ('alpine_hut','camp_site','caravan_site','guest_house','hostel','hotel','motel','museum','viewpoint','bed_and_breakfast','information','chalet')\n         or highway in ('bus_stop','traffic_signals','ford')\n         or man_made in ('mast','water_tower')\n         or historic in ('memorial','archaeological_site')\n         or waterway='lock'\n         or lock='yes'\n         or leisure in ('playground','slipway')\n      ) as points",
+        "table": "(select way,amenity,shop,tourism,highway,man_made,access,religion,waterway,lock,historic,leisure,operator, tags->'ref:FR:LaPoste' as ref_laposte, tags->'emergency' as emergency, substring('******',1,cast(concat('0',regexp_replace(tags->'stars','[^0-9]','','g')) as integer)) as stars,\ncase when amenity='townhall' then 2  when amenity='post_office' then 1  else 0 end as prio\n      from planet_osm_point\n      where (amenity is not null and amenity != 'bus_station')\n         or shop is not null\n         or tourism in ('alpine_hut','camp_site','caravan_site','guest_house','hostel','hotel','motel','museum','viewpoint','bed_and_breakfast','information','chalet')\n         or highway in ('traffic_signals','ford')\n         or man_made in ('mast','water_tower')\n         or historic in ('memorial','archaeological_site','castle')\n         or waterway='lock'\n         or lock='yes'\n         or leisure in ('playground','slipway')  order by prio desc, tags->'stars' desc\n      ) as points",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto",
+        "id": "amenity-points",
+        "project": "osmfr",
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
       },
       "id": "amenity-points",
       "class": "points",
@@ -1746,28 +2038,6 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
       "name": "amenity-points"
-    },
-    {
-      "extent": [
-        -179.99999692067183,
-        -84.96651228427099,
-        179.99999692067183,
-        84.96651228427098
-      ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "(select way,amenity,shop,tourism,highway,man_made,access,religion,waterway,lock,historic,leisure\n      from planet_osm_polygon\n      where amenity is not null\n         or shop is not null\n         or tourism in ('alpine_hut','camp_site','caravan_site','guest_house','hostel','hotel','motel','museum','viewpoint','bed_and_breakfast','information','chalet')\n         or highway in ('bus_stop','traffic_signals')\n         or man_made in ('mast','water_tower')\n         or historic in ('memorial','archaeological_site')\n         or leisure='playground'\n      ) as points",
-        "extent": "-20037508,-19929239,20037508,19929239",
-        "key_field": "",
-        "geometry_field": "way",
-        "dbname": "gis"
-      },
-      "id": "amenity-points-poly",
-      "class": "points",
-      "srs-name": "900913",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "amenity-points-poly"
     },
     {
       "geometry": "linestring",
@@ -1783,7 +2053,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "power-line",
       "class": "",
@@ -1806,7 +2079,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "power-minorline",
       "class": "",
@@ -1829,7 +2105,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "power-towers",
       "class": "",
@@ -1852,7 +2131,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "power-poles",
       "class": "",
@@ -1871,11 +2153,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,highway,ref,char_length(ref) as length\n       from planet_osm_roads\n       where highway in ('motorway','trunk','primary','secondary')\n         and ref is not null\n         and char_length(ref) between 1 and 8\n      ) as roads",
+        "table": "      (select way,junction,highway,ref,char_length(ref) as length\n       from planet_osm_roads\n       where highway in ('motorway','trunk','primary','secondary')\n         and ref is not null\n         and char_length(ref) between 1 and 8\n      ) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "roads-text-ref-low-zoom",
       "class": "",
@@ -1894,11 +2179,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "     (select way,ref,name\n      from planet_osm_point\n      where highway='motorway_junction'\n     ) as junctions",
+        "table": "     (select way,ref,coalesce(tags->'name:fr',name) as name\n      from planet_osm_point\n      where highway='motorway_junction'\n     ) as junctions",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "highway-junctions",
       "class": "",
@@ -1917,11 +2206,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,coalesce(highway,aeroway) as highway,ref,char_length(ref) as length,\n       case when bridge in ('yes','true','1') then 'yes'::text else 'no'::text end as bridge\n       from planet_osm_line\n       where (highway is not null or aeroway is not null)\n         and ref is not null\n         and char_length(ref) between 1 and 8\n      ) as roads",
+        "table": "      (select way,junction,coalesce(highway,aeroway) as highway,ref,char_length(ref) as length,\n       case when bridge in ('yes','true','1') then 'yes'::text else 'no'::text end as bridge\n       from planet_osm_line\n       where (highway is not null or aeroway is not null)\n         and ref is not null\nand (position('GR' in ref)!=1 AND position('G.R' in ref) !=1 AND position('G R ' in ref) !=1)\n         and char_length(ref) between 1 and 8\nand tunnel is null\n      ) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "roads-text-ref",
       "class": "",
@@ -1940,11 +2233,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,highway,name\n       from planet_osm_line\n       where waterway IS NULL\n         and leisure IS NULL\n         and landuse IS NULL\n         and name is not null\n      ) as roads",
+        "table": "      (select way,osm_id,highway,coalesce(tags->'name:fr',name) as name, coalesce(tags->'short_name:fr',tags->'short_name') as short_name, way_area,st_length(way) as way_len, admin_level,boundary, \"ref:INSEE\" as insee, coalesce(highway, railway, aeroway,route,boundary,'') as way_type, railway,tunnel, junction, regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(coalesce(tags->'name:fr',name),'Avenue ','Av. '),'Boulevard ','Bd. '),'Passage ','Pass. '),'Place ','Pl. '),'Promenade ','Prom. '),'Impasse ','Imp. '),'Centre Commercial ','CCial. '),'Immeuble ','Imm. '),'Lotissement ','Lot. '),'Résidence ','Rés. '),'Square ','Sq. '),'Zone Industrielle ','ZI. '),'Adjudant ','Adj. '),'Agricole ','Agric. '),'Arrondissement','Arrond.'),'Aspirant ','Asp. '),'Bâtiment ','Bat. '),'Colonel ','Cᵒˡ '),'Commandant ','Cᵈᵗ '),'Commercial ','Cial. '),'Coopérative ','Coop. '),'Division ','Div. '),'Docteur ','Dr. '),'Etablissement ','Ets. '),'Général ','Gᵃˡ '),'Institut ','Inst. '),'Laboratoire ','Labo. '),'Lieutenant ','Lᵗ '),'Maréchal ','Mᵃˡ '),'Ministère ','Min. '),'Monseigneur ','Mgr. '),'Municipal ','Mun. '),'Observatoire ','Obs. '),'Périphérique ','Périph. '),'Préfecture ','Préf. '),'Président ','Pdt. '),'Régiment ','Rᵍᵗ '),'Régional ','Rég. '),'Régionale ','Rég. '),'Saint-','St-'),'Sainte-','Ste-'),'Sergent ','Sᵍᵗ '),'Université ','Univ. '),'Communauté d.[Aa]gglomération','Comm. d''agglo. '),'Communauté [Uu]rbaine ','Comm. urb. '),'Communauté de [Cc]ommunes ','Comm. comm. '),'Syndicat d.[Aa]gglomération ','Synd. d''agglo. '),'^Chemin ','Ch. ') as nom \n       from planet_osm_line\n       where waterway IS NULL\n         and leisure IS NULL\n         and landuse IS NULL\n         and name is not null\nand NOT tags ? 'land_area' \nand (position('GR' in name)!=1 AND position('G.R' in name) !=1 AND position('G R ' in name) !=1)\nand (boundary is null or boundary not in ('political','election','religion','religious_administration','local_authority','protected_area'))\n\n      ) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "roads-text-name",
       "class": "",
@@ -1954,7 +2251,6 @@
       "name": "roads-text-name"
     },
     {
-      "geometry": "point",
       "extent": [
         -179.99999692067183,
         -84.96651228427099,
@@ -1963,40 +2259,49 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,amenity,shop,access,leisure,landuse,man_made,\"natural\",place,tourism,ele,name,ref,military,aeroway,waterway,historic,'yes'::text as point\n       from planet_osm_point\n       where amenity is not null\n          or shop in ('supermarket','bakery','clothes','fashion','convenience','doityourself','hairdresser','department_store','butcher','car','car_repair','bicycle','florist')\n          or leisure is not null\n          or landuse is not null\n          or tourism is not null\n          or \"natural\" is not null\n          or man_made in ('lighthouse','windmill')\n          or place='island'\n          or military='danger_area'\n          or aeroway='gate'\n          or waterway='lock'\n          or historic in ('memorial','archaeological_site')\n      ) as text",
+        "table": "(select way,osm_id, coalesce(tags->'name:fr',name) as name, regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(coalesce(tags->'short_name:fr',tags->'short_name',tags->'alt_name',tags->'name:fr',name),'Avenue ','Av. '),'Boulevard ','Bd. '),'Passage ','Pass. '),'Place ','Pl. '),'Promenade ','Prom. '),'Impasse ','Imp. '),'Centre Commercial ','CCial. '),'Immeuble ','Imm. '),'Lotissement ','Lot. '),'Résidence ','Rés. '),'Square ','Sq. '),'Zone Industrielle ','ZI. '),'Adjudant ','Adj. '),'Agricole ','Agric. '),'Arrondissement','Arrond.'),'Aspirant ','Asp. '),'Bâtiment ','Bat. '),'Colonel ','Col. '),'Commandant ','Cdt. '),'Commercial ','Cial. '),'Coopérative ','Coop. '),'Division ','Div. '),'Docteur ','Dr. '),'Etablissement ','Ets. '),'Général ','Gal. '),'Institut ','Inst. '),'Faculté ','Fac. '),'Laboratoire ','Labo. '),'Lieutenant ','Lt. '),'Maréchal ','Mal. '),'Ministère ','Min. '),'Monseigneur ','Mgr. '),'Municipal ','Mun. '),'Observatoire ','Obs. '),'Périphérique ','Périph. '),'Préfecture ','Préf. '),'Président ','Pdt. '),'Régiment ','Rgt. '),'Régional ','Rég. '),'Régionale ','Rég. '),'Saint-','St-'),'Sainte-','Ste-'),'Sergent ','Sgt. '),'Université ','Univ. '),'Communauté d.[Aa]gglomération','Comm. d''agglo. '),'Communauté [Uu]rbaine ','Comm. urb. '),'Communauté de [Cc]ommunes ','Comm. comm. '),'Syndicat d.[Aa]gglomération ','Synd. d''agglo. '),'^Chemin ','Ch. '),'^Institut ','Inst. '),'Zone d.[Aa]ctivité.? ','Z.A. '),'Zone [Ii]ndustrielle ','Z.I. ') as nom, aeroway,shop,access,amenity,leisure,landuse,man_made,\"natural\",place,tourism,substring('******',1,cast(concat('0',regexp_replace(tags->'stars','[^0-9]','','g')) as integer)) as stars,NULL as ele,ref,military,waterway,historic,'no'::text as point, way_area, NULL as way_len, initcap(replace(replace(replace(replace(tags->'school:FR','maternelle','école mat.'),'élémentaire','école'),'primaire','école'),'secondaire','collège-Lycée')) as ecole \n       from planet_osm_polygon\n       where amenity is not null\n          or shop in ('supermarket','bakery','clothes','fashion','convenience','doityourself','hairdresser','department_store', 'butcher','car','car_repair','bicycle')\n          or leisure is not null\n          or landuse is not null\n          or tourism is not null\n          or \"natural\" is not null\n          or man_made in ('lighthouse','windmill')\n          or place='island'\n          or military='danger_area'\n          or historic in ('memorial','archaeological_site','castle')\nunion\nselect way,osm_id, coalesce(tags->'name:fr',name) as name,regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(coalesce(tags->'short_name:fr',tags->'short_name',tags->'alt_name',tags->'name:fr',name),'Avenue ','Av. '),'Boulevard ','Bd. '),'Passage ','Pass. '),'Place ','Pl. '),'Promenade ','Prom. '),'Impasse ','Imp. '),'Centre Commercial ','CCial. '),'Immeuble ','Imm. '),'Lotissement ','Lot. '),'Résidence ','Rés. '),'Square ','Sq. '),'Zone Industrielle ','ZI. '),'Adjudant ','Adj. '),'Agricole ','Agric. '),'Arrondissement','Arrond.'),'Aspirant ','Asp. '),'Bâtiment ','Bat. '),'Colonel ','Col. '),'Commandant ','Cdt. '),'Commercial ','Cial. '),'Coopérative ','Coop. '),'Division ','Div. '),'Docteur ','Dr. '),'Etablissement ','Ets. '),'Général ','Gal. '),'Institut ','Inst. '),'Faculté ','Fac. '),'Laboratoire ','Labo. '),'Lieutenant ','Lt. '),'Maréchal ','Mal. '),'Ministère ','Min. '),'Monseigneur ','Mgr. '),'Municipal ','Mun. '),'Observatoire ','Obs. '),'Périphérique ','Périph. '),'Préfecture ','Préf. '),'Président ','Pdt. '),'Régiment ','Rgt. '),'Régional ','Rég. '),'Régionale ','Rég. '),'Saint-','St-'),'Sainte-','Ste-'),'Sergent ','Sgt. '),'Université ','Univ. '),'Communauté d.[Aa]gglomération','Comm. d''agglo. '),'Communauté [Uu]rbaine ','Comm. urb. '),'Communauté de [Cc]ommunes ','Comm. comm. '),'Syndicat d.[Aa]gglomération ','Synd. d''agglo. '),'^Chemin ','Ch. '),'^Institut ','Inst. '),'Zone d.[Aa]ctivité.? ','Z.A. '),'Zone [Ii]ndustrielle ','Z.I. ') as nom,aeroway,shop,access,amenity,leisure,landuse,man_made,\"natural\",place,tourism,substring('******',1,cast(concat('0',regexp_replace(tags->'stars','[^0-9]','','g')) as integer)) as stars,NULL as ele,ref,military,waterway,historic,'no'::text as point, 0 as way_area, NULL as way_len, initcap(replace(replace(replace(replace(tags->'school:FR','maternelle','école mat.'),'élémentaire','école'),'primaire','école'),'secondaire','collège-Lycée')) as ecole \n       from planet_osm_point\n       where amenity is not null\n          or shop in ('supermarket','bakery','clothes','fashion','convenience','doityourself','hairdresser','department_store', 'butcher','car','car_repair','bicycle')\n          or leisure is not null\n          or landuse is not null\n          or tourism is not null\n          or \"natural\" is not null\n          or man_made in ('lighthouse','windmill')\n          or place='island'\n          or military='danger_area'\n          or historic in ('memorial','archaeological_site','castle')\n order by way_area desc\n      ) as text",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
-      },
-      "id": "text",
-      "class": "text",
-      "srs-name": "900913",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "text"
-    },
-    {
-      "extent": [
-        -179.99999692067183,
-        -84.96651228427099,
-        179.99999692067183,
-        84.96651228427098
-      ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "(select way,aeroway,shop,access,amenity,leisure,landuse,man_made,\"natural\",place,tourism,NULL as ele,name,ref,military,waterway,historic,'no'::text as point\n       from planet_osm_polygon\n       where amenity is not null\n          or shop in ('supermarket','bakery','clothes','fashion','convenience','doityourself','hairdresser','department_store', 'butcher','car','car_repair','bicycle')\n          or leisure is not null\n          or landuse is not null\n          or tourism is not null\n          or \"natural\" is not null\n          or man_made in ('lighthouse','windmill')\n          or place='island'\n          or military='danger_area'\n          or historic in ('memorial','archaeological_site')\n      ) as text",
-        "extent": "-20037508,-19929239,20037508,19929239",
-        "key_field": "",
-        "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "text-poly",
       "class": "text",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "text-poly"
+      "name": "text-poly",
+      "geometry": "point"
+    },
+    {
+      "extent": [
+        -179.9999999749438,
+        -85.051,
+        179.9999999749438,
+        83.74912119648586
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "( SELECT ST_Simplify(ST_buffer(p.way,-!pixel_width!*7),1) as way, coalesce(tags->'name:fr',name) as name, cast(regexp_replace(admin_level,'[^0-9]','','g') as integer) as admin_level, \"ref:INSEE\" as insee, regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(coalesce(tags->'name:fr',name),'Avenue ','Av. '),'Boulevard ','Bd. '),'Passage ','Pass. '),'Place ','Pl. '),'Promenade ','Prom. '),'Impasse ','Imp. '),'Centre Commercial ','CCial. '),'Immeuble ','Imm. '),'Lotissement ','Lot. '),'Résidence ','Rés. '),'Square ','Sq. '),'Zone Industrielle ','ZI. '),'Adjudant ','Adj. '),'Agricole ','Agric. '),'Arrondissement','Arrond.'),'Aspirant ','Asp. '),'Bâtiment ','Bat. '),'Colonel ','Col. '),'Commandant ','Cdt. '),'Commercial ','Cial. '),'Coopérative ','Coop. '),'Division ','Div. '),'Docteur ','Dr. '),'Etablissement ','Ets. '),'Général ','Gal. '),'Institut ','Inst. '),'Laboratoire ','Labo. '),'Lieutenant ','Lt. '),'Maréchal ','Mal. '),'Ministère ','Min. '),'Monseigneur ','Mgr. '),'Municipal ','Mun. '),'Observatoire ','Obs. '),'Préfecture ','Préf. '),'Président ','Pdt. '),'Régiment ','Rgt. '),'Régional ','Rég. '),'Régionale ','Rég. '),'Saint-','St-'),'Sainte-','Ste-'),'Sergent ','Sgt. '),'Université ','Univ. '),'Communauté d.[Aa]gglomération','Comm. d''agglo. '),'Communauté [Uu]rbaine ','Comm. urb. '),'Communauté de [Cc]ommunes ','Comm. comm. '),'^Chemin ','Ch. '),'Syndicat d.[Aa]gglomération ','Synd. d''agglo. ') as nom  FROM planet_osm_polygon p where ST_Intersects(p.way,!bbox!) AND not ST_ContainsProperly(!bbox!, p.way) AND boundary is not null and boundary not in ('political','religion','religious_administration') order by admin_level) as admin",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "-20037508.34,-20061906.38,20037508.34,18545450.78",
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
+      },
+      "id": "admin",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "admin"
     },
     {
       "extent": [
@@ -2007,11 +2312,15 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,way_area,name\n       from planet_osm_polygon\n       where name is not null\n         and (waterway is null or waterway != 'riverbank')\n         and place is null\n       order by way_area desc\n      ) as text",
+        "table": "(select p.osm_id, p.way,p.way_area,landuse,coalesce(p.tags->'name:fr',p.name) as name, regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(coalesce(p.tags->'short_name:fr',p.tags->'short_name',p.tags->'alt_name',p.tags->'name:fr',p.name),'Avenue ','Av. '),'Boulevard ','Bd. '),'Passage ','Pass. '),'Place ','Pl. '),'Promenade ','Prom. '),'Impasse ','Imp. '),'Centre Commercial ','CCial. '),'Immeuble ','Imm. '),'Lotissement ','Lot. '),'Résidence ','Rés. '),'Square ','Sq. '),'Zone Industrielle ','ZI. '),'Adjudant ','Adj. '),'Agricole ','Agric. '),'Arrondissement','Arrond.'),'Aspirant ','Asp. '),'Bâtiment ','Bat. '),'Colonel ','Col. '),'Commandant ','Cdt. '),'Commercial ','Cial. '),'Coopérative ','Coop. '),'Division ','Div. '),'Docteur ','Dr. '),'Etablissement ','Ets. '),'Général ','Gal. '),'Institut ','Inst. '),'Laboratoire ','Labo. '),'Lieutenant ','Lt. '),'Maréchal ','Mal. '),'Ministère ','Min. '),'Monseigneur ','Mgr. '),'Municipal ','Mun. '),'Observatoire ','Obs. '),'Périphérique ','Périph. '),'Préfecture ','Préf. '),'Président ','Pdt. '),'Régiment ','Rgt. '),'Régional ','Rég. '),'Régionale ','Rég. '),'Saint-','St-'),'Sainte-','Ste-'),'Sergent ','Sgt. '),'Université ','Univ. '),'Communauté d.[Aa]gglomération','Comm. d''agglo. '),'Communauté [Uu]rbaine ','Comm. urb. '),'Communauté de [Cc]ommunes ','Comm. comm. '),'Syndicat d.[Aa]gglomération ','Synd. d''agglo. '),'^Chemin ','Ch. '),'^Institut ','Inst. '),'Zone d.[Aa]ctivité.? ','Z.A. '),'Zone [Ii]ndustrielle ','Z.I. ') as nom, p.boundary      from planet_osm_polygon p   \n\nLEFT OUTER JOIN planet_osm_rels r ON (r.id=-p.osm_id AND r.members @> ARRAY['admin_centre']) WHERE r.id IS NULL AND\n\n    coalesce(p.tags->'name:fr',p.name) is not null          and (p.waterway is null or p.waterway != 'riverbank')          and p.place is null      and (p.boundary is null or p.boundary not in ('political','local_authority','religion','religious_administration'))  and (p.amenity is null or p.amenity not in ('school','kindergarten')) order by p.way_area desc       ) as text",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
       },
       "id": "area-text",
       "class": "",
@@ -2034,7 +2343,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "interpolation",
       "class": "",
@@ -2057,7 +2369,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "housenumbers",
       "class": "",
@@ -2080,7 +2395,10 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "housenames",
       "class": "",
@@ -2098,11 +2416,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,way_area,name,boundary from planet_osm_polygon where boundary='national_park' and building is null) as boundary",
+        "table": "(select way,way_area,coalesce(tags->'name:fr',name) as name,boundary from planet_osm_polygon where boundary='national_park' and building is null) as boundary",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "misc-boundaries",
       "class": "",
@@ -2120,11 +2441,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,name,tourism from planet_osm_polygon where tourism='theme_park') as theme_park",
+        "table": "(select way,coalesce(tags->'name:fr',name) as name,tourism from planet_osm_polygon where tourism='theme_park') as theme_park",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis"
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
       },
       "id": "theme-park",
       "class": "",
@@ -2132,10 +2456,38 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
       "name": "theme-park"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        -179.99999979528076,
+        -85.051,
+        179.99378812475413,
+        85.051
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT way FROM planet_osm_point WHERE amenity='parking_space' AND (tags->'wheelchair'='yes' or (tags ? 'capacity:disabled' and tags->'capacity:disabled' not in ('0','no'))) UNION SELECT way FROM planet_osm_polygon WHERE amenity='parking_space' AND (tags->'wheelchair'='yes' or (tags ? 'capacity:disabled' and tags->'capacity:disabled' not in ('0','no')))) as park",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "auto",
+        "extent": "-20037508.32,-20061906.38,20036816.84,20061906.38",
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
+      },
+      "id": "parking-handi",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "parking-handi"
     }
   ],
   "scale": 1,
-  "metatile": 2,
-  "name": "OpenStreetMap Carto",
-  "description": "A faithful reimplementation of the standard OpenStreetMap style"
+  "metatile": 4,
+  "name": "OpenStreetMap France",
+  "description": "",
+  "attribution": ""
 }
