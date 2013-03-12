@@ -1,3 +1,6 @@
 .thumb.png
 layers/
 data/
+~DS_Store*
+temp/
+
