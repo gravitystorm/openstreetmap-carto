@@ -2,6 +2,8 @@
 
 Une adaptation "french-style" de la ré-implémentation CartoCSS du style Mapnik d'OpenStreetMap
 
+Le résultat est visible sur: http://tile.openstreetmap.fr/
+
 A project to re-implement the standard OpenStreetMap mapnik style, in CartoCSS... with "french-style" modifications.
 
 
