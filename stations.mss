@@ -73,6 +73,11 @@
     		text-size: 9;
     		text-dy: 10;
     	}
+ 		[l_operator = 'Viacités']{
+    		point-file: url('symbols/fr/Twisto_Logo.png');
+    		text-size: 9;
+    		text-dy: 14;
+   		}
    
    		[type_ratp = 'rer'],
     	[type_ratp = 'metro;rer'],
