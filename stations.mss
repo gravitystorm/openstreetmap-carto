@@ -73,12 +73,6 @@
     		text-size: 9;
     		text-dy: 10;
     	}
- 		[l_operator = 'Viacités']{
-    		point-file: url('symbols/fr/Twisto_Logo.png');
-    		text-size: 9;
-    		text-dy: 14;
-   		}
-   
    		[type_ratp = 'rer'],
     	[type_ratp = 'metro;rer'],
 		[type_ratp = 'rer;metro'] {
@@ -131,18 +125,27 @@
         text-dy: -10;
       }
     }
-    [zoom >= 15] [l_operator = 'TCL']{
-      point-file: url('symbols/fr/tcl-tram.png');
-      text-size: 9;
-      text-dy: 12;
-    }
+    [zoom >= 15] {
+    	[l_operator = 'TCL']{
+    	  point-file: url('symbols/fr/tcl-tram.png');
+    	  text-size: 9;
+    	  text-dy: 12;
+    	}
     
-    [zoom >= 15] [type_ratp = 'tram']{
-      point-file: url('symbols/fr/ratp-tram.png');
-      text-size: 9;
-      text-dy: 10;
-    }
+    	[type_ratp = 'tram']{
+    	  point-file: url('symbols/fr/ratp-tram.png');
+    	  text-size: 9;
+    	  text-dy: 10;
+    	}
 
+ 		[operator = 'Viacités'],
+ 		[l_operator = 'Viacités']{
+    		point-file: url('symbols/fr/Twisto_Logo.png');
+    		text-size: 9;
+    		text-dy: 10;
+    		text-face-name: @bold-fonts;
+   		}
+   	}
   }
 
 
@@ -163,6 +166,10 @@
  		[l_operator = 'STAR']{
     		point-file: url('symbols/fr/rennes_bus.png');
     		point-transform: "scale(0.5)";
+   		}
+ 		[operator = 'Viacités'],
+ 		[l_operator = 'Viacités']{
+    		point-file: url('symbols/fr/Twisto_Logo.png');
    		}
 		point-file: url('symbols/bus_stop.p.12.png');
     }
