@@ -6,9 +6,9 @@
     80
   ],
   "center": [
-    2.3912,
-    48.8274,
-    19
+    -0.3536,
+    49.1785,
+    15
   ],
   "format": "png",
   "interactivity": false,
@@ -1621,7 +1621,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select osm_id, ST_GeometryN(st_union(way),1) as way, max(angle)-min(angle) as angle_diff, avg(angle) as angle from (select p.osm_id, p.way as way, cast(90+degrees(ST_Azimuth(st_line_interpolate_point(ST_Intersection(st_buffer(p.way,0.1), h.way),0),st_line_interpolate_point(ST_Intersection(st_buffer(p.way,0.1), h.way),1))) as integer) % 180 as angle from planet_osm_point p join planet_osm_line h on (st_intersects(p.way,h.way) and h.highway is not null and h.highway not in ('footway','cycleway','path','pedestrian','steps','service')) where (p.highway='crossing' or p.tags->'crossing' in ('traffic_signals','uncontrolled')) and p.way && !bbox!) as crossing group by osm_id ) as highway_crossings",
+        "table": "(select osm_id, ST_GeometryN(st_union(way),1) as way, max(angle)-min(angle) as angle_diff, avg(angle) as angle from (select p.osm_id, p.way as way, cast(90+degrees(ST_Azimuth(st_line_interpolate_point(ST_LineMerge(ST_Intersection(st_buffer(p.way,0.1), h.way)),0),st_line_interpolate_point(ST_LineMerge(ST_Intersection(st_buffer(p.way,0.1), h.way)),1))) as integer) % 180 as angle from planet_osm_point p join planet_osm_line h on (st_intersects(p.way,h.way) and h.highway is not null and h.highway not in ('footway','cycleway','path','pedestrian','steps','service')) where (p.highway='crossing' or p.tags->'crossing' in ('traffic_signals','uncontrolled')) and p.way && !bbox!) as crossing group by osm_id ) as highway_crossings",
         "key_field": "",
         "geometry_field": "way",
         "extent_cache": "auto",
