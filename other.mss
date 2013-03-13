@@ -884,15 +884,15 @@
   [highway = 'motorway'],
   [highway = 'motorway_link'] {
     [zoom >= 12] {
-      line-width: 3;
+      line-width: 4;
       line-color: #506077;
       line-dasharray: 4,2;
       line-smooth: 0.7;
     }
-    [zoom >= 13] { line-width: 6.5; }
-    [zoom >= 15] { line-width: 10; }
-    [zoom >= 17] { line-width: 13; }
-      [zoom >= 19] { line-width: 26; }
+    [zoom >= 13] { line-width: 8; }
+    [zoom >= 15] { line-width: 11; }
+    [zoom >= 17] { line-width: 14; }
+      [zoom >= 19] { line-width: 28; }
   }
 
   [highway = 'trunk'],
@@ -967,16 +967,16 @@
   [highway = 'motorway'],
   [highway = 'motorway_link'] {
     [zoom >= 12] {
-      line-width: 2;
+      line-width: 2.5;
       line-color: #d6dfea;
       line-cap: round;
       line-join: round;
       line-smooth: 0.7;
     }
-    [zoom >= 13] { line-width: 5; }
-    [zoom >= 15] { line-width: 8.5; }
-    [zoom >= 17] { line-width: 11; }
-      [zoom >= 19] { line-width: 22; }
+    [zoom >= 13] { line-width: 6.5; }
+    [zoom >= 15] { line-width: 9; }
+    [zoom >= 17] { line-width: 12; }
+      [zoom >= 19] { line-width: 24; }
   }
 
   [highway = 'trunk'],
@@ -1246,7 +1246,7 @@
       line-width: 2.5;
       line-color: #a37b48;
       line-join: round;
-      line-cap: round;
+      // line-cap: round; // looks bad with tunnels, secondary should not dead-end
     }
     [zoom >= 13] { line-width: 8.5; }
     [zoom >= 15] { line-width: 11.5; }
@@ -1259,7 +1259,7 @@
       line-width: 6;
       line-color: #bbb;
       line-join: round;
-      line-cap: round;
+      // line-cap: round; // looks bad with tunnels, tertiary should not dead-end
     }
     [zoom >= 14] { line-width: 7.5; }
     [zoom >= 15] { line-width: 11; }
@@ -1275,7 +1275,7 @@
         line-width: 3;
         line-color: #999;
         line-join: round;
-        line-cap: round;
+        line-cap: round;	// required for dead-ends
       }
       [zoom >= 14] { line-width: 4.5; }
       [zoom >= 15] {
