@@ -37,6 +37,7 @@
     }
   }
 
+  [landuse = 'salt_pond'][zoom >= 13]::landuse,
   [natural = 'mud'][zoom >= 13]::natural {
     polygon-pattern-file: url('symbols/mud.png');
   }
