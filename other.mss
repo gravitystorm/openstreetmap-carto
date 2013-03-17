@@ -196,16 +196,18 @@
   [way_area >= 80000][zoom >= 15]::long,
   [way_area >= 20000][zoom >= 16]::long,
   [zoom >= 17]::long {
+    [zoom >= 17] { text-name: "[name]"; }
+    text-name: "[nom]";
     [boundary!=''] {
-    	[zoom >= 17] { text-name: "[name]"; }
-    	text-name: "[nom]";
     	text-face-name: @oblique-fonts;
     	text-fill: #003;
 	    text-halo-radius: 2;
     	text-halo-fill: fadeout(white, 30%);
     }
-    [zoom >= 17] { text-name: "[name]"; }
-    text-name: "[nom]";
+    [heritage!=''] { 
+	 	text-fill: brown;
+		text-face-name: @book-fonts;
+	}
     text-face-name: @book-fonts;
     text-size: 10;
     text-fill: #000;
