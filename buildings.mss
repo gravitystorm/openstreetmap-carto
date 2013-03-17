@@ -31,23 +31,18 @@
 }
 
 #buildings {
-  [building = 'INT-light'][zoom >= 14] {
-    polygon-fill: #bca9a9;
-    [zoom >= 18] {polygon-opacity: 0.4;}
-    [zoom = 17] {polygon-opacity: 0.5;}
-    [zoom = 16] {polygon-opacity: 0.6;}
-    polygon-opacity: 0.7;
-  }
-  [building != 'INT-light'][building != ''][zoom >= 14] {
-    [amenity = 'public_building'] {
+  [building != ''][zoom >= 14] {
+    [amenity = 'public_building'],
+    [heritage != '']
+     {
       polygon-fill: #888;
       polygon-opacity: 0.5;
     }
 
     polygon-fill: #bca9a9;
-    [zoom >= 18] {polygon-opacity: 0.4;}
-    [zoom = 17] {polygon-opacity: 0.5;}
-    [zoom = 16] {polygon-opacity: 0.6;}
+    [zoom >= 18] {polygon-fill: #dbcaca;}
+    [zoom = 17] {polygon-fill: #d6c5c5;}
+    [zoom = 16] {polygon-fill: #d1c0c0;}
     polygon-opacity: 0.7;
 /*    [zoom >= 16] {
       line-color: #330066;
@@ -55,6 +50,13 @@
       line-opacity: 0.33;
     }
 */
+  	[zoom >= 18][wall='no'] {
+  		polygon-opacity: 0.2;
+      	line-color: #dbcaca;
+      	line-width: 0.5;
+      	line-opacity: 0.7;
+	}
+
   }
   [aeroway = 'terminal'][zoom >= 14]::aeroway {
     polygon-fill: #cc99ff;
