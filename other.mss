@@ -3230,7 +3230,7 @@
   }
 }
 
-#barriers_area {
+#area-barriers {
   [zoom >= 16] {
     line-color: #444;
     line-width: 0.4;
@@ -3252,7 +3252,6 @@
   [barrier = 'hedge'][zoom >= 16] {
     line-width: 3;
     line-color: #aed1a0;
-    polygon-fill: #aed1a0;
   }
 }
 
