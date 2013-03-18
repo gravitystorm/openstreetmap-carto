@@ -6,9 +6,9 @@
     80
   ],
   "center": [
-    -0.3705,
-    49.1812,
-    18
+    1.7619,
+    48.9716,
+    14
   ],
   "format": "png",
   "interactivity": false,
@@ -2075,7 +2075,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way from planet_osm_line where \"power\"='minor_line') as power_minorline",
+        "table": "(select way, \"power\" as power_type from planet_osm_line where \"power\" in ('line','minor_line')) as power_minorline",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
