@@ -39,6 +39,14 @@
   		point-file: url('symbols/fr/Velib.svg');
   		point-transform: "scale(2)";
   	}
+  	[network="Vélo\'v"] {
+  		point-file: url('symbols/fr/velov.png');
+  		point-transform: "scale(0.5)";
+  	}
+  	[network="V\'Lille"] {
+  		point-file: url('symbols/fr/v-lille.png');
+  		point-transform: "scale(0.33)";
+  	}
     point-file: url('symbols/rental_bicycle.p.20.png');
     point-placement: interior;
   }
