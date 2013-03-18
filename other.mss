@@ -663,8 +663,8 @@
     }
   }
 
-  [amenity = 'townhall'][zoom >= 15],
-  [amenity = 'public_building'][zoom >= 16] {
+  [amenity = 'townhall'][zoom >= 15]::amenity,
+  [amenity = 'public_building'][zoom >= 16]::amenity {
     text-name: "[name]";
     text-size: 10;
     text-fill: #666;
