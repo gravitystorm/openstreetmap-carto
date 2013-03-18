@@ -35,6 +35,10 @@
   }
 
   [amenity = 'bicycle_rental'][zoom >= 17]::amenity {
+  	[network='Vélib’'] {
+  		point-file: url('symbols/fr/Velib.svg');
+  		point-transform: "scale(2)";
+  	}
     point-file: url('symbols/rental_bicycle.p.20.png');
     point-placement: interior;
   }
