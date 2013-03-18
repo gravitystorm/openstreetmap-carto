@@ -39,10 +39,15 @@
       polygon-opacity: 0.5;
     }
 
-    polygon-fill: #bca9a9;
-    [zoom >= 18] {polygon-fill: #dbcaca;}
-    [zoom = 17] {polygon-fill: #d6c5c5;}
-    [zoom = 16] {polygon-fill: #d1c0c0;}
+    polygon-fill: #bdacac;					/* 9%/74% (sat./bright) */
+    [zoom = 16] {polygon-fill: #c2b2b2;}	/* 8%/76% */
+    [zoom = 17] {polygon-fill: #ccbebe;}	/* 7%/80% */
+    [zoom >= 18] {
+    	polygon-fill: #d1c5c5;				/* 6%/82% */
+      	line-color: #d1c5c5;
+      	line-width: 0.5;
+      	line-opacity: 0.7;
+    }
     polygon-opacity: 0.7;
 /*    [zoom >= 16] {
       line-color: #330066;
@@ -51,10 +56,7 @@
     }
 */
   	[zoom >= 18][wall='no'] {
-  		polygon-opacity: 0.2;
-      	line-color: #dbcaca;
-      	line-width: 0.5;
-      	line-opacity: 0.7;
+  		polygon-opacity: 0.35;
 	}
 
   }
