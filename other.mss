@@ -663,6 +663,7 @@
     }
   }
 
+  [amenity = 'townhall'][zoom >= 15],
   [amenity = 'public_building'][zoom >= 16] {
     text-name: "[name]";
     text-size: 10;
@@ -671,6 +672,7 @@
     text-face-name: @bold-fonts;
     text-halo-radius: 1;
     text-placement: interior;
+    [amenity = 'townhall'] { text-dy: 12; }
   }
 
   [tourism = 'museum'][zoom >= 16] {
