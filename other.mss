@@ -2888,7 +2888,7 @@
   }
 }
 
-#barriers_area {
+#area-barriers {
   [zoom >= 16] {
     line-color: #444;
     line-width: 0.4;
