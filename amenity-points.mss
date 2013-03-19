@@ -47,6 +47,10 @@
   		point-file: url('symbols/fr/v-lille.png');
   		point-transform: "scale(0.33)";
   	}
+  	[network="V\'EOL"] {
+  		point-file: url('symbols/fr/veol-caen.png');
+  		point-transform: "scale(0.75)";
+  	}
     point-file: url('symbols/rental_bicycle.p.20.png');
     point-placement: interior;
   }
