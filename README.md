@@ -7,6 +7,19 @@ Le résultat est visible sur: http://tile.openstreetmap.fr/
 A project to re-implement the standard OpenStreetMap mapnik style, in CartoCSS... with "french-style" modifications.
 
 
+# Bugs ?
+
+https://trac.openstreetmap.fr/query?status=accepted&status=assigned&status=new&status=reopened&component=style+osmfr&max=500&desc=1&order=changetime
+
+
+# Changements par rapport au setup d'origine
+
+Le nom de la base est 'osm', utilisateur 'fr'.
+Les requêtes SQL utilisent les hstore pour récupérer certaines données, pensez à les inclure dans votre import osm2pgsql.
+C'est Mapnik 2.1 qui est utilisé avec postgresql 9.1 et postgis 2.0.
+
+Le reste du readme ci-dessous est inchangé par rapport au projet https://github.com/gravitystorm/openstreetmap-carto
+
 # Setup
 
 You need OpenStreetMap data loaded into a PostGIS database (see below for [dependencies](https://github.com/gravitystorm/openstreetmap-carto#dependencies)). These stylesheets currently work only with the osm2pgsql defaults (i.e. database name is 'gis', table names are 'planet_osm_point' etc).
@@ -79,6 +92,3 @@ If you aren't using TileMill, you can compile the CartoCSS stylesheets into Mapn
 * Dashes, not underscores, in layer names
 * Avoid restating defaults, e.g. don't add `point-allow-overlap = false`
 
-# Bugs ?
-
-https://trac.openstreetmap.fr/query?status=accepted&status=assigned&status=new&status=reopened&component=style+osmfr&max=500&desc=1&order=changetime
