@@ -6,9 +6,9 @@
     80
   ],
   "center": [
-	-0.37834,
-    49.18727,
-    18
+    2.60793,
+    48.72663,
+    16
   ],
   "format": "png",
   "interactivity": false,
@@ -1992,7 +1992,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,amenity,shop,tourism,highway,man_made,access,religion,waterway,lock,historic,leisure,operator, tags->'network' as network, tags->'ref:FR:LaPoste' as ref_laposte, tags->'emergency' as emergency, substring('******',1,cast(concat('0',regexp_replace(tags->'stars','[^0-9]','','g')) as integer)) as stars,\ncase when amenity='townhall' then 2  when amenity='post_office' then 1  else 0 end as prio\n      from planet_osm_polygon\n      where amenity is not null\n         or shop is not null\n         or tourism in ('alpine_hut','camp_site','caravan_site','guest_house','hostel','hotel','motel','museum','viewpoint','bed_and_breakfast','information','chalet')\n         or highway in ('bus_stop','traffic_signals')\n         or man_made in ('mast','water_tower')\n         or historic in ('memorial','archaeological_site','castle')\n         or leisure='playground'\n      order by prio desc ) as points",
+        "table": "(select way,amenity,shop,tourism,highway,man_made,access,religion,waterway,lock,historic,leisure,operator, tags->'network' as network, tags->'ref:FR:LaPoste' as ref_laposte, tags->'emergency' as emergency, substring('******',1,cast(concat('0',regexp_replace(tags->'stars','[^0-9]','','g')) as integer)) as stars, tags->'golf' as golf,\ncase when amenity='townhall' then 2  when amenity='post_office' then 1  else 0 end as prio\n      from planet_osm_polygon\n      where amenity is not null\n         or shop is not null\n         or tourism in ('alpine_hut','camp_site','caravan_site','guest_house','hostel','hotel','motel','museum','viewpoint','bed_and_breakfast','information','chalet')\n         or highway in ('bus_stop','traffic_signals')\n         or man_made in ('mast','water_tower')\n         or historic in ('memorial','archaeological_site','castle')\n         or leisure in ('playground','golf_course')  \n      order by prio desc ) as points",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -2019,7 +2019,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,amenity,shop,tourism,highway,man_made,access,religion,waterway,lock,historic,leisure,operator, tags->'network' as network, tags->'ref:FR:LaPoste' as ref_laposte, tags->'emergency' as emergency, substring('******',1,cast(concat('0',regexp_replace(tags->'stars','[^0-9]','','g')) as integer)) as stars,\ncase when amenity='townhall' then 2  when amenity='post_office' then 1  else 0 end as prio\n      from planet_osm_point\n      where (amenity is not null and amenity != 'bus_station')\n         or shop is not null\n         or tourism in ('alpine_hut','camp_site','caravan_site','guest_house','hostel','hotel','motel','museum','viewpoint','bed_and_breakfast','information','chalet')\n         or highway in ('traffic_signals','ford')\n         or man_made in ('mast','water_tower')\n         or historic in ('memorial','archaeological_site','castle')\n         or waterway='lock'\n         or lock='yes'\n         or leisure in ('playground','slipway')  order by prio desc, tags->'stars' desc\n      ) as points",
+        "table": "(select way,amenity,shop,tourism,highway,man_made,access,religion,waterway,lock,historic,leisure,operator, tags->'network' as network, tags->'ref:FR:LaPoste' as ref_laposte, tags->'emergency' as emergency, substring('******',1,cast(concat('0',regexp_replace(tags->'stars','[^0-9]','','g')) as integer)) as stars, tags->'golf' as golf,\ncase when amenity='townhall' then 2  when amenity='post_office' then 1  else 0 end as prio\n      from planet_osm_point\n      where (amenity is not null and amenity != 'bus_station')\n         or shop is not null\n         or tourism in ('alpine_hut','camp_site','caravan_site','guest_house','hostel','hotel','motel','museum','viewpoint','bed_and_breakfast','information','chalet')\n         or highway in ('traffic_signals','ford')\n         or man_made in ('mast','water_tower')\n         or historic in ('memorial','archaeological_site','castle')\n         or waterway='lock'\n         or lock='yes'\n         or leisure in ('playground','slipway','golf_course')  order by prio desc, tags->'stars' desc\n      ) as points",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",

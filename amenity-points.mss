@@ -373,4 +373,10 @@
     point-file: url('symbols/transport_slipway.p.20.png');
     point-placement: interior;
   }
+  
+  [leisure = 'golf_course'][zoom >= 14][zoom < 16]::leisure {
+    point-file: url('symbols/fr/golf-maki.svg');
+	point-transform: "scale(0.25)";
+    point-placement: interior;
+  }
 }

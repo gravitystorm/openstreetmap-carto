@@ -650,6 +650,22 @@
     }
   }
 
+  [leisure = 'golf_course'][zoom >= 14]::leisure {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: black;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 30;
+    text-placement: interior;
+    text-dy: 12;
+    [zoom >= 16] {
+      text-size: 12;
+      text-fill: grey;
+      text-face-name: @oblique-fonts;
+    }
+  }
+
   [tourism = 'theme_park'][zoom >= 14]::tourism {
     text-name: "[name]";
     text-size: 8;
