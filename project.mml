@@ -6,8 +6,8 @@
     80
   ],
   "center": [
-    8.7842989,51.6952247,
-    16
+    2.4506,48.8323,
+    17
   ],
   "format": "png",
   "interactivity": false,
@@ -2483,6 +2483,31 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
       "name": "theme-park"
+    },
+    {
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way, sport, ST_Distance(st_pointn(ST_ExteriorRing(way),1),st_pointn(ST_ExteriorRing(way),2)) as d12, ST_Distance(st_pointn(ST_ExteriorRing(way),3),st_pointn(ST_ExteriorRing(way),2)) as d23,ST_Distance(st_pointn(ST_ExteriorRing(way),1),st_pointn(ST_ExteriorRing(way),3)) as d13, degrees(st_azimuth(st_pointn(ST_ExteriorRing(way),1),st_pointn(ST_ExteriorRing(way),2))) as a12, degrees(st_azimuth(st_pointn(ST_ExteriorRing(way),2),st_pointn(ST_ExteriorRing(way),3))) as a23 from planet_osm_polygon where sport is not null) as sports",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
+      },
+      "id": "sports",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "sports"
     },
     {
       "geometry": "point",
