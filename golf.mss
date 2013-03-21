@@ -64,7 +64,7 @@
 	line-color: white;
 	line-width: 2;
 	line-cap: round;
-	line-dasharray: 8,2;
+	line-dasharray: 1,8;
   }
 
 }
