@@ -1,20 +1,20 @@
 #golf [zoom>=16] {
   [golf = 'rough'] {
-    polygon-fill: green;
-    polygon-opacity: 0.4;
+    polygon-fill: #adcc8f;
+    polygon-opacity: 1;
     polygon-smooth: 0.8;
   }
   [golf = 'fairway'] {
-    polygon-fill: green;
-    polygon-opacity: 0.2;
+    polygon-fill: #adcc8f;
+    polygon-opacity: 1;
     polygon-smooth: 0.8;
   }
   [golf = 'water_hazard'], [golf = 'lateral_water_hazard'] {
-    polygon-fill: #5cbce5;
+    polygon-fill: #b5d0d0;
     polygon-smooth: 0.8;
   }
   [golf = 'green'] {
-    polygon-fill: #cfeca8;
+    polygon-fill: #bfe573;
     polygon-opacity: 1;
     polygon-smooth: 0.8;
   }

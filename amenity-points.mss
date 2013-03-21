@@ -376,7 +376,7 @@
   
   [leisure = 'golf_course'][zoom >= 14][zoom < 16]::leisure {
     point-file: url('symbols/fr/golf-maki.svg');
-	point-transform: "scale(0.25)";
+	point-transform: "scale(0.15)";
     point-placement: interior;
   }
 }
