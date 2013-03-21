@@ -6,8 +6,7 @@
     80
   ],
   "center": [
-    2.2476,
-    48.8471,
+    7.72182,48.58201,
     17
   ],
   "format": "png",
@@ -424,7 +423,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way, sport, surface, way_area, osm_id, ST_Distance(st_pointn(ST_ExteriorRing(way),1),st_pointn(ST_ExteriorRing(way),2)) as d12, ST_Distance(st_pointn(ST_ExteriorRing(way),3),st_pointn(ST_ExteriorRing(way),2)) as d23,ST_Distance(st_pointn(ST_ExteriorRing(way),1),st_pointn(ST_ExteriorRing(way),3)) as d13, degrees(st_azimuth(st_pointn(ST_ExteriorRing(way),1),st_pointn(ST_ExteriorRing(way),2))) as a12, degrees(st_azimuth(st_pointn(ST_ExteriorRing(way),2),st_pointn(ST_ExteriorRing(way),3))) as a23 from planet_osm_polygon where sport is not null) as sports",
+        "table": "(select way, sport, surface, way_area, st_npoints(way2) as nb, osm_id, ST_Distance(st_pointn(way2,1),st_pointn(way2,2)) as d12, ST_Distance(st_pointn(way2,3),st_pointn(way2,2)) as d23,ST_Distance(st_pointn(way2,1),st_pointn(way2,3)) as d13, degrees(st_azimuth(st_pointn(way2,1),st_pointn(way2,2))) as a12, degrees(st_azimuth(st_pointn(way2,2),st_pointn(way2,3))) as a23 from (select *, ST_ExteriorRing(ST_SimplifyPreserveTopology(way,100)) as way2 from planet_osm_polygon where sport in ('tennis','soccer') AND way && !bbox!) as simplified) as sports",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
