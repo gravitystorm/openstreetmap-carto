@@ -119,7 +119,8 @@
       text-spacing: 400;
       text-size: 9;
       text-halo-radius: 1;
-      [cemt='IV'],[cemt='V'] {text-size: 12;}
+      [cemt='IV'],[cemt='V'],[cemt='Va'],[cemt='Vb'] {text-size: 12;}
+      [cemt='VI'],[cemt='VIa'],[cemt='VIb'],[cemt='VIc'],[cemt='VII'] {text-size: 13;}
     }
     [zoom >= 14] {
       line-width: 5;
