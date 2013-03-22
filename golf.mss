@@ -70,23 +70,24 @@
 }
 
 
+@sport-surface-grass: #54a854;
+@sport-surface-clay: #cc7e66;
+
 #sports [zoom>=16][angle_diff>85][angle_diff<95] {
 	[sport='tennis'][zoom>=17] {
-		[surface='clay']::surface { polygon-fill: #cc7e66; }
-		[surface='grass']::surface { polygon-fill: #bfe573; }
-		[way_area<2000][d13>37][d13<75] {
-			[d12>36][d12<65][d23>15][d23<35] { /* 12-longueur - 23-largeur */
+		[surface='clay']::surface { polygon-fill: @sport-surface-clay; }
+		[surface='grass']::surface { polygon-fill: @sport-surface-grass; }
+		[way_area<2500][d13>37][d13<80] {			/* area size / diagonal check */
+			[d12>36][d12<70][d23>15][d23<40] { 		/* 1>2 = length / 2>3 = width */
 				point-file: url('symbols/fr/sports-tennis.svg');
-				point-opacity: 0.9;
 				[zoom=17] { point-transform: "rotate([angle]) scale(0.15)"; }
 				[zoom=18] { point-transform: "rotate([angle]) scale(0.3)"; }
 				[zoom=19] { point-transform: "rotate([angle]) scale(0.6)"; }
 				[zoom=20] { point-transform: "rotate([angle]) scale(1.2)"; }
 				point-ignore-placement: true;
 			}
-			[d23>36][d23<65][d12>15][d12<35] { /* 12-largeur - 23-longueur */
+			[d23>36][d23<70][d12>15][d12<40] { 		/* 1>2 = width / 2>3 = length -> rotate by 90° */
 				point-file: url('symbols/fr/sports-tennis.svg');
-				point-opacity: 0.9;
 				[zoom=17] { point-transform: "rotate([angle]+90) scale(0.15)"; }
 				[zoom=18] { point-transform: "rotate([angle]+90) scale(0.3)"; }
 				[zoom=19] { point-transform: "rotate([angle]+90) scale(0.6)"; }
@@ -97,7 +98,8 @@
 	}
 	
 	[sport='soccer'][d13>150][d13<250] {
-		[d12>130][d12<200][d23>68][d23<160] { /* 12-longueur - 23-largeur */
+		[surface='grass']::surface { polygon-fill: @sport-surface-grass; }
+		[d12>130][d12<200][d23>68][d23<160] { /* 1>2 = length / 2>3 = width */
 			point-file: url('symbols/fr/sports-soccer.svg');
 			point-ignore-placement: true;
 			[way_area<12000] {
@@ -123,7 +125,7 @@
 			}
 		}
 
-		[d23>130][d23<200][d12>68][d12<160] { /* 12-largeur - 23-longueur */
+		[d23>130][d23<200][d12>68][d12<160] { /* 1>2 = length / 2>3 = width */
 			point-file: url('symbols/fr/sports-soccer.svg');
 			point-ignore-placement: true;
 			[way_area<12000] {
@@ -171,8 +173,10 @@
 		}
 	}
 	
+	[sport='rugby'][zoom>=16],
 	[sport='rugby_union'][zoom>=16],
 	[sport='rugby_league'][zoom>=16] {
+		polygon-fill: @sport-surface-grass;
 		[way_area>15000][way_area<25000][d13>150][d13<250] {
 			[d23>75][d23<150][d12>150][d12<250] { /* 12-largeur - 23-longueur */
 				point-file: url('symbols/fr/sports-rugby.svg');
@@ -194,6 +198,29 @@
 			}
 		}
 	}
-	
+
+	[sport='american_football'][zoom>=16] {
+		polygon-fill: @sport-surface-grass;
+		[way_area>8000][way_area<20000][d13>120][d13<250] {
+			[d23>50][d23<100][d12>120][d12<200] { /* 12-largeur - 23-longueur */
+				point-file: url('symbols/fr/sports-foot-us.svg');
+				point-ignore-placement: true;
+				[zoom=16] { point-transform: "rotate([angle]) scale(0.15)"; }
+				[zoom=17] { point-transform: "rotate([angle]) scale(0.3)"; }
+				[zoom=18] { point-transform: "rotate([angle]) scale(0.6)"; }
+				[zoom=19] { point-transform: "rotate([angle]) scale(1.2)"; }
+				[zoom=20] { point-transform: "rotate([angle]) scale(2.4)"; }
+			}
+			[d12>50][d12<100][d23>120][d23<200] { /* 12-longueur - 23-largeur */
+				point-file: url('symbols/fr/sports-foot-us.svg');
+				point-ignore-placement: true;
+				[zoom=16] { point-transform: "rotate([angle]+90) scale(0.15)"; }
+				[zoom=17] { point-transform: "rotate([angle]+90) scale(0.3)"; }
+				[zoom=18] { point-transform: "rotate([angle]+90) scale(0.6)"; }
+				[zoom=19] { point-transform: "rotate([angle]+90) scale(1.2)"; }
+				[zoom=20] { point-transform: "rotate([angle]+90) scale(2.4)"; }
+			}
+		}
+	}
 
 }

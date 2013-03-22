@@ -3,18 +3,20 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="800px" height="600px" viewBox="0 0 800 600" enable-background="new 0 0 800 600" xml:space="preserve">
-<rect x="60.5" y="89.625" fill="none" stroke="#FFFFFF" width="200" height="140"/>
-<rect x="20.5" y="89.625" fill="none" stroke="#FFFFFF" width="40" height="140"/>
-<rect x="260.5" y="89.625" fill="none" stroke="#FFFFFF" width="40" height="140"/>
-<circle fill="none" stroke="#FFFFFF" cx="60.5" cy="149.688" r="2"/>
-<circle fill="none" stroke="#FFFFFF" cx="60.5" cy="169.688" r="2"/>
-<circle fill="none" stroke="#FFFFFF" cx="260.5" cy="149.688" r="2"/>
-<circle fill="none" stroke="#FFFFFF" cx="260.5" cy="169.688" r="2"/>
-<line fill="none" stroke="#FFFFFF" x1="216.5" y1="89.625" x2="216.5" y2="229.625"/>
-<line fill="none" stroke="#FFFFFF" x1="104.5" y1="89.625" x2="104.5" y2="229.625"/>
-<line fill="none" stroke="#FFFFFF" x1="160.5" y1="89.625" x2="160.5" y2="229.625"/>
-<line fill="none" stroke="#FFFFFF" x1="180.5" y1="89.625" x2="180.5" y2="229.625"/>
-<line fill="none" stroke="#FFFFFF" x1="140.5" y1="89.625" x2="140.5" y2="229.625"/>
-<line fill="none" stroke="#FFFFFF" x1="60.5" y1="219.625" x2="260.5" y2="219.625"/>
-<line fill="none" stroke="#FFFFFF" x1="60.5" y1="99.625" x2="260.5" y2="99.625"/>
+<rect x="60.5" y="-220.833" fill="none" stroke="#FFFFFF" width="200" height="140"/>
+<rect x="20.5" y="-220.833" fill="none" stroke="#FFFFFF" width="40" height="140"/>
+<rect x="260.5" y="-220.833" fill="none" stroke="#FFFFFF" width="40" height="140"/>
+<line fill="none" stroke="#FFFFFF" x1="216.5" y1="-220.833" x2="216.5" y2="-80.833"/>
+<line fill="none" stroke="#FFFFFF" x1="104.5" y1="-220.833" x2="104.5" y2="-80.833"/>
+<line fill="none" stroke="#FFFFFF" x1="160.5" y1="-220.833" x2="160.5" y2="-80.833"/>
+<line fill="none" stroke="#FFFFFF" x1="180.5" y1="-220.833" x2="180.5" y2="-80.833"/>
+<line fill="none" stroke="#FFFFFF" x1="140.5" y1="-220.833" x2="140.5" y2="-80.833"/>
+<line fill="none" stroke="#FFFFFF" x1="60.5" y1="-90.833" x2="260.5" y2="-90.833"/>
+<line fill="none" stroke="#FFFFFF" x1="60.5" y1="-210.833" x2="260.5" y2="-210.833"/>
+<line fill="none" stroke="#FFFFFF" x1="60.5" y1="-160.77" x2="51.103" y2="-164.19"/>
+<line fill="none" stroke="#FFFFFF" x1="60.5" y1="-140.77" x2="51.103" y2="-137.35"/>
+<line fill="none" stroke="#FFFFFF" x1="55.802" y1="-162.77" x2="55.802" y2="-139.06"/>
+<line fill="none" stroke="#FFFFFF" x1="260.5" y1="-160.77" x2="269.897" y2="-164.19"/>
+<line fill="none" stroke="#FFFFFF" x1="260.5" y1="-140.77" x2="269.897" y2="-137.35"/>
+<line fill="none" stroke="#FFFFFF" x1="265.199" y1="-162.48" x2="265.198" y2="-139.06"/>
 </svg>
