@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="800px" height="600px" viewBox="0 0 800 600" enable-background="new 0 0 800 600" xml:space="preserve">
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="43.31" y1="114.045" x2="323.31" y2="114.045"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="43.31" y1="114.045" x2="43.31" y2="264.045"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="43.31" y1="264.045" x2="323.31" y2="264.045"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="183.31" y1="114.045" x2="183.31" y2="264.045"/>
+<circle fill="none" stroke="#FFFFFF" stroke-width="2" cx="183.31" cy="189.045" r="18"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="59.06" y1="121.545" x2="76.53" y2="123.845"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="76.53" y1="123.845" x2="92.81" y2="130.588"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="92.81" y1="130.588" x2="106.789" y2="141.315"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="106.789" y1="141.315" x2="117.516" y2="155.295"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="117.516" y1="155.295" x2="124.26" y2="171.575"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="124.26" y1="171.575" x2="126.56" y2="189.045"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="126.56" y1="189.045" x2="124.26" y2="206.515"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="124.26" y1="206.515" x2="117.516" y2="222.795"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="117.516" y1="222.795" x2="106.789" y2="236.774"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="106.789" y1="236.774" x2="92.81" y2="247.501"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="92.81" y1="247.501" x2="76.53" y2="254.245"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="76.53" y1="254.245" x2="59.06" y2="256.545"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="59.06" y1="256.545" x2="43.31" y2="256.545"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="59.06" y1="121.545" x2="43.31" y2="121.545"/>
+<circle fill="none" stroke="#FFFFFF" stroke-width="2" cx="59.06" cy="189.045" r="5"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="48.31" y1="180.31" x2="48.31" y2="197.78"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="54.06" y1="189.045" x2="48.31" y2="189.045"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="323.31" y1="264.045" x2="323.31" y2="114.045"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="307.56" y1="256.545" x2="290.089" y2="254.245"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="290.089" y1="254.245" x2="273.81" y2="247.502"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="273.81" y1="247.502" x2="259.83" y2="236.774"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="259.83" y1="236.774" x2="249.103" y2="222.795"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="249.103" y1="222.795" x2="242.359" y2="206.515"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="242.359" y1="206.515" x2="240.06" y2="189.045"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="240.06" y1="189.045" x2="242.359" y2="171.575"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="242.359" y1="171.575" x2="249.103" y2="155.295"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="249.103" y1="155.295" x2="259.83" y2="141.315"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="259.83" y1="141.315" x2="273.81" y2="130.588"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="273.81" y1="130.588" x2="290.089" y2="123.845"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="290.089" y1="123.845" x2="307.56" y2="121.545"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="307.56" y1="121.545" x2="323.31" y2="121.545"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="307.56" y1="256.545" x2="323.31" y2="256.545"/>
+<circle fill="none" stroke="#FFFFFF" stroke-width="2" cx="307.56" cy="189.045" r="5"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="318.31" y1="197.78" x2="318.31" y2="180.31"/>
+<line fill="none" stroke="#FFFFFF" stroke-width="2" x1="312.56" y1="189.045" x2="318.31" y2="189.045"/>
+</svg>
