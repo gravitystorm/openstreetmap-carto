@@ -74,11 +74,11 @@
 @sport-surface-clay: #cc7e66;
 
 #sports [zoom>=16][angle_diff>85][angle_diff<95] {
-	[sport='tennis'][zoom>=17] {
+	[sport='tennis'] {
 		[surface='clay']::surface { polygon-fill: @sport-surface-clay; }
 		[surface='grass']::surface { polygon-fill: @sport-surface-grass; }
 		[way_area<2500][d13>37][d13<80] {			/* area size / diagonal check */
-			[d12>36][d12<70][d23>15][d23<40] { 		/* 1>2 = length / 2>3 = width */
+			[d12>38][d12<70][d23>20][d23<40] { 		/* 1>2 = length / 2>3 = width */
 				point-file: url('symbols/fr/sports-tennis.svg');
 				[zoom=17] { point-transform: "rotate([angle]) scale(0.15)"; }
 				[zoom=18] { point-transform: "rotate([angle]) scale(0.3)"; }
@@ -86,7 +86,7 @@
 				[zoom=20] { point-transform: "rotate([angle]) scale(1.2)"; }
 				point-ignore-placement: true;
 			}
-			[d23>36][d23<70][d12>15][d12<40] { 		/* 1>2 = width / 2>3 = length -> rotate by 90° */
+			[d23>38][d23<70][d12>20][d12<40] { 		/* 1>2 = width / 2>3 = length -> rotate by 90° */
 				point-file: url('symbols/fr/sports-tennis.svg');
 				[zoom=17] { point-transform: "rotate([angle]+90) scale(0.15)"; }
 				[zoom=18] { point-transform: "rotate([angle]+90) scale(0.3)"; }
@@ -95,11 +95,19 @@
 				point-ignore-placement: true;
 			}
 		}
+        [access='private'][zoom>=17] {
+        	line-width: 4;
+        	line-color: #efa9a9;
+        	line-dasharray: 6,8;
+        	line-opacity: 0.5;
+        	line-join: round;
+        	line-cap: round;
+		}
 	}
 	
-	[sport='soccer'][d13>150][d13<250] {
+	[sport='soccer'] {
 		[surface='grass']::surface { polygon-fill: @sport-surface-grass; }
-		[d12>130][d12<200][d23>68][d23<160] { /* 1>2 = length / 2>3 = width */
+		[d12>130][d12<200][d23>68][d23<160][d13>150][d13<250] { /* 1>2 = length / 2>3 = width */
 			point-file: url('symbols/fr/sports-soccer.svg');
 			point-ignore-placement: true;
 			[way_area<12000] {
@@ -125,7 +133,7 @@
 			}
 		}
 
-		[d23>130][d23<200][d12>68][d12<160] { /* 1>2 = length / 2>3 = width */
+		[d23>130][d23<200][d12>68][d12<160][d13>150][d13<250] { /* 1>2 = length / 2>3 = width */
 			point-file: url('symbols/fr/sports-soccer.svg');
 			point-ignore-placement: true;
 			[way_area<12000] {
