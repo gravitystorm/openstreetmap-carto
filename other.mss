@@ -263,19 +263,6 @@
       name/text-dy: -10;
     }
   }
-
-  [type='gate'][zoom >= 17]
-   {
-    ref/text-name: "[ref]";
-    ref/text-size: 9;
-    ref/text-fill: black;
-    ref/text-min-distance: 2;
-    ref/text-face-name: @bold-fonts;
-    ref/text-halo-radius: 1;
-    [zoom >= 18] {
-      ref/text-size: 12;
-    }
-  }
 }
 
 .text {
@@ -900,12 +887,13 @@
 
   [aeroway = 'gate'][zoom >= 17]::aeroway {
     text-name: "[ref]";
-    text-size: 10;
+    text-size: 9;
     text-fill: #aa66cc;
-    text-face-name: @book-fonts;
+    text-face-name: @bold-fonts;
     text-halo-radius: 1;
     text-wrap-width: 10;
     text-placement: interior;
+    [zoom >= 18] {  text-size: 12; }
   }
 }
 
