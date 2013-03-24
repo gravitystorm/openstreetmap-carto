@@ -6,8 +6,7 @@
     80
   ],
   "center": [
-    2.348,
-    48.8606,
+    6.89734,47.58572,
     17
   ],
   "format": "png",
@@ -834,7 +833,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,highway,railway,tunnel,junction from planet_osm_polygon\n       where highway in ('residential','unclassified','pedestrian','service','footway','track','path','platform')\n          or railway='platform'\n       order by z_order,way_area desc) as roads",
+        "table": "(select way,highway,railway,case when tunnel in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel,junction from planet_osm_polygon\n       where highway in ('residential','unclassified','pedestrian','service','footway','track','path','platform')\n          or railway='platform'\n       order by z_order,way_area desc) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -861,7 +860,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,highway,junction, \n       case when tunnel in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel,\n       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service\n from planet_osm_line\n       where highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified','road','service','pedestrian','raceway','living_street')\n       order by z_order) as roads",
+        "table": "(select way,highway,junction, \n       case when tunnel in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel,\n       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service\n from planet_osm_line\n       where highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified','road','service','pedestrian','raceway','living_street','platform') or railway='platform'\n       order by z_order) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -886,7 +885,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,highway,junction,railway,aeroway,tunnel /* ,case when highway in ('motorway','motorway_link') then '1' when highway in ('trunk','trunk_link') then '2' when highway in ('primary','primary_link') then '3' when highway in ('secondary','secondary_link') then '4' when highway in ('tertiary','tertiary_link') then '5' when highway in ('residential','unclassified') then '6' else '7' end as prio */ from planet_osm_polygon\n       where highway in ('residential','unclassified','pedestrian','service','footway','living_street','track','path','platform','services')\n          or railway='platform'\n          or aeroway in ('runway','taxiway','helipad')\n       order by z_order, way_area desc) as roads",
+        "table": "      (select way,highway,junction,railway,aeroway,case when tunnel in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel /* ,case when highway in ('motorway','motorway_link') then '1' when highway in ('trunk','trunk_link') then '2' when highway in ('primary','primary_link') then '3' when highway in ('secondary','secondary_link') then '4' when highway in ('tertiary','tertiary_link') then '5' when highway in ('residential','unclassified') then '6' else '7' end as prio */ from planet_osm_polygon\n       where highway in ('residential','unclassified','pedestrian','service','footway','living_street','track','path','platform','services')\n          or railway='platform'\n          or aeroway in ('runway','taxiway','helipad')\n       order by z_order, way_area desc) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1120,7 +1119,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select st_buffer(st_collect(way),3) as way from planet_osm_point where \"natural\"='tree' AND way && !bbox!) as trees",
+        "table": "(select st_buffer(st_collect(way),3) as way, 'poly' as type from planet_osm_point where \"natural\"='tree' AND way && !bbox! UNION select way, 'point' as type from planet_osm_point where \"natural\"='tree' AND way && !bbox!) as trees",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1993,7 +1992,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": " (select s.way as way,coalesce(s.tags->'name:fr',s.name) as name,s.railway as railway,s.aerialway as aerialway,s.disused as disused ,s.highway as highway, s.amenity as amenity, s.tags->'type:RATP' as type_ratp,  s.operator as operator, coalesce(l.operator,'') as l_operator , l.route as l_type, substring(l.ref,1,1) as l_ref1, s.tags->'network' as network, coalesce(s.tags->'type:RATP', case when s.railway='station' then '5'  when s.railway='halt' then '4' when s.railway='tram_stop' then '3' when s.amenity='bus_station' then '2' when s.amenity='bus_stop' then '1' else '0' end) as prio, coalesce(s.tags->'usage','') as usage \n      from planet_osm_point s LEFT JOIN planet_osm_rels r ON (r.parts @> ARRAY[s.osm_id] AND r.members @> ARRAY[concat('n',s.osm_id)]) LEFT JOIN planet_osm_line l ON (l.osm_id=-r.id AND l.route is not null) \n      where s.way && !bbox! and (s.railway in ('station','halt','tram_stop','subway_entrance')\n         or s.aerialway='station' \nor s.highway = 'bus_stop'\nor s.amenity='bus_station')\norder by prio desc, l_operator desc\n     ) as stations",
+        "table": " (select s.way as way,coalesce(s.tags->'name:fr',s.name) as name,s.railway as railway,s.aerialway as aerialway,s.disused as disused ,s.highway as highway, s.amenity as amenity, s.tags->'type:RATP' as type_ratp,  s.operator as operator, coalesce(l.operator,'') as l_operator , l.route as l_type, substring(l.ref,1,1) as l_ref1, coalesce(s.tags->'network',l.tags->'network') as network, coalesce(s.tags->'type:RATP', case when s.railway='station' then '5'  when s.railway='halt' then '4' when s.railway='tram_stop' then '3' when s.amenity='bus_station' then '2' when s.amenity='bus_stop' then '1' else '0' end) as prio, coalesce(s.tags->'usage','') as usage \n      from planet_osm_point s LEFT JOIN planet_osm_rels r ON (r.parts @> ARRAY[s.osm_id] AND r.members @> ARRAY[concat('n',s.osm_id)]) LEFT JOIN planet_osm_line l ON (l.osm_id=-r.id AND l.route is not null) \n      where s.way && !bbox! and (s.railway in ('station','halt','tram_stop','subway_entrance')\n         or s.aerialway='station' \nor s.highway = 'bus_stop'\nor s.amenity='bus_station')\norder by prio desc, l_operator desc\n     ) as stations",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -2561,6 +2560,33 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
       "name": "parking-handi"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        -179.99999979528076,
+        -85.051,
+        179.99378812475413,
+        85.051
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select st_astext(rue.way) as way from (select st_intersection(r1.way,r2.way) as way from planet_osm_line r1 join planet_osm_line r2 on (ST_Intersects(r1.way,r2.way) and r2.highway is not null and r1.osm_id != r2.osm_id) where r1.highway is not null and r1.way && !bbox!) as inter join planet_osm_line rue on (st_intersects(inter.way, rue.way) and rue.highway is not null and rue.way && inter.way)) as addresses",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-20037508.32,-20061906.38,20036816.84,20061906.38",
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
+      },
+      "id": "addr-corner",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "addr-corner"
     }
   ],
   "scale": 1,

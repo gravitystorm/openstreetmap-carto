@@ -115,15 +115,12 @@
     line-width: 2;
   }
 
-  [highway = 'platform'],
-  [railway = 'platform'][tunnel!='yes'] {
-    [zoom >= 17] {
-		line-smooth: 0.7;
+  [zoom >= 17][highway = 'platform'],
+  [zoom >= 17][railway = 'platform'][tunnel!='yes'] {
       line-color: grey;
       line-width: 2;
       line-cap: round;
       line-join: round;
-    }
   }
 }
 
@@ -156,7 +153,6 @@
   [railway = 'platform'][tunnel!='yes'] {
     [zoom >= 17] {
       polygon-fill: #bbbbbb;
-      polygon-gamma: 0.65;
     }
   }
 
@@ -3356,13 +3352,24 @@
 }
 
 #trees [zoom>=16] {
-	polygon-fill: green;
-	polygon-opacity: 0.3;
-	[zoom>=19] {
-		polygon-opacity: 0.4;
-		image-filters: agg-stack-blur(2,2);
-		marker-fill: brown;
+	image-filters: agg-stack-blur(1,1);
+	[type='poly'] {
+		polygon-fill: green;
+		polygon-opacity: 0.3;
+	}
+	[zoom>=19][type='point'] {
+		marker-fill: #b27f36;
 		marker-width: 3;
 		marker-height: 3;
 	}
 }
+
+/*
+#addr-corner [zoom>=16] {
+		marker-width: 5;
+		marker-height: 5;
+		marker-fill: red;
+		marker-opacity: 0.7;
+	line-color: green;
+}
+*/
