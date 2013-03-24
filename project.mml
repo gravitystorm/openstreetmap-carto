@@ -6,7 +6,8 @@
     80
   ],
   "center": [
-    7.5290,47.5995,
+    2.348,
+    48.8606,
     17
   ],
   "format": "png",
@@ -1111,6 +1112,31 @@
       "name": "roads"
     },
     {
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select st_buffer(st_collect(way),3) as way from planet_osm_point where \"natural\"='tree' AND way && !bbox!) as trees",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
+      },
+      "id": "trees",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "trees"
+    },
+    {
       "geometry": "linestring",
       "extent": [
         -179.99999692067183,
@@ -1994,7 +2020,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select *\n      from planet_osm_point\n      where aeroway in ('airport','aerodrome','helipad')\n         or barrier in ('bollard','gate','lift_gate','block')\n         or highway in ('mini_roundabout','gate')\n         or man_made in ('lighthouse','power_wind','windmill','mast')\n         or (power='generator' and (\"generator:source\"='wind' or power_source='wind'))\n         or \"natural\" in ('peak','volcano','spring','tree','cave_entrance')\n         or railway='level_crossing'\n      ) as symbols",
+        "table": "(select *\n      from planet_osm_point\n      where aeroway in ('airport','aerodrome','helipad')\n         or barrier in ('bollard','gate','lift_gate','block')\n         or highway in ('mini_roundabout','gate')\n         or man_made in ('lighthouse','power_wind','windmill','mast')\n         or (power='generator' and (\"generator:source\"='wind' or power_source='wind'))\n         or \"natural\" in ('peak','volcano','spring','cave_entrance')\n         or railway='level_crossing'\n      ) as symbols",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",

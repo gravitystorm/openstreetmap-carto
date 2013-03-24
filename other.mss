@@ -3371,3 +3371,15 @@
     }
   }
 }
+
+#trees [zoom>=16] {
+	polygon-fill: green;
+	polygon-opacity: 0.3;
+	[zoom>=19] {
+		polygon-opacity: 0.4;
+		image-filters: agg-stack-blur(2,2);
+		marker-fill: brown;
+		marker-width: 3;
+		marker-height: 3;
+	}
+}
