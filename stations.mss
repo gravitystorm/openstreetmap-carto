@@ -186,6 +186,9 @@
  		[l_operator = 'STAR']{
     		point-file: url('symbols/fr/rennes_bus.png');
    		}
+		[l_operator = 'Optymo']{
+		point-file: url('symbols/fr/belfort-optymo.png');
+		}
 		point-file: url('symbols/bus_stop.p.12.png');
     }
     
