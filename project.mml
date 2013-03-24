@@ -6,7 +6,7 @@
     80
   ],
   "center": [
-    2.4843,48.8054,
+    7.5290,47.5995,
     17
   ],
   "format": "png",
@@ -2231,7 +2231,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "     (select way,ref,coalesce(tags->'name:fr',name) as name\n      from planet_osm_point\n      where highway='motorway_junction'\n     ) as junctions",
+        "table": "     (select way,ref,coalesce(tags->'name:fr',name) as name, coalesce(highway, aeroway) as type \n      from planet_osm_point\n      where highway='motorway_junction'\n or aeroway='gate'    ) as junctions",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",

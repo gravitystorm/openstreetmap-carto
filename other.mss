@@ -238,7 +238,7 @@
 }
 
 #highway-junctions {
-  [zoom >= 11] {
+  [type='highway_junction'][zoom >= 11]   {
     ref/text-name: "[ref]";
     ref/text-size: 9;
     ref/text-fill: #6666ff;
@@ -261,6 +261,19 @@
       ref/text-size: 12;
       name/text-size: 11;
       name/text-dy: -10;
+    }
+  }
+
+  [type='gate'][zoom >= 17]
+   {
+    ref/text-name: "[ref]";
+    ref/text-size: 9;
+    ref/text-fill: black;
+    ref/text-min-distance: 2;
+    ref/text-face-name: @bold-fonts;
+    ref/text-halo-radius: 1;
+    [zoom >= 18] {
+      ref/text-size: 12;
     }
   }
 }
