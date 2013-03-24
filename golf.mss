@@ -80,6 +80,7 @@
 		[way_area<2500][d13>37][d13<80] {			/* area size / diagonal check */
 			[d12>38][d12<70][d23>20][d23<40] { 		/* 1>2 = length / 2>3 = width */
 				point-file: url('symbols/fr/sports-tennis.svg');
+				[zoom=16] { point-transform: "rotate([angle]) scale(0.075)"; }
 				[zoom=17] { point-transform: "rotate([angle]) scale(0.15)"; }
 				[zoom=18] { point-transform: "rotate([angle]) scale(0.3)"; }
 				[zoom=19] { point-transform: "rotate([angle]) scale(0.6)"; }
@@ -88,6 +89,7 @@
 			}
 			[d23>38][d23<70][d12>20][d12<40] { 		/* 1>2 = width / 2>3 = length -> rotate by 90° */
 				point-file: url('symbols/fr/sports-tennis.svg');
+				[zoom=16] { point-transform: "rotate([angle]+90) scale(0.075)"; }
 				[zoom=17] { point-transform: "rotate([angle]+90) scale(0.15)"; }
 				[zoom=18] { point-transform: "rotate([angle]+90) scale(0.3)"; }
 				[zoom=19] { point-transform: "rotate([angle]+90) scale(0.6)"; }

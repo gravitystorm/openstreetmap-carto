@@ -210,7 +210,7 @@
 	}
     text-face-name: @book-fonts;
     text-size: 10;
-    text-fill: #000;
+    text-fill: black;
     text-halo-radius: 1;
     text-wrap-width: 20;
     [landuse!=''] {text-face-name: @oblique-fonts; text-fill: #444;} /* italique grisé pour les landuse */
@@ -1616,7 +1616,7 @@
   [highway = 'steps'][zoom >= 15] {
     line-width: 5.0;
     line-color: salmon;
-    line-dasharray: 2,1;
+    line-dasharray: 2,1;    
   }
 
   [highway = 'bridleway'],
