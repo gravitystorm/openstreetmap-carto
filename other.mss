@@ -815,66 +815,49 @@
     text-placement: interior;
   }
 
-  [shop = 'bakery']::shop {
-    [zoom >= 17] {
-      text-name: "[name]";
-      text-size: 8;
-      text-dy: 5;
-      text-fill: #939;
-      text-face-name: @book-fonts;
-      text-halo-radius: 1;
-      text-wrap-width: 12;
-      text-placement: interior;
-    }
-  }
+  [shop !=''][zoom >= 16] {
+		[zoom >= 17]::shop {
+			text-name: "[name]";
+			text-size: 8;
+			text-fill: #939;
+			text-face-name: @book-fonts;
+			text-halo-radius: 1;
+		 	text-wrap-width: 12;
+			text-placement: interior;
+	  		
+	  		[shop = 'butcher'],
+			[shop = 'clothes'],
+	  		[shop = 'bakery'] {
+				text-dy: 5;
+			}
+	  	}
 
-  [shop = 'clothes']::shop,
-  [shop = 'fashion']::shop,
-  [shop = 'convenience']::shop,
-  [shop = 'doityourself']::shop,
-  [shop = 'hairdresser']::shop,
-  [shop = 'butcher']::shop,
-  [shop = 'car']::shop,
-  [shop = 'car_repair']::shop,
-  [shop = 'bicycle']::shop,
-  [shop = 'florist']::shop {
-    [zoom >= 17] {
-      text-name: "[name]";
-      text-size: 8;
-      text-dy: 9;
-      text-fill: #939;
-      text-face-name: @book-fonts;
-      text-halo-radius: 1;
-      text-wrap-width: 12;
-      text-placement: interior;
-    }
+	  [shop = 'supermarket']::shop {
+		[zoom >= 16] {
+		  text-name: "[name]";
+		  text-size: 9;
+		  text-dy: 9;
+		  text-fill: #939;
+		  text-face-name: @book-fonts;
+		  text-halo-radius: 1;
+		  text-wrap-width: 20;
+		  text-placement: interior;
+		}
+	  }
+	  [shop = 'mall'], [shop = 'department_store'] {
+		[zoom >= 16] {
+		  text-name: "[name]";
+		  text-size: 11;
+		  text-dy: 13;
+		  text-fill: #939;
+		  text-face-name: @book-fonts;
+		  text-halo-radius: 1.5;
+		  text-wrap-width: 20;
+		  text-placement: interior;
+		}
+	  }
   }
-
-  [shop = 'supermarket']::shop {
-    [zoom >= 16] {
-      text-name: "[name]";
-      text-size: 9;
-      text-dy: 9;
-      text-fill: #939;
-      text-face-name: @book-fonts;
-      text-halo-radius: 1;
-      text-wrap-width: 20;
-      text-placement: interior;
-    }
-  }
-  [shop = 'mall'], [shop = 'department_store'] {
-    [zoom >= 16] {
-      text-name: "[name]";
-      text-size: 11;
-      text-dy: 13;
-      text-fill: #939;
-      text-face-name: @book-fonts;
-      text-halo-radius: 1.5;
-      text-wrap-width: 20;
-      text-placement: interior;
-    }
-  }
-
+  
   [military = 'danger_area'][zoom >= 12]::military {
     text-name: "[name]";
     text-size: 9;
