@@ -694,6 +694,7 @@
     text-fill: #734a08;
     text-face-name: @bold-fonts;
     text-halo-radius: 1;
+    text-wrap-width: 50;
     text-placement: interior;
   }
 
@@ -872,7 +873,7 @@
     text-halo-radius: 1;
     text-wrap-width: 10;
     text-placement: interior;
-    [zoom >= 18] {  text-size: 12; }
+    [zoom >= 18] {  text-size: 12; }
   }
 }
 
@@ -3179,9 +3180,9 @@
     [zoom>=15][zoom<18][nom!=''] { text-name: "[nom]"; }
     [admin_level=7][insee!=''] /* traitement spécifique des noms d'arrondissements */
     {
-     	text-name: "'      '+[name]+' (arrond.)      '";
+     	text-name: "'      '+[name]+' (arrond.)      '";
     }
-    text-name: "'      '+[name]+'      '";
+    text-name: "'      '+[name]+'      '";
     text-fill: #666;
     text-size: 10;
     text-placement: line;
@@ -3363,6 +3364,19 @@
 		marker-height: 3;
 	}
 }
+
+
+#crossroad_names [zoom>=15] {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: black;
+    text-face-name: @book-fonts;
+    text-halo-radius: 2;
+    text-halo-fill: fadeout(white, 30%);
+    text-wrap-width: 20;
+}
+
+
 
 /*
 #addr-corner [zoom>=16] {
