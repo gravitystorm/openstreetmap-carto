@@ -3374,6 +3374,7 @@
     text-halo-radius: 2;
     text-halo-fill: fadeout(white, 30%);
     text-wrap-width: 20;
+    [highway!=''][zoom>=17]	{ text-dy: -15; } /* leave space for the traffic-signal icon */
 }
 
 

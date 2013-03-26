@@ -6,8 +6,8 @@
     80
   ],
   "center": [
-    127.1253,
-    37.4054,
+    139.7166,
+    35.6153,
     15
   ],
   "format": "png",
@@ -2572,7 +2572,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,name from planet_osm_point where junction = 'yes' AND name is not null) as crossroad_names",
+        "table": "(select way,name,highway from planet_osm_point where (junction = 'yes' or highway='traffic_signals') AND name is not null) as crossroad_names",
         "key_field": "",
         "geometry_field": "",
         "extent_cache": "auto",
