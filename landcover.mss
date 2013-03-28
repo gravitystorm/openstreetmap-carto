@@ -34,7 +34,7 @@
   }
 
   [feature = 'landuse_vineyard'] {
-    [zoom >= 10][zoom < 13] {
+    [zoom >= 8][zoom < 13] {
       polygon-fill: #abdf96;
     }
     [zoom >= 13] {
@@ -86,7 +86,7 @@
   }
 
   [feature = 'military_danger_area'] {
-    [zoom >= 9][zoom < 11] {
+    [zoom >= 8][zoom < 11] {
       polygon-fill: pink;
       polygon-opacity: 0.3;
     }
@@ -97,7 +97,7 @@
 
   [feature = 'landuse_meadow'],
   [feature = 'landuse_grass'] {
-    [zoom >= 10] {
+    [zoom >= 8] {
       polygon-fill: #cfeca8;
     }
   }
@@ -154,7 +154,7 @@
 
   [feature = 'landuse_farm'],
   [feature = 'landuse_farmland'] {
-    [zoom >= 9] {
+    [zoom >= 8] {
       polygon-fill: #ead8bd;
     }
   }
@@ -234,7 +234,7 @@
   }
 
   [feature = 'natural_scrub'] {
-    [zoom >= 10][zoom < 14] {
+    [zoom >= 8][zoom < 14] {
       polygon-fill: #b5e3b5;
     }
     [zoom >= 14] {
@@ -276,7 +276,7 @@
     line-color: #555;
   }
 
-  [feature = 'natural_beach'][zoom >= 13] {
+  [feature = 'natural_beach'][zoom >= 8] {
     polygon-pattern-file: url('symbols/beach.png');
   }
 
