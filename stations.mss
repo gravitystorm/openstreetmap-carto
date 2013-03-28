@@ -36,7 +36,8 @@
     	[type_ratp = 'rer'],
     	[type_ratp = 'metro;rer'],
 		[type_ratp = 'rer;metro'] {
-      		point-file: url('symbols/fr/ratp-rer-16.png');
+      		point-file: url('symbols/fr/logo-ratp-rer.svg');
+      		point-transform: 'scale(0.04)';
 		}
 	}
 	
@@ -81,7 +82,8 @@
    		}
    		
    		[type_ratp = 'metro']{
-   	 		point-file: url('symbols/fr/ratp-metro-16.png');
+   	 		point-file: url('symbols/fr/logo-ratp-metro.svg');
+   	 		point-transform: 'scale(0.04)';
    	 		text-size: 9;
    	 		text-dy: 12;
    		}
@@ -133,9 +135,10 @@
     	}
     
     	[type_ratp = 'tram']{
-    	  point-file: url('symbols/fr/ratp-tram.png');
-    	  text-size: 9;
-    	  text-dy: 10;
+			point-file: url('symbols/fr/logo-ratp-tram.svg');
+   	 		point-transform: 'scale(0.04)';
+    		text-size: 9;
+    		text-dy: 10;
     	}
 
  		[operator = 'Viacités'],
@@ -157,7 +160,8 @@
     }
     [zoom >= 17] {
     	[type_ratp = 'bus'],[operator='RATP'],[l_operator='RATP'] {
-      		point-file: url('symbols/fr/ratp-bus-16.png');
+   	 		point-file: url('symbols/fr/logo-ratp-bus.svg');
+   	 		point-transform: 'scale(0.04)';
       	}
  		[l_operator = 'TCL']{
     		[l_ref1="C"] {point-file: url('symbols/fr/tcl-c.png');}
@@ -183,7 +187,8 @@
   [amenity = 'bus_station'][zoom >= 16]::amenity {
     [zoom >= 17] {
     	[type_ratp = 'bus'],[operator='RATP'],[l_operator='RATP'] {
-      		point-file: url('symbols/fr/ratp-bus-16.png');
+   	 		point-file: url('symbols/fr/logo-ratp-metro.svg');
+   	 		point-transform: 'scale(0.06)';
       	}
  		[l_operator = 'TCL']{
     	  point-file: url('symbols/fr/tcl-bus.png');
@@ -200,7 +205,8 @@
     }
     
     [type_ratp = 'bus'],[operator='RATP'],[l_operator = 'RATP'] {
-      point-file: url('symbols/fr/ratp-bus-16.png');
+   	 	point-file: url('symbols/fr/logo-ratp-bus.svg');
+   	 	point-transform: 'scale(0.04)';
     }
     point-file: url('symbols/bus_station.n.16.png');
     point-placement: interior;
