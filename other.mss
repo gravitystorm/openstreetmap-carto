@@ -687,7 +687,7 @@
     [amenity = 'townhall'] { text-dy: 12; }
   }
 
-  [tourism = 'museum'][zoom >= 16] {
+  [tourism = 'museum'][zoom >= 16]::tourism {
     text-name: "[name]";
     text-size: 10;
     text-dy: 10;
@@ -812,8 +812,8 @@
     text-placement: interior;
   }
 
-  [shop !=''][zoom >= 16] {
-		[zoom >= 17]::shop {
+  [shop != ''][zoom >= 16]::shop {
+		[zoom >= 17] {
 			text-name: "[name]";
 			text-size: 8;
 			text-fill: #939;
@@ -829,7 +829,7 @@
 			}
 	  	}
 
-	  [shop = 'supermarket']::shop {
+	  [shop = 'supermarket'] {
 		[zoom >= 16] {
 		  text-name: "[name]";
 		  text-size: 9;

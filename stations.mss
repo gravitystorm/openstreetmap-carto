@@ -27,7 +27,7 @@
     
 /* logos spécifiques aux réseaux et opérateurs */
 
-    [zoom >= 10] [operator = 'SNCF'][usage!='freight'] {
+    [zoom >= 10] [operator = 'SNCF'][type_ratp = ''][usage!='freight'] {
       point-file: url('symbols/fr/sncf-24.png');
       [disused = 'yes'] { point-file: url('symbols/station_disused.png'); }
     }
@@ -187,7 +187,7 @@
   [amenity = 'bus_station'][zoom >= 16]::amenity {
     [zoom >= 17] {
     	[type_ratp = 'bus'],[operator='RATP'],[l_operator='RATP'] {
-   	 		point-file: url('symbols/fr/logo-ratp-metro.svg');
+   	 		point-file: url('symbols/fr/logo-ratp-bus.svg');
    	 		point-transform: 'scale(0.06)';
       	}
  		[l_operator = 'TCL']{

@@ -1,7 +1,11 @@
 .points {
-  [amenity = 'post_office'][zoom >= 16]::amenity[operator='La Poste'],[zoom >= 16][ref_laposte!=''] {
-    point-file: url('symbols/fr/laposte.png');
+  [amenity = 'post_office'][zoom >= 16][operator='La Poste']::amenity,
+  [amenity = 'post_office'][zoom >= 16][ref_laposte!='']::amenity {
+    [post_office_type='post_annex'], [post_office_type='post_partner']
+    { point-file: url('symbols/fr/LaPoste3-gris.png'); }
+    point-file: url('symbols/fr/LaPoste3.png');
     point-placement: interior;
+    point-transform: "scale(0.5)";
   }
   
   [amenity = 'post_office'][zoom >= 17]::amenity {
@@ -35,7 +39,9 @@
   }
 
   [amenity = 'bicycle_rental'][zoom >= 17]::amenity {
-  	[network='Vélib’'] {
+  	[network='Vélib’'],
+  	[network="Vélib\'"],
+  	[network='Vélib'] {
   		point-file: url('symbols/fr/Velib.svg');
   		point-transform: "scale(2)";
   	}
@@ -177,7 +183,11 @@
     point-placement: interior;
   }
 
-  [amenity = 'parking'][zoom >= 15]::amenity {
+  [amenity = 'parking'][zoom >= 15][way_area>5000]::amenity,
+  [amenity = 'parking'][zoom >= 15][parking='multi-storey']::amenity,
+  [amenity = 'parking'][zoom >= 16][name != '']::amenity,
+  [amenity = 'parking'][zoom >= 16][way_area>2000]::amenity,
+  [amenity = 'parking'][zoom >= 17]::amenity {
     point-file: url('symbols/parking.p.16.png');
     point-placement: interior;
     [access != ''][access != 'public'][access != 'yes'] {
