@@ -1840,7 +1840,7 @@
 		line-smooth: 0.7;
       line-width: 1;
       line-dasharray: 5,3;
-      line-color: #444;
+      line-color: #999;
       [zoom >= 15] { line-width: 2; }
     }
 
@@ -1850,6 +1850,7 @@
       line-color: #666;
       [tunnel = 'yes'] {
         line-dasharray: 5,3;
+        line-color: #999;
       }
     }
 
@@ -1876,7 +1877,7 @@
 
     [railway = 'platform'][tunnel!='yes'] {
       [zoom >= 16] {
-		line-smooth: 0.7;
+		// line-smooth: 0.7;
         line-join: round;
         line-width: 6;
         line-color: grey;

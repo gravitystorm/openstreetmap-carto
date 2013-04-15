@@ -6,9 +6,9 @@
     80
   ],
   "center": [
-    2.2114,
-    48.8979,
-    15
+	2.3828,
+    48.8391,
+    19
   ],
   "format": "png",
   "interactivity": false,
@@ -1699,7 +1699,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select osm_id, ST_GeometryN(st_union(way),1) as way, max(angle)-min(angle) as angle_diff, avg(angle) as angle from (select p.osm_id, p.way as way, cast(90+degrees(ST_Azimuth(st_line_interpolate_point(ST_LineMerge(ST_Intersection(st_buffer(p.way,0.1), h.way)),0),st_line_interpolate_point(ST_LineMerge(ST_Intersection(st_buffer(p.way,0.1), h.way)),1))) as integer) % 180 as angle from planet_osm_point p join planet_osm_line h on (st_intersects(p.way,h.way) and h.highway is not null and h.highway not in ('footway','cycleway','path','pedestrian','steps','service')) where (p.highway='crossing' or p.tags->'crossing' in ('traffic_signals','uncontrolled')) and p.way && !bbox!) as crossing group by osm_id ) as highway_crossings",
+        "table": "(select osm_id, ST_GeometryN(st_union(way),1) as way, max(angle)-min(angle) as angle_diff, avg(angle) as angle from (select p.osm_id, p.way as way, cast(90+degrees(ST_Azimuth(st_line_interpolate_point(ST_LineMerge(ST_Intersection(st_buffer(p.way,0.1), h.way)),0),st_line_interpolate_point(ST_LineMerge(ST_Intersection(st_buffer(p.way,0.1), h.way)),1))) as integer) % 180 as angle from planet_osm_point as p join planet_osm_line h on (st_intersects(p.way,h.way) and h.highway is not null and h.highway not in ('footway','cycleway','path','pedestrian','steps','service')) where (p.highway='crossing' or p.tags->'crossing' in ('traffic_signals','uncontrolled')) and p.way && !bbox!) as crossing group by osm_id ) as highway_crossings",
         "key_field": "",
         "geometry_field": "way",
         "extent_cache": "auto",
@@ -1963,7 +1963,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,coalesce(tags->'name:fr',name) as name,railway,aerialway,disused,highway, amenity, tags->'type:RATP' as type_ratp, operator, '' as l_operator, '' as l_type, '' as l_ref1, tags->'network' as network, case when railway='station' then 2  when railway='halt' then 1  else 0 end as prio, coalesce(tags->'usage','') as usage \n      from planet_osm_polygon\n      where railway in ('station','halt','tram_stop')\n         or aerialway='station'\n     order by prio desc ) as stations",
+        "table": "      (select way,coalesce(tags->'name:fr',name) as name,railway,aerialway,disused,highway, amenity, coalesce(tags->'type:RATP','') as type_ratp, operator, '' as l_operator, '' as l_type, '' as l_ref1, tags->'network' as network, case when railway='station' then 2  when railway='halt' then 1  else 0 end as prio, coalesce(tags->'usage','') as usage \n      from planet_osm_polygon\n      where railway in ('station','halt','tram_stop')\n         or aerialway='station'\n     order by prio desc ) as stations",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1993,7 +1993,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": " (select s.way as way,coalesce(s.tags->'name:fr',s.name) as name,s.railway as railway,s.aerialway as aerialway,s.disused as disused ,s.highway as highway, s.amenity as amenity, s.tags->'type:RATP' as type_ratp,  s.operator as operator, coalesce(l.operator,'') as l_operator , l.route as l_type, substring(l.ref,1,1) as l_ref1, coalesce(s.tags->'network',l.tags->'network') as network, coalesce(s.tags->'type:RATP', case when s.railway='station' then '5'  when s.railway='halt' then '4' when s.railway='tram_stop' then '3' when s.amenity='bus_station' then '2' when s.amenity='bus_stop' then '1' else '0' end) as prio, coalesce(s.tags->'usage','') as usage \n      from planet_osm_point s LEFT JOIN planet_osm_rels r ON (r.parts @> ARRAY[s.osm_id] AND r.members @> ARRAY[concat('n',s.osm_id)]) LEFT JOIN planet_osm_line l ON (l.osm_id=-r.id AND l.route is not null) \n      where s.way && !bbox! and (s.railway in ('station','halt','tram_stop','subway_entrance')\n         or s.aerialway='station' \nor s.highway = 'bus_stop'\nor s.amenity='bus_station')\norder by prio desc, l_operator desc\n     ) as stations",
+        "table": " (select s.way as way,coalesce(s.tags->'name:fr',s.name) as name,s.railway as railway,s.aerialway as aerialway,s.disused as disused ,s.highway as highway, s.amenity as amenity, coalesce(s.tags->'type:RATP','') as type_ratp,  s.operator as operator, coalesce(l.operator,'') as l_operator , l.route as l_type, substring(l.ref,1,1) as l_ref1, coalesce(s.tags->'network',l.tags->'network') as network, coalesce(s.tags->'type:RATP', case when s.railway='station' then '5'  when s.railway='halt' then '4' when s.railway='tram_stop' then '3' when s.amenity='bus_station' then '2' when s.amenity='bus_stop' then '1' else '0' end) as prio, coalesce(s.tags->'usage','') as usage \n      from planet_osm_point s LEFT JOIN planet_osm_rels r ON (r.parts @> ARRAY[s.osm_id] AND r.members @> ARRAY[concat('n',s.osm_id)]) LEFT JOIN planet_osm_line l ON (l.osm_id=-r.id AND l.route is not null) \n      where s.way && !bbox! and (s.railway in ('station','halt','tram_stop','subway_entrance')\n         or s.aerialway='station' \nor s.highway = 'bus_stop'\nor s.amenity='bus_station')\norder by prio desc, l_operator desc\n     ) as stations",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",

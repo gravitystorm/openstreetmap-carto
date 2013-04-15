@@ -28,8 +28,9 @@
 /* logos spécifiques aux réseaux et opérateurs */
 
     [zoom >= 10] [operator = 'SNCF'][type_ratp = ''][usage!='freight'] {
-      point-file: url('symbols/fr/sncf-24.png');
-      [disused = 'yes'] { point-file: url('symbols/station_disused.png'); }
+      point-file: url('symbols/fr/Logo_SNCF.svg');
+      point-transform: 'scale(0.15)';
+      [disused = 'yes'] { point-file: url('symbols/station_disused.png'); point-transform: 'scale(1)';}
     }
     
     [zoom >= 13] {
