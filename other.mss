@@ -1587,7 +1587,7 @@
   }
 
   [highway = 'platform'] {
-    [zoom >= 16] {
+    [zoom >= 17] {
       line-join: round;
       line-width: 6;
       line-color: grey;
@@ -1876,7 +1876,7 @@
     }
 
     [railway = 'platform'][tunnel!='yes'] {
-      [zoom >= 16] {
+      [zoom >= 17] {
 		// line-smooth: 0.7;
         line-join: round;
         line-width: 6;
