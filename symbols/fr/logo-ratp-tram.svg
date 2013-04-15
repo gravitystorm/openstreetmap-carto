@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 14.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 43363)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+	 id="Layer_1" inkscape:output_extension="org.inkscape.output.svg.inkscape" xmlns:svg="http://www.w3.org/2000/svg" sodipodi:docname="20090101024514!Metro-M.svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" inkscape:version="0.46" sodipodi:version="0.32" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="400px" height="400px"
+	 viewBox="0 0 400 400" enable-background="new 0 0 400 400" xml:space="preserve">
+<defs>
+	
+	
+		<inkscape:perspective  inkscape:vp_x="0 : 200 : 1" sodipodi:type="inkscape:persp3d" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_z="400 : 200 : 1" inkscape:persp3d-origin="200 : 133.33333 : 1" id="perspective10">
+		</inkscape:perspective>
+</defs>
+<sodipodi:namedview  inkscape:cy="200" inkscape:window-width="1231" inkscape:window-y="0" showgrid="false" guidetolerance="10.0" inkscape:window-x="207" borderopacity="1.0" inkscape:zoom="1.165" inkscape:pageshadow="2" inkscape:current-layer="Layer_1" inkscape:cx="126.90217" gridtolerance="10.0" inkscape:window-height="942" inkscape:pageopacity="0.0" pagecolor="#ffffff" bordercolor="#666666" objecttolerance="10.0" id="base">
+	</sodipodi:namedview>
+<path id="path3157" fill="#14489E" d="M399,200.986C399,90.544,306.459,1,200.49,1C90.54,1,1,90.544,1,200.986
+	C1,310.43,90.54,399,200.49,399S399,310.919,399,200.986"/>
+<path id="path3155" fill="#FFFFFF" d="M371.639,200.986c0,93.535-77.105,171.617-171.147,171.617
+	c-94.509,0-172.129-77.09-172.129-171.617c0-95.002,77.62-173.63,172.129-173.63C294.532,27.356,371.639,106.467,371.639,200.986z"
+	/>
+<path fill="#14489E" d="M293.645,125.875c0-8.024-4.996-15.531-14.012-15.531H120.875c-9.016,0-14.025,7.507-14.025,15.531
+	c0,7.013,5.01,15.514,14.025,15.514h61.068v164.287c0,9.016,9.523,14.025,18.033,14.025c9.555,0,18.559-5.01,18.559-14.025V141.385
+	h61.098C288.648,141.385,293.645,132.888,293.645,125.875z"/>
+</svg>

@@ -183,6 +183,16 @@
 		}
 		point-file: url('symbols/bus_stop.p.12.png');
     }
+    [zoom >= 19] {
+      text-name: "[name]";
+      text-face-name: @book-fonts;
+      text-size: 9;
+      text-fill: #66f;
+      text-dy: 10;
+      text-halo-radius: 1;
+      text-wrap-width: 0;
+      text-placement: interior;
+    }
   }
 
   [amenity = 'bus_station'][zoom >= 16]::amenity {
