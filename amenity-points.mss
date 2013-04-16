@@ -8,6 +8,12 @@
     point-transform: "scale(0.5)";
   }
   
+  [amenity = 'post_office'][zoom >= 16][operator='bpost']::amenity {
+    point-file: url('symbols/fr/logo_bpost.png');
+    point-placement: interior;
+    point-transform: "scale(0.5)";
+  }
+  
   [amenity = 'post_office'][zoom >= 17]::amenity {
     point-file: url('symbols/post_office.p.16.png');
     point-placement: interior;
