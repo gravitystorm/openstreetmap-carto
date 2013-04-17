@@ -196,9 +196,14 @@
     text-name: "[nom]";
     [boundary!=''] {
     	text-face-name: @oblique-fonts;
-    	text-fill: #003;
+    	[zoom >= 15]
+    	{
+    		text-fill: grey;
+    		text-size: 12;
+	    }
 	    text-halo-radius: 2;
     	text-halo-fill: fadeout(white, 30%);
+    	text-label-position-tolerance: 50;
     }
     [heritage!=''] { 
 	 	text-fill: brown;

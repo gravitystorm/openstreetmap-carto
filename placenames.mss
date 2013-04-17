@@ -95,10 +95,12 @@
     }
     [zoom >= 11] {
       text-size: 11;
+      text-label-position-tolerance: 30;
     }
     [zoom >= 14] {
       text-size: 14;
       text-fill: #777777;
+      text-label-position-tolerance: 50;
     }
   }
 }
