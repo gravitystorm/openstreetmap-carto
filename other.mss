@@ -1298,6 +1298,7 @@
         line-color: #999;
         line-width: 2.5;
         line-cap: round;
+        line-join: round;
       }
       [zoom >= 16] { line-width: 7; }
       [zoom >= 19] { line-width: 14; }
