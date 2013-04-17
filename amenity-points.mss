@@ -12,6 +12,14 @@
     point-file: url('symbols/fr/logo_bpost.png');
     point-placement: interior;
     point-transform: "scale(0.5)";
+      text-name: "[name]";
+      text-face-name: @book-fonts;
+      text-fill: black;
+      text-halo-radius: 1;
+      text-wrap-width: 0;
+      text-placement: interior;
+      text-size: 8;
+      text-dy: 10;
   }
   
   [amenity = 'post_office'][zoom >= 17]::amenity {
