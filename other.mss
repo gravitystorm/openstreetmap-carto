@@ -311,8 +311,8 @@
   }
 
   [amenity = 'library']::amenity,
-  [amenity = 'theatre']::amenity,
-  [amenity = 'courthouse']::amenity {
+  [amenity = 'theatre']::amenity
+   {
     [zoom >= 16] {
       [zoom >= 16][zoom<17] { text-name: "[nom]"; }
       text-name: "[name]";
@@ -676,7 +676,8 @@
   }
 
   [amenity = 'townhall'][zoom >= 15]::amenity,
-  [amenity = 'public_building'][zoom >= 16]::amenity {
+  [amenity = 'public_building'][zoom >= 16]::amenity,
+  [amenity = 'courthouse'][zoom >= 16] {
     text-name: "[name]";
     text-size: 10;
     text-fill: #666;
@@ -684,7 +685,7 @@
     text-face-name: @bold-fonts;
     text-halo-radius: 1;
     text-placement: interior;
-    [amenity = 'townhall'] { text-dy: 12; }
+    [amenity = 'townhall'],[amenity = 'courthouse'] { text-dy: 12; }
   }
 
   [tourism = 'museum'][zoom >= 16]::tourism {
@@ -3031,6 +3032,7 @@
 	text-face-name: @book-fonts;
 	text-halo-radius: 1.5;
 	text-halo-fill: fadeout(white, 30%);
+	[highway != '']  { text-spacing: 200; }
 
 	[zoom >= 15][zoom<17][railway!=''][way_len != ''][way_len < 1000] { text-name: ""; } /* pas d'affichage des petites voies ferrées comme les quais avant le zoom 17 */
 
@@ -3145,7 +3147,7 @@
 	  [zoom>=17] { text-name: "[name]"; }
 	  text-name: "[nom]";
 	  text-size: 8;
-	  text-spacing: 300;
+	  text-spacing: 200;
 	  text-placement: line;
 	  text-halo-radius: 1;
 	  text-face-name: @book-fonts;
