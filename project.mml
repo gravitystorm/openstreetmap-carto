@@ -8,7 +8,7 @@
   "center": [
   	2.4818,
 	48.8019,
-    17
+    11
   ],
   "format": "png",
   "interactivity": false,
@@ -2257,7 +2257,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "     (select way,ref,coalesce(tags->'name:fr',name) as name, coalesce(highway, aeroway) as type \n      from planet_osm_point\n      where highway='motorway_junction'\n ) as junctions",
+        "table": "     (select way,ref,coalesce(tags->'name:fr',name) as name, replace(replace(replace(coalesce(tags->'short_name:fr',tags->'short_name', tags->'name:fr', name),'Saint-','Sᵗ-'),'Sainte-','Sᵗᵉ-'),'-sous-','-ss-') as nom, coalesce(highway, aeroway) as type \n      from planet_osm_point\n      where highway='motorway_junction'\n ) as junctions",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",

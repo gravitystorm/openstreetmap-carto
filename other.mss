@@ -239,7 +239,7 @@
 }
 
 #highway-junctions {
-  [type='highway_junction'][zoom >= 11]   {
+  [type='motorway_junction'][zoom >= 11]   {
     ref/text-name: "[ref]";
     ref/text-size: 9;
     ref/text-fill: #6666ff;
@@ -248,7 +248,7 @@
     ref/text-halo-radius: 1;
     ref/text-wrap-width: 12;
     [zoom >= 12] {
-      name/text-name: "[name]";
+      name/text-name: "[nom]";
       name/text-size: 8;
       name/text-fill: #6666ff;
       name/text-dy: -8;
