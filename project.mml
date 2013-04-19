@@ -6,9 +6,9 @@
     80
   ],
   "center": [
-  	2.4818,
-	48.8019,
-    11
+  	4.88191,
+	43.98333,
+    18
   ],
   "format": "png",
   "interactivity": false,
@@ -938,7 +938,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way, aeroway, amenity, tags->'heritage' as heritage, \n        case\n         when building in ('residential','house','garage','garages','detached','terrace','apartments') then 'INT-light'::text\n         else building\n        end as building, tags->'wall' as wall \n       from planet_osm_polygon\n       where (building is not null\n         and building not in ('no','station','supermarket','planned')\n         and (railway is null or railway != 'station')\n         and (amenity is null or amenity not in ('place_of_worship', 'public_building','townhall','courthouse','police','post_office','theatre')))\n          or aeroway = 'terminal'\n       order by z_order,way_area desc) as buildings",
+        "table": "      (select way, aeroway, amenity, tags->'heritage' as heritage, case when building in ('residential','house','garage','garages','detached','terrace','apartments') then 'INT-light'::text else building end as building, tags->'wall' as wall  from planet_osm_polygon  where (building is not null  and building not in ('no','station','supermarket','planned')   and (railway is null or railway != 'station')   and (amenity is null or amenity not in ('place_of_worship', 'public_building','townhall','courthouse','police','post_office','theatre')))  or aeroway = 'terminal'   order by z_order,way_area desc) as buildings",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -954,6 +954,32 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
       "name": "buildings"
+    },
+    {
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "      (select way  from planet_osm_polygon  where tags->'room'='yes' or tags->'indoor'='yes') as indoor",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
+      },
+      "id": "indoor",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "indoor"
     },
     {
       "geometry": "linestring",

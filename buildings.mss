@@ -68,3 +68,9 @@
     }
   }
 }
+
+
+#indoor [zoom >= 18] {
+	line-color: #220044;
+	line-width: 0.2;
+}
