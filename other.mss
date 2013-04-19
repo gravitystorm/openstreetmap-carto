@@ -247,7 +247,7 @@
     ref/text-face-name: @oblique-fonts;
     ref/text-halo-radius: 1;
     ref/text-wrap-width: 12;
-    [zoom >= 12] {
+    [zoom >= 13] {
       name/text-name: "[nom]";
       name/text-size: 8;
       name/text-fill: #6666ff;
@@ -2944,7 +2944,7 @@
       shield-fill: #fff;
       shield-placement: line;
       shield-file: url("symbols/mot_shield[length].png");
-      shield-spacing: 750;
+      shield-spacing: @shield_spacing;
       shield-min-distance: 30;
       shield-face-name: @bold-fonts;
       [length = 7] { shield-file: url('symbols/mot_shield6.png'); }
@@ -2958,7 +2958,7 @@
     shield-fill: #fff;
     shield-placement: line;
     shield-file: url("symbols/tru_shield[length].png");
-    shield-spacing: 750;
+    shield-spacing: @shield_spacing;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
   }
@@ -2969,7 +2969,7 @@
     shield-fill: #fff;
     shield-placement: line;
     shield-file: url("symbols/pri_shield[length].png");
-    shield-spacing: 750;
+    shield-spacing: @shield_spacing;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
   }
@@ -2980,7 +2980,7 @@
     shield-fill: #fff;
     shield-placement: line;
     shield-file: url("symbols/sec_shield[length].png");
-    shield-spacing: 750;
+    shield-spacing: @shield_spacing;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
   }
@@ -2991,7 +2991,7 @@
     shield-fill: #fff;
     shield-placement: line;
     shield-file: url("symbols/ter_shield[length].png");
-    shield-spacing: 750;
+    shield-spacing: @shield_spacing;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
   }
@@ -3006,7 +3006,7 @@
       text-min-distance: 18;
       text-halo-radius: 2;
       text-halo-fill: fadeout(white, 30%);
-      text-spacing: 750;
+      text-spacing: @shield_spacing;
       text-placement: line;
       text-dy: 8;
     }
@@ -3018,7 +3018,7 @@
       text-name: "[ref]";
       text-size: 10;
       text-fill: #333;
-      text-spacing: 750;
+      text-spacing: @shield_spacing;
       text-placement: line;
       text-min-distance: 18;
       text-face-name: @book-fonts;
