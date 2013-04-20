@@ -192,7 +192,7 @@
   [way_area >= 80000][zoom >= 15]::long,
   [way_area >= 20000][zoom >= 16]::long,
   [zoom >= 17]::long {
-    [zoom >= 17] { text-name: "[name]"; }
+    [zoom >= 17] { text-name: "[leisure]"; }
     text-name: "[nom]";
     [boundary!=''] {
     	text-face-name: @oblique-fonts;

@@ -277,6 +277,11 @@
     point-placement: interior;
   }
 
+  [emergency = 'aed'][zoom >= 17] {
+    point-file: url('symbols/fr/aed2.svg');
+    point-placement: interior;
+  }
+
   [amenity = 'theatre'][zoom >= 17]::amenity {
     point-file: url('symbols/theatre.p.20.png');
     point-placement: interior;
