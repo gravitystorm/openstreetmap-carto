@@ -39,11 +39,10 @@
 	point-file: url('symbols/fr/golf.svg');
 	point-transform: "scale(0.4)";
 	[ref!=''] {
+		text-fill: #444;
 		text-name: "[ref]";
 		text-face-name: @book-fonts;
-		text-horizontal-alignment: left;
-		text-dy: -2;
-		text-dx: 10;
+		text-dy: -10;
 		text-halo-radius: 1;
 		text-halo-fill: fadeout(white, 30%);
 	}
