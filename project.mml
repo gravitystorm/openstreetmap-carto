@@ -6,9 +6,9 @@
     80
   ],
   "center": [
-  	2.64813,
-  	48.76288,
-    17
+  6.6093,
+  	45.3829,
+    14
   ],
   "format": "png",
   "interactivity": false,
@@ -387,6 +387,33 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
       "name": "dam"
+    },
+    {
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way, tags->'piste:type' as ski_type, tags->'piste:difficulty' as ski_difficulty, ref, name from planet_osm_line where tags ? 'piste:difficulty') as ski",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "",
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
+      },
+      "id": "ski",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "ski",
+      "geometry": ""
     },
     {
       "extent": [
@@ -1095,7 +1122,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,aerialway from planet_osm_line where aerialway is not null) as aerialways",
+        "table": "(select way,aerialway,name from planet_osm_line where aerialway is not null) as aerialways",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1989,7 +2016,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,coalesce(tags->'name:fr',name) as name,railway,aerialway,disused,highway, amenity, coalesce(tags->'type:RATP','') as type_ratp, operator, '' as l_operator, '' as l_type, '' as l_ref1, tags->'network' as network, case when railway='station' then 2  when railway='halt' then 1  else 0 end as prio, coalesce(tags->'usage','') as usage \n      from planet_osm_polygon\n      where railway in ('station','halt','tram_stop')\n         or aerialway='station'\n     order by prio desc ) as stations",
+        "table": "      (select way,coalesce(tags->'name:fr',name) as name,railway,aerialway,disused,highway, amenity, coalesce(tags->'type:RATP','') as type_ratp, operator, '' as l_operator, '' as l_type, '' as l_ref1, tags->'network' as network, case when railway='station' then 2  when railway='halt' then 1  else 0 end as prio, coalesce(tags->'usage','') as usage, coalesce(tags->'ele',tags->'ele:local') as ele \n      from planet_osm_polygon\n      where railway in ('station','halt','tram_stop')\n         or aerialway='station'\n     order by prio desc ) as stations",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -2019,7 +2046,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": " (select s.way as way,coalesce(s.tags->'name:fr',s.name) as name,s.railway as railway,s.aerialway as aerialway,s.disused as disused ,s.highway as highway, s.amenity as amenity, coalesce(s.tags->'type:RATP','') as type_ratp,  s.operator as operator, coalesce(l.operator,'') as l_operator , l.route as l_type, substring(l.ref,1,1) as l_ref1, coalesce(s.tags->'network',l.tags->'network') as network, coalesce(s.tags->'type:RATP', case when s.railway='station' then '5'  when s.railway='halt' then '4' when s.railway='tram_stop' then '3' when s.amenity='bus_station' then '2' when s.amenity='bus_stop' then '1' else '0' end) as prio, coalesce(s.tags->'usage','') as usage \n      from planet_osm_point s LEFT JOIN planet_osm_rels r ON (r.parts @> ARRAY[s.osm_id] AND r.members @> ARRAY['n' || s.osm_id]) LEFT JOIN planet_osm_line l ON (l.osm_id=-r.id AND l.route is not null) \n      where s.way && !bbox! and (s.railway in ('station','halt','tram_stop','subway_entrance')\n         or s.aerialway='station' \nor s.highway = 'bus_stop'\nor s.amenity='bus_station')\norder by prio desc, l_operator desc\n     ) as stations",
+        "table": " (select s.way as way,coalesce(s.tags->'name:fr',s.name) as name,s.railway as railway,s.aerialway as aerialway,s.disused as disused ,s.highway as highway, s.amenity as amenity, coalesce(s.tags->'type:RATP','') as type_ratp,  s.operator as operator, coalesce(l.operator,'') as l_operator , l.route as l_type, substring(l.ref,1,1) as l_ref1, coalesce(s.tags->'network',l.tags->'network') as network, coalesce(s.tags->'type:RATP', case when s.railway='station' then '5'  when s.railway='halt' then '4' when s.railway='tram_stop' then '3' when s.amenity='bus_station' then '2' when s.amenity='bus_stop' then '1' else '0' end) as prio, coalesce(s.tags->'usage','') as usage, coalesce(s.ele,s.tags->'ele:local') as ele \n      from planet_osm_point s LEFT JOIN planet_osm_rels r ON (r.parts @> ARRAY[s.osm_id] AND r.members @> ARRAY['n' || s.osm_id]) LEFT JOIN planet_osm_line l ON (l.osm_id=-r.id AND l.route is not null) \n      where s.way && !bbox! and (s.railway in ('station','halt','tram_stop','subway_entrance')\n         or s.aerialway='station' \nor s.highway = 'bus_stop'\nor s.amenity='bus_station')\norder by prio desc, l_operator desc\n     ) as stations",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",

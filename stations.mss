@@ -115,6 +115,10 @@
       point-file: url('symbols/station_small.png');
     }
     [zoom >= 14] {
+      [zoom>=16][aerialway!=''][ele!=''] {
+      	[name!=''] { text-name: [name]+'\n'+[ele]; }
+      	text-name: [ele];
+      }
       text-name: "[name]";
       text-face-name: @book-fonts;
       text-size: 8;

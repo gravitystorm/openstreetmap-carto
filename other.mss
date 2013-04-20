@@ -3376,6 +3376,25 @@
 }
 
 
+#ski [zoom >= 14] {
+  [ski_type='downhill'] {
+	line-width: 2;
+	line-smooth: 0.5;
+	[zoom >= 16] {line-width: 4; }
+	[zoom >= 18] {line-width: 8; }
+	[ski_difficulty = 'novice']			{ line-color: green; }
+	[ski_difficulty = 'easy']			{ line-color: blue; }
+	[ski_difficulty = 'intermediate']	{ line-color: red; }
+	[ski_difficulty = 'advanced']		{ line-color: black; }
+	line-color: grey;
+	text-name: "[name]";
+	text-placement: line;
+	text-face-name: @book-fonts;
+    text-halo-radius: 2;
+  }
+}
+
+
 #crossroad_names [zoom>=15] {
     text-name: "[name]";
     text-size: 9;
