@@ -6,9 +6,9 @@
     80
   ],
   "center": [
-  6.6093,
-  	45.3829,
-    14
+  2.5066,
+  	48.9591,
+    16
   ],
   "format": "png",
   "interactivity": false,
@@ -1173,7 +1173,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select st_buffer(st_collect(way),3) as way, 'poly' as type from planet_osm_point where \"natural\"='tree' AND way && !bbox! UNION select way, 'point' as type from planet_osm_point where \"natural\"='tree' AND way && !bbox!) as trees",
+        "table": "(select st_buffer(st_collect(way),3) as way, 'poly' as type from planet_osm_point where \"natural\"='tree' AND way && !bbox! UNION select way, 'point' as type from planet_osm_point where \"natural\"='tree' AND way && !bbox! union select st_buffer(way,3) as way, 'poly' as type from planet_osm_line where \"natural\"='tree_row' and way && !bbox! ) as trees",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
