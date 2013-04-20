@@ -664,6 +664,7 @@
       text-size: 12;
       text-fill: grey;
       text-face-name: @oblique-fonts;
+      text-dy: 0;
     }
   }
 
