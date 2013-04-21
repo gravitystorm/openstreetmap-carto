@@ -257,14 +257,6 @@
     }
   }
 
-  [feature = 'amenity_parking'][zoom >= 10] {
-    polygon-fill: #f7efb7;
-    [zoom >= 15] {
-      line-width: 0.3;
-      line-color: #eeeed1;
-    }
-  }
-
   [feature = 'aeroway_apron'][zoom >= 12] {
     polygon-fill: #e9d1ff;
   }
@@ -319,5 +311,15 @@
     polygon-fill: #8ad3af;
     line-width: 0.5;
     line-color: #888;
+  }
+}
+
+#parking-area {
+  [amenity = 'parking'][zoom >= 10] {
+    polygon-fill: #f7efb7;
+    [zoom >= 15] {
+      line-width: 0.3;
+      line-color: #eeeed1;
+    }
   }
 }
