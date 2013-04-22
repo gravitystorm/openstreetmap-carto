@@ -401,13 +401,20 @@
   [natural = 'peak']::natural,
   [natural = 'volcano']::natural {
     [zoom >= 13] {
-      text-name: "[name]";
-      text-size: 10;
-      text-fill: brown;
-      text-dy: 5;
-      text-face-name: @book-fonts;
-      text-halo-radius: 1;
-      text-placement: interior;
+      long/text-name: "[name]";
+      long/text-size: 10;
+      long/text-fill: brown;
+      long/text-dy: 5;
+      long/text-face-name: @book-fonts;
+      long/text-halo-radius: 1;
+      long/text-placement: interior;
+      short/text-name: "[nom]";
+      short/text-size: 10;
+      short/text-fill: brown;
+      short/text-dy: 5;
+      short/text-face-name: @book-fonts;
+      short/text-halo-radius: 1;
+      short/text-placement: interior;
       ele/text-name: "[ele]";
       ele/text-size: 9;
       ele/text-fill: brown;
