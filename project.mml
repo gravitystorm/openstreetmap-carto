@@ -6,8 +6,8 @@
     80
   ],
   "center": [
-  1.13048,
-  	49.47246,
+    -52.31659,
+  	4.92122,
     15
   ],
   "format": "png",
@@ -2123,7 +2123,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,amenity,shop,tourism,highway,man_made,access,religion,waterway,lock,historic,leisure,operator, tags->'network' as network, tags->'ref:FR:LaPoste' as ref_laposte, tags->'post_office:type' as post_office_type, coalesce(tags->'emergency', tags->'medical') as emergency, substring('******',1,cast('0' || regexp_replace(tags->'stars','[^0-9]','','g') as integer)) as stars, tags->'parking' as parking, way_area, name, \ncase when amenity='townhall' then 2  when amenity in ('post_office','courthouse','police','public_building') then 1  else 0 end as prio\n      from planet_osm_polygon\n      where amenity is not null\n         or shop is not null\n         or tourism in ('alpine_hut','camp_site','caravan_site','guest_house','hostel','hotel','motel','museum','viewpoint','bed_and_breakfast','information','chalet')\n         or highway in ('bus_stop','traffic_signals')\n         or man_made in ('mast','water_tower')\n         or historic in ('memorial','archaeological_site','castle')\n         or leisure in ('playground','golf_course')  \n    or tags ? 'emergency' or tags ? 'medical'   order by prio desc ) as points",
+        "table": "(select way,amenity,shop,tourism,highway,man_made,access,religion,waterway,lock,historic,leisure,operator, tags->'network' as network, tags->'ref:FR:LaPoste' as ref_laposte, tags->'post_office:type' as post_office_type, coalesce(tags->'emergency', tags->'medical') as emergency, substring('******',1,cast('0' || regexp_replace(tags->'stars','[^0-9]','','g') as integer)) as stars, tags->'parking' as parking, way_area, name, \ncase when amenity='townhall' then 2  when amenity in ('post_office','courthouse','police','public_building','hospital') then 1  else 0 end as prio\n      from planet_osm_polygon\n      where amenity is not null\n         or shop is not null\n         or tourism in ('alpine_hut','camp_site','caravan_site','guest_house','hostel','hotel','motel','museum','viewpoint','bed_and_breakfast','information','chalet')\n         or highway in ('bus_stop','traffic_signals')\n         or man_made in ('mast','water_tower')\n         or historic in ('memorial','archaeological_site','castle')\n         or leisure in ('playground','golf_course')  \n    or tags ? 'emergency' or tags ? 'medical'   order by prio desc, way_area desc ) as points",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
