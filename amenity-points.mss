@@ -191,6 +191,9 @@
     [religion = 'jewish'] {
       point-file: url('symbols/jewish3.p.16.png');
     }
+    [religion = 'hindu'] {
+      point-file: url('symbols/hindu.png');
+    }
   }
 
   [amenity = 'police'][zoom >= 17]::amenity {
