@@ -89,6 +89,11 @@
     point-file: url('symbols/firestation.p.16.png');
     point-placement: interior;
   }
+  
+  [amenity = 'fountain'][zoom >= 17]::amenity {
+    point-file: url('symbols/fountain.png');
+    point-placement: interior;
+  }
 
   [amenity = 'fuel'][zoom >= 17]::amenity {
     point-file: url('symbols/fuel.p.16.png');
@@ -124,6 +129,13 @@
     point-file: url('symbols/motel.p.20.png');
     point-placement: interior;
   }
+  
+  [amenity = 'nightclub'][zoom >=17]::amenity {
+    point-file: url('symbols/nightclub.svg');
+    point-placement: interior;
+	point-transform: "scale(0.06)";
+  }
+  
 
   [tourism = 'information'][zoom >= 16]::tourism {
     point-file: url('symbols/information.p.16.png');

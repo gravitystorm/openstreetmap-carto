@@ -259,14 +259,17 @@
     }
   }
 
-  [amenity = 'bar'][zoom >= 17]::amenity {
-    text-name: "[name]";
-    text-size: 10;
-    text-fill: #734a08;
-    text-dy: 11;
-    text-face-name: @bold-fonts;
-    text-halo-radius: 1;
-    text-placement: interior;
+  [amenity = 'bar']::amenity ,
+  [amenity = 'nightclub']::amenity {
+	[zoom >= 17]{
+      text-name: "[name]";
+      text-size: 10;
+      text-fill: #734a08;
+      text-dy: 11;
+      text-face-name: @bold-fonts;
+      text-halo-radius: 1;
+      text-placement: interior;
+    }
   }
 
   [amenity = 'library']::amenity,
@@ -284,6 +287,16 @@
   }
 
   [amenity = 'cinema'][zoom >= 17]::amenity {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: #734a08;
+    text-dy: 14;
+    text-face-name: @bold-fonts;
+    text-halo-radius: 1;
+    text-placement: interior;
+  }
+  
+  [amenity = 'fountain'][zoom >= 17]::amenity {
     text-name: "[name]";
     text-size: 10;
     text-fill: #734a08;
