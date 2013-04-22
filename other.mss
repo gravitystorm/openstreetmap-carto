@@ -797,15 +797,24 @@
     text-placement: interior;
   }
 
+  [amenity = 'hospital'][zoom >= 15][way_area>50000]::amenity,
   [amenity = 'hospital'][zoom >= 16]::amenity {
-    text-name: "[name]";
-    text-fill: #3366cc;
-    text-size: 9;
-    text-dy: 12;
-    text-face-name: @book-fonts;
-    text-halo-radius: 2;
-    text-wrap-width: 24;
-    text-placement: interior;
+    long/text-name: "[name]";
+    long/text-fill: #3366cc;
+    long/text-size: 9;
+    long/text-dy: 12;
+    long/text-face-name: @book-fonts;
+    long/text-halo-radius: 2;
+    long/text-wrap-width: 24;
+    long/text-placement: interior;
+    short/text-name: "[nom]";
+    short/text-fill: #3366cc;
+    short/text-size: 9;
+    short/text-dy: 12;
+    short/text-face-name: @book-fonts;
+    short/text-halo-radius: 2;
+    short/text-wrap-width: 24;
+    short/text-placement: interior;
   }
 
   [amenity = 'pharmacy'][zoom >= 17]::amenity {
