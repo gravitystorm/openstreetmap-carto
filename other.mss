@@ -1332,6 +1332,7 @@
         line-width: 4;
         line-cap: round;
         line-join: round;
+      [zoom >= 19] { line-width: 12; }
       }
     }
     [tunnel = 'yes'][zoom >= 14] {
@@ -1597,6 +1598,7 @@
     line-color: #fff;
     line-join: round;
     line-cap: round;
+    [zoom >= 19] { line-width: 10; }
   }
 
   [highway = 'pedestrian'][zoom >= 13] {
