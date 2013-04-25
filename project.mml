@@ -2598,7 +2598,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(SELECT way FROM planet_osm_point WHERE amenity='parking_space' AND (tags->'wheelchair'='yes' or (tags ? 'capacity:disabled' and tags->'capacity:disabled' not in ('0','no'))) UNION SELECT way FROM planet_osm_polygon WHERE amenity='parking_space' AND (tags->'wheelchair'='yes' or (tags ? 'capacity:disabled' and tags->'capacity:disabled' not in ('0','no')))) as park",
+        "table": "(SELECT way,0 as way_area, cast(regexp_replace('0' || coalesce(tags->'capacity:disabled','0') ,'[^0-9]','','g') as integer) as capacity FROM planet_osm_point WHERE amenity='parking_space' AND (tags->'wheelchair'='yes' or (tags ? 'capacity:disabled' and tags->'capacity:disabled' not in ('0','no'))) UNION SELECT way, way_area, cast(regexp_replace('0' || coalesce(tags->'capacity:disabled','0') ,'[^0-9]','','g') as integer) as capacity FROM planet_osm_polygon WHERE amenity='parking_space' AND (tags->'wheelchair'='yes' or (tags ? 'capacity:disabled' and tags->'capacity:disabled' not in ('0','no')))) as park",
         "key_field": "",
         "geometry_field": "way",
         "extent_cache": "auto",

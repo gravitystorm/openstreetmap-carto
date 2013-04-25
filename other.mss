@@ -3225,8 +3225,33 @@
 }
 
 
-#parking-handi {
-  [zoom>=17] { point-file: url('symbols/fr/parking-handi2.png'); }
+#parking-handi [zoom>=17] {
+/*
+  [zoom>=18][way_area>0] {
+  	polygon-fill: #5cc3e5;
+  	line-color: white;
+  	line-width: 2;
+  	point-file: url('symbols/fr/handi2.svg');
+  	point-transform: "scale(0.5)";
+  	
+  	[zoom>=19][capacity!=''] {
+  		text-name: [capacity]+" pl.";
+  		text-face-name: @book-fonts;
+  		text-fill: white;
+  		text-size: 8;
+  		text-dy: 16;
+  	}
+  }
+*/
+
+  [zoom>=18][way_area>100],
+  [zoom>=18][capacity>1],
+  [zoom>=19] {
+  	line-color: white;
+  	line-width: 2;
+  	line-dasharray: 8,4;
+  }
+  point-file: url('symbols/fr/parking-handi2.png');
 }
 
 
