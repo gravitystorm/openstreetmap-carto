@@ -408,4 +408,26 @@
 	point-transform: "scale(0.15)";
     point-placement: interior;
   }
+
+  [entrance != ''][zoom >= 17] {
+	a/text-name: "[nom]";
+    [entrance='main'] { a/text-fill: black; b/text-fill: black; }
+    a/text-fill: #666;
+    a/text-face-name: @book-fonts;
+    a/text-halo-radius: 1;
+    a/text-wrap-width: 0;
+    a/text-placement: interior;
+    a/text-size: 9;
+    a/text-wrap-width: 10;
+	b/text-name: "[ref]";
+    b/text-fill: #666;
+    b/text-face-name: @book-fonts;
+    b/text-halo-radius: 1;
+    b/text-wrap-width: 0;
+    b/text-placement: interior;
+    b/text-size: 8;
+    b/text-dy: -8;
+  }
+
+
 }
