@@ -237,6 +237,7 @@
   }
 
   [amenity = 'post_box'][zoom >= 17]::amenity {
+    [operator='La Poste'] { point-file: url('symbols/fr/LaPoste-BAL.png'); }
     point-file: url('symbols/post_box.p.16.png');
     point-placement: interior;
   }
