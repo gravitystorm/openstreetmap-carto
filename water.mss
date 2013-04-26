@@ -237,7 +237,7 @@
     }
     text-name: "[name]";
     text-size: 9;
-    text-fill: @water-color;
+    text-fill: #6699cc;
     text-placement: line;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
