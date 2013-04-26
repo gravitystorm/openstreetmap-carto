@@ -206,6 +206,12 @@
     [zoom >= 15] {
       line-width: 1;
       line-color: @water-color;
+      [tunnel = 'yes'] {
+        line-width: 2;
+        a/line-dasharray: 4,2;
+        a/line-width: 1;
+        a/line-color: #f3f7f7;
+      }
       text-name: "[name]";
       text-face-name: @book-fonts;
       text-size: 8;
@@ -213,12 +219,6 @@
       text-spacing: 600;
       text-placement: line;
       text-halo-radius: 1;
-      [tunnel = 'yes'] {
-        line-width: 2;
-        line-dasharray: 4,2;
-        a/line-width: 1;
-        a/line-color: #f3f7f7;
-      }
     }
   }
 
@@ -227,6 +227,12 @@
     line-color: @water-color;
     line-join: round;
     line-cap: round;
+    [tunnel = 'yes'] {
+      b/line-dasharray: 4,4;
+      b/line-width: 3;
+      b/line-color: white;
+      [zoom >= 17] { line-width: 7; }
+    }
     text-name: "[name]";
     text-size: 9;
     text-fill: #6699cc;
@@ -234,12 +240,6 @@
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     [zoom >= 17] { line-width: 11; }
-    [tunnel = 'yes'] {
-      line-dasharray: 4,2;
-      b/line-width: 3;
-      b/line-color: white;
-      [zoom >= 17] { line-width: 7; }
-    }
     [lock = 'yes'][zoom >= 17] {
       text-placement: point;
       text-wrap-width: 20;
