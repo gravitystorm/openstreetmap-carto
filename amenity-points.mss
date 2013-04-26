@@ -28,12 +28,12 @@
   }
 
   [tourism = 'alpine_hut'][zoom >= 13]::tourism {
-    point-file: url('symbols/alpinehut.p.16.png');
+    point-file: url('symbols/alpinehut.svg');
     point-placement: interior;
   }
 
   [amenity = 'shelter'][zoom >= 16]::amenity {
-    point-file: url('symbols/shelter2.p.16.png');
+    point-file: url('symbols/shelter2.svg');
     point-placement: interior;
   }
 
@@ -86,7 +86,7 @@
   }
 
   [tourism = 'camp_site'][zoom >= 16]::tourism {
-    point-file: url('symbols/camping.n.16.png');
+    point-file: url('symbols/camping.svg');
     point-placement: interior;
   }
 
@@ -96,7 +96,7 @@
   }
 
   [tourism = 'caravan_site'][zoom >= 16]::tourism {
-    point-file: url('symbols/caravan_park.p.24.png');
+    point-file: url('symbols/caravan_park.svg');
     point-placement: interior;
   }
 
@@ -146,7 +146,7 @@
   }
 
   [tourism = 'hotel'][zoom >= 17]::tourism {
-    point-file: url('symbols/hotel2.p.20.png');
+    point-file: url('symbols/hotel2.svg');
     point-placement: interior;
   }
 
