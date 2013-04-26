@@ -269,8 +269,8 @@
     polygon-fill: #e9d1ff;
   }
 
-  [feature = 'aeroway_aerodrome'][zoom >= 12] {
-    polygon-fill: #ccc;
+  [feature = 'aeroway_aerodrome'][zoom >= 8] {
+    polygon-fill: #666;
     polygon-opacity: 0.2;
     line-width: 0.2;
     line-color: #555;

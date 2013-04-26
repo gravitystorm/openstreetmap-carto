@@ -10,12 +10,22 @@
     text-placement: interior;
   }
 
-  [aeroway = 'airport'][zoom >= 9][zoom < 13]::aeroway {
-    [zoom < 11] {
-      point-file: url('symbols/airport.p.16.png');
-      text-size: 8;
-      text-dy: -12;
-    }
+  [aeroway = 'aerodrome'][aerodrome = 'international'][zoom >= 9]::aeroway,
+  [aeroway = 'aerodrome'][aerodrome = 'airport'][zoom >= 9]::aeroway,
+  [aeroway = 'airport'][zoom >= 9]::aeroway {
+  	[zoom >= 14] {
+    	text-dy: 0;
+    	[zoom>=16] { text-size: 20; }
+    	text-size: 16;
+    	text-name: "[name]";
+    	text-fill: grey;
+    	text-halo-radius: 1;
+    	text-placement: interior;
+    	text-face-name: @oblique-fonts;
+  	}
+	point-file: url('symbols/airport.p.16.png');
+    [zoom>=13] { text-size: 11; }
+    text-dy: -12;
     text-size: 9;
     text-name: "[name]";
     text-fill: #6692da;
@@ -24,11 +34,9 @@
     text-face-name: @bold-fonts;
   }
 
-  [aeroway = 'aerodrome'][zoom >= 10][zoom < 13]::aeroway {
-    [zoom < 11] {
-      point-file: url('symbols/aerodrome.p.16.png');
-      text-dy: -12;
-    }
+  [aeroway = 'aerodrome'][zoom >= 10]::aeroway {
+ 	point-file: url('symbols/aerodrome.p.16.png');
+    text-dy: -12;
     text-name: "[name]";
     text-size: 8;
     text-fill: #6692da;
