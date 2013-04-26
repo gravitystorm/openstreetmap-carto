@@ -186,6 +186,12 @@
   [waterway = 'stream'][zoom >= 15] {
     line-width: 2;
     line-color: @water-color;
+    [tunnel = 'yes'] {
+      line-dasharray: 4,2;
+      line-width: 2.4;
+      a/line-width: 1.2;
+      a/line-color: #f3f7f7;
+    }
     text-name: "[name]";
     text-size: 8;
     text-face-name: @book-fonts;
@@ -193,12 +199,6 @@
     text-halo-radius: 1;
     text-spacing: 600;
     text-placement: line;
-    [tunnel = 'yes'] {
-      line-dasharray: 4,2;
-      line-width: 2.4;
-      a/line-width: 1.2;
-      a/line-color: #f3f7f7;
-    }
   }
 
   [waterway = 'drain'],
@@ -224,22 +224,23 @@
 
   [waterway = 'canal'][zoom >= 14] {
     line-width: 7;
+    [zoom >= 17] { line-width: 11; }
     line-color: @water-color;
     line-join: round;
     line-cap: round;
     [tunnel = 'yes'] {
-      b/line-dasharray: 4,4;
+	  line-cap: butt;
+	  line-dasharray: 4,2;
       b/line-width: 3;
       b/line-color: white;
-      [zoom >= 17] { line-width: 7; }
+      [zoom >= 17] { b/line-width: 7; }
     }
     text-name: "[name]";
     text-size: 9;
-    text-fill: #6699cc;
+    text-fill: @water-color;
     text-placement: line;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    [zoom >= 17] { line-width: 11; }
     [lock = 'yes'][zoom >= 17] {
       text-placement: point;
       text-wrap-width: 20;
