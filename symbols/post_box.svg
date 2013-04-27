@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 14.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 43363)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+	 id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" sodipodi:docname="post_box.svg" inkscape:version="0.46" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:dc="http://purl.org/dc/elements/1.1/" sodipodi:version="0.32" xmlns:cc="http://creativecommons.org/ns#" inkscape:output_extension="org.inkscape.output.svg.inkscape" sodipodi:docbase="s:\Data\FacilityIcons"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="580px" height="580px"
+	 viewBox="0 0 580 580" enable-background="new 0 0 580 580" xml:space="preserve">
+<defs>
+	
+	
+		<inkscape:perspective  inkscape:persp3d-origin="290 : 193.33333 : 1" inkscape:vp_z="580 : 290 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_x="0 : 290 : 1" sodipodi:type="inkscape:persp3d" id="perspective14">
+		</inkscape:perspective>
+</defs>
+<sodipodi:namedview  showgrid="false" inkscape:current-layer="svg2" inkscape:window-y="25" inkscape:window-x="91" inkscape:cy="367.99332" inkscape:cx="64.539201" inkscape:zoom="0.92167712" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" objecttolerance="10.0" gridtolerance="10.0" guidetolerance="10.0" inkscape:window-height="947" inkscape:window-width="1048" inkscape:pageshadow="2" inkscape:pageopacity="0.0" id="base">
+	</sodipodi:namedview>
+<g id="layer3" transform="matrix(48.14969,0,0,48.14969,-536.27327,-33.306752)" inkscape:label="Layout" display="none">
+	<rect id="rect4134" x="1" y="1" display="inline" fill="none" stroke="#757575" stroke-width="0.1" width="10" height="10"/>
+	<rect id="rect4136" x="2" y="2" display="inline" fill="none" stroke="#757575" stroke-width="0.1" width="8" height="8"/>
+</g>
+<path id="flowRoot3192" fill="#754C24" d="M286.458,285.423l3.113,3.089l-3.113,3.074V285.423z M296.142,284.844l-3.836,3.771
+	c-0.189,0.189-0.43,0.283-0.722,0.283c-0.301,0-0.551-0.1-0.752-0.297l-3.805-3.758h9.114V284.844z M296.742,291.586l-3.112-3.074
+	l3.112-3.089V291.586z M287.013,292.165l3.128-3.074l0.135,0.134c0.36,0.346,0.798,0.52,1.309,0.52c0.51,0,0.943-0.173,1.293-0.52
+	l0.136-0.134l3.128,3.074H287.013z M285.615,292.996h12v-9h-12V292.996z"/>
+</svg>

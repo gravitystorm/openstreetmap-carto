@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 14.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 43363)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+	 id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" sodipodi:docname="parking_disabled.svg" inkscape:version="0.46" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:dc="http://purl.org/dc/elements/1.1/" sodipodi:version="0.32" xmlns:cc="http://creativecommons.org/ns#" inkscape:output_extension="org.inkscape.output.svg.inkscape"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="580px" height="580px"
+	 viewBox="0 0 580 580" enable-background="new 0 0 580 580" xml:space="preserve">
+<sodipodi:namedview  showgrid="false" inkscape:current-layer="svg2" inkscape:window-y="0" inkscape:window-x="0" inkscape:cy="195.50635" inkscape:cx="1259.5915" inkscape:zoom="0.35355339" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" objecttolerance="10.0" gridtolerance="10.0" guidetolerance="10.0" inkscape:window-height="1003" inkscape:window-width="1400" inkscape:pageshadow="2" inkscape:pageopacity="0.0" id="base">
+	</sodipodi:namedview>
+<defs>
+	
+	
+		<inkscape:perspective  inkscape:persp3d-origin="290 : 193.33333 : 1" inkscape:vp_z="580 : 290 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_x="0 : 290 : 1" sodipodi:type="inkscape:persp3d" id="perspective12">
+		</inkscape:perspective>
+	
+		<inkscape:perspective  inkscape:persp3d-origin="29.116032 : 19.410688 : 1" inkscape:vp_z="58.232063 : 29.116032 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_x="0 : 29.116032 : 1" sodipodi:type="inkscape:persp3d" id="perspective6807">
+		</inkscape:perspective>
+	
+		<inkscape:perspective  inkscape:persp3d-origin="290 : 193.33333 : 1" inkscape:vp_z="580 : 290 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_x="0 : 290 : 1" sodipodi:type="inkscape:persp3d" id="perspective6954">
+		</inkscape:perspective>
+	
+		<inkscape:perspective  inkscape:persp3d-origin="240 : 160 : 1" inkscape:vp_z="480 : 240 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_x="0 : 240 : 1" sodipodi:type="inkscape:persp3d" id="perspective2541">
+		</inkscape:perspective>
+</defs>
+<g id="layer1" transform="matrix(0.6625094,0,0,0.640796,136.38827,93.962517)" inkscape:label="Ebene 1">
+	<path id="path1631" sodipodi:nodetypes="cccccccccccccccccccccccccccc" fill="#0071BC" stroke="#FFFFFF" stroke-width="0.0297" d="
+		M252.323,324.449c-0.569-0.13-3.549-0.02-4.41-0.02c-0.027-1.874-0.032-3.746-0.049-5.62c-0.538-0.564-0.256-1.582,0.489-1.801
+		c0.737-0.305,1.648,0.381,1.529,1.183c0.032,0.637-0.705,0.792-0.955,1.14c-0.018,0.742-0.032,1.484,0.012,2.225
+		c1.004,0.079,2.022,0.021,3.031,0.035c0,0.326,0,0.652,0,0.978c-0.988,0-1.977,0-2.966,0c-0.245,0.562,0,1.029-0.056,0.977
+		c1.116,0.005,2.948,0.003,4.061,0.003c0.641,1.317,1.257,2.649,1.903,3.961c0.681-0.082,1.173-0.466,1.431-0.483
+		c0.284-0.024,0.29,0.878,0.258,0.85c-0.607,0.218-1.561,0.692-2.173,0.898C254.275,328.524,252.898,325.627,252.323,324.449z
+		 M248.868,330.065c-1.333-0.149-2.264-0.546-2.975-1.186c-1.017-0.884-1.604-2.252-1.449-3.607
+		c0.078-1.533,1.101-2.921,2.457-3.597c0.214,0.203,0.071,0.715,0.109,1.053c0.056,0.293-0.333,0.375-0.476,0.579
+		c-1.007,0.966-1.228,2.612-0.593,3.84c0.675,1.396,2.379,2.277,3.899,1.847c1.139-0.286,2.043-1.149,2.643-2.124
+		c0.251,0.201,0.787,1.052,0.243,1.43C251.813,329.446,250.348,330.169,248.868,330.065z"/>
+</g>
+<path id="text2419" fill="#0071BC" stroke="#0071BC" stroke-width="0.5" d="M291.676,301.884v-10.985h4.143
+	c0.729,0,1.287,0.035,1.671,0.105c0.541,0.09,0.992,0.262,1.356,0.514c0.363,0.252,0.657,0.605,0.881,1.061
+	c0.224,0.454,0.332,0.956,0.332,1.499c0,0.935-0.297,1.726-0.891,2.371c-0.594,0.647-1.668,0.971-3.221,0.971h-2.818v4.466
+	L291.676,301.884L291.676,301.884z M293.129,296.122h2.84c0.939,0,1.606-0.175,2.002-0.524s0.592-0.842,0.592-1.477
+	c0-0.459-0.116-0.852-0.35-1.182c-0.23-0.326-0.538-0.543-0.918-0.648c-0.244-0.064-0.695-0.096-1.357-0.096h-2.809V296.122
+	L293.129,296.122z"/>
+</svg>

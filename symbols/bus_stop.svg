@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 14.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 43363)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+	 id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" sodipodi:docname="highway_bus_stop.svg" inkscape:version="0.46" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:dc="http://purl.org/dc/elements/1.1/" sodipodi:version="0.32" xmlns:cc="http://creativecommons.org/ns#" inkscape:output_extension="org.inkscape.output.svg.inkscape" sodipodi:docbase="s:\Data\FacilityIcons"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="580px" height="580px"
+	 viewBox="0 0 580 580" enable-background="new 0 0 580 580" xml:space="preserve">
+<sodipodi:namedview  showgrid="false" inkscape:current-layer="svg2" inkscape:window-y="13" inkscape:window-x="12" inkscape:cy="186.81904" inkscape:cx="68.469786" inkscape:zoom="0.65172414" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" objecttolerance="10.0" gridtolerance="10.0" guidetolerance="10.0" inkscape:window-height="1003" inkscape:window-width="758" inkscape:pageshadow="2" inkscape:pageopacity="0.0" id="base">
+	</sodipodi:namedview>
+<defs>
+	
+	
+		<inkscape:perspective  inkscape:persp3d-origin="290 : 193.33333 : 1" inkscape:vp_z="580 : 290 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_x="0 : 290 : 1" sodipodi:type="inkscape:persp3d" id="perspective3653">
+		</inkscape:perspective>
+	
+		<inkscape:perspective  inkscape:persp3d-origin="177.51199 : 145.02 : 1" inkscape:vp_z="355.02399 : 217.53 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_x="0 : 217.53 : 1" sodipodi:type="inkscape:persp3d" id="perspective2512">
+		</inkscape:perspective>
+</defs>
+<path id="path2125" fill="#0071BC" d="M292.659,289.437c0.016,0,0.029,0,0.044,0c0.016,0,0.03,0,0.044,0H292.659z M292.702,289.437
+	c-1.016,0.008-2.394,0.3-2.968,0.544c-0.583,0.249-0.972,0.496-1.093,1.115l-0.438,3.436v4.733h0.753v0.743
+	c0,0.904,1.297,0.904,1.297,0v-0.743h2.398h0.008h2.491v0.743c0,0.904,1.299,0.904,1.299,0v-0.743h0.753v-4.733l-0.437-3.436
+	c-0.122-0.619-0.512-0.867-1.094-1.115C295.098,289.736,293.72,289.444,292.702,289.437z M290.852,290.303h1.808h1.895
+	c0.365,0,0.365,0.557,0,0.557h-1.899h-1.803C290.487,290.86,290.487,290.303,290.852,290.303z M289.869,291.425h2.786h2.882
+	c0.386,0,0.485,0.199,0.533,0.502l0.34,2.491c0.032,0.238-0.036,0.477-0.358,0.477h-3.392h-3.303c-0.324,0-0.391-0.238-0.36-0.477
+	l0.342-2.491C289.383,291.624,289.484,291.425,289.869,291.425z M289.606,296.511c0.344,0,0.622,0.284,0.622,0.635
+	c0,0.352-0.278,0.636-0.622,0.636c-0.344,0-0.623-0.284-0.623-0.636C288.983,296.795,289.262,296.511,289.606,296.511z
+	 M295.8,296.511c0.345,0,0.623,0.284,0.623,0.635c0,0.352-0.278,0.636-0.623,0.636c-0.344,0-0.622-0.284-0.622-0.636
+	C295.178,296.795,295.456,296.511,295.8,296.511z"/>
+</svg>

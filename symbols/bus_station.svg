@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 14.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 43363)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+	 id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" sodipodi:docname="transport_bus_station.svg" inkscape:version="0.46" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:dc="http://purl.org/dc/elements/1.1/" sodipodi:version="0.32" xmlns:cc="http://creativecommons.org/ns#" inkscape:output_extension="org.inkscape.output.svg.inkscape" sodipodi:docbase="s:\Data\FacilityIcons"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="580px" height="580px"
+	 viewBox="0 0 580 580" enable-background="new 0 0 580 580" xml:space="preserve">
+<sodipodi:namedview  showgrid="false" inkscape:current-layer="svg2" inkscape:window-y="-4" inkscape:window-x="-4" inkscape:cy="186.81904" inkscape:cx="242.43387" inkscape:zoom="0.65172414" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" objecttolerance="10.0" gridtolerance="10.0" guidetolerance="10.0" inkscape:window-height="1003" inkscape:window-width="1400" inkscape:pageshadow="2" inkscape:pageopacity="0.0" id="base">
+	</sodipodi:namedview>
+<defs>
+	
+	
+		<inkscape:perspective  inkscape:persp3d-origin="290 : 193.33333 : 1" inkscape:vp_z="580 : 290 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_x="0 : 290 : 1" sodipodi:type="inkscape:persp3d" id="perspective3653">
+		</inkscape:perspective>
+	
+		<inkscape:perspective  inkscape:persp3d-origin="177.51199 : 145.02 : 1" inkscape:vp_z="355.02399 : 217.53 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_x="0 : 217.53 : 1" sodipodi:type="inkscape:persp3d" id="perspective2512">
+		</inkscape:perspective>
+</defs>
+<path id="path2125" fill="#0071BC" d="M290.425,283.704c0.015,0,0.032,0.001,0.047,0.001s0.031-0.001,0.048-0.001H290.425z
+	 M290.473,283.705c-1.102,0.009-2.594,0.319-3.217,0.579c-0.632,0.263-1.053,0.526-1.185,1.185l-0.474,3.649v5.028h0.816v0.788
+	c0,0.962,1.406,0.962,1.406,0v-0.788h2.597h0.008h2.701v0.788c0,0.962,1.406,0.962,1.406,0v-0.788h0.816v-5.028l-0.474-3.649
+	c-0.131-0.658-0.554-0.921-1.186-1.185C293.067,284.024,291.574,283.714,290.473,283.705z M288.467,284.626h1.958h2.053
+	c0.396,0,0.396,0.592,0,0.592h-2.058h-1.954C288.072,285.218,288.072,284.626,288.467,284.626z M287.402,285.816h3.019h3.122
+	c0.417,0,0.526,0.212,0.577,0.534l0.369,2.646c0.034,0.254-0.039,0.505-0.39,0.505h-3.674h-3.58c-0.351,0-0.423-0.251-0.389-0.505
+	l0.37-2.646C286.876,286.029,286.985,285.816,287.402,285.816z M287.118,291.219c0.373,0,0.674,0.304,0.674,0.676
+	c0,0.373-0.302,0.675-0.674,0.675s-0.675-0.302-0.675-0.675C286.442,291.522,286.745,291.219,287.118,291.219z M293.829,291.219
+	c0.372,0,0.674,0.304,0.674,0.676c0,0.373-0.302,0.675-0.674,0.675c-0.374,0-0.676-0.302-0.676-0.675
+	C293.153,291.522,293.455,291.219,293.829,291.219z"/>
+<path id="path3267" sodipodi:type="arc" sodipodi:ry="288.57144" sodipodi:rx="288.57144" sodipodi:cy="305.71429" sodipodi:cx="217.14285" opacity="0.1" fill="#0071BC" stroke="#FFFFFF" stroke-width="0.7359" enable-background="new    " d="
+	M298.466,290c0,4.418-3.582,8-8,8s-8-3.582-8-8c0-4.419,3.582-8,8-8S298.466,285.581,298.466,290z"/>
+<path id="path3276" sodipodi:type="arc" sodipodi:ry="288.57144" sodipodi:rx="288.57144" sodipodi:cy="305.71429" sodipodi:cx="217.14285" fill="none" stroke="#0071BC" stroke-width="0.7359" d="
+	M298.466,290c0,4.418-3.582,8-8,8s-8-3.582-8-8c0-4.419,3.582-8,8-8S298.466,285.581,298.466,290z"/>
+</svg>

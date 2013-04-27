@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 14.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 43363)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+	 id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" sodipodi:docname="car_parking.svg" inkscape:version="0.46" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:dc="http://purl.org/dc/elements/1.1/" sodipodi:version="0.32" xmlns:cc="http://creativecommons.org/ns#" inkscape:output_extension="org.inkscape.output.svg.inkscape"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="580px" height="580px"
+	 viewBox="0 0 580 580" enable-background="new 0 0 580 580" xml:space="preserve">
+<sodipodi:namedview  showgrid="false" inkscape:current-layer="svg2" inkscape:window-y="0" inkscape:window-x="0" inkscape:cy="413.63205" inkscape:cx="525.95096" inkscape:zoom="0.35355339" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" objecttolerance="10.0" gridtolerance="10.0" guidetolerance="10.0" inkscape:window-height="1005" inkscape:window-width="1280" inkscape:pageshadow="2" inkscape:pageopacity="0.0" id="base">
+	</sodipodi:namedview>
+<defs>
+	
+	
+		<inkscape:perspective  inkscape:persp3d-origin="290 : 193.33333 : 1" inkscape:vp_z="580 : 290 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_x="0 : 290 : 1" sodipodi:type="inkscape:persp3d" id="perspective12">
+		</inkscape:perspective>
+	
+		<inkscape:perspective  inkscape:persp3d-origin="29.116032 : 19.410688 : 1" inkscape:vp_z="58.232063 : 29.116032 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_x="0 : 29.116032 : 1" sodipodi:type="inkscape:persp3d" id="perspective6807">
+		</inkscape:perspective>
+	
+		<inkscape:perspective  inkscape:persp3d-origin="290 : 193.33333 : 1" inkscape:vp_z="580 : 290 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_x="0 : 290 : 1" sodipodi:type="inkscape:persp3d" id="perspective6954">
+		</inkscape:perspective>
+	
+		<inkscape:perspective  inkscape:persp3d-origin="178.5405 : 158.483 : 1" inkscape:vp_z="357.08099 : 237.7245 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_x="0 : 237.7245 : 1" sodipodi:type="inkscape:persp3d" id="perspective7597">
+		</inkscape:perspective>
+</defs>
+<path id="path2323" fill="#0071BC" d="M260.521,308.476c-0.566,0-0.867,0.31-1.005,0.671l-0.736,1.9
+	c-0.292,0.037-0.809,0.38-0.809,1.028v2.417h0.716v0.772c0,0.951,1.346,0.939,1.346,0v-0.772h2.42h0.001h2.42v0.772
+	c0,0.939,1.346,0.951,1.346,0v-0.772h0.716v-2.417c0-0.648-0.518-0.991-0.809-1.028l-0.737-1.9
+	c-0.139-0.361-0.439-0.671-1.005-0.671h-1.041h-1.771H260.521z M260.513,309.168h1.939h0.001h0.001h1.94
+	c0.243,0.002,0.347,0.153,0.416,0.364l0.555,1.495h-2.911h-0.001h-0.001h-2.91l0.555-1.495
+	C260.166,309.321,260.27,309.17,260.513,309.168z M259.382,311.755c0.343,0,0.621,0.286,0.621,0.64s-0.278,0.642-0.621,0.642
+	s-0.622-0.288-0.622-0.642S259.039,311.755,259.382,311.755z M265.526,311.755c0.343,0,0.621,0.286,0.621,0.64
+	s-0.278,0.642-0.621,0.642c-0.344,0-0.623-0.288-0.623-0.642S265.183,311.755,265.526,311.755z"/>
+<g id="g2319" transform="translate(879.29125,36.805119)">
+</g>
+<path id="text2419" fill="#0071BC" d="M252.941,311.771v-12.206h4.604c0.811,0,1.43,0.039,1.857,0.117
+	c0.6,0.1,1.102,0.29,1.507,0.57s0.731,0.673,0.979,1.178s0.371,1.061,0.371,1.665c0,1.038-0.331,1.917-0.991,2.636
+	c-0.66,0.719-1.854,1.078-3.58,1.078h-3.13v4.962H252.941z M254.556,305.369h3.155c1.043,0,1.785-0.194,2.223-0.583
+	s0.658-0.936,0.658-1.641c0-0.511-0.129-0.947-0.387-1.311c-0.258-0.364-0.598-0.604-1.02-0.721
+	c-0.272-0.072-0.774-0.108-1.507-0.108h-3.122V305.369z"/>
+</svg>
