@@ -2591,6 +2591,7 @@
         line-join: round;
       }
       [zoom >= 16] { line-width: 6; }
+      [zoom >= 19] { line-width: 12; }
     }
 
     [highway = 'pedestrian'] {
