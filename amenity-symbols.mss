@@ -1,6 +1,6 @@
 .symbols {
   [aeroway = 'helipad'][zoom >= 16]::aeroway {
-    point-file: url('symbols/helipad.p.16.png');
+    point-file: url('symbols/helipad.svg');
     text-name: "[name]";
     text-size: 8;
     text-fill: #6692da;
@@ -23,7 +23,7 @@
     	text-placement: interior;
     	text-face-name: @oblique-fonts;
   	}
-	point-file: url('symbols/airport.p.16.png');
+	point-file: url('symbols/airport2.svg');
     [zoom>=13] { text-size: 11; }
     text-dy: -12;
     text-size: 9;
@@ -35,7 +35,7 @@
   }
 
   [aeroway = 'aerodrome'][zoom >= 10]::aeroway {
- 	point-file: url('symbols/aerodrome.p.16.png');
+ 	point-file: url('symbols/aerodrome.svg');
     text-dy: -12;
     text-name: "[name]";
     text-size: 8;

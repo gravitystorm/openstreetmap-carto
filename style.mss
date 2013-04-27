@@ -67,3 +67,70 @@ Map {
 @fill_small_z17: @casing_small_z17 - 1;
 @fill_small_z18: @casing_small_z18 - 1.25;
 @fill_small_z19: @casing_small_z19 - 1.5;
+
+
+
+@couleur-voie: #f84;  	 // orange
+@couleur-piste: #080;    // vert
+@couleur-interdit: #f00; // rouge
+@couleur-autorise: #08f; // bleu clair
+@route: #f4f;            // rose
+  
+#cycleway [zoom>=13] {
+  // double-sens cyclable (orange)
+  [cycleway='opposite'] { line-width: 2; line-color:@couleur-voie;  line-opacity: 0.7; }
+  // voies cyclables (orange)
+  [cycleway='lane']   {    line-width: 2; line-color: @couleur-voie;  line-opacity: 0.7;  }
+  [cycleway_l='lane'] {    line-width: 2; line-color: @couleur-voie;  line-opacity: 0.7;  }
+  [cycleway_r='lane'] {    line-width: 2; line-color: @couleur-voie;  line-opacity: 0.7;  }
+  [bicycle_lanes='yes']   {    line-width: 2; line-color: @couleur-voie;  line-opacity: 0.7;  }
+  [bicycle_lanes='designated']   {    line-width: 2; line-color: @couleur-voie;  line-opacity: 0.7;  }
+  [bicycle='designated']   {    line-width: 1; line-color: @couleur-voie;  line-opacity: 0.7;  }
+  // partagé avec les bus (orange épais)
+  [cycleway='share_busway']    {    line-width: 4; line-color: @couleur-voie;  line-opacity: 0.7;  }
+  [cycleway_l='share_busway']  {    line-width: 4; line-color: @couleur-voie;  line-opacity: 0.7;  }
+  [cycleway_r='share_busway']  {    line-width: 4; line-color: @couleur-voie;  line-opacity: 0.7;  }
+  
+  // pistes (vert épais)
+  [cycleway='track']    {    line-width: 4; line-color:@couleur-piste;  line-opacity: 0.7;  }
+  [cycleway_l='track']  {    line-width: 4; line-color:@couleur-piste;  line-opacity: 0.7;  }
+  [cycleway_r='track']  {    line-width: 4; line-color:@couleur-piste;  line-opacity: 0.7;  }
+  [highway='cycleway']  {    line-width: 4; line-color:@couleur-piste; line-opacity: 0.7;  }
+ 
+  // inconnu
+  [highway='footway']  {  line-dasharray: 8,6;  }
+  [highway='path']  {  line-dasharray: 8,6;  }
+
+  // interdit vélo (rouge)
+  [bicycle='no'] {
+    line-width: 4;  
+    line-color: @couleur-interdit;
+    line-opacity: 0.7; 
+  }
+  
+  // autorisé vélo (bleu)
+  [bicycle='yes'] {
+    line-width: 4;  
+    line-color: @couleur-autorise;
+    line-opacity: 0.7; 
+  }
+  
+  [bicycle='designated'] {
+    line-width: 4;  
+  }
+
+ 
+  [route='bicycle'] {
+    line-color: @route;
+    line-width: 6;
+    line-opacity: 0.5;
+    line-dasharray: 6,12;
+  }
+  
+  line-width:4;
+  line-color:#666;
+  line-opacity: 0.5;
+  line-join: round;
+  line-cap: round;
+
+}

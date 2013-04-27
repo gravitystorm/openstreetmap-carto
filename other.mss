@@ -3231,7 +3231,7 @@
   	polygon-fill: #5cc3e5;
   	line-color: white;
   	line-width: 2;
-  	point-file: url('symbols/fr/handi2.svg');
+  	point-file: url('symbols/parking_disabled.svg');
   	point-transform: "scale(0.5)";
   	
   	[zoom>=19][capacity!=''] {
@@ -3251,7 +3251,7 @@
   	line-width: 2;
   	line-dasharray: 8,4;
   }
-  point-file: url('symbols/fr/parking-handi2.png');
+  point-file: url('symbols/parking_disabled.svg');
 }
 
 

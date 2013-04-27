@@ -185,7 +185,7 @@
 		[network = 'Optymo']{
 			point-file: url('symbols/fr/bus-belfort-optymo.png');
 		}
-		point-file: url('symbols/bus_stop.p.12.png');
+		point-file: url('symbols/bus_stop.svg');
     }
     [zoom >= 19] {
       text-name: "[name]";
@@ -216,14 +216,14 @@
 		[network = 'Optymo']{
 			point-file: url('symbols/fr/bus-belfort-optymo.png');
 		}
-		point-file: url('symbols/bus_stop.p.12.png');
+		point-file: url('symbols/bus_stop.svg');
     }
     
     [type_ratp = 'bus'],[operator='RATP'],[l_operator = 'RATP'] {
    	 	point-file: url('symbols/fr/logo-ratp-bus.svg');
    	 	point-transform: 'scale(0.04)';
     }
-    point-file: url('symbols/bus_station.n.16.png');
+    point-file: url('symbols/bus_station.svg');
     point-placement: interior;
     [zoom >= 17] {
       text-name: "[name]";

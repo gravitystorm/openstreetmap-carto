@@ -6,8 +6,8 @@
     80
   ],
   "center": [
-    2.37062,
-    48.73092,
+    2.4418,
+    48.6298,
     17
   ],
   "format": "png",
@@ -2123,7 +2123,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,amenity,shop,tourism,highway,man_made,access,religion,waterway,lock,historic,leisure,operator, tags->'network' as network, tags->'ref:FR:LaPoste' as ref_laposte, tags->'post_office:type' as post_office_type, coalesce(tags->'emergency', tags->'medical') as emergency, tags->'entrance' as entrance, substring('******',1,cast('0' || regexp_replace(tags->'stars','[^0-9]','','g') as integer)) as stars, tags->'parking' as parking, way_area, name, ref, regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(coalesce(tags->'name:fr',name),'Avenue ','Av. '),'Boulevard ','Bd. '),'Rocade ','Roc. '),'Faubourg ','Fbg. '),'Passage ','Pass. '),'Place ','Pl. '),'Promenade ','Prom. '),'Impasse ','Imp. '),'Centre Commercial ','CCial. '),'Immeuble ','Imm. '),'Lotissement ','Lot. '),'Résidence ','Rés. '),'Square ','Sq. '),'Zone Industrielle ','ZI. '),'Adjudant ','Adj. '),'Agricole ','Agric. '),'Arrondissement','Arrond.'),'Aspirant ','Asp. '),'Bâtiment ','Bat. '),'Colonel ','Cᵒˡ '),'Commandant ','Cᵈᵗ '),'Commercial ','Cial. '),'Coopérative ','Coop. '),'Division ','Div. '),'Docteur ','Dr. '),'Etablissement ','Ets. '),'Général ','Gᵃˡ '),'Institut ','Inst. '),'Laboratoire ','Labo. '),'Lieutenant ','Lᵗ '),'Maréchal ','Mᵃˡ '),'Ministère ','Min. '),'Monseigneur ','Mgr. '),'Bibliothèque ','Bibl. '),'Tribunal ','Trib. '),'Municipale ','Mun. '),'Municipal ','Mun. '),'Observatoire ','Obs. '),'Périphérique ','Périph. '),'Préfecture ','Préf. '),'Président ','Pdt. '),'Régiment ','Rᵍᵗ '),'Régional ','Rég. '),'Régionale ','Rég. '),'Saint-','St-'),'Sainte-','Ste-'),'Sergent ','Sᵍᵗ '),'Université ','Univ. '),'Universitaire ','Univ. '),'Centre Hospitalier ','C.H. '),'Hôpital ','Hôp. '),'Clinique ','Clin. '),'Communauté d.[Aa]gglomération','Comm. d''agglo. '),'Communauté [Uu]rbaine ','Comm. urb. '),'Communauté de [Cc]ommunes ','Comm. comm. '),'Syndicat d.[Aa]gglomération ','Synd. d''agglo. '),'^Chemin ','Ch. ') as nom, \ncase when amenity='townhall' then 2  when amenity in ('post_office','courthouse','police','public_building','hospital') then 1  else 0 end as prio\n      from planet_osm_polygon\n      where amenity is not null\n         or shop is not null\n         or tourism in ('alpine_hut','camp_site','caravan_site','guest_house','hostel','hotel','motel','museum','viewpoint','bed_and_breakfast','information','chalet')\n         or highway in ('bus_stop','traffic_signals')\n         or man_made in ('mast','water_tower')\n         or historic in ('memorial','archaeological_site','castle')\n         or leisure in ('playground','golf_course')  \n    or tags ? 'emergency' or tags ? 'medical'  or tags ? 'entrance' order by prio desc, way_area desc ) as points",
+        "table": "(select way,amenity,shop,tourism,highway,man_made,access,religion,waterway,lock,historic,leisure,operator, tags->'network' as network, tags->'ref:FR:LaPoste' as ref_laposte, tags->'post_office:type' as post_office_type, coalesce(tags->'emergency', tags->'medical') as emergency, tags->'entrance' as entrance, tags->'fuel:lpg' as lpg, substring('******',1,cast('0' || regexp_replace(tags->'stars','[^0-9]','','g') as integer)) as stars, tags->'parking' as parking, way_area, name, ref, regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(coalesce(tags->'name:fr',name),'Avenue ','Av. '),'Boulevard ','Bd. '),'Rocade ','Roc. '),'Faubourg ','Fbg. '),'Passage ','Pass. '),'Place ','Pl. '),'Promenade ','Prom. '),'Impasse ','Imp. '),'Centre Commercial ','CCial. '),'Immeuble ','Imm. '),'Lotissement ','Lot. '),'Résidence ','Rés. '),'Square ','Sq. '),'Zone Industrielle ','ZI. '),'Adjudant ','Adj. '),'Agricole ','Agric. '),'Arrondissement','Arrond.'),'Aspirant ','Asp. '),'Bâtiment ','Bat. '),'Colonel ','Cᵒˡ '),'Commandant ','Cᵈᵗ '),'Commercial ','Cial. '),'Coopérative ','Coop. '),'Division ','Div. '),'Docteur ','Dr. '),'Etablissement ','Ets. '),'Général ','Gᵃˡ '),'Institut ','Inst. '),'Laboratoire ','Labo. '),'Lieutenant ','Lᵗ '),'Maréchal ','Mᵃˡ '),'Ministère ','Min. '),'Monseigneur ','Mgr. '),'Bibliothèque ','Bibl. '),'Tribunal ','Trib. '),'Municipale ','Mun. '),'Municipal ','Mun. '),'Observatoire ','Obs. '),'Périphérique ','Périph. '),'Préfecture ','Préf. '),'Président ','Pdt. '),'Régiment ','Rᵍᵗ '),'Régional ','Rég. '),'Régionale ','Rég. '),'Saint-','St-'),'Sainte-','Ste-'),'Sergent ','Sᵍᵗ '),'Université ','Univ. '),'Universitaire ','Univ. '),'Centre Hospitalier ','C.H. '),'Hôpital ','Hôp. '),'Clinique ','Clin. '),'Communauté d.[Aa]gglomération','Comm. d''agglo. '),'Communauté [Uu]rbaine ','Comm. urb. '),'Communauté de [Cc]ommunes ','Comm. comm. '),'Syndicat d.[Aa]gglomération ','Synd. d''agglo. '),'^Chemin ','Ch. ') as nom, \ncase when amenity='townhall' then 2  when amenity in ('post_office','courthouse','police','public_building','hospital') then 1  else 0 end as prio\n      from planet_osm_polygon\n      where amenity is not null\n         or shop is not null\n         or tourism in ('alpine_hut','camp_site','caravan_site','guest_house','hostel','hotel','motel','museum','viewpoint','bed_and_breakfast','information','chalet')\n         or highway in ('bus_stop','traffic_signals')\n         or man_made in ('mast','water_tower')\n         or historic in ('memorial','archaeological_site','castle')\n         or leisure in ('playground','golf_course')  \n    or tags ? 'emergency' or tags ? 'medical'  or tags ? 'entrance' order by prio desc, way_area desc ) as points",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -2150,7 +2150,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,amenity,shop,tourism,highway,man_made,access,religion,waterway,lock,historic,leisure,operator, tags->'network' as network, tags->'ref:FR:LaPoste' as ref_laposte, tags->'post_office:type' as post_office_type, coalesce(tags->'emergency', tags->'medical')  as emergency, tags->'entrance' as entrance, substring('******',1,cast('0' || regexp_replace(tags->'stars','[^0-9]','','g') as integer)) as stars, tags->'parking' as parking, 0 as way_area, name, ref, regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(coalesce(tags->'name:fr',name),'Avenue ','Av. '),'Boulevard ','Bd. '),'Rocade ','Roc. '),'Faubourg ','Fbg. '),'Passage ','Pass. '),'Place ','Pl. '),'Promenade ','Prom. '),'Impasse ','Imp. '),'Centre Commercial ','CCial. '),'Immeuble ','Imm. '),'Lotissement ','Lot. '),'Résidence ','Rés. '),'Square ','Sq. '),'Zone Industrielle ','ZI. '),'Adjudant ','Adj. '),'Agricole ','Agric. '),'Arrondissement','Arrond.'),'Aspirant ','Asp. '),'Bâtiment ','Bat. '),'Colonel ','Cᵒˡ '),'Commandant ','Cᵈᵗ '),'Commercial ','Cial. '),'Coopérative ','Coop. '),'Division ','Div. '),'Docteur ','Dr. '),'Etablissement ','Ets. '),'Général ','Gᵃˡ '),'Institut ','Inst. '),'Laboratoire ','Labo. '),'Lieutenant ','Lᵗ '),'Maréchal ','Mᵃˡ '),'Ministère ','Min. '),'Monseigneur ','Mgr. '),'Bibliothèque ','Bibl. '),'Tribunal ','Trib. '),'Municipale ','Mun. '),'Municipal ','Mun. '),'Observatoire ','Obs. '),'Périphérique ','Périph. '),'Préfecture ','Préf. '),'Président ','Pdt. '),'Régiment ','Rᵍᵗ '),'Régional ','Rég. '),'Régionale ','Rég. '),'Saint-','St-'),'Sainte-','Ste-'),'Sergent ','Sᵍᵗ '),'Université ','Univ. '),'Universitaire ','Univ. '),'Centre Hospitalier ','C.H. '),'Hôpital ','Hôp. '),'Clinique ','Clin. '),'Communauté d.[Aa]gglomération','Comm. d''agglo. '),'Communauté [Uu]rbaine ','Comm. urb. '),'Communauté de [Cc]ommunes ','Comm. comm. '),'Syndicat d.[Aa]gglomération ','Synd. d''agglo. '),'^Chemin ','Ch. ') as nom, \ncase when amenity='townhall' then 2  when amenity in ('post_office','courthouse','police','public_building','hospital') then 1  else 0 end as prio\n      from planet_osm_point\n      where (amenity is not null and amenity != 'bus_station')\n         or shop is not null\n         or tourism in ('alpine_hut','camp_site','caravan_site','guest_house','hostel','hotel','motel','museum','viewpoint','bed_and_breakfast','information','chalet')\n         or highway in ('traffic_signals','ford')\n         or man_made in ('mast','water_tower')\n         or historic in ('memorial','archaeological_site','castle')\n         or waterway='lock'\n         or lock='yes'\n         or leisure in ('playground','slipway','golf_course') or tags ? 'emergency' or tags ? 'medical' or tags ? 'entrance' order by prio desc, tags->'stars' desc\n      ) as points",
+        "table": "(select way,amenity,shop,tourism,highway,man_made,access,religion,waterway,lock,historic,leisure,operator, tags->'network' as network, tags->'ref:FR:LaPoste' as ref_laposte, tags->'post_office:type' as post_office_type, coalesce(tags->'emergency', tags->'medical')  as emergency, tags->'entrance' as entrance, tags->'fuel:lpg' as lpg , substring('******',1,cast('0' || regexp_replace(tags->'stars','[^0-9]','','g') as integer)) as stars, tags->'parking' as parking, 0 as way_area, name, ref, regexp_replace(regexp_replace(regexp_replace(regexp_replace(regexp_replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(coalesce(tags->'name:fr',name),'Avenue ','Av. '),'Boulevard ','Bd. '),'Rocade ','Roc. '),'Faubourg ','Fbg. '),'Passage ','Pass. '),'Place ','Pl. '),'Promenade ','Prom. '),'Impasse ','Imp. '),'Centre Commercial ','CCial. '),'Immeuble ','Imm. '),'Lotissement ','Lot. '),'Résidence ','Rés. '),'Square ','Sq. '),'Zone Industrielle ','ZI. '),'Adjudant ','Adj. '),'Agricole ','Agric. '),'Arrondissement','Arrond.'),'Aspirant ','Asp. '),'Bâtiment ','Bat. '),'Colonel ','Cᵒˡ '),'Commandant ','Cᵈᵗ '),'Commercial ','Cial. '),'Coopérative ','Coop. '),'Division ','Div. '),'Docteur ','Dr. '),'Etablissement ','Ets. '),'Général ','Gᵃˡ '),'Institut ','Inst. '),'Laboratoire ','Labo. '),'Lieutenant ','Lᵗ '),'Maréchal ','Mᵃˡ '),'Ministère ','Min. '),'Monseigneur ','Mgr. '),'Bibliothèque ','Bibl. '),'Tribunal ','Trib. '),'Municipale ','Mun. '),'Municipal ','Mun. '),'Observatoire ','Obs. '),'Périphérique ','Périph. '),'Préfecture ','Préf. '),'Président ','Pdt. '),'Régiment ','Rᵍᵗ '),'Régional ','Rég. '),'Régionale ','Rég. '),'Saint-','St-'),'Sainte-','Ste-'),'Sergent ','Sᵍᵗ '),'Université ','Univ. '),'Universitaire ','Univ. '),'Centre Hospitalier ','C.H. '),'Hôpital ','Hôp. '),'Clinique ','Clin. '),'Communauté d.[Aa]gglomération','Comm. d''agglo. '),'Communauté [Uu]rbaine ','Comm. urb. '),'Communauté de [Cc]ommunes ','Comm. comm. '),'Syndicat d.[Aa]gglomération ','Synd. d''agglo. '),'^Chemin ','Ch. ') as nom, \ncase when amenity='townhall' then 2  when amenity in ('post_office','courthouse','police','public_building','hospital') then 1  else 0 end as prio\n      from planet_osm_point\n      where (amenity is not null and amenity != 'bus_station')\n         or shop is not null\n         or tourism in ('alpine_hut','camp_site','caravan_site','guest_house','hostel','hotel','motel','museum','viewpoint','bed_and_breakfast','information','chalet')\n         or highway in ('traffic_signals','ford')\n         or man_made in ('mast','water_tower')\n         or historic in ('memorial','archaeological_site','castle')\n         or waterway='lock'\n         or lock='yes'\n         or leisure in ('playground','slipway','golf_course') or tags ? 'emergency' or tags ? 'medical' or tags ? 'entrance' order by prio desc, tags->'stars' desc\n      ) as points",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -2643,6 +2643,62 @@
       "name": "crossroad_names"
     },
     {
+      "geometry": "linestring",
+      "extent": [
+        -179.99999979528076,
+        -85.051,
+        179.99378812475413,
+        85.051
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "/* cycleway */ (SELECT way, highway, route, tags->'cycleway' as cycleway, tags->'cycleway:left' as cycleway_l, tags->'cycleway:right' as cycleway_r, bicycle, tags->'bicycle:lanes' as bicycle_lanes FROM planet_osm_line WHERE ( tags ? 'cycleway' or tags ? 'cycleway:left' or tags ? 'cycleway:right' or highway in ('cycleway','path','footway') or bicycle in ('yes','designated') or route='bicycle' or tags ? 'bicycle:lanes') and (route is null or route='bicycle' or route != 'train') and railway is null) as cycleway",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-608486.97,5050570.13,1098482.3,6674538.35",
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
+      },
+      "id": "cycleway",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "cycleway",
+      "status": "off"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        -179.99999979528076,
+        -85.051,
+        179.99378812475413,
+        85.051
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "/* cycliste-poi */ (SELECT way,amenity,shop, highway, tags->'bicycle' as bicycle FROM planet_osm_point WHERE amenity in ('bicycle_parking','fuel') or shop='bicycle' or tags->'bicycle'='no' or highway='steps') as cycliste",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-573396.57,5050570.13,1085365.03,6668894.01",
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
+      },
+      "id": "cycliste-poi",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "cycliste-poi",
+      "status": "off"
+    },
+    {
       "geometry": "point",
       "extent": [
         -179.99999979528076,
@@ -2667,11 +2723,12 @@
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "addr-corner"
+      "name": "addr-corner",
+      "status": "off"
     }
   ],
   "scale": 1,
-  "metatile": 4,
+  "metatile": 8,
   "_basemap": "",
   "name": "OpenStreetMap France",
   "description": "",
