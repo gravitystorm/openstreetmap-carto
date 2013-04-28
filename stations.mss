@@ -29,7 +29,8 @@
 
     [zoom >= 11] [operator = 'SNCF'][type_ratp = ''][usage!='freight'] {
       point-file: url('symbols/fr/Logo_SNCF.svg');
-      point-transform: 'scale(0.15)';
+      point-transform: 'scale(0.10)';
+      [zoom>=14] { point-transform: 'scale(0.15)'; }
       [disused = 'yes'] { point-file: url('symbols/station_disused.png'); point-transform: 'scale(1)';}
     }
     
