@@ -117,6 +117,7 @@
       text-placement: line;
       text-fill: #6699cc;
       text-spacing: 400;
+      text-character-spacing: 4;
       text-size: 9;
       text-halo-radius: 1;
       [cemt='IV'],[cemt='V'],[cemt='Va'],[cemt='Vb'] {text-size: 12;}
