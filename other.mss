@@ -842,13 +842,45 @@
 			text-fill: #939;
 			text-face-name: @book-fonts;
 			text-halo-radius: 1;
-		 	text-wrap-width: 12;
+		 	text-wrap-width: 15;
 			text-placement: interior;
 	  		
+	  		[shop = 'bakery'],
+	  		[shop = 'beverages'],
+	  		[shop = 'bicycle'],
 	  		[shop = 'butcher'],
+			[shop = 'car_repair'],
+			[shop = 'car'],
 			[shop = 'clothes'],
-	  		[shop = 'bakery'] {
-				text-dy: 5;
+			[shop = 'confectionery'],
+			[shop = 'convenience'],
+	  		[shop = 'computer'],
+			[shop = 'copyshop'],
+			[shop = 'dry_cleaning'],
+	  		[shop = 'fishmonger'],
+	  		[shop = 'garden_centre'],
+			[shop = 'greengrocer'],
+			[shop = 'hifi'],
+			[shop = 'jewelry'],
+			[shop = 'laundry'],
+			[shop = 'motorcycle'],
+			[shop = 'musical_instrument'],
+	  		[shop = 'optician'],
+			[shop = 'photo_studio'],
+			[shop = 'photo'],
+	  		[shop = 'seafood'],
+	  		[shop = 'shoes'],
+	  		[shop = 'toys']
+	  		{
+				text-dy: 7;
+			}
+			
+	  		[shop = 'alcohol'],
+	  		[shop = 'hairdresser'],
+			[shop = 'mobile_phone'],
+			[shop = 'travel_agency']
+			{
+				text-dy: 9;
 			}
 	  	}
 
@@ -856,7 +888,7 @@
 		[zoom >= 16] {
 		  text-name: "[name]";
 		  text-size: 9;
-		  text-dy: 9;
+		  text-dy: 10;
 		  text-fill: #939;
 		  text-face-name: @book-fonts;
 		  text-halo-radius: 1;

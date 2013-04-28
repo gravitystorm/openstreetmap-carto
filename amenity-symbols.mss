@@ -120,7 +120,7 @@
   }
 
   [barrier = 'lift_gate'][zoom >= 16]::barrier {
-    point-file: url('symbols/liftgate.png');
+    point-file: url('symbols/lift_gate.svg');
     point-placement: interior;
   }
 

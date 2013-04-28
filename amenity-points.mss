@@ -1,11 +1,14 @@
 .points {
   [amenity = 'post_office'][zoom >= 16][operator='La Poste']::amenity,
   [amenity = 'post_office'][zoom >= 16][ref_laposte!='']::amenity {
+    /*
     [post_office_type='post_annex'], [post_office_type='post_partner']
     { point-file: url('symbols/fr/LaPoste3-gris.png'); }
     point-file: url('symbols/fr/LaPoste3.png');
-    point-placement: interior;
     point-transform: "scale(0.5)";
+    */
+    point-file: url('symbols/post_office_yellow.svg');
+    point-placement: interior;
   }
   
   [amenity = 'post_office'][zoom >= 16][operator='bpost']::amenity {
@@ -152,7 +155,7 @@
   }
 
   [tourism = 'hostel'][zoom >= 17]::tourism {
-    point-file: url('symbols/hostel.p.20.png');
+    point-file: url('symbols/hostel.svg');
     point-placement: interior;
   }
 
@@ -162,7 +165,7 @@
   }
 
   [tourism = 'motel'][zoom >= 17]::tourism {
-    point-file: url('symbols/motel.p.20.png');
+    point-file: url('symbols/motel.svg');
     point-placement: interior;
   }
 
@@ -253,7 +256,7 @@
   }
 
   [amenity = 'post_box'][zoom >= 17]::amenity {
-    [operator='La Poste'] { point-file: url('symbols/fr/LaPoste-BAL.png'); }
+    [operator='La Poste'] { point-file: url('symbols/post_box_yellow.svg'); }
     point-file: url('symbols/post_box.svg');
     point-placement: interior;
   }
@@ -345,7 +348,7 @@
   }
 
   [shop = 'supermarket'][zoom >= 16]::shop {
-    point-file: url('symbols/shop_supermarket.p.16.png');
+    point-file: url('symbols/supermarket.svg');
     point-placement: interior;
   }
 
@@ -355,53 +358,147 @@
   }
 
   [shop = 'butcher'][zoom >= 17]::shop {
-    point-file: url('symbols/shop_butcher.png');
+    point-file: url('symbols/butcher2.svg');
+    point-placement: interior;
+  }
+
+  [shop = 'fishmonger'][zoom >= 17]::shop,
+  [shop = 'seafood'][zoom >= 17]::shop {
+    point-file: url('symbols/fish.svg');
+    point-placement: interior;
+  }
+
+  [shop = 'beverages'][zoom >= 17]::shop,
+  [shop = 'alcohol'][zoom >= 17]::shop {
+    point-file: url('symbols/alcohol.svg');
+    point-placement: interior;
+  }
+
+  [shop = 'greengrocer'][zoom >= 17]::shop  {
+    point-file: url('symbols/greengrocer.svg');
+    point-placement: interior;
+  }
+
+  [shop = 'confectionery'][zoom >= 17]::shop  {
+    point-file: url('symbols/confectionery.svg');
     point-placement: interior;
   }
 
   [zoom >= 17][shop = 'clothes']::shop,
   [zoom >= 17][shop = 'fashion']::shop {
-      point-file: url('symbols/shop_clothes.p.16.png');
+      point-file: url('symbols/clothes.svg');
       point-placement: interior;
   }
 
   [shop = 'convenience'][zoom >= 17]::shop {
-    point-file: url('symbols/shop_convenience.p.16.png');
+    point-file: url('symbols/convenience.svg');
     point-placement: interior;
   }
 
   [zoom >= 16][shop = 'mall'],[shop = 'department_store'][zoom >= 16]::shop {
-    point-file: url('symbols/department_store.p.16.png');
+    point-file: url('symbols/department_store.svg');
     point-placement: interior;
   }
 
   [shop = 'doityourself'][zoom >= 17]::shop {
-    point-file: url('symbols/shop_diy.p.16.png');
+    point-file: url('symbols/diy.svg');
     point-placement: interior;
   }
 
   [shop = 'florist'][zoom >= 17]::shop {
-    point-file: url('symbols/florist.p.16.png');
+    point-file: url('symbols/florist.svg');
+    point-placement: interior;
+  }
+
+  [shop = 'photo'][zoom >= 17]::shop,
+  [shop = 'photo_studio'][zoom >= 17]::shop {
+    point-file: url('symbols/shopping_photo.svg');
+    point-placement: interior;
+  }
+
+  [shop = 'garden_centre'][zoom >= 17]::shop {
+    point-file: url('symbols/garden_centre.svg');
     point-placement: interior;
   }
 
   [shop = 'hairdresser'][zoom >= 17]::shop {
-    point-file: url('symbols/shop_hairdresser.p.16.png');
+    point-file: url('symbols/hairdresser.svg');
+    point-placement: interior;
+  }
+
+  [shop = 'optician'][zoom >= 17]::shop {
+    point-file: url('symbols/optician.svg');
+    point-placement: interior;
+  }
+
+  [shop = 'toys'][zoom >= 17]::shop {
+    point-file: url('symbols/toys.svg');
+    point-placement: interior;
+  }
+
+  [shop = 'computer'][zoom >= 17]::shop {
+    point-file: url('symbols/computer2.svg');
     point-placement: interior;
   }
 
   [shop = 'car'][zoom >= 17]::shop {
-    point-file: url('symbols/shopping_car.p.16.png');
+    point-file: url('symbols/shop_car.svg');
     point-placement: interior;
   }
 
   [shop = 'car_repair'][zoom >= 17]::shop {
-    point-file: url('symbols/shopping_car_repair.p.16.png');
+    point-file: url('symbols/car_repair.svg');
     point-placement: interior;
   }
 
   [shop = 'bicycle'][zoom >= 17]::shop {
-    point-file: url('symbols/shopping_bicycle.p.16.png');
+    point-file: url('symbols/shopping_bicycle.svg');
+    point-placement: interior;
+  }
+
+  [shop = 'copyshop'][zoom >= 17]::shop {
+    point-file: url('symbols/copyshop.svg');
+    point-placement: interior;
+  }
+
+  [shop = 'hifi'][zoom >= 17]::shop {
+    point-file: url('symbols/hifi.svg');
+    point-placement: interior;
+  }
+
+  [shop = 'travel_agency'][zoom >= 17]::shop {
+    point-file: url('symbols/travel_agency.svg');
+    point-placement: interior;
+  }
+
+  [shop = 'jewelry'][zoom >= 17]::shop {
+    point-file: url('symbols/jewelry.svg');
+    point-placement: interior;
+  }
+
+  [shop = 'shoes'][zoom >= 17]::shop {
+    point-file: url('symbols/shoes.svg');
+    point-placement: interior;
+  }
+
+  [shop = 'laundry'][zoom >= 17]::shop,
+  [shop = 'dry_cleaning'][zoom >= 17]::shop {
+    point-file: url('symbols/laundry.svg');
+    point-placement: interior;
+  }
+
+  [shop = 'mobile_phone'][zoom >= 17]::shop {
+    point-file: url('symbols/mobile_phone.svg');
+    point-placement: interior;
+  }
+
+  [shop = 'motorcycle'][zoom >= 17]::shop {
+    point-file: url('symbols/motorcycle.svg');
+    point-placement: interior;
+  }
+
+  [shop = 'musical_instrument'][zoom >= 17]::shop {
+    point-file: url('symbols/musical_instrument.svg');
     point-placement: interior;
   }
 
