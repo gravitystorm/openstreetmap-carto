@@ -1839,7 +1839,7 @@
 	a/line-smooth: 0.7;
 	b/line-smooth: 0.7;
       a/line-width: 3;
-      a/line-color: #999999;
+      a/line-color: #888;
       a/line-join: round;
       b/line-width: 1;
       b/line-color: white;
@@ -1851,19 +1851,18 @@
     }
 
     [railway = 'spur-siding-yard'][zoom >= 11] {
-	a/line-smooth: 0.7;
-      a/line-width: 1;
+	  a/line-smooth: 0.7;
+      a/line-width: 0.5;
       a/line-color: #aaa;
       a/line-join: round;
       [zoom >= 13][tunnel != 'yes'] {
-        a/line-color: #999999;
-        a/line-width: 2;
-        b/line-width: 0.8;
+        a/line-color: #aaa;
+        a/line-width: 1.5;
+        b/line-width: 0.75;
         b/line-dasharray: 0,8,11,1;
         b/line-color: white;
         b/line-join: round;
-	a/line-smooth: 0.7;
-	b/line-smooth: 0.7;
+		b/line-smooth: 0.7;
       }
     }
 
@@ -2731,7 +2730,7 @@
     ::railway {
       [railway = 'rail'][zoom >= 13] {
         line-width: 3;
-        line-color: #999999;
+        line-color: #888;
         line-join: round;
         b/line-width: 1;
         b/line-color: white;
@@ -2744,7 +2743,7 @@
 
       [railway = 'INT-spur-siding-yard'][zoom >= 13] {
         line-width: 2;
-        line-color: #999999;
+        line-color: #aaa;
         line-join: round;
         b/line-width: 0.8;
         b/line-color: white;
@@ -2842,9 +2841,9 @@
 	  ::railway {
 		[railway = 'rail'][zoom >= 6][zoom < 13] {
 		  line-width: 0.6;
-		  line-color: #aaa;
-		  [zoom >= 9] { line-width: 1; }
-		  [zoom >= 10] { line-width: 2; }
+		  line-color: #666;
+		  [zoom >= 9] { line-width: 1; line-color: #777;}
+		  [zoom >= 10] { line-width: 1.5; line-color: #888;}
 		  [tunnel = 'yes'] {
 			line-dasharray: 5,2;
 		  }
