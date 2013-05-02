@@ -155,7 +155,7 @@
   [feature = 'landuse_farm'],
   [feature = 'landuse_farmland'] {
     [zoom >= 8] {
-      polygon-fill: #ead8bd;
+      polygon-fill: #f2e4ce;
     }
   }
 
