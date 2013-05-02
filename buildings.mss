@@ -39,6 +39,12 @@
       polygon-opacity: 0.5;
     }
 
+    [building = 'greenhouse'][wall='no'],
+    [building = 'greenhouse']
+    {
+      polygon-fill: #c5d2b4;
+    }
+
     polygon-fill: #bdacac;					/* 9%/74% (sat./bright) */
     [zoom = 16] {polygon-fill: #c2b2b2;}	/* 8%/76% */
     [zoom = 17] {polygon-fill: #ccbebe;}	/* 7%/80% */
