@@ -2853,7 +2853,7 @@
 		[railway = 'light_rail'],
 		[railway = 'narrow_gauge'],
 		[railway = 'funicular'] {
-		  [zoom >= 8][zoom < 13] {
+		  [zoom >= 11][zoom < 13] {
 			line-width: 1;
 			line-color: #ccc;
 			[zoom >= 10] { line-color: #aaa }
@@ -3288,14 +3288,13 @@
 
 
 #highway_crossings {
-  [zoom=19][angle_diff<30] {
+  [zoom=19][angle_diff<40] {
 	point-ignore-placement: true;
 	point-file: url('symbols/fr/crossing.svg');
 	point-transform: 'rotate([angle]) scale(0.15)';
   }
-  [zoom=19][angle_diff>=30] {
-	point-file: url('symbols/fr/crossing.png');
-	point-transform: 'scale(0.75)';
+  [zoom=19][angle_diff>=40] {
+	point-file: url('symbols/zebra_crossing.svg');
   }
 }
 
