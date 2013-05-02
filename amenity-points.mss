@@ -396,7 +396,7 @@
   }
 
   [zoom >= 16][shop = 'mall'],[shop = 'department_store'][zoom >= 16]::shop {
-    point-file: url('symbols/department_store.svg');
+    point-file: url('symbols/shopping.svg');
     point-placement: interior;
   }
 
@@ -536,6 +536,4 @@
     text-placement: interior;
     text-size: 9;
   }
-
-
 }
