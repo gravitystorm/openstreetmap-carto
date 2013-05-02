@@ -181,7 +181,7 @@
 
   [amenity = 'townhall'][zoom >= 13]::amenity {
     point-file: url('symbols/town_hall2.svg');
-    [zoom <=14] { point-transform: "scale(0.75)"; }
+    [zoom <=14] { point-transform: "scale(0.66)"; }
     point-placement: interior;
   }
 
@@ -223,7 +223,7 @@
     }
   }
 
-  [amenity = 'bicycle_parking'][zoom >= 17]::amenity {
+  [amenity = 'bicycle_parking'][zoom >= 18]::amenity {
     point-file: url('symbols/parking_bicycle.svg');
     point-placement: interior;
   }
