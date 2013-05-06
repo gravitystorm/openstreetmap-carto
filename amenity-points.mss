@@ -134,7 +134,7 @@
   }
 
   [amenity = 'fuel'][zoom >= 17]::amenity {
-    [lpg='yes'] { point-file: url('symbols/fuel_lpg.svg'); }
+    [lpg='yes'] { point-file: url('symbols/fuel_gpl.svg'); }
     point-file: url('symbols/fuel.svg');
     point-placement: interior;
   }
