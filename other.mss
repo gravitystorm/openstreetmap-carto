@@ -302,6 +302,10 @@
       text-halo-radius: 1;
       text-wrap-width: 34;
       text-placement: interior;
+	  [zoom >= 19] {
+		text-size: 10;
+		text-dy: 10;
+	  }
     }
   }
 
@@ -352,6 +356,10 @@
     [access != ''][access != 'public'][access != 'yes'] {
       text-fill: #66ccaf;
     }
+	  [zoom >= 19] {
+		text-size: 10;
+		text-dy: 10;
+	  }
   }
 
   [amenity = 'police'][zoom >= 17]::amenity {
@@ -450,6 +458,10 @@
       text-halo-radius: 1;
       text-wrap-width: 20;
       text-placement: interior;
+	  [zoom >= 19] {
+		text-size: 10;
+		text-dy: 13;
+	  }
     }
   }
 
@@ -463,6 +475,10 @@
       text-halo-radius: 1;
       text-wrap-width: 25;
       text-placement: interior;
+	  [zoom >= 19] {
+		text-size: 10;
+		text-dy: 10;
+	  }
     }
   }
 
@@ -558,6 +574,10 @@
     text-halo-radius: 1;
     text-placement: interior;
     text-face-name: @book-fonts;
+	  [zoom >= 19] {
+		text-size: 10;
+		text-dy: 10;
+	  }
   }
 
   [tourism = 'hotel']::tourism,
@@ -582,6 +602,10 @@
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-placement: interior;
+	  [zoom >= 19] {
+		text-size: 10;
+		text-dy: 10;
+	  }
   }
 
   [tourism = 'guest_house'][zoom >= 17]::tourism {
@@ -592,6 +616,10 @@
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-placement: interior;
+	  [zoom >= 19] {
+		text-size: 10;
+		text-dy: 10;
+	  }
   }
 
   [tourism = 'bed_and_breakfast'][zoom >= 17]::tourism {
@@ -602,6 +630,10 @@
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-placement: interior;
+	  [zoom >= 19] {
+		text-size: 10;
+		text-dy: 10;
+	  }
   }
 
   [amenity = 'fuel']::amenity {
@@ -612,6 +644,10 @@
       text-dy: 9;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
+	  [zoom >= 19] {
+		text-size: 10;
+		text-dy: 10;
+	  }
     }
   }
 
@@ -733,8 +769,8 @@
   }
 
   [amenity = 'university'][zoom >= 15]::amenity {
-    // [zoom >= 15][zoom<17] { text-name: "[nom]"; }
-	text-name: "[name]";
+    [zoom >= 17] { text-name: "[name]"; }
+	text-name: "[nom]";
     text-size: 9;
     text-fill: #000033;
     text-face-name: @book-fonts;
@@ -872,7 +908,7 @@
 	  		[shop = 'shoes'],
 	  		[shop = 'toys']
 	  		{
-				text-dy: 7;
+				text-dy: 8;
 			}
 			
 	  		[shop = 'alcohol'],
@@ -880,7 +916,55 @@
 			[shop = 'mobile_phone'],
 			[shop = 'travel_agency']
 			{
-				text-dy: 9;
+				text-dy: 10;
+			}
+	  	}
+
+		[zoom >= 19] {
+			text-name: "[name]";
+			text-size: 10;
+			text-fill: #939;
+			text-face-name: @book-fonts;
+			text-halo-radius: 1;
+		 	text-wrap-width: 15;
+			text-placement: interior;
+	  		
+	  		[shop = 'bakery'],
+	  		[shop = 'beverages'],
+	  		[shop = 'bicycle'],
+	  		[shop = 'butcher'],
+			[shop = 'car_repair'],
+			[shop = 'car'],
+			[shop = 'clothes'],
+			[shop = 'confectionery'],
+			[shop = 'convenience'],
+	  		[shop = 'computer'],
+			[shop = 'copyshop'],
+			[shop = 'dry_cleaning'],
+	  		[shop = 'fishmonger'],
+	  		[shop = 'garden_centre'],
+			[shop = 'greengrocer'],
+			[shop = 'hifi'],
+			[shop = 'jewelry'],
+			[shop = 'laundry'],
+			[shop = 'motorcycle'],
+			[shop = 'musical_instrument'],
+	  		[shop = 'optician'],
+			[shop = 'photo_studio'],
+			[shop = 'photo'],
+	  		[shop = 'seafood'],
+	  		[shop = 'shoes'],
+	  		[shop = 'toys']
+	  		{
+				text-dy: 10;
+			}
+			
+	  		[shop = 'alcohol'],
+	  		[shop = 'hairdresser'],
+			[shop = 'mobile_phone'],
+			[shop = 'travel_agency']
+			{
+				text-dy: 12;
 			}
 	  	}
 
@@ -889,6 +973,16 @@
 		  text-name: "[name]";
 		  text-size: 9;
 		  text-dy: 10;
+		  text-fill: #939;
+		  text-face-name: @book-fonts;
+		  text-halo-radius: 1;
+		  text-wrap-width: 20;
+		  text-placement: interior;
+		}
+		[zoom >= 19] {
+		  text-name: "[name]";
+		  text-size: 11;
+		  text-dy: 12;
 		  text-fill: #939;
 		  text-face-name: @book-fonts;
 		  text-halo-radius: 1;
