@@ -506,6 +506,12 @@
     point-file: url('symbols/musical_instrument.svg');
     point-placement: interior;
   }
+  
+  [shop = 'furniture'][zoom >= 17]::shop,
+  [shop = 'interior_decoration'][zoom >= 17]::shop {
+    point-file: url('symbols/furniture.svg');
+    point-placement: interior;
+  }
 
   [leisure = 'playground'][zoom >= 17]::leisure {
     point-file: url('symbols/playground.svg');

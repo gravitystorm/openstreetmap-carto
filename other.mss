@@ -914,6 +914,8 @@
 			}
 			
 	  		[shop = 'alcohol'],
+	  		[shop = 'furniture'],
+	  		[shop = 'interior_decoration'],
 	  		[shop = 'hairdresser'],
 			[shop = 'mobile_phone'],
 			[shop = 'travel_agency']
@@ -963,6 +965,8 @@
 			}
 			
 	  		[shop = 'alcohol'],
+	  		[shop = 'furniture'],
+	  		[shop = 'interior_decoration'],
 	  		[shop = 'hairdresser'],
 			[shop = 'mobile_phone'],
 			[shop = 'travel_agency']
