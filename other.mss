@@ -737,6 +737,7 @@
     [amenity = 'townhall'],[amenity = 'courthouse'] { text-dy: 12; }
   }
 
+  [tourism = 'zoo'][zoom >= 15]::tourism,
   [tourism = 'museum'][zoom >= 16]::tourism {
     text-name: "[name]";
     text-size: 10;

@@ -211,6 +211,11 @@
     point-placement: interior;
   }
 
+  [tourism = 'zoo'][zoom >= 15]::tourism {
+    point-file: url('symbols/zoo.svg');
+    point-placement: interior;
+  }
+
   [amenity = 'parking'][zoom >= 15][way_area>5000]::amenity,
   [amenity = 'parking'][zoom >= 15][parking='multi-storey']::amenity,
   [amenity = 'parking'][zoom >= 16][name != '']::amenity,
