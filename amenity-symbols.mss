@@ -45,12 +45,16 @@
     text-placement: interior;
   }
 
-  [railway = 'crossing'][zoom >= 14]::railway {
-    point-file: url('symbols/level_crossing.png');
+  [railway = 'level_crossing'][zoom >= 15]::railway,
+  [railway = 'crossing'][zoom >= 15]::railway {
+    point-file: url('symbols/level_crossing2.svg');
+    point-transform: "scale(0.5)";
     point-placement: interior;
-    [zoom >= 16] {
-      point-file: url('symbols/level_crossing2.png');
-    }
+  }
+
+  [railway = 'buffer_stop'][zoom >= 17]::railway {
+    point-file: url('symbols/buffer_stop.svg');
+    [zoom=17] { point-transform: "scale(0.5)"; }
   }
 
   [man_made = 'lighthouse'][zoom >= 15]::man_made {
