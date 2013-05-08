@@ -3382,12 +3382,12 @@
 
 
 #highway_crossings {
-  [zoom=19][angle_diff<40] {
+  [zoom>=19][angle_diff<40] {
 	point-ignore-placement: true;
 	point-file: url('symbols/fr/crossing.svg');
 	point-transform: 'rotate([angle]) scale(0.15)';
   }
-  [zoom=19][angle_diff>=40] {
+  [zoom>=19][angle_diff>=40] {
 	point-file: url('symbols/zebra_crossing.svg');
   }
 }
