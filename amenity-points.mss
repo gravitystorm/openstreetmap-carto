@@ -1,13 +1,11 @@
 .points {
   [amenity = 'post_office'][zoom >= 16][operator='La Poste']::amenity,
   [amenity = 'post_office'][zoom >= 16][ref_laposte!='']::amenity {
-    /*
     [post_office_type='post_annex'], [post_office_type='post_partner']
     { point-file: url('symbols/fr/LaPoste3-gris.png'); }
     point-file: url('symbols/fr/LaPoste3.png');
     point-transform: "scale(0.5)";
-    */
-    point-file: url('symbols/post_office_yellow.svg');
+    // point-file: url('symbols/post_office_yellow.svg');
     point-placement: interior;
   }
   

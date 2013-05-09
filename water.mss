@@ -20,9 +20,12 @@
     }
   }
 
-  [landuse = 'basin'][zoom >= 7]::landuse {
-    polygon-gamma: 0.75;
-    polygon-fill: @water-color;
+  [landuse = 'basin'][zoom >= 7][zoom<13]::landuse {
+      polygon-gamma: 0.75;
+      polygon-fill: @water-color;
+  }
+  [landuse = 'basin'][zoom >= 13]::landuse {
+    polygon-pattern-file: url('symbols/basin.png');
   }
 
   [natural = 'lake']::natural,
