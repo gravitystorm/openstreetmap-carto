@@ -1,0 +1,15 @@
+OpenStreetMap Carto: A global map style for OpenStreetMap maps.
+
+Created by Andy Allan <andy@gravitystorm.co.uk> and contributors.
+Based on original cartography by Steve Chilton and others.
+
+This software and associated documentation files (the "Software") is
+released under the CC0 Public Domain Dedication, version 1.0, as
+published by Creative Commons. To the extent possible under law, the
+author(s) have dedicated all copyright and related and neighboring
+rights to the Software to the public domain worldwide. The Software is
+distributed WITHOUT ANY WARRANTY.
+
+If you did not receive a copy of the CC0 Public Domain Dedication
+along with the Software, see
+<http://creativecommons.org/publicdomain/zero/1.0/>
