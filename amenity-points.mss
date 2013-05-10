@@ -39,12 +39,12 @@
   }
 
   [amenity = 'atm'][zoom >=17]::amenity {
-    point-file: url('symbols/fr/dab-16.png');
+    point-file: url('symbols/atm_euro.svg');
     point-placement: interior;
   }
 
   [amenity = 'bank'][zoom >= 17]::amenity {
-    point-file: url('symbols/fr/banque-16.png');
+    point-file: url('symbols/bank_euro.svg');
     point-placement: interior;
   }
 
