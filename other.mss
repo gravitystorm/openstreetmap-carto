@@ -2862,7 +2862,7 @@
       text-size: 11;
     }
   }
-  /* Other roads */
+  /* Other things, not just roads */
   [zoom >= 15] {
     text-name: "[name]";
     text-size: 9;
