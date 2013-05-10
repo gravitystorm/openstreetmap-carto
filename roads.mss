@@ -2202,6 +2202,7 @@
       text-min-distance: 18;
       text-halo-radius: 1;
       text-spacing: 750;
+      text-clip: false;
     }
   }
 
@@ -2212,6 +2213,7 @@
       text-size: 10;
       text-fill: #333;
       text-spacing: 750;
+      text-clip: false;
       text-placement: line;
       text-min-distance: 18;
       text-face-name: @book-fonts;
@@ -2227,6 +2229,8 @@
       text-name: "[name]";
       text-size: 8;
       text-fill: black;
+      text-spacing: 300;
+      text-clip: false;
       text-placement: line;
       text-face-name: @book-fonts;
       text-halo-radius: 0;
@@ -2243,6 +2247,8 @@
       text-name: "[name]";
       text-size: 8;
       text-fill: black;
+      text-spacing: 300;
+      text-clip: false;
       text-placement: line;
       text-face-name: @book-fonts;
       text-halo-radius: 0;
@@ -2259,6 +2265,8 @@
       text-name: "[name]";
       text-size: 9;
       text-fill: #000;
+      text-spacing: 300;
+      text-clip: false;
       text-placement: line;
       text-face-name: @book-fonts;
       text-halo-radius: 0;
@@ -2287,6 +2295,7 @@
       text-name: "[name]";
       text-size: 8;
       text-spacing: 300;
+      text-clip: false;
       text-placement: line;
       text-halo-radius: 1;
       text-face-name: @book-fonts;
