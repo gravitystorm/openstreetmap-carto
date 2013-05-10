@@ -168,12 +168,12 @@
   }
 
   [tourism = 'information'][zoom >= 16]::tourism {
-    point-file: url('symbols/information.p.16.png');
+    point-file: url('symbols/information.svg');
     point-placement: interior;
   }
 
   [amenity = 'embassy'][zoom >= 17]::amenity {
-    point-file: url('symbols/embassy.png');
+    point-file: url('symbols/embassy.svg');
     point-placement: interior;
   }
 
@@ -195,17 +195,17 @@
 
   [zoom >= 15][waterway = 'lock']::waterway,
   [zoom >= 15][lock = 'yes']::lock {
-      point-file: url('symbols/lock_gate.png');
+      point-file: url('symbols/lock_gate.svg');
       point-placement: interior;
   }
 
   [man_made = 'mast'][zoom >= 17]::man_made {
-    point-file: url('symbols/communications.p.20.png');
+    point-file: url('symbols/tower_communications.svg');
     point-placement: interior;
   }
 
   [tourism = 'museum'][zoom >= 17]::tourism {
-    point-file: url('symbols/museum.p.16.png');
+    point-file: url('symbols/museum.svg');
     point-placement: interior;
   }
 
@@ -232,7 +232,7 @@
   }
 
   [amenity = 'pharmacy'][zoom >= 16]::amenity {
-    point-file: url('symbols/fr/pharmacie.png');
+    point-file: url('symbols/fr/pharmacie.svg');
     point-placement: interior;
   }
 
@@ -306,7 +306,7 @@
   }
 
   [amenity = 'theatre'][zoom >= 17]::amenity {
-    point-file: url('symbols/theatre.p.20.png');
+    point-file: url('symbols/theatre.svg');
     point-placement: interior;
   }
 
@@ -316,7 +316,7 @@
   }
 
   [amenity = 'drinking_water'][zoom >= 17]::amenity {
-    point-file: url('symbols/food_drinkingtap.p.20.png');
+    point-file: url('symbols/food_drinkingtap.svg');
     point-placement: interior;
   }
 
@@ -326,7 +326,7 @@
   }
 
   [tourism = 'viewpoint'][zoom >= 16]::tourism {
-    point-file: url('symbols/view_point.p.16.png');
+    point-file: url('symbols/view_point.svg');
     point-placement: interior;
   }
 
@@ -341,12 +341,12 @@
   }
 
   [historic = 'archaeological_site'][zoom >= 16]::historic {
-    point-file: url('symbols/tourist_archaeological2.glow.16.png');
+    point-file: url('symbols/archaeological2.svg');
     point-placement: interior;
   }
 
   [historic = 'castle'][zoom >= 15]::historic {
-    point-file: url('symbols/fr/castle.png');
+    point-file: url('symbols/castle2.svg');
     point-placement: interior;
   }
 
