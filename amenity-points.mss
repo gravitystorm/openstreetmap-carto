@@ -102,7 +102,7 @@
   }
 
   [highway = 'ford'][zoom >= 16]::highway {
-    point-file: url('symbols/transport_ford.p.16.png');
+    point-file: url('symbols/transport_ford.svg');
     point-placement: interior;
   }
 
@@ -112,17 +112,17 @@
   }
 
   [amenity = 'car_sharing'][zoom >= 16]::amenity {
-    point-file: url('symbols/car_share.p.16.png');
+    point-file: url('symbols/car_share.svg');
     point-placement: interior;
   }
 
   [amenity = 'chalet'][zoom >= 17]::amenity {
-    point-file: url('symbols/chalet.p.16.png');
+    point-file: url('symbols/chalet.svg');
     point-placement: interior;
   }
 
   [amenity = 'cinema'][zoom >= 17]::amenity {
-    point-file: url('symbols/cinema.p.24.png');
+    point-file: url('symbols/cinema.svg');
     point-placement: interior;
   }
 
@@ -138,17 +138,17 @@
   }
 
   [tourism = 'guest_house'][zoom >= 17]::tourism {
-    point-file: url('symbols/guest_house.p.16.png');
+    point-file: url('symbols/guest_house.svg');
     point-placement: interior;
   }
 
   [tourism = 'bed_and_breakfast'][zoom >= 17]::tourism {
-    point-file: url('symbols/bandb.p.20.png');
+    point-file: url('symbols/bandb.svg');
     point-placement: interior;
   }
 
   [amenity = 'hospital'][zoom >= 15]::amenity {
-    point-file: url('symbols/fr/hopital-16.png');
+    point-file: url('symbols/fr/hopital.svg');
     point-placement: interior;
   }
 
