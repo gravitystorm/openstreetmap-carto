@@ -2860,6 +2860,7 @@
     }
     [zoom >= 17] {
       text-size: 11;
+      text-spacing: 400;
     }
   }
   /* Other things, not just roads */
