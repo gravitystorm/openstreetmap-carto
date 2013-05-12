@@ -336,7 +336,7 @@
   }
 
   [historic = 'memorial'][zoom >= 17]::historic {
-    point-file: url('symbols/tourist_memorial.p.20.png');
+    point-file: url('symbols/memorial.svg');
     point-placement: interior;
   }
 
