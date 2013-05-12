@@ -56,10 +56,11 @@ If you aren't using TileMill, you can compile the CartoCSS stylesheets into Mapn
 
 ---
 
-* [osm2pgsql](http://wiki.openstreetmap.org/wiki/Osm2pgsql) to import you data into a PostGIS database
+* [osm2pgsql](http://wiki.openstreetmap.org/wiki/Osm2pgsql) to import your data into a PostGIS database
 * [PostgreSQL](http://www.postgresql.org/)
-* [PostGIS](http://postgis.refractions.net/)
+* [PostGIS](http://postgis.org/)
 * [ogr2ogr](http://www.gdal.org/) command line GDAL utility for processing vector data. here we use it to work around a encoding bug in the Nautral Earth data.
+* unzip for decompressing downloaded files
 
 # Roadmap
 
