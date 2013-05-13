@@ -52,7 +52,7 @@ See https://github.com/mapnik/mapnik/issues/1605 for more details.
 If you aren't using TileMill, you can compile the CartoCSS stylesheets into Mapnik XML using the command-line `carto` command.
 
 * [carto](https://github.com/mapbox/carto) >= 0.9.3 (we're using instances with cascading rules)
-* [mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 2.0.0 (we might move to 2.1 in the near term
+* [mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 2.1.0
 
 ---
 
