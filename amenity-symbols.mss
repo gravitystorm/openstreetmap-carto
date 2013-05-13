@@ -88,6 +88,7 @@
     point-placement: interior;
   }
 
+/*
   [natural = 'tree'][zoom >= 16]::natural {
     point-file: url('symbols/tree.png');
     point-ignore-placement: true;
@@ -96,6 +97,7 @@
       point-file: url('symbols/tree2.png');
     }
   }
+*/
 
   [power = 'generator']['generator:source' = 'wind']::power,
   [power = 'generator'][power_source = 'wind']::power,
