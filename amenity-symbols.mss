@@ -63,7 +63,13 @@
   }
 
   [natural = 'peak'][zoom >= 11]::natural {
-    point-file: url('symbols/peak.png');
+    point-file: url('symbols/peak.svg');
+    point-placement: interior;
+  }
+
+  [mountain_pass = 'yes'][zoom >= 11]::natural,
+  [natural = 'saddle'][zoom >= 11]::natural {
+    point-file: url('symbols/mountain_pass.svg');
     point-placement: interior;
   }
 

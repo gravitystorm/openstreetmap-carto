@@ -436,6 +436,33 @@
     }
   }
 
+  [mountain_pass = 'yes']::natural,
+  [natural = 'saddle']::natural {
+    [zoom >= 13] {
+      long/text-name: "[name]";
+      long/text-size: 10;
+      long/text-fill: brown;
+      long/text-face-name: @book-fonts;
+      long/text-halo-radius: 1;
+      long/text-placement: interior;
+      short/text-name: "[nom]";
+      short/text-size: 10;
+      short/text-fill: brown;
+      short/text-face-name: @book-fonts;
+      short/text-halo-radius: 1;
+      short/text-placement: interior;
+      ele/text-name: "[ele]";
+      ele/text-size: 9;
+      ele/text-fill: brown;
+      ele/text-face-name: @oblique-fonts;
+      ele/text-halo-radius: 1;
+      ele/text-placement: interior;
+      [name != ''] {
+        ele/text-dy: 9;
+      }
+    }
+  }
+  
   [natural = 'cave_entrance'][zoom >= 15]::natural {
     text-name: "[name]";
     text-size: 10;
