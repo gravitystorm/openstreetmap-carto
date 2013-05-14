@@ -206,8 +206,8 @@
     	text-label-position-tolerance: 50;
     }
     [heritage!=''] { 
-	 	text-fill: brown;
-		text-face-name: @book-fonts;
+	 	text-fill: #734a08;
+		text-face-name: @bold-fonts;
 	}
     text-face-name: @book-fonts;
     text-size: 10;
@@ -384,6 +384,7 @@
     text-placement: interior;
   }
 
+  [heritage = '1'][zoom >= 15]::amenity,
   [amenity = 'place_of_worship'][zoom >= 17]::amenity {
     text-name: "[name]";
     text-size: 10;
@@ -393,6 +394,10 @@
     text-halo-radius: 1;
     text-wrap-width: 30;
     text-placement: interior;
+    [heritage != ''] {
+    	text-face-name: @bold-fonts;
+    	text-fill: #734a08;
+    }
   }
 
   [landuse = 'forest'][zoom >= 15]::landuse,

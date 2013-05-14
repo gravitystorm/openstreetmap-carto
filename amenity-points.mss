@@ -545,4 +545,11 @@
     text-placement: interior;
     text-size: 9;
   }
+  
+  [heritage = '1'][zoom >= 14] {
+    point-file: url('symbols/view_point.svg');
+    point-transform: "scale(0.75)";
+    point-placement: interior;
+  }
+
 }
