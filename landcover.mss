@@ -42,6 +42,10 @@
     }
   }
 
+  [feature = 'landuse_greenhouse_horticulture'][zoom >= 10] {
+    polygon-fill: #c5d2b4;
+  }
+
   [feature = 'landuse_orchard'][zoom >= 10] {
     polygon-pattern-file: url('symbols/orchard.png');
   }
