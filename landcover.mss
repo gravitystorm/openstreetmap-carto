@@ -290,6 +290,15 @@
       polygon-fill: #efc8c8;
     }
   }
+  
+  [feature = 'amenity_recycling'][zoom >= 14] {
+    polygon-fill: #dfd1d6;
+    [zoom >= 16]{
+    	line-color: #080;
+    	line-dasharray: 8,8;
+    }
+  }  
+
 }
 
 /* man_made=cutline */
