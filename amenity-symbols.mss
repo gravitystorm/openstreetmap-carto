@@ -131,6 +131,7 @@
     }
   }
 
+  [barrier = 'toll_booth'][zoom >= 15]::barrier,
   [barrier = 'lift_gate'][zoom >= 16]::barrier {
     point-file: url('symbols/lift_gate.svg');
     point-placement: interior;
