@@ -277,6 +277,7 @@
   [amenity = 'recycling'][zoom >= 17]::amenity {
     point-file: url('symbols/recycling.svg');
     point-placement: interior;
+    [recycling_type='centre'] { point-file: url('symbols/recycling_centre.svg'); }
   }
 
   [amenity = 'restaurant'][zoom >= 17]::amenity {

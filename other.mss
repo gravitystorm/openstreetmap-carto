@@ -1063,6 +1063,17 @@
     text-placement: interior;
     [zoom >= 18] {  text-size: 12; }
   }
+
+  [amenity = 'recycling'][zoom >= 17]::amenity {
+    text-name: "[name]";
+    text-size: 9;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 20;
+    text-placement: interior;
+    text-dy: 8;
+  }
+
 }
 
 
