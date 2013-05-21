@@ -18,21 +18,12 @@
         polygon-fill: #aaa;
       }
     }
-    
-    [amenity != '']::amenity {
-      polygon-opacity: 0.5;
-      polygon-fill: #888;
-      [zoom >= 15] {
-        polygon-opacity: 0.9;
-        polygon-fill: #aaa;
-      }
-    }
   }
 }
 
 #buildings {
   [building != ''][zoom >= 14] {
-    [amenity = 'public_building'],
+    // [amenity = 'public_building'],
     [heritage != '']
      {
       polygon-fill: #888;

@@ -299,6 +299,10 @@
     }
   }  
 
+  [feature = 'amenity_public_building'][zoom >= 12] {
+    polygon-fill: #b8b8b8;
+  }  
+
 }
 
 /* man_made=cutline */

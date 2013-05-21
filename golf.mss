@@ -185,7 +185,7 @@
 	[sport='rugby'][zoom>=16],
 	[sport='rugby_union'][zoom>=16],
 	[sport='rugby_league'][zoom>=16] {
-		polygon-fill: @sport-surface-grass;
+		[surface='grass'] { polygon-fill: @sport-surface-grass; }
 		[way_area>15000][way_area<25000][d13>150][d13<250] {
 			[d23>75][d23<150][d12>150][d12<250] { /* 12-largeur - 23-longueur */
 				point-file: url('symbols/fr/sports-rugby.svg');
@@ -209,7 +209,7 @@
 	}
 
 	[sport='american_football'][zoom>=16] {
-		polygon-fill: @sport-surface-grass;
+		[surface='grass'] { polygon-fill: @sport-surface-grass; }
 		[way_area>8000][way_area<20000][d13>120][d13<250] {
 			[d23>50][d23<100][d12>120][d12<200] { /* 12-largeur - 23-longueur */
 				point-file: url('symbols/fr/sports-foot-us.svg');
