@@ -3627,6 +3627,34 @@
 }
 
 
+#pmr [zoom>=20] {
+
+  [highway = 'elevator'] {
+    point-file: url('symbols/elevator.svg');
+    point-placement: interior;
+  }
+
+  [highway='steps'][conveying != ''] {
+	[conveying='both'], [conveying='yes'], [conveying='reversible'] { point-file: url('symbols/escalator.svg'); }
+	[incline='up'][conveying='forward'],
+	[incline='down'][conveying='backward'] { point-file: url('symbols/escalator_up.svg'); }
+	[incline='down'][conveying='forward'],
+	[incline='up'][conveying='backward'] { point-file: url('symbols/escalator_down.svg'); }
+    point-file: url('symbols/escalator.svg');
+    point-placement: interior;
+  }
+
+  [highway = 'steps'] {
+    point-file: url('symbols/stairs.svg');
+    point-placement: interior;
+  }
+
+  [ramp_wheelchair != ''] {
+    point-file: url('symbols/wheelchair_ramp.svg');
+    point-placement: interior;
+  }
+
+}
 
 /*
 #addr-corner [zoom>=16] {

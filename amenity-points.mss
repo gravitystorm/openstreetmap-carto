@@ -91,23 +91,6 @@
     point-placement: interior;
   }
 
-  [highway = 'elevator'][zoom >= 20]::highway {
-    point-file: url('symbols/elevator.svg');
-    point-placement: interior;
-  }
-
-  [highway = 'steps'][zoom >= 20]::highway {
-    point-file: url('symbols/stairs.svg');
-    point-placement: interior;
-  }
-
-  [conveying != ''][zoom >= 20]::highway {
-	[incline='up'] { point-file: url('symbols/escalator_up.svg'); }
-	[incline='down'] { point-file: url('symbols/escalator_down.svg'); }
-    point-file: url('symbols/escalator.svg');
-    point-placement: interior;
-  }
-
   [amenity = 'cafe'][zoom >=17]::amenity {
     point-file: url('symbols/cafe.svg');
     point-placement: interior;
