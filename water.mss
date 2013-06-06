@@ -28,6 +28,7 @@
     polygon-pattern-file: url('symbols/basin.png');
   }
 
+  [amenity = 'fountain']::natural,
   [natural = 'lake']::natural,
   [natural = 'water']::natural,
   [landuse = 'reservoir']::landuse,
