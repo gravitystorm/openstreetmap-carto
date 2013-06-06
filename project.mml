@@ -6,9 +6,9 @@
     80
   ],
   "center": [
-  2.48538,
-  48.80294,
-  20
+  6.00461,
+  47.23621,
+  17
   ],
   "format": "png",
   "interactivity": false,
@@ -681,7 +681,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,landuse,leisure\n       from planet_osm_polygon\n       where (landuse = 'military' or leisure='nature_reserve') and building is null\n      ) as landuse_overlay",
+        "table": "(select way,landuse,leisure,amenity\n       from planet_osm_polygon\n       where (landuse = 'military' or leisure='nature_reserve' or amenity='prison') and building is null\n      ) as landuse_overlay",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",

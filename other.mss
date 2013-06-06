@@ -171,6 +171,7 @@
 }
 
 #landuse-overlay {
+  [amenity = 'prison'][zoom >= 10]::landuse,
   [landuse = 'military'][zoom >= 10]::landuse {
     polygon-pattern-file: url('symbols/military_red_hz2.png');
     line-color: #f55;
