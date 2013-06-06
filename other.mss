@@ -142,6 +142,7 @@
   [highway = 'path'] {
     [zoom >= 14] {
       polygon-fill: #ededed;
+      opacity: 0.7;
     }
   }
 
