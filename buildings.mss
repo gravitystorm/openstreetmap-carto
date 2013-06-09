@@ -1,5 +1,6 @@
 #buildings-lz {
   [zoom >= 12] {
+  	polygon-clip: false;
     [railway = 'station']::railway,
     [building = 'station'] {
       polygon-fill: #d4aaaa;
@@ -32,6 +33,7 @@
 
 #buildings {
   [building != ''][zoom >= 14] {
+  	polygon-clip: false;
     [amenity = 'public_building'],
     [heritage != '']
      {
