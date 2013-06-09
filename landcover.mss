@@ -323,6 +323,7 @@
   [leisure = 'stadium'] {
     [zoom >= 10] {
       polygon-fill: #33cc99;
+      polygon-opacity: 0.25;
     }
   }
 
