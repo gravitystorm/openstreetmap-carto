@@ -3229,9 +3229,10 @@
 	text-face-name: @book-fonts;
 	text-halo-radius: 1.5;
 	text-halo-fill: fadeout(white, 30%);
-	[highway != '']  { text-spacing: 200; }
-
-	[zoom >= 15][zoom<17][railway!=''][way_len != ''][way_len < 1000] { text-name: ""; } /* pas d'affichage des petites voies ferrées comme les quais avant le zoom 17 */
+	[highway != '']  { text-spacing: 300; }
+	[tunnel='yes'] { text-opacity: 0.5; }
+	
+	[zoom >= 15][zoom<17][railway!=''][way_len != ''][way_len < 1000] { text-name: ""; } /* pas d'affichage des nom des petites voies ferrées comme les quais avant le zoom 17 */
 
 	[zoom>=17] {
 		text-name: "[name]";
