@@ -5,10 +5,10 @@ set -e -u
 
 mkdir -p data/
 mkdir -p data/world_boundaries
-mkdir -p data/shoreline_300
+mkdir -p data/simplified-land-polygons-complete-3857
 mkdir -p data/ne_110m_admin_0_boundary_lines_land
 mkdir -p data/ne_10m_populated_places
-mkdir -p data/processed_p
+mkdir -p data/land-polygons-split-3857
 
 # world_boundaries
 echo "dowloading world_boundaries..."
@@ -16,11 +16,11 @@ curl -z data/world_boundaries-spherical.tgz -L -o data/world_boundaries-spherica
 echo "expanding world_boundaries..."
 tar -xzf data/world_boundaries-spherical.tgz -C data/
 
-# shoreline_300
-echo "dowloading shoreline_300..."
-curl -z data/shoreline_300.tar.bz2 -L -o data/shoreline_300.tar.bz2 http://tile.openstreetmap.org/shoreline_300.tar.bz2
-echo "expanding shoreline_300..."
-tar -xjf data/shoreline_300.tar.bz2 -C data/shoreline_300/
+# simplified-land-polygons-complete-3857
+echo "downloading simplified-land-polygons-complete-3857..."
+curl -z "data/simplified-land-polygons-complete-3857.zip" -L -o "data/simplified-land-polygons-complete-3857.zip" "http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip"
+echo "simplified-land-polygons-complete-3857..."
+unzip -qq data/simplified-land-polygons-complete-3857.zip -d data/
 
 # ne_110m_admin_0_boundary_lines_land
 echo "dowloading ne_110m_admin_0_boundary_lines_land..."
@@ -34,15 +34,27 @@ curl -z data/ne_10m_populated_places.zip -L -o data/ne_10m_populated_places.zip 
 echo "expanding ne_10m_populated_places..."
 unzip -qq data/ne_10m_populated_places.zip -d data/ne_10m_populated_places/
 
-# processed_p
-echo "dowloading processed_p..."
-curl -z data/processed_p.tar.bz2 -L -o data/processed_p.tar.bz2 http://tile.openstreetmap.org/processed_p.tar.bz2
-echo "expanding processed_p..."
-tar -xjf data/processed_p.tar.bz2 -C data/processed_p/
+# land-polygons-split-3857
+echo "dowloading land-polygons-split-3857..."
+curl -z "data/land-polygons-split-3857.zip" -L -o "data/land-polygons-split-3857.zip" "http://data.openstreetmapdata.com/land-polygons-split-3857.zip"
+echo "expanding land-polygons-split-3857..."
+unzip -qq data/land-polygons-split-3857.zip -d data/
+
 
 #process populated places
 echo "processing ne_10m_populated_places..."
-ogr2ogr data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp data/ne_10m_populated_places/ne_10m_populated_places.shp
+
+ogr2ogr -overwrite data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp data/ne_10m_populated_places/ne_10m_populated_places.shp
+
+#index
+echo "indexing shapefiles"
+
+shapeindex --shape_files \
+data/simplified-land-polygons-complete-3857/simplified_land_polygons.shp \
+data/land-polygons-split-3857/land_polygons.shp \
+data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp \
+data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp
+
 
 #clean up
 echo "cleaning up..."
