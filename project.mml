@@ -46,7 +46,7 @@
       "id": "world",
       "class": "",
       "Datasource": {
-        "file": "data/shoreline_300/shoreline_300.shp",
+        "file": "data/simplified-land-polygons-complete-3857/simplified_land_polygons.shp",
         "type": "shape"
       },
       "srs-name": "900913",
@@ -65,7 +65,7 @@
       "id": "coast-poly",
       "class": "",
       "Datasource": {
-        "file": "data/processed_p/processed_p.shp",
+        "file": "data/land-polygons-split-3857/land_polygons.shp",
         "type": "shape"
       },
       "srs-name": "900913",
