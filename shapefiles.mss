@@ -29,7 +29,7 @@
 }
 
 #builtup {
-  [zoom >= 8][zoom < 11] {
+  [zoom >= 8][zoom < 10] {
     polygon-fill: #ddd;
   }
 }
