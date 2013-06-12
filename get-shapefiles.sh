@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e -u
 
+UNZIP_OPTS=-qqu
+
 # create and populate data dir
 
 mkdir -p data/
@@ -20,25 +22,25 @@ tar -xzf data/world_boundaries-spherical.tgz -C data/
 echo "downloading simplified-land-polygons-complete-3857..."
 curl -z "data/simplified-land-polygons-complete-3857.zip" -L -o "data/simplified-land-polygons-complete-3857.zip" "http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip"
 echo "simplified-land-polygons-complete-3857..."
-unzip -qq data/simplified-land-polygons-complete-3857.zip -d data/
+unzip $UNZIP_OPTS data/simplified-land-polygons-complete-3857.zip simplified-land-polygons-complete-3857/simplified_land_polygons.{shp,shx,prj,dbf,cpg} -d data/
 
 # ne_110m_admin_0_boundary_lines_land
 echo "dowloading ne_110m_admin_0_boundary_lines_land..."
 curl -z data/ne_110m_admin_0_boundary_lines_land.zip -L -o data/ne_110m_admin_0_boundary_lines_land.zip http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip
 echo "expanding ne_110m_admin_0_boundary_lines_land..."
-unzip -qq data/ne_110m_admin_0_boundary_lines_land.zip -d data/ne_110m_admin_0_boundary_lines_land/
+unzip $UNZIP_OPTS data/ne_110m_admin_0_boundary_lines_land.zip -d data/ne_110m_admin_0_boundary_lines_land/
 
 # ne_10m_populated_places
 echo "dowloading ne_10m_populated_places..."
 curl -z data/ne_10m_populated_places.zip -L -o data/ne_10m_populated_places.zip http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_populated_places.zip
 echo "expanding ne_10m_populated_places..."
-unzip -qq data/ne_10m_populated_places.zip -d data/ne_10m_populated_places/
+unzip $UNZIP_OPTS data/ne_10m_populated_places.zip -d data/ne_10m_populated_places/
 
 # land-polygons-split-3857
 echo "dowloading land-polygons-split-3857..."
 curl -z "data/land-polygons-split-3857.zip" -L -o "data/land-polygons-split-3857.zip" "http://data.openstreetmapdata.com/land-polygons-split-3857.zip"
 echo "expanding land-polygons-split-3857..."
-unzip -qq data/land-polygons-split-3857.zip -d data/
+unzip $UNZIP_OPTS data/land-polygons-split-3857.zip -d data/
 
 
 #process populated places
