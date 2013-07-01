@@ -441,42 +441,42 @@
       line-join: round;
     }
     [zoom >= 13] { line-width: @motorway-width-z13 - 2 + 1.5; }
-    [zoom >= 15] { line-width: @motorway-width-z15 - 2.5 + 2; }
-    [zoom >= 17] { line-width: @motorway-width-z17 - 2 + 2; }
+    [zoom >= 15] { line-width: @motorway-width-z15 - 2.5 + 1.8; }
+    [zoom >= 17] { line-width: @motorway-width-z17 - 2 + 2.5; }
   }
 
   [highway = 'trunk_link'][tunnel != 'yes'] {
     [zoom >= 12] {
-      line-width: @trunk-width-z12 + 0.5;
+      line-width: @trunk-width-z12 + 1;
       line-color: @trunk-casing;
       line-join: round;
     }
-    [zoom >= 13] { line-width: @trunk-width-z13 + 0.5; }
-    [zoom >= 15] { line-width: @trunk-width-z15 + 0.5; }
-    [zoom >= 17] { line-width: @trunk-width-z17 + 0.5; }
+    [zoom >= 13] { line-width: @trunk-width-z13 + 1.5; }
+    [zoom >= 15] { line-width: @trunk-width-z15 + 1.8; }
+    [zoom >= 17] { line-width: @trunk-width-z17 + 2.5; }
   }
 
   [highway = 'primary_link'][tunnel != 'yes'] {
     [zoom >= 12] {
-      line-width: @primary-width-z12 + 0.5;
+      line-width: @primary-width-z12 + 1;
       line-color: @primary-casing;
       line-join: round;
     }
-    [zoom >= 13] { line-width: @primary-width-z13 + 0.5; }
-    [zoom >= 15] { line-width: @primary-width-z15 + 0.5; }
-    [zoom >= 17] { line-width: @primary-width-z17 + 0.5; }
+    [zoom >= 13] { line-width: @primary-width-z13 + 1.5; }
+    [zoom >= 15] { line-width: @primary-width-z15 + 1.8; }
+    [zoom >= 17] { line-width: @primary-width-z17 + 2.5; }
   }
 
   [highway = 'secondary_link'][tunnel != 'yes'] {
     [zoom >= 12] {
-      line-width: @secondary-width-z12 + 0.5;
+      line-width: @secondary-width-z12 + 1;
       line-color: @secondary-casing;
       line-cap: round;
       line-join: round;
     }
-    [zoom >= 13] { line-width: @secondary-width-z13 + 0.5; }
-    [zoom >= 15] { line-width: @secondary-width-z15 + 0.5; }
-    [zoom >= 17] { line-width: @secondary-width-z17 + 0.5; }
+    [zoom >= 13] { line-width: @secondary-width-z13 + 1.5; }
+    [zoom >= 15] { line-width: @secondary-width-z15 + 1.8; }
+    [zoom >= 17] { line-width: @secondary-width-z17 + 2.5; }
   }
 
   [highway = 'tertiary_link'][tunnel != 'yes'] {
@@ -500,42 +500,42 @@
       line-join: round;
     }
     [zoom >= 13] { line-width: @motorway-width-z13 + 1.5; }
-    [zoom >= 15] { line-width: @motorway-width-z15 + 1.5; }
-    [zoom >= 17] { line-width: @motorway-width-z17 + 2; }
+    [zoom >= 15] { line-width: @motorway-width-z15 + 1.8; }
+    [zoom >= 17] { line-width: @motorway-width-z17 + 2.5; }
   }
 
   [highway = 'trunk'][tunnel != 'yes'] {
     [zoom >= 12] {
-      line-width: @trunk-width-z12 + 0.5;
+      line-width: @trunk-width-z12 + 1;
       line-color: @trunk-casing;
       line-join: round;
     }
-    [zoom >= 13] { line-width: @trunk-width-z13 + 0.5; }
-    [zoom >= 15] { line-width: @trunk-width-z15 + 0.5; }
-    [zoom >= 17] { line-width: @trunk-width-z17 + 0.5; }
+    [zoom >= 13] { line-width: @trunk-width-z13 + 1.5; }
+    [zoom >= 15] { line-width: @trunk-width-z15 + 1.8; }
+    [zoom >= 17] { line-width: @trunk-width-z17 + 2.5; }
   }
 
   [highway = 'primary'][tunnel != 'yes'] {
     [zoom >= 12] {
-      line-width: @primary-width-z12 + 0.5;
+      line-width: @primary-width-z12 + 1;
       line-color: @primary-casing;
       line-join: round;
     }
-    [zoom >= 13] { line-width: @primary-width-z13 + 0.5; }
-    [zoom >= 15] { line-width: @primary-width-z15 + 0.5; }
-    [zoom >= 17] { line-width: @primary-width-z17 + 0.5; }
+    [zoom >= 13] { line-width: @primary-width-z13 + 1.5; }
+    [zoom >= 15] { line-width: @primary-width-z15 + 1.8; }
+    [zoom >= 17] { line-width: @primary-width-z17 + 2.5; }
   }
 
   [highway = 'secondary'][tunnel != 'yes'] {
     [zoom >= 12] {
-      line-width: @secondary-width-z12 + 0.5;
+      line-width: @secondary-width-z12 + 1;
       line-color: @secondary-casing;
       line-join: round;
       line-cap: round;
     }
-    [zoom >= 13] { line-width: @secondary-width-z13 + 0.5; }
-    [zoom >= 15] { line-width: @secondary-width-z15 + 0.5; }
-    [zoom >= 17] { line-width: @secondary-width-z17 + 0.5; }
+    [zoom >= 13] { line-width: @secondary-width-z13 + 1.5; }
+    [zoom >= 15] { line-width: @secondary-width-z15 + 1.8; }
+    [zoom >= 17] { line-width: @secondary-width-z17 + 2.5; }
   }
 
   [highway = 'tertiary'][tunnel != 'yes'] {
@@ -562,11 +562,11 @@
       }
       [zoom >= 14] { line-width: @residential-width-z14 + 1.5; }
       [zoom >= 15] {
-        line-width: @residential-width-z15 + 1.5;
+        line-width: @residential-width-z15 + 1.8;
         line-color: @residential-casing;
       }
-      [zoom >= 16] { line-width: @residential-width-z16 + 1.6; }
-      [zoom >= 17] { line-width: @residential-width-z17 + 3; }
+      [zoom >= 16] { line-width: @residential-width-z16 + 1.8; }
+      [zoom >= 17] { line-width: @residential-width-z17 + 2.5; }
     }
   }
 
