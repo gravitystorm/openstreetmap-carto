@@ -799,7 +799,7 @@
   }
 
   [feature = 'highway_primary'][tunnel != 'yes'] {
-    [zoom >= 11] { /* awooga prob should be 12? */
+    [zoom >= 12] {
       line-width: @primary-width-z12;
       line-color: @primary-fill;
       line-join: round;
