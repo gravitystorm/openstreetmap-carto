@@ -42,14 +42,17 @@
 @trunk-width-z13: 7;
 @primary-width-z13: 7;
 @secondary-width-z13: 8;
+@tertiary-width-z13: 4.5;
 @residential-width-z13: 2;
 
+@tertiary-width-z14: 6;
 @residential-width-z14: 3;
 
 @motorway-width-z15: 8.5;
 @trunk-width-z15: 11;
 @primary-width-z15: 11;
 @secondary-width-z15: 11;
+@tertiary-width-z15: 9.4;
 @residential-width-z15: 6.5;
 
 @residential-width-z16: 9.4;
@@ -58,6 +61,7 @@
 @trunk-width-z17: 15.5;
 @primary-width-z17: 15.5;
 @secondary-width-z17: 15.5;
+@tertiary-width-z17: 13;
 @residential-width-z17: 13;
 
 #turning-circle-casing {
@@ -540,14 +544,14 @@
 
   [highway = 'tertiary'][tunnel != 'yes'] {
     [zoom >= 13] {
-      line-width: 6;
+      line-width: @tertiary-width-z12 + 1.5;
       line-color: @tertiary-casing;
       line-join: round;
       line-cap: round;
     }
-    [zoom >= 14] { line-width: 7.5; }
-    [zoom >= 15] { line-width: 11; }
-    [zoom >= 17] { line-width: 16; }
+    [zoom >= 14] { line-width: @tertiary-width-z14 + 1.5; }
+    [zoom >= 15] { line-width: @tertiary-width-z15 + 1.6; }
+    [zoom >= 17] { line-width: @tertiary-width-z17 + 3; }
   }
 
   [highway = 'residential'],
@@ -674,14 +678,14 @@
 
   [feature = 'highway_tertiary_link'][tunnel != 'yes'] {
     [zoom >= 13] {
-      line-width: 4.5;
+      line-width: @tertiary-width-z13;
       line-color: @tertiary-fill;
       line-cap: round;
       line-join: round;
     }
-    [zoom >= 14] { line-width: 6; }
-    [zoom >= 15] { line-width: 9.4; }
-    [zoom >= 17] { line-width: 13; }
+    [zoom >= 14] { line-width: @tertiary-width-z14; }
+    [zoom >= 15] { line-width: @tertiary-width-z15; }
+    [zoom >= 17] { line-width: @tertiary-width-z17; }
   }
 }
 
@@ -869,13 +873,13 @@
   }
 
   [feature = 'highway_tertiary'][tunnel != 'yes'][zoom >= 13] {
-    line-width: 4.5;
+    line-width: @tertiary-width-z13;
     line-color: @tertiary-fill;
     line-join: round;
     line-cap: round;
-    [zoom >= 14] { line-width: 6; }
-    [zoom >= 15] { line-width: 9.4; }
-    [zoom >= 17] { line-width: 13; }
+    [zoom >= 14] { line-width: @tertiary-width-z14; }
+    [zoom >= 15] { line-width: @tertiary-width-z15; }
+    [zoom >= 17] { line-width: @tertiary-width-z17; }
   }
 
   [feature = 'highway_service'][service = 'INT-normal'][zoom >= 13] {
