@@ -80,19 +80,19 @@
   [int_tc_type = 'residential'],
   [int_tc_type = 'unclassified'] {
     [zoom >= 15] {
-      marker-width: 14;
-      marker-height: 14;
+      marker-width: @residential-width-z15 * 1.8 + 1.8;
+      marker-height: @residential-width-z15 * 1.8 + 1.8;
       marker-allow-overlap: true;
       marker-ignore-placement: true;
       marker-line-width: 0;
       marker-fill: @residential-casing;
       [zoom >= 16] {
-        marker-width: 18;
-        marker-height: 18;
+        marker-width: @residential-width-z16 * 1.8 + 1.8;
+        marker-height: @residential-width-z16 * 1.8 + 1.8;
       }
       [zoom >= 17] {
-        marker-width: 24;
-        marker-height: 24;
+        marker-width: @residential-width-z17 * 1.8 + 2.5;
+        marker-height: @residential-width-z17 * 1.8 + 2.5;
       }
     }
   }
@@ -145,19 +145,19 @@
   [int_tc_type = 'residential'],
   [int_tc_type = 'unclassified'] {
     [zoom >= 15] {
-      marker-width: 12;
-      marker-height: 12;
+      marker-width: @residential-width-z15 * 1.8;
+      marker-height: @residential-width-z15 * 1.8;
       marker-allow-overlap: true;
       marker-ignore-placement: true;
       marker-line-width: 0;
       marker-fill: @residential-fill;
       [zoom >= 16] {
-        marker-width: 16;
-        marker-height: 16;
+        marker-width: @residential-width-z16 * 1.8;
+        marker-height: @residential-width-z16 * 1.8;
       }
       [zoom >= 17] {
-        marker-width: 22;
-        marker-height: 22;
+        marker-width: @residential-width-z17 * 1.8;
+        marker-height: @residential-width-z17 * 1.8;
       }
     }
   }
