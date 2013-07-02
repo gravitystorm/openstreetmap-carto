@@ -65,93 +65,130 @@
 
 #turning-circle-casing {
   [int_tc_type = 'tertiary'][zoom >= 15] {
-    point-file: url('symbols/turning_circle-tert-casing.18.png');
-    point-allow-overlap: true;
-    point-ignore-placement: true;
+    marker-width: 18;
+    marker-height: 18;
+    marker-allow-overlap: true;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
+    marker-fill: @tertiary-casing;
     [zoom >= 17] {
-      point-file: url('symbols/turning_circle-tert-casing.24.png');
+      marker-width: 24;
+      marker-height: 24;
     }
   }
 
   [int_tc_type = 'residential'],
   [int_tc_type = 'unclassified'] {
     [zoom >= 15] {
-      point-file: url('symbols/turning_circle-uncl-casing.14.png');
-      point-allow-overlap: true;
-      point-ignore-placement: true;
+      marker-width: 14;
+      marker-height: 14;
+      marker-allow-overlap: true;
+      marker-ignore-placement: true;
+      marker-line-width: 0;
+      marker-fill: @residential-casing;
       [zoom >= 16] {
-        point-file: url('symbols/turning_circle-uncl-casing.18.png');
+        marker-width: 18;
+        marker-height: 18;
       }
       [zoom >= 17] {
-        point-file: url('symbols/turning_circle-uncl-casing.24.png');
+        marker-width: 24;
+        marker-height: 24;
       }
     }
   }
 
   [int_tc_type = 'living_street'][zoom >= 15] {
-    point-file: url('symbols/turning_circle-uncl-fill.14.png');
-    point-allow-overlap: true;
-    point-ignore-placement: true;
+    marker-width: 14;
+    marker-height: 14;
+    marker-allow-overlap: true;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
+    marker-fill: @living-street-casing;
     [zoom >= 16] {
-      point-file: url('symbols/turning_circle-uncl-fill.18.png' );
+      marker-width: 18;
+      marker-height: 18;
     }
     [zoom >= 17] {
-      point-file: url('symbols/turning_circle-uncl-fill.24.png' );
+      marker-width: 24;
+      marker-height: 24;
     }
   }
 
   [int_tc_type = 'service'][zoom >= 16] {
-    point-file: url('symbols/turning_circle-uncl-casing.14.png');
-    point-allow-overlap: true;
-    point-ignore-placement: true;
+    marker-width: 14;
+    marker-height: 14;
+    marker-allow-overlap: true;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
+    marker-fill: @service-casing;
     [zoom >= 17] {
-      point-file: url('symbols/turning_circle-uncl-casing.16.png');
+      marker-width: 16;
+      marker-height: 16;
     }
   }
 }
 
 #turning-circle-fill {
   [int_tc_type = 'tertiary'][zoom >= 15] {
-    point-file: url('symbols/turning_circle-tert-fill.16.png');
-    point-allow-overlap: true;
-    point-ignore-placement: true;
+    marker-width: 16;
+    marker-height: 16;
+    marker-allow-overlap: true;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
+    marker-fill: @tertiary-fill;
     [zoom >= 17] {
-      point-file: url('symbols/turning_circle-tert-fill.22.png');
+      marker-width: 22;
+      marker-height: 22;
     }
   }
+
   [int_tc_type = 'residential'],
   [int_tc_type = 'unclassified'] {
     [zoom >= 15] {
-      point-file: url('symbols/turning_circle-uncl-fill.12.png');
-      point-allow-overlap: true;
-      point-ignore-placement: true;
+      marker-width: 12;
+      marker-height: 12;
+      marker-allow-overlap: true;
+      marker-ignore-placement: true;
+      marker-line-width: 0;
+      marker-fill: @residential-fill;
       [zoom >= 16] {
-        point-file: url('symbols/turning_circle-uncl-fill.16.png');
+        marker-width: 16;
+        marker-height: 16;
       }
       [zoom >= 17] {
-        point-file: url('symbols/turning_circle-uncl-fill.22.png');
+        marker-width: 22;
+        marker-height: 22;
       }
     }
   }
 
   [int_tc_type = 'living_street'][zoom >= 15] {
-    point-file: url('symbols/turning_circle-livs-fill.12.png');
-    point-allow-overlap: true;
-    point-ignore-placement: true;
+    marker-width: 12;
+    marker-height: 12;
+    marker-allow-overlap: true;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
+    marker-fill: @living-street-fill;
     [zoom >= 16] {
-      point-file: url('symbols/turning_circle-livs-fill.16.png');
+      marker-width: 16;
+      marker-height: 16;
     }
     [zoom >= 17] {
-      point-file: url('symbols/turning_circle-livs-fill.22.png');
+      marker-width: 22;
+      marker-height: 22;
     }
   }
 
   [int_tc_type = 'service'][zoom >= 16] {
-    point-file: url('symbols/turning_circle-uncl-fill.12.png');
-    point-allow-overlap: true;
-    point-ignore-placement: true;
+    marker-width: 12;
+    marker-height: 12;
+    marker-allow-overlap: true;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
+    marker-fill: @service-fill;
     [zoom >= 17] {
-      point-file: url('symbols/turning_circle-uncl-fill.14.png');
+      marker-width: 14;
+      marker-height: 14;
     }
   }
 }
