@@ -544,14 +544,14 @@
 
   [highway = 'tertiary'][tunnel != 'yes'] {
     [zoom >= 13] {
-      line-width: @tertiary-width-z12 + 1.5;
+      line-width: @tertiary-width-z13 + 1.5;
       line-color: @tertiary-casing;
       line-join: round;
       line-cap: round;
     }
     [zoom >= 14] { line-width: @tertiary-width-z14 + 1.5; }
-    [zoom >= 15] { line-width: @tertiary-width-z15 + 1.6; }
-    [zoom >= 17] { line-width: @tertiary-width-z17 + 3; }
+    [zoom >= 15] { line-width: @tertiary-width-z15 + 1.8; }
+    [zoom >= 17] { line-width: @tertiary-width-z17 + 2.5; }
   }
 
   [highway = 'residential'],
