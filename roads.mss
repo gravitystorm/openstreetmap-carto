@@ -1,10 +1,10 @@
 /* For the main linear features, such as roads and railways. */
 
-@motorway-fill: white;
-@trunk-fill: white;
-@primary-fill: white;
-@secondary-fill: white;
-@tertiary-fill: white;
+@motorway-fill: #89a4cb;
+@trunk-fill: #94d494;
+@primary-fill: #dd9f9f;
+@secondary-fill: #f9d6aa;
+@tertiary-fill: #f8f8ba;
 @residential-fill: #ffffff;
 @residential-thin: #999;
 @service-fill: #ffffff;
@@ -12,13 +12,13 @@
 @pedestrian-fill: #ededed;
 @road-fill: #ddd;
 
-@motorway-casing: #444;
-@trunk-casing: #444;
-@primary-casing: #444;
-@secondary-casing: #444;
-@tertiary-casing: #444;
-@residential-casing: #444;
-@service-casing: #444;
+@motorway-casing: #7788a1;
+@trunk-casing: #7eae7e;
+@primary-casing: #c57b7e;
+@secondary-casing: #cca16a;
+@tertiary-casing: #c6c68a;
+@residential-casing: #bbb;
+@service-casing: #999;
 @living-street-casing: #ffffff;
 @pedestrian-casing: grey;
 
