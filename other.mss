@@ -180,7 +180,21 @@
   }
   [leisure = 'nature_reserve'][zoom >= 10] {
     polygon-pattern-file: url('symbols/fr/nature_reserve6.png');
-    line-pattern-file: url('symbols/fr/nature_reserve_line.png');
+    a/line-color: green;
+    a/line-width: 1;
+    a/line-opacity: 0.7;
+    b/line-color: green;
+    b/line-width: 2;
+    b/line-opacity: 0.5;
+    b/line-offset: -1;
+    c/line-color: green;
+    c/line-width: 2;
+    c/line-opacity: 0.3;
+    c/line-offset: -3;
+    d/line-color: green;
+    d/line-width: 2;
+    d/line-opacity: 0.1;
+    d/line-offset: -5;
   }
 }
 
