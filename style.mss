@@ -70,12 +70,20 @@ Map {
 
 
 
+// raster pour landcover en lowzoom
+.landcover-lz [zoom<=7]{
+  raster-opacity:0.7;
+  raster-scaling: lanczos;
+  raster-filter-factor: 0;
+}
+
+
 @couleur-voie: #f84;  	 // orange
 @couleur-piste: #080;    // vert
 @couleur-interdit: #f00; // rouge
 @couleur-autorise: #08f; // bleu clair
 @route: #f4f;            // rose
-  
+
 #cycleway [zoom>=13] {
   // double-sens cyclable (orange)
   [cycleway='opposite'] { line-width: 2; line-color:@couleur-voie;  line-opacity: 0.7; }

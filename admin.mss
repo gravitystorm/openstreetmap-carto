@@ -2,12 +2,17 @@
   [admin_level = '2'],
   [admin_level = '3'] {
     [zoom >= 4] {
-      line-color: purple;
+      line-color: #6c216c;
       line-width: 0.6;
-      line-opacity: 0.2;
+      //line-opacity: 0.2;
     }
     [zoom >= 7] {
-      line-width: 2;
+      line-width: 1.5;
+    }
+    [zoom >= 8] {
+    	line-width: 2;
+    	line-color: purple;
+    	line-opacity: 0.2;
     }
     [zoom >= 10] {
       line-opacity: 0.1;
@@ -19,19 +24,45 @@
         line-dasharray: 4,2;
       }
     }
+    [zoom>=6][maritime='yes']
+    {
+    	line-color: #0041ff;
+      	line-dasharray: 4, 8;
+        line-width: 1;
+        line-cap: round;
+    }
+    [zoom<6][maritime='yes']
+    {
+    	line-width: 0;
+    }
+
   }
   [admin_level = '4'] {
     [zoom >= 4] {
       line-color: purple;
       line-width: 0.6;
-      line-dasharray: 4,3;
-      line-opacity: 0.2;
+      line-opacity: 0.5;
     }
     [zoom >= 7] {
       line-width: 1;
     }
+    [zoom >= 8] {
+	    line-dasharray: 4,3;
+    	line-opacity: 0.2;
+    }
     [zoom >= 11] {
       line-width: 3;
+    }
+    [zoom>=6][maritime='yes']
+    {
+    	line-color: #0041ff;
+      	line-dasharray: 4, 8;
+        line-width: 0.5;
+        line-cap: round;
+    }
+    [zoom<6][maritime='yes']
+    {
+    	line-width: 0;
     }
   }
 }

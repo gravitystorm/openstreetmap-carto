@@ -18,7 +18,7 @@
   [aerialway = 'j-bar'],
   [aerialway = 'platter'],
   [aerialway = 'rope_tow'] {
-    [zoom >= 12] {
+     [zoom >= 12] {
       line-pattern-file: url('symbols/chair_lift.png');
       [zoom >= 16]
       {

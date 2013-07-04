@@ -1,4 +1,4 @@
-#water-areas {
+#water-areas [zoom >= 8] {
   [natural = 'glacier']::natural {
     [zoom >= 6] {
       line-dasharray: 4,2;
@@ -57,7 +57,7 @@
   }
 }
 
-#glaciers-text {
+#glaciers-text [zoom >= 8] {
   [way_area >= 10000000][zoom >= 10],
   [way_area >= 5000000][way_area < 10000000][zoom >= 11],
   [way_area < 5000000][zoom >= 12] {

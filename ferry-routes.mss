@@ -1,5 +1,4 @@
-#ferry-routes {
-  [zoom >= 7] {
+#ferry-routes [zoom >= 8] {
     line-color: #66f;
     line-width: 0.4;
     line-dasharray: 4,4;
@@ -7,5 +6,4 @@
       line-width: 0.8;
       line-dasharray: 6,6;
     }
-  }
 }

@@ -1,5 +1,5 @@
-#turning-circle-casing {
-  [int_tc_type = 'tertiary'][zoom >= 15] {
+#turning-circle-casing [zoom >= 15] {
+  [int_tc_type = 'tertiary'] {
     point-file: url('symbols/turning_circle-tert-casing.18.png');
     point-allow-overlap: true;
     point-ignore-placement: true;
@@ -10,7 +10,6 @@
 
   [int_tc_type = 'residential'],
   [int_tc_type = 'unclassified'] {
-    [zoom >= 15] {
       point-file: url('symbols/turning_circle-uncl-casing.14.png');
       point-allow-overlap: true;
       point-ignore-placement: true;
@@ -20,10 +19,9 @@
       [zoom >= 17] {
         point-file: url('symbols/turning_circle-uncl-casing.24.png');
       }
-    }
   }
 
-  [int_tc_type = 'living_street'][zoom >= 15] {
+  [int_tc_type = 'living_street'] {
     point-file: url('symbols/turning_circle-uncl-fill.14.png');
     point-allow-overlap: true;
     point-ignore-placement: true;
@@ -45,8 +43,8 @@
   }
 }
 
-#turning-circle-fill {
-  [int_tc_type = 'tertiary'][zoom >= 15] {
+#turning-circle-fill [zoom >= 15] {
+  [int_tc_type = 'tertiary'] {
     point-file: url('symbols/turning_circle-tert-fill.16.png');
     point-allow-overlap: true;
     point-ignore-placement: true;
@@ -56,7 +54,6 @@
   }
   [int_tc_type = 'residential'],
   [int_tc_type = 'unclassified'] {
-    [zoom >= 15] {
       point-file: url('symbols/turning_circle-uncl-fill.12.png');
       point-allow-overlap: true;
       point-ignore-placement: true;
@@ -66,10 +63,9 @@
       [zoom >= 17] {
         point-file: url('symbols/turning_circle-uncl-fill.22.png');
       }
-    }
   }
 
-  [int_tc_type = 'living_street'][zoom >= 15] {
+  [int_tc_type = 'living_street'] {
     point-file: url('symbols/turning_circle-livs-fill.12.png');
     point-allow-overlap: true;
     point-ignore-placement: true;
@@ -198,7 +194,7 @@
   }
 }
 
-#area-text {
+#area-text [zoom >= 8]{
   [way_area >= 150000][zoom >= 14]::long,
   [way_area >= 80000][zoom >= 15]::long,
   [way_area >= 20000][zoom >= 16]::long,
@@ -277,7 +273,7 @@
   }
 }
 
-.text {
+.text [zoom >= 8] {
   [place = 'island'][zoom >= 12]::place {
     text-name: "[name]";
     text-fill: #000;
@@ -2945,7 +2941,7 @@
   }
 }
 
-#roads {
+#roads [zoom >= 8] {
   [zoom >= 5] {
 	  [highway = 'motorway'],
 	  [highway = 'motorway_link'] {

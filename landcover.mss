@@ -1,4 +1,4 @@
-#landcover {
+#landcover [zoom>=8] {
  [feature = 'leisure_swimming_pool'][zoom >= 14] {
     polygon-fill: #9ff2fa;
     line-color: blue;
