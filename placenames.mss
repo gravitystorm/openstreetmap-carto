@@ -33,11 +33,12 @@
     text-wrap-width: 0;
     [zoom >= 5] {
       text-name: "[name]";
+      text-label-position-tolerance: 10;
     }
     [zoom >= 7] {
       text-size: 12;
       text-min-distance: 10;
-      text-label-position-tolerance: 10;
+      text-label-position-tolerance: 15;
     }
   }
 }
@@ -56,39 +57,14 @@
   }
 }
 
-#placenames-capital {
-  [zoom >= 5][zoom < 15] {
-    text-name: "[name]";
-    text-size: 9;
-    text-fill: #000;
-    text-face-name: @bold-fonts;
-    text-halo-radius: 1;
-    [zoom >= 6] {
-      text-size: 11;
-    }
-    [zoom >= 6][zoom <= 7][place='city'] {
-      text-size: 11;
-      text-dy: -4;
-      marker-height: 4;
-      marker-width: 4;
-      marker-fill: black;
-      marker-ignore-placement: true;
-    }
-    [zoom >= 11] {
-      text-size: 15;
-      text-face-name: @oblique-fonts;
-    }
-  }
-}
-
-#placenames-medium::city {
-  [place = 'city'],
-  [place = 'metropolis'] {
+.placenames {
+  [place = 'city'] {
     [zoom >= 6][zoom < 15] {
+	  [is_capital='country'] { text-face-name: @bold-fonts; }
+      text-face-name: @book-fonts;
       text-name: "[name]";
       text-size: 10;
       text-fill: #000;
-      text-face-name: @book-fonts;
 	  text-halo-radius: 2;
   	  text-halo-fill: fadeout(white, 30%);
 	  [zoom >= 6][zoom <= 7] {
@@ -107,19 +83,20 @@
       }
     }
   }
-}
-
-#placenames-medium::town {
   [place = 'town'] {
-    [zoom >= 7] {
+    [zoom >= 6] {
+	  [is_capital='country'] { text-face-name: @bold-fonts; }
+      text-face-name: @book-fonts;
       text-name: "[nom]";
       text-size: 8;
       text-fill: #000;
-      text-face-name: @book-fonts;
-	    text-halo-radius: 2;
-  		text-halo-fill: fadeout(white, 30%);
+      text-halo-radius: 2;
+      text-halo-fill: fadeout(white, 30%);
       text-wrap-width: 20;
-      text-min-distance: 10;
+      text-min-distance: 20;
+      [zoom>=7] {
+      	text-min-distance: 10;
+      }
     }
     [zoom >= 11] {
       text-name: "[nom]";
@@ -155,15 +132,20 @@
 
 #placenames-small::village {
   [place = 'village'],
-  [place = 'large_village'] {
+  [place = 'large_village'] [zoom>=7] {
+	text-name: "[nom]";
+    text-size: 8;
+    text-fill: #222;
+    text-face-name: @book-fonts;
+	text-halo-radius: 1;
+  	text-halo-fill: fadeout(white, 30%);
+    text-min-distance: 100;
+    
     [zoom>=11][pop>1000],
     [zoom>=12] {
-      text-name: "[nom]";
       text-size: 9;
-      text-fill: #222;
-      text-face-name: @oblique-fonts;
 	  text-halo-radius: 2;
-  	  text-halo-fill: fadeout(white, 30%);
+      text-min-distance: 15;
       text-placement-type: simple;
       text-placements: "N,S";
       [zoom >= 15] {
@@ -171,6 +153,11 @@
         text-size: 12;
         text-fill: #777;
       }
+    }
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 12;
+      text-fill: #777;
     }
   }
 }

@@ -74,7 +74,7 @@ Map {
 #landcover-z8 [zoom<=7]{
   raster-opacity:0.7;
   raster-filter-factor: 0;
-  raster-scaling: lanczos;
+  raster-scaling: bilinear;
 }
 
 @couleur-voie: #f84;  	 // orange
