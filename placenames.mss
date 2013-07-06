@@ -14,7 +14,7 @@
     text-name: "[name]";
     text-size: 8;
     text-fill: #9d6c9d;
-    text-face-name: @book-fonts;
+    text-face-name: @oblique-fonts;
     text-halo-radius: 1;
     text-wrap-width: 20;
     [zoom >= 4] {
@@ -42,6 +42,19 @@
   }
 }
 
+#placenames-islands {
+  [zoom >= 4][zoom < 9][way_area>1000000000],
+  [zoom >= 5][zoom < 9][way_area>500000000],
+  [zoom >= 6][zoom < 9][way_area>100000000],
+  [zoom >= 7][zoom < 9][way_area>30000000] {
+    text-name: "[name]";
+    text-size: 8;
+    text-face-name: @oblique-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 0;
+    text-min-distance: 10;
+  }
+}
 
 #placenames-capital {
   [zoom >= 5][zoom < 15] {
@@ -53,8 +66,8 @@
     [zoom >= 6] {
       text-size: 11;
     }
-    [zoom >= 6][zoom <= 7] {
-      text-size: 13;
+    [zoom >= 6][zoom <= 7][place='city'] {
+      text-size: 11;
       text-dy: -4;
       marker-height: 4;
       marker-width: 4;
@@ -97,9 +110,7 @@
 }
 
 #placenames-medium::town {
-  [place = 'town'],
-  [place = 'large_town'],
-  [place = 'small_town'] {
+  [place = 'town'] {
     [zoom >= 7] {
       text-name: "[nom]";
       text-size: 8;

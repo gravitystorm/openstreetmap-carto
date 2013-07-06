@@ -1,18 +1,19 @@
 #admin-01234 {
-  [admin_level = '2'],
-  [admin_level = '3'] {
+  [admin_level = '2'] {
     [zoom >= 4] {
       line-color: #6c216c;
       line-width: 0.6;
       //line-opacity: 0.2;
     }
+    [zoom >= 5] {
+      line-width: 1;
+    }
     [zoom >= 7] {
-      line-width: 1.5;
+      line-width: 2;
     }
     [zoom >= 8] {
-    	line-width: 2;
     	line-color: purple;
-    	line-opacity: 0.2;
+    	// line-opacity: 0.2;
     }
     [zoom >= 10] {
       line-opacity: 0.1;
@@ -37,18 +38,19 @@
     }
 
   }
+  [admin_level = '3'],
   [admin_level = '4'] {
-    [zoom >= 4] {
-      line-color: purple;
-      line-width: 0.6;
-      line-opacity: 0.5;
+    [zoom >= 5] {
+      line-color: #6c216c;
+      line-width: 0.5;
+      line-opacity: 0.8;
     }
     [zoom >= 7] {
       line-width: 1;
     }
     [zoom >= 8] {
+	    line-color: purple;
 	    line-dasharray: 4,3;
-    	line-opacity: 0.2;
     }
     [zoom >= 11] {
       line-width: 3;
@@ -65,6 +67,13 @@
     	line-width: 0;
     }
   }
+  [admin_level = '5'][zoom >= 7][zoom < 11],
+  [admin_level = '6'][zoom >= 7][zoom < 11] {
+    line-color: #6c216c;
+    line-width: 0.33;
+    // line-opacity: 0.5;
+  }
+
 }
 
 #admin-5678 {

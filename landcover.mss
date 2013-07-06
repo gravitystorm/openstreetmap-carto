@@ -221,12 +221,9 @@
     }
   }
 
-  [feature = 'natural_desert'][zoom >= 8] {
-    polygon-fill: #e3b57a;
-  }
-
+  [feature = 'natural_desert'][zoom >= 8],
   [feature = 'natural_sand'][zoom >= 10] {
-    polygon-fill: #ffdf88;
+    polygon-fill: #ffebb2;
   }
 
   [feature = 'natural_heath'][zoom >= 10] {
