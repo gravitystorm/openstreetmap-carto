@@ -66,7 +66,7 @@
       "id": "landcover-z8",
       "class": "",
       "Datasource": {
-        "file": "layers/z8.tif"
+        "file": "layers/z7.tif"
       },
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
@@ -91,63 +91,6 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
       "name": "coast-poly"
-    },
-    {
-      "geometry": "polygon",
-      "extent": [
-        -179.12960815429688,
-        -52.982724914179855,
-        178.4432525634766,
-        70.87402746981634
-      ],
-      "id": "builtup",
-      "class": "",
-      "Datasource": {
-        "file": "/data/work/mapnik/data/world_boundaries/builtup_area.shp",
-        "type": "shape"
-      },
-      "srs-name": "mercator",
-      "srs": "+proj=merc +datum=WGS84 +over",
-      "advanced": {},
-      "name": "builtup"
-    },
-    {
-      "geometry": "linestring",
-      "extent": [
-        -140.99778,
-        -54.89681,
-        141.03385176001382,
-        70.16419
-      ],
-      "id": "necountries",
-      "class": "",
-      "Datasource": {
-        "file": "/data/work/mapnik/data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp",
-        "type": "shape"
-      },
-      "srs-name": "WGS84",
-      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
-      "advanced": {},
-      "name": "necountries"
-    },
-    {
-      "geometry": "point",
-      "extent": [
-        -179.58997888396897,
-        -85.051,
-        179.38330358817018,
-        82.48332318035943
-      ],
-      "id": "nepopulated",
-      "class": "",
-      "Datasource": {
-        "file": "/data/work/mapnik/data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp",
-        "type": "shape"
-      },
-      "srs-name": "WGS84",
-      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
-      "advanced": {},
-      "name": "nepopulated"
     },
     {
       "extent": [
@@ -1849,7 +1792,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "( select ST_SimplifyPreserveTopology(way,0.5) as way2,min(admin_level) as admin_level, tags->'maritime' as maritime from planet_osm_roads where way && !bbox! and \"boundary\"='administrative' and admin_level in ('0','1','2','3','4','5','6') and osm_id>0 and (\"natural\" is null or \"natural\" != 'coastline') group by way, maritime) as admin",
+        "table": "(select ST_SimplifyPreserveTopology(way,0.5) as way2,min(admin_level) as admin_level, tags->'maritime' as maritime from planet_osm_roads where way && !bbox! and boundary is not null and \"boundary\"='administrative' and admin_level in ('0','1','2','3','4','5','6') and osm_id>0 and (\"natural\" is null or \"natural\" != 'coastline') group by way, maritime) as admin",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way2",
@@ -1875,7 +1818,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,admin_level\n       from planet_osm_roads\n       where \"boundary\"='administrative'\n         and admin_level in ('5','6','7','8')\n       ) as admin",
+        "table": "(select way,admin_level\n       from planet_osm_roads\n       where boundary is not null and \"boundary\"='administrative'\n         and admin_level in ('5','6','7','8')\n       ) as admin",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1901,7 +1844,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,admin_level\n       from planet_osm_roads\n       where \"boundary\"='administrative'\n         and (admin_level is null or admin_level not in ('0','1','2','3','4','5','6','7','8'))\n       ) as admin",
+        "table": "(select way,admin_level\n       from planet_osm_roads\n       where boundary is not null and \"boundary\"='administrative'\n         and (admin_level is null or admin_level not in ('0','1','2','3','4','5','6','7','8'))\n       ) as admin",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1927,7 +1870,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way, cast(st_area(st_convexhull(way)) as bigint) way_area, place, coalesce(tags->'short_name:fr',tags->'name:fr',tags->'short_name',tags->'int_name',name) as name from planet_osm_polygon where place in ('archipelago','island') order by place, way_area desc ) as islands",
+        "table": "(select way, cast(st_area(st_convexhull(way)) as bigint) way_area, place, coalesce(tags->'short_name:fr',tags->'name:fr',tags->'short_name',tags->'int_name',name) as name from planet_osm_polygon where place is not null and place in ('archipelago','island') order by place, way_area desc ) as islands",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "",
@@ -1954,7 +1897,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,place,coalesce(tags->'name:fr',tags->'int_name',name) as name, replace(replace(replace(coalesce(tags->'short_name:fr',tags->'short_name', tags->'name:fr',tags->'int_name', name),'Saint-','Sᵗ-'),'Sainte-','Sᵗᵉ-'),'-sous-','-ss-') as nom, cast(regexp_replace('0' || population,'[^0-9]','','g') as bigint) as pop, tags->'is_capital' as is_capital \n      from planet_osm_point\n      where place in ('city','town') and tags->'is_capital' in ('country','state') order by is_capital, place, pop desc ) as placenames",
+        "table": "(select way,place,coalesce(tags->'name:fr',tags->'int_name',name) as name, replace(replace(replace(coalesce(tags->'short_name:fr',tags->'short_name', tags->'name:fr',tags->'int_name', name),'Saint-','Sᵗ-'),'Sainte-','Sᵗᵉ-'),'-sous-','-ss-') as nom, cast(regexp_replace('0' || population,'[^0-9]','','g') as bigint) as pop, tags->'is_capital' as is_capital       from planet_osm_point      where place is not null and place in ('city','town') and tags->'is_capital' in ('country','state') order by is_capital, place, pop desc ) as placenames",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1981,7 +1924,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,place,coalesce(tags->'short_name:fr',tags->'name:fr',tags->'short_name',tags->'int_name',name) as name, osm_id, cast(regexp_replace('0' || population,'[^0-9]','','g') as bigint) as pop, ref,0 as way_area from planet_osm_point where place  in ('country','state') order by place, pop desc ) as placenames",
+        "table": "(select way,place,coalesce(tags->'short_name:fr',tags->'name:fr',tags->'short_name',tags->'int_name',name) as name, osm_id, cast(regexp_replace('0' || population,'[^0-9]','','g') as bigint) as pop, ref,0 as way_area from planet_osm_point where place is not null and place  in ('country','state') order by place, pop desc ) as placenames",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -2008,7 +1951,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,place,coalesce(tags->'name:fr',tags->'int_name',name) as name, replace(replace(replace(coalesce(tags->'short_name:fr',tags->'short_name', tags->'name:fr',tags->'int_name', name),'Saint-','Sᵗ-'),'Sainte-','Sᵗᵉ-'),'-sous-','-ss-') as nom, cast(regexp_replace('0' || population,'[^0-9]','','g') as bigint) as pop, tags->'is_capital' as is_capital \n      from planet_osm_point\n      where place in ('city','town','village') order by tags->'is_capital' desc, place, pop desc ) as placenames",
+        "table": "(select way,place,coalesce(tags->'name:fr',tags->'int_name',name) as name, replace(replace(replace(coalesce(tags->'short_name:fr',tags->'short_name', tags->'name:fr',tags->'int_name', name),'Saint-','Sᵗ-'),'Sainte-','Sᵗᵉ-'),'-sous-','-ss-') as nom, cast(regexp_replace('0' || population,'[^0-9]','','g') as bigint) as pop, tags->'is_capital' as is_capital       from planet_osm_point      where place is not null and place in ('city','town','village') order by tags->'is_capital' desc, place, pop desc ) as placenames",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -2035,7 +1978,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,place,coalesce(tags->'name:fr',tags->'int_name',name) as name, regexp_replace(regexp_replace(replace(replace(replace(replace(replace(coalesce(tags->'short_name:fr',tags->'short_name', tags->'name:fr',tags->'int_name', name),'Saint-','Sᵗ-'),'Sainte-','Sᵗᵉ-'),'-sous-','-ss-'),'Lotissement ','Lot. '),'Résidence ','Rés. '),'^Place ','Pl. '),'^Pointe ','Pᵗᵉ ') as nom, cast(regexp_replace('0' || population,'[^0-9]','','g') as bigint) as pop \n      from planet_osm_point\n      where place in ('suburb','large_village','hamlet','locality','isolated_dwelling','farm')\n      ) as placenames",
+        "table": "(select way,place,coalesce(tags->'name:fr',tags->'int_name',name) as name, regexp_replace(regexp_replace(replace(replace(replace(replace(replace(coalesce(tags->'short_name:fr',tags->'short_name', tags->'name:fr',tags->'int_name', name),'Saint-','Sᵗ-'),'Sainte-','Sᵗᵉ-'),'-sous-','-ss-'),'Lotissement ','Lot. '),'Résidence ','Rés. '),'^Place ','Pl. '),'^Pointe ','Pᵗᵉ ') as nom, cast(regexp_replace('0' || population,'[^0-9]','','g') as bigint) as pop       from planet_osm_point      where place is not null and place in ('suburb','large_village','hamlet','locality','isolated_dwelling','farm')      ) as placenames",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -2061,7 +2004,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,coalesce(tags->'name:fr',tags->'int_name',tags->'int_name',name) as name,railway,aerialway,disused,highway, amenity, coalesce(tags->'type:RATP','') as type_ratp, operator, '' as l_operator, '' as l_type, '' as l_ref1, tags->'network' as network, case when railway='station' then 2  when railway='halt' then 1  else 0 end as prio, coalesce(tags->'usage','') as usage, coalesce(tags->'ele',tags->'ele:local') as ele \n      from planet_osm_polygon\n      where railway in ('station','halt','tram_stop')\n         or aerialway='station'\n     order by prio desc ) as stations",
+        "table": "      (select way,coalesce(tags->'name:fr',tags->'int_name',tags->'int_name',name) as name,railway,aerialway,disused,highway, amenity, coalesce(tags->'type:RATP','') as type_ratp, operator, '' as l_operator, '' as l_type, '' as l_ref1, tags->'network' as network, case when railway='station' then 2  when railway='halt' then 1  else 0 end as prio, coalesce(tags->'usage','') as usage, coalesce(tags->'ele',tags->'ele:local') as ele       from planet_osm_polygon      where railway in ('station','halt','tram_stop')         or aerialway='station'     order by prio desc ) as stations",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",

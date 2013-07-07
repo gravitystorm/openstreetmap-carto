@@ -13,32 +13,31 @@
   [place = 'country'][zoom >= 2][zoom < 6] {
     text-name: "[name]";
     text-size: 8;
-    text-fill: #9d6c9d;
+    text-fill: #6c216c;
     text-face-name: @oblique-fonts;
     text-halo-radius: 1;
     text-wrap-width: 20;
-    [zoom >= 4] {
-      text-size: 10;
+    text-label-position-tolerance: 10;
+    [zoom=5] {
+      text-size: 11;
     }
   }
 }
 
 .state {
-  [place = 'state'][zoom >= 4][zoom < 9] {
-    text-name: "[ref]";
+  [place = 'state'][zoom >= 5][zoom < 9] {
     text-size: 8;
     text-fill: #6c216c;
-    text-face-name: @oblique-fonts;
+    text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: 0;
-    [zoom >= 5] {
-      text-name: "[name]";
-      text-label-position-tolerance: 10;
-    }
+	text-name: "[name]";
+    text-label-position-tolerance: 10;
     [zoom >= 7] {
       text-size: 12;
       text-min-distance: 10;
       text-label-position-tolerance: 15;
+      text-face-name: @oblique-fonts;
     }
   }
 }
@@ -59,6 +58,13 @@
 
 .placenames {
   [place = 'city'] {
+    [zoom=4][is_capital='country'] {
+        marker-height: 2;
+        marker-width: 2;
+        marker-fill: #6c216c;
+        marker-ignore-placement: true;
+    }
+    [zoom >= 5][zoom < 15][is_capital='country'],
     [zoom >= 6][zoom < 15] {
 	  [is_capital='country'] { text-face-name: @bold-fonts; }
       text-face-name: @book-fonts;
@@ -84,6 +90,7 @@
     }
   }
   [place = 'town'] {
+    [zoom >= 5][is_capital='country'],
     [zoom >= 6] {
 	  [is_capital='country'] { text-face-name: @bold-fonts; }
       text-face-name: @book-fonts;
@@ -131,15 +138,14 @@
 }
 
 #placenames-small::village {
-  [place = 'village'],
-  [place = 'large_village'] [zoom>=7] {
+  [place = 'village'][zoom>=6] {
 	text-name: "[nom]";
     text-size: 8;
     text-fill: #222;
     text-face-name: @book-fonts;
 	text-halo-radius: 1;
   	text-halo-fill: fadeout(white, 30%);
-    text-min-distance: 100;
+    text-min-distance: 50;
     
     [zoom>=11][pop>1000],
     [zoom>=12] {
@@ -148,11 +154,6 @@
       text-min-distance: 15;
       text-placement-type: simple;
       text-placements: "N,S";
-      [zoom >= 15] {
-        text-name: "[name]";
-        text-size: 12;
-        text-fill: #777;
-      }
     }
     [zoom >= 15] {
       text-name: "[name]";
