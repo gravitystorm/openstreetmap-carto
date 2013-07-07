@@ -101,6 +101,7 @@
       text-halo-fill: fadeout(white, 30%);
       text-wrap-width: 20;
       text-min-distance: 20;
+      text-label-position-tolerance: 5;
       [zoom>=7] {
       	text-min-distance: 10;
       }
@@ -128,9 +129,10 @@
     text-name: "[name]";
     text-size: 8;
     text-fill: #666;
-      text-face-name: @oblique-fonts;
-	    text-halo-radius: 2;
-  		text-halo-fill: fadeout(white, 30%);
+    text-face-name: @oblique-fonts;
+	text-halo-radius: 2;
+  	text-halo-fill: fadeout(white, 30%);
+    text-label-position-tolerance: 5;
     [zoom >= 14] {
       text-size: 12;
     }
@@ -141,11 +143,12 @@
   [place = 'village'][zoom>=6] {
 	text-name: "[nom]";
     text-size: 8;
-    text-fill: #222;
+    text-fill: #333;
     text-face-name: @book-fonts;
 	text-halo-radius: 1;
   	text-halo-fill: fadeout(white, 30%);
-    text-min-distance: 50;
+    text-min-distance: 25;
+    text-label-position-tolerance: 5;
     
     [zoom>=11][pop>1000],
     [zoom>=12] {
