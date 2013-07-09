@@ -9,7 +9,17 @@
   }
 }
 
+
 .country {
+  [place = 'continent'][zoom >= 2][zoom < 4] {
+    text-name: "[name]";
+    text-size: 12;
+    text-fill: grey;
+    text-face-name: @oblique-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 20;
+    text-label-position-tolerance: 20;
+  }
   [place = 'country'][zoom >= 2][zoom < 6] {
     text-name: "[name]";
     text-size: 8;

@@ -71,10 +71,10 @@ Map {
 
 
 // raster pour landcover en lowzoom
-#landcover-z8 [zoom<=7]{
+#lowzoom [zoom<=7]{
   raster-opacity:0.7;
   raster-filter-factor: 0;
-  raster-scaling: bilinear;
+  raster-scaling: lanczos;
 }
 
 @couleur-voie: #f84;  	 // orange

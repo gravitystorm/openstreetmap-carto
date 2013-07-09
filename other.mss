@@ -3640,10 +3640,13 @@
     point-placement: interior;
   }
 
+  [highway='conveyor'],
   [highway='steps'][conveying != ''] {
 	[conveying='both'], [conveying='yes'], [conveying='reversible'] { point-file: url('symbols/escalator.svg'); }
+	[conveying='up'],
 	[incline='up'][conveying='forward'],
 	[incline='down'][conveying='backward'] { point-file: url('symbols/escalator_up.svg'); }
+	[conveying='down'],
 	[incline='down'][conveying='forward'],
 	[incline='up'][conveying='backward'] { point-file: url('symbols/escalator_down.svg'); }
     point-file: url('symbols/escalator.svg');

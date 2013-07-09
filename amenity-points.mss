@@ -7,9 +7,11 @@
     point-transform: "scale(0.5)";
     // point-file: url('symbols/post_office_yellow.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
   
   [amenity = 'post_office'][zoom >= 16][operator='bpost']::amenity {
+    [indoor='yes'] { point-opacity: 0.5; }
     point-file: url('symbols/fr/logo_bpost.png');
     point-placement: interior;
     point-transform: "scale(0.5)";
@@ -26,6 +28,7 @@
   [amenity = 'post_office'][zoom >= 17]::amenity {
     point-file: url('symbols/post_office.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [tourism = 'alpine_hut'][zoom >= 13]::tourism {
@@ -41,16 +44,19 @@
   [amenity = 'atm'][zoom >=17]::amenity {
     point-file: url('symbols/atm_euro.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [amenity = 'bank'][zoom >= 17]::amenity {
     point-file: url('symbols/bank_euro.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [amenity = 'bar'][zoom >=17]::amenity {
     point-file: url('symbols/bar.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [amenity = 'bicycle_rental'][zoom >= 17]::amenity {
@@ -94,6 +100,7 @@
   [amenity = 'cafe'][zoom >=17]::amenity {
     point-file: url('symbols/cafe.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [tourism = 'camp_site'][zoom >= 16]::tourism {
@@ -124,6 +131,7 @@
   [amenity = 'cinema'][zoom >= 17]::amenity {
     point-file: url('symbols/cinema.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [amenity = 'fire_station'][zoom >= 17]::amenity {
@@ -170,6 +178,7 @@
   [tourism = 'information'][zoom >= 16]::tourism {
     point-file: url('symbols/information.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [amenity = 'embassy'][zoom >= 17]::amenity {
@@ -207,6 +216,7 @@
   [tourism = 'museum'][zoom >= 17]::tourism {
     point-file: url('symbols/museum.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [tourism = 'zoo'][zoom >= 15]::tourism {
@@ -229,14 +239,17 @@
   [amenity = 'bicycle_parking'][zoom >= 18]::amenity {
     point-file: url('symbols/parking_bicycle.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [amenity = 'pharmacy'][zoom >= 16]::amenity {
     point-file: url('symbols/fr/pharmacie.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [amenity = 'place_of_worship'][zoom >= 16]::amenity {
+    [indoor='yes'] { point-opacity: 0.5; }
     point-file: url('symbols/place_of_worship3.p.16.png');
     point-placement: interior;
     [religion = 'christian'] {
@@ -256,69 +269,82 @@
   [amenity = 'police'][zoom >= 17]::amenity {
     point-file: url('symbols/police2.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [amenity = 'post_box'][zoom >= 17]::amenity {
     [operator='La Poste'] { point-file: url('symbols/post_box_yellow.svg'); }
     point-file: url('symbols/post_box.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [amenity = 'pub'][zoom >= 16]::amenity {
     point-file: url('symbols/pub.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [amenity = 'biergarten'][zoom >= 16]::amenity {
     point-file: url('symbols/biergarten.p.16.png');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [amenity = 'recycling'][zoom >= 17]::amenity {
     point-file: url('symbols/recycling.svg');
     point-placement: interior;
     [recycling_type='centre'] { point-file: url('symbols/recycling_centre.svg'); }
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [amenity = 'restaurant'][zoom >= 17]::amenity {
     point-file: url('symbols/restaurant.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [amenity = 'fast_food'][zoom >= 17]::amenity {
     point-file: url('symbols/fastfood.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [amenity = 'telephone'][zoom >= 17]::amenity {
     point-file: url('symbols/telephone.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [emergency = 'phone'][zoom >= 17],
   [amenity = 'emergency_phone'][zoom >= 17]::amenity {
     point-file: url('symbols/emergency_phone.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [emergency = 'aed'][zoom >= 17] {
     point-file: url('symbols/fr/aed2.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [amenity = 'theatre'][zoom >= 17]::amenity {
     point-file: url('symbols/theatre.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [amenity = 'toilets'][zoom >= 17]::amenity {
     point-file: url('symbols/toilets.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [amenity = 'drinking_water'][zoom >= 17]::amenity {
     point-file: url('symbols/food_drinkingtap.svg');
     point-placement: interior;
+    [indoor='yes'] { point-opacity: 0.5; }
   }
 
   [amenity = 'prison'][zoom >= 17]::amenity {
