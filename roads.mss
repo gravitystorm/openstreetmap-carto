@@ -65,15 +65,15 @@
 
 #turning-circle-casing {
   [int_tc_type = 'tertiary'][zoom >= 15] {
-    marker-width: 18;
-    marker-height: 18;
+    marker-width: @tertiary-width-z15 * 1.8 + 1.8;
+    marker-height: @tertiary-width-z15 * 1.8 + 1.8;
     marker-allow-overlap: true;
     marker-ignore-placement: true;
     marker-line-width: 0;
     marker-fill: @tertiary-casing;
     [zoom >= 17] {
-      marker-width: 24;
-      marker-height: 24;
+      marker-width: @tertiary-width-z17 * 1.8 + 2.5;
+      marker-height: @tertiary-width-z17 * 1.8 + 2.5;
     }
   }
 
@@ -130,15 +130,15 @@
 
 #turning-circle-fill {
   [int_tc_type = 'tertiary'][zoom >= 15] {
-    marker-width: 16;
-    marker-height: 16;
+    marker-width: @tertiary-width-z15 * 1.8;
+    marker-height: @tertiary-width-z15 * 1.8;
     marker-allow-overlap: true;
     marker-ignore-placement: true;
     marker-line-width: 0;
     marker-fill: @tertiary-fill;
     [zoom >= 17] {
-      marker-width: 22;
-      marker-height: 22;
+      marker-width: @tertiary-width-z17 * 1.8;
+      marker-width: @tertiary-width-z17 * 1.8;
     }
   }
 
