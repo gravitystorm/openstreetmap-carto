@@ -157,14 +157,14 @@
     text-face-name: @book-fonts;
 	text-halo-radius: 1;
   	text-halo-fill: fadeout(white, 30%);
-    text-min-distance: 25;
+    [zoom<12] { text-min-distance: 25; }
     text-label-position-tolerance: 5;
     
     [zoom>=11][pop>1000],
     [zoom>=12] {
       text-size: 9;
 	  text-halo-radius: 2;
-      text-min-distance: 15;
+      [zoom<15] { text-min-distance: 15; }
       text-placement-type: simple;
       text-placements: "N,S";
     }

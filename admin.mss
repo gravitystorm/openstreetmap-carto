@@ -3,6 +3,7 @@
     [zoom >= 4] {
       line-color: #6c216c;
       line-width: 0.6;
+      line-cap: round;
       //line-opacity: 0.2;
     }
     [zoom >= 5] {
@@ -16,12 +17,12 @@
     	// line-opacity: 0.2;
     }
     [zoom >= 10] {
-      line-opacity: 0.1;
+      line-opacity: 0.5;
       [admin_level = '2'] {
-        line-width: 6;
+        line-width: 4;
       }
       [admin_level = '3'] {
-        line-width: 5;
+        line-width: 3;
         line-dasharray: 4,2;
       }
     }
@@ -43,6 +44,7 @@
     [zoom >= 5] {
       line-color: #6c216c;
       line-width: 0.5;
+      line-cap: round;
       line-opacity: 0.8;
     }
     [zoom >= 7] {
@@ -51,6 +53,9 @@
     [zoom >= 8] {
 	    line-color: purple;
 	    line-dasharray: 4,3;
+    }
+    [zoom >= 10] {
+      line-width: 1.5;
     }
     [zoom >= 11] {
       line-width: 3;
@@ -71,6 +76,7 @@
   [admin_level = '6'][zoom >= 7][zoom < 11] {
     line-color: #6c216c;
     line-width: 0.33;
+    line-cap: round;
     // line-opacity: 0.5;
   }
 
