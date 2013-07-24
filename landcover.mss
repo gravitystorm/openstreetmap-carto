@@ -44,6 +44,10 @@
   [feature = 'landuse_orchard'][zoom >= 10] {
     polygon-pattern-file: url('symbols/orchard.png');
   }
+  
+  [feature = 'landuse_greenhouse_horticulture'][zoom >= 10] {
+    polygon-fill: #dceaee;
+  }
 
   [feature = 'landuse_cemetery'],
   [feature = 'landuse_grave_yard'],
