@@ -19,16 +19,16 @@ Additionally you need some shapefiles.
 To download the shapefiles you can run the following script from this directory. No further steps should be needed as the data has been processed and placed in the requisite directories.
 
 ```
-sh get_data
+sh get-shapefiles.sh
 ```
 
 ## Manual download
 
-You can also download them maunally at the following paths:
+You can also download them manually at the following paths:
 
-* `shoreline_300.shp` [download](http://tile.openstreetmap.org/shoreline_300.tar.bz2)
-* `processed_p.shp` [download](http://tile.openstreetmap.org/processed_p.tar.bz2)
-* `builtup_area.shp` [download](http://tile.openstreetmap.org/world_boundaries-spherical.tgz)
+* `simplified-land-polygons.shp` [download](http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip)
+* `land-polygon.shp` [download](http://data.openstreetmapdata.com/land-polygons-split-3857.zip)
+* `builtup_area.shp` [download](http://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz)
 * `ne_110m_admin_0_boundary_lines_land.shp` [download](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip)
 * `ne_10m_populated_places_fixed.shp` [download](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_populated_places.zip) (and see below)
 
@@ -47,19 +47,20 @@ See https://github.com/mapnik/mapnik/issues/1605 for more details.
 
 ## Dependencies
 
-* [TileMill](mapbox.com/tilemill) - This is a TileMill project you can copy (or symlink) directly into your Mapbox/project directory
+* [TileMill](http://mapbox.com/tilemill) - This is a TileMill project you can copy (or symlink) directly into your Mapbox/project directory
 
-OR
+If you aren't using TileMill, you can compile the CartoCSS stylesheets into Mapnik XML using the command-line `carto` command.
 
 * [carto](https://github.com/mapbox/carto) >= 0.9.3 (we're using instances with cascading rules)
-* [mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 2.0.0 (we might move to 2.1 in the near term
+* [mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 2.1.0
 
 ---
 
-* [osm2pgsql](http://wiki.openstreetmap.org/wiki/Osm2pgsql) to import you data into a PostGIS database
+* [osm2pgsql](http://wiki.openstreetmap.org/wiki/Osm2pgsql) to import your data into a PostGIS database
 * [PostgreSQL](http://www.postgresql.org/)
-* [PostGIS](http://postgis.refractions.net/)
+* [PostGIS](http://postgis.org/)
 * [ogr2ogr](http://www.gdal.org/) command line GDAL utility for processing vector data. here we use it to work around a encoding bug in the Nautral Earth data.
+* curl and unzip for downloading and decompressing files
 
 # Roadmap
 
