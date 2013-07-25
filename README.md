@@ -26,9 +26,9 @@ sh get-shapefiles.sh
 
 You can also download them manually at the following paths:
 
-* `shoreline_300.shp` [download](http://tile.openstreetmap.org/shoreline_300.tar.bz2)
-* `processed_p.shp` [download](http://tile.openstreetmap.org/processed_p.tar.bz2)
-* `builtup_area.shp` [download](http://tile.openstreetmap.org/world_boundaries-spherical.tgz)
+* `simplified-land-polygons.shp` [download](http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip)
+* `land-polygon.shp` [download](http://data.openstreetmapdata.com/land-polygons-split-3857.zip)
+* `builtup_area.shp` [download](http://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz) 
 * `ne_110m_admin_0_boundary_lines_land.shp` [download](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip)
 * `ne_10m_populated_places_fixed.shp` [download](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_populated_places.zip) (and see below)
 
