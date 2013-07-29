@@ -352,6 +352,7 @@
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: 20;
+    text-placement: interior;
   }
 }
 
