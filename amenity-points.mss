@@ -288,6 +288,16 @@
     point-placement: interior;
   }
 
+  [shop = 'greengrocer'][zoom >= 17]::shop {
+    point-file: url('symbols/apple.p.16.png');
+    point-placement: interior;
+  }
+
+  [shop = 'farm'][zoom >= 15]::shop {   /* Zoom 15 because normally in sparsely habited areas */
+    point-file: url('symbols/apple.p.16.png');
+    point-placement: interior;
+  }
+
   [shop = 'bakery'][zoom >= 17]::shop {
     point-file: url('symbols/shop_bakery.p.16.png');
     point-placement: interior;
