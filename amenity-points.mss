@@ -283,6 +283,11 @@
     point-placement: interior;
   }
 
+  [shop != ''][zoom >= 16]::shop {
+    point-file: url('symbols/shop.p.16.png');
+    point-placement: interior;
+  }
+  
   [shop = 'supermarket'][zoom >= 16]::shop {
     point-file: url('symbols/shop_supermarket.p.16.png');
     point-placement: interior;
@@ -841,7 +846,20 @@
     text-wrap-width: 12;
     text-placement: interior;
   }
-
+  
+    /* Default shop text style */
+  [shop != ''][zoom >= 17]::shop {
+    text-name: [name];
+    text-size: 9;
+    text-dy: 9;
+    text-fill: #939;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 12;
+    text-placement: interior;
+  }
+  
+  
   [shop = 'bakery']::shop,
   [shop = 'clothes']::shop,
   [shop = 'fashion']::shop,
@@ -864,7 +882,7 @@
       text-placement: interior;
     }
   }
-
+  
   [shop = 'supermarket']::shop,
   [shop = 'department_store']::shop {
     [zoom >= 16] {
@@ -878,6 +896,7 @@
       text-placement: interior;
     }
   }
+
 
   [military = 'danger_area'][zoom >= 12]::military {
     text-name: "[name]";
