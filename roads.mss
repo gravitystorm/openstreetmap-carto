@@ -616,6 +616,7 @@
         line-color: @service-casing;
         line-width: 2.5;
         line-cap: round;
+        line-join: round;
       }
       [zoom >= 16] { line-width: 7; }
     }
