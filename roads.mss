@@ -1617,7 +1617,7 @@
     }
 
     [feature = 'highway_cycleway'],
-    [feature = 'highway_path'][foot = 'designated'] {
+    [feature = 'highway_path'][bicycle = 'designated'] {
       [zoom >= 14] {
         line-width: 5.5;
         line-color: black;
