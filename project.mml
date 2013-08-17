@@ -8,7 +8,7 @@
   "center": [
     6.1111,
     45.9026,
-    10
+    6
   ],
   "format": "png",
   "interactivity": false,
@@ -1792,10 +1792,10 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select ST_LineMerge(st_collect(way2)) as way2, admin_level, maritime from (select ST_SimplifyPreserveTopology(way,0.5) as way2,min(admin_level) as admin_level, tags->'maritime' as maritime from planet_osm_roads where way && !bbox! and boundary is not null and \"boundary\"='administrative' and admin_level in ('0','1','2','3','4','5','6') and osm_id>0 and (\"natural\" is null or \"natural\" != 'coastline') group by way, maritime) as admins group by admin_level, maritime) as admin",
+        "table": "(select ST_LineMerge(st_collect(way2)) as way, admin_level, maritime from (select ST_SimplifyPreserveTopology(way,0.5) as way2,min(admin_level) as admin_level, tags->'maritime' as maritime from planet_osm_roads where way && !bbox! and boundary is not null and \"boundary\"='administrative' and admin_level in ('0','1','2','3','4','5','6') and osm_id>0 and (\"natural\" is null or \"natural\" != 'coastline') group by way, maritime) as admins group by admin_level, maritime) as admin",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
-        "geometry_field": "way2",
+        "geometry_field": "way",
         "dbname": "osm",
         "host": "localhost",
         "user": "fr",
@@ -1806,7 +1806,8 @@
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "admin-01234"
+      "name": "admin-01234",
+      "status": "off"
     },
     {
       "geometry": "linestring",
@@ -1891,13 +1892,13 @@
       "geometry": "point",
       "extent": [
         -179.99999692067183,
-        -84.96651228427099,
+        -84.96651228427098,
         179.99999692067183,
-        84.96651228427098
+        84.96651228427099
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,place,coalesce(tags->'name:fr',tags->'int_name',name) as name, replace(replace(replace(coalesce(tags->'short_name:fr',tags->'short_name', tags->'name:fr',tags->'int_name', name),'Saint-','Sᵗ-'),'Sainte-','Sᵗᵉ-'),'-sous-','-ss-') as nom, cast(regexp_replace('0' || population,'[^0-9]','','g') as bigint) as pop, tags->'is_capital' as is_capital       from planet_osm_point      where place is not null and place in ('city','town') and tags->'is_capital' in ('country','state') order by is_capital, place, pop desc ) as placenames",
+        "table": "(select way,place,coalesce(tags->'name:fr',tags->'int_name',name) as name, replace(replace(replace(coalesce(tags->'short_name:fr',tags->'short_name', tags->'name:fr',tags->'int_name', name),'Saint-','Sᵗ-'),'Sainte-','Sᵗᵉ-'),'-sous-','-ss-') as nom, cast(regexp_replace('0' || population,'[^0-9]','','g') as bigint) as pop, coalesce(tags->'is_capital', tags->'admin_level', tags->'capital') as is_capital      from planet_osm_point      where place is not null and place in ('city','town') and (tags->'is_capital' in ('country','state') or tags->'capital' in ('2','4') or (tags->'capital'='yes' and admin_level in ('2','4'))) order by is_capital, place, pop desc ) as placenames",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",

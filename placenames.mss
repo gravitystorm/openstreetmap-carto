@@ -68,15 +68,17 @@
 
 .placenames {
   [place = 'city'] {
-    [zoom=4][is_capital='country'] {
+    [zoom=4][is_capital='country'],
+    [zoom=4][is_capital='2'] {
         marker-height: 2;
         marker-width: 2;
         marker-fill: #6c216c;
         marker-ignore-placement: true;
     }
     [zoom >= 5][zoom < 15][is_capital='country'],
+    [zoom >= 5][zoom < 15][is_capital='2'],
     [zoom >= 6][zoom < 15] {
-	  [is_capital='country'] { text-face-name: @bold-fonts; }
+	  [is_capital='country'],[is_capital='2'] { text-face-name: @bold-fonts; }
       text-face-name: @book-fonts;
       text-name: "[name]";
       text-size: 10;
@@ -101,8 +103,9 @@
   }
   [place = 'town'] {
     [zoom >= 5][is_capital='country'],
+    [zoom >= 5][is_capital='2'],
     [zoom >= 6] {
-	  [is_capital='country'] { text-face-name: @bold-fonts; }
+	  [is_capital='country'],[is_capital='2'] { text-face-name: @bold-fonts; }
       text-face-name: @book-fonts;
       text-name: "[nom]";
       text-size: 8;
