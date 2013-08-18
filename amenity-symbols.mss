@@ -24,25 +24,29 @@
     	text-face-name: @oblique-fonts;
   	}
 	point-file: url('symbols/airport2.svg');
+    [zoom>=11] {
+    	text-dy: -12;
+    	text-size: 9;
+    	text-name: "[name]";
+    	text-fill: #6692da;
+    	text-halo-radius: 1;
+    	text-placement: interior;
+    	text-face-name: @bold-fonts;
+    }
     [zoom>=13] { text-size: 11; }
-    text-dy: -12;
-    text-size: 9;
-    text-name: "[name]";
-    text-fill: #6692da;
-    text-halo-radius: 1;
-    text-placement: interior;
-    text-face-name: @bold-fonts;
   }
 
   [aeroway = 'aerodrome'][zoom >= 10]::aeroway {
  	point-file: url('symbols/aerodrome.svg');
-    text-dy: -12;
-    text-name: "[name]";
-    text-size: 8;
-    text-fill: #6692da;
-    text-face-name: @oblique-fonts;
-    text-halo-radius: 1;
-    text-placement: interior;
+    [zoom>=12] {
+    	text-dy: -12;
+    	text-name: "[name]";
+    	text-size: 8;
+    	text-fill: #6692da;
+    	text-face-name: @oblique-fonts;
+    	text-halo-radius: 1;
+    	text-placement: interior;
+    }
   }
 
   [railway = 'level_crossing'][zoom >= 15]::railway,
