@@ -78,7 +78,7 @@
     [zoom >= 6][zoom < 15] {
 	  [is_capital='country'] { text-size: 11; text-face-name: @bold-fonts; }
       text-face-name: @book-fonts;
-      text-name: "[name]";
+      text-name: "[nom]";
       text-size: 10;
       text-fill: #000;
 	  text-halo-radius: 2;
@@ -94,6 +94,7 @@
         text-size: 12;
       }
       [zoom >= 11] {
+        text-name: "[name]";
         text-size: 14;
         text-face-name: @oblique-fonts;
       }
