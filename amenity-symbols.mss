@@ -12,6 +12,7 @@
 
   [aeroway = 'aerodrome'][aerodrome = 'international'][zoom >= 9]::aeroway,
   [aeroway = 'aerodrome'][aerodrome = 'airport'][zoom >= 9]::aeroway,
+  [aeroway = 'aerodrome'][aerodrome = 'continental'][zoom >= 9]::aeroway,
   [aeroway = 'airport'][zoom >= 9]::aeroway {
   	[zoom >= 14] {
     	text-dy: 0;
