@@ -1393,12 +1393,13 @@
   }
 
   [highway = 'tertiary_link'][tunnel != 'yes'] {
-    [zoom >= 13] {
-      line-width: 4.5;
+    [zoom >= 12] {
+      line-width: 2;
       line-color: #ffffb3;
       line-cap: round;
       line-join: round;
     }
+    [zoom >= 13] { line-width: 4.5; }
     [zoom >= 14] { line-width: 6; }
     [zoom >= 15] { line-width: 9.4; }
     [zoom >= 17] { line-width: 13; }
@@ -1462,12 +1463,13 @@
   }
 
   [highway = 'tertiary'][tunnel != 'yes'] {
-    [zoom >= 13] {
-      line-width: 6;
-      line-color: #bbb;
+    [zoom >= 12] {
+      line-width: 2.5;
+      line-color: #888;
       line-join: round;
       // line-cap: round; // looks bad with tunnels, tertiary should not dead-end
     }
+    [zoom >= 13] { line-width: 6; line-color: #bbb;}
     [zoom >= 14] { line-width: 7.5; }
     [zoom >= 15] { line-width: 11; }
     [zoom >= 17] { line-width: 16; }
@@ -1646,7 +1648,7 @@
         b/line-dasharray: 2,6;
       }
     }
-  }
+  } // construction / proposed
 
   [highway = 'motorway'][tunnel != 'yes'] {
     [zoom >= 12] {
@@ -1752,11 +1754,12 @@
       [zoom >= 19] { line-width: 26; }
   }
 
-  [highway = 'tertiary'][tunnel != 'yes'][zoom >= 13] {
-    line-width: 4.5;
-    line-color: #ffffb3;
+  [highway = 'tertiary'][tunnel != 'yes'][zoom >= 12] {
+    line-width: 2;
+    line-color: #ffffa0;
     line-join: round;
     line-cap: round;
+    [zoom >= 14] { line-width: 4.5; line-color: #ffffb3; }
     [zoom >= 14] { line-width: 6; }
     [zoom >= 15] { line-width: 9.4; }
     [zoom >= 17] { line-width: 13; }
