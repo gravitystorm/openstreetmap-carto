@@ -6,9 +6,9 @@
     80
   ],
   "center": [
-    2.4828,
-    48.785,
-    10
+    0.92,
+    48.84,
+    11
   ],
   "format": "png",
   "interactivity": false,
@@ -2289,6 +2289,33 @@
       "name": "highway-junctions"
     },
     {
+      "geometry": "point",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way,place,coalesce(tags->'name:fr',tags->'int_name',name) as name, regexp_replace(regexp_replace(replace(replace(replace(replace(replace(coalesce(tags->'short_name:fr',tags->'short_name', tags->'name:fr',tags->'int_name', name),'Saint-','Sᵗ-'),'Sainte-','Sᵗᵉ-'),'-sous-','-ss-'),'Lotissement ','Lot. '),'Résidence ','Rés. '),'^Place ','Pl. '),'^Pointe ','Pᵗᵉ ') as nom, cast(regexp_replace('0' || population,'[^0-9]','','g') as bigint) as pop       from planet_osm_point      where place is not null and place in ('suburb','village','large_village','hamlet','locality','isolated_dwelling','farm') order by pop desc     ) as placenames",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3",
+        "extent_cache": "auto"
+      },
+      "id": "placenames-small",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "placenames-small"
+    },
+    {
       "geometry": "linestring",
       "extent": [
         -179.99999692067183,
@@ -2420,7 +2447,7 @@
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "placenames-small"
+      "name": "placenames-small-lz"
     },
     {
       "extent": [

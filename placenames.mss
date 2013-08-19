@@ -104,12 +104,11 @@
     [zoom >= 5][is_capital='country'],
     [zoom >= 6] {
 	  [is_capital!=''] {
-	  	text-size: 9;
 	    [is_capital='country'] { text-face-name: @bold-fonts; }
 	  }
       text-face-name: @book-fonts;
       text-name: "[nom]";
-      text-size: 8;
+      text-size: 9;
       text-fill: #000;
       text-halo-radius: 2;
       text-halo-fill: fadeout(white, 30%);
@@ -138,39 +137,31 @@
   }
 }
 
-#placenames-small::suburb {
-  [place = 'suburb'][zoom >= 12] {
-    text-name: "[name]";
-    text-size: 8;
-    text-fill: #666;
-    text-face-name: @oblique-fonts;
-	text-halo-radius: 2;
-  	text-halo-fill: fadeout(white, 30%);
-    text-label-position-tolerance: 5;
-    [zoom >= 14] {
-      text-size: 12;
-    }
-  }
-}
-
-#placenames-small::village {
-  [place = 'village'][zoom>=6] {
+#placenames-small-lz::village [zoom >= 6][zoom <= 11][place = 'village'] { // remplissage dans les faibles zooms (6-11)
 	text-name: "[nom]";
-    text-size: 8;
+    text-size: 8.5;
     text-fill: #333;
     text-face-name: @book-fonts;
 	text-halo-radius: 1;
   	text-halo-fill: fadeout(white, 30%);
-    [zoom<12] { text-min-distance: 25; }
+    text-min-distance: 25;
+    text-label-position-tolerance: 5;
+}
+
+#placenames-small::village [zoom >= 11] {
+  [place = 'village'] {
+	text-name: "[nom]";
+    text-size: 8.5;
+    text-fill: #333;
+    text-face-name: @book-fonts;
+	text-halo-radius: 1;
+  	text-halo-fill: fadeout(white, 30%);
     text-label-position-tolerance: 5;
     
-    [zoom>=11][pop>1000],
+    [zoom>=10][pop>1000],
     [zoom>=12] {
       text-size: 9;
 	  text-halo-radius: 2;
-      [zoom<15] { text-min-distance: 15; }
-      text-placement-type: simple;
-      text-placements: "N,S";
     }
     [zoom >= 15] {
       text-name: "[name]";
@@ -180,19 +171,33 @@
   }
 }
 
-#placenames-small::hamlet {
+#placenames-small::suburb [zoom >= 12] {
+  [place = 'suburb'] {
+    text-name: "[nom]";
+    text-size: 8;
+    text-fill: #666;
+    text-face-name: @oblique-fonts;
+	text-halo-radius: 2;
+  	text-halo-fill: fadeout(white, 30%);
+    text-label-position-tolerance: 5;
+    [zoom >= 14] {
+      text-name: "[name]";
+      text-size: 12;
+    }
+  }
+}
+
+
+#placenames-small::hamlet [zoom >= 14] {
   [place = 'hamlet'],
   [place = 'locality'],
   [place = 'isolated_dwelling'],
   [place = 'farm'] {
-    [zoom >= 14] {
-      text-name: "[nom]";
-      text-size: 8;
-      text-fill: #444;
-      text-face-name: @oblique-fonts;
-	    text-halo-radius: 2;
-  		text-halo-fill: fadeout(white, 30%);
-    }
+	text-name: "[nom]";
+    text-fill: #444;
+    text-face-name: @oblique-fonts;
+	text-halo-radius: 2;
+  	text-halo-fill: fadeout(white, 30%);
     [zoom >= 16] {
       text-name: "[name]";
       text-size: 11;
