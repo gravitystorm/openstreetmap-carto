@@ -27,7 +27,7 @@
     [zoom>=11] {
     	text-dy: -12;
     	text-size: 9;
-    	text-name: "[name]";
+    	text-name: "[nom]";
     	text-fill: #6692da;
     	text-halo-radius: 1;
     	text-placement: interior;
@@ -40,8 +40,9 @@
  	point-file: url('symbols/aerodrome.svg');
     [zoom>=12] {
     	text-dy: -12;
-    	text-name: "[name]";
-    	text-size: 8;
+    	text-name: "[nom]";
+    	[zoom>=15] { text-name: "[name]"; }
+    	text-size: 9;
     	text-fill: #6692da;
     	text-face-name: @oblique-fonts;
     	text-halo-radius: 1;
