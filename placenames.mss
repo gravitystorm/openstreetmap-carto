@@ -97,6 +97,7 @@
         text-name: "[name]";
         text-size: 14;
         text-face-name: @oblique-fonts;
+        text-label-position-tolerance: 10;
       }
     }
   }
@@ -127,6 +128,7 @@
       text-placements: "N,S,NE,SE,NW,SW,11,10,9";
       text-horizontal-alignment: auto;
       text-vertical-alignment: auto;
+	  text-label-position-tolerance: 10;
     }
     [zoom >= 14] {
       text-face-name: @oblique-fonts;
@@ -142,7 +144,7 @@
     text-size: 8.5;
     text-fill: #333;
     text-face-name: @book-fonts;
-	text-halo-radius: 1;
+	text-halo-radius: 1.5;
   	text-halo-fill: fadeout(white, 30%);
     text-min-distance: 25;
     text-label-position-tolerance: 5;
@@ -154,14 +156,15 @@
     text-size: 8.5;
     text-fill: #333;
     text-face-name: @book-fonts;
-	text-halo-radius: 1;
+	text-halo-radius: 1.5;
   	text-halo-fill: fadeout(white, 30%);
     text-label-position-tolerance: 5;
     
-    [zoom>=10][pop>1000],
+    [pop>1000],
     [zoom>=12] {
       text-size: 9;
 	  text-halo-radius: 2;
+	  text-label-position-tolerance: 10;
     }
     [zoom >= 15] {
       text-name: "[name]";
@@ -174,10 +177,10 @@
 #placenames-small::suburb [zoom >= 12] {
   [place = 'suburb'] {
     text-name: "[nom]";
-    text-size: 8;
+    text-size: 8.5;
     text-fill: #666;
     text-face-name: @oblique-fonts;
-	text-halo-radius: 2;
+	text-halo-radius: 1;
   	text-halo-fill: fadeout(white, 30%);
     text-label-position-tolerance: 5;
     [zoom >= 14] {
@@ -188,20 +191,35 @@
 }
 
 
+#placenames-small-lz::smaller [zoom >= 12] { // remplissage dans les faibles zooms (12-)
+  [place = 'hamlet'],
+  [place = 'locality'],
+  [place = 'isolated_dwelling'],
+  [place = 'farm'] {
+	text-name: "[nom]";
+    text-size: 8.5;
+    text-fill: #666;
+    text-face-name: @book-fonts;
+	text-halo-radius: 1;
+  	text-halo-fill: fadeout(white, 30%);
+    text-min-distance: 25;
+    text-label-position-tolerance: 5;
+  }
+}
+
 #placenames-small::hamlet [zoom >= 14] {
   [place = 'hamlet'],
   [place = 'locality'],
   [place = 'isolated_dwelling'],
   [place = 'farm'] {
 	text-name: "[nom]";
-    text-fill: #444;
+    text-fill: #666;
     text-face-name: @oblique-fonts;
-	text-halo-radius: 2;
+	text-halo-radius: 1;
   	text-halo-fill: fadeout(white, 30%);
     [zoom >= 16] {
       text-name: "[name]";
       text-size: 11;
-      text-fill: #777;
     }
   }
 }
