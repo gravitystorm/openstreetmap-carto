@@ -13,6 +13,8 @@
   [aeroway = 'aerodrome'][aerodrome = 'international'][zoom >= 9]::aeroway,
   [aeroway = 'aerodrome'][aerodrome = 'airport'][zoom >= 9]::aeroway,
   [aeroway = 'aerodrome'][aerodrome = 'continental'][zoom >= 9]::aeroway,
+  [aerodrome = 'military'][zoom >= 9]::aeroway,
+  [aerodrome = 'airfield'][zoom >= 9]::aeroway,
   [aeroway = 'airport'][zoom >= 9]::aeroway {
   	[zoom >= 14] {
     	text-dy: 0;
@@ -25,11 +27,16 @@
     	text-face-name: @oblique-fonts;
   	}
 	point-file: url('symbols/airport2.svg');
+    [aerodrome = 'military'],[aerodrome = 'airfield']
+  	{
+	  	point-file: url('symbols/airport-red.svg');
+  	}
     [zoom>=11] {
     	text-dy: -12;
     	text-size: 9;
     	text-name: "[nom]";
     	text-fill: #6692da;
+    	[aerodrome = 'military'],[aerodrome = 'airfield'] { text-fill: black; text-face-name: @book-fonts;}
     	text-halo-radius: 1;
     	text-placement: interior;
     	text-face-name: @bold-fonts;
