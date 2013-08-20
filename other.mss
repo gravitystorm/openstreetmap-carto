@@ -1759,7 +1759,7 @@
     line-color: #ffffa0;
     line-join: round;
     line-cap: round;
-    [zoom >= 14] { line-width: 4.5; line-color: #ffffb3; }
+    [zoom >= 13] { line-width: 4.5; line-color: #ffffb3; }
     [zoom >= 14] { line-width: 6; }
     [zoom >= 15] { line-width: 9.4; }
     [zoom >= 17] { line-width: 13; }
@@ -3092,53 +3092,53 @@
 }
 
 #roads-text-ref-low-zoom {
-  [highway = 'motorway'][length < 9] {
-    [zoom >= 10][zoom < 13] {
-      shield-name: "[ref]";
-      shield-size: 10;
-      shield-fill: #fff;
-      shield-placement: line;
-      shield-file: url("symbols/mot_shield[length].png");
-      shield-spacing: 750;
-      shield-min-distance: 30;
-      shield-face-name: @bold-fonts;
-      [length = 7] { shield-file: url('symbols/mot_shield6.png'); }
-      [length = 8] { shield-file: url('symbols/mot_shield7.png'); }
-    }
-  }
+	[way_len>40000][zoom>=10],
+	[way_len>20000][zoom>=11]
+	{
+	  [highway = 'motorway'][length < 9] {
+		[zoom >= 10][zoom < 13] {
+		  shield-name: "[ref]";
+		  shield-size: 10;
+		  shield-fill: #fff;
+		  shield-placement: line;
+		  shield-file: url("symbols/mot_shield[length].png");
+		  shield-spacing: 500;
+		  shield-face-name: @bold-fonts;
+		  [length = 7] { shield-file: url('symbols/mot_shield6.png'); }
+		  [length = 8] { shield-file: url('symbols/mot_shield7.png'); }
+		}
+	  }
 
-  [highway = 'trunk'][zoom >= 11][zoom < 13] {
-    shield-name: "[ref]";
-    shield-size: 10;
-    shield-fill: #fff;
-    shield-placement: line;
-    shield-file: url("symbols/tru_shield[length].png");
-    shield-spacing: 750;
-    shield-min-distance: 30;
-    shield-face-name: @bold-fonts;
-  }
+	  [highway = 'trunk'][zoom >= 11][zoom < 13] {
+		shield-name: "[ref]";
+		shield-size: 10;
+		shield-fill: #fff;
+		shield-placement: line;
+		shield-file: url("symbols/tru_shield[length].png");
+		shield-spacing: 500;
+		shield-face-name: @bold-fonts;
+	  }
 
-  [highway = 'primary'][zoom >= 11][zoom < 13] {
-    shield-name: "[ref]";
-    shield-size: 10;
-    shield-fill: #fff;
-    shield-placement: line;
-    shield-file: url("symbols/pri_shield[length].png");
-    shield-spacing: 750;
-    shield-min-distance: 30;
-    shield-face-name: @bold-fonts;
-  }
+	  [highway = 'primary'][zoom >= 11][zoom < 13] {
+		shield-name: "[ref]";
+		shield-size: 10;
+		shield-fill: #fff;
+		shield-placement: line;
+		shield-file: url("symbols/pri_shield[length].png");
+		shield-spacing: 500;
+		shield-face-name: @bold-fonts;
+	  }
 
-  [highway = 'secondary'][zoom >= 12][zoom < 13] {
-    shield-name: "[ref]";
-    shield-size: 10;
-    shield-fill: #fff;
-    shield-placement: line;
-    shield-file: url("symbols/sec_shield[length].png");
-    shield-spacing: 750;
-    shield-min-distance: 30;
-    shield-face-name: @bold-fonts;
-  }
+	  [highway = 'secondary'][zoom >= 12][zoom < 13] {
+		shield-name: "[ref]";
+		shield-size: 10;
+		shield-fill: #fff;
+		shield-placement: line;
+		shield-file: url("symbols/sec_shield[length].png");
+		shield-spacing: 500;
+		shield-face-name: @bold-fonts;
+	  }
+	}
 }
 
 #roads-text-ref {
@@ -3150,7 +3150,7 @@
       shield-placement: line;
       shield-file: url("symbols/mot_shield[length].png");
       shield-spacing: @shield_spacing;
-      shield-min-distance: 30;
+      shield-min-distance: 20;
       shield-face-name: @bold-fonts;
       [length = 7] { shield-file: url('symbols/mot_shield6.png'); }
       [length = 8] { shield-file: url('symbols/mot_shield7.png'); }
@@ -3164,7 +3164,7 @@
     shield-placement: line;
     shield-file: url("symbols/tru_shield[length].png");
     shield-spacing: @shield_spacing;
-    shield-min-distance: 30;
+    shield-min-distance: 20;
     shield-face-name: @bold-fonts;
   }
 
@@ -3175,7 +3175,7 @@
     shield-placement: line;
     shield-file: url("symbols/pri_shield[length].png");
     shield-spacing: @shield_spacing;
-    shield-min-distance: 30;
+    shield-min-distance: 20;
     shield-face-name: @bold-fonts;
   }
 
@@ -3186,7 +3186,7 @@
     shield-placement: line;
     shield-file: url("symbols/sec_shield[length].png");
     shield-spacing: @shield_spacing;
-    shield-min-distance: 30;
+    shield-min-distance: 20;
     shield-face-name: @bold-fonts;
   }
 
@@ -3197,7 +3197,7 @@
     shield-placement: line;
     shield-file: url("symbols/ter_shield[length].png");
     shield-spacing: @shield_spacing;
-    shield-min-distance: 30;
+    shield-min-distance: 20;
     shield-face-name: @bold-fonts;
   }
 
