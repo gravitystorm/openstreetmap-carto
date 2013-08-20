@@ -999,7 +999,7 @@
 
   [feature = 'highway_steps'][zoom >= 15] {
     line-width: 5.0;
-    line-color: @footway-fill;
+    line-color: @steps-fill;
     line-dasharray: 2,1;
   }
 
@@ -1277,7 +1277,7 @@
 
   [feature = 'aeroway_taxiway'][bridge = 'no'][zoom >= 14] {
     line-width: 4;
-    line-color: @helipad-fill;
+    line-color: @taxiway-fill;
     [zoom >= 15] {
       line-width: 6;
     }
