@@ -3103,6 +3103,7 @@
 		  shield-placement: line;
 		  shield-file: url("symbols/mot_shield[length].png");
 		  shield-spacing: 500;
+		  shield-min-distance: 15;
 		  shield-face-name: @bold-fonts;
 		  [length = 7] { shield-file: url('symbols/mot_shield6.png'); }
 		  [length = 8] { shield-file: url('symbols/mot_shield7.png'); }
@@ -3116,6 +3117,7 @@
 		shield-placement: line;
 		shield-file: url("symbols/tru_shield[length].png");
 		shield-spacing: 500;
+		shield-min-distance: 15;
 		shield-face-name: @bold-fonts;
 	  }
 
@@ -3126,6 +3128,7 @@
 		shield-placement: line;
 		shield-file: url("symbols/pri_shield[length].png");
 		shield-spacing: 500;
+		shield-min-distance: 15;
 		shield-face-name: @bold-fonts;
 	  }
 
@@ -3136,6 +3139,7 @@
 		shield-placement: line;
 		shield-file: url("symbols/sec_shield[length].png");
 		shield-spacing: 500;
+		shield-min-distance: 15;
 		shield-face-name: @bold-fonts;
 	  }
 	}
