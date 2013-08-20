@@ -6,7 +6,7 @@
     80
   ],
   "center": [
-    2.48543,48.80294,11
+    2.6673,48.4840,12
   ],
   "format": "png:t=0",
   "interactivity": false,
@@ -2270,7 +2270,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select *, char_length(ref) as length, st_length(way) as way_len from (select st_intersection(ST_SetSRID(ST_MakeBox2D(ST_Point(ST_XMin(!bbox!)+!pixel_width!*(256+256+12),ST_Ymin(!bbox!)+!pixel_height!*(128+256+10)), ST_Point(ST_XMax(!bbox!)-!pixel_width!*(256+256+12),ST_Ymax(!bbox!)-!pixel_height!*(128+256+10))),900913),st_linemerge(st_collect(way))) as way,highway,ref  from  planet_osm_roads  where way && !bbox! AND highway in ('motorway','trunk','primary','secondary')\n         and ref is not null\n         and char_length(ref) between 1 and 8\n   group by highway, ref, oneway) as ways order by way_len desc) as roads",
+        "table": "      (select *, char_length(ref) as length, st_length(way) as way_len  from (select st_intersection(ST_SetSRID(ST_MakeBox2D(ST_Point(ST_XMin(!bbox!)+!pixel_width!*(256+256+12),ST_Ymin(!bbox!)+!pixel_height!*(128+256+10)), ST_Point(ST_XMax(!bbox!)-!pixel_width!*(256+256+12),ST_Ymax(!bbox!)-!pixel_height!*(128+256+10))),900913),st_linemerge(st_collect(way))) as way,highway,ref, case when highway='motorway' then 0 when highway='trunk' then 2 when highway='primary' then 3 when highway='secondary' then 4 end as prio  from  planet_osm_roads  where way && !bbox! AND highway in ('motorway','trunk','primary','secondary') and osm_id>0 \n         and ref is not null\n         and char_length(ref) between 1 and 8\n   group by highway, ref, oneway) as ways order by prio, way_len desc) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
