@@ -2059,7 +2059,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select *, replace(regexp_replace(coalesce(tags->'name:fr',tags->'int_name',name),'^([Aa]éroport|[Aa]érodrome) ([Ii]nternational )?(d''|de la |de |du |)',''),'Base aérienne ','B.A. ') as nom, tags->'mountain_pass' as mountain_pass, coalesce(tags->'aerodrome', p.military) as aerodrome \n      from planet_osm_point p \n      where aeroway in ('airport','aerodrome','helipad','military')\n or p.military='airfield' or barrier in ('bollard','gate','lift_gate','block','toll_booth') \n         or highway in ('mini_roundabout','gate')\n         or man_made in ('lighthouse','power_wind','windmill','mast')\n         or (power='generator' and (\"generator:source\"='wind' or power_source='wind'))\n         or \"natural\" in ('peak','volcano','spring','tree','cave_entrance')\n         or railway in ('level_crossing','buffer_stop') \n      ) as symbols",
+        "table": "(select *, regexp_replace(regexp_replace(coalesce(tags->'name:fr',tags->'int_name',name),'^([Aa]éroport|[Aa]érodrome) ([Ii]nternational )?(d''|de la |de |du |)',''),'^Base [Aa]érienne ','B.A. ') as nom, tags->'mountain_pass' as mountain_pass, coalesce(tags->'aerodrome', p.military) as aerodrome \n      from planet_osm_point p \n      where aeroway in ('airport','aerodrome','helipad','military')\n or p.military='airfield' or barrier in ('bollard','gate','lift_gate','block','toll_booth') \n         or highway in ('mini_roundabout','gate')\n         or man_made in ('lighthouse','power_wind','windmill','mast')\n         or (power='generator' and (\"generator:source\"='wind' or power_source='wind'))\n         or \"natural\" in ('peak','volcano','spring','tree','cave_entrance')\n         or railway in ('level_crossing','buffer_stop') \n      ) as symbols",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -2270,7 +2270,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select *, char_length(ref) as length, st_length(way) as way_len  from (select st_intersection(ST_SetSRID(ST_MakeBox2D(ST_Point(ST_XMin(!bbox!)+!pixel_width!*(256+256+12),ST_Ymin(!bbox!)+!pixel_height!*(128+256+10)), ST_Point(ST_XMax(!bbox!)-!pixel_width!*(256+256+12),ST_Ymax(!bbox!)-!pixel_height!*(128+256+10))),900913),st_linemerge(st_collect(way))) as way,highway,ref, case when highway='motorway' then 0 when highway='trunk' then 2 when highway='primary' then 3 when highway='secondary' then 4 end as prio  from  planet_osm_roads  where way && !bbox! AND highway in ('motorway','trunk','primary','secondary') and osm_id>0 \n         and ref is not null\n         and char_length(ref) between 1 and 8\n   group by highway, ref, oneway) as ways where st_length(way)>10000 order by prio, way_len desc) as roads",
+        "table": "      (select way,highway,ref, char_length(ref) as length, st_length(way) as way_len, case when highway='motorway' then 0 when highway='trunk' then 2 when highway='primary' then 3 when highway='secondary' then 4 end as prio  from  planet_osm_roads  where way && !bbox! AND highway in ('motorway','trunk','primary','secondary') and osm_id>0 \n         and ref is not null\n         and char_length(ref) between 1 and 8\n and st_length(way)>1000 order by prio, way_len desc) as roads",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",

@@ -1094,7 +1094,9 @@
       line-width: 4;
       line-color: #506077;
       line-dasharray: 4,2;
+      line-clip: false;
       line-smooth: 0.7;
+      
     }
     [zoom >= 13] { line-width: 8; }
     [zoom >= 15] { line-width: 11; }
@@ -1178,6 +1180,7 @@
       line-color: #d6dfea;
       line-cap: round;
       line-join: round;
+      line-clip: false;
       line-smooth: 0.7;
     }
     [zoom >= 13] { line-width: 6.5; }
@@ -1279,6 +1282,7 @@
       line-width: 3;
       line-color: #506077;
       line-join: round;
+      line-clip: false;
       line-smooth: 0.7;
     }
     [zoom >= 13] { line-width: 7.5; }
@@ -1345,6 +1349,7 @@
       line-color: #809bc0;
       line-cap: round;
       line-join: round;
+      line-clip: false;
       line-smooth: 0.7;
     }
     [zoom >= 13] { line-width: 7; }
@@ -1409,14 +1414,15 @@
 
 
 #minor-roads-casing {
-  [zoom>=16][zoom<19][junction = 'roundabout'] { line-smooth: 0.8; }
-  // [zoom>=19][highway != ''] { line-smooth: 1; }
+  [zoom>=16][zoom<19][junction = 'roundabout'] { line-clip: false; line-smooth: 0.8; }
+  // [zoom>=19][highway != ''] { line-clip: false; line-smooth: 1; }
   
   [highway = 'motorway'][tunnel != 'yes'] {
     [zoom >= 12] {
       line-width: 3;
       line-color: #506077;
       line-join: round;
+      line-clip: false;
       line-smooth: 0.7;
     }
     [zoom >= 13] { line-width: 7.5; }
@@ -1570,8 +1576,8 @@
    * https://github.com/mapbox/carto/issues/235
    * https://github.com/mapbox/carto/issues/237
    */
-  [zoom>=16][zoom<19][junction = 'roundabout'] { line-smooth: 0.8; }
-  // [zoom>=19][highway != ''] { line-smooth: 1; }
+  [zoom>=16][zoom<19][junction = 'roundabout'] { line-clip: false; line-smooth: 0.8; }
+  // [zoom>=19][highway != ''] { line-clip: false; line-smooth: 1; }
   
   [highway = 'proposed'],
   [highway = 'construction'] {
@@ -1582,7 +1588,9 @@
       [construction = 'motorway'],
       [construction = 'motorway_link'] {
         line-color: #809bc0;
+        line-clip: false;
         line-smooth: 0.7;
+        b/line-clip: false;
         b/line-smooth: 0.7;
       }
       [construction = 'trunk'],
@@ -1654,6 +1662,7 @@
     [zoom >= 12] {
       line-width: 2.5;
       line-color: #809bc0;
+      line-clip: false;
       line-smooth: 0.7;
     }
     [zoom >= 13] {
@@ -1942,6 +1951,13 @@
   ::railway {
     [railway = 'rail'][tunnel = 'yes'][zoom >= 13],
     [railway = 'spur-siding-yard'][tunnel = 'yes'][zoom >= 13] {
+	a/line-clip: false;
+	b/line-clip: false;
+	c/line-clip: false;
+	d/line-clip: false;
+	e/line-clip: false;
+	f/line-clip: false;
+	g/line-clip: false;
 	a/line-smooth: 0.7;
 	b/line-smooth: 0.7;
 	c/line-smooth: 0.7;
@@ -1990,6 +2006,8 @@
     }
 
     [railway = 'rail'][tunnel != 'yes'][zoom >= 13] {
+	a/line-clip: false;
+	b/line-clip: false;
 	a/line-smooth: 0.7;
 	b/line-smooth: 0.7;
       a/line-width: 3;
@@ -2005,6 +2023,7 @@
     }
 
     [railway = 'spur-siding-yard'][zoom >= 11] {
+	  a/line-clip: false;
 	  a/line-smooth: 0.7;
       a/line-width: 0.5;
       a/line-color: #aaa;
@@ -2016,6 +2035,7 @@
         b/line-dasharray: 0,8,11,1;
         b/line-color: white;
         b/line-join: round;
+		b/line-clip: false;
 		b/line-smooth: 0.7;
       }
     }
@@ -2032,6 +2052,9 @@
           b/line-width: 4;
           c/line-color: #aaa;
           c/line-width: 1.5;
+	a/line-clip: false;
+	b/line-clip: false;
+	c/line-clip: false;
 	a/line-smooth: 0.7;
 	b/line-smooth: 0.7;
 	c/line-smooth: 0.7;
@@ -2048,7 +2071,8 @@
     }
 
     [railway = 'tram'][tunnel = 'yes'][zoom >= 13] {
-		line-smooth: 0.7;
+	  line-clip: false;
+	  line-smooth: 0.7;
       line-width: 1;
       line-dasharray: 5,3;
       line-color: #999;
@@ -2056,7 +2080,8 @@
     }
 
     [railway = 'light_rail'][zoom >= 13] {
-		line-smooth: 0.7;
+	  line-clip: false;
+	  line-smooth: 0.7;
       line-width: 2;
       line-color: #666;
       [tunnel = 'yes'] {
@@ -2066,7 +2091,8 @@
     }
 
     [railway = 'subway'][zoom >= 12] {
-		line-smooth: 0.7;
+	  line-clip: false;
+	  line-smooth: 0.7;
       line-width: 2;
       line-color: #999;
       [tunnel = 'yes'] {
@@ -2078,6 +2104,7 @@
     [railway = 'abandoned'],
     [railway = 'construction'] { /* and not [highway] != '' <- todo */
       [zoom >= 13] {
+		line-clip: false;
 		line-smooth: 0.7;
         line-color: grey;
         line-width: 2;
@@ -2088,7 +2115,6 @@
 
     [railway = 'platform'][tunnel!='yes'] {
       [zoom >= 17] {
-		// line-smooth: 0.7;
         line-join: round;
         line-width: 6;
         line-color: grey;
@@ -2368,13 +2394,14 @@
 }
 
 .bridges {
-  // [zoom>=19] { line-smooth: 1; }
+  // [zoom>=19] { line-clip: false; line-smooth: 1; }
   ::bridges_casing {
     [highway = 'motorway'],
     [highway = 'motorway_link'] {
       [zoom >= 12] {
         line-width: 4;
         line-color: #506077;
+        line-clip: false;
         line-smooth: 0.7;
       }
       [zoom >= 13] {
@@ -2680,6 +2707,7 @@
         line-color: #809bc0;
         line-join: round;
         line-cap: round;
+        line-clip: false;
         line-smooth: 0.7;
       }
       [zoom >= 13] { line-width: 7; }
@@ -3092,8 +3120,9 @@
 }
 
 #roads-text-ref-low-zoom {
-	[way_len>40000][zoom>=10],
-	[way_len>20000][zoom>=11]
+	[way_len>10000][zoom>=10],
+	[way_len>5000][zoom>=11],
+	[way_len>2500][zoom>=12]
 	{
 	  [highway = 'motorway'][length < 9] {
 		[zoom >= 10][zoom < 13] {
@@ -3612,6 +3641,7 @@
 #ski [zoom >= 14] {
   [ski_type='downhill'] {
 	line-width: 2;
+	line-clip: false;
 	line-smooth: 0.5;
 	[zoom >= 16] {line-width: 4; }
 	[zoom >= 18] {line-width: 8; }
