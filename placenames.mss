@@ -175,7 +175,8 @@
 }
 
 #placenames-small::suburb [zoom >= 12] {
-  [place = 'suburb'] {
+	[place = 'neighbourhood'][zoom>=14],
+	[place = 'suburb'] {
     text-name: "[nom]";
     text-size: 8.5;
     text-fill: #666;
@@ -183,7 +184,7 @@
 	text-halo-radius: 1;
   	text-halo-fill: fadeout(white, 30%);
     text-label-position-tolerance: 5;
-    [zoom >= 14] {
+    [zoom >= 15] {
       text-name: "[name]";
       text-size: 12;
     }
@@ -191,11 +192,7 @@
 }
 
 
-#placenames-small-lz::smaller [zoom >= 12] { // remplissage dans les faibles zooms (12-)
-  [place = 'hamlet'],
-  [place = 'locality'],
-  [place = 'isolated_dwelling'],
-  [place = 'farm'] {
+#placenames-small-lz::smaller [place = 'hamlet'][zoom >= 12] { // remplissage dans les faibles zooms (12 et +)
 	text-name: "[nom]";
     text-size: 8.5;
     text-fill: #666;
@@ -204,7 +201,6 @@
   	text-halo-fill: fadeout(white, 30%);
     text-min-distance: 25;
     text-label-position-tolerance: 5;
-  }
 }
 
 #placenames-small::hamlet [zoom >= 14] {
