@@ -198,6 +198,11 @@
     point-placement: interior;
   }
 
+  [amenity = 'ranger_station'][zoom >= 17]::amenity {
+    point-file: url('symbols/ranger_station.p.16.png');
+    point-placement: interior;
+  }
+
   [amenity = 'post_box'][zoom >= 17]::amenity {
     point-file: url('symbols/post_box.p.16.png');
     point-placement: interior;
