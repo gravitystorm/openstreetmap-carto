@@ -682,7 +682,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,barrier,\"natural\" from planet_osm_polygon where barrier is not null or \"natural\"='hedge') as barriers",
+        "table": "(select way,barrier from planet_osm_polygon where barrier is not null) as barriers",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
