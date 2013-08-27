@@ -86,18 +86,20 @@
 
 #national-park-boundaries {
   [zoom >= 7] {
-    [zoom < 13] {
-      polygon-opacity: 0.05;
+    ::fill [zoom < 13] {
+      opacity: 0.05;
       polygon-fill: green;
     }
-    line-color: green;
-    line-width: 1.5;
-    line-dasharray: 4,2;
-    line-opacity: 0.15;
-    [zoom >= 10] {
-      line-width: 3;
-      line-dasharray: 6,2;
-      line-join: bevel;
+    ::line {
+      opacity: 0.15;
+      line-color: green;
+      line-width: 1.5;
+      line-dasharray: 4,2;
+      [zoom >= 10] {
+        line-width: 3;
+        line-dasharray: 6,2;
+        line-join: bevel;
+      }
     }
   }
   [way_area > 200000000][zoom >= 8][zoom < 12],
