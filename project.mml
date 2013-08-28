@@ -1967,8 +1967,7 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis",
-        "extent_cache": "auto"
+        "dbname": "gis"
       },
       "id": "text",
       "class": "text",
@@ -2137,7 +2136,6 @@
   ],
   "scale": 1,
   "metatile": 2,
-  "_basemap": "",
   "name": "OpenStreetMap Carto",
   "description": "A faithful reimplementation of the standard OpenStreetMap style"
 }
