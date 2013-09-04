@@ -6,7 +6,7 @@ These stylesheets can be used in your own cartography projects, and are designed
 customised. They work with [TileMill](http://www.mapbox.com/tilemill/) and also with the command-line [CartoCSS](https://github.com/mapbox/carto) processor.
 
 Since August 2013 these stylesheets are used on the OSMF tileservers (tile.openstreetmap.org), and
-are updated from each point release. They supercede the previous [XML-based stylesheets](https://trac.openstreetmap.org/browser/subversion/applications/rendering/mapnik)
+are updated from each point release. They supersede the previous [XML-based stylesheets](https://trac.openstreetmap.org/browser/subversion/applications/rendering/mapnik)
 
 # Setup
 
