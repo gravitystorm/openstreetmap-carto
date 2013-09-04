@@ -2405,6 +2405,8 @@
       text-name: "[name]";
       text-size: 9;
       text-fill: #000;
+      text-spacing: 300;
+      text-clip: false;
       text-placement: line;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
@@ -2437,6 +2439,8 @@
     text-name: "[name]";
     text-size: 9;
     text-fill: #000;
+    text-spacing: 300;
+    text-clip: false;
     text-placement: line;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
