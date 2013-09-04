@@ -651,7 +651,7 @@
     text-name: "[name]";
     text-size: 8;
     text-fill: #0066ff;
-    text-dy: 9;
+    text-dy: 10;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-placement: interior;
@@ -661,7 +661,7 @@
     text-name: "[name]";
     text-size: 8;
     text-fill: #0066ff;
-    text-dy: 7;
+    text-dy: 8;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-placement: interior;
