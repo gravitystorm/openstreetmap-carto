@@ -258,7 +258,7 @@
   }
 
   [feature = 'amenity_parking'][zoom >= 10] {
-    polygon-fill: parking;
+    polygon-fill: @parking;
     [zoom >= 15] {
       line-width: 0.3;
       line-color: @parking;

@@ -14,7 +14,7 @@ Map {
 // --- Parks, woods, other green things ---
 
 @forest: #8dc56c;
-@grass: #cfeca8; // also medow, common, garden, village_green, conservation
+@grass: #cfeca8; // also meadow, common, garden, village_green, conservation
 @golf_course: #b5e3b5;
 @natural: #c6e4b4; // also grassland
 @park: #b6fdb6; // also recreation_ground
@@ -53,5 +53,5 @@ Map {
 @retail: #f1dada;
 @residential: #ddd;
 @sand: #ffdf88;
-@school: #f0f0d8l; // also university, college, hospital, kindergarten
+@school: #f0f0d8; // also university, college, hospital, kindergarten
 @sub_station: #444;	// WHY ARE THESE DIFFERENT
