@@ -2157,6 +2157,15 @@
       line-width: 6;
     }
   }
+
+  [highway = 'taxipath'][bridge = 'no'][zoom >= 14] {
+    line-width: 1.5;
+    line-color: #bbc;
+    [zoom >= 15] {
+      line-width: 2;
+    }
+  }
+
 }
 
 /* This is a good target for refactoring */
@@ -2594,6 +2603,12 @@
       line-color: black;
       [zoom >= 15] { line-width: 7; }
     }
+
+    [highway = 'taxipath'][zoom >= 14] {
+      line-width: 2;
+      line-color: black;
+      [zoom >= 15] { line-width: 3; }
+    }
   }
 
   ::bridges-casing2 {
@@ -2969,6 +2984,12 @@
       line-color: #bbc;
       [zoom >= 15] { line-width: 6; }
     }
+
+    [highway = 'taxipath'][zoom >= 14] {
+      line-width: 1.5;
+      line-color: #bbc;
+      [zoom >= 15] { line-width: 2; }
+    }
   }
 }
 
@@ -3251,7 +3272,8 @@
   }
 
   [highway = 'runway'],
-  [highway = 'taxiway'] {
+  [highway = 'taxiway'],
+  [highway = 'taxipath'][zoom>=16] {
     [zoom >= 15][bridge = 'no'] {
       text-name: "[ref]";
       text-size: 10;
