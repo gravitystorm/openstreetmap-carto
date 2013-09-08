@@ -256,8 +256,7 @@
     }
   }
 
-  [feature = 'natural_wood'],
-  [feature = 'landuse_wood'] {
+  [feature = 'natural_wood'] {
     [zoom >= 8] {
       polygon-fill: @wood;
     }
