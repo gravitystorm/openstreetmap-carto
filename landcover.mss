@@ -35,13 +35,12 @@
 @farm: #ead8bd; // also farmland
 @parking: #f7efb7;
 @playground: #ccfff1;
-@power: #dfd1d6;    // WHY ARE THESE DIFFERENT
+@power: #bbb;
 @rest_area: #efc8c8; // also services
 @retail: #f1dada;
 @residential: #ddd;
 @sand: #ffdf88;
 @school: #f0f0d8; // also university, college, hospital, kindergarten
-@sub_station: #444; // WHY ARE THESE DIFFERENT
 
 #landcover {
  [feature = 'leisure_swimming_pool'][zoom >= 14] {
@@ -237,7 +236,7 @@
   }
 
   [feature = 'power_sub_station'][zoom >= 13] {
-    polygon-fill: @sub_station;
+    polygon-fill: @power;
     line-width: 0.4;
     line-color: #555;
   }
