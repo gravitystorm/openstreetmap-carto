@@ -45,8 +45,8 @@ unzip $UNZIP_OPTS data/land-polygons-split-3857.zip -d data/
 
 #process populated places
 echo "processing ne_10m_populated_places..."
-
-ogr2ogr -overwrite data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp data/ne_10m_populated_places/ne_10m_populated_places.shp
+rm -f data/ne_10m_populated_places/ne_10m_populated_places_fixed.*
+ogr2ogr data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp data/ne_10m_populated_places/ne_10m_populated_places.shp
 
 #index
 echo "indexing shapefiles"
