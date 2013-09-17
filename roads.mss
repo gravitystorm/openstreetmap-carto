@@ -492,7 +492,7 @@
   }
 }
 
-#minor-roads-casing::links {
+#roads-casing::links {
   [highway = 'raceway'] {
     [zoom >= 12] {
       line-color: pink;
@@ -561,7 +561,7 @@
   }
 }
 
-#minor-roads-casing {
+#roads-casing {
   [highway = 'motorway'][tunnel != 'yes'] {
     [zoom >= 12] {
       line-width: @motorway-width-z12 + 1;
@@ -690,7 +690,7 @@
   }
 }
 
-#minor-roads-fill::links {
+#roads-fill::links {
   [feature = 'highway_motorway_link'][tunnel != 'yes'] {
     [zoom >= 12] {
       line-width: @motorway-width-z12 - 1.5;
@@ -752,7 +752,7 @@
   }
 }
 
-#minor-roads-fill {
+#roads-fill {
 
   /*
    * The construction rules for small roads are strange, since if construction is null its assumed that
@@ -1228,6 +1228,48 @@
       [tunnel = 'yes'] {
         line-dasharray: 5,3;
       }
+    }
+
+
+    [feature = 'railway_preserved'][zoom >= 12] {
+      line-width: 1.5;
+      line-color: #aaa;
+      line-join: round;
+      [zoom >= 13] {
+        line-width: 3;
+        line-color: #999999;
+        b/line-width: 1;
+        b/line-color: white;
+        b/line-dasharray: 0,1,8,1;
+        b/line-join: round;
+      }
+    }
+
+    [feature = 'railway_INT-preserved-ssy'][zoom >= 12] {
+      line-width: 1;
+      line-color: #aaa;
+      line-join: round;
+      [zoom >= 13] {
+        line-width: 2;
+        line-color: #999999;
+        b/line-width: 0.8;
+        b/line-color: white;
+        b/line-dasharray: 0,1,8,1;
+        b/line-join: round;
+      }
+    }
+
+    [feature = 'railway_monorail'][zoom >= 14] {
+      line-width: 4;
+      line-color: #fff;
+      line-opacity: 0.4;
+      line-cap: round;
+      line-join: round;
+      b/line-width: 3;
+      b/line-color: #777;
+      b/line-dasharray: 2,3;
+      b/line-cap: round;
+      b/line-join: round;
     }
 
     [feature = 'railway_disused'],
@@ -2087,7 +2129,7 @@
   }
 }
 
-#roads {
+#roads-low-zoom {
   [feature = 'highway_motorway'],
   [feature = 'highway_motorway_link'] {
     [zoom >= 5][zoom < 12] {
@@ -2146,54 +2188,12 @@
 
     [feature = 'railway_tram'],
     [feature = 'railway_light_rail'],
-    [feature = 'railway_narrow_gauge'],
-    [feature = 'railway_funicular'] {
+    [feature = 'railway_narrow_gauge'] {
       [zoom >= 8][zoom < 13] {
         line-width: 1;
         line-color: #ccc;
         [zoom >= 10] { line-color: #aaa }
       }
-    }
-
-    [feature = 'railway_preserved'][zoom >= 12] {
-      line-width: 1.5;
-      line-color: #aaa;
-      line-join: round;
-      [zoom >= 13] {
-        line-width: 3;
-        line-color: #999999;
-        b/line-width: 1;
-        b/line-color: white;
-        b/line-dasharray: 0,1,8,1;
-        b/line-join: round;
-      }
-    }
-
-    [feature = 'railway_INT-preserved-ssy'][zoom >= 12] {
-      line-width: 1;
-      line-color: #aaa;
-      line-join: round;
-      [zoom >= 13] {
-        line-width: 2;
-        line-color: #999999;
-        b/line-width: 0.8;
-        b/line-color: white;
-        b/line-dasharray: 0,1,8,1;
-        b/line-join: round;
-      }
-    }
-
-    [feature = 'railway_monorail'][zoom >= 14] {
-      line-width: 4;
-      line-color: #fff;
-      line-opacity: 0.4;
-      line-cap: round;
-      line-join: round;
-      b/line-width: 3;
-      b/line-color: #777;
-      b/line-dasharray: 2,3;
-      b/line-cap: round;
-      b/line-join: round;
     }
 }
 
