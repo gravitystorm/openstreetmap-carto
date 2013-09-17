@@ -105,6 +105,7 @@ judgement. The work done already in v1.0 and v2.0 will make it much easier to pr
 * Dashes, not underscores, in layer names
 * Avoid restating defaults, e.g. don't add `point-allow-overlap = false`
 * Do not repeat the layer name for layers with mutiple attachments, i.e., use
+
 ```
 #layer {
   ::outline {
@@ -116,7 +117,10 @@ judgement. The work done already in v1.0 and v2.0 will make it much easier to pr
     line-color: white;
   }
 }
+```
 instead of
+
+```
 #layer::outline {
     line-width: 6;
     line-color: black;
