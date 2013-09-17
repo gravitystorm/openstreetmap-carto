@@ -478,6 +478,52 @@
       ],
       "Datasource": {
         "type": "postgis",
+        "table": "(select way,highway,horse,foot,bicycle from planet_osm_line where highway in ('bridleway','footway','cycleway','path') and tunnel in ('yes','true','1') order by z_order) as roads",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "gis"
+      },
+      "id": "footbikecycle-tunnels",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "footbikecycle-tunnels"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way,tracktype from planet_osm_line where highway='track' and tunnel in ('yes','true','1')) as tracks",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "gis"
+      },
+      "id": "tracks-tunnels",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "tracks-tunnels"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
         "table": "(select way from planet_osm_line where \"historic\"='citywalls') as citywalls",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
@@ -559,75 +605,6 @@
       "name": "landuse-overlay"
     },
     {
-      "geometry": "point",
-      "extent": [
-        -179.99999692067183,
-        -84.96651228427099,
-        179.99999692067183,
-        84.96651228427098
-      ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "(select distinct on (p.way) p.way as way,l.highway as int_tc_type\n       from planet_osm_point p\n       join planet_osm_line l\n        on ST_DWithin(p.way,l.way,0.1)\n       join (values\n        ('tertiary',1),\n        ('unclassified',2),\n        ('residential',3),\n        ('living_street',4),\n        ('service',5)\n       ) as v (highway,prio)\n        on v.highway=l.highway\n       where p.highway='turning_circle'\n       order by p.way,v.prio\n      ) as turning_circle",
-        "extent": "-20037508,-19929239,20037508,19929239",
-        "key_field": "",
-        "geometry_field": "way",
-        "dbname": "gis"
-      },
-      "id": "turning-circle-casing",
-      "class": "",
-      "srs-name": "900913",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "turning-circle-casing"
-    },
-    {
-      "geometry": "linestring",
-      "extent": [
-        -179.99999692067183,
-        -84.96651228427099,
-        179.99999692067183,
-        84.96651228427098
-      ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "(select way,highway,horse,foot,bicycle from planet_osm_line where highway in ('bridleway','footway','cycleway','path') and tunnel in ('yes','true','1') order by z_order) as roads",
-        "extent": "-20037508,-19929239,20037508,19929239",
-        "key_field": "",
-        "geometry_field": "way",
-        "dbname": "gis"
-      },
-      "id": "footbikecycle-tunnels",
-      "class": "",
-      "srs-name": "900913",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "footbikecycle-tunnels"
-    },
-    {
-      "geometry": "linestring",
-      "extent": [
-        -179.99999692067183,
-        -84.96651228427099,
-        179.99999692067183,
-        84.96651228427098
-      ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "(select way,tracktype from planet_osm_line where highway='track' and tunnel in ('yes','true','1')) as tracks",
-        "extent": "-20037508,-19929239,20037508,19929239",
-        "key_field": "",
-        "geometry_field": "way",
-        "dbname": "gis"
-      },
-      "id": "tracks-tunnels",
-      "class": "",
-      "srs-name": "900913",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "tracks-tunnels"
-    },
-    {
       "geometry": "linestring",
       "extent": [
         -179.99999692067183,
@@ -694,6 +671,52 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
       "name": "area-barriers"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way from planet_osm_line where route='ferry' ) as routes",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "gis"
+      },
+      "id": "ferry-routes",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "ferry-routes"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select distinct on (p.way) p.way as way,l.highway as int_tc_type\n       from planet_osm_point p\n       join planet_osm_line l\n        on ST_DWithin(p.way,l.way,0.1)\n       join (values\n        ('tertiary',1),\n        ('unclassified',2),\n        ('residential',3),\n        ('living_street',4),\n        ('service',5)\n       ) as v (highway,prio)\n        on v.highway=l.highway\n       where p.highway='turning_circle'\n       order by p.way,v.prio\n      ) as turning_circle",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "gis"
+      },
+      "id": "turning-circle-casing",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "turning-circle-casing"
     },
     {
       "extent": [
@@ -885,18 +908,41 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way from planet_osm_line where route='ferry' ) as routes",
+        "table": "(select way,access,highway,\n       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service\n       from planet_osm_line\n       where access is not null and highway is not null\n         and (bridge is null or bridge not in ('yes','true','1','viaduct'))\n      ) as access",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
         "dbname": "gis"
       },
-      "id": "ferry-routes",
-      "class": "",
+      "id": "access-pre-bridges",
+      "class": "access",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "ferry-routes"
+      "name": "access-pre-bridges"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way,\n       case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway\n       from planet_osm_line\n       where oneway is not null\n         and (highway is not null or railway is not null or waterway is not null)\n         and (bridge is null or bridge not in ('yes','true','1','viaduct'))\n      ) as directions",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "gis"
+      },
+      "id": "direction-pre-bridges",
+      "class": "directions",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "direction-pre-bridges"
     },
     {
       "geometry": "linestring",
@@ -966,52 +1012,6 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
       "name": "waterway-bridges"
-    },
-    {
-      "geometry": "linestring",
-      "extent": [
-        -179.99999692067183,
-        -84.96651228427099,
-        179.99999692067183,
-        84.96651228427098
-      ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "(select way,access,highway,\n       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service\n       from planet_osm_line\n       where access is not null and highway is not null\n         and (bridge is null or bridge not in ('yes','true','1','viaduct'))\n      ) as access",
-        "extent": "-20037508,-19929239,20037508,19929239",
-        "key_field": "",
-        "geometry_field": "way",
-        "dbname": "gis"
-      },
-      "id": "access-pre-bridges",
-      "class": "access",
-      "srs-name": "900913",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "access-pre-bridges"
-    },
-    {
-      "geometry": "linestring",
-      "extent": [
-        -179.99999692067183,
-        -84.96651228427099,
-        179.99999692067183,
-        84.96651228427098
-      ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "(select way,\n       case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway\n       from planet_osm_line\n       where oneway is not null\n         and (highway is not null or railway is not null or waterway is not null)\n         and (bridge is null or bridge not in ('yes','true','1','viaduct'))\n      ) as directions",
-        "extent": "-20037508,-19929239,20037508,19929239",
-        "key_field": "",
-        "geometry_field": "way",
-        "dbname": "gis"
-      },
-      "id": "direction-pre-bridges",
-      "class": "directions",
-      "srs-name": "900913",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "direction-pre-bridges"
     },
     {
       "geometry": "linestring",
