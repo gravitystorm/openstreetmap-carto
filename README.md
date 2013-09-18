@@ -104,7 +104,7 @@ judgement. The work done already in v1.0 and v2.0 will make it much easier to pr
 * space after : but no before
 * Dashes, not underscores, in layer names
 * Avoid restating defaults, e.g. don't add `point-allow-overlap = false`
-* Do not repeat the layer name for layers with mutiple attachments, i.e., use
+* Avoid repeating the layer name for layers with mutiple attachments, i.e., prefer
 
 ```
 #layer {
