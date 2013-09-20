@@ -839,30 +839,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,tracktype from planet_osm_line where highway='track' and (bridge is null or bridge in ('no','false','0')) and (tunnel is null or tunnel in ('no','false','0'))) as tracks",
-        "extent": "-20037508,-19929239,20037508,19929239",
-        "key_field": "",
-        "geometry_field": "way",
-        "dbname": "gis"
-      },
-      "id": "tracks-notunnel-nobridge",
-      "class": "",
-      "srs-name": "900913",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "tracks-notunnel-nobridge"
-    },
-    {
-      "geometry": "linestring",
-      "extent": [
-        -179.99999692067183,
-        -84.96651228427099,
-        179.99999692067183,
-        84.96651228427098
-      ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "      (select way,\n       coalesce(('highway_' || (case when highway is not null then highway else null end)), ('railway_' ||(case when railway='preserved' and service in ('spur','siding','yard') then 'INT-preserved-ssy'::text\n            when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'spur-siding-yard'\n            when railway in ('light_rail','narrow_gauge','funicular','rail','subway','tram','spur','siding','monorail','platform','preserved','disused','abandoned','construction','miniature','turntable')\n then railway else null end)), ('aeroway_' || (case when aeroway in ('runway', 'taxiway') then aeroway else null end))) as feature,\n       horse,bicycle,foot,construction,\n       case when tunnel in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel,\n       case when bridge in ('yes','true','1','viaduct') then 'yes'::text else 'no'::text end as bridge,\n       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service\n       from planet_osm_line\n       where highway is not null\n          or aeroway in ('runway','taxiway')\n          or railway in ('light_rail','narrow_gauge','funicular','rail','subway','tram','spur','siding','monorail','platform','preserved','disused','abandoned','construction','miniature','turntable')\n       order by z_order) as roads\n",
+        "table": "      (select way,tracktype,\n       coalesce(('highway_' || (case when highway is not null then highway else null end)), ('railway_' ||(case when railway='preserved' and service in ('spur','siding','yard') then 'INT-preserved-ssy'::text\n            when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'spur-siding-yard'\n            when railway in ('light_rail','narrow_gauge','funicular','rail','subway','tram','spur','siding','monorail','platform','preserved','disused','abandoned','construction','miniature','turntable')\n then railway else null end)), ('aeroway_' || (case when aeroway in ('runway', 'taxiway') then aeroway else null end))) as feature,\n       horse,bicycle,foot,construction,\n       case when tunnel in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel,\n       case when bridge in ('yes','true','1','viaduct') then 'yes'::text else 'no'::text end as bridge,\n       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service\n       from planet_osm_line\n       where highway is not null\n          or aeroway in ('runway','taxiway')\n          or railway in ('light_rail','narrow_gauge','funicular','rail','subway','tram','spur','siding','monorail','platform','preserved','disused','abandoned','construction','miniature','turntable')\n       order by z_order) as roads\n",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
