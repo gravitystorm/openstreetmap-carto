@@ -1091,12 +1091,14 @@
       b/line-color: @track-fill;
       b/line-cap: round;
       b/line-join: round;
+      b/line-dasharray: 3,4;
       [zoom >= 13][zoom < 14] {
         line-width: 2.5;
         b/line-width: 1.2;
-        b/line-dasharray: 3,4;
       }
       [zoom >= 14] {
+        line-width: 3;
+        b/line-width: 1.5;
         [tracktype = 'grade1'] {
           line-width: 3.5;
           b/line-width: 2;
