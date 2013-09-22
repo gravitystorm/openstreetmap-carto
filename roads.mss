@@ -497,6 +497,7 @@
     [zoom >= 12] {
       line-color: pink;
       line-width: 1.2;
+      line-cap: round;
       line-join: round;
     }
     [zoom >= 13] { line-width: 4; }
@@ -507,6 +508,7 @@
     [zoom >= 12] {
       line-width: @motorway-width-z12 - 1.5 + 1;
       line-color: @motorway-casing;
+      line-cap: round;
       line-join: round;
     }
     [zoom >= 13] { line-width: @motorway-width-z13 - 2 + 1.5; }
@@ -518,6 +520,7 @@
     [zoom >= 12] {
       line-width: @trunk-width-z12 + 1;
       line-color: @trunk-casing;
+      line-cap: round;
       line-join: round;
     }
     [zoom >= 13] { line-width: @trunk-width-z13 + 1.5; }
@@ -529,6 +532,7 @@
     [zoom >= 12] {
       line-width: @primary-width-z12 + 1;
       line-color: @primary-casing;
+      line-cap: round;
       line-join: round;
     }
     [zoom >= 13] { line-width: @primary-width-z13 + 1.5; }
@@ -566,6 +570,7 @@
     [zoom >= 12] {
       line-width: @motorway-width-z12 + 1;
       line-color: @motorway-casing;
+      line-cap: round;
       line-join: round;
     }
     [zoom >= 13] { line-width: @motorway-width-z13 + 1.5; }
@@ -577,6 +582,7 @@
     [zoom >= 12] {
       line-width: @trunk-width-z12 + 1;
       line-color: @trunk-casing;
+      line-cap: round;
       line-join: round;
     }
     [zoom >= 13] { line-width: @trunk-width-z13 + 1.5; }
@@ -588,6 +594,7 @@
     [zoom >= 12] {
       line-width: @primary-width-z12 + 1;
       line-color: @primary-casing;
+      line-cap: round;
       line-join: round;
     }
     [zoom >= 13] { line-width: @primary-width-z13 + 1.5; }
@@ -1569,6 +1576,7 @@
         line-width: 3;
         line-color: @motorway-casing;
         line-join: round;
+        line-cap: round;
       }
       [zoom >= 13] {
         line-width: 6.5;
@@ -1584,6 +1592,7 @@
         line-width: 4;
         line-color: @trunk-casing;
         line-join: round;
+        line-cap: round;
       }
       [zoom >= 13] {
         line-width: 8;
@@ -1599,6 +1608,7 @@
         line-width: 4;
         line-color: @primary-casing;
         line-join: round;
+        line-cap: round;
       }
       [zoom >= 13] {
         line-width: 8;
