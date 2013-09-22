@@ -1089,18 +1089,57 @@
     b/line-cap: round;
   }
 
-  /* Todo re-unite this with the rest of the track definitions */
-  [feature = 'highway_track'][zoom >= 13][zoom < 14] {
-    line-color: @track-casing;
-    line-width: 2.5;
-    line-opacity: 0.4;
-    line-join: round;
-    line-cap: round;
-    b/line-width: 1.2;
-    b/line-color: @track-fill;
-    b/line-dasharray: 3,4;
-    b/line-cap: round;
-    b/line-join: round;
+  [feature = 'highway_track'] {
+    [zoom >= 13] {
+      line-color: @track-casing;
+      line-join: round;
+      line-cap: round;
+      line-opacity: 0.4;
+      b/line-color: @track-fill;
+      b/line-cap: round;
+      b/line-join: round;
+      b/line-dasharray: 3,4;
+      [zoom >= 13][zoom < 14] {
+        line-width: 2.5;
+        b/line-width: 1.2;
+      }
+      [zoom >= 14] {
+        line-width: 3;
+        b/line-width: 1.5;
+        [tracktype = 'grade1'] {
+          line-width: 3.5;
+          b/line-width: 2;
+          b/line-color: @track-grade1-fill;
+          b/line-dasharray: 100,0; /* i.e. none, see https://github.com/mapbox/carto/issues/214 */
+          b/line-opacity: 0.7;
+        }
+        [tracktype = 'grade2'] {
+          line-width: 3;
+          b/line-color: @track-grade2-fill;
+          b/line-width: 1.5;
+          b/line-dasharray: 9,4;
+          b/line-opacity: 0.8;
+        }
+        [tracktype = 'grade3'] {
+          line-width: 3;
+          b/line-width: 1.5;
+          b/line-dasharray: 3,4;
+          b/line-opacity: 0.8;
+        }
+        [tracktype = 'grade4'] {
+          line-width: 3;
+          b/line-width: 2;
+          b/line-dasharray: 4,7,1,5;
+          b/line-opacity: 0.8;
+         }
+        [tracktype = 'grade5'] {
+          line-width: 3;
+          b/line-width: 2;
+          b/line-dasharray: 1,5;
+          b/line-opacity: 0.8;
+        }
+      }
+    }
   }
 
   /* TODO remove */
@@ -1484,46 +1523,6 @@
     c/line-dasharray: 6,3;
     c/line-cap: round;
     c/line-join: round;
-  }
-}
-
-#tracks-notunnel-nobridge {
-  [zoom >= 14] {
-    line-width: 3;
-    line-color: @track-casing;
-    line-opacity: 0.4;
-    line-join: round;
-    line-cap: round;
-    b/line-width: 1.5;
-    b/line-color: @track-fill;
-    b/line-dasharray: 3,4;
-    b/line-cap: round;
-    b/line-join: round;
-    [tracktype = 'grade1'] {
-      line-width: 3.5;
-      b/line-width: 2;
-      b/line-color: @track-grade1-fill;
-      b/line-opacity: 0.7;
-      b/line-dasharray: 100,0; /* i.e. none, see https://github.com/mapbox/carto/issues/214 */
-    }
-    [tracktype = 'grade2'] {
-      b/line-color: @track-grade2-fill;
-      b/line-dasharray: 9,4;
-      b/line-opacity: 0.8;
-    }
-    [tracktype = 'grade3'] {
-      b/line-opacity: 0.8;
-    }
-    [tracktype = 'grade4'] {
-      b/line-width: 2;
-      b/line-dasharray: 4,7,1,5;
-      b/line-opacity: 0.8;
-    }
-    [tracktype = 'grade5'] {
-      b/line-width: 2;
-      b/line-dasharray: 1,5;
-      b/line-opacity: 0.8;
-    }
   }
 }
 
