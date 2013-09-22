@@ -1576,7 +1576,6 @@
         line-width: 3;
         line-color: @motorway-casing;
         line-join: round;
-        line-cap: round;
       }
       [zoom >= 13] {
         line-width: 6.5;
@@ -1592,7 +1591,6 @@
         line-width: 4;
         line-color: @trunk-casing;
         line-join: round;
-        line-cap: round;
       }
       [zoom >= 13] {
         line-width: 8;
@@ -1608,7 +1606,6 @@
         line-width: 4;
         line-color: @primary-casing;
         line-join: round;
-        line-cap: round;
       }
       [zoom >= 13] {
         line-width: 8;
