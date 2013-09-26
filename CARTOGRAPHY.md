@@ -29,3 +29,9 @@ For similar reasons, use of external non-OSM data should be avoided.
 ## Legibility
 
 I mean this not only in terms of font size, but in the ability of users to be able to "read" the map style. For example, a user might not be familiar with our exact road colours, but should be able to understand their relative importance via intensity of colour, width or other attributes. Important features should be more easily spotted and understood than less important information. It should be possible to gain an understanding of the majority of the map without using a legend.
+
+## The Mapper Feedback Loop
+
+If you thought that mappers were happy just to press "Save" on their editor, you'd be wrong. A key part of their feedback loop - to reassure them their work has been saved, and also to check that they have mapped 'correctly' - is waiting to see the results of their mapping on the main map layer on www.osm.org
+
+While this desire is in obvious conflict with the above comments on level of detail, it has a second impact on the map style. We need to, wherever possible, avoid accidentally encouraging mistakes - that is, avoiding the situation where a clearly misspelled or misused tag leads to the originally expected result. So `highway=mtorway` shouldn't show up as if it was `highway=motorway`, and so on. This has been a problem with "catch-all" rules in queries and filters, such as `where leisure is not null` or `[amenity != ""]`. Avoid these situations.

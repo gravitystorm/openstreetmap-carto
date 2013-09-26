@@ -2182,6 +2182,7 @@
 
     [feature = 'railway_tram'],
     [feature = 'railway_light_rail'],
+    [feature = 'railway_funicular'],
     [feature = 'railway_narrow_gauge'] {
       [zoom >= 8][zoom < 13] {
         line-width: 1;
