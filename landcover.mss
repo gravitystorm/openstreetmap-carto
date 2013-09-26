@@ -250,7 +250,7 @@
   [feature = 'landuse_greenfield'],
   [feature = 'landuse_construction'] {
     [zoom >= 10] {
-      polygon-fill: @commercial;
+      polygon-fill: @construction;
       polygon-opacity: 0.7;
     }
   }
