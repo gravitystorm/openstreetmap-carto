@@ -490,6 +490,122 @@
     [zoom >= 16] { line-width: 9.4; }
     [zoom >= 17] { line-width: 13; }
   }
+
+  [highway = 'bridleway'],
+  [highway = 'path'][horse = 'designated'] {
+    [zoom >= 13] {
+      line-width: 5;
+      line-color: @tunnel-casing;
+      line-dasharray: 4,2;
+      b/line-width: 3;
+      b/line-color: @bridleway-casing;
+      b/line-cap: round;
+      b/line-join: round;
+      c/line-width: 2;
+      c/line-color: @bridleway-fill;
+      c/line-opacity: 0.5;
+      c/line-dasharray: 4,2;
+      c/line-join: round;
+      c/line-cap: round;
+    }
+  }
+
+  [highway = 'footway'],
+  [highway = 'path'][foot = 'designated'] {
+    [zoom >= 13] {
+      line-width: 5.5;
+      line-color: @tunnel-casing;
+      line-dasharray: 4,2;
+      b/line-width: 3.5;
+      b/line-color: @footway-casing;
+      b/line-join: round;
+      b/line-cap: round;
+      c/line-width: 2.5;
+      c/line-color: @footway-fill;
+      c/line-dasharray: 1,3;
+      c/line-opacity: 0.5;
+      c/line-join: round;
+      c/line-cap: round;
+    }
+  }
+
+  [highway = 'cycleway'],
+  [highway = 'path'][bicycle = 'designated'] {
+    [zoom >= 13] {
+      line-width: 5;
+      line-color: @tunnel-casing;
+      line-dasharray: 4,2;
+      b/line-width: 3;
+      b/line-color: @cycleway-casing;
+      b/line-join: round;
+      b/line-cap: round;
+      c/line-width: 2;
+      c/line-color: @cycleway-fill;
+      c/line-opacity: 0.5;
+      c/line-dasharray: 1,3;
+      c/line-join: round;
+      c/line-cap: round;
+    }
+  }
+
+  /*
+  * The above defininitions should override this when needed
+  * given the specitivity precedence.
+  */
+  [highway = 'path'][zoom >= 13] {
+    line-width: 5.5;
+    line-color: @tunnel-casing;
+    line-dasharray: 4,2;
+    b/line-width: 1;
+    b/line-color: @path-casing;
+    b/line-opacity: 0.4;
+    b/line-join: round;
+    b/line-cap: round;
+    c/line-width: 0.5;
+    c/line-color: @path-fill;
+    c/line-dasharray: 6,3;
+    c/line-cap: round;
+    c/line-join: round;
+  }
+
+  [highway = 'track'][zoom >= 14] {
+    line-width: 4.5;
+    line-color: @tunnel-casing;
+    line-dasharray: 4,2;
+    b/line-width: 3;
+    b/line-color: @track-casing;
+    b/line-cap: round;
+    b/line-join: round;
+    c/line-width: 1.5;
+    c/line-color: @track-fill;
+    c/line-dasharray: 3,4;
+    c/line-opacity: 0.5;
+    c/line-join: round;
+    c/line-cap: round;
+    [tracktype = 'grade1'] {
+      line-width: 4;
+      b/line-width: 3.5;
+      c/line-width: 2;
+      c/line-color: @track-grade1-fill;
+      c/line-dasharray: 100,0; /* i.e. none, see https://github.com/mapbox/carto/issues/214 */
+    }
+    [tracktype = 'grade2'] {
+      c/line-color: @track-grade2-fill;
+    }
+    [tracktype = 'grade3'] {
+      b/line-width: 3.5;
+      c/line-width: 2;
+      c/line-dasharray: 100,0; /* yes, weird but true */
+    }
+    [tracktype = 'grade4'] {
+      c/line-width: 2;
+      c/line-dasharray: 4,7,1,5;
+    }
+    [tracktype = 'grade5'] {
+      c/line-width: 2;
+      c/line-dasharray: 1,5;
+    }
+  }
 }
 
 #roads-casing::links {
@@ -1362,126 +1478,6 @@
     line-color: @taxiway-fill;
     [zoom >= 15] {
       line-width: 6;
-    }
-  }
-}
-
-#footbikecycle-tunnels {
-  [highway = 'bridleway'],
-  [highway = 'path'][horse = 'designated'] {
-    [zoom >= 13] {
-      line-width: 5;
-      line-color: @tunnel-casing;
-      line-dasharray: 4,2;
-      b/line-width: 3;
-      b/line-color: @bridleway-casing;
-      b/line-cap: round;
-      b/line-join: round;
-      c/line-width: 2;
-      c/line-color: @bridleway-fill;
-      c/line-opacity: 0.5;
-      c/line-dasharray: 4,2;
-      c/line-join: round;
-      c/line-cap: round;
-    }
-  }
-
-  [highway = 'footway'],
-  [highway = 'path'][foot = 'designated'] {
-    [zoom >= 13] {
-      line-width: 5.5;
-      line-color: @tunnel-casing;
-      line-dasharray: 4,2;
-      b/line-width: 3.5;
-      b/line-color: @footway-casing;
-      b/line-join: round;
-      b/line-cap: round;
-      c/line-width: 2.5;
-      c/line-color: @footway-fill;
-      c/line-dasharray: 1,3;
-      c/line-opacity: 0.5;
-      c/line-join: round;
-      c/line-cap: round;
-    }
-  }
-
-  [highway = 'cycleway'],
-  [highway = 'path'][bicycle = 'designated'] {
-    [zoom >= 13] {
-      line-width: 5;
-      line-color: @tunnel-casing;
-      line-dasharray: 4,2;
-      b/line-width: 3;
-      b/line-color: @cycleway-casing;
-      b/line-join: round;
-      b/line-cap: round;
-      c/line-width: 2;
-      c/line-color: @cycleway-fill;
-      c/line-opacity: 0.5;
-      c/line-dasharray: 1,3;
-      c/line-join: round;
-      c/line-cap: round;
-    }
-  }
-
-  /*
-  * The above defininitions should override this when needed
-  * given the specitivity precedence.
-  */
-  [highway = 'path'][zoom >= 13] {
-    line-width: 5.5;
-    line-color: @tunnel-casing;
-    line-dasharray: 4,2;
-    b/line-width: 1;
-    b/line-color: @path-casing;
-    b/line-opacity: 0.4;
-    b/line-join: round;
-    b/line-cap: round;
-    c/line-width: 0.5;
-    c/line-color: @path-fill;
-    c/line-dasharray: 6,3;
-    c/line-cap: round;
-    c/line-join: round;
-  }
-}
-
-#tracks-tunnels {
-  [zoom >= 14] {
-    line-width: 4.5;
-    line-color: @tunnel-casing;
-    line-dasharray: 4,2;
-    b/line-width: 3;
-    b/line-color: @track-casing;
-    b/line-cap: round;
-    b/line-join: round;
-    c/line-width: 1.5;
-    c/line-color: @track-fill;
-    c/line-dasharray: 3,4;
-    c/line-opacity: 0.5;
-    c/line-join: round;
-    c/line-cap: round;
-    [tracktype = 'grade1'] {
-      line-width: 4;
-      b/line-width: 3.5;
-      c/line-width: 2;
-      c/line-color: @track-grade1-fill;
-      c/line-dasharray: 100,0; /* i.e. none, see https://github.com/mapbox/carto/issues/214 */
-    }
-    [tracktype = 'grade2'] {
-      c/line-color: @track-grade2-fill;
-    }
-    [tracktype = 'grade3'] {
-      b/line-width: 3.5;
-      c/line-width: 2;
-      c/line-dasharray: 100,0; /* yes, weird but true */
-    }
-    [tracktype = 'grade4'] {
-      c/line-width: 2;
-      c/line-dasharray: 4,7,1,5;
-    }
-    [tracktype = 'grade5'] {
-      c/line-width: 2;
-      c/line-dasharray: 1,5;
     }
   }
 }
