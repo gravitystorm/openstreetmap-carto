@@ -377,7 +377,7 @@
   [amenity = 'restaurant']::amenity,
   [amenity = 'cafe']::amenity,
   [amenity = 'fast_food']::amenity,
-  [amenity = 'beirgarten']::amenity {
+  [amenity = 'biergarten']::amenity {
     [zoom >= 17] {
       text-name: "[name]";
       text-fill: #734a08;
