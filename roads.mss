@@ -1068,15 +1068,20 @@
   }
 
   [feature = 'highway_track'] {
+    comp-op: src-over; // to force flattering first
     [zoom >= 13] {
+      line-width: 3;
       line-color: @track-casing;
+      line-opacity: 0.4;
       line-join: round;
       line-cap: round;
-      line-opacity: 0.4;
+      line-comp-op: dst-over; // to not to draw over "b/" lines of other tracks
+      b/line-width: 1.5;
       b/line-color: @track-fill;
+      b/line-dasharray: 5,4,2,4;
       b/line-cap: round;
       b/line-join: round;
-      b/line-dasharray: 3,4;
+      b/line-opacity: 0.8;
       [zoom >= 13][zoom < 14] {
         line-width: 2.5;
         b/line-width: 1.2;
@@ -1085,36 +1090,21 @@
         line-width: 3;
         b/line-width: 1.5;
         [tracktype = 'grade1'] {
-          line-width: 3.5;
-          b/line-width: 2;
-          b/line-color: @track-grade1-fill;
           b/line-dasharray: 100,0; /* i.e. none, see https://github.com/mapbox/carto/issues/214 */
-          b/line-opacity: 0.7;
+          line-width: 4;
         }
         [tracktype = 'grade2'] {
-          line-width: 3;
-          b/line-color: @track-grade2-fill;
-          b/line-width: 1.5;
-          b/line-dasharray: 9,4;
-          b/line-opacity: 0.8;
+          line-width: 3.5;
+          b/line-dasharray: 5,3;
         }
         [tracktype = 'grade3'] {
-          line-width: 3;
-          b/line-width: 1.5;
-          b/line-dasharray: 3,4;
-          b/line-opacity: 0.8;
+          b/line-dasharray: 4,4;
         }
         [tracktype = 'grade4'] {
-          line-width: 3;
-          b/line-width: 2;
-          b/line-dasharray: 4,7,1,5;
-          b/line-opacity: 0.8;
-         }
+          b/line-dasharray: 3,5;
+        }
         [tracktype = 'grade5'] {
-          line-width: 3;
-          b/line-width: 2;
-          b/line-dasharray: 1,5;
-          b/line-opacity: 0.8;
+          b/line-dasharray: 2,6;
         }
       }
     }
