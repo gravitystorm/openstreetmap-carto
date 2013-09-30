@@ -368,7 +368,8 @@
 
 #landuse-overlay {
   [landuse = 'military'][zoom >= 10]::landuse {
-    polygon-pattern-file: url('symbols/military_red_hz2.png');
+    polygon-pattern-file: url('symbols/military_red_hatch.png');
+    polygon-pattern-alignment: global;
     line-color: #f55;
     line-width: 3;
     line-opacity: 0.329;
