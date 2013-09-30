@@ -132,7 +132,8 @@
   [place = 'hamlet'],
   [place = 'locality'],
   [place = 'isolated_dwelling'],
-  [place = 'farm'] {
+  [place = 'farm'],
+  [place = 'allotments'] {
     [zoom >= 14] {
       text-name: "[name]";
       text-size: 8;
