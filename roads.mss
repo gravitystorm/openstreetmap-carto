@@ -2279,21 +2279,6 @@
       text-clip: false;
     }
   }
-
-  [highway = 'runway'],
-  [highway = 'taxiway'] {
-    [zoom >= 15][bridge = 'no'] {
-      text-name: "[ref]";
-      text-size: 10;
-      text-fill: #333;
-      text-spacing: 750;
-      text-clip: false;
-      text-placement: line;
-      text-min-distance: 18;
-      text-face-name: @book-fonts;
-      text-halo-radius: 1;
-    }
-  }
 }
 
 #roads-text-name {
