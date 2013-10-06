@@ -250,7 +250,7 @@
   [feature = 'landuse_greenfield'],
   [feature = 'landuse_construction'] {
     [zoom >= 10] {
-      polygon-fill: @commercial;
+      polygon-fill: @construction;
       polygon-opacity: 0.7;
     }
   }
@@ -368,7 +368,8 @@
 
 #landuse-overlay {
   [landuse = 'military'][zoom >= 10]::landuse {
-    polygon-pattern-file: url('symbols/military_red_hz2.png');
+    polygon-pattern-file: url('symbols/military_red_hatch.png');
+    polygon-pattern-alignment: global;
     line-color: #f55;
     line-width: 3;
     line-opacity: 0.329;
