@@ -29,6 +29,7 @@
   [landuse = 'salt_pond'][zoom >= 13]::landuse,
   [landuse = 'basin'][zoom >= 13]::landuse {
     polygon-pattern-file: url('symbols/basin.png');
+    line-color: @water-color;
   }
 
   [amenity = 'fountain']::natural,
