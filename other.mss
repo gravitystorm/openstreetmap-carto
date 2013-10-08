@@ -376,7 +376,7 @@
     text-dy: 10;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 30;
+    text-wrap-width: 40;
     text-placement: interior;
   }
 
@@ -384,10 +384,10 @@
     text-name: "[name]";
     text-size: 10;
     text-fill: #734a08;
-    text-dy: 9;
+    text-dy: 10;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 30;
+    text-wrap-width: 40;
     text-placement: interior;
   }
 
@@ -399,7 +399,7 @@
     text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 30;
+    text-wrap-width: 40;
     text-placement: interior;
     [heritage != ''] {
     	text-face-name: @bold-fonts;
