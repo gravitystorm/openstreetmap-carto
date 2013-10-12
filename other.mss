@@ -630,6 +630,7 @@
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-placement: interior;
+      text-wrap-width: 70;
     }
   }
 
@@ -641,6 +642,7 @@
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-placement: interior;
+    text-wrap-width: 70;
 	  [zoom >= 19] {
 		text-size: 10;
 		text-dy: 10;
@@ -784,7 +786,7 @@
     text-fill: #734a08;
     text-face-name: @bold-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 50;
+    text-wrap-width: 70;
     text-placement: interior;
   }
 
