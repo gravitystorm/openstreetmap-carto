@@ -42,7 +42,8 @@
       line-opacity: 0.33;
     }
 */
-  	[zoom >= 18][wall='no'] {
+  	[zoom >= 18][wall='no'],
+  	[zoom >= 18][building='roof'] {
   		polygon-opacity: 0.35;
 	}
 
