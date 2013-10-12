@@ -1,7 +1,6 @@
 #buildings-lz {
   [zoom >= 12] {
-  	polygon-clip: false;
-    [railway = 'station']::railway,
+    [railway = 'station'],
     [building = 'station'] {
       polygon-fill: #d4aaaa;
     }
@@ -10,31 +9,11 @@
       polygon-fill: pink;
       polygon-opacity: 0.5;
     }
-
-    [amenity = 'place_of_worship']::amenity {
-      polygon-opacity: 0.5;
-      polygon-fill: #777;
-      [zoom >= 15] {
-        polygon-opacity: 0.9;
-        polygon-fill: #aaa;
-      }
-    }
-    
-    [building != ''][amenity != '']::amenity {
-      polygon-opacity: 0.5;
-      polygon-fill: #888;
-      [zoom >= 15] {
-        polygon-opacity: 0.9;
-        polygon-fill: #aaa;
-      }
-    }
   }
 }
 
 #buildings {
   [building != ''][zoom >= 14] {
-  	polygon-clip: false;
-    [amenity = 'public_building'],
     [heritage != '']
      {
       polygon-fill: #888;

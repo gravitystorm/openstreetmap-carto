@@ -23,6 +23,7 @@
     }
   }
 
+  [feature = 'tourism_museum'][zoom >= 10],
   [feature = 'tourism_attraction'][zoom >= 10] {
     polygon-fill: #f2caea;
   }
@@ -296,10 +297,18 @@
     }
   }  
 
-  [feature = 'amenity_public_building'][zoom >= 12] {
-    polygon-fill: #b8b8b8;
-  }  
-
+  [zoom >= 12] {
+  	[feature = 'amenity_place_of_worship'],
+  	[feature = 'amenity_public_building'],
+  	[feature = 'amenity_townhall'],
+  	[feature = 'amenity_courthouse'],
+  	[feature = 'amenity_police'],
+  	[feature = 'amenity_post_office'],
+  	[feature = 'amenity_theatre']
+  	{
+    	polygon-fill: #aaa;
+    }
+  }
 }
 
 /* man_made=cutline */
