@@ -3547,9 +3547,9 @@
     line-color: #aed1a0;
   }
   [barrier = 'bollard'][zoom >= 17] {
-    line-width: 3;
+    line-width: 4;
     line-color: #888;
-    line-dasharray: 1,8;
+    line-dasharray: 0.1,8;
     line-cap: round;
     line-join: round;
   }
