@@ -624,6 +624,7 @@
   }
 
   [tourism = 'hotel']::tourism,
+  [tourism = 'motel']::tourism,
   [tourism = 'hostel']::tourism,
   [tourism = 'chalet']::tourism {
     [zoom >= 17] {
