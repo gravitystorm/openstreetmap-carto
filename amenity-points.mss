@@ -380,6 +380,7 @@
   [shop = 'supermarket'][zoom >= 16]::shop {
     point-file: url('symbols/supermarket.svg');
     point-placement: interior;
+   [organic='yes'],[organic='only'] { point-file: url('symbols/supermarket-organic.svg');}
   }
 
   [shop = 'bakery'][zoom >= 17]::shop {
@@ -423,6 +424,7 @@
   [shop = 'convenience'][zoom >= 17]::shop {
     point-file: url('symbols/convenience.svg');
     point-placement: interior;
+    [organic='yes'],[organic='only'] { point-file: url('symbols/convenience-organic.svg');}
   }
 
   [zoom >= 16][shop = 'mall'],[shop = 'department_store'][zoom >= 16]::shop {
