@@ -76,9 +76,7 @@
 }
 
 #placenames-medium::town {
-  [place = 'town'],
-  [place = 'large_town'],
-  [place = 'small_town'] {
+  [place = 'town'] {
     [zoom >= 9] {
       text-name: "[name]";
       text-size: 8;
