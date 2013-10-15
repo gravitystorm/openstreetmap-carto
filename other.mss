@@ -913,6 +913,7 @@
     text-placement: interior;
   }
 
+  [amenity = 'vehicle_inspection'][zoom >= 16],
   [shop != ''][zoom >= 16]::shop {
 		[zoom >= 17] {
 			text-name: "[name]";
@@ -923,6 +924,7 @@
 		 	text-wrap-width: 15;
 			text-placement: interior;
 	  		
+	  		[amenity = 'vehicle_inspection'],
 	  		[shop = 'bakery'],
 	  		[shop = 'beverages'],
 	  		[shop = 'bicycle'],
@@ -954,7 +956,6 @@
 				text-dy: 8;
 			}
 			
-	  		[shop = 'alcohol'],
 	  		[shop = 'furniture'],
 	  		[shop = 'interior_decoration'],
 	  		[shop = 'hairdresser'],
@@ -962,6 +963,11 @@
 			[shop = 'travel_agency']
 			{
 				text-dy: 10;
+			}
+
+	  		[shop = 'alcohol'],
+			{
+				text-dy: 12;
 			}
 	  	}
 
@@ -974,6 +980,7 @@
 		 	text-wrap-width: 15;
 			text-placement: interior;
 	  		
+	  		[amenity = 'vehicle_inspection'],
 	  		[shop = 'bakery'],
 	  		[shop = 'beverages'],
 	  		[shop = 'bicycle'],
@@ -3504,7 +3511,27 @@
 	point-ignore-placement: true;
 	point-file: url('symbols/fr/crossing.svg');
 	point-transform: 'rotate([angle]) scale(0.15)';
+	[zoom>=20] {
+	  [tactile_paving='yes'] {
+		t/point-ignore-placement: true;
+		t/point-file: url('symbols/fr/crossing-tactile-paving.svg');
+		t/point-transform: 'rotate([angle]) scale(0.25)';
+	  }
+	  [wheelchair='no'] {
+		w/point-ignore-placement: true;
+		w/point-file: url('symbols/fr/crossing-wheelchair-no.svg');
+		w/point-transform: 'rotate([angle]) scale(0.25)';
+	  }
+	  [crossing_bollard!=''] {
+		b/point-ignore-placement: true;
+		b/point-transform: 'rotate([angle]) scale(0.25)';
+		b/point-file: url('symbols/fr/crossing-bollard.svg');
+		[crossing_bollard='half'] {	b/point-file: url('symbols/fr/crossing-bollard-half.svg'); }
+		[crossing_bollard='contrasted'] {	b/point-file: url('symbols/fr/crossing-bollard-contrasted.svg'); }
+	  }
+	}
   }
+
   [zoom>=19][angle_diff>=40] {
 	point-file: url('symbols/zebra_crossing.svg');
   }
