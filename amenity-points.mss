@@ -181,6 +181,9 @@
     point-placement: interior;
     [religion = 'christian'] {
       point-file: url('symbols/christian3.p.14.png');
+      [denomination = 'jehovahs_witness']{
+            point-file: url('symbols/place_of_worship3.p.16.png');
+      }
     }
     [religion = 'muslim'] {
       point-file: url('symbols/islamic3.p.16.png');
