@@ -483,6 +483,11 @@
     point-placement: interior;
   }
 
+  [amenity = 'vehicle_inspection'][zoom >= 17]::shop {
+    point-file: url('symbols/vehicle_inspection.svg');
+    point-placement: interior;
+  }
+
   [shop = 'bicycle'][zoom >= 17]::shop {
     point-file: url('symbols/shopping_bicycle.svg');
     point-placement: interior;
