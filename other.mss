@@ -3528,6 +3528,7 @@
 		b/point-file: url('symbols/fr/crossing-bollard.svg');
 		[crossing_bollard='half'] {	b/point-file: url('symbols/fr/crossing-bollard-half.svg'); }
 		[crossing_bollard='contrasted'] {	b/point-file: url('symbols/fr/crossing-bollard-contrasted.svg'); }
+		[crossing_bollard='no'] {	b/point-opacity: 0; }
 	  }
 	}
   }
