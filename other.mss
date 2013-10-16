@@ -1090,14 +1090,15 @@
     text-dy: 8;
   }
 
-  [power != ''][zoom >= 16]::power {
+  [power = 'plant'][zoom >= 12]::power,
+  [power != ''][zoom >= 15]::power {
     text-name: "[name]";
     text-size: 10;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: 70;
     text-placement: interior;
-    text-dy: 12;
+    [power != 'generator'] { text-dy: 12; }
   }
 
 

@@ -191,6 +191,7 @@
     }
   }
 
+  [feature = 'power_plant'],
   [feature = 'power_station'],
   [feature = 'power_generator'] {
     [zoom >= 10] {

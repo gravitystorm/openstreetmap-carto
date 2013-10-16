@@ -115,10 +115,12 @@
 */
 
 
-  [zoom >= 15][man_made = 'power_wind'],
-  [zoom >= 15][power = 'generator'],
-  [zoom >= 15][power = 'sub_station'],
-  [zoom >= 15][power = 'substation'] {
+  [zoom >= 15][man_made = 'power_wind']::power,
+  [zoom >= 15][power = 'generator']['generator:source' = 'wind']::power,
+  [zoom >= 15][power = 'generator'][power_source = 'wind']::power,
+  [zoom >= 12][power = 'plant']::power,
+  [zoom >= 15][power = 'sub_station']::power,
+  [zoom >= 15][power = 'substation']::power {
       point-file: url('symbols/fr/electricity.svg');
       point-placement: interior;
 	  [power = 'generator']['generator:source' = 'wind']::power,
