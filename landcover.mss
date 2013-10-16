@@ -205,7 +205,7 @@
   [feature = 'power_substation'][zoom >= 13],
   [feature = 'power_sub_station'][zoom >= 13] {
     polygon-fill: #bbb;
-    line-width: 0.4;
+    line-width: 0.5;
     line-color: #555;
   }
 

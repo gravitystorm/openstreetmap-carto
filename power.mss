@@ -4,9 +4,15 @@
 }
 
 #power-minorline [zoom >= 16][location!='underground'] {
-    [power_type='line'] { line-width: 1; }
     line-width: 0.25;
     line-color: #777;
+    [power_type='line'] {
+    	line-width: 1;
+		[line='busbar'],
+		[line='bay'] {
+			line-width: 0.5;
+		}
+    }
 }
 
 #power-towers {

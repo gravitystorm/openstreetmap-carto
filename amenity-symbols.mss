@@ -114,13 +114,18 @@
   }
 */
 
-  [power = 'generator']['generator:source' = 'wind']::power,
-  [power = 'generator'][power_source = 'wind']::power,
-  [man_made = 'power_wind'] {
-    [zoom >= 15] {
-      point-file: url('symbols/power_wind.png');
+
+  [zoom >= 15][man_made = 'power_wind'],
+  [zoom >= 15][power = 'generator'],
+  [zoom >= 15][power = 'sub_station'],
+  [zoom >= 15][power = 'substation'] {
+      point-file: url('symbols/fr/electricity.svg');
       point-placement: interior;
-    }
+	  [power = 'generator']['generator:source' = 'wind']::power,
+	  [power = 'generator'][power_source = 'wind']::power,
+	  [man_made = 'power_wind'] {
+		  point-file: url('symbols/power_wind.png');
+	  }
   }
 
   [man_made = 'windmill'][zoom >= 16]::man_made {

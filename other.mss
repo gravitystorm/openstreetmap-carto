@@ -1090,6 +1090,17 @@
     text-dy: 8;
   }
 
+  [power != ''][zoom >= 16]::power {
+    text-name: "[name]";
+    text-size: 10;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 70;
+    text-placement: interior;
+    text-dy: 12;
+  }
+
+
 }
 
 
