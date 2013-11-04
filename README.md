@@ -66,7 +66,8 @@ If you aren't using TileMill, you can compile the CartoCSS stylesheets into Mapn
 * [PostgreSQL](http://www.postgresql.org/)
 * [PostGIS](http://postgis.org/)
 * [ogr2ogr](http://www.gdal.org/) command line GDAL utility for processing vector data. here we use it to work around a encoding bug in the Nautral Earth data.
-* curl and unzip for downloading and decompressing files
+* curl, unzip for downloading and decompressing files
+* shapeindex (a companion utility to Mapnik found in the mapnik-utils package) for indexing downloaded shapefiles
 
 # Roadmap
 
