@@ -75,7 +75,7 @@
     point-placement: interior;
   }
 
-  [amenity = 'chalet'][zoom >= 17]::amenity {
+  [tourism = 'chalet'][zoom >= 17]::tourism {
     point-file: url('symbols/chalet.p.16.png');
     point-placement: interior;
   }
