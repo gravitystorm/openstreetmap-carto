@@ -112,25 +112,6 @@
       "name": "necountries"
     },
     {
-      "geometry": "point",
-      "extent": [
-        -179.58997888396897,
-        -85.051,
-        179.38330358817018,
-        82.48332318035943
-      ],
-      "id": "nepopulated",
-      "class": "",
-      "Datasource": {
-        "file": "data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp",
-        "type": "shape"
-      },
-      "srs-name": "WGS84",
-      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
-      "advanced": {},
-      "name": "nepopulated"
-    },
-    {
       "extent": [
         -179.99999692067183,
         -84.96651228427099,
@@ -1564,6 +1545,25 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
       "name": "power-line"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        -179.58997888396897,
+        -85.051,
+        179.38330358817018,
+        82.48332318035943
+      ],
+      "id": "nepopulated",
+      "class": "",
+      "Datasource": {
+        "file": "data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp",
+        "type": "shape"
+      },
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "advanced": {},
+      "name": "nepopulated"
     },
     {
       "geometry": "point",
