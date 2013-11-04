@@ -112,8 +112,7 @@
 }
 
 #placenames-small::village {
-  [place = 'village'],
-  [place = 'large_village'] {
+  [place = 'village'] {
     [zoom >=12] {
       text-name: "[name]";
       text-size: 9;
