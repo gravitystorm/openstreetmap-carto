@@ -575,6 +575,7 @@
     text-halo-radius: 1;
     text-wrap-width: 20;
     text-placement: interior;
+    text-dy: 6;
   }
 
   [tourism = 'alpine_hut'][zoom >= 15]::tourism {
