@@ -57,8 +57,7 @@
 }
 
 #placenames-medium::city {
-  [place = 'city'],
-  [place = 'metropolis'] {
+  [place = 'city'] {
     [zoom >= 6][zoom < 15] {
       text-name: "[name]";
       text-size: 8;
