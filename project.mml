@@ -1558,11 +1558,14 @@
       "class": "",
       "Datasource": {
         "file": "data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp",
-        "type": "shape"
+        "type": "shape",
+        "encoding": "windows-1252"
       },
       "srs-name": "WGS84",
       "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
-      "advanced": {},
+      "advanced": {
+        "encoding": "windows-1252"
+      },
       "name": "nepopulated"
     },
     {
