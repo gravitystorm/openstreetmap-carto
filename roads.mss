@@ -398,7 +398,7 @@
     }
   }
 
-  [feature = 'highway_living_street']
+  [feature = 'highway_living_street'] {
     [tunnel = 'yes'] {
       line-width: 2.5;
       line-color: @living-street-casing;
@@ -631,10 +631,11 @@
         line-cap: round;
       }
     }
+  }
 
-    [feature = 'railway_disused'],
-    [feature = 'railway_abandoned'],
-    [feature = 'railway_construction'] {
+  [feature = 'railway_disused'],
+  [feature = 'railway_abandoned'],
+  [feature = 'railway_construction'] {
     [bridge = 'yes'] {
       [zoom >= 13] {
         line-width: 4.5;
