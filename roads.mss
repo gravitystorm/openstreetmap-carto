@@ -127,13 +127,13 @@
       [zoom >= 15] { line-width: @motorway-width-z15 + 1.8; }
       [zoom >= 17] { line-width: @motorway-width-z17 + 2.5; }
 
-      [feature = 'highway_motorway_link'] {
+   /*   [feature = 'highway_motorway_link'] {*/
         [zoom >= 12] { line-width: @motorway-width-z12 - 1.5 + 1; }
         [zoom >= 13] { line-width: @motorway-width-z13 - 2 + 1.5; }
         [zoom >= 15] { line-width: @motorway-width-z15 - 2.5 + 1.8; }
         [zoom >= 17] { line-width: @motorway-width-z17 - 2 + 2.5; }
       }
-    }
+ /*   } */
   }
 
   [feature = 'highway_trunk'],
