@@ -57,8 +57,7 @@
 }
 
 #placenames-medium::city {
-  [place = 'city'],
-  [place = 'metropolis'] {
+  [place = 'city'] {
     [zoom >= 6][zoom < 15] {
       text-name: "[name]";
       text-size: 8;
@@ -76,9 +75,7 @@
 }
 
 #placenames-medium::town {
-  [place = 'town'],
-  [place = 'large_town'],
-  [place = 'small_town'] {
+  [place = 'town'] {
     [zoom >= 9] {
       text-name: "[name]";
       text-size: 8;
@@ -112,8 +109,7 @@
 }
 
 #placenames-small::village {
-  [place = 'village'],
-  [place = 'large_village'] {
+  [place = 'village'] {
     [zoom >=12] {
       text-name: "[name]";
       text-size: 9;

@@ -112,25 +112,6 @@
       "name": "necountries"
     },
     {
-      "geometry": "point",
-      "extent": [
-        -179.58997888396897,
-        -85.051,
-        179.38330358817018,
-        82.48332318035943
-      ],
-      "id": "nepopulated",
-      "class": "",
-      "Datasource": {
-        "file": "data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp",
-        "type": "shape"
-      },
-      "srs-name": "WGS84",
-      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
-      "advanced": {},
-      "name": "nepopulated"
-    },
-    {
       "extent": [
         -179.99999692067183,
         -84.96651228427099,
@@ -1111,6 +1092,28 @@
     {
       "geometry": "point",
       "extent": [
+        -179.58997888396897,
+        -85.051,
+        179.38330358817018,
+        82.48332318035943
+      ],
+      "id": "nepopulated",
+      "class": "",
+      "Datasource": {
+        "file": "data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp",
+        "type": "shape",
+        "encoding": "windows-1252"
+      },
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "advanced": {
+        "encoding": "windows-1252"
+      },
+      "name": "nepopulated"
+    },
+    {
+      "geometry": "point",
+      "extent": [
         -179.99999692067183,
         -84.96651228427099,
         179.99999692067183,
@@ -1141,7 +1144,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,place,name,ref\n       from planet_osm_point\n       where place in ('city','metropolis','town') and capital='yes'\n      ) as placenames",
+        "table": "(select way,place,name,ref\n       from planet_osm_point\n       where place in ('city','town') and capital='yes'\n      ) as placenames",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1164,7 +1167,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,place,name\n      from planet_osm_point\n      where place in ('city','metropolis','town','large_town','small_town')\n        and (capital is null or capital != 'yes')\n      ) as placenames",
+        "table": "(select way,place,name\n      from planet_osm_point\n      where place in ('city','town')\n        and (capital is null or capital != 'yes')\n      ) as placenames",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1187,7 +1190,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,place,name\n      from planet_osm_point\n      where place in ('suburb','village','large_village','hamlet','locality','isolated_dwelling','farm')\n      ) as placenames",
+        "table": "(select way,place,name\n      from planet_osm_point\n      where place in ('suburb','village','hamlet','locality','isolated_dwelling','farm')\n      ) as placenames",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
