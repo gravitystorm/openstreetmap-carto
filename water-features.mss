@@ -35,7 +35,7 @@
 #piers {
   [man_made = 'breakwater'],
   [man_made = 'groyne'] {
-    [zoom >= 11] {
+    [zoom >= 12] {
       line-width: 1;
       line-color: #aaa;
     }
@@ -46,7 +46,7 @@
       line-width: 4;
     }
   }
-  [man_made = 'pier'][zoom >= 11] {
+  [man_made = 'pier'][zoom >= 12] {
     line-width: 1.5;
     line-color: @land-color;
     [zoom >= 13] { line-width: 3; }

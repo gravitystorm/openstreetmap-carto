@@ -75,7 +75,7 @@
     point-placement: interior;
   }
 
-  [amenity = 'chalet'][zoom >= 17]::amenity {
+  [tourism = 'chalet'][zoom >= 17]::tourism {
     point-file: url('symbols/chalet.p.16.png');
     point-placement: interior;
   }
@@ -377,7 +377,7 @@
   [amenity = 'restaurant']::amenity,
   [amenity = 'cafe']::amenity,
   [amenity = 'fast_food']::amenity,
-  [amenity = 'beirgarten']::amenity {
+  [amenity = 'biergarten']::amenity {
     [zoom >= 17] {
       text-name: "[name]";
       text-fill: #734a08;
@@ -575,6 +575,7 @@
     text-halo-radius: 1;
     text-wrap-width: 20;
     text-placement: interior;
+    text-dy: 6;
   }
 
   [tourism = 'alpine_hut'][zoom >= 15]::tourism {
@@ -624,6 +625,7 @@
   }
 
   [tourism = 'hotel']::tourism,
+  [tourism = 'motel']::tourism,
   [tourism = 'hostel']::tourism,
   [tourism = 'chalet']::tourism {
     [zoom >= 17] {
@@ -834,7 +836,7 @@
   [amenity = 'pharmacy'][zoom >= 17]::amenity {
     text-name: "[name]";
     text-size: 8;
-    text-dy: 9;
+    text-dy: 10;
     text-fill: #da0092;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
@@ -856,7 +858,7 @@
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 8;
-      text-dy: 9;
+      text-dy: 10;
       text-fill: #939;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
