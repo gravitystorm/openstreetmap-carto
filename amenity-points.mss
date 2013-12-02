@@ -367,7 +367,7 @@
     point-file: url('symbols/picnic.p.16.png');
     point-placement: interior;
   }
-  
+
   [leisure = 'picnic_table'][zoom >= 17]::leisure {
     point-file: url('symbols/picnic.p.16.png');
     point-placement: interior;

@@ -1764,11 +1764,7 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis",
-        "id": "amenity-points",
-        "project": "openstreetmap-carto-master",
-        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-        "extent_cache": "auto"
+        "dbname": "gis"
       },
       "id": "amenity-points",
       "class": "points",
@@ -1790,11 +1786,7 @@
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
-        "dbname": "gis",
-        "extent_cache": "auto",
-        "id": "amenity-points-poly",
-        "project": "openstreetmap-carto-master",
-        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+        "dbname": "gis"
       },
       "id": "amenity-points-poly",
       "class": "points",
