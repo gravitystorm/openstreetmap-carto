@@ -127,6 +127,7 @@
 #placenames-small::hamlet {
   [place = 'hamlet'],
   [place = 'locality'],
+  [place = 'neighbourhood'],
   [place = 'isolated_dwelling'],
   [place = 'farm'] {
     [zoom >= 14] {
