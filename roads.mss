@@ -1332,80 +1332,6 @@
   }
 }
 
-/* This is a good target for refactoring */
-.access {
-  [access = 'permissive'] {
-    [highway = 'unclassified'],
-    [highway = 'residential'],
-    [highway = 'footway'] {
-      [zoom >= 15] {
-        line-width: 6;
-        line-color: @permissive-marking;
-        line-dasharray: 6,8;
-        line-cap: round;
-        line-join: round;
-        line-opacity: 0.5;
-      }
-    }
-    [highway = 'service'][service = 'INT-normal'][zoom >= 15],
-    [highway = 'service'][zoom >= 16] {
-      line-width: 3;
-      line-color: @permissive-marking;
-      line-dasharray: 6,8;
-      line-cap: round;
-      line-join: round;
-      line-opacity: 0.5;
-      [zoom >= 16] { line-width: 6; }
-    }
-  }
-  [access = 'destination'] {
-    [highway = 'unclassified'],
-    [highway = 'residential'] {
-      [zoom >= 15] {
-        line-width: 6;
-        line-color: @destination-marking;
-        line-dasharray: 6,8;
-        line-cap: round;
-        line-join: round;
-        line-opacity: 0.5;
-      }
-    }
-    [highway = 'service'][service = 'INT-normal'][zoom >= 15],
-    [highway = 'service'][zoom >= 16] {
-      line-width: 3;
-      line-color: @destination-marking;
-      line-dasharray: 6,8;
-      line-cap: round;
-      line-join: round;
-      line-opacity: 0.5;
-      [zoom >= 16] { line-width: 6; }
-    }
-  }
-  [access = 'private'],
-  [access = 'no'] {
-    [highway != 'service'] {
-      [zoom >= 15] {
-        line-width: 6;
-        line-color: @private-marking;
-        line-dasharray: 6,8;
-        line-opacity: 0.5;
-        line-join: round;
-        line-cap: round;
-      }
-    }
-    [highway = 'service'][service = 'INT-normal'][zoom >= 15],
-    [highway = 'service'][zoom >= 16] {
-      line-width: 3;
-      line-color: @private-marking;
-      line-dasharray: 6,8;
-      line-opacity: 0.5;
-      line-join: round;
-      line-cap: round;
-      [zoom >= 16] { line-width: 6; }
-    }
-  }
-}
-
 #footbikecycle-tunnels {
   [highway = 'bridleway'],
   [highway = 'path'][horse = 'designated'] {
@@ -2045,6 +1971,79 @@
       line-width: 4;
       line-color: @taxiway-fill;
       [zoom >= 15] { line-width: 6; }
+    }
+  }
+}
+
+.access {
+  [access = 'permissive'] {
+    [feature = 'highway_unclassified'],
+    [feature = 'highway_residential'],
+    [feature = 'highway_footway'] {
+      [zoom >= 15] {
+        access/line-width: 6;
+        access/line-color: @permissive-marking;
+        access/line-dasharray: 6,8;
+        access/line-cap: round;
+        access/line-join: round;
+        access/line-opacity: 0.5;
+      }
+    }
+    [feature = 'highway_service'][service = 'INT-normal'][zoom >= 15],
+    [feature = 'highway_service'][zoom >= 16] {
+      access/line-width: 3;
+      access/line-color: @permissive-marking;
+      access/line-dasharray: 6,8;
+      access/line-cap: round;
+      access/line-join: round;
+      access/line-opacity: 0.5;
+      [zoom >= 16] { access/line-width: 6; }
+    }
+  }
+  [access = 'destination'] {
+    [feature = 'highway_unclassified'],
+    [feature = 'highway_residential'] {
+      [zoom >= 15] {
+        access/line-width: 6;
+        access/line-color: @destination-marking;
+        access/line-dasharray: 6,8;
+        access/line-cap: round;
+        access/line-join: round;
+        access/line-opacity: 0.5;
+      }
+    }
+    [feature = 'highway_service'][service = 'INT-normal'][zoom >= 15],
+    [feature = 'highway_service'][zoom >= 16] {
+      access/line-width: 3;
+      access/line-color: @destination-marking;
+      access/line-dasharray: 6,8;
+      access/line-cap: round;
+      access/line-join: round;
+      access/line-opacity: 0.5;
+      [zoom >= 16] { access/line-width: 6; }
+    }
+  }
+  [access = 'private'],
+  [access = 'no'] {
+    [feature != 'highway_service'] {
+      [zoom >= 15] {
+        access/line-width: 6;
+        access/line-color: @private-marking;
+        access/line-dasharray: 6,8;
+        access/line-opacity: 0.5;
+        access/line-join: round;
+        access/line-cap: round;
+      }
+    }
+    [feature = 'highway_service'][service = 'INT-normal'][zoom >= 15],
+    [feature = 'highway_service'][zoom >= 16] {
+      access/line-width: 3;
+      access/line-color: @private-marking;
+      access/line-dasharray: 6,8;
+      access/line-opacity: 0.5;
+      access/line-join: round;
+      access/line-cap: round;
+      [zoom >= 16] { access/line-width: 6; }
     }
   }
 }
