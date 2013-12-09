@@ -504,7 +504,7 @@
       text-name: "[name]";
       text-size: 10;
       text-fill: brown;
-      text-dy: 5;
+      text-dy: 7;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-placement: interior;
