@@ -10,20 +10,6 @@
     text-placement: interior;
   }
 
-  [aeroway = 'airport'][zoom >= 9][zoom < 13]::aeroway {
-    [zoom < 11] {
-      point-file: url('symbols/airport.p.16.png');
-      text-size: 8;
-      text-dy: -12;
-    }
-    text-size: 9;
-    text-name: "[name]";
-    text-fill: #6692da;
-    text-halo-radius: 1;
-    text-placement: interior;
-    text-face-name: @bold-fonts;
-  }
-
   [aeroway = 'aerodrome'][zoom >= 10][zoom < 13]::aeroway {
     [zoom < 11] {
       point-file: url('symbols/aerodrome.p.16.png');
