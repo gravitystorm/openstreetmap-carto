@@ -183,6 +183,15 @@
     }
   }
 
+  [feature = 'man_made_wastewater_plant'],
+  [feature = 'man_made_works'],
+  [feature = 'man_made_gasometer'] {
+    [zoom >= 10] {
+      polygon-fill: #dfd1d6;
+      line-width: 0.3;
+    }
+  }
+  
   [feature = 'landuse_industrial'],
   [feature = 'landuse_harbour'],
   [feature = 'landuse_railway'] {
@@ -237,6 +246,7 @@
     polygon-fill: #c6e4b4;
   }
 
+  [feature='man_made_clearcut'],
   [feature = 'natural_scrub'] {
     [zoom >= 8][zoom < 14] {
       polygon-fill: #b5e3b5;
