@@ -2337,15 +2337,18 @@
     }
   }
   [highway = 'tertiary'] {
-    [zoom >= 15] {
+    [zoom >= 14] {
       text-name: "[name]";
-      text-size: 9;
+      text-size: 8;
       text-fill: #000;
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
       text-face-name: @book-fonts;
       text-halo-radius: 0;
+    }
+    [zoom >= 15] {
+      text-size: 9;
     }
     [zoom >= 17] {
       text-size: 11;
