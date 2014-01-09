@@ -35,7 +35,7 @@
       line-width: 3;
     }
   }
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
 #admin-5678 {
@@ -60,7 +60,7 @@
       line-clip: false;
     }
   }
-  opacity: 0.4;
+  opacity: 0.5;
 }
 
 #admin-other {
@@ -73,7 +73,7 @@
       line-clip: false;
     }
   }
-  opacity: 0.4;
+  opacity: 0.5;
 }
 
 /*
