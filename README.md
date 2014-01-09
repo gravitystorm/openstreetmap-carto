@@ -102,8 +102,9 @@ judgement. The work done already in v1.0 and v2.0 will make it much easier to pr
 * Open curly braces on the same line, and close on an empty line.
 * One space before and after = etc
 * Two space indents. No tabs.
-* space after : but no before
+* space after : but not before
 * Dashes, not underscores, in layer names
+* Name SQL subqueries after the layer name (but use underscores)
 * Avoid restating defaults, e.g. don't add `point-allow-overlap = false`
 * Avoid repeating the layer name for layers with mutiple attachments, i.e., prefer
 
