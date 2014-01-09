@@ -2300,7 +2300,9 @@
 
 #roads-text-name {
   [highway = 'trunk'],
-  [highway = 'primary'] {
+  [highway = 'trunk_link'],
+  [highway = 'primary'],
+  [highway = 'primary_link'] {
     [zoom >= 13] {
       text-name: "[name]";
       text-size: 8;
@@ -2318,7 +2320,8 @@
       text-size: 10;
     }
   }
-  [highway = 'secondary'] {
+  [highway = 'secondary'],
+  [highway = 'secondary_link'] {
     [zoom >= 13] {
       text-name: "[name]";
       text-size: 8;
@@ -2336,7 +2339,8 @@
       text-size: 10;
     }
   }
-  [highway = 'tertiary'] {
+  [highway = 'tertiary'],
+  [highway = 'tertiary_link'] {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
