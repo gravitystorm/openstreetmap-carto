@@ -17,6 +17,7 @@
       [admin_level = '3'] {
         line-width: 5;
         line-dasharray: 4,2;
+        line-clip: false;
       }
     }
   }
@@ -25,6 +26,7 @@
       line-color: @admin-boundaries;
       line-width: 0.6;
       line-dasharray: 4,3;
+      line-clip: false;
     }
     [zoom >= 7] {
       line-width: 1;
@@ -41,11 +43,13 @@
     line-color: @admin-boundaries;
     line-width: 2;
     line-dasharray: 6,3,2,3,2,3;
+    line-clip: false;
   }
   [admin_level = '6'][zoom >= 11] {
     line-color: @admin-boundaries;
     line-width: 2;
     line-dasharray: 6,3,2,3;
+    line-clip: false;
   }
   [admin_level = '7'],
   [admin_level = '8'] {
@@ -53,6 +57,7 @@
       line-color: @admin-boundaries;
       line-width: 1.5;
       line-dasharray: 5,2;
+      line-clip: false;
     }
   }
   opacity: 0.4;
