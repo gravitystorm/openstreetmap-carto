@@ -38,6 +38,7 @@
     text-fill: @placenames;
     text-face-name: @book-fonts;
     text-halo-radius: 1.5;
+    text-min-distance: 10;
     [zoom >= 6] {
       text-size: 12;
     }
@@ -55,6 +56,7 @@
       text-fill: @placenames;
       text-face-name: @book-fonts;
       text-halo-radius: 1.5;
+      text-min-distance: 10;
       [zoom >= 9] {
         text-size: 12;
       }
@@ -74,6 +76,7 @@
       text-face-name: @book-fonts;
       text-halo-radius: 1.5;
       text-wrap-width: 20;
+      text-min-distance: 10;
     }
     [zoom >= 11] {
       text-size: 11;
@@ -92,6 +95,7 @@
     text-fill: @placenames;
     text-face-name: @book-fonts;
     text-halo-radius: 1.5;
+    text-min-distance: 10;
     [zoom >= 14] {
       text-size: 14;
       text-fill: @placenames-light;
@@ -107,6 +111,7 @@
       text-fill: @placenames;
       text-face-name: @book-fonts;
       text-halo-radius: 1.5;
+      text-min-distance: 10;
       [zoom >= 15] {
         text-size: 13;
         text-fill: @placenames-light;
@@ -127,6 +132,7 @@
       text-fill: @placenames;
       text-face-name: @book-fonts;
       text-halo-radius: 1.5;
+      text-min-distance: 10;
     }
     [zoom >= 16] {
       text-size: 12;
