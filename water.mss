@@ -55,10 +55,10 @@
   [way_area >= 5000000][way_area < 10000000][zoom >= 11],
   [way_area < 5000000][zoom >= 12] {
     text-name: "[name]";
-    text-size: 9;
-    text-fill: #99f;
+    text-size: 10;
+    text-fill: #77f;
     text-face-name: @book-fonts;
-    text-halo-radius: 1;
+    text-halo-radius: 1.5;
     text-wrap-width: 20;
   }
 }
