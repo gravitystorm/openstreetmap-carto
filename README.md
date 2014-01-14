@@ -51,6 +51,13 @@ ogr2ogr ne_10m_populated_places_fixed.shp ne_10m_populated_places.shp
 
 See https://github.com/mapnik/mapnik/issues/1605 for more details.
 
+## Fonts
+The stylesheet depends on a number of openly licensed fonts for support of all the languages found on the map. The package which supplies these fonts on Ubuntu is indicated.
+
+* DejaVu Sans, for most language (``ttf-dejavu``)
+* Droid Sans Fallback, as a reasonable fallback (``fonts-droid``)
+* Unifont, as a last resort fallback (``ttf-unifont``)
+
 ## Dependencies
 
 * [TileMill](http://mapbox.com/tilemill) - This is a TileMill project you can copy (or symlink) directly into your Mapbox/project directory
