@@ -141,3 +141,48 @@ Map {
   line-cap: round;
 
 }
+
+
+#relief [zoom>=8][zoom<=17]{
+  raster-opacity: 0.30;
+  raster-scaling: bicubic;
+  [zoom>=17] { raster-opacity: 0.15;}
+}
+
+#relief2 [zoom>=8][zoom<=16]{
+  raster-opacity: 0.15;
+  raster-scaling: bicubic;
+}
+
+#contours_text [zoom>=13] {
+  [ele=~'.*[05]0'] { // 50m
+    text-face-name: @book-fonts;
+    text-name: [ele];
+    text-fill: #444;
+    text-size: 8;
+    text-placement: line;
+    text-halo-radius: 1;
+    text-halo-fill: fadeout(white, 50%);
+    text-dy: -2;
+    text-max-char-angle-delta: 5;
+    text-spacing: 400;
+    [ele=~'.*[05]00'] { text-fill: black; } // 500m
+  }
+}
+
+#contours [zoom>=11] {
+  line-width: 0.2;
+  line-color: grey;
+  [zoom>=15] { line-smooth: 0.5; }
+  [ele=~'.*[05]0'][zoom>=13] { line-color: black; } // 50m
+  [ele=~'.*[05]00'][zoom>=13] { line-width: 0.33; } // 500m
+}
+
+#neige {
+  [ele>=1500] { polygon-fill: white; polygon-opacity: 0.1; }
+}
+
+
+#contours2 {
+  marker-height: 2;
+}
