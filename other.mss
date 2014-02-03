@@ -1114,6 +1114,7 @@
     [zoom >= 12] {
       line-width: 4;
       line-color: #506077;
+      [toll='yes'] { line-color: black; }
       line-dasharray: 4,2;
       line-clip: false;
       line-smooth: 0.7;
@@ -1302,6 +1303,7 @@
     [zoom >= 12] {
       line-width: 3;
       line-color: #506077;
+	  [toll='yes'] { line-color: black; line-dasharray: 20,20; }
       line-join: round;
       line-clip: false;
       line-smooth: 0.7;
@@ -1367,7 +1369,8 @@
   [highway = 'motorway_link'][tunnel != 'yes'] {
     [zoom >= 12] {
       line-width: 2.5;
-      line-color: #809bc0;
+      line-color: @motorway_color;
+	  //[toll='yes'] { line-color: @motorway_toll_color; }
       line-cap: round;
       line-join: round;
       line-clip: false;
@@ -1442,6 +1445,7 @@
     [zoom >= 12] {
       line-width: 3;
       line-color: #506077;
+	  [toll='yes'] { line-color: black; line-dasharray: 20,20; }
       line-join: round;
       line-clip: false;
       line-smooth: 0.7;
@@ -1608,7 +1612,7 @@
 
       [construction = 'motorway'],
       [construction = 'motorway_link'] {
-        line-color: #809bc0;
+        line-color: @motorway_color;
         line-clip: false;
         line-smooth: 0.7;
         b/line-clip: false;
@@ -1682,7 +1686,8 @@
   [highway = 'motorway'][tunnel != 'yes'] {
     [zoom >= 12] {
       line-width: 2.5;
-      line-color: #809bc0;
+      line-color: @motorway_color;
+	  //[toll='yes'] { line-color: @motorway_toll_color; }
       line-clip: false;
       line-smooth: 0.7;
     }
@@ -2431,6 +2436,7 @@
       [zoom >= 12] {
         line-width: 4;
         line-color: #506077;
+        [toll='yes'] { line-color: black; }
         line-clip: false;
         line-smooth: 0.7;
       }
@@ -2740,7 +2746,8 @@
     [highway = 'motorway_link'] {
       [zoom >= 12] {
         line-width: 2;
-        line-color: #809bc0;
+        line-color: @motorway_color;
+  	    //[toll='yes'] { line-color: @motorway_toll_color; }
         line-join: round;
         line-cap: round;
         line-clip: false;
@@ -3020,7 +3027,8 @@
 	  [highway = 'motorway_link'] {
 		[zoom >= 5][zoom < 12] {
 		  line-width: 0.5;
-		  line-color: #809bc0;
+		  line-color: @motorway_color;
+	      //[toll='yes'] { line-color: @motorway_toll_color; }
 		  [zoom >= 7] { line-width: 1; }
 		  [zoom >= 9] { line-width: 1.4; }
 		  [zoom >= 10] { line-width: 2; }
