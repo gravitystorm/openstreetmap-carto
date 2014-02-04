@@ -550,8 +550,9 @@
     point-placement: interior;
   }
 
-  [amenity = 'picnic_site'][zoom >= 16]::amenity {
-    point-file: url('symbols/picnic.p.16.png');
+  [amenity = 'picnic_site'][zoom >= 16]::amenity,
+  [leisure = 'picnic_table'][zoom >= 18]::leisure {
+    point-file: url('symbols/picnic.svg');
     point-placement: interior;
   }
 
@@ -585,5 +586,4 @@
     point-transform: "scale(0.75)";
     point-placement: interior;
   }
-
 }
