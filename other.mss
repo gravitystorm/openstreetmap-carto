@@ -3603,8 +3603,10 @@
   }
 }
 
-.directions {
-    [zoom >= 16][oneway = 'yes'] {
+.directions [zoom >= 16] {
+    [oneway = 'yes'][footway=''],
+    [oneway = 'yes'][footway!=''][zoom>=19]
+    {
       a/line-width: 1;
       a/line-dasharray: 0,12,10,152;
       a/line-color: #6c70d5;
@@ -3634,7 +3636,9 @@
 
     }
     
-    [zoom >= 16][oneway = '-1'] {
+    [oneway = '-1'][footway=''],
+    [oneway = '-1'][footway!=''][zoom>=19]
+    {  
       a/line-width: 1;
       a/line-dasharray: 0,12,10,152;
       a/line-color: #6c70d5;

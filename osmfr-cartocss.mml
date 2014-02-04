@@ -6,9 +6,9 @@
     80
   ],
   "center": [
-    2.83606,
-    48.85259,
-    15
+    3.87669,
+    43.64183,
+    18
   ],
   "format": "png:t=0",
   "interactivity": false,
@@ -221,7 +221,8 @@
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "contours"
+      "name": "contours",
+      "status": "off"
     },
     {
       "extent": [
@@ -1241,7 +1242,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select '-1' as oneway ,tunnel, case when oneway in ('yes','true','1') or junction='roundabout' then ST_Reverse(way) else way end as way from planet_osm_line  where way && !bbox! and ((oneway is not null and oneway not in ('no','false','0')) or (junction='roundabout')) and (highway is not null or railway is not null or waterway is not null)  and (bridge is null or bridge not in ('yes','true','1','viaduct'))) as directions",
+        "table": "(select '-1' as oneway ,tunnel, coalesce(tags->'footway','') as footway, case when oneway in ('yes','true','1') or junction='roundabout' then ST_Reverse(way) else way end as way from planet_osm_line  where way && !bbox! and ((oneway is not null and oneway not in ('no','false','0')) or (junction='roundabout')) and (highway is not null or railway is not null or waterway is not null)  and (bridge is null or bridge not in ('yes','true','1','viaduct'))) as directions",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1320,7 +1321,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select '-1' as oneway ,tunnel, case when oneway in ('yes','true','1') then ST_Reverse(way) else way end as way from planet_osm_line  where way && !bbox! and oneway is not null and oneway not in ('no','false','0') and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and (layer is null or layer in ('-5','-4','-3','-2','-1','0'))\n      ) as directions0",
+        "table": "      (select '-1' as oneway ,tunnel, coalesce(tags->'footway','') as footway, case when oneway in ('yes','true','1') then ST_Reverse(way) else way end as way from planet_osm_line  where way && !bbox! and oneway is not null and oneway not in ('no','false','0') and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and (layer is null or layer in ('-5','-4','-3','-2','-1','0'))\n      ) as directions0",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1399,7 +1400,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select '-1' as oneway ,tunnel, case when oneway in ('yes','true','1') then ST_Reverse(way) else way end as way from planet_osm_line  where way && !bbox! and oneway is not null and oneway not in ('no','false','0') and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '1'\n      ) as directions1",
+        "table": "      (select '-1' as oneway ,tunnel, coalesce(tags->'footway','') as footway, case when oneway in ('yes','true','1') then ST_Reverse(way) else way end as way from planet_osm_line  where way && !bbox! and oneway is not null and oneway not in ('no','false','0') and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '1'\n      ) as directions1",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1478,7 +1479,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select '-1' as oneway ,tunnel, case when oneway in ('yes','true','1') then ST_Reverse(way) else way end as way from planet_osm_line  where way && !bbox! and oneway is not null and oneway not in ('no','false','0') and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '2'\n      ) as directions2",
+        "table": "      (select '-1' as oneway ,tunnel, coalesce(tags->'footway','') as footway, case when oneway in ('yes','true','1') then ST_Reverse(way) else way end as way from planet_osm_line  where way && !bbox! and oneway is not null and oneway not in ('no','false','0') and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '2'\n      ) as directions2",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1557,7 +1558,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select '-1' as oneway ,tunnel, case when oneway in ('yes','true','1') then ST_Reverse(way) else way end as way from planet_osm_line  where way && !bbox! and oneway is not null and oneway not in ('no','false','0') and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '3'\n      ) as directions3",
+        "table": "      (select '-1' as oneway ,tunnel, coalesce(tags->'footway','') as footway, case when oneway in ('yes','true','1') then ST_Reverse(way) else way end as way from planet_osm_line  where way && !bbox! and oneway is not null and oneway not in ('no','false','0') and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '3'\n      ) as directions3",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1636,7 +1637,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "     (select '-1' as oneway ,tunnel, case when oneway in ('yes','true','1') then ST_Reverse(way) else way end as way from planet_osm_line  where way && !bbox! and oneway is not null and oneway not in ('no','false','0') and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '4'\n      ) as directions4",
+        "table": "     (select '-1' as oneway ,tunnel, coalesce(tags->'footway','') as footway, case when oneway in ('yes','true','1') then ST_Reverse(way) else way end as way from planet_osm_line  where way && !bbox! and oneway is not null and oneway not in ('no','false','0') and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '4'\n      ) as directions4",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1715,7 +1716,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select '-1' as oneway ,tunnel, case when oneway in ('yes','true','1') then ST_Reverse(way) else way end as way from planet_osm_line  where way && !bbox! and oneway is not null and oneway not in ('no','false','0') and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '5'\n      ) as directions5",
+        "table": "      (select '-1' as oneway ,tunnel, coalesce(tags->'footway','') as footway, case when oneway in ('yes','true','1') then ST_Reverse(way) else way end as way from planet_osm_line  where way && !bbox! and oneway is not null and oneway not in ('no','false','0') and (highway is not null or railway is not null or waterway is not null)\n         and bridge in ('yes','true','1','viaduct')\n         and layer = '5'\n      ) as directions5",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -2793,7 +2794,8 @@
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "contours_text"
+      "name": "contours_text",
+      "status": "off"
     },
     {
       "geometry": "point",
