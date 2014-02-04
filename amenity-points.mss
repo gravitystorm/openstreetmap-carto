@@ -586,4 +586,10 @@
     point-transform: "scale(0.75)";
     point-placement: interior;
   }
+
+  [amenity = 'bench'][zoom >= 19]::amenity {
+    point-file: url('symbols/bench.svg');
+    point-placement: interior;
+  }
+
 }
