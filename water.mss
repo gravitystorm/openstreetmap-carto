@@ -123,7 +123,7 @@
     [zoom >= 18] {
       line-width: 12;
     }
-    [tunnel = 'yes'] {
+    [tunnel != ''] {
       [zoom >= 14] {
         a/line-width: 6;
         a/line-dasharray: 4,2;
@@ -167,7 +167,7 @@
   [waterway = 'stream'][zoom >= 15] {
     line-width: 2;
     line-color: @water-color;
-    [tunnel = 'yes'] {
+    [tunnel != ''] {
       line-dasharray: 4,2;
       line-width: 2.4;
       a/line-width: 1.2;
@@ -180,7 +180,7 @@
     [zoom >= 15] {
       line-width: 1;
       line-color: @water-color;
-      [tunnel = 'yes'] {
+      [tunnel != ''] {
         line-width: 2;
         line-dasharray: 4,2;
         a/line-width: 1;
@@ -195,7 +195,7 @@
     line-join: round;
     line-cap: round;
     [zoom >= 17] { line-width: 11; }
-    [tunnel = 'yes'] {
+    [tunnel != ''] {
       line-dasharray: 4,2;
       b/line-width: 3;
       b/line-color: white;
@@ -250,7 +250,7 @@
     text-size: 9;
     text-halo-radius: 1;
     [zoom >= 14] { text-size: 10; }
-    [tunnel = 'yes'] { text-min-distance: 200; }
+    [tunnel != ''] { text-min-distance: 200; }
   }
 
   [waterway = 'canal'][zoom >= 13][zoom < 14] {
