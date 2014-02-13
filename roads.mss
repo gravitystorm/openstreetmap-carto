@@ -2270,6 +2270,79 @@
   }
 }
 
+.access::fill {
+  [access = 'permissive'] {
+    [feature = 'highway_unclassified'],
+    [feature = 'highway_residential'],
+    [feature = 'highway_footway'] {
+      [zoom >= 15] {
+        access/line-width: 6;
+        access/line-color: @permissive-marking;
+        access/line-dasharray: 6,8;
+        access/line-cap: round;
+        access/line-join: round;
+        access/line-opacity: 0.5;
+      }
+    }
+    [feature = 'highway_service'][service = 'INT-normal'][zoom >= 15],
+    [feature = 'highway_service'][zoom >= 16] {
+      access/line-width: 3;
+      access/line-color: @permissive-marking;
+      access/line-dasharray: 6,8;
+      access/line-cap: round;
+      access/line-join: round;
+      access/line-opacity: 0.5;
+      [zoom >= 16] { access/line-width: 6; }
+    }
+  }
+  [access = 'destination'] {
+    [feature = 'highway_unclassified'],
+    [feature = 'highway_residential'] {
+      [zoom >= 15] {
+        access/line-width: 6;
+        access/line-color: @destination-marking;
+        access/line-dasharray: 6,8;
+        access/line-cap: round;
+        access/line-join: round;
+        access/line-opacity: 0.5;
+      }
+    }
+    [feature = 'highway_service'][service = 'INT-normal'][zoom >= 15],
+    [feature = 'highway_service'][zoom >= 16] {
+      access/line-width: 3;
+      access/line-color: @destination-marking;
+      access/line-dasharray: 6,8;
+      access/line-cap: round;
+      access/line-join: round;
+      access/line-opacity: 0.5;
+      [zoom >= 16] { access/line-width: 6; }
+    }
+  }
+  [access = 'private'],
+  [access = 'no'] {
+    [feature != 'highway_service'] {
+      [zoom >= 15] {
+        access/line-width: 6;
+        access/line-color: @private-marking;
+        access/line-dasharray: 6,8;
+        access/line-opacity: 0.5;
+        access/line-join: round;
+        access/line-cap: round;
+      }
+    }
+    [feature = 'highway_service'][service = 'INT-normal'][zoom >= 15],
+    [feature = 'highway_service'][zoom >= 16] {
+      access/line-width: 3;
+      access/line-color: @private-marking;
+      access/line-dasharray: 6,8;
+      access/line-opacity: 0.5;
+      access/line-join: round;
+      access/line-cap: round;
+      [zoom >= 16] { access/line-width: 6; }
+    }
+  }
+}
+
 #roads-low-zoom {
   [feature = 'highway_motorway'],
   [feature = 'highway_motorway_link'] {
@@ -2622,7 +2695,7 @@
   }
 }
 
-.directions {
+.directions::fill {
   [zoom >= 16] {
     [oneway = 'yes'] {
       a/line-width: 1;
