@@ -1095,7 +1095,7 @@
 
 
   [feature = 'highway_motorway'] {
-    [tunnel = 'no'] {
+    [tunnel = 'no'][bridge = 'no'] {
       [zoom >= 12] {
         line-width: @motorway-width-z12;
         line-color: @motorway-fill;
@@ -1133,7 +1133,7 @@
   }
 
   [feature = 'highway_trunk'] {
-    [tunnel = 'no'] {
+    [tunnel = 'no'][bridge = 'no'] {
       [zoom >= 12] {
         line-width: @trunk-width-z12;
         line-cap: round;
@@ -1169,7 +1169,7 @@
   }
 
   [feature = 'highway_primary'] {
-    [tunnel = 'no'] {
+    [tunnel = 'no'][bridge = 'no'] {
       [zoom >= 12] {
         line-width: @primary-width-z12;
         line-color: @primary-fill;
@@ -1205,7 +1205,7 @@
   }
 
   [feature = 'highway_secondary'] {
-    [tunnel = 'no'] {
+    [tunnel = 'no'][bridge = 'no'] {
       [zoom >= 12] {
         line-width: @secondary-width-z12;
         line-color: @secondary-fill;
@@ -1240,7 +1240,7 @@
   }
 
   [feature = 'highway_tertiary'] {
-    [tunnel = 'no'] {
+    [tunnel = 'no'][bridge = 'no'] {
       [zoom >= 13] {
         line-width: @tertiary-width-z13;
         line-color: @tertiary-fill;
@@ -1276,7 +1276,7 @@
 
   [feature = 'highway_residential'],
   [feature = 'highway_unclassified'] {
-    [tunnel = 'no'] {
+    [tunnel = 'no'][bridge = 'no'] {
       [zoom >= 13] {
         line-width: @residential-width-z13;
         line-color: @residential-fill;
@@ -1324,7 +1324,7 @@
   }
 
   [feature = 'highway_road'] {
-    [zoom >= 13] {
+    [zoom >= 13][bridge = 'no'] {
       line-width: 2;
       line-color: @road-fill;
       line-join: round;
@@ -1359,7 +1359,7 @@
   }
 
   [feature = 'highway_living_street'] {
-    [zoom >= 12] {
+    [zoom >= 12][bridge = 'no'] {
       line-width: 1.5;
       line-color: @living-street-fill;
       line-join: round;
@@ -1372,25 +1372,27 @@
   }
 
   [feature = 'highway_service'] {
-    [service = 'INT-normal'] {
-      [zoom >= 13] {
-        line-width: 1;
-        line-color: @residential-casing;
-        [zoom >= 14] {
+    [bridge = 'no'] {
+      [service = 'INT-normal'] {
+        [zoom >= 13] {
+          line-width: 1;
+          line-color: @residential-casing;
+          [zoom >= 14] {
+            line-join: round;
+            line-cap: round;
+            line-width: 2;
+            line-color: @residential-fill;
+          }
+          [zoom >= 16] { line-width: 6; }
+        }
+      }
+      [service = 'INT-minor'] {
+        [zoom >= 16] {
+          line-width: 3;
+          line-color: @residential-fill;
           line-join: round;
           line-cap: round;
-          line-width: 2;
-          line-color: @residential-fill;
         }
-        [zoom >= 16] { line-width: 6; }
-      }
-    }
-    [service = 'INT-minor'] {
-      [zoom >= 16] {
-        line-width: 3;
-        line-color: @residential-fill;
-        line-join: round;
-        line-cap: round;
       }
     }
     [bridge = 'yes'] {
