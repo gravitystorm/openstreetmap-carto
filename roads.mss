@@ -2755,48 +2755,48 @@
 .directions::fill {
   [zoom >= 16] {
     [oneway = 'yes'] {
-      a/line-width: 1;
-      a/line-dasharray: 0,12,10,152;
-      a/line-color: #6c70d5;
-      a/line-join: bevel;
-      a/line-clip: false;
-      b/line-width: 2;
-      b/line-dasharray: 0,12,9,153;
-      b/line-color: #6c70d5;
-      b/line-join: bevel;
-      b/line-clip: false;
-      c/line-width: 3;
-      c/line-dasharray: 0,18,2,154;
-      c/line-color: #6c70d5;
-      c/line-join: bevel;
-      c/line-clip: false;
-      d/line-width: 4;
-      d/line-dasharray: 0,18,1,155;
-      d/line-color: #6c70d5;
-      d/line-join: bevel;
-      d/line-clip: false;
+      dira/line-width: 1;
+      dira/line-dasharray: 0,12,10,152;
+      dira/line-color: #6c70d5;
+      dira/line-join: bevel;
+      dira/line-clip: false;
+      dirb/line-width: 2;
+      dirb/line-dasharray: 0,12,9,153;
+      dirb/line-color: #6c70d5;
+      dirb/line-join: bevel;
+      dirb/line-clip: false;
+      dirc/line-width: 3;
+      dirc/line-dasharray: 0,18,2,154;
+      dirc/line-color: #6c70d5;
+      dirc/line-join: bevel;
+      dirc/line-clip: false;
+      dird/line-width: 4;
+      dird/line-dasharray: 0,18,1,155;
+      dird/line-color: #6c70d5;
+      dird/line-join: bevel;
+      dird/line-clip: false;
     }
     [oneway = '-1'] {
-      a/line-width: 1;
-      a/line-dasharray: 0,12,10,152;
-      a/line-color: #6c70d5;
-      a/line-join: bevel;
-      a/line-clip: false;
-      b/line-width: 2;
-      b/line-dasharray: 0,13,9,152;
-      b/line-color: #6c70d5;
-      b/line-join: bevel;
-      b/line-clip: false;
-      c/line-width: 3;
-      c/line-dasharray: 0,14,2,158;
-      c/line-color: #6c70d5;
-      c/line-join: bevel;
-      c/line-clip: false;
-      d/line-width: 4;
-      d/line-dasharray: 0,15,1,158;
-      d/line-color: #6c70d5;
-      d/line-join: bevel;
-      d/line-clip: false;
+      dira/line-width: 1;
+      dira/line-dasharray: 0,12,10,152;
+      dira/line-color: #6c70d5;
+      dira/line-join: bevel;
+      dira/line-clip: false;
+      dirb/line-width: 2;
+      dirb/line-dasharray: 0,13,9,152;
+      dirb/line-color: #6c70d5;
+      dirb/line-join: bevel;
+      dirb/line-clip: false;
+      dirc/line-width: 3;
+      dirc/line-dasharray: 0,14,2,158;
+      dirc/line-color: #6c70d5;
+      dirc/line-join: bevel;
+      dirc/line-clip: false;
+      dird/line-width: 4;
+      dird/line-dasharray: 0,15,1,158;
+      dird/line-color: #6c70d5;
+      dird/line-join: bevel;
+      dird/line-clip: false;
     }
   }
 }
