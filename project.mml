@@ -1158,7 +1158,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,place,name, cast(regexp_replace('0' || population,'[^0-9]','','g') as bigint) as pop \n      from planet_osm_point\n      where place in ('city','town')\n        and (capital is null or capital != 'yes')\n   order by place, pop desc ) as placenames_medium",
+        "table": "(select way,place,name, cast(regexp_replace(concat('0',population),'[^0-9]','','g') as bigint) as pop \n      from planet_osm_point\n      where place in ('city','town')\n        and (capital is null or capital != 'yes')\n   order by place, pop desc ) as placenames_medium",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
