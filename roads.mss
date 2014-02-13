@@ -102,7 +102,7 @@
   }
 
   [feature = 'highway_motorway_link'] {
-    [tunnel = 'no'] {
+    [tunnel = 'no'][bridge = 'no'] {
       [zoom >= 12] {
         line-width: @motorway-width-z12 - 1.5 + 1;
         line-color: @motorway-casing;
@@ -164,7 +164,7 @@
   }
 
   [feature = 'highway_primary_link'] {
-    [tunnel = 'no'] {
+    [tunnel = 'no'][bridge = 'no'] {
       [zoom >= 12] {
         line-width: @trunk-width-z12 + 1;
         line-color: @trunk-casing;
@@ -200,7 +200,7 @@
   }
 
   [feature = 'highway_secondary_link'] {
-    [tunnel = 'no'] {
+    [tunnel = 'no'][bridge = 'no'] {
       [zoom >= 12] {
         line-width: @secondary-width-z12 + 1;
         line-color: @secondary-casing;
@@ -233,7 +233,7 @@
   }
 
   [feature = 'highway_tertiary_link'] {
-    [tunnel = 'no'] {
+    [tunnel = 'no'][bridge = 'no'] {
       [zoom >= 13] {
         line-width: 6;
         line-color: @tertiary-casing;
@@ -268,7 +268,7 @@
 
 .roads::casing {
   [feature = 'highway_motorway'] {
-    [tunnel = 'no'] {
+    [tunnel = 'no'][bridge = 'no'] {
       [zoom >= 12] {
         line-width: @motorway-width-z12 + 1;
         line-color: @motorway-casing;
@@ -304,7 +304,7 @@
   }
 
   [feature = 'highway_trunk'] {
-    [tunnel = 'no'] {
+    [tunnel = 'no'][bridge = 'no'] {
       [zoom >= 12] {
         line-width: @trunk-width-z12 + 1;
         line-color: @trunk-casing;
@@ -340,7 +340,7 @@
   }
 
   [feature = 'highway_primary'] {
-    [tunnel = 'no'] {
+    [tunnel = 'no'][bridge = 'no'] {
       [zoom >= 12] {
         line-width: @primary-width-z12 + 1;
         line-color: @primary-casing;
@@ -376,7 +376,7 @@
   }
 
   [feature = 'highway_secondary'] {
-    [tunnel = 'no'] {
+    [tunnel = 'no'][bridge = 'no'] {
       [zoom >= 12] {
         line-width: @secondary-width-z12 + 1;
         line-color: @secondary-casing;
@@ -409,7 +409,7 @@
   }
 
   [feature = 'highway_tertiary'] {
-    [tunnel = 'no'] {
+    [tunnel = 'no'][bridge = 'no'] {
       [zoom >= 13] {
         line-width: @tertiary-width-z13 + 1.5;
         line-color: @tertiary-casing;
@@ -444,7 +444,7 @@
   [feature = 'highway_residential'],
   [feature = 'highway_unclassified'],
   [feature = 'highway_road'] {
-    [tunnel = 'no'] {
+    [tunnel = 'no'][bridge = 'no'] {
       [zoom >= 13] {
         line-width: 3;
         line-color: @residential-casing;
@@ -483,7 +483,7 @@
    * simply because of a tunnel tag. Also rationalise joins and caps
    */
   [feature = 'highway_service'] {
-    [tunnel = 'no'] {
+    [tunnel = 'no'][bridge = 'no'] {
       [service = 'INT-normal'] {
         [zoom >= 14] {
           line-color: @service-casing;
@@ -521,16 +521,18 @@
   }
 
   [feature = 'highway_pedestrian'] {
-    [zoom >= 13] {
-      line-width: 2;
-      line-color: @pedestrian-casing;
-      line-cap: round;
-      line-join: round;
-      [zoom >= 14] { line-width: 3.6; }
-      [zoom >= 15] { line-width: 6.5; }
-      [zoom >= 16] { line-width: 9; }
-      [tunnel = 'yes'] {
-        line-dasharray: 4,2;
+    [bridge = 'no'] {
+      [zoom >= 13] {
+        line-width: 2;
+        line-color: @pedestrian-casing;
+        line-cap: round;
+        line-join: round;
+        [zoom >= 14] { line-width: 3.6; }
+        [zoom >= 15] { line-width: 6.5; }
+        [zoom >= 16] { line-width: 9; }
+        [tunnel = 'yes'] {
+          line-dasharray: 4,2;
+        }
       }
     }
     [bridge = 'yes'] {
@@ -546,15 +548,17 @@
   }
 
   [feature = 'highway_living_street'] {
-    [zoom >= 12] {
-      line-width: 2.5;
-      line-color: @living-street-casing;
-      line-cap: round;
-      line-join: round;
-      [zoom >= 14] { line-width: 4; }
-      [zoom >= 15] { line-width: 6; }
-      [zoom >= 16] { line-width: 9; }
-      [zoom >= 17] { line-width: 14.5; }
+    [bridge = 'no'] {
+      [zoom >= 12] {
+        line-width: 2.5;
+        line-color: @living-street-casing;
+        line-cap: round;
+        line-join: round;
+        [zoom >= 14] { line-width: 4; }
+        [zoom >= 15] { line-width: 6; }
+        [zoom >= 16] { line-width: 9; }
+        [zoom >= 17] { line-width: 14.5; }
+      }
     }
   }
   [feature = 'highway_bridleway'],
