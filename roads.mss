@@ -90,7 +90,7 @@
 @tertiary-width-z17: 13;
 @residential-width-z17: 13;
 
-.roads::casing_links {
+.roads-casing::casing_links {
   [feature = 'highway_raceway'] {
     [zoom >= 12] {
       line-color: pink;
@@ -275,7 +275,7 @@
   }
 }
 
-.roads::casing {
+.roads-casing::casing {
   [feature = 'highway_motorway'] {
     [tunnel = 'no'][bridge = 'no'] {
       [zoom >= 12] {
@@ -701,7 +701,7 @@
   }
 }
 
-.roads::casing2 {
+.roads-casing::casing2 {
   [feature = 'highway_bridleway'],
   [feature = 'highway_path'][horse = 'designated'] {
     [bridge = 'yes'] {
@@ -815,7 +815,7 @@
   }
 }
 
-.roads::fill_links {
+.roads-fill::fill_links {
   [feature = 'highway_motorway_link'] {
     [tunnel = 'no'] {
       [zoom >= 12] {
@@ -1006,7 +1006,7 @@
   }
 }
 
-.roads::fill {
+.roads-fill::fill {
 
   /*
    * The construction rules for small roads are strange, since if construction is null its assumed that

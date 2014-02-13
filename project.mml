@@ -443,7 +443,7 @@
         "dbname": "gis"
       },
       "id": "tunnels",
-      "class": "roads access directions",
+      "class": "roads-fill roads-casing access directions",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
@@ -676,6 +676,29 @@
       "name": "highway-area-casing"
     },
     {
+      "geometry": "linestring",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "      (select way,coalesce(('highway_' || highway), ('railway_' ||(case when railway='preserved' and service in ('spur','siding','yard') then 'INT-preserved-ssy'::text when railway in ('spur','siding') or (railway='rail' and service in ('spur','siding','yard'))  then 'INT-spur-siding-yard' when railway in ('light_rail', 'narrow_gauge', 'funicular', 'rail', 'subway', 'tram', 'spur', 'siding', 'monorail', 'platform', 'preserved', 'disused', 'abandoned', 'construction', 'miniature', 'turntable') then railway else null end)), ('aeroway_' || aeroway)) as feature, horse, foot, bicycle, tracktype, access, construction, case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service, case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway, case when bridge in ('yes','true','1','viaduct') then 'yes'::text else 'no'::text end as bridge, case when tunnel in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel, case when layer is null then '0' else layer end as layernotnull from planet_osm_line where (highway in ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'road', 'unclassified', 'service', 'pedestrian', 'living_street', 'raceway', 'bridleway', 'footway', 'cycleway', 'path', 'track', 'steps', 'platform', 'proposed', 'construction')  or aeroway in ('runway','taxiway') or railway in ('light_rail', 'subway', 'narrow_gauge',  'rail', 'spur', 'siding', 'disused', 'abandoned', 'construction')) and (tunnel is null or not tunnel in ('yes','true','1')) and (bridge is null or not bridge in ('yes','true','1','viaduct')) order by z_order)  as roads",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "gis"
+      },
+      "id": "roads-casing",
+      "class": "roads-casing access directions",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "roads-casing"
+    },
+    {
       "extent": [
         -179.99999692067183,
         -84.96651228427099,
@@ -757,12 +780,12 @@
         "geometry_field": "way",
         "dbname": "gis"
       },
-      "id": "roads",
-      "class": "roads access directions",
+      "id": "roads-fill",
+      "class": "roads-fill access directions",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "roads"
+      "name": "roads-fill"
     },
     {
       "geometry": "point",
@@ -873,7 +896,7 @@
         "dbname": "gis"
       },
       "id": "bridges",
-      "class": "roads access directions",
+      "class": "roads-fill roads-casing access directions",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
