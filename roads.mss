@@ -2242,6 +2242,52 @@
   }
 }
 
+#highway-area-fill {
+  [feature = 'highway_living_street'][zoom >= 14] {
+    polygon-fill: #ccc;
+  }
+
+  [feature = 'highway_residential'],
+  [feature = 'highway_unclassified'],
+  [feature = 'highway_service'] {
+    [zoom >= 14] {
+      polygon-fill: #fff;
+    }
+  }
+
+  [feature = 'highway_pedestrian'],
+  [feature = 'highway_footway'],
+  [feature = 'highway_path'] {
+    [zoom >= 14] {
+      polygon-fill: #ededed;
+    }
+  }
+
+  [feature = 'highway_track'][zoom >= 14] {
+    polygon-fill: #dfcc66;
+  }
+
+  [feature = 'highway_platform'],
+  [feature = 'railway_platform'] {
+    [zoom >= 16] {
+      polygon-fill: #bbbbbb;
+      polygon-gamma: 0.65;
+    }
+  }
+
+  [feature = 'aeroway_runway'][zoom >= 11] {
+    polygon-fill: @runway-fill;
+  }
+
+  [feature = 'aeroway_taxiway'][zoom >= 13] {
+    polygon-fill: @taxiway-fill;
+  }
+
+  [feature = 'aeroway_helipad'][zoom >= 16] {
+    polygon-fill: @helipad-fill;
+  }
+}
+
 #highway-junctions {
   [zoom >= 11] {
     ref/text-name: "[ref]";
