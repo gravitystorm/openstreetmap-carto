@@ -516,7 +516,7 @@
       ele/text-halo-radius: 1;
       ele/text-placement: interior;
       [name != ''] {
-        ele/text-dy: 18;
+        ele/text-dy: 19;
       }
     }
   }
