@@ -88,6 +88,14 @@
 </Style>
 */
 
+#admin-text[zoom >= 16] {
+  text-name: "[name]";
+  text-face-name: @book-fonts;
+  text-fill: @admin-boundaries;
+  text-placement: line;
+  text-halo-radius: 1.0;
+}
+
 #national-park-boundaries {
   [zoom >= 7] {
     ::fill [zoom < 13] {

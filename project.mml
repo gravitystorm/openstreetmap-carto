@@ -1678,6 +1678,30 @@
       "name": "water-lines-text"
     },
     {
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427098,
+        179.99999692067183,
+        84.96651228427099
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way, name, admin_level from planet_osm_roads where \"boundary\" = 'administrative' and admin_level in ('0','1','2','3','4','5','6','7','8','9','10')) as admin_text",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "custom",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "dbname": "gis"
+      },
+      "id": "admin-text",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "admin-text",
+      "geometry": "linestring"
+    },
+    {
       "geometry": "polygon",
       "extent": [
         -179.99999692067183,
