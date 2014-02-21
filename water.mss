@@ -244,9 +244,9 @@
     text-placement: line;
     text-fill: #6699cc;
     text-spacing: 400;
-    text-size: 9;
+    text-size: 10;
     text-halo-radius: 1;
-    [zoom >= 14] { text-size: 10; }
+    [zoom >= 14] { text-size: 12; }
     [tunnel = 'yes'] { text-min-distance: 200; }
   }
 
@@ -254,14 +254,14 @@
     text-name: "[name]";
     text-face-name: @oblique-fonts;
     text-halo-radius: 1;
-    text-size: 8;
+    text-size: 10;
     text-placement: line;
     text-fill: #6699cc;
   }
 
   [waterway = 'stream'][zoom >= 15] {
     text-name: "[name]";
-    text-size: 8;
+    text-size: 10;
     text-face-name: @oblique-fonts;
     text-fill: #6699cc;
     text-halo-radius: 1;
@@ -274,7 +274,7 @@
     [zoom >= 15] {
       text-name: "[name]";
       text-face-name: @oblique-fonts;
-      text-size: 8;
+      text-size: 10;
       text-fill: #6699cc;
       text-spacing: 600;
       text-placement: line;
@@ -284,7 +284,7 @@
 
   [waterway = 'canal'][zoom >= 14] {
     text-name: "[name]";
-    text-size: 9;
+    text-size: 10;
     text-fill: #6699cc;
     text-placement: line;
     text-face-name: @oblique-fonts;
@@ -297,14 +297,14 @@
 
   [waterway = 'derelict_canal'][zoom >= 13] {
     text-name: "[name]";
-    text-size: 9;
+    text-size: 10;
     text-fill: #80d1ae;
     text-face-name: @oblique-fonts;
     text-placement: line;
     text-spacing: 600;
     text-halo-radius: 1;
     [zoom >= 14] {
-      text-size: 10;
+      text-size: 12;
     }
   }
 }

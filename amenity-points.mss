@@ -552,7 +552,7 @@
   [landuse = 'basin']::landuse {
     [zoom >= 15] {
       text-name: "[name]";
-      text-size: 10;
+      text-size: 12;
       text-fill: #6699cc;
       text-face-name: @oblique-fonts;
       text-halo-radius: 1;
