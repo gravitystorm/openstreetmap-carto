@@ -203,16 +203,13 @@
     }
   }
 
-  [waterway = 'derelict_canal'],
-  [waterway = 'canal'][disused = 'yes'] {
-    [zoom >= 12] {
-      line-width: 1.5;
-      line-color: #b5e4d0;
-      line-dasharray: 4,4;
-      line-opacity: 0.5;
-      line-join: round;
-      line-cap: round;
-    }
+  [waterway = 'derelict_canal'][zoom >= 12] {
+    line-width: 1.5;
+    line-color: #b5e4d0;
+    line-dasharray: 4,4;
+    line-opacity: 0.5;
+    line-join: round;
+    line-cap: round;
     [zoom >= 13] {
       line-width: 2.5;
       line-dasharray: 4,6;
@@ -298,17 +295,14 @@
     }
   }
 
-  [waterway = 'derelict_canal'],
-  [waterway = 'canal'][disused = 'yes'] {
-    [zoom >= 13] {
-      text-name: "[name]";
-      text-size: 9;
-      text-fill: #80d1ae;
-      text-face-name: @book-fonts;
-      text-placement: line;
-      text-spacing: 600;
-      text-halo-radius: 1;
-    }
+  [waterway = 'derelict_canal'][zoom >= 13] {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: #80d1ae;
+    text-face-name: @book-fonts;
+    text-placement: line;
+    text-spacing: 600;
+    text-halo-radius: 1;
     [zoom >= 14] {
       text-size: 10;
     }
