@@ -82,6 +82,8 @@
   text-fill: @admin-boundaries;
   text-placement: line;
   text-halo-radius: 1.0;
+  text-placement: line;
+  text-dy: -10;
 }
 
 #national-park-boundaries {
