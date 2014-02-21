@@ -553,7 +553,7 @@
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 12;
-      text-fill: #6699cc;
+      text-fill: @water-text;
       text-face-name: @oblique-fonts;
       text-halo-radius: 1;
       text-wrap-width: 20;

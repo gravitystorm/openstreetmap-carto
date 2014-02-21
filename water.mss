@@ -1,3 +1,5 @@
+@water-text: #6699cc;
+
 #water-areas {
   [natural = 'glacier']::natural {
     [zoom >= 6] {
@@ -242,7 +244,7 @@
     text-name: "[name]";
     text-face-name: @oblique-fonts;
     text-placement: line;
-    text-fill: #6699cc;
+    text-fill: @water-text;
     text-spacing: 400;
     text-size: 10;
     text-halo-radius: 1;
@@ -256,14 +258,14 @@
     text-halo-radius: 1;
     text-size: 10;
     text-placement: line;
-    text-fill: #6699cc;
+    text-fill: @water-text;
   }
 
   [waterway = 'stream'][zoom >= 15] {
     text-name: "[name]";
     text-size: 10;
     text-face-name: @oblique-fonts;
-    text-fill: #6699cc;
+    text-fill: @water-text;
     text-halo-radius: 1;
     text-spacing: 600;
     text-placement: line;
@@ -276,7 +278,7 @@
       text-name: "[name]";
       text-face-name: @oblique-fonts;
       text-size: 10;
-      text-fill: #6699cc;
+      text-fill: @water-text;
       text-spacing: 600;
       text-placement: line;
       text-halo-radius: 1;
@@ -286,7 +288,7 @@
   [waterway = 'canal'][zoom >= 14] {
     text-name: "[name]";
     text-size: 10;
-    text-fill: #6699cc;
+    text-fill: @water-text;
     text-placement: line;
     text-face-name: @oblique-fonts;
     text-halo-radius: 1;
