@@ -2756,7 +2756,7 @@
   }
 }
 
-.directions::fill {
+.directions::directions {
   [zoom >= 16] {
     [oneway = 'yes'] {
       dira/line-width: 1;
