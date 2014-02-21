@@ -5,6 +5,7 @@
 @golf_course: #b5e3b5;
 @natural: #c6e4b4; // also grassland
 @park: #b6fdb6; // also recreation_ground
+@park-text: #2c4b2c;
 @wood: #aed1a0;
 @vineyard: #abdf96;
 
@@ -385,17 +386,18 @@
   }
 }
 
-#area-text {
+#park-text {
   [way_area >= 150000][zoom >= 14],
   [way_area >= 80000][zoom >= 15],
   [way_area >= 20000][zoom >= 16],
   [zoom >= 17] {
     text-name: "[name]";
-    text-size: 10;
-    text-fill: #000033;
+    text-size: 11;
+    text-fill: @park-text;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 20;
+    text-halo-fill: rgba(255,255,255,0.6);
+    text-wrap-width: 30;
     text-placement: interior;
   }
 }

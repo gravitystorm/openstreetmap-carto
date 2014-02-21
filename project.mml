@@ -1549,18 +1549,41 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,way_area,name\n       from planet_osm_polygon\n       where name is not null\n         and (waterway is null or waterway != 'riverbank')\n         and place is null\n       order by way_area desc\n      ) as area_text",
+        "table": "(select way,way_area,name\n       from planet_osm_polygon\n       where name is not null\n         and leisure in ('playground', 'park', 'recreation_ground', 'common', 'garden', 'golf_course')\n       order by way_area desc\n      ) as park_text",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
         "dbname": "gis"
       },
-      "id": "area-text",
+      "id": "park-text",
       "class": "",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "area-text"
+      "name": "park-text"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select name, way, way_area from planet_osm_polygon where building is not null  and building not in ('no','station','supermarket')) as building_text",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "gis"
+      },
+      "id": "building-text",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "building-text"
     },
     {
       "geometry": "linestring",
