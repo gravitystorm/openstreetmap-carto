@@ -267,6 +267,7 @@
     text-halo-radius: 1;
     text-spacing: 600;
     text-placement: line;
+    text-dy: 8;
   }
 
   [waterway = 'drain'],
