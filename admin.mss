@@ -76,18 +76,6 @@
   opacity: 0.5;
 }
 
-/*
- * err, what does this do?
-<Style name="admin-other">
-   <Rule>
-      <Filter>not [admin_level] != ''</Filter>
-      &maxscale_zoom9;
-      &minscale_zoom11;
-      <LineSymbolizer stroke="purple" stroke-width="1" stroke-opacity="0.2"/>
-    </Rule>
-</Style>
-*/
-
 #admin-text[zoom >= 16] {
   text-name: "[name]";
   text-face-name: @book-fonts;
