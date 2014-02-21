@@ -811,7 +811,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,\n       case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway\n       from planet_osm_line\n       where oneway is not null\n         and (highway is not null or railway is not null or waterway is not null)\n         and (bridge is null or bridge not in ('yes','true','1','viaduct'))\n      ) as directions_pre_bridges",
+        "table": "(select way, oneway\n       from planet_osm_line\n       where oneway in ('yes', '-1')\n         and highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified','road','service','pedestrian','raceway','living_street','construction')\n         and (bridge is null or bridge not in ('yes','true','1','viaduct'))\n      ) as directions_pre_bridges",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -903,7 +903,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,coalesce(('highway_' || (case when highway is not null then highway else null end)), ('railway_' || (case when railway in ('spur', 'siding') or (railway='rail' and service in ('spur','siding','yard')) then 'INT-spur-siding-yard' when railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction') then railway else null end)), ('aeroway_' || (case when aeroway in ('runway', 'taxiway') then aeroway else null end))) as feature, case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service,horse,bicycle,foot,tracktype,access,case when oneway in ('yes','true','1') then 'yes'::text else oneway end as oneway, case when layer is null then '0' else layer end as layerfixed \n from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and (layer is null or layer in ('0','1','2','3','4','5')) \n       order by layerfixed, z_order\n      ) as bridges",
+        "table": "(select way,coalesce(('highway_' || (case when highway is not null then highway else null end)), ('railway_' || (case when railway in ('spur', 'siding') or (railway='rail' and service in ('spur','siding','yard')) then 'INT-spur-siding-yard' when railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction') then railway else null end)), ('aeroway_' || (case when aeroway in ('runway', 'taxiway') then aeroway else null end))) as feature, case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service,horse,bicycle,foot,tracktype,access,case when oneway in ('yes', '-1') and highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified','road','service','pedestrian','raceway','living_street','construction') then oneway else null end as oneway, case when layer is null then '0' else layer end as layerfixed \n from planet_osm_line\n       where (highway is not null\n              or aeroway in ('runway','taxiway')\n              or railway in ('light_rail','subway','narrow_gauge','rail','spur','siding','disused','abandoned','construction'))\n         and bridge in ('yes','true','1','viaduct')\n         and (layer is null or layer in ('0','1','2','3','4','5')) \n       order by layerfixed, z_order\n      ) as bridges",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1480,7 +1480,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,highway,name\n       from planet_osm_line\n       where waterway IS NULL\n         and leisure IS NULL\n         and landuse IS NULL\n         and name is not null\n      ) as roads_text_name",
+        "table": "      (select way, highway, name\n       from planet_osm_line\n       where highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified','road','service','pedestrian','raceway','living_street', 'construction') \n         and name is not null\n      ) as roads_text_name",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1549,18 +1549,41 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,way_area,name\n       from planet_osm_polygon\n       where name is not null\n         and (waterway is null or waterway != 'riverbank')\n         and place is null\n       order by way_area desc\n      ) as area_text",
+        "table": "(select way,way_area,name\n       from planet_osm_polygon\n       where name is not null\n         and leisure in ('playground', 'park', 'recreation_ground', 'common', 'garden', 'golf_course')\n       order by way_area desc\n      ) as park_text",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
         "dbname": "gis"
       },
-      "id": "area-text",
+      "id": "park-text",
       "class": "",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "area-text"
+      "name": "park-text"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select name, way, way_area from planet_osm_polygon where building is not null  and building not in ('no','station','supermarket')) as building_text",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "gis"
+      },
+      "id": "building-text",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "building-text"
     },
     {
       "geometry": "linestring",
@@ -1653,6 +1676,30 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
       "name": "water-lines-text"
+    },
+    {
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427098,
+        179.99999692067183,
+        84.96651228427099
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way, name, admin_level from planet_osm_roads where \"boundary\" = 'administrative' and admin_level in ('0','1','2','3','4','5','6','7','8','9','10')) as admin_text",
+        "key_field": "",
+        "geometry_field": "way",
+        "extent_cache": "custom",
+        "extent": "-20037508,-19929239,20037508,19929239",
+        "dbname": "gis"
+      },
+      "id": "admin-text",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "admin-text",
+      "geometry": "linestring"
     },
     {
       "geometry": "polygon",

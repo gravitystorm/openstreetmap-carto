@@ -2390,19 +2390,6 @@
       text-spacing: 400;
     }
   }
-  /* Other things, not just roads */
-  [zoom >= 15] {
-    text-name: "[name]";
-    text-size: 9;
-    text-fill: #000;
-    text-clip: false;
-    text-placement: line;
-    text-face-name: @book-fonts;
-    text-halo-radius: 1;
-  }
-  [zoom >= 17] {
-      text-size: 11;
-  }
 }
 
 .directions {

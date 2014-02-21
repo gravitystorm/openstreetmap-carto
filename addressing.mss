@@ -31,3 +31,19 @@
     }
   }
 }
+
+#building-text {
+  [way_area >= 150000][zoom >= 14],
+  [way_area >= 80000][zoom >= 15],
+  [way_area >= 20000][zoom >= 16],
+  [zoom >= 17] {
+    text-name: "[name]";
+    text-size: 11;
+    text-fill: #444;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 20;
+    text-halo-fill: rgba(255,255,255,0.5);
+    text-placement: interior;
+  }
+}
