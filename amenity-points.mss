@@ -731,7 +731,7 @@
   [leisure = 'marina'][zoom >= 15]::leisure {
     text-name: "[name]";
     text-size: 8;
-    text-fill: blue;
+    text-fill: #576ddf;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: 30;
