@@ -2373,7 +2373,6 @@
       [zoom >= 16] { access/line-width: 6; }
     }
   }
-  [access = 'private'],
   [access = 'no'] {
     [feature != 'highway_service'] {
       [zoom >= 15] {
