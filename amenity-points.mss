@@ -578,7 +578,9 @@
   }
 
   [leisure = 'sports_centre']::leisure,
-  [leisure = 'stadium']::leisure {
+  [leisure = 'stadium']::leisure,
+  [leisure = 'track']::leisure,
+  [leisure = 'pitch']::leisure {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
@@ -598,7 +600,8 @@
   [landuse = 'village_green']::landuse,
   [leisure = 'common']::leisure,
   [leisure = 'garden']::leisure,
-  [leisure = 'golf_course']::leisure {
+  [leisure = 'golf_course']::leisure,
+  [leisure = 'nature_reserve']::leisure {
     [way_area >= 150000][zoom >= 14],
     [way_area >= 80000][zoom >= 15],
     [way_area >= 20000][zoom >= 16],
