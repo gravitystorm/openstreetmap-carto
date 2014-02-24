@@ -54,9 +54,13 @@ See https://github.com/mapnik/mapnik/issues/1605 for more details.
 ## Fonts
 The stylesheet depends on a number of openly licensed fonts for support of all the languages found on the map. The package which supplies these fonts on Ubuntu is indicated.
 
+### Global
 * DejaVu Sans, for most language (``ttf-dejavu``)
 * Droid Sans Fallback, as a reasonable fallback (``fonts-droid``)
 * Unifont, as a last resort fallback (``ttf-unifont``)
+
+### Southeast Asia
+* Arundina Sans, for Thai (``fonts-sipa-arundina``)
 
 ## Dependencies
 
