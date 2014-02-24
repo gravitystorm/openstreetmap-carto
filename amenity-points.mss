@@ -291,7 +291,7 @@
   }
 
   [historic = 'archaeological_site'][zoom >= 16]::historic {
-    point-file: url('symbols/tourist_archaeological2.glow.16.png');
+    point-file: url('symbols/tourist_archaeological2.glow.24.png');
     point-placement: interior;
   }
 
