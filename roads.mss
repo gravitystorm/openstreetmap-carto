@@ -2374,7 +2374,19 @@
     }
   }
   [access = 'no'] {
-    [feature != 'highway_service'] {
+    [feature = 'highway_motorway'],
+    [feature = 'highway_trunk'],
+    [feature = 'highway_primary'],
+    [feature = 'highway_secondary'],
+    [feature = 'highway_tertiary'],
+    [feature = 'highway_unclassified'],
+    [feature = 'highway_residential'],
+    [feature = 'highway_road'],
+    [feature = 'highway_track'],
+    [feature = 'highway_path'],
+    [feature = 'highway_footway'],
+    [feature = 'highway_cycleway'],
+    [feature = 'highway_bridleway'] {
       [zoom >= 15] {
         access/line-width: 6;
         access/line-color: @private-marking;
