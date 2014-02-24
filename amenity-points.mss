@@ -532,18 +532,26 @@
     text-placement: interior;
   }
 
-  [historic = 'memorial']::historic,
-  [historic = 'archaeological_site']::historic {
-    [zoom >= 17] {
-      text-name: "[name]";
-      text-size: 9;
-      text-fill: brown;
-      text-dy: 12;
-      text-face-name: @book-fonts;
-      text-halo-radius: 1;
-      text-wrap-width: 20;
-      text-placement: interior;
-    }
+  [historic = 'memorial'][zoom >= 17]::historic {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: brown;
+    text-dy: 13;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 20;
+    text-placement: interior;
+  }
+
+  [historic = 'archaeological_site'][zoom >= 17]::historic {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: brown;
+    text-dy: 15;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 20;
+    text-placement: interior;
   }
 
   [natural = 'water']::natural,
