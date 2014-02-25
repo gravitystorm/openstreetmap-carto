@@ -54,8 +54,10 @@ See https://github.com/mapnik/mapnik/issues/1605 for more details.
 ## Fonts
 The stylesheet depends on a number of openly licensed fonts for support of all the languages found on the map. The package which supplies these fonts on Ubuntu is indicated.
 
+If a font is missing, it will skip to the next available font which contains those characters. If you are not concerned with a particular language, you do not need its fonts. DejaVu Sans and Unifont are the two required fonts, and included on most systems.
+
 ### Global
-* DejaVu Sans, for most language (``ttf-dejavu``)
+* DejaVu Sans, for most languages (``ttf-dejavu``)
 * Droid Sans Fallback, as a reasonable fallback (``fonts-droid``)
 * Unifont, as a last resort fallback (``ttf-unifont``)
 
