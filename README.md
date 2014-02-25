@@ -64,6 +64,7 @@ If a font is missing, it will skip to the next available font which contains tho
 ### Southeast Asia
 * Arundina Sans, for Thai (``fonts-sipa-arundina``)
 * Padauk, for Burmese (``fonts-sil-padauk``)
+* Khmer OS Metal Chrieng Regular, for Khmer (``fonts-khmeros``)
 
 ## Dependencies
 
