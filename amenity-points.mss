@@ -495,9 +495,9 @@
   [natural = 'wood'][zoom >= 15]::natural {
     text-name: "[name]";
     text-size: 10;
-    text-fill: #000;
+    text-fill: darken(@wood, 50%);
     text-face-name: @book-fonts;
-    text-halo-radius: 2;
+    text-halo-radius: 1;
     text-wrap-width: 10;
     text-placement: interior;
   }
