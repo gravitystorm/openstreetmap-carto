@@ -51,6 +51,21 @@ ogr2ogr ne_10m_populated_places_fixed.shp ne_10m_populated_places.shp
 
 See https://github.com/mapnik/mapnik/issues/1605 for more details.
 
+## Fonts
+The stylesheet depends on a number of openly licensed fonts for support of all the languages found on the map. The package which supplies these fonts on Ubuntu is indicated.
+
+If a font is missing, it will skip to the next available font which contains those characters. If you are not concerned with a particular language, you do not need its fonts. DejaVu Sans and Unifont are the two required fonts, and included on most systems.
+
+### Global
+* DejaVu Sans, for most languages (``ttf-dejavu``)
+* Droid Sans Fallback, as a reasonable fallback (``fonts-droid``)
+* Unifont, as a last resort fallback (``ttf-unifont``)
+
+### Southeast Asia
+* Arundina Sans, for Thai (``fonts-sipa-arundina``)
+* Padauk, for Burmese (``fonts-sil-padauk``)
+* Khmer OS Metal Chrieng Regular, for Khmer (``fonts-khmeros``)
+
 ## Dependencies
 
 * [TileMill](http://mapbox.com/tilemill) - This is a TileMill project you can copy (or symlink) directly into your Mapbox/project directory
