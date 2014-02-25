@@ -61,6 +61,7 @@ The stylesheet depends on a number of openly licensed fonts for support of all t
 
 ### Southeast Asia
 * Arundina Sans, for Thai (``fonts-sipa-arundina``)
+* Padauk, for Burmese (``fonts-sil-padauk``)
 
 ## Dependencies
 
