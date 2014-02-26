@@ -2795,6 +2795,47 @@
   }
 }
 
+#paths-text-name {
+  [highway = 'track'] {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 8;
+      text-spacing: 300;
+      text-clip: false;
+      text-placement: line;
+      text-face-name: @book-fonts;
+    }
+    [zoom >= 16] {
+      text-size: 9;
+    }
+    [zoom >= 17] {
+      text-size: 11;
+    }
+  }
+
+  [highway = 'footway'],
+  [highway = 'cycleway'],
+  [highway = 'path'],
+  [highway = 'steps'] {
+    [zoom >= 16] {
+      text-name: "[name]";
+      text-fill: #222;
+      text-size: 9;
+      text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.8);
+      text-spacing: 200;
+      text-clip: false;
+      text-placement: line;
+      text-face-name: @book-fonts;
+      text-dy: 7;
+    }
+    [zoom >= 17] {
+      text-size: 11;
+      text-dy: 9;
+    }
+  }
+}
+
 .directions::directions {
   [zoom >= 16] {
     [oneway = 'yes'] {
