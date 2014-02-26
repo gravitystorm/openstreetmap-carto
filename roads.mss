@@ -2666,6 +2666,8 @@
 }
 
 #roads-text-name {
+  [highway = 'motorway'],
+  [highway = 'motorway_link'],
   [highway = 'trunk'],
   [highway = 'trunk_link'],
   [highway = 'primary'],
@@ -2739,7 +2741,8 @@
     }
   }
   [highway = 'residential'],
-  [highway = 'unclassified'] {
+  [highway = 'unclassified'],
+  [highway = 'road'] {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 8;
@@ -2755,6 +2758,39 @@
     [zoom >= 17] {
       text-size: 11;
       text-spacing: 400;
+    }
+  }
+
+  [highway = 'raceway'],
+  [highway = 'service'] {
+    [zoom >= 16] {
+      text-name: "[name]";
+      text-size: 9;
+      text-spacing: 300;
+      text-clip: false;
+      text-placement: line;
+      text-face-name: @book-fonts;
+    }
+    [zoom >= 17] {
+      text-size: 11;
+    }
+  }
+
+  [highway = 'living_street'],
+  [highway = 'pedestrian'] {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 8;
+      text-spacing: 300;
+      text-clip: false;
+      text-placement: line;
+      text-face-name: @book-fonts;
+    }
+    [zoom >= 16] {
+      text-size: 9;
+    }
+    [zoom >= 17] {
+      text-size: 11;
     }
   }
 }
