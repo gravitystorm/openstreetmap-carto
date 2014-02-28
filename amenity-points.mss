@@ -1,7 +1,7 @@
 .points {
   [amenity = 'post_office'][zoom >= 16][operator='La Poste']::amenity,
   [amenity = 'post_office'][zoom >= 16][ref_laposte!='']::amenity {
-    [post_office_type='post_annex'], [post_office_type='post_partner']
+    [poi_type='post_annex'], [poi_type='post_partner']
     { point-file: url('symbols/fr/LaPoste3-gris.png'); }
     point-file: url('symbols/fr/LaPoste3.png');
     point-transform: "scale(0.5)";
@@ -36,7 +36,7 @@
     point-placement: interior;
   }
 
-  [amenity = 'shelter'][zoom >= 16]::amenity {
+  [amenity = 'shelter'][poi_type!='public_transport'][zoom >= 16]::amenity {
     point-file: url('symbols/shelter2.svg');
     point-placement: interior;
   }
@@ -175,7 +175,7 @@
     point-placement: interior;
   }
 
-  [tourism = 'information'][zoom >= 16]::tourism {
+  [tourism = 'information'][poi_type!='trail_blaze'][zoom >= 16]::tourism {
     point-file: url('symbols/information.svg');
     point-placement: interior;
     [indoor='yes'] { point-opacity: 0.5; }
@@ -294,7 +294,7 @@
   [amenity = 'recycling'][zoom >= 17]::amenity {
     point-file: url('symbols/recycling.svg');
     point-placement: interior;
-    [recycling_type='centre'] { point-file: url('symbols/recycling_centre.svg'); }
+    [poi_type='centre'] { point-file: url('symbols/recycling_centre.svg'); }
     [indoor='yes'] { point-opacity: 0.5; }
   }
 
