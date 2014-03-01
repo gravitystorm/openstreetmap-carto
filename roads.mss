@@ -2333,7 +2333,7 @@
 }
 
 .access::fill {
-  [access = 'permissive'] {
+  [access = 'permissive'],[motorcar='permissive'] {
     [feature = 'highway_unclassified'],
     [feature = 'highway_residential'],
     [feature = 'highway_footway'] {
@@ -2357,7 +2357,7 @@
       [zoom >= 16] { access/line-width: 6; }
     }
   }
-  [access = 'destination'] {
+  [access = 'destination'],[motorcar='destination'] {
     [feature = 'highway_unclassified'],
     [feature = 'highway_residential'] {
       [zoom >= 15] {
