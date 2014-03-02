@@ -1849,7 +1849,7 @@
         a/line-color: #aaa;
         a/line-join: round;
         [zoom >= 13] {
-          .tunnels-fill {
+          .roads-fill, .bridges-fill {
             a/line-color: #999999;
             a/line-width: 2;
             b/line-width: 0.8;
