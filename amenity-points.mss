@@ -643,7 +643,7 @@
       text-size: 9;
       text-fill: darken(@vineyard, 50%);
       text-face-name: @book-fonts;
-      // extra halo needed to overpower the cemetery polygon pattern
+      // extra halo needed to overpower the polygon pattern
       text-halo-radius: 1.5;
       text-wrap-width: 10;
     }
@@ -656,7 +656,7 @@
       text-size: 9;
       text-fill: darken(@cemetery, 50%);
       text-face-name: @book-fonts;
-      // extra halo needed to overpower the cemetery polygon pattern
+      // extra halo needed to overpower the polygon pattern
       text-halo-radius: 1.5;
       text-wrap-width: 10;
     }
@@ -1144,5 +1144,21 @@
     text-halo-radius: 1;
     text-wrap-width: 10;
     text-placement: interior;
+  }
+
+  [highway = 'pedestrian']::highway {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 8;
+      text-face-name: @book-fonts;
+      text-placement: interior;
+      text-wrap-width: 30;
+    }
+    [zoom >= 16] {
+      text-size: 9;
+    }
+    [zoom >= 17] {
+      text-size: 11;
+    }
   }
 }
