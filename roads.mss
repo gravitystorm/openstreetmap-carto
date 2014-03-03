@@ -564,7 +564,7 @@
     }
 
     [feature = 'highway_living_street'] {
-      .roads-casing, .tunnels-casing {
+      .roads-casing, .tunnels-casing, .bridges-casing {
         [zoom >= 12] {
           line-width: 2.5;
           line-color: @living-street-casing;
@@ -1359,7 +1359,7 @@
     }
 
     [feature = 'highway_living_street'] {
-      .roads-fill {
+      .roads-fill, .bridges-casing, .tunnels-casing {
         [zoom >= 12] {
           line-width: 1.5;
           line-color: @living-street-fill;
@@ -1374,7 +1374,7 @@
     }
 
     [feature = 'highway_service'] {
-      .roads-fill {
+      .roads-fill, .tunnels-fill {
         [service = 'INT-normal'] {
           [zoom >= 13] {
             line-width: 1;
