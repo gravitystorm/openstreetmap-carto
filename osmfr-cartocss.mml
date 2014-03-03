@@ -6,9 +6,9 @@
     80
   ],
   "center": [
-    2.46047,
-    48.79326,
-    20
+    2.2685,
+    48.8945,
+    18
   ],
   "format": "png:t=0",
   "interactivity": false,
@@ -154,7 +154,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,waterway\n      from planet_osm_line\n      where waterway in ('stream','drain','ditch')\n        and (tunnel is null or tunnel != 'yes')\n      ) as water_lines",
+        "table": "      (select way,waterway\n      from planet_osm_line\n      where osm_id>0 AND waterway in ('stream','drain','ditch')\n        and (tunnel is null or tunnel != 'yes')\n      ) as water_lines",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -180,7 +180,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,waterway\n      from planet_osm_line\n      where waterway='river'\n      ) as water_lines",
+        "table": "      (select way,waterway\n      from planet_osm_line\n      where waterway='river' and osm_id>0 \n      ) as water_lines",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -233,7 +233,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,\"natural\",waterway,landuse,amenity,coalesce(tags->'name:fr',tags->'int_name',name) as name, tags->'basin' as basin, water \n      from planet_osm_polygon\n      where (waterway in ('dock','mill_pond','riverbank','canal')\n         or landuse in ('reservoir','water','basin','salt_pond')\n         or \"natural\" in ('lake','water','land','glacier','mud','bay') or amenity='fountain')\n         and building is null\n      order by z_order,way_area desc\n      ) as water_areas",
+        "table": "      (select way,\"natural\",waterway,landuse,amenity,coalesce(tags->'name:fr',tags->'int_name',name) as name, tags->'basin' as basin, water \n      from planet_osm_polygon\n      where (waterway in ('dock','mill_pond','riverbank','canal')\n         or landuse in ('reservoir','water','basin','salt_pond')\n         or \"natural\" in ('lake','water','land','glacier','mud','bay') or amenity='fountain')\n         and building is null \n      order by z_order,way_area desc\n      ) as water_areas",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -309,7 +309,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select st_intersection(ST_SetSRID(ST_MakeBox2D(ST_Point(ST_XMin(!bbox!)+!pixel_width!*(256+256),ST_Ymin(!bbox!)+!pixel_height!*(128+256)), ST_Point(ST_XMax(!bbox!)-!pixel_width!*(256+256),ST_Ymax(!bbox!)-!pixel_height!*(128+256))),900913),way) as way,waterway,disused,lock,coalesce(tags->'name:fr',tags->'int_name',name) as name,\n      case when tunnel in ('yes','true','1') then 'yes'::text else tunnel end as tunnel, tags->'CEMT' as cemt\n      from planet_osm_line\n      where way && !bbox! AND waterway in ('weir','river','canal','derelict_canal','stream','drain','ditch','wadi')\n        and (bridge is null or bridge not in ('yes','true','1','aqueduct'))\n      order by z_order\n      ) as water_lines",
+        "table": "      (select st_intersection(ST_SetSRID(ST_MakeBox2D(ST_Point(ST_XMin(!bbox!)+!pixel_width!*(256+256),ST_Ymin(!bbox!)+!pixel_height!*(128+256)), ST_Point(ST_XMax(!bbox!)-!pixel_width!*(256+256),ST_Ymax(!bbox!)-!pixel_height!*(128+256))),900913),way) as way,waterway,disused,lock,coalesce(tags->'name:fr',tags->'int_name',name) as name,\n      case when tunnel in ('yes','true','1') then 'yes'::text else tunnel end as tunnel, tags->'CEMT' as cemt\n      from planet_osm_line\n      where way && !bbox! AND osm_id>0 AND waterway in ('weir','river','canal','derelict_canal','stream','drain','ditch','wadi')\n        and (bridge is null or bridge not in ('yes','true','1','aqueduct'))\n      order by z_order\n      ) as water_lines",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
