@@ -629,7 +629,7 @@
     }
   }
 
-  ::casing2 {
+  ::bridges_background {
     [feature = 'highway_bridleway'],
     [feature = 'highway_path'][horse = 'designated'] {
       .bridges-casing {
