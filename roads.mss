@@ -499,7 +499,7 @@
      * simply because of a tunnel tag. Also rationalise joins and caps
      */
     [feature = 'highway_service'] {
-      .roads-casing {
+      .roads-casing, .tunnels-casing {
         [service = 'INT-normal'] {
           [zoom >= 14] {
             line-color: @service-casing;
@@ -564,19 +564,18 @@
     }
 
     [feature = 'highway_living_street'] {
-      .roads-casing, .tunnels-casing {
-        [zoom >= 12] {
-          line-width: 2.5;
-          line-color: @living-street-casing;
-          line-cap: round;
-          line-join: round;
-          [zoom >= 14] { line-width: 4; }
-          [zoom >= 15] { line-width: 6; }
-          [zoom >= 16] { line-width: 9; }
-          [zoom >= 17] { line-width: 14.5; }
-        }
+      [zoom >= 12] {
+        line-width: 2.5;
+        line-color: @living-street-casing;
+        line-cap: round;
+        line-join: round;
+        [zoom >= 14] { line-width: 4; }
+        [zoom >= 15] { line-width: 6; }
+        [zoom >= 16] { line-width: 9; }
+        [zoom >= 17] { line-width: 14.5; }
       }
     }
+
     [feature = 'highway_bridleway'],
     [feature = 'highway_path'][horse = 'designated'] {
       .bridges-casing {
@@ -1359,17 +1358,15 @@
     }
 
     [feature = 'highway_living_street'] {
-      .roads-fill {
-        [zoom >= 12] {
-          line-width: 1.5;
-          line-color: @living-street-fill;
-          line-join: round;
-          line-cap: round;
-          [zoom >= 14] { line-width: 3; }
-          [zoom >= 15] { line-width: 4.7; }
-          [zoom >= 16] { line-width: 7.4; }
-          [zoom >= 17] { line-width: 13; }
-        }
+      [zoom >= 12] {
+        line-width: 1.5;
+        line-color: @living-street-fill;
+        line-join: round;
+        line-cap: round;
+        [zoom >= 14] { line-width: 3; }
+        [zoom >= 15] { line-width: 4.7; }
+        [zoom >= 16] { line-width: 7.4; }
+        [zoom >= 17] { line-width: 13; }
       }
     }
 
