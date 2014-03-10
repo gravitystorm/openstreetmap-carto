@@ -495,6 +495,26 @@
         [zoom >= 15] { line-width: 6; }
         [zoom >= 16] { line-width: 9; }
         [zoom >= 17] { line-width: 14.5; }
+        .bridges-casing {
+          [zoom >= 14] {
+            line-color: @bridge-casing;
+            line-cap: butt;
+            [zoom >= 15] { line-width: 6.2; }
+            [zoom >= 16] { line-width: 8.9; }
+            [zoom >= 17] { line-width: 15; }
+          }
+        }
+      }
+    }
+
+    [feature = 'highway_steps'] {
+      .bridges-casing {
+        [zoom >= 14] {
+          line-width: 6.5;
+          [zoom >= 15] { line-width: 9.5; }
+          line-color: @bridge-casing;
+          line-join: round;
+        }
       }
     }
 
@@ -575,7 +595,9 @@
       }
     }
 
-    [feature = 'railway_rail'] {
+    [feature = 'railway_rail'],
+    [feature = 'railway_preserved'],
+    [feature = 'railway_monorail'][zoom >= 14] {
       .bridges-casing {
         [zoom >= 13] {
           line-width: 6.5;
@@ -597,7 +619,10 @@
 
     [feature = 'railway_disused'],
     [feature = 'railway_abandoned'],
-    [feature = 'railway_construction'] {
+    [feature = 'railway_construction'],
+    [feature = 'railway_funicular'][zoom >= 14],
+    [feature = 'railway_miniature'][zoom >= 15],
+    [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
       .bridges-casing {
         [zoom >= 13] {
           line-width: 6;
@@ -666,6 +691,17 @@
       }
     }
 
+    [feature = 'highway_steps'] {
+      .bridges-casing {
+        [zoom >= 14] {
+          line-width: 5;
+          [zoom >= 15] { line-width: 8; }
+          line-color: @steps-casing;
+          line-join: round;
+        }
+      }
+    }
+
     [feature = 'highway_path'] {
       .bridges-casing {
         [zoom >= 14] {
@@ -689,13 +725,13 @@
       }
     }
 
-    [feature = 'railway_rail'] {
+    [feature = 'railway_rail'][zoom >= 13],
+    [feature = 'railway_preserved'][zoom >= 14],
+    [feature = 'railway_monorail'][zoom >= 14] {
       .bridges-casing {
-        [zoom >= 13] {
-          line-width: 5;
-          line-color: white;
-          line-join: round;
-        }
+        line-width: 5;
+        line-color: white;
+        line-join: round;
       }
     }
 
@@ -712,7 +748,10 @@
 
     [feature = 'railway_disused'],
     [feature = 'railway_abandoned'],
-    [feature = 'railway_construction'] {
+    [feature = 'railway_construction'],
+    [feature = 'railway_funicular'][zoom >= 14],
+    [feature = 'railway_miniature'][zoom >= 15],
+    [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
       .bridges-casing {
         [zoom >= 13] {
           line-width: 4.5;
@@ -1281,9 +1320,11 @@
 
     [feature = 'highway_steps'] {
       [zoom >= 13][zoom < 15] {
-        line-width: 6;
-        line-color: @steps-casing;
-        line-opacity: 0.4;
+        .roads-fill, .tunnels-fill {
+          line-width: 6;
+          line-color: @steps-casing;
+          line-opacity: 0.4;
+        }
         b/line-width: 2;
         b/line-color: @steps-fill;
         b/line-dasharray: 1,3;
