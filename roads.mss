@@ -2038,8 +2038,12 @@
     }
   }
   [access = 'destination'] {
+    [feature = 'highway_secondary'],
+    [feature = 'highway_tertiary'],
     [feature = 'highway_unclassified'],
-    [feature = 'highway_residential'] {
+    [feature = 'highway_residential'],
+    [feature = 'highway_road'],
+    [feature = 'highway_living_street'] {
       [zoom >= 15] {
         access/line-width: 6;
         access/line-color: @destination-marking;
@@ -2069,6 +2073,7 @@
     [feature = 'highway_unclassified'],
     [feature = 'highway_residential'],
     [feature = 'highway_road'],
+    [feature = 'highway_living_street'],
     [feature = 'highway_track'],
     [feature = 'highway_path'],
     [feature = 'highway_footway'],
