@@ -323,6 +323,7 @@
     [indoor='yes'] { point-opacity: 0.5; }
   }
 
+  [emergency = 'defibrillator'][zoom >= 17],
   [emergency = 'aed'][zoom >= 17] {
     point-file: url('symbols/fr/aed2.svg');
     point-placement: interior;
