@@ -2795,6 +2795,24 @@
   }
 }
 
+#roads-area-text-name {
+  [highway = 'pedestrian'] {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 8;
+      text-face-name: @book-fonts;
+      text-placement: interior;
+      text-wrap-width: 30;
+    }
+    [zoom >= 16] {
+      text-size: 9;
+    }
+    [zoom >= 17] {
+      text-size: 11;
+    }
+  }
+}
+
 #paths-text-name {
   [highway = 'track'] {
     [zoom >= 15] {
