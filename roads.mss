@@ -1415,8 +1415,8 @@
           background/line-color: @path-casing;
           background/line-cap: round;
           background/line-join: round;
-          background/line-width: 1;
-          background/line-opacity: 0.4;
+          background/line-width: 3;
+          .roads-fill { background/line-opacity: 0.4; }
         }
         line/line-width: 0.5;
         line/line-color: @path-fill;
