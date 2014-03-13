@@ -1183,7 +1183,7 @@
     [feature = 'highway_residential'][zoom >= 10][zoom < 13],
     [feature = 'highway_unclassified'][zoom >= 10][zoom < 13],
     [feature = 'highway_road'][zoom >= 10][zoom < 13],
-    [feature = 'highway_living_street'][zoom = 13] {
+    [feature = 'highway_living_street'][zoom >= 12][zoom < 13] {
       line-width: 1;
       line-color: @residential-casing;
     }
