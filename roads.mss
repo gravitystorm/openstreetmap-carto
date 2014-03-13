@@ -1105,16 +1105,16 @@
           [zoom >= 17] { line-width: @primary-width-z17; }
         }
         .bridges-fill {
-          line-width: 2.5;
-          [zoom >= 13] { line-width: 6.5; }
-          [zoom >= 15] { line-width: 9; }
-          [zoom >= 17] { line-width: 12; }
-        }
-        .tunnels-fill {
           line-width: 3;
           [zoom >= 13] { line-width: 7; }
           [zoom >= 15] { line-width: 9.5; }
           [zoom >= 17] { line-width: 14.5; }
+        }
+        .tunnels-fill {
+          line-width: 2.5;
+          [zoom >= 13] { line-width: 6.5; }
+          [zoom >= 15] { line-width: 9; }
+          [zoom >= 17] { line-width: 12; }
         }
         line-cap: round;
         line-join: round;
