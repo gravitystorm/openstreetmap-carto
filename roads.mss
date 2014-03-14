@@ -486,7 +486,7 @@
     }
 
     [feature = 'highway_living_street'] {
-      [zoom >= 12] {
+      [zoom >= 13] {
         line-width: 2.5;
         line-color: @living-street-casing;
         line-cap: round;
@@ -1218,14 +1218,13 @@
       }
     }
 
-    [feature = 'highway_tertiary'],
-    [feature = 'highway_residential'],
-    [feature = 'highway_unclassified'],
-    [feature = 'highway_road'] {
-      [zoom >= 10][zoom < 13] {
-        line-width: 1;
-        line-color: @residential-casing;
-      }
+    [feature = 'highway_tertiary'][zoom >= 10][zoom < 13],
+    [feature = 'highway_residential'][zoom >= 10][zoom < 13],
+    [feature = 'highway_unclassified'][zoom >= 10][zoom < 13],
+    [feature = 'highway_road'][zoom >= 10][zoom < 13],
+    [feature = 'highway_living_street'][zoom >= 12][zoom < 13] {
+      line-width: 1;
+      line-color: @residential-casing;
     }
 
     [feature = 'highway_road'] {
@@ -1261,7 +1260,7 @@
     }
 
     [feature = 'highway_living_street'] {
-      [zoom >= 12] {
+      [zoom >= 13] {
         line-width: 1.5;
         line-color: @living-street-fill;
         line-join: round;
