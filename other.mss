@@ -2184,6 +2184,7 @@
     }
   }
 
+  [highway = 'parking_position'][bridge = 'no'][zoom >= 14],
   [highway = 'taxipath'][bridge = 'no'][zoom >= 14] {
     line-width: 1.5;
     line-color: #bbc;
@@ -2631,6 +2632,7 @@
       [zoom >= 15] { line-width: 7; }
     }
 
+    [highway = 'parking_position'][zoom >= 14],
     [highway = 'taxipath'][zoom >= 14] {
       line-width: 2;
       line-color: black;
@@ -3013,6 +3015,7 @@
       [zoom >= 15] { line-width: 6; }
     }
 
+    [highway = 'parking_position'][zoom >= 14],
     [highway = 'taxipath'][zoom >= 14] {
       line-width: 1.5;
       line-color: #bbc;
@@ -3302,14 +3305,15 @@
 
   [highway = 'runway'],
   [highway = 'taxiway'],
+  [highway = 'parking_position'][zoom>=16],
   [highway = 'taxipath'][zoom>=16] {
     [zoom >= 15][bridge = 'no'] {
       text-name: "[ref]";
       text-size: 10;
       text-fill: #333;
-      text-spacing: @shield_spacing;
+      // text-spacing: @shield_spacing;
       text-placement: line;
-      text-min-distance: 18;
+      // text-min-distance: 18;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
     }
