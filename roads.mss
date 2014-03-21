@@ -916,10 +916,10 @@
     [feature = 'highway_tertiary_link'] {
       [zoom >= 13] {
         .roads-fill, .bridges-fill {
-          line-color: @secondary-fill;
+          line-color: @tertiary-fill;
         }
         .tunnels-fill {
-          line-color: @secondary-tunnel-fill;
+          line-color: @tertiary-tunnel-fill;
         }
         .roads-fill {
           line-width: @tertiary-width-z13;
