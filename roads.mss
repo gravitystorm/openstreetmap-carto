@@ -1277,7 +1277,7 @@
     }
 
     [feature = 'highway_service'] {
-      [zoom >= 13][zoom < 14][service = 'INT-normal'] {
+      [zoom >= 13][service = 'INT-normal'] {
         line-width: 1;
         line-color: @residential-casing;
       }
@@ -1483,7 +1483,7 @@
         }
 
         .roads-fill, .tunnels-fill {
-          [zoom >= 13][zoom < 14]        { background/line-width: 2.5; }
+          [zoom >= 13]                   { background/line-width: 2.5; }
           [zoom >= 14]                   { background/line-width: 3; }
           .roads-fill                    { background/line-opacity: 0.4; }
           background/line-color: @track-casing;
@@ -1495,7 +1495,7 @@
         line/line-dasharray: 3,4;
         line/line-cap: round;
         line/line-join: round;
-        [zoom >= 13][zoom < 14] { line/line-width: 1.2; }
+        [zoom >= 13] { line/line-width: 1.2; }
         [zoom >= 14] { line/line-width: 1.5; }
         .tunnels-fill[zoom >= 14]        { line/line-opacity: 0.5; }
 
