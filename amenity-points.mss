@@ -347,6 +347,11 @@
     point-placement: interior;
   }
 
+  [shop = 'hardware'][zoom >= 17]::shop {
+    point-file: url('symbols/shop_hardware.p.16.png');
+    point-placement: interior;
+  }
+
   [shop = 'car'][zoom >= 17]::shop {
     point-file: url('symbols/shopping_car.p.16.png');
     point-placement: interior;
