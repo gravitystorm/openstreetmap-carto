@@ -967,12 +967,6 @@
           line-color: @trunk-tunnel-fill;
         }
         .bridges-fill {
-          line-width: 3;
-          [zoom >= 13] { line-width: 7; }
-          [zoom >= 15] { line-width: 9.5; }
-          [zoom >= 17] { line-width: 14.5; }
-        }
-        .tunnels-fill {
           line-width: @trunk-width-z12 - 2 * @bridge-casing-width-z12;
           [zoom >= 13] { line-width: @trunk-width-z13 - 2 * @bridge-casing-width-z13; }
           [zoom >= 15] { line-width: @trunk-width-z15 - 2 * @bridge-casing-width-z15; }
@@ -1625,8 +1619,6 @@
     }
   }
 }
-
-//etc
 
 #turning-circle-casing {
   [int_tc_type = 'tertiary'][zoom >= 15] {
