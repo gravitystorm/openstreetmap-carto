@@ -485,7 +485,7 @@
     text-name: "[name]";
     text-size: 10;
     text-fill: #000033;
-    text-dy: 11;
+    text-dy: 12;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: 30;
