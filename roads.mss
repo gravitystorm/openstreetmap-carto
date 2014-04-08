@@ -33,6 +33,7 @@
 @residential-casing: #bbb;
 @service-casing: #999;
 @living-street-casing: @default-casing;
+@living-street-tunnel-casing: #bbb;
 @pedestrian-casing: grey;
 @path-casing: @default-casing;
 @footway-casing: @default-casing;
@@ -57,7 +58,7 @@
 @secondary-tunnel-fill: lighten(@secondary-fill, 5%);
 @tertiary-tunnel-fill: lighten(@tertiary-fill, 5%);
 @residential-tunnel-fill: lighten(@residential-fill, 10%);
-
+@living-street-tunnel-fill: lighten(@living-street-fill, 10%);
 
 @motorway-width-z12: 2;
 @trunk-width-z12: 2.5;
@@ -493,16 +494,21 @@
       [zoom >= 13] {
         line-width: 2.5;
         line-color: @living-street-casing;
-        line-cap: round;
-        line-join: round;
         [zoom >= 14] { line-width: 4; }
         [zoom >= 15] { line-width: 6; }
         [zoom >= 16] { line-width: 9; }
         [zoom >= 17] { line-width: 14.5; }
+        .roads-casing {
+          line-cap: round;
+          line-join: round;
+        }
+        .tunnels-casing {
+          line-color: @living-street-tunnel-casing;
+          line-dasharray: 4,2;
+        }
         .bridges-casing {
           [zoom >= 14] {
             line-color: @bridge-casing;
-            line-cap: butt;
             [zoom >= 15] { line-width: 6.2; }
             [zoom >= 16] { line-width: 8.9; }
             [zoom >= 17] { line-width: 15; }
@@ -1273,6 +1279,9 @@
         [zoom >= 15] { line-width: 4.7; }
         [zoom >= 16] { line-width: 7.4; }
         [zoom >= 17] { line-width: 13; }
+      }
+      .tunnels-fill {
+        line-color: @living-street-tunnel-fill;
       }
     }
 
