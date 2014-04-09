@@ -77,21 +77,21 @@
 @tertiary-width-z14:              7.5;  @tertiary-oneway-width-z14:       7.5;
 @residential-width-z14:           4.5;
 
-@motorway-width-z15:             12.8;  @motorway-oneway-width-z15:      10.3;
+@motorway-width-z15:             12.8;  @motorway-oneway-width-z15:      11.2;
 @motorway-link-width-z15:         7.8;
-@trunk-width-z15:                12.8;  @trunk-oneway-width-z15:         10.3;
-@primary-width-z15:              12.8;  @primary-oneway-width-z15:       10.3;
-@secondary-width-z15:            12.8;  @secondary-oneway-width-z15:     10.3;
+@trunk-width-z15:                12.8;  @trunk-oneway-width-z15:         11.2;
+@primary-width-z15:              12.8;  @primary-oneway-width-z15:       11.2;
+@secondary-width-z15:            12.8;  @secondary-oneway-width-z15:     11.2;
 @tertiary-width-z15:             11.2;  @tertiary-oneway-width-z15:       9;
 @residential-width-z15:           8.3;
 
 @residential-width-z16:          11.2;
 
-@motorway-width-z17:             18;    @motorway-oneway-width-z17:      13.5;
+@motorway-width-z17:             18;    @motorway-oneway-width-z17:      15.5;
 @motorway-link-width-z17:        11.5;
-@trunk-width-z17:                18;    @trunk-oneway-width-z17:         13.5;
-@primary-width-z17:              18;    @primary-oneway-width-z17:       13.5;
-@secondary-width-z17:            18;    @secondary-oneway-width-z17:     13.5;
+@trunk-width-z17:                18;    @trunk-oneway-width-z17:         15.5;
+@primary-width-z17:              18;    @primary-oneway-width-z17:       15.5;
+@secondary-width-z17:            18;    @secondary-oneway-width-z17:     15.5;
 @tertiary-width-z17:             15.5;  @tertiary-oneway-width-z17:      12;
 @residential-width-z17:          15.5;
 
