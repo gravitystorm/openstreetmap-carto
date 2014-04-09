@@ -92,7 +92,7 @@
 @trunk-width-z17:                18;    @trunk-oneway-width-z17:         15.5;
 @primary-width-z17:              18;    @primary-oneway-width-z17:       15.5;
 @secondary-width-z17:            18;    @secondary-oneway-width-z17:     15.5;
-@tertiary-width-z17:             15.5;  @tertiary-oneway-width-z17:      12;
+@tertiary-width-z17:             15.5;  @tertiary-oneway-width-z17:      15.5;
 @residential-width-z17:          15.5;
 
 @casing-width-z12:                0.5;
