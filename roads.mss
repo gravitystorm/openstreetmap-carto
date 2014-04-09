@@ -1913,10 +1913,15 @@
   }
   [access = 'no'] {
     [feature = 'highway_motorway'],
+    [feature = 'highway_motorway_link'],
     [feature = 'highway_trunk'],
+    [feature = 'highway_trunk_link'],
     [feature = 'highway_primary'],
+    [feature = 'highway_primary_link'],
     [feature = 'highway_secondary'],
+    [feature = 'highway_secondary_link'],
     [feature = 'highway_tertiary'],
+    [feature = 'highway_tertiary_link'],
     [feature = 'highway_unclassified'],
     [feature = 'highway_residential'],
     [feature = 'highway_road'],
