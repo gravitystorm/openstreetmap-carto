@@ -933,7 +933,7 @@
 
     [feature = 'highway_motorway'] {
       [zoom >= 12] {
-        line-width: @motorway-link-width-z12 - 2 * @casing-width-z12;
+        line-width: @motorway-width-z12 - 2 * @casing-width-z12;
         [zoom >= 13] { line-width: @motorway-width-z13 - 2 * @casing-width-z13; }
         [zoom >= 15] { line-width: @motorway-width-z15 - 2 * @casing-width-z15; }
         [zoom >= 17] { line-width: @motorway-width-z17 - 2 * @casing-width-z17; }
