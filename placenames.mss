@@ -134,7 +134,7 @@
 
 #placenames-small::village {
   [place = 'village'] {
-    [zoom >= 12][zoom < 17] {
+    [zoom >= 11][zoom < 17] {
       text-name: "[name]";
       text-size: 10;
       text-fill: @placenames;
@@ -143,6 +143,7 @@
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: 50;
       text-min-distance: 10;
+      [zoom <=11] {text-min-distance: 30;}
       [zoom >= 14] {
         text-fill: @placenames-light;
         text-halo-fill: white;
@@ -163,7 +164,7 @@
   [place = 'neighbourhood'],
   [place = 'isolated_dwelling'],
   [place = 'farm'] {
-    [zoom >= 15] {
+    [zoom >= 12] {
       text-name: "[name]";
       text-size: 9;
       text-fill: @placenames;
