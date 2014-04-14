@@ -66,6 +66,20 @@ If a font is missing, it will skip to the next available font which contains tho
 * Padauk, for Burmese (``fonts-sil-padauk``)
 * Khmer OS Metal Chrieng Regular, for Khmer (``fonts-khmeros``)
 
+### South Asia
+
+* Mukti Narrow, for Bangali (``ttf-indic-fonts-core``)
+* Gargi Medium, for Devanagari (``ttf-indic-fonts-core``)
+* TSCu_Paranar, for Tamil (``ttf-tamil-fonts``)
+* Mallige, for Kannada (``ttf-indic-fonts-core`` for normal and bold and ``ttf-kannada-fonts`` for oblique) *The filename uses "Malige" but the font name uses "Mallige"*
+
+On Ubuntu you can install all the fonts with
+
+```
+sudo apt-get install ttf-dejavu fonts-droid ttf-unifont fonts-sipa-arundina fonts-sil-padauk fonts-khmeros \
+ttf-indic-fonts-core ttf-tamil-fonts ttf-kannada-fonts
+```
+
 ## Dependencies
 
 * [TileMill](http://mapbox.com/tilemill) - This is a TileMill project you can copy (or symlink) directly into your Mapbox/project directory
