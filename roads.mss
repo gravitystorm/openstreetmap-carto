@@ -1695,7 +1695,7 @@
     marker-fill: @tertiary-fill;
     [zoom >= 17] {
       marker-width: (@tertiary-width-z17 - 2 * @casing-width-z17) * 1.8;
-      marker-width: (@tertiary-width-z17 - 2 * @casing-width-z17) * 1.8;
+      marker-height: (@tertiary-width-z17 - 2 * @casing-width-z17) * 1.8;
     }
   }
 
