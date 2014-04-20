@@ -332,6 +332,25 @@
       polygon-fill: @rest_area;
     }
   }
+
+  [feature = 'leisure_sports_centre'],
+  [feature = 'leisure_stadium'] {
+    [zoom >= 10] {
+      polygon-fill: @stadium;
+    }
+  }
+
+  [feature = 'leisure_track'][zoom >= 10] {
+    polygon-fill: @track;
+    line-width: 0.5;
+    line-color: #888;
+  }
+
+  [feature = 'leisure_pitch'][zoom >= 10] {
+    polygon-fill: @pitch;
+    line-width: 0.5;
+    line-color: #888;
+  }
 }
 
 /* man_made=cutline */
@@ -346,28 +365,6 @@
     }
   }
 }
-
-#sports-grounds {
-  [leisure = 'sports_centre'],
-  [leisure = 'stadium'] {
-    [zoom >= 10] {
-      polygon-fill: @stadium;
-    }
-  }
-
-  [leisure = 'track'][zoom >= 10] {
-    polygon-fill: @track;
-    line-width: 0.5;
-    line-color: #888;
-  }
-
-  [leisure = 'pitch'][zoom >= 10] {
-    polygon-fill: @pitch;
-    line-width: 0.5;
-    line-color: #888;
-  }
-}
-
 
 #landuse-overlay {
   [landuse = 'military'][zoom >= 10]::landuse {
