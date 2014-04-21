@@ -1839,7 +1839,6 @@
     ref/text-min-distance: 2;
     ref/text-face-name: @oblique-fonts;
     ref/text-halo-radius: 1.5;
-    ref/text-wrap-width: 12;
     [zoom >= 12] {
       name/text-name: "[name]";
       name/text-size: 9;
