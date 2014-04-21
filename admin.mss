@@ -86,7 +86,7 @@
   text-dy: -10;
 }
 
-#national-park-boundaries {
+#nature-reserve-boundaries {
   [zoom >= 7] {
     ::fill [zoom < 13] {
       opacity: 0.05;

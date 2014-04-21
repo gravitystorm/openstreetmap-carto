@@ -515,7 +515,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,landuse,leisure\n       from planet_osm_polygon\n       where (landuse = 'military' or leisure='nature_reserve') and building is null\n      ) as landuse_overlay",
+        "table": "(select way,landuse,leisure\n       from planet_osm_polygon\n       where (landuse = 'military') and building is null\n      ) as landuse_overlay",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
@@ -1713,18 +1713,18 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,way_area,name,boundary from planet_osm_polygon where boundary='national_park' and building is null) as national_park_boundaries",
+        "table": "(select way,way_area,name,boundary from planet_osm_polygon where boundary='national_park' or leisure='nature_reserve' and building is null) as national_park_boundaries",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
         "dbname": "gis"
       },
-      "id": "national-park-boundaries",
+      "id": "nature-reserve-boundaries",
       "class": "",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "national-park-boundaries"
+      "name": "nature-reserve-boundaries"
     },
     {
       "geometry": "polygon",
