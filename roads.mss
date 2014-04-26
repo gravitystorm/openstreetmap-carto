@@ -288,6 +288,7 @@
         [zoom >= 17] { line-width: @primary-width-z17; }
         .roads-casing {
           line-join: round;
+          line-cap: round;
         }
         .tunnels-casing {
           line-dasharray: 4,2;
