@@ -235,10 +235,13 @@
     }
   }
 
-  [feature = 'power_sub_station'][zoom >= 13] {
-    polygon-fill: @power;
-    line-width: 0.4;
-    line-color: #555;
+  [feature = 'power_sub_station']
+  [feature = 'power_substation'] {
+    [zoom >= 13] {
+      polygon-fill: @power;
+      line-width: 0.4;
+      line-color: #555;
+    }
   }
 
   [feature = 'landuse_commercial'][zoom >= 10] {
