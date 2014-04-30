@@ -569,17 +569,20 @@
   }
 
   [entrance != ''][zoom >= 17] {
-	[ref!=''][nom!=''] { text-name: [nom]+ ";"+[ref]; }
+    marker-fill: black;
+    marker-width: 2;
+    marker-line-width: 0;
+    [entrance='main'] { text-fill: black; marker-width: 3; }
+    [entrance='emergency'] { marker-fill: #080; text-fill: #080; } // sorties de secours en vert foncé
+	[ref!=''][nom!=''] { text-name: [nom]+" / "+[ref]; }
 	[nom!=''] { text-name: [nom]; }
 	text-name: "[ref]";
-    [entrance='main'] { text-fill: black; }
     text-fill: #666;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 4;
-    text-wrap-character: ';';
     text-placement: interior;
     text-size: 9;
+    text-dy: -4;
   }
   
   [heritage = '1'][zoom >= 14] {
