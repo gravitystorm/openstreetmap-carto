@@ -175,6 +175,13 @@
     }
   }
 
+  [amenity = 'parking_entrance'][zoom >= 15]::amenity {
+    [entrance = 'main'],[entrance = 'yes'] {
+      point-file: url('symbols/parking_entrance.p.16.png');
+      point-placement: interior;
+    }
+  }
+
   [amenity = 'pharmacy'][zoom >= 17]::amenity {
     point-file: url('symbols/pharmacy.p.16.png');
     point-placement: interior;
@@ -456,6 +463,19 @@
     text-placement: interior;
     [access != ''][access != 'public'][access != 'yes'] {
       text-fill: #66ccaf;
+    }
+  }
+
+  [amenity = 'parking_entrance'][zoom >= 17]::amenity {
+    [entrance = 'main']{
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: #0066ff;
+      text-dy: 9;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 34;
+      text-placement: interior;
     }
   }
 
