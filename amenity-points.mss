@@ -177,8 +177,11 @@
 
   [amenity = 'parking_entrance'][zoom >= 15]::amenity {
     [entrance = 'main'],[entrance = 'yes'] {
-      point-file: url('symbols/parking_entrance.p.16.png');
-      point-placement: interior;
+      [access = null],[access = 'public'],[access = 'customers'],
+      [access = 'yes'],[access = 'destination'],[access = 'permissive'] {
+        point-file: url('symbols/parking_entrance.p.16.png');
+        point-placement: interior;
+      }
     }
   }
 
@@ -468,14 +471,17 @@
 
   [amenity = 'parking_entrance'][zoom >= 17]::amenity {
     [entrance = 'main']{
-      text-name: "[name]";
-      text-size: 9;
-      text-fill: #0066ff;
-      text-dy: 9;
-      text-face-name: @book-fonts;
-      text-halo-radius: 1;
-      text-wrap-width: 34;
-      text-placement: interior;
+      [access = null],[access = 'public'],[access = 'customers'],
+      [access = 'yes'],[access = 'destination'],[access = 'permissive'] {
+        text-name: "[name]";
+        text-size: 9;
+        text-fill: #0066ff;
+        text-dy: 9;
+        text-face-name: @book-fonts;
+        text-halo-radius: 1;
+        text-wrap-width: 34;
+        text-placement: interior;
+      }
     }
   }
 
