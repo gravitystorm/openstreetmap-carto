@@ -570,7 +570,7 @@
 
   [entrance != ''][zoom >= 17] {
     marker-fill: black;
-    marker-width: 2;
+    marker-width: 3;
     marker-line-width: 0;
     [entrance='main'] { text-fill: black; marker-width: 3; }
     [entrance='emergency'] { marker-fill: #080; text-fill: #080; } // sorties de secours en vert foncé
