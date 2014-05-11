@@ -72,27 +72,27 @@
 @sport-surface-grass: #54a854;
 @sport-surface-clay: #cc7e66;
 
-#sports [zoom>=16][angle_diff>85][angle_diff<95] {
-	[sport='tennis'] {
+#sports [zoom>=14][angle_diff>85][angle_diff<95] {
+	[sport='tennis'][zoom>=17] {
 		[surface='clay']::surface { polygon-fill: @sport-surface-clay; }
 		[surface='grass']::surface { polygon-fill: @sport-surface-grass; }
 		[way_area<2500][d13>37][d13<80] {			/* area size / diagonal check */
 			[d12>38][d12<70][d23>20][d23<40] { 		/* 1>2 = length / 2>3 = width */
 				point-file: url('symbols/fr/sports-tennis.svg');
-				[zoom=16] { point-transform: "rotate([angle]) scale(0.075)"; }
-				[zoom=17] { point-transform: "rotate([angle]) scale(0.15)"; }
-				[zoom=18] { point-transform: "rotate([angle]) scale(0.3)"; }
-				[zoom=19] { point-transform: "rotate([angle]) scale(0.6)"; }
-				[zoom=20] { point-transform: "rotate([angle]) scale(1.2)"; }
+				[zoom>=16] { point-transform: "rotate([angle]) scale(0.075)"; }
+				[zoom>=17] { point-transform: "rotate([angle]) scale(0.15)"; }
+				[zoom>=18] { point-transform: "rotate([angle]) scale(0.3)"; }
+				[zoom>=19] { point-transform: "rotate([angle]) scale(0.6)"; }
+				[zoom>=20] { point-transform: "rotate([angle]) scale(1.2)"; }
 				point-ignore-placement: true;
 			}
 			[d23>38][d23<70][d12>20][d12<40] { 		/* 1>2 = width / 2>3 = length -> rotate by 90° */
 				point-file: url('symbols/fr/sports-tennis.svg');
-				[zoom=16] { point-transform: "rotate([angle]+90) scale(0.075)"; }
-				[zoom=17] { point-transform: "rotate([angle]+90) scale(0.15)"; }
-				[zoom=18] { point-transform: "rotate([angle]+90) scale(0.3)"; }
-				[zoom=19] { point-transform: "rotate([angle]+90) scale(0.6)"; }
-				[zoom=20] { point-transform: "rotate([angle]+90) scale(1.2)"; }
+				[zoom>=16] { point-transform: "rotate([angle]+90) scale(0.075)"; }
+				[zoom>=17] { point-transform: "rotate([angle]+90) scale(0.15)"; }
+				[zoom>=18] { point-transform: "rotate([angle]+90) scale(0.3)"; }
+				[zoom>=19] { point-transform: "rotate([angle]+90) scale(0.6)"; }
+				[zoom>=20] { point-transform: "rotate([angle]+90) scale(1.2)"; }
 				point-ignore-placement: true;
 			}
 		}
@@ -112,25 +112,31 @@
 			point-file: url('symbols/fr/sports-soccer.svg');
 			point-ignore-placement: true;
 			[way_area<12000] {
-				[zoom=16] { point-transform: "rotate([angle]) scale(0.1125)"; }
-				[zoom=17] { point-transform: "rotate([angle]) scale(0.225)"; }
-				[zoom=18] { point-transform: "rotate([angle]) scale(0.45)"; }
-				[zoom=19] { point-transform: "rotate([angle]) scale(0.9)"; }
-				[zoom=20] { point-transform: "rotate([angle]) scale(1.8)"; }
+				[zoom>=14] { point-transform: "rotate([angle]) scale(0.028125)"; }
+				[zoom>=15] { point-transform: "rotate([angle]) scale(0.05625)"; }
+				[zoom>=16] { point-transform: "rotate([angle]) scale(0.1125)"; }
+				[zoom>=17] { point-transform: "rotate([angle]) scale(0.225)"; }
+				[zoom>=18] { point-transform: "rotate([angle]) scale(0.45)"; }
+				[zoom>=19] { point-transform: "rotate([angle]) scale(0.9)"; }
+				[zoom>=20] { point-transform: "rotate([angle]) scale(1.8)"; }
 			}
 			[way_area>=12000][way_area<17000] {
-				[zoom=16] { point-transform: "rotate([angle]) scale(0.15)"; }
-				[zoom=17] { point-transform: "rotate([angle]) scale(0.3)"; }
-				[zoom=18] { point-transform: "rotate([angle]) scale(0.6)"; }
-				[zoom=19] { point-transform: "rotate([angle]) scale(1.2)"; }
-				[zoom=20] { point-transform: "rotate([angle]) scale(2.4)"; }
+				[zoom>=14] { point-transform: "rotate([angle]) scale(0.0375)"; }
+				[zoom>=15] { point-transform: "rotate([angle]) scale(0.075)"; }
+				[zoom>=16] { point-transform: "rotate([angle]) scale(0.15)"; }
+				[zoom>=17] { point-transform: "rotate([angle]) scale(0.3)"; }
+				[zoom>=18] { point-transform: "rotate([angle]) scale(0.6)"; }
+				[zoom>=19] { point-transform: "rotate([angle]) scale(1.2)"; }
+				[zoom>=20] { point-transform: "rotate([angle]) scale(2.4)"; }
 			}
 			[way_area>=17000] {
-				[zoom=16] { point-transform: "rotate([angle]) scale(0.175)"; }
-				[zoom=17] { point-transform: "rotate([angle]) scale(0.35)"; }
-				[zoom=18] { point-transform: "rotate([angle]) scale(0.7)"; }
-				[zoom=19] { point-transform: "rotate([angle]) scale(1.4)"; }
-				[zoom=20] { point-transform: "rotate([angle]) scale(2.8)"; }
+				[zoom>=14] { point-transform: "rotate([angle]) scale(0.0435)"; }
+				[zoom>=15] { point-transform: "rotate([angle]) scale(0.0875)"; }
+				[zoom>=16] { point-transform: "rotate([angle]) scale(0.175)"; }
+				[zoom>=17] { point-transform: "rotate([angle]) scale(0.35)"; }
+				[zoom>=18] { point-transform: "rotate([angle]) scale(0.7)"; }
+				[zoom>=19] { point-transform: "rotate([angle]) scale(1.4)"; }
+				[zoom>=20] { point-transform: "rotate([angle]) scale(2.8)"; }
 			}
 		}
 
@@ -138,25 +144,31 @@
 			point-file: url('symbols/fr/sports-soccer.svg');
 			point-ignore-placement: true;
 			[way_area<12000] {
-				[zoom=16] { point-transform: "rotate([angle]+90) scale(0.1125)"; }
-				[zoom=17] { point-transform: "rotate([angle]+90) scale(0.225)"; }
-				[zoom=18] { point-transform: "rotate([angle]+90) scale(0.45)"; }
-				[zoom=19] { point-transform: "rotate([angle]+90) scale(0.9)"; }
-				[zoom=20] { point-transform: "rotate([angle]+90) scale(1.8)"; }
+				[zoom>=14] { point-transform: "rotate([angle]+90) scale(0.028125)"; }
+				[zoom>=15] { point-transform: "rotate([angle]+90) scale(0.05625)"; }
+				[zoom>=16] { point-transform: "rotate([angle]+90) scale(0.1125)"; }
+				[zoom>=17] { point-transform: "rotate([angle]+90) scale(0.225)"; }
+				[zoom>=18] { point-transform: "rotate([angle]+90) scale(0.45)"; }
+				[zoom>=19] { point-transform: "rotate([angle]+90) scale(0.9)"; }
+				[zoom>=20] { point-transform: "rotate([angle]+90) scale(1.8)"; }
 			}
 			[way_area>=12000][way_area<17000] {
-				[zoom=16] { point-transform: "rotate([angle]+90) scale(0.15)"; }
-				[zoom=17] { point-transform: "rotate([angle]+90) scale(0.3)"; }
-				[zoom=18] { point-transform: "rotate([angle]+90) scale(0.6)"; }
-				[zoom=19] { point-transform: "rotate([angle]+90) scale(1.2)"; }
-				[zoom=20] { point-transform: "rotate([angle]+90) scale(2.4)"; }
+				[zoom>=14] { point-transform: "rotate([angle]+90) scale(0.0375)"; }
+				[zoom>=15] { point-transform: "rotate([angle]+90) scale(0.075)"; }
+				[zoom>=16] { point-transform: "rotate([angle]+90) scale(0.15)"; }
+				[zoom>=17] { point-transform: "rotate([angle]+90) scale(0.3)"; }
+				[zoom>=18] { point-transform: "rotate([angle]+90) scale(0.6)"; }
+				[zoom>=19] { point-transform: "rotate([angle]+90) scale(1.2)"; }
+				[zoom>=20] { point-transform: "rotate([angle]+90) scale(2.4)"; }
 			}
 			[way_area>=17000] {
-				[zoom=16] { point-transform: "rotate([angle]+90) scale(0.175)"; }
-				[zoom=17] { point-transform: "rotate([angle]+90) scale(0.35)"; }
-				[zoom=18] { point-transform: "rotate([angle]+90) scale(0.7)"; }
-				[zoom=19] { point-transform: "rotate([angle]+90) scale(1.4)"; }
-				[zoom=20] { point-transform: "rotate([angle]+90) scale(2.8)"; }
+				[zoom>=14] { point-transform: "rotate([angle]+90) scale(0.0435)"; }
+				[zoom>=15] { point-transform: "rotate([angle]+90) scale(0.0875)"; }
+				[zoom>=16] { point-transform: "rotate([angle]+90) scale(0.175)"; }
+				[zoom>=17] { point-transform: "rotate([angle]+90) scale(0.35)"; }
+				[zoom>=18] { point-transform: "rotate([angle]+90) scale(0.7)"; }
+				[zoom>=19] { point-transform: "rotate([angle]+90) scale(1.4)"; }
+				[zoom>=20] { point-transform: "rotate([angle]+90) scale(2.8)"; }
 			}
 		}
 	}
@@ -166,68 +178,76 @@
 			[d12>30][d12<40][d23>15][d23<25] { /* 12-longueur - 23-largeur */
 				point-file: url('symbols/fr/sports-basketball.svg');
 				point-ignore-placement: true;
-				[zoom=17] { point-transform: "rotate([angle]) scale(0.075)"; }
-				[zoom=18] { point-transform: "rotate([angle]) scale(0.15)"; }
-				[zoom=19] { point-transform: "rotate([angle]) scale(0.3)"; }
-				[zoom=20] { point-transform: "rotate([angle]) scale(0.6)"; }
+				[zoom>=17] { point-transform: "rotate([angle]) scale(0.075)"; }
+				[zoom>=18] { point-transform: "rotate([angle]) scale(0.15)"; }
+				[zoom>=19] { point-transform: "rotate([angle]) scale(0.3)"; }
+				[zoom>=20] { point-transform: "rotate([angle]) scale(0.6)"; }
 			}
 			[d23>30][d23<40][d12>15][d12<25] { /* 12-largeur - 23-longueur */
 				point-file: url('symbols/fr/sports-basketball.svg');
 				point-ignore-placement: true;
-				[zoom=17] { point-transform: "rotate([angle]+90) scale(0.075)"; }
-				[zoom=18] { point-transform: "rotate([angle]+90) scale(0.15)"; }
-				[zoom=19] { point-transform: "rotate([angle]+90) scale(0.3)"; }
-				[zoom=20] { point-transform: "rotate([angle]+90) scale(0.6)"; }
+				[zoom>=17] { point-transform: "rotate([angle]+90) scale(0.075)"; }
+				[zoom>=18] { point-transform: "rotate([angle]+90) scale(0.15)"; }
+				[zoom>=19] { point-transform: "rotate([angle]+90) scale(0.3)"; }
+				[zoom>=20] { point-transform: "rotate([angle]+90) scale(0.6)"; }
 			}
 		}
 	}
 	
-	[sport='rugby'][zoom>=16],
-	[sport='rugby_union'][zoom>=16],
-	[sport='rugby_league'][zoom>=16] {
+	[sport='rugby'],
+	[sport='rugby_union'],
+	[sport='rugby_league'] {
 		[surface='grass'] { polygon-fill: @sport-surface-grass; }
 		[way_area>15000][way_area<25000][d13>150][d13<250] {
 			[d23>75][d23<150][d12>150][d12<250] { /* 12-largeur - 23-longueur */
 				point-file: url('symbols/fr/sports-rugby.svg');
 				point-ignore-placement: true;
-				[zoom=16] { point-transform: "rotate([angle]) scale(0.25)"; }
-				[zoom=17] { point-transform: "rotate([angle]) scale(0.5)"; }
-				[zoom=18] { point-transform: "rotate([angle]) scale(1)"; }
-				[zoom=19] { point-transform: "rotate([angle]) scale(2)"; }
-				[zoom=20] { point-transform: "rotate([angle]) scale(4)"; }
+				[zoom>=14] { point-transform: "rotate([angle]) scale(0.0625)"; }
+				[zoom>=15] { point-transform: "rotate([angle]) scale(0.125)"; }
+				[zoom>=16] { point-transform: "rotate([angle]) scale(0.25)"; }
+				[zoom>=17] { point-transform: "rotate([angle]) scale(0.5)"; }
+				[zoom>=18] { point-transform: "rotate([angle]) scale(1)"; }
+				[zoom>=19] { point-transform: "rotate([angle]) scale(2)"; }
+				[zoom>=20] { point-transform: "rotate([angle]) scale(4)"; }
 			}
 			[d12>75][d12<150][d23>150][d23<250] { /* 12-longueur - 23-largeur */
 				point-file: url('symbols/fr/sports-rugby.svg');
 				point-ignore-placement: true;
-				[zoom=16] { point-transform: "rotate([angle]+90) scale(0.25)"; }
-				[zoom=17] { point-transform: "rotate([angle]+90) scale(0.5)"; }
-				[zoom=18] { point-transform: "rotate([angle]+90) scale(1)"; }
-				[zoom=19] { point-transform: "rotate([angle]+90) scale(2)"; }
-				[zoom=20] { point-transform: "rotate([angle]+90) scale(4)"; }
+				[zoom>=14] { point-transform: "rotate([angle]+90) scale(0.0625)"; }
+				[zoom>=15] { point-transform: "rotate([angle]+90) scale(0.125)"; }
+				[zoom>=16] { point-transform: "rotate([angle]+90) scale(0.25)"; }
+				[zoom>=17] { point-transform: "rotate([angle]+90) scale(0.5)"; }
+				[zoom>=18] { point-transform: "rotate([angle]+90) scale(1)"; }
+				[zoom>=19] { point-transform: "rotate([angle]+90) scale(2)"; }
+				[zoom>=20] { point-transform: "rotate([angle]+90) scale(4)"; }
 			}
 		}
 	}
 
-	[sport='american_football'][zoom>=16] {
+	[sport='american_football'] {
 		[surface='grass'] { polygon-fill: @sport-surface-grass; }
 		[way_area>8000][way_area<20000][d13>120][d13<250] {
 			[d23>50][d23<100][d12>120][d12<200] { /* 12-largeur - 23-longueur */
 				point-file: url('symbols/fr/sports-foot-us.svg');
 				point-ignore-placement: true;
-				[zoom=16] { point-transform: "rotate([angle]) scale(0.15)"; }
-				[zoom=17] { point-transform: "rotate([angle]) scale(0.3)"; }
-				[zoom=18] { point-transform: "rotate([angle]) scale(0.6)"; }
-				[zoom=19] { point-transform: "rotate([angle]) scale(1.2)"; }
-				[zoom=20] { point-transform: "rotate([angle]) scale(2.4)"; }
+				[zoom>=14] { point-transform: "rotate([angle]) scale(0.0375)"; }
+				[zoom>=15] { point-transform: "rotate([angle]) scale(0.075)"; }
+				[zoom>=16] { point-transform: "rotate([angle]) scale(0.15)"; }
+				[zoom>=17] { point-transform: "rotate([angle]) scale(0.3)"; }
+				[zoom>=18] { point-transform: "rotate([angle]) scale(0.6)"; }
+				[zoom>=19] { point-transform: "rotate([angle]) scale(1.2)"; }
+				[zoom>=20] { point-transform: "rotate([angle]) scale(2.4)"; }
 			}
 			[d12>50][d12<100][d23>120][d23<200] { /* 12-longueur - 23-largeur */
 				point-file: url('symbols/fr/sports-foot-us.svg');
 				point-ignore-placement: true;
-				[zoom=16] { point-transform: "rotate([angle]+90) scale(0.15)"; }
-				[zoom=17] { point-transform: "rotate([angle]+90) scale(0.3)"; }
-				[zoom=18] { point-transform: "rotate([angle]+90) scale(0.6)"; }
-				[zoom=19] { point-transform: "rotate([angle]+90) scale(1.2)"; }
-				[zoom=20] { point-transform: "rotate([angle]+90) scale(2.4)"; }
+				[zoom>=14] { point-transform: "rotate([angle]+90) scale(0.0375)"; }
+				[zoom>=15] { point-transform: "rotate([angle]+90) scale(0.075)"; }
+				[zoom>=16] { point-transform: "rotate([angle]+90) scale(0.15)"; }
+				[zoom>=17] { point-transform: "rotate([angle]+90) scale(0.3)"; }
+				[zoom>=18] { point-transform: "rotate([angle]+90) scale(0.6)"; }
+				[zoom>=19] { point-transform: "rotate([angle]+90) scale(1.2)"; }
+				[zoom>=20] { point-transform: "rotate([angle]+90) scale(2.4)"; }
 			}
 		}
 	}
