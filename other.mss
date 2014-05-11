@@ -3798,3 +3798,15 @@
 	line-color: green;
 }
 */
+
+
+#masque [zoom>=12] {
+	polygon-fill: white;
+	polygon-opacity: 0.5;
+	[ref='93'] {
+		polygon-opacity: 0;
+		line-width: 6;
+		line-opacity: 0.5;
+		line-color: violet;
+	}
+}
