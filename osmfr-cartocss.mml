@@ -6,9 +6,9 @@
     80
   ],
   "center": [
-    2.4917,
-    48.79915,
-    19
+    2.4458,
+    48.9099,
+    14
   ],
   "format": "png:t=0",
   "interactivity": false,
@@ -2823,6 +2823,34 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
       "name": "addr-corner",
+      "status": "off"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        -179.99999979528076,
+        -85.051,
+        179.99378812475413,
+        85.051
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way,ref from planet_osm_polygon where boundary = 'administrative' and admin_level='6') as masque",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-20037508.32,-20061906.38,20036816.84,20061906.38",
+        "dbname": "osm",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
+      },
+      "id": "masque",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "masque",
       "status": "off"
     }
   ],
