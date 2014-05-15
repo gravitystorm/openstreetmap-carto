@@ -31,19 +31,21 @@
   }
 }
 
-#placenames-capital {
-  [zoom >= 5][zoom < 15] {
-    text-name: "[name]";
-    text-size: 10;
-    text-fill: @placenames;
-    text-face-name: @book-fonts;
-    text-halo-radius: 1.5;
-    text-min-distance: 10;
-    [zoom >= 6] {
-      text-size: 12;
-    }
-    [zoom >= 11] {
-      text-size: 15;
+#placenames-medium::capital {
+  [capital = 'yes'] {
+    [zoom >= 5][zoom < 15] {
+      text-name: "[name]";
+      text-size: 10;
+      text-fill: @placenames;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1.5;
+      text-min-distance: 10;
+      [zoom >= 6] {
+        text-size: 12;
+      }
+      [zoom >= 11] {
+        text-size: 15;
+      }
     }
   }
 }
