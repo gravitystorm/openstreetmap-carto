@@ -1114,7 +1114,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(SELECT way,place,capital,name\n  FROM planet_osm_point\n  WHERE place IN ('city','town')) AS placenames_medium",
+        "table": "(SELECT way,place,name,capital,population\n  FROM\n    (SELECT \n        way,place,name,NULL AS capital,way_area,\n        CASE WHEN population~E'^\\d{1,9}$' THEN population::integer ELSE NULL END AS population\n      FROM planet_osm_polygon\n    UNION ALL\n    SELECT \n        way,place,name,capital,NULL AS way_area,\n        CASE WHEN population~E'^\\d{1,9}$' AND length(population)<10 THEN population::integer ELSE NULL END AS population \n      FROM planet_osm_point) AS p\n  WHERE place IN ('city','town')\n  ORDER BY \n    CASE place WHEN 'city' THEN 0 ELSE 10 END,\n    CASE capital WHEN 'yes' THEN 0 ELSE 10 END, \n    way_area DESC NULLS LAST, \n    population DESC NULLS LAST\n) AS placenames_medium",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
