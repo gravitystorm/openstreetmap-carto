@@ -1713,7 +1713,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,way_area,name,boundary from planet_osm_polygon where boundary='national_park' or leisure='nature_reserve' and building is null) as national_park_boundaries",
+        "table": "(select way,way_area,name,boundary from planet_osm_polygon where (boundary='national_park' or leisure='nature_reserve') and building is null) as national_park_boundaries",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
