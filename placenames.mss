@@ -31,7 +31,7 @@
   }
 }
 
-#placenames-medium::capital {
+#placenames-medium {
   [capital = 'yes'] {
     [zoom >= 5][zoom < 15] {
       text-name: "[name]";
@@ -48,9 +48,7 @@
       }
     }
   }
-}
 
-#placenames-medium::city {
   [place = 'city'] {
     [zoom >= 6][zoom < 15] {
       text-name: "[name]";
@@ -67,9 +65,7 @@
       }
     }
   }
-}
 
-#placenames-medium::town {
   [place = 'town'] {
     [zoom >= 9] {
       text-name: "[name]";
