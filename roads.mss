@@ -388,8 +388,10 @@
         [service = 'INT-minor'] {
           line-width: 4;
         }
-        line-join: round;
-        line-cap: round;
+        .roads-casing {
+          line-join: round;
+          line-cap: round;
+        }
         .tunnels-casing { line-dasharray: 4,2; }
         .bridges-casing {
           line-color: @bridge-casing;
