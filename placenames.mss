@@ -31,7 +31,7 @@
   }
 }
 
-#placenames-medium {
+#place-medium {
   [capital = 'yes'] {
     [zoom >= 5][zoom < 15] {
       text-name: "[name]";
