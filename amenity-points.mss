@@ -209,7 +209,7 @@
     }
   }
 
-  [amenity = 'police'][zoom >= 17]::amenity {
+  [amenity = 'police'][zoom >= 16]::amenity {
     point-file: url('symbols/police.p.16.png');
     point-placement: interior;
   }
@@ -224,12 +224,12 @@
     point-placement: interior;
   }
 
-  [amenity = 'pub'][zoom >= 16]::amenity {
+  [amenity = 'pub'][zoom >= 17]::amenity {
     point-file: url('symbols/pub.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'biergarten'][zoom >= 16]::amenity {
+  [amenity = 'biergarten'][zoom >= 17]::amenity {
     point-file: url('symbols/biergarten.p.16.png');
     point-placement: interior;
   }
