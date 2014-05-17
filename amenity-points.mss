@@ -394,12 +394,13 @@
     text-placement: interior;
   }
 
+  [amenity = 'bar']::amenity,
   [amenity = 'pub']::amenity,
   [amenity = 'restaurant']::amenity,
   [amenity = 'cafe']::amenity,
   [amenity = 'fast_food']::amenity,
   [amenity = 'biergarten']::amenity {
-    [zoom >= 17] {
+    [zoom >= 18] {
       text-name: "[name]";
       text-fill: #734a08;
       text-size: 10;
@@ -409,16 +410,6 @@
       text-wrap-width: 34;
       text-placement: interior;
     }
-  }
-
-  [amenity = 'bar'][zoom >= 17]::amenity {
-    text-name: "[name]";
-    text-size: 10;
-    text-fill: #734a08;
-    text-dy: 11;
-    text-face-name: @bold-fonts;
-    text-halo-radius: 1;
-    text-placement: interior;
   }
 
   [amenity = 'library']::amenity,
