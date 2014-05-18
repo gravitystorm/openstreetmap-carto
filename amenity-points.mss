@@ -404,7 +404,7 @@
       text-name: "[name]";
       text-fill: #734a08;
       text-size: 10;
-      text-dy: 9;
+      text-dy: 11;
       text-face-name: @bold-fonts;
       text-halo-radius: 1;
       text-wrap-width: 34;
