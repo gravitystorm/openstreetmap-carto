@@ -209,7 +209,7 @@
     }
   }
 
-  [amenity = 'police'][zoom >= 15]::amenity {
+  [amenity = 'police'][zoom >= 16]::amenity {
     point-file: url('symbols/police.p.16.png');
     point-placement: interior;
   }
@@ -450,7 +450,7 @@
     }
   }
 
-  [amenity = 'police'][zoom >= 16]::amenity {
+  [amenity = 'police'][zoom >= 17]::amenity {
     text-name: "[name]";
     text-size: 10;
     text-fill: #734a08;
