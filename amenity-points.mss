@@ -234,7 +234,7 @@
     point-placement: interior;
   }
 
-  [amenity = 'recycling'][zoom >= 16]::amenity {
+  [amenity = 'recycling'][zoom >= 17]::amenity {
     point-file: url('symbols/recycling.p.16.png');
     point-placement: interior;
   }
