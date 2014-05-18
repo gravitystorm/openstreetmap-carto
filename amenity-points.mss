@@ -209,7 +209,7 @@
     }
   }
 
-  [amenity = 'police'][zoom >= 17]::amenity {
+  [amenity = 'police'][zoom >= 16]::amenity {
     point-file: url('symbols/police.p.16.png');
     point-placement: interior;
   }
@@ -224,17 +224,17 @@
     point-placement: interior;
   }
 
-  [amenity = 'pub'][zoom >= 16]::amenity {
+  [amenity = 'pub'][zoom >= 17]::amenity {
     point-file: url('symbols/pub.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'biergarten'][zoom >= 16]::amenity {
+  [amenity = 'biergarten'][zoom >= 17]::amenity {
     point-file: url('symbols/biergarten.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'recycling'][zoom >= 16]::amenity {
+  [amenity = 'recycling'][zoom >= 17]::amenity {
     point-file: url('symbols/recycling.p.16.png');
     point-placement: interior;
   }
@@ -394,31 +394,22 @@
     text-placement: interior;
   }
 
+  [amenity = 'bar']::amenity,
   [amenity = 'pub']::amenity,
   [amenity = 'restaurant']::amenity,
   [amenity = 'cafe']::amenity,
   [amenity = 'fast_food']::amenity,
   [amenity = 'biergarten']::amenity {
-    [zoom >= 17] {
+    [zoom >= 18] {
       text-name: "[name]";
       text-fill: #734a08;
       text-size: 10;
-      text-dy: 9;
+      text-dy: 11;
       text-face-name: @bold-fonts;
       text-halo-radius: 1;
       text-wrap-width: 34;
       text-placement: interior;
     }
-  }
-
-  [amenity = 'bar'][zoom >= 17]::amenity {
-    text-name: "[name]";
-    text-size: 10;
-    text-fill: #734a08;
-    text-dy: 11;
-    text-face-name: @bold-fonts;
-    text-halo-radius: 1;
-    text-placement: interior;
   }
 
   [amenity = 'library']::amenity,
@@ -1088,7 +1079,7 @@
   [shop = 'car_repair']::shop,
   [shop = 'bicycle']::shop,
   [shop = 'florist']::shop {
-    [zoom >= 17] {
+    [zoom >= 18] {
       text-name: "[name]";
       text-size: 8;
       text-dy: 10;
