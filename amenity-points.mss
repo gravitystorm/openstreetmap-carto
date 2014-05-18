@@ -1079,7 +1079,7 @@
   [shop = 'car_repair']::shop,
   [shop = 'bicycle']::shop,
   [shop = 'florist']::shop {
-    [zoom >= 17] {
+    [zoom >= 18] {
       text-name: "[name]";
       text-size: 8;
       text-dy: 10;
