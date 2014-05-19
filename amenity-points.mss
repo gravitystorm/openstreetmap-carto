@@ -366,6 +366,11 @@
     point-file: url('symbols/playground.p.20.png');
     point-placement: interior;
   }
+  
+  [leisure = 'miniature_golf'][zoom >= 17]::leisure {
+    point-file: url('symbols/miniature_golf.p.20.png');
+    point-placement: interior;
+  }
 
   [tourism = 'picnic_site'][zoom >= 16]::tourism {
     point-file: url('symbols/picnic.p.16.png');
@@ -622,6 +627,19 @@
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: 30;
       text-placement: interior;
+    }
+  }
+  
+  [leisure = 'miniature_golf']::leisure {
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: 10;
+      text-fill: @park-text;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
+      text-placement: interior;
+      text-dy: 11;
     }
   }
 
