@@ -31,24 +31,24 @@
   }
 }
 
-#placenames-capital {
-  [zoom >= 5][zoom < 15] {
-    text-name: "[name]";
-    text-size: 10;
-    text-fill: @placenames;
-    text-face-name: @book-fonts;
-    text-halo-radius: 1.5;
-    text-min-distance: 10;
-    [zoom >= 6] {
-      text-size: 12;
-    }
-    [zoom >= 11] {
-      text-size: 15;
+#place-medium {
+  [capital = 'yes'] {
+    [zoom >= 5][zoom < 15] {
+      text-name: "[name]";
+      text-size: 10;
+      text-fill: @placenames;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1.5;
+      text-min-distance: 10;
+      [zoom >= 6] {
+        text-size: 12;
+      }
+      [zoom >= 11] {
+        text-size: 15;
+      }
     }
   }
-}
 
-#placenames-medium::city {
   [place = 'city'] {
     [zoom >= 6][zoom < 15] {
       text-name: "[name]";
@@ -65,9 +65,7 @@
       }
     }
   }
-}
 
-#placenames-medium::town {
   [place = 'town'] {
     [zoom >= 9] {
       text-name: "[name]";
