@@ -165,7 +165,8 @@
     polygon-fill: @grass;
   }
 
-  [feature = 'leisure_golf_course'][zoom >= 10] {
+  [feature = 'leisure_golf_course'][zoom >= 10],
+  [feature = 'leisure_miniature_golf'][zoom >= 15] {
     polygon-fill: @golf_course;
   }
 
