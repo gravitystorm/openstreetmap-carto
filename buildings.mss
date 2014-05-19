@@ -6,12 +6,6 @@
       polygon-clip: false;
     }
 
-    [building = 'supermarket'] {
-      polygon-fill: pink;
-      polygon-opacity: 0.5;
-      polygon-clip: false;
-    }
-
     [amenity = 'place_of_worship']::amenity {
       polygon-opacity: 0.5;
       polygon-fill: #777;
