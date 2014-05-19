@@ -2,6 +2,7 @@
   [zoom >= 10] {
     [railway = 'station']::railway,
     [building = 'station'] {
+      polygon-opacity: 0.9;
       polygon-fill: #d4aaaa;
       polygon-clip: false;
     }
