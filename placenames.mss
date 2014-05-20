@@ -86,7 +86,7 @@
   }
 }
 
-#placenames-small::suburb {
+#place-small {
   [place = 'suburb'][zoom >= 12] {
     text-name: "[name]";
     text-size: 11;
@@ -99,9 +99,7 @@
       text-fill: @placenames-light;
     }
   }
-}
 
-#placenames-small::village {
   [place = 'village'] {
     [zoom >=12] {
       text-name: "[name]";
@@ -116,9 +114,7 @@
       }
     }
   }
-}
 
-#placenames-small::hamlet {
   [place = 'hamlet'],
   [place = 'locality'],
   [place = 'neighbourhood'],
