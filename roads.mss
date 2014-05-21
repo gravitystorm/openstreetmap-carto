@@ -288,6 +288,7 @@
         [zoom >= 17] { line-width: @primary-width-z17; }
         .roads-casing {
           line-join: round;
+          line-cap: round;
         }
         .tunnels-casing {
           line-dasharray: 4,2;
@@ -388,8 +389,10 @@
         [service = 'INT-minor'] {
           line-width: 4;
         }
-        line-join: round;
-        line-cap: round;
+        .roads-casing {
+          line-join: round;
+          line-cap: round;
+        }
         .tunnels-casing { line-dasharray: 4,2; }
         .bridges-casing {
           line-color: @bridge-casing;
@@ -528,11 +531,12 @@
     }
 
     [feature = 'railway_light_rail'],
+    [feature = 'railway_funicular'],
     [feature = 'railway_narrow_gauge'] {
       .bridges-casing {
         [zoom >= 14] {
           line-width: 5.5;
-          line-color: #555;
+          line-color: black;
           line-join: round;
         }
       }
@@ -561,9 +565,7 @@
     }
 
     [feature = 'railway_disused'],
-    [feature = 'railway_abandoned'],
     [feature = 'railway_construction'],
-    [feature = 'railway_funicular'][zoom >= 14],
     [feature = 'railway_miniature'][zoom >= 15],
     [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
       .bridges-casing {
@@ -605,7 +607,6 @@
           line-width: 4;
           line-color: @bridleway-casing;
           line-join: round;
-          line-cap: round;
         }
       }
     }
@@ -617,7 +618,6 @@
           line-width: 4.5;
           line-color: @footway-casing;
           line-join: round;
-          line-cap: round;
         }
       }
     }
@@ -629,7 +629,6 @@
           line-width: 4;
           line-color: @cycleway-casing;
           line-join: round;
-          line-cap: round;
         }
       }
     }
@@ -651,7 +650,6 @@
           line-width: 2.5;
           line-color: @path-casing;
           line-join: round;
-          line-cap: round;
         }
       }
     }
@@ -662,7 +660,6 @@
           line-width: 3;
           line-color: @track-casing;
           line-join: round;
-          line-cap: round;
           [tracktype = 'grade1'] { line-width: 3.5; }
         }
       }
@@ -684,15 +681,12 @@
           line-width: 4;
           line-color: white;
           line-join: round;
-          line-cap: round;
         }
       }
     }
 
     [feature = 'railway_disused'],
-    [feature = 'railway_abandoned'],
     [feature = 'railway_construction'],
-    [feature = 'railway_funicular'][zoom >= 14],
     [feature = 'railway_miniature'][zoom >= 15],
     [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
       .bridges-casing {
@@ -700,7 +694,6 @@
           line-width: 4.5;
           line-color: white;
           line-join: round;
-          line-cap: round;
         }
       }
     }
@@ -710,16 +703,19 @@
         [zoom >= 14] {
           line-width: 4;
           line-color: white;
+          line-join: round;
         }
       }
     }
 
     [feature = 'railway_light_rail'],
+    [feature = 'railway_funicular'],
     [feature = 'railway_narrow_gauge'] {
       .bridges-casing {
         [zoom >= 14] {
           line-width: 4;
           line-color: white;
+          line-join: round;
         }
       }
     }
@@ -1436,34 +1432,14 @@
       }
     }
 
+    [feature = 'railway_light_rail'],
+    [feature = 'railway_funicular'],
     [feature = 'railway_narrow_gauge'] {
       [zoom >= 13] {
-        line/line-width: 2;
-        line/line-color: #666;
+        line-width: 2;
+        line-color: #666;
         .tunnels-fill {
-          tunnelcasing/line-width: 5;
-          tunnelcasing/line-dasharray: 5,3;
-          tunnelcasing/line-color: #666;
-          background/line-color: #fff;
-          background/line-width: 4;
-          line/line-color: #aaa;
-          line/line-width: 1.5;
-        }
-      }
-    }
-
-    [feature = 'railway_funicular'] {
-      [zoom >= 13] {
-        line/line-width: 2;
-        line/line-color: #666;
-        .tunnels-fill {
-          tunnelcasing/line-width: 5;
-          tunnelcasing/line-dasharray: 5,3;
-          tunnelcasing/line-color: #666;
-          background/line-color: #fff;
-          background/line-width: 4;
-          line/line-color: #aaa;
-          line/line-width: 1.5;
+          line-dasharray: 5,3;
         }
       }
     }
@@ -1485,16 +1461,6 @@
           line-dasharray: 5,3;
           line-color: #444;
           [zoom >= 15] { line-width: 2; }
-        }
-      }
-    }
-
-    [feature = 'railway_light_rail'] {
-      [zoom >= 13] {
-        line-width: 2;
-        line-color: #666;
-        .tunnels-fill {
-          line-dasharray: 5,3;
         }
       }
     }
@@ -1563,7 +1529,6 @@
     }
 
     [feature = 'railway_disused'],
-    [feature = 'railway_abandoned'],
     [feature = 'railway_construction'] {
       [zoom >= 13] {
         line-color: grey;
@@ -1672,16 +1637,22 @@
   }
 
   [int_tc_type = 'service'][zoom >= 16] {
-    marker-width: 14;
-    marker-height: 14;
+    [int_tc_service = 'INT-normal'] {
+      marker-width: 14;
+      marker-height: 14;
+      [zoom >= 17] {
+        marker-width: 16;
+        marker-height: 16;
+      }
+    }
+    [int_tc_service = 'INT-minor'] {
+      marker-width: 12;
+      marker-height: 12;
+    }
     marker-allow-overlap: true;
     marker-ignore-placement: true;
     marker-line-width: 0;
     marker-fill: @service-casing;
-    [zoom >= 17] {
-      marker-width: 16;
-      marker-height: 16;
-    }
   }
 }
 
@@ -1737,16 +1708,22 @@
   }
 
   [int_tc_type = 'service'][zoom >= 16] {
-    marker-width: 12;
-    marker-height: 12;
+    [int_tc_service = 'INT-normal'] {
+      marker-width: 12;
+      marker-height: 12;
+      [zoom >= 17] {
+        marker-width: 14;
+        marker-height: 14;
+      }
+    }
+    [int_tc_service = 'INT-minor'] {
+      marker-width: 10;
+      marker-height: 10;
+    }
     marker-allow-overlap: true;
     marker-ignore-placement: true;
     marker-line-width: 0;
     marker-fill: @service-fill;
-    [zoom >= 17] {
-      marker-width: 14;
-      marker-height: 14;
-    }
   }
 }
 
@@ -1762,6 +1739,7 @@
   [feature = 'highway_pedestrian'],
   [feature = 'highway_service'],
   [feature = 'highway_footway'],
+  [feature = 'highway_cycleway'],
   [feature = 'highway_path'] {
     [zoom >= 14] {
       line-color: grey;
@@ -1800,6 +1778,7 @@
 
   [feature = 'highway_pedestrian'],
   [feature = 'highway_footway'],
+  [feature = 'highway_cycleway'],
   [feature = 'highway_path'] {
     [zoom >= 14] {
       polygon-fill: #ededed;
@@ -1839,7 +1818,6 @@
     ref/text-min-distance: 2;
     ref/text-face-name: @oblique-fonts;
     ref/text-halo-radius: 1.5;
-    ref/text-wrap-width: 12;
     [zoom >= 12] {
       name/text-name: "[name]";
       name/text-size: 9;

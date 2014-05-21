@@ -1127,7 +1127,7 @@
     [zoom >= 16] {
       text-name: "[name]";
       text-size: 9;
-      text-dy: 9;
+      text-dy: 11;
       text-fill: #939;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
