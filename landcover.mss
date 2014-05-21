@@ -236,7 +236,7 @@
     }
   }
 
-  [feature = 'power_sub_station']
+  [feature = 'power_sub_station'],
   [feature = 'power_substation'] {
     [zoom >= 13] {
       polygon-fill: @power;
