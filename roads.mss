@@ -562,7 +562,6 @@
     }
 
     [feature = 'railway_disused'],
-    [feature = 'railway_abandoned'],
     [feature = 'railway_construction'],
     [feature = 'railway_miniature'][zoom >= 15],
     [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
@@ -690,7 +689,6 @@
     }
 
     [feature = 'railway_disused'],
-    [feature = 'railway_abandoned'],
     [feature = 'railway_construction'],
     [feature = 'railway_miniature'][zoom >= 15],
     [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
@@ -1533,7 +1531,6 @@
     }
 
     [feature = 'railway_disused'],
-    [feature = 'railway_abandoned'],
     [feature = 'railway_construction'] {
       [zoom >= 13] {
         line-color: grey;
