@@ -1738,6 +1738,7 @@
   [feature = 'highway_pedestrian'],
   [feature = 'highway_service'],
   [feature = 'highway_footway'],
+  [feature = 'highway_cycleway'],
   [feature = 'highway_path'] {
     [zoom >= 14] {
       line-color: grey;
@@ -1776,6 +1777,7 @@
 
   [feature = 'highway_pedestrian'],
   [feature = 'highway_footway'],
+  [feature = 'highway_cycleway'],
   [feature = 'highway_path'] {
     [zoom >= 14] {
       polygon-fill: #ededed;
