@@ -1634,16 +1634,22 @@
   }
 
   [int_tc_type = 'service'][zoom >= 16] {
-    marker-width: 14;
-    marker-height: 14;
+    [int_tc_service = 'INT-normal'] {
+      marker-width: 14;
+      marker-height: 14;
+      [zoom >= 17] {
+        marker-width: 16;
+        marker-height: 16;
+      }
+    }
+    [int_tc_service = 'INT-minor'] {
+      marker-width: 12;
+      marker-height: 12;
+    }
     marker-allow-overlap: true;
     marker-ignore-placement: true;
     marker-line-width: 0;
     marker-fill: @service-casing;
-    [zoom >= 17] {
-      marker-width: 16;
-      marker-height: 16;
-    }
   }
 }
 
@@ -1699,16 +1705,22 @@
   }
 
   [int_tc_type = 'service'][zoom >= 16] {
-    marker-width: 12;
-    marker-height: 12;
+    [int_tc_service = 'INT-normal'] {
+      marker-width: 12;
+      marker-height: 12;
+      [zoom >= 17] {
+        marker-width: 14;
+        marker-height: 14;
+      }
+    }
+    [int_tc_service = 'INT-minor'] {
+      marker-width: 10;
+      marker-height: 10;
+    }
     marker-allow-overlap: true;
     marker-ignore-placement: true;
     marker-line-width: 0;
     marker-fill: @service-fill;
-    [zoom >= 17] {
-      marker-width: 14;
-      marker-height: 14;
-    }
   }
 }
 
