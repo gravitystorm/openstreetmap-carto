@@ -528,11 +528,12 @@
     }
 
     [feature = 'railway_light_rail'],
+    [feature = 'railway_funicular'],
     [feature = 'railway_narrow_gauge'] {
       .bridges-casing {
         [zoom >= 14] {
           line-width: 5.5;
-          line-color: #555;
+          line-color: black;
           line-join: round;
         }
       }
@@ -563,7 +564,6 @@
     [feature = 'railway_disused'],
     [feature = 'railway_abandoned'],
     [feature = 'railway_construction'],
-    [feature = 'railway_funicular'][zoom >= 14],
     [feature = 'railway_miniature'][zoom >= 15],
     [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
       .bridges-casing {
@@ -692,7 +692,6 @@
     [feature = 'railway_disused'],
     [feature = 'railway_abandoned'],
     [feature = 'railway_construction'],
-    [feature = 'railway_funicular'][zoom >= 14],
     [feature = 'railway_miniature'][zoom >= 15],
     [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
       .bridges-casing {
@@ -715,6 +714,7 @@
     }
 
     [feature = 'railway_light_rail'],
+    [feature = 'railway_funicular'],
     [feature = 'railway_narrow_gauge'] {
       .bridges-casing {
         [zoom >= 14] {
@@ -1436,34 +1436,14 @@
       }
     }
 
+    [feature = 'railway_light_rail'],
+    [feature = 'railway_funicular'],
     [feature = 'railway_narrow_gauge'] {
       [zoom >= 13] {
-        line/line-width: 2;
-        line/line-color: #666;
+        line-width: 2;
+        line-color: #666;
         .tunnels-fill {
-          tunnelcasing/line-width: 5;
-          tunnelcasing/line-dasharray: 5,3;
-          tunnelcasing/line-color: #666;
-          background/line-color: #fff;
-          background/line-width: 4;
-          line/line-color: #aaa;
-          line/line-width: 1.5;
-        }
-      }
-    }
-
-    [feature = 'railway_funicular'] {
-      [zoom >= 13] {
-        line/line-width: 2;
-        line/line-color: #666;
-        .tunnels-fill {
-          tunnelcasing/line-width: 5;
-          tunnelcasing/line-dasharray: 5,3;
-          tunnelcasing/line-color: #666;
-          background/line-color: #fff;
-          background/line-width: 4;
-          line/line-color: #aaa;
-          line/line-width: 1.5;
+          line-dasharray: 5,3;
         }
       }
     }
@@ -1485,16 +1465,6 @@
           line-dasharray: 5,3;
           line-color: #444;
           [zoom >= 15] { line-width: 2; }
-        }
-      }
-    }
-
-    [feature = 'railway_light_rail'] {
-      [zoom >= 13] {
-        line-width: 2;
-        line-color: #666;
-        .tunnels-fill {
-          line-dasharray: 5,3;
         }
       }
     }
