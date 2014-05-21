@@ -604,7 +604,6 @@
           line-width: 4;
           line-color: @bridleway-casing;
           line-join: round;
-          line-cap: round;
         }
       }
     }
@@ -616,7 +615,6 @@
           line-width: 4.5;
           line-color: @footway-casing;
           line-join: round;
-          line-cap: round;
         }
       }
     }
@@ -628,7 +626,6 @@
           line-width: 4;
           line-color: @cycleway-casing;
           line-join: round;
-          line-cap: round;
         }
       }
     }
@@ -650,7 +647,6 @@
           line-width: 2.5;
           line-color: @path-casing;
           line-join: round;
-          line-cap: round;
         }
       }
     }
@@ -661,7 +657,6 @@
           line-width: 3;
           line-color: @track-casing;
           line-join: round;
-          line-cap: round;
           [tracktype = 'grade1'] { line-width: 3.5; }
         }
       }
@@ -683,7 +678,6 @@
           line-width: 4;
           line-color: white;
           line-join: round;
-          line-cap: round;
         }
       }
     }
@@ -697,7 +691,6 @@
           line-width: 4.5;
           line-color: white;
           line-join: round;
-          line-cap: round;
         }
       }
     }
@@ -707,6 +700,7 @@
         [zoom >= 14] {
           line-width: 4;
           line-color: white;
+          line-join: round;
         }
       }
     }
@@ -718,6 +712,7 @@
         [zoom >= 14] {
           line-width: 4;
           line-color: white;
+          line-join: round;
         }
       }
     }
