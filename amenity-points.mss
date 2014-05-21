@@ -366,9 +366,14 @@
     point-file: url('symbols/playground.p.20.png');
     point-placement: interior;
   }
-  
+
   [leisure = 'miniature_golf'][zoom >= 17]::leisure {
     point-file: url('symbols/miniature_golf.p.20.png');
+    point-placement: interior;
+  }
+
+  [leisure = 'golf_course'][zoom >= 15]::leisure {
+    point-file: url('symbols/golf.p.20.png');
     point-placement: interior;
   }
 
@@ -613,7 +618,6 @@
   [landuse = 'village_green']::landuse,
   [leisure = 'common']::leisure,
   [leisure = 'garden']::leisure,
-  [leisure = 'golf_course']::leisure,
   [leisure = 'nature_reserve']::leisure {
     [way_area >= 150000][zoom >= 14],
     [way_area >= 80000][zoom >= 15],
@@ -629,18 +633,18 @@
       text-placement: interior;
     }
   }
-  
-  [leisure = 'miniature_golf']::leisure {
-    [zoom >= 17] {
-      text-name: "[name]";
-      text-size: 10;
-      text-fill: @park-text;
-      text-face-name: @book-fonts;
-      text-halo-radius: 1;
-      text-halo-fill: rgba(255,255,255,0.6);
-      text-placement: interior;
-      text-dy: 11;
-    }
+
+  [leisure = 'miniature_golf'][zoom >= 17]::leisure,
+  [leisure = 'golf_course'][zoom >= 15]::leisure {
+    text-name: "[name]";
+    text-size: 11;
+    text-fill: @park-text;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
+    text-placement: interior;
+    text-dy: 11;
+    text-wrap-width: 40;
   }
 
   [landuse = 'quarry']::landuse {
