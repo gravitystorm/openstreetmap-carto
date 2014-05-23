@@ -88,6 +88,11 @@
     point-file: url('symbols/chalet.p.16.png');
     point-placement: interior;
   }
+  
+  [tourism = 'apartment'][zoom >= 18]::tourism {
+    point-file: url('symbols/chalet.p.16.png');
+    point-placement: interior;
+  }
 
   [amenity = 'cinema'][zoom >= 17]::amenity {
     point-file: url('symbols/cinema.p.24.png');
