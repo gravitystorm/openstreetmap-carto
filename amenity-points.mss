@@ -78,8 +78,18 @@
     point-file: url('symbols/car_share.p.16.png');
     point-placement: interior;
   }
+  
+  [amenity = 'boat_sharing'][zoom >= 16]::amenity {
+    point-file: url('symbols/boat_share.p.16.png');
+    point-placement: interior;
+  }
 
   [tourism = 'chalet'][zoom >= 17]::tourism {
+    point-file: url('symbols/chalet.p.16.png');
+    point-placement: interior;
+  }
+  
+  [tourism = 'apartment'][zoom >= 18]::tourism {
     point-file: url('symbols/chalet.p.16.png');
     point-placement: interior;
   }
