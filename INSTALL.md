@@ -60,7 +60,7 @@ git fetch upstream
 sh get-shapefiles.sh
 ```
 
-# Import data in the database
+## Import data in the database
 
 This example uses a data extract of Luxembourg. Other data extracts can be found here:
 http://download.geofabrik.de.
