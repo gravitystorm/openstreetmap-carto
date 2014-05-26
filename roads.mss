@@ -57,7 +57,7 @@
 @primary-tunnel-fill: lighten(@primary-fill, 10%);
 @secondary-tunnel-fill: lighten(@secondary-fill, 5%);
 @tertiary-tunnel-fill: lighten(@tertiary-fill, 5%);
-@residential-tunnel-fill: lighten(@residential-fill, 10%);
+@residential-tunnel-fill: darken(@residential-fill, 5%);
 @living-street-tunnel-fill: lighten(@living-street-fill, 10%);
 
 @motorway-width-z12:              3;
@@ -1142,6 +1142,9 @@
         }
         line-join: round;
         line-cap: round;
+      }
+      .tunnels-fill {
+        line-color: darken(white, 5%);
       }
     }
 
