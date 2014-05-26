@@ -98,13 +98,13 @@
 @residential-width-z17:          15.5;
 
 @casing-width-z12:                0.5;
-@casing-width-z13:                0.75;
+@casing-width-z13:                0.5;
 @residential-casing-width-z13:    0.5;
-@casing-width-z14:                0.75;
-@casing-width-z15:                0.9;
+@casing-width-z14:                0.5;
+@casing-width-z15:                0.7;
 @tertiary-link-casing-width-z15:  0.8;
-@casing-width-z16:                0.9;
-@casing-width-z17:                1.25;
+@casing-width-z16:                0.7;
+@casing-width-z17:                1;
 @tertiary-link-casing-width-z17:  1.5;
 
 @bridge-casing-width-z12:         0.5;
