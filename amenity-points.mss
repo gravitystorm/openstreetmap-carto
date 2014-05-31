@@ -1,3 +1,7 @@
+@marina-text: #576ddf; // also swimming_pool
+@military-text: #99001a;
+@park-text: #2c4b2c;
+
 .points {
   [tourism = 'alpine_hut'][zoom >= 13]::tourism {
     point-file: url('symbols/alpinehut.p.16.png');
@@ -75,7 +79,7 @@
     point-placement: interior;
   }
 
-  [amenity = 'chalet'][zoom >= 17]::amenity {
+  [tourism = 'chalet'][zoom >= 17]::tourism {
     point-file: url('symbols/chalet.p.16.png');
     point-placement: interior;
   }
@@ -191,6 +195,18 @@
     [religion = 'jewish'] {
       point-file: url('symbols/jewish3.p.16.png');
     }
+    [religion = 'hindu'] {
+      point-file: url('symbols/hindu.png');
+    }
+    [religion = 'buddhist'] {
+      point-file: url('symbols/buddhist.png');
+    }
+    [religion = 'shinto'] {
+      point-file: url('symbols/shinto.png');
+    }
+    [religion = 'taoist'] {
+      point-file: url('symbols/taoist.png');
+    }
   }
 
   [amenity = 'police'][zoom >= 17]::amenity {
@@ -279,7 +295,7 @@
   }
 
   [historic = 'archaeological_site'][zoom >= 16]::historic {
-    point-file: url('symbols/tourist_archaeological2.glow.16.png');
+    point-file: url('symbols/tourist_archaeological2.glow.24.png');
     point-placement: interior;
   }
 
@@ -356,7 +372,12 @@
     point-placement: interior;
   }
 
-  [amenity = 'picnic_site'][zoom >= 16]::amenity {
+  [tourism = 'picnic_site'][zoom >= 16]::tourism {
+    point-file: url('symbols/picnic.p.16.png');
+    point-placement: interior;
+  }
+
+  [leisure = 'picnic_table'][zoom >= 17]::leisure {
     point-file: url('symbols/picnic.p.16.png');
     point-placement: interior;
   }
@@ -382,7 +403,7 @@
   [amenity = 'restaurant']::amenity,
   [amenity = 'cafe']::amenity,
   [amenity = 'fast_food']::amenity,
-  [amenity = 'beirgarten']::amenity {
+  [amenity = 'biergarten']::amenity {
     [zoom >= 17] {
       text-name: "[name]";
       text-fill: #734a08;
@@ -469,7 +490,7 @@
     text-name: "[name]";
     text-size: 10;
     text-fill: #000033;
-    text-dy: 11;
+    text-dy: 12;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: 30;
@@ -479,9 +500,9 @@
   [natural = 'wood'][zoom >= 15]::natural {
     text-name: "[name]";
     text-size: 10;
-    text-fill: #000;
+    text-fill: darken(@wood, 50%);
     text-face-name: @book-fonts;
-    text-halo-radius: 2;
+    text-halo-radius: 1;
     text-wrap-width: 10;
     text-placement: interior;
   }
@@ -492,7 +513,7 @@
       text-name: "[name]";
       text-size: 10;
       text-fill: brown;
-      text-dy: 5;
+      text-dy: 7;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-placement: interior;
@@ -504,7 +525,7 @@
       ele/text-halo-radius: 1;
       ele/text-placement: interior;
       [name != ''] {
-        ele/text-dy: 18;
+        ele/text-dy: 19;
       }
     }
   }
@@ -520,18 +541,26 @@
     text-placement: interior;
   }
 
-  [historic = 'memorial']::historic,
-  [historic = 'archaeological_site']::historic {
-    [zoom >= 17] {
-      text-name: "[name]";
-      text-size: 9;
-      text-fill: brown;
-      text-dy: 12;
-      text-face-name: @book-fonts;
-      text-halo-radius: 1;
-      text-wrap-width: 20;
-      text-placement: interior;
-    }
+  [historic = 'memorial'][zoom >= 17]::historic {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: brown;
+    text-dy: 13;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 20;
+    text-placement: interior;
+  }
+
+  [historic = 'archaeological_site'][zoom >= 17]::historic {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: brown;
+    text-dy: 15;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 20;
+    text-placement: interior;
   }
 
   [natural = 'water']::natural,
@@ -540,24 +569,228 @@
   [landuse = 'basin']::landuse {
     [zoom >= 15] {
       text-name: "[name]";
-      text-size: 10;
-      text-fill: #6699cc;
-      text-face-name: @book-fonts;
+      text-size: 12;
+      text-fill: @water-text;
+      text-face-name: @oblique-fonts;
       text-halo-radius: 1;
       text-wrap-width: 20;
       text-placement: interior;
     }
   }
 
-  /* Hmmm */
-  [point = 'yes'][leisure != '']::point,
-  [point = 'yes'][landuse != '']::point {
+  [leisure = 'swimming_pool']::leisure {
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: @marina-text;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 10;
+      text-placement: interior;
+    }
+  }
+
+  [leisure = 'sports_centre']::leisure,
+  [leisure = 'stadium']::leisure,
+  [leisure = 'track']::leisure,
+  [leisure = 'pitch']::leisure {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: darken(@stadium, 30%);
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 10;
+      text-placement: interior;
+    }
+  }
+
+  [leisure = 'playground']::leisure,
+  [leisure = 'park']::leisure,
+  [leisure = 'recreation_ground']::leisure,
+  [landuse = 'recreation_ground']::landuse,
+  [landuse = 'conservation']::landuse,
+  [landuse = 'village_green']::landuse,
+  [leisure = 'common']::leisure,
+  [leisure = 'garden']::leisure,
+  [leisure = 'golf_course']::leisure,
+  [leisure = 'nature_reserve']::leisure {
+    [way_area >= 150000][zoom >= 14],
+    [way_area >= 80000][zoom >= 15],
+    [way_area >= 20000][zoom >= 16],
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: 11;
+      text-fill: @park-text;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
+      text-wrap-width: 30;
+      text-placement: interior;
+    }
+  }
+
+  [landuse = 'quarry']::landuse {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
       text-fill: #000;
       text-face-name: @book-fonts;
-      text-halo-radius: 2;
+      text-halo-radius: 1;
+      text-wrap-width: 10;
+    }
+  }
+
+  [landuse = 'vineyard']::landuse,
+  [landuse = 'orchard']::landuse  {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: darken(@vineyard, 50%);
+      text-face-name: @book-fonts;
+      // extra halo needed to overpower the cemetery polygon pattern
+      text-halo-radius: 1.5;
+      text-wrap-width: 10;
+    }
+  }
+
+  [landuse = 'cemetery']::landuse,
+  [landuse = 'grave_yard']::landuse  {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: darken(@cemetery, 50%);
+      text-face-name: @book-fonts;
+      // extra halo needed to overpower the cemetery polygon pattern
+      text-halo-radius: 1.5;
+      text-wrap-width: 10;
+    }
+  }
+
+  [landuse = 'residential']::landuse {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: #000;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 10;
+    }
+  }
+
+  [landuse = 'garages']::landuse {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: darken(@garages, 50%);
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 10;
+    }
+  }
+
+  [landuse = 'field']::landuse {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: darken(@field, 50%);
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 10;
+    }
+  }
+
+  [landuse = 'meadow']::landuse,
+  [landuse = 'grass']::landuse  {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: darken(@grass, 65%);
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 10;
+    }
+  }
+
+  [landuse = 'allotments']::landuse {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: darken(@allotments, 60%);
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 10;
+    }
+  }
+
+  [landuse = 'forest']::landuse {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: darken(@forest, 50%);
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 10;
+    }
+  }
+
+  [landuse = 'farm']::landuse,
+  [landuse = 'farmland']::landuse,
+  [landuse = 'farmyard']::landuse {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: darken(@farm, 70%);
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 10;
+    }
+  }
+
+  [landuse = 'retail']::landuse {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: darken(@retail, 60%);
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 10;
+    }
+  }
+
+  [landuse = 'industrial']::landuse,
+  [landuse = 'railway']::landuse {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: darken(@industrial, 60%);
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 10;
+    }
+  }
+
+  [landuse = 'commercial']::landuse {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: darken(@commercial, 60%);
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 10;
+    }
+  }
+
+  [landuse = 'brownfield']::landuse,
+  [landuse = 'landfill']::landuse,
+  [landuse = 'greenfield']::landuse,
+  [landuse = 'construction']::landuse {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: darken(@construction, 50%);
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
       text-wrap-width: 10;
     }
   }
@@ -580,6 +813,7 @@
     text-halo-radius: 1;
     text-wrap-width: 20;
     text-placement: interior;
+    text-dy: 6;
   }
 
   [tourism = 'alpine_hut'][zoom >= 15]::tourism {
@@ -629,6 +863,7 @@
   }
 
   [tourism = 'hotel']::tourism,
+  [tourism = 'motel']::tourism,
   [tourism = 'hostel']::tourism,
   [tourism = 'chalet']::tourism {
     [zoom >= 17] {
@@ -656,7 +891,7 @@
     text-name: "[name]";
     text-size: 8;
     text-fill: #0066ff;
-    text-dy: 9;
+    text-dy: 10;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-placement: interior;
@@ -666,7 +901,7 @@
     text-name: "[name]";
     text-size: 8;
     text-fill: #0066ff;
-    text-dy: 7;
+    text-dy: 8;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-placement: interior;
@@ -717,7 +952,7 @@
   [leisure = 'marina'][zoom >= 15]::leisure {
     text-name: "[name]";
     text-size: 8;
-    text-fill: blue;
+    text-fill: @marina-text;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: 30;
@@ -839,7 +1074,7 @@
   [amenity = 'pharmacy'][zoom >= 17]::amenity {
     text-name: "[name]";
     text-size: 8;
-    text-dy: 9;
+    text-dy: 10;
     text-fill: #da0092;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
@@ -873,7 +1108,7 @@
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 8;
-      text-dy: 9;
+      text-dy: 10;
       text-fill: #939;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
@@ -887,7 +1122,7 @@
     [zoom >= 16] {
       text-name: "[name]";
       text-size: 9;
-      text-dy: 9;
+      text-dy: 11;
       text-fill: #939;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
@@ -899,11 +1134,23 @@
   [military = 'danger_area'][zoom >= 12]::military {
     text-name: "[name]";
     text-size: 9;
-    text-fill: pink;
+    text-fill: @military-text;
     text-face-name: @bold-fonts;
     text-halo-radius: 1;
     text-wrap-width: 10;
     text-placement: interior;
+  }
+
+  [landuse = 'military']::landuse {
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: @military-text;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 10;
+      text-placement: interior;
+    }
   }
 
   [aeroway = 'gate'][zoom >= 17]::aeroway {

@@ -1,19 +1,21 @@
 #buildings-lz {
   [zoom >= 10] {
-    polygon-clip: false;
     [railway = 'station']::railway,
     [building = 'station'] {
       polygon-fill: #d4aaaa;
+      polygon-clip: false;
     }
 
     [building = 'supermarket'] {
       polygon-fill: pink;
       polygon-opacity: 0.5;
+      polygon-clip: false;
     }
 
     [amenity = 'place_of_worship']::amenity {
       polygon-opacity: 0.5;
       polygon-fill: #777;
+      polygon-clip: false;
       [zoom >= 15] {
         polygon-opacity: 0.9;
         polygon-fill: #aaa;

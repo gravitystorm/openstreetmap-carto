@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e -u
 
-UNZIP_OPTS=-qqu
+UNZIP_OPTS=-qqun
 
 # create and populate data dir
 
@@ -28,25 +28,25 @@ unzip $UNZIP_OPTS data/simplified-land-polygons-complete-3857.zip simplified-lan
 echo "dowloading ne_110m_admin_0_boundary_lines_land..."
 curl -z data/ne_110m_admin_0_boundary_lines_land.zip -L -o data/ne_110m_admin_0_boundary_lines_land.zip http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip
 echo "expanding ne_110m_admin_0_boundary_lines_land..."
-unzip $UNZIP_OPTS data/ne_110m_admin_0_boundary_lines_land.zip -d data/ne_110m_admin_0_boundary_lines_land/
+unzip $UNZIP_OPTS data/ne_110m_admin_0_boundary_lines_land.zip ne_110m_admin_0_boundary_lines_land.{shp,shx,prj,dbf} -d data/ne_110m_admin_0_boundary_lines_land/
 
 # ne_10m_populated_places
 echo "dowloading ne_10m_populated_places..."
 curl -z data/ne_10m_populated_places.zip -L -o data/ne_10m_populated_places.zip http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_populated_places.zip
 echo "expanding ne_10m_populated_places..."
-unzip $UNZIP_OPTS data/ne_10m_populated_places.zip -d data/ne_10m_populated_places/
+unzip $UNZIP_OPTS data/ne_10m_populated_places.zip ne_10m_populated_places.{shp,shx,prj,dbf,cpg} -d data/ne_10m_populated_places/
 
 # land-polygons-split-3857
 echo "dowloading land-polygons-split-3857..."
 curl -z "data/land-polygons-split-3857.zip" -L -o "data/land-polygons-split-3857.zip" "http://data.openstreetmapdata.com/land-polygons-split-3857.zip"
 echo "expanding land-polygons-split-3857..."
-unzip $UNZIP_OPTS data/land-polygons-split-3857.zip -d data/
+unzip $UNZIP_OPTS data/land-polygons-split-3857.zip land-polygons-split-3857/land_polygons.{shp,shx,prj,dbf,cpg} -d data/
 
 
 #process populated places
 echo "processing ne_10m_populated_places..."
-
-ogr2ogr -overwrite data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp data/ne_10m_populated_places/ne_10m_populated_places.shp
+rm -f data/ne_10m_populated_places/ne_10m_populated_places_fixed.*
+ogr2ogr --config SHAPE_ENCODING UTF8 data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp data/ne_10m_populated_places/ne_10m_populated_places.shp
 
 #index
 echo "indexing shapefiles"

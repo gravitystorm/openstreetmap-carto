@@ -25,12 +25,6 @@
       text-size: 11;
       text-dy: -10;
     }
-    /*
-    [disused = 'yes'] {
-      point-file: url('symbols/station_disused.png'); // 14 and above
-      text-fill: grey; // 15 and above, small version only
-    }
-    */
   }
 
   [railway = 'halt'],

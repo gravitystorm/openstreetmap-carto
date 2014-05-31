@@ -1,31 +1,32 @@
+@admin-boundaries: #ac46ac;
+
 #admin-01234 {
   [admin_level = '2'],
   [admin_level = '3'] {
     [zoom >= 4] {
-      line-color: purple;
+      line-color: @admin-boundaries;
       line-width: 0.6;
-      line-opacity: 0.2;
     }
     [zoom >= 7] {
       line-width: 2;
     }
     [zoom >= 10] {
-      line-opacity: 0.1;
       [admin_level = '2'] {
         line-width: 6;
       }
       [admin_level = '3'] {
         line-width: 5;
         line-dasharray: 4,2;
+        line-clip: false;
       }
     }
   }
   [admin_level = '4'] {
     [zoom >= 4] {
-      line-color: purple;
+      line-color: @admin-boundaries;
       line-width: 0.6;
       line-dasharray: 4,3;
-      line-opacity: 0.2;
+      line-clip: false;
     }
     [zoom >= 7] {
       line-width: 1;
@@ -34,69 +35,73 @@
       line-width: 3;
     }
   }
+  opacity: 0.4;
 }
 
 #admin-5678 {
   [admin_level = '5'][zoom >= 11] {
-    line-color: purple;
+    line-color: @admin-boundaries;
     line-width: 2;
     line-dasharray: 6,3,2,3,2,3;
-    line-opacity: 0.3;
+    line-clip: false;
   }
   [admin_level = '6'][zoom >= 11] {
-    line-color: purple;
+    line-color: @admin-boundaries;
     line-width: 2;
     line-dasharray: 6,3,2,3;
-    line-opacity: 0.3;
+    line-clip: false;
   }
   [admin_level = '7'],
   [admin_level = '8'] {
     [zoom >= 12] {
-      line-color: purple;
+      line-color: @admin-boundaries;
       line-width: 1.5;
       line-dasharray: 5,2;
-      line-opacity: 0.3;
+      line-clip: false;
     }
   }
+  opacity: 0.5;
 }
 
 #admin-other {
   [admin_level = '9'],
   [admin_level = '10'] {
     [zoom >= 13] {
-      line-color: purple;
+      line-color: @admin-boundaries;
       line-width: 2;
       line-dasharray: 2,3;
-      line-opacity: 0.3;
+      line-clip: false;
     }
   }
+  opacity: 0.5;
 }
 
-/*
- * err, what does this do?
-<Style name="admin-other">
-   <Rule>
-      <Filter>not [admin_level] != ''</Filter>
-      &maxscale_zoom9;
-      &minscale_zoom11;
-      <LineSymbolizer stroke="purple" stroke-width="1" stroke-opacity="0.2"/>
-    </Rule>
-</Style>
-*/
+#admin-text[zoom >= 16] {
+  text-name: "[name]";
+  text-face-name: @book-fonts;
+  text-fill: @admin-boundaries;
+  text-placement: line;
+  text-halo-radius: 1.0;
+  text-placement: line;
+  text-dy: -10;
+}
 
-#national-park-boundaries {
+#nature-reserve-boundaries {
   [zoom >= 7] {
-    [zoom < 13] {
-      polygon-opacity: 0.05;
+    ::fill [zoom < 13] {
+      opacity: 0.05;
       polygon-fill: green;
     }
-    line-color: green;
-    line-width: 1.5;
-    line-dasharray: 4,2;
-    line-opacity: 0.15;
-    [zoom >= 10] {
-      line-width: 3;
-      line-dasharray: 6,2;
+    ::line {
+      opacity: 0.15;
+      line-color: green;
+      line-width: 1.5;
+      line-dasharray: 4,2;
+      [zoom >= 10] {
+        line-width: 3;
+        line-dasharray: 6,2;
+        line-join: bevel;
+      }
     }
   }
   [way_area > 200000000][zoom >= 8][zoom < 12],

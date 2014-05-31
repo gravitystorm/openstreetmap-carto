@@ -16,13 +16,24 @@
 
 #marinas-area {
   [zoom >= 14] {
-    line-width: 1;
-    line-color: blue;
-    line-dasharray: 6,2;
-    line-opacity: 0.5;
-  }
-  [zoom >= 16] {
-    line-width: 2;
+    a/line-width: 1;
+    a/line-offset: -0.5;
+    a/line-color: blue;
+    a/line-opacity: 0.1;
+    a/line-join: round;
+    a/line-cap: round;
+    b/line-width: 3;
+    b/line-offset: -1.5;
+    b/line-color: blue;
+    b/line-opacity: 0.1;
+    b/line-join: round;
+    b/line-cap: round;
+    [zoom >= 17] {
+      a/line-width: 2;
+      a/line-offset: -1;
+      b/line-width: 6;
+      b/line-offset: -3;
+    }
   }
 }
 
@@ -35,7 +46,7 @@
 #piers {
   [man_made = 'breakwater'],
   [man_made = 'groyne'] {
-    [zoom >= 11] {
+    [zoom >= 12] {
       line-width: 1;
       line-color: #aaa;
     }
@@ -46,7 +57,7 @@
       line-width: 4;
     }
   }
-  [man_made = 'pier'][zoom >= 11] {
+  [man_made = 'pier'][zoom >= 12] {
     line-width: 1.5;
     line-color: @land-color;
     [zoom >= 13] { line-width: 3; }
