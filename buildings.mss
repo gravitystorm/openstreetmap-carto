@@ -1,5 +1,5 @@
-@building-fill: #e0d9cc;
-@building-line: darken(@building-fill, 15%);
+@building-fill: #dcd5c6;
+@building-line: darken(@building-fill, 10%);
 
 @building-aeroway-fill: #cc99ff;
 @building-aeroway-line: darken(@building-aeroway-fill,15%);
