@@ -20,14 +20,14 @@
     */
     polygon-fill: @building-fill;
     polygon-clip: false;
-    [zoom >= 16] {
+    [zoom >= 15] {
       line-color: @building-line;
       line-width: .75;
       line-clip: false;
     }
     [aeroway = 'terminal'] {
       polygon-fill: @building-aeroway-fill;
-      [zoom >= 16] {
+      [zoom >= 15] {
         line-color: @building-aeroway-line;
       }
     }
