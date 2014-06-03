@@ -27,6 +27,9 @@
 @farmland: #EDDDC9;         // Lch(89,12,80) (Also used for farm)
 @farmland-line: #C8B69E;    // Lch(75,15,80)
 
+@farmyard: #EFD6B5;         // Lch(87,20,80)
+@farmyard-line: #D1B48C;    // Lch(75,25,80)
+
 // --- Other ----
 
 @aerodrome: #ccc;
@@ -39,7 +42,6 @@
 @construction: #9d9d6c;
 @danger_area: pink;
 @desert: #e3b57a;
-@farmyard: #ddbf92;
 @field: #660;
 @garages: #996;
 @heath: #d6d99f;
@@ -201,6 +203,10 @@
 
   [feature = 'landuse_farmyard'][zoom >= 9] {
     polygon-fill: @farmyard;
+      [zoom >= 15] {
+        line-width: .7;
+        line-color: @farmyard-line;
+      }
   }
 
   [feature = 'landuse_farm'],
