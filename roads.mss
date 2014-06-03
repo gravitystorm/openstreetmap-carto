@@ -1730,15 +1730,37 @@
   }
 }
 
-#highway-junctions {
-  [zoom >= 11] {
-    ref/text-name: "[ref]";
-    ref/text-size: 10;
-    ref/text-fill: #6666ff;
-    ref/text-min-distance: 2;
-    ref/text-face-name: @oblique-fonts;
-    ref/text-halo-radius: 1.5;
-    [zoom >= 12] {
+#junctions {
+  [highway = 'motorway_junction'] {
+    [zoom >= 11] {
+      ref/text-name: "[ref]";
+      ref/text-size: 10;
+      ref/text-fill: #6666ff;
+      ref/text-min-distance: 2;
+      ref/text-face-name: @oblique-fonts;
+      ref/text-halo-radius: 1.5;
+      [zoom >= 12] {
+        name/text-name: "[name]";
+        name/text-size: 9;
+        name/text-fill: #6666ff;
+        name/text-dy: -9;
+        name/text-face-name: @oblique-fonts;
+        name/text-halo-radius: 1;
+        name/text-wrap-character: ";";
+        name/text-wrap-width: 2;
+        name/text-min-distance: 2;
+      }
+      [zoom >= 15] {
+        ref/text-size: 12;
+        name/text-size: 11;
+        name/text-dy: -10;
+      }
+    }
+  }
+
+  [junction = 'yes'],
+  [junction = 'roundabout'] {
+    [zoom >= 13] {
       name/text-name: "[name]";
       name/text-size: 9;
       name/text-fill: #6666ff;
@@ -1748,11 +1770,10 @@
       name/text-wrap-character: ";";
       name/text-wrap-width: 2;
       name/text-min-distance: 2;
-    }
-    [zoom >= 15] {
-      ref/text-size: 12;
-      name/text-size: 11;
-      name/text-dy: -10;
+      [zoom >= 15] {
+        name/text-size: 11;
+        name/text-dy: -10;
+      }
     }
   }
 }
