@@ -249,16 +249,24 @@
     }
   }
 
-  [feature = 'landuse_industrial'],
-  [feature = 'landuse_railway'] {
-    [zoom >= 10] {
-      polygon-fill: @industrial;
-      [zoom >= 16] {
-        line-width: .5;
-        line-color: @industrial-line;
-        [name!=''] {
-          line-width: 0.7;
-        }
+  [feature = 'landuse_industrial'][zoom >= 10] {
+    polygon-fill: @industrial;
+    [zoom >= 16] {
+      line-width: .5;
+      line-color: @industrial-line;
+      [name!=''] {
+        line-width: 0.7;
+      }
+    }
+  }
+
+  [feature = 'landuse_railway'][zoom >= 10] {
+    polygon-fill: @industrial;
+    [zoom >= 16] {
+      line-width: .5;
+      line-color: @industrial-line;
+      [name!=''] {
+        line-width: 0.7;
       }
     }
   }
