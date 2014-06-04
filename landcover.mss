@@ -114,9 +114,13 @@
 
   [feature = 'landuse_residential'][zoom >= 10] {
     polygon-fill: @residential;
-    [zoom >= 15] {
-      line-width: .7;
+    [zoom >= 16] {
+      line-width: .5;
       line-color: @residential-line;
+      [name!=''] {
+        line-width: 0.7;
+      }
+
     }
   }
 
@@ -203,9 +207,12 @@
 
   [feature = 'landuse_farmyard'][zoom >= 9] {
     polygon-fill: @farmyard;
-      [zoom >= 15] {
-        line-width: .7;
+      [zoom >= 16] {
+        line-width: 0.5;
         line-color: @farmyard-line;
+        [name!=''] {
+          line-width: 0.7;
+        }
       }
   }
 
@@ -213,8 +220,8 @@
   [feature = 'landuse_farmland'] {
     [zoom >= 9] {
       polygon-fill: @farmland;
-      [zoom >= 15] {
-        line-width: .7;
+      [zoom >= 16] {
+        line-width: .5;
         line-color: @farmland-line;
       }
     }
@@ -233,9 +240,12 @@
 
   [feature = 'landuse_retail'][zoom >= 10] {
     polygon-fill: @retail;
-    [zoom >= 15] {
-      line-width: .7;
+    [zoom >= 16] {
+      line-width: 0.5;
       line-color: @retail-line;
+      [name!=''] {
+        line-width: 0.7;
+      }
     }
   }
 
@@ -243,9 +253,12 @@
   [feature = 'landuse_railway'] {
     [zoom >= 10] {
       polygon-fill: @industrial;
-      [zoom >= 15] {
-        line-width: .7;
+      [zoom >= 16] {
+        line-width: .5;
         line-color: @industrial-line;
+        [name!=''] {
+          line-width: 0.7;
+        }
       }
     }
   }
@@ -272,9 +285,13 @@
 
   [feature = 'landuse_commercial'][zoom >= 10] {
     polygon-fill: @commercial;
-    [zoom >= 15] {
-      line-width: .7;
+    [zoom >= 16] {
+      line-width: 0.5;
       line-color: @commercial-line;
+      [name!=''] {
+        line-width: 0.7;
+      }
+
     }
   }
 
