@@ -1590,27 +1590,24 @@
 
 #turning-circle-casing {
   [int_tc_type = 'tertiary'][zoom >= 15] {
+    marker-fill: @tertiary-casing;
     marker-width: (@tertiary-width-z15 - 2 * @casing-width-z15) * 1.8 + 2 * @casing-width-z15;
     marker-height: (@tertiary-width-z15 - 2 * @casing-width-z15) * 1.8 + 2 * @casing-width-z15;
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
-    marker-fill: @tertiary-casing;
     [zoom >= 17] {
       marker-width: (@tertiary-width-z17 - 2 * @casing-width-z17) * 1.8 + 2 * @casing-width-z17;
       marker-height: (@tertiary-width-z17 - 2 * @casing-width-z17) * 1.8 + 2 * @casing-width-z17;
     }
+    marker-allow-overlap: true;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
   }
 
   [int_tc_type = 'residential'],
   [int_tc_type = 'unclassified'] {
     [zoom >= 15] {
+      marker-fill: @residential-casing;
       marker-width: (@residential-width-z15 - 2 * @casing-width-z15) * 1.8 + 2 * @casing-width-z15;
       marker-height: (@residential-width-z15 - 2 * @casing-width-z15) * 1.8 + 2 * @casing-width-z15;
-      marker-allow-overlap: true;
-      marker-ignore-placement: true;
-      marker-line-width: 0;
-      marker-fill: @residential-casing;
       [zoom >= 16] {
         marker-width: (@residential-width-z16 - 2 * @casing-width-z16) * 1.8 + 2 * @casing-width-z16;
         marker-height: (@residential-width-z16 - 2 * @casing-width-z16) * 1.8 + 2 * @casing-width-z16;
@@ -1619,16 +1616,16 @@
         marker-width: (@residential-width-z17 - 2 * @casing-width-z17) * 1.8 + 2 * @casing-width-z17;
         marker-height: (@residential-width-z17 - 2 * @casing-width-z17) * 1.8 + 2 * @casing-width-z17;
       }
+      marker-allow-overlap: true;
+      marker-ignore-placement: true;
+      marker-line-width: 0;
     }
   }
 
   [int_tc_type = 'living_street'][zoom >= 15] {
+    marker-fill: @living-street-casing;
     marker-width: 14;
     marker-height: 14;
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
-    marker-fill: @living-street-casing;
     [zoom >= 16] {
       marker-width: 18;
       marker-height: 18;
@@ -1637,9 +1634,13 @@
       marker-width: 24;
       marker-height: 24;
     }
+    marker-allow-overlap: true;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
   }
 
   [int_tc_type = 'service'][zoom >= 16] {
+    marker-fill: @service-casing;
     [int_tc_service = 'INT-normal'] {
       marker-width: 14;
       marker-height: 14;
@@ -1655,33 +1656,29 @@
     marker-allow-overlap: true;
     marker-ignore-placement: true;
     marker-line-width: 0;
-    marker-fill: @service-casing;
   }
 }
 
 #turning-circle-fill {
   [int_tc_type = 'tertiary'][zoom >= 15] {
+    marker-fill: @tertiary-fill;
     marker-width: (@tertiary-width-z15 - 2 * @casing-width-z15) * 1.8;
     marker-height: (@tertiary-width-z15 - 2 * @casing-width-z15) * 1.8;
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
-    marker-fill: @tertiary-fill;
     [zoom >= 17] {
       marker-width: (@tertiary-width-z17 - 2 * @casing-width-z17) * 1.8;
       marker-height: (@tertiary-width-z17 - 2 * @casing-width-z17) * 1.8;
     }
+    marker-allow-overlap: true;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
   }
 
   [int_tc_type = 'residential'],
   [int_tc_type = 'unclassified'] {
     [zoom >= 15] {
+      marker-fill: @residential-fill;
       marker-width: (@residential-width-z15 - 2 * @casing-width-z15) * 1.8;
       marker-height: (@residential-width-z15 - 2 * @casing-width-z15) * 1.8;
-      marker-allow-overlap: true;
-      marker-ignore-placement: true;
-      marker-line-width: 0;
-      marker-fill: @residential-fill;
       [zoom >= 16] {
         marker-width: (@residential-width-z16 - 2 * @casing-width-z16) * 1.8;
         marker-height: (@residential-width-z16 - 2 * @casing-width-z16) * 1.8;
@@ -1690,16 +1687,16 @@
         marker-width: (@residential-width-z17 - 2 * @casing-width-z17) * 1.8;
         marker-height: (@residential-width-z17 - 2 * @casing-width-z17) * 1.8;
       }
+      marker-allow-overlap: true;
+      marker-ignore-placement: true;
+      marker-line-width: 0;
     }
   }
 
   [int_tc_type = 'living_street'][zoom >= 15] {
+    marker-fill: @living-street-fill;
     marker-width: 12;
     marker-height: 12;
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
-    marker-fill: @living-street-fill;
     [zoom >= 16] {
       marker-width: 16;
       marker-height: 16;
@@ -1708,9 +1705,13 @@
       marker-width: 22;
       marker-height: 22;
     }
+    marker-allow-overlap: true;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
   }
 
   [int_tc_type = 'service'][zoom >= 16] {
+    marker-fill: @service-fill;
     [int_tc_service = 'INT-normal'] {
       marker-width: 12;
       marker-height: 12;
@@ -1726,7 +1727,6 @@
     marker-allow-overlap: true;
     marker-ignore-placement: true;
     marker-line-width: 0;
-    marker-fill: @service-fill;
   }
 }
 
