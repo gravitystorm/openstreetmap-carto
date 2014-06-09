@@ -27,10 +27,14 @@
 }
 
 #buildings {
-  [building = 'INT-light'][zoom >= 12] {
+  [building = 'INT-light'][zoom >= 15] {
     polygon-fill: #bca9a9;
-    polygon-opacity: 0.7;
+    polygon-opacity: 0.5;
     polygon-clip: false;
+    [zoom >= 17] {
+      line-color: #330066;
+      line-width: 0.2;
+    }
   }
   [building != 'INT-light'][building != ''][zoom >= 12] {
     polygon-fill: #bca9a9;
