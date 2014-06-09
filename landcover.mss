@@ -458,6 +458,14 @@
   }
 }
 
+#tree-row {
+  [natural = 'tree_row'][zoom >= 16] {
+    line-pattern-file: url('symbols/tree_row.png');
+    [zoom >= 17] {
+      line-pattern-file: url('symbols/tree_row2.png');
+    }
+  }
+}
 
 #theme-park {
   [tourism = 'theme_park'][zoom >= 13] {
