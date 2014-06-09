@@ -119,7 +119,7 @@
     [zoom >= 16] {
       line-width: .5;
       line-color: @residential-line;
-      [name!=''] {
+      [name != ''] {
         line-width: 0.7;
       }
 
@@ -212,7 +212,7 @@
       [zoom >= 16] {
         line-width: 0.5;
         line-color: @farmyard-line;
-        [name!=''] {
+        [name != ''] {
           line-width: 0.7;
         }
       }
@@ -245,7 +245,7 @@
     [zoom >= 16] {
       line-width: 0.5;
       line-color: @retail-line;
-      [name!=''] {
+      [name != ''] {
         line-width: 0.7;
       }
     }
@@ -256,7 +256,7 @@
     [zoom >= 16] {
       line-width: .5;
       line-color: @industrial-line;
-      [name!=''] {
+      [name != ''] {
         line-width: 0.7;
       }
     }
@@ -264,7 +264,7 @@
 
   [feature = 'landuse_railway'][zoom >= 10] {
     polygon-fill: @railway;
-    [zoom >= 16][name!=''] {
+    [zoom >= 16][name != ''] {
       line-width: 0.7;
       line-color: @railway-line;
     }
@@ -286,7 +286,7 @@
     [zoom >= 16] {
       line-width: 0.5;
       line-color: @commercial-line;
-      [name!=''] {
+      [name != ''] {
         line-width: 0.7;
       }
 
