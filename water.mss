@@ -147,16 +147,6 @@
     }
   }
 
-  [waterway = 'canal'][zoom >= 12][zoom < 14] {
-    line-color: @water-color;
-    line-width: 3;
-    line-cap: round;
-    line-join: round;
-    [zoom >= 13] {
-      line-width: 4;
-    }
-  }
-
   [waterway = 'stream'],
   [waterway = 'ditch'],
   [waterway = 'drain'] {
@@ -191,13 +181,15 @@
     }
   }
 
-  [waterway = 'canal'][zoom >= 14] {
-    line-width: 7;
+  [waterway = 'canal'][zoom >= 12] {
     line-color: @water-color;
-    line-join: round;
-    line-cap: round;
+    line-width: 3;
+    [zoom >= 13] { line-width: 4; }
+    [zoom >= 14] { line-width: 7; }
     [zoom >= 17] { line-width: 11; }
-    [tunnel = 'yes'] {
+    line-cap: round;
+    line-join: round;
+    [tunnel = 'yes'][zoom >= 14] {
       line-dasharray: 4,2;
       b/line-width: 3;
       b/line-color: white;
