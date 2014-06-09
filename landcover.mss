@@ -14,6 +14,24 @@
 @track: #74dcba;
 @pitch: #8ad3af;
 
+// --- "base" landuses ---
+
+@residential: #E1E1E1;      // Lch(89,0,0)
+@residential-line: #B9B9B9; // Lch(75,0,0)
+@retail: #FFD6D1;           // Lch(89,16,30)
+@retail-line: #D99C95;      // Lch(70,25,30)
+@commercial: #F2DAD9;       // Lch(89,8.5,25)
+@commercial-line: #D1B2B0;  // Lch(75,12,25)
+@industrial: #EBDBE8;       // Lch(89,9,330)
+@industrial-line: #C6B3C3;  // Lch(75,11,330)
+@railway: @industrial;
+@railway-line: @industrial-line;
+@farmland: #EDDDC9;         // Lch(89,12,80) (Also used for farm)
+@farmland-line: #C8B69E;    // Lch(75,15,80)
+
+@farmyard: #EFD6B5;         // Lch(87,20,80)
+@farmyard-line: #D1B48C;    // Lch(75,25,80)
+
 // --- Other ----
 
 @aerodrome: #ccc;
@@ -24,21 +42,15 @@
 @campsite: #ccff99; // also caravan_site, picnic_site
 @cemetery: #aacbaf; // also grave_yard
 @construction: #9d9d6c;
-@commercial: #efc8c8;
 @danger_area: pink;
 @desert: #e3b57a;
 @field: #660;
 @garages: #996;
 @heath: #d6d99f;
-@industrial: #dfd1d6; // also railway
-@farmyard: #ddbf92;
-@farm: #ead8bd; // also farmland
 @parking: #f7efb7;
 @playground: #ccfff1;
 @power: #bbb;
 @rest_area: #efc8c8; // also services
-@retail: #f1dada;
-@residential: #ddd;
 @sand: #ffdf88;
 @school: #f0f0d8; // also university, college, hospital, kindergarten
 
@@ -104,6 +116,14 @@
 
   [feature = 'landuse_residential'][zoom >= 10] {
     polygon-fill: @residential;
+    [zoom >= 16] {
+      line-width: .5;
+      line-color: @residential-line;
+      [name!=''] {
+        line-width: 0.7;
+      }
+
+    }
   }
 
   [feature = 'landuse_garages'][zoom >= 12] {
@@ -189,12 +209,23 @@
 
   [feature = 'landuse_farmyard'][zoom >= 9] {
     polygon-fill: @farmyard;
+      [zoom >= 16] {
+        line-width: 0.5;
+        line-color: @farmyard-line;
+        [name!=''] {
+          line-width: 0.7;
+        }
+      }
   }
 
   [feature = 'landuse_farm'],
   [feature = 'landuse_farmland'] {
     [zoom >= 9] {
-      polygon-fill: @farm;
+      polygon-fill: @farmland;
+      [zoom >= 16] {
+        line-width: .5;
+        line-color: @farmland-line;
+      }
     }
   }
 
@@ -211,16 +242,31 @@
 
   [feature = 'landuse_retail'][zoom >= 10] {
     polygon-fill: @retail;
-    [zoom >= 15] {
-      line-width: 0.3;
-      line-color: red;
+    [zoom >= 16] {
+      line-width: 0.5;
+      line-color: @retail-line;
+      [name!=''] {
+        line-width: 0.7;
+      }
     }
   }
 
-  [feature = 'landuse_industrial'],
-  [feature = 'landuse_railway'] {
-    [zoom >= 10] {
-      polygon-fill: @industrial;
+  [feature = 'landuse_industrial'][zoom >= 10] {
+    polygon-fill: @industrial;
+    [zoom >= 16] {
+      line-width: .5;
+      line-color: @industrial-line;
+      [name!=''] {
+        line-width: 0.7;
+      }
+    }
+  }
+
+  [feature = 'landuse_railway'][zoom >= 10] {
+    polygon-fill: @railway;
+    [zoom >= 16][name!=''] {
+      line-width: 0.7;
+      line-color: @railway-line;
     }
   }
 
@@ -246,6 +292,14 @@
 
   [feature = 'landuse_commercial'][zoom >= 10] {
     polygon-fill: @commercial;
+    [zoom >= 16] {
+      line-width: 0.5;
+      line-color: @commercial-line;
+      [name!=''] {
+        line-width: 0.7;
+      }
+
+    }
   }
 
   [feature = 'landuse_brownfield'],

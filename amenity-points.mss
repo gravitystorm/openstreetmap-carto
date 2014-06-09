@@ -735,7 +735,7 @@
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
-      text-fill: darken(@farm, 70%);
+      text-fill: darken(@farmland, 70%);
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-wrap-width: 10;
