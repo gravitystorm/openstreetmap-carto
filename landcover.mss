@@ -57,13 +57,13 @@
 #landcover {
  [feature = 'leisure_swimming_pool'][zoom >= 14] {
     polygon-fill: @water-color;
-    line-color: blue;
+    line-color: saturate(darken(@water-color, 40%), 30%);
     line-width: 0.5;
   }
 
   [feature = 'leisure_playground'][zoom >= 13] {
     polygon-fill: @playground;
-    line-color: #666;
+    line-color: saturate(darken(@playground, 60%), 30%);
     line-width: 0.3;
   }
 
@@ -73,7 +73,7 @@
     [zoom >= 13] {
       polygon-fill: @campsite;
       polygon-opacity: 0.5;
-      line-color: #666;
+      line-color: saturate(darken(@campsite, 60%), 30%);
       line-width: 0.3;
     }
   }
@@ -143,7 +143,7 @@
       [zoom >= 14] {
         line-width: 0.3;
         line-opacity: 0.4;
-        line-color: #660;
+        line-color: saturate(darken(@field, 40%), 20%);
       }
     }
   }
@@ -270,24 +270,15 @@
     }
   }
 
-  [feature = 'power_station'],
-  [feature = 'power_generator'] {
-    [zoom >= 10] {
+  [feature = 'power_station'][zoom >= 10],
+  [feature = 'power_generator'][zoom >= 10],
+  [feature = 'power_sub_station'][zoom >= 13],
+  [feature = 'power_substation'][zoom >= 13] {
       polygon-fill: @power;
       [zoom >= 12] {
         line-width: 0.4;
-        line-color: #555;
+        line-color: darken(@power, 40%);
       }
-    }
-  }
-
-  [feature = 'power_sub_station'],
-  [feature = 'power_substation'] {
-    [zoom >= 13] {
-      polygon-fill: @power;
-      line-width: 0.4;
-      line-color: #555;
-    }
   }
 
   [feature = 'landuse_commercial'][zoom >= 10] {
@@ -361,7 +352,7 @@
     polygon-fill: @parking;
     [zoom >= 15] {
       line-width: 0.3;
-      line-color: @parking;
+      line-color: saturate(darken(@parking, 40%), 20%);
     }
   }
 
@@ -373,7 +364,7 @@
     polygon-fill: @aerodrome;
     polygon-opacity: 0.2;
     line-width: 0.2;
-    line-color: #555;
+    line-color: saturate(darken(@aerodrome, 40%), 20%);
   }
 
   [feature = 'natural_beach'][zoom >= 13] {
@@ -412,13 +403,13 @@
   [leisure = 'track'][zoom >= 10] {
     polygon-fill: @track;
     line-width: 0.5;
-    line-color: #888;
+    line-color: saturate(darken(@track, 40%), 20%);
   }
 
   [leisure = 'pitch'][zoom >= 10] {
     polygon-fill: @pitch;
     line-width: 0.5;
-    line-color: #888;
+    line-color: saturate(darken(@pitch, 40%), 20%);
   }
 }
 
