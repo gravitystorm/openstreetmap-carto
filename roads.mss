@@ -17,8 +17,6 @@
 @cycleway-fill: blue;
 @bridleway-fill: green;
 @track-fill: #996600;
-@track-grade1-fill: #b37700;
-@track-grade2-fill: #a87000;
 @aeroway-fill: #bbc;
 @runway-fill: @aeroway-fill;
 @taxiway-fill: @aeroway-fill;
@@ -509,12 +507,24 @@
 
     [feature = 'highway_track'] {
       .bridges-casing {
-        [zoom >= 14] {
-          line-width: 4.5;
+        [zoom >= 13] {
           line-color: @bridge-casing;
           line-join: round;
+          line-width: 4.4;
           [tracktype = 'grade1'] {
-            line-width: 5;
+            line-width: 5.2;
+          }
+          [tracktype = 'grade2'] {
+            line-width: 4.8;
+          }
+        }
+        [zoom >= 15] {
+          line-width: 5;
+          [tracktype = 'grade1'] {
+            line-width: 6;
+          }
+          [tracktype = 'grade2'] {
+            line-width: 5.5;
           }
         }
       }
@@ -655,12 +665,27 @@
     }
 
     [feature = 'highway_track'] {
+      /* We don't set opacity here, so it's 1.0. Aside from that, it's basically a copy of roads-fill::background in the track part of ::fill */
       .bridges-casing {
-        [zoom >= 14] {
-          line-width: 3;
+        [zoom >= 13] {
           line-color: @track-casing;
           line-join: round;
-          [tracktype = 'grade1'] { line-width: 3.5; }
+          line-width: 2.4;
+          [tracktype = 'grade1'] {
+            line-width: 3.2;
+          }
+          [tracktype = 'grade2'] {
+            line-width: 2.8;
+          }
+        }
+        [zoom >= 15] {
+          line-width: 3;
+          [tracktype = 'grade1'] {
+            line-width: 4;
+          }
+          [tracktype = 'grade2'] {
+            line-width: 3.5;
+          }
         }
       }
     }
@@ -1328,49 +1353,96 @@
 
     [feature = 'highway_track'] {
       [zoom >= 13] {
-        .tunnels-fill[zoom >= 14] {
-          tunnelcasing/line-width: 4.5;
+        .tunnels-fill {
           tunnelcasing/line-color: @tunnel-casing;
           tunnelcasing/line-dasharray: 4,2;
+          tunnelcasing/line-width: 4.4;
+          [tracktype = 'grade1'] {
+            tunnelcasing/line-width: 5.2;
+          }
+          [tracktype = 'grade2'] {
+            tunnelcasing/line-width: 5.2;
+          }
+          [zoom >= 15]{
+            tunnelcasing/line-width: 5;
+            [tracktype = 'grade1'] {
+              tunnelcasing/line-width: 6;
+            }
+            [tracktype = 'grade2'] {
+              tunnelcasing/line-width: 5.5;
+            }
+          }
         }
 
+        /* The white casing that you mainly see against forests and other dark features */
         .roads-fill, .tunnels-fill {
-          [zoom >= 13]                   { background/line-width: 2.5; }
-          [zoom >= 14]                   { background/line-width: 3; }
-          .roads-fill                    { background/line-opacity: 0.4; }
+          background/line-opacity: 0.4;
           background/line-color: @track-casing;
           background/line-join: round;
           background/line-cap: round;
-        }
-
-        line/line-color: @track-fill;
-        line/line-dasharray: 3,4;
-        line/line-cap: round;
-        line/line-join: round;
-        [zoom >= 13] { line/line-width: 1.2; }
-        [zoom >= 14] { line/line-width: 1.5; }
-        .roads-fill, .bridges-fill   { line/line-opacity: 0.8; }
-        .tunnels-fill[zoom >= 14]    { line/line-opacity: 0.5; }
-
-        [zoom >= 14] {
+          background/line-width: 2.4;
+          /* With the heavier dasharrays on grade1 and grade2 it helps to make the casing a bit larger */
           [tracktype = 'grade1'] {
-            .roads-fill, .tunnels-fill   { background/line-width: 3.5; }
-            line/line-width: 2;
-            line/line-color: @track-grade1-fill;
-            line/line-dasharray: 100,0; /* i.e. none, see https://github.com/mapbox/carto/issues/214 */
-            .roads-fill, .bridges-fill   { line/line-opacity: 0.7; }
+            background/line-width: 3.2;
           }
           [tracktype = 'grade2'] {
-            line/line-color: @track-grade2-fill;
-            line/line-dasharray: 9,4;
+            background/line-width: 2.8;
+          }
+
+          [zoom >= 15] {
+            background/line-width: 3;
+            [tracktype = 'grade1'] {
+              background/line-width: 4;
+            }
+            [tracktype = 'grade2'] {
+              background/line-width: 3.5;
+            }
+          }
+        }
+
+        /* Set the properties of the brown inside */
+        line/line-color: @track-fill;
+        line/line-dasharray: 5,4,2,4;
+        line/line-cap: round;
+        line/line-join: round;
+        line/line-opacity: 0.8;
+        line/line-clip:false;
+
+        /* ~80% of higher zoom sizes */
+        line/line-width: 1.2;
+
+        [tracktype = 'grade1'] {
+          line/line-dasharray: 100,0;
+        }
+        [tracktype = 'grade2'] {
+          line/line-dasharray: 8.8,3.2;
+        }
+        [tracktype = 'grade3'] {
+          line/line-dasharray: 5.6,4.0;
+        }
+        [tracktype = 'grade4'] {
+          line/line-dasharray: 3.2,4.8;
+        }
+        [tracktype = 'grade5'] {
+          line/line-dasharray: 1.6,6.4;
+        }
+
+        [zoom >= 15] {
+          line/line-width: 1.5;
+          [tracktype = 'grade1'] {
+            line/line-dasharray: 100,0;
+          }
+          [tracktype = 'grade2'] {
+            line/line-dasharray: 11,4;
+          }
+          [tracktype = 'grade3'] {
+            line/line-dasharray: 7,5;
           }
           [tracktype = 'grade4'] {
-            line/line-width: 2;
-            line/line-dasharray: 4,7,1,5;
+            line/line-dasharray: 4,6;
           }
           [tracktype = 'grade5'] {
-            line/line-width: 2;
-            line/line-dasharray: 1,5;
+            line/line-dasharray: 2,8;
           }
         }
       }
