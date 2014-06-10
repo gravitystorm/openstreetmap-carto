@@ -299,7 +299,7 @@
     point-placement: interior;
   }
 
-  [shop != ''][zoom >= 16]::shop {
+  [shop != ''][zoom >= 17]::shop {
     point-file: url('symbols/shop.p.16.png');
     point-placement: interior;
   }
