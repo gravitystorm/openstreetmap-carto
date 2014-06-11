@@ -135,8 +135,7 @@
     polygon-fill: @barracks;
   }
 
-  [feature = 'landuse_field'],
-  [feature = 'natural_field'] {
+  [feature = 'landuse_field'] {
     [zoom >= 10] {
       polygon-fill: @field;
       polygon-opacity: 0.2;
