@@ -7,7 +7,13 @@ MIN_COUNT = 100
 EXCEPTIONS = [
    "no",
    "vacant",
+   "empty",
+   "disused",
+   "unknown",
+   "closed",
    "fixme",
+   "FIXME",
+   "FixMe",
    "drugstore", # discouraged
    "other",
    "*",
@@ -18,7 +24,10 @@ EXCEPTIONS = [
    "organic", # discouraged
    "pharmacy", # prefer amenity=pharmacy
    "delicatessen", # prefer shop=deli
-   "jewellry" # prefer shop=jewelry
+   "jewellery", # prefer shop=jewelry
+   "tailor", # prefer craft=tailor
+   "market" # prefer shop=supermarket or amenity=marketplace
+
 ]
 
 
