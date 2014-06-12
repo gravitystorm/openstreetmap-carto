@@ -26,7 +26,10 @@ EXCEPTIONS = [
    "delicatessen", # prefer shop=deli
    "jewellery", # prefer shop=jewelry
    "tailor", # prefer craft=tailor
-   "market" # prefer shop=supermarket or amenity=marketplace
+   "market", # prefer shop=supermarket or amenity=marketplace
+   "bags", # prefer shop=bag
+   "antique", # prefer shop=antiques
+   "pets" # prefer shop=pet
 
 ]
 
