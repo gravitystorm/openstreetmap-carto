@@ -367,6 +367,11 @@
     point-placement: interior;
   }
 
+  [leisure = 'water_park'][zoom >= 17]::leisure {
+    point-file: url('symbols/water_park.p.24.png');
+    point-placement: interior;
+  }
+
   [tourism = 'picnic_site'][zoom >= 16]::tourism {
     point-file: url('symbols/picnic.p.16.png');
     point-placement: interior;
@@ -601,6 +606,7 @@
   }
 
   [leisure = 'playground']::leisure,
+  [leisure = 'water_park']::leisure,
   [leisure = 'park']::leisure,
   [leisure = 'recreation_ground']::leisure,
   [landuse = 'recreation_ground']::landuse,
