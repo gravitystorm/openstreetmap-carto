@@ -368,7 +368,7 @@
   }
 
   [leisure = 'water_park'][zoom >= 17]::leisure {
-    point-file: url('symbols/water_park.p.24.png');
+    point-file: url('symbols/water_park.p.20.png');
     point-placement: interior;
   }
 
