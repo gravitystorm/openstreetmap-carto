@@ -84,7 +84,7 @@
     point-placement: interior;
   }
 
-  [highway = 'mini_roundabout'][zoom >= 15]::highway {
+  [highway = 'mini_roundabout'][zoom >= 16]::highway {
     point-file: url('symbols/mini_round.png');
     point-placement: interior;
   }
