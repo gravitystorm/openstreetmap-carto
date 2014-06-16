@@ -1,6 +1,7 @@
 @marina-text: #576ddf; // also swimming_pool
 @military-text: #99001a;
 @park-text: #2c4b2c;
+@parking-icon: #0092da;
 
 .points {
   [tourism = 'alpine_hut'][zoom >= 13]::tourism {
@@ -168,10 +169,12 @@
   }
 
   [amenity = 'parking'][zoom >= 15]::amenity {
-    point-file: url('symbols/parking.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/parking.svg');
+    marker-placement: interior;
+    marker-height: 12;
+    marker-fill: @parking-icon;
     [access != ''][access != 'public'][access != 'yes'] {
-      point-file: url('symbols/parking_private.p.16.png');
+      marker-opacity: 0.33;
     }
   }
 
