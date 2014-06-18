@@ -14,23 +14,8 @@ EXCEPTIONS = [
    "fixme",
    "FIXME",
    "FixMe",
-   "drugstore", # discouraged
    "other",
-   "*",
-   "fish", # discouraged; prefer seafood, or fishing
-   "fishmonger", # ditto
-   "betting", # http://wiki.openstreetmap.org/wiki/Tag:shop%3Dbetting
-   "gambling", # discouraged
-   "organic", # discouraged
-   "pharmacy", # prefer amenity=pharmacy
-   "delicatessen", # prefer shop=deli
-   "jewellery", # prefer shop=jewelry
-   "tailor", # prefer craft=tailor
-   "market", # prefer shop=supermarket or amenity=marketplace
-   "bags", # prefer shop=bag
-   "antique", # prefer shop=antiques
-   "pets" # prefer shop=pet
-
+   "*"
 ]
 
 
