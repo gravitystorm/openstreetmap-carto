@@ -39,14 +39,14 @@
       "geometry": "polygon",
       "extent": [
         -179.99999692067183,
-        -85.051,
+        -60,
         179.99999692067183,
         83.66933299999998
       ],
       "id": "world",
       "class": "",
       "Datasource": {
-        "file": "data/simplified-land-polygons-complete-3857/simplified_land_polygons.shp",
+        "file": "data/simplified-land-polygons-complete-3857/simplified_land_north.shp",
         "type": "shape"
       },
       "srs-name": "900913",
@@ -60,18 +60,56 @@
         -179.99999692067183,
         -85.051,
         179.99999692067183,
+        -60
+      ],
+      "id": "world-south",
+      "class": "",
+      "Datasource": {
+        "file": "data/simplified-land-polygons-complete-3857/simplified_land_south.shp",
+        "type": "shape"
+      },
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "world-south"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        -179.99999692067183,
+        -60,
+        179.99999692067183,
         83.66933299999998
       ],
       "id": "coast-poly",
       "class": "",
       "Datasource": {
-        "file": "data/land-polygons-split-3857/land_polygons.shp",
+        "file": "data/land-polygons-split-3857/land_north.shp",
         "type": "shape"
       },
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
       "name": "coast-poly"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        -179.99999692067183,
+        -85.051,
+        179.99999692067183,
+        -60
+      ],
+      "id": "coast-poly-south",
+      "class": "",
+      "Datasource": {
+        "file": "data/land-polygons-split-3857/land_south.shp",
+        "type": "shape"
+      },
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "coast-poly-south"
     },
     {
       "geometry": "polygon",

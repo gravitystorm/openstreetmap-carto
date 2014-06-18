@@ -24,9 +24,24 @@
   }
 }
 
+#world-south {
+  [zoom = 0] {
+    polygon-fill: @land-color;
+  }
+  [zoom >= 1][zoom < 10] {
+    polygon-pattern-file: url('symbols/glacier.png');
+  }
+}
+
 #coast-poly {
   [zoom >= 10] {
     polygon-fill: @land-color;
+  }
+}
+
+#coast-poly-south {
+  [zoom >= 10] {
+    polygon-pattern-file: url('symbols/glacier2.png');
   }
 }
 
