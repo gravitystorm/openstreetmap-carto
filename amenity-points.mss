@@ -1,7 +1,7 @@
 @marina-text: #576ddf; // also swimming_pool
 @military-text: #99001a;
 @park-text: #2c4b2c;
-@parking-icon: #0092da;
+@transportation: #0092da;
 
 .points {
   [tourism = 'alpine_hut'][zoom >= 13]::tourism {
@@ -171,7 +171,7 @@
   [amenity = 'parking'][zoom >= 15]::amenity {
     marker-file: url('symbols/parking.svg');
     marker-placement: interior;
-    marker-fill: @parking-icon;
+    marker-fill: @transportation;
     [access != ''][access != 'public'][access != 'yes'] {
       marker-opacity: 0.33;
     }
