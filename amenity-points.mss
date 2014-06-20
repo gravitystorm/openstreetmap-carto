@@ -326,8 +326,10 @@
   }
 
   [shop = 'convenience'][zoom >= 17]::shop {
-    point-file: url('symbols/shop_convenience.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/shop_convenience.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
   }
 
   [shop = 'department_store'][zoom >= 16]::shop {
