@@ -171,6 +171,7 @@
   [amenity = 'parking'][zoom >= 15]::amenity {
     marker-file: url('symbols/parking.svg');
     marker-placement: interior;
+    marker-clip: false;
     marker-fill: @transportation;
     [access != ''][access != 'public'][access != 'yes'] {
       marker-opacity: 0.33;
@@ -450,7 +451,7 @@
   [amenity = 'parking'][zoom >= 17]::amenity {
     text-name: "[name]";
     text-size: 9;
-    text-fill: #0066ff;
+    text-fill: @transportation;
     text-dy: 9;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
