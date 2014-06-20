@@ -320,8 +320,10 @@
   [shop = 'clothes']::shop,
   [shop = 'fashion']::shop {
     [zoom >= 17] {
-      point-file: url('symbols/shop_clothes.p.16.png');
-      point-placement: interior;
+      marker-file: url('symbols/shop_clothes.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @shop-icon;
     }
   }
 
