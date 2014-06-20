@@ -911,7 +911,7 @@
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 9;
-      text-fill: #0066ff;
+      text-fill: @transportation-text;
       text-dy: 9;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
