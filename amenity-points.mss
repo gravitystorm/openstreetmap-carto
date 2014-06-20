@@ -1,6 +1,7 @@
 @marina-text: #576ddf; // also swimming_pool
 @military-text: #99001a;
 @park-text: #2c4b2c;
+@shop-icon: #ac39ac;
 
 .points {
   [tourism = 'alpine_hut'][zoom >= 13]::tourism {
@@ -300,8 +301,10 @@
   }
 
   [shop = 'supermarket'][zoom >= 16]::shop {
-    point-file: url('symbols/shop_supermarket.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/shop_supermarket.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
   }
 
   [shop = 'bakery'][zoom >= 17]::shop {
