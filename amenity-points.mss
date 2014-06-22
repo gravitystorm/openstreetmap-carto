@@ -355,8 +355,10 @@
   }
 
   [shop = 'car'][zoom >= 17]::shop {
-    point-file: url('symbols/shopping_car.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/shop_car.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
   }
 
   [shop = 'car_repair'][zoom >= 17]::shop {
