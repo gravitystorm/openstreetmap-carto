@@ -12,7 +12,7 @@ are updated from each point release. They supersede the previous [XML-based styl
 
 You need OpenStreetMap data loaded into a PostGIS database (see below for [dependencies](https://github.com/gravitystorm/openstreetmap-carto#dependencies)). These stylesheets currently work only with the osm2pgsql defaults (i.e. database name is 'gis', table names are 'planet_osm_point' etc).
 
-It's probably easiest to grab an PBF of OSM data from [metro.teczno.com](http://metro.teczno.com/) or [geofabrik](http://download.geofabrik.de/). Once you've set up your PostGIS database, import with osm2pgsql:
+It's probably easiest to grab an PBF of OSM data from [metro.teczno.com](http://metro.teczno.com/) or [geofabrik](http://download.geofabrik.de/). Once you've [set up your PostGIS database](http://switch2osm.org/loading-osm-data/), import with osm2pgsql:
 
 ```
 osm2pgsql -d gis ~/path/to/data.osm.pbf --style openstreetmap-carto.style
