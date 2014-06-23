@@ -2505,3 +2505,52 @@
     }
   }
 }
+
+#railways-text-name {
+  [railway = 'rail'],
+  [railway = 'subway'] {
+    [zoom >= 13] {
+      text-name: "[name]";
+      text-size: 8;
+      text-fill: black;
+      text-spacing: 300;
+      text-clip: false;
+      text-placement: line;
+      text-face-name: @book-fonts;
+      text-halo-radius: 0;
+    }
+    [zoom >= 14] {
+      text-size: 9;
+    }
+    [zoom >= 15] {
+      text-size: 10;
+    }
+    [zoom >= 17] {
+      text-size: 11;
+    }
+  }
+  [railway = 'light_rail'],
+  [railway = 'tram'],
+  [railway = 'funicular'],
+  [railway = 'monorail'],
+  [railway = 'narrow_gauge'],
+  [railway = 'abandoned'],
+  [railway = 'construction'],
+  [railway = 'disused'],
+  [railway = 'miniature'],
+  [railway = 'preserved'] {
+    [zoom >= 14] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: #000;
+      text-spacing: 300;
+      text-clip: false;
+      text-placement: line;
+      text-face-name: @book-fonts;
+      text-halo-radius: 0;
+    }
+    [zoom >= 17] {
+      text-size: 11;
+    }
+  }
+}
