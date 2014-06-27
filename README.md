@@ -25,7 +25,7 @@ Additionally you need some shapefiles.
 To download the shapefiles you can run the following script from this directory. No further steps should be needed as the data has been processed and placed in the requisite directories.
 
 ```
-sh get-shapefiles.sh
+./get-shapefiles.sh
 ```
 
 ## Manual download
