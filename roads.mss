@@ -74,6 +74,7 @@
 
 @tertiary-width-z14:              7.5;
 @residential-width-z14:           4.5;
+@service-width-z14:               2.5;
 
 @motorway-width-z15:             12.8;
 @motorway-link-width-z15:         7.8;
@@ -84,6 +85,8 @@
 @residential-width-z15:           8.3;
 
 @residential-width-z16:          11.2;
+@service-width-z16:               6;
+@minor-service-width-z16:         4;
 
 @motorway-width-z17:             18;
 @motorway-link-width-z17:        11.5;
@@ -92,6 +95,7 @@
 @secondary-width-z17:            18;
 @tertiary-width-z17:             15.5;
 @residential-width-z17:          15.5;
+@service-width-z17:               7;
 
 @casing-width-z12:                0.5;
 @casing-width-z13:                0.5;
@@ -371,17 +375,12 @@
       [zoom >= 16][service = 'INT-minor'] {
         line-color: @service-casing;
         [service = 'INT-normal'] {
-          .roads-casing, .tunnels-casing {
-            line-width: 2.5;
-            [zoom >= 16] { line-width: 7; }
-          }
-          .bridges-casing {
-            line-width: 3;
-            [zoom >= 16] { line-width: 8; }
-          }
+          line-width: @service-width-z14;
+          [zoom >= 16] { line-width: @service-width-z16; }
+          [zoom >= 17] { line-width: @service-width-z17; }
         }
         [service = 'INT-minor'] {
-          line-width: 4;
+          line-width: @minor-service-width-z16;
         }
         .roads-casing {
           line-join: round;
@@ -391,7 +390,6 @@
         .bridges-casing {
           line-color: @bridge-casing;
           line-join: round;
-          line-cap: butt;
         }
       }
     }
@@ -1155,17 +1153,28 @@
       [zoom >= 16][service = 'INT-minor'] {
         line-color: @service-fill;
         [service = 'INT-normal'] {
-          line-width: 2;
-          [zoom >= 16] { line-width: 6; }
+          line-width: @service-width-z14 - 2 * @casing-width-z14;
+          [zoom >= 16] { line-width: @service-width-z16 - 2 * @casing-width-z16; }
+          [zoom >= 17] { line-width: @service-width-z17 - 2 * @casing-width-z17; }
         }
         [service = 'INT-minor'] {
-          line-width: 3;
+          line-width: @minor-service-width-z16 - 2 * @casing-width-z16;
         }
         line-join: round;
         line-cap: round;
-      }
-      .tunnels-fill {
-        line-color: darken(white, 5%);
+        .tunnels-fill {
+          line-color: darken(white, 5%);
+        }
+        .bridges-fill {
+          [service = 'INT-normal'] {
+            line-width: @service-width-z14 - 2 * @bridge-casing-width-z14;
+            [zoom >= 16] { line-width: @service-width-z16 - 2 * @bridge-casing-width-z16; }
+            [zoom >= 17] { line-width: @service-width-z17 - 2 * @bridge-casing-width-z17; }
+          }
+          [service = 'INT-minor'] {
+            line-width: @minor-service-width-z16 - 2 * @bridge-casing-width-z16;
+          }
+        }
       }
     }
 

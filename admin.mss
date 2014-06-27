@@ -111,6 +111,7 @@
     text-face-name: @bold-fonts;
     text-halo-radius: 1;
     text-wrap-width: 14;
+    text-placement: interior;
     [zoom >= 11] { text-size: 11; }
   }
 }
