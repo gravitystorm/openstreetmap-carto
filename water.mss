@@ -1,4 +1,4 @@
-@water-text: #6699cc;
+@water-text: #0d5c87;
 
 #water-areas {
   [natural = 'glacier']::natural {
