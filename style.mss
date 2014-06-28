@@ -15,5 +15,5 @@ Map {
                 "Mukti Narrow Regular", "gargi Medium", "TSCu_Paranar Regular", "Tibetan Machine Uni Regular", "Mallige Normal",
                 "Droid Sans Fallback Regular", "Unifont Medium", "unifont Medium";
 
-@water-color: #b5d0d0;
+@water-color: #809fac;
 @land-color: #f2efe9;
