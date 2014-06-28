@@ -68,7 +68,10 @@
   [power = 'generator']['generator:source' = 'wind']::power,
   [power = 'generator'][power_source = 'wind']::power,
   [man_made = 'power_wind'] {
-    [zoom >= 15] {
+    [zoom >= 18],
+    [man_made = 'tower'][zoom = 17],
+    [man_made = 'tower'][zoom = 16],
+    [man_made = 'tower'][zoom = 15] {
       point-file: url('symbols/power_wind.png');
       point-placement: interior;
     }
