@@ -791,7 +791,6 @@
 
   [landuse = 'brownfield']::landuse,
   [landuse = 'landfill']::landuse,
-  [landuse = 'greenfield']::landuse,
   [landuse = 'construction']::landuse {
     [zoom >= 15] {
       text-name: "[name]";

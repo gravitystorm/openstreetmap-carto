@@ -294,7 +294,6 @@
 
   [feature = 'landuse_brownfield'],
   [feature = 'landuse_landfill'],
-  [feature = 'landuse_greenfield'],
   [feature = 'landuse_construction'] {
     [zoom >= 10] {
       polygon-fill: @construction;
