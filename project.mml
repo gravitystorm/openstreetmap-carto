@@ -1114,18 +1114,18 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,place,name,ref\n       from planet_osm_point\n       where place in ('city','town') and capital='yes'\n      ) as placenames_capital",
+        "table": "(SELECT way,place,name,capital,population\n  FROM\n    (SELECT \n        way,place,name,NULL AS capital,way_area,\n        CASE WHEN population~E'^\\d+$' AND length(population)<10 THEN population::integer ELSE NULL END AS population\n      FROM planet_osm_polygon\n    UNION ALL\n    SELECT \n        way,place,name,capital,NULL AS way_area,\n        CASE WHEN population~E'^\\d+$' AND length(population)<10 THEN population::integer ELSE NULL END AS population \n      FROM planet_osm_point) AS p\n  WHERE place IN ('city','town')\n  ORDER BY \n    CASE place WHEN 'city' THEN 0 ELSE 10 END,\n    CASE capital WHEN 'yes' THEN 0 ELSE 10 END, \n    way_area DESC NULLS LAST, \n    population DESC NULLS LAST\n) AS place_medium",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
         "dbname": "gis"
       },
-      "id": "placenames-capital",
+      "id": "place-medium",
       "class": "",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "placenames-capital"
+      "name": "place-medium"
     },
     {
       "geometry": "point",
@@ -1137,41 +1137,18 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,place,name\n      from planet_osm_point\n      where place in ('city','town')\n        and (capital is null or capital != 'yes')\n      ) as placenames_medium",
+        "table": "(SELECT way,place,name\n  FROM\n    (SELECT \n        way,place,name,way_area\n      FROM planet_osm_polygon\n    UNION ALL\n    SELECT \n        way,place,name,NULL AS way_area\n      FROM planet_osm_point) AS p\n  WHERE place IN ('suburb','village','hamlet','neighbourhood','isolated_dwelling','locality','farm')\n  ORDER BY \n    CASE place \n      WHEN 'suburb' THEN 0 \n      WHEN 'village' THEN 10\n      WHEN 'hamlet' THEN 20\n      WHEN 'neighbourhood' THEN 30\n      WHEN 'hamlet' THEN 40\n      WHEN 'neighbourhood' THEN 50\n      WHEN 'isolated_dwelling' THEN 60\n      WHEN 'locality' THEN 70\n      ELSE 80 END,\n    way_area DESC NULLS LAST\n) AS place_small",
         "extent": "-20037508,-19929239,20037508,19929239",
         "key_field": "",
         "geometry_field": "way",
         "dbname": "gis"
       },
-      "id": "placenames-medium",
+      "id": "place-small",
       "class": "",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "placenames-medium"
-    },
-    {
-      "geometry": "point",
-      "extent": [
-        -179.99999692067183,
-        -84.96651228427099,
-        179.99999692067183,
-        84.96651228427098
-      ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "(select way,place,name\n      from planet_osm_point\n      where place in ('suburb','village','hamlet','neighbourhood','locality','isolated_dwelling','farm')\n      ) as placenames_small",
-        "extent": "-20037508,-19929239,20037508,19929239",
-        "key_field": "",
-        "geometry_field": "way",
-        "dbname": "gis"
-      },
-      "id": "placenames-small",
-      "class": "",
-      "srs-name": "900913",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "placenames-small"
+      "name": "place-small"
     },
     {
       "geometry": "point",
