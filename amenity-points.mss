@@ -1,6 +1,7 @@
 @marina-text: #576ddf; // also swimming_pool
 @military-text: #99001a;
 @park-text: #2c4b2c;
+@shop-icon: #ac39ac;
 @transportation-icon: #0092da;
 @transportation-text: #0066ff;
 
@@ -304,8 +305,10 @@
   }
 
   [shop = 'supermarket'][zoom >= 16]::shop {
-    point-file: url('symbols/shop_supermarket.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/shop_supermarket.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
   }
 
   [shop = 'bakery'][zoom >= 17]::shop {
@@ -321,14 +324,18 @@
   [shop = 'clothes']::shop,
   [shop = 'fashion']::shop {
     [zoom >= 17] {
-      point-file: url('symbols/shop_clothes.p.16.png');
-      point-placement: interior;
+      marker-file: url('symbols/shop_clothes.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @shop-icon;
     }
   }
 
   [shop = 'convenience'][zoom >= 17]::shop {
-    point-file: url('symbols/shop_convenience.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/shop_convenience.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
   }
 
   [shop = 'department_store'][zoom >= 16]::shop {
@@ -352,8 +359,10 @@
   }
 
   [shop = 'car'][zoom >= 17]::shop {
-    point-file: url('symbols/shopping_car.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/shop_car.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
   }
 
   [shop = 'car_repair'][zoom >= 17]::shop {
