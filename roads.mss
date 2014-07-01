@@ -2134,6 +2134,7 @@
       shield-spacing: 750;
       shield-min-distance: 30;
       shield-face-name: @bold-fonts;
+      shield-clip: false;
       [length = 7] { shield-file: url('symbols/mot_shield6.png'); }
       [length = 8] { shield-file: url('symbols/mot_shield7.png'); }
     }
@@ -2148,6 +2149,7 @@
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
+    shield-clip: false;
   }
 
   [highway = 'primary'][zoom >= 11][zoom < 13] {
@@ -2159,6 +2161,7 @@
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
+    shield-clip: false;
   }
 
   [highway = 'secondary'][zoom >= 12][zoom < 13] {
@@ -2170,6 +2173,7 @@
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
+    shield-clip: false;
   }
 }
 
@@ -2184,7 +2188,7 @@
       shield-spacing: 750;
       shield-min-distance: 30;
       shield-face-name: @bold-fonts;
-      shield-avoid-edges: true;
+      shield-clip: false;
       [length = 7] { shield-file: url('symbols/mot_shield6.png'); }
       [length = 8] { shield-file: url('symbols/mot_shield7.png'); }
     }
@@ -2199,7 +2203,7 @@
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
-    shield-avoid-edges: true;
+    shield-clip: false;
   }
 
   [highway = 'primary'][zoom >= 13] {
@@ -2211,7 +2215,7 @@
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
-    shield-avoid-edges: true;
+    shield-clip: false;
   }
 
   [highway = 'secondary'][bridge = 'no'][zoom >= 13] {
@@ -2223,7 +2227,7 @@
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
-    shield-avoid-edges: true;
+    shield-clip: false;
   }
 
   [highway = 'tertiary'][bridge = 'no'][zoom >= 13] {
@@ -2235,7 +2239,7 @@
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
-    shield-avoid-edges: true;
+    shield-clip: false;
   }
 
   [highway = 'unclassified'],
