@@ -89,7 +89,6 @@
     point-placement: interior;
   }
 
-  [highway = 'gate']::highway,
   [barrier = 'gate']::barrier {
     [zoom >= 15] {
       point-file: url('symbols/gate2.png');
