@@ -375,6 +375,11 @@
     point-placement: interior;
   }
 
+  [leisure = 'water_park'][zoom >= 17]::leisure {
+    point-file: url('symbols/water_park.p.20.png');
+    point-placement: interior;
+  }
+
   [leisure = 'playground'][zoom >= 17]::leisure {
     point-file: url('symbols/playground.p.20.png');
     point-placement: interior;
@@ -614,6 +619,7 @@
   }
 
   [leisure = 'playground']::leisure,
+  [leisure = 'water_park']::leisure,
   [leisure = 'park']::leisure,
   [leisure = 'recreation_ground']::leisure,
   [landuse = 'recreation_ground']::landuse,
@@ -630,6 +636,7 @@
       text-name: "[name]";
       text-size: 11;
       text-fill: @park-text;
+      text-dy: 11;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-halo-fill: rgba(255,255,255,0.6);
