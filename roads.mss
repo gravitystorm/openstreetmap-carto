@@ -2124,18 +2124,17 @@
 }
 
 #roads-text-ref-low-zoom {
-  [highway = 'motorway'][length < 9] {
+  [highway = 'motorway'][length < 12] {
     [zoom >= 10][zoom < 13] {
       shield-name: "[ref]";
       shield-size: 10;
       shield-fill: #fff;
       shield-placement: line;
-      shield-file: url("symbols/mot_shield[length].png");
+      shield-file: url("symbols/shields/mot_shield[length].svg");
       shield-spacing: 750;
       shield-min-distance: 30;
       shield-face-name: @bold-fonts;
-      [length = 7] { shield-file: url('symbols/mot_shield6.png'); }
-      [length = 8] { shield-file: url('symbols/mot_shield7.png'); }
+      shield-clip: false;
     }
   }
 
@@ -2144,10 +2143,11 @@
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/tru_shield[length].png");
+    shield-file: url("symbols/shields/tru_shield[length].svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
+    shield-clip: false;
   }
 
   [highway = 'primary'][zoom >= 11][zoom < 13] {
@@ -2155,10 +2155,11 @@
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/pri_shield[length].png");
+    shield-file: url("symbols/shields/pri_shield[length].svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
+    shield-clip: false;
   }
 
   [highway = 'secondary'][zoom >= 12][zoom < 13] {
@@ -2166,27 +2167,26 @@
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/sec_shield[length].png");
+    shield-file: url("symbols/shields/sec_shield[length].svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
+    shield-clip: false;
   }
 }
 
 #roads-text-ref {
-  [highway = 'motorway'][length < 9] {
+  [highway = 'motorway'][length < 12] {
     [zoom >= 13] {
       shield-name: "[ref]";
       shield-size: 10;
       shield-fill: #fff;
       shield-placement: line;
-      shield-file: url("symbols/mot_shield[length].png");
+      shield-file: url("symbols/shields/mot_shield[length].svg");
       shield-spacing: 750;
       shield-min-distance: 30;
       shield-face-name: @bold-fonts;
-      shield-avoid-edges: true;
-      [length = 7] { shield-file: url('symbols/mot_shield6.png'); }
-      [length = 8] { shield-file: url('symbols/mot_shield7.png'); }
+      shield-clip: false;
     }
   }
 
@@ -2195,11 +2195,11 @@
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/tru_shield[length].png");
+    shield-file: url("symbols/shields/tru_shield[length].svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
-    shield-avoid-edges: true;
+    shield-clip: false;
   }
 
   [highway = 'primary'][zoom >= 13] {
@@ -2207,11 +2207,11 @@
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/pri_shield[length].png");
+    shield-file: url("symbols/shields/pri_shield[length].svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
-    shield-avoid-edges: true;
+    shield-clip: false;
   }
 
   [highway = 'secondary'][bridge = 'no'][zoom >= 13] {
@@ -2219,11 +2219,11 @@
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/sec_shield[length].png");
+    shield-file: url("symbols/shields/sec_shield[length].svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
-    shield-avoid-edges: true;
+    shield-clip: false;
   }
 
   [highway = 'tertiary'][bridge = 'no'][zoom >= 13] {
@@ -2231,11 +2231,11 @@
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/ter_shield[length].png");
+    shield-file: url("symbols/shields/ter_shield[length].svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
-    shield-avoid-edges: true;
+    shield-clip: false;
   }
 
   [highway = 'unclassified'],
