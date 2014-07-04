@@ -36,7 +36,6 @@
     point-placement: interior;
   }
 
-  [amenity = 'bus_stop']::amenity,
   [highway = 'bus_stop']::highway {
     [zoom >= 16] {
       point-file: url('symbols/bus_stop_small.png');
