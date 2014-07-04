@@ -66,8 +66,7 @@
   }
 
   [power = 'generator']['generator:source' = 'wind']::power,
-  [power = 'generator'][power_source = 'wind']::power,
-  [man_made = 'power_wind'] {
+  [power = 'generator'][power_source = 'wind']::power {
     [zoom >= 15] {
       point-file: url('symbols/power_wind.png');
       point-placement: interior;
@@ -84,12 +83,11 @@
     point-placement: interior;
   }
 
-  [highway = 'mini_roundabout'][zoom >= 15]::highway {
+  [highway = 'mini_roundabout'][zoom >= 16]::highway {
     point-file: url('symbols/mini_round.png');
     point-placement: interior;
   }
 
-  [highway = 'gate']::highway,
   [barrier = 'gate']::barrier {
     [zoom >= 15] {
       point-file: url('symbols/gate2.png');
