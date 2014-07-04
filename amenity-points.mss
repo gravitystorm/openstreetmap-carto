@@ -107,11 +107,6 @@
     point-placement: interior;
   }
 
-  [tourism = 'bed_and_breakfast'][zoom >= 17]::tourism {
-    point-file: url('symbols/bandb.p.20.png');
-    point-placement: interior;
-  }
-
   [amenity = 'hospital'][zoom >= 15]::amenity {
     point-file: url('symbols/hospital.p.16.png');
     point-placement: interior;
