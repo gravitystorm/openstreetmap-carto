@@ -1204,7 +1204,7 @@
     }
 
     [feature = 'highway_steps'] {
-      [zoom >= 13][zoom < 15] {
+      [zoom >= 14][zoom < 15] {
         .roads-fill, .tunnels-fill {
           line-width: 6;
           line-color: @steps-casing;
@@ -1261,7 +1261,7 @@
 
     [feature = 'highway_footway'],
     [feature = 'highway_path'][foot = 'designated'] {
-      [zoom >= 13] {
+      [zoom >= 14] {
         .tunnels-fill {
           tunnelcasing/line-width: 5.5;
           tunnelcasing/line-color: @tunnel-casing;
@@ -1283,7 +1283,6 @@
           line/line-width: 1.5;
         }
         .bridges-fill {
-          [zoom >= 13] { line/line-width: 1.5; }
           [zoom >= 14] { line/line-width: 2; }
         }
         .tunnels-fill {
@@ -1331,7 +1330,7 @@
     * given the specitivity precedence.
     */
     [feature = 'highway_path'] {
-      [zoom >= 13] {
+      [zoom >= 14] {
         .tunnels-fill {
           tunnelcasing/line-width: 5.5;
           tunnelcasing/line-color: @tunnel-casing;
