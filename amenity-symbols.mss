@@ -51,6 +51,11 @@
     point-placement: interior;
   }
 
+  [man_made = 'adit'][zoom >= 15]::man_made {
+    point-file: url('symbols/poi_adit.p.16.png');
+    point-placement: interior;
+  }
+
   [natural = 'spring'][zoom >= 14]::natural {
     point-file: url('symbols/spring.png');
     point-placement: interior;
