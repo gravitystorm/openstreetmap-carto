@@ -1,6 +1,6 @@
 # OpenStreetMap Carto
 
-An implemention of the standard OpenStreetMap mapnik style, in CartoCSS.
+The standard stylesheet on [OpenStreetMap.org](http://www.openstreetmap.org) An implemention of the standard OpenStreetMap mapnik style, in CartoCSS.
 
 These stylesheets can be used in your own cartography projects, and are designed to be easily
 customised. They work with [TileMill](http://www.mapbox.com/tilemill/) and also with the command-line [CartoCSS](https://github.com/mapbox/carto) processor.
@@ -10,13 +10,15 @@ are updated from each point release. They supersede the previous [XML-based styl
 
 # Setup
 
-You need OpenStreetMap data loaded into a PostGIS database (see below for [dependencies](https://github.com/gravitystorm/openstreetmap-carto#dependencies)). These stylesheets currently work only with the osm2pgsql defaults (i.e. database name is 'gis', table names are 'planet_osm_point' etc).
+You need OpenStreetMap data loaded into a PostGIS database (see below for [dependencies](https://github.com/gravitystorm/openstreetmap-carto#dependencies)). These stylesheets currently work only with the osm2pgsql defaults (i.e. database name is ``gis``, table names are ``planet_osm_point``, etc).
 
-It's probably easiest to grab an PBF of OSM data from [metro.teczno.com](http://metro.teczno.com/) or [geofabrik](http://download.geofabrik.de/). Once you've [set up your PostGIS database](http://switch2osm.org/loading-osm-data/), import with osm2pgsql:
+It's probably easiest to grab an PBF of OSM data from [metro.teczno.com](http://metro.teczno.com/) or [geofabrik](http://download.geofabrik.de/). Once you've set up your PostGIS database, import with osm2pgsql:
 
 ```
 osm2pgsql -d gis ~/path/to/data.osm.pbf --style openstreetmap-carto.style
 ```
+
+You can find a more detailed guide to setting up a database and loading data with osm2pgsql at [switch2osm.org](http://switch2osm.org/loading-osm-data/)
 
 Additionally you need some shapefiles.
 
@@ -137,7 +139,7 @@ judgement. The work done already in v1.0 and v2.0 will make it much easier to pr
 * Avoid restating defaults, e.g. don't add `point-allow-overlap = false`
 * Avoid repeating the layer name for layers with mutiple attachments, i.e., prefer
 
-```
+```css
 #layer {
   ::outline {
     line-width: 6;
@@ -151,7 +153,7 @@ judgement. The work done already in v1.0 and v2.0 will make it much easier to pr
 ```
 instead of
 
-```
+```css
 #layer::outline {
     line-width: 6;
     line-color: black;
