@@ -127,43 +127,5 @@ There are over [400 open requests][trac] on trac, some that have been open for y
 reviewing and dividing into obvious fixes, or additional new features that need some cartographic
 judgement. The work done already in v1.0 and v2.0 will make it much easier to process these.
 
-# CartoCSS Style Guidelines
-
-* Always specify zoom levels as either >= or < . Don't use = or =< or >
-* Open curly braces on the same line, and close on an empty line.
-* One space before and after = etc
-* Two space indents. No tabs.
-* space after : but not before
-* Dashes, not underscores, in layer names
-* Name SQL subqueries after the layer name (but use underscores)
-* Avoid restating defaults, e.g. don't add `point-allow-overlap = false`
-* Avoid repeating the layer name for layers with mutiple attachments, i.e., prefer
-
-```css
-#layer {
-  ::outline {
-    line-width: 6;
-    line-color: black;
-  }
-  ::inline {
-    line-width: 2;
-    line-color: white;
-  }
-}
-```
-instead of
-
-```css
-#layer::outline {
-    line-width: 6;
-    line-color: black;
-}
-#layer::inline {
-    line-width: 2;
-    line-color: white;
-}
-```
-* Order the selectors in a style-sheet in rough order of importance (i.e., highway=primary, then highway=secondary) and beyond that, add layers that are rendered later (i.e., higher) lower in the file.
-
 [trac]: https://trac.openstreetmap.org/query?component=mapnik&status=!closed&order=changetime&desc=1&max=500
 [cleverness]: https://github.com/openstreetmap/mapnik-stylesheets/blob/master/inc/settings.xml.inc.template#L16
