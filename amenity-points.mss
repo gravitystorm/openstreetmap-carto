@@ -141,7 +141,7 @@
     point-placement: interior;
   }
 
-  [amenity = 'courthouse'][zoom > 15]::amenity {
+  [amenity = 'courthouse'][zoom >= 16]::amenity {
     point-file: url('symbols/amenity_court.p.20.png');
     point-placement: interior;
   }
