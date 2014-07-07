@@ -86,12 +86,12 @@
     point-placement: interior;
   }
 
-  [amenity = 'cinema'][zoom >= 17]::amenity {
+  [amenity = 'cinema'][zoom >= 16]::amenity {
     point-file: url('symbols/cinema.p.24.png');
     point-placement: interior;
   }
 
-  [amenity = 'fire_station'][zoom >= 17]::amenity {
+  [amenity = 'fire_station'][zoom >= 16]::amenity {
     point-file: url('symbols/firestation.p.16.png');
     point-placement: interior;
   }
@@ -126,7 +126,7 @@
     point-placement: interior;
   }
 
-  [tourism = 'information'][zoom >= 16]::tourism {
+  [tourism = 'information'][zoom >= 17]::tourism {
     point-file: url('symbols/information.p.16.png');
     point-placement: interior;
   }
@@ -136,12 +136,12 @@
     point-placement: interior;
   }
 
-  [amenity = 'library'][zoom >= 17]::amenity {
+  [amenity = 'library'][zoom >= 16]::amenity {
     point-file: url('symbols/library.p.20.png');
     point-placement: interior;
   }
 
-  [amenity = 'courthouse'][zoom > 17]::amenity {
+  [amenity = 'courthouse'][zoom > 15]::amenity {
     point-file: url('symbols/amenity_court.p.20.png');
     point-placement: interior;
   }
@@ -159,12 +159,12 @@
     point-placement: interior;
   }
 
-  [tourism = 'museum'][zoom >= 17]::tourism {
+  [tourism = 'museum'][zoom >= 16]::tourism {
     point-file: url('symbols/museum.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'parking'][zoom >= 15]::amenity {
+  [amenity = 'parking'][zoom >= 16]::amenity {
     marker-file: url('symbols/parking.svg');
     marker-placement: interior;
     marker-clip: false;
@@ -208,7 +208,7 @@
     }
   }
 
-  [amenity = 'police'][zoom >= 17]::amenity {
+  [amenity = 'police'][zoom >= 16]::amenity {
     point-file: url('symbols/police.p.16.png');
     point-placement: interior;
   }
@@ -223,12 +223,12 @@
     point-placement: interior;
   }
 
-  [amenity = 'pub'][zoom >= 16]::amenity {
+  [amenity = 'pub'][zoom >= 17]::amenity {
     point-file: url('symbols/pub.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'biergarten'][zoom >= 16]::amenity {
+  [amenity = 'biergarten'][zoom >= 17]::amenity {
     point-file: url('symbols/biergarten.p.16.png');
     point-placement: interior;
   }
@@ -258,7 +258,7 @@
     point-placement: interior;
   }
 
-  [amenity = 'theatre'][zoom >= 17]::amenity {
+  [amenity = 'theatre'][zoom >= 16]::amenity {
     point-file: url('symbols/theatre.p.20.png');
     point-placement: interior;
   }
