@@ -145,7 +145,7 @@ Map {
 
 
 #relief [zoom>=8][zoom<=17]{
-  raster-opacity: 0.30;
+  raster-opacity: 0.80;
   raster-scaling: bicubic;
   [zoom>=17] { raster-opacity: 0.15;}
 }

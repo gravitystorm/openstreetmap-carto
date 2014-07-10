@@ -15,6 +15,7 @@
     text-face-name: @book-fonts;
     text-fill: #666;
     text-size: 7;
+    [entrance!=''] { text-dy: -5; }
   }
   [zoom >= 18] {
     text-name: "[addr:housenumber]";
@@ -24,6 +25,7 @@
     text-face-name: @book-fonts;
     text-fill: #666;
     text-size: 9;
+    [entrance!=''] { text-dy: -5; }
   }
 }
 
