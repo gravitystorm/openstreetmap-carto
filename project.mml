@@ -251,7 +251,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,\"natural\",waterway,landuse,name\n      from planet_osm_polygon\n      where (waterway in ('dock','mill_pond','riverbank','canal')\n         or landuse in ('reservoir','water','basin')\n         or \"natural\" in ('lake','water','land','glacier','mud'))\n         and building is null\n      order by z_order,way_area desc\n      ) as water_areas",
+        "table": "      (select way,way_area,\"natural\",waterway,landuse,name\n      from planet_osm_polygon\n      where (waterway in ('dock','mill_pond','riverbank','canal')\n         or landuse in ('reservoir','water','basin')\n         or \"natural\" in ('lake','water','land','glacier','mud'))\n         and building is null\n      order by z_order,way_area desc\n      ) as water_areas",
         "extent": "-20037508,-20037508,20037508,20037508",
         "key_field": "",
         "geometry_field": "way",

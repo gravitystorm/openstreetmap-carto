@@ -25,10 +25,10 @@
 }
 
 #world-south {
-  [zoom = 0] {
+  [zoom < 2] {
     polygon-fill: @land-color;
   }
-  [zoom >= 1][zoom < 10] {
+  [zoom >= 2][zoom < 10] {
     polygon-pattern-file: url('symbols/glacier.png');
   }
 }
