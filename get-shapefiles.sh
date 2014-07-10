@@ -30,6 +30,10 @@ unzip $UNZIP_OPTS data/simplified-land-polygons-complete-3857.zip \
   simplified-land-polygons-complete-3857/simplified_land_polygons.cpg \
   -d data/
 
+ogr2ogr -spat -20037509 -8400000 20037509 20037509 data/simplified-land-polygons-complete-3857/simplified_land_north.shp data/simplified-land-polygons-complete-3857/simplified_land_polygons.shp
+ogr2ogr -spat -20037509 -20037509 20037509 -8400000 data/simplified-land-polygons-complete-3857/simplified_land_south.shp data/simplified-land-polygons-complete-3857/simplified_land_polygons.shp
+
+
 # ne_110m_admin_0_boundary_lines_land
 echo "dowloading ne_110m_admin_0_boundary_lines_land..."
 curl -z data/ne_110m_admin_0_boundary_lines_land.zip -L -o data/ne_110m_admin_0_boundary_lines_land.zip http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip
@@ -65,6 +69,8 @@ unzip $UNZIP_OPTS data/land-polygons-split-3857.zip \
   land-polygons-split-3857/land_polygons.cpg \
   -d data/
 
+ogr2ogr -spat -20037509 -8400000 20037509 20037509 data/land-polygons-split-3857/land_north.shp data/land-polygons-split-3857/land_polygons.shp
+ogr2ogr -spat -20037509 -20037509 20037509 -8400000 data/land-polygons-split-3857/land_south.shp data/land-polygons-split-3857/land_polygons.shp
 
 #process populated places
 echo "processing ne_10m_populated_places..."
@@ -78,8 +84,11 @@ shapeindex --shape_files \
 data/simplified-land-polygons-complete-3857/simplified_land_polygons.shp \
 data/land-polygons-split-3857/land_polygons.shp \
 data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp \
-data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp
-
+data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp \
+data/land-polygons-split-3857/land_south.shp \
+data/land-polygons-split-3857/land_north.shp \
+data/simplified-land-polygons-complete-3857/simplified_land_north.shp \
+data/simplified-land-polygons-complete-3857/simplified_land_south.shp
 
 #clean up
 echo "cleaning up..."
