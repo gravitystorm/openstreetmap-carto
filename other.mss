@@ -3475,6 +3475,8 @@
 
 }
 
+@admin-boundaries: #ac46ac;
+
 #admin {
   [zoom>=11][admin_level<=6],
   [zoom>=13][admin_level<=8],
@@ -3486,7 +3488,7 @@
      	text-name: "'      '+[name]+' (arrond.)      '";
     }
     text-name: "'      '+[name]+'      '";
-    text-fill: #666;
+    text-fill: @admin-boundaries;
     text-size: 10;
     text-placement: line;
 	text-face-name: @oblique-fonts;
