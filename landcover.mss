@@ -365,7 +365,7 @@
     line-color: saturate(darken(@aerodrome, 40%), 20%);
   }
 
-  [feature = 'natural_beach'][zoom >= 9] {
+  [feature = 'natural_beach'][zoom >= 10] {
     polygon-pattern-file: url('symbols/beach.png');
   }
 
