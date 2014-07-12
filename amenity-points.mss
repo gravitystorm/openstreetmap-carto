@@ -612,6 +612,7 @@
     }
   }
 
+  [leisure = 'playground']::leisure,
   [leisure = 'park']::leisure,
   [leisure = 'recreation_ground']::leisure,
   [landuse = 'recreation_ground']::landuse,
@@ -636,7 +637,6 @@
     }
   }
 
-  [leisure = 'playground']::leisure,
   [leisure = 'water_park']::leisure {
     [way_area >= 150000][zoom >= 14],
     [way_area >= 80000][zoom >= 15],
