@@ -783,7 +783,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select distinct on (p.way) p.way as way,l.highway as int_tc_type\n       from planet_osm_point p\n       join planet_osm_line l\n        on ST_DWithin(p.way,l.way,0.1)\n       join (values\n        ('tertiary',1),\n        ('unclassified',2),\n        ('residential',3),\n        ('living_street',4),\n        ('service',5)\n       ) as v (highway,prio)\n        on v.highway=l.highway\n       where p.highway='turning_circle'\n       order by p.way,v.prio\n      ) as turning_circle",
+        "table": "(select distinct on (p.way) p.way as way,l.highway as int_tc_type\n       from planet_osm_point p\n       join planet_osm_line l\n        on ST_DWithin(p.way,l.way,0.1)\n       join (values\n        ('tertiary',1),\n        ('unclassified',2),\n        ('residential',3),\n        ('living_street',4),\n        ('service',5)\n       ) as v (highway,prio)\n        on v.highway=l.highway\n       where p.highway in ('turning_circle','turning_loop')\n       order by p.way,v.prio\n      ) as turning_circle",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
@@ -1197,7 +1197,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select distinct on (p.way) p.way as way,l.highway as int_tc_type\n       from planet_osm_point p\n       join planet_osm_line l\n        on ST_DWithin(p.way,l.way,0.1)\n       join (values\n        ('tertiary',1),\n        ('unclassified',2),\n        ('residential',3),\n        ('living_street',4),\n        ('service',5)\n       ) as v (highway,prio)\n        on v.highway=l.highway\n       where p.highway='turning_circle'\n       order by p.way,v.prio\n      ) as turning_circle",
+        "table": "      (select distinct on (p.way) p.way as way,l.highway as int_tc_type\n       from planet_osm_point p\n       join planet_osm_line l\n        on ST_DWithin(p.way,l.way,0.1)\n       join (values\n        ('tertiary',1),\n        ('unclassified',2),\n        ('residential',3),\n        ('living_street',4),\n        ('service',5)\n       ) as v (highway,prio)\n        on v.highway=l.highway\n       where p.highway in ('turning_circle','turning_loop')\n       order by p.way,v.prio\n      ) as turning_circle",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
