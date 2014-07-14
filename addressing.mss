@@ -13,7 +13,7 @@
     text-min-distance: 2;
     text-wrap-width: 0;
     text-face-name: @book-fonts;
-    text-fill: #666;
+    text-fill: #585858;
     text-size: 7;
     [entrance!=''] { text-dy: -5; }
   }
@@ -23,7 +23,7 @@
     text-min-distance: 2;
     text-wrap-width: 0;
     text-face-name: @book-fonts;
-    text-fill: #666;
+    text-fill: #585858;
     text-size: 9;
     [entrance!=''] { text-dy: -5; }
   }
@@ -40,5 +40,24 @@
     [zoom >= 18] {
       text-size: 9;
     }
+  }
+}
+
+#bano {
+  [zoom = 17] {
+    text-name: "[num]";
+    text-min-distance: 2;
+    text-wrap-width: 0;
+    text-face-name: @oblique-fonts;
+    text-fill: #777;
+    text-size: 7;
+  }
+  [zoom >= 18] {
+    text-name: "[num]";
+    text-min-distance: 2;
+    text-wrap-width: 0;
+    text-face-name: @oblique-fonts;
+    text-fill: #777;
+    text-size: 9;
   }
 }
