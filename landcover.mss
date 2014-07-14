@@ -77,8 +77,7 @@
     polygon-fill: #ff8f8f;
   }
 
-  [feature = 'landuse_field'],
-  [feature = 'natural_field'] {
+  [feature = 'landuse_field'] {
     [zoom >= 10] {
       polygon-fill: #666600;
       polygon-opacity: 0.2;
