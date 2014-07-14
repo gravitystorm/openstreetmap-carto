@@ -161,7 +161,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,waterway\n      from planet_osm_line\n      where osm_id>0 AND waterway in ('stream','drain','ditch')\n        and (tunnel is null or tunnel != 'yes')\n      ) as water_lines",
+        "table": "      (select way,waterway\n      from planet_osm_line\n      where osm_id>0 AND waterway in ('stream','drain','ditch')\n        and (tunnel is null and covered is null or coalesce(tunnel,covered) not in ('yes','true','1','building_passage'))\n      ) as water_lines",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
@@ -339,7 +339,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select st_intersection(ST_SetSRID(ST_MakeBox2D(ST_Point(ST_XMin(!bbox!)+!pixel_width!*(256+256),ST_Ymin(!bbox!)+!pixel_height!*(128+256)), ST_Point(ST_XMax(!bbox!)-!pixel_width!*(256+256),ST_Ymax(!bbox!)-!pixel_height!*(128+256))),900913),way) as way,waterway,disused,lock,coalesce(tags->'name:fr',tags->'int_name',name) as name,\n      case when tunnel in ('yes','true','1') then 'yes'::text else tunnel end as tunnel, tags->'CEMT' as cemt\n      from planet_osm_line\n      where way && !bbox! AND osm_id>0 AND waterway in ('weir','river','canal','derelict_canal','stream','drain','ditch','wadi')\n        and (bridge is null or bridge not in ('yes','true','1','aqueduct'))\n      order by z_order\n      ) as water_lines",
+        "table": "      (select st_intersection(ST_SetSRID(ST_MakeBox2D(ST_Point(ST_XMin(!bbox!)+!pixel_width!*(256+256),ST_Ymin(!bbox!)+!pixel_height!*(128+256)), ST_Point(ST_XMax(!bbox!)-!pixel_width!*(256+256),ST_Ymax(!bbox!)-!pixel_height!*(128+256))),900913),way) as way,waterway,disused,lock,coalesce(tags->'name:fr',tags->'int_name',name) as name,\n      case when coalesce(tunnel,covered) in ('yes','true','1') then 'yes'::text else coalesce(tunnel,covered) end as tunnel, tags->'CEMT' as cemt\n      from planet_osm_line\n      where way && !bbox! AND osm_id>0 AND waterway in ('weir','river','canal','derelict_canal','stream','drain','ditch','wadi')\n        and (bridge is null or bridge not in ('yes','true','1','aqueduct'))\n      order by z_order\n      ) as water_lines",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
@@ -517,7 +517,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way, highway, junction, toll from planet_osm_line where highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified') and tunnel in ('yes','true','1') order by z_order) as roads",
+        "table": "(select way, highway, junction, toll from planet_osm_line where highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified') and coalesce(tunnel,covered) in ('yes','true','1') order by z_order) as roads",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
@@ -813,7 +813,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,highway,toll,horse,foot,bicycle,junction,coalesce(tags->'footway','') as footway from planet_osm_line where highway in ('bridleway','footway','cycleway','path') and tunnel in ('yes','true','1') order by z_order) as roads",
+        "table": "(select way,highway,toll,horse,foot,bicycle,junction,coalesce(tags->'footway','') as footway from planet_osm_line where highway in ('bridleway','footway','cycleway','path') and coalesce(tunnel,covered) in ('yes','true','1') order by z_order) as roads",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
@@ -843,7 +843,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,tracktype from planet_osm_line where highway='track' and tunnel in ('yes','true','1')) as tracks",
+        "table": "(select way,tracktype from planet_osm_line where highway='track' and coalesce(tunnel,covered) in ('yes','true','1')) as tracks",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
@@ -931,7 +931,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,highway,railway,toll,coalesce(tags->'footway','') as footway, case when tunnel in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel,junction from planet_osm_polygon\n       where highway in ('residential','unclassified','pedestrian','service','footway','track','path','platform')\n          or railway='platform'\n       order by z_order,way_area desc) as roads",
+        "table": "(select way,highway,railway,toll,coalesce(tags->'footway','') as footway, case when coalesce(tunnel,covered) in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel,junction from planet_osm_polygon\n       where highway in ('residential','unclassified','pedestrian','service','footway','track','path','platform')\n          or railway='platform'\n       order by z_order,way_area desc) as roads",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
@@ -961,7 +961,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,highway,junction, toll, coalesce(tags->'footway','') as footway, \n       case when tunnel in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel,\n       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service\n from planet_osm_line\n       where (highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified','road','service','pedestrian','raceway','living_street','platform') or railway='platform') and route is null\n       order by z_order) as roads",
+        "table": "(select way,highway,junction, toll, coalesce(tags->'footway','') as footway, \n       case when coalesce(tunnel,covered) in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel,\n       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service\n from planet_osm_line\n       where (highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified','road','service','pedestrian','raceway','living_street','platform') or railway='platform') and route is null\n       order by z_order) as roads",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
@@ -990,7 +990,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,highway,junction, toll, railway,aeroway,coalesce(tags->'footway','') as footway, case when tunnel in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel /* ,case when highway in ('motorway','motorway_link') then '1' when highway in ('trunk','trunk_link') then '2' when highway in ('primary','primary_link') then '3' when highway in ('secondary','secondary_link') then '4' when highway in ('tertiary','tertiary_link') then '5' when highway in ('residential','unclassified') then '6' else '7' end as prio */ from planet_osm_polygon\n       where highway in ('residential','unclassified','pedestrian','service','footway','living_street','track','path','platform','services')\n          or railway='platform'\n          or aeroway in ('runway','taxiway','helipad','taxipath','parking_position')\n       order by z_order, way_area desc) as roads",
+        "table": "      (select way,highway,junction, toll, railway,aeroway,coalesce(tags->'footway','') as footway, case when coalesce(tunnel,covered) in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel /* ,case when highway in ('motorway','motorway_link') then '1' when highway in ('trunk','trunk_link') then '2' when highway in ('primary','primary_link') then '3' when highway in ('secondary','secondary_link') then '4' when highway in ('tertiary','tertiary_link') then '5' when highway in ('residential','unclassified') then '6' else '7' end as prio */ from planet_osm_polygon\n       where highway in ('residential','unclassified','pedestrian','service','footway','living_street','track','path','platform','services')\n          or railway='platform'\n          or aeroway in ('runway','taxiway','helipad','taxipath','parking_position')\n       order by z_order, way_area desc) as roads",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
@@ -1167,7 +1167,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,oneway,junction,toll,\n       coalesce(highway,aeroway) as highway,\n       horse,bicycle,foot,construction,coalesce(tags->'footway','') as footway, \n       case when tunnel in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel,\n       case when bridge in ('yes','true','1','viaduct') then 'yes'::text else 'no'::text end as bridge,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'spur-siding-yard'::text else railway end as railway,\n       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service,\n   case  when (z_order<10 and z_order>3 and highway in ('motorway_link','trunk_link','primary_link','secondary_link','tertiary_link')) then 4+(z_order/10)  when (z_order<10 and z_order>3 and highway='tertiary') then 5 else z_order end as zz_order   from planet_osm_line\n       where (highway is not null\n          or aeroway in ('runway','taxiway','taxipath','parking_position')\n          or railway in ('light_rail','narrow_gauge','funicular','rail','subway','tram','spur','siding','platform','disused','abandoned','construction','miniature','turntable')) and route is null\n       order by zz_order) as roads",
+        "table": "      (select way,oneway,junction,toll,\n       coalesce(highway,aeroway) as highway,\n       horse,bicycle,foot,construction,coalesce(tags->'footway','') as footway, \n       case when coalesce(tunnel,covered) in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel,\n       case when bridge in ('yes','true','1','viaduct') then 'yes'::text else 'no'::text end as bridge,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'spur-siding-yard'::text else railway end as railway,\n       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service,\n   case  when (z_order<10 and z_order>3 and highway in ('motorway_link','trunk_link','primary_link','secondary_link','tertiary_link')) then 4+(z_order/10)  when (z_order<10 and z_order>3 and highway='tertiary') then 5 else z_order end as zz_order   from planet_osm_line\n       where (highway is not null\n          or aeroway in ('runway','taxiway','taxipath','parking_position')\n          or railway in ('light_rail','narrow_gauge','funicular','rail','subway','tram','spur','siding','platform','disused','abandoned','construction','miniature','turntable')) and route is null\n       order by zz_order) as roads",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
@@ -1287,7 +1287,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,highway,junction,toll,\n       case when tunnel in ('yes','true','1') then 'yes'::text else tunnel end as tunnel,\n       case when railway='preserved' and service in ('spur','siding','yard') then 'INT-preserved-ssy'::text else railway end as railway\n       from planet_osm_roads\n       where highway is not null\n          or (railway is not null and railway!='preserved' and (service is null or service not in ('spur','siding','yard')))\n          or railway='preserved'\n       order by z_order\n      ) as roads",
+        "table": "      (select way,highway,junction,toll,\n       case when coalesce(tunnel,covered) in ('yes','true','1') then 'yes'::text else tunnel end as tunnel,\n       case when railway='preserved' and service in ('spur','siding','yard') then 'INT-preserved-ssy'::text else railway end as railway\n       from planet_osm_roads\n       where highway is not null\n          or (railway is not null and railway!='preserved' and (service is null or service not in ('spur','siding','yard')))\n          or railway='preserved'\n       order by z_order\n      ) as roads",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
@@ -2006,7 +2006,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,railway,bridge from planet_osm_line where railway='tram' and (tunnel is null or tunnel not in ('yes','true','1'))) as trams",
+        "table": "(select way,railway,bridge from planet_osm_line where railway='tram' and (tunnel is null and covered is null or coalesce(tunnel,covered) not in ('yes','true','1','building_passage'))) as trams",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
@@ -2036,7 +2036,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way from planet_osm_line where highway='bus_guideway' and (tunnel is null or tunnel not in ('yes','true','1'))) as guideways",
+        "table": "(select way from planet_osm_line where highway='bus_guideway' and (tunnel is null and covered is null or coalesce(tunnel,covered) not in ('yes','true','1','building_passage'))) as guideways",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
@@ -2669,7 +2669,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select st_intersection(ST_SetSRID(ST_MakeBox2D(ST_Point(ST_XMin(!bbox!)+!pixel_width!*(256+256+40),ST_Ymin(!bbox!)+!pixel_height!*(128+256+20)), ST_Point(ST_XMax(!bbox!)-!pixel_width!*(256+256+40),ST_Ymax(!bbox!)-!pixel_height!*(128+256+20))),900913),way) as way,junction,coalesce(highway,aeroway) as highway,ref,char_length(ref) as length,\n       case when bridge in ('yes','true','1') then 'yes'::text else 'no'::text end as bridge\n       from planet_osm_line\n       where way && !bbox! AND (highway is not null or aeroway is not null)\n         and ref is not null\nand (position('GR' in ref)!=1 AND position('G.R' in ref) !=1 AND position('G R ' in ref) !=1)\n         and char_length(ref) between 1 and 8\nand tunnel is null\n      ) as roads",
+        "table": "      (select st_intersection(ST_SetSRID(ST_MakeBox2D(ST_Point(ST_XMin(!bbox!)+!pixel_width!*(256+256+40),ST_Ymin(!bbox!)+!pixel_height!*(128+256+20)), ST_Point(ST_XMax(!bbox!)-!pixel_width!*(256+256+40),ST_Ymax(!bbox!)-!pixel_height!*(128+256+20))),900913),way) as way,junction,coalesce(highway,aeroway) as highway,ref,char_length(ref) as length,\n       case when bridge in ('yes','true','1') then 'yes'::text else 'no'::text end as bridge\n       from planet_osm_line\n       where way && !bbox! AND (highway is not null or aeroway is not null)\n         and ref is not null\nand (position('GR' in ref)!=1 AND position('G.R' in ref) !=1 AND position('G R ' in ref) !=1)\n         and char_length(ref) between 1 and 8\nand (tunnel is null and covered is null or coalesce(tunnel,covered) not in ('yes','true','1','building_passage'))\n      ) as roads",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
