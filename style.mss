@@ -1,6 +1,6 @@
 Map {
   background-color: @water-color;
-  buffer-size: 128;
+  buffer-size: 256;
 }
 
 @book-fonts: "DejaVu Sans Book", "unifont Medium";

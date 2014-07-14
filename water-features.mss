@@ -16,13 +16,15 @@
 
 #marinas-area {
   [zoom >= 14] {
-    line-width: 1;
-    line-color: blue;
-    line-dasharray: 6,2;
-    line-opacity: 0.5;
-  }
-  [zoom >= 16] {
-    line-width: 2;
+    a/line-width: 1;
+    a/line-color: blue;
+    a/line-opacity: 0.5;
+    a/line-cap: butt;
+    a/line-dasharray: 1, 3;
+    [zoom >= 17] {
+      a/line-width: 2;
+      a/line-offset: -1;
+    }
   }
 }
 
