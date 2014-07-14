@@ -2139,6 +2139,7 @@
         line-color: grey;
         line-width: 2;
         line-dasharray: 2,4;
+        [railway = 'abandoned'] {line-dasharray: 2,6;}
         line-join: round;
       }
     }
@@ -2989,6 +2990,7 @@
           line-width: 2;
           line-color: grey;
           line-dasharray: 2,4;
+          [railway = 'abandoned'] {line-dasharray: 2,6;}
           line-join: round;
         }
       }
