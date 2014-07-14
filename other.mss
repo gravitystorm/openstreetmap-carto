@@ -2227,8 +2227,13 @@
     }
   }
   [access = 'destination'] {
+    [highway = 'secondary'],
+    [highway = 'tertiary'],
     [highway = 'unclassified'],
-    [highway = 'residential'] {
+    [highway = 'residential'],
+    [highway = 'road'],
+    [highway = 'living_street']
+    {
       [zoom >= 15] {
         line-width: 6;
         line-color: #c2e0ff;
