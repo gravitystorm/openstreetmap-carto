@@ -6,9 +6,9 @@
     80
   ],
   "center": [
-    2.45,
-    48.8,
-    16
+    0,
+    45,
+    5
   ],
   "format": "png:t=0",
   "interactivity": false,
@@ -71,8 +71,9 @@
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "lowzoom"
-    },
+      "name": "lowzoom",
+      "status": "on"
+   },
     {
       "geometry": "polygon",
       "extent": [
@@ -2150,6 +2151,36 @@
       "geometry": "point",
       "extent": [
         -179.99999692067183,
+        -84.96651228427098,
+        179.99999692067183,
+        84.96651228427099
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way,place,coalesce(tags->'name:fr',tags->'int_name',name) as name, replace(replace(replace(coalesce(tags->'short_name:fr', tags->'name:fr', tags->'int_name', name),'Saint-','Sᵗ-'),'Sainte-','Sᵗᵉ-'),'-sous-','-ss-') as nom, cast(regexp_replace('0' || population,'[^0-9]','','g') as bigint) as pop, coalesce(tags->'is_capital', (case when coalesce(admin_level, capital)='2' then 'country' when tags->'importance'='international' then 'state' when coalesce(admin_level, capital)='4' then 'state' when tags->'importance'='national' then 'state' else null end) ) as is_capital, array_length(hstore_to_array(tags),1)/2 as nbtags  from planet_osm_point  where place is not null and place in ('city','town') and (tags->'is_capital' in ('country','state') or capital in ('2','4') or (capital='yes' and admin_level in ('2','4')) or tags->'importance' in ('international','national') or array_length(hstore_to_array(tags),1)/2>20) order by is_capital, place, pop desc ) as placenames",
+        "extent_cache": "custom",
+        "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "osm",
+        "asynchronous_request": "true",
+        "max_async_connection": "6",
+        "srid":"900913",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
+      },
+      "id": "placenames-capital",
+      "class": "placenames",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "placenames-capital"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        -179.99999692067183,
         -84.96651228427099,
         179.99999692067183,
         84.96651228427098
@@ -2175,36 +2206,6 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
       "name": "placenames-islands"
-    },
-    {
-      "geometry": "point",
-      "extent": [
-        -179.99999692067183,
-        -84.96651228427098,
-        179.99999692067183,
-        84.96651228427099
-      ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "(select way,place,coalesce(tags->'name:fr',tags->'int_name',name) as name, replace(replace(replace(coalesce(tags->'short_name:fr',tags->'short_name', tags->'name:fr',tags->'int_name', name),'Saint-','Sᵗ-'),'Sainte-','Sᵗᵉ-'),'-sous-','-ss-') as nom, cast(regexp_replace('0' || population,'[^0-9]','','g') as bigint) as pop, coalesce(tags->'is_capital', (case when coalesce(admin_level, capital)='2' then 'country' when coalesce(admin_level, capital)='4' then 'state' else null end) ) as is_capital      from planet_osm_point      where place is not null and place in ('city','town') and (tags->'is_capital' in ('country','state') or capital in ('2','4') or (capital='yes' and admin_level in ('2','4'))) order by is_capital, place, pop desc ) as placenames",
-        "extent_cache": "custom",
-        "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
-        "key_field": "",
-        "geometry_field": "way",
-        "dbname": "osm",
-        "asynchronous_request": "true",
-        "max_async_connection": "6",
-        "srid":"900913",
-        "host": "localhost",
-        "user": "fr",
-        "password": "m4d31nfr4nc3"
-      },
-      "id": "placenames-capital",
-      "class": "placenames",
-      "srs-name": "900913",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "placenames-capital"
     },
     {
       "geometry": "point",
@@ -2246,7 +2247,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,place,coalesce(tags->'name:fr',tags->'int_name',name) as name, replace(replace(replace(coalesce(tags->'short_name:fr',tags->'short_name', tags->'name:fr',tags->'int_name', name),'Saint-','Sᵗ-'),'Sainte-','Sᵗᵉ-'),'-sous-','-ss-') as nom, cast(regexp_replace('0' || population,'[^0-9]','','g') as bigint) as pop, tags->'is_capital' as is_capital       from planet_osm_point      where place is not null and place in ('city','town') order by tags->'is_capital' desc, place, pop desc ) as placenames",
+        "table": "(select way,place,coalesce(tags->'name:fr',tags->'int_name',name) as name, replace(replace(replace(coalesce(tags->'short_name:fr',tags->'short_name', tags->'name:fr',tags->'int_name', name),'Saint-','Sᵗ-'),'Sainte-','Sᵗᵉ-'),'-sous-','-ss-') as nom, cast(regexp_replace('0' || population,'[^0-9]','','g') as bigint) as pop, tags->'is_capital' as is_capital, 0 as nbtags       from planet_osm_point      where place is not null and place in ('city','town') order by tags->'is_capital' desc, place, pop desc ) as placenames",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
@@ -2811,6 +2812,36 @@
       "geometry": "point",
       "extent": [
         -179.99999692067183,
+        -84.96651228427098,
+        179.99999692067183,
+        84.96651228427099
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way,place,coalesce(tags->'name:fr',tags->'int_name',name) as name, replace(replace(replace(coalesce(tags->'short_name:fr', tags->'name:fr', tags->'int_name', name),'Saint-','Sᵗ-'),'Sainte-','Sᵗᵉ-'),'-sous-','-ss-') as nom, cast(regexp_replace('0' || population,'[^0-9]','','g') as bigint) as pop, coalesce(tags->'is_capital', (case when coalesce(admin_level, capital)='2' then 'country' when tags->'importance'='international' then 'state' when coalesce(admin_level, capital)='4' then 'state' when tags->'importance'='national' then 'state' else null end) ) as is_capital, array_length(hstore_to_array(tags),1)/2 as nbtags  from planet_osm_point  where place is not null and place in ('city','town') and (tags->'is_capital' in ('country','state') or capital in ('2','4') or (capital='yes' and admin_level in ('2','4')) or tags->'importance' in ('international','national') or array_length(hstore_to_array(tags),1)/2>20) order by is_capital, place, pop desc ) as placenames",
+        "extent_cache": "custom",
+        "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "osm",
+        "asynchronous_request": "true",
+        "max_async_connection": "6",
+        "srid":"900913",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
+      },
+      "id": "placenames-lz",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "placenames-large-lz"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        -179.99999692067183,
         -84.96651228427099,
         179.99999692067183,
         84.96651228427098
@@ -3102,7 +3133,7 @@
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {
-        "asynchronous_request": "true"
+        "asynchronous_request": "false"
       },
       "name": "crossroad_names"
     },
