@@ -98,7 +98,9 @@
 
   [highway = 'pedestrian'],
   [highway = 'service'],
-  [highway = 'footway'][footway=''],[highway = 'footway'][zoom>=19],
+  [highway = 'footway'][footway=''],
+  [highway = 'footway'][zoom>=19],
+  [highway = 'cycleway'],
   [highway = 'path'] {
     [zoom >= 14] {
       line-color: grey;
@@ -134,7 +136,9 @@
   }
 
   [highway = 'pedestrian'],
-  [highway = 'footway'][footway=''],[highway = 'footway'][zoom>=19],
+  [highway = 'footway'][footway=''],
+  [highway = 'footway'][zoom>=19],
+  [highway = 'cycleway'],
   [highway = 'path'] {
     [zoom >= 14] {
       polygon-fill: #ededed;
