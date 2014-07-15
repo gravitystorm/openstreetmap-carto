@@ -98,7 +98,6 @@
         text-name: "[name]";
         text-size: 14;
         text-face-name: @oblique-fonts;
-        text-label-position-tolerance: 10;
       }
     }
   }
@@ -111,31 +110,49 @@
       text-face-name: @book-fonts;
       text-name: "[nom]";
       text-size: 9;
-      text-fill: #000;
+      text-fill: black;
       text-halo-radius: 2;
       text-halo-fill: fadeout(white, 30%);
       text-wrap-width: 20;
-      text-min-distance: 20;
-      text-label-position-tolerance: 5;
-      [zoom>=7] {
-      	text-min-distance: 10;
-      }
+    }
+    [zoom>=7] {
+      text-min-distance: 10;
+	}
+    [zoom >= 9] {
+      text-size: 9.5;
+      b/text-min-distance: 10;
+      b/text-face-name: @book-fonts;
+      b/text-name: "[nom]";
+      b/text-size: 9.5;
+      b/text-fill: black;
+      b/text-halo-radius: 2;
+      b/text-halo-fill: fadeout(white, 30%);
+      b/text-wrap-width: 20;
+      b/text-placement-type: simple;
+      b/text-placements: "N,S,NE,SE,NW,SW";
+      b/text-dx: 4;
+      b/text-dy: 4;
     }
     [zoom >= 11] {
-      text-name: "[nom]";
       [zoom >= 12] { text-name: "[name]"; }
       text-size: 11;
-      text-placement-type: simple;
-      text-placements: "N,S,NE,SE,NW,SW,11,10,9";
-      text-horizontal-alignment: auto;
-      text-vertical-alignment: auto;
-	  text-label-position-tolerance: 10;
+      b/text-size: 11;
+      b/text-placements: "N,S,NE,SE,NW,SW,11,10,9";
+	  b/text-dx: 6;
+      b/text-dy: 6;
     }
     [zoom >= 14] {
       text-face-name: @oblique-fonts;
       text-name: "[name]";
       text-size: 14;
       text-fill: #777777;
+      b/text-face-name: @oblique-fonts;
+      b/text-name: "[name]";
+      b/text-size: 14;
+      b/text-placements: "N,S,NE,SE,NW,SW,14,12,10";
+      b/text-fill: #777777;
+      b/text-dx: 8;
+      b/text-dy: 8;
     }
   }
 }
@@ -145,7 +162,6 @@
     [zoom < 15] {
 	  [is_capital='country'] { text-size: 11; text-face-name: @bold-fonts; }
       text-min-distance: 25;
-      text-label-position-tolerance: 8;
       text-face-name: @book-fonts;
       text-name: "[nom]";
       text-size: 10;
@@ -166,7 +182,6 @@
         text-name: "[name]";
         text-size: 14;
         text-face-name: @oblique-fonts;
-        text-label-position-tolerance: 10;
       }
     }
   }
@@ -184,7 +199,6 @@
       text-halo-fill: fadeout(white, 30%);
       text-wrap-width: 20;
       text-min-distance: 20;
-      text-label-position-tolerance: 5;
       [zoom>=7] {
       	text-min-distance: 10;
       }
@@ -193,17 +207,13 @@
       text-name: "[nom]";
       [zoom >= 12] { text-name: "[name]"; }
       text-size: 11;
-      text-placement-type: simple;
-      text-placements: "N,S,NE,SE,NW,SW,11,10,9";
-      text-horizontal-alignment: auto;
-      text-vertical-alignment: auto;
-	  text-label-position-tolerance: 10;
     }
     [zoom >= 14] {
       text-face-name: @oblique-fonts;
       text-name: "[name]";
-      text-size: 14;
       text-fill: #777777;
+      text-size: 14;
+      text-label-position-tolerance: 12;
     }
   }
 }

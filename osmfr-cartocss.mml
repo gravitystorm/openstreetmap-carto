@@ -6,9 +6,9 @@
     80
   ],
   "center": [
-    0,
-    45,
-    5
+    -1.6,
+    48.1,
+    10
   ],
   "format": "png:t=0",
   "interactivity": false,
