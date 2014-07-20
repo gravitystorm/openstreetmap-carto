@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash -e
 
 # A simple script to generate a SVG road shield.
 # Copyright 2014 Paul Norman
@@ -20,14 +20,15 @@ YOFFSET=$5
 
 
 echo "<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' "\
-"viewBox='0 0 $(echo $WIDTH + $XOFFSET | bc -q) $(echo $HEIGHT + $YOFFSET | bc -q)'>"
+"viewBox='0 0 $(bc -q <<< "$WIDTH + $XOFFSET") $(bc -q <<< "$HEIGHT + $YOFFSET")'>"
+
 echo "<rect x='$XOFFSET' y='$YOFFSET' height='$HEIGHT' width='$WIDTH' rx='$RADIUS' fill='$COLOUR'/>"
 
-echo "<rect x='$(echo $XOFFSET + $OUTERLINE | bc -q)' y='$(echo $YOFFSET + $OUTERLINE | bc -q)' "\
-"height='$(echo $HEIGHT - 2\*$OUTERLINE | bc -q)' width='$(ECHO $WIDTH - 2\*$OUTERLINE | bc -q)' "\
-"rx='$(echo $RADIUS - $OUTERLINE | bc -q)' fill='white'/>"
+echo "<rect x='$(bc -q <<< "$XOFFSET + $OUTERLINE")' y='$(bc -q <<< "$YOFFSET + $OUTERLINE")' "\
+"height='$(bc -q <<< "$HEIGHT - 2*$OUTERLINE")' width='$(bc -q <<< "$WIDTH - 2*$OUTERLINE")' "\
+"rx='$(bc -q <<< "$RADIUS - $OUTERLINE")' fill='white'/>"
 
-echo "<rect x='$(echo $XOFFSET + $OUTERLINE + $WHITELINE | bc -q)' y='$(echo $YOFFSET + $OUTERLINE + $WHITELINE| bc -q)' "\
-"height='$(echo $HEIGHT - 2\*$OUTERLINE - 2\*$WHITELINE | bc -q)' width='$(ECHO $WIDTH - 2\*$OUTERLINE - 2\*$WHITELINE | bc -q)' "\
-"rx='$(echo $RADIUS - $OUTERLINE - $WHITELINE | bc -q)' fill='$COLOUR'/>"
+echo "<rect x='$(bc -q <<< "$XOFFSET + $OUTERLINE + $WHITELINE")' y='$(bc -q <<< "$YOFFSET + $OUTERLINE + $WHITELINE")' "\
+"height='$(bc -q <<< "$HEIGHT - 2*$OUTERLINE - 2*$WHITELINE")' width='$(bc -q <<< "$WIDTH - 2*$OUTERLINE - 2*$WHITELINE")' "\
+"rx='$(bc -q <<< "$RADIUS - $OUTERLINE - $WHITELINE")' fill='$COLOUR'/>"
 echo "</svg>"
