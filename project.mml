@@ -836,7 +836,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,coalesce(('highway_' || (case when highway is not null then highway else null end)), ('railway_' || (case when (railway='rail' and service in ('spur','siding','yard'))  then 'INT-spur-siding-yard' when railway in ('rail','tram','light_rail','funicular','narrow_gauge') then railway else null end))) as feature,tunnel\n       from planet_osm_roads\n       where highway is not null\n          or (railway is not null and railway!='preserved' and (service is null or service not in ('spur','siding','yard')))\n       order by z_order\n      ) as roads_low_zoom",
+        "table": "      (select way,coalesce(('highway_' || (case when substr(highway, length(highway)-3, 4) = 'link' then substr(highway,0,length(highway)-4) else highway end)), ('railway_' || (case when (railway='rail' and service in ('spur','siding','yard'))  then 'INT-spur-siding-yard' when railway in ('rail','tram','light_rail','funicular','narrow_gauge') then railway else null end))) as feature,tunnel\n       from planet_osm_roads\n       where highway is not null\n          or (railway is not null and railway!='preserved' and (service is null or service not in ('spur','siding','yard')))\n       order by z_order\n      ) as roads_low_zoom",
         "extent": "-20037508,-20037508,20037508,20037508",
         "key_field": "",
         "geometry_field": "way",
@@ -1459,7 +1459,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way, highway, name\n       from planet_osm_line\n       where highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified','road','service','pedestrian','raceway','living_street', 'construction','proposed') \n         and name is not null\n      ) as roads_text_name",
+        "table": "      (select way, case when substr(highway, length(highway)-3, 4) = 'link' then substr(highway,0,length(highway)-4) else highway end, name\n       from planet_osm_line\n       where highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified','road','service','pedestrian','raceway','living_street', 'construction','proposed') \n         and name is not null\n      ) as roads_text_name",
         "extent": "-20037508,-20037508,20037508,20037508",
         "key_field": "",
         "geometry_field": "way",
