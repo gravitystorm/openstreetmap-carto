@@ -294,7 +294,6 @@
 
   [feature = 'landuse_brownfield'],
   [feature = 'landuse_landfill'],
-  [feature = 'landuse_greenfield'],
   [feature = 'landuse_construction'] {
     [zoom >= 10] {
       polygon-fill: @construction;
@@ -386,14 +385,18 @@
 
   [feature = 'leisure_track'][zoom >= 10] {
     polygon-fill: @track;
-    line-width: 0.5;
-    line-color: saturate(darken(@track, 40%), 20%);
+    [zoom >= 15] {
+      line-width: 0.5;
+      line-color: saturate(darken(@track, 40%), 20%);
+    }
   }
 
   [feature = 'leisure_pitch'][zoom >= 10] {
     polygon-fill: @pitch;
-    line-width: 0.5;
-    line-color: saturate(darken(@pitch, 40%), 20%);
+    [zoom >= 15] {
+      line-width: 0.5;
+      line-color: saturate(darken(@pitch, 40%), 20%);
+    }
   }
 }
 
