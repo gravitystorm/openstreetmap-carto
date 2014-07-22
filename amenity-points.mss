@@ -299,8 +299,9 @@
   }
 
   [shop != ''][zoom >= 17]::shop {
-    point-file: url('symbols/shop.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/shop.p.16.png');
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [shop = 'supermarket'][zoom >= 16]::shop {
@@ -311,13 +312,15 @@
   }
 
   [shop = 'bakery'][zoom >= 17]::shop {
-    point-file: url('symbols/shop_bakery.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/shop_bakery.p.16.png');
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [shop = 'butcher'][zoom >= 17]::shop {
-    point-file: url('symbols/shop_butcher.png');
-    point-placement: interior;
+    marker-file: url('symbols/shop_butcher.png');
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [shop = 'clothes']::shop,
@@ -343,18 +346,21 @@
   }
 
   [shop = 'doityourself'][zoom >= 17]::shop {
-    point-file: url('symbols/shop_diy.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/shop_diy.p.16.png');
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [shop = 'florist'][zoom >= 17]::shop {
-    point-file: url('symbols/florist.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/florist.p.16.png');
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [shop = 'hairdresser'][zoom >= 17]::shop {
-    point-file: url('symbols/shop_hairdresser.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/shop_hairdresser.p.16.png');
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [shop = 'car'][zoom >= 17]::shop {
@@ -365,13 +371,15 @@
   }
 
   [shop = 'car_repair'][zoom >= 17]::shop {
-    point-file: url('symbols/shopping_car_repair.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/shopping_car_repair.p.16.png');
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [shop = 'bicycle'][zoom >= 17]::shop {
-    point-file: url('symbols/shopping_bicycle.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/shopping_bicycle.p.16.png');
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [leisure = 'playground'][zoom >= 17]::leisure {
