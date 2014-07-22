@@ -2424,17 +2424,23 @@
   [highway = 'track'] {
     [zoom >= 15] {
       text-name: "[name]";
+      text-fill: #222;
       text-size: 8;
+      text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.8); 
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
       text-face-name: @book-fonts;
+      text-dy: 5;
     }
     [zoom >= 16] {
       text-size: 9;
+      text-dy: 7;
     }
     [zoom >= 17] {
       text-size: 11;
+      text-dy: 9;
     }
   }
 
