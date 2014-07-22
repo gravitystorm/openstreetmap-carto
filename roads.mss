@@ -2134,7 +2134,7 @@
       shield-size: 10;
       shield-fill: #fff;
       shield-placement: line;
-      shield-file: url("symbols/shields/mot_shield[length].svg");
+      shield-file: url("symbols/shields/motorway_[length]x1.svg");
       shield-spacing: 750;
       shield-min-distance: 30;
       shield-face-name: @bold-fonts;
@@ -2147,7 +2147,7 @@
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/shields/tru_shield[length].svg");
+    shield-file: url("symbols/shields/trunk_[length]x1.svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
@@ -2159,7 +2159,7 @@
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/shields/pri_shield[length].svg");
+    shield-file: url("symbols/shields/primary_[length]x1.svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
@@ -2171,7 +2171,7 @@
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/shields/sec_shield[length].svg");
+    shield-file: url("symbols/shields/secondary_[length]x1.svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
@@ -2186,7 +2186,7 @@
       shield-size: 10;
       shield-fill: #fff;
       shield-placement: line;
-      shield-file: url("symbols/shields/mot_shield[length].svg");
+      shield-file: url("symbols/shields/motorway_[length]x1.svg");
       shield-spacing: 750;
       shield-min-distance: 30;
       shield-face-name: @bold-fonts;
@@ -2199,7 +2199,7 @@
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/shields/tru_shield[length].svg");
+    shield-file: url("symbols/shields/trunk_[length]x1.svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
@@ -2211,7 +2211,7 @@
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/shields/pri_shield[length].svg");
+    shield-file: url("symbols/shields/primary_[length]x1.svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
@@ -2223,7 +2223,7 @@
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/shields/sec_shield[length].svg");
+    shield-file: url("symbols/shields/secondary_[length]x1.svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
@@ -2235,7 +2235,7 @@
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/shields/ter_shield[length].svg");
+    shield-file: url("symbols/shields/tertiary_[length]x1.svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
