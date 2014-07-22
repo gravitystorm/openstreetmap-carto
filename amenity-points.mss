@@ -298,6 +298,11 @@
     point-placement: interior;
   }
 
+  [shop != ''][zoom >= 17]::shop {
+    point-file: url('symbols/shop.p.16.png');
+    point-placement: interior;
+  }
+
   [shop = 'supermarket'][zoom >= 16]::shop {
     marker-file: url('symbols/shop_supermarket.svg');
     marker-placement: interior;
@@ -1077,6 +1082,18 @@
     text-size: 8;
     text-dy: 10;
     text-fill: #da0092;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 12;
+    text-placement: interior;
+  }
+
+  /* Default shop text style */
+  [shop != ''][zoom >= 17]::shop {
+    text-name: [name];
+    text-size: 9;
+    text-dy: 9;
+    text-fill: #939;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: 12;
