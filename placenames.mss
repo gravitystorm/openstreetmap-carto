@@ -115,8 +115,8 @@
       text-halo-fill: fadeout(white, 30%);
       text-wrap-width: 20;
     }
-    [zoom>=7] {
-      text-min-distance: 10;
+    [zoom>=6] {
+      text-min-distance: 15;
 	}
     [zoom >= 9] {
       text-size: 9.5;
