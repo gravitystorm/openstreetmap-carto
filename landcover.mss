@@ -114,6 +114,29 @@
     }
   }
 
+  [feature = 'amenity_police'][zoom >= 10] {
+    polygon-pattern-file: url('symbols/grey1_hatch.png');
+    polygon-pattern-alignment: global;
+    line-color: #888;
+    line-width: 3;
+    line-opacity: 0.329;
+  }
+
+  [feature = 'amenity_prison'][zoom >= 10] {
+    polygon-pattern-file: url('symbols/grey_vertical_hatch.png');
+    polygon-pattern-alignment: global;
+    line-color: #888;
+    line-width: 3;
+    line-opacity: 0.329;
+  }
+
+  [feature = 'landuse_religious'] {
+    [zoom >= 10] {
+      polygon-fill: darken(@residential, 8%);
+      line-color: @residential-line;
+    }
+  }
+
   [feature = 'landuse_residential'][zoom >= 10] {
     polygon-fill: @residential;
     [zoom >= 16] {
