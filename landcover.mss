@@ -102,7 +102,6 @@
   }
 
   [feature = 'landuse_cemetery'],
-  [feature = 'landuse_grave_yard'],
   [feature = 'amenity_grave_yard'] {
     [zoom >= 10][zoom < 14] {
       polygon-fill: @cemetery;
