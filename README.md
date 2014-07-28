@@ -1,6 +1,6 @@
 # OpenStreetMap Carto
 
-An implemention of the standard OpenStreetMap mapnik style, in CartoCSS.
+The standard stylesheet on [OpenStreetMap.org](http://www.openstreetmap.org) An implemention of the standard OpenStreetMap mapnik style, in CartoCSS.
 
 These stylesheets can be used in your own cartography projects, and are designed to be easily
 customised. They work with [TileMill](http://www.mapbox.com/tilemill/) and also with the command-line [CartoCSS](https://github.com/mapbox/carto) processor.
@@ -10,13 +10,15 @@ are updated from each point release. They supersede the previous [XML-based styl
 
 # Setup
 
-You need OpenStreetMap data loaded into a PostGIS database (see below for [dependencies](https://github.com/gravitystorm/openstreetmap-carto#dependencies)). These stylesheets currently work only with the osm2pgsql defaults (i.e. database name is 'gis', table names are 'planet_osm_point' etc).
+You need OpenStreetMap data loaded into a PostGIS database (see below for [dependencies](https://github.com/gravitystorm/openstreetmap-carto#dependencies)). These stylesheets currently work only with the osm2pgsql defaults (i.e. database name is ``gis``, table names are ``planet_osm_point``, etc).
 
 It's probably easiest to grab an PBF of OSM data from [metro.teczno.com](http://metro.teczno.com/) or [geofabrik](http://download.geofabrik.de/). Once you've set up your PostGIS database, import with osm2pgsql:
 
 ```
 osm2pgsql -d gis ~/path/to/data.osm.pbf --style openstreetmap-carto.style
 ```
+
+You can find a more detailed guide to setting up a database and loading data with osm2pgsql at [switch2osm.org](http://switch2osm.org/loading-osm-data/)
 
 Additionally you need some shapefiles.
 
@@ -25,7 +27,7 @@ Additionally you need some shapefiles.
 To download the shapefiles you can run the following script from this directory. No further steps should be needed as the data has been processed and placed in the requisite directories.
 
 ```
-sh get-shapefiles.sh
+./get-shapefiles.sh
 ```
 
 ## Manual download
@@ -124,44 +126,6 @@ much more suitable for further development, and/or forking for third-parties to 
 There are over [400 open requests][trac] on trac, some that have been open for years. These need
 reviewing and dividing into obvious fixes, or additional new features that need some cartographic
 judgement. The work done already in v1.0 and v2.0 will make it much easier to process these.
-
-# CartoCSS Style Guidelines
-
-* Always specify zoom levels as either >= or < . Don't use = or =< or >
-* Open curly braces on the same line, and close on an empty line.
-* One space before and after = etc
-* Two space indents. No tabs.
-* space after : but not before
-* Dashes, not underscores, in layer names
-* Name SQL subqueries after the layer name (but use underscores)
-* Avoid restating defaults, e.g. don't add `point-allow-overlap = false`
-* Avoid repeating the layer name for layers with mutiple attachments, i.e., prefer
-
-```
-#layer {
-  ::outline {
-    line-width: 6;
-    line-color: black;
-  }
-  ::inline {
-    line-width: 2;
-    line-color: white;
-  }
-}
-```
-instead of
-
-```
-#layer::outline {
-    line-width: 6;
-    line-color: black;
-}
-#layer::inline {
-    line-width: 2;
-    line-color: white;
-}
-```
-* Order the selectors in a style-sheet in rough order of importance (i.e., highway=primary, then highway=secondary) and beyond that, add layers that are rendered later (i.e., higher) lower in the file.
 
 [trac]: https://trac.openstreetmap.org/query?component=mapnik&status=!closed&order=changetime&desc=1&max=500
 [cleverness]: https://github.com/openstreetmap/mapnik-stylesheets/blob/master/inc/settings.xml.inc.template#L16

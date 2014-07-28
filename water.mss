@@ -69,11 +69,13 @@
   [waterway='stream'],
   [waterway='ditch'],
   [waterway='drain'] {
-    [zoom >= 13] {
-      line-width: 1.5;
-      line-color: white;
-      [waterway='stream'][zoom >= 15] {
-        line-width: 2.5;
+    [int_tunnel = 'no'] {
+      [zoom >= 13] {
+        line-width: 1.5;
+        line-color: white;
+        [waterway='stream'][zoom >= 15] {
+          line-width: 2.5;
+        }
       }
     }
   }
@@ -105,103 +107,47 @@
     [zoom >= 16] { line-width: 2; }
   }
 
+  [waterway = 'canal'][zoom >= 12],
   [waterway = 'river'][zoom >= 12] {
     line-color: @water-color;
     line-width: 2;
+    [zoom >= 13] { line-width: 3; }
+    [zoom >= 14] { line-width: 5; }
+    [zoom >= 15] { line-width: 6; }
+    [zoom >= 17] { line-width: 10; }
+    [zoom >= 18] { line-width: 12; }
     line-cap: round;
     line-join: round;
-    [zoom >= 13] {
-      line-width: 3;
-    }
-    [zoom >= 14] {
-      line-width: 5;
-    }
-    [zoom >= 15] {
-      line-width: 6;
-    }
-    [zoom >= 17] {
-      line-width: 10;
-    }
-    [zoom >= 18] {
-      line-width: 12;
-    }
-    [tunnel = 'yes'] {
-      [zoom >= 14] {
-        a/line-width: 6;
-        a/line-dasharray: 4,2;
-        a/line-color: @water-color;
-        b/line-width: 4;
-        b/line-color: white;
-      }
-      [zoom >= 15] {
-        a/line-width: 7;
-      }
-      [zoom >= 17] {
-        a/line-width: 11;
-        b/line-width: 7;
-      }
-      [zoom >= 18] {
-        a/line-width: 13;
-        b/line-width: 9;
-      }
-    }
-  }
-
-  [waterway = 'canal'][zoom >= 12][zoom < 14] {
-    line-color: @water-color;
-    line-width: 3;
-    line-cap: round;
-    line-join: round;
-    [zoom >= 13] {
-      line-width: 4;
+    [int_tunnel = 'yes'] {
+      line-dasharray: 4,2;
+      line-cap: butt;
+      line-join: miter;
+      a/line-color: #f3f7f7;
+      a/line-width: 1;
+      [zoom >= 14] { a/line-width: 2; }
+      [zoom >= 15] { a/line-width: 3; }
+      [zoom >= 17] { a/line-width: 7; }
+      [zoom >= 18] { a/line-width: 8; }
     }
   }
 
   [waterway = 'stream'],
   [waterway = 'ditch'],
   [waterway = 'drain'] {
-    [zoom >= 13][zoom < 15] {
+    [zoom >= 13] {
       line-width: 1;
       line-color: @water-color;
-    }
-  }
-
-  [waterway = 'stream'][zoom >= 15] {
-    line-width: 2;
-    line-color: @water-color;
-    [tunnel = 'yes'] {
-      line-dasharray: 4,2;
-      line-width: 2.4;
-      a/line-width: 1.2;
-      a/line-color: #f3f7f7;
-    }
-  }
-
-  [waterway = 'drain'],
-  [waterway = 'ditch'] {
-    [zoom >= 15] {
-      line-width: 1;
-      line-color: @water-color;
-      [tunnel = 'yes'] {
+      [waterway = 'stream'][zoom >= 15] {
         line-width: 2;
+      }
+      [int_tunnel = 'yes'][zoom >= 15] {
+        line-width: 2.5;
+        [waterway = 'stream'] { line-width: 3.5; }
         line-dasharray: 4,2;
         a/line-width: 1;
+        [waterway = 'stream'] { a/line-width: 2; }
         a/line-color: #f3f7f7;
       }
-    }
-  }
-
-  [waterway = 'canal'][zoom >= 14] {
-    line-width: 7;
-    line-color: @water-color;
-    line-join: round;
-    line-cap: round;
-    [zoom >= 17] { line-width: 11; }
-    [tunnel = 'yes'] {
-      line-dasharray: 4,2;
-      b/line-width: 3;
-      b/line-color: white;
-      [zoom >= 17] { line-width: 7; }
     }
   }
 
@@ -249,7 +195,7 @@
     text-size: 10;
     text-halo-radius: 1;
     [zoom >= 14] { text-size: 12; }
-    [tunnel = 'yes'] { text-min-distance: 200; }
+    [int_tunnel = 'yes'] { text-min-distance: 200; }
   }
 
   [waterway = 'canal'][zoom >= 13][zoom < 14] {

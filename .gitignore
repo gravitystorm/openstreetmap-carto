@@ -2,3 +2,4 @@
 layers/
 data/
 *.xml
+node_modules/
