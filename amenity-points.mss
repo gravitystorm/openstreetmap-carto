@@ -1100,7 +1100,7 @@
   [shop != ''][zoom >= 17]::shop {
     text-name: [name];
     text-size: 9;
-    text-dy: 9;
+    text-dy: 10;
     text-fill: #939;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
