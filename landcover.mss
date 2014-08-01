@@ -70,7 +70,7 @@
   [feature = 'tourism_camp_site'],
   [feature = 'tourism_caravan_site'],
   [feature = 'tourism_picnic_site'] {
-    [zoom >= 13] {
+    [zoom >= 10] {
       polygon-fill: @campsite;
       line-color: saturate(darken(@campsite, 60%), 30%);
       line-width: 0.3;
@@ -81,7 +81,7 @@
     polygon-fill: @attraction;
   }
 
-  [feature = 'landuse_quarry'][zoom >= 11] {
+  [feature = 'landuse_quarry'][zoom >= 10] {
     polygon-pattern-file: url('symbols/quarry2.png');
     line-width: 0.5;
     line-color: grey;
@@ -124,7 +124,7 @@
     }
   }
 
-  [feature = 'landuse_garages'][zoom >= 12] {
+  [feature = 'landuse_garages'][zoom >= 13] {
     polygon-fill: @garages;
   }
 
@@ -201,7 +201,7 @@
     }
   }
 
-  [feature = 'landuse_farmyard'][zoom >= 9] {
+  [feature = 'landuse_farmyard'][zoom >= 10] {
     polygon-fill: @farmyard;
       [zoom >= 16] {
         line-width: 0.5;
@@ -214,7 +214,7 @@
 
   [feature = 'landuse_farm'],
   [feature = 'landuse_farmland'] {
-    [zoom >= 9] {
+    [zoom >= 10] {
       polygon-fill: @farmland;
       [zoom >= 16] {
         line-width: .5;
@@ -230,7 +230,7 @@
     }
   }
 
-  [feature = 'landuse_village_green'][zoom >= 11] {
+  [feature = 'landuse_village_green'][zoom >= 10] {
     polygon-fill: @grass;
   }
 
@@ -301,7 +301,7 @@
     }
   }
 
-  [feature = 'natural_desert'][zoom >= 8] {
+  [feature = 'natural_desert'][zoom >= 10] {
     polygon-fill: @desert;
   }
 
@@ -348,11 +348,11 @@
     }
   }
 
-  [feature = 'aeroway_apron'][zoom >= 12] {
+  [feature = 'aeroway_apron'][zoom >= 10] {
     polygon-fill: @apron;
   }
 
-  [feature = 'aeroway_aerodrome'][zoom >= 12] {
+  [feature = 'aeroway_aerodrome'][zoom >= 10] {
     polygon-fill: @aerodrome;
     line-width: 0.2;
     line-color: saturate(darken(@aerodrome, 40%), 20%);
@@ -364,7 +364,7 @@
 
   [feature = 'highway_services'],
   [feature = 'highway_rest_area'] {
-    [zoom >= 14] {
+    [zoom >= 10] {
       polygon-fill: @rest_area;
     }
   }
