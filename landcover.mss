@@ -4,7 +4,7 @@
 @grass: #cfeca8; // also meadow, common, garden, village_green, conservation
 @golf_course: #b5e3b5;
 @natural: #c6e4b4; // also grassland
-@park: #b6fdb6; // also recreation_ground
+@park: #cdf7c9; // also recreation_ground
 @wood: #aed1a0;
 @vineyard: #abdf96;
 
@@ -34,18 +34,18 @@
 
 // --- Other ----
 
-@aerodrome: #ccc;
+@aerodrome: #e9e7e2;
 @allotments: #e5c7ab;
 @apron: #e9d1ff;
 @attraction: #f2caea;
 @barracks: #ff8f8f;
-@campsite: #ccff99; // also caravan_site, picnic_site
+@campsite: #def6c0; // also caravan_site, picnic_site
 @cemetery: #aacbaf; // also grave_yard
-@construction: #9d9d6c;
+@construction: #b6b592;
 @danger_area: pink;
 @desert: #e3b57a;
 @field: @farmland;
-@garages: #996;
+@garages: #dfddce;
 @heath: #d6d99f;
 @parking: #f7efb7;
 @playground: #ccfff1;
