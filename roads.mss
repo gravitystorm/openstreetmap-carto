@@ -464,7 +464,7 @@
     [feature = 'railway_subway'] {
       .bridges-casing {
         [zoom >= 14] {
-          line-width: 5;
+          line-width: 5.5;
           line-color: black;
           line-join: round;
         }
