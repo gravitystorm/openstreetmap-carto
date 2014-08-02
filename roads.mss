@@ -1759,20 +1759,28 @@
   }
 
   [junction = 'yes'],
-  [junction = 'roundabout'] {
-    [zoom >= 13] {
-      name/text-name: "[name]";
-      name/text-size: 9;
-      name/text-fill: #6666ff;
-      name/text-dy: -9;
-      name/text-face-name: @oblique-fonts;
-      name/text-halo-radius: 1;
-      name/text-wrap-character: ";";
-      name/text-wrap-width: 2;
-      name/text-min-distance: 2;
+  [highway = 'traffic_signals'] {
+    [zoom >= 14] {
+      text-name: "[name]";
+      text-size: 8;
+      text-fill: black;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: 30;
+      text-min-distance: 2;
+      [zoom >= 14] {
+        text-size: 9;
+      }
       [zoom >= 15] {
-        name/text-size: 11;
-        name/text-dy: -10;
+        text-size: 10;
+      }
+      [zoom >= 17] {
+        text-size: 11;
+        /* Offset name on traffic_signals on zoomlevels where they are displayed
+        in order not to hide the icon */
+        [highway = 'traffic_signals'] {
+          text-dy: 11;
+        }
       }
     }
   }

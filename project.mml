@@ -1390,7 +1390,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "     (select way,highway,junction,ref,name\n      from planet_osm_point\n      where highway='motorway_junction' or NOT junction IS NULL\n     ) as junctions",
+        "table": "     (select way,highway,junction,ref,name\n      from planet_osm_point\n      where highway='motorway_junction' or highway = 'traffic_signals' or junction = 'yes'\n     ) as junctions",
         "extent": "-20037508,-20037508,20037508,20037508",
         "key_field": "",
         "geometry_field": "way",
