@@ -2295,6 +2295,9 @@
     [zoom >= 15] {
       text-size: 10;
     }
+    [zoom >= 17] {
+      text-size: 11;
+    }
   }
   [highway = 'secondary'],
   [highway = 'secondary_link'] {
@@ -2314,13 +2317,16 @@
     [zoom >= 15] {
       text-size: 10;
     }
+    [zoom >= 17] {
+      text-size: 11;
+    }
   }
   [highway = 'tertiary'],
   [highway = 'tertiary_link'] {
-    [zoom >= 15] {
+    [zoom >= 14] {
       text-name: "[name]";
       text-size: 9;
-      text-fill: #000;
+      text-fill: black;
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
@@ -2336,14 +2342,14 @@
     [zoom >= 13] {
       text-name: "[name]";
       text-size: 9;
-      text-fill: #000;
+      text-fill: black;
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
-      text-face-name: @book-fonts;
       text-halo-radius: 1;
+      text-face-name: @book-fonts;
     }
-    [zoom >= 16] {
+    [zoom >= 17] {
       text-size: 11;
     }
   }
@@ -2353,10 +2359,11 @@
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 8;
+      text-fill: black;
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
-      text-halo-radius: 1;
+      text-halo-radius: 0;
       text-face-name: @book-fonts;
     }
     [zoom >= 16] {
@@ -2373,9 +2380,11 @@
     [zoom >= 16] {
       text-name: "[name]";
       text-size: 9;
+      text-fill: black;
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
+      text-halo-radius: 0;
       text-face-name: @book-fonts;
     }
     [zoom >= 17] {
@@ -2388,9 +2397,11 @@
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 8;
+      text-fill: black;
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
+      text-halo-radius: 0;
       text-face-name: @book-fonts;
     }
     [zoom >= 16] {
@@ -2444,6 +2455,7 @@
     }
   }
 
+  [highway = 'bridleway'],
   [highway = 'footway'],
   [highway = 'cycleway'],
   [highway = 'path'],
