@@ -7,7 +7,7 @@
 @secondary-fill: #f9d6aa;
 @tertiary-fill: #f8f8ba;
 @residential-fill: #ffffff;
-@service-fill: #ffffff;
+@service-fill: @residential-fill;
 @living-street-fill: #ccc;
 @pedestrian-fill: #ededed;
 @road-fill: #ddd;
@@ -29,7 +29,7 @@
 @secondary-casing: #cca16a;
 @tertiary-casing: #c6c68a;
 @residential-casing: #bbb;
-@service-casing: #999;
+@service-casing: @residential-casing;
 @living-street-casing: @default-casing;
 @living-street-tunnel-casing: #bbb;
 @pedestrian-casing: grey;
