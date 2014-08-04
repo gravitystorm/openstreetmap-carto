@@ -1259,7 +1259,7 @@
           .roads-fill { background/line-opacity: 0.4; }
         }
         line/line-color: @steps-fill;
-        line/line-dasharray: 1,3;
+        line/line-dasharray: 2,1;
         [zoom >= 15] { line/line-width:  @steps-width-z15; }
         line/line-width: @steps-width-z13;
         [zoom >= 15] { line/line-width:  @steps-width-z15; }
