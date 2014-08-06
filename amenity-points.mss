@@ -582,7 +582,14 @@
   [natural = 'lake']::natural,
   [landuse = 'reservoir']::landuse,
   [landuse = 'basin']::landuse {
-    [zoom >= 15] {
+    [way_area >= 40000000][zoom >= 10],
+    [way_area >= 10000000][zoom >= 11],
+    [way_area >= 2400000][zoom >= 12],
+    [way_area >= 600000][zoom >= 13],
+    [way_area >= 150000][zoom >= 14],
+    [way_area >= 80000][zoom >= 15],
+    [way_area >= 20000][zoom >= 16],
+    [zoom >= 17] {
       text-name: "[name]";
       text-size: 12;
       text-fill: @water-text;
