@@ -4,7 +4,7 @@
 @grass: #cfeca8; // also meadow, common, garden, village_green, conservation
 @golf_course: #b5e3b5;
 @natural: #c6e4b4; // also grassland
-@park: #b6fdb6; // also recreation_ground
+@park: #cdf7c9; // also recreation_ground
 @wood: #aed1a0;
 @vineyard: #abdf96;
 
@@ -34,18 +34,18 @@
 
 // --- Other ----
 
-@aerodrome: #ccc;
+@aerodrome: #e9e7e2;
 @allotments: #e5c7ab;
 @apron: #e9d1ff;
 @attraction: #f2caea;
 @barracks: #ff8f8f;
-@campsite: #ccff99; // also caravan_site, picnic_site
+@campsite: #def6c0; // also caravan_site, picnic_site
 @cemetery: #aacbaf; // also grave_yard
-@construction: #9d9d6c;
+@construction: #b6b592;
 @danger_area: pink;
 @desert: #e3b57a;
-@field: #660;
-@garages: #996;
+@field: @farmland;
+@garages: #dfddce;
 @heath: #d6d99f;
 @parking: #f7efb7;
 @playground: #ccfff1;
@@ -72,7 +72,6 @@
   [feature = 'tourism_picnic_site'] {
     [zoom >= 13] {
       polygon-fill: @campsite;
-      polygon-opacity: 0.5;
       line-color: saturate(darken(@campsite, 60%), 30%);
       line-width: 0.3;
     }
@@ -127,7 +126,6 @@
 
   [feature = 'landuse_garages'][zoom >= 12] {
     polygon-fill: @garages;
-    polygon-opacity: 0.2;
   }
 
   [feature = 'military_barracks'][zoom >= 10] {
@@ -137,7 +135,6 @@
   [feature = 'landuse_field'] {
     [zoom >= 10] {
       polygon-fill: @field;
-      polygon-opacity: 0.2;
       [zoom >= 14] {
         line-width: 0.3;
         line-opacity: 0.4;
@@ -167,7 +164,6 @@
   [feature = 'leisure_recreation_ground'] {
     [zoom >= 10] {
       polygon-fill: @park;
-      polygon-opacity: 0.6;
     }
   }
 
@@ -296,7 +292,6 @@
   [feature = 'landuse_construction'] {
     [zoom >= 10] {
       polygon-fill: @construction;
-      polygon-opacity: 0.7;
     }
   }
 
@@ -359,7 +354,6 @@
 
   [feature = 'aeroway_aerodrome'][zoom >= 12] {
     polygon-fill: @aerodrome;
-    polygon-opacity: 0.2;
     line-width: 0.2;
     line-color: saturate(darken(@aerodrome, 40%), 20%);
   }
