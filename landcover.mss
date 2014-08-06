@@ -201,6 +201,16 @@
     }
   }
 
+  [feature = 'landuse_plant_nursery'] {
+    [zoom >= 8][zoom < 14] {
+      polygon-fill: @forest;
+    }
+    [zoom >= 14] {
+      polygon-pattern-file: url('symbols/plant_nursery.png');
+    }
+  }
+
+
   [feature = 'landuse_farmyard'][zoom >= 9] {
     polygon-fill: @farmyard;
       [zoom >= 16] {
