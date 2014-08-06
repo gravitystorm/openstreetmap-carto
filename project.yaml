@@ -431,7 +431,7 @@ Layer:
                 ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
             WHERE (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes')
             )) AS features 
-          ORDER BY layernotnull, prio
+          ORDER BY layernotnull, prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end
         ) AS tunnels
     properties: 
       group-by: "layernotnull"
@@ -828,7 +828,7 @@ Layer:
                 AND (covered IS NULL OR NOT covered = 'yes') 
                 AND (bridge IS NULL OR NOT bridge IN ('yes', 'viaduct'))
             )
-          ) AS features ORDER BY prio
+          ) AS features ORDER BY prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end
         ) AS roads_fill
     advanced: {}
   - id: "turning-circle-fill"
@@ -993,7 +993,7 @@ Layer:
                 ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
             WHERE bridge IN ('yes', 'viaduct')
             )) AS features 
-          ORDER BY layernotnull, prio
+          ORDER BY layernotnull, prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end
         ) AS bridges
     properties: 
       group-by: "layernotnull"
