@@ -712,47 +712,47 @@
      * https://github.com/mapbox/carto/issues/235
      * https://github.com/mapbox/carto/issues/237
      */
-   [feature = 'highway_proposed']{
+    [feature = 'highway_proposed'] {
       [zoom >= 12] {
         line-width: 0;
         a/line-color: @residential-construction;
-	a/line-offset: @residential-width-z13 / 2;
+        a/line-offset: @residential-width-z13 / 2;
         a/line-width: 0.2;
-	a/line-dasharray: 6,4;
+        a/line-dasharray: 6,4;
         b/line-color: @residential-construction;
-	b/line-offset: 0 - @residential-width-z13 / 2;
+        b/line-offset: 0 - @residential-width-z13 / 2;
         b/line-width: 0.2;
-	b/line-dasharray: 6,4;
+        b/line-dasharray: 6,4;
         [zoom >= 13] {
-	  a/line-offset: @residential-width-z13 / 2 - @casing-width-z13;
+          a/line-offset: @residential-width-z13 / 2 - @casing-width-z13;
           a/line-width: @casing-width-z13;
-	  b/line-offset: 0 - @residential-width-z13 / 2 + @casing-width-z13;
+          b/line-offset: 0 - @residential-width-z13 / 2 + @casing-width-z13;
           b/line-width: @casing-width-z13;
         }
         [zoom >= 14] {
-	  a/line-offset: @residential-width-z14 / 2 - @casing-width-z14;
+          a/line-offset: @residential-width-z14 / 2 - @casing-width-z14;
           a/line-width: @casing-width-z14;
-	  b/line-offset: 0 - @residential-width-z14 / 2 + @casing-width-z14;
+          b/line-offset: 0 - @residential-width-z14 / 2 + @casing-width-z14;
           b/line-width: @casing-width-z14;
         }
         [zoom >= 15] {
-	  a/line-offset: @residential-width-z15 / 2 - @casing-width-z15;
+          a/line-offset: @residential-width-z15 / 2 - @casing-width-z15;
           a/line-width: @casing-width-z15;
-	  b/line-offset: 0 - @residential-width-z15 / 2 + @casing-width-z15;
+          b/line-offset: 0 - @residential-width-z15 / 2 + @casing-width-z15;
           b/line-width: @casing-width-z15;
         }
         [zoom >= 16] {
-	  a/line-offset: @residential-width-z16 / 2 - @casing-width-z16;
+          a/line-offset: @residential-width-z16 / 2 - @casing-width-z16;
           a/line-width: @casing-width-z16;
-	  a/line-dasharray: 8,6;
-	  b/line-offset: 0 - @residential-width-z16 / 2 + @casing-width-z16;
+          a/line-dasharray: 8,6;
+          b/line-offset: 0 - @residential-width-z16 / 2 + @casing-width-z16;
           b/line-width: @casing-width-z16;
-	  b/line-dasharray: 8,6;
+          b/line-dasharray: 8,6;
         }
         [zoom >= 17] {
-	  a/line-offset: @residential-width-z17 / 2 - @casing-width-z17;
+          a/line-offset: @residential-width-z17 / 2 - @casing-width-z17;
           a/line-width: @casing-width-z17;
-	  b/line-offset: 0 - @residential-width-z17 / 2 + @casing-width-z17;
+          b/line-offset: 0 - @residential-width-z17 / 2 + @casing-width-z17;
           b/line-width: @casing-width-z17;
         }
       }
