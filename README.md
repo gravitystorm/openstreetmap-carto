@@ -121,7 +121,7 @@ much more suitable for further development, and/or forking for third-parties to 
 
 ## Tackle the backlog (v3.x)
 
-There are over [400 open requests][trac] on trac, some that have been open for years. These need
+There are over [300 open requests][issues], some that have been open for years. These need
 reviewing and dividing into obvious fixes, or additional new features that need some cartographic
 judgement. The work done already in v1.0 and v2.0 will make it much easier to process these.
 
@@ -163,5 +163,5 @@ instead of
 ```
 * Order the selectors in a style-sheet in rough order of importance (i.e., highway=primary, then highway=secondary) and beyond that, add layers that are rendered later (i.e., higher) lower in the file.
 
-[trac]: https://trac.openstreetmap.org/query?component=mapnik&status=!closed&order=changetime&desc=1&max=500
+[issues]: https://github.com/gravitystorm/openstreetmap-carto/issues
 [cleverness]: https://github.com/openstreetmap/mapnik-stylesheets/blob/master/inc/settings.xml.inc.template#L16
