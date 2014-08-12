@@ -14,7 +14,6 @@
   }
 
   [waterway = 'dock'],
-  [waterway = 'mill_pond'],
   [waterway = 'canal'] {
     [zoom >= 9]::waterway {
       polygon-fill: @water-color;
@@ -28,8 +27,7 @@
   [natural = 'lake']::natural,
   [natural = 'water']::natural,
   [landuse = 'reservoir']::landuse,
-  [waterway = 'riverbank']::waterway,
-  [landuse = 'water']::water {
+  [waterway = 'riverbank']::waterway {
     [zoom >= 6] {
       polygon-fill: @water-color;
     }
