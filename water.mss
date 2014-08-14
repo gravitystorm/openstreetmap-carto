@@ -20,6 +20,9 @@
       [way_pixels >= 4] {
         polygon-gamma: 0.75;
       }
+      [way_pixels >= 64] {
+        polygon-gamma: 0.6;
+      }
     }
   }
 
@@ -27,6 +30,9 @@
     polygon-fill: @water-color;
     [way_pixels >= 4] {
       polygon-gamma: 0.75;
+    }
+    [way_pixels >= 64] {
+      polygon-gamma: 0.6;
     }
   }
 
@@ -38,6 +44,9 @@
       polygon-fill: @water-color;
       [way_pixels >= 4] {
         polygon-gamma: 0.75;
+      }
+      [way_pixels >= 64] {
+        polygon-gamma: 0.6;
       }
     }
   }
