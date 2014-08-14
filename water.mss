@@ -17,11 +17,17 @@
   [waterway = 'canal'] {
     [zoom >= 9]::waterway {
       polygon-fill: @water-color;
+      [way_pixels >= 4] {
+        polygon-gamma: 0.75;
+      }
     }
   }
 
   [landuse = 'basin'][zoom >= 7]::landuse {
     polygon-fill: @water-color;
+    [way_pixels >= 4] {
+      polygon-gamma: 0.75;
+    }
   }
 
   [natural = 'lake']::natural,
@@ -30,6 +36,9 @@
   [waterway = 'riverbank']::waterway {
     [zoom >= 6] {
       polygon-fill: @water-color;
+      [way_pixels >= 4] {
+        polygon-gamma: 0.75;
+      }
     }
   }
 
