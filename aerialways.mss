@@ -1,9 +1,14 @@
 #aerialways {
   [aerialway = 'cable_car'],
-  [aerialway = 'gondola'],
+  [aerialway = 'gondola'] {
+    [zoom >= 12] {
+      line-pattern-file: url('symbols/aerialway_cable_car.png');
+    }
+  }
+
   [aerialway = 'goods'] {
     [zoom >= 12] {
-      line-pattern-file: url('symbols/cable_car.png');
+      line-pattern-file: url('symbols/aerialway_goods.png');
     }
   }
 
