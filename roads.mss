@@ -437,17 +437,6 @@
       }
     }
 
-    [feature = 'highway_raceway'] {
-      [zoom >= 12] {
-        line-color: pink;
-        line-width: 1.2;
-        line-join: round;
-        line-cap: round;
-      }
-      [zoom >= 13] { line-width: 4; }
-      [zoom >= 15] { line-width: 7; }
-    }
-
     [feature = 'railway_tram'] {
       .bridges-casing {
         [zoom >= 13] {
@@ -1035,6 +1024,17 @@
         line-join: round;
         line-cap: round;
       }
+    }
+
+    [feature = 'highway_raceway'] {
+      [zoom >= 12] {
+        line-color: pink;
+        line-width: 1.2;
+        line-join: round;
+        line-cap: round;
+      }
+      [zoom >= 13] { line-width: 4; }
+      [zoom >= 15] { line-width: 7; }
     }
 
     [feature = 'highway_platform'] {
