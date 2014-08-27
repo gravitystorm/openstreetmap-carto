@@ -36,7 +36,7 @@ You can also download them manually at the following paths:
 
 * `simplified-land-polygons.shp` [download](http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip)
 * `land-polygon.shp` [download](http://data.openstreetmapdata.com/land-polygons-split-3857.zip)
-* `builtup_area.shp` [download](http://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz) 
+* `builtup_area.shp` [download](http://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz)
 * `ne_110m_admin_0_boundary_lines_land.shp` [download](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip)
 * `ne_10m_populated_places_fixed.shp` [download](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_populated_places.zip) (and see below)
 
@@ -123,9 +123,9 @@ much more suitable for further development, and/or forking for third-parties to 
 
 ## Tackle the backlog (v3.x)
 
-There are over [400 open requests][trac] on trac, some that have been open for years. These need
+There are over [300 open requests][issues], some that have been open for years. These need
 reviewing and dividing into obvious fixes, or additional new features that need some cartographic
 judgement. The work done already in v1.0 and v2.0 will make it much easier to process these.
 
-[trac]: https://trac.openstreetmap.org/query?component=mapnik&status=!closed&order=changetime&desc=1&max=500
+[issues]: https://github.com/gravitystorm/openstreetmap-carto/issues
 [cleverness]: https://github.com/openstreetmap/mapnik-stylesheets/blob/master/inc/settings.xml.inc.template#L16
