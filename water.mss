@@ -14,27 +14,40 @@
   }
 
   [waterway = 'dock'],
-  [waterway = 'mill_pond'],
   [waterway = 'canal'] {
     [zoom >= 9]::waterway {
-      polygon-gamma: 0.75;
       polygon-fill: @water-color;
+      [way_pixels >= 4] {
+        polygon-gamma: 0.75;
+      }
+      [way_pixels >= 64] {
+        polygon-gamma: 0.6;
+      }
     }
   }
 
   [landuse = 'basin'][zoom >= 7]::landuse {
-    polygon-gamma: 0.75;
     polygon-fill: @water-color;
+    [way_pixels >= 4] {
+      polygon-gamma: 0.75;
+    }
+    [way_pixels >= 64] {
+      polygon-gamma: 0.6;
+    }
   }
 
   [natural = 'lake']::natural,
   [natural = 'water']::natural,
   [landuse = 'reservoir']::landuse,
-  [waterway = 'riverbank']::waterway,
-  [landuse = 'water']::water {
+  [waterway = 'riverbank']::waterway {
     [zoom >= 6] {
       polygon-fill: @water-color;
-      polygon-gamma: 0.75;
+      [way_pixels >= 4] {
+        polygon-gamma: 0.75;
+      }
+      [way_pixels >= 64] {
+        polygon-gamma: 0.6;
+      }
     }
   }
 
