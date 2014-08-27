@@ -2195,7 +2195,7 @@
 }
 
 #roads-area-text-name {
-  [highway = 'pedestrian'] {
+  [way_pixels > 3000] {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 8;
