@@ -86,12 +86,12 @@
     point-placement: interior;
   }
 
-  [feature = 'amenity_cinema'][zoom >= 17] {
+  [feature = 'amenity_cinema'][zoom >= 16] {
     point-file: url('symbols/cinema.p.24.png');
     point-placement: interior;
   }
 
-  [feature = 'amenity_fire_station'][zoom >= 17] {
+  [feature = 'amenity_fire_station'][zoom >= 16] {
     point-file: url('symbols/firestation.p.16.png');
     point-placement: interior;
   }
@@ -126,7 +126,7 @@
     point-placement: interior;
   }
 
-  [feature = 'tourism_information'][zoom >= 16] {
+  [feature = 'tourism_information'][zoom >= 17] {
     point-file: url('symbols/information.p.16.png');
     point-placement: interior;
   }
@@ -136,12 +136,12 @@
     point-placement: interior;
   }
 
-  [feature = 'amenity_library'][zoom >= 17] {
+  [feature = 'amenity_library'][zoom >= 16] {
     point-file: url('symbols/library.p.20.png');
     point-placement: interior;
   }
 
-  [feature = 'amenity_courthouse'][zoom > 17] {
+  [feature = 'amenity_courthouse'][zoom > 16] {
     point-file: url('symbols/amenity_court.p.20.png');
     point-placement: interior;
   }
@@ -159,12 +159,12 @@
     point-placement: interior;
   }
 
-  [feature = 'tourism_museum'][zoom >= 17] {
+  [feature = 'tourism_museum'][zoom >= 16] {
     point-file: url('symbols/museum.p.16.png');
     point-placement: interior;
   }
 
-  [feature = 'amenity_parking'][zoom >= 15] {
+  [feature = 'amenity_parking'][zoom >= 16] {
     marker-file: url('symbols/parking.svg');
     marker-placement: interior;
     marker-clip: false;
@@ -208,7 +208,7 @@
     }
   }
 
-  [feature = 'amenity_police'][zoom >= 17] {
+  [feature = 'amenity_police'][zoom >= 16] {
     point-file: url('symbols/police.p.16.png');
     point-placement: interior;
   }
@@ -223,12 +223,12 @@
     point-placement: interior;
   }
 
-  [feature = 'amenity_pub'][zoom >= 16] {
+  [feature = 'amenity_pub'][zoom >= 17] {
     point-file: url('symbols/pub.p.16.png');
     point-placement: interior;
   }
 
-  [feature = 'amenity_biergarten'][zoom >= 16] {
+  [feature = 'amenity_biergarten'][zoom >= 17] {
     point-file: url('symbols/biergarten.p.16.png');
     point-placement: interior;
   }
@@ -258,7 +258,7 @@
     point-placement: interior;
   }
 
-  [feature = 'amenity_theatre'][zoom >= 17] {
+  [feature = 'amenity_theatre'][zoom >= 16] {
     point-file: url('symbols/theatre.p.20.png');
     point-placement: interior;
   }
