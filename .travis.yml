@@ -19,4 +19,4 @@ install:
   - touch data/land-polygons-split-3857/land_polygons.shp
 script:
   - jsonlint project.mml
-  - ./node_modules/carto/bin/carto project.mml | xmllint --noout -
+  - ./node_modules/carto/bin/carto project.mml | xmllint - | wc -l
