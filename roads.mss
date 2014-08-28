@@ -707,19 +707,24 @@
         line-width: 2;
         line-color: #9cc;
 
-        [construction = 'motorway'] {
+        [construction = 'motorway'],
+        [construction = 'motorway_link'] {
           line-color: @motorway-fill;
         }
-        [construction = 'trunk'] {
+        [construction = 'trunk'],
+        [construction = 'trunk_link'] {
           line-color: @trunk-fill;
         }
-        [construction = 'primary'] {
+        [construction = 'primary'],
+        [construction = 'primary_link'] {
           line-color: @primary-fill;
         }
-        [construction = 'secondary'] {
+        [construction = 'secondary'],
+        [construction = 'secondary_link'] {
           line-color: @secondary-fill;
         }
-        [construction = 'tertiary'] {
+        [construction = 'tertiary'],
+        [construction = 'tertiary_link'] {
           line-color: @tertiary-fill;
           [zoom < 13] {
             line-width: 0;
