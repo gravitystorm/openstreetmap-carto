@@ -612,6 +612,18 @@
     }
   }
 
+  [natural = 'beach']::natural {
+    [zoom >= 16] {
+      text-name: "[name]";
+      text-size: 12;
+      text-fill: darken(@sand, 40%);
+      text-face-name: @oblique-fonts;
+      text-halo-fill: lighten(@sand, 20%);
+      text-halo-radius: 1;
+      text-wrap-width: 10;
+    }
+  }
+
   [leisure = 'sports_centre']::leisure,
   [leisure = 'stadium']::leisure,
   [leisure = 'track']::leisure,
