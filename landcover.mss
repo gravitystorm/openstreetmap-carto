@@ -189,6 +189,7 @@
     }
     [zoom >= 14] {
       polygon-pattern-file: url('symbols/allotments.png');
+      polygon-pattern-alignment: global;
     }
   }
 
