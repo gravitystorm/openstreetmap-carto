@@ -6,37 +6,37 @@
 @transportation-text: #0066ff;
 
 .points {
-  [tourism = 'alpine_hut'][zoom >= 13]::tourism {
+  [feature = 'tourism_alpine_hut'][zoom >= 13] {
     point-file: url('symbols/alpinehut.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'shelter'][zoom >= 16]::amenity {
+  [feature = 'amenity_shelter'][zoom >= 16] {
     point-file: url('symbols/shelter2.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'atm'][zoom >=17]::amenity {
+  [feature = 'amenity_atm'][zoom >=17] {
     point-file: url('symbols/atm2.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'bank'][zoom >= 17]::amenity {
+  [feature = 'amenity_bank'][zoom >= 17] {
     point-file: url('symbols/bank2.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'bar'][zoom >=17]::amenity {
+  [feature = 'amenity_bar'][zoom >=17] {
     point-file: url('symbols/bar.p.20.png');
     point-placement: interior;
   }
 
-  [amenity = 'bicycle_rental'][zoom >= 17]::amenity {
+  [feature = 'amenity_bicycle_rental'][zoom >= 17] {
     point-file: url('symbols/rental_bicycle.p.20.png');
     point-placement: interior;
   }
 
-  [highway = 'bus_stop']::highway {
+  [feature = 'highway_bus_stop'] {
     [zoom >= 16] {
       point-file: url('symbols/bus_stop_small.png');
       point-placement: interior;
@@ -46,125 +46,125 @@
     }
   }
 
-  [amenity = 'bus_station'][zoom >= 16]::amenity {
+  [feature = 'amenity_bus_station'][zoom >= 16] {
     point-file: url('symbols/bus_station.n.16.png');
     point-placement: interior;
   }
 
-  [highway = 'traffic_signals'][zoom >= 17]::highway {
+  [feature = 'highway_traffic_signals'][zoom >= 17] {
     point-file: url('symbols/traffic_light.png');
     point-placement: interior;
   }
 
-  [amenity = 'cafe'][zoom >=17]::amenity {
+  [feature = 'amenity_cafe'][zoom >=17] {
     point-file: url('symbols/cafe.p.16.png');
     point-placement: interior;
   }
 
-  [tourism = 'camp_site'][zoom >= 16]::tourism {
+  [feature = 'tourism_camp_site'][zoom >= 16] {
     point-file: url('symbols/camping.n.16.png');
     point-placement: interior;
   }
 
-  [highway = 'ford'][zoom >= 16]::highway {
+  [feature = 'highway_ford'][zoom >= 16] {
     point-file: url('symbols/transport_ford.p.16.png');
     point-placement: interior;
   }
 
-  [tourism = 'caravan_site'][zoom >= 16]::tourism {
+  [feature = 'tourism_caravan_site'][zoom >= 16] {
     point-file: url('symbols/caravan_park.p.24.png');
     point-placement: interior;
   }
 
-  [amenity = 'car_sharing'][zoom >= 16]::amenity {
+  [feature = 'amenity_car_sharing'][zoom >= 16] {
     point-file: url('symbols/car_share.p.16.png');
     point-placement: interior;
   }
 
-  [tourism = 'chalet'][zoom >= 17]::tourism {
+  [feature = 'tourism_chalet'][zoom >= 17] {
     point-file: url('symbols/chalet.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'cinema'][zoom >= 17]::amenity {
+  [feature = 'amenity_cinema'][zoom >= 17] {
     point-file: url('symbols/cinema.p.24.png');
     point-placement: interior;
   }
 
-  [amenity = 'fire_station'][zoom >= 17]::amenity {
+  [feature = 'amenity_fire_station'][zoom >= 17] {
     point-file: url('symbols/firestation.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'fuel'][zoom >= 17]::amenity {
+  [feature = 'amenity_fuel'][zoom >= 17] {
     point-file: url('symbols/fuel.p.16.png');
     point-placement: interior;
   }
 
-  [tourism = 'guest_house'][zoom >= 17]::tourism {
+  [feature = 'tourism_guest_house'][zoom >= 17] {
     point-file: url('symbols/guest_house.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'hospital'][zoom >= 15]::amenity {
+  [feature = 'amenity_hospital'][zoom >= 15] {
     point-file: url('symbols/hospital.p.16.png');
     point-placement: interior;
   }
 
-  [tourism = 'hostel'][zoom >= 17]::tourism {
+  [feature = 'tourism_hostel'][zoom >= 17] {
     point-file: url('symbols/hostel.p.20.png');
     point-placement: interior;
   }
 
-  [tourism = 'hotel'][zoom >= 17]::tourism {
+  [feature = 'tourism_hotel'][zoom >= 17] {
     point-file: url('symbols/hotel2.p.20.png');
     point-placement: interior;
   }
 
-  [tourism = 'motel'][zoom >= 17]::tourism {
+  [feature = 'tourism_motel'][zoom >= 17] {
     point-file: url('symbols/motel.p.20.png');
     point-placement: interior;
   }
 
-  [tourism = 'information'][zoom >= 16]::tourism {
+  [feature = 'tourism_information'][zoom >= 16] {
     point-file: url('symbols/information.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'embassy'][zoom >= 17]::amenity {
+  [feature = 'amenity_embassy'][zoom >= 17] {
     point-file: url('symbols/embassy.png');
     point-placement: interior;
   }
 
-  [amenity = 'library'][zoom >= 17]::amenity {
+  [feature = 'amenity_library'][zoom >= 17] {
     point-file: url('symbols/library.p.20.png');
     point-placement: interior;
   }
 
-  [amenity = 'courthouse'][zoom > 17]::amenity {
+  [feature = 'amenity_courthouse'][zoom > 17] {
     point-file: url('symbols/amenity_court.p.20.png');
     point-placement: interior;
   }
 
-  [waterway = 'lock']::waterway,
-  [lock = 'yes']::lock {
+  [feature = 'waterway_lock'],
+  [feature = 'lock_yes'] {
     [zoom >= 15] {
       point-file: url('symbols/lock_gate.png');
       point-placement: interior;
     }
   }
 
-  [man_made = 'mast'][zoom >= 17]::man_made {
+  [feature = 'man_made_mast'][zoom >= 17] {
     point-file: url('symbols/communications.p.20.png');
     point-placement: interior;
   }
 
-  [tourism = 'museum'][zoom >= 17]::tourism {
+  [feature = 'tourism_museum'][zoom >= 17] {
     point-file: url('symbols/museum.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'parking'][zoom >= 15]::amenity {
+  [feature = 'amenity_parking'][zoom >= 15] {
     marker-file: url('symbols/parking.svg');
     marker-placement: interior;
     marker-clip: false;
@@ -174,12 +174,12 @@
     }
   }
 
-  [amenity = 'pharmacy'][zoom >= 17]::amenity {
+  [feature = 'amenity_pharmacy'][zoom >= 17] {
     point-file: url('symbols/pharmacy.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'place_of_worship'][zoom >= 16]::amenity {
+  [feature = 'amenity_place_of_worship'][zoom >= 16] {
     point-file: url('symbols/place_of_worship3.p.16.png');
     point-placement: interior;
     [religion = 'christian'] {
@@ -208,123 +208,123 @@
     }
   }
 
-  [amenity = 'police'][zoom >= 17]::amenity {
+  [feature = 'amenity_police'][zoom >= 17] {
     point-file: url('symbols/police.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'post_box'][zoom >= 17]::amenity {
+  [feature = 'amenity_post_box'][zoom >= 17] {
     point-file: url('symbols/post_box.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'post_office'][zoom >= 17]::amenity {
+  [feature = 'amenity_post_office'][zoom >= 17] {
     point-file: url('symbols/post_office.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'pub'][zoom >= 16]::amenity {
+  [feature = 'amenity_pub'][zoom >= 16] {
     point-file: url('symbols/pub.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'biergarten'][zoom >= 16]::amenity {
+  [feature = 'amenity_biergarten'][zoom >= 16] {
     point-file: url('symbols/biergarten.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'recycling'][zoom >= 16]::amenity {
+  [feature = 'amenity_recycling'][zoom >= 16] {
     point-file: url('symbols/recycling.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'restaurant'][zoom >= 17]::amenity {
+  [feature = 'amenity_restaurant'][zoom >= 17] {
     point-file: url('symbols/restaurant.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'fast_food'][zoom >= 17]::amenity {
+  [feature = 'amenity_fast_food'][zoom >= 17] {
     point-file: url('symbols/fast_food.png');
     point-placement: interior;
   }
 
-  [amenity = 'telephone'][zoom >= 17]::amenity {
+  [feature = 'amenity_telephone'][zoom >= 17] {
     point-file: url('symbols/telephone.p.16.png');
     point-placement: interior;
   }
 
-  [amenity = 'emergency_phone'][zoom >= 17]::amenity {
+  [feature = 'amenity_emergency_phone'][zoom >= 17] {
     point-file: url('symbols/sosphone.png');
     point-placement: interior;
   }
 
-  [amenity = 'theatre'][zoom >= 17]::amenity {
+  [feature = 'amenity_theatre'][zoom >= 17] {
     point-file: url('symbols/theatre.p.20.png');
     point-placement: interior;
   }
 
-  [amenity = 'toilets'][zoom >= 17]::amenity {
+  [feature = 'amenity_toilets'][zoom >= 17] {
     point-file: url('symbols/toilets.p.20.png');
     point-placement: interior;
   }
 
-  [amenity = 'drinking_water'][zoom >= 17]::amenity {
+  [feature = 'amenity_drinking_water'][zoom >= 17] {
     point-file: url('symbols/food_drinkingtap.p.20.png');
     point-placement: interior;
   }
 
-  [amenity = 'prison'][zoom >= 17]::amenity {
+  [feature = 'amenity_prison'][zoom >= 17] {
     point-file: url('symbols/amenity_prison.p.20.png');
     point-placement: interior;
   }
 
-  [tourism = 'viewpoint'][zoom >= 16]::tourism {
+  [feature = 'tourism_viewpoint'][zoom >= 16] {
     point-file: url('symbols/view_point.p.16.png');
     point-placement: interior;
   }
 
-  [man_made = 'water_tower'][zoom >= 17]::man_made {
+  [feature = 'man_made_water_tower'][zoom >= 17] {
     point-file: url('symbols/tower_water.p.20.png');
     point-placement: interior;
   }
 
-  [historic = 'memorial'][zoom >= 17]::historic {
+  [feature = 'historic_memorial'][zoom >= 17] {
     point-file: url('symbols/tourist_memorial.p.20.png');
     point-placement: interior;
   }
 
-  [historic = 'archaeological_site'][zoom >= 16]::historic {
+  [feature = 'historic_archaeological_site'][zoom >= 16] {
     point-file: url('symbols/tourist_archaeological2.glow.24.png');
     point-placement: interior;
   }
 
-  [shop != ''][zoom >= 17]::shop {
+  [feature = 'shop_other'][zoom >= 17] {
     marker-file: url('symbols/shop.p.16.png');
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [shop = 'supermarket'][zoom >= 16]::shop {
+  [feature = 'shop_supermarket'][zoom >= 16] {
     marker-file: url('symbols/shop_supermarket.svg');
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @shop-icon;
   }
 
-  [shop = 'bakery'][zoom >= 17]::shop {
+  [feature = 'shop_bakery'][zoom >= 17] {
     marker-file: url('symbols/shop_bakery.p.16.png');
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [shop = 'butcher'][zoom >= 17]::shop {
+  [feature = 'shop_butcher'][zoom >= 17] {
     marker-file: url('symbols/shop_butcher.png');
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [shop = 'clothes']::shop,
-  [shop = 'fashion']::shop {
+  [feature = 'shop_clothes'],
+  [feature = 'shop_fashion'] {
     [zoom >= 17] {
       marker-file: url('symbols/shop_clothes.svg');
       marker-placement: interior;
@@ -333,71 +333,71 @@
     }
   }
 
-  [shop = 'convenience'][zoom >= 17]::shop {
+  [feature = 'shop_convenience'][zoom >= 17] {
     marker-file: url('symbols/shop_convenience.svg');
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @shop-icon;
   }
 
-  [shop = 'department_store'][zoom >= 16]::shop {
+  [feature = 'shop_department_store'][zoom >= 16] {
     point-file: url('symbols/department_store.p.16.png');
     point-placement: interior;
   }
 
-  [shop = 'doityourself'][zoom >= 17]::shop {
+  [feature = 'shop_doityourself'][zoom >= 17] {
     marker-file: url('symbols/shop_diy.p.16.png');
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [shop = 'florist'][zoom >= 17]::shop {
+  [feature = 'shop_florist'][zoom >= 17] {
     marker-file: url('symbols/florist.p.16.png');
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [shop = 'hairdresser'][zoom >= 17]::shop {
+  [feature = 'shop_hairdresser'][zoom >= 17] {
     marker-file: url('symbols/shop_hairdresser.p.16.png');
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [shop = 'car'][zoom >= 17]::shop {
+  [feature = 'shop_car'][zoom >= 17] {
     marker-file: url('symbols/shop_car.svg');
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @shop-icon;
   }
 
-  [shop = 'car_repair'][zoom >= 17]::shop {
+  [feature = 'shop_car_repair'][zoom >= 17] {
     marker-file: url('symbols/shopping_car_repair.p.16.png');
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [shop = 'bicycle'][zoom >= 17]::shop {
+  [feature = 'shop_bicycle'][zoom >= 17] {
     marker-file: url('symbols/shopping_bicycle.p.16.png');
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [leisure = 'playground'][zoom >= 17]::leisure {
+  [feature = 'leisure_playground'][zoom >= 17] {
     point-file: url('symbols/playground.p.20.png');
     point-placement: interior;
   }
 
-  [tourism = 'picnic_site'][zoom >= 16]::tourism {
+  [feature = 'tourism_picnic_site'][zoom >= 16] {
     point-file: url('symbols/picnic.p.16.png');
     point-placement: interior;
   }
 
-  [leisure = 'picnic_table'][zoom >= 17]::leisure {
+  [feature = 'leisure_picnic_table'][zoom >= 17] {
     point-file: url('symbols/picnic.p.16.png');
     point-placement: interior;
   }
 
-  [leisure = 'slipway'][zoom >= 17]::leisure {
+  [feature = 'leisure_slipway'][zoom >= 17] {
     point-file: url('symbols/transport_slipway.p.20.png');
     point-placement: interior;
   }
@@ -405,7 +405,7 @@
 
 
 .text {
-  [place = 'island'][zoom >= 12]::place {
+  [feature = 'place_island'][zoom >= 12] {
     text-name: "[name]";
     text-fill: #000;
     text-size: 9;
@@ -414,11 +414,11 @@
     text-placement: interior;
   }
 
-  [amenity = 'pub']::amenity,
-  [amenity = 'restaurant']::amenity,
-  [amenity = 'cafe']::amenity,
-  [amenity = 'fast_food']::amenity,
-  [amenity = 'biergarten']::amenity {
+  [feature = 'amenity_pub'],
+  [feature = 'amenity_restaurant'],
+  [feature = 'amenity_cafe'],
+  [feature = 'amenity_fast_food'],
+  [feature = 'amenity_biergarten'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-fill: #734a08;
@@ -431,7 +431,7 @@
     }
   }
 
-  [amenity = 'bar'][zoom >= 17]::amenity {
+  [feature = 'amenity_bar'][zoom >= 17] {
     text-name: "[name]";
     text-size: 10;
     text-fill: #734a08;
@@ -441,9 +441,9 @@
     text-placement: interior;
   }
 
-  [amenity = 'library']::amenity,
-  [amenity = 'theatre']::amenity,
-  [amenity = 'courthouse']::amenity {
+  [feature = 'amenity_library'],
+  [feature = 'amenity_theatre'],
+  [feature = 'amenity_courthouse'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 10;
@@ -455,7 +455,7 @@
     }
   }
 
-  [amenity = 'cinema'][zoom >= 17]::amenity {
+  [feature = 'amenity_cinema'][zoom >= 17] {
     text-name: "[name]";
     text-size: 10;
     text-fill: #734a08;
@@ -465,7 +465,7 @@
     text-placement: interior;
   }
 
-  [amenity = 'parking'][zoom >= 17]::amenity {
+  [feature = 'amenity_parking'][zoom >= 17] {
     text-name: "[name]";
     text-size: 9;
     text-fill: @transportation-text;
@@ -479,7 +479,7 @@
     }
   }
 
-  [amenity = 'police'][zoom >= 17]::amenity {
+  [feature = 'amenity_police'][zoom >= 17] {
     text-name: "[name]";
     text-size: 10;
     text-fill: #734a08;
@@ -490,7 +490,7 @@
     text-placement: interior;
   }
 
-  [amenity = 'fire_station'][zoom >= 17]::amenity {
+  [feature = 'amenity_fire_station'][zoom >= 17] {
     text-name: "[name]";
     text-size: 10;
     text-fill: #734a08;
@@ -501,7 +501,7 @@
     text-placement: interior;
   }
 
-  [amenity = 'place_of_worship'][zoom >= 17]::amenity {
+  [feature = 'amenity_place_of_worship'][zoom >= 17] {
     text-name: "[name]";
     text-size: 10;
     text-fill: #000033;
@@ -512,7 +512,7 @@
     text-placement: interior;
   }
 
-  [natural = 'wood'][zoom >= 15]::natural {
+  [feature = 'natural_wood'][zoom >= 15] {
     text-name: "[name]";
     text-size: 10;
     text-fill: darken(@wood, 50%);
@@ -522,8 +522,8 @@
     text-placement: interior;
   }
 
-  [natural = 'peak']::natural,
-  [natural = 'volcano']::natural {
+  [feature = 'natural_peak'],
+  [feature = 'natural_volcano'] {
     [zoom >= 13] {
       text-name: "[name]";
       text-size: 10;
@@ -545,7 +545,7 @@
     }
   }
 
-  [natural = 'cave_entrance'][zoom >= 15]::natural {
+  [feature = 'natural_cave_entrance'][zoom >= 15] {
     text-name: "[name]";
     text-size: 10;
     text-fill: brown;
@@ -556,7 +556,7 @@
     text-placement: interior;
   }
 
-  [historic = 'memorial'][zoom >= 17]::historic {
+  [feature = 'historic_memorial'][zoom >= 17] {
     text-name: "[name]";
     text-size: 9;
     text-fill: brown;
@@ -567,7 +567,7 @@
     text-placement: interior;
   }
 
-  [historic = 'archaeological_site'][zoom >= 17]::historic {
+  [feature = 'historic_archaeological_site'][zoom >= 17] {
     text-name: "[name]";
     text-size: 9;
     text-fill: brown;
@@ -578,10 +578,10 @@
     text-placement: interior;
   }
 
-  [natural = 'water']::natural,
-  [natural = 'lake']::natural,
-  [landuse = 'reservoir']::landuse,
-  [landuse = 'basin']::landuse {
+  [feature = 'natural_water'],
+  [feature = 'natural_lake'],
+  [feature = 'landuse_reservoir'],
+  [feature = 'landuse_basin'] {
     [way_area >= 40000000][zoom >= 10],
     [way_area >= 10000000][zoom >= 11],
     [way_area >= 2400000][zoom >= 12],
@@ -600,7 +600,7 @@
     }
   }
 
-  [leisure = 'swimming_pool']::leisure {
+  [feature = 'leisure_swimming_pool'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 9;
@@ -612,10 +612,10 @@
     }
   }
 
-  [leisure = 'sports_centre']::leisure,
-  [leisure = 'stadium']::leisure,
-  [leisure = 'track']::leisure,
-  [leisure = 'pitch']::leisure {
+  [feature = 'leisure_sports_centre'],
+  [feature = 'leisure_stadium'],
+  [feature = 'leisure_track'],
+  [feature = 'leisure_pitch'] {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
@@ -627,16 +627,16 @@
     }
   }
 
-  [leisure = 'playground']::leisure,
-  [leisure = 'park']::leisure,
-  [leisure = 'recreation_ground']::leisure,
-  [landuse = 'recreation_ground']::landuse,
-  [landuse = 'conservation']::landuse,
-  [landuse = 'village_green']::landuse,
-  [leisure = 'common']::leisure,
-  [leisure = 'garden']::leisure,
-  [leisure = 'golf_course']::leisure,
-  [leisure = 'nature_reserve']::leisure {
+  [feature = 'leisure_playground'],
+  [feature = 'leisure_park'],
+  [feature = 'leisure_recreation_ground'],
+  [feature = 'landuse_recreation_ground'],
+  [feature = 'landuse_conservation'],
+  [feature = 'landuse_village_green'],
+  [feature = 'leisure_common'],
+  [feature = 'leisure_garden'],
+  [feature = 'leisure_golf_course'],
+  [feature = 'leisure_nature_reserve'] {
     [way_area >= 150000][zoom >= 14],
     [way_area >= 80000][zoom >= 15],
     [way_area >= 20000][zoom >= 16],
@@ -652,7 +652,7 @@
     }
   }
 
-  [landuse = 'quarry']::landuse {
+  [feature = 'landuse_quarry'] {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
@@ -663,8 +663,8 @@
     }
   }
 
-  [landuse = 'vineyard']::landuse,
-  [landuse = 'orchard']::landuse  {
+  [feature = 'landuse_vineyard'],
+  [feature = 'landuse_orchard']  {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
@@ -676,8 +676,8 @@
     }
   }
 
-  [landuse = 'cemetery']::landuse,
-  [landuse = 'grave_yard']::landuse  {
+  [feature = 'landuse_cemetery'],
+  [feature = 'landuse_grave_yard']  {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
@@ -689,7 +689,7 @@
     }
   }
 
-  [landuse = 'residential']::landuse {
+  [feature = 'landuse_residential'] {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
@@ -700,7 +700,7 @@
     }
   }
 
-  [landuse = 'garages']::landuse {
+  [feature = 'landuse_garages'] {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
@@ -711,7 +711,7 @@
     }
   }
 
-  [landuse = 'field']::landuse {
+  [feature = 'landuse_field'] {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
@@ -722,8 +722,8 @@
     }
   }
 
-  [landuse = 'meadow']::landuse,
-  [landuse = 'grass']::landuse  {
+  [feature = 'landuse_meadow'],
+  [feature = 'landuse_grass']  {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
@@ -734,7 +734,7 @@
     }
   }
 
-  [landuse = 'allotments']::landuse {
+  [feature = 'landuse_allotments'] {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
@@ -745,7 +745,7 @@
     }
   }
 
-  [landuse = 'forest']::landuse {
+  [feature = 'landuse_forest'] {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
@@ -756,9 +756,9 @@
     }
   }
 
-  [landuse = 'farm']::landuse,
-  [landuse = 'farmland']::landuse,
-  [landuse = 'farmyard']::landuse {
+  [feature = 'landuse_farm'],
+  [feature = 'landuse_farmland'],
+  [feature = 'landuse_farmyard'] {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
@@ -769,7 +769,7 @@
     }
   }
 
-  [landuse = 'retail']::landuse {
+  [feature = 'landuse_retail'] {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
@@ -780,8 +780,8 @@
     }
   }
 
-  [landuse = 'industrial']::landuse,
-  [landuse = 'railway']::landuse {
+  [feature = 'landuse_industrial'],
+  [feature = 'landuse_railway'] {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
@@ -792,7 +792,7 @@
     }
   }
 
-  [landuse = 'commercial']::landuse {
+  [feature = 'landuse_commercial'] {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
@@ -803,9 +803,9 @@
     }
   }
 
-  [landuse = 'brownfield']::landuse,
-  [landuse = 'landfill']::landuse,
-  [landuse = 'construction']::landuse {
+  [feature = 'landuse_brownfield'],
+  [feature = 'landuse_landfill'],
+  [feature = 'landuse_construction'] {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
@@ -816,7 +816,7 @@
     }
   }
 
-  [natural = 'bay'][zoom >= 14]::natural {
+  [feature = 'natural_bay'][zoom >= 14] {
     text-name: "[name]";
     text-size: 10;
     text-fill: #6699cc;
@@ -826,7 +826,7 @@
     text-placement: interior;
   }
 
-  [natural = 'spring'][zoom >= 16]::natural {
+  [feature = 'natural_spring'][zoom >= 16] {
     text-name: "[name]";
     text-size: 10;
     text-fill: #6699cc;
@@ -837,7 +837,7 @@
     text-dy: 6;
   }
 
-  [tourism = 'alpine_hut'][zoom >= 15]::tourism {
+  [feature = 'tourism_alpine_hut'][zoom >= 15] {
     text-name: "[name]";
     text-size: 9;
     text-fill: #6699cc;
@@ -856,7 +856,7 @@
     }
   }
 
-  [amenity = 'shelter'][zoom >= 17]::amenity {
+  [feature = 'amenity_shelter'][zoom >= 17] {
     text-name: "[name]";
     text-size: 9;
     text-fill: #6699cc;
@@ -873,7 +873,7 @@
     ele/text-placement: interior;
   }
 
-  [amenity = 'bank'][zoom >= 17]::amenity {
+  [feature = 'amenity_bank'][zoom >= 17] {
     text-name: "[name]";
     text-size: 9;
     text-fill: black;
@@ -883,10 +883,10 @@
     text-face-name: @book-fonts;
   }
 
-  [tourism = 'hotel']::tourism,
-  [tourism = 'motel']::tourism,
-  [tourism = 'hostel']::tourism,
-  [tourism = 'chalet']::tourism {
+  [feature = 'tourism_hotel'],
+  [feature = 'tourism_motel'],
+  [feature = 'tourism_hostel'],
+  [feature = 'tourism_chalet'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 10;
@@ -898,7 +898,7 @@
     }
   }
 
-  [amenity = 'embassy'][zoom >= 17]::amenity {
+  [feature = 'amenity_embassy'][zoom >= 17] {
     text-name: "[name]";
     text-size: 9;
     text-fill: #0066ff;
@@ -908,7 +908,7 @@
     text-placement: interior;
   }
 
-  [tourism = 'guest_house'][zoom >= 17]::tourism {
+  [feature = 'tourism_guest_house'][zoom >= 17] {
     text-name: "[name]";
     text-size: 8;
     text-fill: #0066ff;
@@ -918,7 +918,7 @@
     text-placement: interior;
   }
 
-  [tourism = 'bed_and_breakfast'][zoom >= 17]::tourism {
+  [feature = 'tourism_bed_and_breakfast'][zoom >= 17] {
     text-name: "[name]";
     text-size: 8;
     text-fill: #0066ff;
@@ -928,8 +928,8 @@
     text-placement: interior;
   }
 
-  [amenity = 'fuel']::amenity,
-  [amenity = 'bus_station']::amenity {
+  [feature = 'amenity_fuel'],
+  [feature = 'amenity_bus_station'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 9;
@@ -940,7 +940,7 @@
     }
   }
 
-  [tourism = 'camp_site'][zoom >= 17]::tourism {
+  [feature = 'tourism_camp_site'][zoom >= 17] {
     text-name: "[name]";
     text-size: 10;
     text-fill: #0066ff;
@@ -950,7 +950,7 @@
     text-wrap-width: 70;
   }
 
-  [tourism = 'caravan_site'][zoom >= 17]::tourism {
+  [feature = 'tourism_caravan_site'][zoom >= 17] {
     text-name: "[name]";
     text-size: 10;
     text-fill: #0066ff;
@@ -960,7 +960,7 @@
     text-wrap-width: 70;
   }
 
-  [waterway = 'lock'][zoom >= 15]::waterway {
+  [feature = 'waterway_lock'][zoom >= 15] {
     text-name: "[name]";
     text-size: 9;
     text-dy: 10;
@@ -970,7 +970,7 @@
     text-wrap-width: 70;
   }
 
-  [leisure = 'marina'][zoom >= 15]::leisure {
+  [feature = 'leisure_marina'][zoom >= 15] {
     text-name: "[name]";
     text-size: 8;
     text-fill: @marina-text;
@@ -983,7 +983,7 @@
     }
   }
 
-  [tourism = 'theme_park'][zoom >= 14]::tourism {
+  [feature = 'tourism_theme_park'][zoom >= 14] {
     text-name: "[name]";
     text-size: 8;
     text-fill: #734a08;
@@ -996,7 +996,7 @@
     }
   }
 
-  [tourism = 'museum'][zoom >= 17]::tourism {
+  [feature = 'tourism_museum'][zoom >= 17] {
     text-name: "[name]";
     text-size: 10;
     text-dy: 10;
@@ -1006,7 +1006,7 @@
     text-placement: interior;
   }
 
-  [amenity = 'prison'][zoom >= 17]::amenity {
+  [feature = 'amenity_prison'][zoom >= 17] {
     text-name: "[name]";
     text-size: 10;
     text-fill: #734a08;
@@ -1016,7 +1016,7 @@
     text-placement: interior;
   }
 
-  [tourism = 'attraction'][zoom >= 16]::tourism {
+  [feature = 'tourism_attraction'][zoom >= 16] {
     text-name: "[name]";
     text-size: 10;
     text-fill: #660033;
@@ -1026,7 +1026,7 @@
     text-placement: interior;
   }
 
-  [amenity = 'university'][zoom >= 15]::amenity {
+  [feature = 'amenity_university'][zoom >= 15] {
     text-name: "[name]";
     text-size: 9;
     text-fill: #000033;
@@ -1036,8 +1036,8 @@
     text-placement: interior;
   }
 
-  [amenity = 'school']::amenity,
-  [amenity = 'college']::amenity {
+  [feature = 'amenity_school'],
+  [feature = 'amenity_college'] {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
@@ -1049,7 +1049,7 @@
     }
   }
 
-  [amenity = 'kindergarten'][zoom >= 16]::amenity {
+  [feature = 'amenity_kindergarten'][zoom >= 16] {
     text-name: "[name]";
     text-size: 8;
     text-fill: #000033;
@@ -1059,7 +1059,7 @@
     text-placement: interior;
   }
 
-  [man_made = 'lighthouse'][zoom >= 15]::man_made {
+  [feature = 'man_made_lighthouse'][zoom >= 15] {
     text-name: "[name]";
     text-size: 9;
     text-fill: #000033;
@@ -1070,7 +1070,7 @@
     text-placement: interior;
   }
 
-  [man_made = 'windmill'][zoom >= 17]::man_made {
+  [feature = 'man_made_windmill'][zoom >= 17] {
     text-name: "[name]";
     text-size: 9;
     text-fill: #734a08;
@@ -1081,7 +1081,7 @@
     text-placement: interior;
   }
 
-  [amenity = 'hospital'][zoom >= 16]::amenity {
+  [feature = 'amenity_hospital'][zoom >= 16] {
     text-name: "[name]";
     text-fill: #da0092;
     text-size: 8;
@@ -1092,7 +1092,7 @@
     text-placement: interior;
   }
 
-  [amenity = 'pharmacy'][zoom >= 17]::amenity {
+  [feature = 'amenity_pharmacy'][zoom >= 17] {
     text-name: "[name]";
     text-size: 8;
     text-dy: 10;
@@ -1104,7 +1104,7 @@
   }
 
   /* Default shop text style */
-  [shop != ''][zoom >= 17]::shop {
+  [feature = 'shop_other'][zoom >= 17] {
     text-name: [name];
     text-size: 9;
     text-dy: 10;
@@ -1115,17 +1115,17 @@
     text-placement: interior;
   }
 
-  [shop = 'bakery']::shop,
-  [shop = 'clothes']::shop,
-  [shop = 'fashion']::shop,
-  [shop = 'convenience']::shop,
-  [shop = 'doityourself']::shop,
-  [shop = 'hairdresser']::shop,
-  [shop = 'butcher']::shop,
-  [shop = 'car']::shop,
-  [shop = 'car_repair']::shop,
-  [shop = 'bicycle']::shop,
-  [shop = 'florist']::shop {
+  [feature = 'shop_bakery'],
+  [feature = 'shop_clothes'],
+  [feature = 'shop_fashion'],
+  [feature = 'shop_convenience'],
+  [feature = 'shop_doityourself'],
+  [feature = 'shop_hairdresser'],
+  [feature = 'shop_butcher'],
+  [feature = 'shop_car'],
+  [feature = 'shop_car_repair'],
+  [feature = 'shop_bicycle'],
+  [feature = 'shop_florist'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 8;
@@ -1138,8 +1138,8 @@
     }
   }
 
-  [shop = 'supermarket']::shop,
-  [shop = 'department_store']::shop {
+  [feature = 'shop_supermarket'],
+  [feature = 'shop_department_store'] {
     [zoom >= 16] {
       text-name: "[name]";
       text-size: 9;
@@ -1152,7 +1152,7 @@
     }
   }
 
-  [military = 'danger_area'][zoom >= 12]::military {
+  [feature = 'military_danger_area'][zoom >= 12] {
     text-name: "[name]";
     text-size: 9;
     text-fill: @military-text;
@@ -1162,7 +1162,7 @@
     text-placement: interior;
   }
 
-  [landuse = 'military']::landuse {
+  [feature = 'landuse_military'] {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 9;
@@ -1174,7 +1174,7 @@
     }
   }
 
-  [aeroway = 'gate'][zoom >= 17]::aeroway {
+  [feature = 'aeroway_gate'][zoom >= 17] {
     text-name: "[ref]";
     text-size: 10;
     text-fill: #aa66cc;
