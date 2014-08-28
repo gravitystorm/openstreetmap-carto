@@ -259,14 +259,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,waterway,lock,name,case when tunnel in ('yes','culvert') then 'yes' else 'no' end as int_tunnel\n      from planet_osm_line\n      where waterway in ('weir','river','canal','derelict_canal','stream','drain','ditch','wadi')\n        and (bridge is null or bridge not in ('yes','aqueduct'))\n      order by z_order\n      ) as water_lines",
+        "table": "      (select way,waterway,lock,name,case when tunnel in ('yes','culvert') then 'yes' else 'no' end as int_tunnel, 'no' as bridge\n      from planet_osm_line\n      where waterway in ('weir','river','canal','derelict_canal','stream','drain','ditch','wadi')\n        and (bridge is null or bridge not in ('yes','aqueduct'))\n      order by z_order\n      ) as water_lines",
         "extent": "-20037508,-20037508,20037508,20037508",
         "key_field": "",
         "geometry_field": "way",
         "dbname": "gis"
       },
       "id": "water-lines",
-      "class": "",
+      "class": "water-lines",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
@@ -859,14 +859,14 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,name from planet_osm_line where waterway='canal' and bridge in ('yes','aqueduct') order by z_order) as waterway_bridges",
+        "table": "(select way,waterway,name,case when tunnel in ('yes','culvert') then 'yes' else 'no' end as int_tunnel, 'yes' as bridge from planet_osm_line where waterway in ('river','canal','derelict_canal','stream','drain','ditch','wadi') and bridge in ('yes','aqueduct') order by z_order) as waterway_bridges",
         "extent": "-20037508,-20037508,20037508,20037508",
         "key_field": "",
         "geometry_field": "way",
         "dbname": "gis"
       },
       "id": "waterway-bridges",
-      "class": "",
+      "class": "water-lines",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
