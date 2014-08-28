@@ -9,7 +9,7 @@
 }
 
 #power-minorline {
-  [zoom >= 16] {
+  [zoom >= 18] {
     line-width: 0.5;
     line-color: #777;
   }
@@ -28,7 +28,7 @@
 }
 
 #power-poles {
-  [zoom >= 16] {
+  [zoom >= 18] {
     point-file: url('symbols/power_pole.png');
   }
 }
