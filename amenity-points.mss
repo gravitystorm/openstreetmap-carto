@@ -363,6 +363,11 @@
     marker-clip: false;
   }
 
+  [shop = 'hardware'][zoom >= 17]::shop {
+    point-file: url('symbols/shop_hardware.p.16.png');
+    point-placement: interior;
+  }
+
   [shop = 'car'][zoom >= 17]::shop {
     marker-file: url('symbols/shop_car.svg');
     marker-placement: interior;
