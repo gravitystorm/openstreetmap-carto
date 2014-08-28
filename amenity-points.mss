@@ -298,7 +298,7 @@
     point-placement: interior;
   }
 
-  [shop != ''][zoom >= 17] {
+  [feature = 'shop_other'][zoom >= 17] {
     marker-file: url('symbols/shop.p.16.png');
     marker-placement: interior;
     marker-clip: false;
@@ -1104,7 +1104,7 @@
   }
 
   /* Default shop text style */
-  [shop != ''][zoom >= 17] {
+  [feature = 'shop_other'][zoom >= 17] {
     text-name: [name];
     text-size: 9;
     text-dy: 10;
