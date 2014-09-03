@@ -8,7 +8,7 @@
 
 #housenumbers {
   [zoom >= 17] {
-    text-name: "[addr:housenumber]";
+    text-name: "[addr:housenumber].replace(';', ', ').replace('  ', ' ')";
     text-placement: interior;
     text-min-distance: 1;
     text-wrap-width: 0;
