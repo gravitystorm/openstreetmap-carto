@@ -660,6 +660,7 @@
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-wrap-width: 10;
+      text-placement: interior;
     }
   }
 
@@ -673,6 +674,7 @@
       // extra halo needed to overpower the cemetery polygon pattern
       text-halo-radius: 1.5;
       text-wrap-width: 10;
+      text-placement: interior;
     }
   }
 
@@ -686,6 +688,7 @@
       // extra halo needed to overpower the cemetery polygon pattern
       text-halo-radius: 1.5;
       text-wrap-width: 10;
+      text-placement: interior;
     }
   }
 
@@ -697,6 +700,7 @@
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-wrap-width: 10;
+      text-placement: interior;
     }
   }
 
@@ -708,6 +712,7 @@
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-wrap-width: 10;
+      text-placement: interior;
     }
   }
 
@@ -719,6 +724,7 @@
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-wrap-width: 10;
+      text-placement: interior;
     }
   }
 
@@ -731,6 +737,7 @@
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-wrap-width: 10;
+      text-placement: interior;
     }
   }
 
@@ -742,6 +749,7 @@
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-wrap-width: 10;
+      text-placement: interior;
     }
   }
 
@@ -753,6 +761,7 @@
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-wrap-width: 10;
+      text-placement: interior;
     }
   }
 
@@ -766,6 +775,7 @@
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-wrap-width: 10;
+      text-placement: interior;
     }
   }
 
@@ -777,6 +787,7 @@
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-wrap-width: 10;
+      text-placement: interior;
     }
   }
 
@@ -789,6 +800,7 @@
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-wrap-width: 10;
+      text-placement: interior;
     }
   }
 
@@ -800,6 +812,7 @@
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-wrap-width: 10;
+      text-placement: interior;
     }
   }
 
@@ -813,6 +826,7 @@
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-wrap-width: 10;
+      text-placement: interior;
     }
   }
 
@@ -937,6 +951,7 @@
       text-dy: 9;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
+      text-placement: interior;
     }
   }
 
@@ -948,6 +963,7 @@
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: 70;
+    text-placement: interior;
   }
 
   [feature = 'tourism_caravan_site'][zoom >= 17] {
@@ -958,6 +974,7 @@
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: 70;
+    text-placement: interior;
   }
 
   [feature = 'waterway_lock'][zoom >= 15] {
@@ -968,6 +985,7 @@
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: 70;
+    text-placement: interior;
   }
 
   [feature = 'leisure_marina'][zoom >= 15] {
