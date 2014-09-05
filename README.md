@@ -40,7 +40,7 @@ You can also download them manually at the following paths:
 * `ne_110m_admin_0_boundary_lines_land.shp` [download](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip)
 * `ne_10m_populated_places_fixed.shp` [download](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_populated_places.zip) (and see below)
 
-Put these shapefiles at path/to/opentreetmap-carto/data
+Put these shapefiles at path/to/openstreetmap-carto/data
 
 ### Populated places shapefile
 
