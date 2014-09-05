@@ -1367,7 +1367,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,highway,ref,char_length(ref) as length\n       from planet_osm_roads\n       where highway in ('motorway','trunk','primary','secondary')\n         and ref is not null\n         and char_length(ref) between 1 and 11\n      ) as roads_text_ref_low_zoom",
+        "table": "(SELECT way, highway, height, width, refs FROM\n  (SELECT \n      way, highway, \n      array_length(refs,1) AS height, \n      (SELECT MAX(char_length(ref)) FROM unnest(refs) AS u(ref)) AS width, \n      array_to_string(refs,E'\\n') AS refs\n    FROM (\n      SELECT \n          way, \n          highway, \n          string_to_array(ref,';') AS refs\n      FROM planet_osm_roads\n        WHERE highway IN ('motorway','trunk','primary','secondary')\n        AND ref IS NOT NULL\n      ) AS p) AS q\n  WHERE height <= 4 AND width <= 11) AS roads_text_ref_low_zoom",
         "extent": "-20037508,-20037508,20037508,20037508",
         "key_field": "",
         "geometry_field": "way",
@@ -1413,7 +1413,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,coalesce(highway,aeroway) as highway,ref,char_length(ref) as length,\n       case when bridge in ('yes','aqueduct') then 'yes'::text else 'no'::text end as bridge\n       from planet_osm_line\n       where (highway is not null or aeroway is not null)\n         and ref is not null\n         and char_length(ref) between 1 and 11\n      ) as roads_text_ref",
+        "table": "(SELECT way, highway, height, width, refs FROM\n  (SELECT \n      way, highway, \n      array_length(refs,1) AS height, \n      (SELECT MAX(char_length(ref)) FROM unnest(refs) AS u(ref)) AS width, \n      array_to_string(refs,E'\\n') AS refs\n    FROM (\n      SELECT \n          way, \n          COALESCE(highway, aeroway) AS highway, \n          string_to_array(ref,';') AS refs\n      FROM planet_osm_line\n        WHERE (highway IN ('motorway','trunk','primary','secondary','tertiary','unclassified','residential') OR aeroway IN ('runway','taxiway'))\n        AND ref IS NOT NULL\n      ) AS p) AS q\n  WHERE height <= 4 AND width <= 11) AS roads_text_ref",
         "extent": "-20037508,-20037508,20037508,20037508",
         "key_field": "",
         "geometry_field": "way",

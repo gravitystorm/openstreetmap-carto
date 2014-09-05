@@ -1947,26 +1947,24 @@
 }
 
 #roads-text-ref-low-zoom {
-  [highway = 'motorway'][length < 12] {
-    [zoom >= 10][zoom < 13] {
-      shield-name: "[ref]";
-      shield-size: 10;
-      shield-fill: #fff;
-      shield-placement: line;
-      shield-file: url("symbols/shields/motorway_[length]x1.svg");
-      shield-spacing: 750;
-      shield-min-distance: 30;
-      shield-face-name: @bold-fonts;
-      shield-clip: false;
-    }
-  }
-
-  [highway = 'trunk'][zoom >= 11][zoom < 13] {
-    shield-name: "[ref]";
+  [highway = 'motorway'][zoom >= 10][zoom < 13] {
+    shield-name: "[refs]";
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/shields/trunk_[length]x1.svg");
+    shield-file: url("symbols/shields/motorway_[width]x[height].svg");
+    shield-spacing: 750;
+    shield-min-distance: 30;
+    shield-face-name: @bold-fonts;
+    shield-clip: false;
+  }
+
+  [highway = 'trunk'][zoom >= 11][zoom < 13] {
+    shield-name: "[refs]";
+    shield-size: 10;
+    shield-fill: #fff;
+    shield-placement: line;
+    shield-file: url("symbols/shields/trunk_[width]x[height].svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
@@ -1974,11 +1972,11 @@
   }
 
   [highway = 'primary'][zoom >= 11][zoom < 13] {
-    shield-name: "[ref]";
+    shield-name: "[refs]";
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/shields/primary_[length]x1.svg");
+    shield-file: url("symbols/shields/primary_[width]x[height].svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
@@ -1986,11 +1984,11 @@
   }
 
   [highway = 'secondary'][zoom >= 12][zoom < 13] {
-    shield-name: "[ref]";
+    shield-name: "[refs]";
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/shields/secondary_[length]x1.svg");
+    shield-file: url("symbols/shields/secondary_[width]x[height].svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
@@ -1999,26 +1997,24 @@
 }
 
 #roads-text-ref {
-  [highway = 'motorway'][length < 12] {
-    [zoom >= 13] {
-      shield-name: "[ref]";
-      shield-size: 10;
-      shield-fill: #fff;
-      shield-placement: line;
-      shield-file: url("symbols/shields/motorway_[length]x1.svg");
-      shield-spacing: 750;
-      shield-min-distance: 30;
-      shield-face-name: @bold-fonts;
-      shield-clip: false;
-    }
-  }
-
-  [highway = 'trunk'][zoom >= 13] {
-    shield-name: "[ref]";
+  [highway = 'motorway'][zoom >= 13] {
+    shield-name: "[refs]";
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/shields/trunk_[length]x1.svg");
+    shield-file: url("symbols/shields/motorway_[width]x[height].svg");
+    shield-spacing: 750;
+    shield-min-distance: 30;
+    shield-face-name: @bold-fonts;
+    shield-clip: false;
+  }
+
+  [highway = 'trunk'][zoom >= 13] {
+    shield-name: "[refs]";
+    shield-size: 10;
+    shield-fill: #fff;
+    shield-placement: line;
+    shield-file: url("symbols/shields/trunk_[width]x[height].svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
@@ -2026,35 +2022,35 @@
   }
 
   [highway = 'primary'][zoom >= 13] {
-    shield-name: "[ref]";
+    shield-name: "[refs]";
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/shields/primary_[length]x1.svg");
+    shield-file: url("symbols/shields/primary_[width]x[height].svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
     shield-clip: false;
   }
 
-  [highway = 'secondary'][bridge = 'no'][zoom >= 13] {
-    shield-name: "[ref]";
+  [highway = 'secondary'][zoom >= 13] {
+    shield-name: "[refs]";
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/shields/secondary_[length]x1.svg");
+    shield-file: url("symbols/shields/secondary_[width]x[height].svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
     shield-clip: false;
   }
 
-  [highway = 'tertiary'][bridge = 'no'][zoom >= 13] {
-    shield-name: "[ref]";
+  [highway = 'tertiary'][zoom >= 13] {
+    shield-name: "[refs]";
     shield-size: 10;
     shield-fill: #fff;
     shield-placement: line;
-    shield-file: url("symbols/shields/tertiary_[length]x1.svg");
+    shield-file: url("symbols/shields/tertiary_[width]x[height].svg");
     shield-spacing: 750;
     shield-min-distance: 30;
     shield-face-name: @bold-fonts;
@@ -2063,8 +2059,8 @@
 
   [highway = 'unclassified'],
   [highway = 'residential'] {
-    [zoom >= 15][bridge = 'no'] {
-      text-name: "[ref]";
+    [zoom >= 15] {
+      text-name: "[refs]";
       text-size: 10;
       text-fill: #000;
       text-face-name: @bold-fonts;
@@ -2077,8 +2073,8 @@
 
   [highway = 'runway'],
   [highway = 'taxiway'] {
-    [zoom >= 15][bridge = 'no'] {
-      text-name: "[ref]";
+    [zoom >= 15] {
+      text-name: "[refs]";
       text-size: 10;
       text-fill: #333;
       text-spacing: 750;
