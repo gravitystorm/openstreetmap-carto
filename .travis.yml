@@ -6,7 +6,7 @@ before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -y -q python-demjson
 install:
-  - npm install carto
+  - npm install carto@0.12.1
   - mkdir -p data/world_boundaries
   - mkdir -p data/simplified-land-polygons-complete-3857
   - mkdir -p data/ne_110m_admin_0_boundary_lines_land
