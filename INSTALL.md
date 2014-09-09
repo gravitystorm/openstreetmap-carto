@@ -24,13 +24,13 @@ To download the shapefiles you can run the following script from this directory.
 
 You can also download them manually at the following paths:
 
-* `simplified-land-polygons.shp` [download](http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip)
-* `land-polygon.shp` [download](http://data.openstreetmapdata.com/land-polygons-split-3857.zip)
-* `builtup_area.shp` [download](http://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz)
-* `ne_110m_admin_0_boundary_lines_land.shp` [download](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip)
-* `ne_10m_populated_places_fixed.shp` [download](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_populated_places.zip) (and see below)
+* [``simplified-land-polygons.shp``](http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip)
+* [``land-polygon.shp``](http://data.openstreetmapdata.com/land-polygons-split-3857.zip)
+* [``builtup_area.shp``](http://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz)
+* [``ne_110m_admin_0_boundary_lines_land.shp``](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip)
+* [``ne_10m_populated_places_fixed.shp``](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_populated_places.zip) (and see [below](#populated-places-shapefile))
 
-Put these shapefiles at path/to/openstreetmap-carto/data
+Put these shapefiles at ``path/to/openstreetmap-carto/data``.
 
 ### Populated places shapefile
 
