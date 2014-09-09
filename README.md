@@ -66,6 +66,16 @@ judgement. The work done already in v1.0 and v2.0 will make it much easier to pr
 [issues]: https://github.com/gravitystorm/openstreetmap-carto/issues
 [cleverness]: https://github.com/openstreetmap/mapnik-stylesheets/blob/master/inc/settings.xml.inc.template#L16
 
+# Alternatives
+
+There are many open-source stylesheets written for creating OpenStreetMap-based
+maps using mapnik, many based on this project. Some alternatives are:
+
+* [OSM-Bright](https://github.com/mapbox/osm-bright)
+* [XML-based stylesheets](https://trac.openstreetmap.org/browser/subversion/applications/rendering/mapnik)
+* [osmfr-cartocss](https://github.com/cquest/osmfr-cartocss)
+* [openstreetmap-carto-german](https://github.com/woodpeck/openstreetmap-carto-german)
+
 # Maintainers
 
 * Andy Allan [@gravitystorm](https://github.com/gravitystorm/)
