@@ -1,5 +1,7 @@
 # OpenStreetMap Carto
 
+![screenshot](https://raw.github.com/gravitystorm/openstreetmap-carto/master/preview.png)
+
 The standard stylesheet on [OpenStreetMap.org](http://www.openstreetmap.org) An implemention of the standard OpenStreetMap mapnik style, in CartoCSS.
 
 These stylesheets can be used in your own cartography projects, and are designed to be easily
