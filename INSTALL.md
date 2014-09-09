@@ -8,7 +8,7 @@ It's probably easiest to grab an PBF of OSM data from [Mapzen](https://mapzen.co
 osm2pgsql -d gis ~/path/to/data.osm.pbf --style openstreetmap-carto.style
 ```
 
-You can find a more detailed guide to setting up a database and loading data with osm2pgsql at [switch2osm.org](http://switch2osm.org/loading-osm-data/)
+You can find a more detailed guide to setting up a database and loading data with osm2pgsql at [switch2osm.org](http://switch2osm.org/loading-osm-data/).
 
 Additionally you need some shapefiles.
 
