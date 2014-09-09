@@ -20,6 +20,22 @@ osm2pgsql database layout, along with auxillary shapefiles. See [INSTALL.md](INS
 Contributions to this project are welcome, see [CONTRIBUTING.md](CONTRIBUTING.md)
 for full details
 
+# Versioning
+
+This project follows a MAJOR.MINOR.PATCH versioning system. In the context of a
+cartographic project you can expect the following:
+
+* PATCH: When a patch version is released, there would be no reason not to
+  upgrade. PATCH versions contain only bugfixes e.g. stylesheets won't compile,
+  features are missing by mistake, etc.
+* MINOR: These are routine releases and happen every 1-3 weeks. They will
+  contain changes to what's shown on the map, how they appear, new features
+  added and old features removed. They may rarely contain changes to assets i.e.
+  shapefiles and fonts but will not contain changes that require software or
+  database upgrades.
+* MAJOR: Any change the requires reloading a database, or upgrading software
+  dependecies will trigger a major version change.
+
 # Roadmap
 
 ## Initial Release (v1.0.0, December 2012)
