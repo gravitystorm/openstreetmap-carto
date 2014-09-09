@@ -131,3 +131,10 @@ judgement. The work done already in v1.0 and v2.0 will make it much easier to pr
 
 [issues]: https://github.com/gravitystorm/openstreetmap-carto/issues
 [cleverness]: https://github.com/openstreetmap/mapnik-stylesheets/blob/master/inc/settings.xml.inc.template#L16
+
+# Maintainers
+
+* Andy Allan [@gravitystorm](https://github.com/gravitystorm/)
+* Matthijs Melissen [@math1985](https://github.com/math1985/)
+* Paul Norman [@pnorman](https://github.com/pnorman/)
+* Mateusz Konieczny [@mkoniecz](https://github.com/mkoniecz/)
