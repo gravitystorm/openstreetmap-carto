@@ -593,7 +593,7 @@
       "class": "", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
-        "extent": "-20037508,-19929239,20037508,19929239", 
+        "extent": "-20037508,-20037508,20037508,20037508", 
         "table": "(select way,\"natural\" from planet_osm_line where \"natural\" = 'tree_row') as tree_row", 
         "geometry_field": "way", 
         "type": "postgis", 
@@ -639,7 +639,7 @@
       "class": "", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
-        "extent": "-20037508,-19929239,20037508,19929239", 
+        "extent": "-20037508,-20037508,20037508,20037508", 
         "table": "(select distinct on (p.way) p.way as way,l.highway as int_tc_type,case when l.service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as int_tc_service\n       from planet_osm_point p\n       join planet_osm_line l\n        on ST_DWithin(p.way,l.way,0.1)\n       join (values\n        ('tertiary',1),\n        ('unclassified',2),\n        ('residential',3),\n        ('living_street',4),\n        ('service',5)\n       ) as v (highway,prio)\n        on v.highway=l.highway\n       where p.highway='turning_circle' or p.highway='turning_loop' \n       order by p.way,v.prio\n      ) as turning_circle_casing", 
         "geometry_field": "way", 
         "type": "postgis", 
@@ -1629,7 +1629,6 @@
       "class": "", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
-        "extent_cache": "custom", 
         "extent": "-20037508,-20037508,20037508,20037508", 
         "table": "(select way, name, admin_level from planet_osm_polygon where \"boundary\" = 'administrative' and admin_level in ('0','1','2','3','4','5','6','7','8','9','10')) as admin_text", 
         "geometry_field": "way", 
