@@ -32,6 +32,20 @@
   }
 }
 
+#addr-flats {
+  [zoom >= 17] {
+    text-name: "[addr:flats]";
+    text-placement: interior;
+    text-wrap-width: 20;
+    text-face-name: @book-fonts;
+    text-size: 8;
+    text-fill: #444;
+    [zoom >= 18] {
+      text-size: 9;
+    }
+  }
+}
+
 #building-text {
   [way_area >= 150000][zoom >= 14],
   [way_area >= 80000][zoom >= 15],
