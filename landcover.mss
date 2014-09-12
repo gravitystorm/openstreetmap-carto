@@ -3,10 +3,10 @@
 @forest: #a0cf85;
 @grass: #cfeca8; // also meadow, common, garden, village_green, conservation
 @golf_course: #b5e3b5;
-@natural: #c6e4b4; // also grassland
 @park: #cdf7c9; // also recreation_ground
 @wood: #aed1a0;
 @vineyard: #abdf96;
+@grassland: #c6e4b4;
 
 // --- sports ---
 
@@ -53,6 +53,12 @@
 @rest_area: #efc8c8; // also services
 @sand: #ffdf88;
 @school: #f0f0d8; // also university, college, hospital, kindergarten
+@scrub: #b5e3b5;
+@theme_park: #734a08;
+@quarry: #c5c3c3;
+@military: #f55;
+@zoo: #a4f3a1;
+@beach: #fff1ba;
 
 #landcover {
  [feature = 'leisure_swimming_pool'][zoom >= 14] {
@@ -315,12 +321,12 @@
   }
 
   [feature = 'natural_grassland'][zoom >= 10] {
-    polygon-fill: #c6e4b4;
+    polygon-fill: @grassland;
   }
 
   [feature = 'natural_scrub'] {
     [zoom >= 10][zoom < 14] {
-      polygon-fill: #b5e3b5;
+      polygon-fill: @scrub;
     }
     [zoom >= 14] {
       polygon-pattern-file: url('symbols/scrub.png');
@@ -411,7 +417,7 @@
   [landuse = 'military'][zoom >= 10]::landuse {
     polygon-pattern-file: url('symbols/military_red_hatch.png');
     polygon-pattern-alignment: global;
-    line-color: #f55;
+    line-color: @military;
     line-width: 3;
     line-opacity: 0.329;
   }
@@ -465,7 +471,7 @@
 
 #theme-park {
   [tourism = 'theme_park'][zoom >= 13] {
-    line-color: #734a08;
+    line-color: @theme_park;
     line-width: 1.5;
     line-dasharray: 9,3;
     line-opacity: 0.6;
