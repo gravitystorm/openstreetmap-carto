@@ -469,7 +469,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way from planet_osm_line where \"historic\"='citywalls') as citywalls",
+        "table": "(select way from planet_osm_line where historic='citywalls') as citywalls",
         "extent": "-20037508,-20037508,20037508,20037508",
         "key_field": "",
         "geometry_field": "way",
@@ -492,7 +492,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way from planet_osm_line where \"historic\"='castle_walls') as castlewalls",
+        "table": "(select way from planet_osm_line where historic='castle_walls') as castlewalls",
         "extent": "-20037508,-20037508,20037508,20037508",
         "key_field": "",
         "geometry_field": "way",
@@ -515,7 +515,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way from planet_osm_polygon where \"historic\"='castle_walls') as castlewalls_poly",
+        "table": "(select way from planet_osm_polygon where historic='castle_walls') as castlewalls_poly",
         "extent": "-20037508,-20037508,20037508,20037508",
         "key_field": "",
         "geometry_field": "way",
