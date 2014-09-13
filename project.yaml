@@ -156,7 +156,6 @@ Layer:
             CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel 
           FROM planet_osm_line
           WHERE waterway IN ('stream', 'drain', 'ditch')
-            AND (tunnel IS NULL OR tunnel != 'yes')
         ) AS water_lines_casing
     advanced: {}
   - id: "water-lines-low-zoom"
