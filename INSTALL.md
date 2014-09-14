@@ -89,3 +89,5 @@ If you aren't using TileMill, you can compile the CartoCSS stylesheets into Mapn
 * [ogr2ogr](http://www.gdal.org/) command line GDAL utility for processing vector data. here we use it to work around a encoding bug in the Nautral Earth data.
 * curl, unzip for downloading and decompressing files
 * shapeindex (a companion utility to Mapnik found in the mapnik-utils package) for indexing downloaded shapefiles
+
+* [PyYAML] (http://pyyaml.org/wiki/PyYAML) if editing the MML (layer definition) file (packaged as ``python-yaml`` on Ubuntu, or installed with ``pip install pyyaml``)
