@@ -140,7 +140,7 @@ Layer:
         (SELECT 
             way
           FROM planet_osm_line
-          WHERE man_made='cutline'
+          WHERE man_made = 'cutline'
         ) AS landcover_line
     advanced: {}
   - id: "water-lines-casing"
@@ -169,7 +169,7 @@ Layer:
       table: |-
         (SELECT way, waterway
           FROM planet_osm_line
-          WHERE waterway='river'
+          WHERE waterway = 'river'
         ) AS water_lines_low_zoom
     advanced: {}
   - id: "water-areas"
@@ -292,7 +292,7 @@ Layer:
             way, waterway 
           FROM planet_osm_point 
           WHERE waterway = 'lock_gate'
-        ) as locks
+        ) AS locks
     advanced: {}
   - id: "buildings-lz"
     name: "buildings-lz"
@@ -304,11 +304,11 @@ Layer:
       table: |-
         (SELECT
             way, building, railway, amenity FROM planet_osm_polygon
-          WHERE railway='station'
+          WHERE railway = 'station'
             OR building IN ('station', 'supermarket')
             OR amenity = 'place_of_worship'
           ORDER BY z_order, way_area DESC
-        ) as buildings_lz
+        ) AS buildings_lz
     advanced: {}
   - id: "buildings"
     name: "buildings"
@@ -461,7 +461,7 @@ Layer:
         (SELECT
             way 
           FROM planet_osm_line 
-          WHERE "historic"='castle_walls'
+          WHERE historic = 'castle_walls'
         ) AS castlewalls
     advanced: {}
   - id: "castlewalls-poly"
@@ -475,7 +475,7 @@ Layer:
         (SELECT 
             way 
           FROM planet_osm_polygon 
-          WHERE "historic"='castle_walls'
+          WHERE historic = 'castle_walls'
         ) AS castlewalls_poly
     advanced: {}
   - id: "landuse-overlay"
@@ -559,7 +559,7 @@ Layer:
         (SELECT 
             way 
           FROM planet_osm_line 
-          WHERE route='ferry' 
+          WHERE route = 'ferry' 
         ) AS ferry_routes
     advanced: {}
   - id: "turning-circle-casing"
@@ -751,7 +751,7 @@ Layer:
                 END AS access,
                 construction, 
                 CASE WHEN service in ('parking_aisle','drive-through','driveway') THEN 'INT-minor'::text else 'INT-normal'::text end as service, 
-                CASE WHEN oneway in ('yes', '-1') and highway in ('motorway', 'motorway_link',  'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street',' construction') THEN oneway ELSE NULL END as oneway, 
+                CASE WHEN oneway in ('yes', '-1') and highway in ('motorway', 'motorway_link',  'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction') THEN oneway ELSE NULL END as oneway, 
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' else 'no' end as link, CASE WHEN layer IS NULL THEN '0' else layer end as layernotnull 
               FROM planet_osm_line 
                 JOIN (VALUES 
