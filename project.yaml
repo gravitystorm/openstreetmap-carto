@@ -111,7 +111,7 @@ Layer:
               ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'golf_course', 'picnic_table','sports_centre','stadium','pitch','track') THEN leisure ELSE NULL END)) AS leisure,
               ('military_' || (CASE WHEN military IN ('barracks', 'danger_area') THEN military ELSE NULL END)) AS military,
               ('natural_' || (CASE WHEN "natural" IN ('beach','desert','heath','mud','grassland','wood','sand','scrub') THEN "natural" ELSE NULL END)) AS "natural",
-              ('power_' || (CASE WHEN power IN ('station','sub_station','substation','generator') THEN power ELSE NULL END)) as power,
+              ('power_' || (CASE WHEN power IN ('station','sub_station','substation','generator') THEN power ELSE NULL END)) AS power,
               ('tourism_' || (CASE WHEN tourism IN ('attraction', 'camp_site', 'caravan_site', 'picnic_site', 'zoo') THEN tourism ELSE NULL END)) AS tourism,
               ('highway_' || (CASE WHEN highway IN ('services', 'rest_area') THEN highway ELSE NULL END)) AS highway,
               CASE WHEN religion IN ('christian','jewish') THEN religion ELSE 'INT-generic'::text end AS religion
@@ -221,7 +221,7 @@ Layer:
             'no' as bridge
           FROM planet_osm_line
           WHERE waterway in ('weir', 'river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi')
-            and (bridge IS NULL or bridge not in ('yes','aqueduct'))
+            AND (bridge IS NULL or bridge not in ('yes','aqueduct'))
           ORDER BY z_order
         ) AS water_lines
     advanced: {}
@@ -278,7 +278,7 @@ Layer:
             way, man_made 
           FROM planet_osm_line 
           WHERE man_made IN ('pier', 'breakwater', 'groyne')
-        ) as piers
+        ) AS piers
     advanced: {}
   - id: "locks"
     name: "locks"
@@ -397,7 +397,7 @@ Layer:
           UNION ALL
           (SELECT 
               way, prio, 
-              COALESCE(('railway_' || (CASE WHEN railway='preserved' and service in ('spur','siding','yard') THEN 'INT-preserved-ssy'::text WHEN (railway='rail' and service in ('spur','siding','yard'))  THEN 'INT-spur-siding-yard' else railway END)),
+              COALESCE(('railway_' || (CASE WHEN railway='preserved' AND service in ('spur','siding','yard') THEN 'INT-preserved-ssy'::text WHEN (railway='rail' AND service in ('spur','siding','yard'))  THEN 'INT-spur-siding-yard' else railway END)),
                ('aeroway_' || aeroway)) AS feature,
                horse, foot, bicycle, tracktype,
               CASE WHEN access in ('destination') THEN 'destination'::text 
@@ -503,7 +503,7 @@ Layer:
         (SELECT 
             way, barrier 
           FROM planet_osm_line 
-          WHERE barrier is not null
+          WHERE barrier IS NOT NULL
         ) AS line_barriers
     advanced: {}
   - id: "cliffs"
@@ -604,7 +604,7 @@ Layer:
             COALESCE((
               'highway_' || (CASE WHEN highway IN ('residential','unclassified','pedestrian','service','footway','cycleway','track','path','platform') THEN highway ELSE NULL END)), 
               ('railway_' || (CASE WHEN railway IN ('platform') THEN railway ELSE NULL END))
-            ) as feature 
+            ) AS feature 
           FROM planet_osm_polygon
           WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'track', 'path', 'platform')
             OR railway IN ('platform')
@@ -671,7 +671,7 @@ Layer:
             UNION ALL 
             (SELECT 
                 way, prio, 
-                COALESCE(('railway_' ||(CASE WHEN railway='preserved' and service in ('spur','siding','yard') THEN 'INT-preserved-ssy'::text when (railway='rail' and service in ('spur','siding','yard'))  THEN 'INT-spur-siding-yard' else railway end)), ('aeroway_' || aeroway)) as feature, 
+                COALESCE(('railway_' ||(CASE WHEN railway='preserved' AND service in ('spur','siding','yard') THEN 'INT-preserved-ssy'::text when (railway='rail' AND service in ('spur','siding','yard'))  THEN 'INT-spur-siding-yard' else railway end)), ('aeroway_' || aeroway)) AS feature, 
                 horse, foot, bicycle, tracktype, 
                 CASE WHEN access in ('destination') THEN 'destination'::text when access in ('no', 'private') THEN 'no'::text ELSE NULL END as access, 
                 construction, CASE WHEN service in ('parking_aisle','drive-through','driveway') THEN 'INT-minor'::text else 'INT-normal'::text end as service, 
@@ -699,8 +699,8 @@ Layer:
                 ) AS ordertable (feature, prio) 
                   ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
               WHERE (tunnel IS NULL or not tunnel in ('yes','building_passage'))
-                and (covered IS NULL or not covered='yes') 
-                and (bridge IS NULL or not bridge in ('yes','viaduct'))
+                AND (covered IS NULL or not covered='yes') 
+                AND (bridge IS NULL or not bridge in ('yes','viaduct'))
               )
             ) AS features 
           ORDER BY prio
@@ -742,7 +742,7 @@ Layer:
           (
             (SELECT 
                 way, prio, 
-                ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway,0,length(highway)-4) else highway end)) as feature, 
+                ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway,0,length(highway)-4) else highway end)) AS feature, 
                 horse, foot, bicycle, tracktype, 
                 CASE WHEN access in ('destination') THEN 'destination'::text 
                   WHEN access in ('no', 'private') THEN 'no'::text 
@@ -750,7 +750,7 @@ Layer:
                 END AS access,
                 construction, 
                 CASE WHEN service in ('parking_aisle','drive-through','driveway') THEN 'INT-minor'::text else 'INT-normal'::text end as service, 
-                CASE WHEN oneway in ('yes', '-1') and highway in ('motorway', 'motorway_link',  'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction') THEN oneway ELSE NULL END as oneway, 
+                CASE WHEN oneway in ('yes', '-1') AND highway in ('motorway', 'motorway_link',  'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction') THEN oneway ELSE NULL END as oneway, 
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' else 'no' end as link, CASE WHEN layer IS NULL THEN '0' else layer end as layernotnull 
               FROM planet_osm_line 
                 JOIN (VALUES 
@@ -783,8 +783,8 @@ Layer:
                 ) AS ordertable (feature, prio) 
                   on ('highway_' || planet_osm_line.highway) = ordertable.feature 
               WHERE (tunnel IS NULL or not tunnel in ('yes','building_passage')) 
-                and (covered IS NULL or not covered='yes') 
-                and (bridge IS NULL or not bridge in ('yes','viaduct'))) 
+                AND (covered IS NULL or not covered='yes') 
+                AND (bridge IS NULL or not bridge in ('yes','viaduct'))) 
             union all 
             (SELECT 
                 way, prio, 
@@ -822,7 +822,7 @@ Layer:
                   ('railway_construction',400),
                   ('aeroway_runway',60),
                   ('aeroway_taxiway',50),
-                  ('railway_platform',90)) as ordertable (feature, prio) 
+                  ('railway_platform',90)) AS ordertable (feature, prio) 
                 ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature 
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes','building_passage')) 
                 AND (covered IS NULL OR NOT covered='yes') 
@@ -857,7 +857,7 @@ Layer:
               ON v.highway=l.highway
           WHERE p.highway='turning_circle' or p.highway='turning_loop' 
           ORDER BY p.way,v.prio
-        ) as turning_circle_fill
+        ) AS turning_circle_fill
     advanced: {}
   - id: "aerialways"
     name: "aerialways"
@@ -867,7 +867,7 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |2-
-        (SELECT way,aerialway FROM planet_osm_line WHERE aerialway is not null) as aerialways
+        (SELECT way,aerialway FROM planet_osm_line WHERE aerialway IS NOT NULL) AS aerialways
     advanced: {}
   - id: "roads-low-zoom"
     name: "roads-low-zoom"
@@ -877,12 +877,12 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |2-
-              (SELECT way,coalesce(('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway,0,length(highway)-4) else highway end)), ('railway_' || (CASE WHEN (railway='rail' and service in ('spur','siding','yard'))  THEN 'INT-spur-siding-yard' when railway in ('rail','tram','light_rail','funicular','narrow_gauge') THEN railway ELSE NULL END))) as feature,tunnel
+              (SELECT way,coalesce(('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway,0,length(highway)-4) else highway end)), ('railway_' || (CASE WHEN (railway='rail' AND service in ('spur','siding','yard'))  THEN 'INT-spur-siding-yard' when railway in ('rail','tram','light_rail','funicular','narrow_gauge') THEN railway ELSE NULL END))) AS feature,tunnel
                FROM planet_osm_roads
-               WHERE highway is not null
-                  or (railway is not null and railway!='preserved' and (service IS NULL or service not in ('spur','siding','yard')))
+               WHERE highway IS NOT NULL
+                  or (railway IS NOT NULL AND railway!='preserved' AND (service IS NULL or service not in ('spur','siding','yard')))
                ORDER BY z_order
-              ) as roads_low_zoom
+              ) AS roads_low_zoom
     advanced: {}
   - id: "waterway-bridges"
     name: "waterway-bridges"
@@ -892,7 +892,7 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |2-
-        (SELECT way,waterway,name,CASE WHEN tunnel in ('yes','culvert') THEN 'yes' else 'no' end as int_tunnel, 'yes' as bridge FROM planet_osm_line WHERE waterway in ('river','canal','derelict_canal','stream','drain','ditch','wadi') and bridge in ('yes','aqueduct') ORDER BY z_order) as waterway_bridges
+        (SELECT way,waterway,name,CASE WHEN tunnel in ('yes','culvert') THEN 'yes' else 'no' end as int_tunnel, 'yes' as bridge FROM planet_osm_line WHERE waterway in ('river','canal','derelict_canal','stream','drain','ditch','wadi') AND bridge in ('yes','aqueduct') ORDER BY z_order) AS waterway_bridges
     advanced: {}
   - id: "bridges"
     name: "bridges"
@@ -902,7 +902,7 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |2-
-        (SELECT * FROM ((SELECT way, prio, ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway,0,length(highway)-4) else highway end)) as feature, horse, foot, bicycle, tracktype, CASE WHEN access in ('destination') THEN 'destination'::text when access in ('no', 'private') THEN 'no'::text ELSE NULL END as access, construction, CASE WHEN service in ('parking_aisle','drive-through','driveway') THEN 'INT-minor'::text else 'INT-normal'::text end as service, CASE WHEN oneway in ('yes', '-1') and highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified','road','service','pedestrian','raceway','living_street','construction') THEN oneway ELSE NULL END as oneway, CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' else 'no' end as link, CASE WHEN layer IS NULL THEN '0' else layer end as layernotnull FROM planet_osm_line JOIN ( values ('highway_motorway',380), ('highway_trunk',370), ('highway_primary',360), ('highway_secondary',350), ('highway_tertiary',340), ('highway_residential',330), ('highway_unclassified',330), ('highway_road',330), ('highway_living_street',320), ('highway_pedestrian',310),  ('highway_raceway',300), ('highway_motorway_link',240), ('highway_trunk_link',230), ('highway_primary_link',220), ('highway_secondary_link',210), ('highway_tertiary_link',200), ('highway_service',150), ('highway_track',110), ('highway_path',100), ('highway_footway',100), ('highway_bridleway',100), ('highway_cycleway',100),  ('highway_steps',100), ('highway_platform',90), ('highway_proposed',20), ('highway_construction',10)) as ordertable (feature, prio) on ('highway_' || planet_osm_line.highway) = ordertable.feature WHERE bridge in ('yes','viaduct')) union all (SELECT way, prio, coalesce(('railway_' ||(CASE WHEN railway='preserved' and service in ('spur','siding','yard') THEN 'INT-preserved-ssy'::text when (railway='rail' and service in ('spur','siding','yard'))  THEN 'INT-spur-siding-yard' else railway end)), ('aeroway_' || aeroway)) as feature, horse, foot, bicycle, tracktype, CASE WHEN access in ('destination') THEN 'destination'::text when access in ('no', 'private') THEN 'no'::text ELSE NULL END as access, construction, CASE WHEN service in ('parking_aisle','drive-through','driveway') THEN 'INT-minor'::text else 'INT-normal'::text end as service, null as oneway, 'no' as link, CASE WHEN layer IS NULL THEN '0' else layer end as layernotnull FROM planet_osm_line JOIN ( values ('railway_rail',430), ('railway_spur',430), ('railway_siding',430), ('railway_subway',420), ('railway_narrow_gauge',420), ('railway_light_rail',420), ('railway_preserved',420), ('railway_funicular',420), ('railway_monorail',420), ('railway_miniature',420), ('railway_turntable',420), ('railway_tram',410), ('railway_disused',400), ('railway_construction',400), ('aeroway_runway',60), ('aeroway_taxiway',50), ('railway_platform',90)) as ordertable (feature, prio) on coalesce(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature WHERE bridge in ('yes','viaduct'))) as features ORDER BY layernotnull,prio) as bridges
+        (SELECT * FROM ((SELECT way, prio, ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway,0,length(highway)-4) else highway end)) AS feature, horse, foot, bicycle, tracktype, CASE WHEN access in ('destination') THEN 'destination'::text when access in ('no', 'private') THEN 'no'::text ELSE NULL END as access, construction, CASE WHEN service in ('parking_aisle','drive-through','driveway') THEN 'INT-minor'::text else 'INT-normal'::text end as service, CASE WHEN oneway in ('yes', '-1') AND highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified','road','service','pedestrian','raceway','living_street','construction') THEN oneway ELSE NULL END as oneway, CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' else 'no' end as link, CASE WHEN layer IS NULL THEN '0' else layer end as layernotnull FROM planet_osm_line JOIN ( values ('highway_motorway',380), ('highway_trunk',370), ('highway_primary',360), ('highway_secondary',350), ('highway_tertiary',340), ('highway_residential',330), ('highway_unclassified',330), ('highway_road',330), ('highway_living_street',320), ('highway_pedestrian',310),  ('highway_raceway',300), ('highway_motorway_link',240), ('highway_trunk_link',230), ('highway_primary_link',220), ('highway_secondary_link',210), ('highway_tertiary_link',200), ('highway_service',150), ('highway_track',110), ('highway_path',100), ('highway_footway',100), ('highway_bridleway',100), ('highway_cycleway',100),  ('highway_steps',100), ('highway_platform',90), ('highway_proposed',20), ('highway_construction',10)) AS ordertable (feature, prio) on ('highway_' || planet_osm_line.highway) = ordertable.feature WHERE bridge in ('yes','viaduct')) union all (SELECT way, prio, coalesce(('railway_' ||(CASE WHEN railway='preserved' AND service in ('spur','siding','yard') THEN 'INT-preserved-ssy'::text when (railway='rail' AND service in ('spur','siding','yard'))  THEN 'INT-spur-siding-yard' else railway end)), ('aeroway_' || aeroway)) AS feature, horse, foot, bicycle, tracktype, CASE WHEN access in ('destination') THEN 'destination'::text when access in ('no', 'private') THEN 'no'::text ELSE NULL END as access, construction, CASE WHEN service in ('parking_aisle','drive-through','driveway') THEN 'INT-minor'::text else 'INT-normal'::text end as service, null as oneway, 'no' as link, CASE WHEN layer IS NULL THEN '0' else layer end as layernotnull FROM planet_osm_line JOIN ( values ('railway_rail',430), ('railway_spur',430), ('railway_siding',430), ('railway_subway',420), ('railway_narrow_gauge',420), ('railway_light_rail',420), ('railway_preserved',420), ('railway_funicular',420), ('railway_monorail',420), ('railway_miniature',420), ('railway_turntable',420), ('railway_tram',410), ('railway_disused',400), ('railway_construction',400), ('aeroway_runway',60), ('aeroway_taxiway',50), ('railway_platform',90)) AS ordertable (feature, prio) on coalesce(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature WHERE bridge in ('yes','viaduct'))) AS features ORDER BY layernotnull,prio) AS bridges
     properties: 
       group-by: "layernotnull"
     advanced: {}
@@ -914,7 +914,7 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |2-
-        (SELECT way FROM planet_osm_line WHERE highway='bus_guideway' and (tunnel IS NULL or tunnel != 'yes')) as guideways
+        (SELECT way FROM planet_osm_line WHERE highway='bus_guideway' AND (tunnel IS NULL or tunnel != 'yes')) AS guideways
     advanced: {}
   - name: "admin-01234"
     id: "admin-01234"
@@ -927,8 +927,8 @@ Layer:
         (SELECT way,admin_level
                FROM planet_osm_roads
                WHERE "boundary"='administrative'
-                 and admin_level in ('0','1','2','3','4')
-               ) as admin_01234
+                 AND admin_level in ('0','1','2','3','4')
+               ) AS admin_01234
     advanced: {}
   - id: "admin-5678"
     name: "admin-5678"
@@ -941,8 +941,8 @@ Layer:
         (SELECT way,admin_level
                FROM planet_osm_roads
                WHERE "boundary"='administrative'
-                 and admin_level in ('5','6','7','8')
-               ) as admin_5678
+                 AND admin_level in ('5','6','7','8')
+               ) AS admin_5678
     advanced: {}
   - id: "admin-other"
     name: "admin-other"
@@ -955,8 +955,8 @@ Layer:
         (SELECT way,admin_level
                FROM planet_osm_roads
                WHERE "boundary"='administrative'
-                 and admin_level in ('9', '10')
-               ) as admin_other
+                 AND admin_level in ('9', '10')
+               ) AS admin_other
     advanced: {}
   - id: "power-minorline"
     name: "power-minorline"
@@ -966,7 +966,7 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |2-
-        (SELECT way FROM planet_osm_line WHERE "power"='minor_line') as power_minorline
+        (SELECT way FROM planet_osm_line WHERE "power"='minor_line') AS power_minorline
     advanced: {}
   - id: "power-line"
     name: "power-line"
@@ -976,7 +976,7 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |2-
-        (SELECT way FROM planet_osm_line WHERE "power"='line') as power_line
+        (SELECT way FROM planet_osm_line WHERE "power"='line') AS power_line
     advanced: {}
   - id: "nepopulated"
     name: "nepopulated"
@@ -1000,7 +1000,7 @@ Layer:
         (SELECT way,place,name,ref
                FROM planet_osm_point
                WHERE place in ('country','state')
-              ) as placenames_large
+              ) AS placenames_large
     advanced: {}
   - id: "placenames-capital"
     name: "placenames-capital"
@@ -1012,8 +1012,8 @@ Layer:
       table: |2-
         (SELECT way,place,name,ref
                FROM planet_osm_point
-               WHERE place in ('city','town') and capital='yes'
-              ) as placenames_capital
+               WHERE place in ('city','town') AND capital='yes'
+              ) AS placenames_capital
     advanced: {}
   - id: "placenames-medium"
     name: "placenames-medium"
@@ -1026,8 +1026,8 @@ Layer:
         (SELECT way,place,name
               FROM planet_osm_point
               WHERE place in ('city','town')
-                and (capital IS NULL or capital != 'yes')
-              ) as placenames_medium
+                AND (capital IS NULL or capital != 'yes')
+              ) AS placenames_medium
     advanced: {}
   - id: "placenames-small"
     name: "placenames-small"
@@ -1040,7 +1040,7 @@ Layer:
         (SELECT way,place,name
               FROM planet_osm_point
               WHERE place in ('suburb','village','hamlet','neighbourhood','locality','isolated_dwelling','farm')
-              ) as placenames_small
+              ) AS placenames_small
     advanced: {}
   - id: "stations"
     class: "stations"
@@ -1054,7 +1054,7 @@ Layer:
               FROM planet_osm_point
               WHERE railway in ('station','halt','tram_stop','subway_entrance')
                  or aerialway='station'
-              ) as stations
+              ) AS stations
     advanced: {}
   - id: "stations-poly"
     name: "stations-poly"
@@ -1068,7 +1068,7 @@ Layer:
               FROM planet_osm_polygon
               WHERE railway in ('station','halt','tram_stop')
                  or aerialway='station'
-              ) as stations_poly
+              ) AS stations_poly
     advanced: {}
   - id: "glaciers-text"
     name: "glaciers-text"
@@ -1080,9 +1080,9 @@ Layer:
       table: |2-
               (SELECT way,name,way_area
               FROM planet_osm_polygon
-              WHERE "natural"='glacier' and building IS NULL
+              WHERE "natural"='glacier' AND building IS NULL
               ORDER BY way_area desc
-              ) as glaciers_text
+              ) AS glaciers_text
     advanced: {}
   - id: "amenity-symbols"
     name: "amenity-symbols"
@@ -1098,10 +1098,10 @@ Layer:
                  or barrier in ('bollard','gate','lift_gate','block')
                  or highway in ('mini_roundabout','gate')
                  or man_made in ('lighthouse','power_wind','windmill','mast')
-                 or (power='generator' and ("generator:source"='wind' or power_source='wind'))
+                 or (power='generator' AND ("generator:source"='wind' or power_source='wind'))
                  or "natural" in ('peak','volcano','spring','tree','cave_entrance')
                  or railway='level_crossing'
-              ) as amenity_symbols
+              ) AS amenity_symbols
     advanced: {}
   - id: "amenity-symbols-poly"
     name: "amenity-symbols-poly"
@@ -1117,10 +1117,10 @@ Layer:
                  or barrier in ('bollard','gate','lift_gate','block')
                  or highway in ('mini_roundabout','gate')
                  or man_made in ('lighthouse','power_wind','windmill','mast')
-                 or (power='generator' and ("generator:source"='wind' or power_source='wind'))
+                 or (power='generator' AND ("generator:source"='wind' or power_source='wind'))
                  or "natural" in ('peak','volcano','spring','tree')
                  or railway='level_crossing'
-              ) as amenity_symbols_poly
+              ) AS amenity_symbols_poly
     advanced: {}
   - id: "amenity-points-poly"
     name: "amenity-points-poly"
@@ -1130,16 +1130,16 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |2-
-        (SELECT way,coalesce('aeroway_' || aeroway, 'shop_' || CASE WHEN shop in ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle') THEN shop when not shop IS NULL THEN 'other' ELSE NULL END, 'amenity_' || amenity, 'leisure_' || leisure, 'landuse_' || landuse, 'man_made_' || man_made, 'natural_' || "natural", 'place_' || place, 'tourism_' || tourism, 'military_' || military, 'waterway_' || waterway, 'historic_' || historic, 'lock_' || lock, 'highway_' || highway) as feature,access,religion
+        (SELECT way,coalesce('aeroway_' || aeroway, 'shop_' || CASE WHEN shop in ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle') THEN shop when not shop IS NULL THEN 'other' ELSE NULL END, 'amenity_' || amenity, 'leisure_' || leisure, 'landuse_' || landuse, 'man_made_' || man_made, 'natural_' || "natural", 'place_' || place, 'tourism_' || tourism, 'military_' || military, 'waterway_' || waterway, 'historic_' || historic, 'lock_' || lock, 'highway_' || highway) AS feature,access,religion
               FROM planet_osm_polygon
-              WHERE amenity is not null
+              WHERE amenity IS NOT NULL
                  or shop in ('accessories', 'alcohol', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bag', 'bags', 'bakery', 'bathroom_furnishing', 'beauty', 'bed', 'betting', 'beverages', 'bicycle', 'boat', 'bookmaker', 'books', 'boutique', 'builder', 'building_materials', 'butcher', 'camera', 'car', 'car_parts', 'car_repair', 'car_service', 'carpet', 'charity', 'cheese', 'chemist', 'chocolate', 'clothes', 'coffee', 'communication', 'computer', 'confectionery', 'convenience', 'copyshop', 'cosmetics', 'craft', 'curtain', 'dairy', 'deli', 'delicatessen', 'department_store', 'discount', 'dive', 'doityourself', 'dry_cleaning', 'e-cigarette', 'electrical', 'electronics', 'energy', 'erotic', 'estate_agent', 'fabric', 'farm', 'fashion', 'fish', 'fishing', 'fishmonger', 'flooring', 'florist', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'furniture', 'gallery', 'gambling', 'games', 'garden_centre', 'gas', 'general', 'gift', 'glaziery', 'greengrocer', 'grocery', 'hairdresser', 'hardware', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hifi', 'hobby', 'household', 'houseware', 'hunting', 'ice_cream', 'insurance', 'interior_decoration', 'jewellery', 'jewelry', 'kiosk', 'kitchen', 'laundry', 'leather', 'lighting', 'locksmith', 'lottery', 'mall', 'market', 'massage', 'medical', 'medical_supply', 'mobile_phone', 'money_lender', 'motorcycle', 'motorcycle_repair', 'music', 'musical_instrument', 'newsagent', 'office_supplies', 'optician', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'perfumery', 'pet', 'pets', 'pharmacy', 'phone', 'photo', 'photo_studio', 'photography', 'pottery', 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'seafood', 'second_hand', 'sewing', 'shoe_repair', 'shoes', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'stationery', 'supermarket', 'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'toys', 'trade', 'travel_agency', 'tyres', 'vacuum_cleaner', 'variety_store', 'video', 'video_games', 'watches', 'wholesale', 'wine', 'winery', 'yes')
                  or tourism in ('alpine_hut','camp_site','picnic_site','caravan_site','guest_house','hostel','hotel','motel','museum','viewpoint','bed_and_breakfast','information','chalet')
                  or highway in ('bus_stop','traffic_signals')
                  or man_made in ('mast','water_tower')
                  or historic in ('memorial','archaeological_site')
                  or leisure in ('playground', 'picnic_table')
-         ORDER BY way_area desc      ) as amenity_points_poly
+         ORDER BY way_area desc      ) AS amenity_points_poly
     advanced: {}
   - id: "amenity-points"
     name: "amenity-points"
@@ -1149,10 +1149,10 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |2-
-        (SELECT way,coalesce('aeroway_' || aeroway, 'shop_' || CASE WHEN shop in ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle') THEN shop when not shop IS NULL THEN 'other' ELSE NULL END, 'amenity_' || amenity, 'leisure_' || leisure, 'landuse_' || landuse, 'man_made_' || man_made, 'natural_' || "natural", 'place_' || place, 'tourism_' || tourism, 'military_' || military, 'waterway_' || waterway, 'historic_' || historic, 'lock_' || lock, 'highway_' || highway) as feature,access,religion
+        (SELECT way,coalesce('aeroway_' || aeroway, 'shop_' || CASE WHEN shop in ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle') THEN shop when not shop IS NULL THEN 'other' ELSE NULL END, 'amenity_' || amenity, 'leisure_' || leisure, 'landuse_' || landuse, 'man_made_' || man_made, 'natural_' || "natural", 'place_' || place, 'tourism_' || tourism, 'military_' || military, 'waterway_' || waterway, 'historic_' || historic, 'lock_' || lock, 'highway_' || highway) AS feature,access,religion
               FROM planet_osm_point
               WHERE shop in ('accessories', 'alcohol', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bag', 'bags', 'bakery', 'bathroom_furnishing', 'beauty', 'bed', 'betting', 'beverages', 'bicycle', 'boat', 'bookmaker', 'books', 'boutique', 'builder', 'building_materials', 'butcher', 'camera', 'car', 'car_parts', 'car_repair', 'car_service', 'carpet', 'charity', 'cheese', 'chemist', 'chocolate', 'clothes', 'coffee', 'communication', 'computer', 'confectionery', 'convenience', 'copyshop', 'cosmetics', 'craft', 'curtain', 'dairy', 'deli', 'delicatessen', 'department_store', 'discount', 'dive', 'doityourself', 'dry_cleaning', 'e-cigarette', 'electrical', 'electronics', 'energy', 'erotic', 'estate_agent', 'fabric', 'farm', 'fashion', 'fish', 'fishing', 'fishmonger', 'flooring', 'florist', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'furniture', 'gallery', 'gambling', 'games', 'garden_centre', 'gas', 'general', 'gift', 'glaziery', 'greengrocer', 'grocery', 'hairdresser', 'hardware', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hifi', 'hobby', 'household', 'houseware', 'hunting', 'ice_cream', 'insurance', 'interior_decoration', 'jewellery', 'jewelry', 'kiosk', 'kitchen', 'laundry', 'leather', 'lighting', 'locksmith', 'lottery', 'mall', 'market', 'massage', 'medical', 'medical_supply', 'mobile_phone', 'money_lender', 'motorcycle', 'motorcycle_repair', 'music', 'musical_instrument', 'newsagent', 'office_supplies', 'optician', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'perfumery', 'pet', 'pets', 'pharmacy', 'phone', 'photo', 'photo_studio', 'photography', 'pottery', 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'seafood', 'second_hand', 'sewing', 'shoe_repair', 'shoes', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'stationery', 'supermarket', 'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'toys', 'trade', 'travel_agency', 'tyres', 'vacuum_cleaner', 'variety_store', 'video', 'video_games', 'watches', 'wholesale', 'wine', 'winery', 'yes')
-                 or amenity is not null
+                 or amenity IS NOT NULL
                  or tourism in ('alpine_hut','picnic_site','camp_site','caravan_site','guest_house','hostel','hotel','motel','museum','viewpoint','bed_and_breakfast','information','chalet')
                  or highway in ('bus_stop','traffic_signals','ford')
                  or man_made in ('mast','water_tower')
@@ -1160,7 +1160,7 @@ Layer:
                  or waterway='lock'
                  or lock='yes'
                  or leisure in ('playground','slipway','picnic_table')
-              ) as amenity_points
+              ) AS amenity_points
     advanced: {}
   - id: "power-towers"
     name: "power-towers"
@@ -1170,7 +1170,7 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |2-
-        (SELECT way FROM planet_osm_point WHERE power='tower') as power_towers
+        (SELECT way FROM planet_osm_point WHERE power='tower') AS power_towers
     advanced: {}
   - id: "power-poles"
     name: "power-poles"
@@ -1180,7 +1180,7 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |2-
-        (SELECT way FROM planet_osm_point WHERE power='pole') as power_poles
+        (SELECT way FROM planet_osm_point WHERE power='pole') AS power_poles
     advanced: {}
   - id: "roads-text-ref-low-zoom"
     name: "roads-text-ref-low-zoom"
@@ -1218,7 +1218,7 @@ Layer:
              (SELECT way,highway,junction,ref,name
               FROM planet_osm_point
               WHERE highway='motorway_junction' or highway = 'traffic_signals' or junction = 'yes'
-             ) as junctions
+             ) AS junctions
     advanced: {}
   - id: "roads-text-ref"
     name: "roads-text-ref"
@@ -1255,8 +1255,8 @@ Layer:
       table: |2-
               (SELECT way, way_area/(!pixel_width!*!pixel_height!) AS way_pixels, highway, name
                FROM planet_osm_polygon
-               WHERE highway in ('residential','unclassified','pedestrian','service','footway','cycleway','living_street','track','path','platform') or railway in ('platform') and name is not null
-              ) as roads_area_text_name
+               WHERE highway in ('residential','unclassified','pedestrian','service','footway','cycleway','living_street','track','path','platform') or railway in ('platform') AND name IS NOT NULL
+              ) AS roads_area_text_name
     advanced: {}
   - id: "roads-text-name"
     name: "roads-text-name"
@@ -1269,8 +1269,8 @@ Layer:
               (SELECT way, CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway,0,length(highway)-4) else highway end, name
                FROM planet_osm_line
                WHERE highway in ('motorway','motorway_link','trunk','trunk_link','primary','primary_link','secondary','secondary_link','tertiary','tertiary_link','residential','unclassified','road','service','pedestrian','raceway','living_street', 'construction','proposed') 
-                 and name is not null
-              ) as roads_text_name
+                 AND name IS NOT NULL
+              ) AS roads_text_name
     advanced: {}
   - id: "paths-text-name"
     name: "paths-text-name"
@@ -1283,8 +1283,8 @@ Layer:
               (SELECT way, highway, name
                FROM planet_osm_line
                WHERE highway in ('bridleway', 'footway', 'cycleway', 'path', 'track', 'steps') 
-                 and name is not null
-              ) as paths_text_name
+                 AND name IS NOT NULL
+              ) AS paths_text_name
     advanced: {}
   - id: "text-poly"
     name: "text-poly"
@@ -1294,19 +1294,19 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |2-
-        (SELECT way,coalesce('aeroway_' || aeroway, 'shop_' || CASE WHEN shop in ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle') THEN shop when not shop IS NULL THEN 'other' ELSE NULL END, 'amenity_' || amenity, 'leisure_' || leisure, 'landuse_' || landuse, 'man_made_' || man_made, 'natural_' || "natural", 'place_' || place, 'tourism_' || tourism, 'military_' || military, 'waterway_' || waterway, 'historic_' || historic, 'highway_' || highway) as feature,access,NULL as ele,name,ref,way_area
+        (SELECT way,coalesce('aeroway_' || aeroway, 'shop_' || CASE WHEN shop in ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle') THEN shop when not shop IS NULL THEN 'other' ELSE NULL END, 'amenity_' || amenity, 'leisure_' || leisure, 'landuse_' || landuse, 'man_made_' || man_made, 'natural_' || "natural", 'place_' || place, 'tourism_' || tourism, 'military_' || military, 'waterway_' || waterway, 'historic_' || historic, 'highway_' || highway) AS feature,access,NULL as ele,name,ref,way_area
                FROM planet_osm_polygon
-               WHERE amenity is not null
+               WHERE amenity IS NOT NULL
                   or shop in ('accessories', 'alcohol', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bag', 'bags', 'bakery', 'bathroom_furnishing', 'beauty', 'bed', 'betting', 'beverages', 'bicycle', 'boat', 'bookmaker', 'books', 'boutique', 'builder', 'building_materials', 'butcher', 'camera', 'car', 'car_parts', 'car_repair', 'car_service', 'carpet', 'charity', 'cheese', 'chemist', 'chocolate', 'clothes', 'coffee', 'communication', 'computer', 'confectionery', 'convenience', 'copyshop', 'cosmetics', 'craft', 'curtain', 'dairy', 'deli', 'delicatessen', 'department_store', 'discount', 'dive', 'doityourself', 'dry_cleaning', 'e-cigarette', 'electrical', 'electronics', 'energy', 'erotic', 'estate_agent', 'fabric', 'farm', 'fashion', 'fish', 'fishing', 'fishmonger', 'flooring', 'florist', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'furniture', 'gallery', 'gambling', 'games', 'garden_centre', 'gas', 'general', 'gift', 'glaziery', 'greengrocer', 'grocery', 'hairdresser', 'hardware', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hifi', 'hobby', 'household', 'houseware', 'hunting', 'ice_cream', 'insurance', 'interior_decoration', 'jewellery', 'jewelry', 'kiosk', 'kitchen', 'laundry', 'leather', 'lighting', 'locksmith', 'lottery', 'mall', 'market', 'massage', 'medical', 'medical_supply', 'mobile_phone', 'money_lender', 'motorcycle', 'motorcycle_repair', 'music', 'musical_instrument', 'newsagent', 'office_supplies', 'optician', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'perfumery', 'pet', 'pets', 'pharmacy', 'phone', 'photo', 'photo_studio', 'photography', 'pottery', 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'seafood', 'second_hand', 'sewing', 'shoe_repair', 'shoes', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'stationery', 'supermarket', 'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'toys', 'trade', 'travel_agency', 'tyres', 'vacuum_cleaner', 'variety_store', 'video', 'video_games', 'watches', 'wholesale', 'wine', 'winery', 'yes')
-                  or leisure is not null
-                  or landuse is not null
-                  or tourism is not null
-                  or "natural" is not null
+                  or leisure IS NOT NULL
+                  or landuse IS NOT NULL
+                  or tourism IS NOT NULL
+                  or "natural" IS NOT NULL
                   or man_made in ('lighthouse','windmill')
                   or place='island'
                   or military='danger_area'
                   or historic in ('memorial','archaeological_site')
-         ORDER BY way_area desc     ) as text_poly
+         ORDER BY way_area desc     ) AS text_poly
     advanced: {}
   - id: "text"
     name: "text"
@@ -1316,21 +1316,21 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |2-
-              (SELECT way,coalesce('aeroway_' || aeroway, 'shop_' || CASE WHEN shop in ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle') THEN shop when not shop IS NULL THEN 'other' ELSE NULL END, 'amenity_' || amenity, 'leisure_' || leisure, 'landuse_' || landuse, 'man_made_' || man_made, 'natural_' || "natural", 'place_' || place, 'tourism_' || tourism, 'military_' || military, 'waterway_' || waterway, 'historic_' || historic, 'highway_' || highway) as feature,access,ele,name,ref,NULL as way_area
+              (SELECT way,coalesce('aeroway_' || aeroway, 'shop_' || CASE WHEN shop in ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle') THEN shop when not shop IS NULL THEN 'other' ELSE NULL END, 'amenity_' || amenity, 'leisure_' || leisure, 'landuse_' || landuse, 'man_made_' || man_made, 'natural_' || "natural", 'place_' || place, 'tourism_' || tourism, 'military_' || military, 'waterway_' || waterway, 'historic_' || historic, 'highway_' || highway) AS feature,access,ele,name,ref,NULL as way_area
                FROM planet_osm_point
-               WHERE amenity is not null
+               WHERE amenity IS NOT NULL
                   or shop in ('accessories', 'alcohol', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bag', 'bags', 'bakery', 'bathroom_furnishing', 'beauty', 'bed', 'betting', 'beverages', 'bicycle', 'boat', 'bookmaker', 'books', 'boutique', 'builder', 'building_materials', 'butcher', 'camera', 'car', 'car_parts', 'car_repair', 'car_service', 'carpet', 'charity', 'cheese', 'chemist', 'chocolate', 'clothes', 'coffee', 'communication', 'computer', 'confectionery', 'convenience', 'copyshop', 'cosmetics', 'craft', 'curtain', 'dairy', 'deli', 'delicatessen', 'department_store', 'discount', 'dive', 'doityourself', 'dry_cleaning', 'e-cigarette', 'electrical', 'electronics', 'energy', 'erotic', 'estate_agent', 'fabric', 'farm', 'fashion', 'fish', 'fishing', 'fishmonger', 'flooring', 'florist', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'furniture', 'gallery', 'gambling', 'games', 'garden_centre', 'gas', 'general', 'gift', 'glaziery', 'greengrocer', 'grocery', 'hairdresser', 'hardware', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hifi', 'hobby', 'household', 'houseware', 'hunting', 'ice_cream', 'insurance', 'interior_decoration', 'jewellery', 'jewelry', 'kiosk', 'kitchen', 'laundry', 'leather', 'lighting', 'locksmith', 'lottery', 'mall', 'market', 'massage', 'medical', 'medical_supply', 'mobile_phone', 'money_lender', 'motorcycle', 'motorcycle_repair', 'music', 'musical_instrument', 'newsagent', 'office_supplies', 'optician', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'perfumery', 'pet', 'pets', 'pharmacy', 'phone', 'photo', 'photo_studio', 'photography', 'pottery', 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'seafood', 'second_hand', 'sewing', 'shoe_repair', 'shoes', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'stationery', 'supermarket', 'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'toys', 'trade', 'travel_agency', 'tyres', 'vacuum_cleaner', 'variety_store', 'video', 'video_games', 'watches', 'wholesale', 'wine', 'winery', 'yes')
-                  or leisure is not null
-                  or landuse is not null
-                  or tourism is not null
-                  or "natural" is not null
+                  or leisure IS NOT NULL
+                  or landuse IS NOT NULL
+                  or tourism IS NOT NULL
+                  or "natural" IS NOT NULL
                   or man_made in ('lighthouse','windmill')
                   or place='island'
                   or military='danger_area'
                   or aeroway='gate'
                   or waterway='lock'
                   or historic in ('memorial','archaeological_site')
-              ) as text
+              ) AS text
     advanced: {}
   - id: "building-text"
     name: "building-text"
@@ -1340,7 +1340,7 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |2-
-        (SELECT name, way, way_area FROM planet_osm_polygon WHERE building is not null  and building not in ('no','station','supermarket')) as building_text
+        (SELECT name, way, way_area FROM planet_osm_polygon WHERE building IS NOT NULL  AND building not in ('no','station','supermarket')) AS building_text
     advanced: {}
   - id: "interpolation"
     name: "interpolation"
@@ -1350,7 +1350,7 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |2-
-        (SELECT way FROM planet_osm_line WHERE "addr:interpolation" is not null) as interpolation
+        (SELECT way FROM planet_osm_line WHERE "addr:interpolation" IS NOT NULL) AS interpolation
     advanced: {}
   - id: "housenumbers"
     name: "housenumbers"
@@ -1360,10 +1360,10 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |2-
-              (SELECT way,"addr:housenumber" FROM planet_osm_polygon WHERE "addr:housenumber" is not null and building is not null
+              (SELECT way,"addr:housenumber" FROM planet_osm_polygon WHERE "addr:housenumber" IS NOT NULL AND building IS NOT NULL
                union
-               select way,"addr:housenumber" FROM planet_osm_point WHERE "addr:housenumber" is not null
-              ) as housenumbers
+               select way,"addr:housenumber" FROM planet_osm_point WHERE "addr:housenumber" IS NOT NULL
+              ) AS housenumbers
     advanced: {}
   - id: "housenames"
     name: "housenames"
@@ -1373,10 +1373,10 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |2-
-        (SELECT way,"addr:housename" FROM planet_osm_polygon WHERE "addr:housename" is not null and building is not null
+        (SELECT way,"addr:housename" FROM planet_osm_polygon WHERE "addr:housename" IS NOT NULL AND building IS NOT NULL
                union
-               select way,"addr:housename" FROM planet_osm_point WHERE "addr:housename" is not null
-              ) as housenames
+               select way,"addr:housename" FROM planet_osm_point WHERE "addr:housename" IS NOT NULL
+              ) AS housenames
     advanced: {}
   - id: "water-lines-text"
     name: "water-lines-text"
@@ -1390,7 +1390,7 @@ Layer:
               FROM planet_osm_line
               WHERE waterway in ('weir','river','canal','derelict_canal','stream','drain','ditch','wadi')
                ORDER BY z_order
-              ) as water_lines_text
+              ) AS water_lines_text
     advanced: {}
   - id: "admin-text"
     name: "admin-text"
@@ -1400,7 +1400,7 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |2-
-        (SELECT way, name, admin_level FROM planet_osm_polygon WHERE "boundary" = 'administrative' and admin_level in ('0','1','2','3','4','5','6','7','8','9','10')) as admin_text
+        (SELECT way, name, admin_level FROM planet_osm_polygon WHERE "boundary" = 'administrative' AND admin_level in ('0','1','2','3','4','5','6','7','8','9','10')) AS admin_text
     advanced: {}
   - id: "nature-reserve-boundaries"
     name: "nature-reserve-boundaries"
@@ -1410,7 +1410,7 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |2-
-        (SELECT way,way_area,name,boundary FROM planet_osm_polygon WHERE (boundary='national_park' or leisure='nature_reserve') and building IS NULL) as national_park_boundaries
+        (SELECT way,way_area,name,boundary FROM planet_osm_polygon WHERE (boundary='national_park' or leisure='nature_reserve') AND building IS NULL) AS national_park_boundaries
     advanced: {}
   - id: "theme-park"
     name: "theme-park"
@@ -1420,5 +1420,5 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |2-
-        (SELECT way,name,tourism FROM planet_osm_polygon WHERE tourism='theme_park') as theme_park
+        (SELECT way,name,tourism FROM planet_osm_polygon WHERE tourism='theme_park') AS theme_park
     advanced: {}
