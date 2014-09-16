@@ -12,13 +12,13 @@ Your pull requests will then be reviewed and discussed.
 
 ## Editing Layers
 
-OpenStreetMap Carto uses a YAML file for defining layers. Some of the rationale is outlined in [a GitHub issue](https://github.com/gravitystorm/openstreetmap-carto/issues/711). Editing SQL in a YAML file is much friendlier than editing escaped SQL in a JSON file.
+OpenStreetMap Carto uses a YAML file for defining layers. Some of the rationale is outlined in [a GitHub issue](https://github.com/gravitystorm/openstreetmap-carto/issues/711). Editing multi-line SQL statements in a YAML file is much friendlier than editing escaped SQL in a JSON file.
 
 This requires a preprocessing step to convert the YAML to JSON. A script is provided at ``scripts/yaml2mml.py``, which depends on PyYAML, available through ``pip install pyyaml`` or packaged on Ubuntu as ``python-yaml``.
 
 After editing the YAML file, run ``./scripts/yaml2mml.py < project.yaml > project.mml && touch project.mml`` to update the file and force TileMill to reload it.
 
-When committing changes, add the entire project.mml file with ``git add project.mml``. One of the big advantages of this system is that to resolve any layer merge conflicts, they only need to be resolved in the YAML file where they are easier to handle, then the JSON file can be regenerated.
+When committing changes, add both the `project.yaml` and `project.mml` files to the commit. One of the big advantages of this system is that to resolve any layer merge conflicts, they only need to be resolved in the YAML file where they are easier to handle, then the JSON file can be regenerated, while at the same time the styles work with Tilemill out-of-the-box without needing to run the `yaml2mml` script.
 
 ## CartoCSS Style Guidelines
 
