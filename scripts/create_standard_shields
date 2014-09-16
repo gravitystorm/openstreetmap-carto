@@ -28,18 +28,22 @@ tertiary:#c4c68f'
 xoffset=1.25
 yoffset=1.75
 
-h='1:18'
+heights='
+1:18
+2:30
+3:44
+4:54'
 
-for w in $widths; do
-  xchars=$(echo $w | awk -F ":" '{print $1}')
-  xpixels=$(echo $w | awk -F ":" '{print $2}')
-  ychars=$(echo $h | awk -F ":" '{print $1}')
-  ypixels=$(echo $h | awk -F ":" '{print $2}')
-
-  for shield in $colours; do
-    class=$(echo $shield | awk -F ":" '{print $1}')
-    colour=$(echo $shield | awk -F ":" '{print $2}')
-    
-    ./create_shield $colour $xpixels $ypixels $xoffset $yoffset > "${class}_${xchars}x${ychars}.svg"
+for h in $heights; do
+  for w in $widths; do
+    xchars=$(echo $w | awk -F ":" '{print $1}')
+    xpixels=$(echo $w | awk -F ":" '{print $2}')
+    ychars=$(echo $h | awk -F ":" '{print $1}')
+    ypixels=$(echo $h | awk -F ":" '{print $2}')
+    for shield in $colours; do
+      class=$(echo $shield | awk -F ":" '{print $1}')
+      colour=$(echo $shield | awk -F ":" '{print $2}')
+      ./create_shield $colour $xpixels $ypixels $xoffset $yoffset > "${class}_${xchars}x${ychars}.svg"
+    done;
   done;
 done;

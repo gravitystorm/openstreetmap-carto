@@ -14,27 +14,40 @@
   }
 
   [waterway = 'dock'],
-  [waterway = 'mill_pond'],
   [waterway = 'canal'] {
     [zoom >= 9]::waterway {
-      polygon-gamma: 0.75;
       polygon-fill: @water-color;
+      [way_pixels >= 4] {
+        polygon-gamma: 0.75;
+      }
+      [way_pixels >= 64] {
+        polygon-gamma: 0.6;
+      }
     }
   }
 
   [landuse = 'basin'][zoom >= 7]::landuse {
-    polygon-gamma: 0.75;
     polygon-fill: @water-color;
+    [way_pixels >= 4] {
+      polygon-gamma: 0.75;
+    }
+    [way_pixels >= 64] {
+      polygon-gamma: 0.6;
+    }
   }
 
   [natural = 'lake']::natural,
   [natural = 'water']::natural,
   [landuse = 'reservoir']::landuse,
-  [waterway = 'riverbank']::waterway,
-  [landuse = 'water']::water {
+  [waterway = 'riverbank']::waterway {
     [zoom >= 6] {
       polygon-fill: @water-color;
-      polygon-gamma: 0.75;
+      [way_pixels >= 4] {
+        polygon-gamma: 0.75;
+      }
+      [way_pixels >= 64] {
+        polygon-gamma: 0.6;
+      }
     }
   }
 
@@ -90,7 +103,7 @@
   }
 }
 
-#water-lines {
+.water-lines {
   [waterway = 'weir'][zoom >= 15] {
     line-color: #aaa;
     line-width: 2;
@@ -109,6 +122,16 @@
 
   [waterway = 'canal'][zoom >= 12],
   [waterway = 'river'][zoom >= 12] {
+    [bridge = 'yes'] {
+      [zoom >= 14] {
+        bridgecasing/line-color: black;
+        bridgecasing/line-join: round;
+        bridgecasing/line-width: 6;
+        [zoom >= 15] { bridgecasing/line-width: 7; }
+        [zoom >= 17] { bridgecasing/line-width: 11; }
+        [zoom >= 18] { bridgecasing/line-width: 13; }
+      }
+    }
     line-color: @water-color;
     line-width: 2;
     [zoom >= 13] { line-width: 3; }
@@ -135,6 +158,18 @@
   [waterway = 'ditch'],
   [waterway = 'drain'] {
     [zoom >= 13] {
+      [bridge = 'yes'] {
+        [zoom >= 14] {
+          bridgecasing/line-color: black;
+          bridgecasing/line-join: round;
+          bridgecasing/line-width: 3;
+          [waterway = 'stream'][zoom >= 15] { bridgecasing/line-width: 4; }
+          bridgeglow/line-color: white;
+          bridgeglow/line-join: round;
+          bridgeglow/line-width: 2;
+          [waterway = 'stream'][zoom >= 15] { bridgeglow/line-width: 3; }
+        }
+      }
       line-width: 1;
       line-color: @water-color;
       [waterway = 'stream'][zoom >= 15] {
@@ -165,22 +200,6 @@
     [zoom >= 14] {
       line-width: 4.5;
       line-dasharray: 4,8;
-    }
-  }
-}
-
-#waterway-bridges {
-  [zoom >= 14] {
-    line-width: 7;
-    line-color: #000;
-    line-join: round;
-    b/line-width: 6;
-    b/line-color: @water-color;
-    b/line-cap: round;
-    b/line-join: round;
-    [zoom >= 17] {
-      line-width: 11;
-      b/line-width: 10;
     }
   }
 }
