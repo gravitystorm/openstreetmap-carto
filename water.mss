@@ -53,6 +53,7 @@
 
   [natural = 'mud'][zoom >= 13]::natural {
     polygon-pattern-file: url('symbols/mud.png');
+    polygon-pattern-alignment: global;
   }
 }
 
