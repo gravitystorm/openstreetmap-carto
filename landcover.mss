@@ -98,6 +98,7 @@
 
   [feature = 'landuse_orchard'][zoom >= 10] {
     polygon-pattern-file: url('symbols/orchard.png');
+    polygon-pattern-alignment: global;
   }
 
   [feature = 'landuse_cemetery'],
@@ -361,6 +362,7 @@
 
   [feature = 'natural_beach'][zoom >= 10] {
     polygon-pattern-file: url('symbols/beach.png');
+    polygon-pattern-alignment: global;
   }
 
   [feature = 'highway_services'],
