@@ -14,9 +14,9 @@ Your pull requests will then be reviewed and discussed.
 
 OpenStreetMap Carto uses a YAML file for defining layers. Some of the rationale is outlined in [a GitHub issue](https://github.com/gravitystorm/openstreetmap-carto/issues/711). Editing multi-line SQL statements in a YAML file is much friendlier than editing escaped SQL in a JSON file.
 
-This requires a preprocessing step to convert the YAML to JSON. A script is provided at ``scripts/yaml2mml.py``, which depends on PyYAML, available through ``pip install pyyaml`` or packaged on Ubuntu as ``python-yaml``.
+This requires a preprocessing step to convert the YAML to JSON. A script is provided at `scripts/yaml2mml.py`, which depends on PyYAML, available through `pip install pyyaml` or packaged on Ubuntu as `python-yaml`.
 
-After editing the YAML file, run ``./scripts/yaml2mml.py < project.yaml > project.mml && touch project.mml`` to update the file and force TileMill to reload it.
+After editing the YAML file, run `./scripts/yaml2mml.py < project.yaml > project.mml && touch project.mml` to update the file and force TileMill to reload it.
 
 When committing changes, add both the `project.yaml` and `project.mml` files to the commit. One of the big advantages of this system is that to resolve any layer merge conflicts, they only need to be resolved in the YAML file where they are easier to handle, then the JSON file can be regenerated, while at the same time the styles work with Tilemill out-of-the-box without needing to run the `yaml2mml` script.
 
@@ -62,10 +62,10 @@ Because SQL within JSON or YAML will not generally be syntax highlighted, indent
 
 * SQL keywords in caps, as in PostgreSQL documentation
 * Two space indents. No tabs.
-* Start with ``(SELECT`` and start the columns on the next line.
+* Start with `(SELECT` and start the columns on the next line.
 * Two indents for columns, to bring them to the same indent level as later clause contents
-* Add indentation after ``SELECT``s until the end of the sub-select.
-* Add indentation for contents of ``FROM``, ``WHERE``, ``ORDER BY`` and other clauses
+* Add indentation after `SELECT`s until the end of the sub-select.
+* Add indentation for contents of `FROM`, `WHERE`, `ORDER BY` and other clauses
 * Put content with WHERE, etc if it's short
 * Add indentation if necessary for complex function calls, WHERE parenthesis, and CASE statements
 * One space before and after = etc
