@@ -355,9 +355,7 @@ Layer:
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text 
                   ELSE 'INT-normal'::text 
                 END AS service, 
-                CASE WHEN oneway IN ('yes', '-1') AND highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction') THEN oneway 
-                  ELSE NULL 
-                END AS oneway,
+                CASE WHEN oneway IN ('yes', '-1') THEN oneway ELSE NULL END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' 
                   ELSE 'no' END AS link, 
                 CASE WHEN layer IS NULL THEN '0' 
@@ -629,10 +627,7 @@ Layer:
                 horse, foot, bicycle, tracktype, 
                 CASE WHEN access IN ('destination') THEN 'destination'::text WHEN access IN ('no', 'private') THEN 'no'::text ELSE NULL END AS access, construction, 
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service, 
-                CASE WHEN oneway IN ('yes', '-1') 
-                    AND highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction') THEN oneway 
-                  ELSE NULL 
-                END AS oneway, 
+                CASE WHEN oneway IN ('yes', '-1') THEN oneway ELSE NULL END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link, 
                 CASE WHEN layer IS NULL THEN '0' ELSE layer END AS layernotnull 
               FROM planet_osm_line 
@@ -750,7 +745,7 @@ Layer:
                 END AS access,
                 construction, 
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service, 
-                CASE WHEN oneway IN ('yes', '-1') AND highway IN ('motorway', 'motorway_link',  'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction') THEN oneway ELSE NULL END AS oneway, 
+                CASE WHEN oneway IN ('yes', '-1') THEN oneway ELSE NULL END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link, CASE WHEN layer IS NULL THEN '0' ELSE layer END AS layernotnull 
               FROM planet_osm_line 
                 JOIN (VALUES 
@@ -916,9 +911,7 @@ Layer:
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text 
                   ELSE 'INT-normal'::text 
                 END AS service, 
-                CASE WHEN oneway IN ('yes', '-1') AND highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction') THEN oneway 
-                  ELSE NULL 
-                END AS oneway,
+                CASE WHEN oneway IN ('yes', '-1') THEN oneway ELSE NULL END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' 
                   ELSE 'no' END AS link, 
                 CASE WHEN layer IS NULL THEN '0' 
