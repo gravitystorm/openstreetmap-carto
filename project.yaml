@@ -954,7 +954,8 @@ Layer:
                 ('highway_construction', 10)
               ) AS ordertable (feature, prio) 
                 ON ('highway_' || planet_osm_line.highway) = ordertable.feature 
-            WHERE (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes')) 
+            WHERE bridge IN ('yes', 'viaduct')
+          ) 
           UNION ALL
           (SELECT 
               way, prio, 
