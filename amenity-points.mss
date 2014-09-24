@@ -724,6 +724,7 @@
     }
   }
 
+  [feature = 'boundary_national_park'],
   [feature = 'leisure_nature_reserve'] {
     [zoom >= 8][way_pixels > 3000],
     [zoom >= 17] {
