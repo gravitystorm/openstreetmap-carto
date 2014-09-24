@@ -6,9 +6,9 @@
 @landcover-font-size: 9;
 @landcover-font-size-big: 12;
 @landcover-font-size-bigger: 15;
-@landcover-wrap-width-size: 16;
-@landcover-wrap-width-size-big: 24;
-@landcover-wrap-width-size-bigger: 32;
+@landcover-wrap-width-size: 25;
+@landcover-wrap-width-size-big: 35;
+@landcover-wrap-width-size-bigger: 45;
 @landcover-face-name: @oblique-fonts;
 
 .points {
