@@ -1162,20 +1162,6 @@ Layer:
                  OR aerialway = 'station'
               ) AS stations_poly
     advanced: {}
-  - id: "glaciers-text"
-    name: "glaciers-text"
-    class: ""
-    geometry: "polygon"
-    <<: *extents
-    Datasource: 
-      <<: *osm2pgsql
-      table: |2-
-              (SELECT way, name, way_area
-              FROM planet_osm_polygon
-              WHERE "natural" = 'glacier' AND building IS NULL
-              ORDER BY way_area desc
-              ) AS glaciers_text
-    advanced: {}
   - id: "amenity-symbols"
     name: "amenity-symbols"
     class: "symbols"
