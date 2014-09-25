@@ -189,7 +189,7 @@ Layer:
               OR "natural" IN ('lake', 'water', 'land', 'glacier', 'mud'))
             AND building IS NULL
             AND way_area/(!pixel_width!*!pixel_height!) > 0.01
-          ORDER BY z_order, way_area
+          ORDER BY z_order, way_area DESC
         ) AS water_areas
     advanced: {}
   - id: "water-areas-overlay"
