@@ -563,19 +563,6 @@
     marker-placement: interior;
   }
 
-  [feature = 'natural_tree'][zoom >= 16] {
-    marker-placement: interior;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
-    marker-width: 3;
-    marker-fill: #239c45;
-    [zoom >= 17] {
-      marker-line-width: 1;
-      marker-line-color: #8ef2ab;
-      marker-width: 4;
-    }
-  }
-
   [feature = 'power_generator']['generator:source' = 'wind'],
   [feature = 'power_generator'][power_source = 'wind'] {
     [zoom >= 15] {
@@ -1940,5 +1927,18 @@
     text-halo-radius: 1;
     text-placement: interior;
     text-wrap-width: 30;
+  }
+}
+
+#trees [zoom>=16] {
+  image-filters: agg-stack-blur(1,1);
+  [type='poly'] {
+    polygon-fill: green;
+    polygon-opacity: 0.3;
+  }
+  [zoom>=19][type='point'] {
+    marker-fill: #b27f36;
+    marker-width: 3;
+    marker-height: 3;
   }
 }

@@ -604,22 +604,6 @@ Layer:
     properties:
       minzoom: 16
     advanced: {}
-  - id: "tree-row"
-    name: "tree-row"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,"natural"
-          FROM planet_osm_line
-          WHERE "natural" = 'tree_row'
-        ) AS tree_row
-    properties:
-      minzoom: 16
-    advanced: {}
   - id: "ferry-routes"
     name: "ferry-routes"
     class: ""
@@ -1305,6 +1289,58 @@ Layer:
               ) AS stations_poly
     properties:
       minzoom: 12
+    advanced: {}
+  - id: "glaciers-text"
+    name: "glaciers-text"
+    class: ""
+    geometry: "polygon"
+    <<: *extents
+    Datasource: 
+      <<: *osm2pgsql
+      table: |2-
+              (SELECT way,name,way_area
+              FROM planet_osm_polygon
+              WHERE "natural"='glacier' AND building IS NULL
+              ORDER BY way_area desc
+              ) AS glaciers_text
+    advanced: {}
+  - id: "glaciers-text"
+    name: "glaciers-text"
+    class: ""
+    geometry: "polygon"
+    <<: *extents
+    Datasource: 
+      <<: *osm2pgsql
+      table: |2-
+              (SELECT way,name,way_area
+              FROM planet_osm_polygon
+              WHERE "natural"='glacier' AND building IS NULL
+              ORDER BY way_area desc
+              ) AS glaciers_text
+    advanced: {}
+  - id: "trees"
+    name: "trees"
+    class: ""
+    geometry: "polygon"
+    <<: *extents
+    Datasource: 
+      <<: *osm2pgsql
+      table: |2-
+              (
+                SELECT st_buffer(st_collect(way),3) AS way, 'poly' AS type
+                FROM planet_osm_point
+                WHERE "natural"='tree' AND way && !bbox! 
+              UNION
+                SELECT way, 'point' AS type
+                FROM planet_osm_point
+                WHERE "natural"='tree' AND way && !bbox!
+              UNION
+                SELECT st_buffer(st_collect(way),3) as way, 'poly' AS type
+                FROM planet_osm_line
+                WHERE "natural"='tree_row' AND way && !bbox!
+              ) AS trees
+    properties:
+      minzoom: 16
     advanced: {}
   - id: "amenity-points-poly"
     name: "amenity-points-poly"
