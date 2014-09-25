@@ -661,7 +661,7 @@ Layer:
                   ON ('highway_' || planet_osm_line.highway) = ordertable.feature 
                 WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage')) 
                   AND (covered IS NULL OR NOT covered = 'yes') 
-                  AND (bridge IS NULL OR NOT bridge IN ('yes', 'viaduct'))) 
+                  AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))) 
             UNION ALL 
             (SELECT 
                 way, prio, 
@@ -694,7 +694,7 @@ Layer:
                   ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
                 AND (covered IS NULL OR NOT covered = 'yes') 
-                AND (bridge IS NULL OR NOT bridge IN ('yes', 'viaduct'))
+                AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
               )
             ) AS features 
           ORDER BY prio
@@ -778,7 +778,7 @@ Layer:
                   on ('highway_' || planet_osm_line.highway) = ordertable.feature 
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage')) 
                 AND (covered IS NULL OR NOT covered = 'yes') 
-                AND (bridge IS NULL OR NOT bridge IN ('yes', 'viaduct'))) 
+                AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))) 
             UNION ALL
             (SELECT 
                 way, prio, 
@@ -820,7 +820,7 @@ Layer:
                 ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature 
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage')) 
                 AND (covered IS NULL OR NOT covered = 'yes') 
-                AND (bridge IS NULL OR NOT bridge IN ('yes', 'viaduct'))
+                AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
             )
           ) AS features ORDER BY prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end
         ) AS roads_fill
@@ -946,7 +946,7 @@ Layer:
                 ('highway_construction', 10)
               ) AS ordertable (feature, prio) 
                 ON ('highway_' || planet_osm_line.highway) = ordertable.feature 
-            WHERE bridge IN ('yes', 'viaduct')
+            WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
           ) 
           UNION ALL
           (SELECT 
@@ -983,7 +983,7 @@ Layer:
                 ('railway_platform', 90)
               ) AS ordertable (feature, prio) 
                 ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
-            WHERE bridge IN ('yes', 'viaduct')
+            WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
             )) AS features 
           ORDER BY layernotnull, prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end
         ) AS bridges
