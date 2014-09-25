@@ -1480,6 +1480,20 @@ Layer:
                ORDER BY z_order
               ) AS water_lines_text
     advanced: {}
+  - id: "ferry-routes-text"
+    name: "ferry-routes-text"
+    class: ""
+    geometry: "linestring"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT
+          way, name
+          FROM planet_osm_line
+          WHERE route = 'ferry'
+        ) AS ferry_routes_text
+    advanced: {}
   - id: "admin-text"
     name: "admin-text"
     class: ""
