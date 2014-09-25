@@ -8,6 +8,7 @@
     text-face-name: @bold-fonts;
     text-halo-radius: 1;
     text-placement: interior;
+    text-wrap-width: 30;
   }
 
   [aeroway = 'aerodrome'][zoom >= 10][zoom < 13]::aeroway {
@@ -21,6 +22,7 @@
     text-face-name: @oblique-fonts;
     text-halo-radius: 1;
     text-placement: interior;
+    text-wrap-width: 30;
   }
 
   [railway = 'level_crossing'][zoom >= 14]::railway {
