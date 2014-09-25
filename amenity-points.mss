@@ -405,7 +405,8 @@
 
 
 .text {
-  [feature = 'place_island'][zoom >= 12] {
+  [feature = 'place_island'][zoom >= 12],
+  [feature = 'place_islet'][zoom >= 16] {
     text-name: "[name]";
     text-fill: #000;
     text-size: 9;
