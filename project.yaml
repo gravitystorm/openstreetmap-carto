@@ -156,6 +156,7 @@ Layer:
             CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel 
           FROM planet_osm_line
           WHERE waterway IN ('stream', 'drain', 'ditch')
+            AND (tunnel IS NULL OR tunnel != 'yes')
         ) AS water_lines_casing
     advanced: {}
   - id: "water-lines-low-zoom"
@@ -354,7 +355,9 @@ Layer:
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text 
                   ELSE 'INT-normal'::text 
                 END AS service, 
-                CASE WHEN oneway IN ('yes', '-1') THEN oneway ELSE NULL END AS oneway,
+                CASE WHEN oneway IN ('yes', '-1') AND highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction') THEN oneway 
+                  ELSE NULL 
+                END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' 
                   ELSE 'no' END AS link, 
                 CASE WHEN layer IS NULL THEN '0' 
@@ -428,7 +431,7 @@ Layer:
                 ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
             WHERE (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes')
             )) AS features 
-          ORDER BY layernotnull, prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end
+          ORDER BY layernotnull, prio
         ) AS tunnels
     properties: 
       group-by: "layernotnull"
@@ -626,7 +629,10 @@ Layer:
                 horse, foot, bicycle, tracktype, 
                 CASE WHEN access IN ('destination') THEN 'destination'::text WHEN access IN ('no', 'private') THEN 'no'::text ELSE NULL END AS access, construction, 
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service, 
-                CASE WHEN oneway IN ('yes', '-1') THEN oneway ELSE NULL END AS oneway,
+                CASE WHEN oneway IN ('yes', '-1') 
+                    AND highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction') THEN oneway 
+                  ELSE NULL 
+                END AS oneway, 
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link, 
                 CASE WHEN layer IS NULL THEN '0' ELSE layer END AS layernotnull 
               FROM planet_osm_line 
@@ -661,7 +667,7 @@ Layer:
                   ON ('highway_' || planet_osm_line.highway) = ordertable.feature 
                 WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage')) 
                   AND (covered IS NULL OR NOT covered = 'yes') 
-                  AND (bridge IS NULL OR NOT bridge IN ('yes', 'viaduct'))) 
+                  AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))) 
             UNION ALL 
             (SELECT 
                 way, prio, 
@@ -694,7 +700,7 @@ Layer:
                   ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
                 AND (covered IS NULL OR NOT covered = 'yes') 
-                AND (bridge IS NULL OR NOT bridge IN ('yes', 'viaduct'))
+                AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
               )
             ) AS features 
           ORDER BY prio
@@ -744,7 +750,7 @@ Layer:
                 END AS access,
                 construction, 
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service, 
-                CASE WHEN oneway IN ('yes', '-1') THEN oneway ELSE NULL END AS oneway,
+                CASE WHEN oneway IN ('yes', '-1') AND highway IN ('motorway', 'motorway_link',  'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction') THEN oneway ELSE NULL END AS oneway, 
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link, CASE WHEN layer IS NULL THEN '0' ELSE layer END AS layernotnull 
               FROM planet_osm_line 
                 JOIN (VALUES 
@@ -778,7 +784,7 @@ Layer:
                   on ('highway_' || planet_osm_line.highway) = ordertable.feature 
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage')) 
                 AND (covered IS NULL OR NOT covered = 'yes') 
-                AND (bridge IS NULL OR NOT bridge IN ('yes', 'viaduct'))) 
+                AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))) 
             UNION ALL
             (SELECT 
                 way, prio, 
@@ -820,9 +826,9 @@ Layer:
                 ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature 
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage')) 
                 AND (covered IS NULL OR NOT covered = 'yes') 
-                AND (bridge IS NULL OR NOT bridge IN ('yes', 'viaduct'))
+                AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
             )
-          ) AS features ORDER BY prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end
+          ) AS features ORDER BY prio
         ) AS roads_fill
     advanced: {}
   - id: "turning-circle-fill"
@@ -910,7 +916,9 @@ Layer:
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text 
                   ELSE 'INT-normal'::text 
                 END AS service, 
-                CASE WHEN oneway IN ('yes', '-1') THEN oneway ELSE NULL END AS oneway,
+                CASE WHEN oneway IN ('yes', '-1') AND highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction') THEN oneway 
+                  ELSE NULL 
+                END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' 
                   ELSE 'no' END AS link, 
                 CASE WHEN layer IS NULL THEN '0' 
@@ -946,7 +954,7 @@ Layer:
                 ('highway_construction', 10)
               ) AS ordertable (feature, prio) 
                 ON ('highway_' || planet_osm_line.highway) = ordertable.feature 
-            WHERE bridge IN ('yes', 'viaduct')
+            WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
           ) 
           UNION ALL
           (SELECT 
@@ -983,9 +991,9 @@ Layer:
                 ('railway_platform', 90)
               ) AS ordertable (feature, prio) 
                 ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
-            WHERE bridge IN ('yes', 'viaduct')
+            WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
             )) AS features 
-          ORDER BY layernotnull, prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end
+          ORDER BY layernotnull, prio
         ) AS bridges
     properties: 
       group-by: "layernotnull"
