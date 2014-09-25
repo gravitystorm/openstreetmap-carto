@@ -89,7 +89,7 @@
   }
 
   [barrier = 'gate']::barrier {
-    [zoom >= 15] {
+    [zoom >= 16] {
       point-file: url('symbols/gate2.png');
       point-placement: interior;
     }
