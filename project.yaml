@@ -1388,6 +1388,7 @@ Layer:
                   OR "natural" IS NOT NULL
                   OR man_made IN ('lighthouse', 'windmill')
                   OR place = 'island'
+                  OR place = 'islet'
                   OR military = 'danger_area'
                   OR historic IN ('memorial', 'archaeological_site')
          ORDER BY way_area desc     ) AS text_poly
@@ -1410,6 +1411,7 @@ Layer:
                   OR "natural" IS NOT NULL
                   OR man_made IN ('lighthouse', 'windmill')
                   OR place = 'island'
+                  OR place = 'islet'
                   OR military = 'danger_area'
                   OR aeroway = 'gate'
                   OR waterway = 'lock'
