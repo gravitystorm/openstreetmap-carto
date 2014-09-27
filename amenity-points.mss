@@ -405,10 +405,15 @@
 
 
 .text {
-  [feature = 'place_island'][zoom >= 12] {
+  [feature = 'place_island'][zoom >= 7][way_pixels > 3000],
+  [feature = 'place_island'][zoom >= 14],
+  [feature = 'place_islet'][zoom >= 14][way_pixels > 3000],
+  [feature = 'place_islet'][zoom >= 19] {
     text-name: "[name]";
     text-fill: #000;
     text-size: 9;
+    [way_pixels > 12000] { text-size: 12; }
+    [way_pixels > 48000] { text-size: 15; }
     text-face-name: @oblique-fonts;
     text-halo-radius: 1;
     text-placement: interior;
