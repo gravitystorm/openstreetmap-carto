@@ -1325,20 +1325,17 @@ Layer:
     <<: *extents
     Datasource: 
       <<: *osm2pgsql
-      table: |2-
-              (
-                SELECT st_buffer(st_collect(way),3) AS way, 'poly' AS type
-                FROM planet_osm_point
-                WHERE "natural"='tree' AND way && !bbox! 
-              UNION
-                SELECT way, 'point' AS type
-                FROM planet_osm_point
-                WHERE "natural"='tree' AND way && !bbox!
-              UNION
-                SELECT st_buffer(st_collect(way),3) as way, 'poly' AS type
-                FROM planet_osm_line
-                WHERE "natural"='tree_row' AND way && !bbox!
-              ) AS trees
+      table: |-
+        (SELECT
+            way, "natural"
+          FROM planet_osm_point
+          WHERE "natural" = 'tree'
+        UNION ALL
+        SELECT
+            way, "natural"
+          FROM planet_osm_line
+          WHERE "natural" = 'tree_row'
+        ) AS trees
     properties:
       minzoom: 16
     advanced: {}
