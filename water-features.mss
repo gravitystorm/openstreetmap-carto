@@ -1,16 +1,93 @@
-#dam {
-  [zoom >= 13] {
-    line-width: 2;
-    line-color: #444;
-    line-join: round;
-    line-cap: round;
+@breakwater-color: #aaa; /* Also for groyne */
+@dam: #adadad;
+@dam-line: #444444;
+@weir-line: #aaa;
+@lock-gate: #aaa;
+@lock-gate-line: #aaa;
+
+#water-barriers-point, #water-barriers-line, #water-barriers-poly {
+  [waterway = 'dam'] {
+    #water-barriers-poly[zoom >= 13] {
+      line-width: 2;
+      line-color: @dam-line;
+      line-join: round;
+      line-cap: round;
+      polygon-fill: @dam;
+    }
+    #water-barriers-line[zoom >= 13] {
+      line-width: 2;
+      line-color: @dam-line;
+      line-join: round;
+      line-cap: round;
+    }
+    #water-barriers-point[zoom >= 17] {
+      marker-fill: @dam;
+      marker-line-color: @dam-line;
+      marker-line-width: 1;
+      marker-width: 8;
+      marker-height: 8;
+      marker-allow-overlap: true;
+      marker-ignore-placement: true;
+    }
   }
-  [zoom >= 15] {
-    text-name: "[name]";
-    text-halo-radius: 1;
-    text-fill: #222;
-    text-size: 8;
-    text-face-name: @book-fonts;
+
+  [waterway = 'weir'] {
+    #water-barriers-line[zoom >= 13] {
+      line-color: @weir-line;
+      line-width: 2;
+      line-dasharray: 2,2;
+    }
+    #water-barriers-point[zoom >= 17] {
+      marker-fill: @water-color;
+      marker-line-color: @weir-line;
+      marker-line-width: 1;
+      marker-width: 8;
+      marker-height: 8;
+      marker-allow-overlap: true;
+      marker-ignore-placement: true;
+    }
+  }
+
+  [waterway = 'lock_gate'] {
+    #water-barriers-line[zoom >= 13] {
+      line-color: @lock-gate-line;
+      line-width: 2;
+    }
+    #water-barriers-point[zoom >= 17] {
+      marker-fill: @lock-gate;
+      marker-line-width: 0;
+      marker-width: 8;
+      marker-height: 8;
+      marker-allow-overlap: true;
+      marker-ignore-placement: true;
+    }
+  }
+}
+
+#piers-poly, #piers-line {
+  [man_made = 'pier'][zoom >= 12] {
+    #piers-poly {
+      polygon-fill: @land-color;
+    }
+    #piers-line {
+      line-width: 1.5;
+      line-color: @land-color;
+      [zoom >= 13] { line-width: 3; }
+      [zoom >= 16] { line-width: 7; }
+    }
+  }
+
+  [man_made = 'breakwater'][zoom >= 12],
+  [man_made = 'groyne'][zoom >= 12] {
+    #piers-poly {
+      polygon-fill: @breakwater-color;
+    }
+    #piers-line {
+      line-width: 1;
+      line-color: @breakwater-color;
+      [zoom >= 13] { line-width: 2; }
+      [zoom >= 16] { line-width: 4; }
+    }
   }
 }
 
@@ -37,38 +114,49 @@
   }
 }
 
-#piers-area {
-  [zoom >= 12] {
-    polygon-fill: @land-color;
+.text {
+  [feature = 'waterway_dam'],
+  [feature = 'waterway_weir'] {
+    #text-poly[zoom >= 15],
+    #text-line[zoom >= 15],
+    #text-point[zoom >= 17] {
+      text-name: "[name]";
+      text-halo-radius: 1;
+      text-fill: #222;
+      text-size: 10;
+      text-face-name: @book-fonts;
+      #text-poly {
+        text-placement: interior;
+      }
+      #text-line {
+        text-placement: line;
+        text-dy: 8;
+        text-spacing: 400;
+      }
+      #text-point {
+        text-placement: point;
+        text-dy: 8;
+      }
+    }
   }
-}
 
-#piers {
-  [man_made = 'breakwater'],
-  [man_made = 'groyne'] {
-    [zoom >= 12] {
-      line-width: 1;
-      line-color: #aaa;
+  [feature = 'man_made_breakwater'][zoom >= 15],
+  [feature = 'man_made_groyne'][zoom >= 15],
+  [feature = 'man_made_pier'][zoom >= 15] {
+    #text-poly,
+    #text-line {
+      text-name: "[name]";
+      text-halo-radius: 1;
+      text-fill: #222;
+      text-size: 10;
+      text-face-name: @book-fonts;
+      #text-poly {
+        text-placement: interior;
+      }
+      #text-line {
+        text-placement: line;
+        text-spacing: 400;
+      }
     }
-    [zoom >= 13] {
-      line-width: 2;
-    }
-    [zoom >= 16] {
-      line-width: 4;
-    }
-  }
-  [man_made = 'pier'][zoom >= 12] {
-    line-width: 1.5;
-    line-color: @land-color;
-    [zoom >= 13] { line-width: 3; }
-    [zoom >= 16] { line-width: 7; }
-  }
-}
-
-#locks {
-  [waterway = 'lock_gate'][zoom >= 17] {
-    marker-fill: #969494;
-    marker-width: 9;
-    marker-line-width: 0;
   }
 }
