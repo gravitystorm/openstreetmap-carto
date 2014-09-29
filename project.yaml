@@ -1414,6 +1414,7 @@ Layer:
                   OR aeroway = 'gate'
                   OR waterway = 'lock'
                   OR historic IN ('memorial', 'archaeological_site')
+                  OR highway = 'bus_stop'
               ) AS text
     advanced: {}
   - id: "building-text"

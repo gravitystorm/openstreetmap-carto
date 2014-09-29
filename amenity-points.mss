@@ -942,6 +942,7 @@
     text-placement: interior;
   }
 
+  [feature = 'highway_bus_stop'],
   [feature = 'amenity_fuel'],
   [feature = 'amenity_bus_station'] {
     [zoom >= 17] {
