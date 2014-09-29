@@ -90,7 +90,7 @@
         [waterway='stream'][zoom >= 15] {
           line-width: 3.5;
         }
-        [intermittent = 'yes']{
+        [intermittent = 'yes'] {
           line-dasharray: 4,3;
           line-cap: butt;
           line-join: round;
@@ -138,7 +138,7 @@
         [zoom >= 18] { bridgecasing/line-width: 13; }
       }
     }
-    [intermittent = 'yes']{
+    [intermittent = 'yes'] {
       [bridge = 'yes'][zoom >= 14] {
         bridgefill/line-color: white;
         bridgefill/line-join: round;
@@ -189,7 +189,7 @@
           [waterway = 'stream'][zoom >= 15] { bridgeglow/line-width: 3; }
         }
       }
-      [intermittent = 'yes']{
+      [intermittent = 'yes'] {
         line-dasharray: 4,3;
         line-cap: butt;
         line-join: round;
