@@ -141,6 +141,11 @@
         [zoom >= 18] { bridgefill/line-width: 11; }
       }
       line-dasharray: 4,3;
+      [zoom >= 13] { line-dasharray: 6,5; }
+      [zoom >= 14] { line-dasharray: 10,7; }
+      [zoom >= 15] { line-dasharray: 12,9; }
+      [zoom >= 17] { line-dasharray: 20,15; }
+      [zoom >= 18] { line-dasharray: 24,18; }
       line-cap: butt;
       line-join: round;
     }
