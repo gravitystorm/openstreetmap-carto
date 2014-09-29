@@ -357,9 +357,7 @@ Layer:
                 CASE WHEN oneway IN ('yes', '-1') THEN oneway ELSE NULL END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' 
                   ELSE 'no' END AS link, 
-                CASE WHEN layer IS NULL THEN '0' 
-                  ELSE layer 
-                END AS layernotnull 
+                COALESCE(layer::integer, 0) AS layernotnull 
             FROM planet_osm_line 
               JOIN (VALUES 
                 ('highway_motorway', 380), 
@@ -404,7 +402,7 @@ Layer:
               CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service, 
               NULL AS oneway, 
               'no' AS link,
-              CASE WHEN layer IS NULL THEN '0' ELSE layer END AS layernotnull 
+              COALESCE(layer::integer, 0) AS layernotnull 
             FROM planet_osm_line 
               JOIN (VALUES 
                 ('railway_rail', 430), 
@@ -628,7 +626,7 @@ Layer:
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service, 
                 CASE WHEN oneway IN ('yes', '-1') THEN oneway ELSE NULL END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link, 
-                CASE WHEN layer IS NULL THEN '0' ELSE layer END AS layernotnull 
+                COALESCE(layer::integer, 0) AS layernotnull 
               FROM planet_osm_line 
                 JOIN (VALUES
                   ('highway_motorway',380), 
@@ -670,7 +668,7 @@ Layer:
                 CASE WHEN access IN ('destination') THEN 'destination'::text WHEN access IN ('no', 'private') THEN 'no'::text ELSE NULL END AS access, 
                 construction, CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service, 
                 NULL AS oneway, 'no' AS link, 
-                CASE WHEN layer IS NULL THEN '0' ELSE layer END AS layernotnull 
+                COALESCE(layer::integer, 0) AS layernotnull 
               FROM planet_osm_line 
                 JOIN (VALUES 
                   ('railway_rail', 430),
@@ -745,7 +743,7 @@ Layer:
                 construction, 
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service, 
                 CASE WHEN oneway IN ('yes', '-1') THEN oneway ELSE NULL END AS oneway,
-                CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link, CASE WHEN layer IS NULL THEN '0' ELSE layer END AS layernotnull 
+                CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link, COALESCE(layer::integer, 0) AS layernotnull 
               FROM planet_osm_line 
                 JOIN (VALUES 
                   ('highway_motorway',380), 
@@ -797,7 +795,7 @@ Layer:
                 END AS service,
                 NULL AS oneway, 
                 'no' AS link,
-                CASE WHEN layer IS NULL THEN '0' ELSE layer END AS layernotnull 
+                COALESCE(layer::integer, 0) AS layernotnull 
               FROM planet_osm_line 
                 JOIN (VALUES
                   ('railway_rail',430),
@@ -913,9 +911,7 @@ Layer:
                 CASE WHEN oneway IN ('yes', '-1') THEN oneway ELSE NULL END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' 
                   ELSE 'no' END AS link, 
-                CASE WHEN layer IS NULL THEN '0' 
-                  ELSE layer 
-                END AS layernotnull 
+                COALESCE(layer::integer, 0) AS layernotnull 
             FROM planet_osm_line 
               JOIN (VALUES 
                 ('highway_motorway', 380), 
@@ -961,7 +957,7 @@ Layer:
               CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service, 
               NULL AS oneway, 
               'no' AS link,
-              CASE WHEN layer IS NULL THEN '0' ELSE layer END AS layernotnull 
+              COALESCE(layer::integer, 0) AS layernotnull 
             FROM planet_osm_line 
               JOIN (VALUES 
                 ('railway_rail', 430), 
