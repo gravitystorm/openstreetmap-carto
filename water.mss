@@ -94,6 +94,7 @@
           line-dasharray: 4,3;
           line-cap: butt;
           line-join: round;
+          line-clip: false;
         }
       }
     }
@@ -148,6 +149,7 @@
       [zoom >= 18] { line-dasharray: 24,18; }
       line-cap: butt;
       line-join: round;
+      line-clip: false;
     }
     line-color: @water-color;
     line-width: 2;
@@ -191,6 +193,7 @@
         line-dasharray: 4,3;
         line-cap: butt;
         line-join: round;
+        line-clip: false;
       }
       line-width: 2;
       line-color: @water-color;
