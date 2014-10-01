@@ -3,7 +3,7 @@
 @forest: #a0cf85;
 @grass: #cfeca8; // also meadow, common, garden, village_green, conservation
 @golf_course: #b5e3b5;
-@natural: #c6e4b4; // also grassland
+@grassland: #c6e4b4;
 @park: #cdf7c9; // also recreation_ground
 @wood: #aed1a0;
 @vineyard: #abdf96;
@@ -316,7 +316,7 @@
   }
 
   [feature = 'natural_grassland'][zoom >= 10] {
-    polygon-fill: #c6e4b4;
+    polygon-fill: @grassland;
   }
 
   [feature = 'natural_scrub'] {
