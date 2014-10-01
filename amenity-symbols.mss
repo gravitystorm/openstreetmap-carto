@@ -88,18 +88,21 @@
   [highway = 'mini_roundabout'][zoom >= 16]::highway {
     point-file: url('symbols/mini_round.png');
     point-placement: interior;
+    point-ignore-placement: true;
   }
 
   [barrier = 'gate']::barrier {
     [zoom >= 16] {
       point-file: url('symbols/gate2.png');
       point-placement: interior;
+      point-ignore-placement: true;
     }
   }
 
   [barrier = 'lift_gate'][zoom >= 16]::barrier {
     point-file: url('symbols/liftgate.png');
     point-placement: interior;
+    point-ignore-placement: true;
   }
 
   [barrier = 'bollard'],
@@ -107,6 +110,7 @@
     [zoom >= 16] {
       point-file: url('symbols/bollard.png');
       point-placement: interior;
+      point-ignore-placement: true;
     }
   }
 }

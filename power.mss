@@ -18,17 +18,21 @@
 #power-towers {
   [zoom >= 14] {
     point-file: url('symbols/power_tower_3x3.png');
+    point-ignore-placement: true;
   }
   [zoom >= 15] {
     point-file: url('symbols/power_tower_5x5.png');
+    point-ignore-placement: true;
   }
   [zoom >= 17] {
     point-file: url('symbols/power_tower.png');
+    point-ignore-placement: true;
   }
 }
 
 #power-poles {
   [zoom >= 16] {
     point-file: url('symbols/power_pole.png');
+    point-ignore-placement: true;
   }
 }
