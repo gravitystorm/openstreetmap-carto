@@ -406,9 +406,9 @@
 
 .text {
   [feature = 'place_island'][zoom >= 7][way_pixels > 3000],
-  [feature = 'place_island'][zoom >= 14],
+  [feature = 'place_island'][zoom >= 16],
   [feature = 'place_islet'][zoom >= 14][way_pixels > 3000],
-  [feature = 'place_islet'][zoom >= 19] {
+  [feature = 'place_islet'][zoom >= 17] {
     text-name: "[name]";
     text-fill: #000;
     text-size: 9;
