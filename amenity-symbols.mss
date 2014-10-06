@@ -26,10 +26,10 @@
   }
 
   [railway = 'level_crossing'][zoom >= 14]::railway {
-    point-file: url('symbols/level_crossing.png');
+    point-file: url('symbols/level_crossing.svg');
     point-placement: interior;
     [zoom >= 16] {
-      point-file: url('symbols/level_crossing2.png');
+      point-file: url('symbols/level_crossing2.svg');
     }
   }
 
