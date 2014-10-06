@@ -20,4 +20,4 @@ install:
 script:
   - jsonlint project.mml
   - ./node_modules/carto/bin/carto project.mml | xmllint - | wc -l
-  - scripts/yaml2mml.py < project.yaml > project.mml2 && diff project.mml project.mml2 | wc -l
+  - scripts/yaml2mml.py < project.yaml > project.mml2 && diff project.mml project.mml2
