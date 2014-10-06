@@ -3,7 +3,7 @@
 @transportation-icon: #0092da;
 @transportation-text: #0066ff;
 
-@landcover-font-size: 9;
+@landcover-font-size: 10;
 @landcover-font-size-big: 12;
 @landcover-font-size-bigger: 15;
 @landcover-wrap-width-size: 25;
@@ -918,7 +918,7 @@
   [feature = 'landuse_farmyard'][is_building = 'no'] {
     [zoom >= 10][way_pixels > 3000],
     [zoom >= 17] {
-      text-name: "[name]"; 
+      text-name: "[name]";
       text-size: @landcover-font-size;
       [way_pixels > 12000] { text-size: @landcover-font-size-big; }
       [way_pixels > 48000] { text-size: @landcover-font-size-bigger; }
