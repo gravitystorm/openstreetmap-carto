@@ -1416,7 +1416,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT name, way, way_area
+        (SELECT name, way, way_area/(!pixel_width!*!pixel_height!) AS way_pixels
         FROM planet_osm_polygon
         WHERE building IS NOT NULL AND building NOT IN ('no', 'station', 'supermarket')) AS building_text
     advanced: {}
