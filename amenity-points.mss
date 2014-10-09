@@ -1658,7 +1658,8 @@
   }
 
   [feature = 'natural_glacier'][is_building = 'no'] {
-    [zoom >= 10][way_pixels > 3000],
+    [zoom >= 8][way_pixels > 10000],
+    [zoom >= 10][way_pixels > 750],
     [zoom >= 17] {
       text-name: "[name]";
       text-size: @landcover-font-size;
