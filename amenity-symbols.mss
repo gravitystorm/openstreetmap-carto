@@ -1,9 +1,13 @@
+@airtransport: #8461C4;
+
 .symbols {
   [aeroway = 'helipad'][zoom >= 16]::aeroway {
-    point-file: url('symbols/helipad.p.16.png');
+    marker-file: url('symbols/helipad.svg');
+    marker-clip: false;
+    marker-fill: @airtransport;
     text-name: "[name]";
     text-size: 8;
-    text-fill: #6692da;
+    text-fill: @airtransport;
     text-dy: -10;
     text-face-name: @bold-fonts;
     text-halo-radius: 1;
@@ -13,12 +17,14 @@
 
   [aeroway = 'aerodrome'][zoom >= 10][zoom < 13]::aeroway {
     [zoom < 11] {
-      point-file: url('symbols/aerodrome.p.16.png');
-      text-dy: -12;
+      marker-file: url('symbols/aerodrome.svg');
+      marker-clip: false;
+      marker-fill: @airtransport;
+      text-dy: -10;
     }
     text-name: "[name]";
     text-size: 8;
-    text-fill: #6692da;
+    text-fill: darken(@airtransport, 15%);
     text-face-name: @oblique-fonts;
     text-halo-radius: 1;
     text-placement: interior;
