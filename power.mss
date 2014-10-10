@@ -5,6 +5,7 @@
   }
   [zoom >= 16] {
     line-width: 1.5;
+    line-color: black;
   }
 }
 
