@@ -428,6 +428,7 @@
 
   [feature = 'amenity_pub'],
   [feature = 'amenity_restaurant'],
+  [feature = 'amenity_food_court'],
   [feature = 'amenity_cafe'],
   [feature = 'amenity_fast_food'],
   [feature = 'amenity_biergarten'] {
