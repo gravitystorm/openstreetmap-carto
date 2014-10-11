@@ -180,6 +180,11 @@
     }
   }
 
+  [feature = 'amenity_doctors'][zoom >= 17] {
+    point-file: url('symbols/doctors.p.16.png');
+    point-placement: interior;
+  }
+
   [feature = 'amenity_pharmacy'][zoom >= 17] {
     point-file: url('symbols/pharmacy.p.16.png');
     point-placement: interior;
@@ -1350,6 +1355,17 @@
   }
 
   [feature = 'amenity_pharmacy'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: 8;
+    text-dy: 10;
+    text-fill: #da0092;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: 12;
+    text-placement: interior;
+  }
+
+  [feature = 'amenity_doctors'][zoom >= 17] {
     text-name: "[name]";
     text-size: 8;
     text-dy: 10;
