@@ -2,9 +2,9 @@
   [zoom >= 14] {
     line-width: 1;
     line-color: #777;
-  }
-  [zoom >= 16] {
-    line-width: 1.5;
+    [zoom >= 16] {
+      line-width: 1.5;
+    }
   }
 }
 
