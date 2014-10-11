@@ -244,7 +244,8 @@
     point-placement: interior;
   }
 
-  [feature = 'amenity_restaurant'][zoom >= 17] {
+  [feature = 'amenity_restaurant'][zoom >= 17],
+  [feature = 'amenity_food_court'][zoom >= 17] {
     point-file: url('symbols/restaurant.p.16.png');
     point-placement: interior;
   }
