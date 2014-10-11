@@ -63,6 +63,7 @@
 @trunk-width-z12:                 3.5;
 @primary-width-z12:               3.5;
 @secondary-width-z12:             3;
+@tertiary-width-z12:              3;
 
 @motorway-width-z13:              7;
 @motorway-link-width-z13:         4.5;
@@ -227,9 +228,10 @@
     }
 
     [feature = 'highway_tertiary'] {
-      [zoom >= 13] {
+      [zoom >= 12] {
         line-color: @tertiary-casing;
-        line-width: @tertiary-width-z13;
+        line-width: @tertiary-width-z12;
+        [zoom >= 13] { line-width: @tertiary-width-z13; }
         [zoom >= 14] { line-width: @tertiary-width-z14; }
         [zoom >= 15] { line-width: @tertiary-width-z15; }
         [zoom >= 17] { line-width: @tertiary-width-z17; }
@@ -727,10 +729,6 @@
         [construction = 'tertiary'],
         [construction = 'tertiary_link'] {
           line-color: @tertiary-fill;
-          [zoom < 13] {
-            line-width: 0;
-            b/line-width: 0;
-          }
         }
         [construction = 'residential'],
         [construction = 'unclassified'],
@@ -881,8 +879,9 @@
     }
 
     [feature = 'highway_tertiary'] {
-      [zoom >= 13] {
-        line-width: @tertiary-width-z13 - 2 * @casing-width-z13;
+      [zoom >= 12] {
+        line-width: @tertiary-width-z12 - 2 * @casing-width-z12;
+        [zoom >= 13] { line-width: @tertiary-width-z13 - 2 * @casing-width-z13; }
         [zoom >= 14] { line-width: @tertiary-width-z14 - 2 * @casing-width-z14; }
         [zoom >= 15] { line-width: @tertiary-width-z15 - 2 * @casing-width-z15; }
         [zoom >= 17] { line-width: @tertiary-width-z17 - 2 * @casing-width-z17; }
@@ -893,7 +892,8 @@
           line-color: @tertiary-tunnel-fill;
         }
         .bridges-fill {
-          line-width: @tertiary-width-z13 - 2 * @bridge-casing-width-z13;
+          line-width: @tertiary-width-z12 - 2 * @bridge-casing-width-z12;
+          [zoom >= 13] { line-width: @tertiary-width-z13 - 2 * @bridge-casing-width-z13; }
           [zoom >= 14] { line-width: @tertiary-width-z14 - 2 * @bridge-casing-width-z14; }
           [zoom >= 15] { line-width: @tertiary-width-z15 - 2 * @bridge-casing-width-z15; }
           [zoom >= 17] { line-width: @tertiary-width-z17 - 2 * @bridge-casing-width-z17; }
@@ -929,7 +929,7 @@
       }
     }
 
-    [feature = 'highway_tertiary'][zoom >= 10][zoom < 13],
+    [feature = 'highway_tertiary'][zoom >= 10][zoom < 12],
     [feature = 'highway_residential'][zoom >= 10][zoom < 13],
     [feature = 'highway_unclassified'][zoom >= 10][zoom < 13],
     [feature = 'highway_road'][zoom >= 10][zoom < 13],
