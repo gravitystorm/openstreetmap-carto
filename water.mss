@@ -62,7 +62,7 @@
 #water-areas-overlay {
   [natural = 'marsh'],
   [natural = 'wetland'] {
-    [zoom >= 13] {
+    [zoom >= 10] {
       polygon-pattern-file: url('symbols/marsh.png');
     }
   }
