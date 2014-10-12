@@ -43,10 +43,10 @@
 @cemetery: #aacbaf; // also grave_yard
 @construction: #b6b592;
 @danger_area: pink;
-@desert: #e3b57a;
+@desert: #ffd79c;           // Lch(89,37,75)
 @field: @farmland;
 @garages: #dfddce;
-@heath: #d6d99f;
+@heath: #e1e4a9;            // Lch(89,30,110)
 @parking: #f7efb7;
 @playground: #ccfff1;
 @power: #bbb;

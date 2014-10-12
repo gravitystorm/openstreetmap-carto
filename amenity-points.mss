@@ -1519,7 +1519,7 @@
       text-size: @landcover-font-size;
       [way_pixels > 12000] { text-size: @landcover-font-size-big; }
       [way_pixels > 48000] { text-size: @landcover-font-size-bigger; }
-      text-fill: darken(@desert, 40%);
+      text-fill: darken(@desert, 50%);
       text-face-name: @landcover-face-name;
       text-halo-radius: 1;
       text-halo-fill: rgba(255,255,255,0.6);
