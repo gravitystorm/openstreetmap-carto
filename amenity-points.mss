@@ -429,7 +429,8 @@
   [feature = 'amenity_restaurant'],
   [feature = 'amenity_cafe'],
   [feature = 'amenity_fast_food'],
-  [feature = 'amenity_biergarten'] {
+  [feature = 'amenity_biergarten'],
+  [feature = 'amenity_bar'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-fill: #734a08;
@@ -439,22 +440,16 @@
       text-halo-radius: 1;
       text-wrap-width: 34;
       text-placement: interior;
+      [feature = 'amenity_bar'] {
+        text-dy: 11;
+      }
     }
-  }
-
-  [feature = 'amenity_bar'][zoom >= 17] {
-    text-name: "[name]";
-    text-size: 10;
-    text-fill: #734a08;
-    text-dy: 11;
-    text-face-name: @bold-fonts;
-    text-halo-radius: 1;
-    text-placement: interior;
   }
 
   [feature = 'amenity_library'],
   [feature = 'amenity_theatre'],
-  [feature = 'amenity_courthouse'] {
+  [feature = 'amenity_courthouse'],
+  [feature = 'amenity_cinema'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 10;
@@ -463,17 +458,10 @@
       text-face-name: @bold-fonts;
       text-halo-radius: 1;
       text-placement: interior;
+      [feature = 'amenity_cinema'] {
+        text-dy: 14;
+      }
     }
-  }
-
-  [feature = 'amenity_cinema'][zoom >= 17] {
-    text-name: "[name]";
-    text-size: 10;
-    text-fill: #734a08;
-    text-dy: 14;
-    text-face-name: @bold-fonts;
-    text-halo-radius: 1;
-    text-placement: interior;
   }
 
   [feature = 'amenity_parking'][zoom >= 17] {
