@@ -1360,18 +1360,6 @@
     text-placement: interior;
   }
 
-  /* Default shop text style */
-  [feature = 'shop_other'][zoom >= 17] {
-    text-name: [name];
-    text-size: 9;
-    text-dy: 10;
-    text-fill: #939;
-    text-face-name: @book-fonts;
-    text-halo-radius: 1;
-    text-wrap-width: 12;
-    text-placement: interior;
-  }
-
   [feature = 'shop_bakery'],
   [feature = 'shop_clothes'],
   [feature = 'shop_fashion'],
@@ -1382,7 +1370,8 @@
   [feature = 'shop_car'],
   [feature = 'shop_car_repair'],
   [feature = 'shop_bicycle'],
-  [feature = 'shop_florist'] {
+  [feature = 'shop_florist'],
+  [feature = 'shop_other']{
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 8;
