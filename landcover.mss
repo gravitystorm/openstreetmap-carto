@@ -48,11 +48,14 @@
 @garages: #dfddce;
 @heath: #d6d99f;
 @parking: #f7efb7;
+@place_of_worship: #cdccc9;
+@place_of_worship_outline: #111;
 @playground: #ccfff1;
 @power: #bbb;
 @rest_area: #efc8c8; // also services
 @sand: #ffdf88;
 @school: #f0f0d8; // also university, college, hospital, kindergarten
+@station: #d4aaaa;
 
 #landcover {
  [feature = 'leisure_swimming_pool'][zoom >= 14] {
@@ -110,6 +113,16 @@
       [religion = 'jewish'] { polygon-pattern-file: url('symbols/cemetery_jewish.18.png'); }
       [religion = 'christian'] { polygon-pattern-file: url('symbols/grave_yard.png'); }
       [religion = 'INT-generic'] { polygon-pattern-file: url('symbols/grave_yard_generic.png'); }
+    }
+  }
+
+  [feature = 'amenity_place_of_worship'] {
+    polygon-fill: @place_of_worship;
+    polygon-clip: false;
+    [zoom >= 15] {
+      line-color: @place_of_worship_outline;
+      line-width: 0.3;
+      line-clip: false;
     }
   }
 
@@ -370,6 +383,10 @@
     [zoom >= 10] {
       polygon-fill: @rest_area;
     }
+  }
+
+  [feature = 'railway_station'][zoom >= 10] {
+    polygon-fill: @station;
   }
 
   [feature = 'leisure_sports_centre'],
