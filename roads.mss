@@ -10,6 +10,7 @@
 @service-fill: @residential-fill;
 @living-street-fill: #ccc;
 @pedestrian-fill: #ededed;
+@raceway-fill: pink;
 @road-fill: #ddd;
 @path-fill: black;
 @footway-fill: salmon;
@@ -1033,7 +1034,7 @@
 
     [feature = 'highway_raceway'] {
       [zoom >= 12] {
-        line-color: pink;
+        line-color: @raceway-fill;
         line-width: 1.2;
         line-join: round;
         line-cap: round;
@@ -2099,7 +2100,10 @@
       text-clip: false;
       text-placement: line;
       text-face-name: @book-fonts;
-      text-halo-radius: 0;
+      text-halo-radius: 1;
+      [highway = 'motorway'] { text-halo-fill: @motorway-fill; }
+      [highway = 'trunk'] { text-halo-fill: @trunk-fill; }
+      [highway = 'primary'] { text-halo-fill: @primary-fill; }
     }
     [zoom >= 14] {
       text-size: 9;
@@ -2120,7 +2124,8 @@
       text-clip: false;
       text-placement: line;
       text-face-name: @book-fonts;
-      text-halo-radius: 0;
+      text-halo-radius: 1;
+      text-halo-fill: @secondary-fill; 
     }
     [zoom >= 14] {
       text-size: 9;
@@ -2142,7 +2147,8 @@
       text-clip: false;
       text-placement: line;
       text-face-name: @book-fonts;
-      text-halo-radius: 0;
+      text-halo-radius: 1;
+      text-halo-fill: @tertiary-fill;
     }
     [zoom >= 17] {
       text-size: 11;
@@ -2174,7 +2180,8 @@
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
-      text-halo-radius: 0;
+      text-halo-radius: 1;
+      text-halo-fill: @residential-fill;
       text-face-name: @book-fonts;
     }
     [zoom >= 16] {
@@ -2195,7 +2202,9 @@
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
-      text-halo-radius: 0;
+      text-halo-radius: 1;
+      [highway = 'raceway'] { text-halo-fill: @raceway-fill; }
+      [highway = 'service'] { text-halo-fill: @service-fill; }
       text-face-name: @book-fonts;
     }
     [zoom >= 17] {
@@ -2212,7 +2221,9 @@
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
-      text-halo-radius: 0;
+      text-halo-radius: 1;
+      [highway = 'living_street'] { text-halo-fill: @living-street-fill; }
+      [highway = 'pedestrian'] { text-halo-fill: @pedestrian-fill; }
       text-face-name: @book-fonts;
     }
     [zoom >= 16] {
