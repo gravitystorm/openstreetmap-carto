@@ -1170,7 +1170,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT *\n      FROM planet_osm_point\n      WHERE aeroway IN ('aerodrome', 'helipad')\n         OR barrier IN ('bollard', 'gate', 'lift_gate', 'block')\n         OR highway IN ('mini_roundabout', 'gate')\n         OR man_made IN ('lighthouse', 'power_wind', 'windmill', 'mast')\n         OR (power = 'generator' AND (\"generator:source\" = 'wind' OR power_source = 'wind'))\n         OR \"natural\" IN ('peak', 'volcano', 'spring', 'tree', 'cave_entrance')\n         OR railway = 'level_crossing'\n      ) AS amenity_symbols", 
+        "table": "(SELECT *\n      FROM planet_osm_point\n      WHERE aeroway IN ('aerodrome', 'helipad')\n         OR man_made IN ('lighthouse', 'power_wind', 'windmill', 'mast')\n         OR (power = 'generator' AND (\"generator:source\" = 'wind' OR power_source = 'wind'))\n         OR \"natural\" IN ('peak', 'volcano', 'spring', 'tree', 'cave_entrance')\n      ) AS amenity_symbols", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -1193,7 +1193,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT *\n      FROM planet_osm_polygon\n      WHERE aeroway IN ('aerodrome', 'helipad')\n         OR barrier IN ('bollard', 'gate', 'lift_gate', 'block')\n         OR highway IN ('mini_roundabout', 'gate')\n         OR man_made IN ('lighthouse', 'power_wind', 'windmill', 'mast')\n         OR (power = 'generator' AND (\"generator:source\" = 'wind' OR power_source = 'wind'))\n         OR \"natural\" IN ('peak', 'volcano', 'spring', 'tree')\n         OR railway = 'level_crossing'\n      ) AS amenity_symbols_poly", 
+        "table": "(SELECT *\n      FROM planet_osm_polygon\n      WHERE aeroway IN ('aerodrome', 'helipad')\n         OR man_made IN ('lighthouse', 'power_wind', 'windmill', 'mast')\n         OR (power = 'generator' AND (\"generator:source\" = 'wind' OR power_source = 'wind'))\n         OR \"natural\" IN ('peak', 'volcano', 'spring', 'tree')\n      ) AS amenity_symbols_poly", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -1689,6 +1689,52 @@
         85.05112877980659
       ], 
       "id": "theme-park", 
+      "advanced": {}
+    }, 
+    {
+      "name": "amenity-low-priority", 
+      "srs-name": "900913", 
+      "geometry": "point", 
+      "class": "amenity-low-priority", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT *\n      FROM planet_osm_point\n      WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'block')\n         OR highway IN ('mini_roundabout')\n         OR railway = 'level_crossing'\n      ) AS amenity_low_priority", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "gis"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "amenity-low-priority", 
+      "advanced": {}
+    }, 
+    {
+      "name": "amenity-low-priority-poly", 
+      "srs-name": "900913", 
+      "geometry": "polygon", 
+      "class": "amenity-low-priority", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT *\n      FROM planet_osm_polygon\n      WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'block')\n         OR highway IN ('mini_roundabout')\n         OR railway = 'level_crossing'\n      ) AS amenity_low_priority_poly", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "gis"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "amenity-low-priority-poly", 
       "advanced": {}
     }
   ], 
