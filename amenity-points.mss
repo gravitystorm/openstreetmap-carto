@@ -951,6 +951,7 @@
     }
   }
 
+  [feature = 'shop_mall'],
   [feature = 'landuse_retail'][is_building = 'no'] {
     [zoom >= 10][way_pixels > 3000],
     [zoom >= 17] {
