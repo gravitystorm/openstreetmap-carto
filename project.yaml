@@ -1496,6 +1496,17 @@ Layer:
       table: |2-
         (SELECT way, name, admin_level FROM planet_osm_polygon WHERE "boundary" = 'administrative' AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')) AS admin_text
     advanced: {}
+  - id: "nature-reserve-text"
+    name: "nature-reserve-text"
+    class: ""
+    geometry: "linestring"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, name, way_area/(!pixel_width!*!pixel_height!) AS way_pixels
+          FROM planet_osm_polygon WHERE "boundary" = 'national_park' OR leisure = 'nature_reserve') AS nature_reserve_text
+    advanced: {}
   - id: "nature-reserve-boundaries"
     name: "nature-reserve-boundaries"
     class: ""
