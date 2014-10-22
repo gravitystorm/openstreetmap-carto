@@ -354,29 +354,6 @@
       "advanced": {}
     }, 
     {
-      "name": "buildings-major", 
-      "srs-name": "900913", 
-      "geometry": "polygon", 
-      "class": "", 
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
-      "Datasource": {
-        "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way, building, amenity\n  FROM planet_osm_polygon\n  WHERE building IN ('station','supermarket')\n    OR (building IS NOT NULL AND building != 'no'\n      AND (\n        amenity IN ('place_of_worship','supermarket') OR shop = 'mall' OR tourism = 'attraction'\n      )\n    )\n  ORDER BY z_order,way_area DESC)\nAS buildings_major", 
-        "geometry_field": "way", 
-        "type": "postgis", 
-        "key_field": "", 
-        "dbname": "gis"
-      }, 
-      "extent": [
-        -180, 
-        -85.05112877980659, 
-        180, 
-        85.05112877980659
-      ], 
-      "id": "buildings-major", 
-      "advanced": {}
-    }, 
-    {
       "name": "buildings", 
       "srs-name": "900913", 
       "geometry": "polygon", 
@@ -384,7 +361,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT\n    way, name, building, amenity, aeroway, way_area\n  FROM planet_osm_polygon\n  WHERE (building IS NOT NULL OR aeroway = 'terminal')\n    AND building != 'no'\n  ORDER BY z_order, way_area DESC\n) AS buildings", 
+        "table": "(SELECT\n    way, building\n  FROM planet_osm_polygon\n  WHERE (building IS NOT NULL)\n    AND building != 'no'\n  ORDER BY z_order, way_area DESC\n) AS buildings", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -397,6 +374,29 @@
         85.05112877980659
       ], 
       "id": "buildings", 
+      "advanced": {}
+    }, 
+    {
+      "name": "buildings-major", 
+      "srs-name": "900913", 
+      "geometry": "polygon", 
+      "class": "", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, building, amenity, aeroway\n  FROM planet_osm_polygon\n  WHERE (building IS NOT NULL)\n    AND building != 'no'\n  ORDER BY z_order,way_area DESC)\nAS buildings_major", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "gis"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "buildings-major", 
       "advanced": {}
     }, 
     {
