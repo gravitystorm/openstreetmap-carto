@@ -11,11 +11,9 @@
     text-wrap-width: 30;
   }
 
-  [aeroway = 'aerodrome'][zoom >= 10][zoom < 13]::aeroway {
-    [zoom < 11] {
-      point-file: url('symbols/aerodrome.p.16.png');
-      text-dy: -12;
-    }
+  [aeroway = 'aerodrome'][zoom >= 10]::aeroway {
+    point-file: url('symbols/aerodrome.p.16.png');
+    text-dy: -12;
     text-name: "[name]";
     text-size: 8;
     text-fill: #6692da;
