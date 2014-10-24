@@ -25,14 +25,6 @@
     text-wrap-width: 30;
   }
 
-  [railway = 'level_crossing'][zoom >= 14]::railway {
-    point-file: url('symbols/level_crossing.svg');
-    point-placement: interior;
-    [zoom >= 16] {
-      point-file: url('symbols/level_crossing2.svg');
-    }
-  }
-
   [man_made = 'lighthouse'][zoom >= 15]::man_made {
     point-file: url('symbols/lighthouse.p.20.png');
     point-placement: interior;
@@ -83,6 +75,16 @@
   [man_made = 'mast'][zoom >= 17]::man_made {
     point-file: url('symbols/communications.p.20.png');
     point-placement: interior;
+  }
+}
+
+.amenity-low-priority {
+  [railway = 'level_crossing'][zoom >= 14]::railway {
+    point-file: url('symbols/level_crossing.svg');
+    point-placement: interior;
+    [zoom >= 16] {
+      point-file: url('symbols/level_crossing2.svg');
+    }
   }
 
   [highway = 'mini_roundabout'][zoom >= 16]::highway {
