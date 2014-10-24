@@ -106,33 +106,41 @@
   [feature = 'landuse_vineyard'] {
     [zoom >= 10][zoom < 13] {
       polygon-fill: @vineyard;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.6;  }
     }
     [zoom >= 13] {
       polygon-pattern-file: url('symbols/vineyard.png');
+      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.6;  }
     }
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.6;  }
   }
 
   [feature = 'landuse_orchard'][zoom >= 10] {
     polygon-pattern-file: url('symbols/orchard.png');
     polygon-pattern-alignment: global;
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.6;  }
+    [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-pattern-gamma: 0.6;  }
   }
 
   [feature = 'landuse_cemetery'],
   [feature = 'amenity_grave_yard'] {
     [zoom >= 10][zoom < 14] {
       polygon-fill: @cemetery;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.6;  }
     }
     [zoom >= 14] {
       [religion = 'jewish'] { polygon-pattern-file: url('symbols/cemetery_jewish.18.png'); }
       [religion = 'christian'] { polygon-pattern-file: url('symbols/grave_yard.png'); }
       [religion = 'INT-generic'] { polygon-pattern-file: url('symbols/grave_yard_generic.png'); }
+      [religion = 'jewish'],
+      [religion = 'christian'],
+      [religion = 'INT-generic'] {
+        [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+        [way_pixels >= 64] { polygon-pattern-gamma: 0.6;  }
+      }
     }
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.6;  }
   }
 
   [feature = 'landuse_residential'][zoom >= 10] {
@@ -230,24 +238,29 @@
   [feature = 'landuse_allotments'] {
     [zoom >= 10][zoom < 14] {
       polygon-fill: @allotments;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.6;  }
     }
     [zoom >= 14] {
       polygon-pattern-file: url('symbols/allotments.png');
       polygon-pattern-alignment: global;
+      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.6;  }
     }
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.6;  }
   }
 
   [feature = 'landuse_forest'] {
     [zoom >= 8] {
       polygon-fill: @forest;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.6;  }
     }
     [zoom >= 14] {
       polygon-pattern-file: url('symbols/forest.png');
+      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.6;  }
     }
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.6;  }
+
   }
 
   [feature = 'landuse_farmyard'][zoom >= 10] {
