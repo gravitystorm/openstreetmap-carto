@@ -1698,7 +1698,10 @@
 
   [feature = 'highway_track'][zoom >= 14] {
     line-color: @track-fill;
-    line-width: 2;
+    line-width: 1;
+    line-dasharray: 5,4,2,4;
+    line-cap: round;
+    line-join: round;
   }
 
   [feature = 'highway_platform'],
@@ -1735,7 +1738,7 @@
   }
 
   [feature = 'highway_track'][zoom >= 14] {
-    polygon-fill: #dfcc66;
+    polygon-fill: #cdbea0;
   }
 
   [feature = 'highway_platform'],
