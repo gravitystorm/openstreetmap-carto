@@ -429,7 +429,8 @@
   [feature = 'amenity_restaurant'],
   [feature = 'amenity_cafe'],
   [feature = 'amenity_fast_food'],
-  [feature = 'amenity_biergarten'] {
+  [feature = 'amenity_biergarten'],
+  [feature = 'amenity_bar'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-fill: #734a08;
@@ -439,22 +440,16 @@
       text-halo-radius: 1;
       text-wrap-width: 34;
       text-placement: interior;
+      [feature = 'amenity_bar'] {
+        text-dy: 11;
+      }
     }
-  }
-
-  [feature = 'amenity_bar'][zoom >= 17] {
-    text-name: "[name]";
-    text-size: 10;
-    text-fill: #734a08;
-    text-dy: 11;
-    text-face-name: @bold-fonts;
-    text-halo-radius: 1;
-    text-placement: interior;
   }
 
   [feature = 'amenity_library'],
   [feature = 'amenity_theatre'],
-  [feature = 'amenity_courthouse'] {
+  [feature = 'amenity_courthouse'],
+  [feature = 'amenity_cinema'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 10;
@@ -463,17 +458,10 @@
       text-face-name: @bold-fonts;
       text-halo-radius: 1;
       text-placement: interior;
+      [feature = 'amenity_cinema'] {
+        text-dy: 14;
+      }
     }
-  }
-
-  [feature = 'amenity_cinema'][zoom >= 17] {
-    text-name: "[name]";
-    text-size: 10;
-    text-fill: #734a08;
-    text-dy: 14;
-    text-face-name: @bold-fonts;
-    text-halo-radius: 1;
-    text-placement: interior;
   }
 
   [feature = 'amenity_parking'][zoom >= 17] {
@@ -1128,16 +1116,6 @@
     text-placement: interior;
   }
 
-  [feature = 'tourism_bed_and_breakfast'][zoom >= 17] {
-    text-name: "[name]";
-    text-size: 8;
-    text-fill: #0066ff;
-    text-dy: 8;
-    text-face-name: @book-fonts;
-    text-halo-radius: 1;
-    text-placement: interior;
-  }
-
   [feature = 'highway_bus_stop'],
   [feature = 'amenity_fuel'],
   [feature = 'amenity_bus_station'] {
@@ -1360,18 +1338,6 @@
     text-placement: interior;
   }
 
-  /* Default shop text style */
-  [feature = 'shop_other'][zoom >= 17] {
-    text-name: [name];
-    text-size: 9;
-    text-dy: 10;
-    text-fill: #939;
-    text-face-name: @book-fonts;
-    text-halo-radius: 1;
-    text-wrap-width: 12;
-    text-placement: interior;
-  }
-
   [feature = 'shop_bakery'],
   [feature = 'shop_clothes'],
   [feature = 'shop_fashion'],
@@ -1382,7 +1348,8 @@
   [feature = 'shop_car'],
   [feature = 'shop_car_repair'],
   [feature = 'shop_bicycle'],
-  [feature = 'shop_florist'] {
+  [feature = 'shop_florist'],
+  [feature = 'shop_other']{
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 8;
