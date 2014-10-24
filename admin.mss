@@ -86,6 +86,16 @@
   text-dy: -10;
 }
 
+#nature-reserve-text[zoom >= 13][way_pixels > 192000] {
+  text-name: "[name]";
+  text-face-name: @book-fonts;
+  text-fill: green;
+  text-placement: line;
+  text-halo-radius: 1.0;
+  text-placement: line;
+  text-dy: -10;
+}
+
 #nature-reserve-boundaries {
   [zoom >= 7] {
     ::fill [zoom < 13] {
