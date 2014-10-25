@@ -69,14 +69,14 @@
 }
 
 #water-lines-casing {
-  [waterway='stream'],
-  [waterway='ditch'],
-  [waterway='drain'] {
+  [waterway = 'stream'],
+  [waterway = 'ditch'],
+  [waterway = 'drain'] {
     [int_tunnel = 'no'] {
       [zoom >= 13] {
         line-width: 2.5;
         line-color: white;
-        [waterway='stream'][zoom >= 15] {
+        [waterway = 'stream'][zoom >= 15] {
           line-width: 3.5;
         }
       }
