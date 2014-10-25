@@ -438,13 +438,13 @@
       text-name: "[name]";
       text-fill: #734a08;
       text-size: 10;
-      text-dy: 9;
+      text-dy: 11;
       text-face-name: @bold-fonts;
       text-halo-radius: 1;
       text-wrap-width: 34;
       text-placement: interior;
-      [feature = 'amenity_bar'] {
-        text-dy: 11;
+      [feature = 'amenity_bar']{
+        text-dy: 13;
       }
     }
   }
@@ -457,12 +457,12 @@
       text-name: "[name]";
       text-size: 10;
       text-fill: #734a08;
-      text-dy: 12;
+      text-dy: 13;
       text-face-name: @bold-fonts;
       text-halo-radius: 1;
       text-placement: interior;
       [feature = 'amenity_cinema'] {
-        text-dy: 14;
+        text-dy: 15;
       }
     }
   }
@@ -485,7 +485,7 @@
     text-name: "[name]";
     text-size: 10;
     text-fill: #734a08;
-    text-dy: 10;
+    text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: 30;
@@ -496,7 +496,7 @@
     text-name: "[name]";
     text-size: 10;
     text-fill: #734a08;
-    text-dy: 9;
+    text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: 30;
@@ -559,7 +559,7 @@
     text-name: "[name]";
     text-size: 10;
     text-fill: brown;
-    text-dy: 9;
+    text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: 20;
@@ -688,6 +688,7 @@
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 11;
+      text-dy: 13;
       text-fill: darken(@park, 60%);
       text-face-name: @book-fonts;
       text-halo-radius: 1;
@@ -1043,7 +1044,7 @@
     text-name: "[name]";
     text-size: 9;
     text-fill: #6699cc;
-    text-dy: 10;
+    text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-placement: interior;
@@ -1051,7 +1052,7 @@
       ele/text-name: "[ele]";
       ele/text-size: 8;
       ele/text-fill: #6699cc;
-      ele/text-dy: 22;
+      ele/text-dy: 23;
       ele/text-face-name: @oblique-fonts;
       ele/text-halo-radius: 1;
       ele/text-placement: interior;
@@ -1062,14 +1063,14 @@
     text-name: "[name]";
     text-size: 9;
     text-fill: #6699cc;
-    text-dy: 10;
+    text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-placement: interior;
     ele/text-name: "[ele]";
     ele/text-size: 8;
     ele/text-fill: #6699cc;
-    ele/text-dy: 22;
+    ele/text-dy: 23;
     ele/text-face-name: @oblique-fonts;
     ele/text-halo-radius: 1;
     ele/text-placement: interior;
@@ -1079,7 +1080,7 @@
     text-name: "[name]";
     text-size: 9;
     text-fill: black;
-    text-dy: 9;
+    text-dy: 12;
     text-halo-radius: 1;
     text-placement: interior;
     text-face-name: @book-fonts;
@@ -1093,10 +1094,13 @@
       text-name: "[name]";
       text-size: 10;
       text-fill: #0066ff;
-      text-dy: 11;
+      text-dy: 13;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-placement: interior;
+      [feature = 'tourism_chalet'] {
+        text-dy: 11;
+      }
     }
   }
 
@@ -1104,7 +1108,7 @@
     text-name: "[name]";
     text-size: 9;
     text-fill: #0066ff;
-    text-dy: 8;
+    text-dy: 9;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-placement: interior;
@@ -1127,10 +1131,13 @@
       text-name: "[name]";
       text-size: 9;
       text-fill: @transportation-text;
-      text-dy: 9;
+      text-dy: 11;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-placement: interior;
+      [feature = 'highway_bus_stop'] {
+        text-dy: 9;
+      }
     }
   }
 
@@ -1153,6 +1160,7 @@
       [way_pixels > 12000] { text-size: @landcover-font-size-big; }
       [way_pixels > 48000] { text-size: @landcover-font-size-bigger; }
       text-fill: darken(@campsite, 50%);
+      text-dy: 15;
       text-face-name: @landcover-face-name;
       text-halo-radius: 1;
       text-halo-fill: rgba(255,255,255,0.6);
@@ -1208,7 +1216,7 @@
   [feature = 'tourism_museum'][zoom >= 17] {
     text-name: "[name]";
     text-size: 10;
-    text-dy: 10;
+    text-dy: 11;
     text-fill: #734a08;
     text-face-name: @book-fonts;
     text-halo-radius: 1;

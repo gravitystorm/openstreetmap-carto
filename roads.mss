@@ -1809,9 +1809,9 @@
       [zoom >= 17] {
         text-size: 11;
         /* Offset name on traffic_signals on zoomlevels where they are displayed
-        in order not to hide the icon */
+        in order not to hide the text */
         [highway = 'traffic_signals'] {
-          text-dy: 11;
+          text-dy: 13;
         }
       }
     }
