@@ -11,6 +11,8 @@
 @landcover-wrap-width-size-bigger: 45;
 @landcover-face-name: @oblique-fonts;
 
+@standard-wrap-width: 30;
+
 .points {
   [feature = 'tourism_alpine_hut'][zoom >= 13] {
     point-file: url('symbols/alpinehut.p.16.png');
@@ -425,6 +427,7 @@
     [way_pixels > 48000] { text-size: 15; }
     text-face-name: @oblique-fonts;
     text-halo-radius: 1;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
@@ -441,7 +444,7 @@
       text-dy: 11;
       text-face-name: @bold-fonts;
       text-halo-radius: 1;
-      text-wrap-width: 34;
+      text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       [feature = 'amenity_bar']{
         text-dy: 13;
@@ -460,6 +463,7 @@
       text-dy: 13;
       text-face-name: @bold-fonts;
       text-halo-radius: 1;
+      text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       [feature = 'amenity_cinema'] {
         text-dy: 15;
@@ -474,7 +478,7 @@
     text-dy: 9;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 34;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
     [access != ''][access != 'public'][access != 'yes'] {
       text-fill: #66ccaf;
@@ -488,7 +492,7 @@
     text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 30;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
@@ -499,7 +503,7 @@
     text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 30;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
@@ -510,7 +514,7 @@
     text-dy: 12;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 30;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
@@ -541,6 +545,7 @@
       text-dy: 7;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
+      text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       ele/text-name: "[ele]";
       ele/text-size: 9;
@@ -562,7 +567,7 @@
     text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 20;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
@@ -573,7 +578,7 @@
     text-dy: 13;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 20;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
@@ -584,7 +589,7 @@
     text-dy: 15;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 20;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
@@ -605,7 +610,7 @@
       text-fill: @water-text;
       text-face-name: @oblique-fonts;
       text-halo-radius: 1;
-      text-wrap-width: 20;
+      text-wrap-width: @standard-wrap-width;
       text-placement: interior;
     }
   }
@@ -693,7 +698,7 @@
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-halo-fill: rgba(255,255,255,0.6);
-      text-wrap-width: 30;
+      text-wrap-width: @standard-wrap-width;
       text-placement: interior;
     }
   }
@@ -1025,7 +1030,7 @@
     text-fill: #6699cc;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 20;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
@@ -1035,7 +1040,7 @@
     text-fill: #6699cc;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 20;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
     text-dy: 6;
   }
@@ -1047,6 +1052,7 @@
     text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
     [zoom >= 16] {
       ele/text-name: "[ele]";
@@ -1066,6 +1072,7 @@
     text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
     ele/text-name: "[ele]";
     ele/text-size: 8;
@@ -1082,6 +1089,7 @@
     text-fill: black;
     text-dy: 12;
     text-halo-radius: 1;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
     text-face-name: @book-fonts;
   }
@@ -1097,6 +1105,7 @@
       text-dy: 13;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
+      text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       [feature = 'tourism_chalet'] {
         text-dy: 11;
@@ -1111,6 +1120,7 @@
     text-dy: 9;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
@@ -1121,6 +1131,7 @@
     text-dy: 10;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
@@ -1134,6 +1145,7 @@
       text-dy: 11;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
+      text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       [feature = 'highway_bus_stop'] {
         text-dy: 9;
@@ -1148,7 +1160,7 @@
     text-dy: 15;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 70;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
@@ -1178,7 +1190,7 @@
     text-fill: #0066ff;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 70;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
@@ -1188,7 +1200,7 @@
     text-fill: @marina-text;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 30;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
     [zoom >= 17] {
       text-size: 10;
@@ -1220,6 +1232,7 @@
     text-fill: #734a08;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
@@ -1230,6 +1243,7 @@
     text-dy: 16;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
@@ -1313,7 +1327,7 @@
     text-dy: 16;
     text-face-name: @book-fonts;
     text-halo-radius: 2;
-    text-wrap-width: 12;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
@@ -1324,7 +1338,7 @@
     text-dy: 12;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 20;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
@@ -1335,7 +1349,7 @@
     text-dy: 10;
     text-face-name: @book-fonts;
     text-halo-radius: 2;
-    text-wrap-width: 24;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
@@ -1346,7 +1360,7 @@
     text-fill: #da0092;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 12;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
@@ -1369,7 +1383,7 @@
       text-fill: #939;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
-      text-wrap-width: 12;
+      text-wrap-width: @standard-wrap-width;
       text-placement: interior;
     }
   }
@@ -1383,7 +1397,7 @@
       text-fill: #939;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
-      text-wrap-width: 20;
+      text-wrap-width: @standard-wrap-width;
       text-placement: interior;
     }
   }
@@ -1430,7 +1444,7 @@
     text-fill: #aa66cc;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 10;
+    text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
