@@ -8,6 +8,7 @@
     text-face-name: @bold-fonts;
     text-halo-radius: 1;
     text-placement: interior;
+    text-wrap-width: 30;
   }
 
   [aeroway = 'aerodrome'][zoom >= 10][zoom < 13]::aeroway {
@@ -21,14 +22,7 @@
     text-face-name: @oblique-fonts;
     text-halo-radius: 1;
     text-placement: interior;
-  }
-
-  [railway = 'level_crossing'][zoom >= 14]::railway {
-    point-file: url('symbols/level_crossing.png');
-    point-placement: interior;
-    [zoom >= 16] {
-      point-file: url('symbols/level_crossing2.png');
-    }
+    text-wrap-width: 30;
   }
 
   [man_made = 'lighthouse'][zoom >= 15]::man_made {
@@ -82,6 +76,16 @@
     point-file: url('symbols/communications.p.20.png');
     point-placement: interior;
   }
+}
+
+.amenity-low-priority {
+  [railway = 'level_crossing'][zoom >= 14]::railway {
+    point-file: url('symbols/level_crossing.svg');
+    point-placement: interior;
+    [zoom >= 16] {
+      point-file: url('symbols/level_crossing2.svg');
+    }
+  }
 
   [highway = 'mini_roundabout'][zoom >= 16]::highway {
     point-file: url('symbols/mini_round.png');
@@ -89,7 +93,7 @@
   }
 
   [barrier = 'gate']::barrier {
-    [zoom >= 15] {
+    [zoom >= 16] {
       point-file: url('symbols/gate2.png');
       point-placement: interior;
     }
