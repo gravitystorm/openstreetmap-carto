@@ -1511,7 +1511,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT way, way_area, name, boundary FROM planet_osm_polygon WHERE (boundary = 'national_park' OR leisure = 'nature_reserve') AND building IS NULL) AS national_park_boundaries
+        (SELECT way, way_area, name, boundary, way_area/(!pixel_width!*!pixel_height!) AS way_pixels FROM planet_osm_polygon WHERE (boundary = 'national_park' OR leisure = 'nature_reserve') AND building IS NULL) AS national_park_boundaries
     advanced: {}
   - id: "theme-park"
     name: "theme-park"
