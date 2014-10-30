@@ -24,7 +24,7 @@
     point-placement: interior;
   }
 
-  [feature = 'amenity_atm'][zoom >=17] {
+  [feature = 'amenity_atm'][zoom >= 17] {
     point-file: url('symbols/atm2.p.16.png');
     point-placement: interior;
   }
@@ -34,7 +34,7 @@
     point-placement: interior;
   }
 
-  [feature = 'amenity_bar'][zoom >=17] {
+  [feature = 'amenity_bar'][zoom >= 17] {
     point-file: url('symbols/bar.p.20.png');
     point-placement: interior;
   }
@@ -64,7 +64,7 @@
     point-placement: interior;
   }
 
-  [feature = 'amenity_cafe'][zoom >=17] {
+  [feature = 'amenity_cafe'][zoom >= 17] {
     point-file: url('symbols/cafe.p.16.png');
     point-placement: interior;
   }
