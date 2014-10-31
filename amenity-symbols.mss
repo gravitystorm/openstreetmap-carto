@@ -51,11 +51,15 @@
   }
 
   [natural = 'tree'][zoom >= 16]::natural {
-    point-file: url('symbols/tree.png');
-    point-ignore-placement: true;
-    point-placement: interior;
+    marker-placement: interior;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
+    marker-width: 3;
+    marker-fill: #239c45;
     [zoom >= 17] {
-      point-file: url('symbols/tree2.png');
+      marker-line-width: 1;
+      marker-line-color: #8ef2ab;
+      marker-width: 4;
     }
   }
 
@@ -107,8 +111,14 @@
   [barrier = 'bollard'],
   [barrier = 'block'] {
     [zoom >= 16] {
-      point-file: url('symbols/bollard.png');
-      point-placement: interior;
+      marker-width: 3;
+      marker-line-width: 0;
+      marker-fill: #7d7c7c;
+      marker-placement: interior;
+
+      [zoom >= 18] {
+        marker-width: 4;
+      }
     }
   }
 }

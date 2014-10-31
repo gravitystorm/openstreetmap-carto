@@ -67,6 +67,8 @@
 
 #locks {
   [waterway = 'lock_gate'][zoom >= 17] {
-    point-file: url('symbols/lock_gate.png');
+    marker-fill: #969494;
+    marker-width: 9;
+    marker-line-width: 0;
   }
 }
