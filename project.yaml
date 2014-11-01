@@ -1009,6 +1009,7 @@ Layer:
                FROM planet_osm_roads
                WHERE "boundary" = 'administrative'
                  AND admin_level IN ('0', '1', '2', '3', '4')
+               ORDER BY admin_level DESC
                ) AS admin_01234
     advanced: {}
   - id: "admin-5678"
@@ -1023,6 +1024,7 @@ Layer:
                FROM planet_osm_roads
                WHERE "boundary" = 'administrative'
                  AND admin_level IN ('5', '6', '7', '8')
+               ORDER BY admin_level DESC
                ) AS admin_5678
     advanced: {}
   - id: "admin-other"
@@ -1037,6 +1039,7 @@ Layer:
                FROM planet_osm_roads
                WHERE "boundary" = 'administrative'
                  AND admin_level IN ('9', '10')
+               ORDER BY admin_level DESC
                ) AS admin_other
     advanced: {}
   - id: "power-minorline"
