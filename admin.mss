@@ -1,6 +1,13 @@
 @admin-boundaries: #ac46ac;
 
-#admin-01234 {
+/* For performance reasons, the admin border layers are split into three groups
+for low, middle and high zoom levels.
+For each zoomlevel, all borders come from a single attachment, to handle
+overlapping borders correctly.  */
+
+#admin-low-zoom[zoom < 11],
+#admin-mid-zoom[zoom >= 11][zoom < 13],
+#admin-high-zoom[zoom >= 13] {
   [admin_level = '2'],
   [admin_level = '3'] {
     [zoom >= 4] {
@@ -48,7 +55,8 @@
   comp-op: darken;
 }
 
-#admin-5678 {
+#admin-mid-zoom[zoom >= 11][zoom < 13],
+#admin-high-zoom[zoom >= 13] {
   [admin_level = '5'][zoom >= 11] {
     background/line-color: white;
     background/line-width: 2;
@@ -80,7 +88,7 @@
   comp-op: darken;
 }
 
-#admin-other {
+#admin-high-zoom[zoom >= 13] {
   [admin_level = '9'],
   [admin_level = '10'] {
     [zoom >= 13] {
