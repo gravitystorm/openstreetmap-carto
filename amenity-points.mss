@@ -60,8 +60,9 @@
   }
 
   [feature = 'highway_traffic_signals'][zoom >= 17] {
-    point-file: url('symbols/traffic_light.png');
-    point-placement: interior;
+    marker-file: url('symbols/traffic_light.svg');
+    marker-fill: #0a0a0a;
+    marker-placement: interior;
   }
 
   [feature = 'amenity_cafe'][zoom >=17] {
