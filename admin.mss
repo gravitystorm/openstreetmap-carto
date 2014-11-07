@@ -86,6 +86,16 @@
   text-dy: -10;
 }
 
+#nature-reserve-text[zoom >= 13][way_pixels > 192000] {
+  text-name: "[name]";
+  text-face-name: @book-fonts;
+  text-fill: green;
+  text-placement: line;
+  text-halo-radius: 1.0;
+  text-placement: line;
+  text-dy: -10;
+}
+
 #nature-reserve-boundaries {
   [zoom >= 7] {
     ::fill [zoom < 13] {
@@ -103,15 +113,5 @@
         line-join: bevel;
       }
     }
-  }
-  [way_area > 200000000][zoom >= 8][zoom < 12] {
-    text-name: "[name]";
-    text-size: 8;
-    text-fill: #9c9;
-    text-face-name: @bold-fonts;
-    text-halo-radius: 1;
-    text-wrap-width: 14;
-    text-placement: interior;
-    [zoom >= 11] { text-size: 11; }
   }
 }

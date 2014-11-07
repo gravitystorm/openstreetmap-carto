@@ -33,9 +33,7 @@
 }
 
 #building-text {
-  [way_area >= 150000][zoom >= 14],
-  [way_area >= 80000][zoom >= 15],
-  [way_area >= 20000][zoom >= 16],
+  [zoom >= 14][way_pixels > 3000],
   [zoom >= 17] {
     text-name: "[name]";
     text-size: 11;
