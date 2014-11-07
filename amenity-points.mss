@@ -182,7 +182,7 @@
     }
   }
 
-  [feature = 'amenity_parking_entrance'][zoom >= 15] {
+  [feature = 'amenity_parking_entrance'][zoom >= 16] {
     [entrance = 'main'],[entrance = 'yes'] {
       [access = null],[access = 'public'],[access = 'customers'],
       [access = 'yes'],[access = 'destination'],[access = 'permissive'] {
