@@ -5,7 +5,7 @@
 @golf_course: #b5e3b5;
 @park: #cdf7c9; // also recreation_ground
 @wood: #aed1a0;
-@vineyard: #abdf96;
+@vineyard: #b3e2a8;
 @grassland: #c6e4b4;
 
 // --- sports ---
@@ -54,6 +54,7 @@
 @sand: #ffdf88;
 @school: #f0f0d8; // also university, college, hospital, kindergarten
 @scrub: #b5e3b5;
+@orchard: #9ed88f;
 @theme_park: #734a08;
 @quarry: #c5c3c3;
 @military: #f55;
@@ -96,7 +97,8 @@
   }
 
   [feature = 'landuse_quarry'][zoom >= 10] {
-    polygon-pattern-file: url('symbols/quarry2.png');
+    polygon-fill: @quarry;
+    polygon-pattern-file: url('symbols/quarry.png');
     line-width: 0.5;
     line-color: grey;
     [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
@@ -104,19 +106,18 @@
   }
 
   [feature = 'landuse_vineyard'] {
-    [zoom >= 10][zoom < 13] {
+    [zoom >= 10] {
       polygon-fill: @vineyard;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.6;  }
     }
     [zoom >= 13] {
       polygon-pattern-file: url('symbols/vineyard.png');
-      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-pattern-gamma: 0.6;  }
     }
   }
 
   [feature = 'landuse_orchard'][zoom >= 10] {
+    polygon-fill: @orchard;
     polygon-pattern-file: url('symbols/orchard.png');
     polygon-pattern-alignment: global;
     [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
@@ -125,21 +126,15 @@
 
   [feature = 'landuse_cemetery'],
   [feature = 'amenity_grave_yard'] {
-    [zoom >= 10][zoom < 14] {
+    [zoom >= 10] {
       polygon-fill: @cemetery;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.6;  }
     }
     [zoom >= 14] {
-      [religion = 'jewish'] { polygon-pattern-file: url('symbols/cemetery_jewish.18.png'); }
-      [religion = 'christian'] { polygon-pattern-file: url('symbols/grave_yard.png'); }
+      [religion = 'jewish'] { polygon-pattern-file: url('symbols/grave_yard_jewish.png'); }
+      [religion = 'christian'] { polygon-pattern-file: url('symbols/grave_yard_christian.png'); }
       [religion = 'INT-generic'] { polygon-pattern-file: url('symbols/grave_yard_generic.png'); }
-      [religion = 'jewish'],
-      [religion = 'christian'],
-      [religion = 'INT-generic'] {
-        [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
-        [way_pixels >= 64] { polygon-pattern-gamma: 0.6;  }
-      }
     }
   }
 
@@ -214,6 +209,7 @@
   }
 
   [feature = 'tourism_zoo'][zoom >= 10] {
+    polygon-fill: @zoo;
     polygon-pattern-file: url('symbols/zoo.png');
     [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
     [way_pixels >= 64] { polygon-pattern-gamma: 0.6;  }
@@ -411,15 +407,13 @@
   }
 
   [feature = 'natural_scrub'] {
-    [zoom >= 10][zoom < 14] {
+    [zoom >= 10] {
       polygon-fill: @scrub;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.6;  }
     }
     [zoom >= 14] {
       polygon-pattern-file: url('symbols/scrub.png');
-      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-pattern-gamma: 0.6;  }
     }
   }
 
@@ -464,6 +458,7 @@
   }
 
   [feature = 'natural_beach'][zoom >= 10] {
+    polygon-fill: @beach;
     polygon-pattern-file: url('symbols/beach.png');
     polygon-pattern-alignment: global;
     [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
