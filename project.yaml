@@ -1414,7 +1414,9 @@ Layer:
       table: |2-
         (SELECT name, way, way_area/(!pixel_width!*!pixel_height!) AS way_pixels
         FROM planet_osm_polygon
-        WHERE building IS NOT NULL AND building NOT IN ('no', 'station', 'supermarket')) AS building_text
+        WHERE building IS NOT NULL AND building NOT IN ('no', 'station', 'supermarket')
+        ORDER BY way_area DESC
+        ) AS building_text
     advanced: {}
   - id: "interpolation"
     name: "interpolation"
@@ -1436,9 +1438,10 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-              (SELECT way,"addr:housenumber" FROM planet_osm_polygon WHERE "addr:housenumber" IS NOT NULL AND building IS NOT NULL
+              (SELECT way,"addr:housenumber", way_area FROM planet_osm_polygon WHERE "addr:housenumber" IS NOT NULL AND building IS NOT NULL
                UNION
-               SELECT way,"addr:housenumber" FROM planet_osm_point WHERE "addr:housenumber" IS NOT NULL
+               SELECT way,"addr:housenumber", NULL AS way_area FROM planet_osm_point WHERE "addr:housenumber" IS NOT NULL
+               ORDER BY way_area DESC
               ) AS housenumbers
     advanced: {}
   - id: "housenames"
@@ -1449,9 +1452,10 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT way,"addr:housename" FROM planet_osm_polygon WHERE "addr:housename" IS NOT NULL AND building IS NOT NULL
+        (SELECT way,"addr:housename", way_area FROM planet_osm_polygon WHERE "addr:housename" IS NOT NULL AND building IS NOT NULL
                UNION
-               SELECT way,"addr:housename" FROM planet_osm_point WHERE "addr:housename" IS NOT NULL
+               SELECT way,"addr:housename", NULL AS way_area FROM planet_osm_point WHERE "addr:housename" IS NOT NULL
+               ORDER BY way_area DESC
               ) AS housenames
     advanced: {}
   - id: "water-lines-text"
