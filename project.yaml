@@ -297,25 +297,6 @@ Layer:
           WHERE waterway = 'lock_gate'
         ) AS locks
     advanced: {}
-  - id: "buildings-major"
-    name: "buildings-major"
-    class: ""
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT way, building, amenity
-          FROM planet_osm_polygon
-          WHERE building IN ('station','supermarket')
-            OR (building IS NOT NULL AND building != 'no'
-              AND (
-                amenity IN ('place_of_worship','supermarket') OR shop = 'mall' OR tourism = 'attraction'
-              )
-            )
-          ORDER BY z_order,way_area DESC)
-        AS buildings_major
-    advanced: {}
   - id: "buildings"
     name: "buildings"
     class: ""
@@ -325,12 +306,27 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, name, building, amenity, aeroway, way_area
+            way, building
           FROM planet_osm_polygon
-          WHERE (building IS NOT NULL OR aeroway = 'terminal')
+          WHERE (building IS NOT NULL)
             AND building != 'no'
           ORDER BY z_order, way_area DESC
         ) AS buildings
+    advanced: {}
+  - id: "buildings-major"
+    name: "buildings-major"
+    class: ""
+    geometry: "polygon"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT way, building, amenity, aeroway
+          FROM planet_osm_polygon
+          WHERE (building IS NOT NULL)
+            AND building != 'no'
+          ORDER BY z_order,way_area DESC)
+        AS buildings_major
     advanced: {}
   - id: "tunnels"
     name: "tunnels"
