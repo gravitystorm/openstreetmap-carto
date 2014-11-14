@@ -999,8 +999,8 @@ Layer:
       table: |2-
         (SELECT way FROM planet_osm_line WHERE highway = 'bus_guideway' AND (tunnel IS NULL OR tunnel != 'yes')) AS guideways
     advanced: {}
-  - name: "admin-01234"
-    id: "admin-01234"
+  - name: "admin-low-zoom"
+    id: "admin-low-zoom"
     class: ""
     geometry: "linestring"
     <<: *extents
@@ -1011,10 +1011,11 @@ Layer:
                FROM planet_osm_roads
                WHERE "boundary" = 'administrative'
                  AND admin_level IN ('0', '1', '2', '3', '4')
-               ) AS admin_01234
+               ORDER BY admin_level DESC
+               ) AS admin_low_zoom
     advanced: {}
-  - id: "admin-5678"
-    name: "admin-5678"
+  - id: "admin-mid-zoom"
+    name: "admin-mid-zoom"
     class: ""
     geometry: "linestring"
     <<: *extents
@@ -1024,11 +1025,12 @@ Layer:
         (SELECT way, admin_level
                FROM planet_osm_roads
                WHERE "boundary" = 'administrative'
-                 AND admin_level IN ('5', '6', '7', '8')
-               ) AS admin_5678
+                 AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')
+               ORDER BY admin_level DESC
+               ) AS admin_mid_zoom
     advanced: {}
-  - id: "admin-other"
-    name: "admin-other"
+  - id: "admin-high-zoom"
+    name: "admin-high-zoom"
     class: ""
     geometry: "linestring"
     <<: *extents
@@ -1038,8 +1040,9 @@ Layer:
         (SELECT way, admin_level
                FROM planet_osm_roads
                WHERE "boundary" = 'administrative'
-                 AND admin_level IN ('9', '10')
-               ) AS admin_other
+                 AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
+               ORDER BY admin_level DESC
+               ) AS admin_high_zoom
     advanced: {}
   - id: "power-minorline"
     name: "power-minorline"
