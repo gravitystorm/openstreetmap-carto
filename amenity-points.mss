@@ -46,11 +46,14 @@
 
   [feature = 'highway_bus_stop'] {
     [zoom >= 16] {
-      point-file: url('symbols/bus_stop_small.png');
-      point-placement: interior;
+      marker-file: url('symbols/square.svg');
+      marker-fill: @transportation-icon;
+      marker-placement: interior;
+      marker-width: 6;
     }
     [zoom >= 17] {
-      point-file: url('symbols/bus_stop.p.12.png');
+      marker-file: url('symbols/bus_stop.p.12.png');
+      marker-width: 12;
     }
   }
 
@@ -158,8 +161,10 @@
   [feature = 'waterway_lock'],
   [feature = 'lock_yes'] {
     [zoom >= 15] {
-      point-file: url('symbols/lock_gate.png');
-      point-placement: interior;
+      marker-fill: #969494;
+      marker-width: 9;
+      marker-line-width: 0;
+      marker-placement: interior;
     }
   }
 
@@ -311,7 +316,9 @@
   }
 
   [feature = 'shop_other'][zoom >= 17] {
-    marker-file: url('symbols/shop.p.16.png');
+    marker-fill: @shop-icon;
+    marker-width: 6;
+    marker-line-width: 0;
     marker-placement: interior;
     marker-clip: false;
   }

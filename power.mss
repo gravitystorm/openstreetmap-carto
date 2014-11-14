@@ -31,6 +31,8 @@
 
 #power-poles {
   [zoom >= 16] {
-    point-file: url('symbols/power_pole.png');
+    marker-file: url('symbols/square.svg');
+    marker-fill: #928f8f;
+    marker-width: 3;
   }
 }
