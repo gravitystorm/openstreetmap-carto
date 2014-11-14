@@ -1386,11 +1386,12 @@
   [feature = 'shop_other']{
     [zoom >= 17] {
       text-name: "[name]";
-      text-size: 8;
-      text-dy: 10;
+      text-size: 10;
+      text-dy: 12;
       text-fill: #939;
       text-face-name: @book-fonts;
-      text-halo-radius: 1;
+      text-halo-radius: 1.5;
+      text-halo-fill: rgba(255, 255, 255, 0.8);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
     }
@@ -1400,11 +1401,12 @@
   [feature = 'shop_department_store'] {
     [zoom >= 16] {
       text-name: "[name]";
-      text-size: 9;
-      text-dy: 11;
+      text-size: 10;
+      text-dy: 12;
       text-fill: #939;
       text-face-name: @book-fonts;
-      text-halo-radius: 1;
+      text-halo-radius: 1.5;
+      text-halo-fill: rgba(255, 255, 255, 0.8);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
     }
