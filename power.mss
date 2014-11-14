@@ -17,13 +17,15 @@
 
 #power-towers {
   [zoom >= 14] {
-    point-file: url('symbols/power_tower_3x3.png');
+    marker-file: url('symbols/power_tower_small.svg');
+    marker-width: 3;
   }
   [zoom >= 15] {
-    point-file: url('symbols/power_tower_5x5.png');
+    marker-file: url('symbols/power_tower.svg');
+    marker-width: 5;
   }
   [zoom >= 17] {
-    point-file: url('symbols/power_tower.png');
+    marker-width: 7;
   }
 }
 
