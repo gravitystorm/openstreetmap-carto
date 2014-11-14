@@ -2126,10 +2126,12 @@
       text-clip: false;
       text-placement: line;
       text-face-name: @book-fonts;
-      text-halo-radius: 1;
-      [highway = 'motorway'] { text-halo-fill: @motorway-fill; }
-      [highway = 'trunk'] { text-halo-fill: @trunk-fill; }
-      [highway = 'primary'] { text-halo-fill: @primary-fill; }
+      [tunnel = 'no'] {
+        text-halo-radius: 1;
+        [highway = 'motorway'] { text-halo-fill: @motorway-fill; }
+        [highway = 'trunk'] { text-halo-fill: @trunk-fill; }
+        [highway = 'primary'] { text-halo-fill: @primary-fill; }
+      }
     }
     [zoom >= 14] {
       text-size: 9;
