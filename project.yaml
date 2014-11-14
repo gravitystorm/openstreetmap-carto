@@ -1061,6 +1061,26 @@ Layer:
       table: |2-
         (SELECT way FROM planet_osm_line WHERE "power" = 'line') AS power_line
     advanced: {}
+  - id: "nature-reserve-boundaries"
+    name: "nature-reserve-boundaries"
+    class: ""
+    geometry: "polygon"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, way_area, name, boundary FROM planet_osm_polygon WHERE (boundary = 'national_park' OR leisure = 'nature_reserve') AND building IS NULL) AS national_park_boundaries
+    advanced: {}
+  - id: "theme-park"
+    name: "theme-park"
+    class: ""
+    geometry: "polygon"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, name, tourism FROM planet_osm_polygon WHERE tourism = 'theme_park') AS theme_park
+    advanced: {}
   - id: "nepopulated"
     name: "nepopulated"
     class: ""
@@ -1505,26 +1525,6 @@ Layer:
       table: |2-
         (SELECT way, name, way_area/(!pixel_width!*!pixel_height!) AS way_pixels
           FROM planet_osm_polygon WHERE "boundary" = 'national_park' OR leisure = 'nature_reserve') AS nature_reserve_text
-    advanced: {}
-  - id: "nature-reserve-boundaries"
-    name: "nature-reserve-boundaries"
-    class: ""
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way, way_area, name, boundary FROM planet_osm_polygon WHERE (boundary = 'national_park' OR leisure = 'nature_reserve') AND building IS NULL) AS national_park_boundaries
-    advanced: {}
-  - id: "theme-park"
-    name: "theme-park"
-    class: ""
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way, name, tourism FROM planet_osm_polygon WHERE tourism = 'theme_park') AS theme_park
     advanced: {}
   - id: "amenity-low-priority"
     name: "amenity-low-priority"
