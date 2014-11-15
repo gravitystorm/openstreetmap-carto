@@ -188,6 +188,16 @@
     }
   }
 
+  [feature = 'amenity_parking_entrance'][zoom >= 16] {
+    [entrance = 'main'],[entrance = 'yes'] {
+      [access = null],[access = 'public'],[access = 'customers'],
+      [access = 'yes'],[access = 'destination'],[access = 'permissive'] {
+        point-file: url('symbols/parking_entrance.p.16.png');
+        point-placement: interior;
+      }
+    }
+  }
+
   [feature = 'amenity_pharmacy'][zoom >= 17] {
     point-file: url('symbols/pharmacy.p.16.png');
     point-placement: interior;
@@ -490,6 +500,22 @@
     text-placement: interior;
     [access != ''][access != 'public'][access != 'yes'] {
       text-fill: #66ccaf;
+    }
+  }
+
+  [feature = 'amenity_parking_entrance'][zoom >= 17] {
+    [entrance = 'main']{
+      [access = null],[access = 'public'],[access = 'customers'],
+      [access = 'yes'],[access = 'destination'],[access = 'permissive'] {
+        text-name: "[name]";
+        text-size: 9;
+        text-fill: #0066ff;
+        text-dy: 9;
+        text-face-name: @book-fonts;
+        text-halo-radius: 1;
+        text-wrap-width: @standard-wrap-width;
+        text-placement: interior;
+      }
     }
   }
 
