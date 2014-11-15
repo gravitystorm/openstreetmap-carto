@@ -888,14 +888,14 @@
       "advanced": {}
     }, 
     {
-      "name": "admin-01234", 
+      "name": "admin-low-zoom", 
       "srs-name": "900913", 
       "geometry": "linestring", 
-      "id": "admin-01234", 
+      "id": "admin-low-zoom", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way, admin_level\n       FROM planet_osm_roads\n       WHERE \"boundary\" = 'administrative'\n         AND admin_level IN ('0', '1', '2', '3', '4')\n       ) AS admin_01234", 
+        "table": "(SELECT way, admin_level\n       FROM planet_osm_roads\n       WHERE \"boundary\" = 'administrative'\n         AND admin_level IN ('0', '1', '2', '3', '4')\n       ORDER BY admin_level DESC\n       ) AS admin_low_zoom", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -911,14 +911,14 @@
       "advanced": {}
     }, 
     {
-      "name": "admin-5678", 
+      "name": "admin-mid-zoom", 
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way, admin_level\n       FROM planet_osm_roads\n       WHERE \"boundary\" = 'administrative'\n         AND admin_level IN ('5', '6', '7', '8')\n       ) AS admin_5678", 
+        "table": "(SELECT way, admin_level\n       FROM planet_osm_roads\n       WHERE \"boundary\" = 'administrative'\n         AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')\n       ORDER BY admin_level DESC\n       ) AS admin_mid_zoom", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -930,18 +930,18 @@
         180, 
         85.05112877980659
       ], 
-      "id": "admin-5678", 
+      "id": "admin-mid-zoom", 
       "advanced": {}
     }, 
     {
-      "name": "admin-other", 
+      "name": "admin-high-zoom", 
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way, admin_level\n       FROM planet_osm_roads\n       WHERE \"boundary\" = 'administrative'\n         AND admin_level IN ('9', '10')\n       ) AS admin_other", 
+        "table": "(SELECT way, admin_level\n       FROM planet_osm_roads\n       WHERE \"boundary\" = 'administrative'\n         AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')\n       ORDER BY admin_level DESC\n       ) AS admin_high_zoom", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -953,7 +953,7 @@
         180, 
         85.05112877980659
       ], 
-      "id": "admin-other", 
+      "id": "admin-high-zoom", 
       "advanced": {}
     }, 
     {
@@ -1000,6 +1000,52 @@
         85.05112877980659
       ], 
       "id": "power-line", 
+      "advanced": {}
+    }, 
+    {
+      "name": "nature-reserve-boundaries", 
+      "srs-name": "900913", 
+      "geometry": "polygon", 
+      "class": "", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, way_area, name, boundary FROM planet_osm_polygon WHERE (boundary = 'national_park' OR leisure = 'nature_reserve') AND building IS NULL) AS national_park_boundaries", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "gis"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "nature-reserve-boundaries", 
+      "advanced": {}
+    }, 
+    {
+      "name": "theme-park", 
+      "srs-name": "900913", 
+      "geometry": "polygon", 
+      "class": "", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, name, tourism FROM planet_osm_polygon WHERE tourism = 'theme_park') AS theme_park", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "gis"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "theme-park", 
       "advanced": {}
     }, 
     {
@@ -1400,7 +1446,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "      (SELECT way, CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end, name\n       FROM planet_osm_line\n       WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction', 'proposed')\n         AND name IS NOT NULL\n      ) AS roads_text_name", 
+        "table": "      (SELECT way,\n         CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END,\n         CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,\n         name\n       FROM planet_osm_line\n       WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction', 'proposed')\n         AND name IS NOT NULL\n      ) AS roads_text_name", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -1492,7 +1538,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT name, way, way_area/(!pixel_width!*!pixel_height!) AS way_pixels\nFROM planet_osm_polygon\nWHERE building IS NOT NULL AND building NOT IN ('no', 'station', 'supermarket')) AS building_text", 
+        "table": "(SELECT name, way, way_area/(!pixel_width!*!pixel_height!) AS way_pixels\nFROM planet_osm_polygon\nWHERE building IS NOT NULL AND building NOT IN ('no', 'station', 'supermarket')\nORDER BY way_area DESC\n) AS building_text", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -1538,7 +1584,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "      (SELECT way,\"addr:housenumber\" FROM planet_osm_polygon WHERE \"addr:housenumber\" IS NOT NULL AND building IS NOT NULL\n       UNION\n       SELECT way,\"addr:housenumber\" FROM planet_osm_point WHERE \"addr:housenumber\" IS NOT NULL\n      ) AS housenumbers", 
+        "table": "      (SELECT way,\"addr:housenumber\", way_area FROM planet_osm_polygon WHERE \"addr:housenumber\" IS NOT NULL AND building IS NOT NULL\n       UNION\n       SELECT way,\"addr:housenumber\", NULL AS way_area FROM planet_osm_point WHERE \"addr:housenumber\" IS NOT NULL\n       ORDER BY way_area DESC\n      ) AS housenumbers", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -1561,7 +1607,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way,\"addr:housename\" FROM planet_osm_polygon WHERE \"addr:housename\" IS NOT NULL AND building IS NOT NULL\n       UNION\n       SELECT way,\"addr:housename\" FROM planet_osm_point WHERE \"addr:housename\" IS NOT NULL\n      ) AS housenames", 
+        "table": "(SELECT way,\"addr:housename\", way_area FROM planet_osm_polygon WHERE \"addr:housename\" IS NOT NULL AND building IS NOT NULL\n       UNION\n       SELECT way,\"addr:housename\", NULL AS way_area FROM planet_osm_point WHERE \"addr:housename\" IS NOT NULL\n       ORDER BY way_area DESC\n      ) AS housenames", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -1666,52 +1712,6 @@
         85.05112877980659
       ], 
       "id": "nature-reserve-text", 
-      "advanced": {}
-    }, 
-    {
-      "name": "nature-reserve-boundaries", 
-      "srs-name": "900913", 
-      "geometry": "polygon", 
-      "class": "", 
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
-      "Datasource": {
-        "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way, way_area, name, boundary FROM planet_osm_polygon WHERE (boundary = 'national_park' OR leisure = 'nature_reserve') AND building IS NULL) AS national_park_boundaries", 
-        "geometry_field": "way", 
-        "type": "postgis", 
-        "key_field": "", 
-        "dbname": "gis"
-      }, 
-      "extent": [
-        -180, 
-        -85.05112877980659, 
-        180, 
-        85.05112877980659
-      ], 
-      "id": "nature-reserve-boundaries", 
-      "advanced": {}
-    }, 
-    {
-      "name": "theme-park", 
-      "srs-name": "900913", 
-      "geometry": "polygon", 
-      "class": "", 
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
-      "Datasource": {
-        "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way, name, tourism FROM planet_osm_polygon WHERE tourism = 'theme_park') AS theme_park", 
-        "geometry_field": "way", 
-        "type": "postgis", 
-        "key_field": "", 
-        "dbname": "gis"
-      }, 
-      "extent": [
-        -180, 
-        -85.05112877980659, 
-        180, 
-        85.05112877980659
-      ], 
-      "id": "theme-park", 
       "advanced": {}
     }, 
     {

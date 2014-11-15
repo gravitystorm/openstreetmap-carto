@@ -31,13 +31,15 @@
   }
 
   [natural = 'peak'][zoom >= 11]::natural {
-    point-file: url('symbols/peak.png');
-    point-placement: interior;
+    marker-file: url('symbols/peak.svg');
+    marker-fill: #d08f55;
+    marker-placement: interior;
   }
 
   [natural = 'volcano'][zoom >= 11]::natural {
-    point-file: url('symbols/volcano.png');
-    point-placement: interior;
+    marker-file: url('symbols/peak.svg');
+    marker-fill: #d40000;
+    marker-placement: interior;
   }
 
   [natural = 'cave_entrance'][zoom >= 15]::natural {
@@ -46,16 +48,20 @@
   }
 
   [natural = 'spring'][zoom >= 14]::natural {
-    point-file: url('symbols/spring.png');
-    point-placement: interior;
+    marker-file: url('symbols/spring.svg');
+    marker-placement: interior;
   }
 
   [natural = 'tree'][zoom >= 16]::natural {
-    point-file: url('symbols/tree.png');
-    point-ignore-placement: true;
-    point-placement: interior;
+    marker-placement: interior;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
+    marker-width: 3;
+    marker-fill: #239c45;
     [zoom >= 17] {
-      point-file: url('symbols/tree2.png');
+      marker-line-width: 1;
+      marker-line-color: #8ef2ab;
+      marker-width: 4;
     }
   }
 
@@ -88,27 +94,34 @@
   }
 
   [highway = 'mini_roundabout'][zoom >= 16]::highway {
-    point-file: url('symbols/mini_round.png');
-    point-placement: interior;
+    marker-file: url('symbols/mini_roundabout.svg');
+    marker-placement: interior;
   }
 
   [barrier = 'gate']::barrier {
     [zoom >= 16] {
-      point-file: url('symbols/gate2.png');
-      point-placement: interior;
+      marker-file: url('symbols/gate.svg');
+      marker-placement: interior;
     }
   }
 
   [barrier = 'lift_gate'][zoom >= 16]::barrier {
-    point-file: url('symbols/liftgate.png');
-    point-placement: interior;
+    marker-file: url('symbols/liftgate.svg');
+    marker-fill: #3f3f3f;
+    marker-placement: interior
   }
 
   [barrier = 'bollard'],
   [barrier = 'block'] {
     [zoom >= 16] {
-      point-file: url('symbols/bollard.png');
-      point-placement: interior;
+      marker-width: 3;
+      marker-line-width: 0;
+      marker-fill: #7d7c7c;
+      marker-placement: interior;
+
+      [zoom >= 18] {
+        marker-width: 4;
+      }
     }
   }
 }

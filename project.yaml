@@ -993,8 +993,8 @@ Layer:
       table: |2-
         (SELECT way FROM planet_osm_line WHERE highway = 'bus_guideway' AND (tunnel IS NULL OR tunnel != 'yes')) AS guideways
     advanced: {}
-  - name: "admin-01234"
-    id: "admin-01234"
+  - name: "admin-low-zoom"
+    id: "admin-low-zoom"
     class: ""
     geometry: "linestring"
     <<: *extents
@@ -1005,10 +1005,11 @@ Layer:
                FROM planet_osm_roads
                WHERE "boundary" = 'administrative'
                  AND admin_level IN ('0', '1', '2', '3', '4')
-               ) AS admin_01234
+               ORDER BY admin_level DESC
+               ) AS admin_low_zoom
     advanced: {}
-  - id: "admin-5678"
-    name: "admin-5678"
+  - id: "admin-mid-zoom"
+    name: "admin-mid-zoom"
     class: ""
     geometry: "linestring"
     <<: *extents
@@ -1018,11 +1019,12 @@ Layer:
         (SELECT way, admin_level
                FROM planet_osm_roads
                WHERE "boundary" = 'administrative'
-                 AND admin_level IN ('5', '6', '7', '8')
-               ) AS admin_5678
+                 AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')
+               ORDER BY admin_level DESC
+               ) AS admin_mid_zoom
     advanced: {}
-  - id: "admin-other"
-    name: "admin-other"
+  - id: "admin-high-zoom"
+    name: "admin-high-zoom"
     class: ""
     geometry: "linestring"
     <<: *extents
@@ -1032,8 +1034,9 @@ Layer:
         (SELECT way, admin_level
                FROM planet_osm_roads
                WHERE "boundary" = 'administrative'
-                 AND admin_level IN ('9', '10')
-               ) AS admin_other
+                 AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
+               ORDER BY admin_level DESC
+               ) AS admin_high_zoom
     advanced: {}
   - id: "power-minorline"
     name: "power-minorline"
@@ -1054,6 +1057,26 @@ Layer:
       <<: *osm2pgsql
       table: |2-
         (SELECT way FROM planet_osm_line WHERE "power" = 'line') AS power_line
+    advanced: {}
+  - id: "nature-reserve-boundaries"
+    name: "nature-reserve-boundaries"
+    class: ""
+    geometry: "polygon"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, way_area, name, boundary FROM planet_osm_polygon WHERE (boundary = 'national_park' OR leisure = 'nature_reserve') AND building IS NULL) AS national_park_boundaries
+    advanced: {}
+  - id: "theme-park"
+    name: "theme-park"
+    class: ""
+    geometry: "polygon"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, name, tourism FROM planet_osm_polygon WHERE tourism = 'theme_park') AS theme_park
     advanced: {}
   - id: "nepopulated"
     name: "nepopulated"
@@ -1323,7 +1346,10 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-              (SELECT way, CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end, name
+              (SELECT way,
+                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END,
+                 CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
+                 name
                FROM planet_osm_line
                WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction', 'proposed')
                  AND name IS NOT NULL
@@ -1408,7 +1434,9 @@ Layer:
       table: |2-
         (SELECT name, way, way_area/(!pixel_width!*!pixel_height!) AS way_pixels
         FROM planet_osm_polygon
-        WHERE building IS NOT NULL AND building NOT IN ('no', 'station', 'supermarket')) AS building_text
+        WHERE building IS NOT NULL AND building NOT IN ('no', 'station', 'supermarket')
+        ORDER BY way_area DESC
+        ) AS building_text
     advanced: {}
   - id: "interpolation"
     name: "interpolation"
@@ -1430,9 +1458,10 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-              (SELECT way,"addr:housenumber" FROM planet_osm_polygon WHERE "addr:housenumber" IS NOT NULL AND building IS NOT NULL
+              (SELECT way,"addr:housenumber", way_area FROM planet_osm_polygon WHERE "addr:housenumber" IS NOT NULL AND building IS NOT NULL
                UNION
-               SELECT way,"addr:housenumber" FROM planet_osm_point WHERE "addr:housenumber" IS NOT NULL
+               SELECT way,"addr:housenumber", NULL AS way_area FROM planet_osm_point WHERE "addr:housenumber" IS NOT NULL
+               ORDER BY way_area DESC
               ) AS housenumbers
     advanced: {}
   - id: "housenames"
@@ -1443,9 +1472,10 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT way,"addr:housename" FROM planet_osm_polygon WHERE "addr:housename" IS NOT NULL AND building IS NOT NULL
+        (SELECT way,"addr:housename", way_area FROM planet_osm_polygon WHERE "addr:housename" IS NOT NULL AND building IS NOT NULL
                UNION
-               SELECT way,"addr:housename" FROM planet_osm_point WHERE "addr:housename" IS NOT NULL
+               SELECT way,"addr:housename", NULL AS way_area FROM planet_osm_point WHERE "addr:housename" IS NOT NULL
+               ORDER BY way_area DESC
               ) AS housenames
     advanced: {}
   - id: "water-lines-text"
@@ -1496,26 +1526,6 @@ Layer:
       table: |2-
         (SELECT way, name, way_area/(!pixel_width!*!pixel_height!) AS way_pixels
           FROM planet_osm_polygon WHERE "boundary" = 'national_park' OR leisure = 'nature_reserve') AS nature_reserve_text
-    advanced: {}
-  - id: "nature-reserve-boundaries"
-    name: "nature-reserve-boundaries"
-    class: ""
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way, way_area, name, boundary FROM planet_osm_polygon WHERE (boundary = 'national_park' OR leisure = 'nature_reserve') AND building IS NULL) AS national_park_boundaries
-    advanced: {}
-  - id: "theme-park"
-    name: "theme-park"
-    class: ""
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way, name, tourism FROM planet_osm_polygon WHERE tourism = 'theme_park') AS theme_park
     advanced: {}
   - id: "amenity-low-priority"
     name: "amenity-low-priority"

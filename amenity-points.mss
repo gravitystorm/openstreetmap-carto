@@ -46,11 +46,14 @@
 
   [feature = 'highway_bus_stop'] {
     [zoom >= 16] {
-      point-file: url('symbols/bus_stop_small.png');
-      point-placement: interior;
+      marker-file: url('symbols/square.svg');
+      marker-fill: @transportation-icon;
+      marker-placement: interior;
+      marker-width: 6;
     }
     [zoom >= 17] {
-      point-file: url('symbols/bus_stop.p.12.png');
+      marker-file: url('symbols/bus_stop.p.12.png');
+      marker-width: 12;
     }
   }
 
@@ -60,8 +63,9 @@
   }
 
   [feature = 'highway_traffic_signals'][zoom >= 17] {
-    point-file: url('symbols/traffic_light.png');
-    point-placement: interior;
+    marker-file: url('symbols/traffic_light.svg');
+    marker-fill: #0a0a0a;
+    marker-placement: interior;
   }
 
   [feature = 'amenity_cafe'][zoom >=17] {
@@ -157,8 +161,10 @@
   [feature = 'waterway_lock'],
   [feature = 'lock_yes'] {
     [zoom >= 15] {
-      point-file: url('symbols/lock_gate.png');
-      point-placement: interior;
+      marker-fill: #969494;
+      marker-width: 9;
+      marker-line-width: 0;
+      marker-placement: interior;
     }
   }
 
@@ -310,7 +316,9 @@
   }
 
   [feature = 'shop_other'][zoom >= 17] {
-    marker-file: url('symbols/shop.p.16.png');
+    marker-fill: @shop-icon;
+    marker-width: 6;
+    marker-line-width: 0;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -422,7 +430,7 @@
   [feature = 'place_islet'][zoom >= 17] {
     text-name: "[name]";
     text-fill: #000;
-    text-size: 9;
+    text-size: 10;
     [way_pixels > 12000] { text-size: 12; }
     [way_pixels > 48000] { text-size: 15; }
     text-face-name: @oblique-fonts;
@@ -1378,11 +1386,12 @@
   [feature = 'shop_other']{
     [zoom >= 17] {
       text-name: "[name]";
-      text-size: 8;
-      text-dy: 10;
+      text-size: 10;
+      text-dy: 12;
       text-fill: #939;
       text-face-name: @book-fonts;
-      text-halo-radius: 1;
+      text-halo-radius: 1.5;
+      text-halo-fill: rgba(255, 255, 255, 0.8);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
     }
@@ -1392,11 +1401,12 @@
   [feature = 'shop_department_store'] {
     [zoom >= 16] {
       text-name: "[name]";
-      text-size: 9;
-      text-dy: 11;
+      text-size: 10;
+      text-dy: 12;
       text-fill: #939;
       text-face-name: @book-fonts;
-      text-halo-radius: 1;
+      text-halo-radius: 1.5;
+      text-halo-fill: rgba(255, 255, 255, 0.8);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
     }

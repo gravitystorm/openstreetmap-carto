@@ -1,6 +1,7 @@
 @water-text: #6699cc;
 @glacier: #ddecec;
 @glacier-line: #9cf;
+@mud: #e6dcd1;
 
 #water-areas {
   [natural = 'glacier']::natural {
@@ -8,9 +9,9 @@
       line-dasharray: 4,2;
       line-width: 1.5;
       line-color: @glacier-line;
-      polygon-pattern-file: url('symbols/glacier.png');
+      polygon-fill: @glacier;
       [zoom >= 8] {
-        polygon-pattern-file: url('symbols/glacier2.png');
+        polygon-pattern-file: url('symbols/glacier.png');
       }
     }
   }
@@ -54,6 +55,7 @@
   }
 
   [natural = 'mud'][zoom >= 13]::natural {
+    polygon-fill: @mud;
     polygon-pattern-file: url('symbols/mud.png');
     polygon-pattern-alignment: global;
   }
