@@ -85,7 +85,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT\n    way, name, way_pixels,\n    COALESCE(landuse, \"natural\") AS feature\n  FROM (SELECT\n      way, COALESCE(name, '') AS name,\n      ('landuse_' || (CASE WHEN landuse IN ('forest') THEN landuse ELSE NULL END)) AS landuse,\n      ('natural_' || (CASE WHEN \"natural\" IN ('wood') THEN \"natural\" ELSE NULL END)) AS \"natural\",\n      way_area/(!pixel_width!*!pixel_height!) AS way_pixels\n    FROM planet_osm_polygon\n    WHERE (landuse IN ('forest')\n      OR \"natural\" IN ('wood'))\n      AND way_area/(!pixel_width!*!pixel_height!) > 0.01\n    ORDER BY z_order, way_area DESC\n  ) AS landcover_low_zoom\n) AS features", 
+        "table": "(SELECT\n    way, name, way_pixels,\n    COALESCE(landuse, \"natural\") AS feature\n  FROM (SELECT\n      way, COALESCE(name, '') AS name,\n      ('landuse_' || (CASE WHEN landuse IN ('forest') THEN landuse ELSE NULL END)) AS landuse,\n      ('natural_' || (CASE WHEN \"natural\" IN ('wood') THEN \"natural\" ELSE NULL END)) AS \"natural\",\n      way_area/(!pixel_width!*!pixel_height!) AS way_pixels\n    FROM planet_osm_polygon\n    WHERE (landuse IN ('forest')\n      OR \"natural\" IN ('wood'))\n      AND way_area/(!pixel_width!*!pixel_height!) > 0.01\n    ORDER BY z_order, way_area DESC\n  ) AS features\n) AS landcover_low_zoom", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -1515,7 +1515,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way, way_area/(!pixel_width!*!pixel_height!) AS way_pixels,\n  COALESCE('landuse_' || landuse, 'natural_' || \"natural\", 'boundary_' || boundary) AS feature, name, way_area, CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building\n       FROM planet_osm_polygon\n       WHERE landuse IN ('forest')\n          OR \"natural\" IN ('wood')\n          OR boundary = 'national_park'\n ORDER BY way_area DESC     ) AS text_poly_low_zoom", 
+        "table": "  (SELECT way, way_area/(!pixel_width!*!pixel_height!) AS way_pixels,\n      COALESCE('landuse_' || landuse, 'natural_' || \"natural\", 'boundary_' || boundary) AS feature,\n      name,\n      way_area,\n      CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building\n    FROM planet_osm_polygon\n    WHERE landuse IN ('forest')\n      OR \"natural\" IN ('wood')\n      OR boundary IN ('national_park')\n    ORDER BY way_area DESC\n  ) AS text_poly_low_zoom", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
