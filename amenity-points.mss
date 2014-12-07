@@ -785,7 +785,7 @@
   }
 
   [feature = 'landuse_cemetery'][is_building = 'no'],
-  [feature = 'landuse_grave_yard'][is_building = 'no'] {
+  [feature = 'amenity_grave_yard'][is_building = 'no'] {
     [zoom >= 10][way_pixels > 3000],
     [zoom >= 17] {
       text-name: "[name]";
