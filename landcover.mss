@@ -476,11 +476,11 @@
     a/line-width: 1;
     a/line-offset: -0.5;
     a/line-color: @theme_park;
-    a/line-opacity: 0.3;
+    a/line-opacity: 0.5;
     a/line-join: round;
     a/line-cap: round;
-    b/line-width: 3;
-    b/line-offset: -1.5;
+    b/line-width: 4;
+    b/line-offset: -2;
     b/line-color: @theme_park;
     b/line-opacity: 0.3;
     b/line-join: round;
