@@ -112,6 +112,7 @@ Layer:
             WHERE (landuse IN ('forest')
               OR "natural" IN ('wood'))
               AND way_area/(!pixel_width!*!pixel_height!) > 0.01
+              AND building IS NULL
             ORDER BY z_order, way_area DESC
           ) AS features
         ) AS landcover_low_zoom
@@ -1413,9 +1414,10 @@ Layer:
               way_area,
               CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
             FROM planet_osm_polygon
-            WHERE landuse IN ('forest')
+            WHERE (landuse IN ('forest')
               OR "natural" IN ('wood')
-              OR boundary IN ('national_park')
+              OR boundary IN ('national_park'))
+              AND building IS NULL
             ORDER BY way_area DESC
           ) AS text_poly_low_zoom
     advanced: {}
