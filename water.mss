@@ -63,7 +63,7 @@
   [natural = 'marsh'],
   [natural = 'wetland'] {
     [zoom >= 10] {
-      polygon-pattern-file: url('symbols/marsh.png');
+      polygon-pattern-file: url('symbols/wetland.png');
     }
   }
 }
