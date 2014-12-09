@@ -325,6 +325,7 @@ Layer:
           FROM planet_osm_polygon
           WHERE (building IS NOT NULL)
             AND building != 'no'
+            AND (aeroway = 'terminal' OR amenity = 'place_of_worship')
           ORDER BY z_order,way_area DESC)
         AS buildings_major
     advanced: {}
