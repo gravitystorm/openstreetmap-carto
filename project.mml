@@ -1101,7 +1101,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way, place, name, ref\n       FROM planet_osm_point\n       WHERE place IN ('country', 'state')\n      ) AS placenames_large", 
+        "table": "(SELECT way, way_area/(!pixel_width!*!pixel_height!) AS way_pixels, name, ref, admin_level\n       FROM planet_osm_polygon\n       WHERE boundary = 'administrative' AND admin_level IN ('2', '4')\n      ) AS placenames_large", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
