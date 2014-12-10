@@ -44,7 +44,6 @@
 @construction: #b6b592;
 @danger_area: pink;
 @desert: #e3b57a;
-@field: @farmland;
 @garages: #dfddce;
 @heath: #d6d99f;
 @parking: #f7efb7;
@@ -170,19 +169,6 @@
     polygon-fill: @barracks;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
-  }
-
-  [feature = 'landuse_field'] {
-    [zoom >= 10] {
-      polygon-fill: @field;
-      [zoom >= 14] {
-        line-width: 0.3;
-        line-opacity: 0.4;
-        line-color: saturate(darken(@field, 40%), 20%);
-      }
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
-    }
   }
 
   [feature = 'military_danger_area'] {
