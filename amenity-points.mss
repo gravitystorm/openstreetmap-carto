@@ -426,11 +426,9 @@
     point-placement: interior;
   }
 
-  [feature = 'aeroway_aerodrome'][zoom >= 10][zoom < 13]::aeroway {
-    [zoom < 11] {
-      point-file: url('symbols/aerodrome.p.16.png');
-      point-placement: interior;
-    }
+  [feature = 'aeroway_aerodrome'][zoom >= 10][zoom < 14]::aeroway {
+    point-file: url('symbols/aerodrome.p.16.png');
+    point-placement: interior;
   }
 
   [feature = 'man_made_lighthouse'][zoom >= 15]::man_made {
@@ -1800,13 +1798,11 @@
     text-wrap-width: 30;
   }
 
-  [feature = 'aeroway_aerodrome'][zoom >= 10][zoom < 13]::aeroway {
-    [zoom < 11] {
-      text-dy: -12;
-    }
+  [feature = 'aeroway_aerodrome'][zoom >= 10][zoom < 14]::aeroway {
     text-name: "[name]";
     text-size: 8;
     text-fill: #6692da;
+    text-dy: -12;
     text-face-name: @oblique-fonts;
     text-halo-radius: 1;
     text-placement: interior;
