@@ -450,6 +450,12 @@
     marker-placement: interior;
   }
 
+  [feature = 'natural_saddle'][zoom >= 15]::natural {
+    marker-file: url('symbols/saddle.svg');
+    marker-fill: #d08f55;
+    marker-placement: interior;
+  }
+
   [feature = 'natural_cave_entrance'][zoom >= 15]::natural {
     point-file: url('symbols/poi_cave.p.16.png');
     point-placement: interior;
@@ -659,6 +665,29 @@
   [feature = 'natural_peak'],
   [feature = 'natural_volcano'] {
     [zoom >= 13] {
+      text-name: "[name]";
+      text-size: 10;
+      text-fill: brown;
+      text-dy: 7;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: @standard-wrap-width;
+      text-placement: interior;
+      ele/text-name: "[ele]";
+      ele/text-size: 9;
+      ele/text-fill: brown;
+      ele/text-dy: 6;
+      ele/text-face-name: @oblique-fonts;
+      ele/text-halo-radius: 1;
+      ele/text-placement: interior;
+      [name != ''] {
+        ele/text-dy: 19;
+      }
+    }
+  }
+
+  [feature = 'natural_saddle'] {
+    [zoom >= 15] {
       text-name: "[name]";
       text-size: 10;
       text-fill: brown;
