@@ -420,8 +420,120 @@
     point-file: url('symbols/transport_slipway.p.20.png');
     point-placement: interior;
   }
+
+  [feature = 'aeroway_helipad'][zoom >= 16]::aeroway {
+    point-file: url('symbols/helipad.p.16.png');
+    point-placement: interior;
+  }
+
+  [feature = 'aeroway_aerodrome'][zoom >= 10][zoom < 13]::aeroway {
+    [zoom < 11] {
+      point-file: url('symbols/aerodrome.p.16.png');
+      point-placement: interior;
+    }
+  }
+
+  [feature = 'man_made_lighthouse'][zoom >= 15]::man_made {
+    point-file: url('symbols/lighthouse.p.20.png');
+    point-placement: interior;
+  }
+
+  [feature = 'natural_peak'][zoom >= 11]::natural {
+    marker-file: url('symbols/peak.svg');
+    marker-fill: #d08f55;
+    marker-placement: interior;
+  }
+
+  [feature = 'natural_volcano'][zoom >= 11]::natural {
+    marker-file: url('symbols/peak.svg');
+    marker-fill: #d40000;
+    marker-placement: interior;
+  }
+
+  [feature = 'natural_cave_entrance'][zoom >= 15]::natural {
+    point-file: url('symbols/poi_cave.p.16.png');
+    point-placement: interior;
+  }
+
+  [feature = 'natural_spring'][zoom >= 14]::natural {
+    marker-file: url('symbols/spring.svg');
+    marker-placement: interior;
+  }
+
+  [feature = 'natural_tree'][zoom >= 16]::natural {
+    marker-placement: interior;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
+    marker-width: 3;
+    marker-fill: #239c45;
+    [zoom >= 17] {
+      marker-line-width: 1;
+      marker-line-color: #8ef2ab;
+      marker-width: 4;
+    }
+  }
+
+  [feature = 'power_generator']['generator:source' = 'wind']::power,
+  [feature = 'power_generator'][power_source = 'wind']::power {
+    [zoom >= 15] {
+      point-file: url('symbols/power_wind.png');
+      point-placement: interior;
+    }
+  }
+
+  [feature = 'man_made_windmill'][zoom >= 16]::man_made {
+    point-file: url('symbols/windmill.png');
+    point-placement: interior;
+  }
+
+  [feature = 'man_made_mast'][zoom >= 17]::man_made {
+    point-file: url('symbols/communications.p.20.png');
+    point-placement: interior;
+  }
 }
 
+
+.amenity-low-priority {
+  [railway = 'level_crossing'][zoom >= 14]::railway {
+    point-file: url('symbols/level_crossing.svg');
+    point-placement: interior;
+    [zoom >= 16] {
+      point-file: url('symbols/level_crossing2.svg');
+    }
+  }
+
+  [highway = 'mini_roundabout'][zoom >= 16]::highway {
+    marker-file: url('symbols/mini_roundabout.svg');
+    marker-placement: interior;
+  }
+
+  [barrier = 'gate']::barrier {
+    [zoom >= 16] {
+      marker-file: url('symbols/gate.svg');
+      marker-placement: interior;
+    }
+  }
+
+  [barrier = 'lift_gate'][zoom >= 16]::barrier {
+    marker-file: url('symbols/liftgate.svg');
+    marker-fill: #3f3f3f;
+    marker-placement: interior
+  }
+
+  [barrier = 'bollard'],
+  [barrier = 'block'] {
+    [zoom >= 16] {
+      marker-width: 3;
+      marker-line-width: 0;
+      marker-fill: #7d7c7c;
+      marker-placement: interior;
+
+      [zoom >= 18] {
+        marker-width: 4;
+      }
+    }
+  }
+}
 
 .text {
   [feature = 'place_island'][zoom >= 7][way_pixels > 3000],
@@ -1675,5 +1787,29 @@
       [way_pixels > 12000] {text-wrap-width: @landcover-wrap-width-size-big; }
       [way_pixels > 48000] {text-wrap-width: @landcover-wrap-width-size-bigger; }
     }
+  }
+
+  [feature = 'aeroway_helipad'][zoom >= 16]::aeroway {
+    text-name: "[name]";
+    text-size: 8;
+    text-fill: #6692da;
+    text-dy: -10;
+    text-face-name: @bold-fonts;
+    text-halo-radius: 1;
+    text-placement: interior;
+    text-wrap-width: 30;
+  }
+
+  [feature = 'aeroway_aerodrome'][zoom >= 10][zoom < 13]::aeroway {
+    [zoom < 11] {
+      text-dy: -12;
+    }
+    text-name: "[name]";
+    text-size: 8;
+    text-fill: #6692da;
+    text-face-name: @oblique-fonts;
+    text-halo-radius: 1;
+    text-placement: interior;
+    text-wrap-width: 30;
   }
 }
