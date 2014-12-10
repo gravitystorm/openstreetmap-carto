@@ -490,7 +490,6 @@
   }
 }
 
-
 .amenity-low-priority {
   [railway = 'level_crossing'][zoom >= 14]::railway {
     point-file: url('symbols/level_crossing.svg');
@@ -533,7 +532,8 @@
   }
 }
 
-.text {
+.text-low-zoom[zoom < 10],
+.text[zoom >= 10] {
   [feature = 'place_island'][zoom >= 7][way_pixels > 3000],
   [feature = 'place_island'][zoom >= 16],
   [feature = 'place_islet'][zoom >= 14][way_pixels > 3000],

@@ -91,6 +91,31 @@ Layer:
       file: "data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp"
       type: "shape"
     advanced: {}
+  - id: "landcover-low-zoom"
+    name: "landcover-low-zoom"
+    class: ""
+    geometry: "polygon"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way, name, way_pixels,
+            COALESCE(landuse, "natural") AS feature
+          FROM (SELECT
+              way, COALESCE(name, '') AS name,
+              ('landuse_' || (CASE WHEN landuse IN ('forest') THEN landuse ELSE NULL END)) AS landuse,
+              ('natural_' || (CASE WHEN "natural" IN ('wood') THEN "natural" ELSE NULL END)) AS "natural",
+              way_area/(!pixel_width!*!pixel_height!) AS way_pixels
+            FROM planet_osm_polygon
+            WHERE (landuse IN ('forest')
+              OR "natural" IN ('wood'))
+              AND way_area/(!pixel_width!*!pixel_height!) > 0.01
+              AND building IS NULL
+            ORDER BY z_order, way_area DESC
+          ) AS features
+        ) AS landcover_low_zoom
+    advanced: {}
   - id: "landcover"
     name: "landcover"
     class: ""
@@ -1347,6 +1372,27 @@ Layer:
                WHERE highway IN ('bridleway', 'footway', 'cycleway', 'path', 'track', 'steps')
                  AND name IS NOT NULL
               ) AS paths_text_name
+    advanced: {}
+  - id: "text-poly-low-zoom"
+    name: "text-poly-low-zoom"
+    class: "text-low-zoom"
+    geometry: "polygon"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+          (SELECT way, way_area/(!pixel_width!*!pixel_height!) AS way_pixels,
+              COALESCE('landuse_' || landuse, 'natural_' || "natural", 'boundary_' || boundary) AS feature,
+              name,
+              way_area,
+              CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
+            FROM planet_osm_polygon
+            WHERE (landuse IN ('forest')
+              OR "natural" IN ('wood')
+              OR boundary IN ('national_park'))
+              AND building IS NULL
+            ORDER BY way_area DESC
+          ) AS text_poly_low_zoom
     advanced: {}
   - id: "text-poly"
     name: "text-poly"

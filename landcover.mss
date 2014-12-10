@@ -61,7 +61,8 @@
 @zoo: #a4f3a1;
 @beach: #fff1ba;
 
-#landcover {
+#landcover-low-zoom[zoom < 10],
+#landcover[zoom >= 10] {
  [feature = 'leisure_swimming_pool'][zoom >= 14] {
     polygon-fill: @water-color;
     line-color: saturate(darken(@water-color, 40%), 30%);
