@@ -24,7 +24,7 @@
     point-placement: interior;
   }
 
-  [feature = 'amenity_atm'][zoom >=17] {
+  [feature = 'amenity_atm'][zoom >= 17] {
     point-file: url('symbols/atm2.p.16.png');
     point-placement: interior;
   }
@@ -34,7 +34,7 @@
     point-placement: interior;
   }
 
-  [feature = 'amenity_bar'][zoom >=17] {
+  [feature = 'amenity_bar'][zoom >= 17] {
     point-file: url('symbols/bar.p.20.png');
     point-placement: interior;
   }
@@ -68,7 +68,7 @@
     marker-placement: interior;
   }
 
-  [feature = 'amenity_cafe'][zoom >=17] {
+  [feature = 'amenity_cafe'][zoom >= 17] {
     point-file: url('symbols/cafe.p.16.png');
     point-placement: interior;
   }
@@ -905,7 +905,7 @@
   }
 
   [feature = 'landuse_cemetery'][is_building = 'no'],
-  [feature = 'landuse_grave_yard'][is_building = 'no'] {
+  [feature = 'amenity_grave_yard'][is_building = 'no'] {
     [zoom >= 10][way_pixels > 3000],
     [zoom >= 17] {
       text-name: "[name]";
