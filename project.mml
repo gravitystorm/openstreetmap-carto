@@ -1049,28 +1049,6 @@
       "advanced": {}
     }, 
     {
-      "name": "nepopulated", 
-      "srs-name": "WGS84", 
-      "geometry": "point", 
-      "class": "", 
-      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs", 
-      "Datasource": {
-        "type": "shape", 
-        "file": "data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp", 
-        "encoding": "windows-1252"
-      }, 
-      "extent": [
-        -180, 
-        -85.05112877980659, 
-        180, 
-        85.05112877980659
-      ], 
-      "id": "nepopulated", 
-      "advanced": {
-        "encoding": "windows-1252"
-      }
-    }, 
-    {
       "name": "placenames-large", 
       "srs-name": "900913", 
       "geometry": "point", 
@@ -1092,6 +1070,28 @@
       ], 
       "id": "placenames-large", 
       "advanced": {}
+    }, 
+    {
+      "name": "nepopulated", 
+      "srs-name": "WGS84", 
+      "geometry": "point", 
+      "class": "", 
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs", 
+      "Datasource": {
+        "type": "shape", 
+        "file": "data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp", 
+        "encoding": "windows-1252"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "nepopulated", 
+      "advanced": {
+        "encoding": "windows-1252"
+      }
     }, 
     {
       "name": "placenames-capital", 
