@@ -1,4 +1,4 @@
-@building-fill: #dcd5c6;
+@building-fill: #d6d1c8;
 @building-line: darken(@building-fill, 10%);
 
 @building-major-fill: darken(@building-fill, 20%);
