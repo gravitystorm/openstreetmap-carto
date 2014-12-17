@@ -3,7 +3,8 @@
 /* For performance reasons, the admin border layers are split into three groups
 for low, middle and high zoom levels.
 For each zoomlevel, all borders come from a single attachment, to handle
-overlapping borders correctly.  */
+overlapping borders correctly. 
+*/
 
 #admin-low-zoom[zoom < 11],
 #admin-mid-zoom[zoom >= 11][zoom < 13],
@@ -51,6 +52,17 @@ overlapping borders correctly.  */
       line-width: 3;
     }
   }
+  /*
+  The following code prevents admin boundaries from being rendered on top of
+  each other. Comp-op works on the entire attachment, not on the individual
+  border. Therefore, this code generates an attachment containing a set of
+  @admin-boundaries/white dashed lines (of which only the top one is visible),
+  and with `comp-op: darken` the white part is ignored, while the
+  @admin-boundaries colored part is rendered (as long as the background is not
+  darker than @admin-boundaries).
+  The SQL has `ORDER BY admin_level`, so the boundary with the lowest
+  admin_level is rendered on top, and therefore the only visible boundary.
+  */
   opacity: 0.4;
   comp-op: darken;
 }
@@ -125,21 +137,34 @@ overlapping borders correctly.  */
 }
 
 #nature-reserve-boundaries {
-  [zoom >= 7] {
-    ::fill [zoom < 13] {
-      opacity: 0.05;
-      polygon-fill: green;
-    }
-    ::line {
-      opacity: 0.15;
-      line-color: green;
-      line-width: 1.5;
-      line-dasharray: 4,2;
-      [zoom >= 10] {
-        line-width: 3;
-        line-dasharray: 6,2;
-        line-join: bevel;
+  [way_pixels > 100][zoom >= 7] {
+    [zoom < 10] {
+      ::fill {
+        opacity: 0.05;
+        polygon-fill: green;
       }
+    }
+    a/line-width: 1;
+    a/line-offset: -0.5;
+    a/line-color: green;
+    a/line-opacity: 0.15;
+    a/line-join: round;
+    a/line-cap: round;
+    b/line-width: 2;
+    b/line-offset: -1;
+    b/line-color: green;
+    b/line-opacity: 0.15;
+    b/line-join: round;
+    b/line-cap: round;
+    [zoom >= 10] {
+      a/line-width: 2;
+      a/line-offset: -1;
+      b/line-width: 4;
+      b/line-offset: -2;
+    }
+    [zoom >= 14] {
+      b/line-width: 6;
+      b/line-offset: -3;
     }
   }
 }

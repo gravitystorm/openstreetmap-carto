@@ -64,7 +64,8 @@
 @zoo: #a4f3a1;
 @beach: #fff1ba;
 
-#landcover {
+#landcover-low-zoom[zoom < 10],
+#landcover[zoom >= 10] {
  [feature = 'leisure_swimming_pool'][zoom >= 14] {
     polygon-fill: @water-color;
     line-color: saturate(darken(@water-color, 40%), 30%);
@@ -602,12 +603,23 @@
 
 #theme-park {
   [tourism = 'theme_park'][zoom >= 13] {
-    line-color: @theme_park;
-    line-width: 1.5;
-    line-dasharray: 9,3;
-    line-opacity: 0.6;
-    [zoom >= 15] {
-      line-width: 2.5;
+    a/line-width: 1;
+    a/line-offset: -0.5;
+    a/line-color: @theme_park;
+    a/line-opacity: 0.5;
+    a/line-join: round;
+    a/line-cap: round;
+    b/line-width: 4;
+    b/line-offset: -2;
+    b/line-color: @theme_park;
+    b/line-opacity: 0.3;
+    b/line-join: round;
+    b/line-cap: round;
+    [zoom >= 17] {
+      a/line-width: 2;
+      a/line-offset: -1;
+      b/line-width: 6;
+      b/line-offset: -3;
     }
   }
 }
