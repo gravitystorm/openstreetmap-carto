@@ -1,5 +1,6 @@
 @building-fill: #d6d1c8;
 @building-line: darken(@building-fill, 10%);
+@building-low-zoom: darken(@building-fill, 4%);
 
 @building-major-fill: darken(@building-fill, 20%);
 @building-major-line: darken(@building-major-fill, 25%);
@@ -10,10 +11,11 @@
 
 #buildings {
   [zoom >= 12] {
-    polygon-fill: @building-fill;
+    polygon-fill: @building-low-zoom;
     polygon-clip: false;
     [zoom >= 15] {
       line-color: @building-line;
+      polygon-fill: @building-fill;
       line-width: .75;
       line-clip: false;
     }
