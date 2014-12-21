@@ -94,6 +94,11 @@
     point-file: url('symbols/car_share.p.16.png');
     point-placement: interior;
   }
+  
+  [feature = 'amenity_boat_sharing'][zoom >= 16] {
+    point-file: url('symbols/boat_share.p.16.png');
+    point-placement: interior;
+  }
 
   [feature = 'tourism_chalet'][zoom >= 17] {
     point-file: url('symbols/chalet.p.16.png');
