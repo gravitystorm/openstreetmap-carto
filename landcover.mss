@@ -37,7 +37,6 @@
 @aerodrome: #e9e7e2;
 @allotments: #e5c7ab;
 @apron: #e9d1ff;
-@attraction: #f2caea;
 @barracks: #ff8f8f;
 @campsite: #def6c0; // also caravan_site, picnic_site
 @cemetery: #aacbaf; // also grave_yard
@@ -92,12 +91,6 @@
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-  }
-
-  [feature = 'tourism_attraction'][zoom >= 10] {
-    polygon-fill: @attraction;
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
   [feature = 'landuse_quarry'][zoom >= 10] {
