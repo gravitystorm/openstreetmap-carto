@@ -1108,17 +1108,6 @@ Layer:
       table: |2-
         (SELECT way, name, tourism FROM planet_osm_polygon WHERE tourism = 'theme_park') AS theme_park
     advanced: {}
-  - id: "nepopulated"
-    name: "nepopulated"
-    class: ""
-    geometry: "point"
-    <<: *extents84
-    Datasource:
-      file: "data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp"
-      type: "shape"
-      encoding: "windows-1252"
-    advanced:
-      encoding: "windows-1252"
   - id: "placenames-large"
     name: "placenames-large"
     class: "country state"
@@ -1132,6 +1121,17 @@ Layer:
                WHERE boundary = 'administrative' AND admin_level IN ('2', '4')
               ) AS placenames_large
     advanced: {}
+  - id: "nepopulated"
+    name: "nepopulated"
+    class: ""
+    geometry: "point"
+    <<: *extents84
+    Datasource:
+      file: "data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp"
+      type: "shape"
+      encoding: "windows-1252"
+    advanced:
+      encoding: "windows-1252"
   - id: "placenames-capital"
     name: "placenames-capital"
     class: ""
