@@ -4,6 +4,7 @@
 @shop-icon: #ac39ac;
 @transportation-icon: #0092da;
 @transportation-text: #0066ff;
+@airtransport: #8461C4;
 
 @landcover-font-size: 10;
 @landcover-font-size-big: 12;
@@ -424,13 +425,15 @@
   }
 
   [feature = 'aeroway_helipad'][zoom >= 16]::aeroway {
-    point-file: url('symbols/helipad.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/helipad.svg');
+    marker-clip: false;
+    marker-fill: @airtransport;
   }
 
   [feature = 'aeroway_aerodrome'][zoom >= 10][zoom < 14]::aeroway {
-    point-file: url('symbols/aerodrome.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/aerodrome.svg');
+    marker-clip: false;
+    marker-fill: @airtransport;
   }
 
   [feature = 'man_made_lighthouse'][zoom >= 15]::man_made {
@@ -1855,7 +1858,7 @@
   [feature = 'aeroway_helipad'][zoom >= 16]::aeroway {
     text-name: "[name]";
     text-size: 8;
-    text-fill: #6692da;
+    text-fill: @airtransport;
     text-dy: -10;
     text-face-name: @bold-fonts;
     text-halo-radius: 1;
@@ -1866,8 +1869,8 @@
   [feature = 'aeroway_aerodrome'][zoom >= 10][zoom < 14]::aeroway {
     text-name: "[name]";
     text-size: 8;
-    text-fill: #6692da;
-    text-dy: -12;
+    text-fill: darken(@airtransport, 15%);
+    text-dy: -10;
     text-face-name: @oblique-fonts;
     text-halo-radius: 1;
     text-placement: interior;
