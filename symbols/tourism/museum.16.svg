@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="100%"
+   height="100%"
+   viewBox="0 0 16 16">
+  <path
+     d="M 8,2 2,4 2,5 14,5 14,4 z m -6,4 0,1 1,0 0,5 -1,0 -1,2 14,0 -1,-2 -1,0 0,-5 1,0 0,-1 z M 6,7 C 6.4973717,7 7,7.5325904 7,8 L 7,12 5,12 5,8 C 5,7.4726661 5.5026283,7 6,7 z m 4,0 c 0.503364,0 1,0.4726661 1,1 l 0,4 -2,0 0,-4 C 9,7.4726661 9.4966359,7 10,7 z" />
+</svg>
