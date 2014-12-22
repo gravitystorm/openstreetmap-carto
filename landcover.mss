@@ -48,11 +48,14 @@
 @garages: #dfddce;
 @heath: #d6d99f;
 @parking: #f7efb7;
+@place_of_worship: #cdccc9;
+@place_of_worship_outline: #111;
 @playground: #ccfff1;
 @power: #bbb;
 @rest_area: #efc8c8; // also services
 @sand: #ffdf88;
 @school: #f0f0d8; // also university, college, hospital, kindergarten
+@station: #d4aaaa;
 @scrub: #b5e3b5;
 @orchard: #9ed88f;
 @theme_park: #734a08;
@@ -144,6 +147,16 @@
         [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
         [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
       }
+    }
+  }
+
+  [feature = 'amenity_place_of_worship'] {
+    polygon-fill: @place_of_worship;
+    polygon-clip: false;
+    [zoom >= 15] {
+      line-color: @place_of_worship_outline;
+      line-width: 0.3;
+      line-clip: false;
     }
   }
 
@@ -483,6 +496,10 @@
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
+  }
+
+  [feature = 'railway_station'][zoom >= 10] {
+    polygon-fill: @station;
   }
 
   [feature = 'leisure_sports_centre'],
