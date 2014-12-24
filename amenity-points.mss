@@ -254,8 +254,10 @@
   }
 
   [feature = 'amenity_recycling'][zoom >= 16] {
-    point-file: url('symbols/recycling.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/amenity/recycling.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_restaurant'][zoom >= 17] {
