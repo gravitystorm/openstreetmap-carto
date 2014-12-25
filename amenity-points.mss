@@ -405,8 +405,10 @@
   }
 
   [feature = 'leisure_playground'][zoom >= 17] {
-    point-file: url('symbols/playground.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/amenity/playground.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'tourism_picnic_site'][zoom >= 16] {
