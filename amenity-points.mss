@@ -351,8 +351,10 @@
   }
 
   [feature = 'amenity_toilets'][zoom >= 17] {
-    point-file: url('symbols/toilets.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/toilets.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_drinking_water'][zoom >= 17] {
