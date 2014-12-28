@@ -6,6 +6,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "", 
+      "id": "world", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "type": "shape", 
@@ -17,7 +18,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "world", 
+      "properties": {
+        "maxzoom": 9
+      }, 
       "advanced": {}
     }, 
     {
@@ -25,6 +28,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "", 
+      "id": "coast-poly", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "type": "shape", 
@@ -36,7 +40,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "coast-poly", 
+      "properties": {
+        "minzoom": 10
+      }, 
       "advanced": {}
     }, 
     {
@@ -44,6 +50,7 @@
       "srs-name": "mercator", 
       "geometry": "polygon", 
       "class": "", 
+      "id": "builtup", 
       "srs": "+proj=merc +datum=WGS84 +over", 
       "Datasource": {
         "type": "shape", 
@@ -55,7 +62,10 @@
         180, 
         85.05112877980659
       ], 
-      "id": "builtup", 
+      "properties": {
+        "maxzoom": 9, 
+        "minzoom": 8
+      }, 
       "advanced": {}
     }, 
     {
@@ -63,6 +73,7 @@
       "srs-name": "WGS84", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "necountries", 
       "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs", 
       "Datasource": {
         "type": "shape", 
@@ -74,7 +85,10 @@
         180, 
         85.05112877980659
       ], 
-      "id": "necountries", 
+      "properties": {
+        "maxzoom": 3, 
+        "minzoom": 1
+      }, 
       "advanced": {}
     }, 
     {
@@ -82,6 +96,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "", 
+      "id": "landcover-low-zoom", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -97,7 +112,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "landcover-low-zoom", 
+      "properties": {
+        "maxzoom": 9
+      }, 
       "advanced": {}
     }, 
     {
@@ -105,6 +122,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "", 
+      "id": "landcover", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -120,7 +138,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "landcover", 
+      "properties": {
+        "minzoom": 10
+      }, 
       "advanced": {}
     }, 
     {
@@ -128,6 +148,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "landcover-line", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -143,7 +164,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "landcover-line", 
+      "properties": {
+        "minzoom": 14
+      }, 
       "advanced": {}
     }, 
     {
@@ -151,6 +174,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "water-lines-casing", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -166,7 +190,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "water-lines-casing", 
+      "properties": {
+        "minzoom": 13
+      }, 
       "advanced": {}
     }, 
     {
@@ -174,6 +200,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "water-lines-low-zoom", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -189,7 +216,10 @@
         180, 
         85.05112877980659
       ], 
-      "id": "water-lines-low-zoom", 
+      "properties": {
+        "maxzoom": 11, 
+        "minzoom": 8
+      }, 
       "advanced": {}
     }, 
     {
@@ -197,6 +227,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "", 
+      "id": "water-areas", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -212,7 +243,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "water-areas", 
+      "properties": {
+        "minzoom": 4
+      }, 
       "advanced": {}
     }, 
     {
@@ -220,6 +253,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "", 
+      "id": "water-areas-overlay", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -235,7 +269,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "water-areas-overlay", 
+      "properties": {
+        "minzoom": 10
+      }, 
       "advanced": {}
     }, 
     {
@@ -243,6 +279,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "water-lines", 
+      "id": "water-lines", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -258,7 +295,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "water-lines", 
+      "properties": {
+        "minzoom": 12
+      }, 
       "advanced": {}
     }, 
     {
@@ -266,6 +305,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "dam", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -281,7 +321,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "dam", 
+      "properties": {
+        "minzoom": 13
+      }, 
       "advanced": {}
     }, 
     {
@@ -289,6 +331,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "", 
+      "id": "marinas-area", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -304,7 +347,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "marinas-area", 
+      "properties": {
+        "minzoom": 14
+      }, 
       "advanced": {}
     }, 
     {
@@ -312,6 +357,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "", 
+      "id": "piers-area", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -327,7 +373,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "piers-area", 
+      "properties": {
+        "minzoom": 12
+      }, 
       "advanced": {}
     }, 
     {
@@ -335,6 +383,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "piers", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -350,7 +399,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "piers", 
+      "properties": {
+        "minzoom": 12
+      }, 
       "advanced": {}
     }, 
     {
@@ -358,6 +409,7 @@
       "srs-name": "900913", 
       "geometry": "point", 
       "class": "", 
+      "id": "locks", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -373,7 +425,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "locks", 
+      "properties": {
+        "minzoom": 17
+      }, 
       "advanced": {}
     }, 
     {
@@ -381,6 +435,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "", 
+      "id": "buildings", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -396,7 +451,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "buildings", 
+      "properties": {
+        "minzoom": 12
+      }, 
       "advanced": {}
     }, 
     {
@@ -404,6 +461,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "", 
+      "id": "buildings-major", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -419,7 +477,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "buildings-major", 
+      "properties": {
+        "minzoom": 12
+      }, 
       "advanced": {}
     }, 
     {
@@ -444,7 +504,8 @@
         85.05112877980659
       ], 
       "properties": {
-        "group-by": "layernotnull"
+        "group-by": "layernotnull", 
+        "minzoom": 12
       }, 
       "advanced": {}
     }, 
@@ -476,6 +537,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "castlewalls", 
+      "id": "castlewalls", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -491,7 +553,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "castlewalls", 
+      "properties": {
+        "minzoom": 14
+      }, 
       "advanced": {}
     }, 
     {
@@ -499,6 +563,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "castlewalls", 
+      "id": "castlewalls-poly", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -514,7 +579,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "castlewalls-poly", 
+      "properties": {
+        "minzoom": 14
+      }, 
       "advanced": {}
     }, 
     {
@@ -522,6 +589,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "", 
+      "id": "landuse-overlay", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -537,7 +605,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "landuse-overlay", 
+      "properties": {
+        "minzoom": 10
+      }, 
       "advanced": {}
     }, 
     {
@@ -545,6 +615,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "barriers", 
+      "id": "line-barriers", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -560,7 +631,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "line-barriers", 
+      "properties": {
+        "minzoom": 16
+      }, 
       "advanced": {}
     }, 
     {
@@ -568,6 +641,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "cliffs", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -583,7 +657,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "cliffs", 
+      "properties": {
+        "minzoom": 13
+      }, 
       "advanced": {}
     }, 
     {
@@ -591,6 +667,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "barriers", 
+      "id": "area-barriers", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -606,7 +683,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "area-barriers", 
+      "properties": {
+        "minzoom": 16
+      }, 
       "advanced": {}
     }, 
     {
@@ -614,6 +693,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "tree-row", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -629,7 +709,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "tree-row", 
+      "properties": {
+        "minzoom": 16
+      }, 
       "advanced": {}
     }, 
     {
@@ -637,6 +719,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "ferry-routes", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -652,7 +735,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "ferry-routes", 
+      "properties": {
+        "minzoom": 7
+      }, 
       "advanced": {}
     }, 
     {
@@ -660,6 +745,7 @@
       "srs-name": "900913", 
       "geometry": "point", 
       "class": "", 
+      "id": "turning-circle-casing", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -675,7 +761,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "turning-circle-casing", 
+      "properties": {
+        "minzoom": 15
+      }, 
       "advanced": {}
     }, 
     {
@@ -683,6 +771,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "", 
+      "id": "highway-area-casing", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -698,14 +787,16 @@
         180, 
         85.05112877980659
       ], 
-      "id": "highway-area-casing", 
+      "properties": {
+        "minzoom": 14
+      }, 
       "advanced": {}
     }, 
     {
       "name": "roads-casing", 
       "srs-name": "900913", 
       "geometry": "linestring", 
-      "id": "roads-casing", 
+      "class": "roads-casing", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -721,13 +812,17 @@
         180, 
         85.05112877980659
       ], 
-      "class": "roads-casing", 
+      "id": "roads-casing", 
+      "properties": {
+        "minzoom": 12
+      }, 
       "advanced": {}
     }, 
     {
       "name": "highway-area-fill", 
       "srs-name": "900913", 
       "class": "", 
+      "id": "highway-area-fill", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -743,7 +838,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "highway-area-fill", 
+      "properties": {
+        "minzoom": 14
+      }, 
       "advanced": {}
     }, 
     {
@@ -751,6 +848,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "roads-fill access directions", 
+      "id": "roads-fill", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -766,7 +864,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "roads-fill", 
+      "properties": {
+        "minzoom": 12
+      }, 
       "advanced": {}
     }, 
     {
@@ -774,6 +874,7 @@
       "srs-name": "900913", 
       "geometry": "point", 
       "class": "", 
+      "id": "turning-circle-fill", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -789,7 +890,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "turning-circle-fill", 
+      "properties": {
+        "minzoom": 15
+      }, 
       "advanced": {}
     }, 
     {
@@ -797,6 +900,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "aerialways", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -812,7 +916,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "aerialways", 
+      "properties": {
+        "minzoom": 15
+      }, 
       "advanced": {}
     }, 
     {
@@ -820,6 +926,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "roads-low-zoom", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -835,7 +942,10 @@
         180, 
         85.05112877980659
       ], 
-      "id": "roads-low-zoom", 
+      "properties": {
+        "maxzoom": 11, 
+        "minzoom": 5
+      }, 
       "advanced": {}
     }, 
     {
@@ -843,6 +953,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "water-lines", 
+      "id": "waterway-bridges", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -858,7 +969,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "waterway-bridges", 
+      "properties": {
+        "minzoom": 15
+      }, 
       "advanced": {}
     }, 
     {
@@ -883,7 +996,8 @@
         85.05112877980659
       ], 
       "properties": {
-        "group-by": "layernotnull"
+        "group-by": "layernotnull", 
+        "minzoom": 12
       }, 
       "advanced": {}
     }, 
@@ -892,6 +1006,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "guideways", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -907,14 +1022,16 @@
         180, 
         85.05112877980659
       ], 
-      "id": "guideways", 
+      "properties": {
+        "minzoom": 13
+      }, 
       "advanced": {}
     }, 
     {
       "name": "admin-low-zoom", 
       "srs-name": "900913", 
       "geometry": "linestring", 
-      "id": "admin-low-zoom", 
+      "class": "", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -930,7 +1047,10 @@
         180, 
         85.05112877980659
       ], 
-      "class": "", 
+      "id": "admin-low-zoom", 
+      "properties": {
+        "maxzoom": 10
+      }, 
       "advanced": {}
     }, 
     {
@@ -938,6 +1058,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "admin-mid-zoom", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -953,7 +1074,10 @@
         180, 
         85.05112877980659
       ], 
-      "id": "admin-mid-zoom", 
+      "properties": {
+        "maxzoom": 12, 
+        "minzoom": 11
+      }, 
       "advanced": {}
     }, 
     {
@@ -961,6 +1085,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "admin-high-zoom", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -976,7 +1101,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "admin-high-zoom", 
+      "properties": {
+        "minzoom": 13
+      }, 
       "advanced": {}
     }, 
     {
@@ -984,6 +1111,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "power-minorline", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -999,7 +1127,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "power-minorline", 
+      "properties": {
+        "minzoom": 16
+      }, 
       "advanced": {}
     }, 
     {
@@ -1007,6 +1137,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "power-line", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1022,7 +1153,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "power-line", 
+      "properties": {
+        "minzoom": 14
+      }, 
       "advanced": {}
     }, 
     {
@@ -1030,6 +1163,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "", 
+      "id": "nature-reserve-boundaries", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1045,7 +1179,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "nature-reserve-boundaries", 
+      "properties": {
+        "minzoom": 7
+      }, 
       "advanced": {}
     }, 
     {
@@ -1053,6 +1189,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "", 
+      "id": "theme-park", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1068,7 +1205,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "theme-park", 
+      "properties": {
+        "minzoom": 13
+      }, 
       "advanced": {}
     }, 
     {
@@ -1076,6 +1215,7 @@
       "srs-name": "900913", 
       "geometry": "point", 
       "class": "country state", 
+      "id": "placenames-large", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1091,7 +1231,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "placenames-large", 
+      "properties": {
+        "minzoom": 2
+      }, 
       "advanced": {}
     }, 
     {
@@ -1099,6 +1241,7 @@
       "srs-name": "WGS84", 
       "geometry": "point", 
       "class": "", 
+      "id": "nepopulated", 
       "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs", 
       "Datasource": {
         "type": "shape", 
@@ -1111,7 +1254,10 @@
         180, 
         85.05112877980659
       ], 
-      "id": "nepopulated", 
+      "properties": {
+        "maxzoom": 4, 
+        "minzoom": 3
+      }, 
       "advanced": {
         "encoding": "windows-1252"
       }
@@ -1121,6 +1267,7 @@
       "srs-name": "900913", 
       "geometry": "point", 
       "class": "", 
+      "id": "placenames-capital", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1136,7 +1283,10 @@
         180, 
         85.05112877980659
       ], 
-      "id": "placenames-capital", 
+      "properties": {
+        "maxzoom": 14, 
+        "minzoom": 5
+      }, 
       "advanced": {}
     }, 
     {
@@ -1144,6 +1294,7 @@
       "srs-name": "900913", 
       "geometry": "point", 
       "class": "", 
+      "id": "placenames-medium", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1159,7 +1310,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "placenames-medium", 
+      "properties": {
+        "minzoom": 6
+      }, 
       "advanced": {}
     }, 
     {
@@ -1167,6 +1320,7 @@
       "srs-name": "900913", 
       "geometry": "point", 
       "class": "", 
+      "id": "placenames-small", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1182,7 +1336,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "placenames-small", 
+      "properties": {
+        "minzoom": 12
+      }, 
       "advanced": {}
     }, 
     {
@@ -1190,6 +1346,7 @@
       "srs-name": "900913", 
       "geometry": "point", 
       "class": "stations", 
+      "id": "stations", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1205,7 +1362,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "stations", 
+      "properties": {
+        "minzoom": 12
+      }, 
       "advanced": {}
     }, 
     {
@@ -1213,6 +1372,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "stations", 
+      "id": "stations-poly", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1228,7 +1388,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "stations-poly", 
+      "properties": {
+        "minzoom": 12
+      }, 
       "advanced": {}
     }, 
     {
@@ -1236,6 +1398,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "points", 
+      "id": "amenity-points-poly", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1251,7 +1414,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "amenity-points-poly", 
+      "properties": {
+        "minzoom": 13
+      }, 
       "advanced": {}
     }, 
     {
@@ -1259,6 +1424,7 @@
       "srs-name": "900913", 
       "geometry": "point", 
       "class": "points", 
+      "id": "amenity-points", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1274,7 +1440,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "amenity-points", 
+      "properties": {
+        "minzoom": 13
+      }, 
       "advanced": {}
     }, 
     {
@@ -1282,6 +1450,7 @@
       "srs-name": "900913", 
       "geometry": "point", 
       "class": "", 
+      "id": "power-towers", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1297,7 +1466,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "power-towers", 
+      "properties": {
+        "minzoom": 14
+      }, 
       "advanced": {}
     }, 
     {
@@ -1305,6 +1476,7 @@
       "srs-name": "900913", 
       "geometry": "point", 
       "class": "", 
+      "id": "power-poles", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1320,7 +1492,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "power-poles", 
+      "properties": {
+        "minzoom": 16
+      }, 
       "advanced": {}
     }, 
     {
@@ -1328,6 +1502,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "roads-text-ref-low-zoom", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1343,7 +1518,10 @@
         180, 
         85.05112877980659
       ], 
-      "id": "roads-text-ref-low-zoom", 
+      "properties": {
+        "maxzoom": 12, 
+        "minzoom": 10
+      }, 
       "advanced": {}
     }, 
     {
@@ -1351,6 +1529,7 @@
       "srs-name": "900913", 
       "geometry": "point", 
       "class": "", 
+      "id": "junctions", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1366,7 +1545,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "junctions", 
+      "properties": {
+        "minzoom": 11
+      }, 
       "advanced": {}
     }, 
     {
@@ -1374,6 +1555,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "roads-text-ref", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1389,7 +1571,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "roads-text-ref", 
+      "properties": {
+        "minzoom": 13
+      }, 
       "advanced": {}
     }, 
     {
@@ -1397,6 +1581,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "", 
+      "id": "roads-area-text-name", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1412,7 +1597,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "roads-area-text-name", 
+      "properties": {
+        "minzoom": 15
+      }, 
       "advanced": {}
     }, 
     {
@@ -1420,6 +1607,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "roads-text-name", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1435,7 +1623,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "roads-text-name", 
+      "properties": {
+        "minzoom": 13
+      }, 
       "advanced": {}
     }, 
     {
@@ -1443,6 +1633,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "paths-text-name", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1458,7 +1649,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "paths-text-name", 
+      "properties": {
+        "minzoom": 15
+      }, 
       "advanced": {}
     }, 
     {
@@ -1466,6 +1659,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "text-low-zoom", 
+      "id": "text-poly-low-zoom", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1481,7 +1675,10 @@
         180, 
         85.05112877980659
       ], 
-      "id": "text-poly-low-zoom", 
+      "properties": {
+        "maxzoom": 9, 
+        "minzoom": 7
+      }, 
       "advanced": {}
     }, 
     {
@@ -1489,6 +1686,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "text", 
+      "id": "text-poly", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1504,7 +1702,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "text-poly", 
+      "properties": {
+        "minzoom": 10
+      }, 
       "advanced": {}
     }, 
     {
@@ -1512,6 +1712,7 @@
       "srs-name": "900913", 
       "geometry": "point", 
       "class": "text", 
+      "id": "text", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1527,7 +1728,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "text", 
+      "properties": {
+        "minzoom": 10
+      }, 
       "advanced": {}
     }, 
     {
@@ -1535,6 +1738,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "", 
+      "id": "building-text", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1550,7 +1754,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "building-text", 
+      "properties": {
+        "minzoom": 14
+      }, 
       "advanced": {}
     }, 
     {
@@ -1558,6 +1764,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "interpolation", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1573,7 +1780,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "interpolation", 
+      "properties": {
+        "minzoom": 17
+      }, 
       "advanced": {}
     }, 
     {
@@ -1581,6 +1790,7 @@
       "srs-name": "900913", 
       "geometry": "point", 
       "class": "", 
+      "id": "housenumbers", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1596,7 +1806,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "housenumbers", 
+      "properties": {
+        "minzoom": 17
+      }, 
       "advanced": {}
     }, 
     {
@@ -1604,6 +1816,7 @@
       "srs-name": "900913", 
       "geometry": "point", 
       "class": "", 
+      "id": "housenames", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1619,7 +1832,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "housenames", 
+      "properties": {
+        "minzoom": 17
+      }, 
       "advanced": {}
     }, 
     {
@@ -1627,6 +1842,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "water-lines-text", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1642,7 +1858,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "water-lines-text", 
+      "properties": {
+        "minzoom": 13
+      }, 
       "advanced": {}
     }, 
     {
@@ -1650,6 +1868,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "ferry-routes-text", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1665,7 +1884,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "ferry-routes-text", 
+      "properties": {
+        "minzoom": 13
+      }, 
       "advanced": {}
     }, 
     {
@@ -1673,6 +1894,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "admin-text", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1688,7 +1910,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "admin-text", 
+      "properties": {
+        "minzoom": 16
+      }, 
       "advanced": {}
     }, 
     {
@@ -1696,6 +1920,7 @@
       "srs-name": "900913", 
       "geometry": "linestring", 
       "class": "", 
+      "id": "nature-reserve-text", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1711,7 +1936,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "nature-reserve-text", 
+      "properties": {
+        "minzoom": 13
+      }, 
       "advanced": {}
     }, 
     {
@@ -1719,6 +1946,7 @@
       "srs-name": "900913", 
       "geometry": "point", 
       "class": "amenity-low-priority", 
+      "id": "amenity-low-priority", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1734,7 +1962,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "amenity-low-priority", 
+      "properties": {
+        "minzoom": 14
+      }, 
       "advanced": {}
     }, 
     {
@@ -1742,6 +1972,7 @@
       "srs-name": "900913", 
       "geometry": "polygon", 
       "class": "amenity-low-priority", 
+      "id": "amenity-low-priority-poly", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
@@ -1757,7 +1988,9 @@
         180, 
         85.05112877980659
       ], 
-      "id": "amenity-low-priority-poly", 
+      "properties": {
+        "minzoom": 14
+      }, 
       "advanced": {}
     }
   ], 
