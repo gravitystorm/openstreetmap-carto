@@ -1509,6 +1509,7 @@ Layer:
               (SELECT way, waterway, lock, name, CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel
               FROM planet_osm_line
               WHERE waterway IN ('weir', 'river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi')
+                AND (tunnel IS NULL or tunnel != 'culvert')
                ORDER BY z_order
               ) AS water_lines_text
     advanced: {}
