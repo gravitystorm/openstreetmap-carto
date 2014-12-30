@@ -1716,6 +1716,19 @@
     marker-ignore-placement: true;
     marker-line-width: 0;
   }
+
+  [int_tc_type = 'track'][zoom >= 15] {
+    marker-fill: @track-fill;
+    marker-width: 12;
+    marker-height: 12;
+    [zoom >= 17] {
+      marker-width: 14;
+      marker-height: 14;
+    }
+    marker-allow-overlap: true;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
+  }
 }
 
 #highway-area-casing {

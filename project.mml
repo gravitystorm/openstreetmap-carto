@@ -777,7 +777,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    DISTINCT on (p.way)\n    p.way AS way, l.highway AS int_tc_type,\n    CASE WHEN l.service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text\n      ELSE 'INT-normal'::text END AS int_tc_service\n  FROM planet_osm_point p\n    JOIN planet_osm_line l\n      ON ST_DWithin(p.way, l.way, 0.1)\n    JOIN (VALUES\n      ('tertiary', 1),\n      ('unclassified', 2),\n      ('residential', 3),\n      ('living_street', 4),\n      ('service', 5)\n    ) AS v (highway, prio)\n      ON v.highway=l.highway\n  WHERE p.highway = 'turning_circle' OR p.highway = 'turning_loop'\n  ORDER BY p.way, v.prio\n) AS turning_circle_fill",
+        "table": "(SELECT\n    DISTINCT on (p.way)\n    p.way AS way, l.highway AS int_tc_type,\n    CASE WHEN l.service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text\n      ELSE 'INT-normal'::text END AS int_tc_service\n  FROM planet_osm_point p\n    JOIN planet_osm_line l\n      ON ST_DWithin(p.way, l.way, 0.1)\n    JOIN (VALUES\n      ('tertiary', 1),\n      ('unclassified', 2),\n      ('residential', 3),\n      ('living_street', 4),\n      ('service', 5),\n      ('track', 6)\n    ) AS v (highway, prio)\n      ON v.highway=l.highway\n  WHERE p.highway = 'turning_circle' OR p.highway = 'turning_loop'\n  ORDER BY p.way, v.prio\n) AS turning_circle_fill",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
