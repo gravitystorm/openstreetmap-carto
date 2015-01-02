@@ -204,34 +204,36 @@
   }
 
   [feature = 'amenity_place_of_worship'][zoom >= 16] {
-    point-file: url('symbols/place_of_worship3.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/religious/place_of_worship.16.svg');
+    marker-fill: #000000;
+    marker-placement: interior;
+    marker-clip: false;
     [religion = 'christian'] {
-      point-file: url('symbols/christian3.p.14.png');
+      marker-file: url('symbols/religious/christian.16.svg');
       [denomination = 'jehovahs_witness']{
-        point-file: url('symbols/place_of_worship3.p.16.png');
+        marker-file: url('symbols/religious/place_of_worship.16.svg');
       }
     }
     [religion = 'muslim'] {
-      point-file: url('symbols/islamic3.p.16.png');
+      marker-file: url('symbols/religious/muslim.16.svg');
     }
     [religion = 'sikh'] {
-      point-file: url('symbols/sikh3.p.16.png');
+      marker-file: url('symbols/religious/sikhist.16.svg');
     }
     [religion = 'jewish'] {
-      point-file: url('symbols/jewish3.p.16.png');
+      marker-file: url('symbols/religious/jewish.16.svg');
     }
     [religion = 'hindu'] {
-      point-file: url('symbols/hindu.png');
+      marker-file: url('symbols/religious/hinduist.16.svg');
     }
     [religion = 'buddhist'] {
-      point-file: url('symbols/buddhist.png');
+      marker-file: url('symbols/religious/buddhist.16.svg');
     }
     [religion = 'shinto'] {
-      point-file: url('symbols/shinto.png');
+      marker-file: url('symbols/religious/shintoist.16.svg');
     }
     [religion = 'taoist'] {
-      point-file: url('symbols/taoist.png');
+      marker-file: url('symbols/religious/taoist.16.svg');
     }
   }
 
