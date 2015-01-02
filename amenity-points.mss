@@ -123,7 +123,7 @@
   }
 
   [feature = 'amenity_hospital'][zoom >= 15] {
-    marker-file: url('symbols/health/hospital.16.svg');
+    marker-file: url('symbols/hospital.16.svg');
     marker-fill: @health-color;
     marker-placement: interior;
     marker-clip: false;
@@ -180,7 +180,7 @@
   }
 
   [feature = 'tourism_museum'][zoom >= 16] {
-    marker-file: url('symbols/amenity/museum.16.svg');
+    marker-file: url('symbols/museum.16.svg');
     marker-fill: #734a08;
     marker-placement: interior;
     marker-clip: false;
@@ -197,43 +197,43 @@
   }
 
   [feature = 'amenity_pharmacy'][zoom >= 17] {
-    marker-file: url('symbols/health/pharmacy.16.svg');
+    marker-file: url('symbols/pharmacy.16.svg');
     marker-fill: @health-color;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'amenity_place_of_worship'][zoom >= 16] {
-    marker-file: url('symbols/religious/place_of_worship.16.svg');
+    marker-file: url('symbols/place_of_worship.16.svg');
     marker-fill: #000000;
     marker-placement: interior;
     marker-clip: false;
     [religion = 'christian'] {
-      marker-file: url('symbols/religious/christian.16.svg');
+      marker-file: url('symbols/christian.16.svg');
       [denomination = 'jehovahs_witness']{
-        marker-file: url('symbols/religious/place_of_worship.16.svg');
+        marker-file: url('symbols/place_of_worship.16.svg');
       }
     }
     [religion = 'muslim'] {
-      marker-file: url('symbols/religious/muslim.16.svg');
+      marker-file: url('symbols/muslim.16.svg');
     }
     [religion = 'sikh'] {
-      marker-file: url('symbols/religious/sikhist.16.svg');
+      marker-file: url('symbols/sikhist.16.svg');
     }
     [religion = 'jewish'] {
-      marker-file: url('symbols/religious/jewish.16.svg');
+      marker-file: url('symbols/jewish.16.svg');
     }
     [religion = 'hindu'] {
-      marker-file: url('symbols/religious/hinduist.16.svg');
+      marker-file: url('symbols/hinduist.16.svg');
     }
     [religion = 'buddhist'] {
-      marker-file: url('symbols/religious/buddhist.16.svg');
+      marker-file: url('symbols/buddhist.16.svg');
     }
     [religion = 'shinto'] {
-      marker-file: url('symbols/religious/shintoist.16.svg');
+      marker-file: url('symbols/shintoist.16.svg');
     }
     [religion = 'taoist'] {
-      marker-file: url('symbols/religious/taoist.16.svg');
+      marker-file: url('symbols/taoist.16.svg');
     }
   }
 
@@ -263,7 +263,7 @@
   }
 
   [feature = 'amenity_recycling'][zoom >= 16] {
-    marker-file: url('symbols/amenity/recycling.16.svg');
+    marker-file: url('symbols/recycling.16.svg');
     marker-fill: #734a08;
     marker-placement: interior;
     marker-clip: false;
@@ -416,7 +416,7 @@
   }
 
   [feature = 'leisure_playground'][zoom >= 17] {
-    marker-file: url('symbols/amenity/playground.16.svg');
+    marker-file: url('symbols/playground.16.svg');
     marker-fill: #734a08;
     marker-placement: interior;
     marker-clip: false;
