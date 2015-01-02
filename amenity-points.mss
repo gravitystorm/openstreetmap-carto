@@ -180,8 +180,10 @@
   }
 
   [feature = 'tourism_museum'][zoom >= 16] {
-    point-file: url('symbols/museum.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/amenity/museum.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_parking'][zoom >= 16] {
