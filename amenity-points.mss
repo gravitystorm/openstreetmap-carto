@@ -5,6 +5,7 @@
 @transportation-icon: #0092da;
 @transportation-text: #0066ff;
 @airtransport: #8461C4;
+@health-color: #da0092;
 
 @landcover-font-size: 10;
 @landcover-font-size-big: 12;
@@ -122,8 +123,10 @@
   }
 
   [feature = 'amenity_hospital'][zoom >= 15] {
-    point-file: url('symbols/hospital.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/health/hospital.16.svg');
+    marker-fill: @health-color;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'tourism_hostel'][zoom >= 17] {
@@ -192,8 +195,10 @@
   }
 
   [feature = 'amenity_pharmacy'][zoom >= 17] {
-    point-file: url('symbols/pharmacy.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/health/pharmacy.16.svg');
+    marker-fill: @health-color;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_place_of_worship'][zoom >= 16] {
@@ -1530,7 +1535,7 @@
 
   [feature = 'amenity_hospital'][zoom >= 16] {
     text-name: "[name]";
-    text-fill: #da0092;
+    text-fill: @health-color;
     text-size: 8;
     text-dy: 10;
     text-face-name: @book-fonts;
@@ -1543,7 +1548,7 @@
     text-name: "[name]";
     text-size: 8;
     text-dy: 10;
-    text-fill: #da0092;
+    text-fill: @health-color;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: @standard-wrap-width;
