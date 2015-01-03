@@ -689,16 +689,6 @@
       text-halo-radius: 1;
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
-      ele/text-name: "[ele]";
-      ele/text-size: 9;
-      ele/text-fill: brown;
-      ele/text-dy: 6;
-      ele/text-face-name: @oblique-fonts;
-      ele/text-halo-radius: 1;
-      ele/text-placement: interior;
-      [name != ''] {
-        ele/text-dy: 19;
-      }
     }
   }
 
@@ -712,16 +702,6 @@
       text-halo-radius: 1;
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
-      ele/text-name: "[ele]";
-      ele/text-size: 9;
-      ele/text-fill: brown;
-      ele/text-dy: 6;
-      ele/text-face-name: @oblique-fonts;
-      ele/text-halo-radius: 1;
-      ele/text-placement: interior;
-      [name != ''] {
-        ele/text-dy: 19;
-      }
     }
   }
 
@@ -1254,15 +1234,6 @@
     text-halo-radius: 1;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
-    [zoom >= 16] {
-      ele/text-name: "[ele]";
-      ele/text-size: 8;
-      ele/text-fill: #6699cc;
-      ele/text-dy: 23;
-      ele/text-face-name: @oblique-fonts;
-      ele/text-halo-radius: 1;
-      ele/text-placement: interior;
-    }
   }
 
   [feature = 'amenity_shelter'][zoom >= 17] {
@@ -1274,13 +1245,6 @@
     text-halo-radius: 1;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
-    ele/text-name: "[ele]";
-    ele/text-size: 8;
-    ele/text-fill: #6699cc;
-    ele/text-dy: 23;
-    ele/text-face-name: @oblique-fonts;
-    ele/text-halo-radius: 1;
-    ele/text-placement: interior;
   }
 
   [feature = 'amenity_bank'][zoom >= 17] {
