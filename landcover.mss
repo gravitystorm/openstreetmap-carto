@@ -42,7 +42,6 @@
 @cemetery: #aacbaf; // also grave_yard
 @construction: #b6b592;
 @danger_area: pink;
-@desert: #e3b57a;
 @garages: #dfddce;
 @heath: #d6d99f;
 @parking: #f7efb7;
@@ -381,12 +380,6 @@
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-  }
-
-  [feature = 'natural_desert'][zoom >= 10] {
-    polygon-fill: @desert;
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
   [feature = 'natural_sand'][zoom >= 10] {
