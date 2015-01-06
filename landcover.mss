@@ -37,13 +37,10 @@
 @aerodrome: #e9e7e2;
 @allotments: #e5c7ab;
 @apron: #e9d1ff;
-@barracks: #ff8f8f;
 @campsite: #def6c0; // also caravan_site, picnic_site
 @cemetery: #aacbaf; // also grave_yard
 @construction: #b6b592;
 @danger_area: pink;
-@desert: #e3b57a;
-@field: @farmland;
 @garages: #dfddce;
 @heath: #d6d99f;
 @parking: #f7efb7;
@@ -170,25 +167,6 @@
     polygon-fill: @garages;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
-  }
-
-  [feature = 'military_barracks'][zoom >= 10] {
-    polygon-fill: @barracks;
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
-  }
-
-  [feature = 'landuse_field'] {
-    [zoom >= 10] {
-      polygon-fill: @field;
-      [zoom >= 14] {
-        line-width: 0.3;
-        line-opacity: 0.4;
-        line-color: saturate(darken(@field, 40%), 20%);
-      }
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
-    }
   }
 
   [feature = 'military_danger_area'] {
@@ -395,12 +373,6 @@
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-  }
-
-  [feature = 'natural_desert'][zoom >= 10] {
-    polygon-fill: @desert;
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
   [feature = 'natural_sand'][zoom >= 10] {
