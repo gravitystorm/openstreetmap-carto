@@ -208,6 +208,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_doctors'][zoom >= 17] {
+    marker-file: url('symbols/doctors.16.svg');
+    marker-fill: @health-color;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_place_of_worship'][zoom >= 16] {
     marker-file: url('symbols/place_of_worship.16.svg');
     marker-fill: #000000;
@@ -1503,15 +1510,18 @@
     text-placement: interior;
   }
 
-  [feature = 'amenity_pharmacy'][zoom >= 17] {
-    text-name: "[name]";
-    text-size: 8;
-    text-dy: 10;
-    text-fill: @health-color;
-    text-face-name: @book-fonts;
-    text-halo-radius: 1;
-    text-wrap-width: @standard-wrap-width;
-    text-placement: interior;
+  [feature = 'amenity_pharmacy'],
+  [feature = 'amenity_doctors'] {
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: 8;
+      text-dy: 10;
+      text-fill: @health-color;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: @standard-wrap-width;
+      text-placement: interior;
+    }
   }
 
   [feature = 'shop_bakery'],
