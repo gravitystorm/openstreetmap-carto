@@ -16,8 +16,7 @@
 
 // --- "base" landuses ---
 
-@residential: #E1E1E1;      // Lch(89,0,0)
-@residential-line: #B9B9B9; // Lch(75,0,0)
+@residential: #e3e2df;
 @retail: #FFD6D1;           // Lch(89,16,30)
 @retail-line: #D99C95;      // Lch(70,25,30)
 @commercial: #F2DAD9;       // Lch(89,8.5,25)
@@ -152,9 +151,12 @@
 
   [feature = 'landuse_residential'][zoom >= 10] {
     polygon-fill: @residential;
-    [zoom >= 16] {
+    [zoom >= 17] {
+      polygon-fill: lighten(@residential, 2%);
+    }
+    [zoom >= 15] {
       line-width: .5;
-      line-color: @residential-line;
+      line-color: darken(@residential, 15%);
       [name != ''] {
         line-width: 0.7;
       }
