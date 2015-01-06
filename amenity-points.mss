@@ -2,6 +2,7 @@
 @wetland-text: darken(#017fff, 10%); /* Also for marsh */
 @mud-text: darken(#aea397, 20%);
 @shop-icon: #ac39ac;
+@money-icon: #555555;
 @transportation-icon: #0092da;
 @transportation-text: #0066ff;
 @airtransport: #8461C4;
@@ -29,13 +30,17 @@
   }
 
   [feature = 'amenity_atm'][zoom >= 17] {
-    point-file: url('symbols/atm2.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/atm.16.svg');
+    marker-fill: @money-icon;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_bank'][zoom >= 17] {
-    point-file: url('symbols/bank2.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/bank.16.svg');
+    marker-fill: @money-icon;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_bar'][zoom >= 17] {
