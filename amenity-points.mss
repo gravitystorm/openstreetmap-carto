@@ -350,7 +350,8 @@
   }
 
   [feature = 'shop_bakery'][zoom >= 17] {
-    marker-file: url('symbols/shop_bakery.p.16.png');
+    marker-file: url('symbols/shop_bakery.16.svg');
+    marker-fill: @shop-icon;
     marker-placement: interior;
     marker-clip: false;
   }
