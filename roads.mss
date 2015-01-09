@@ -629,7 +629,7 @@
     }
 
     [feature = 'railway_rail'][zoom >= 13],
-    [feature = 'railway_preserved'][zoom >= 14],
+    [feature = 'railway_preserved'][zoom >= 13],
     [feature = 'railway_monorail'][zoom >= 14] {
       .bridges-casing {
         line-width: 5;
