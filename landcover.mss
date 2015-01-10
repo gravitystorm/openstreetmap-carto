@@ -37,6 +37,7 @@
 @aerodrome: #e9e7e2;
 @allotments: #e5c7ab;
 @apron: #e9d1ff;
+@bare_ground: #eee5dc;
 @campsite: #def6c0; // also caravan_site, picnic_site
 @cemetery: #aacbaf; // also grave_yard
 @construction: #b6b592;
@@ -49,7 +50,7 @@
 @playground: #ccfff1;
 @power: #bbb;
 @rest_area: #efc8c8; // also services
-@sand: #ffdf88;
+@sand: #f5e9c6;
 @school: #f0f0d8; // also university, college, hospital, kindergarten
 @station: #d4aaaa;
 @scrub: #b5e3b5;
@@ -375,7 +376,32 @@
     }
   }
 
-  [feature = 'natural_sand'][zoom >= 10] {
+  [feature = 'natural_bare_rock'][zoom >= 9] {
+    polygon-fill: @bare_ground;
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    [zoom >= 13] {
+      polygon-pattern-file: url('symbols/rock_overlay.png');
+      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+    }
+  }
+
+  [feature = 'natural_scree'],
+  [feature = 'natural_shingle'] {
+    [zoom >= 9] {
+      polygon-fill: @bare_ground;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+      [zoom >= 13] {
+        polygon-pattern-file: url('symbols/scree_overlay.png');
+        [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+        [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+      }
+    }
+  }
+
+  [feature = 'natural_sand'][zoom >= 9] {
     polygon-fill: @sand;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
