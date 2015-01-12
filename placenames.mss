@@ -45,6 +45,7 @@
     text-fill: @placenames;
     text-face-name: @book-fonts;
     text-halo-radius: 1.5;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: 25;
     text-min-distance: 10;
     [zoom >= 6] {
@@ -66,6 +67,7 @@
       text-fill: @placenames;
       text-face-name: @book-fonts;
       text-halo-radius: 1.5;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: 25;
       text-min-distance: 10;
       [zoom >= 9] {
@@ -88,6 +90,7 @@
       text-fill: @placenames;
       text-face-name: @book-fonts;
       text-halo-radius: 1.5;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: 50;
       text-min-distance: 10;
     }
@@ -99,6 +102,7 @@
       text-size: 15;
       text-wrap-width: 90;
       text-fill: @placenames-light;
+      text-halo-fill: white;
     }
   }
 }
@@ -110,12 +114,14 @@
     text-fill: @placenames;
     text-face-name: @book-fonts;
     text-halo-radius: 1.5;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: 70;
     text-min-distance: 10;
     [zoom >= 14] {
       text-size: 14;
       text-wrap-width: 90;
       text-fill: @placenames-light;
+      text-halo-fill: white;
     }
   }
 }
@@ -128,11 +134,13 @@
       text-fill: @placenames;
       text-face-name: @book-fonts;
       text-halo-radius: 1.5;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: 50;
       text-min-distance: 10;
       [zoom >= 15] {
         text-size: 13;
         text-fill: @placenames-light;
+        text-halo-fill: white;
       }
     }
   }
@@ -150,6 +158,7 @@
       text-fill: @placenames;
       text-face-name: @book-fonts;
       text-halo-radius: 1.5;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: 50;
       text-min-distance: 10;
     }
@@ -157,6 +166,7 @@
       text-size: 12;
       text-wrap-width: 70;
       text-fill: @placenames-light;
+      text-halo-fill: white;
     }
   }
 }
