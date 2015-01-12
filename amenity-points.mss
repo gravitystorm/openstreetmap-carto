@@ -83,8 +83,10 @@
   }
 
   [feature = 'tourism_camp_site'][zoom >= 16] {
-    point-file: url('symbols/camping.n.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/camping.16.svg');
+    marker-fill: #0092da;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'highway_ford'][zoom >= 16] {
