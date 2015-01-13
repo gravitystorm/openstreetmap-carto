@@ -283,7 +283,8 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_restaurant'][zoom >= 17] {
+  [feature = 'amenity_restaurant'][zoom >= 17],
+  [feature = 'amenity_food_court'][zoom >= 17] {
     point-file: url('symbols/restaurant.p.16.png');
     point-placement: interior;
   }
@@ -590,6 +591,7 @@
 
   [feature = 'amenity_pub'],
   [feature = 'amenity_restaurant'],
+  [feature = 'amenity_food_court'],
   [feature = 'amenity_cafe'],
   [feature = 'amenity_fast_food'],
   [feature = 'amenity_biergarten'],
