@@ -436,7 +436,7 @@
     marker-clip: false;
   }
 
-  [feature = 'leisure_water_park'][zoom >= 17]::leisure {
+  [feature = 'leisure_water_park'][zoom >= 17] {
     point-file: url('symbols/water_park.p.20.png');
     point-placement: interior;
   }
