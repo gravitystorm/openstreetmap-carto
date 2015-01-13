@@ -281,6 +281,9 @@
     marker-fill: #734a08;
     marker-placement: interior;
     marker-clip: false;
+    [access != ''][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'amenity_restaurant'][zoom >= 17],
@@ -441,6 +444,9 @@
     marker-fill: #734a08;
     marker-placement: interior;
     marker-clip: false;
+    [access != ''][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'leisure_miniature_golf'][zoom >= 17] {
@@ -943,6 +949,9 @@
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
+      [access != ''][access != 'yes'] {
+        text-fill: darken(@park, 50%);
+      }
     }
   }
 
