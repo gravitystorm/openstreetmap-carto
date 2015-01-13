@@ -110,8 +110,10 @@
   }
 
   [feature = 'amenity_cinema'][zoom >= 16] {
-    point-file: url('symbols/cinema.p.24.png');
-    point-placement: interior;
+    marker-file: url('symbols/cinema.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_fire_station'][zoom >= 16] {
@@ -646,7 +648,7 @@
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       [feature = 'amenity_cinema'] {
-        text-dy: 15;
+        text-dy: 11;
       }
     }
   }
