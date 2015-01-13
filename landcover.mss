@@ -221,7 +221,8 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [feature = 'leisure_golf_course'][zoom >= 10] {
+  [feature = 'leisure_golf_course'][zoom >= 10],
+  [feature = 'leisure_miniature_golf'][zoom >= 15] {
     polygon-fill: @golf_course;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }

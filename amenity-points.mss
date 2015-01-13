@@ -443,6 +443,16 @@
     marker-clip: false;
   }
 
+  [feature = 'leisure_miniature_golf'][zoom >= 17] {
+    point-file: url('symbols/miniature_golf.p.20.png');
+    point-placement: interior;
+  }
+
+  [feature = 'leisure_golf_course'][zoom >= 15] {
+    point-file: url('symbols/golf.p.20.png');
+    point-placement: interior;
+  }
+
   [feature = 'tourism_picnic_site'][zoom >= 16] {
     point-file: url('symbols/picnic.p.16.png');
     point-placement: interior;
@@ -851,6 +861,20 @@
     }
   }
 
+
+  [feature = 'leisure_miniature_golf'][zoom >= 17],
+  [feature = 'leisure_golf_course'][zoom >= 15] {
+    text-name: "[name]";
+    text-size: 11;
+    text-fill: darken(@park, 60%);
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
+    text-placement: interior;
+    text-dy: 11;
+    text-wrap-width: 40;
+  }
+
   [feature = 'leisure_sports_centre'][is_building = 'no'],
   [feature = 'leisure_stadium'][is_building = 'no'] {
     [zoom >= 10][way_pixels > 3000],
@@ -928,8 +952,7 @@
   [feature = 'landuse_conservation'][is_building = 'no'],
   [feature = 'landuse_village_green'][is_building = 'no'],
   [feature = 'leisure_common'][is_building = 'no'],
-  [feature = 'leisure_garden'][is_building = 'no'],
-  [feature = 'leisure_golf_course'][is_building = 'no'] {
+  [feature = 'leisure_garden'][is_building = 'no'] {
     [zoom >= 10][way_pixels > 3000],
     [zoom >= 17] {
       text-name: "[name]";

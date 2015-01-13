@@ -132,7 +132,7 @@ Layer:
               ('aeroway_' || (CASE WHEN aeroway IN ('apron', 'aerodrome') THEN aeroway ELSE NULL END)) AS aeroway,
               ('amenity_' || (CASE WHEN amenity IN ('parking', 'university', 'college', 'school', 'hospital', 'kindergarten', 'grave_yard', 'place_of_worship') THEN amenity ELSE NULL END)) AS amenity,
               ('landuse_' || (CASE WHEN landuse IN ('quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farm', 'farmland', 'recreation_ground', 'conservation', 'village_green', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'construction') THEN landuse ELSE NULL END)) AS landuse,
-              ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'golf_course', 'picnic_table', 'sports_centre', 'stadium', 'pitch', 'track') THEN leisure ELSE NULL END)) AS leisure,
+              ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'golf_course', 'miniature_golf', 'picnic_table', 'sports_centre', 'stadium', 'pitch', 'track') THEN leisure ELSE NULL END)) AS leisure,
               ('military_' || (CASE WHEN military IN ('danger_area') THEN military ELSE NULL END)) AS military,
               ('natural_' || (CASE WHEN "natural" IN ('beach', 'heath', 'mud', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub') THEN "natural" ELSE NULL END)) AS "natural",
               ('power_' || (CASE WHEN power IN ('station', 'sub_station', 'substation', 'generator') THEN power ELSE NULL END)) AS power,
@@ -1211,7 +1211,7 @@ Layer:
                  OR highway IN ('bus_stop', 'traffic_signals')
                  OR man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill')
                  OR historic IN ('memorial', 'archaeological_site')
-                 OR leisure IN ('water_park', 'playground', 'picnic_table')
+                 OR leisure IN ('water_park', 'playground', 'picnic_table', 'golf_course', 'miniature_golf')
                  OR aeroway IN ('aerodrome', 'helipad')
                  OR "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'tree')
                  OR (power = 'generator' AND ("generator:source" = 'wind' OR power_source = 'wind'))
@@ -1235,7 +1235,7 @@ Layer:
                  OR historic IN ('memorial', 'archaeological_site')
                  OR waterway = 'lock'
                  OR lock = 'yes'
-                 OR leisure IN ('water_park', 'playground', 'slipway', 'picnic_table')
+                 OR leisure IN ('water_park', 'playground', 'slipway', 'picnic_table', 'golf_course', 'miniature_golf')
                  OR aeroway IN ('aerodrome', 'helipad')
                  OR "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'tree', 'cave_entrance')
                  OR (power = 'generator' AND ("generator:source" = 'wind' OR power_source = 'wind'))
