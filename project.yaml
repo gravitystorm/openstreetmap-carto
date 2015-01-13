@@ -1211,7 +1211,7 @@ Layer:
                  OR highway IN ('bus_stop', 'traffic_signals')
                  OR man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill')
                  OR historic IN ('memorial', 'archaeological_site')
-                 OR leisure IN ('playground', 'picnic_table')
+                 OR leisure IN ('water_park', 'playground', 'picnic_table')
                  OR aeroway IN ('aerodrome', 'helipad')
                  OR "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'tree')
                  OR (power = 'generator' AND ("generator:source" = 'wind' OR power_source = 'wind'))
@@ -1235,7 +1235,7 @@ Layer:
                  OR historic IN ('memorial', 'archaeological_site')
                  OR waterway = 'lock'
                  OR lock = 'yes'
-                 OR leisure IN ('playground', 'slipway', 'picnic_table')
+                 OR leisure IN ('water_park', 'playground', 'slipway', 'picnic_table')
                  OR aeroway IN ('aerodrome', 'helipad')
                  OR "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'tree', 'cave_entrance')
                  OR (power = 'generator' AND ("generator:source" = 'wind' OR power_source = 'wind'))

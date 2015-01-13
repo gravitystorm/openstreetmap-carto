@@ -431,6 +431,11 @@
     marker-clip: false;
   }
 
+  [feature = 'leisure_water_park'][zoom >= 17]::leisure {
+    point-file: url('symbols/water_park.p.20.png');
+    point-placement: interior;
+  }
+
   [feature = 'leisure_playground'][zoom >= 17] {
     marker-file: url('symbols/playground.16.svg');
     marker-fill: #734a08;
@@ -825,6 +830,23 @@
       text-wrap-width: @landcover-wrap-width-size;
       [way_pixels > 12000] {text-wrap-width: @landcover-wrap-width-size-big; }
       [way_pixels > 48000] {text-wrap-width: @landcover-wrap-width-size-bigger; }
+      text-placement: interior;
+    }
+  }
+
+  [feature = 'leisure_water_park']::leisure {
+    [way_area >= 150000][zoom >= 14],
+    [way_area >= 80000][zoom >= 15],
+    [way_area >= 20000][zoom >= 16],
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: 11;
+      text-fill: darken(@park, 60%);
+      text-dy: 11;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
+      text-wrap-width: 30;
       text-placement: interior;
     }
   }
