@@ -115,8 +115,10 @@
   }
 
   [feature = 'amenity_fire_station'][zoom >= 16] {
-    point-file: url('symbols/firestation.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/firestation.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_fuel'][zoom >= 17] {
@@ -252,8 +254,10 @@
   }
 
   [feature = 'amenity_police'][zoom >= 16] {
-    point-file: url('symbols/police.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/police.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_post_box'][zoom >= 17] {
