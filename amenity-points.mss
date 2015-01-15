@@ -860,7 +860,7 @@
       text-name: "[name]";
       text-size: 11;
       text-fill: darken(@park, 60%);
-      text-dy: 11;
+      text-dy: 13;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-halo-fill: rgba(255,255,255,0.6);
