@@ -743,6 +743,11 @@
           [zoom < 13] {
             line-width: 0;
             b/line-width: 0;
+          }            
+          [zoom >= 13][zoom < 14] {
+            line-width: 3;
+            b/line-width: 2;
+            b/line-dasharray: 5,3;
           }
         }
         [construction = 'service'] {
