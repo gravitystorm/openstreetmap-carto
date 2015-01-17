@@ -487,13 +487,16 @@
   }
 
   [feature = 'tourism_picnic_site'][zoom >= 16] {
-    point-file: url('symbols/picnic.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/picnic.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'leisure_picnic_table'][zoom >= 17] {
-    point-file: url('symbols/picnic.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/picnic.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
   }
 
   [feature = 'leisure_slipway'][zoom >= 17] {
