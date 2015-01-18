@@ -260,8 +260,8 @@ Layer:
     properties:
       minzoom: 4
     advanced: {}
-  - id: "water-areas-overlay"
-    name: "water-areas-overlay"
+  - id: "landcover-area-symbols"
+    name: "landcover-area-symbols"
     class: ""
     geometry: "polygon"
     <<: *extents
@@ -270,13 +270,23 @@ Layer:
       table: |-
         (SELECT
             way,
-            CASE WHEN "natural" IN ('marsh', 'mud') THEN "natural" ELSE wetland END AS int_wetland
+            COALESCE("natural", CASE WHEN landuse = 'forest' THEN 'wood' ELSE NULL END) AS "natural",
+            CASE WHEN "natural" IN ('marsh', 'mud') 
+                THEN "natural" 
+                ELSE CASE WHEN ("natural" = 'wetland' AND wetland IS NULL) 
+                  THEN 'wetland' 
+                  ELSE CASE WHEN ("natural" = 'wetland')
+                    THEN wetland
+                    ELSE NULL
+                    END 
+                END
+              END AS int_wetland
           FROM planet_osm_polygon
-          WHERE "natural" IN ('marsh', 'mud', 'wetland')
+          WHERE ("natural" IN ('marsh', 'mud', 'wetland', 'wood') OR landuse = 'forest')
             AND building IS NULL
             AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
           ORDER BY z_order, way_area DESC
-        ) AS water_areas_overlay
+        ) AS landcover_area_symbols
     properties:
       minzoom: 10
     advanced: {}

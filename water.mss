@@ -53,39 +53,6 @@
   }
 }
 
-#water-areas-overlay {
-  [zoom >= 10] {
-    polygon-pattern-file: url('symbols/wetland.png');
-    polygon-pattern-alignment: global;
-  }
-  [zoom >= 14] {
-    [int_wetland = 'marsh'],
-    [int_wetland = 'saltmarsh'],
-    [int_wetland = 'wet_meadow'],
-    [int_wetland = 'fen'] {
-      polygon-pattern-file: url('symbols/wetland_marsh.png');
-      polygon-pattern-alignment: global;
-    }
-    [int_wetland = 'reedbed'] {
-      polygon-pattern-file: url('symbols/wetland_reed.png');
-      polygon-pattern-alignment: global;
-    }
-    [int_wetland = 'mangrove'] {
-      polygon-pattern-file: url('symbols/wetland_mangrove.png');
-      polygon-pattern-alignment: global;
-    }
-    [int_wetland = 'swamp'] {
-      polygon-pattern-file: url('symbols/wetland_swamp.png');
-      polygon-pattern-alignment: global;
-    }
-    [int_wetland = 'bog'],
-    [int_wetland = 'string_bog'] {
-      polygon-pattern-file: url('symbols/wetland_bog.png');
-      polygon-pattern-alignment: global;
-    }
-  }
-}
-
 #water-lines-casing {
   [waterway = 'stream'],
   [waterway = 'ditch'],
