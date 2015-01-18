@@ -503,9 +503,10 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, landuse, leisure
+            way, COALESCE(landuse, CASE WHEN "natural" = 'wood' THEN 'forest' END) AS feature
           FROM planet_osm_polygon
-          WHERE (landuse = 'military') AND building IS NULL
+          WHERE (landuse IN ('military', 'forest') OR "natural" = 'wood')
+            AND building IS NULL
         ) AS landuse_overlay
     advanced: {}
   - id: "line-barriers"
