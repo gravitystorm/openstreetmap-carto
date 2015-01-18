@@ -340,8 +340,10 @@
   }
 
   [feature = 'historic_memorial'][zoom >= 17] {
-    point-file: url('symbols/tourist_memorial.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/tourist_memorial.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'historic_archaeological_site'][zoom >= 16] {
@@ -760,7 +762,7 @@
     text-name: "[name]";
     text-size: 9;
     text-fill: brown;
-    text-dy: 13;
+    text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: @standard-wrap-width;
