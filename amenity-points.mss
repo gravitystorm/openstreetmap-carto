@@ -44,8 +44,10 @@
   }
 
   [feature = 'amenity_bar'][zoom >= 17] {
-    point-file: url('symbols/bar.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/bar.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_bicycle_rental'][zoom >= 17] {
@@ -78,8 +80,10 @@
   }
 
   [feature = 'amenity_cafe'][zoom >= 17] {
-    point-file: url('symbols/cafe.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/cafe.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'tourism_camp_site'][zoom >= 16] {
@@ -280,13 +284,17 @@
   }
 
   [feature = 'amenity_pub'][zoom >= 17] {
-    point-file: url('symbols/pub.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/pub.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_biergarten'][zoom >= 17] {
-    point-file: url('symbols/biergarten.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/biergarten.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_recycling'][zoom >= 16] {
@@ -301,13 +309,17 @@
 
   [feature = 'amenity_restaurant'][zoom >= 17],
   [feature = 'amenity_food_court'][zoom >= 17] {
-    point-file: url('symbols/restaurant.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/restaurant.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_fast_food'][zoom >= 17] {
-    point-file: url('symbols/fast_food.png');
-    point-placement: interior;
+    marker-file: url('symbols/fast_food.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_telephone'][zoom >= 17] {
