@@ -165,8 +165,10 @@
   }
 
   [feature = 'amenity_embassy'][zoom >= 17] {
-    point-file: url('symbols/embassy.png');
-    point-placement: interior;
+    marker-file: url('symbols/embassy.16.svg');
+    marker-fill: #0092da;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_library'][zoom >= 16] {
@@ -1359,7 +1361,7 @@
     text-name: "[name]";
     text-size: 9;
     text-fill: #0066ff;
-    text-dy: 9;
+    text-dy: 10;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: @standard-wrap-width;
