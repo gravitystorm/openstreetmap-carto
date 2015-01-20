@@ -181,6 +181,13 @@
     point-placement: interior;
   }
 
+  [feature = 'amenity_townhall'][zoom > 16] {
+    marker-file: url('symbols/town_hall.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'waterway_lock'],
   [feature = 'lock_yes'] {
     [zoom >= 15] {
@@ -662,6 +669,7 @@
   [feature = 'amenity_library'],
   [feature = 'amenity_theatre'],
   [feature = 'amenity_courthouse'],
+  [feature = 'amenity_townhall'],
   [feature = 'amenity_cinema'] {
     [zoom >= 17] {
       text-name: "[name]";
