@@ -1,11 +1,11 @@
 // --- Parks, woods, other green things ---
-
-@forest: #b2d6a3;            // Lch(82,30,135)
-@forest-text: #4e843e;       // Lch(50,45,135) (mix of @forest and polygon-pattern)
-@forest-text-halo: #d0f5c1;  // Lch(92.8, 30, 135)
-@grass: #cfeca8; // also meadow, common, garden, village_green, conservation
+@grass: #c8e9bb;        // Lch(89, 27, 135)
+// grass is also meadow, common, garden, village_green, conservation
+@scrub: #b5e0a5;        // Lch(85,35,135)
+@forest: #add19e;       // Lch(80,30,135)
+@forest-text: #46673b;  // Lch(40,30,135) (mix of @forest and polygon-pattern)
 @golf_course: #b5e3b5;
-@park: #cdf7c9; // also recreation_ground
+@park: #c8facc;         // Lch(94,30,145) also recreation_ground
 @vineyard: #b3e2a8;
 
 // --- sports ---
@@ -53,7 +53,6 @@
 @sand: #f5e9c6;
 @school: #f0f0d8; // also university, college, hospital, kindergarten
 @station: #d4aaaa;
-@scrub: #b5e3b5;
 @orchard: #9ed88f;
 @theme_park: #734a08;
 @quarry: #c5c3c3;
@@ -536,7 +535,7 @@
     line-opacity: 0.329;
   }
   [feature = 'forest'][zoom >= 12]  {
-    polygon-pattern-file: url('symbols/forest.png'); // Lch(50,60,135)
+    polygon-pattern-file: url('symbols/forest.png'); // Lch(50,30,135)
     polygon-pattern-alignment: global;
     opacity: 0.6; // The entire layer has opacity in case of overlapping forests
   }

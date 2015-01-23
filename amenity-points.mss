@@ -1123,7 +1123,7 @@
       text-fill: @forest-text;
       text-face-name: @landcover-face-name;
       text-halo-radius: 1;
-      text-halo-fill: @forest-text-halo;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @landcover-wrap-width-size;
       [way_pixels > 12000] {text-wrap-width: @landcover-wrap-width-size-big; }
       [way_pixels > 48000] {text-wrap-width: @landcover-wrap-width-size-bigger; }
