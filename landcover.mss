@@ -3,7 +3,7 @@
 // grass is also meadow, common, garden, village_green, conservation
 @scrub: #b5e0a5;        // Lch(85,35,135)
 @forest: #add19e;       // Lch(80,30,135)
-@forest-text: #5a8f46;  // Lch(50,30,135)
+@forest-text: #46673b;  // Lch(40,30,135)
 @golf_course: #b5e3b5;
 @park: #c8facc;         // Lch(94,30,145) also recreation_ground
 @vineyard: #b3e2a8;
