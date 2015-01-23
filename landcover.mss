@@ -7,7 +7,6 @@
 @golf_course: #b5e3b5;
 @park: #cdf7c9; // also recreation_ground
 @vineyard: #b3e2a8;
-@grassland: #c6e4b4;
 
 // --- sports ---
 
@@ -194,6 +193,7 @@
   }
 
   [feature = 'landuse_meadow'],
+  [feature = 'natural_grassland'],
   [feature = 'landuse_grass'] {
     [zoom >= 10] {
       polygon-fill: @grass;
@@ -406,12 +406,6 @@
 
   [feature = 'natural_heath'][zoom >= 10] {
     polygon-fill: @heath;
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
-  }
-
-  [feature = 'natural_grassland'][zoom >= 10] {
-    polygon-fill: @grassland;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
