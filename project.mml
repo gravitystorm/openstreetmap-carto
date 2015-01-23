@@ -525,7 +525,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT\n    way, landuse, leisure\n  FROM planet_osm_polygon\n  WHERE (landuse = 'military') AND building IS NULL\n) AS landuse_overlay", 
+        "table": "(SELECT\n    way, COALESCE(landuse, CASE WHEN \"natural\" = 'wood' THEN 'forest' ELSE NULL END) AS landuse\n  FROM planet_osm_polygon\n  WHERE (landuse IN ('military', 'forest') OR \"natural\" = 'wood')\n    AND building IS NULL\n) AS landuse_overlay", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 

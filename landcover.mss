@@ -1,12 +1,12 @@
 // --- Parks, woods, other green things ---
-
-@forest: #a0cf85;
-@grass: #cfeca8; // also meadow, common, garden, village_green, conservation
+@grass: #c8e9bb;        // Lch(89, 27, 135)
+// grass is also meadow, common, garden, village_green, conservation
+@scrub: #b5e0a5;        // Lch(85,35,135)
+@forest: #add19e;       // Lch(80,30,135)
+@forest-text: #46673b;  // Lch(40,30,135)
 @golf_course: #b5e3b5;
-@park: #cdf7c9; // also recreation_ground
-@wood: #aed1a0;
+@park: #c8facc;         // Lch(94,30,145) also recreation_ground
 @vineyard: #b3e2a8;
-@grassland: #c6e4b4;
 
 // --- sports ---
 
@@ -53,7 +53,6 @@
 @sand: #f5e9c6;
 @school: #f0f0d8; // also university, college, hospital, kindergarten
 @station: #d4aaaa;
-@scrub: #b5e3b5;
 @orchard: #9ed88f;
 @theme_park: #734a08;
 @quarry: #c5c3c3;
@@ -193,6 +192,7 @@
   }
 
   [feature = 'landuse_meadow'],
+  [feature = 'natural_grassland'],
   [feature = 'landuse_grass'] {
     [zoom >= 10] {
       polygon-fill: @grass;
@@ -250,18 +250,13 @@
     }
   }
 
-  [feature = 'landuse_forest'] {
+  [feature = 'landuse_forest'],
+  [feature = 'natural_wood'] {
     [zoom >= 8] {
       polygon-fill: @forest;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-    [zoom >= 14] {
-      polygon-pattern-file: url('symbols/forest.png');
-      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
-    }
-
   }
 
   [feature = 'landuse_farmyard'][zoom >= 10] {
@@ -377,14 +372,6 @@
     }
   }
 
-  [feature = 'natural_wood'] {
-    [zoom >= 8] {
-      polygon-fill: @wood;
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
-    }
-  }
-
   [feature = 'natural_bare_rock'][zoom >= 9] {
     polygon-fill: @bare_ground;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -418,12 +405,6 @@
 
   [feature = 'natural_heath'][zoom >= 10] {
     polygon-fill: @heath;
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
-  }
-
-  [feature = 'natural_grassland'][zoom >= 10] {
-    polygon-fill: @grassland;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
@@ -546,12 +527,18 @@
 }
 
 #landuse-overlay {
-  [landuse = 'military'][zoom >= 10]::landuse {
+  [landuse = 'military'][zoom >= 10] {
     polygon-pattern-file: url('symbols/military_red_hatch.png');
     polygon-pattern-alignment: global;
     line-color: @military;
     line-width: 3;
     line-opacity: 0.329;
+  }
+  // Also natural=wood, converted in SQL
+  [landuse = 'forest'][zoom >= 12]  {
+    polygon-pattern-file: url('symbols/forest.png'); // Lch(50,30,135)
+    polygon-pattern-alignment: global;
+    opacity: 0.6; // The entire layer has opacity in case of overlapping forests
   }
 }
 
