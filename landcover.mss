@@ -527,14 +527,15 @@
 }
 
 #landuse-overlay {
-  [feature = 'military'][zoom >= 10] {
+  [landuse = 'military'][zoom >= 10] {
     polygon-pattern-file: url('symbols/military_red_hatch.png');
     polygon-pattern-alignment: global;
     line-color: @military;
     line-width: 3;
     line-opacity: 0.329;
   }
-  [feature = 'forest'][zoom >= 12]  {
+  // Also natural=wood, converted in SQL
+  [landuse = 'forest'][zoom >= 12]  {
     polygon-pattern-file: url('symbols/forest.png'); // Lch(50,30,135)
     polygon-pattern-alignment: global;
     opacity: 0.6; // The entire layer has opacity in case of overlapping forests

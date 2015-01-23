@@ -503,7 +503,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, COALESCE(landuse, CASE WHEN "natural" = 'wood' THEN 'forest' END) AS feature
+            way, COALESCE(landuse, CASE WHEN "natural" = 'wood' THEN 'forest' ELSE NULL END) AS landuse
           FROM planet_osm_polygon
           WHERE (landuse IN ('military', 'forest') OR "natural" = 'wood')
             AND building IS NULL
