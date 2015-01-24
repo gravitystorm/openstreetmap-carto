@@ -535,10 +535,10 @@
     line-opacity: 0.329;
   }
   // Also natural=wood, converted in SQL
-  [landuse = 'forest'][zoom >= 12]  {
+  [landuse = 'forest'][zoom >= 12] {
     polygon-pattern-file: url('symbols/forest.png'); // Lch(50,30,135)
     polygon-pattern-alignment: global;
-    opacity: 0.6; // The entire layer has opacity in case of overlapping forests
+    opacity: 0.4; // The entire layer has opacity in case of overlapping forests, rather than polygon-pattern-opacity
   }
 }
 
