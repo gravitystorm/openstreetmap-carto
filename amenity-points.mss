@@ -342,8 +342,10 @@
   }
 
   [feature = 'amenity_theatre'][zoom >= 16] {
-    point-file: url('symbols/theatre.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/theatre.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_toilets'][zoom >= 17] {
@@ -685,6 +687,7 @@
       text-halo-radius: 1;
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
+      [feature = 'amenity_theatre'],
       [feature = 'amenity_cinema'] {
         text-dy: 11;
       }
