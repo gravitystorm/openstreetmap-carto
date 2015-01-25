@@ -701,6 +701,18 @@
     marker-placement: interior;
     marker-clip: false;
   }
+
+  [feature = 'amenity_bench'][zoom >= 18] {
+    marker-file: url('symbols/bench.16.svg');
+    marker-fill: #744a08;
+    marker-placement: interior;
+  }
+
+  [feature = 'amenity_waste_basket'][zoom >= 19] {
+    marker-file: url('symbols/waste_basket.16.svg');
+    marker-fill: #744a08;
+    marker-placement: interior;
+  }
 }
 
 .amenity-low-priority {
