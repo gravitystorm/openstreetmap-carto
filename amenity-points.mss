@@ -357,8 +357,10 @@
   }
 
   [feature = 'amenity_prison'][zoom >= 17] {
-    point-file: url('symbols/amenity_prison.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/prison.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'tourism_viewpoint'][zoom >= 16] {
@@ -1497,7 +1499,7 @@
     text-name: "[name]";
     text-size: 10;
     text-fill: #734a08;
-    text-dy: 16;
+    text-dy: 12;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: @standard-wrap-width;
