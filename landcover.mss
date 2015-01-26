@@ -1,5 +1,5 @@
 // --- Parks, woods, other green things ---
-@grass: #c8e9bb;        // Lch(89, 27, 135)
+@grass: #cfeca8;        // Could use some adjustment later to fit in better
 // grass is also meadow, common, garden, village_green, conservation
 @scrub: #b5e0a5;        // Lch(85,35,135)
 @forest: #add19e;       // Lch(80,30,135)
