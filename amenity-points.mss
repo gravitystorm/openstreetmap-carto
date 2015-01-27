@@ -19,7 +19,7 @@
 @standard-wrap-width: 30;
 
 .points {
-  [feature = 'tourism_alpine_hut'][zoom >= 1c3] {
+  [feature = 'tourism_alpine_hut'][zoom >= 13] {
     point-file: url('symbols/alpinehut.p.16.png');
     point-placement: interior;
   }
