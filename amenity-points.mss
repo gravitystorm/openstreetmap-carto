@@ -19,7 +19,7 @@
 @standard-wrap-width: 30;
 
 .points {
-  [feature = 'tourism_alpine_hut'][zoom >= 13] {
+  [feature = 'tourism_alpine_hut'][zoom >= 1c3] {
     point-file: url('symbols/alpinehut.p.16.png');
     point-placement: interior;
   }
@@ -551,6 +551,9 @@
   [feature = 'natural_cave_entrance'][zoom >= 15]::natural {
     point-file: url('symbols/poi_cave.p.16.png');
     point-placement: interior;
+    [access != ''][access != 'yes'] {
+      point-opacity: 0.55;
+    }
   }
 
   [feature = 'natural_spring'][zoom >= 14]::natural {
@@ -792,6 +795,9 @@
     text-halo-radius: 1;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
+    [access != ''][access != 'yes'] {
+      text-opacity: 0.55;
+    }
   }
 
   [feature = 'historic_memorial'][zoom >= 17] {
