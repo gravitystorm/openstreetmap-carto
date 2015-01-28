@@ -39,7 +39,6 @@
     }
   }
 
-  [natural = 'lake']::natural,
   [natural = 'water']::natural,
   [landuse = 'reservoir']::landuse,
   [waterway = 'riverbank']::waterway {
