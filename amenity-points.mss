@@ -354,8 +354,9 @@
   }
 
   [feature = 'amenity_drinking_water'][zoom >= 17] {
-    point-file: url('symbols/food_drinkingtap.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/drinking_water.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
   }
 
   [feature = 'amenity_prison'][zoom >= 17] {
