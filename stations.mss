@@ -21,6 +21,7 @@
       text-fill: #66f;
       text-dy: -8;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: 0;
       text-placement: interior;
     }
@@ -50,6 +51,7 @@
       text-fill: #66f;
       text-dy: -8;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: 0;
       text-placement: interior;
       [zoom >= 15] {

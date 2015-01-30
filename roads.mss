@@ -1840,6 +1840,7 @@
       text-fill: black;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: 30;
       text-min-distance: 2;
       [zoom >= 14] {
@@ -2135,6 +2136,7 @@
       text-face-name: @bold-fonts;
       text-min-distance: 18;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-spacing: 750;
       text-clip: false;
     }
@@ -2152,6 +2154,7 @@
       text-min-distance: 18;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
     }
   }
 }
@@ -2233,6 +2236,7 @@
       text-clip: false;
       text-placement: line;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-face-name: @book-fonts;
       text-opacity: 0.3;
     }
@@ -2249,6 +2253,7 @@
       text-clip: false;
       text-placement: line;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-face-name: @book-fonts;
     }
     [zoom >= 17] {
@@ -2345,7 +2350,7 @@
       text-fill: #222;
       text-size: 8;
       text-halo-radius: 1;
-      text-halo-fill: rgba(255,255,255,0.8);
+      text-halo-fill: rgba(255,255,255,0.6);
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
@@ -2372,7 +2377,7 @@
       text-fill: #222;
       text-size: 9;
       text-halo-radius: 1;
-      text-halo-fill: rgba(255,255,255,0.8);
+      text-halo-fill: rgba(255,255,255,0.6);
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
