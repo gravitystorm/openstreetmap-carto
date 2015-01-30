@@ -1932,7 +1932,6 @@
 
 #trees [zoom >= 16] {
   ::canopy {
-    image-filters: agg-stack-blur(1,1);
     opacity: 0.3;
     [natural = 'tree_row'] {
       line-color: green;
@@ -1976,7 +1975,6 @@
     }
   }
   [natural = 'tree']::trunk {
-    image-filters: agg-stack-blur(1,1);
     [zoom >= 18] {
       trunk/marker-fill: #b27f36;
       trunk/marker-allow-overlap: true;
