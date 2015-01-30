@@ -1294,9 +1294,13 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-             (SELECT way, highway, junction, ref, name
-              FROM planet_osm_point
-              WHERE highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes'
+             (  SELECT way, highway, junction, ref, name
+                FROM planet_osm_point
+                WHERE highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes'
+              UNION
+                SELECT ST_BuildArea(way), highway, junction, ref, name
+                FROM planet_osm_line
+                WHERE highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes'
              ) AS junctions
     advanced: {}
   - id: "roads-text-ref"

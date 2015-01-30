@@ -1842,6 +1842,7 @@
       text-halo-radius: 1;
       text-wrap-width: 30;
       text-min-distance: 2;
+      text-placement: interior;
       [zoom >= 14] {
         text-size: 9;
       }
