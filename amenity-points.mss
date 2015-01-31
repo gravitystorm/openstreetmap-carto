@@ -1944,10 +1944,10 @@
         line-width: 10;
       }
       [zoom >= 19] {
-        line-width: 20;
+        line-width: 15;
       }
       [zoom >= 20] {
-        line-width: 40;
+        line-width: 30;
       }
     }
     [natural = 'tree'] {
