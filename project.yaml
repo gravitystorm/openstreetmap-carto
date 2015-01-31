@@ -148,7 +148,7 @@ Layer:
               ('military_' || (CASE WHEN military IN ('danger_area') THEN military ELSE NULL END)) AS military,
               ('natural_' || (CASE WHEN "natural" IN ('beach', 'heath', 'mud', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub') THEN "natural" ELSE NULL END)) AS "natural",
               ('power_' || (CASE WHEN power IN ('station', 'sub_station', 'substation', 'generator') THEN power ELSE NULL END)) AS power,
-              ('tourism_' || (CASE WHEN tourism IN ('attraction', 'camp_site', 'caravan_site', 'picnic_site', 'zoo') THEN tourism ELSE NULL END)) AS tourism,
+              ('tourism_' || (CASE WHEN tourism IN ('attraction', 'camp_site', 'caravan_site', 'picnic_site') THEN tourism ELSE NULL END)) AS tourism,
               ('highway_' || (CASE WHEN highway IN ('services', 'rest_area') THEN highway ELSE NULL END)) AS highway,
               ('railway_' || (CASE WHEN railway = 'station' THEN railway ELSE NULL END)) AS railway,
               CASE WHEN religion IN ('christian', 'jewish') THEN religion ELSE 'INT-generic'::text END AS religion,
@@ -161,7 +161,7 @@ Layer:
               OR military IN ('danger_area')
               OR "natural" IN ('beach', 'heath', 'mud', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub')
               OR power IN ('station', 'sub_station', 'substation', 'generator')
-              OR tourism IN ('attraction', 'camp_site', 'caravan_site', 'picnic_site', 'zoo')
+              OR tourism IN ('attraction', 'camp_site', 'caravan_site', 'picnic_site')
               OR highway IN ('services', 'rest_area')
               OR railway = 'station')
               AND way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) > 0.01
@@ -1323,15 +1323,15 @@ Layer:
     properties:
       minzoom: 7
     advanced: {}
-  - id: "theme-park"
-    name: "theme-park"
+  - id: "tourism-boundary"
+    name: "tourism-boundary"
     class: ""
     geometry: "polygon"
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT way, name, tourism FROM planet_osm_polygon WHERE tourism = 'theme_park') AS theme_park
+        (SELECT way, name, tourism FROM planet_osm_polygon WHERE tourism = 'theme_park' OR tourism = 'zoo') AS tourism_boundary
     properties:
       minzoom: 13
     advanced: {}

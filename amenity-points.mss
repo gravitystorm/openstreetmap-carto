@@ -1540,14 +1540,15 @@
     }
   }
 
-  [feature = 'tourism_theme_park'][is_building = 'no'] {
+  [feature = 'tourism_theme_park'][is_building = 'no'],
+  [feature = 'tourism_zoo'][is_building = 'no'] {
     [zoom >= 13][way_pixels > 3000],
     [zoom >= 17] {
       text-name: "[name]";
       text-size: @landcover-font-size;
       [way_pixels > 12000] { text-size: @landcover-font-size-big; }
       [way_pixels > 48000] { text-size: @landcover-font-size-bigger; }
-      text-fill: @theme_park;
+      text-fill: @tourism;
       text-face-name: @bold-fonts; /*rendered bold to improve visibility since theme parks tend to have crowded backgrounds*/
       text-halo-radius: 1;
       text-halo-fill: rgba(255,255,255,0.6);
@@ -1757,24 +1758,6 @@
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
-  }
-
-  [feature = 'tourism_zoo'][is_building = 'no'] {
-    [zoom >= 10][way_pixels > 3000],
-    [zoom >= 17] {
-      text-name: "[name]";
-      text-size: @landcover-font-size;
-      [way_pixels > 12000] { text-size: @landcover-font-size-big; }
-      [way_pixels > 48000] { text-size: @landcover-font-size-bigger; }
-      text-fill: darken(@zoo, 40%);
-      text-face-name: @landcover-face-name;
-      text-halo-radius: 1;
-      text-halo-fill: rgba(255,255,255,0.6);
-      text-wrap-width: @landcover-wrap-width-size;
-      [way_pixels > 12000] {text-wrap-width: @landcover-wrap-width-size-big; }
-      [way_pixels > 48000] {text-wrap-width: @landcover-wrap-width-size-bigger; }
-      text-placement: interior;
-    }
   }
 
   [feature = 'power_station'][is_building = 'no'][zoom >= 10],
