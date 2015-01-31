@@ -24,7 +24,7 @@
         polygon-gamma: 0.75;
       }
       [way_pixels >= 64] {
-        polygon-gamma: 0.6;
+        polygon-gamma: 0.3;
       }
     }
   }
@@ -35,7 +35,7 @@
       polygon-gamma: 0.75;
     }
     [way_pixels >= 64] {
-      polygon-gamma: 0.6;
+      polygon-gamma: 0.3;
     }
   }
 
@@ -48,7 +48,7 @@
         polygon-gamma: 0.75;
       }
       [way_pixels >= 64] {
-        polygon-gamma: 0.6;
+        polygon-gamma: 0.3;
       }
     }
   }
