@@ -518,52 +518,52 @@
     point-placement: interior;
   }
 
-  [feature = 'aeroway_helipad'][zoom >= 16]::aeroway {
+  [feature = 'aeroway_helipad'][zoom >= 16] {
     marker-file: url('symbols/helipad.svg');
     marker-clip: false;
     marker-fill: @airtransport;
   }
 
-  [feature = 'aeroway_aerodrome'][zoom >= 10][zoom < 14]::aeroway {
+  [feature = 'aeroway_aerodrome'][zoom >= 10][zoom < 14] {
     marker-file: url('symbols/aerodrome.svg');
     marker-clip: false;
     marker-fill: @airtransport;
   }
 
-  [feature = 'man_made_lighthouse'][zoom >= 15]::man_made {
+  [feature = 'man_made_lighthouse'][zoom >= 15] {
     point-file: url('symbols/lighthouse.p.20.png');
     point-placement: interior;
   }
 
-  [feature = 'natural_peak'][zoom >= 11]::natural {
+  [feature = 'natural_peak'][zoom >= 11] {
     marker-file: url('symbols/peak.svg');
     marker-fill: #d08f55;
     marker-placement: interior;
   }
 
-  [feature = 'natural_volcano'][zoom >= 11]::natural {
+  [feature = 'natural_volcano'][zoom >= 11] {
     marker-file: url('symbols/peak.svg');
     marker-fill: #d40000;
     marker-placement: interior;
   }
 
-  [feature = 'natural_saddle'][zoom >= 15]::natural {
+  [feature = 'natural_saddle'][zoom >= 15] {
     marker-file: url('symbols/saddle.svg');
     marker-fill: #d08f55;
     marker-placement: interior;
   }
 
-  [feature = 'natural_cave_entrance'][zoom >= 15]::natural {
+  [feature = 'natural_cave_entrance'][zoom >= 15] {
     point-file: url('symbols/poi_cave.p.16.png');
     point-placement: interior;
   }
 
-  [feature = 'natural_spring'][zoom >= 14]::natural {
+  [feature = 'natural_spring'][zoom >= 14] {
     marker-file: url('symbols/spring.svg');
     marker-placement: interior;
   }
 
-  [feature = 'natural_tree'][zoom >= 16]::natural {
+  [feature = 'natural_tree'][zoom >= 16] {
     marker-placement: interior;
     marker-ignore-placement: true;
     marker-line-width: 0;
@@ -576,20 +576,20 @@
     }
   }
 
-  [feature = 'power_generator']['generator:source' = 'wind']::power,
-  [feature = 'power_generator'][power_source = 'wind']::power {
+  [feature = 'power_generator']['generator:source' = 'wind'],
+  [feature = 'power_generator'][power_source = 'wind'] {
     [zoom >= 15] {
       point-file: url('symbols/power_wind.png');
       point-placement: interior;
     }
   }
 
-  [feature = 'man_made_windmill'][zoom >= 16]::man_made {
+  [feature = 'man_made_windmill'][zoom >= 16] {
     point-file: url('symbols/windmill.png');
     point-placement: interior;
   }
 
-  [feature = 'man_made_mast'][zoom >= 17]::man_made {
+  [feature = 'man_made_mast'][zoom >= 17] {
     point-file: url('symbols/communications.p.20.png');
     point-placement: interior;
   }
@@ -896,7 +896,7 @@
     }
   }
 
-  [feature = 'leisure_water_park']::leisure {
+  [feature = 'leisure_water_park'] {
     [way_area >= 150000][zoom >= 14],
     [way_area >= 80000][zoom >= 15],
     [way_area >= 20000][zoom >= 16],
@@ -1920,7 +1920,7 @@
     }
   }
 
-  [feature = 'aeroway_helipad'][zoom >= 16]::aeroway {
+  [feature = 'aeroway_helipad'][zoom >= 16] {
     text-name: "[name]";
     text-size: 8;
     text-fill: @airtransport;
@@ -1931,7 +1931,7 @@
     text-wrap-width: 30;
   }
 
-  [feature = 'aeroway_aerodrome'][zoom >= 10][zoom < 14]::aeroway {
+  [feature = 'aeroway_aerodrome'][zoom >= 10][zoom < 14] {
     text-name: "[name]";
     text-size: 8;
     text-fill: darken(@airtransport, 15%);
