@@ -51,8 +51,9 @@
   }
 
   [feature = 'amenity_bicycle_rental'][zoom >= 17] {
-    point-file: url('symbols/rental_bicycle.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/rental_bicycle.16.svg');
+    marker-fill: #0092da;
+    marker-placement: interior;
   }
 
   [feature = 'highway_bus_stop'] {
