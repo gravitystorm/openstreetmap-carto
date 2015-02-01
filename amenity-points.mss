@@ -111,8 +111,9 @@
   }
 
   [feature = 'amenity_car_sharing'][zoom >= 16] {
-    point-file: url('symbols/car_share.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/car_share.16.svg');
+    marker-fill: @transportation-icon;
+    marker-placement: interior;
   }
 
   [feature = 'amenity_car_rental'][zoom >= 16] {
