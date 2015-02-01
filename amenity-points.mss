@@ -128,8 +128,10 @@
   }
 
   [feature = 'amenity_fuel'][zoom >= 17] {
-    point-file: url('symbols/fuel.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/fuel.16.svg');
+    marker-fill: #0092da;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'tourism_guest_house'][zoom >= 17] {
