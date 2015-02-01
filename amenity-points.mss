@@ -504,7 +504,8 @@
   }
 
   [feature = 'shop_bicycle'][zoom >= 17] {
-    marker-file: url('symbols/shopping_bicycle.p.16.png');
+    marker-file: url('symbols/shop_bicycle.16.svg');
+    marker-fill: @shop-icon;
     marker-placement: interior;
     marker-clip: false;
   }
