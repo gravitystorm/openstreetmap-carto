@@ -552,7 +552,7 @@
     point-file: url('symbols/poi_cave.p.16.png');
     point-placement: interior;
     [access != ''][access != 'yes'] {
-      point-opacity: 0.55;
+      point-opacity: 0.4;
     }
   }
 
@@ -796,7 +796,7 @@
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
     [access != ''][access != 'yes'] {
-      text-opacity: 0.55;
+      text-opacity: 0.4;
     }
   }
 
