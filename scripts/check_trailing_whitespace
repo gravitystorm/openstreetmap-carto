@@ -1,0 +1,8 @@
+#!/bin/bash
+# This script takes a directory as argument (if none is given, the current working directory is used).
+# It prints the number of lines with trailing whitespaces found in files inside the chosen directory.
+# This number of lines is also returned as exit code.
+# The directories data, .git and node_modules are excluded from the check.
+num_ws=`find $1 -not \( -path ${1:-'.'}/node_modules -prune \) -not \( -path ${1:-'.'}/.git -prune \) -not \( -path ${1:-'.'}/data -prune \) -type f -regextype posix-extended -regex '.*/([A-Za-z_]+|.*\.(mss|mml|style|svg|yaml|yml|md|rb|py|sh|gitignore))' -exec sed -n "/\s$/p" {} \; | wc -l`;
+echo "$num_ws lines contain trailing whitespace.";
+exit $num_ws;

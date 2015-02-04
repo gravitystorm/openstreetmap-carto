@@ -780,7 +780,7 @@
           [zoom < 13] {
             line-width: 0;
             b/line-width: 0;
-          }            
+          }
           [zoom >= 13][zoom < 14] {
             line-width: 3;
             b/line-width: 2;
@@ -2195,7 +2195,7 @@
       text-placement: line;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
-      text-halo-fill: @secondary-fill; 
+      text-halo-fill: @secondary-fill;
     }
     [zoom >= 14] {
       text-size: 9;

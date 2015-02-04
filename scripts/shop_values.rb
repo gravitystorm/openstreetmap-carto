@@ -30,12 +30,11 @@ data = JSON.parse(res.body)["data"]
 
 
 # Get an array of values that only includes values with more than MIN_COUNT occurrences
-counted = data.select { |h| h["count"] > MIN_COUNT }.map { |h| h["value"] } 
+counted = data.select { |h| h["count"] > MIN_COUNT }.map { |h| h["value"] }
 # Filter out empty strings
-no_empty = counted.reject { |h| h.strip.empty? } 
+no_empty = counted.reject { |h| h.strip.empty? }
 # Filter out exceptions in EXCEPTIONS
 filtered = no_empty - EXCEPTIONS
 
 # Output in SQL style
 puts "(" + filtered.map{ |val| "'#{val}'" }.sort.join(", ") + ")"
-
