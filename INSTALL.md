@@ -81,7 +81,7 @@ In Ubuntu 13.10 (Saucy) and lower, replace fonts-taml-tscu with ttf-tamil-fonts.
 
 If you aren't using TileMill, you can compile the CartoCSS stylesheets into Mapnik XML using the command-line `carto` command.
 
-* [carto](https://github.com/mapbox/carto) >= 0.9.3 (we're using instances with cascading rules)
+* [carto](https://github.com/mapbox/carto) >= 0.9.5 (we're using instances with cascading rules and min/max zoom properties)
 * [mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 2.1.0
 
 ---
