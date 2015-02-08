@@ -505,7 +505,7 @@
       ],
       "properties": {
         "group-by": "layernotnull",
-        "minzoom": 12
+        "minzoom": 10
       },
       "advanced": {}
     },
@@ -814,7 +814,7 @@
       ],
       "id": "roads-casing",
       "properties": {
-        "minzoom": 12
+        "minzoom": 10
       },
       "advanced": {}
     },
@@ -865,7 +865,7 @@
         85.05112877980659
       ],
       "properties": {
-        "minzoom": 12
+        "minzoom": 10
       },
       "advanced": {}
     },
@@ -943,7 +943,7 @@
         85.05112877980659
       ],
       "properties": {
-        "maxzoom": 11,
+        "maxzoom": 12,
         "minzoom": 5
       },
       "advanced": {}
@@ -997,7 +997,7 @@
       ],
       "properties": {
         "group-by": "layernotnull",
-        "minzoom": 12
+        "minzoom": 10
       },
       "advanced": {}
     },

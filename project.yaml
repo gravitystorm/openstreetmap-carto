@@ -492,7 +492,7 @@ Layer:
         ) AS tunnels
     properties:
       group-by: "layernotnull"
-      minzoom: 12
+      minzoom: 10
     advanced: {}
   - id: "citywalls"
     name: "citywalls"
@@ -781,7 +781,7 @@ Layer:
           ORDER BY prio
         ) AS roads_casing
     properties:
-      minzoom: 12
+      minzoom: 10
     advanced: {}
   - id: "highway-area-fill"
     name: "highway-area-fill"
@@ -911,7 +911,7 @@ Layer:
           ) AS features ORDER BY prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end
         ) AS roads_fill
     properties:
-      minzoom: 12
+      minzoom: 10
     advanced: {}
   - id: "turning-circle-fill"
     name: "turning-circle-fill"
@@ -971,7 +971,7 @@ Layer:
               ) AS roads_low_zoom
     properties:
       minzoom: 5
-      maxzoom: 11
+      maxzoom: 12
     advanced: {}
   - id: "waterway-bridges"
     name: "waterway-bridges"
@@ -1084,7 +1084,7 @@ Layer:
         ) AS bridges
     properties:
       group-by: "layernotnull"
-      minzoom: 12
+      minzoom: 10
     advanced: {}
   - id: "guideways"
     name: "guideways"
