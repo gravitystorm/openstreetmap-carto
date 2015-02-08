@@ -971,7 +971,7 @@ Layer:
               ) AS roads_low_zoom
     properties:
       minzoom: 5
-      maxzoom: 11
+      maxzoom: 12
     advanced: {}
   - id: "waterway-bridges"
     name: "waterway-bridges"

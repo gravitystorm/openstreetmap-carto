@@ -943,7 +943,7 @@
         85.05112877980659
       ],
       "properties": {
-        "maxzoom": 11,
+        "maxzoom": 12,
         "minzoom": 5
       },
       "advanced": {}
