@@ -917,7 +917,7 @@
         85.05112877980659
       ],
       "properties": {
-        "minzoom": 15
+        "minzoom": 12
       },
       "advanced": {}
     },
