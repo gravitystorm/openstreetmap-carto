@@ -807,7 +807,11 @@
           b/line-width: 7;
           b/line-dasharray: 8,6;
         }
-        [construction = 'cycleway'] {
+        [construction = 'footway'],
+        [construction = 'cycleway'],
+        [construction = 'bridleway'],
+        [construction = 'path'],
+        [construction = 'track'] {
           [zoom < 14] {
             line-width: 0;
             b/line-width: 0;
