@@ -256,12 +256,13 @@
 
 #placenames-small::suburb [zoom >= 12] {
 	[place = 'neighbourhood'][zoom>=14],
+	[place = 'quarter'][zoom>=14],
 	[place = 'suburb'] {
     text-name: "[nom]";
     text-size: 8.5;
     text-fill: #666;
     text-face-name: @oblique-fonts;
-	text-halo-radius: 1;
+	text-halo-radius: 1.25;
   	text-halo-fill: fadeout(white, 30%);
     text-label-position-tolerance: 5;
     [zoom >= 15] {
