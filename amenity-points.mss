@@ -60,21 +60,19 @@
   }
 
   [amenity = 'bicycle_rental'][zoom >= 17]::amenity {
-  	[network='Vélib’'],
-  	[network="Vélib\'"],
-  	[network='Vélib'] {
+  	[network=~'^Vélib.?'] {
   		point-file: url('symbols/fr/Velib.svg');
   		point-transform: "scale(2)";
   	}
-  	[network="Vélo\'v"] {
+  	[network=~"^Vélo.v"] {
   		point-file: url('symbols/fr/velov.png');
   		point-transform: "scale(0.5)";
   	}
-  	[network="V\'Lille"] {
+  	[network=~"^V.Lille"] {
   		point-file: url('symbols/fr/v-lille.png');
   		point-transform: "scale(0.33)";
   	}
-  	[network="V\'EOL"] {
+  	[network=~"^V.EOL"] {
   		point-file: url('symbols/fr/veol-caen.png');
   		point-transform: "scale(0.75)";
   	}
@@ -187,7 +185,7 @@
   }
 
   [amenity = 'townhall'][zoom >= 13]::amenity {
-    point-file: url('symbols/town_hall2.svg');
+    point-file: url('symbols/town_hall.16.svg');
     [zoom <=14] { point-transform: "scale(0.66)"; }
     point-placement: interior;
   }
@@ -200,6 +198,13 @@
   [amenity = 'courthouse'][zoom > 17]::amenity {
     point-file: url('symbols/courthouse.svg');
     point-placement: interior;
+  }
+
+  [amenity = 'doctors'][zoom > 17]::amenity {
+    marker-file: url('symbols/doctors.16.svg');
+    marker-fill: @health-color;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [zoom >= 15][waterway = 'lock']::waterway,
@@ -385,8 +390,10 @@
   }
 
   [shop = 'bakery'][zoom >= 17]::shop {
-    point-file: url('symbols/fr/boulangerie2.png');
-    point-placement: interior;
+    marker-file: url('symbols/shop_bakery.16.svg');
+    marker-fill: @shop-icon;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [shop = 'butcher'][zoom >= 17]::shop {
