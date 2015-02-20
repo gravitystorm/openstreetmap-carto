@@ -201,8 +201,9 @@
   }
 
   [feature = 'man_made_mast'][zoom >= 17] {
-    point-file: url('symbols/communications.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/communications.16.svg');
+    marker-fill: #555;
+    marker-placement: interior;
   }
 
   [feature = 'tourism_museum'][zoom >= 16] {
@@ -588,11 +589,6 @@
 
   [feature = 'man_made_windmill'][zoom >= 16] {
     point-file: url('symbols/windmill.png');
-    point-placement: interior;
-  }
-
-  [feature = 'man_made_mast'][zoom >= 17] {
-    point-file: url('symbols/communications.p.20.png');
     point-placement: interior;
   }
 }
