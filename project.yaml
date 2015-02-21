@@ -407,7 +407,7 @@ Layer:
             (SELECT
                 way, prio,
                 ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature,
-                horse, foot, bicycle, tracktype,
+                horse, foot, segregated, bicycle, tracktype,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
@@ -456,7 +456,7 @@ Layer:
               way, prio,
               COALESCE(('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway END)),
                ('aeroway_' || aeroway)) AS feature,
-               horse, foot, bicycle, tracktype,
+               horse, foot, segregated, bicycle, tracktype,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
@@ -705,7 +705,7 @@ Layer:
             (SELECT
                 way, prio,
                 ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature,
-                horse, foot, bicycle, tracktype,
+                horse, foot, segregated, bicycle, tracktype,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
@@ -752,7 +752,7 @@ Layer:
             (SELECT
                 way, prio,
                 COALESCE(('railway_' ||(CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway end)), ('aeroway_' || aeroway)) AS feature,
-                horse, foot, bicycle, tracktype,
+                horse, foot, segregated, bicycle, tracktype,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
@@ -830,7 +830,7 @@ Layer:
             (SELECT
                 way, prio,
                 ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end)) AS feature,
-                horse, foot, bicycle, tracktype,
+                horse, foot, segregated, bicycle, tracktype,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
@@ -880,7 +880,7 @@ Layer:
                   ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway END)),
                   ('aeroway_' || aeroway)
                 ) AS feature,
-                horse, foot, bicycle, tracktype,
+                horse, foot, segregated, bicycle, tracktype,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
@@ -1007,7 +1007,7 @@ Layer:
             (SELECT
                 way, prio,
                 ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature,
-                horse, foot, bicycle, tracktype,
+                horse, foot, segregated, bicycle, tracktype,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
@@ -1057,7 +1057,7 @@ Layer:
               way, prio,
               COALESCE(('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway END)),
                ('aeroway_' || aeroway)) AS feature,
-               horse, foot, bicycle, tracktype,
+               horse, foot, segregated, bicycle, tracktype,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL

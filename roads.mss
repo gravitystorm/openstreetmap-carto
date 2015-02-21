@@ -1226,6 +1226,36 @@
         }
         line/line-color: @cycleway-fill;
         line/line-dasharray: 1,3;
+        /*
+         * For shared cycleway and footway, use alternating footway
+         * and cycleway dashing (blue 1-space 3-red 1-space 3).
+         */
+        [foot = 'yes'],
+        [foot = 'designated'] {
+          line/line-dasharray: 1, 7;
+          b/line-color: @footway-fill;
+          b/line-dasharray: 0, 4, 1, 3;
+          b/line-join: round;
+          b/line-cap: round;
+          b/line-width:  @footway-width-z15;
+        }
+        /*
+         * For segregated cycleway and footway, use alternating
+         * footway and cycleway dashing with longer cycleway dashes.
+         * 'Segregation' usually consist painted white lane on the
+         * road, or other very minor segregation. See Key:segregated
+         * for more info.
+         * blue 5-space 3-red 1-space 3
+         */
+        [foot = 'yes'][segregated = 'yes'],
+        [foot = 'designated'][segregated = 'yes'] {
+          line/line-dasharray: 5, 7;
+          b/line-color: @footway-fill;
+          b/line-dasharray: 0, 8, 1, 3;
+          b/line-join: round;
+          b/line-cap: round;
+          b/line-width:  @footway-width-z15;
+        }
         line/line-join: round;
         line/line-cap: round;
         line/line-width: @cycleway-width-z13;
