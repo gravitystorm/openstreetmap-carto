@@ -121,6 +121,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_nightclub'][zoom >= 17] {
+    marker-file: url('symbols/nightclub.18.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_fire_station'][zoom >= 16] {
     marker-file: url('symbols/firestation.16.svg');
     marker-fill: #734a08;
@@ -648,7 +655,8 @@
   [feature = 'amenity_cafe'],
   [feature = 'amenity_fast_food'],
   [feature = 'amenity_biergarten'],
-  [feature = 'amenity_bar'] {
+  [feature = 'amenity_bar'],
+  [feature = 'amenity_nightclub'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-fill: #734a08;
