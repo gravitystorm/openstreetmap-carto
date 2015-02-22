@@ -61,15 +61,6 @@
   }
 }
 
-#water-areas-overlay {
-  [natural = 'marsh'],
-  [natural = 'wetland'] {
-    [zoom >= 10] {
-      polygon-pattern-file: url('symbols/wetland.png');
-    }
-  }
-}
-
 #water-lines-casing {
   [waterway = 'stream'],
   [waterway = 'ditch'],

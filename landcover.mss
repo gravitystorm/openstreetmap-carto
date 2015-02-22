@@ -526,6 +526,22 @@
   }
 }
 
+#landcover-area-symbols {
+  [natural = 'marsh'],
+  [natural = 'wetland'] {
+    [zoom >= 10] {
+      polygon-pattern-file: url('symbols/wetland.png');
+      polygon-pattern-alignment: global;
+    }
+  }
+// Also landuse = forest, converted in the SQL
+  [natural = 'wood'][zoom >= 13]::wood {
+    polygon-pattern-file: url('symbols/forest.png'); // Lch(50,30,135)
+    polygon-pattern-alignment: global;
+    opacity: 0.4; // The entire layer has opacity to handle overlapping forests
+  }
+}
+
 #landuse-overlay {
   [landuse = 'military'][zoom >= 10] {
     polygon-pattern-file: url('symbols/military_red_hatch.png');
@@ -533,12 +549,6 @@
     line-color: @military;
     line-width: 3;
     line-opacity: 0.329;
-  }
-  // Also natural=wood, converted in SQL
-  [landuse = 'forest'][zoom >= 13] {
-    polygon-pattern-file: url('symbols/forest.png'); // Lch(50,30,135)
-    polygon-pattern-alignment: global;
-    opacity: 0.4; // The entire layer has opacity in case of overlapping forests, rather than polygon-pattern-opacity
   }
 }
 

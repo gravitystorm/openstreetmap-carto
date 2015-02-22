@@ -219,8 +219,8 @@ Layer:
           ORDER BY z_order, way_area DESC
         ) AS water_areas
     advanced: {}
-  - id: "water-areas-overlay"
-    name: "water-areas-overlay"
+  - id: "landcover-area-symbols"
+    name: "landcover-area-symbols"
     class: ""
     geometry: "polygon"
     <<: *extents
@@ -228,11 +228,12 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, "natural"
+            way, COALESCE("natural", CASE WHEN landuse = 'forest' THEN 'wood' ELSE NULL END) AS "natural"
           FROM planet_osm_polygon
-          WHERE "natural" IN ('marsh', 'wetland') AND building IS NULL
+          WHERE ("natural" IN ('marsh', 'wetland', 'wood') OR landuse = 'forest')
+            AND building IS NULL
           ORDER BY z_order, way_area DESC
-        ) AS water_areas_overlay
+        ) AS landcover_area_symbols
     advanced: {}
   - id: "water-lines"
     name: "water-lines"
@@ -503,9 +504,9 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, COALESCE(landuse, CASE WHEN "natural" = 'wood' THEN 'forest' ELSE NULL END) AS landuse
+            way, landuse
           FROM planet_osm_polygon
-          WHERE (landuse IN ('military', 'forest') OR "natural" = 'wood')
+          WHERE landuse = 'military'
             AND building IS NULL
         ) AS landuse_overlay
     advanced: {}
