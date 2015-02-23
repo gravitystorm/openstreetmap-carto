@@ -1,0 +1,12 @@
+#!/bin/bash
+scripts/yaml2mml.py < project.yaml > project.mml2 && diff -q project.mml project.mml2
+exitcode=$?
+
+if [ $exitcode -eq 0 ]
+then
+  echo "project.yaml and project.mml are in sync."
+else
+  printf "\nproject.yaml and project.mml are not in sync!\nYou should only modify project.yaml, not project.mml and run scripts/yaml2mml.py before committing.\nRead https://github.com/gravitystorm/openstreetmap-carto/blob/master/CONTRIBUTING.md#editing-layers for further information.\n"
+fi
+
+exit $exitcode
