@@ -120,7 +120,6 @@ overlapping borders correctly.
   text-name: "[name]";
   text-face-name: @book-fonts;
   text-fill: @admin-boundaries;
-  text-placement: line;
   text-halo-radius: 1.0;
   text-placement: line;
   text-dy: -10;
@@ -130,7 +129,6 @@ overlapping borders correctly.
   text-name: "[name]";
   text-face-name: @book-fonts;
   text-fill: green;
-  text-placement: line;
   text-halo-radius: 1.0;
   text-placement: line;
   text-dy: -10;
