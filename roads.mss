@@ -2245,7 +2245,8 @@
     }
   }
   [highway = 'construction'] {
-    [zoom >= 13] {
+    [int_construction_minor = 'no'][zoom >= 13],
+    [int_construction_minor = 'yes'][zoom >= 14] {
       text-name: "[name]";
       text-size: 9;
       text-fill: black;
@@ -2254,9 +2255,9 @@
       text-placement: line;
       text-halo-radius: 1;
       text-face-name: @book-fonts;
-    }
-    [zoom >= 17] {
-      text-size: 11;
+      [zoom >= 17] {
+        text-size: 11;
+      }
     }
   }
   [highway = 'residential'],
