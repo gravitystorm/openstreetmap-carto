@@ -519,7 +519,9 @@
     [feature = 'aeroway_runway'] {
       .bridges-casing {
         [zoom >= 14] {
-          line-width: 19;
+          line-width: 13;
+          [zoom >= 15] { line-width: 19; }
+          [zoom >= 16] { line-width: 25; }
           line-color: black;
           line-join: round;
         }
@@ -1550,27 +1552,25 @@
     }
 
     [feature = 'aeroway_runway'] {
-      [zoom >= 11][zoom < 14] {
+      [zoom >= 11] {
+        line-color: @runway-fill;
         line-width: 2;
-        line-color: @runway-fill;
         [zoom >= 12] { line-width: 4; }
-        [zoom >= 13] { line-width: 7; }
-      }
-      [zoom >= 14] {
-        line-width: 18;
-        line-color: @runway-fill;
+        [zoom >= 13] { line-width: 6; }
+        [zoom >= 14] { line-width: 12; }
+        [zoom >= 15] { line-width: 18; }
+        [zoom >= 16] { line-width: 24; }
       }
     }
 
     [feature = 'aeroway_taxiway'] {
-      [zoom >= 11][zoom < 14] {
+      [zoom >= 11] {
+        line-color: @taxiway-fill;
         line-width: 1;
-        line-color: @taxiway-fill;
-      }
-      [zoom >= 14] {
-        line-width: 4;
-        line-color: @taxiway-fill;
+        [zoom >= 13] { line-width: 2; }
+        [zoom >= 14] { line-width: 4; }
         [zoom >= 15] { line-width: 6; }
+        [zoom >= 16] { line-width: 8; }
       }
     }
   }
