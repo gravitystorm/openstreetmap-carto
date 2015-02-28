@@ -1,10 +1,14 @@
 #admin-01234 {
+  background/line-color: white;
+  background/line-width: 6;
+  comp-op: darken;
+  opacity: 0.7;
+
   [admin_level = '2'] {
     [zoom >= 4] {
       line-color: #6c216c;
       line-width: 0.6;
       line-cap: round;
-      //line-opacity: 0.2;
     }
     [zoom >= 5] {
       line-width: 1;
@@ -14,15 +18,14 @@
     }
     [zoom >= 8] {
     	line-color: purple;
-    	// line-opacity: 0.2;
     }
     [zoom >= 10] {
       line-opacity: 0.5;
       [admin_level = '2'] {
-        line-width: 4;
+        line-width: 6;
       }
       [admin_level = '3'] {
-        line-width: 3;
+        line-width: 4;
         line-dasharray: 4,2;
       }
     }
@@ -30,7 +33,7 @@
     {
     	line-color: #0041ff;
       	line-dasharray: 4, 8;
-        line-width: 1;
+        line-width: 2;
         line-cap: round;
     }
     [zoom<6][maritime='yes']
@@ -45,7 +48,6 @@
       line-color: #6c216c;
       line-width: 0.5;
       line-cap: round;
-      line-opacity: 0.8;
     }
     [zoom >= 7] {
       line-width: 1;
@@ -77,36 +79,42 @@
     line-color: #6c216c;
     line-width: 0.33;
     line-cap: round;
-    // line-opacity: 0.5;
   }
 
 }
 
 #admin-5678 {
+  background/line-color: white;
+  background/line-width: 2;
+  comp-op: darken;
+  opacity: 0.7;
+
   [admin_level = '5'][zoom >= 11] {
     line-color: purple;
     line-width: 2;
     line-dasharray: 6,3,2,3,2,3;
-    line-opacity: 0.3;
   }
   [admin_level = '6'][zoom >= 11] {
     line-color: purple;
     line-width: 2;
-    line-dasharray: 6,3,2,3;
-    line-opacity: 0.3;
+    line-dasharray: 8,3,2,3;
   }
   [admin_level = '7'],
   [admin_level = '8'] {
     [zoom >= 12] {
       line-color: purple;
       line-width: 1.5;
-      line-dasharray: 5,2;
-      line-opacity: 0.3;
+      line-dasharray: 5,3;
     }
   }
 }
 
 #admin-other {
+  background/line-color: white;
+  background/line-width: 2;
+  comp-op: darken;
+  opacity: 0.7;
+
   [admin_level = '9'],
   [admin_level = '10'] {
     [zoom >= 13] {
@@ -117,15 +125,3 @@
     }
   }
 }
-
-/*
- * err, what does this do?
-<Style name="admin-other">
-   <Rule>
-      <Filter>not [admin_level] != ''</Filter>
-      &maxscale_zoom9;
-      &minscale_zoom11;
-      <LineSymbolizer stroke="purple" stroke-width="1" stroke-opacity="0.2"/>
-    </Rule>
-</Style>
-*/
