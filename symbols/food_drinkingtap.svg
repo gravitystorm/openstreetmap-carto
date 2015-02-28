@@ -5,27 +5,27 @@
 	 width="400px" height="400px" viewBox="0 0 400 400" enable-background="new 0 0 400 400" xml:space="preserve">
 <g id="g3353" transform="translate(20,12)">
 	
-		<path id="path3340" sodipodi:nodetypes="csscc" opacity="0.9851" fill="#FFFFFF" stroke="#603813" stroke-width="0.5227" stroke-linecap="round" stroke-linejoin="round" enable-background="new    " d="
+		<path id="path3340" opacity="0.9851" fill="#FFFFFF" stroke="#603813" stroke-width="0.5227" stroke-linecap="round" stroke-linejoin="round" enable-background="new    " d="
 		M206.299,179.163c-0.405,0.151-0.964,0.379-1.172,0.379s-0.379-0.17-0.379-0.379s0.171-0.378,0.379-0.378
 		C205.326,178.793,205.905,179.028,206.299,179.163z"/>
 	
-		<path id="path3345" sodipodi:nodetypes="csscc" opacity="0.9851" fill="#FFFFFF" stroke="#603813" stroke-width="0.5227" stroke-linecap="round" stroke-linejoin="round" enable-background="new    " d="
+		<path id="path3345" opacity="0.9851" fill="#FFFFFF" stroke="#603813" stroke-width="0.5227" stroke-linecap="round" stroke-linejoin="round" enable-background="new    " d="
 		M205.934,179.163c0.406,0.151,0.963,0.379,1.173,0.379c0.209,0,0.378-0.17,0.378-0.379s-0.169-0.378-0.378-0.378
 		C206.906,178.793,206.329,179.028,205.934,179.163z"/>
 	<path id="path3347" fill="none" stroke="#603813" stroke-width="1.0453" stroke-linecap="round" d="M206.11,179.145v2.306
 		l0.027,0.898"/>
 	
-		<path id="path3349" sodipodi:type="arc" sodipodi:ry="45.569103" sodipodi:rx="22.784552" sodipodi:cy="125.39394" sodipodi:cx="401.44211" opacity="0.9851" fill="#603813" stroke="#603813" stroke-width="1.0453" stroke-linecap="round" stroke-linejoin="round" enable-background="new    " d="
+		<path id="path3349" opacity="0.9851" fill="#603813" stroke="#603813" stroke-width="1.0453" stroke-linecap="round" stroke-linejoin="round" enable-background="new    " d="
 		M206.905,182.149c0,0.877-0.356,1.589-0.794,1.59c-0.438,0-0.795-0.711-0.796-1.587v-0.003c0-0.876,0.355-1.587,0.793-1.589
 		c0.439-0.001,0.796,0.711,0.797,1.587C206.905,182.147,206.905,182.148,206.905,182.149z"/>
-	<path id="path3351" sodipodi:nodetypes="cccc" fill="none" stroke="#603813" stroke-width="1.7422" d="M210.344,182.339
+	<path id="path3351" fill="none" stroke="#603813" stroke-width="1.7422" d="M210.344,182.339
 		l-6.199-0.035l-0.492-0.003c-2.419-0.037-2.269,2.231-2.269,2.231"/>
 </g>
-<path id="path2209" sodipodi:nodetypes="ccsssccccsssccccccc" fill="#603813" d="M225.405,198.584h-0.006
+<path id="path2209" fill="#603813" d="M225.405,198.584h-0.006
 	c0.006-0.005,0.011-0.011,0.011-0.017c0-0.129-1.777-0.234-3.967-0.234c-2.188,0-3.966,0.105-3.966,0.234
 	c0,0.006,0.005,0.012,0.011,0.017h-0.011l1.237,9.438h0.007c-0.011,0.005-0.018,0.012-0.018,0.018c0,0.091,1.228,0.163,2.739,0.163
 	c1.513,0,2.739-0.072,2.739-0.163c0-0.006-0.005-0.013-0.017-0.018L225.405,198.584z M223.372,207.33
 	c-0.063,0.061-3.824,0.032-3.888-0.025l-1.175-8.149c2.006,0.007,3.451,0.107,6.179-0.056L223.372,207.33z"/>
-<path id="path2381" sodipodi:nodetypes="ccccc" opacity="0.1" fill="#603813" enable-background="new    " d="M217.982,199.002
+<path id="path2381" opacity="0.1" fill="#603813" enable-background="new    " d="M217.982,199.002
 	l6.791,0.055l-1.1,8.696l-4.647,0.055L217.982,199.002z"/>
 </svg>
