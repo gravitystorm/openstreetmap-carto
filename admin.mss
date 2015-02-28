@@ -1,5 +1,6 @@
 
 @admin-boundaries: #ac46ac;
+@admin-boundary-line: #6c216c;
 
 #admin {
   [zoom>=11][admin_level<=6],
@@ -15,7 +16,7 @@
     text-fill: @admin-boundaries;
     text-size: 10;
     text-placement: line;
-	text-face-name: @oblique-fonts;
+    text-face-name: @oblique-fonts;
     text-halo-radius: 1.5;
     text-halo-fill: fadeout(white, 30%);
     text-min-padding: 50;
@@ -34,7 +35,7 @@
 
   [admin_level = '2'] {
     [zoom >= 4] {
-      line-color: #6c216c;
+      line-color: @admin-boundary-line;
       line-width: 0.6;
       line-cap: round;
     }
@@ -73,7 +74,7 @@
   [admin_level = '3'],
   [admin_level = '4'] {
     [zoom >= 5] {
-      line-color: #6c216c;
+      line-color: @admin-boundary-line;
       line-width: 0.5;
       line-cap: round;
     }
@@ -104,7 +105,7 @@
   }
   [admin_level = '5'][zoom >= 7][zoom <= 10],
   [admin_level = '6'][zoom >= 7][zoom <= 10] {
-    line-color: #6c216c;
+    line-color: @admin-boundary-line;
     line-width: 0.33;
     line-cap: round;
   }
@@ -113,7 +114,7 @@
 
 #admin-5678 {
   background/line-color: white;
-  background/line-width: 2;
+  background/line-width: 3;
   comp-op: darken;
   opacity: 0.7;
 
@@ -135,21 +136,13 @@
       line-dasharray: 5,3;
     }
   }
-}
-
-#admin-other {
-  background/line-color: white;
-  background/line-width: 2;
-  comp-op: darken;
-  opacity: 0.7;
 
   [admin_level = '9'],
   [admin_level = '10'] {
-    [zoom >= 13] {
+    [zoom >= 16] {
       line-color: purple;
-      line-width: 2;
-      line-dasharray: 2,3;
-      line-opacity: 0.2;
+      line-width: 1.5;
+      line-dasharray: 5,6;
     }
   }
 }

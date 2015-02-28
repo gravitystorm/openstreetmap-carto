@@ -2101,7 +2101,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way, admin_level from planet_osm_roads r where boundary='administrative' and admin_level in ('5','6','7','8') order by 2 desc ) as admin",
+        "table": "(select way, admin_level from planet_osm_roads r where boundary='administrative' and admin_level not in ('2','3','4') order by cast(regexp_replace(admin_level,'[^0-9]','','g') as integer) desc ) as admin",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
@@ -2120,36 +2120,6 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
       "name": "admin-5678"
-    },
-    {
-      "geometry": "linestring",
-      "extent": [
-        -179.99999692067183,
-        -84.96651228427099,
-        179.99999692067183,
-        84.96651228427098
-      ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "(select way,admin_level\n       from planet_osm_roads\n       where boundary is not null and \"boundary\"='administrative'\n         and (admin_level is null or admin_level not in ('0','1','2','3','4','5','6','7','8'))\n       ) as admin",
-        "extent_cache": "custom",
-        "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
-        "key_field": "",
-        "geometry_field": "way",
-        "dbname": "osm",
-        "asynchronous_request": "true",
-        "max_async_connection": "6",
-        "srid": "900913",
-        "host": "localhost",
-        "user": "fr",
-        "password": "m4d31nfr4nc3"
-      },
-      "id": "admin-other",
-      "class": "",
-      "srs-name": "900913",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "admin-other"
     },
     {
       "geometry": "point",
