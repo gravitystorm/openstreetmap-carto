@@ -13,7 +13,7 @@ Map {
 @primary_color: #ec989a;
 @motorway_color: #809bc0;
 @motorway_toll_color: #809bc0;
-@shield_spacing: 750;
+@shield_spacing: 768;
 
 @health-color: #da0092;
 @shop-icon: #ac39ac;
