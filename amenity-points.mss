@@ -51,8 +51,9 @@
   }
 
   [feature = 'amenity_bicycle_rental'][zoom >= 17] {
-    point-file: url('symbols/rental_bicycle.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/rental_bicycle.16.svg');
+    marker-fill: #0092da;
+    marker-placement: interior;
   }
 
   [feature = 'highway_bus_stop'] {
@@ -201,8 +202,9 @@
   }
 
   [feature = 'man_made_mast'][zoom >= 17] {
-    point-file: url('symbols/communications.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/communications.16.svg');
+    marker-fill: #555;
+    marker-placement: interior;
   }
 
   [feature = 'tourism_museum'][zoom >= 16] {
@@ -351,8 +353,10 @@
   }
 
   [feature = 'amenity_toilets'][zoom >= 17] {
-    point-file: url('symbols/toilets.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/toilets.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_drinking_water'][zoom >= 17] {
@@ -588,11 +592,6 @@
 
   [feature = 'man_made_windmill'][zoom >= 16] {
     point-file: url('symbols/windmill.png');
-    point-placement: interior;
-  }
-
-  [feature = 'man_made_mast'][zoom >= 17] {
-    point-file: url('symbols/communications.p.20.png');
     point-placement: interior;
   }
 }
