@@ -185,9 +185,11 @@
   }
 
   [amenity = 'townhall'][zoom >= 13]::amenity {
-    point-file: url('symbols/town_hall.16.svg');
-    [zoom <=14] { point-transform: "scale(0.66)"; }
-    point-placement: interior;
+    marker-file: url('symbols/town_hall.16.svg');
+    [zoom <=14] { marker-transform: "scale(0.66)"; }
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: #666;
   }
 
   [amenity = 'library'][zoom >= 17]::amenity {
@@ -272,8 +274,10 @@
   }
 
   [amenity = 'police'][zoom >= 17]::amenity {
-    point-file: url('symbols/police2.svg');
-    point-placement: interior;
+    marker-file: url('symbols/police.16.svg');
+    marker-fill: #734a08;
+    marker-placement: interior;
+    marker-clip: false;
     [indoor='yes'] { point-opacity: 0.5; }
   }
 
@@ -284,7 +288,7 @@
     [indoor='yes'] { point-opacity: 0.5; }
   }
 
-  [amenity = 'pub'][zoom >= 16]::amenity {
+  [amenity = 'pub'][zoom >= 17]::amenity {
     point-file: url('symbols/pub.svg');
     point-placement: interior;
     [indoor='yes'] { point-opacity: 0.5; }
@@ -570,9 +574,11 @@
   }
   
   [leisure = 'golf_course'][zoom >= 14][zoom < 16]::leisure {
-    point-file: url('symbols/fr/golf-maki.svg');
-	point-transform: "scale(0.15)";
-    point-placement: interior;
+    marker-file: url('symbols/fr/golf-maki.svg');
+    marker-fill: #040; // un peu de vert...
+    marker-transform: "scale(0.15)";
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [entrance != ''][zoom >= 17] {

@@ -4,10 +4,11 @@
     text-name: "[name]";
     text-size: 8;
     text-fill: #6692da;
-    text-dy: -10;
+    text-dy: -12;
     text-face-name: @bold-fonts;
     text-halo-radius: 1;
     text-placement: interior;
+    text-wrap-width: 50;
   }
 
   [zoom>=10]::aeroway {
