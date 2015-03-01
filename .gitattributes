@@ -1,0 +1,3 @@
+# Keep get-shapefiles.sh with LF-endings as to avoid Vagrant issues
+# Should be the case for all shell-files, and as such is *.sh
+*.sh text eol=lf

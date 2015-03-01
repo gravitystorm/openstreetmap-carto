@@ -3,3 +3,5 @@ layers/
 data/
 *.xml
 node_modules/
+.vagrant/
+Vagrantfile
