@@ -96,16 +96,17 @@ sysctl.overcommit:
 
 # OpenStreetMap related repos and packages
 osm:
-  # add the ppa for osm2pgsql with osmctools
+  # Add the ppa for osm2pgsql
+  # It also contains libapache2-mod-tile, should it be needed
   pkgrepo.managed:
     - ppa: kakrueger/openstreetmap
-  # install the packages from above-mentioned repo!
+  # Install any specifically OSM related package
   pkg.latest:
     - install_recommends: false
     - refresh: true
     - pkgs:
-      - osm2pgsql
-      - osmctools
+      - osm2pgsql  # installs from the PPA
+      - osmctools  # installs from ubuntu main v0.1-2
 
 gis.shapefiles:
   pkg.installed:
