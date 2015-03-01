@@ -70,7 +70,7 @@
     		text-size: 9;
     		text-dy: 14;
    		}
-    	[l_operator = 'TCL']{
+    	[l_operator = 'TCL'],[network='TCL']{
     		[l_ref1 = 'F'] {point-file: url('symbols/fr/tcl-funi.png');}
     		point-file: url('symbols/fr/tcl-metro.png');
     		text-size: 9;
@@ -134,7 +134,7 @@
       }
     }
     [zoom >= 15] {
-    	[l_operator = 'TCL']{
+    	[l_operator = 'TCL'],[network='TCL']{
     	  point-file: url('symbols/fr/tcl-tram.png');
     	  text-size: 9;
     	  text-dy: 12;
@@ -169,7 +169,7 @@
    	 		point-file: url('symbols/fr/logo-ratp-bus.svg');
    	 		point-transform: 'scale(0.04)';
       	}
- 		[l_operator = 'TCL']{
+ 		[l_operator = 'TCL'],[network='TCL']{
     		[l_ref1="C"] {point-file: url('symbols/fr/tcl-c.png');}
     		point-file: url('symbols/fr/tcl-bus.png');
    		}
@@ -206,7 +206,7 @@
    	 		point-file: url('symbols/fr/logo-ratp-bus.svg');
    	 		point-transform: 'scale(0.06)';
       	}
- 		[l_operator = 'TCL']{
+ 		[l_operator = 'TCL'],[network='TCL']{
     	  point-file: url('symbols/fr/tcl-bus.png');
    		}
  		[l_operator = 'STAR']{
