@@ -116,11 +116,11 @@ Layer:
               way, COALESCE(name, '') AS name,
               ('landuse_' || (CASE WHEN landuse IN ('forest') THEN landuse ELSE NULL END)) AS landuse,
               ('natural_' || (CASE WHEN "natural" IN ('wood', 'sand', 'scree', 'shingle', 'bare_rock') THEN "natural" ELSE NULL END)) AS "natural",
-              way_area/(!pixel_width!*!pixel_height!) AS way_pixels
+              way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
             FROM planet_osm_polygon
             WHERE (landuse IN ('forest')
               OR "natural" IN ('wood', 'sand', 'scree', 'shingle', 'bare_rock'))
-              AND way_area/(!pixel_width!*!pixel_height!) > 0.01
+              AND way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) > 0.01
               AND building IS NULL
             ORDER BY z_order, way_area DESC
           ) AS features
@@ -152,7 +152,7 @@ Layer:
               ('highway_' || (CASE WHEN highway IN ('services', 'rest_area') THEN highway ELSE NULL END)) AS highway,
               ('railway_' || (CASE WHEN railway = 'station' THEN railway ELSE NULL END)) AS railway,
               CASE WHEN religion IN ('christian', 'jewish') THEN religion ELSE 'INT-generic'::text END AS religion,
-              way_area/(!pixel_width!*!pixel_height!) AS way_pixels
+              way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
             FROM planet_osm_polygon
             WHERE (landuse IS NOT NULL
               OR leisure IS NOT NULL
@@ -164,7 +164,7 @@ Layer:
               OR tourism IN ('attraction', 'camp_site', 'caravan_site', 'picnic_site', 'zoo')
               OR highway IN ('services', 'rest_area')
               OR railway = 'station')
-              AND way_area/(!pixel_width!*!pixel_height!) > 0.01
+              AND way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) > 0.01
             ORDER BY z_order, way_area DESC
           ) AS landcover
         ) AS features
@@ -229,14 +229,14 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, "natural", waterway, landuse, name, way_area/(!pixel_width!*!pixel_height!) AS way_pixels
+            way, "natural", waterway, landuse, name, way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
           WHERE
             (waterway IN ('dock', 'riverbank', 'canal')
               OR landuse IN ('reservoir', 'basin')
               OR "natural" IN ('water', 'glacier', 'mud'))
             AND building IS NULL
-            AND way_area/(!pixel_width!*!pixel_height!) > 0.01
+            AND way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) > 0.01
           ORDER BY z_order, way_area DESC
         ) AS water_areas
     properties:
@@ -1178,7 +1178,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT way, way_area, name, boundary, way_area/(!pixel_width!*!pixel_height!) AS way_pixels FROM planet_osm_polygon WHERE (boundary = 'national_park' OR leisure = 'nature_reserve') AND building IS NULL) AS national_park_boundaries
+        (SELECT way, way_area, name, boundary, way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels FROM planet_osm_polygon WHERE (boundary = 'national_park' OR leisure = 'nature_reserve') AND building IS NULL) AS national_park_boundaries
     properties:
       minzoom: 7
     advanced: {}
@@ -1202,7 +1202,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT way, way_area/(!pixel_width!*!pixel_height!) AS way_pixels, name, ref, admin_level
+        (SELECT way, way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels, name, ref, admin_level
                FROM planet_osm_polygon
                WHERE boundary = 'administrative' AND admin_level IN ('2', '4')
               ) AS placenames_large
@@ -1522,7 +1522,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-              (SELECT way, way_area/(!pixel_width!*!pixel_height!) AS way_pixels, highway, name
+              (SELECT way, way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels, highway, name
                FROM planet_osm_polygon
                WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street', 'track', 'path', 'platform') OR railway IN ('platform') AND name IS NOT NULL
               ) AS roads_area_text_name
@@ -1572,7 +1572,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-          (SELECT way, way_area/(!pixel_width!*!pixel_height!) AS way_pixels,
+          (SELECT way, way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
               COALESCE('landuse_' || landuse, 'natural_' || "natural", 'boundary_' || boundary) AS feature,
               name,
               way_area,
@@ -1598,7 +1598,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            way_area/(!pixel_width!*!pixel_height!) AS way_pixels,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
             COALESCE(
               'aeroway_' || aeroway,
               'shop_' || CASE WHEN shop IN ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle', 'mall') THEN shop WHEN NOT shop IS NULL THEN 'other' ELSE NULL END,
@@ -1704,7 +1704,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT name, way, way_area/(!pixel_width!*!pixel_height!) AS way_pixels
+        (SELECT name, way, way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
         FROM planet_osm_polygon
         WHERE building IS NOT NULL AND building NOT IN ('no', 'station', 'supermarket')
         ORDER BY way_area DESC
@@ -1811,7 +1811,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT way, name, way_area/(!pixel_width!*!pixel_height!) AS way_pixels
+        (SELECT way, name, way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon WHERE "boundary" = 'national_park' OR leisure = 'nature_reserve') AS nature_reserve_text
     properties:
       minzoom: 13
