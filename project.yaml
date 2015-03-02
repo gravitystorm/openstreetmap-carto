@@ -605,22 +605,6 @@ Layer:
     properties:
       minzoom: 16
     advanced: {}
-  - id: "tree-row"
-    name: "tree-row"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,"natural"
-          FROM planet_osm_line
-          WHERE "natural" = 'tree_row'
-        ) AS tree_row
-    properties:
-      minzoom: 16
-    advanced: {}
   - id: "ferry-routes"
     name: "ferry-routes"
     class: ""
@@ -1315,6 +1299,27 @@ Layer:
               ) AS stations_poly
     properties:
       minzoom: 12
+    advanced: {}
+  - id: "trees"
+    name: "trees"
+    class: ""
+    geometry: "polygon"
+    <<: *extents
+    Datasource: 
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way, "natural"
+          FROM planet_osm_point
+          WHERE "natural" = 'tree'
+        UNION ALL
+        SELECT
+            way, "natural"
+          FROM planet_osm_line
+          WHERE "natural" = 'tree_row'
+        ) AS trees
+    properties:
+      minzoom: 16
     advanced: {}
   - id: "amenity-points-poly"
     name: "amenity-points-poly"

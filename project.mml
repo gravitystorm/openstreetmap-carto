@@ -689,32 +689,6 @@
       "advanced": {}
     },
     {
-      "name": "tree-row",
-      "srs-name": "900913",
-      "geometry": "linestring",
-      "class": "",
-      "id": "tree-row",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "Datasource": {
-        "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\"natural\"\n  FROM planet_osm_line\n  WHERE \"natural\" = 'tree_row'\n) AS tree_row",
-        "geometry_field": "way",
-        "type": "postgis",
-        "key_field": "",
-        "dbname": "gis"
-      },
-      "extent": [
-        -180,
-        -85.05112877980659,
-        180,
-        85.05112877980659
-      ],
-      "properties": {
-        "minzoom": 16
-      },
-      "advanced": {}
-    },
-    {
       "name": "ferry-routes",
       "srs-name": "900913",
       "geometry": "linestring",
@@ -1390,6 +1364,32 @@
       ],
       "properties": {
         "minzoom": 12
+      },
+      "advanced": {}
+    },
+    {
+      "name": "trees",
+      "srs-name": "900913",
+      "geometry": "polygon",
+      "class": "",
+      "id": "trees",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508",
+        "table": "(SELECT\n    way, \"natural\"\n  FROM planet_osm_point\n  WHERE \"natural\" = 'tree'\nUNION ALL\nSELECT\n    way, \"natural\"\n  FROM planet_osm_line\n  WHERE \"natural\" = 'tree_row'\n) AS trees",
+        "geometry_field": "way",
+        "type": "postgis",
+        "key_field": "",
+        "dbname": "gis"
+      },
+      "extent": [
+        -180,
+        -85.05112877980659,
+        180,
+        85.05112877980659
+      ],
+      "properties": {
+        "minzoom": 16
       },
       "advanced": {}
     },
