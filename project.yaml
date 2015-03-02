@@ -1233,7 +1233,7 @@ Layer:
       table: |2-
         (SELECT way, place, name, ref
                FROM planet_osm_point
-               WHERE place IN ('city', 'town') AND capital = 'yes'
+               WHERE place IN ('city', 'town') AND (capital = 'yes' OR capital = '4')
               ) AS placenames_capital
     properties:
       minzoom: 5
@@ -1250,7 +1250,7 @@ Layer:
         (SELECT way, place, name
               FROM planet_osm_point
               WHERE place IN ('city', 'town')
-                AND (capital IS NULL OR capital != 'yes')
+                AND (capital IS NULL OR (capital != 'yes' AND capital != '4'))
               ) AS placenames_medium
     properties:
       minzoom: 6
