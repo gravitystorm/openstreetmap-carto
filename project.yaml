@@ -1719,10 +1719,12 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way
-        FROM planet_osm_line
-        WHERE "addr:interpolation" IS NOT NULL) AS interpolation
+      table: |-
+        (SELECT
+            way
+          FROM planet_osm_line
+          WHERE "addr:interpolation" IS NOT NULL
+        ) AS interpolation
     properties:
       minzoom: 17
     advanced: {}
