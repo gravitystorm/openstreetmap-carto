@@ -1719,10 +1719,12 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way
-        FROM planet_osm_line
-        WHERE "addr:interpolation" IS NOT NULL) AS interpolation
+      table: |-
+        (SELECT
+            way
+          FROM planet_osm_line
+          WHERE "addr:interpolation" IS NOT NULL
+        ) AS interpolation
     properties:
       minzoom: 17
     advanced: {}
@@ -1733,12 +1735,23 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-              (SELECT way,"addr:housenumber", way_area FROM planet_osm_polygon WHERE "addr:housenumber" IS NOT NULL AND building IS NOT NULL
-               UNION
-               SELECT way,"addr:housenumber", NULL AS way_area FROM planet_osm_point WHERE "addr:housenumber" IS NOT NULL
-               ORDER BY way_area DESC
-              ) AS housenumbers
+      table: |-
+        (SELECT
+            way,
+            "addr:housenumber",
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+          FROM planet_osm_polygon
+          WHERE "addr:housenumber" IS NOT NULL
+            AND building IS NOT NULL
+        UNION ALL
+        SELECT
+            way,
+            "addr:housenumber",
+            NULL AS way_pixels
+          FROM planet_osm_point
+          WHERE "addr:housenumber" IS NOT NULL
+          ORDER BY way_pixels DESC NULLS LAST
+        ) AS housenumbers
     properties:
       minzoom: 17
     advanced: {}
@@ -1749,12 +1762,22 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way,"addr:housename", way_area FROM planet_osm_polygon WHERE "addr:housename" IS NOT NULL AND building IS NOT NULL
-               UNION
-               SELECT way,"addr:housename", NULL AS way_area FROM planet_osm_point WHERE "addr:housename" IS NOT NULL
-               ORDER BY way_area DESC
-              ) AS housenames
+      table: |-
+        (SELECT
+            way,
+            "addr:housename",
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+          FROM planet_osm_polygon
+          WHERE "addr:housename" IS NOT NULL
+            AND building IS NOT NULL
+        UNION ALL
+        SELECT
+            way,
+            "addr:housename",
+            NULL AS way_pixels
+          FROM planet_osm_point WHERE "addr:housename" IS NOT NULL
+        ORDER BY way_pixels DESC NULLS LAST
+        ) AS housenames
     properties:
       minzoom: 17
     advanced: {}
