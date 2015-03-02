@@ -586,8 +586,8 @@
 }
 
 #tourism-boundary {
-  [tourism = 'zoo'][zoom >= 13],
-  [tourism = 'theme_park'][zoom >= 13] {
+  [tourism = 'zoo'][zoom >= 10],
+  [tourism = 'theme_park'][zoom >= 10] {
     a/line-width: 1;
     a/line-offset: -0.5;
     a/line-color: @tourism;

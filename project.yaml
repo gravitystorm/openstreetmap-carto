@@ -1333,7 +1333,7 @@ Layer:
       table: |2-
         (SELECT way, name, tourism FROM planet_osm_polygon WHERE tourism = 'theme_park' OR tourism = 'zoo') AS tourism_boundary
     properties:
-      minzoom: 13
+      minzoom: 10
     advanced: {}
   - id: "placenames-large"
     name: "placenames-large"

@@ -1206,7 +1206,7 @@
         85.05112877980659
       ],
       "properties": {
-        "minzoom": 13
+        "minzoom": 10
       },
       "advanced": {}
     },
