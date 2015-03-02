@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 scripts/yaml2mml.py < project.yaml > project.mml2 && diff -q project.mml project.mml2
 exitcode=$?
 
