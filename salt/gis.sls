@@ -1,4 +1,9 @@
-# get the software packages installed
+# State for configuring the packages and requirements for PostGIS locally.
+# Configures a very basic setup with increased memory for postgresql,
+# along with software needed for importing OpenStreetMap data.
+
+
+# Install basic tools that are useful to have for installing this and that.
 base:
   pkg.installed:
     - install_recommends: false
@@ -22,22 +27,20 @@ gis:
       - postgresql-contrib-9.3
       - proj-bin
       - libgeos-dev
-  # Let's make it easy for our GIS-in-aid software to access our PostGIS database
-  file.blockreplace:
-    - name: /etc/postgresql/9.3/main/pg_hba.conf
-    - marker_start: "# TYPE  DATABASE"
-    - marker_end: '# "local" is'
-    - content: "local   all             gisuser                                 trust"
+  # Making sure the postresql service is running, and that it's restarted
+  # when changes to the configuration are processed. Requires gis beforehand.
   service:
     - name: postgresql
     - running
     - watch:
-      - file: postgresql.conf.work_mem
-      - file: postgresql.conf.maintenance_work_mem
+      - file: postgis-postgresql.conf
       - file: gis
     - require:
       - pkg: gis
       - file: gis
+  user.present:
+    - name: gisuser
+    - empty_password: True
   postgres_user.present:
     - name: gisuser
     - superuser: true
@@ -68,18 +71,30 @@ postgis:
 
 # Conservative tweaks to PostgreSQL conf, based on 
 # "Loading OSM data" located at switch2osm.org.
-# TODO: figure out if it's possible to get rid of the other ID, so I can sleep better at night.
-postgresql.conf.work_mem:
-  file.replace:
-    - name: /etc/postgresql/9.3/main/postgresql.conf
-    - pattern: "#work_mem = 1MB"
-    - repl: "work_mem = 16MB"
+# Create the folder for our configuration (and any others you'd like) to go in
+postgresql.conf.d:
+  file.directory:
+    - name: /etc/postgresql/9.3/main/conf.d/
 
-postgresql.conf.maintenance_work_mem:
-  file.replace:
+# Configure work memory and maintenance work memory
+postgis-postgresql.conf:
+  file.managed:
+    - name: /etc/postgresql/9.3/main/conf.d/postgis-postgresql.conf
+    - content: |
+        # Configure the work memory
+        work_mem = 16MB
+        # Configure the maintenance work memory
+        maintenance_work_mem = 128MB
+    - require:
+      - file: postgresql.conf.d
+
+# Configure postgresql to load .conf files within directory conf.d.
+postgresql.conf:
+  file.append:
     - name: /etc/postgresql/9.3/main/postgresql.conf
-    - pattern: "#maintenance_work_mem = 16MB"
-    - repl: "maintenance_work_mem = 128MB"
+    - text: "include_dir 'conf.d'"
+    - require:
+      - file: postgis-postgresql.conf
 
 # Configure the system to allow overcommitting
 sysctl.overcommit:
@@ -119,7 +134,7 @@ gis.shapefiles:
     # run/download/generate shapefiles for the style
     - name: /srv/openstreetmap-carto/get-shapefiles.sh
     - cwd: /srv/openstreetmap-carto
-    #- unless: "test -d /srv/openstreetmap-carto/data/"
+    - unless: "test -d /srv/openstreetmap-carto/data/"
     # Experimental setting: different VT, allows for instant output within salt logs.
     - use_vt: true
     # We'll be needing these if we are to run get-shapefiles.sh

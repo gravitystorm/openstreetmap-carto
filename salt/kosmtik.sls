@@ -2,9 +2,7 @@
 # improving the OpenStreetMap CartoCSS implementation and style.
 
 
-# A whole bunch of libraries that we'll need, plus a bunch
-# of extra fonts.
-# TODO: fill in exact requirements
+# A whole bunch of libraries that we'll need, plus a bunch of extra fornts.
 package-requirements:
   pkg.installed:
     - install_recommends: false
@@ -26,20 +24,15 @@ package-requirements:
 
 # nodejs is what kosmtik runs on
 nodejs:
-  pkgrepo.managed:
-    - humanname: NodeSource node.js
-    - name: deb https://deb.nodesource.com/node/ trusty main
-    - dist: trusty
-    - file: /etc/apt/sources.list.d/nodesource.list
-    - key_url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
   pkg.latest:
-    - pkgs:
-      - nodejs
     - install_recommends: false
     - refresh: true
 
 # Getting kosmtik from github, latest version
 kosmtik:
+  user.present:
+    - name: gisuser
+    - empty_password: True
   git.latest:
     - rev: master
     - name: https://github.com/kosmtik/kosmtik.git
@@ -52,25 +45,37 @@ kosmtik:
     - require:
       - pkg: nodejs
       - git: kosmtik
-  # localconfig.json -- can be edited, is stored in the home directory
+  # localconfig.json -- can be edited via the salt.pillar() function in 
+  # the Vagrantfile. By default it'll connect locally over Unix sockets,
+  # but you can override this to use a remote database over TCP/IP.
   file.managed:
-    - name: /root/localconfig.json
+    - name: /home/gisuser/localconfig.json
     - contents: |
         [
           { 
             "where": "Layer",
             "if": {
-              "Datasource.type": "postgis"
+              "Datasource.type": "postgis",
+              "Datasource.dbname": "gis"
             },
             "then": {
-              "Datasource.dbname": "gis",
-              "Datasource.password": "",
-              "Datasource.user": "gisuser",
-              "Datasource.host": ""
+              "Datasource.dbname": "{{ salt['pillar.get']('kosmtik:source:dbname', 'gis') }}",
+              "Datasource.password": "{{ salt['pillar.get']('kosmtik:source:password', '') }}",
+              "Datasource.user": "{{ salt['pillar.get']('kosmtik:source:user', 'gisuser') }}",
+              "Datasource.host": "{{ salt['pillar.get']('kosmtik:source:host', '') }}"
             }
           }
         ]
+    - require:
+      - user: gisuser
 
+# Only recommended on your local machine
+# -- Do not do in production environments!
+/usr/local/kosmtik/:
+  file.directory:
+    - mode: 0777
+
+# Configure kosmtik upstart service
 /etc/init/kosmtik.conf:
   file.managed:
     - contents: |
@@ -78,29 +83,30 @@ kosmtik:
         author "Thor M. K. H. <thor@roht.no>"
         start on started postgresql
         stop on runlevel [016]
-        env HOME=/root/
+        env HOME=/home/gisuser/
+        setuid gisuser
         chdir /usr/local/kosmtik
-        exec node index.js serve /srv/openstreetmap-carto/project.yaml --host=0.0.0.0 --localconfig /root/localconfig.json
+        exec node index.js serve /srv/openstreetmap-carto/project.yaml --host=0.0.0.0 --localconfig /home/user/gisuser/localconfig.json
   service.running:
     - name: kosmtik
     - require:
       - file: /etc/init/kosmtik.conf
 
-
-/root/.config/:
+# Create .config folder to ensure kosmtik won't fail on plugin install
+/home/gisuser/.config/:
   file.directory:
-    - user: root
+    - user: gituser
 
 {% for plugin in salt['pillar.get']('kosmtik:plugins', {}) %}
 {{ plugin }}:
   cmd.run:
     - name: node index.js plugins --install {{ plugin }}
-    - user: root
+    - user: gisuser
     - cwd: {{ salt['pillar.get']('kosmtik.path', '/usr/local/kosmtik') }}
     - creates: /usr/local/kosmtik/node_modules/{{ plugin }}/package.json
     - require:
       - npm: kosmtik
-      - file: /root/.config/
+      - file: kosmtik
     - require_in:
       - service: /etc/init/kosmtik.conf
 {% endfor %}
