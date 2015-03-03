@@ -134,7 +134,8 @@ gis.shapefiles:
     # run/download/generate shapefiles for the style
     - name: /srv/openstreetmap-carto/get-shapefiles.sh
     - cwd: /srv/openstreetmap-carto
-    - unless: "test -d /srv/openstreetmap-carto/data/"
+    # Checks the index time for the land_polygons.index to see if shapefiles should run again
+    - unless: "test `find /srv/openstreetmap-carto/data/land-polygons-split-3857/land_polygons.index -mmin +1440 -exec echo 1`"
     # Experimental setting: different VT, allows for instant output within salt logs.
     - use_vt: true
     # We'll be needing these if we are to run get-shapefiles.sh
