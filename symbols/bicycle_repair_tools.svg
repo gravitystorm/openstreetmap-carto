@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   height="575"
+   width="575"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="16.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   sodipodi:modified="TRUE"
+   inkscape:export-filename="/home/uwe/Desktop/Zeichen_237.png"
+   inkscape:export-xdpi="4.2362185"
+   inkscape:export-ydpi="4.2362185">
+  <title
+     id="title68846">Bicycle repair station</title>
+  <metadata
+     id="metadata13">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Bicycle repair station</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Bryce Nesbitt</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Unrestricted</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:description>Wrench plus bicycle symbol</dc:description>
+        <dc:contributor>
+          <cc:Agent>
+            <dc:title>BeaOriginal</dc:title>
+          </cc:Agent>
+        </dc:contributor>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs11" />
+  <sodipodi:namedview
+     inkscape:window-height="988"
+     inkscape:window-width="1680"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     inkscape:zoom="1.1172287"
+     inkscape:cx="457.44214"
+     inkscape:cy="226.1412"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:current-layer="svg2"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2988"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true"
+       originx="0px"
+       originy="-8.609891e-005px" />
+  </sodipodi:namedview>
+  <rect
+     style="fill:#ffffff;fill-opacity:1;stroke:#0078ff;stroke-width:0.98967296;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     id="rect2990"
+     width="574.01031"
+     height="574.01031"
+     x="0.49483648"
+     y="0.49483648" />
+  <g
+     id="g3138"
+     transform="matrix(0.98757845,0,0,1,-171.61601,7.0110373)"
+     inkscape:export-xdpi="4.2362185"
+     inkscape:export-ydpi="4.2362185">
+    <circle
+       transform="matrix(0.612193,0,0,0.612193,156.40859,178.29391)"
+       r="161"
+       cy="409"
+       cx="215"
+       style="fill:none;stroke:#000000;stroke-width:40px;stroke-opacity:1"
+       id="FrontWheel"
+       sodipodi:cx="215"
+       sodipodi:cy="409"
+       sodipodi:rx="161"
+       sodipodi:ry="161"
+       d="m 376,409 c 0,88.91784 -72.08216,161 -161,161 -88.91784,0 -161,-72.08216 -161,-161 0,-88.91784 72.08216,-161 161,-161 88.91784,0 161,72.08216 161,161 z" />
+    <circle
+       transform="matrix(0.612193,0,0,0.612193,156.40859,178.29391)"
+       r="161"
+       cy="406"
+       cx="790"
+       style="fill:none;stroke:#000000;stroke-width:40px;stroke-opacity:1"
+       id="RearWheel"
+       sodipodi:cx="790"
+       sodipodi:cy="406"
+       sodipodi:rx="161"
+       sodipodi:ry="161"
+       d="m 951,406 c 0,88.91784 -72.08216,161 -161,161 -88.91784,0 -161,-72.08216 -161,-161 0,-88.91784 72.08216,-161 161,-161 88.91784,0 161,72.08216 161,161 z" />
+    <path
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.61219299;stroke-opacity:1"
+       id="Frame"
+       d="m 419.33591,187.76277 c -81.15626,0.791 -67.39292,-8.38456 -111.05594,131.93826 -35.56995,112.11783 -31.69552,99.89097 -31.88155,107.75543 -0.13037,6.10982 4.80163,10.95404 10.99923,11.36869 12.88887,-1.30322 7.46752,1.39395 52.15306,-137.36977 163.27931,172.24394 102.021,144.31296 189.89195,147.81092 115.48553,-1.10739 124.87203,6.01158 126.24309,-10.91575 -0.1582,-5.74792 -2.84759,-9.17557 -82.10546,-185.56784 l 7.59356,-20.88232 26.1029,-0.4746 -0.9492,-21.83151 -97.2926,0 c -8.5955,11.75949 3.48039,11.70675 46.98521,21.35692 l -7.59357,21.3569 -194.11061,0.47461 c 13.07781,-45.66688 5.69518,-42.8193 64.54534,-42.71383 l 0.47459,-22.30611 z m -70.62884,88.427 189.94107,-0.33678 -54.89431,147.50742 -135.04676,-147.17064 z m 212.84176,8.75614 -53.88399,141.44548 117.87123,0.33677 -63.98724,-141.78225 z"
+       inkscape:connector-curvature="0" />
+  </g>
+  <g
+     id="Layer_2"
+     transform="matrix(0,-1.6091568,1.6672138,0,-129.48538,524.0285)">
+    <path
+       d="m 230.667,88 5,42 20,6.333 18,-11 -6.333,-43 c 0,0 36.667,11 39.667,37.333 0,0 3.999,23 -10.334,34 l -10.999,10 c 0,0 -14,10.667 -10.667,34 v 204 l -0.333,7.667 c 0,0 1,9 -9,9.333 h -19 c 0,0 -10,1.667 -11.667,-12.333 V 185.999 c 0,0 1.333,-12.333 -8.333,-18.333 l -12.333,-10 c 0,0 -21.333,-16.334 -7.333,-45.667 -0.001,0 4.999,-13.999 23.665,-23.999 z"
+       id="path68800"
+       inkscape:connector-curvature="0"
+       style="fill:#1e1916" />
+  </g>
+</svg>

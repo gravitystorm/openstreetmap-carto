@@ -24,6 +24,11 @@
     point-placement: interior;
   }
 
+  [amenity = 'bicycle_repair_station'][zoom >= 17]::amenity {
+    point-file: url('symbols/bicycle_repair_tools.svg');
+    point-placement: interior;
+  }
+
   [amenity = 'bicycle_rental'][zoom >= 17]::amenity {
     point-file: url('symbols/rental_bicycle.p.20.png');
     point-placement: interior;
