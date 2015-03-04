@@ -1307,6 +1307,7 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
           background/line-cap: round;
           background/line-join: round;
           background/line-width: @steps-width-z15 + 2 * @paths-background-width;
+          background/line-opacity: 0.4;
         }
         line/line-color: @steps-fill;
         line/line-dasharray: 2,1;
@@ -1324,6 +1325,7 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
           background/line-cap: round;
           background/line-join: round;
           background/line-width: @bridleway-width-z15 + 2 * @paths-background-width;
+          background/line-opacity: 0.4;
         }
         line/line-color: @bridleway-fill;
         line/line-dasharray: 4,2;
@@ -1388,6 +1390,7 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
           background/line-cap: round;
           background/line-join: round;
           background/line-width: @path-width-z15 + 2 * @paths-background-width;
+          background/line-opacity: 0.4;
         }
         line/line-color: @path-fill;
         line/line-dasharray: 6,3;
