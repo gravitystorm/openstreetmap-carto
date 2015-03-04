@@ -179,12 +179,12 @@
     point-placement: interior;
   }
 
-  [feature = 'amenity_courthouse'][zoom > 16] {
+  [feature = 'amenity_courthouse'][zoom >= 17] {
     point-file: url('symbols/amenity_court.p.20.png');
     point-placement: interior;
   }
 
-  [feature = 'amenity_townhall'][zoom > 16] {
+  [feature = 'amenity_townhall'][zoom >= 17] {
     marker-file: url('symbols/town_hall.16.svg');
     marker-fill: #734a08;
     marker-placement: interior;
