@@ -2369,7 +2369,8 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
 }
 
 #roads-area-text-name {
-  [way_pixels > 3000] {
+  [way_pixels > 3000],
+  [zoom >= 17] {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 8;
