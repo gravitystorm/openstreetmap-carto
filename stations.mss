@@ -11,6 +11,7 @@
     marker-placement: interior;
     marker-fill: @station-color;
     marker-width: 4;
+    marker-clip: false;
     [zoom >= 13] {
       marker-width: 6;
     }
@@ -39,6 +40,7 @@
       marker-placement: interior;
       marker-fill: @station-color;
       marker-width: 4;
+      marker-clip: false;
     }
     [zoom >= 15] {
       marker-width: 6;
