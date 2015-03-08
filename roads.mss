@@ -961,7 +961,11 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
           b/line-width: 7;
           b/line-dasharray: 8,6;
         }
-        [construction = 'cycleway'] {
+        [construction = 'footway'],
+        [construction = 'cycleway'],
+        [construction = 'bridleway'],
+        [construction = 'path'],
+        [construction = 'track'] {
           [zoom < 14] {
             line-width: 0;
             b/line-width: 0;
@@ -2289,7 +2293,8 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
   [highway = 'construction'] {
-    [zoom >= 13] {
+    [int_construction_minor = 'no'][zoom >= 13],
+    [int_construction_minor = 'yes'][zoom >= 14] {
       text-name: "[name]";
       text-size: 9;
       text-fill: black;
@@ -2298,9 +2303,9 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
       text-placement: line;
       text-halo-radius: 1;
       text-face-name: @book-fonts;
-    }
-    [zoom >= 17] {
-      text-size: 11;
+      [zoom >= 17] {
+        text-size: 11;
+      }
     }
   }
   [highway = 'residential'],
