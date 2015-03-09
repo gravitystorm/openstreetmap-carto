@@ -236,6 +236,16 @@
     }
   }
 
+  [feature = 'amenity_bicycle_parking'] {
+    [zoom >= 18],
+    [way_pixels > 750] {
+      marker-file: url('symbols/bicycle_parking.18.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @transportation-icon;
+    }
+  }
+
   [feature = 'amenity_pharmacy'][zoom >= 17] {
     marker-file: url('symbols/pharmacy.16.svg');
     marker-fill: @health-color;

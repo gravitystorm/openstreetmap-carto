@@ -142,7 +142,7 @@ Layer:
           FROM (SELECT 
               way, COALESCE(name, '') AS name, 
               ('aeroway_' || (CASE WHEN aeroway IN ('apron', 'aerodrome') THEN aeroway ELSE NULL END)) AS aeroway,
-              ('amenity_' || (CASE WHEN amenity IN ('parking', 'university', 'college', 'school', 'hospital', 'kindergarten', 'grave_yard', 'prison', 'place_of_worship') THEN amenity ELSE NULL END)) AS amenity,
+              ('amenity_' || (CASE WHEN amenity IN ('parking', 'bicycle_parking', 'university', 'college', 'school', 'hospital', 'kindergarten', 'grave_yard', 'prison', 'place_of_worship') THEN amenity ELSE NULL END)) AS amenity,
               ('landuse_' || (CASE WHEN landuse IN ('quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farm', 'farmland', 'recreation_ground', 'conservation', 'village_green', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'construction') THEN landuse ELSE NULL END)) AS landuse,
               ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'golf_course', 'miniature_golf', 'picnic_table', 'sports_centre', 'stadium', 'pitch', 'track') THEN leisure ELSE NULL END)) AS leisure,
               ('military_' || (CASE WHEN military IN ('danger_area') THEN military ELSE NULL END)) AS military,
@@ -157,7 +157,7 @@ Layer:
             WHERE (landuse IS NOT NULL
               OR leisure IS NOT NULL
               OR aeroway IN ('apron', 'aerodrome')
-              OR amenity IN ('parking', 'university', 'college', 'school', 'hospital', 'kindergarten', 'grave_yard', 'place_of_worship', 'prison')
+              OR amenity IN ('parking', 'bicycle_parking', 'university', 'college', 'school', 'hospital', 'kindergarten', 'grave_yard', 'place_of_worship', 'prison')
               OR military IN ('danger_area')
               OR "natural" IN ('beach', 'heath', 'mud', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub')
               OR power IN ('station', 'sub_station', 'substation', 'generator')
@@ -1380,7 +1380,8 @@ Layer:
             religion,
             denomination,
             "generator:source",
-            power_source
+            power_source,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
           WHERE aeroway IN ('helipad', 'aerodrome')
@@ -1426,7 +1427,8 @@ Layer:
             religion,
             denomination,
             "generator:source",
-            power_source
+            power_source,
+            NULL AS way_pixels
           FROM planet_osm_point
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
           WHERE aeroway IN ('helipad', 'aerodrome')
