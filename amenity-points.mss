@@ -755,7 +755,7 @@
     [zoom >= 13] {
       text-name: "[name]";
       text-size: 10;
-      [feature = 'natural_peak'] { text-fill: #d08f55; }
+      [feature = 'natural_peak'] { text-fill: darken(#d08f55, 30%); }
       [feature = 'natural_volcano'] { text-fill: #d40000; }
       text-dy: 7;
       text-face-name: @book-fonts;
@@ -769,7 +769,7 @@
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 10;
-      text-fill: #d08f55;
+      text-fill: darken(#d08f55, 30%);
       text-dy: 7;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
