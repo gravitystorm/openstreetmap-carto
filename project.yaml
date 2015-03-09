@@ -384,12 +384,16 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT way, building, amenity, aeroway
+        (SELECT
+            way,
+            building,
+            amenity,
+            aeroway
           FROM planet_osm_polygon
           WHERE (building IS NOT NULL)
             AND building != 'no'
             AND (aeroway = 'terminal' OR amenity = 'place_of_worship')
-          ORDER BY z_order,way_area DESC)
+          ORDER BY z_order, way_area DESC)
         AS buildings_major
     properties:
       minzoom: 12
@@ -1533,9 +1537,9 @@ Layer:
                   way,
                   COALESCE(highway, aeroway) AS highway,
                   string_to_array(ref, ';') AS refs
-              FROM planet_osm_line
-                WHERE (highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential') OR aeroway IN ('runway', 'taxiway'))
-                AND ref IS NOT NULL
+                FROM planet_osm_line
+                  WHERE (highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential') OR aeroway IN ('runway', 'taxiway'))
+                    AND ref IS NOT NULL
               ) AS p) AS q
           WHERE height <= 4 AND width <= 11) AS roads_text_ref
     properties:
