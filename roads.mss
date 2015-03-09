@@ -31,7 +31,7 @@
 @tertiary-casing: #c6c68a;
 @residential-casing: #bbb;
 @service-casing: @residential-casing;
-@living-street-casing: @residential-casing;
+@living-street-casing: #999;
 @pedestrian-casing: @residential-casing;
 @path-casing: @default-casing;
 @footway-casing: @default-casing;
