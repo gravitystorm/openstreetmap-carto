@@ -654,6 +654,7 @@
     [way_pixels > 48000] { text-size: 15; }
     text-face-name: @oblique-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -672,6 +673,7 @@
       text-dy: 11;
       text-face-name: @bold-fonts;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       [feature = 'amenity_bar']{
@@ -692,6 +694,7 @@
       text-dy: 13;
       text-face-name: @bold-fonts;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       [feature = 'amenity_theatre'],
@@ -708,6 +711,7 @@
     text-dy: 9;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
     [access != ''][access != 'public'][access != 'yes'] {
@@ -722,6 +726,7 @@
     text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -733,6 +738,7 @@
     text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -744,6 +750,7 @@
     text-dy: 12;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -775,6 +782,7 @@
       text-dy: 7;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
     }
@@ -788,6 +796,7 @@
       text-dy: 7;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
     }
@@ -800,6 +809,7 @@
     text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -811,6 +821,7 @@
     text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -822,6 +833,7 @@
     text-dy: 15;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -843,6 +855,7 @@
       text-fill: @water-text;
       text-face-name: @oblique-fonts;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
     }
@@ -858,6 +871,7 @@
       text-fill: @mud-text;
       text-face-name: @landcover-face-name;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @landcover-wrap-width-size;
       [way_pixels > 12000] {text-wrap-width: @landcover-wrap-width-size-big; }
       [way_pixels > 48000] {text-wrap-width: @landcover-wrap-width-size-bigger; }
@@ -876,6 +890,7 @@
       text-fill: @wetland-text;
       text-face-name: @landcover-face-name;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @landcover-wrap-width-size;
       [way_pixels > 12000] {text-wrap-width: @landcover-wrap-width-size-big; }
       [way_pixels > 48000] {text-wrap-width: @landcover-wrap-width-size-bigger; }
@@ -893,6 +908,7 @@
       text-fill: @marina-text;
       text-face-name: @landcover-face-name;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @landcover-wrap-width-size;
       [way_pixels > 12000] {text-wrap-width: @landcover-wrap-width-size-big; }
       [way_pixels > 48000] {text-wrap-width: @landcover-wrap-width-size-bigger; }
@@ -960,6 +976,7 @@
       text-fill: darken(@track, 40%);
       text-face-name: @landcover-face-name;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @landcover-wrap-width-size;
       [way_pixels > 12000] {text-wrap-width: @landcover-wrap-width-size-big; }
       [way_pixels > 48000] {text-wrap-width: @landcover-wrap-width-size-bigger; }
@@ -1313,6 +1330,7 @@
     text-fill: #6699cc;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1323,6 +1341,7 @@
     text-fill: #6699cc;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
     text-dy: 6;
@@ -1335,6 +1354,7 @@
     text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1356,6 +1376,7 @@
     text-fill: black;
     text-dy: 12;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
     text-face-name: @book-fonts;
@@ -1372,6 +1393,7 @@
       text-dy: 13;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       [feature = 'tourism_chalet'] {
@@ -1387,6 +1409,7 @@
     text-dy: 10;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1398,6 +1421,7 @@
     text-dy: 10;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1412,6 +1436,7 @@
       text-dy: 11;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       [feature = 'highway_bus_stop'] {
@@ -1427,6 +1452,7 @@
     text-dy: 15;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1457,6 +1483,7 @@
     text-fill: #0066ff;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1467,6 +1494,7 @@
     text-fill: @marina-text;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
     [zoom >= 17] {
@@ -1499,6 +1527,7 @@
     text-fill: #734a08;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1510,6 +1539,7 @@
     text-dy: 12;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1524,6 +1554,7 @@
       text-fill: #660033;
       text-face-name: @book-fonts;
       text-halo-radius: 2;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @landcover-wrap-width-size;
       [way_pixels > 12000] {text-wrap-width: @landcover-wrap-width-size-big; }
       [way_pixels > 48000] {text-wrap-width: @landcover-wrap-width-size-bigger; }
@@ -1593,6 +1624,7 @@
     text-dy: 16;
     text-face-name: @book-fonts;
     text-halo-radius: 2;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1604,6 +1636,7 @@
     text-dy: 12;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1615,6 +1648,7 @@
     text-dy: 10;
     text-face-name: @book-fonts;
     text-halo-radius: 2;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1629,6 +1663,7 @@
       text-fill: @health-color;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
     }
@@ -1653,7 +1688,7 @@
       text-fill: #939;
       text-face-name: @book-fonts;
       text-halo-radius: 1.5;
-      text-halo-fill: rgba(255, 255, 255, 0.8);
+      text-halo-fill: rgba(255, 255, 255, 0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
     }
@@ -1668,7 +1703,7 @@
       text-fill: #939;
       text-face-name: @book-fonts;
       text-halo-radius: 1.5;
-      text-halo-fill: rgba(255, 255, 255, 0.8);
+      text-halo-fill: rgba(255, 255, 255, 0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
     }
@@ -1716,6 +1751,7 @@
     text-fill: #aa66cc;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1933,6 +1969,7 @@
     text-dy: -10;
     text-face-name: @bold-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-placement: interior;
     text-wrap-width: 30;
   }
@@ -1944,6 +1981,7 @@
     text-dy: -10;
     text-face-name: @oblique-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-placement: interior;
     text-wrap-width: 30;
   }

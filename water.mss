@@ -223,6 +223,7 @@
     text-spacing: 400;
     text-size: 10;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     [zoom >= 14] { text-size: 12; }
     [int_tunnel = 'yes'] { text-min-distance: 200; }
   }
@@ -231,6 +232,7 @@
     text-name: "[name]";
     text-face-name: @oblique-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-size: 10;
     text-placement: line;
     text-fill: @water-text;
@@ -242,6 +244,7 @@
     text-face-name: @oblique-fonts;
     text-fill: @water-text;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     text-spacing: 600;
     text-placement: line;
     text-dy: 8;
@@ -257,6 +260,7 @@
       text-spacing: 600;
       text-placement: line;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
     }
   }
 
@@ -267,6 +271,7 @@
     text-placement: line;
     text-face-name: @oblique-fonts;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     [lock = 'yes'][zoom >= 17] {
       text-placement: point;
       text-wrap-width: 20;
@@ -281,6 +286,7 @@
     text-placement: line;
     text-spacing: 600;
     text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
     [zoom >= 14] {
       text-size: 12;
     }
