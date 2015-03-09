@@ -1101,13 +1101,15 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way, admin_level
-               FROM planet_osm_roads
-               WHERE "boundary" = 'administrative'
-                 AND admin_level IN ('0', '1', '2', '3', '4')
-               ORDER BY admin_level DESC
-               ) AS admin_low_zoom
+      table: |-
+        (SELECT
+            way,
+            admin_level
+          FROM planet_osm_roads
+          WHERE "boundary" = 'administrative'
+            AND admin_level IN ('0', '1', '2', '3', '4')
+          ORDER BY admin_level DESC
+        ) AS admin_low_zoom
     properties:
       maxzoom: 10
     advanced: {}
@@ -1118,13 +1120,15 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way, admin_level
-               FROM planet_osm_roads
-               WHERE "boundary" = 'administrative'
-                 AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')
-               ORDER BY admin_level DESC
-               ) AS admin_mid_zoom
+      table: |-
+        (SELECT
+            way,
+            admin_level
+          FROM planet_osm_roads
+          WHERE "boundary" = 'administrative'
+            AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')
+          ORDER BY admin_level DESC
+        ) AS admin_mid_zoom
     properties:
       minzoom: 11
       maxzoom: 12
@@ -1136,13 +1140,15 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way, admin_level
-               FROM planet_osm_roads
-               WHERE "boundary" = 'administrative'
-                 AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
-               ORDER BY admin_level DESC
-               ) AS admin_high_zoom
+      table: |-
+        (SELECT
+            way,
+            admin_level
+          FROM planet_osm_roads
+          WHERE "boundary" = 'administrative'
+            AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
+          ORDER BY admin_level::integer DESC -- With 10 as a valid value, we need to do a numeric ordering, not a text ordering
+        ) AS admin_high_zoom
     properties:
       minzoom: 13
     advanced: {}
@@ -1201,11 +1207,17 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way, way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels, name, ref, admin_level
-               FROM planet_osm_polygon
-               WHERE boundary = 'administrative' AND admin_level IN ('2', '4')
-              ) AS placenames_large
+      table: |-
+        (SELECT
+            way,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            name,
+            ref,
+            admin_level
+          FROM planet_osm_polygon
+          WHERE boundary = 'administrative'
+            AND admin_level IN ('2', '4')
+        ) AS placenames_large
     properties:
       minzoom: 2
     advanced: {}
@@ -1822,8 +1834,15 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way, name, admin_level FROM planet_osm_polygon WHERE "boundary" = 'administrative' AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')) AS admin_text
+      table: |-
+        (SELECT
+            way,
+            name,
+            admin_level
+          FROM planet_osm_polygon
+          WHERE "boundary" = 'administrative'
+            AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
+        ) AS admin_text
     properties:
       minzoom: 16
     advanced: {}
