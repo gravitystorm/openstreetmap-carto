@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="100%"
+   height="100%"
+   viewBox="0 0 18 18"
+   id="svg2">
+  <metadata
+     id="metadata8">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6" />
+  <rect
+     width="18"
+     height="18"
+     x="0"
+     y="0"
+     id="canvas"
+     style="fill:none;stroke:none;visibility:hidden" />
+  <g
+     id="hospital">
+    <path
+       d="M 9,2 C 5.1775118,2 2,5.0888888 2,9 c 0,3.911112 3.1775118,7 7,7 3.822489,0 7,-3.088889 7,-7 C 16,5.0888888 12.822489,2 9,2 z m 0,1.0577778 c 3.389409,0 6.058296,2.7055413 6.058296,5.9422222 0,3.236682 -2.668887,5.942222 -6.058296,5.942222 C 5.6105905,14.942222 2.941704,12.236682 2.941704,9 2.941704,5.7633191 5.6105905,3.0577778 9,3.0577778 z m -2.0089686,0.9644444 0,2.9866667 -3.0134529,0 0,3.9822221 3.0134529,0 0,2.986667 4.0179376,0 0,-2.986667 3.013453,0 0,-3.9822221 -3.013453,0 0,-2.9866667 -4.0179376,0 z"
+       id="halo"
+       style="opacity:0.3;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       d="M 9,2 C 5.177512,2 2,5.0888888 2,9 c 0,3.911112 3.177512,7 7,7 3.822489,0 7,-3.088889 7,-7 C 16,5.0888888 12.822489,2 9,2 z m 0,1.0577778 c 3.389409,0 6.058296,2.7055413 6.058296,5.9422222 0,3.236682 -2.668887,5.942222 -6.058296,5.942222 C 5.610591,14.942222 2.941704,12.236682 2.941704,9 2.941704,5.7633191 5.610591,3.0577778 9,3.0577778 z m -2.008969,0.9644444 0,2.9866667 -3.013452,0 0,3.9822221 3.013452,0 0,2.986667 4.017938,0 0,-2.986667 3.013453,0 0,-3.9822221 -3.013453,0 0,-2.9866667 -4.017938,0 z"
+       id="icon"
+       style="fill:#1a1a1a;fill-opacity:1;stroke:none" />
+  </g>
+</svg>
