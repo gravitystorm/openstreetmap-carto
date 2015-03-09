@@ -943,8 +943,13 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way, aerialway FROM planet_osm_line WHERE aerialway IS NOT NULL) AS aerialways
+      table: |-
+        (SELECT
+            way,
+            aerialway
+          FROM planet_osm_line
+          WHERE aerialway IS NOT NULL
+        ) AS aerialways
     properties:
       minzoom: 12
     advanced: {}
@@ -1289,12 +1294,17 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-              (SELECT way, name, railway, aerialway, disused
-              FROM planet_osm_point
-              WHERE railway IN ('station', 'halt', 'tram_stop', 'subway_entrance')
-                 OR aerialway = 'station'
-              ) AS stations
+      table: |-
+        (SELECT
+            way,
+            name,
+            railway,
+            aerialway,
+            disused
+          FROM planet_osm_point
+          WHERE railway IN ('station', 'halt', 'tram_stop', 'subway_entrance')
+            OR aerialway = 'station'
+        ) AS stations
     properties:
       minzoom: 12
     advanced: {}
@@ -1305,12 +1315,17 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-              (SELECT way, name, railway, aerialway, disused
-              FROM planet_osm_polygon
-              WHERE railway IN ('station', 'halt', 'tram_stop')
-                 OR aerialway = 'station'
-              ) AS stations_poly
+      table: |-
+        (SELECT
+            way,
+            name,
+            railway,
+            aerialway,
+            disused
+        FROM planet_osm_polygon
+        WHERE railway IN ('station', 'halt', 'tram_stop')
+          OR aerialway = 'station'
+        ) AS stations_poly
     properties:
       minzoom: 12
     advanced: {}
