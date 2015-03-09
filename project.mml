@@ -465,7 +465,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT way, building, amenity, aeroway\n  FROM planet_osm_polygon\n  WHERE (building IS NOT NULL)\n    AND building != 'no'\n    AND (aeroway = 'terminal' OR amenity = 'place_of_worship')\n  ORDER BY z_order,way_area DESC)\nAS buildings_major",
+        "table": "(SELECT\n    way,\n    building,\n    amenity,\n    aeroway\n  FROM planet_osm_polygon\n  WHERE (building IS NOT NULL)\n    AND building != 'no'\n    AND (aeroway = 'terminal' OR amenity = 'place_of_worship')\n  ORDER BY z_order, way_area DESC)\nAS buildings_major",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -878,7 +878,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT way, aerialway FROM planet_osm_line WHERE aerialway IS NOT NULL) AS aerialways",
+        "table": "(SELECT\n    way,\n    aerialway\n  FROM planet_osm_line\n  WHERE aerialway IS NOT NULL\n) AS aerialways",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1009,7 +1009,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT way, admin_level\n       FROM planet_osm_roads\n       WHERE \"boundary\" = 'administrative'\n         AND admin_level IN ('0', '1', '2', '3', '4')\n       ORDER BY admin_level DESC\n       ) AS admin_low_zoom",
+        "table": "(SELECT\n    way,\n    admin_level\n  FROM planet_osm_roads\n  WHERE \"boundary\" = 'administrative'\n    AND admin_level IN ('0', '1', '2', '3', '4')\n  ORDER BY admin_level DESC\n) AS admin_low_zoom",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1036,7 +1036,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT way, admin_level\n       FROM planet_osm_roads\n       WHERE \"boundary\" = 'administrative'\n         AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')\n       ORDER BY admin_level DESC\n       ) AS admin_mid_zoom",
+        "table": "(SELECT\n    way,\n    admin_level\n  FROM planet_osm_roads\n  WHERE \"boundary\" = 'administrative'\n    AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')\n  ORDER BY admin_level DESC\n) AS admin_mid_zoom",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1063,7 +1063,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT way, admin_level\n       FROM planet_osm_roads\n       WHERE \"boundary\" = 'administrative'\n         AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')\n       ORDER BY admin_level DESC\n       ) AS admin_high_zoom",
+        "table": "(SELECT\n    way,\n    admin_level\n  FROM planet_osm_roads\n  WHERE \"boundary\" = 'administrative'\n    AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')\n  ORDER BY admin_level::integer DESC -- With 10 as a valid value, we need to do a numeric ordering, not a text ordering\n) AS admin_high_zoom",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1193,7 +1193,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT way, way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels, name, ref, admin_level\n       FROM planet_osm_polygon\n       WHERE boundary = 'administrative' AND admin_level IN ('2', '4')\n      ) AS placenames_large",
+        "table": "(SELECT\n    way,\n    way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,\n    name,\n    ref,\n    admin_level\n  FROM planet_osm_polygon\n  WHERE boundary = 'administrative'\n    AND admin_level IN ('2', '4')\n) AS placenames_large",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1324,7 +1324,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "      (SELECT way, name, railway, aerialway, disused\n      FROM planet_osm_point\n      WHERE railway IN ('station', 'halt', 'tram_stop', 'subway_entrance')\n         OR aerialway = 'station'\n      ) AS stations",
+        "table": "(SELECT\n    way,\n    name,\n    railway,\n    aerialway,\n    disused\n  FROM planet_osm_point\n  WHERE railway IN ('station', 'halt', 'tram_stop', 'subway_entrance')\n    OR aerialway = 'station'\n) AS stations",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1350,7 +1350,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "      (SELECT way, name, railway, aerialway, disused\n      FROM planet_osm_polygon\n      WHERE railway IN ('station', 'halt', 'tram_stop')\n         OR aerialway = 'station'\n      ) AS stations_poly",
+        "table": "(SELECT\n    way,\n    name,\n    railway,\n    aerialway,\n    disused\nFROM planet_osm_polygon\nWHERE railway IN ('station', 'halt', 'tram_stop')\n  OR aerialway = 'station'\n) AS stations_poly",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1559,7 +1559,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT way, highway, height, width, refs FROM\n  (SELECT\n      way, highway,\n      array_length(refs,1) AS height,\n      (SELECT MAX(char_length(ref)) FROM unnest(refs) AS u(ref)) AS width,\n      array_to_string(refs, E'\\n') AS refs\n    FROM (\n      SELECT\n          way,\n          COALESCE(highway, aeroway) AS highway,\n          string_to_array(ref, ';') AS refs\n      FROM planet_osm_line\n        WHERE (highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential') OR aeroway IN ('runway', 'taxiway'))\n        AND ref IS NOT NULL\n      ) AS p) AS q\n  WHERE height <= 4 AND width <= 11) AS roads_text_ref",
+        "table": "(SELECT way, highway, height, width, refs FROM\n  (SELECT\n      way, highway,\n      array_length(refs,1) AS height,\n      (SELECT MAX(char_length(ref)) FROM unnest(refs) AS u(ref)) AS width,\n      array_to_string(refs, E'\\n') AS refs\n    FROM (\n      SELECT\n          way,\n          COALESCE(highway, aeroway) AS highway,\n          string_to_array(ref, ';') AS refs\n        FROM planet_osm_line\n          WHERE (highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential') OR aeroway IN ('runway', 'taxiway'))\n            AND ref IS NOT NULL\n      ) AS p) AS q\n  WHERE height <= 4 AND width <= 11) AS roads_text_ref",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1898,7 +1898,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT way, name, admin_level FROM planet_osm_polygon WHERE \"boundary\" = 'administrative' AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')) AS admin_text",
+        "table": "(SELECT\n    way,\n    name,\n    admin_level\n  FROM planet_osm_polygon\n  WHERE \"boundary\" = 'administrative'\n    AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')\n) AS admin_text",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
