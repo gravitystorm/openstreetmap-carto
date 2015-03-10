@@ -729,6 +729,21 @@
     }
   }
 
+  [feature = 'amenity_bicycle_parking'] {
+    [zoom >= 18],
+    [way_pixels > 750] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: @transportation-text;
+      text-dy: 12;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
+      text-wrap-width: @standard-wrap-width;
+      text-placement: interior;
+    }
+  }
+
   [feature = 'amenity_police'][zoom >= 17] {
     text-name: "[name]";
     text-size: 10;
