@@ -229,6 +229,16 @@
     }
   }
 
+  [feature = 'amenity_bicycle_parking'] {
+    [zoom >= 18],
+    [way_pixels > 750] {
+      marker-file: url('symbols/bicycle_parking.18.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @transportation-icon;
+    }
+  }
+
   [feature = 'amenity_pharmacy'][zoom >= 17] {
     marker-file: url('symbols/pharmacy.16.svg');
     marker-fill: @health-color;
@@ -716,6 +726,21 @@
     text-placement: interior;
     [access != ''][access != 'public'][access != 'yes'] {
       text-fill: #66ccaf;
+    }
+  }
+
+  [feature = 'amenity_bicycle_parking'] {
+    [zoom >= 18],
+    [way_pixels > 750] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: @transportation-text;
+      text-dy: 12;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
+      text-wrap-width: @standard-wrap-width;
+      text-placement: interior;
     }
   }
 
