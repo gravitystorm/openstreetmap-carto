@@ -1897,6 +1897,8 @@ Layer:
               WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'block')
                  OR highway IN ('mini_roundabout')
                  OR railway = 'level_crossing'
+                 OR amenity = 'parking'
+                 OR amenity = 'bicycle_parking'
               ) AS amenity_low_priority
     properties:
       minzoom: 14
@@ -1914,6 +1916,7 @@ Layer:
               WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'block')
                  OR highway IN ('mini_roundabout')
                  OR railway = 'level_crossing'
+                 OR amenity IN ('parking', 'bicycle_parking')
               ) AS amenity_low_priority_poly
     properties:
       minzoom: 14

@@ -457,17 +457,8 @@
     }
   }
 
-  [feature = 'amenity_parking'][zoom >= 10] {
-    polygon-fill: @parking;
-    [zoom >= 15] {
-      line-width: 0.3;
-      line-color: saturate(darken(@parking, 40%), 20%);
-    }
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
-  }
-
-  [feature = 'amenity_bicycle_parking'][zoom >= 13] {
+  [feature = 'amenity_parking'][zoom >= 10],
+  [feature = 'amenity_bicycle_parking'][zoom >= 10] {
     polygon-fill: @parking;
     [zoom >= 15] {
       line-width: 0.3;
