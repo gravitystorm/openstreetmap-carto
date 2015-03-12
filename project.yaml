@@ -138,9 +138,9 @@ Layer:
       table: |-
         (SELECT
             way, name, religion, way_pixels,
-            COALESCE(aeroway, amenity, landuse, leisure, military, "natural", power, tourism, highway, railway) AS feature 
-          FROM (SELECT 
-              way, COALESCE(name, '') AS name, 
+            COALESCE(aeroway, amenity, landuse, leisure, military, "natural", power, tourism, highway, railway) AS feature
+          FROM (SELECT
+              way, COALESCE(name, '') AS name,
               ('aeroway_' || (CASE WHEN aeroway IN ('apron', 'aerodrome') THEN aeroway ELSE NULL END)) AS aeroway,
               ('amenity_' || (CASE WHEN amenity IN ('parking', 'university', 'college', 'school', 'hospital', 'kindergarten', 'grave_yard', 'prison', 'place_of_worship') THEN amenity ELSE NULL END)) AS amenity,
               ('landuse_' || (CASE WHEN landuse IN ('quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farm', 'farmland', 'recreation_ground', 'conservation', 'village_green', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'construction') THEN landuse ELSE NULL END)) AS landuse,
@@ -195,7 +195,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT 
+        (SELECT
             way, waterway, intermittent,
             CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel
           FROM planet_osm_line
@@ -267,7 +267,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT 
+        (SELECT
             way, waterway, lock, name, intermittent,
             CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel,
             'no' AS bridge
@@ -1338,7 +1338,7 @@ Layer:
     class: ""
     geometry: "polygon"
     <<: *extents
-    Datasource: 
+    Datasource:
       <<: *osm2pgsql
       table: |-
         (SELECT
@@ -1385,13 +1385,14 @@ Layer:
             religion,
             denomination,
             "generator:source",
+            "tower:type",
             power_source
           FROM planet_osm_polygon
           WHERE amenity IS NOT NULL
             OR shop IN ('accessories', 'alcohol', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bag', 'bags', 'bakery', 'bathroom_furnishing', 'beauty', 'bed', 'betting', 'beverages', 'bicycle', 'boat', 'bookmaker', 'books', 'boutique', 'builder', 'building_materials', 'butcher', 'camera', 'car', 'car_parts', 'car_repair', 'car_service', 'carpet', 'charity', 'cheese', 'chemist', 'chocolate', 'clothes', 'coffee', 'communication', 'computer', 'confectionery', 'convenience', 'copyshop', 'cosmetics', 'craft', 'curtain', 'dairy', 'deli', 'delicatessen', 'department_store', 'discount', 'dive', 'doityourself', 'dry_cleaning', 'e-cigarette', 'electrical', 'electronics', 'energy', 'erotic', 'estate_agent', 'fabric', 'farm', 'fashion', 'fish', 'fishing', 'fishmonger', 'flooring', 'florist', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'furniture', 'gallery', 'gambling', 'games', 'garden_centre', 'gas', 'general', 'gift', 'glaziery', 'greengrocer', 'grocery', 'hairdresser', 'hardware', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hifi', 'hobby', 'household', 'houseware', 'hunting', 'ice_cream', 'insurance', 'interior_decoration', 'jewellery', 'jewelry', 'kiosk', 'kitchen', 'laundry', 'leather', 'lighting', 'locksmith', 'lottery', 'mall', 'market', 'massage', 'medical', 'medical_supply', 'mobile_phone', 'money_lender', 'motorcycle', 'motorcycle_repair', 'music', 'musical_instrument', 'newsagent', 'office_supplies', 'optician', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'perfumery', 'pet', 'pets', 'pharmacy', 'phone', 'photo', 'photo_studio', 'photography', 'pottery', 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'seafood', 'second_hand', 'sewing', 'shoe_repair', 'shoes', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'stationery', 'supermarket', 'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'toys', 'trade', 'travel_agency', 'tyres', 'vacuum_cleaner', 'variety_store', 'video', 'video_games', 'watches', 'wholesale', 'wine', 'winery', 'yes')
             OR tourism IN ('alpine_hut', 'camp_site', 'picnic_site', 'caravan_site', 'guest_house', 'hostel', 'hotel', 'motel', 'museum', 'viewpoint', 'information', 'chalet')
             OR highway IN ('bus_stop', 'traffic_signals')
-            OR man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill')
+            OR man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill')
             OR historic IN ('memorial', 'archaeological_site')
             OR leisure IN ('water_park', 'playground', 'picnic_table', 'golf_course', 'miniature_golf')
             OR aeroway IN ('aerodrome', 'helipad')
@@ -1433,13 +1434,14 @@ Layer:
             religion,
             denomination,
             "generator:source",
+            "tower:type",
             power_source
           FROM planet_osm_point
           WHERE shop IN ('accessories', 'alcohol', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bag', 'bags', 'bakery', 'bathroom_furnishing', 'beauty', 'bed', 'betting', 'beverages', 'bicycle', 'boat', 'bookmaker', 'books', 'boutique', 'builder', 'building_materials', 'butcher', 'camera', 'car', 'car_parts', 'car_repair', 'car_service', 'carpet', 'charity', 'cheese', 'chemist', 'chocolate', 'clothes', 'coffee', 'communication', 'computer', 'confectionery', 'convenience', 'copyshop', 'cosmetics', 'craft', 'curtain', 'dairy', 'deli', 'delicatessen', 'department_store', 'discount', 'dive', 'doityourself', 'dry_cleaning', 'e-cigarette', 'electrical', 'electronics', 'energy', 'erotic', 'estate_agent', 'fabric', 'farm', 'fashion', 'fish', 'fishing', 'fishmonger', 'flooring', 'florist', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'furniture', 'gallery', 'gambling', 'games', 'garden_centre', 'gas', 'general', 'gift', 'glaziery', 'greengrocer', 'grocery', 'hairdresser', 'hardware', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hifi', 'hobby', 'household', 'houseware', 'hunting', 'ice_cream', 'insurance', 'interior_decoration', 'jewellery', 'jewelry', 'kiosk', 'kitchen', 'laundry', 'leather', 'lighting', 'locksmith', 'lottery', 'mall', 'market', 'massage', 'medical', 'medical_supply', 'mobile_phone', 'money_lender', 'motorcycle', 'motorcycle_repair', 'music', 'musical_instrument', 'newsagent', 'office_supplies', 'optician', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'perfumery', 'pet', 'pets', 'pharmacy', 'phone', 'photo', 'photo_studio', 'photography', 'pottery', 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'seafood', 'second_hand', 'sewing', 'shoe_repair', 'shoes', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'stationery', 'supermarket', 'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'toys', 'trade', 'travel_agency', 'tyres', 'vacuum_cleaner', 'variety_store', 'video', 'video_games', 'watches', 'wholesale', 'wine', 'winery', 'yes')
             OR amenity IS NOT NULL
             OR tourism IN ('alpine_hut', 'picnic_site', 'camp_site', 'caravan_site', 'guest_house', 'hostel', 'hotel', 'motel', 'museum', 'viewpoint', 'information', 'chalet')
             OR highway IN ('bus_stop', 'traffic_signals', 'ford')
-            OR man_made IN ('mast', 'water_tower', 'lighthouse', 'power_wind', 'windmill')
+            OR man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'power_wind', 'windmill')
             OR historic IN ('memorial', 'archaeological_site')
             OR waterway = 'lock'
             OR lock = 'yes'

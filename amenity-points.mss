@@ -205,7 +205,8 @@
     }
   }
 
-  [feature = 'man_made_mast'][zoom >= 17] {
+  [feature = 'man_made_mast'][zoom >= 17],
+  [feature = 'man_made_tower']['tower:type' = 'communication'][zoom >= 17] {
     marker-file: url('symbols/communications.16.svg');
     marker-fill: #555;
     marker-placement: interior;
@@ -2037,15 +2038,15 @@
       trunk/marker-allow-overlap: true;
       trunk/marker-line-width: 0;
       trunk/marker-width: 2;
-      trunk/marker-height: 2;    
+      trunk/marker-height: 2;
     }
     [zoom >= 19] {
       trunk/marker-width: 3;
-      trunk/marker-height: 3;    
+      trunk/marker-height: 3;
     }
     [zoom >= 20] {
       trunk/marker-width: 6;
-      trunk/marker-height: 6;    
+      trunk/marker-height: 6;
     }
   }
 }
