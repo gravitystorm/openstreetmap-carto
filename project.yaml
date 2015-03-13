@@ -1642,7 +1642,7 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      # Include values that are rendered as icon without label to prevent mismatch beween icons and labels,
+      # Include values that are rendered as icon without label to prevent mismatch between icons and labels,
       # see https://github.com/gravitystorm/openstreetmap-carto/pull/1349#issuecomment-77805678
       table: |-
         (SELECT
@@ -1696,7 +1696,7 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      # Include values that are rendered as icon without label to prevent mismatch beween icons and labels,
+      # Include values that are rendered as icon without label to prevent mismatch between icons and labels,
       # see https://github.com/gravitystorm/openstreetmap-carto/pull/1349#issuecomment-77805678
       table: |-
         (SELECT
