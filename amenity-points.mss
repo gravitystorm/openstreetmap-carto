@@ -229,7 +229,7 @@
   [feature = 'amenity_parking'][way_pixels > 900],
   [feature = 'amenity_bicycle_parking'][way_pixels > 900] {
     [feature = 'amenity_bicycle_parking'] {
-      marker-file: url('symbols/bicycle_parking.18.svg');
+      marker-file: url('symbols/bicycle_parking.16.svg');
     }
     [feature = 'amenity_parking'] {
       marker-file: url('symbols/parking.svg');
@@ -613,7 +613,7 @@
   [amenity = 'parking'][zoom >= 17],
   [amenity = 'bicycle_parking'][zoom >= 17] {
     [amenity = 'bicycle_parking'] {
-      marker-file: url('symbols/bicycle_parking.18.svg');
+      marker-file: url('symbols/bicycle_parking.16.svg');
     }
     [amenity = 'parking'] {
       marker-file: url('symbols/parking.svg');
