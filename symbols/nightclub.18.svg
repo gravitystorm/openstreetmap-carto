@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="100%"
+   height="100%"
+   viewBox="0 0 18 18"
+   id="svg2">
+  <metadata
+     id="metadata8">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6" />
+  <rect
+     width="18"
+     height="18"
+     x="0"
+     y="0"
+     id="canvas"
+     style="fill:none;stroke:none;visibility:hidden" />
+  <g
+     id="nightclub">
+    <path
+       d="m 15.006803,2.0030893 -10.0000002,2 0,8.5624997 c -0.385369,-0.06933 -0.7875721,-0.07549 -1.1875,0.03125 -1.1547814,0.308194 -2.0133171,1.387352 -1.78125,2.25 0.2320671,0.862648 1.5014687,1.370694 2.65625,1.0625 1.1547814,-0.308194 1.8125,-1.336236 1.8125,-2.25 l 0,-6.9687497 7.0000002,-1.375 0,5.6249997 c -0.385334,-0.06124 -0.787622,-0.04422 -1.1875,0.0625 -1.154637,0.308156 -2.013061,1.35615 -1.78125,2.21875 0.232265,0.862479 1.501613,1.370655 2.65625,1.0625 1.154637,-0.308156 1.8125,-1.28125 1.8125,-2.28125 z"
+       id="halo"
+       style="opacity:0.3;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    <path
+       d="m 15.006803,2.0030893 -10,2 0,8.5624997 c -0.385369,-0.06933 -0.787572,-0.07549 -1.1875,0.03125 -1.154782,0.308194 -2.013317,1.387352 -1.78125,2.25 0.232067,0.862648 1.501469,1.370694 2.65625,1.0625 1.154781,-0.308194 1.8125,-1.336236 1.8125,-2.25 l 0,-6.9687497 7,-1.375 0,5.6249997 c -0.385334,-0.06124 -0.787622,-0.04422 -1.1875,0.0625 -1.154637,0.308156 -2.013061,1.35615 -1.78125,2.21875 0.232265,0.862479 1.501613,1.370655 2.65625,1.0625 1.154637,-0.308156 1.8125,-1.28125 1.8125,-2.28125 z"
+       id="icon"
+       style="fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:none" />
+  </g>
+</svg>
