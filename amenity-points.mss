@@ -584,9 +584,10 @@
   }
 
   [feature = 'natural_spring'][zoom >= 14] {
-    marker-file: url('symbols/spring.svg');
+    marker-file: url('symbols/spring.16.svg');
     marker-placement: interior;
     marker-clip: false;
+    marker-fill: @water-color;
   }
 
   [feature = 'power_generator']['generator:source' = 'wind'],
