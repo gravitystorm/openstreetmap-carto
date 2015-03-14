@@ -786,7 +786,8 @@
     [zoom >= 13] {
       text-name: "[name]";
       text-size: 10;
-      text-fill: brown;
+      [feature = 'natural_peak'] { text-fill: darken(#d08f55, 30%); }
+      [feature = 'natural_volcano'] { text-fill: #d40000; }
       text-dy: 7;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
@@ -800,7 +801,7 @@
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 10;
-      text-fill: brown;
+      text-fill: darken(#d08f55, 30%);
       text-dy: 7;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
@@ -813,7 +814,7 @@
   [feature = 'natural_cave_entrance'][zoom >= 15] {
     text-name: "[name]";
     text-size: 10;
-    text-fill: brown;
+    text-fill: black;
     text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
@@ -825,7 +826,7 @@
   [feature = 'historic_memorial'][zoom >= 17] {
     text-name: "[name]";
     text-size: 9;
-    text-fill: brown;
+    text-fill: #734a08;
     text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
@@ -837,7 +838,7 @@
   [feature = 'historic_archaeological_site'][zoom >= 17] {
     text-name: "[name]";
     text-size: 9;
-    text-fill: brown;
+    text-fill: #734a08;
     text-dy: 15;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
@@ -1628,7 +1629,7 @@
   [feature = 'man_made_lighthouse'][zoom >= 15] {
     text-name: "[name]";
     text-size: 9;
-    text-fill: #000033;
+    text-fill: #6699cc;
     text-dy: 16;
     text-face-name: @book-fonts;
     text-halo-radius: 2;
