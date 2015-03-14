@@ -7,6 +7,7 @@
 @transportation-text: #0066ff;
 @airtransport: #8461C4;
 @health-color: #da0092;
+@amenity-brown: #734a08;
 
 @landcover-font-size: 10;
 @landcover-font-size-big: 12;
@@ -45,14 +46,14 @@
 
   [feature = 'amenity_bar'][zoom >= 17] {
     marker-file: url('symbols/bar.16.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'amenity_bicycle_rental'][zoom >= 17] {
     marker-file: url('symbols/rental_bicycle.16.svg');
-    marker-fill: #0092da;
+    marker-fill: @transportation-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -85,14 +86,14 @@
 
   [feature = 'amenity_cafe'][zoom >= 17] {
     marker-file: url('symbols/cafe.16.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'tourism_camp_site'][zoom >= 16] {
     marker-file: url('symbols/camping.16.svg');
-    marker-fill: #0092da;
+    marker-fill: @transportation-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -119,28 +120,28 @@
 
   [feature = 'amenity_cinema'][zoom >= 16] {
     marker-file: url('symbols/cinema.16.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'amenity_nightclub'][zoom >= 17] {
     marker-file: url('symbols/nightclub.18.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'amenity_fire_station'][zoom >= 16] {
     marker-file: url('symbols/firestation.16.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'amenity_fuel'][zoom >= 17] {
     marker-file: url('symbols/fuel.16.svg');
-    marker-fill: #0092da;
+    marker-fill: @transportation-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -179,7 +180,7 @@
 
   [feature = 'amenity_embassy'][zoom >= 17] {
     marker-file: url('symbols/embassy.16.svg');
-    marker-fill: #0092da;
+    marker-fill: @transportation-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -196,7 +197,7 @@
 
   [feature = 'amenity_townhall'][zoom >= 16] {
     marker-file: url('symbols/town_hall.16.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -221,7 +222,7 @@
 
   [feature = 'tourism_museum'][zoom >= 16] {
     marker-file: url('symbols/museum.16.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -293,7 +294,7 @@
 
   [feature = 'amenity_police'][zoom >= 16] {
     marker-file: url('symbols/police.16.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -310,21 +311,21 @@
 
   [feature = 'amenity_pub'][zoom >= 17] {
     marker-file: url('symbols/pub.16.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'amenity_biergarten'][zoom >= 17] {
     marker-file: url('symbols/biergarten.16.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'amenity_recycling'][zoom >= 16] {
     marker-file: url('symbols/recycling.16.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
     [access != ''][access != 'yes'] {
@@ -335,14 +336,14 @@
   [feature = 'amenity_restaurant'][zoom >= 17],
   [feature = 'amenity_food_court'][zoom >= 17] {
     marker-file: url('symbols/restaurant.16.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'amenity_fast_food'][zoom >= 17] {
     marker-file: url('symbols/fast_food.16.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -359,28 +360,28 @@
 
   [feature = 'amenity_theatre'][zoom >= 16] {
     marker-file: url('symbols/theatre.16.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'amenity_toilets'][zoom >= 17] {
     marker-file: url('symbols/toilets.16.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'amenity_drinking_water'][zoom >= 17] {
     marker-file: url('symbols/drinking_water.16.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'amenity_prison'][zoom >= 17] {
     marker-file: url('symbols/prison.16.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -397,7 +398,7 @@
 
   [feature = 'historic_memorial'][zoom >= 17] {
     marker-file: url('symbols/tourist_memorial.16.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -501,7 +502,7 @@
 
   [feature = 'leisure_playground'][zoom >= 17] {
     marker-file: url('symbols/playground.16.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
     [access != ''][access != 'yes'] {
@@ -521,14 +522,14 @@
 
   [feature = 'tourism_picnic_site'][zoom >= 16] {
     marker-file: url('symbols/picnic.16.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'leisure_picnic_table'][zoom >= 17] {
     marker-file: url('symbols/picnic.16.svg');
-    marker-fill: #734a08;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -676,7 +677,7 @@
   [feature = 'amenity_nightclub'] {
     [zoom >= 17] {
       text-name: "[name]";
-      text-fill: #734a08;
+      text-fill: @amenity-brown;
       text-size: 10;
       text-dy: 11;
       text-face-name: @bold-fonts;
@@ -698,7 +699,7 @@
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 10;
-      text-fill: #734a08;
+      text-fill: @amenity-brown;
       text-dy: 13;
       text-face-name: @bold-fonts;
       text-halo-radius: 1;
@@ -730,7 +731,7 @@
   [feature = 'amenity_police'][zoom >= 17] {
     text-name: "[name]";
     text-size: 10;
-    text-fill: #734a08;
+    text-fill: @amenity-brown;
     text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
@@ -742,7 +743,7 @@
   [feature = 'amenity_fire_station'][zoom >= 17] {
     text-name: "[name]";
     text-size: 10;
-    text-fill: #734a08;
+    text-fill: @amenity-brown;
     text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
@@ -826,7 +827,7 @@
   [feature = 'historic_memorial'][zoom >= 17] {
     text-name: "[name]";
     text-size: 9;
-    text-fill: #734a08;
+    text-fill: @amenity-brown;
     text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
@@ -838,7 +839,7 @@
   [feature = 'historic_archaeological_site'][zoom >= 17] {
     text-name: "[name]";
     text-size: 9;
-    text-fill: #734a08;
+    text-fill: @amenity-brown;
     text-dy: 15;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
@@ -1533,7 +1534,7 @@
     text-name: "[name]";
     text-size: 10;
     text-dy: 11;
-    text-fill: #734a08;
+    text-fill: @amenity-brown;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
@@ -1544,7 +1545,7 @@
   [feature = 'amenity_prison'][zoom >= 17] {
     text-name: "[name]";
     text-size: 10;
-    text-fill: #734a08;
+    text-fill: @amenity-brown;
     text-dy: 12;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
@@ -1641,7 +1642,7 @@
   [feature = 'man_made_windmill'][zoom >= 17] {
     text-name: "[name]";
     text-size: 9;
-    text-fill: #734a08;
+    text-fill: @amenity-brown;
     text-dy: 12;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
