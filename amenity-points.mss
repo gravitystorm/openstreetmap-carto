@@ -469,9 +469,10 @@
   }
 
   [feature = 'shop_doityourself'][zoom >= 17] {
-    marker-file: url('symbols/shop_diy.p.16.png');
+    marker-file: url('symbols/shop_diy.16.svg');
     marker-placement: interior;
     marker-clip: false;
+    marker-fill: @shop-icon;
   }
 
   [feature = 'shop_florist'][zoom >= 17] {
