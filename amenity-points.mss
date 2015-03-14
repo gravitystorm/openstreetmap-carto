@@ -574,8 +574,10 @@
   }
 
   [feature = 'man_made_lighthouse'][zoom >= 15] {
-    point-file: url('symbols/lighthouse.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/lighthouse.16.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @transportation-icon;
   }
 
   [feature = 'natural_peak'][zoom >= 11] {
