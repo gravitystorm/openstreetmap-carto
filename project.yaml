@@ -214,7 +214,7 @@ Layer:
       table: |-
         (SELECT way, waterway
           FROM planet_osm_line
-          WHERE waterway = 'river'
+          WHERE waterway = 'river' AND (intermittent IS NULL OR intermittent != 'yes')
         ) AS water_lines_low_zoom
     properties:
       minzoom: 8
