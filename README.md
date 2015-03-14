@@ -81,4 +81,4 @@ maps using mapnik, many based on this project. Some alternatives are:
 * Andy Allan [@gravitystorm](https://github.com/gravitystorm/)
 * Matthijs Melissen [@math1985](https://github.com/math1985/)
 * Paul Norman [@pnorman](https://github.com/pnorman/)
-* Mateusz Konieczny [@mkoniecz](https://github.com/mkoniecz/)
+* Mateusz Konieczny [@matkoniecz](https://github.com/mkoniecz/)
