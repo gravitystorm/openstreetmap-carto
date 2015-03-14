@@ -472,9 +472,10 @@
   }
 
   [feature = 'shop_florist'][zoom >= 17] {
-    marker-file: url('symbols/florist.p.16.png');
+    marker-file: url('symbols/florist.16.svg');
     marker-placement: interior;
     marker-clip: false;
+    marker-fill: @shop-icon;
   }
 
   [feature = 'shop_hairdresser'][zoom >= 17] {
