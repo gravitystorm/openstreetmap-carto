@@ -483,9 +483,10 @@
   }
 
   [feature = 'shop_car_repair'][zoom >= 17] {
-    marker-file: url('symbols/shopping_car_repair.p.16.png');
+    marker-file: url('symbols/shopping_car_repair.16.svg');
     marker-placement: interior;
     marker-clip: false;
+    marker-fill: @shop-icon;
   }
 
   [feature = 'shop_bicycle'][zoom >= 17] {
