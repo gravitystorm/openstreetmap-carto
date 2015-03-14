@@ -460,8 +460,9 @@
   }
 
   [feature = 'shop_butcher'][zoom >= 17] {
-    marker-file: url('symbols/shop_butcher.png');
+    marker-file: url('symbols/shop_butcher.16.svg');
     marker-placement: interior;
+    marker-fill: @shop-icon;
     marker-clip: false;
   }
 
