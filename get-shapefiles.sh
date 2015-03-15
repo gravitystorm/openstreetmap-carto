@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e -u
 
-UNZIP_OPTS=-qqun
+UNZIP_OPTS=-qqu
 
 # create and populate data dir
 
