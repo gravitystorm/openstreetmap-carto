@@ -172,8 +172,10 @@
   }
 
   [feature = 'tourism_hotel'][zoom >= 17] {
-    point-file: url('symbols/hotel2.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/hotel.16.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @transportation-icon;
   }
 
   [feature = 'tourism_motel'][zoom >= 17] {
@@ -1418,6 +1420,7 @@
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
+      [feature = 'tourism_hotel'],
       [feature = 'tourism_chalet'] {
         text-dy: 11;
       }
