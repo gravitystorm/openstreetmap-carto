@@ -113,6 +113,13 @@
     point-placement: interior;
   }
 
+  [feature = 'amenity_car_rental'][zoom >= 16] {
+    marker-file: url('symbols/rental_car.16.svg');
+    marker-fill: @transportation-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'tourism_chalet'][zoom >= 17] {
     point-file: url('symbols/chalet.p.16.png');
     point-placement: interior;
@@ -712,6 +719,18 @@
         text-dy: 11;
       }
     }
+  }
+
+  [feature = 'amenity_car_rental'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: @transportation-text;
+    text-dy: 10;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
+    text-wrap-width: @standard-wrap-width;
+    text-placement: interior;
   }
 
   [feature = 'amenity_parking'][zoom >= 17] {
