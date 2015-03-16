@@ -422,7 +422,7 @@ Layer:
                 END AS service,
                 CASE
                   WHEN oneway IN ('yes', '-1') THEN oneway
-                  WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway = 'no') THEN 'yes'
+                  WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
                   ELSE NULL
                 END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
@@ -706,7 +706,7 @@ Layer:
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 CASE
                   WHEN oneway IN ('yes', '-1') THEN oneway
-                  WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway = 'no') THEN 'yes'
+                  WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
                   ELSE NULL
                 END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link,
@@ -835,7 +835,7 @@ Layer:
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 CASE
                   WHEN oneway IN ('yes', '-1') THEN oneway
-                  WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway = 'no') THEN 'yes'
+                  WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
                   ELSE NULL
                 END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link,
@@ -1025,7 +1025,7 @@ Layer:
                 END AS service,
                 CASE
                   WHEN oneway IN ('yes', '-1') THEN oneway
-                  WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway = 'no') THEN 'yes'
+                  WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
                   ELSE NULL
                 END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
