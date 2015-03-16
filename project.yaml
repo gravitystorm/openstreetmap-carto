@@ -428,7 +428,11 @@ Layer:
                   WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
                   ELSE 'INT-normal'::text
                 END AS service,
-                CASE WHEN oneway IN ('yes', '-1') THEN oneway ELSE NULL END AS oneway,
+                CASE
+                  WHEN oneway IN ('yes', '-1') THEN oneway
+                  WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
+                  ELSE NULL
+                END AS oneway,
                 CASE
                   WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
                   ELSE 'no'
@@ -722,7 +726,11 @@ Layer:
                   WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
                   ELSE 'INT-normal'::text
                 END AS service,
-                CASE WHEN oneway IN ('yes', '-1') THEN oneway ELSE NULL END AS oneway,
+                CASE
+                  WHEN oneway IN ('yes', '-1') THEN oneway
+                  WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
+                  ELSE NULL
+                END AS oneway,
                 CASE
                   WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
                   ELSE 'no'
@@ -860,7 +868,11 @@ Layer:
                   END AS access,
                 construction,
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
-                CASE WHEN oneway IN ('yes', '-1') THEN oneway ELSE NULL END AS oneway,
+                CASE
+                  WHEN oneway IN ('yes', '-1') THEN oneway
+                  WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
+                  ELSE NULL
+                END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link,
                 CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
               FROM planet_osm_line
@@ -1050,7 +1062,11 @@ Layer:
                   WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
                   ELSE 'INT-normal'::text
                 END AS service,
-                CASE WHEN oneway IN ('yes', '-1') THEN oneway ELSE NULL END AS oneway,
+                CASE
+                  WHEN oneway IN ('yes', '-1') THEN oneway
+                  WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
+                  ELSE NULL
+                END AS oneway,
                 CASE
                   WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
                   ELSE 'no'
