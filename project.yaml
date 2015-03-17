@@ -253,7 +253,8 @@ Layer:
         (SELECT
             way, "natural"
           FROM planet_osm_polygon
-          WHERE "natural" IN ('marsh', 'wetland') AND building IS NULL
+          WHERE "natural" IN ('marsh', 'wetland')
+            AND building IS NULL
           ORDER BY z_order, way_area DESC
         ) AS water_areas_overlay
     properties:
@@ -367,9 +368,10 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, building
+            way,
+            building
           FROM planet_osm_polygon
-          WHERE (building IS NOT NULL)
+          WHERE building IS NOT NULL
             AND building != 'no'
           ORDER BY z_order, way_area DESC
         ) AS buildings
@@ -390,7 +392,7 @@ Layer:
             amenity,
             aeroway
           FROM planet_osm_polygon
-          WHERE (building IS NOT NULL)
+          WHERE building IS NOT NULL
             AND building != 'no'
             AND (aeroway = 'terminal' OR amenity = 'place_of_worship')
           ORDER BY z_order, way_area DESC)
@@ -578,7 +580,8 @@ Layer:
         (SELECT
             way, landuse, leisure
           FROM planet_osm_polygon
-          WHERE (landuse = 'military') AND building IS NULL
+          WHERE landuse = 'military'
+            AND building IS NULL
         ) AS landuse_overlay
     properties:
       minzoom: 10
@@ -1682,7 +1685,7 @@ Layer:
               'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END
             ) AS feature,
             name,
-            CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
+            CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building -- always no with the where conditions
           FROM planet_osm_polygon
           WHERE (landuse IN ('forest')
               OR "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock')
@@ -1812,11 +1815,15 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT name, way, way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
-        FROM planet_osm_polygon
-        WHERE building IS NOT NULL AND building NOT IN ('no', 'station', 'supermarket')
-        ORDER BY way_area DESC
+      table: |-
+        (SELECT
+            name,
+            way,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+          FROM planet_osm_polygon
+          WHERE building IS NOT NULL
+            AND building NOT IN ('no', 'station', 'supermarket')
+          ORDER BY way_area DESC
         ) AS building_text
     properties:
       minzoom: 14
