@@ -1040,8 +1040,19 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way, waterway, name, intermittent, CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel, 'yes' AS bridge FROM planet_osm_line WHERE waterway IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi') AND bridge IN ('yes', 'aqueduct') ORDER BY z_order) AS waterway_bridges
+      table: |-
+        (SELECT
+            way,
+            waterway,
+            name,
+            intermittent,
+            CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel,
+            'yes' AS bridge
+          FROM planet_osm_line
+          WHERE waterway IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi')
+            AND bridge IN ('yes', 'aqueduct')
+          ORDER BY z_order
+        ) AS waterway_bridges
     properties:
       minzoom: 15
     advanced: {}
@@ -1918,13 +1929,19 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-              (SELECT way, waterway, lock, name, intermittent, CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel
-              FROM planet_osm_line
-              WHERE waterway IN ('weir', 'river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi')
-                AND (tunnel IS NULL or tunnel != 'culvert')
-               ORDER BY z_order
-              ) AS water_lines_text
+      table: |-
+        (SELECT
+            way,
+            waterway,
+            lock,
+            name,
+            intermittent,
+            CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel
+          FROM planet_osm_line
+          WHERE waterway IN ('weir', 'river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi')
+            AND (tunnel IS NULL or tunnel != 'culvert')
+          ORDER BY z_order
+        ) AS water_lines_text
     properties:
       minzoom: 13
     advanced: {}
