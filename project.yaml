@@ -1179,7 +1179,7 @@ Layer:
             way,
             admin_level
           FROM planet_osm_roads
-          WHERE "boundary" = 'administrative'
+          WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4')
           ORDER BY admin_level DESC
         ) AS admin_low_zoom
@@ -1198,7 +1198,7 @@ Layer:
             way,
             admin_level
           FROM planet_osm_roads
-          WHERE "boundary" = 'administrative'
+          WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')
           ORDER BY admin_level DESC
         ) AS admin_mid_zoom
@@ -1218,7 +1218,7 @@ Layer:
             way,
             admin_level
           FROM planet_osm_roads
-          WHERE "boundary" = 'administrative'
+          WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
           ORDER BY admin_level::integer DESC -- With 10 as a valid value, we need to do a numeric ordering, not a text ordering
         ) AS admin_high_zoom
@@ -1256,8 +1256,16 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way, way_area, name, boundary, way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels FROM planet_osm_polygon WHERE (boundary = 'national_park' OR leisure = 'nature_reserve') AND building IS NULL) AS national_park_boundaries
+      table: |-
+        (SELECT
+            way,
+            name,
+            boundary,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+          FROM planet_osm_polygon
+          WHERE (boundary = 'national_park' OR leisure = 'nature_reserve')
+            AND building IS NULL
+        ) AS national_park_boundaries
     properties:
       minzoom: 7
     advanced: {}
@@ -1664,23 +1672,24 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-          (SELECT way, way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
-              COALESCE(
-                'landuse_' || CASE WHEN landuse IN ('forest') THEN landuse ELSE NULL END,
-                'natural_' || CASE WHEN "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock') THEN "natural" ELSE NULL END,
-                'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END
-              ) AS feature,
-              name,
-              way_area,
-              CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
-            FROM planet_osm_polygon
-            WHERE (landuse IN ('forest')
+      table: |-
+        (SELECT
+            way,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            COALESCE(
+              'landuse_' || CASE WHEN landuse IN ('forest') THEN landuse ELSE NULL END,
+              'natural_' || CASE WHEN "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock') THEN "natural" ELSE NULL END,
+              'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END
+            ) AS feature,
+            name,
+            CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
+          FROM planet_osm_polygon
+          WHERE (landuse IN ('forest')
               OR "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock')
               OR boundary IN ('national_park'))
-              AND building IS NULL
-            ORDER BY way_area DESC
-          ) AS text_poly_low_zoom
+            AND building IS NULL
+          ORDER BY way_area DESC
+        ) AS text_poly_low_zoom
     properties:
       minzoom: 7
       maxzoom: 9
@@ -1927,7 +1936,7 @@ Layer:
             name,
             admin_level
           FROM planet_osm_polygon
-          WHERE "boundary" = 'administrative'
+          WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
         ) AS admin_text
     properties:
@@ -1940,9 +1949,14 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way, name, way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
-          FROM planet_osm_polygon WHERE "boundary" = 'national_park' OR leisure = 'nature_reserve') AS nature_reserve_text
+      table: |-
+        (SELECT
+            way,
+            name,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+          FROM planet_osm_polygon
+          WHERE boundary = 'national_park' OR leisure = 'nature_reserve'
+        ) AS nature_reserve_text
     properties:
       minzoom: 13
     advanced: {}
