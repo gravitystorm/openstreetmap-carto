@@ -1326,11 +1326,16 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way, place, name, ref
-               FROM planet_osm_point
-               WHERE place IN ('city', 'town') AND (capital = 'yes' OR capital = '4')
-              ) AS placenames_capital
+      table: |-
+        (SELECT
+            way,
+            place,
+            name,
+            ref
+          FROM planet_osm_point
+          WHERE place IN ('city', 'town')
+            AND capital IN ('yes', '4')
+        ) AS placenames_capital
     properties:
       minzoom: 5
       maxzoom: 14
@@ -1342,12 +1347,15 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way, place, name
-              FROM planet_osm_point
-              WHERE place IN ('city', 'town')
-                AND (capital IS NULL OR (capital != 'yes' AND capital != '4'))
-              ) AS placenames_medium
+      table: |-
+        (SELECT
+            way,
+            place,
+            name
+          FROM planet_osm_point
+          WHERE place IN ('city', 'town')
+            AND (capital IS NULL OR capital NOT IN ('yes', '4'))
+        ) AS placenames_medium
     properties:
       minzoom: 6
     advanced: {}
