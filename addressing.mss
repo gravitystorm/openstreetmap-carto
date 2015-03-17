@@ -13,7 +13,7 @@
     text-min-distance: 1;
     text-wrap-width: 0;
     text-face-name: @book-fonts;
-    text-fill: #444;
+    text-fill: #666;
     text-size: 9;
   }
 }
@@ -25,7 +25,7 @@
     text-wrap-width: 20;
     text-face-name: @book-fonts;
     text-size: 8;
-    text-fill: #444;
+    text-fill: #666;
     [zoom >= 18] {
       text-size: 9;
     }
