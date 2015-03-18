@@ -19,6 +19,7 @@
 
 @standard-wrap-width: 30;
 
+/* Note that .points is also used in water-features.mss */
 .points {
   [feature = 'tourism_alpine_hut'][zoom >= 13] {
     point-file: url('symbols/alpinehut.p.16.png');
@@ -207,17 +208,6 @@
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
-  }
-
-  [feature = 'waterway_lock'],
-  [feature = 'lock_yes'] {
-    [zoom >= 15] {
-      marker-fill: #969494;
-      marker-width: 9;
-      marker-line-width: 0;
-      marker-placement: interior;
-      marker-clip: false;
-    }
   }
 
   [feature = 'man_made_mast'][zoom >= 17] {
@@ -1506,18 +1496,6 @@
       [way_pixels > 48000] {text-wrap-width: @landcover-wrap-width-size-bigger; }
       text-placement: interior;
     }
-  }
-
-  [feature = 'waterway_lock'][zoom >= 15] {
-    text-name: "[name]";
-    text-size: 9;
-    text-dy: 10;
-    text-fill: #0066ff;
-    text-face-name: @book-fonts;
-    text-halo-radius: 1;
-    text-halo-fill: rgba(255,255,255,0.6);
-    text-wrap-width: @standard-wrap-width;
-    text-placement: interior;
   }
 
   [feature = 'leisure_marina'][zoom >= 15] {
