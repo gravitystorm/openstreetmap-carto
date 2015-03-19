@@ -872,105 +872,116 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT
-            *
-          FROM
-          (
-            (SELECT
-                way, prio,
-                ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end)) AS feature,
-                horse, foot, bicycle, tracktype,
+        (SELECT *
+          FROM ( -- subselect that contains both roads and rail/aero
+            SELECT
+                way,
+                ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature, --only motorway to tertiary links are accepted later on
+                horse,
+                foot,
+                bicycle,
+                tracktype,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
-                  END AS access,
+                END AS access,
                 construction,
-                CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
+                CASE
+                  WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
+                  ELSE 'INT-normal'::text
+                END AS service,
                 CASE
                   WHEN oneway IN ('yes', '-1') THEN oneway
                   WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
                   ELSE NULL
                 END AS oneway,
-                CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link,
+                CASE
+                  WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
+                  ELSE 'no'
+                END AS link,
                 CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
               FROM planet_osm_line
-                JOIN (VALUES
-                  ('highway_motorway',380),
-                  ('highway_trunk',370),
-                  ('highway_primary',360),
-                  ('highway_secondary',350),
-                  ('highway_tertiary',340),
-                  ('highway_residential',330),
-                  ('highway_unclassified',330),
-                  ('highway_road',330),
-                  ('highway_living_street',320),
-                  ('highway_pedestrian',310),
-                  ('highway_raceway',300),
-                  ('highway_motorway_link',240),
-                  ('highway_trunk_link',230),
-                  ('highway_primary_link',220),
-                  ('highway_secondary_link',210),
-                  ('highway_tertiary_link',200),
-                  ('highway_service',150),
-                  ('highway_track',110),
-                  ('highway_path',100),
-                  ('highway_footway',100),
-                  ('highway_bridleway',100),
-                  ('highway_cycleway',100),
-                  ('highway_steps',100),
-                  ('highway_platform',90),
-                  ('highway_proposed',20),
-                  ('highway_construction',10)
-                ) AS ordertable (feature, prio)
-                  on ('highway_' || planet_osm_line.highway) = ordertable.feature
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
                 AND (covered IS NULL OR NOT covered = 'yes')
-                AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')))
+                AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
+                AND highway IS NOT NULL -- end of road select
             UNION ALL
-            (SELECT
-                way, prio,
+            SELECT
+                way,
                 COALESCE(
                   ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway END)),
                   ('aeroway_' || aeroway)
                 ) AS feature,
-                horse, foot, bicycle, tracktype,
-                CASE WHEN access IN ('destination') THEN 'destination'::text
+                horse,
+                foot,
+                bicycle,
+                tracktype,
+                CASE
+                  WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
-                  END AS access,
+                END AS access,
                 construction,
-                CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
-                  ELSE 'INT-normal'::text
-                END AS service,
+                CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 NULL AS oneway,
                 'no' AS link,
                 CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
               FROM planet_osm_line
-                JOIN (VALUES
-                  ('railway_rail',430),
-                  ('railway_spur',430),
-                  ('railway_siding',430),
-                  ('railway_subway',420),
-                  ('railway_narrow_gauge',420),
-                  ('railway_light_rail',420),
-                  ('railway_preserved',420),
-                  ('railway_funicular',420),
-                  ('railway_monorail',420),
-                  ('railway_miniature',420),
-                  ('railway_turntable',420),
-                  ('railway_tram',410),
-                  ('railway_disused',400),
-                  ('railway_construction',400),
-                  ('aeroway_runway',60),
-                  ('aeroway_taxiway',50),
-                  ('railway_platform',90)) AS ordertable (feature, prio)
-                ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
                 AND (covered IS NULL OR NOT covered = 'yes')
                 AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
-            )
-          ) AS features
-          ORDER BY prio, CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END
+                AND (railway IS NOT NULL OR aeroway IS NOT NULL) -- end of rail/aero select
+            ) AS features
+          JOIN (VALUES -- this join is also putting a condition on what is selected. features not matching it do not make it into the results.
+              ('railway_rail', 430),
+              ('railway_spur', 430),
+              ('railway_siding', 430),
+              ('railway_subway', 420),
+              ('railway_narrow_gauge', 420),
+              ('railway_light_rail', 420),
+              ('railway_preserved', 420),
+              ('railway_funicular', 420),
+              ('railway_monorail', 420),
+              ('railway_miniature', 420),
+              ('railway_turntable', 420),
+              ('railway_tram', 410),
+              ('railway_disused', 400),
+              ('railway_construction', 400),
+              ('highway_motorway', 380),
+              ('highway_trunk', 370),
+              ('highway_primary', 360),
+              ('highway_secondary', 350),
+              ('highway_tertiary', 340),
+              ('highway_residential', 330),
+              ('highway_unclassified', 330),
+              ('highway_road', 330),
+              ('highway_living_street', 320),
+              ('highway_pedestrian', 310),
+              ('highway_raceway', 300),
+              ('highway_motorway_link', 240),
+              ('highway_trunk_link', 230),
+              ('highway_primary_link', 220),
+              ('highway_secondary_link', 210),
+              ('highway_tertiary_link', 200),
+              ('highway_service', 150),
+              ('highway_track', 110),
+              ('highway_path', 100),
+              ('highway_footway', 100),
+              ('highway_bridleway', 100),
+              ('highway_cycleway', 100),
+              ('highway_steps', 100),
+              ('highway_platform', 90),
+              ('railway_platform', 90),
+              ('aeroway_runway', 60),
+              ('aeroway_taxiway', 50),
+              ('highway_proposed', 20),
+              ('highway_construction', 10)
+            ) AS ordertable (feature, prio)
+            USING (feature)
+          ORDER BY
+            layernotnull,
+            prio,
+            CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END
         ) AS roads_fill
     properties:
       minzoom: 10
