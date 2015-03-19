@@ -253,7 +253,8 @@ Layer:
         (SELECT
             way, "natural"
           FROM planet_osm_polygon
-          WHERE "natural" IN ('marsh', 'wetland') AND building IS NULL
+          WHERE "natural" IN ('marsh', 'wetland')
+            AND building IS NULL
           ORDER BY z_order, way_area DESC
         ) AS water_areas_overlay
     properties:
@@ -382,9 +383,10 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, building
+            way,
+            building
           FROM planet_osm_polygon
-          WHERE (building IS NOT NULL)
+          WHERE building IS NOT NULL
             AND building != 'no'
           ORDER BY z_order, way_area DESC
         ) AS buildings
@@ -405,7 +407,7 @@ Layer:
             amenity,
             aeroway
           FROM planet_osm_polygon
-          WHERE (building IS NOT NULL)
+          WHERE building IS NOT NULL
             AND building != 'no'
             AND (aeroway = 'terminal' OR amenity = 'place_of_worship')
           ORDER BY z_order, way_area DESC)
@@ -593,7 +595,8 @@ Layer:
         (SELECT
             way, landuse, leisure
           FROM planet_osm_polygon
-          WHERE (landuse = 'military') AND building IS NULL
+          WHERE landuse = 'military'
+            AND building IS NULL
         ) AS landuse_overlay
     properties:
       minzoom: 10
@@ -1026,15 +1029,21 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-              (SELECT way, COALESCE(('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end)), ('railway_' || (CASE WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' WHEN railway IN ('rail', 'tram', 'light_rail', 'funicular', 'narrow_gauge') THEN railway ELSE NULL END))) AS feature,
-                 CASE WHEN tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes' THEN 'yes' ELSE 'no' END AS int_tunnel,
-                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link
-               FROM planet_osm_roads
-               WHERE highway IS NOT NULL
-                  OR (railway IS NOT NULL AND railway != 'preserved' AND (service IS NULL OR service NOT IN ('spur', 'siding', 'yard')))
-               ORDER BY z_order
-              ) AS roads_low_zoom
+      table: |-
+        (SELECT
+            way,
+            COALESCE(
+              ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end)),
+              ('railway_' || (CASE WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' WHEN railway IN ('rail', 'tram', 'light_rail', 'funicular', 'narrow_gauge') THEN railway ELSE NULL END))
+            ) AS feature,
+            CASE WHEN tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes' THEN 'yes' ELSE 'no' END AS int_tunnel,
+            CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link
+          FROM planet_osm_roads
+          WHERE highway IS NOT NULL
+            OR (railway IS NOT NULL AND railway != 'preserved'
+              AND (service IS NULL OR service NOT IN ('spur', 'siding', 'yard')))
+          ORDER BY z_order
+        ) AS roads_low_zoom
     properties:
       minzoom: 5
       maxzoom: 9
@@ -1046,8 +1055,19 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way, waterway, name, intermittent, CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel, 'yes' AS bridge FROM planet_osm_line WHERE waterway IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi') AND bridge IN ('yes', 'aqueduct') ORDER BY z_order) AS waterway_bridges
+      table: |-
+        (SELECT
+            way,
+            waterway,
+            name,
+            intermittent,
+            CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel,
+            'yes' AS bridge
+          FROM planet_osm_line
+          WHERE waterway IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi')
+            AND bridge IN ('yes', 'aqueduct')
+          ORDER BY z_order
+        ) AS waterway_bridges
     properties:
       minzoom: 15
     advanced: {}
@@ -1194,7 +1214,7 @@ Layer:
             way,
             admin_level
           FROM planet_osm_roads
-          WHERE "boundary" = 'administrative'
+          WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4')
           ORDER BY admin_level DESC
         ) AS admin_low_zoom
@@ -1213,7 +1233,7 @@ Layer:
             way,
             admin_level
           FROM planet_osm_roads
-          WHERE "boundary" = 'administrative'
+          WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')
           ORDER BY admin_level DESC
         ) AS admin_mid_zoom
@@ -1233,7 +1253,7 @@ Layer:
             way,
             admin_level
           FROM planet_osm_roads
-          WHERE "boundary" = 'administrative'
+          WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
           ORDER BY admin_level::integer DESC -- With 10 as a valid value, we need to do a numeric ordering, not a text ordering
         ) AS admin_high_zoom
@@ -1271,8 +1291,16 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way, way_area, name, boundary, way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels FROM planet_osm_polygon WHERE (boundary = 'national_park' OR leisure = 'nature_reserve') AND building IS NULL) AS national_park_boundaries
+      table: |-
+        (SELECT
+            way,
+            name,
+            boundary,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+          FROM planet_osm_polygon
+          WHERE (boundary = 'national_park' OR leisure = 'nature_reserve')
+            AND building IS NULL
+        ) AS national_park_boundaries
     properties:
       minzoom: 7
     advanced: {}
@@ -1330,11 +1358,16 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way, place, name, ref
-               FROM planet_osm_point
-               WHERE place IN ('city', 'town') AND (capital = 'yes' OR capital = '4')
-              ) AS placenames_capital
+      table: |-
+        (SELECT
+            way,
+            place,
+            name,
+            ref
+          FROM planet_osm_point
+          WHERE place IN ('city', 'town')
+            AND capital IN ('yes', '4')
+        ) AS placenames_capital
     properties:
       minzoom: 5
       maxzoom: 14
@@ -1346,12 +1379,15 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way, place, name
-              FROM planet_osm_point
-              WHERE place IN ('city', 'town')
-                AND (capital IS NULL OR (capital != 'yes' AND capital != '4'))
-              ) AS placenames_medium
+      table: |-
+        (SELECT
+            way,
+            place,
+            name
+          FROM planet_osm_point
+          WHERE place IN ('city', 'town')
+            AND (capital IS NULL OR capital NOT IN ('yes', '4'))
+        ) AS placenames_medium
     properties:
       minzoom: 6
     advanced: {}
@@ -1639,16 +1675,16 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-              (SELECT way,
-                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END,
-                 CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
-                 CASE WHEN (construction IN ('service', 'footway', 'cycleway', 'bridleway', 'path', 'track')) THEN 'yes' ELSE 'no' END AS int_construction_minor,
-                 name
-               FROM planet_osm_line
-               WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction', 'proposed')
-                 AND name IS NOT NULL
-              ) AS roads_text_name
+      table: |-
+        (SELECT way,
+            CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END,
+            CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
+            CASE WHEN construction IN ('service', 'footway', 'cycleway', 'bridleway', 'path', 'track') THEN 'yes' ELSE 'no' END AS int_construction_minor,
+            name
+          FROM planet_osm_line
+          WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction', 'proposed')
+            AND name IS NOT NULL
+        ) AS roads_text_name
     properties:
       minzoom: 13
     advanced: {}
@@ -1675,23 +1711,24 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-          (SELECT way, way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
-              COALESCE(
-                'landuse_' || CASE WHEN landuse IN ('forest') THEN landuse ELSE NULL END,
-                'natural_' || CASE WHEN "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock') THEN "natural" ELSE NULL END,
-                'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END
-              ) AS feature,
-              name,
-              way_area,
-              CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
-            FROM planet_osm_polygon
-            WHERE (landuse IN ('forest')
+      table: |-
+        (SELECT
+            way,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            COALESCE(
+              'landuse_' || CASE WHEN landuse IN ('forest') THEN landuse ELSE NULL END,
+              'natural_' || CASE WHEN "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock') THEN "natural" ELSE NULL END,
+              'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END
+            ) AS feature,
+            name,
+            CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building -- always no with the where conditions
+          FROM planet_osm_polygon
+          WHERE (landuse IN ('forest')
               OR "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock')
               OR boundary IN ('national_park'))
-              AND building IS NULL
-            ORDER BY way_area DESC
-          ) AS text_poly_low_zoom
+            AND building IS NULL
+          ORDER BY way_area DESC
+        ) AS text_poly_low_zoom
     properties:
       minzoom: 7
       maxzoom: 9
@@ -1833,11 +1870,15 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT name, way, way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
-        FROM planet_osm_polygon
-        WHERE building IS NOT NULL AND building NOT IN ('no', 'station', 'supermarket')
-        ORDER BY way_area DESC
+      table: |-
+        (SELECT
+            name,
+            way,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+          FROM planet_osm_polygon
+          WHERE building IS NOT NULL
+            AND building NOT IN ('no', 'station', 'supermarket')
+          ORDER BY way_area DESC
         ) AS building_text
     properties:
       minzoom: 14
@@ -1918,13 +1959,19 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-              (SELECT way, waterway, lock, name, intermittent, CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel
-              FROM planet_osm_line
-              WHERE waterway IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi')
-                AND (tunnel IS NULL or tunnel != 'culvert')
-               ORDER BY z_order
-              ) AS water_lines_text
+      table: |-
+        (SELECT
+            way,
+            waterway,
+            lock,
+            name,
+            intermittent,
+            CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel
+          FROM planet_osm_line
+          WHERE waterway IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi')
+            AND (tunnel IS NULL or tunnel != 'culvert')
+          ORDER BY z_order
+        ) AS water_lines_text
     properties:
       minzoom: 13
     advanced: {}
@@ -1957,7 +2004,7 @@ Layer:
             name,
             admin_level
           FROM planet_osm_polygon
-          WHERE "boundary" = 'administrative'
+          WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
         ) AS admin_text
     properties:
@@ -1970,9 +2017,14 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way, name, way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
-          FROM planet_osm_polygon WHERE "boundary" = 'national_park' OR leisure = 'nature_reserve') AS nature_reserve_text
+      table: |-
+        (SELECT
+            way,
+            name,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+          FROM planet_osm_polygon
+          WHERE boundary = 'national_park' OR leisure = 'nature_reserve'
+        ) AS nature_reserve_text
     properties:
       minzoom: 13
     advanced: {}
@@ -1983,13 +2035,17 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT *
-              FROM planet_osm_point
-              WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'block')
-                 OR highway IN ('mini_roundabout')
-                 OR railway = 'level_crossing'
-              ) AS amenity_low_priority
+      table: |-
+        (SELECT
+            way,
+            railway,
+            highway,
+            barrier
+          FROM planet_osm_point
+          WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'block')
+             OR highway IN ('mini_roundabout')
+             OR railway = 'level_crossing'
+          ) AS amenity_low_priority
     properties:
       minzoom: 14
     advanced: {}
@@ -2000,13 +2056,17 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT *
-              FROM planet_osm_polygon
-              WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'block')
-                 OR highway IN ('mini_roundabout')
-                 OR railway = 'level_crossing'
-              ) AS amenity_low_priority_poly
+      table: |-
+        (SELECT
+            way,
+            railway,
+            highway,
+            barrier
+          FROM planet_osm_polygon
+          WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'block')
+             OR highway IN ('mini_roundabout')
+             OR railway = 'level_crossing'
+          ) AS amenity_low_priority_poly
     properties:
       minzoom: 14
     advanced: {}
