@@ -212,7 +212,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT way, waterway
+        (SELECT way, waterway, intermittent
           FROM planet_osm_line
           WHERE waterway = 'river'
         ) AS water_lines_low_zoom
