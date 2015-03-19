@@ -177,8 +177,10 @@
   }
 
   [feature = 'tourism_motel'][zoom >= 17] {
-    point-file: url('symbols/motel.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/motel.16.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @transportation-icon;
   }
 
   [feature = 'tourism_information'][zoom >= 17] {
