@@ -965,7 +965,7 @@
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
     text-placement: interior;
-    text-dy: 11;
+    text-dy: 13;
     text-wrap-width: 40;
   }
 
