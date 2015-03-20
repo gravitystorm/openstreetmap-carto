@@ -502,6 +502,13 @@
     marker-clip: false;
   }
 
+  [feature = 'shop_pet'][zoom >= 17] {
+    marker-file: url('symbols/shop_pet.16.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+
   [feature = 'leisure_water_park'][zoom >= 17] {
     point-file: url('symbols/water_park.p.20.png');
     point-placement: interior;
@@ -1698,6 +1705,7 @@
   [feature = 'shop_car_repair'],
   [feature = 'shop_bicycle'],
   [feature = 'shop_florist'],
+  [feature = 'shop_pet'],
   [feature = 'shop_other']{
     [zoom >= 17] {
       text-name: "[name]";
