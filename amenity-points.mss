@@ -1379,29 +1379,6 @@
     text-dy: 6;
   }
 
-  [feature = 'tourism_alpine_hut'][zoom >= 15] {
-    text-name: "[name]";
-    text-size: 9;
-    text-fill: #6699cc;
-    text-dy: 11;
-    text-face-name: @book-fonts;
-    text-halo-radius: 1;
-    text-halo-fill: rgba(255,255,255,0.6);
-    text-wrap-width: @standard-wrap-width;
-    text-placement: interior;
-  }
-
-  [feature = 'amenity_shelter'][zoom >= 17] {
-    text-name: "[name]";
-    text-size: 9;
-    text-fill: #6699cc;
-    text-dy: 11;
-    text-face-name: @book-fonts;
-    text-halo-radius: 1;
-    text-wrap-width: @standard-wrap-width;
-    text-placement: interior;
-  }
-
   [feature = 'amenity_bank'][zoom >= 17] {
     text-name: "[name]";
     text-size: 9;
@@ -1414,41 +1391,37 @@
     text-face-name: @book-fonts;
   }
 
-  [feature = 'tourism_hotel'],
-  [feature = 'tourism_motel'],
-  [feature = 'tourism_hostel'],
-  [feature = 'tourism_chalet'] {
-    [zoom >= 17] {
-      text-name: "[name]";
-      text-size: 10;
-      text-fill: #0066ff;
-      text-dy: 13;
-      text-face-name: @book-fonts;
-      text-halo-radius: 1;
-      text-halo-fill: rgba(255,255,255,0.6);
-      text-wrap-width: @standard-wrap-width;
-      text-placement: interior;
-      [feature = 'tourism_chalet'] {
-        text-dy: 11;
-      }
+  [feature = 'tourism_alpine_hut'][zoom >= 15],
+  [feature = 'amenity_shelter'][zoom >= 17],
+  [feature = 'tourism_hotel'][zoom >= 17],
+  [feature = 'tourism_motel'][zoom >= 17],
+  [feature = 'tourism_hostel'][zoom >= 17],
+  [feature = 'tourism_chalet'][zoom >= 17],
+  [feature = 'tourism_guest_house'][zoom >= 17],
+  [feature = 'tourism_camp_site'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: #0066ff;
+    text-dy: 13;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
+    text-wrap-width: @standard-wrap-width;
+    text-placement: interior;
+    [feature = 'tourism_alpine_hut'],
+    [feature = 'amenity_shelter'],
+    [feature = 'tourism_chalet'],
+    [feature = 'tourism_guest_house'] {
+      text-dy: 11;
+    }
+    [feature = 'tourism_camp_site'] {
+      text-dy: 15;
     }
   }
 
   [feature = 'amenity_embassy'][zoom >= 17] {
     text-name: "[name]";
     text-size: 9;
-    text-fill: #0066ff;
-    text-dy: 10;
-    text-face-name: @book-fonts;
-    text-halo-radius: 1;
-    text-halo-fill: rgba(255,255,255,0.6);
-    text-wrap-width: @standard-wrap-width;
-    text-placement: interior;
-  }
-
-  [feature = 'tourism_guest_house'][zoom >= 17] {
-    text-name: "[name]";
-    text-size: 8;
     text-fill: #0066ff;
     text-dy: 10;
     text-face-name: @book-fonts;
@@ -1475,18 +1448,6 @@
         text-dy: 9;
       }
     }
-  }
-
-  [feature = 'tourism_camp_site'][zoom >= 17] {
-    text-name: "[name]";
-    text-size: 10;
-    text-fill: #0066ff;
-    text-dy: 15;
-    text-face-name: @book-fonts;
-    text-halo-radius: 1;
-    text-halo-fill: rgba(255,255,255,0.6);
-    text-wrap-width: @standard-wrap-width;
-    text-placement: interior;
   }
 
   [feature = 'tourism_caravan_site'][is_building = 'no'] {
