@@ -803,13 +803,14 @@
 
   [feature = 'natural_peak'][zoom >= 13],
   [feature = 'natural_volcano'][zoom >= 13],
-  [feature = 'natural_saddle'][zoom >= 15] {
+  [feature = 'natural_saddle'][zoom >= 15],
+  [feature = 'tourism_viewpoint'][zoom >= 16] {
     text-name: "[name]";
     text-size: 10;
-    [feature = 'natural_peak'] { text-fill: darken(#d08f55, 30%); }
+    text-fill: darken(#d08f55, 30%);
     [feature = 'natural_volcano'] { text-fill: #d40000; }
-    [feature = 'natural_saddle'] { text-fill: darken(#d08f55, 30%); }
     text-dy: 7;
+    [feature = 'tourism_viewpoint'] { text-dy: 11; }
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
