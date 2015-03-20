@@ -427,6 +427,13 @@
     marker-clip: false;
   }
 
+  [feature = 'shop_books'][zoom >= 17] {
+    marker-file: url('symbols/shop_books.16.svg');
+    marker-fill: @shop-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'shop_butcher'][zoom >= 17] {
     marker-file: url('symbols/shop_butcher.png');
     marker-placement: interior;
@@ -1680,6 +1687,7 @@
   }
 
   [feature = 'shop_bakery'],
+  [feature = 'shop_books'],
   [feature = 'shop_clothes'],
   [feature = 'shop_fashion'],
   [feature = 'shop_convenience'],
