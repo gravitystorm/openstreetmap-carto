@@ -224,8 +224,14 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_parking'][zoom >= 16] {
-    marker-file: url('symbols/parking.svg');
+  [feature = 'amenity_parking'][way_pixels > 900],
+  [feature = 'amenity_bicycle_parking'][way_pixels > 900] {
+    [feature = 'amenity_bicycle_parking'] {
+      marker-file: url('symbols/bicycle_parking.16.svg');
+    }
+    [feature = 'amenity_parking'] {
+      marker-file: url('symbols/parking.svg');
+    }
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @transportation-icon;
@@ -619,6 +625,22 @@
 }
 
 .amenity-low-priority {
+  [amenity = 'parking'][zoom >= 17],
+  [amenity = 'bicycle_parking'][zoom >= 17] {
+    [amenity = 'bicycle_parking'] {
+      marker-file: url('symbols/bicycle_parking.16.svg');
+    }
+    [amenity = 'parking'] {
+      marker-file: url('symbols/parking.svg');
+    }
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @transportation-icon;
+    [access != ''][access != 'public'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
+  }
+
   [railway = 'level_crossing'][zoom >= 14]::railway {
     point-file: url('symbols/level_crossing.svg');
     point-placement: interior;
@@ -742,7 +764,8 @@
     text-placement: interior;
   }
 
-  [feature = 'amenity_parking'][zoom >= 17] {
+  [feature = 'amenity_parking'][zoom >= 10][way_pixels > 900],
+  [feature = 'amenity_bicycle_parking'][zoom >= 10][way_pixels > 900] {
     text-name: "[name]";
     text-size: 9;
     text-fill: @transportation-text;
@@ -754,6 +777,9 @@
     text-placement: interior;
     [access != ''][access != 'public'][access != 'yes'] {
       text-fill: #66ccaf;
+    }
+    [feature = 'amenity_bicycle_parking'] {
+      text-dy: 12;
     }
   }
 
