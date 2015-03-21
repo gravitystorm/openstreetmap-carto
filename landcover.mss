@@ -7,6 +7,7 @@
 @wood: #aed1a0;
 @vineyard: #b3e2a8;
 @grassland: #c6e4b4;
+@scrub: #b5e3b5;
 
 // --- sports ---
 
@@ -53,7 +54,6 @@
 @sand: #f5e9c6;
 @school: #f0f0d8; // also university, college, hospital, kindergarten
 @station: #d4aaaa;
-@scrub: #b5e3b5;
 @orchard: #9ed88f;
 @theme_park: #734a08;
 @quarry: #c5c3c3;
