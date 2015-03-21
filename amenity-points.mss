@@ -687,10 +687,10 @@
 
 .text-low-zoom[zoom < 10],
 .text[zoom >= 10] {
-  [feature = 'place_island'][zoom >= 7][way_pixels > 3000],
-  [feature = 'place_island'][zoom >= 16],
-  [feature = 'place_islet'][zoom >= 14][way_pixels > 3000],
-  [feature = 'place_islet'][zoom >= 17] {
+  [feature = 'place_island'][zoom >= 7][way_pixels > 3000][way_pixels < 800000],
+  [feature = 'place_island'][zoom >= 16][way_pixels < 800000],
+  [feature = 'place_islet'][zoom >= 14][way_pixels > 3000][way_pixels < 800000],
+  [feature = 'place_islet'][zoom >= 17][way_pixels < 800000] {
     text-name: "[name]";
     text-fill: #000;
     text-size: 10;
