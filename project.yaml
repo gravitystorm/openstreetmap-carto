@@ -1741,6 +1741,7 @@ Layer:
             COALESCE(
               'landuse_' || CASE WHEN landuse IN ('forest') THEN landuse ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock') THEN "natural" ELSE NULL END,
+              'place_' || CASE WHEN place IN ('island') THEN place ELSE NULL END,
               'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END
             ) AS feature,
             name,
@@ -1748,6 +1749,7 @@ Layer:
           FROM planet_osm_polygon
           WHERE (landuse IN ('forest')
               OR "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock')
+              OR "place" IN ('island')              
               OR boundary IN ('national_park'))
             AND building IS NULL
           ORDER BY way_area DESC
