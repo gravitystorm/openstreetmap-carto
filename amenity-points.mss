@@ -8,6 +8,7 @@
 @airtransport: #8461C4;
 @health-color: #da0092;
 @amenity-brown: #734a08;
+@man-made-icon: #555;
 
 @landcover-font-size: 10;
 @landcover-font-size-big: 12;
@@ -212,7 +213,7 @@
 
   [feature = 'man_made_mast'][zoom >= 17] {
     marker-file: url('symbols/communications.16.svg');
-    marker-fill: #555;
+    marker-fill: @man-made-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -621,6 +622,13 @@
   [feature = 'man_made_windmill'][zoom >= 16] {
     point-file: url('symbols/windmill.png');
     point-placement: interior;
+  }
+
+  [feature = 'amenity_hunting_stand'][zoom >= 16] {
+    marker-file: url('symbols/hunting-stand.16.svg');
+    marker-fill: @man-made-icon;
+    marker-placement: interior;
+    marker-clip: false;
   }
 }
 
@@ -1961,6 +1969,19 @@
     text-placement: interior;
     text-wrap-width: 30;
   }
+
+  [feature = 'amenity_hunting_stand'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: 10;
+    text-dy: 11;
+    text-fill: @man-made-icon;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
+    text-placement: interior;
+    text-wrap-width: 30;
+  }
+
 }
 
 #trees [zoom >= 16] {
