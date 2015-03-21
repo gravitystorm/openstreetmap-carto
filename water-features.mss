@@ -25,7 +25,7 @@
       marker-line-color: @dam-line;
       marker-line-width: 1;
       marker-width: 8;
-      marker-height: 8;
+      [zoom >= 18] { marker-width: 10; }
       marker-allow-overlap: true;
       marker-ignore-placement: true;
     }
@@ -42,7 +42,7 @@
       marker-line-color: @weir-line;
       marker-line-width: 1;
       marker-width: 8;
-      marker-height: 8;
+      [zoom >= 18] { marker-width: 10; }
       marker-allow-overlap: true;
       marker-ignore-placement: true;
     }
@@ -57,7 +57,7 @@
       marker-fill: @lock-gate;
       marker-line-width: 0;
       marker-width: 8;
-      marker-height: 8;
+      [zoom >= 18] { marker-width: 10; }
       marker-allow-overlap: true;
       marker-ignore-placement: true;
     }
