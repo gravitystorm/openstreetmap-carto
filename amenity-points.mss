@@ -1319,7 +1319,8 @@
     }
   }
   [feature = 'landuse_farm'][is_building = 'no'],
-  [feature = 'landuse_farmland'][is_building = 'no'] {
+  [feature = 'landuse_farmland'][is_building = 'no'],
+  [feature = 'landuse_greenhouse_horticulture'][is_building = 'no'] {
     [zoom >= 10][way_pixels > 3000],
     [zoom >= 17] {
       text-name: "[name]";
