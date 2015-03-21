@@ -1989,6 +1989,7 @@
       marker-line-width: 0;
       marker-width: 2.5;
       marker-height: 2.5;
+      marker-ignore-placement: true;
       [zoom >= 17] {
         marker-width: 5;
         marker-height: 5;
@@ -2013,7 +2014,8 @@
       trunk/marker-allow-overlap: true;
       trunk/marker-line-width: 0;
       trunk/marker-width: 2;
-      trunk/marker-height: 2;    
+      trunk/marker-height: 2;
+      trunk/marker-ignore-placement: true;
     }
     [zoom >= 19] {
       trunk/marker-width: 3;
