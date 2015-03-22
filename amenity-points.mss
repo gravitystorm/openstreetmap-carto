@@ -844,11 +844,20 @@
     }
   }
 
-  [feature = 'amenity_car_rental'][zoom >= 17] {
+  [feature = 'amenity_car_rental'][zoom >= 17],
+  [feature = 'amenity_car_sharing'][zoom >= 17],
+  [feature = 'amenity_bicycle_rental'][zoom >= 17],
+  [feature = 'leisure_slipway'][zoom >= 17] {
     text-name: "[name]";
+    [feature = 'amenity_car_sharing'] {
+      text-name: "[operator]";
+    }
     text-size: 9;
     text-fill: @transportation-text;
-    text-dy: 10;
+    [feature = 'amenity_car_rental']     { text-dy: 10; }
+    [feature = 'amenity_car_sharing']    { text-dy: 11; }
+    [feature = 'amenity_bicycle_rental'] { text-dy: 10; }
+    [feature = 'leisure_slipway']        { text-dy: 13; }
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
@@ -877,11 +886,20 @@
 
 
   [feature = 'amenity_police'][zoom >= 17],
-  [feature = 'amenity_fire_station'][zoom >= 17] {
+  [feature = 'amenity_fire_station'][zoom >= 17],
+  [feature = 'amenity_drinking_water'][zoom >= 17],
+  [feature = 'amenity_recyling'][zoom >= 17],
+  [feature = 'tourism_picnic_site'][zoom >= 17],
+  [feature = 'leisure_picnic_table'][zoom >= 17],
+  [feature = 'amenity_post_office'][zoom >= 17] {
     text-name: "[name]";
     text-size: 10;
     text-fill: @amenity-brown;
-    text-dy: 11;
+    text-dy: 10;
+    [feature = 'amenity_police'] { text-dy: 11; }
+    [feature = 'amenity_fire_station'] { text-dy: 11; }
+    [feature = 'amenity_post_office'] { text-dy: 11; }
+    [feature = 'amenity_drinking_water'] { text-dy: 9; }
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
@@ -936,11 +954,15 @@
     text-placement: interior;
   }
 
-  [feature = 'natural_cave_entrance'][zoom >= 15] {
+  [feature = 'natural_cave_entrance'][zoom >= 15],
+  [feature = 'man_made_mast'][zoom >= 17],
+  [feature = 'man_made_water_tower'][zoom >= 17] {
     text-name: "[name]";
     text-size: 10;
     text-fill: black;
-    text-dy: 11;
+    [feature = 'natural_cave_entrance'] { text-dy: 11; }
+    [feature = 'man_made_mast']         { text-dy: 9; }
+    [feature = 'man_made_water_tower']  { text-dy: 13; }
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
@@ -1449,11 +1471,15 @@
     text-dy: 6;
   }
 
-  [feature = 'amenity_bank'][zoom >= 17] {
+  [feature = 'amenity_bank'][zoom >= 17],
+  [feature = 'amenity_atm'][zoom >= 17] {
     text-name: "[name]";
-    text-size: 9;
+    [feature = 'amenity_atm'] {
+      text-name: "[operator]";
+    }
+    [feature = 'amenity_bank'] { text-dy: 9; }
+    [feature = 'amenity_atm']  { text-dy: 10; }
     text-fill: black;
-    text-dy: 12;
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
@@ -1634,11 +1660,13 @@
     text-placement: interior;
   }
 
-  [feature = 'man_made_windmill'][zoom >= 17] {
+  [feature = 'man_made_windmill'][zoom >= 17],
+  [feature = 'amenity_recycling'][zoom >= 17] {
     text-name: "[name]";
     text-size: 9;
     text-fill: @amenity-brown;
     text-dy: 12;
+    [feature = 'amenity_recycling'] { text-dy: 9; }
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
@@ -2014,6 +2042,20 @@
     text-wrap-width: 30;
   }
 
+  [feature = 'natural_tree'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: 8;
+    text-fill: green;
+    text-dy: 7;
+    [zoom >= 18] { text-dy: 8; }
+    [zoom >= 19] { text-dy: 11; }
+    [zoom >= 20] { text-dy: 18; }
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
+    text-placement: interior;
+    text-wrap-width: 30;
+  }
 }
 
 #trees [zoom >= 16] {
