@@ -1824,7 +1824,7 @@ Layer:
     Datasource: 
       <<: *osm2pgsql
       table: |-
-        (SELECT way, NULL as way_pixels, COALESCE('man_made_' || man_made, 'waterway' || waterway, 'natural_' || "natural") AS feature, access, NULL as ele, name, ref, NULL AS way_area,
+        (SELECT way, NULL as way_pixels, COALESCE('man_made_' || man_made, 'waterway_' || waterway, 'natural_' || "natural") AS feature, access, NULL as ele, name, ref, NULL AS way_area,
          CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
          FROM planet_osm_line
          WHERE man_made IN ('pier', 'breakwater', 'groyne', 'embankment')
