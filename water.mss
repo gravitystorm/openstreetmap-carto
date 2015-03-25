@@ -289,3 +289,22 @@
     }
   }
 }
+
+.text[zoom >= 10] {
+  [feature = 'natural_water'],
+  [feature = 'natural_lake'],
+  [feature = 'landuse_reservoir'],
+  [feature = 'landuse_basin'] {
+    [zoom >= 10][way_pixels > 3000],
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: 12;
+      text-fill: @water-text;
+      text-face-name: @oblique-fonts;
+      text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
+      text-wrap-width: @standard-wrap-width;
+      text-placement: interior;
+    }
+  }
+}

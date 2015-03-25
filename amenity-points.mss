@@ -696,6 +696,7 @@
   }
 }
 
+/* Note that .text is also used in water.mss */
 .text-low-zoom[zoom < 10],
 .text[zoom >= 10] {
   [feature = 'place_island'][zoom >= 7][way_pixels > 3000][way_pixels < 800000],
@@ -879,29 +880,6 @@
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
-  }
-
-  [feature = 'natural_water'],
-  [feature = 'natural_lake'],
-  [feature = 'landuse_reservoir'],
-  [feature = 'landuse_basin'] {
-    [way_area >= 40000000][zoom >= 10],
-    [way_area >= 10000000][zoom >= 11],
-    [way_area >= 2400000][zoom >= 12],
-    [way_area >= 600000][zoom >= 13],
-    [way_area >= 150000][zoom >= 14],
-    [way_area >= 80000][zoom >= 15],
-    [way_area >= 20000][zoom >= 16],
-    [zoom >= 17] {
-      text-name: "[name]";
-      text-size: 12;
-      text-fill: @water-text;
-      text-face-name: @oblique-fonts;
-      text-halo-radius: 1;
-      text-halo-fill: rgba(255,255,255,0.6);
-      text-wrap-width: @standard-wrap-width;
-      text-placement: interior;
-    }
   }
 
   [feature = 'natural_mud'][is_building = 'no'] {
