@@ -292,7 +292,6 @@
 
 .text[zoom >= 10] {
   [feature = 'natural_water'],
-  [feature = 'natural_lake'],
   [feature = 'landuse_reservoir'],
   [feature = 'landuse_basin'] {
     [zoom >= 10][way_pixels > 3000],

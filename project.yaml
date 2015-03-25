@@ -1779,7 +1779,7 @@ Layer:
               'leisure_' || CASE WHEN leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'sports_centre', 'stadium', 'track', 'pitch', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina', 'slipway') THEN leisure ELSE NULL END,
               'landuse_' || CASE WHEN landuse IN ('reservoir', 'basin', 'recreation_ground', 'conservation', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farm', 'farmland', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'construction', 'military') THEN landuse ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower', 'pier', 'breakwater', 'groyne') THEN man_made ELSE NULL END,
-              'natural_' || CASE WHEN "natural" IN ('wood', 'water', 'lake', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier') THEN "natural" ELSE NULL END,
+              'natural_' || CASE WHEN "natural" IN ('wood', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier') THEN "natural" ELSE NULL END,
               'place_' || CASE WHEN place IN ('island', 'islet') THEN place ELSE NULL END,
               'military_' || CASE WHEN military IN ('danger_area') THEN military ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('memorial', 'archaeological_site') THEN historic ELSE NULL END,
@@ -1803,7 +1803,7 @@ Layer:
             OR leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'sports_centre', 'stadium', 'track', 'pitch', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina', 'slipway')
             OR landuse IN ('reservoir', 'basin', 'recreation_ground', 'conservation', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farm', 'farmland', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'construction', 'military')
             OR man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower', 'pier', 'breakwater', 'groyne')
-            OR "natural" IN ('wood', 'water', 'lake', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier')
+            OR "natural" IN ('wood', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier')
             OR place IN ('island', 'islet')
             OR military IN ('danger_area')
             OR historic IN ('memorial', 'archaeological_site')
@@ -1853,7 +1853,7 @@ Layer:
               'leisure_' || CASE WHEN leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'sports_centre', 'stadium', 'track', 'pitch', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina', 'slipway') THEN leisure ELSE NULL END,
               'landuse_' || CASE WHEN landuse IN ('reservoir', 'basin', 'recreation_ground', 'conservation', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farm', 'farmland', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'construction', 'military') THEN landuse ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower') THEN man_made ELSE NULL END,
-              'natural_' || CASE WHEN "natural" IN ('wood', 'peak', 'volcano', 'saddle', 'cave_entrance', 'water', 'lake', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier') THEN "natural" ELSE NULL END,
+              'natural_' || CASE WHEN "natural" IN ('wood', 'peak', 'volcano', 'saddle', 'cave_entrance', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier') THEN "natural" ELSE NULL END,
               'place_' || CASE WHEN place IN ('island', 'islet') THEN place ELSE NULL END,
               'military_' || CASE WHEN military IN ('danger_area') THEN military ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('memorial', 'archaeological_site') THEN historic ELSE NULL END,
@@ -1877,7 +1877,7 @@ Layer:
             OR leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'sports_centre', 'stadium', 'track', 'pitch', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina', 'slipway')
             OR landuse IN ('reservoir', 'basin', 'recreation_ground', 'conservation', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farm', 'farmland', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'construction', 'military')
             OR man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower')
-            OR "natural" IN ('wood', 'peak', 'volcano', 'saddle', 'cave_entrance', 'water', 'lake', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier')
+            OR "natural" IN ('wood', 'peak', 'volcano', 'saddle', 'cave_entrance', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier')
             OR place IN ('island', 'islet')
             OR military IN ('danger_area')
             OR historic IN ('memorial', 'archaeological_site')
