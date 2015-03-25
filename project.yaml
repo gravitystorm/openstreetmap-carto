@@ -1903,7 +1903,7 @@ Layer:
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
           WHERE building IS NOT NULL
-            AND building NOT IN ('no', 'station', 'supermarket')
+            AND building NOT IN ('no')
           ORDER BY way_area DESC
         ) AS building_text
     properties:
