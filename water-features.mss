@@ -122,6 +122,7 @@
     #text-point[zoom >= 17] {
       text-name: "[name]";
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-fill: #222;
       text-size: 10;
       text-face-name: @book-fonts;
@@ -147,6 +148,7 @@
     #text-line {
       text-name: "[name]";
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-fill: #222;
       text-size: 10;
       text-face-name: @book-fonts;
