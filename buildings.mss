@@ -1,50 +1,46 @@
-#buildings-lz {
-  [zoom >= 10] {
+@building-fill: #d9d0c9; //Lch(84, 5, 70)
+@building-line: darken(@building-fill, 15%);
+@building-low-zoom: darken(@building-fill, 4%);
+
+@building-major-fill: darken(@building-fill, 20%);
+@building-major-line: darken(@building-major-fill, 25%);
+
+@building-aeroway-fill: #cc99ff;
+@building-aeroway-line: darken(@building-aeroway-fill,15%);
+
+
+#buildings {
+  [zoom >= 12] {
+    polygon-fill: @building-low-zoom;
     polygon-clip: false;
-    [railway = 'station']::railway,
-    [building = 'station'] {
-      polygon-fill: #d4aaaa;
-    }
-
-    [building = 'supermarket'] {
-      polygon-fill: pink;
-      polygon-opacity: 0.5;
-    }
-
-    [amenity = 'place_of_worship']::amenity {
-      polygon-opacity: 0.5;
-      polygon-fill: #777;
-      [zoom >= 15] {
-        polygon-opacity: 0.9;
-        polygon-fill: #aaa;
-        line-width: 0.3;
-        line-color: #111;
-      }
+    [zoom >= 15] {
+      line-color: @building-line;
+      polygon-fill: @building-fill;
+      line-width: .75;
+      line-clip: false;
     }
   }
 }
 
-#buildings {
-  [building = 'INT-light'][zoom >= 12] {
-    polygon-fill: #bca9a9;
-    polygon-opacity: 0.7;
-    polygon-clip: false;
-  }
-  [building != 'INT-light'][building != ''][zoom >= 12] {
-    polygon-fill: #bca9a9;
-    polygon-opacity: 0.9;
-    polygon-clip: false;
-    [zoom >= 16] {
-      line-color: #330066;
-      line-width: 0.2;
+#buildings-major {
+  [zoom >= 12] {
+    [aeroway = 'terminal'] {
+      polygon-fill: @building-aeroway-fill;
+      polygon-clip: false;
+      [zoom >= 15] {
+        line-width: .75;
+        line-clip: false;
+        line-color: @building-aeroway-line;
+      }
     }
-  }
-  [aeroway = 'terminal'][zoom >= 12]::aeroway {
-    polygon-fill: #cc99ff;
-    polygon-clip: false;
-    [zoom >= 14] {
-      line-color: #330066;
-      line-width: 0.2;
+    [amenity = 'place_of_worship'] {
+      polygon-fill: @building-major-fill;
+      polygon-clip: false;
+      [zoom >= 15] {
+        line-width: .75;
+        line-clip: false;
+        line-color: @building-major-line;
+      }
     }
   }
 }

@@ -1,3 +1,5 @@
+@station-color: #7981b0;
+
 .stations {
   [railway = 'subway_entrance'][zoom >= 18] {
     point-file: url('symbols/walking.n.12.png');
@@ -5,10 +7,13 @@
   }
 
   [railway = 'station'][zoom >= 12] {
-    point-file: url('symbols/halt.png');
-    point-placement: interior;
+    marker-file: url('symbols/square.svg');
+    marker-placement: interior;
+    marker-fill: @station-color;
+    marker-width: 4;
+    marker-clip: false;
     [zoom >= 13] {
-      point-file: url('symbols/station_small.png');
+      marker-width: 6;
     }
     [zoom >= 14] {
       text-name: "[name]";
@@ -17,30 +22,29 @@
       text-fill: #66f;
       text-dy: -8;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: 0;
       text-placement: interior;
     }
     [zoom >= 15] {
-      point-file: url('symbols/station.png');
+      marker-width: 9;
       text-size: 11;
       text-dy: -10;
     }
-    /*
-    [disused = 'yes'] {
-      point-file: url('symbols/station_disused.png'); // 14 and above
-      text-fill: grey; // 15 and above, small version only
-    }
-    */
   }
 
   [railway = 'halt'],
   [railway = 'tram_stop'],
   [aerialway = 'station']::aerialway {
     [zoom >= 13] {
-      point-file: url('symbols/halt.png');
+      marker-file: url('symbols/square.svg');
+      marker-placement: interior;
+      marker-fill: @station-color;
+      marker-width: 4;
+      marker-clip: false;
     }
     [zoom >= 15] {
-      point-file: url('symbols/station_small.png');
+      marker-width: 6;
     }
     [zoom >= 14] {
       text-name: "[name]";
@@ -49,6 +53,7 @@
       text-fill: #66f;
       text-dy: -8;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: 0;
       text-placement: interior;
       [zoom >= 15] {

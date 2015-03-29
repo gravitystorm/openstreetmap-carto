@@ -1,3 +1,5 @@
 .thumb.png
 layers/
 data/
+*.xml
+node_modules/

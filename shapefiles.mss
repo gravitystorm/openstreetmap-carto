@@ -6,13 +6,16 @@
 }
 
 #nepopulated {
-  [SCALERANK = 1][zoom >= 3][zoom < 5] {
-    text-name: "[NAME]";
-    text-size: 8;
-    text-fill: grey;
-    text-face-name: @book-fonts;
-    text-halo-radius: 1;
-    text-dy: 2;
+  [zoom >= 3][zoom < 5] {
+    [SCALERANK = 0],
+    [SCALERANK = 1] {
+      text-name: "[NAME]";
+      text-size: 8;
+      text-fill: grey;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
+    }
   }
 }
 
