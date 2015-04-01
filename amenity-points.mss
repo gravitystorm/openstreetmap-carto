@@ -106,8 +106,10 @@
   }
 
   [feature = 'tourism_caravan_site'][zoom >= 16] {
-    point-file: url('symbols/caravan_park.p.24.png');
-    point-placement: interior;
+    marker-file: url('symbols/caravan_park.16.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @transportation-icon;
   }
 
   [feature = 'amenity_car_sharing'][zoom >= 16] {
