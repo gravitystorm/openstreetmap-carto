@@ -1506,7 +1506,7 @@ Layer:
               'leisure_' || CASE WHEN leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table') THEN leisure ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill') THEN man_made ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('spring') THEN "natural" ELSE NULL END,
-              'historic_' || CASE WHEN historic IN ('memorial', 'archaeological_site') THEN historic ELSE NULL END,
+              'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site') THEN historic ELSE NULL END,
               'highway_'|| CASE WHEN highway IN ('bus_stop', 'traffic_signals') THEN highway ELSE NULL END,
               'power_' || CASE WHEN power IN ('generator') THEN power ELSE NULL END,
               'tourism_' || CASE WHEN tourism IN ('viewpoint') THEN tourism ELSE NULL END
@@ -1526,7 +1526,7 @@ Layer:
             OR leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table')
             OR man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill')
             OR "natural" IN ('spring')
-            OR historic IN ('memorial', 'archaeological_site')
+            OR historic IN ('memorial', 'monument', 'archaeological_site')
             OR highway IN ('bus_stop', 'traffic_signals')
             OR (power = 'generator' AND ("generator:source" = 'wind' OR power_source = 'wind'))
           ORDER BY way_area desc
@@ -1552,7 +1552,7 @@ Layer:
               'leisure_' || CASE WHEN leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'slipway') THEN leisure ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill') THEN man_made ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance') THEN "natural" ELSE NULL END,
-              'historic_' || CASE WHEN historic IN ('memorial', 'archaeological_site') THEN historic ELSE NULL END,
+              'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site') THEN historic ELSE NULL END,
               'highway_'|| CASE WHEN highway IN ('bus_stop', 'traffic_signals', 'ford') THEN highway ELSE NULL END,
               'power_' || CASE WHEN power IN ('generator') THEN power ELSE NULL END,
               'tourism_' || CASE WHEN tourism IN ('viewpoint') THEN tourism ELSE NULL END
@@ -1572,7 +1572,7 @@ Layer:
             OR leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'slipway')
             OR man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill')
             OR "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance')
-            OR historic IN ('memorial', 'archaeological_site')
+            OR historic IN ('memorial', 'monument', 'archaeological_site')
             OR highway IN ('bus_stop', 'traffic_signals', 'ford')
             OR (power = 'generator' AND ("generator:source" = 'wind' OR power_source = 'wind'))
           ) AS amenity_points
@@ -1784,7 +1784,7 @@ Layer:
               'natural_' || CASE WHEN "natural" IN ('wood', 'water', 'lake', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier') THEN "natural" ELSE NULL END,
               'place_' || CASE WHEN place IN ('island', 'islet') THEN place ELSE NULL END,
               'military_' || CASE WHEN military IN ('danger_area') THEN military ELSE NULL END,
-              'historic_' || CASE WHEN historic IN ('memorial', 'archaeological_site') THEN historic ELSE NULL END,
+              'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site') THEN historic ELSE NULL END,
               'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'ford') THEN highway ELSE NULL END,
               'power_' || CASE WHEN power IN ('station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,
               'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
@@ -1808,7 +1808,7 @@ Layer:
             OR "natural" IN ('wood', 'water', 'lake', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier')
             OR place IN ('island', 'islet')
             OR military IN ('danger_area')
-            OR historic IN ('memorial', 'archaeological_site')
+            OR historic IN ('memorial', 'monument', 'archaeological_site')
             OR highway IN ('services', 'rest_area', 'bus_stop', 'ford')
             OR power IN ('station', 'generator', 'sub_station', 'substation')
             OR boundary IN ('national_park')
@@ -1858,7 +1858,7 @@ Layer:
               'natural_' || CASE WHEN "natural" IN ('wood', 'peak', 'volcano', 'saddle', 'cave_entrance', 'water', 'lake', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier') THEN "natural" ELSE NULL END,
               'place_' || CASE WHEN place IN ('island', 'islet') THEN place ELSE NULL END,
               'military_' || CASE WHEN military IN ('danger_area') THEN military ELSE NULL END,
-              'historic_' || CASE WHEN historic IN ('memorial', 'archaeological_site') THEN historic ELSE NULL END,
+              'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site') THEN historic ELSE NULL END,
               'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'ford') THEN highway ELSE NULL END,
               'power_' || CASE WHEN power IN ('station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,
               'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
@@ -1882,7 +1882,7 @@ Layer:
             OR "natural" IN ('wood', 'peak', 'volcano', 'saddle', 'cave_entrance', 'water', 'lake', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier')
             OR place IN ('island', 'islet')
             OR military IN ('danger_area')
-            OR historic IN ('memorial', 'archaeological_site')
+            OR historic IN ('memorial', 'monument', 'archaeological_site')
             OR highway IN ('bus_stop', 'services', 'rest_area', 'bus_stop', 'ford')
             OR power IN ('station', 'generator', 'sub_station', 'substation')
             OR boundary IN ('national_park')

@@ -400,7 +400,8 @@
     point-placement: interior;
   }
 
-  [feature = 'historic_memorial'][zoom >= 17] {
+  [feature = 'historic_memorial'][zoom >= 17],
+  [feature = 'historic_monument'][zoom >= 17] {
     marker-file: url('symbols/tourist_memorial.16.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
@@ -869,6 +870,7 @@
   }
 
   [feature = 'historic_memorial'][zoom >= 17],
+  [feature = 'historic_monument'][zoom >= 17],
   [feature = 'historic_archaeological_site'][zoom >= 17] {
     text-name: "[name]";
     text-size: 9;
