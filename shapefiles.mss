@@ -14,6 +14,7 @@
       text-fill: grey;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
     }
   }
 }

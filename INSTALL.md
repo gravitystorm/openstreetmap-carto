@@ -1,6 +1,6 @@
 # Installation
 
-You need OpenStreetMap data loaded into a PostGIS database (see below for [dependencies](https://github.com/gravitystorm/openstreetmap-carto#dependencies)). These stylesheets currently work only with the osm2pgsql defaults (i.e. database name is `gis`, table names are `planet_osm_point`, etc).
+You need OpenStreetMap data loaded into a PostGIS database (see below for [dependencies](#dependencies)). These stylesheets currently work only with the osm2pgsql defaults (i.e. database name is `gis`, table names are `planet_osm_point`, etc).
 
 It's probably easiest to grab an PBF of OSM data from [Mapzen](https://mapzen.com/metro-extracts/) or [geofabrik](http://download.geofabrik.de/). Once you've set up your PostGIS database, import with osm2pgsql:
 
@@ -64,15 +64,16 @@ If a font is missing, it will skip to the next available font which contains tho
 
 * Mukti Narrow, for Bangali (`ttf-indic-fonts-core`)
 * Gargi Medium, for Devanagari (`ttf-indic-fonts-core`)
-* TSCu_Paranar, for Tamil (`ttf-tamil-fonts`)
+* TSCu_Paranar, for Tamil (`ttf-tamil-fonts` or ``fonts-taml-tscu``, depending on your Ubuntu version)
 * Mallige, for Kannada (`ttf-indic-fonts-core` for normal and bold and `ttf-kannada-fonts` for oblique) *The filename uses "Malige" but the font name uses "Mallige"*
 
 On Ubuntu you can install all the fonts with
 
 ```
 sudo apt-get install ttf-dejavu fonts-droid ttf-unifont fonts-sipa-arundina fonts-sil-padauk fonts-khmeros \
-ttf-indic-fonts-core ttf-tamil-fonts ttf-kannada-fonts
+ttf-indic-fonts-core fonts-taml-tscu ttf-kannada-fonts
 ```
+In Ubuntu 13.10 (Saucy) and lower, replace fonts-taml-tscu with ttf-tamil-fonts.
 
 ## Dependencies
 
@@ -80,7 +81,7 @@ ttf-indic-fonts-core ttf-tamil-fonts ttf-kannada-fonts
 
 If you aren't using TileMill, you can compile the CartoCSS stylesheets into Mapnik XML using the command-line `carto` command.
 
-* [carto](https://github.com/mapbox/carto) >= 0.9.3 (we're using instances with cascading rules)
+* [carto](https://github.com/mapbox/carto) >= 0.9.5 (we're using instances with cascading rules and min/max zoom properties)
 * [mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 2.1.0
 
 ---
