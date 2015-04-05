@@ -617,8 +617,10 @@
   [feature = 'power_generator']['generator:source' = 'wind'],
   [feature = 'power_generator'][power_source = 'wind'] {
     [zoom >= 15] {
-      point-file: url('symbols/power_wind.png');
-      point-placement: interior;
+      marker-file: url('symbols/power_wind-16.svg');
+      marker-placement: interior;
+      marker-fill: black;
+      marker-clip: false;
     }
   }
 
