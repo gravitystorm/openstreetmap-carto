@@ -1908,6 +1908,7 @@ Layer:
                 OR power IN ('station', 'generator', 'sub_station', 'substation')
                 OR boundary IN ('national_park')
                 OR waterway IN ('dam', 'weir')
+              ORDER BY elevation DESC NULLS LAST
               ) AS p
           ) AS text
     properties:
