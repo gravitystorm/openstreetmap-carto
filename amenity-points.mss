@@ -200,8 +200,10 @@
   }
 
   [feature = 'amenity_courthouse'][zoom >= 16] {
-    point-file: url('symbols/amenity_court.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/courthouse-16.svg');
+    marker-placement: interior;
+    marker-fill: @amenity-brown;
+    marker-clip: false;
   }
 
   [feature = 'amenity_townhall'][zoom >= 16] {
