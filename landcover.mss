@@ -52,7 +52,7 @@
 @power: #bbb;
 @rest_area: #efc8c8; // also services
 @sand: #f5e9c6;
-@school: #f0f0d8; // also university, college, hospital, kindergarten
+@school: #f0f0d8; // also university, college, hospital, kindergarten, clinic
 @station: #d4aaaa;
 @orchard: #9ed88f;
 @theme_park: #734a08;
@@ -445,7 +445,8 @@
   [feature = 'amenity_college'],
   [feature = 'amenity_school'],
   [feature = 'amenity_hospital'],
-  [feature = 'amenity_kindergarten'] {
+  [feature = 'amenity_kindergarten'],
+  [feature = 'amenity_clinic'] {
     [zoom >= 10] {
       polygon-fill: @school;
       [zoom >= 12] {

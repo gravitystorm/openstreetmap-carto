@@ -134,6 +134,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_clinic'][zoom >= 16] {
+    marker-file: url('symbols/clinic.16.svg');
+    marker-fill: @health-color;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_nightclub'][zoom >= 17] {
     marker-file: url('symbols/nightclub.18.svg');
     marker-fill: @amenity-brown;
