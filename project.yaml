@@ -1558,6 +1558,14 @@ Layer:
               'tourism_' || CASE WHEN tourism IN ('viewpoint') THEN tourism ELSE NULL END
             ) AS feature,
             access,
+            CASE
+              WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
+                CASE
+                  WHEN ele ~ '^-?\d{1,4}(\.\d+)?$' THEN ele::NUMERIC
+                  ELSE NULL
+                END                  
+              ELSE NULL
+            END AS score,
             religion,
             denomination,
             "generator:source",
@@ -1575,6 +1583,7 @@ Layer:
             OR historic IN ('memorial', 'archaeological_site')
             OR highway IN ('bus_stop', 'traffic_signals', 'ford')
             OR (power = 'generator' AND ("generator:source" = 'wind' OR power_source = 'wind'))
+          ORDER BY score DESC NULLS LAST
           ) AS amenity_points
     properties:
       minzoom: 10
@@ -1843,7 +1852,7 @@ Layer:
       <<: *osm2pgsql
       # Include values that are rendered as icon without label to prevent mismatch between icons and labels,
       # see https://github.com/gravitystorm/openstreetmap-carto/pull/1349#issuecomment-77805678
-      table: |-
+      table: |2-
         (SELECT
             way,
             way_pixels,
@@ -1851,13 +1860,17 @@ Layer:
             access,
             CONCAT(
                 name,
-                CASE WHEN (name IS NOT NULL) AND (elevation IS NOT NULL) THEN E'\n' ELSE NULL END,
-                CASE WHEN elevation IS NOT NULL THEN CONCAT(REPLACE(CAST (CAST (elevation AS INTEGER) AS TEXT), '-', U&'\2212'), U&'\00A0', 'm') ELSE NULL END
+                CASE WHEN name IS NOT NULL AND elevation IS NOT NULL THEN E'\n' ELSE NULL END,
+                CASE WHEN elevation IS NOT NULL THEN CONCAT(REPLACE(ROUND(elevation)::TEXT, '-', U&'\2212'), U&'\00A0', 'm') ELSE NULL END
             ) AS name,
+            CASE
+              WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN elevation
+              ELSE NULL
+            END AS score,
             ref,
             way_area,
             is_building
-          FROM (
+          FROM
             (SELECT
                 way,
                 NULL AS way_pixels,
@@ -1880,14 +1893,16 @@ Layer:
                   'tourism_' || CASE WHEN tourism IN ('attraction', 'viewpoint') THEN tourism ELSE NULL END
                 ) AS feature,
                 access,
+                name,
                 CASE
                   WHEN "natural" IN ('peak', 'volcano', 'saddle') OR tourism = 'alpine_hut' OR amenity = 'shelter' THEN
                     CASE
-                      WHEN ele ~ '^-?\d{1,4}(\.\d+)?$' THEN CAST (ele AS numeric)
+                      WHEN ele ~ '^-?\d{1,4}(\.\d+)?$' THEN ele::NUMERIC
                       ELSE NULL
                     END                  
                   ELSE NULL
                 END AS elevation,
+                "natural",
                 ref,
                 NULL AS way_area,
                 CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
@@ -1908,8 +1923,8 @@ Layer:
                 OR power IN ('station', 'generator', 'sub_station', 'substation')
                 OR boundary IN ('national_park')
                 OR waterway IN ('dam', 'weir')
-              ORDER BY elevation DESC NULLS LAST
               ) AS p
+          ORDER BY score DESC NULLS LAST
           ) AS text
     properties:
       minzoom: 10
