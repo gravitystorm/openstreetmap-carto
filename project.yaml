@@ -138,9 +138,9 @@ Layer:
       table: |-
         (SELECT
             way, name, religion, way_pixels,
-            COALESCE(aeroway, amenity, landuse, leisure, military, "natural", power, tourism, highway, railway) AS feature 
-          FROM (SELECT 
-              way, COALESCE(name, '') AS name, 
+            COALESCE(aeroway, amenity, landuse, leisure, military, "natural", power, tourism, highway, railway) AS feature
+          FROM (SELECT
+              way, COALESCE(name, '') AS name,
               ('aeroway_' || (CASE WHEN aeroway IN ('apron', 'aerodrome') THEN aeroway ELSE NULL END)) AS aeroway,
               ('amenity_' || (CASE WHEN amenity IN ('parking', 'bicycle_parking', 'university', 'college', 'school', 'hospital', 'kindergarten', 'grave_yard', 'prison', 'place_of_worship') THEN amenity ELSE NULL END)) AS amenity,
               ('landuse_' || (CASE WHEN landuse IN ('quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farm', 'farmland', 'recreation_ground', 'conservation', 'village_green', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'construction') THEN landuse ELSE NULL END)) AS landuse,
@@ -195,7 +195,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT 
+        (SELECT
             way, waterway, intermittent,
             CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel
           FROM planet_osm_line
@@ -268,7 +268,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT 
+        (SELECT
             way, waterway, name, intermittent,
             CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel,
             'no' AS bridge
@@ -288,8 +288,8 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT way, waterway, name 
-          FROM planet_osm_line 
+        (SELECT way, waterway, name
+          FROM planet_osm_line
           WHERE waterway IN ('dam', 'weir', 'lock_gate')
         ) AS water_barriers_line
     advanced: {}
@@ -300,11 +300,11 @@ Layer:
     class: ""
     geometry: "polygon"
     <<: *extents
-    Datasource: 
+    Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT way, waterway, name 
-          FROM planet_osm_polygon 
+        (SELECT way, waterway, name
+          FROM planet_osm_polygon
           WHERE waterway IN ('dam', 'weir', 'lock_gate')
         ) AS water_barriers_poly
     advanced: {}
@@ -366,9 +366,9 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT 
-            way, waterway 
-          FROM planet_osm_point 
+        (SELECT
+            way, waterway
+          FROM planet_osm_point
           WHERE waterway IN ('dam', 'weir', 'lock_gate')
         ) AS water_barriers_points
     properties:
@@ -1472,7 +1472,7 @@ Layer:
     class: ""
     geometry: "polygon"
     <<: *extents
-    Datasource: 
+    Datasource:
       <<: *osm2pgsql
       table: |-
         (SELECT
@@ -1563,7 +1563,7 @@ Layer:
                 CASE
                   WHEN ele ~ '^-?\d{1,4}(\.\d+)?$' THEN ele::NUMERIC
                   ELSE NULL
-                END                  
+                END
               ELSE NULL
             END AS score,
             religion,
@@ -1759,7 +1759,7 @@ Layer:
           FROM planet_osm_polygon
           WHERE (landuse IN ('forest')
               OR "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock')
-              OR "place" IN ('island')              
+              OR "place" IN ('island')
               OR boundary IN ('national_park')
               OR leisure IN ('nature_reserve'))
             AND building IS NULL
@@ -1832,7 +1832,7 @@ Layer:
     class: "text"
     geometry: "linestring"
     <<: *extents
-    Datasource: 
+    Datasource:
       <<: *osm2pgsql
       table: |-
         (SELECT way, NULL as way_pixels, COALESCE('man_made_' || man_made, 'waterway_' || waterway, 'natural_' || "natural") AS feature, access, NULL as ele, name, ref, NULL AS way_area,
@@ -1899,7 +1899,7 @@ Layer:
                     CASE
                       WHEN ele ~ '^-?\d{1,4}(\.\d+)?$' THEN ele::NUMERIC
                       ELSE NULL
-                    END                  
+                    END
                   ELSE NULL
                 END AS elevation,
                 "natural",
