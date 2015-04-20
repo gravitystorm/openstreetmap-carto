@@ -1983,11 +1983,11 @@
     }
     [zoom >= 19] {
       trunk/marker-width: 3;
-      trunk/marker-height: 3;    
+      trunk/marker-height: 3;
     }
     [zoom >= 20] {
       trunk/marker-width: 6;
-      trunk/marker-height: 6;    
+      trunk/marker-height: 6;
     }
   }
 }

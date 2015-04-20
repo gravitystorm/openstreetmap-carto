@@ -3,7 +3,7 @@
 /* For performance reasons, the admin border layers are split into three groups
 for low, middle and high zoom levels.
 For each zoomlevel, all borders come from a single attachment, to handle
-overlapping borders correctly. 
+overlapping borders correctly.
 */
 
 #admin-low-zoom[zoom < 11],

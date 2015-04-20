@@ -98,7 +98,7 @@
       line-cap: butt;
       line-join: round;
       line-clip: false;
-    }  
+    }
     line-color: @water-color;
     line-width: 0.7;
     [zoom >= 9] { line-width: 1.2; }
