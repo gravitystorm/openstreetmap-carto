@@ -527,6 +527,58 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_gift'][zoom >= 17] {
+    marker-file: url('symbols/shop_gift.16.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+  
+  [feature = 'shop_electronics'][zoom >= 17] {
+    marker-file: url('symbols/shop_electronics.16.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+  
+  [feature = 'shop_alcohol'][zoom >= 17] {
+    marker-file: url('symbols/shop_alcohol.16.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+  
+  [feature = 'shop_optician'][zoom >= 17] {
+    marker-file: url('symbols/shop_optician.16.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+  
+  [feature = 'shop_furniture'][zoom >= 17] {
+    marker-file: url('symbols/shop_furniture.16.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+  
+  [feature = 'shop_mobile_phone'][zoom >= 17] {
+    marker-file: url('symbols/shop_mobile_phone.16.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+  
+  [feature = 'shop_jewelry'],
+  [feature = 'shop_jewellery'] {
+    [zoom >= 17] {
+      marker-file: url('symbols/shop_jewelry.16.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @shop-icon;
+    }
+  }
+
   [feature = 'leisure_water_park'][zoom >= 17] {
     point-file: url('symbols/water_park.p.20.png');
     point-placement: interior;
@@ -1619,6 +1671,14 @@
   [feature = 'shop_florist'],
   [feature = 'shop_pet'],
   [feature = 'shop_shoes'],
+  [feature = 'shop_gift'],
+  [feature = 'shop_electronics'],
+  [feature = 'shop_alcohol'],
+  [feature = 'shop_optician'],
+  [feature = 'shop_furniture'],
+  [feature = 'shop_mobile_phone'],
+  [feature = 'shop_jewelry'],
+  [feature = 'shop_jewellery'],
   [feature = 'shop_other']{
     [zoom >= 17] {
       text-name: "[name]";
