@@ -1,6 +1,5 @@
 @marina-text: #576ddf; // also swimming_pool
-@wetland-text: darken(#017fff, 10%); /* Also for marsh */
-@mud-text: darken(#aea397, 20%);
+@wetland-text: darken(#4aa5fa, 25%); /* Also for marsh and mud */
 @shop-icon: #ac39ac;
 @money-icon: #555555;
 @transportation-icon: #0092da;
@@ -984,26 +983,9 @@
     text-placement: interior;
   }
 
-  [feature = 'natural_mud'][is_building = 'no'] {
-    [zoom >= 10][way_pixels > 3000],
-    [zoom >= 17] {
-      text-name: "[name]";
-      text-size: @landcover-font-size;
-      [way_pixels > 12000] { text-size: @landcover-font-size-big; }
-      [way_pixels > 48000] { text-size: @landcover-font-size-bigger; }
-      text-fill: @mud-text;
-      text-face-name: @landcover-face-name;
-      text-halo-radius: 1;
-      text-halo-fill: rgba(255,255,255,0.6);
-      text-wrap-width: @landcover-wrap-width-size;
-      [way_pixels > 12000] {text-wrap-width: @landcover-wrap-width-size-big; }
-      [way_pixels > 48000] {text-wrap-width: @landcover-wrap-width-size-bigger; }
-      text-placement: interior;
-    }
-  }
-
   [feature = 'natural_wetland'][is_building = 'no'],
-  [feature = 'natural_marsh'][is_building = 'no'] {
+  [feature = 'natural_marsh'][is_building = 'no'],
+  [feature = 'natural_mud'][is_building = 'no'] {
     [zoom >= 10][way_pixels > 3000],
     [zoom >= 17] {
       text-name: "[name]";
