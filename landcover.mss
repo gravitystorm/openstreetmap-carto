@@ -8,6 +8,7 @@
 @vineyard: #b3e2a8;
 @grassland: #c6e4b4;
 @scrub: #b5e3b5;
+@mangrove: rgba(151,199,136,0.75); // produces @wood over @land
 
 // --- sports ---
 
@@ -45,6 +46,7 @@
 @danger_area: pink;
 @garages: #dfddce;
 @heath: #d6d99f;
+@mud: rgba(203,177,154,0.3); // produces #e6dcd1 over @land
 @parking: #f7efb7;
 @place_of_worship: #cdccc9;
 @place_of_worship_outline: #111;
@@ -439,6 +441,42 @@
       polygon-pattern-file: url('symbols/scrub.png');
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+    }
+  }
+
+  [feature = 'wetland_mud'],
+  [feature = 'wetland_tidalflat'] {
+    [zoom >= 10] {
+      polygon-fill: @mud;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+  }
+  
+  [feature = 'wetland_swamp'][zoom >= 10] {
+    polygon-fill: @wood;
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+  
+  [feature = 'wetland_mangrove'][zoom >= 10] {
+    polygon-fill: @mangrove;
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+  
+  [feature = 'wetland_bog'][zoom >= 10] {
+    polygon-fill: @heath;
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+  
+  [feature = 'wetland_wet_meadow'],
+  [feature = 'wetland_marsh'] {
+    [zoom >= 10] {
+      polygon-fill: @grass;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
   }
 
