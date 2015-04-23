@@ -423,7 +423,7 @@
   }
 
   [feature = 'shop_supermarket'][zoom >= 16] {
-    marker-file: url('symbols/shop_supermarket.svg');
+    marker-file: url('symbols/shop_supermarket.16.svg');
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @shop-icon;
@@ -460,7 +460,7 @@
   }
 
   [feature = 'shop_convenience'][zoom >= 17] {
-    marker-file: url('symbols/shop_convenience.svg');
+    marker-file: url('symbols/shop_convenience.16.svg');
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @shop-icon;
