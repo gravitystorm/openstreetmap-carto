@@ -446,29 +446,32 @@
 
   [feature = 'wetland_mud'],
   [feature = 'wetland_tidalflat'] {
-    [zoom >= 10] {
+    [zoom >= 9] {
       polygon-fill: @mud;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
   }
   
-  [feature = 'wetland_swamp'][zoom >= 10] {
+  [feature = 'wetland_swamp'][zoom >= 8] {
     polygon-fill: @wood;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
   
-  [feature = 'wetland_mangrove'][zoom >= 10] {
+  [feature = 'wetland_mangrove'][zoom >= 8] {
     polygon-fill: @mangrove;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
   
-  [feature = 'wetland_bog'][zoom >= 10] {
-    polygon-fill: @heath;
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  [feature = 'wetland_bog'],
+  [feature = 'wetland_string_bog'] {
+    [zoom >= 10] {
+      polygon-fill: @heath;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
   }
   
   [feature = 'wetland_wet_meadow'],

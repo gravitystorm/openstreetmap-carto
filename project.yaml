@@ -111,15 +111,16 @@ Layer:
       table: |-
         (SELECT
             way, name, way_pixels,
-            COALESCE(landuse, "natural") AS feature
+            COALESCE(wetland, landuse, "natural") AS feature
           FROM (SELECT
               way, COALESCE(name, '') AS name,
               ('landuse_' || (CASE WHEN landuse IN ('forest') THEN landuse ELSE NULL END)) AS landuse,
               ('natural_' || (CASE WHEN "natural" IN ('wood', 'sand', 'scree', 'shingle', 'bare_rock') THEN "natural" ELSE NULL END)) AS "natural",
+              ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'mud') THEN (CASE WHEN "natural" IN ('mud') THEN "natural" ELSE wetland END) ELSE NULL END)) AS wetland,
               way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
             FROM planet_osm_polygon
             WHERE (landuse IN ('forest')
-              OR "natural" IN ('wood', 'sand', 'scree', 'shingle', 'bare_rock'))
+              OR "natural" IN ('wood', 'wetland', 'mud', 'sand', 'scree', 'shingle', 'bare_rock'))
               AND way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) > 0.01
               AND building IS NULL
             ORDER BY z_order, way_area DESC
