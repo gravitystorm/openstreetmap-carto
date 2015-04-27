@@ -899,7 +899,6 @@
     [feature = 'amenity_police'] { text-dy: 11; }
     [feature = 'amenity_fire_station'] { text-dy: 11; }
     [feature = 'amenity_post_office'] { text-dy: 11; }
-    [feature = 'amenity_drinking_water'] { text-dy: 9; }
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
@@ -961,7 +960,6 @@
     text-size: 10;
     text-fill: black;
     [feature = 'natural_cave_entrance'] { text-dy: 11; }
-    [feature = 'man_made_mast']         { text-dy: 9; }
     [feature = 'man_made_water_tower']  { text-dy: 13; }
     text-face-name: @book-fonts;
     text-halo-radius: 1;
@@ -1666,7 +1664,7 @@
     text-size: 9;
     text-fill: @amenity-brown;
     text-dy: 12;
-    [feature = 'amenity_recycling'] { text-dy: 9; }
+    [feature = 'amenity_recycling'] { text-dy: 10; }
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
