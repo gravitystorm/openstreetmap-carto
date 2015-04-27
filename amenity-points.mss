@@ -2044,7 +2044,7 @@
 
   [feature = 'natural_tree'][zoom >= 17] {
     text-name: "[name]";
-    text-size: 8;
+    text-size: 9;
     text-fill: green;
     text-dy: 7;
     [zoom >= 18] { text-dy: 8; }
