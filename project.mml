@@ -1999,7 +1999,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    amenity,\n    railway,\n    highway,\n    barrier,\n    access\n  FROM planet_osm_point\n  WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'block')\n     OR highway IN ('mini_roundabout')\n     OR railway = 'level_crossing'\n     OR amenity IN ('parking', 'bicycle_parking', 'bench', 'waste_basket')\n  ) AS amenity_low_priority",
+        "table": "(SELECT\n    way,\n    amenity,\n    railway,\n    highway,\n    barrier,\n    access,\n    CASE WHEN amenity='waste_basket' THEN 2 ELSE 1 END AS prio\n  FROM planet_osm_point p\n  WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'block')\n     OR highway IN ('mini_roundabout')\n     OR railway = 'level_crossing'\n     OR amenity IN ('parking', 'bicycle_parking', 'bench', 'waste_basket')\n  ORDER BY prio\n  ) AS amenity_low_priority",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",

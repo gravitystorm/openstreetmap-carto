@@ -2108,12 +2108,14 @@ Layer:
             railway,
             highway,
             barrier,
-            access
-          FROM planet_osm_point
+            access,
+            CASE WHEN amenity='waste_basket' THEN 2 ELSE 1 END AS prio
+          FROM planet_osm_point p
           WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'block')
              OR highway IN ('mini_roundabout')
              OR railway = 'level_crossing'
              OR amenity IN ('parking', 'bicycle_parking', 'bench', 'waste_basket')
+          ORDER BY prio
           ) AS amenity_low_priority
     properties:
       minzoom: 14

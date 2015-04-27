@@ -763,14 +763,14 @@
     }
   }
 
-  [amenity = 'bench'][zoom >= 18]::amenity {
+  [amenity = 'bench'][zoom >= 19]::amenity {
     marker-file: url('symbols/bench.16.svg');
     marker-fill: #744a08;
     marker-placement: interior;
   }
 
   [amenity = 'waste_basket'][zoom >= 19]::amenity {
-    marker-file: url('symbols/waste_basket.16.svg');
+    marker-file: url('symbols/waste_basket.10.svg');
     marker-fill: #744a08;
     marker-placement: interior;
   }
