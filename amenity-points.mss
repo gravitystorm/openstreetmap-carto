@@ -960,6 +960,7 @@
     text-size: 10;
     text-fill: black;
     [feature = 'natural_cave_entrance'] { text-dy: 11; }
+    [feature = 'man_made_mast']         { text-dy: 10; }
     [feature = 'man_made_water_tower']  { text-dy: 13; }
     text-face-name: @book-fonts;
     text-halo-radius: 1;
