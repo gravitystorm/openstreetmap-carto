@@ -69,14 +69,16 @@
       marker-clip: false;
     }
     [zoom >= 17] {
-      marker-file: url('symbols/bus_stop.p.12.png');
-      marker-width: 12;
+      marker-file: url('symbols/bus_stop.16.svg');
+      marker-width: 16;
     }
   }
 
   [feature = 'amenity_bus_station'][zoom >= 16] {
-    point-file: url('symbols/bus_station.n.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/bus_station.16.svg');
+    marker-fill: @transportation-icon;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'highway_traffic_signals'][zoom >= 17] {
@@ -1514,9 +1516,6 @@
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
-      [feature = 'highway_bus_stop'] {
-        text-dy: 9;
-      }
     }
   }
 
