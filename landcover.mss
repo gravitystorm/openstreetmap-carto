@@ -8,7 +8,6 @@
 @vineyard: #b3e2a8;
 @grassland: #c6e4b4;
 @scrub: #b5e3b5;
-@mangrove: rgba(151,199,136,0.75); // produces @wood over @land
 
 // --- sports ---
 
@@ -65,7 +64,19 @@
 
 #landcover-low-zoom[zoom < 10],
 #landcover[zoom >= 10] {
- [feature = 'leisure_swimming_pool'][zoom >= 14] {
+
+  ::first {
+    [feature = 'wetland_mud'],
+    [feature = 'wetland_tidalflat'] {
+      [zoom >= 9] {
+        polygon-fill: @mud;
+        [way_pixels >= 4]  { polygon-gamma: 0.75; }
+        [way_pixels >= 64] { polygon-gamma: 0.3;  }
+      }
+    }
+  }
+
+  [feature = 'leisure_swimming_pool'][zoom >= 14] {
     polygon-fill: @water-color;
     line-color: saturate(darken(@water-color, 40%), 30%);
     line-width: 0.5;
@@ -443,28 +454,13 @@
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
   }
-
-  [feature = 'wetland_mud'],
-  [feature = 'wetland_tidalflat'] {
-    [zoom >= 9] {
-      polygon-fill: @mud;
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
-    }
-  }
-  
+ 
   [feature = 'wetland_swamp'][zoom >= 8] {
     polygon-fill: @wood;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
-  
-  [feature = 'wetland_mangrove'][zoom >= 8] {
-    polygon-fill: @mangrove;
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
-  }
-  
+
   [feature = 'wetland_bog'],
   [feature = 'wetland_string_bog'] {
     [zoom >= 10] {
@@ -473,7 +469,7 @@
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
   }
-  
+
   [feature = 'wetland_wet_meadow'],
   [feature = 'wetland_marsh'] {
     [zoom >= 10] {
