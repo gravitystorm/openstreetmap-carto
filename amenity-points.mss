@@ -69,7 +69,7 @@
       marker-clip: false;
     }
     [zoom >= 17] {
-      marker-file: url('symbols/bus_stop.p.12.png');
+      marker-file: url('symbols/bus_stop.12.svg');
       marker-width: 12;
     }
   }
