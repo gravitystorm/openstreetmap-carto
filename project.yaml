@@ -427,11 +427,13 @@ Layer:
       # ALL is present, and to use an ordering different than current osm2pgsql
       # an order is generated in SQL.
       table: |-
-        (SELECT *
+        (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
+                horse, foot, bicycle, tracktype, access, construction,
+                service, oneway, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
                 way,
-                ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature, --only motorway to tertiary links are accepted later on
+                ('highway_' || highway) AS feature, --only motorway to tertiary links are accepted later on
                 horse,
                 foot,
                 bicycle,
@@ -728,11 +730,13 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT *
+        (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
+                horse, foot, bicycle, tracktype, access, construction,
+                service, oneway, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
                 way,
-                ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature, --only motorway to tertiary links are accepted later on
+                ('highway_' || highway) AS feature, --only motorway to tertiary links are accepted later on
                 horse,
                 foot,
                 bicycle,
@@ -876,11 +880,13 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT *
+        (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
+                horse, foot, bicycle, tracktype, access, construction,
+                service, oneway, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
                 way,
-                ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature, --only motorway to tertiary links are accepted later on
+                ('highway_' || highway) AS feature, --only motorway to tertiary links are accepted later on
                 horse,
                 foot,
                 bicycle,
@@ -1096,11 +1102,13 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT *
+        (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
+                horse, foot, bicycle, tracktype, access, construction,
+                service, oneway, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
                 way,
-                ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature, --only motorway to tertiary links are accepted later on
+                ('highway_' || highway) AS feature, --only motorway to tertiary links are accepted later on
                 horse,
                 foot,
                 bicycle,
