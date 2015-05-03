@@ -458,7 +458,7 @@
   [feature = 'shop_clothes'],
   [feature = 'shop_fashion'] {
     [zoom >= 17] {
-      marker-file: url('symbols/shop_clothes.svg');
+      marker-file: url('symbols/shop_clothes.16.svg');
       marker-placement: interior;
       marker-clip: false;
       marker-fill: @shop-icon;
