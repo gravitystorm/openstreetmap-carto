@@ -2,8 +2,10 @@
 
 .stations {
   [railway = 'subway_entrance'][zoom >= 18] {
-    point-file: url('symbols/walking.n.12.png');
-    point-placement: interior;
+    marker-file: url('symbols/entrance.10.svg');
+    marker-placement: interior;
+    marker-fill: @transportation-icon;
+    marker-clip: false;
   }
 
   [railway = 'station'][zoom >= 12] {
