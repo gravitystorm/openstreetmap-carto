@@ -414,8 +414,10 @@
   }
 
   [feature = 'historic_archaeological_site'][zoom >= 16] {
-    point-file: url('symbols/tourist_archaeological2.glow.24.png');
-    point-placement: interior;
+    marker-file: url('symbols/archaeological_site.16.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'shop_other'][zoom >= 17] {
@@ -953,8 +955,7 @@
     text-name: "[name]";
     text-size: 9;
     text-fill: @amenity-brown;
-    text-dy: 15;
-    [feature = 'historic_memorial'] { text-dy: 11; }
+    text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
