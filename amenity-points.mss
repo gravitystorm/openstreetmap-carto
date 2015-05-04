@@ -1051,7 +1051,7 @@
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-halo-fill: rgba(255,255,255,0.6);
-      text-wrap-width: 30;
+      text-wrap-width: @standard-wrap-width;
       text-placement: interior;
     }
   }
@@ -2015,7 +2015,7 @@
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
     text-placement: interior;
-    text-wrap-width: 30;
+    text-wrap-width: @standard-wrap-width;
   }
 
   [feature = 'aeroway_aerodrome'][zoom >= 10][zoom < 14] {
@@ -2027,7 +2027,7 @@
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
     text-placement: interior;
-    text-wrap-width: 30;
+    text-wrap-width: @standard-wrap-width;
   }
 
   [feature = 'amenity_hunting_stand'][zoom >= 17] {
@@ -2039,7 +2039,7 @@
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
     text-placement: interior;
-    text-wrap-width: 30;
+    text-wrap-width: @standard-wrap-width;
   }
 
   [feature = 'natural_tree'][zoom >= 17] {
@@ -2054,7 +2054,7 @@
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
     text-placement: interior;
-    text-wrap-width: 30;
+    text-wrap-width: @standard-wrap-width;
   }
 }
 
