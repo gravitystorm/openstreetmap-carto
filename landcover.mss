@@ -574,12 +574,13 @@
 /* man_made=cutline */
 #landcover-line {
   [zoom >= 14] {
-    line-width: 3;
+    line-width: 2;
     line-join: round;
     line-cap: square;
-    line-color: @land-color;
+    line-color: white;
+    line-opacity: 0.3;
     [zoom >= 16] {
-      line-width: 6;
+      line-width: 4;
     }
   }
 }
