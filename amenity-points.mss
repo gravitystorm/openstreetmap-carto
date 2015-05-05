@@ -1459,6 +1459,7 @@
     [feature = 'amenity_atm'] {
       text-name: "[operator]";
     }
+    text-size: 10;
     [feature = 'amenity_bank'] { text-dy: 9; }
     [feature = 'amenity_atm']  { text-dy: 10; }
     text-fill: black;
