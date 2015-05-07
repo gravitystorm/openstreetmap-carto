@@ -412,6 +412,13 @@
     marker-clip: false;
   }
 
+  [feature = 'historic_monument'][zoom >= 16] {
+    marker-file: url('symbols/monument.16.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'historic_archaeological_site'][zoom >= 16] {
     marker-file: url('symbols/archaeological_site.16.svg');
     marker-fill: @amenity-brown;
@@ -971,6 +978,7 @@
   }
 
   [feature = 'historic_memorial'][zoom >= 17],
+  [feature = 'historic_monument'][zoom >= 16],
   [feature = 'historic_archaeological_site'][zoom >= 17] {
     text-name: "[name]";
     text-size: 9;
