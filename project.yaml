@@ -1022,7 +1022,8 @@ Layer:
               ('unclassified', 2),
               ('residential', 3),
               ('living_street', 4),
-              ('service', 5)
+              ('service', 5),
+              ('track', 6)
             ) AS v (highway, prio)
               ON v.highway=l.highway
           WHERE p.highway = 'turning_circle' OR p.highway = 'turning_loop'
