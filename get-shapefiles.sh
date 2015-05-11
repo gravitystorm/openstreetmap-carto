@@ -11,6 +11,8 @@ mkdir -p data/simplified-land-polygons-complete-3857
 mkdir -p data/ne_110m_admin_0_boundary_lines_land
 mkdir -p data/ne_10m_populated_places
 mkdir -p data/land-polygons-split-3857
+mkdir -p antarctica-icesheet-polygons-3857
+mkdir -p antarctica-icesheet-outlines-3857
 
 # world_boundaries
 echo "dowloading world_boundaries..."
@@ -65,6 +67,27 @@ unzip $UNZIP_OPTS data/land-polygons-split-3857.zip \
   land-polygons-split-3857/land_polygons.cpg \
   -d data/
 
+# antarctica-icesheet-polygons-3857
+echo "dowloading antarctica-icesheet-polygons-3857..."
+curl -z "data/antarctica-icesheet-polygons-3857.zip" -L -o "data/antarctica-icesheet-polygons-3857.zip" "http://data.openstreetmapdata.com/antarctica-icesheet-polygons-3857.zip"
+echo "expanding antarctica-icesheet-polygons-3857..."
+unzip $UNZIP_OPTS data/antarctica-icesheet-polygons-3857.zip \
+  antarctica-icesheet-polygons-3857/icesheet_polygons.shp \
+  antarctica-icesheet-polygons-3857/icesheet_polygons.shx \
+  antarctica-icesheet-polygons-3857/icesheet_polygons.prj \
+  antarctica-icesheet-polygons-3857/icesheet_polygons.dbf \
+  -d data/
+
+# antarctica-icesheet-outlines-3857
+echo "dowloading antarctica-icesheet-outlines-3857..."
+curl -z "data/antarctica-icesheet-outlines-3857.zip" -L -o "data/antarctica-icesheet-outlines-3857.zip" "http://data.openstreetmapdata.com/antarctica-icesheet-outlines-3857.zip"
+echo "expanding antarctica-icesheet-outlines-3857..."
+unzip $UNZIP_OPTS data/antarctica-icesheet-outlines-3857.zip \
+  antarctica-icesheet-outlines-3857/icesheet_outlines.shp \
+  antarctica-icesheet-outlines-3857/icesheet_outlines.shx \
+  antarctica-icesheet-outlines-3857/icesheet_outlines.prj \
+  antarctica-icesheet-outlines-3857/icesheet_outlines.dbf \
+  -d data/
 
 #process populated places
 echo "processing ne_10m_populated_places..."
@@ -77,6 +100,8 @@ echo "indexing shapefiles"
 shapeindex --shape_files \
 data/simplified-land-polygons-complete-3857/simplified_land_polygons.shp \
 data/land-polygons-split-3857/land_polygons.shp \
+data/antarctica-icesheet-polygons-3857/icesheet_polygons.shp \
+data/antarctica-icesheet-outlines-3857/icesheet_outlines.shp \
 data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp \
 data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp
 

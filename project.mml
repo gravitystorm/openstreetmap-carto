@@ -223,6 +223,28 @@
       "advanced": {}
     },
     {
+      "name": "icesheet-poly",
+      "srs-name": "900913",
+      "geometry": "polygon",
+      "class": "",
+      "id": "icesheet-poly",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "Datasource": {
+        "type": "shape",
+        "file": "data/antarctica-icesheet-polygons-3857/icesheet_polygons.shp"
+      },
+      "extent": [
+        -180,
+        -85.05112877980659,
+        180,
+        85.05112877980659
+      ],
+      "properties": {
+        "minzoom": 4
+      },
+      "advanced": {}
+    },
+    {
       "name": "water-areas",
       "srs-name": "900913",
       "geometry": "polygon",
@@ -271,6 +293,28 @@
       ],
       "properties": {
         "minzoom": 10
+      },
+      "advanced": {}
+    },
+    {
+      "name": "icesheet-outlines",
+      "srs-name": "900913",
+      "geometry": "linestring",
+      "class": "",
+      "id": "icesheet-outlines",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "Datasource": {
+        "type": "shape",
+        "file": "data/antarctica-icesheet-outlines-3857/icesheet_outlines.shp"
+      },
+      "extent": [
+        -180,
+        -85.05112877980659,
+        180,
+        85.05112877980659
+      ],
+      "properties": {
+        "minzoom": 4
       },
       "advanced": {}
     },
