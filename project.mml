@@ -1010,7 +1010,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT way FROM planet_osm_line WHERE highway = 'bus_guideway' AND (tunnel IS NULL OR tunnel != 'yes')) AS guideways",
+        "table": "(SELECT\n    way\n  FROM planet_osm_line\n  WHERE highway = 'bus_guideway' AND (tunnel IS NULL OR tunnel != 'yes')\n) AS guideways",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1115,7 +1115,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT way FROM planet_osm_line WHERE \"power\" = 'minor_line') AS power_minorline",
+        "table": "(SELECT\n    way\n  FROM planet_osm_line\n  WHERE power = 'minor_line'\n) AS power_minorline",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1141,7 +1141,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT way FROM planet_osm_line WHERE \"power\" = 'line') AS power_line",
+        "table": "(SELECT\n    way\n  FROM planet_osm_line\n  WHERE power = 'line'\n) AS power_line",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1193,7 +1193,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT way, name, tourism FROM planet_osm_polygon WHERE tourism = 'theme_park' OR tourism = 'zoo') AS tourism_boundary",
+        "table": "(SELECT\n    way,\n    name,\n    tourism\n  FROM planet_osm_polygon\n  WHERE tourism = 'theme_park'\n    OR tourism = 'zoo'\n) AS tourism_boundary",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1324,7 +1324,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT way, place, name\n      FROM planet_osm_point\n      WHERE place IN ('suburb', 'village', 'hamlet', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')\n      ) AS placenames_small",
+        "table": "(SELECT\n    way,\n    place,\n    name\n  FROM planet_osm_point\n  WHERE place IN ('suburb', 'village', 'hamlet', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')\n) AS placenames_small",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1480,7 +1480,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT way FROM planet_osm_point WHERE power = 'tower') AS power_towers",
+        "table": "(SELECT\n    way\n  FROM planet_osm_point\n  WHERE power = 'tower'\n) AS power_towers",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1506,7 +1506,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT way FROM planet_osm_point WHERE power = 'pole') AS power_poles",
+        "table": "(SELECT\n    way\n  FROM planet_osm_point\n  WHERE power = 'pole'\n) AS power_poles",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1559,7 +1559,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "     (SELECT way, highway, junction, ref, name\n      FROM planet_osm_point\n      WHERE highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes'\n     ) AS junctions",
+        "table": "(SELECT\n    way,\n    highway,\n    junction,\n    ref,\n    name\n  FROM planet_osm_point\n  WHERE highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes'\n) AS junctions",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1611,7 +1611,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "      (SELECT way, way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels, highway, name\n       FROM planet_osm_polygon\n       WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street', 'track', 'path', 'platform') OR railway IN ('platform') AND name IS NOT NULL\n      ) AS roads_area_text_name",
+        "table": "(SELECT\n    way,\n    way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,\n    highway,\n    name\n  FROM planet_osm_polygon\n  WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street', 'track', 'path', 'platform')\n    OR railway IN ('platform')\n    AND name IS NOT NULL\n) AS roads_area_text_name",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1663,7 +1663,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "      (SELECT way, highway, name\n       FROM planet_osm_line\n       WHERE highway IN ('bridleway', 'footway', 'cycleway', 'path', 'track', 'steps')\n         AND name IS NOT NULL\n      ) AS paths_text_name",
+        "table": "(SELECT\n    way,\n    highway,\n    name\n  FROM planet_osm_line\n  WHERE highway IN ('bridleway', 'footway', 'cycleway', 'path', 'track', 'steps')\n    AND name IS NOT NULL\n) AS paths_text_name",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1921,7 +1921,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n  way, name\n  FROM planet_osm_line\n  WHERE route = 'ferry'\n) AS ferry_routes_text",
+        "table": "(SELECT\n    way,\n    name\n  FROM planet_osm_line\n  WHERE route = 'ferry'\n) AS ferry_routes_text",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",

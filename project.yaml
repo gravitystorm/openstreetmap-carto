@@ -1228,8 +1228,12 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way FROM planet_osm_line WHERE highway = 'bus_guideway' AND (tunnel IS NULL OR tunnel != 'yes')) AS guideways
+      table: |-
+        (SELECT
+            way
+          FROM planet_osm_line
+          WHERE highway = 'bus_guideway' AND (tunnel IS NULL OR tunnel != 'yes')
+        ) AS guideways
     properties:
       minzoom: 13
     advanced: {}
@@ -1298,8 +1302,12 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way FROM planet_osm_line WHERE "power" = 'minor_line') AS power_minorline
+      table: |-
+        (SELECT
+            way
+          FROM planet_osm_line
+          WHERE power = 'minor_line'
+        ) AS power_minorline
     properties:
       minzoom: 16
     advanced: {}
@@ -1310,8 +1318,12 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way FROM planet_osm_line WHERE "power" = 'line') AS power_line
+      table: |-
+        (SELECT
+            way
+          FROM planet_osm_line
+          WHERE power = 'line'
+        ) AS power_line
     properties:
       minzoom: 14
     advanced: {}
@@ -1342,8 +1354,15 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way, name, tourism FROM planet_osm_polygon WHERE tourism = 'theme_park' OR tourism = 'zoo') AS tourism_boundary
+      table: |-
+        (SELECT
+            way,
+            name,
+            tourism
+          FROM planet_osm_polygon
+          WHERE tourism = 'theme_park'
+            OR tourism = 'zoo'
+        ) AS tourism_boundary
     properties:
       minzoom: 10
     advanced: {}
@@ -1429,11 +1448,14 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way, place, name
-              FROM planet_osm_point
-              WHERE place IN ('suburb', 'village', 'hamlet', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')
-              ) AS placenames_small
+      table: |-
+        (SELECT
+            way,
+            place,
+            name
+          FROM planet_osm_point
+          WHERE place IN ('suburb', 'village', 'hamlet', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')
+        ) AS placenames_small
     properties:
       minzoom: 12
     advanced: {}
@@ -1607,8 +1629,12 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way FROM planet_osm_point WHERE power = 'tower') AS power_towers
+      table: |-
+        (SELECT
+            way
+          FROM planet_osm_point
+          WHERE power = 'tower'
+        ) AS power_towers
     properties:
       minzoom: 14
     advanced: {}
@@ -1619,8 +1645,12 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-        (SELECT way FROM planet_osm_point WHERE power = 'pole') AS power_poles
+      table: |-
+        (SELECT
+            way
+          FROM planet_osm_point
+          WHERE power = 'pole'
+        ) AS power_poles
     properties:
       minzoom: 16
     advanced: {}
@@ -1631,7 +1661,7 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
+      table: |-
         (SELECT way, highway, height, width, refs FROM
           (SELECT
               way, highway,
@@ -1659,11 +1689,16 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-             (SELECT way, highway, junction, ref, name
-              FROM planet_osm_point
-              WHERE highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes'
-             ) AS junctions
+      table: |-
+        (SELECT
+            way,
+            highway,
+            junction,
+            ref,
+            name
+          FROM planet_osm_point
+          WHERE highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes'
+        ) AS junctions
     properties:
       minzoom: 11
     advanced: {}
@@ -1674,7 +1709,7 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
+      table: |-
         (SELECT way, highway, height, width, refs FROM
           (SELECT
               way, highway,
@@ -1704,11 +1739,17 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-              (SELECT way, way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels, highway, name
-               FROM planet_osm_polygon
-               WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street', 'track', 'path', 'platform') OR railway IN ('platform') AND name IS NOT NULL
-              ) AS roads_area_text_name
+      table: |-
+        (SELECT
+            way,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            highway,
+            name
+          FROM planet_osm_polygon
+          WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street', 'track', 'path', 'platform')
+            OR railway IN ('platform')
+            AND name IS NOT NULL
+        ) AS roads_area_text_name
     properties:
       minzoom: 15
     advanced: {}
@@ -1739,12 +1780,15 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
-              (SELECT way, highway, name
-               FROM planet_osm_line
-               WHERE highway IN ('bridleway', 'footway', 'cycleway', 'path', 'track', 'steps')
-                 AND name IS NOT NULL
-              ) AS paths_text_name
+      table: |-
+        (SELECT
+            way,
+            highway,
+            name
+          FROM planet_osm_line
+          WHERE highway IN ('bridleway', 'footway', 'cycleway', 'path', 'track', 'steps')
+            AND name IS NOT NULL
+        ) AS paths_text_name
     properties:
       minzoom: 15
     advanced: {}
@@ -2063,9 +2107,10 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |2-
+      table: |-
         (SELECT
-          way, name
+            way,
+            name
           FROM planet_osm_line
           WHERE route = 'ferry'
         ) AS ferry_routes_text
