@@ -1784,6 +1784,7 @@ Layer:
               OR boundary IN ('national_park')
               OR leisure IN ('nature_reserve'))
             AND building IS NULL
+            AND name IS NOT NULL
           ORDER BY way_area DESC
         ) AS text_poly_low_zoom
     properties:
@@ -1829,22 +1830,23 @@ Layer:
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
           FROM planet_osm_polygon
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
-          WHERE aeroway IN ('gate', 'apron', 'helipad', 'aerodrome')
-            OR tourism IN ('alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'guest_house', 'camp_site', 'caravan_site', 'theme_park', 'museum', 'attraction', 'zoo', 'information', 'picnic_site')
-            OR amenity IN ('pub', 'restaurant', 'food_court', 'cafe', 'fast_food', 'biergarten', 'bar', 'library', 'theatre', 'courthouse', 'townhall', 'cinema', 'parking', 'bicycle_parking', 'police', 'fire_station', 'place_of_worship', 'grave_yard', 'shelter', 'bank', 'embassy', 'fuel', 'bus_station', 'prison', 'university', 'school', 'college', 'kindergarten', 'hospital', 'pharmacy', 'doctors', 'dentist', 'atm', 'bicycle_rental', 'car_rental', 'car_sharing', 'post_box', 'post_office', 'recycling', 'telephone', 'emergency_phone', 'toilets', 'drinking_water', 'hunting_stand', 'nightclub')
-            OR shop IS NOT NULL -- skip checking a huge list and use a null check
-            OR leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'sports_centre', 'stadium', 'track', 'pitch', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina', 'picnic_table')
-            OR landuse IN ('reservoir', 'basin', 'recreation_ground', 'conservation', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farm', 'farmland', 'greenhouse_horticulture', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'construction', 'military')
-            OR man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower', 'pier', 'breakwater', 'groyne')
-            OR "natural" IN ('wood', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier')
-            OR place IN ('island', 'islet')
-            OR military IN ('danger_area')
-            OR historic IN ('memorial', 'monument', 'archaeological_site')
-            OR highway IN ('services', 'rest_area', 'bus_stop', 'ford')
-            OR power IN ('station', 'generator', 'sub_station', 'substation')
-            OR boundary IN ('national_park')
-            OR waterway = 'dam'
-          ORDER BY way_area desc
+          WHERE (aeroway IN ('gate', 'apron', 'helipad', 'aerodrome')
+              OR tourism IN ('alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'guest_house', 'camp_site', 'caravan_site', 'theme_park', 'museum', 'attraction', 'zoo', 'information', 'picnic_site')
+              OR amenity IN ('pub', 'restaurant', 'food_court', 'cafe', 'fast_food', 'biergarten', 'bar', 'library', 'theatre', 'courthouse', 'townhall', 'cinema', 'parking', 'bicycle_parking', 'police', 'fire_station', 'place_of_worship', 'grave_yard', 'shelter', 'bank', 'embassy', 'fuel', 'bus_station', 'prison', 'university', 'school', 'college', 'kindergarten', 'hospital', 'pharmacy', 'doctors', 'dentist', 'atm', 'bicycle_rental', 'car_rental', 'car_sharing', 'post_box', 'post_office', 'recycling', 'telephone', 'emergency_phone', 'toilets', 'drinking_water', 'hunting_stand', 'nightclub')
+              OR shop IS NOT NULL -- skip checking a huge list and use a null check
+              OR leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'sports_centre', 'stadium', 'track', 'pitch', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina', 'picnic_table')
+              OR landuse IN ('reservoir', 'basin', 'recreation_ground', 'conservation', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farm', 'farmland', 'greenhouse_horticulture', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'construction', 'military')
+              OR man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower', 'pier', 'breakwater', 'groyne')
+              OR "natural" IN ('wood', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier')
+              OR place IN ('island', 'islet')
+              OR military IN ('danger_area')
+              OR historic IN ('memorial', 'monument', 'archaeological_site')
+              OR highway IN ('services', 'rest_area', 'bus_stop', 'ford')
+              OR power IN ('station', 'generator', 'sub_station', 'substation')
+              OR boundary IN ('national_park')
+              OR waterway = 'dam')
+            AND name IS NOT NULL
+          ORDER BY way_area DESC
         ) AS text_poly
     properties:
       minzoom: 10
@@ -1860,9 +1862,10 @@ Layer:
         (SELECT way, NULL as way_pixels, COALESCE('man_made_' || man_made, 'waterway_' || waterway, 'natural_' || "natural") AS feature, access, NULL as ele, name, operator, ref, NULL AS way_area,
          CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
          FROM planet_osm_line
-         WHERE man_made IN ('pier', 'breakwater', 'groyne', 'embankment')
-            OR waterway IN ('dam', 'weir')
-            OR "natural" IN ('cliff')
+         WHERE (man_made IN ('pier', 'breakwater', 'groyne', 'embankment')
+              OR waterway IN ('dam', 'weir')
+              OR "natural" IN ('cliff'))
+            AND name IS NOT NULL
         ) AS text_line
     advanced: {}
   - id: "text-point"
@@ -1932,21 +1935,22 @@ Layer:
                 CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
               FROM planet_osm_point
               -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
-              WHERE aeroway IN ('gate', 'apron', 'helipad', 'aerodrome')
-                OR tourism IN ('alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'guest_house', 'camp_site', 'caravan_site', 'theme_park', 'museum', 'attraction', 'zoo', 'information', 'viewpoint', 'picnic_site')
-                OR amenity IN ('pub', 'restaurant', 'food_court', 'cafe', 'fast_food', 'biergarten', 'bar', 'library', 'theatre', 'courthouse', 'townhall', 'cinema', 'parking', 'bicycle_parking', 'police', 'fire_station', 'place_of_worship', 'grave_yard', 'shelter', 'bank', 'embassy', 'fuel', 'bus_station', 'prison', 'university', 'school', 'college', 'kindergarten', 'hospital', 'pharmacy', 'doctors', 'dentist', 'atm', 'bicycle_rental', 'car_rental', 'car_sharing', 'post_box', 'post_office', 'recycling', 'telephone', 'emergency_phone', 'toilets', 'drinking_water', 'hunting_stand', 'nightclub')
-                OR shop IS NOT NULL -- skip checking a huge list and use a null check
-                OR leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'sports_centre', 'stadium', 'track', 'pitch', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina', 'slipway', 'picnic_table')
-                OR landuse IN ('reservoir', 'basin', 'recreation_ground', 'conservation', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farm', 'farmland', 'greenhouse_horticulture', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'construction', 'military')
-                OR man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower')
-                OR "natural" IN ('wood', 'peak', 'volcano', 'saddle', 'cave_entrance', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier', 'tree')
-                OR place IN ('island', 'islet')
-                OR military IN ('danger_area')
-                OR historic IN ('memorial', 'monument', 'archaeological_site')
-                OR highway IN ('bus_stop', 'services', 'rest_area', 'bus_stop', 'ford')
-                OR power IN ('station', 'generator', 'sub_station', 'substation')
-                OR boundary IN ('national_park')
-                OR waterway IN ('dam', 'weir')
+              WHERE (aeroway IN ('gate', 'apron', 'helipad', 'aerodrome')
+                  OR tourism IN ('alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'guest_house', 'camp_site', 'caravan_site', 'theme_park', 'museum', 'attraction', 'zoo', 'information', 'viewpoint', 'picnic_site')
+                  OR amenity IN ('pub', 'restaurant', 'food_court', 'cafe', 'fast_food', 'biergarten', 'bar', 'library', 'theatre', 'courthouse', 'townhall', 'cinema', 'parking', 'bicycle_parking', 'police', 'fire_station', 'place_of_worship', 'grave_yard', 'shelter', 'bank', 'embassy', 'fuel', 'bus_station', 'prison', 'university', 'school', 'college', 'kindergarten', 'hospital', 'pharmacy', 'doctors', 'dentist', 'atm', 'bicycle_rental', 'car_rental', 'car_sharing', 'post_box', 'post_office', 'recycling', 'telephone', 'emergency_phone', 'toilets', 'drinking_water', 'hunting_stand', 'nightclub')
+                  OR shop IS NOT NULL -- skip checking a huge list and use a null check
+                  OR leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'sports_centre', 'stadium', 'track', 'pitch', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina', 'slipway', 'picnic_table')
+                  OR landuse IN ('reservoir', 'basin', 'recreation_ground', 'conservation', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farm', 'farmland', 'greenhouse_horticulture', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'construction', 'military')
+                  OR man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower')
+                  OR "natural" IN ('wood', 'peak', 'volcano', 'saddle', 'cave_entrance', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier', 'tree')
+                  OR place IN ('island', 'islet')
+                  OR military IN ('danger_area')
+                  OR historic IN ('memorial', 'monument', 'archaeological_site')
+                  OR highway IN ('bus_stop', 'services', 'rest_area', 'bus_stop', 'ford')
+                  OR power IN ('station', 'generator', 'sub_station', 'substation')
+                  OR boundary IN ('national_park')
+                  OR waterway IN ('dam', 'weir'))
+                AND name IS NOT NULL
               ) AS p
           ORDER BY score DESC NULLS LAST
           ) AS text
@@ -1968,6 +1972,7 @@ Layer:
           FROM planet_osm_polygon
           WHERE building IS NOT NULL
             AND building NOT IN ('no')
+            AND name IS NOT NULL
           ORDER BY way_area DESC
         ) AS building_text
     properties:
@@ -2060,6 +2065,7 @@ Layer:
           FROM planet_osm_line
           WHERE waterway IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi')
             AND (tunnel IS NULL or tunnel != 'culvert')
+            AND name IS NOT NULL
           ORDER BY z_order
         ) AS water_lines_text
     properties:
@@ -2077,6 +2083,7 @@ Layer:
           way, name
           FROM planet_osm_line
           WHERE route = 'ferry'
+            AND name IS NOT NULL
         ) AS ferry_routes_text
     properties:
       minzoom: 13
@@ -2096,6 +2103,7 @@ Layer:
           FROM planet_osm_polygon
           WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
+            AND name IS NOT NULL
         ) AS admin_text
     properties:
       minzoom: 16
@@ -2113,7 +2121,8 @@ Layer:
             name,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
-          WHERE boundary = 'national_park' OR leisure = 'nature_reserve'
+          WHERE (boundary = 'national_park' OR leisure = 'nature_reserve')
+            AND name IS NOT NULL
         ) AS nature_reserve_text
     properties:
       minzoom: 13
