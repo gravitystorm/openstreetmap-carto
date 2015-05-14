@@ -121,7 +121,7 @@ Layer:
             FROM planet_osm_polygon
             WHERE (landuse IN ('forest')
               OR "natural" IN ('wood', 'wetland', 'mud', 'sand', 'scree', 'shingle', 'bare_rock'))
-              AND way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) > 0.01
+              AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
               AND building IS NULL
             ORDER BY z_order, way_area DESC
           ) AS features
@@ -166,7 +166,7 @@ Layer:
               OR tourism IN ('attraction', 'camp_site', 'caravan_site', 'picnic_site')
               OR highway IN ('services', 'rest_area')
               OR railway = 'station')
-              AND way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) > 0.01
+              AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
             ORDER BY z_order, way_area DESC
           ) AS landcover
         ) AS features
@@ -231,14 +231,19 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, "natural", waterway, landuse, name, way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+            way,
+            "natural",
+            waterway,
+            landuse,
+            name,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
           WHERE
             (waterway IN ('dock', 'riverbank', 'canal')
               OR landuse IN ('reservoir', 'basin')
               OR "natural" IN ('water', 'glacier'))
             AND building IS NULL
-            AND way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) > 0.01
+            AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
           ORDER BY z_order, way_area DESC
         ) AS water_areas
     properties:
@@ -258,6 +263,7 @@ Layer:
           FROM planet_osm_polygon
           WHERE "natural" IN ('marsh', 'mud', 'wetland')
             AND building IS NULL
+            AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
           ORDER BY z_order, way_area DESC
         ) AS water_areas_overlay
     properties:
@@ -391,6 +397,7 @@ Layer:
           FROM planet_osm_polygon
           WHERE building IS NOT NULL
             AND building != 'no'
+            AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
           ORDER BY z_order, way_area DESC
         ) AS buildings
     properties:
@@ -413,6 +420,7 @@ Layer:
           WHERE building IS NOT NULL
             AND building != 'no'
             AND (aeroway = 'terminal' OR amenity = 'place_of_worship')
+            AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
           ORDER BY z_order, way_area DESC)
         AS buildings_major
     properties:
@@ -1331,6 +1339,7 @@ Layer:
           FROM planet_osm_polygon
           WHERE (boundary = 'national_park' OR leisure = 'nature_reserve')
             AND building IS NULL
+            AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
         ) AS national_park_boundaries
     properties:
       minzoom: 7
