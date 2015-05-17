@@ -174,8 +174,10 @@
   }
 
   [feature = 'tourism_hotel'][zoom >= 17] {
-    point-file: url('symbols/hotel2.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/hotel.16.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @transportation-icon;
   }
 
   [feature = 'tourism_motel'][zoom >= 17] {
@@ -1501,6 +1503,7 @@
     [feature = 'tourism_alpine_hut'],
     [feature = 'amenity_shelter'],
     [feature = 'tourism_chalet'],
+    [feature = 'tourism_hotel'],
     [feature = 'tourism_guest_house'] {
       text-dy: 11;
     }
