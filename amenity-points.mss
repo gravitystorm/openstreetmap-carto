@@ -1496,19 +1496,14 @@
     text-name: "[name]";
     text-size: 10;
     text-fill: #0066ff;
-    text-dy: 13;
+    text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
-    [feature = 'tourism_alpine_hut'],
-    [feature = 'amenity_shelter'],
-    [feature = 'tourism_chalet'],
-    [feature = 'tourism_hotel'],
-    [feature = 'tourism_hostel'],
-    [feature = 'tourism_guest_house'] {
-      text-dy: 11;
+    [feature = 'tourism_motel'] {
+      text-dy: 13;
     }
     [feature = 'tourism_camp_site'] {
       text-dy: 15;
