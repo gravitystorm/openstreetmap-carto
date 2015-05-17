@@ -56,10 +56,9 @@
 @school: #f0f0d8; // also university, college, hospital, kindergarten
 @station: #d4aaaa;
 @orchard: #9ed88f;
-@theme_park: #734a08;
+@tourism: #734a08;
 @quarry: #c5c3c3;
 @military: #f55;
-@zoo: #a4f3a1;
 @beach: #fff1ba;
 
 #landcover-low-zoom[zoom < 10],
@@ -221,13 +220,6 @@
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-  }
-
-  [feature = 'tourism_zoo'][zoom >= 10] {
-    polygon-fill: @zoo;
-    polygon-pattern-file: url('symbols/zoo.png');
-    [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
   }
 
   [feature = 'leisure_common'][zoom >= 10] {
@@ -631,17 +623,18 @@
   }
 }
 
-#theme-park {
-  [tourism = 'theme_park'][zoom >= 13] {
+#tourism-boundary {
+  [tourism = 'zoo'][zoom >= 10],
+  [tourism = 'theme_park'][zoom >= 10] {
     a/line-width: 1;
     a/line-offset: -0.5;
-    a/line-color: @theme_park;
+    a/line-color: @tourism;
     a/line-opacity: 0.5;
     a/line-join: round;
     a/line-cap: round;
     b/line-width: 4;
     b/line-offset: -2;
-    b/line-color: @theme_park;
+    b/line-color: @tourism;
     b/line-opacity: 0.3;
     b/line-join: round;
     b/line-cap: round;
