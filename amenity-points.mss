@@ -601,8 +601,10 @@
   }
 
   [feature = 'leisure_water_park'][zoom >= 17] {
-    point-file: url('symbols/water_park.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/water_park.16.svg');
+    marker-placement: interior;
+    marker-fill: @amenity-brown;
+    marker-clip: false;
   }
 
   [feature = 'leisure_playground'][zoom >= 17] {
@@ -1048,7 +1050,7 @@
       text-name: "[name]";
       text-size: 11;
       text-fill: darken(@park, 60%);
-      text-dy: 13;
+      text-dy: 11;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-halo-fill: rgba(255,255,255,0.6);
