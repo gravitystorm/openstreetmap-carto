@@ -405,8 +405,10 @@
   }
 
   [feature = 'man_made_water_tower'][zoom >= 17] {
-    point-file: url('symbols/tower_water.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/water_tower.16.svg');
+    marker-fill: @man-made-icon;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'historic_memorial'][zoom >= 17] {
@@ -974,9 +976,11 @@
     text-name: "[name]";
     text-size: 10;
     text-fill: black;
-    [feature = 'natural_cave_entrance'] { text-dy: 11; }
+    [feature = 'natural_cave_entrance'],
+    [feature = 'man_made_water_tower'] {
+      text-dy: 11;
+    }
     [feature = 'man_made_mast']         { text-dy: 10; }
-    [feature = 'man_made_water_tower']  { text-dy: 13; }
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
