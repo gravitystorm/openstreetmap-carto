@@ -78,6 +78,13 @@
     point-placement: interior;
   }
 
+  [feature = 'amenity_taxi'][zoom >= 16] {
+    marker-file: url('symbols/taxi.16.svg');
+    marker-fill: @transportation-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'highway_traffic_signals'][zoom >= 17] {
     marker-file: url('symbols/traffic_light.svg');
     marker-fill: #0a0a0a;
@@ -1519,6 +1526,18 @@
     text-size: 9;
     text-fill: #0066ff;
     text-dy: 10;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
+    text-wrap-width: @standard-wrap-width;
+    text-placement: interior;
+  }
+
+  [feature = 'amenity_taxi'][zoom >= 16] {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: #0066ff;
+    text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
