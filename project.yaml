@@ -378,10 +378,10 @@ Layer:
         (SELECT
             way, waterway
           FROM planet_osm_point
-          WHERE waterway IN ('dam', 'weir', 'lock_gate')
+          WHERE waterway IN ('dam', 'weir', 'lock_gate', 'waterfall')
         ) AS water_barriers_points
     properties:
-      minzoom: 17
+      minzoom: 16
     advanced: {}
   - id: "buildings"
     name: "buildings"
@@ -1961,7 +1961,7 @@ Layer:
                   'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'ford') THEN highway ELSE NULL END,
                   'power_' || CASE WHEN power IN ('station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,
                   'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
-                  'waterway_' || CASE WHEN waterway IN ('dam', 'weir') THEN waterway ELSE NULL END,
+                  'waterway_' || CASE WHEN waterway IN ('dam', 'waterfall', 'weir') THEN waterway ELSE NULL END,
                   'tourism_' || CASE WHEN tourism IN ('attraction', 'viewpoint') THEN tourism ELSE NULL END
                 ) AS feature,
                 access,
@@ -1995,7 +1995,7 @@ Layer:
                   OR highway IN ('bus_stop', 'services', 'rest_area', 'bus_stop', 'ford')
                   OR power IN ('station', 'generator', 'sub_station', 'substation')
                   OR boundary IN ('national_park')
-                  OR waterway IN ('dam', 'weir'))
+                  OR waterway IN ('dam', 'waterfall', 'weir'))
                 AND name IS NOT NULL
               ) AS p
           ORDER BY score DESC NULLS LAST
