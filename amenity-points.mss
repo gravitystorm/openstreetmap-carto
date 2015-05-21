@@ -484,6 +484,13 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_confectionery'][zoom >= 17] {
+    marker-file: url('symbols/confectionery-14.svg');
+    marker-fill: @shop-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'shop_department_store'][zoom >= 16] {
     point-file: url('symbols/department_store.p.16.png');
     point-placement: interior;
@@ -1707,6 +1714,7 @@
   [feature = 'shop_clothes'],
   [feature = 'shop_fashion'],
   [feature = 'shop_convenience'],
+  [feature = 'shop_confectionery'],
   [feature = 'shop_doityourself'],
   [feature = 'shop_hardware'],
   [feature = 'shop_hairdresser'],
