@@ -400,8 +400,10 @@
   }
 
   [feature = 'tourism_viewpoint'][zoom >= 16] {
-    point-file: url('symbols/view_point.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/viewpoint.16.svg');
+    marker-placement: interior;
+    marker-fill: @amenity-brown;
+    marker-clip: false;
   }
 
   [feature = 'man_made_water_tower'][zoom >= 17] {
