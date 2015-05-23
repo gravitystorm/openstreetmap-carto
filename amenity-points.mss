@@ -506,6 +506,13 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_garden_centre'][zoom >= 17] {
+    marker-file: url('symbols/garden_centre-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+
   [feature = 'shop_hairdresser'][zoom >= 17] {
     marker-file: url('symbols/shop_hairdresser.16.svg');
     marker-placement: interior;
@@ -1715,6 +1722,7 @@
   [feature = 'shop_car_repair'],
   [feature = 'shop_bicycle'],
   [feature = 'shop_florist'],
+  [feature = 'shop_garden_centre'],
   [feature = 'shop_pet'],
   [feature = 'shop_shoes'],
   [feature = 'shop_gift'],
