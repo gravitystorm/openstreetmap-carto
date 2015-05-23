@@ -467,6 +467,13 @@
     marker-clip: false;
   }
 
+  [feature = 'shop_chemist'][zoom >= 17] {
+    marker-file: url('symbols/chemist-14.svg');
+    marker-fill: @shop-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'shop_clothes'],
   [feature = 'shop_fashion'] {
     [zoom >= 17] {
@@ -1725,6 +1732,7 @@
   [feature = 'shop_mobile_phone'],
   [feature = 'shop_jewelry'],
   [feature = 'shop_jewellery'],
+  [feature = 'shop_chemist'],
   [feature = 'shop_other']{
     [zoom >= 17] {
       text-name: "[name]";
