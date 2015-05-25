@@ -571,6 +571,17 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_photo'],
+  [feature = 'shop_photo_studio'],
+  [feature = 'shop_photography'] {
+    [zoom >= 17] {
+      marker-file: url('symbols/photo-14.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @shop-icon;
+    }
+  }
+
   [feature = 'shop_shoes'][zoom >= 17] {
     marker-file: url('symbols/shop_shoes.16.svg');
     marker-placement: interior;
@@ -1762,6 +1773,9 @@
   [feature = 'shop_florist'],
   [feature = 'shop_garden_centre'],
   [feature = 'shop_pet'],
+  [feature = 'shop_photo'],
+  [feature = 'shop_photo_studio'],
+  [feature = 'shop_photography'],
   [feature = 'shop_shoes'],
   [feature = 'shop_gift'],
   [feature = 'shop_electronics'],
