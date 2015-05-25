@@ -619,7 +619,17 @@
     marker-clip: false;
     marker-fill: @shop-icon;
   }
-  
+
+  [feature = 'shop_kiosk'],
+  [feature = 'shop_newsagent'] {
+    [zoom >= 17] {
+      marker-file: url('symbols/newsagent-14.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @shop-icon;
+    }
+  }
+
   [feature = 'shop_jewelry'],
   [feature = 'shop_jewellery'] {
     [zoom >= 17] {
@@ -1768,7 +1778,9 @@
   [feature = 'shop_alcohol'],
   [feature = 'shop_optician'],
   [feature = 'shop_furniture'],
+  [feature = 'shop_kiosk'],
   [feature = 'shop_mobile_phone'],
+  [feature = 'shop_newsagent'],
   [feature = 'shop_jewelry'],
   [feature = 'shop_jewellery'],
   [feature = 'shop_chemist'],
