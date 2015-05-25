@@ -463,6 +463,13 @@
     marker-clip: false;
   }
 
+  [feature = 'shop_beauty'][zoom >= 17] {
+    marker-file: url('symbols/beauty-14.svg');
+    marker-fill: @shop-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'shop_books'][zoom >= 17] {
     marker-file: url('symbols/shop_books.16.svg');
     marker-fill: @shop-icon;
@@ -1747,6 +1754,7 @@
   }
 
   [feature = 'shop_bakery'],
+  [feature = 'shop_beauty'],
   [feature = 'shop_books'],
   [feature = 'shop_clothes'],
   [feature = 'shop_fashion'],
