@@ -62,6 +62,15 @@
       marker-ignore-placement: true;
     }
   }
+
+  [waterway = 'waterfall'] {
+    #water-barriers-point[zoom >= 16] {
+      marker-file: url('symbols/waterfall.16.svg');
+      marker-placement: interior;
+      marker-fill: @transportation-icon;
+      marker-clip: false;
+    }
+  }
 }
 
 #piers-poly, #piers-line {
@@ -159,6 +168,19 @@
         text-placement: line;
         text-spacing: 400;
       }
+    }
+  }
+
+  [feature = 'waterway_waterfall'] {
+    #text-point[zoom >= 16] {
+      text-name: "[name]";
+      text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
+      text-fill: @transportation-text;
+      text-size: 10;
+      text-face-name: @book-fonts;
+      text-placement: point;
+      text-dy: 11;
     }
   }
 }
