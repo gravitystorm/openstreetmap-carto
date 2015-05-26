@@ -550,6 +550,13 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_car_parts'][zoom >= 17] {
+    marker-file: url('symbols/car_parts-14.svg');
+    marker-fill: @shop-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'shop_car_repair'][zoom >= 17] {
     marker-file: url('symbols/shopping_car_repair.16.svg');
     marker-placement: interior;
@@ -1758,6 +1765,7 @@
   [feature = 'shop_butcher'],
   [feature = 'shop_car'],
   [feature = 'shop_car_repair'],
+  [feature = 'shop_car_parts'],
   [feature = 'shop_bicycle'],
   [feature = 'shop_florist'],
   [feature = 'shop_garden_centre'],
