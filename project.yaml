@@ -567,6 +567,8 @@ Layer:
           WHERE historic = 'citywalls')
         AS citywalls
     advanced: {}
+    properties:
+      minzoom: 14
   - id: "castlewalls"
     name: "castlewalls"
     class: "castlewalls"
