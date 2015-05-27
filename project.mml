@@ -1738,10 +1738,11 @@
       "srs-name": "900913",
       "geometry": "linestring",
       "class": "text",
+      "id": "text-line",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT way, NULL as way_pixels, COALESCE('man_made_' || man_made, 'waterway_' || waterway, 'natural_' || \"natural\") AS feature, access, NULL as ele, name, operator, ref, NULL AS way_area,\n CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building\n FROM planet_osm_line\n WHERE (man_made IN ('pier', 'breakwater', 'groyne', 'embankment')\n      OR waterway IN ('dam', 'weir')\n      OR \"natural\" IN ('cliff'))\n    AND name IS NOT NULL\n) AS text_line",
+        "table": "(SELECT\n  way,\n    NULL as way_pixels,\n    COALESCE('man_made_' || man_made, 'waterway_' || waterway, 'natural_' || \"natural\") AS feature,\n    access,\n    name,\n    operator,\n    ref,\n    NULL AS way_area,\n    CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building\n  FROM planet_osm_line\n  WHERE (man_made IN ('pier', 'breakwater', 'groyne', 'embankment')\n      OR waterway IN ('dam', 'weir')\n      OR \"natural\" IN ('cliff'))\n    AND name IS NOT NULL\n) AS text_line",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1753,7 +1754,9 @@
         180,
         85.05112877980659
       ],
-      "id": "text-line",
+      "properties": {
+        "minzoom": 10
+      },
       "advanced": {}
     },
     {
