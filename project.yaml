@@ -1430,6 +1430,7 @@ Layer:
           FROM planet_osm_point
           WHERE place IN ('city', 'town')
             AND capital IN ('yes', '4')
+            AND name IS NOT NULL
         ) AS placenames_capital
     properties:
       minzoom: 5
@@ -1450,6 +1451,7 @@ Layer:
           FROM planet_osm_point
           WHERE place IN ('city', 'town')
             AND (capital IS NULL OR capital NOT IN ('yes', '4'))
+            AND name IS NOT NULL
         ) AS placenames_medium
     properties:
       minzoom: 6
@@ -1468,6 +1470,7 @@ Layer:
             name
           FROM planet_osm_point
           WHERE place IN ('suburb', 'village', 'hamlet', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')
+            AND name IS NOT NULL
         ) AS placenames_small
     properties:
       minzoom: 12
