@@ -463,6 +463,13 @@
     marker-clip: false;
   }
 
+  [feature = 'shop_beverages'][zoom >= 17] {
+    marker-file: url('symbols/beverages-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+
   [feature = 'shop_books'][zoom >= 17] {
     marker-file: url('symbols/shop_books.16.svg');
     marker-fill: @shop-icon;
@@ -1747,6 +1754,7 @@
   }
 
   [feature = 'shop_bakery'],
+  [feature = 'shop_beverages'],
   [feature = 'shop_books'],
   [feature = 'shop_clothes'],
   [feature = 'shop_fashion'],
