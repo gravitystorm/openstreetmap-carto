@@ -562,58 +562,6 @@
       "advanced": {}
     },
     {
-      "name": "castlewalls",
-      "srs-name": "900913",
-      "geometry": "linestring",
-      "class": "castlewalls",
-      "id": "castlewalls",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "Datasource": {
-        "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way\n  FROM planet_osm_line\n  WHERE historic = 'castle_walls'\n) AS castlewalls",
-        "geometry_field": "way",
-        "type": "postgis",
-        "key_field": "",
-        "dbname": "gis"
-      },
-      "extent": [
-        -180,
-        -85.05112877980659,
-        180,
-        85.05112877980659
-      ],
-      "properties": {
-        "minzoom": 14
-      },
-      "advanced": {}
-    },
-    {
-      "name": "castlewalls-poly",
-      "srs-name": "900913",
-      "geometry": "polygon",
-      "class": "castlewalls",
-      "id": "castlewalls-poly",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "Datasource": {
-        "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way\n  FROM planet_osm_polygon\n  WHERE historic = 'castle_walls'\n) AS castlewalls_poly",
-        "geometry_field": "way",
-        "type": "postgis",
-        "key_field": "",
-        "dbname": "gis"
-      },
-      "extent": [
-        -180,
-        -85.05112877980659,
-        180,
-        85.05112877980659
-      ],
-      "properties": {
-        "minzoom": 14
-      },
-      "advanced": {}
-    },
-    {
       "name": "landuse-overlay",
       "srs-name": "900913",
       "geometry": "polygon",
