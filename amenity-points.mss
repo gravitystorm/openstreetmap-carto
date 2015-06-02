@@ -514,6 +514,16 @@
     marker-clip: false;
   }
 
+  [feature = 'shop_cosmetics'],
+  [feature = 'shop_perfumery'] {
+    [zoom >= 17] {
+      marker-file: url('symbols/perfumery-14.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @shop-icon;
+    }
+  }
+
   [feature = 'shop_department_store'][zoom >= 16] {
     point-file: url('symbols/department_store.p.16.png');
     point-placement: interior;
@@ -1799,6 +1809,7 @@
   [feature = 'shop_car'],
   [feature = 'shop_car_repair'],
   [feature = 'shop_car_parts'],
+  [feature = 'shop_cosmetics'],
   [feature = 'shop_bicycle'],
   [feature = 'shop_florist'],
   [feature = 'shop_garden_centre'],
@@ -1811,6 +1822,7 @@
   [feature = 'shop_electronics'],
   [feature = 'shop_alcohol'],
   [feature = 'shop_optician'],
+  [feature = 'shop_perfumery'],
   [feature = 'shop_furniture'],
   [feature = 'shop_mobile_phone'],
   [feature = 'shop_jewelry'],
