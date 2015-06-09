@@ -370,8 +370,10 @@
   }
 
   [feature = 'amenity_telephone'][zoom >= 17] {
-    point-file: url('symbols/telephone.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/telephone.16.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_emergency_phone'][zoom >= 17] {
