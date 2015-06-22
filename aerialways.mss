@@ -13,6 +13,7 @@
       dash/line-cap: round;
       dash/line-color: black;
       dash/line-dasharray: 0.4,13;
+      dash/line-clip: false;
     }
   }
 
@@ -32,6 +33,7 @@
       dash/line-join: round;
       dash/line-color: black;
       dash/line-dasharray: 1,30;
+      dash/line-clip: false;
     }
   }
 }
