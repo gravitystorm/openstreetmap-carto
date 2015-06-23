@@ -343,7 +343,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_recycling'][zoom >= 16] {
+  [feature = 'amenity_recycling'][zoom >= 17] {
     marker-file: url('symbols/recycling.16.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
