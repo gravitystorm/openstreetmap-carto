@@ -550,6 +550,13 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_hifi'][zoom >= 17] {
+    marker-file: url('symbols/hifi-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+
   [feature = 'shop_car'][zoom >= 17] {
     marker-file: url('symbols/shop_car.svg');
     marker-placement: interior;
@@ -1795,6 +1802,7 @@
   [feature = 'shop_doityourself'],
   [feature = 'shop_hardware'],
   [feature = 'shop_hairdresser'],
+  [feature = 'shop_hifi'],
   [feature = 'shop_butcher'],
   [feature = 'shop_car'],
   [feature = 'shop_car_repair'],
