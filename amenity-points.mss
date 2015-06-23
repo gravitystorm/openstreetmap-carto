@@ -529,6 +529,13 @@
     }
   }
 
+  [feature = 'shop_erotic'][zoom >= 17] {
+    marker-file: url('symbols/erotic-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+
   [feature = 'shop_florist'][zoom >= 17] {
     marker-file: url('symbols/florist.16.svg');
     marker-placement: interior;
@@ -1793,6 +1800,7 @@
   [feature = 'shop_convenience'],
   [feature = 'shop_confectionery'],
   [feature = 'shop_doityourself'],
+  [feature = 'shop_erotic'],
   [feature = 'shop_hardware'],
   [feature = 'shop_hairdresser'],
   [feature = 'shop_butcher'],
