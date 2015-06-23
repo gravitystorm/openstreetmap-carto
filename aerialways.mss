@@ -3,7 +3,17 @@
   [aerialway = 'gondola'],
   [aerialway = 'goods'] {
     [zoom >= 12] {
-      line-pattern-file: url('symbols/cable_car.png');
+      line/line-width: 1;
+      line/line-join: round;
+      line/line-cap: round;
+      line/line-color: #808080;
+
+      dash/line-width: 3;
+      dash/line-join: round;
+      dash/line-cap: round;
+      dash/line-color: black;
+      dash/line-dasharray: 0.4,13;
+      dash/line-clip: false;
     }
   }
 
@@ -14,7 +24,16 @@
   [aerialway = 'platter'],
   [aerialway = 'rope_tow'] {
     [zoom >= 12] {
-      line-pattern-file: url('symbols/chair_lift.png');
+      line/line-width: 1;
+      line/line-join: round;
+      line/line-cap: round;
+      line/line-color: #808080;
+
+      dash/line-width: 4;
+      dash/line-join: round;
+      dash/line-color: black;
+      dash/line-dasharray: 1,30;
+      dash/line-clip: false;
     }
   }
 }
