@@ -522,6 +522,16 @@
     marker-clip: false;
   }
 
+  [feature = 'shop_copyshop'],
+  [feature = 'shop_printing'] {
+    [zoom >= 17] {
+      marker-file: url('symbols/copyshop-14.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @shop-icon;
+    }
+  }
+
   [feature = 'shop_cosmetics'],
   [feature = 'shop_perfumery'] {
     [zoom >= 17] {
@@ -1859,6 +1869,7 @@
   [feature = 'shop_fashion'],
   [feature = 'shop_convenience'],
   [feature = 'shop_confectionery'],
+  [feature = 'shop_copyshop'],
   [feature = 'shop_doityourself'],
   [feature = 'shop_dry_cleaning'],
   [feature = 'shop_hardware'],
@@ -1878,6 +1889,7 @@
   [feature = 'shop_photo'],
   [feature = 'shop_photo_studio'],
   [feature = 'shop_photography'],
+  [feature = 'shop_printing'],
   [feature = 'shop_shoes'],
   [feature = 'shop_gift'],
   [feature = 'shop_electronics'],
