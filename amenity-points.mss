@@ -264,6 +264,7 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_clinic'][zoom >= 16],
   [feature = 'amenity_doctors'][zoom >= 17] {
     marker-file: url('symbols/doctors.16.svg');
     marker-fill: @health-color;
@@ -470,6 +471,13 @@
     marker-clip: false;
   }
 
+  [feature = 'shop_beverages'][zoom >= 17] {
+    marker-file: url('symbols/beverages-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+
   [feature = 'shop_books'][zoom >= 17] {
     marker-file: url('symbols/shop_books.16.svg');
     marker-fill: @shop-icon;
@@ -514,6 +522,16 @@
     marker-clip: false;
   }
 
+  [feature = 'shop_cosmetics'],
+  [feature = 'shop_perfumery'] {
+    [zoom >= 17] {
+      marker-file: url('symbols/perfumery-14.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @shop-icon;
+    }
+  }
+
   [feature = 'shop_department_store'][zoom >= 16] {
     point-file: url('symbols/department_store.p.16.png');
     point-placement: interior;
@@ -523,6 +541,16 @@
   [feature = 'shop_hardware'] {
     [zoom >= 17] {
       marker-file: url('symbols/shop_diy.16.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @shop-icon;
+    }
+  }
+
+  [feature = 'shop_dry_cleaning'],
+  [feature = 'shop_laundry'] {
+    [zoom >= 17] {
+      marker-file: url('symbols/laundry-14.svg');
       marker-placement: interior;
       marker-clip: false;
       marker-fill: @shop-icon;
@@ -543,8 +571,25 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_greengrocer'],
+  [feature = 'shop_farm'] {
+    [zoom >= 17] {
+      marker-file: url('symbols/greengrocer-14.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @shop-icon;
+    }
+  }
+
   [feature = 'shop_hairdresser'][zoom >= 17] {
     marker-file: url('symbols/shop_hairdresser.16.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+
+  [feature = 'shop_hifi'][zoom >= 17] {
+    marker-file: url('symbols/hifi-14.svg');
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @shop-icon;
@@ -644,7 +689,17 @@
     marker-clip: false;
     marker-fill: @shop-icon;
   }
-  
+
+  [feature = 'shop_kiosk'],
+  [feature = 'shop_newsagent'] {
+    [zoom >= 17] {
+      marker-file: url('symbols/newsagent-14.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @shop-icon;
+    }
+  }
+
   [feature = 'shop_jewelry'],
   [feature = 'shop_jewellery'] {
     [zoom >= 17] {
@@ -664,6 +719,13 @@
 
   [feature = 'shop_travel_agency'][zoom >= 17] {
     marker-file: url('symbols/travel_agency-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+
+  [feature = 'shop_stationery'][zoom >= 17] {
+    marker-file: url('symbols/stationery-14.svg');
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @shop-icon;
@@ -779,8 +841,10 @@
   }
 
   [feature = 'man_made_windmill'][zoom >= 16] {
-    point-file: url('symbols/windmill.png');
-    point-placement: interior;
+    marker-file: url('symbols/windmill.16.svg');
+    marker-placement: interior;
+    marker-fill: @amenity-brown;
+    marker-clip: false;
   }
 
   [feature = 'amenity_hunting_stand'][zoom >= 16] {
@@ -1769,6 +1833,8 @@
     text-placement: interior;
   }
 
+
+  [feature = 'amenity_clinic'],
   [feature = 'amenity_pharmacy'],
   [feature = 'amenity_doctors'],
   [feature = 'amenity_dentist'] {
@@ -1787,21 +1853,27 @@
 
   [feature = 'shop_bakery'],
   [feature = 'shop_beauty'],
+  [feature = 'shop_beverages'],
   [feature = 'shop_books'],
   [feature = 'shop_clothes'],
   [feature = 'shop_fashion'],
   [feature = 'shop_convenience'],
   [feature = 'shop_confectionery'],
   [feature = 'shop_doityourself'],
+  [feature = 'shop_dry_cleaning'],
   [feature = 'shop_hardware'],
   [feature = 'shop_hairdresser'],
+  [feature = 'shop_hifi'],
   [feature = 'shop_butcher'],
   [feature = 'shop_car'],
   [feature = 'shop_car_repair'],
   [feature = 'shop_car_parts'],
+  [feature = 'shop_cosmetics'],
   [feature = 'shop_bicycle'],
+  [feature = 'shop_farm'],
   [feature = 'shop_florist'],
   [feature = 'shop_garden_centre'],
+  [feature = 'shop_greengrocer'],
   [feature = 'shop_pet'],
   [feature = 'shop_photo'],
   [feature = 'shop_photo_studio'],
@@ -1811,13 +1883,18 @@
   [feature = 'shop_electronics'],
   [feature = 'shop_alcohol'],
   [feature = 'shop_optician'],
+  [feature = 'shop_perfumery'],
   [feature = 'shop_furniture'],
+  [feature = 'shop_kiosk'],
   [feature = 'shop_mobile_phone'],
+  [feature = 'shop_newsagent'],
   [feature = 'shop_jewelry'],
   [feature = 'shop_jewellery'],
+  [feature = 'shop_laundry'],
   [feature = 'shop_chemist'],
   [feature = 'shop_toys'],
   [feature = 'shop_travel_agency'],
+  [feature = 'shop_stationery'],
   [feature = 'shop_other']{
     [zoom >= 17] {
       text-name: "[name]";
