@@ -557,6 +557,16 @@
     }
   }
 
+  [feature = 'shop_fishmonger'],
+  [feature = 'shop_seafood'] {
+    [zoom >= 17] {
+      marker-file: url('symbols/seafood-14.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @shop-icon;
+    }
+  }
+
   [feature = 'shop_florist'][zoom >= 17] {
     marker-file: url('symbols/florist.16.svg');
     marker-placement: interior;
@@ -1871,6 +1881,7 @@
   [feature = 'shop_cosmetics'],
   [feature = 'shop_bicycle'],
   [feature = 'shop_farm'],
+  [feature = 'shop_fishmonger'],
   [feature = 'shop_florist'],
   [feature = 'shop_garden_centre'],
   [feature = 'shop_greengrocer'],
@@ -1894,6 +1905,7 @@
   [feature = 'shop_chemist'],
   [feature = 'shop_toys'],
   [feature = 'shop_travel_agency'],
+  [feature = 'shop_seafood'],
   [feature = 'shop_stationery'],
   [feature = 'shop_other']{
     [zoom >= 17] {
