@@ -787,8 +787,10 @@
   }
 
   [feature = 'man_made_windmill'][zoom >= 16] {
-    point-file: url('symbols/windmill.png');
-    point-placement: interior;
+    marker-file: url('symbols/windmill.16.svg');
+    marker-placement: interior;
+    marker-fill: @amenity-brown;
+    marker-clip: false;
   }
 
   [feature = 'amenity_hunting_stand'][zoom >= 16] {
