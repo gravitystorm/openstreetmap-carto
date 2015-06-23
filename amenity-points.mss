@@ -697,6 +697,13 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_stationery'][zoom >= 17] {
+    marker-file: url('symbols/stationery-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+
   [feature = 'leisure_water_park'][zoom >= 17] {
     marker-file: url('symbols/water_park.16.svg');
     marker-placement: interior;
@@ -1855,6 +1862,7 @@
   [feature = 'shop_chemist'],
   [feature = 'shop_toys'],
   [feature = 'shop_travel_agency'],
+  [feature = 'shop_stationery'],
   [feature = 'shop_other']{
     [zoom >= 17] {
       text-name: "[name]";
