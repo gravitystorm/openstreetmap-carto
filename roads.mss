@@ -8,8 +8,8 @@
 @tertiary-fill: #f8f8ba;
 @residential-fill: #ffffff;
 @service-fill: @residential-fill;
-@living-street-fill: #ccc;
-@pedestrian-fill: #ededed;
+@living-street-fill: #ededed;
+@pedestrian-fill: #efdfe2;
 @raceway-fill: pink;
 @road-fill: #ddd;
 @path-fill: black;
@@ -31,8 +31,8 @@
 @tertiary-casing: #c6c68a;
 @residential-casing: #bbb;
 @service-casing: @residential-casing;
-@living-street-casing: #999;
-@pedestrian-casing: @residential-casing;
+@living-street-casing: @residential-casing;
+@pedestrian-casing: #999;
 @path-casing: @default-casing;
 @footway-casing: @default-casing;
 @steps-casing: @default-casing;
@@ -56,6 +56,7 @@
 @tertiary-tunnel-fill: lighten(@tertiary-fill, 5%);
 @residential-tunnel-fill: darken(@residential-fill, 5%);
 @living-street-tunnel-fill: lighten(@living-street-fill, 10%);
+@pedestrian-tunnel-fill: #EFE3E6;
 
 @motorway-width-z12:              3.5;
 @motorway-link-width-z12:         1.5;
@@ -1232,6 +1233,9 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
         [zoom >= 16] { line-width: @pedestrian-width-z16 - 2 * @casing-width-z16; }
         [zoom >= 17] { line-width: @pedestrian-width-z17 - 2 * @casing-width-z17; }
         line-color: @pedestrian-fill;
+        .tunnels-fill {
+          line-color: @pedestrian-tunnel-fill;
+        }
         .bridges-fill {
           line-width: @pedestrian-width-z13 - 2 * @casing-width-z13;
           [zoom >= 14] { line-width: @pedestrian-width-z14 - 2 * @bridge-casing-width-z14; }
@@ -1839,11 +1843,24 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
 
+  [feature = 'highway_living_street'] {
+    [zoom >= 14] {
+      line-color: @living-street-casing;
+      line-width: 1;
+    }
+  }
+
   [feature = 'highway_pedestrian'],
-  [feature = 'highway_service'],
   [feature = 'highway_footway'],
   [feature = 'highway_cycleway'],
   [feature = 'highway_path'] {
+    [zoom >= 14] {
+      line-color: @pedestrian-casing;
+      line-width: 1;
+    }
+  }
+
+  [feature = 'highway_service'] {
     [zoom >= 14] {
       line-color: grey;
       line-width: 1;
@@ -1871,7 +1888,7 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
 
 #highway-area-fill {
   [feature = 'highway_living_street'][zoom >= 14] {
-    polygon-fill: #ccc;
+    polygon-fill: @living-street-fill;
   }
 
   [feature = 'highway_residential'],
@@ -1887,7 +1904,7 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
   [feature = 'highway_cycleway'],
   [feature = 'highway_path'] {
     [zoom >= 14] {
-      polygon-fill: #ededed;
+      polygon-fill: @pedestrian-fill;
     }
   }
 
