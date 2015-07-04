@@ -415,6 +415,25 @@ Layer:
     properties:
       minzoom: 17
     advanced: {}
+  - id: "bridge"
+    name: "bridge"
+    class: ""
+    geometry: "polygon"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            man_made,
+            name
+          FROM planet_osm_polygon
+          WHERE man_made = 'bridge'
+        ) AS bridge
+    properties:
+      minzoom: 12
+    advanced: {}
   - id: "buildings"
     name: "buildings"
     class: ""
@@ -1743,6 +1762,25 @@ Layer:
           FROM planet_osm_point
           WHERE highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes'
         ) AS junctions
+    properties:
+      minzoom: 11
+    advanced: {}
+  - id: "bridge-text"
+    name: "bridge-text"
+    class: ""
+    geometry: "polygon"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            man_made,
+            name
+          FROM planet_osm_polygon
+          WHERE man_made = 'bridge'
+        ) AS bridge_text
     properties:
       minzoom: 11
     advanced: {}

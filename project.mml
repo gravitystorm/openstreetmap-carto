@@ -501,6 +501,32 @@
       "advanced": {}
     },
     {
+      "name": "bridge",
+      "srs-name": "900913",
+      "geometry": "polygon",
+      "class": "",
+      "id": "bridge",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508",
+        "table": "(SELECT\n    way,\n    way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,\n    man_made,\n    name\n  FROM planet_osm_polygon\n  WHERE man_made = 'bridge'\n) AS bridge",
+        "geometry_field": "way",
+        "type": "postgis",
+        "key_field": "",
+        "dbname": "gis"
+      },
+      "extent": [
+        -180,
+        -85.05112877980659,
+        180,
+        85.05112877980659
+      ],
+      "properties": {
+        "minzoom": 12
+      },
+      "advanced": {}
+    },
+    {
       "name": "buildings",
       "srs-name": "900913",
       "geometry": "polygon",
@@ -1555,6 +1581,32 @@
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
         "table": "(SELECT\n    way,\n    highway,\n    junction,\n    ref,\n    name\n  FROM planet_osm_point\n  WHERE highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes'\n) AS junctions",
+        "geometry_field": "way",
+        "type": "postgis",
+        "key_field": "",
+        "dbname": "gis"
+      },
+      "extent": [
+        -180,
+        -85.05112877980659,
+        180,
+        85.05112877980659
+      ],
+      "properties": {
+        "minzoom": 11
+      },
+      "advanced": {}
+    },
+    {
+      "name": "bridge-text",
+      "srs-name": "900913",
+      "geometry": "polygon",
+      "class": "",
+      "id": "bridge-text",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508",
+        "table": "(SELECT\n    way,\n    way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,\n    man_made,\n    name\n  FROM planet_osm_polygon\n  WHERE man_made = 'bridge'\n) AS bridge_text",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
