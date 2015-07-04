@@ -143,6 +143,7 @@
 @paths-tunnel-casing-width:       1;
 
 @oneway-arrow-color:              #6c70d5;
+@junction-text-color:             #6666ff;
 
 .roads-casing, .bridges-casing, .tunnels-casing {
   ::casing {
@@ -1920,14 +1921,14 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
     [zoom >= 11] {
       ref/text-name: "[ref]";
       ref/text-size: 10;
-      ref/text-fill: #6666ff;
+      ref/text-fill: @junction-text-color;
       ref/text-min-distance: 2;
       ref/text-face-name: @oblique-fonts;
       ref/text-halo-radius: 1.5;
       [zoom >= 12] {
         name/text-name: "[name]";
         name/text-size: 9;
-        name/text-fill: #6666ff;
+        name/text-fill: @junction-text-color;
         name/text-dy: -9;
         name/text-face-name: @oblique-fonts;
         name/text-halo-radius: 1;
