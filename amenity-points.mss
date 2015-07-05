@@ -356,6 +356,14 @@
     }
   }
 
+  [feature = 'man_made_cross'][zoom >= 17],
+  [feature = 'historic_wayside_cross'][zoom >= 17] {
+    marker-file: url('symbols/christian.9.svg');
+    marker-fill: #000000;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_police'][zoom >= 16] {
     marker-file: url('symbols/police.16.svg');
     marker-fill: @amenity-brown;
@@ -962,6 +970,16 @@
 }
 
 .amenity-low-priority {
+  [man_made = 'cross'][name != ''][zoom >= 14],
+  [historic = 'wayside_cross'][name != ''][zoom >= 14] ,
+  [man_made = 'cross'][zoom >= 15],
+  [historic = 'wayside_cross'][zoom >= 15] {
+    marker-file: url('symbols/christian.9.svg');
+    marker-fill: #000000;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [amenity = 'parking'][zoom >= 17],
   [amenity = 'bicycle_parking'][zoom >= 17],
   [amenity = 'motorcycle_parking'][zoom >= 17] {
@@ -1204,6 +1222,8 @@
     text-placement: interior;
   }
 
+  [feature = 'man_made_cross'][zoom >= 17],
+  [feature = 'historic_wayside_cross'][zoom >= 17],
   [feature = 'natural_cave_entrance'][zoom >= 15],
   [feature = 'man_made_mast'][zoom >= 17],
   [feature = 'man_made_water_tower'][zoom >= 17] {
@@ -1213,6 +1233,10 @@
     [feature = 'natural_cave_entrance'],
     [feature = 'man_made_water_tower'] {
       text-dy: 11;
+    }
+    [feature = 'man_made_cross'],
+    [feature = 'historic_wayside_cross'] {
+      text-dy: 6;
     }
     [feature = 'man_made_mast']         { text-dy: 10; }
     text-face-name: @book-fonts;
