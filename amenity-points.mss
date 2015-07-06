@@ -375,8 +375,10 @@
   }
 
   [feature = 'amenity_emergency_phone'][zoom >= 17] {
-    point-file: url('symbols/sosphone.png');
-    point-placement: interior;
+    marker-file: url('symbols/emergency_phone.16.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_theatre'][zoom >= 16] {
