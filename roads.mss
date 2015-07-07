@@ -1571,12 +1571,16 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
     }
 
     [feature = 'railway_tram'] {
-      [zoom >= 8] {
-        line-color: #ccc;
-        [zoom >= 10] { line-color: #aaa; }
-        [zoom >= 13] { line-color: #444; }
-        line-width: 1;
+      [zoom >= 12] {
+        line-color: #444;
+        line-width: 0.75;
+        [zoom >= 14] {
+          line-width: 1;
+        }
         [zoom >= 15] {
+          line-width: 1.5;
+        }
+        [zoom >= 17] {
           line-width: 2;
         }
         .tunnels-fill {
