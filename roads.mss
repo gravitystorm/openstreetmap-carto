@@ -1573,7 +1573,10 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'railway_tram'] {
       [zoom >= 12] {
         line-color: #444;
-        line-width: 0.75;
+        line-width: 0.4;
+        [zoom >= 13] {
+          line-width: 0.75;
+        }
         [zoom >= 14] {
           line-width: 1;
         }
