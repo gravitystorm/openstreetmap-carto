@@ -196,6 +196,13 @@
     marker-fill: @transportation-icon;
   }
 
+  [feature = 'amenity_ice_cream'][zoom >= 17] {
+    marker-file: url('symbols/ice-cream-14.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'tourism_information'][zoom >= 17] {
     point-file: url('symbols/information.p.16.png');
     point-placement: interior;
@@ -609,6 +616,13 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_ice_cream'][zoom >= 17] {
+    marker-file: url('symbols/ice-cream-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+
   [feature = 'shop_car'][zoom >= 17] {
     marker-file: url('symbols/shop_car.svg');
     marker-placement: interior;
@@ -971,6 +985,7 @@
   [feature = 'amenity_fast_food'],
   [feature = 'amenity_biergarten'],
   [feature = 'amenity_bar'],
+  [feature = 'amenity_ice_cream'],
   [feature = 'amenity_nightclub'] {
     [zoom >= 17] {
       text-name: "[name]";
@@ -1881,6 +1896,7 @@
   [feature = 'shop_hardware'],
   [feature = 'shop_hairdresser'],
   [feature = 'shop_hifi'],
+  [feature = 'shop_ice_cream'],
   [feature = 'shop_butcher'],
   [feature = 'shop_car'],
   [feature = 'shop_car_repair'],
