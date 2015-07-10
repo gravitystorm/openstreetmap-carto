@@ -721,6 +721,13 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_motorcycle'][zoom >= 17] {
+    marker-file: url('symbols/motorcycle-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+
   [feature = 'shop_kiosk'],
   [feature = 'shop_newsagent'] {
     [zoom >= 17] {
@@ -1921,6 +1928,7 @@
   [feature = 'shop_furniture'],
   [feature = 'shop_kiosk'],
   [feature = 'shop_mobile_phone'],
+  [feature = 'shop_motorcycle'],
   [feature = 'shop_newsagent'],
   [feature = 'shop_jewelry'],
   [feature = 'shop_jewellery'],
