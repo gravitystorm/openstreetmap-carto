@@ -624,20 +624,23 @@
 }
 
 #tourism-boundary {
-  [tourism = 'zoo'][zoom >= 10],
-  [tourism = 'theme_park'][zoom >= 10] {
+  [tourism = 'zoo'][zoom >= 10][way_pixels >= 20],
+  [tourism = 'theme_park'][zoom >= 10][way_pixels >= 20] {
     a/line-width: 1;
     a/line-offset: -0.5;
     a/line-color: @tourism;
     a/line-opacity: 0.5;
     a/line-join: round;
     a/line-cap: round;
-    b/line-width: 4;
-    b/line-offset: -2;
-    b/line-color: @tourism;
-    b/line-opacity: 0.3;
-    b/line-join: round;
-    b/line-cap: round;
+    [zoom >= 17],
+    [way_pixels >= 60] {
+      b/line-width: 4;
+      b/line-offset: -2;
+      b/line-color: @tourism;
+      b/line-opacity: 0.3;
+      b/line-join: round;
+      b/line-cap: round;    
+    }
     [zoom >= 17] {
       a/line-width: 2;
       a/line-offset: -1;

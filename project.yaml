@@ -1336,6 +1336,7 @@ Layer:
       table: |-
         (SELECT
             way,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
             name,
             tourism
           FROM planet_osm_polygon
