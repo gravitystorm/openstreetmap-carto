@@ -666,11 +666,14 @@
     marker-fill: @shop-icon;
   }
   
-  [feature = 'shop_alcohol'][zoom >= 17] {
-    marker-file: url('symbols/shop_alcohol.16.svg');
-    marker-placement: interior;
-    marker-clip: false;
-    marker-fill: @shop-icon;
+  [feature = 'shop_alcohol'],
+  [feature = 'shop_wine'] {
+    [zoom >= 17] {
+      marker-file: url('symbols/shop_alcohol.16.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @shop-icon;
+    }
   }
   
   [feature = 'shop_optician'][zoom >= 17] {
@@ -1899,6 +1902,7 @@
   [feature = 'shop_toys'],
   [feature = 'shop_travel_agency'],
   [feature = 'shop_stationery'],
+  [feature = 'shop_wine'],
   [feature = 'shop_other']{
     [zoom >= 17] {
       text-name: "[name]";
