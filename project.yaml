@@ -1319,7 +1319,7 @@ Layer:
             boundary,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
-          WHERE (boundary = 'national_park' OR leisure = 'nature_reserve')
+          WHERE (boundary = 'national_park' OR leisure = 'nature_reserve' OR landuse = 'conservation')
             AND building IS NULL
             AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
         ) AS national_park_boundaries
@@ -2153,7 +2153,7 @@ Layer:
             name,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
-          WHERE (boundary = 'national_park' OR leisure = 'nature_reserve')
+          WHERE (boundary = 'national_park' OR leisure = 'nature_reserve' OR landuse = 'conservation')
             AND name IS NOT NULL
         ) AS nature_reserve_text
     properties:

@@ -1,13 +1,12 @@
 // --- Parks, woods, other green things ---
 
 @forest: #a0cf85;
-@grass: #cfeca8; // also meadow, common, garden, village_green, conservation
+@grass: #cdebb0; // also meadow, common, garden, village_green
 @golf_course: #b5e3b5;
 @park: #cdf7c9; // also recreation_ground
 @wood: #aed1a0;
-@vineyard: #b3e2a8;
-@grassland: #c6e4b4;
 @scrub: #b5e3b5;
+@orchard: #aedfa3;
 
 // --- sports ---
 
@@ -55,7 +54,6 @@
 @sand: #f5e9c6;
 @school: #f0f0d8; // also university, college, hospital, kindergarten
 @station: #d4aaaa;
-@orchard: #9ed88f;
 @tourism: #734a08;
 @quarry: #c5c3c3;
 @military: #f55;
@@ -114,23 +112,30 @@
 
   [feature = 'landuse_vineyard'] {
     [zoom >= 10] {
-      polygon-fill: @vineyard;
+      polygon-fill: @orchard;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-    [zoom >= 13] {
+    [zoom >= 14] {
       polygon-pattern-file: url('symbols/vineyard.png');
+      polygon-pattern-alignment: global;
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
   }
 
-  [feature = 'landuse_orchard'][zoom >= 10] {
-    polygon-fill: @orchard;
-    polygon-pattern-file: url('symbols/orchard.png');
-    polygon-pattern-alignment: global;
-    [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+  [feature = 'landuse_orchard'] {
+    [zoom >= 10] {
+      polygon-fill: @orchard;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+    [zoom >= 14] {
+      polygon-pattern-file: url('symbols/orchard.png');
+      polygon-pattern-alignment: global;
+      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+    }
   }
 
   [feature = 'landuse_cemetery'],
@@ -296,8 +301,7 @@
     }
   }
 
-  [feature = 'landuse_recreation_ground'],
-  [feature = 'landuse_conservation'] {
+  [feature = 'landuse_recreation_ground'] {
     [zoom >= 10] {
       polygon-fill: @grass;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -429,7 +433,7 @@
   }
 
   [feature = 'natural_grassland'][zoom >= 10] {
-    polygon-fill: @grassland;
+    polygon-fill: @grass;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
