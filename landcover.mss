@@ -664,6 +664,7 @@
     text-face-name: @book-fonts;
     text-placement: line;
     text-dy: 8;
+    text-vertical-alignment: middle;
     text-spacing: 400;
   }
 }

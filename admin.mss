@@ -123,6 +123,8 @@ overlapping borders correctly.
   text-halo-radius: 1.0;
   text-halo-fill: rgba(255,255,255,0.6);
   text-placement: line;
+  text-clip: true;
+  text-vertical-alignment: middle;
   text-dy: -10;
 }
 
@@ -133,6 +135,8 @@ overlapping borders correctly.
   text-halo-radius: 1.0;
   text-halo-fill: rgba(255,255,255,0.6);
   text-placement: line;
+  text-clip: true;
+  text-vertical-alignment: middle;
   text-dy: -10;
 }
 

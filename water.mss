@@ -264,6 +264,7 @@
       text-halo-fill: rgba(255,255,255,0.6);
       text-spacing: 600;
       text-placement: line;
+      text-vertical-alignment: middle;
       text-dy: 8;
     }
 

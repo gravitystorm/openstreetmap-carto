@@ -2429,6 +2429,7 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
       text-clip: false;
       text-placement: line;
       text-face-name: @book-fonts;
+      text-vertical-alignment: middle;
       text-dy: 5;
     }
     [zoom >= 16] {
@@ -2456,6 +2457,7 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
       text-clip: false;
       text-placement: line;
       text-face-name: @book-fonts;
+      text-vertical-alignment: middle;
       text-dy: 7;
     }
     [zoom >= 17] {
