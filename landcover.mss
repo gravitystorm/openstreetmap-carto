@@ -477,10 +477,13 @@
   [feature = 'amenity_hospital'],
   [feature = 'amenity_kindergarten'] {
     [zoom >= 10] {
-      polygon-fill: @school;
+      polygon-fill: @residential;
       [zoom >= 12] {
-        line-width: 0.3;
-        line-color: brown;
+        polygon-fill: @school;
+        [zoom >= 13] {
+          line-width: 0.3;
+          line-color: brown;
+        }
       }
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
