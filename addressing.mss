@@ -6,6 +6,18 @@
   }
 }
 
+#flatnumbers {
+  [zoom >= 17] {
+    text-name: "[addr:flats]";
+    text-placement: interior;
+    text-min-distance: 1;
+    text-wrap-width: 0;
+    text-face-name: @book-fonts;
+    text-fill: #666;
+    text-size: 8;
+  }
+}
+
 #housenumbers {
   [zoom >= 17] {
     text-name: "[addr:housenumber]";
