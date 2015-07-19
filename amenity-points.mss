@@ -1,7 +1,6 @@
 @marina-text: #576ddf; // also swimming_pool
 @wetland-text: darken(#4aa5fa, 25%); /* Also for marsh and mud */
 @shop-icon: #ac39ac;
-@money-icon: #555555;
 @transportation-icon: #0092da;
 @transportation-text: #0066ff;
 @airtransport: #8461C4;
@@ -33,14 +32,14 @@
 
   [feature = 'amenity_atm'][zoom >= 17] {
     marker-file: url('symbols/atm.16.svg');
-    marker-fill: @money-icon;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'amenity_bank'][zoom >= 17] {
     marker-file: url('symbols/bank.16.svg');
-    marker-fill: @money-icon;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1655,7 +1654,7 @@
     text-size: 10;
     [feature = 'amenity_bank'] { text-dy: 9; }
     [feature = 'amenity_atm']  { text-dy: 10; }
-    text-fill: black;
+    text-fill: @amenity-brown;
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
