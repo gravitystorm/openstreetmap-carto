@@ -3,6 +3,7 @@
 
 # OsmType  Tag          DataType     Flags
 node,way   access       text         linear
+node,way   addr:flats   text         linear
 node,way   addr:housename      text  linear
 node,way   addr:housenumber    text  linear
 node,way   addr:interpolation  text  linear
