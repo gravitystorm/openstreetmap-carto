@@ -576,7 +576,7 @@
       }
     }
 
-    [feature = 'railway_disused'],
+    [feature = 'railway_disused'][zoom >= 15],
     [feature = 'railway_construction'],
     [feature = 'railway_miniature'][zoom >= 15],
     [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
@@ -799,7 +799,7 @@
       }
     }
 
-    [feature = 'railway_disused'],
+    [feature = 'railway_disused'][zoom >= 15],
     [feature = 'railway_construction'],
     [feature = 'railway_miniature'][zoom >= 15],
     [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
@@ -1446,15 +1446,10 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'railway_rail'][zoom >= 7],
     [feature = 'railway_INT-spur-siding-yard'][zoom >= 13] {
       [zoom < 13] {
-        line-color: #aaa;
-        [feature = 'railway_rail'] {
-          line-width: 0.6;
-          [zoom >= 9] { line-width: 1; }
-          [zoom >= 10] { line-width: 2; }
-        }
-        [feature = 'railway_INT-spur-siding-yard'] {
-          line-width: 1;
-        }
+        line-color: #787878;
+        line-width: 0.7;
+        [zoom >= 8] { line-width: 0.8; }
+        [zoom >= 12] { line-width: 0.9; }
         line-join: round;
         .roads_low_zoom[int_tunnel = 'yes'], .tunnels-fill {
           line-dasharray: 5,2;
@@ -1462,56 +1457,42 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
       }
       [zoom >= 13] {
         .roads-fill, .bridges-fill {
-          dark/line-color: #999999;
-          [feature = 'railway_rail']                               { dark/line-width: 3; }
-          [feature = 'railway_INT-spur-siding-yard']               { dark/line-width: 2; }
-          [feature = 'railway_rail']                               { dark/line-join: round; }
-          [feature = 'railway_INT-spur-siding-yard'] .bridges-fill { dark/line-join: round; }
+          dark/line-join: round;
           light/line-color: white;
-          [feature = 'railway_rail']                               { light/line-width: 1; }
-          [feature = 'railway_INT-spur-siding-yard']               { light/line-width: 0.8; }
-          [feature = 'railway_rail']                               { light/line-dasharray: 8,12; }
-          [feature = 'railway_INT-spur-siding-yard']               { light/line-dasharray: 0,8,11,1; }
           light/line-join: round;
-          [feature = 'railway_rail'][zoom >= 14]                   { light/line-dasharray: 0,11,8,1; }
+          [feature = 'railway_rail'] {
+            dark/line-color: #787878;
+            dark/line-width: 3;
+            light/line-width: 1;
+            light/line-dasharray: 8,8;
+            [zoom >= 15] {
+              light/line-dasharray: 0,8,8,1;
+            }
+            [zoom >= 19] {
+              dark/line-width: 4;
+              light/line-width: 2;
+            }
+          }
+          [feature = 'railway_INT-spur-siding-yard'] {
+            dark/line-width: 2;
+            dark/line-color: #aaa;
+            light/line-width: 0.8;
+            light/line-dasharray: 0,8,8,1;
+          }
         }
         .tunnels-fill {
-          a/line-width: 3;
-          b/line-width: 3;
-          c/line-width: 3;
-          d/line-width: 3;
-          e/line-width: 3;
-          f/line-width: 3;
-          g/line-width: 3;
-          a/line-color: #ffffff;
-          b/line-color: #fdfdfd;
-          c/line-color: #ececec;
-          d/line-color: #cacaca;
-          e/line-color: #afafaf;
-          f/line-color: #a1a1a1;
-          g/line-color: #9b9b9b;
-          a/line-dasharray: 1,9;
-          b/line-dasharray: 0,1,1,8;
-          c/line-dasharray: 0,2,1,7;
-          d/line-dasharray: 0,3,1,6;
-          e/line-dasharray: 0,4,1,5;
-          f/line-dasharray: 0,5,1,4;
-          g/line-dasharray: 0,6,1,3;
-          a/line-join: round;
-          b/line-join: round;
-          c/line-join: round;
-          d/line-join: round;
-          e/line-join: round;
-          f/line-join: round;
-          g/line-join: round;
+          line-color: #787878;
+          line-width: 2.8;
+          line-dasharray: 6,4;
+          line-clip: false;
           [feature = 'railway_INT-spur-siding-yard'] {
-            a/line-width: 2;
-            b/line-width: 2;
-            c/line-width: 2;
-            d/line-width: 2;
-            e/line-width: 2;
-            f/line-width: 2;
-            g/line-width: 2;
+            line-color: #aaa;
+            line-width: 1.9;
+            line-dasharray: 3,3;
+          }
+          [feature = 'railway_rail'][zoom >= 19] {
+            line-dasharray: 8,6;
+            line-width: 3.8;
           }
         }
       }
@@ -1644,10 +1625,25 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
 
-    [feature = 'railway_disused'],
     [feature = 'railway_construction'] {
       [zoom >= 13] {
         line-color: grey;
+        line-width: 2;
+        line-dasharray: 2,4;
+        line-join: round;
+        [zoom >= 14] {
+          line-dasharray: 2,3;
+        }
+        [zoom >= 15] {
+          line-width: 3;
+          line-dasharray: 3,3;
+        }
+      }
+    }
+
+    [feature = 'railway_disused'] {
+      [zoom >= 15] {
+        line-color: #aaa;
         line-width: 2;
         line-dasharray: 2,4;
         line-join: round;
