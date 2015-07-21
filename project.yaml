@@ -497,9 +497,7 @@ Layer:
                 AND (railway IS NOT NULL OR aeroway IS NOT NULL) -- end of rail/aero select
             ) AS features
           JOIN (VALUES -- this join is also putting a condition on what is selected. features not matching it do not make it into the results.
-              ('railway_rail', 430),
-              ('railway_spur', 430),
-              ('railway_siding', 430),
+              ('railway_rail', 440),
               ('railway_INT-preserved-ssy', 430),
               ('railway_INT-spur-siding-yard', 430),
               ('railway_subway', 420),
@@ -774,9 +772,7 @@ Layer:
                 AND (railway IS NOT NULL OR aeroway IS NOT NULL) -- end of rail/aero select
             ) AS features
           JOIN (VALUES -- this join is also putting a condition on what is selected. features not matching it do not make it into the results.
-              ('railway_rail', 430),
-              ('railway_spur', 430),
-              ('railway_siding', 430),
+              ('railway_rail', 440),
               ('railway_INT-preserved-ssy', 430),
               ('railway_INT-spur-siding-yard', 430),
               ('railway_subway', 420),
@@ -924,9 +920,7 @@ Layer:
                 AND (railway IS NOT NULL OR aeroway IS NOT NULL) -- end of rail/aero select
             ) AS features
           JOIN (VALUES -- this join is also putting a condition on what is selected. features not matching it do not make it into the results.
-              ('railway_rail', 430),
-              ('railway_spur', 430),
-              ('railway_siding', 430),
+              ('railway_rail', 440),
               ('railway_INT-preserved-ssy', 430),
               ('railway_INT-spur-siding-yard', 430),
               ('railway_subway', 420),
@@ -1143,9 +1137,7 @@ Layer:
                 AND (railway IS NOT NULL OR aeroway IS NOT NULL) -- end of rail/aero select
             ) AS features
           JOIN (VALUES -- this join is also putting a condition on what is selected. features not matching it do not make it into the results.
-              ('railway_rail', 430),
-              ('railway_spur', 430),
-              ('railway_siding', 430),
+              ('railway_rail', 440),
               ('railway_INT-preserved-ssy', 430),
               ('railway_INT-spur-siding-yard', 430),
               ('railway_subway', 420),
