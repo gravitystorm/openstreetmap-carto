@@ -475,7 +475,7 @@ Layer:
             SELECT
                 way,
                 COALESCE(
-                  ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway END)),
+                  ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'  WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service' ELSE railway END)),
                   ('aeroway_' || aeroway)
                 ) AS feature,
                 horse,
@@ -509,6 +509,7 @@ Layer:
               ('railway_miniature', 420),
               ('railway_turntable', 420),
               ('railway_tram', 410),
+              ('railway_tram-service', 405),
               ('railway_disused', 400),
               ('railway_construction', 400),
               ('highway_motorway', 380),
@@ -747,7 +748,7 @@ Layer:
             SELECT
                 way,
                 COALESCE(
-                  ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway END)),
+                  ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'  WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service' ELSE railway END)),
                   ('aeroway_' || aeroway)
                 ) AS feature,
                 horse,
@@ -783,6 +784,7 @@ Layer:
               ('railway_miniature', 420),
               ('railway_turntable', 420),
               ('railway_tram', 410),
+              ('railway_tram-service', 405),
               ('railway_disused', 400),
               ('railway_construction', 400),
               ('highway_motorway', 380),
@@ -894,7 +896,7 @@ Layer:
             SELECT
                 way,
                 COALESCE(
-                  ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway END)),
+                  ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'  WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service' ELSE railway END)),
                   ('aeroway_' || aeroway)
                 ) AS feature,
                 horse,
@@ -930,6 +932,7 @@ Layer:
               ('railway_miniature', 420),
               ('railway_turntable', 420),
               ('railway_tram', 410),
+              ('railway_tram-service', 405),
               ('railway_disused', 400),
               ('railway_construction', 400),
               ('highway_motorway', 380),
@@ -1112,7 +1115,7 @@ Layer:
             SELECT
                 way,
                 COALESCE(
-                  ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway END)),
+                  ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service' ELSE railway END)),
                   ('aeroway_' || aeroway)
                 ) AS feature,
                 horse,
@@ -1146,6 +1149,7 @@ Layer:
               ('railway_miniature', 420),
               ('railway_turntable', 420),
               ('railway_tram', 410),
+              ('railway_tram-service', 405),
               ('railway_disused', 400),
               ('railway_construction', 400),
               ('highway_motorway', 380),
