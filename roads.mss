@@ -1815,11 +1815,11 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
 
   [int_tc_type = 'track'][zoom >= 15] {
     marker-fill: @track-fill;
-    marker-width: 12;
-    marker-height: 12;
+    marker-width: 6;
+    marker-height: 6;
     [zoom >= 17] {
-      marker-width: 14;
-      marker-height: 14;
+      marker-width: 10;
+      marker-height: 10;
     }
     marker-allow-overlap: true;
     marker-ignore-placement: true;
