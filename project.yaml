@@ -498,8 +498,6 @@ Layer:
             ) AS features
           JOIN (VALUES -- this join is also putting a condition on what is selected. features not matching it do not make it into the results.
               ('railway_rail', 440),
-              ('railway_spur', 430),
-              ('railway_siding', 430),
               ('railway_INT-preserved-ssy', 430),
               ('railway_INT-spur-siding-yard', 430),
               ('railway_subway', 420),
@@ -775,8 +773,6 @@ Layer:
             ) AS features
           JOIN (VALUES -- this join is also putting a condition on what is selected. features not matching it do not make it into the results.
               ('railway_rail', 440),
-              ('railway_spur', 430),
-              ('railway_siding', 430),
               ('railway_INT-preserved-ssy', 430),
               ('railway_INT-spur-siding-yard', 430),
               ('railway_subway', 420),
@@ -925,8 +921,6 @@ Layer:
             ) AS features
           JOIN (VALUES -- this join is also putting a condition on what is selected. features not matching it do not make it into the results.
               ('railway_rail', 440),
-              ('railway_spur', 430),
-              ('railway_siding', 430),
               ('railway_INT-preserved-ssy', 430),
               ('railway_INT-spur-siding-yard', 430),
               ('railway_subway', 420),
@@ -1144,8 +1138,6 @@ Layer:
             ) AS features
           JOIN (VALUES -- this join is also putting a condition on what is selected. features not matching it do not make it into the results.
               ('railway_rail', 440),
-              ('railway_spur', 430),
-              ('railway_siding', 430),
               ('railway_INT-preserved-ssy', 430),
               ('railway_INT-spur-siding-yard', 430),
               ('railway_subway', 420),
