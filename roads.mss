@@ -853,44 +853,6 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
 .bridges-fill[zoom >= 10],
 .tunnels-fill[zoom >= 10] {
   ::fill {
-    [feature = 'highway_proposed'] {
-      [zoom >= 13] {
-        line-width: 2;
-        line-color: white;
-        line-opacity: 0.3;
-        centre/line-width: 2;
-        centre/line-color: #9cc;
-        centre/line-opacity: 0.3;
-        centre/line-dasharray: 2,4;
-        right/line-offset: 2 / 2;
-        right/line-width: 0.1;
-        right/line-color: #9cc;
-        right/line-opacity: 0.3;
-        left/line-offset: -2 / 2;
-        left/line-width: 0.1;
-        left/line-color: #9cc;
-        left/line-opacity: 0.3;
-        [zoom >= 14] {
-          line-width: 3.5;
-          centre/line-width: 3.5;
-          centre/line-dasharray: 4,6;
-          right/line-offset: 3.5 / 2;
-          right/line-width: 0.25;
-          left/line-offset: -3.5 / 2;
-          left/line-width: 0.25;
-        }
-        [zoom >= 16] {
-          line-width: 7;
-          centre/line-width: 7;
-          centre/line-dasharray: 6,8;
-          right/line-offset: 7 / 2;
-          right/line-width: 0.5;
-          left/line-offset: -7 / 2;
-          left/line-width: 0.5;
-        }
-      }
-    }
-
     /*
      * The construction rules for small roads are strange, since if construction is null its assumed that
      * it's a more major road. The line-width = 0 could be removed by playing with the query to set a construction
@@ -2294,23 +2256,6 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-halo-fill: @tertiary-fill;
-    }
-    [zoom >= 17] {
-      text-size: 11;
-    }
-  }
-  [highway = 'proposed'] {
-    [zoom >= 15] {
-      text-name: "[name]";
-      text-size: 9;
-      text-fill: black;
-      text-spacing: 300;
-      text-clip: false;
-      text-placement: line;
-      text-halo-radius: 1;
-      text-halo-fill: rgba(255,255,255,0.6);
-      text-face-name: @book-fonts;
-      text-opacity: 0.3;
     }
     [zoom >= 17] {
       text-size: 11;

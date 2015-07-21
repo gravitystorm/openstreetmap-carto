@@ -538,7 +538,6 @@ Layer:
               ('railway_platform', 90),
               ('aeroway_runway', 60),
               ('aeroway_taxiway', 50),
-              ('highway_proposed', 20),
               ('highway_construction', 10)
             ) AS ordertable (feature, prio)
             USING (feature)
@@ -813,7 +812,6 @@ Layer:
               ('railway_platform', 90),
               ('aeroway_runway', 60),
               ('aeroway_taxiway', 50),
-              ('highway_proposed', 20),
               ('highway_construction', 10)
             ) AS ordertable (feature, prio)
             USING (feature)
@@ -961,7 +959,6 @@ Layer:
               ('railway_platform', 90),
               ('aeroway_runway', 60),
               ('aeroway_taxiway', 50),
-              ('highway_proposed', 20),
               ('highway_construction', 10)
             ) AS ordertable (feature, prio)
             USING (feature)
@@ -1178,7 +1175,6 @@ Layer:
               ('railway_platform', 90),
               ('aeroway_runway', 60),
               ('aeroway_taxiway', 50),
-              ('highway_proposed', 20),
               ('highway_construction', 10)
             ) AS ordertable (feature, prio)
             USING (feature)
@@ -1744,7 +1740,7 @@ Layer:
             CASE WHEN construction IN ('service', 'footway', 'cycleway', 'bridleway', 'path', 'track') THEN 'yes' ELSE 'no' END AS int_construction_minor,
             name
           FROM planet_osm_line
-          WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction', 'proposed')
+          WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction')
             AND name IS NOT NULL
         ) AS roads_text_name
     properties:
