@@ -77,6 +77,20 @@
     point-placement: interior;
   }
 
+  [feature = 'amenity_ferry_terminal'] {
+    [zoom >= 16] {
+      marker-file: url('symbols/square.svg');
+      marker-fill: @transportation-icon;
+      marker-placement: interior;
+      marker-width: 6;
+      marker-clip: false;
+    }
+    [zoom >= 17] {
+      marker-file: url('symbols/ferry-14.svg');
+      marker-width: 12;
+    }
+  }
+
   [feature = 'amenity_taxi'][zoom >= 16] {
     marker-file: url('symbols/taxi.16.svg');
     marker-fill: @transportation-icon;
@@ -1720,7 +1734,8 @@
 
   [feature = 'highway_bus_stop'],
   [feature = 'amenity_fuel'],
-  [feature = 'amenity_bus_station'] {
+  [feature = 'amenity_bus_station'],
+  [feature = 'amenity_ferry_terminal'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 9;
@@ -1731,7 +1746,8 @@
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
-      [feature = 'highway_bus_stop'] {
+      [feature = 'highway_bus_stop'],
+      [feature = 'amenity_ferry_terminal'] {
         text-dy: 9;
       }
     }
