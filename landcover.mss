@@ -49,7 +49,8 @@
 @place_of_worship: #cdccc9;
 @place_of_worship_outline: #111;
 @playground: #ccfff1;
-@power: #bbb;
+@power: darken(@industrial, 5%);
+@power-line: darken(@industrial-line, 5%);
 @rest_area: #efc8c8; // also services
 @sand: #f5e9c6;
 @educational_areas_and_hospital: #f0f0d8;
@@ -356,11 +357,17 @@
   [feature = 'power_generator'][zoom >= 10],
   [feature = 'power_sub_station'][zoom >= 13],
   [feature = 'power_substation'][zoom >= 13] {
+    polygon-fill: @industrial;
+    [zoom >= 15] {
       polygon-fill: @power;
-      [zoom >= 12] {
-        line-width: 0.4;
-        line-color: darken(@power, 40%);
+    }
+    [zoom >= 16] {
+      line-width: 0.5;
+      line-color: @power-line;
+      [name != ''] {
+        line-width: 0.7;
       }
+    }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
