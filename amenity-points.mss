@@ -72,6 +72,15 @@
     }
   }
 
+  [feature = 'highway_elevator'][zoom >= 18] {
+    [access = null],
+    [access = 'yes'] {
+      marker-file: url('symbols/elevator-12.svg');
+      marker-fill: @transportation-icon;
+      marker-placement: interior;
+    }
+  }
+
   [feature = 'amenity_bus_station'][zoom >= 16] {
     point-file: url('symbols/bus_station.n.16.png');
     point-placement: interior;
