@@ -10,7 +10,7 @@
 
 
 #buildings {
-  [zoom >= 12] {
+  [zoom >= 13] {
     polygon-fill: @building-low-zoom;
     polygon-clip: false;
     [zoom >= 15] {
@@ -23,7 +23,7 @@
 }
 
 #buildings-major {
-  [zoom >= 12] {
+  [zoom >= 13] {
     [aeroway = 'terminal'] {
       polygon-fill: @building-aeroway-fill;
       polygon-clip: false;
