@@ -53,7 +53,7 @@
 @power: #bbb;
 @rest_area: #efc8c8; // also services
 @sand: #f5e9c6;
-@school: #f0f0d8; // also university, college, hospital, kindergarten
+@educational_areas_and_hospital: #f0f0d8;
 @station: #d4aaaa;
 @orchard: #9ed88f;
 @tourism: #734a08;
@@ -479,7 +479,7 @@
     [zoom >= 10] {
       polygon-fill: @residential;
       [zoom >= 12] {
-        polygon-fill: @school;
+        polygon-fill: @educational_areas_and_hospital;
         [zoom >= 13] {
           line-width: 0.3;
           line-color: brown;
