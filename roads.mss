@@ -521,7 +521,7 @@
           [zoom >= 15] {
             line-width: 5;
           }
-          line-color: black;
+          line-color: @bridge-casing;
           line-join: round;
         }
       }
@@ -531,7 +531,7 @@
       .bridges-casing {
         [zoom >= 14] {
           line-width: 5.5;
-          line-color: black;
+          line-color: @bridge-casing;
           line-join: round;
         }
       }
@@ -543,7 +543,7 @@
       .bridges-casing {
         [zoom >= 14] {
           line-width: 5.5;
-          line-color: black;
+          line-color: @bridge-casing;
           line-join: round;
         }
       }
@@ -555,7 +555,7 @@
       .bridges-casing {
         [zoom >= 13] {
           line-width: 6.5;
-          line-color: black;
+          line-color: @bridge-casing;
           line-join: round;
         }
       }
@@ -565,7 +565,7 @@
       .bridges-casing {
         [zoom >= 13] {
           line-width: 5.7;
-          line-color: black;
+          line-color: @bridge-casing;
           line-join: round;
         }
       }
@@ -578,7 +578,7 @@
       .bridges-casing {
         [zoom >= 13] {
           line-width: 6;
-          line-color: black;
+          line-color: @bridge-casing;
           line-join: round;
         }
       }
@@ -590,7 +590,7 @@
           line-width: 13;
           [zoom >= 15] { line-width: 19; }
           [zoom >= 16] { line-width: 25; }
-          line-color: black;
+          line-color: @bridge-casing;
           line-join: round;
         }
       }
@@ -600,7 +600,7 @@
       .bridges-casing {
         [zoom >= 14] {
           line-width: 5;
-          line-color: black;
+          line-color: @bridge-casing;
           line-join: round;
           [zoom >= 15] { line-width: 7; }
         }
