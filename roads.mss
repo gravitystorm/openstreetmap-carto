@@ -142,6 +142,9 @@
 @paths-bridge-casing-width:       0.5;
 @paths-tunnel-casing-width:       1;
 
+@oneway-arrow-color:              #6c70d5;
+@junction-text-color:             #6666ff;
+
 .roads-casing, .bridges-casing, .tunnels-casing {
   ::casing {
     [zoom >= 12] {
@@ -1918,14 +1921,14 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
     [zoom >= 11] {
       ref/text-name: "[ref]";
       ref/text-size: 10;
-      ref/text-fill: #6666ff;
+      ref/text-fill: @junction-text-color;
       ref/text-min-distance: 2;
       ref/text-face-name: @oblique-fonts;
       ref/text-halo-radius: 1.5;
       [zoom >= 12] {
         name/text-name: "[name]";
         name/text-size: 9;
-        name/text-fill: #6666ff;
+        name/text-fill: @junction-text-color;
         name/text-dy: -9;
         name/text-face-name: @oblique-fonts;
         name/text-halo-radius: 1;
@@ -2417,44 +2420,44 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
     [oneway = 'yes'] {
       dira/line-width: 1;
       dira/line-dasharray: 0,12,10,152;
-      dira/line-color: #6c70d5;
+      dira/line-color: @oneway-arrow-color;
       dira/line-join: bevel;
       dira/line-clip: false;
       dirb/line-width: 2;
       dirb/line-dasharray: 0,12,9,153;
-      dirb/line-color: #6c70d5;
+      dirb/line-color: @oneway-arrow-color;
       dirb/line-join: bevel;
       dirb/line-clip: false;
       dirc/line-width: 3;
       dirc/line-dasharray: 0,18,2,154;
-      dirc/line-color: #6c70d5;
+      dirc/line-color: @oneway-arrow-color;
       dirc/line-join: bevel;
       dirc/line-clip: false;
       dird/line-width: 4;
       dird/line-dasharray: 0,18,1,155;
-      dird/line-color: #6c70d5;
+      dird/line-color: @oneway-arrow-color;
       dird/line-join: bevel;
       dird/line-clip: false;
     }
     [oneway = '-1'] {
       dira/line-width: 1;
       dira/line-dasharray: 0,12,10,152;
-      dira/line-color: #6c70d5;
+      dira/line-color: @oneway-arrow-color;
       dira/line-join: bevel;
       dira/line-clip: false;
       dirb/line-width: 2;
       dirb/line-dasharray: 0,13,9,152;
-      dirb/line-color: #6c70d5;
+      dirb/line-color: @oneway-arrow-color;
       dirb/line-join: bevel;
       dirb/line-clip: false;
       dirc/line-width: 3;
       dirc/line-dasharray: 0,14,2,158;
-      dirc/line-color: #6c70d5;
+      dirc/line-color: @oneway-arrow-color;
       dirc/line-join: bevel;
       dirc/line-clip: false;
       dird/line-width: 4;
       dird/line-dasharray: 0,15,1,158;
-      dird/line-color: #6c70d5;
+      dird/line-color: @oneway-arrow-color;
       dird/line-join: bevel;
       dird/line-clip: false;
     }
