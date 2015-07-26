@@ -784,6 +784,13 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_variety_store'][zoom >= 17] {
+    marker-file: url('symbols/variety_store-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+
   [feature = 'leisure_water_park'][zoom >= 17] {
     marker-file: url('symbols/water_park.16.svg');
     marker-placement: interior;
@@ -1954,6 +1961,7 @@
   [feature = 'shop_travel_agency'],
   [feature = 'shop_seafood'],
   [feature = 'shop_stationery'],
+  [feature = 'shop_variety_store'],
   [feature = 'shop_wine'],
   [feature = 'shop_other']{
     [zoom >= 17] {
