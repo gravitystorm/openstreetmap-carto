@@ -1514,7 +1514,7 @@ Layer:
               'man_made_' || CASE WHEN man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill') THEN man_made ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('spring') THEN "natural" ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site') THEN historic ELSE NULL END,
-              'highway_'|| CASE WHEN highway IN ('bus_stop', 'traffic_signals') THEN highway ELSE NULL END,
+              'highway_'|| CASE WHEN highway IN ('bus_stop', 'elevator', 'traffic_signals') THEN highway ELSE NULL END,
               'power_' || CASE WHEN power IN ('generator') THEN power ELSE NULL END,
               'tourism_' || CASE WHEN tourism IN ('viewpoint') THEN tourism ELSE NULL END
             ) AS feature,
@@ -1534,7 +1534,7 @@ Layer:
             OR man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill')
             OR "natural" IN ('spring')
             OR historic IN ('memorial', 'monument', 'archaeological_site')
-            OR highway IN ('bus_stop', 'traffic_signals')
+            OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
             OR (power = 'generator' AND ("generator:source" = 'wind' OR power_source = 'wind'))
           ORDER BY way_area desc
         ) AS amenity_points_poly
@@ -1560,7 +1560,7 @@ Layer:
               'man_made_' || CASE WHEN man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill') THEN man_made ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance') THEN "natural" ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site') THEN historic ELSE NULL END,
-              'highway_'|| CASE WHEN highway IN ('bus_stop', 'traffic_signals', 'ford') THEN highway ELSE NULL END,
+              'highway_'|| CASE WHEN highway IN ('bus_stop', 'elevator', 'traffic_signals', 'ford') THEN highway ELSE NULL END,
               'power_' || CASE WHEN power IN ('generator') THEN power ELSE NULL END,
               'tourism_' || CASE WHEN tourism IN ('viewpoint') THEN tourism ELSE NULL END
             ) AS feature,
@@ -1588,7 +1588,7 @@ Layer:
             OR man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill')
             OR "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance')
             OR historic IN ('memorial', 'monument', 'archaeological_site')
-            OR highway IN ('bus_stop', 'traffic_signals', 'ford')
+            OR highway IN ('bus_stop', 'elevator', 'traffic_signals', 'ford')
             OR (power = 'generator' AND ("generator:source" = 'wind' OR power_source = 'wind'))
           ORDER BY score DESC NULLS LAST
           ) AS amenity_points
@@ -1824,7 +1824,7 @@ Layer:
               'place_' || CASE WHEN place IN ('island', 'islet') THEN place ELSE NULL END,
               'military_' || CASE WHEN military IN ('danger_area') THEN military ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site') THEN historic ELSE NULL END,
-              'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'ford') THEN highway ELSE NULL END,
+              'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator', 'ford') THEN highway ELSE NULL END,
               'power_' || CASE WHEN power IN ('station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,
               'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
               'waterway_' || CASE WHEN waterway IN ('dam') THEN waterway ELSE NULL END,
@@ -1849,7 +1849,7 @@ Layer:
               OR place IN ('island', 'islet')
               OR military IN ('danger_area')
               OR historic IN ('memorial', 'monument', 'archaeological_site')
-              OR highway IN ('services', 'rest_area', 'bus_stop', 'ford')
+              OR highway IN ('services', 'rest_area', 'bus_stop', 'elevator', 'ford')
               OR power IN ('station', 'generator', 'sub_station', 'substation')
               OR boundary IN ('national_park')
               OR waterway = 'dam')
@@ -1930,7 +1930,7 @@ Layer:
                   'place_' || CASE WHEN place IN ('island', 'islet') THEN place ELSE NULL END,
                   'military_' || CASE WHEN military IN ('danger_area') THEN military ELSE NULL END,
                   'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site') THEN historic ELSE NULL END,
-                  'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'ford') THEN highway ELSE NULL END,
+                  'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator', 'ford') THEN highway ELSE NULL END,
                   'power_' || CASE WHEN power IN ('station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,
                   'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
                   'waterway_' || CASE WHEN waterway IN ('dam', 'weir') THEN waterway ELSE NULL END,
@@ -1964,7 +1964,7 @@ Layer:
                   OR place IN ('island', 'islet')
                   OR military IN ('danger_area')
                   OR historic IN ('memorial', 'monument', 'archaeological_site')
-                  OR highway IN ('bus_stop', 'services', 'rest_area', 'bus_stop', 'ford')
+                  OR highway IN ('bus_stop', 'services', 'rest_area', 'elevator', 'ford')
                   OR power IN ('station', 'generator', 'sub_station', 'substation')
                   OR boundary IN ('national_park')
                   OR waterway IN ('dam', 'weir'))
