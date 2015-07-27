@@ -1222,7 +1222,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    place,\n    name,\n    ref\n  FROM planet_osm_point\n  WHERE place IN ('city', 'town')\n    AND capital IN ('yes', '4')\n    AND name IS NOT NULL\n) AS placenames_capital",
+        "table": "(SELECT\n    way,\n    place,\n    name,\n    ref\n  FROM planet_osm_point\n  WHERE place IN ('city', 'town')\n    AND capital IN ('yes', '4')\n    AND name IS NOT NULL\n  ORDER BY CASE\n      WHEN place = 'city' THEN 1\n      WHEN place = 'town' THEN 2\n    END ASC\n) AS placenames_capital",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1249,7 +1249,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    place,\n    name\n  FROM planet_osm_point\n  WHERE place IN ('city', 'town')\n    AND (capital IS NULL OR capital NOT IN ('yes', '4'))\n    AND name IS NOT NULL\n) AS placenames_medium",
+        "table": "(SELECT\n    way,\n    place,\n    name\n  FROM planet_osm_point\n  WHERE place IN ('city', 'town')\n    AND (capital IS NULL OR capital NOT IN ('yes', '4'))\n    AND name IS NOT NULL\n  ORDER BY CASE\n      WHEN place = 'city' THEN 1\n      WHEN place = 'town' THEN 2\n    END ASC\n) AS placenames_medium",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1275,7 +1275,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    place,\n    name\n  FROM planet_osm_point\n  WHERE place IN ('suburb', 'village', 'hamlet', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')\n    AND name IS NOT NULL\n) AS placenames_small",
+        "table": "(SELECT\n    way,\n    place,\n    name\n  FROM planet_osm_point\n  WHERE place IN ('suburb', 'village', 'hamlet', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')\n    AND name IS NOT NULL\n  ORDER BY CASE\n      WHEN place = 'suburb' THEN 3\n      WHEN place = 'village' THEN 4\n      WHEN place = 'hamlet' THEN 5\n      WHEN place = 'neighbourhood' THEN 6\n      WHEN place = 'locality' THEN 7\n      WHEN place = 'isolated_dwelling' THEN 8\n      WHEN place = 'farm' THEN 9\n    END ASC\n) AS placenames_small",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
