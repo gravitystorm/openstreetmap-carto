@@ -1404,9 +1404,9 @@
       text-size: @landcover-font-size;
       [way_pixels > 12000] { text-size: @landcover-font-size-big; }
       [way_pixels > 48000] { text-size: @landcover-font-size-bigger; }
-      text-fill: darken(@vineyard, 50%);
+      text-fill: darken(@orchard, 50%);
       text-face-name: @landcover-face-name;
-      text-halo-radius: 1.5; /* extra halo needed to overpower the vineyard polygon pattern */
+      text-halo-radius: 1;
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @landcover-wrap-width-size;
       [way_pixels > 12000] {text-wrap-width: @landcover-wrap-width-size-big; }
@@ -2116,7 +2116,7 @@
       text-size: @landcover-font-size;
       [way_pixels > 12000] { text-size: @landcover-font-size-big; }
       [way_pixels > 48000] { text-size: @landcover-font-size-bigger; }
-      text-fill: darken(@grassland, 60%);
+      text-fill: darken(@grass, 50%);
       text-face-name: @landcover-face-name;
       text-halo-radius: 1;
       text-halo-fill: rgba(255,255,255,0.6);
