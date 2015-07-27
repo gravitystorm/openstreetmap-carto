@@ -1097,7 +1097,11 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
 
     [feature = 'highway_residential'],
     [feature = 'highway_unclassified'] {
-      [zoom >= 12] {
+      [zoom >= 12][feature = 'highway_residential'] {
+        line-color: @residential-casing;
+        line-width: 0.4;
+      }
+      [zoom >= 12][feature = 'highway_unclassified'] {
         line-color: @residential-casing;
         line-width: 1;
       }
