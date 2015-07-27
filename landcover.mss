@@ -158,7 +158,7 @@
     }
   }
 
-  [feature = 'amenity_place_of_worship'] {
+  [feature = 'amenity_place_of_worship'][zoom >= 13] {
     polygon-fill: @place_of_worship;
     polygon-clip: false;
     [zoom >= 15] {
