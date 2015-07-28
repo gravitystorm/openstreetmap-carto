@@ -517,7 +517,9 @@
       }
     }
 
-    [feature = 'railway_tram'] {
+
+    [feature = 'railway_tram'],
+    [feature = 'railway_tram-service'][zoom >= 15] {
       .bridges-casing {
         [zoom >= 13] {
           line-width: 4;
@@ -810,7 +812,8 @@
       }
     }
 
-    [feature = 'railway_tram'] {
+    [feature = 'railway_tram'],
+    [feature = 'railway_tram-service'][zoom >= 15] {
       .bridges-casing {
         [zoom >= 13] {
           line-width: 3;
@@ -1535,7 +1538,8 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
 
-    [feature = 'railway_tram'] {
+    [feature = 'railway_tram'],
+    [feature = 'railway_tram-service'][zoom >= 15] {
       [zoom >= 12] {
         line-color: #6E6E6E;
         line-width: 0.75;
@@ -1547,9 +1551,25 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
         }
         [zoom >= 15] {
           line-width: 1.5;
+          [feature = 'railway_tram-service'] {
+            line-width: 0.5;
+          }
         }
         [zoom >= 17] {
           line-width: 2;
+          [feature = 'railway_tram-service'] {
+            line-width: 1;
+          }
+        }
+        [zoom >= 18] {
+          [feature = 'railway_tram-service'] {
+            line-width: 1.5;
+          }
+        }
+        [zoom >= 19] {
+          [feature = 'railway_tram-service'] {
+            line-width: 2;
+          }
         }
         .tunnels-fill {
           line-dasharray: 5,3;
