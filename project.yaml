@@ -222,6 +222,17 @@ Layer:
       minzoom: 8
       maxzoom: 11
     advanced: {}
+  - id: "icesheet-poly"
+    name: "icesheet-poly"
+    class: ""
+    geometry: "polygon"
+    <<: *extents
+    Datasource:
+      file: "data/antarctica-icesheet-polygons-3857/icesheet_polygons.shp"
+      type: "shape"
+    properties:
+      minzoom: 4
+    advanced: {}
   - id: "water-areas"
     name: "water-areas"
     class: ""
@@ -268,6 +279,17 @@ Layer:
         ) AS water_areas_overlay
     properties:
       minzoom: 10
+    advanced: {}
+  - id: "icesheet-outlines"
+    name: "icesheet-outlines"
+    class: ""
+    geometry: "linestring"
+    <<: *extents
+    Datasource:
+      file: "data/antarctica-icesheet-outlines-3857/icesheet_outlines.shp"
+      type: "shape"
+    properties:
+      minzoom: 4
     advanced: {}
   - id: "water-lines"
     name: "water-lines"
