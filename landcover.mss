@@ -476,10 +476,10 @@
     }
   }
 
+  [feature = 'amenity_hospital'],
   [feature = 'amenity_university'],
   [feature = 'amenity_college'],
   [feature = 'amenity_school'],
-  [feature = 'amenity_hospital'],
   [feature = 'amenity_kindergarten'] {
     [zoom >= 10] {
       polygon-fill: @residential;
