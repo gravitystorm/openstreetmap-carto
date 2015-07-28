@@ -405,7 +405,8 @@
     }
 
     [feature = 'highway_footway'],
-    [feature = 'highway_path'][foot = 'designated'] {
+    [feature = 'highway_path'][foot = 'designated'],
+    [feature = 'highway_path'][bicycle != 'designated'][horse != 'designated'] {
       .bridges-casing {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
@@ -442,27 +443,6 @@
         [zoom >= 15] {
           line-width: @cycleway-width-z13 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
           [zoom >= 15] { line-width: @cycleway-width-z15 + 2 * (@paths-background-width + @paths-tunnel-casing-width); }
-          line-color: @tunnel-casing;
-          line-dasharray: 4,2;
-        }
-      }
-    }
-
-    [feature = 'highway_path'] {
-      .bridges-casing {
-        [zoom >= 14][access != 'no'],
-        [zoom >= 15] {
-          line-width: @path-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
-          [zoom >= 15] { line-width: @path-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
-          line-color: @bridge-casing;
-          line-join: round;
-        }
-      }
-      .tunnels-casing {
-        [zoom >= 13][access != 'no'],
-        [zoom >= 15] {
-          line-width: @path-width-z13 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
-          [zoom >= 15] { line-width: @path-width-z15 + 2 * (@paths-background-width + @paths-tunnel-casing-width); }
           line-color: @tunnel-casing;
           line-dasharray: 4,2;
         }
@@ -638,7 +618,8 @@
     }
 
     [feature = 'highway_footway'],
-    [feature = 'highway_path'][foot = 'designated'] {
+    [feature = 'highway_path'][foot = 'designated'],
+    [feature = 'highway_path'][bicycle != 'designated'][horse != 'designated'] {
       .bridges-casing {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
@@ -701,28 +682,6 @@
           line-join: round;
           line-width: @steps-width-z13 + 2 * @paths-background-width;
           [zoom >= 15] { line-width: @steps-width-z15 + 2 * @paths-background-width; }
-        }
-      }
-    }
-
-    [feature = 'highway_path'] {
-      .bridges-casing {
-        [zoom >= 14][access != 'no'],
-        [zoom >= 15] {
-          line-width: @path-width-z13 + 2 * @paths-background-width;
-          [zoom >= 15] { line-width: @path-width-z15 + 2 * @paths-background-width; }
-          line-color: @path-casing;
-          line-join: round;
-        }
-      }
-      .tunnels-casing {
-        [zoom >= 13][access != 'no'],
-        [zoom >= 15] {
-          line-color: @path-casing;
-          line-cap: round;
-          line-join: round;
-          line-width: @path-width-z13 + 2 * @paths-background-width;
-          [zoom >= 15] { line-width: @path-width-z15 + 2 * @paths-background-width; }
         }
       }
     }
@@ -1311,7 +1270,8 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
     }
 
     [feature = 'highway_footway'],
-    [feature = 'highway_path'][foot = 'designated'] {
+    [feature = 'highway_path'][foot = 'designated'],
+    [feature = 'highway_path'][bicycle != 'designated'][horse != 'designated'] {
       [zoom >= 13][access != 'no'],
       [zoom >= 15] {
         .roads-fill[zoom >= 15] {
@@ -1347,29 +1307,6 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
         line/line-cap: round;
         line/line-width: @cycleway-width-z13;
         [zoom >= 15] { line/line-width: @cycleway-width-z15; }
-      }
-    }
-
-    /*
-    * The above defininitions should override this when needed
-    * given the specitivity precedence.
-    */
-    [feature = 'highway_path'] {
-      [zoom >= 13][access != 'no'],
-      [zoom >= 15] {
-        .roads-fill[zoom >= 15] {
-          background/line-color: @path-casing;
-          background/line-cap: round;
-          background/line-join: round;
-          background/line-width: @path-width-z15 + 2 * @paths-background-width;
-          background/line-opacity: 0.4;
-        }
-        line/line-color: @path-fill;
-        line/line-dasharray: 6,3;
-        line/line-join: round;
-        line/line-cap: round;
-        line/line-width: @path-width-z13;
-        [zoom >= 15] { line/line-width: @path-width-z15; }
       }
     }
 
