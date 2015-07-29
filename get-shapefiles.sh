@@ -11,8 +11,6 @@ mkdir -p data/simplified-land-polygons-complete-3857
 mkdir -p data/ne_110m_admin_0_boundary_lines_land
 mkdir -p data/ne_10m_populated_places
 mkdir -p data/land-polygons-split-3857
-mkdir -p antarctica-icesheet-polygons-3857
-mkdir -p antarctica-icesheet-outlines-3857
 
 # world_boundaries
 echo "dowloading world_boundaries..."
