@@ -1254,8 +1254,12 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
         line-join: round;
         line-cap: round;
       }
-      [zoom >= 13] { line-width: 4; }
-      [zoom >= 15] { line-width: 7; }
+      [zoom >= 13] { line-width: 2; }
+      [zoom >= 14] { line-width: 3; }
+      [zoom >= 15] { line-width: 6; }
+      [zoom >= 18] { line-width: 8; }
+      [zoom >= 19] { line-width: 12; }
+      [zoom >= 20] { line-width: 24; }
     }
 
     [feature = 'highway_platform'] {
