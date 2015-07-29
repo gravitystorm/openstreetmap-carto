@@ -336,13 +336,17 @@
   }
 
   [feature = 'amenity_post_box'][zoom >= 17] {
-    point-file: url('symbols/post_box.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/post_box.12.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_post_office'][zoom >= 17] {
-    point-file: url('symbols/post_office.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/post_office.16.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_pub'][zoom >= 17] {
