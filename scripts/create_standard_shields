@@ -18,11 +18,19 @@ widths='
 10:75.75
 11:80.75'
 
-colours='motorway:#7788a1
-trunk:#87ab87
-primary:#bb7b7f
-secondary:#c6ad84
-tertiary:#c4c68f'
+#shield colors were generated with scripts/generate_road_colors.py
+colours='motorway:#d18996
+trunk:#da9b88
+primary:#d5b284
+secondary:#c6ca90
+tertiary:#c6c6c6'
+
+#motorway: lch(65, 30, 10) Conversion error on moving from lch to rgb: 0.4 lch(-0.3, -0.4, -0.9)
+#trunk: lch(70, 30, 42) Conversion error on moving from lch to rgb: 0.8 lch(-0.3, -1.4, 1.1)
+#primary: lch(75, 30, 74) Conversion error on moving from lch to rgb: 1.7 lch(-0.3, -0.8, 3.9)
+#secondary: lch(80, 30, 106) Conversion error on moving from lch to rgb: 1.7 lch(-0.2, 0.7, 4.3)
+#tertiary: lch(80, 0, 0) Conversion error on moving from lch to rgb: 0.0 lch(-0.0, 0.0, 322.5)
+
 
 
 xoffset=1.25
