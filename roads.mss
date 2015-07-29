@@ -1891,7 +1891,7 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
 
 #highway-area-fill {
   [feature = 'highway_living_street'][zoom >= 14] {
-    polygon-fill: #ccc;
+    polygon-fill: @living-street-fill;
   }
 
   [feature = 'highway_residential'],
@@ -1907,7 +1907,7 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
   [feature = 'highway_cycleway'],
   [feature = 'highway_path'] {
     [zoom >= 14] {
-      polygon-fill: #ededed;
+      polygon-fill: @pedestrian-fill;
     }
   }
 
