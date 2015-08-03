@@ -1288,12 +1288,12 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
           background/line-join: round;
           background/line-width: @footway-width-z15 + 2 * @paths-background-width;
           background/line-opacity: 0.4;
-          [surface = 'unpaved'][zoom < 19]  {
+          [int_surface = 'unpaved'][zoom < 19]  {
             background/line-width: @footway-width-z15/2 + 2 * @paths-background-width/2;
           }
           [zoom >= 19] {
             background/line-width: @footway-width-z19 + 2 * @paths-background-width;
-            [surface = 'unpaved'] {
+            [int_surface = 'unpaved'] {
               background/line-width: @footway-width-z19/1.5 + 2 * @paths-background-width/1.5;            
             }
           }
@@ -1303,13 +1303,13 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
         line/line-join: round;
         line/line-cap: round;
         line/line-width: @footway-width-z13;
-        [zoom >= 15][surface = 'paved'] {
+        [zoom >= 15][int_surface = 'paved'] {
           line/line-width:  @footway-width-z15;
           [zoom >= 19] {
             line/line-width:  @footway-width-z19;          
           }
         }
-        [zoom >= 15][surface = 'unpaved'] {
+        [zoom >= 15][int_surface = 'unpaved'] {
           line/line-dasharray: 1,4;
           line/line-width:  @footway-width-z15/1.5;
           [zoom >= 19] {
@@ -1330,7 +1330,7 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
           background/line-join: round;
           background/line-width: @cycleway-width-z15 + 2 * @paths-background-width;
           background/line-opacity: 0.4;
-          [surface = 'unpaved'][zoom < 19]  {
+          [int_surface = 'unpaved'][zoom < 19]  {
             background/line-width: @cycleway-width-z15/2 + 2 * @paths-background-width/2;
           }
           [zoom >= 19] {
@@ -1342,13 +1342,13 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
         line/line-join: round;
         line/line-cap: round;
         line/line-width: @cycleway-width-z13;
-        [zoom >= 15][surface = 'paved'] {
+        [zoom >= 15][int_surface = 'paved'] {
           line/line-width:  @cycleway-width-z15;
           [zoom >= 19] {
             line/line-width:  @cycleway-width-z19;          
           }
         }
-        [zoom >= 15][surface = 'unpaved'] {
+        [zoom >= 15][int_surface = 'unpaved'] {
           line/line-dasharray: 1,4;
           line/line-width:  @cycleway-width-z15/1.5;
           [zoom >= 19] {
