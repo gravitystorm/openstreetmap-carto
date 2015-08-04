@@ -168,7 +168,7 @@
     }
   }
 
-  [feature = 'amenity_prison'][zoom >= 10] {
+  [feature = 'amenity_prison'][zoom >= 10][way_pixels > 50] {
     polygon-pattern-file: url('symbols/grey_vertical_hatch.png');
     polygon-pattern-alignment: global;
     line-color: #888;
@@ -607,7 +607,7 @@
 }
 
 #landuse-overlay {
-  [landuse = 'military'][zoom >= 10] {
+  [landuse = 'military'][zoom >= 10][way_pixels > 50] {
     polygon-pattern-file: url('symbols/military_red_hatch.png');
     polygon-pattern-alignment: global;
     line-color: @military;
