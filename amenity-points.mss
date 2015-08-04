@@ -751,6 +751,13 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_musical_instrument'][zoom >= 17] {
+    marker-file: url('symbols/musical_instrument-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+
   [feature = 'shop_kiosk'],
   [feature = 'shop_newsagent'] {
     [zoom >= 17] {
@@ -1966,6 +1973,7 @@
   [feature = 'shop_kiosk'],
   [feature = 'shop_mobile_phone'],
   [feature = 'shop_motorcycle'],
+  [feature = 'shop_musical_instrument'],
   [feature = 'shop_newsagent'],
   [feature = 'shop_jewelry'],
   [feature = 'shop_jewellery'],
