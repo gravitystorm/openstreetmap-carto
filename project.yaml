@@ -598,7 +598,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, landuse, leisure
+            way, landuse
           FROM planet_osm_polygon
           WHERE landuse = 'military'
             AND building IS NULL
