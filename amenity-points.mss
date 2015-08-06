@@ -2017,7 +2017,7 @@
   }
 
   [feature = 'landuse_military'][is_building = 'no'] {
-    [zoom >= 10][way_pixels > 3000],
+    [zoom >= 8][way_pixels > 3000],
     [zoom >= 17] {
       text-name: "[name]";
       text-size: @landcover-font-size;
