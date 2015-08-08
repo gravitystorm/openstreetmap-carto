@@ -16,6 +16,8 @@
 @landcover-wrap-width-size-bigger: 45;
 @landcover-face-name: @oblique-fonts;
 
+@max-labeling-area-in-pixels: 900000;
+
 @standard-wrap-width: 30;
 
 /* Note that .points is also used in water-features.mss */
@@ -873,7 +875,9 @@
     marker-fill: @airtransport;
   }
 
-  [feature = 'aeroway_aerodrome'][zoom >= 10][zoom < 14] {
+  [feature = 'aeroway_aerodrome'][zoom >= 14][way_pixels < @max-labeling-area-in-pixels],
+  [feature = 'aeroway_aerodrome'][zoom >= 14][way_pixels = null],
+  [feature = 'aeroway_aerodrome'][zoom >= 10][way_pixels > 5][way_pixels < @max-labeling-area-in-pixels] {
     marker-file: url('symbols/aerodrome.svg');
     marker-placement: interior;
     marker-clip: false;
@@ -1024,10 +1028,10 @@
 /* Note that .text is also used in water.mss */
 .text-low-zoom[zoom < 10],
 .text[zoom >= 10] {
-  [feature = 'place_island'][zoom >= 7][way_pixels > 3000][way_pixels < 800000],
-  [feature = 'place_island'][zoom >= 16][way_pixels < 800000],
-  [feature = 'place_islet'][zoom >= 14][way_pixels > 3000][way_pixels < 800000],
-  [feature = 'place_islet'][zoom >= 17][way_pixels < 800000] {
+  [feature = 'place_island'][zoom >= 7][way_pixels > 3000][way_pixels < @max-labeling-area-in-pixels],
+  [feature = 'place_island'][zoom >= 16][way_pixels < @max-labeling-area-in-pixels],
+  [feature = 'place_islet'][zoom >= 14][way_pixels > 3000][way_pixels < @max-labeling-area-in-pixels],
+  [feature = 'place_islet'][zoom >= 17][way_pixels < @max-labeling-area-in-pixels] {
     text-name: "[name]";
     text-fill: #000;
     text-size: 10;
@@ -2242,7 +2246,9 @@
     text-wrap-width: @standard-wrap-width;
   }
 
-  [feature = 'aeroway_aerodrome'][zoom >= 10][zoom < 14] {
+  [feature = 'aeroway_aerodrome'][zoom >= 14][way_pixels < @max-labeling-area-in-pixels],
+  [feature = 'aeroway_aerodrome'][zoom >= 14][way_pixels = null],
+  [feature = 'aeroway_aerodrome'][zoom >= 10][way_pixels > 5][way_pixels < @max-labeling-area-in-pixels] {
     text-name: "[name]";
     text-size: 8;
     text-fill: darken(@airtransport, 15%);
