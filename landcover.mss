@@ -329,7 +329,8 @@
     }
   }
 
-  [feature = 'landuse_industrial'][zoom >= 10] {
+  [feature = 'landuse_industrial'][zoom >= 10],
+  [feature = 'landuse_port'][zoom >= 10] {
     polygon-fill: @industrial;
     [zoom >= 16] {
       line-width: .5;
