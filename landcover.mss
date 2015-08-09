@@ -2,7 +2,7 @@
 
 @grass: #cdebb0; // also meadow, common, garden, village_green, conservation
 @golf_course: #b5e3b5;
-@scrub: #b5e3b5;
+@scrub_heath: #b5e3b5;
 @forest: #add19e;       // Lch(80,30,135)
 @forest-text: #46673b;  // Lch(40,30,135)
 @park: #c8facc;         // Lch(94,30,145) also recreation_ground
@@ -43,7 +43,7 @@
 @construction: #b6b592;
 @danger_area: pink;
 @garages: #dfddce;
-@heath: #d6d99f;
+@bog: #d6d99f;
 @mud: rgba(203,177,154,0.3); // produces #e6dcd1 over @land
 @parking: #f7efb7;
 @place_of_worship: #cdccc9;
@@ -415,20 +415,20 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [feature = 'natural_heath'][zoom >= 10] {
-    polygon-fill: @heath;
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
-  }
-
+  [feature = 'natural_heath'],
   [feature = 'natural_scrub'] {
     [zoom >= 10] {
-      polygon-fill: @scrub;
+      polygon-fill: @scrub_heath;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
     [zoom >= 14] {
-      polygon-pattern-file: url('symbols/scrub.png');
+      [feature = 'natural_scrub'] {
+        polygon-pattern-file: url('symbols/scrub.png');
+      }
+      [feature = 'natural_heath'] {
+        polygon-pattern-file: url('symbols/heath.png');
+      }
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
@@ -443,7 +443,7 @@
   [feature = 'wetland_bog'],
   [feature = 'wetland_string_bog'] {
     [zoom >= 10] {
-      polygon-fill: @heath;
+      polygon-fill: @bog;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
