@@ -153,6 +153,7 @@
 @living-street-width-z17:        12;
 @pedestrian-width-z17:           12;
 @service-width-z17:               7;
+@minor-service-width-z17:         3.5;
 
 @motorway-width-z18:             20;
 @motorway-link-width-z18:        12;
@@ -160,6 +161,8 @@
 @primary-width-z18:              20;
 @secondary-width-z18:            20;
 @tertiary-width-z18:             20;
+@service-width-z18:               8;
+@minor-service-width-z18:         4.25;
 
 @major-casing-width-z11:          0.3;
 @casing-width-z12:                0.1;
@@ -377,9 +380,12 @@
           line-width: @service-width-z14;
           [zoom >= 16] { line-width: @service-width-z16; }
           [zoom >= 17] { line-width: @service-width-z17; }
+          [zoom >= 18] { line-width: @service-width-z18; }
         }
         [service = 'INT-minor'] {
           line-width: @minor-service-width-z16;
+          [zoom >= 17] { line-width: @minor-service-width-z17; }
+          [zoom >= 18] { line-width: @minor-service-width-z18; }
         }
         .roads-casing {
           line-join: round;
@@ -1292,9 +1298,12 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
           line-width: @service-width-z14 - 2 * @casing-width-z14;
           [zoom >= 16] { line-width: @service-width-z16 - 2 * @casing-width-z16; }
           [zoom >= 17] { line-width: @service-width-z17 - 2 * @casing-width-z17; }
+          [zoom >= 18] { line-width: @service-width-z18 - 2 * @casing-width-z18; }
         }
         [service = 'INT-minor'] {
           line-width: @minor-service-width-z16 - 2 * @casing-width-z16;
+          [zoom >= 17] { line-width: @minor-service-width-z17 - 2 * @casing-width-z17; }
+          [zoom >= 18] { line-width: @minor-service-width-z18 - 2 * @casing-width-z18; }
         }
         line-join: round;
         line-cap: round;
@@ -1309,9 +1318,12 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
             line-width: @service-width-z14 - 2 * @bridge-casing-width-z14;
             [zoom >= 16] { line-width: @service-width-z16 - 2 * @bridge-casing-width-z16; }
             [zoom >= 17] { line-width: @service-width-z17 - 2 * @bridge-casing-width-z17; }
+            [zoom >= 18] { line-width: @service-width-z18 - 2 * @bridge-casing-width-z18; }
           }
           [service = 'INT-minor'] {
             line-width: @minor-service-width-z16 - 2 * @bridge-casing-width-z16;
+            [zoom >= 17] { line-width: @minor-service-width-z17 - 2 * @bridge-casing-width-z17; }
+            [zoom >= 18] { line-width: @minor-service-width-z18 - 2 * @bridge-casing-width-z18; }
           }
         }
       }
