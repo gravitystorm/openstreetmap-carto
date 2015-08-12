@@ -112,6 +112,7 @@
 @track-grade2-width-z13:          0.5;
 @steps-width-z13:                 0.7;
 
+@secondary-width-z14:             5;
 @tertiary-width-z14:              5;
 @residential-width-z14:           3;
 @living-street-width-z14:         3;
@@ -136,7 +137,8 @@
 @track-grade2-width-z15:          0.75;
 @steps-width-z15:                 3;
 
-@tertiary-width-z16:              10;
+@secondary-width-z16:            10;
+@tertiary-width-z16:             10;
 @residential-width-z16:           6;
 @living-street-width-z16:         6;
 @pedestrian-width-z16:            6;
@@ -165,21 +167,34 @@
 @minor-service-width-z18:         4.25;
 
 @major-casing-width-z11:          0.3;
+
 @casing-width-z12:                0.1;
 @secondary-casing-width-z12:      0.3;
 @major-casing-width-z12:          0.5;
-@major-casing-width-z13:          0.5;
+
 @casing-width-z13:                0.5;
 @residential-casing-width-z13:    0.5;
+@secondary-casing-width-z13:      0.5;
+@major-casing-width-z13:          0.5;
+
 @casing-width-z14:                0.5;
+@secondary-casing-width-z14:      0.6;
 @major-casing-width-z14:          0.6;
+
 @casing-width-z15:                0.6;
+@secondary-casing-width-z15:      0.7;
 @major-casing-width-z15:          0.7;
+
 @casing-width-z16:                0.6;
+@secondary-casing-width-z16:      0.7;
 @major-casing-width-z16:          0.7;
+
 @casing-width-z17:                0.8;
+@secondary-casing-width-z17:      1;
 @major-casing-width-z17:          1;
+
 @casing-width-z18:                0.8;
+@secondary-casing-width-z18:      1;
 @major-casing-width-z18:          1;
 
 @bridge-casing-width-z12:         0.1;
@@ -301,7 +316,9 @@
         line-width: @secondary-width-z11;
         [zoom >= 12] { line-width: @secondary-width-z12; }
         [zoom >= 13] { line-width: @secondary-width-z13; }
+        [zoom >= 14] { line-width: @secondary-width-z14; }
         [zoom >= 15] { line-width: @secondary-width-z15; }
+        [zoom >= 16] { line-width: @secondary-width-z16; }
         [zoom >= 17] { line-width: @secondary-width-z17; }
         [zoom >= 18] { line-width: @secondary-width-z18; }
         .roads-casing {
@@ -1170,17 +1187,21 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
         line-join: round;
         [zoom >= 12] {
           line-width: @secondary-width-z12 - 2 * @secondary-casing-width-z12;
-          [zoom >= 13] { line-width: @secondary-width-z13 - 2 * @major-casing-width-z13; }
-          [zoom >= 15] { line-width: @secondary-width-z15 - 2 * @major-casing-width-z15; }
-          [zoom >= 17] { line-width: @secondary-width-z17 - 2 * @major-casing-width-z17; }
-          [zoom >= 18] { line-width: @secondary-width-z18 - 2 * @major-casing-width-z18; }
+          [zoom >= 13] { line-width: @secondary-width-z13 - 2 * @secondary-casing-width-z13; }
+          [zoom >= 14] { line-width: @secondary-width-z14 - 2 * @secondary-casing-width-z14; }
+          [zoom >= 15] { line-width: @secondary-width-z15 - 2 * @secondary-casing-width-z15; }
+          [zoom >= 16] { line-width: @secondary-width-z16 - 2 * @secondary-casing-width-z16; }
+          [zoom >= 17] { line-width: @secondary-width-z17 - 2 * @secondary-casing-width-z17; }
+          [zoom >= 18] { line-width: @secondary-width-z18 - 2 * @secondary-casing-width-z18; }
           .tunnels-fill {
             line-color: @secondary-tunnel-fill;
           }
           .bridges-fill {
             line-width: @secondary-width-z12 - 2 * @bridge-casing-width-z12;
             [zoom >= 13] { line-width: @secondary-width-z13 - 2 * @major-bridge-casing-width-z13; }
+            [zoom >= 14] { line-width: @secondary-width-z14 - 2 * @major-bridge-casing-width-z14; }
             [zoom >= 15] { line-width: @secondary-width-z15 - 2 * @major-bridge-casing-width-z15; }
+            [zoom >= 16] { line-width: @secondary-width-z16 - 2 * @major-bridge-casing-width-z16; }
             [zoom >= 17] { line-width: @secondary-width-z17 - 2 * @major-bridge-casing-width-z17; }
             [zoom >= 18] { line-width: @secondary-width-z18 - 2 * @major-bridge-casing-width-z18; }
           }
