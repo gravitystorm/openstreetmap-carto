@@ -174,11 +174,11 @@
 
 @casing-width-z13:                0.5;
 @residential-casing-width-z13:    0.5;
-@secondary-casing-width-z13:      0.5;
+@secondary-casing-width-z13:      0.35;
 @major-casing-width-z13:          0.5;
 
 @casing-width-z14:                0.5;
-@secondary-casing-width-z14:      0.6;
+@secondary-casing-width-z14:      0.35;
 @major-casing-width-z14:          0.6;
 
 @casing-width-z15:                0.6;
