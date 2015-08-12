@@ -72,6 +72,8 @@
 @motorway-width-z7:               0.8;
 @trunk-width-z7:                  0.8;
 
+@motorway-width-z8:               0.8;
+@trunk-width-z8:                  0.8;
 @primary-width-z8:                1;
 
 @motorway-width-z9:               1.4;
@@ -1058,6 +1060,7 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
         }
       }
       [zoom >= 7] { line-width: @motorway-width-z7; }
+      [zoom >= 8] { line-width: @motorway-width-z8; }
       [zoom >= 9] { line-width: @motorway-width-z9; }
       [zoom >= 10] { line-width: @motorway-width-z10; }
       [zoom >= 11] {
@@ -1106,9 +1109,8 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
           line-color: @trunk-fill;
         }
       }
-      [zoom >= 7] {
-        line-width: @trunk-width-z7;
-      }
+      [zoom >= 7] { line-width: @trunk-width-z7; }
+      [zoom >= 8] { line-width: @trunk-width-z8; }
       [zoom >= 9] { line-width: @trunk-width-z9; }
       [zoom >= 10] { line-width: @trunk-width-z10; }
       [zoom >= 11] {
