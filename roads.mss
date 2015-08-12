@@ -72,8 +72,8 @@
 @motorway-width-z7:               0.8;
 @trunk-width-z7:                  0.8;
 
-@motorway-width-z8:               0.8;
-@trunk-width-z8:                  0.8;
+@motorway-width-z8:               1;
+@trunk-width-z8:                  1;
 @primary-width-z8:                1;
 
 @motorway-width-z9:               1.4;
