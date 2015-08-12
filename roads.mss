@@ -3,7 +3,7 @@
 //road colors for major roads were generated with scripts/generate_road_colors.py
 @motorway-fill: #e892a2; // lch(70, 35, 10) Conversion error on moving from lch to rgb: 0.5 lch(-0.3, -0.5, -0.9)
 @trunk-fill: #f9b29c; // lch(79, 33, 42) Conversion error on moving from lch to rgb: 0.8 lch(-0.4, -1.5, 1.1)
-@primary-fill: #fcd6a4; // lch(79, 33, 42) Conversion error on moving from lch to rgb: 0.8 lch(-0.4, -1.5, 1.1)
+@primary-fill: #fcd6a4; // lch(88, 31, 74) Conversion error on moving from lch to rgb: 1.8 lch(-0.3, -0.8, 4.0)
 @secondary-fill: #f7fabf; // lch(97, 29, 106) Conversion error on moving from lch to rgb: 1.8 lch(-0.2, 0.7, 4.4)
 @tertiary-fill: #ffffff;
 @residential-fill: #ffffff;

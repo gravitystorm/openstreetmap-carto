@@ -181,7 +181,7 @@ road_fill = """
 //road colors for major roads were generated with scripts/generate_road_colors.py
 @motorway-fill: """ + colors['motorway_fill'].get_as_hex() + '; // ' + colors['motorway_fill'].intended_lch_string + """
 @trunk-fill: """+colors['trunk_fill'].get_as_hex() + '; // ' + colors['trunk_fill'].intended_lch_string + """
-@primary-fill: """+colors['primary_fill'].get_as_hex() + '; // ' + colors['trunk_fill'].intended_lch_string + """
+@primary-fill: """+colors['primary_fill'].get_as_hex() + '; // ' + colors['primary_fill'].intended_lch_string + """
 @secondary-fill: """+colors['secondary_fill'].get_as_hex() + '; // ' + colors['secondary_fill'].intended_lch_string + """
 """
 
