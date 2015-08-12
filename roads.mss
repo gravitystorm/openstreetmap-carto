@@ -995,9 +995,7 @@ residential is rendered from z10 and is not included in osm_planet_roads. */
           line-color: @secondary-fill;
         }
         [construction = 'tertiary'],
-        [construction = 'tertiary_link'] {
-          line-color: @tertiary-fill;
-        }
+        [construction = 'tertiary_link'],
         [construction = 'residential'],
         [construction = 'unclassified'],
         [construction = 'living_street'] {
