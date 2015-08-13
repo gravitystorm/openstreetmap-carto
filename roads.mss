@@ -227,6 +227,24 @@
 
 .roads-casing, .bridges-casing, .tunnels-casing {
   ::casing {
+    [zoom = 9][feature = 'highway_secondary'] {
+      line-color: white;
+      line-width: 2.2;
+      line-opacity: 0.4;
+      line-join: round;
+      //Missing line-cap: round; is intentional. It would cause rendering glow multiple times in some places - what as result of partial transparency would cause differences in rendering
+      //Also, bridges - including bridge casings are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
+    }
+    [zoom = 10][feature = 'highway_secondary'],
+    [zoom = 11][feature = 'highway_tertiary'] {
+      line-color: white;
+      line-width: 2.7;
+      line-opacity: 0.4;
+      line-join: round;
+      //Missing line-cap: round; is intentional. It would cause rendering glow multiple times in some places - what as result of partial transparency would cause differences in rendering
+      //Also, bridges - including bridge casings are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
+    }
+
     [zoom >= 11] {
       [feature = 'highway_motorway'] {
         line-width: @motorway-width-z11;

@@ -585,7 +585,7 @@ Layer:
         ) AS tunnels
     properties:
       group-by: "layernotnull"
-      minzoom: 10
+      minzoom: 9
     advanced: {}
   - id: "citywalls"
     name: "citywalls"
@@ -863,7 +863,7 @@ Layer:
             CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
         ) AS roads_casing
     properties:
-      minzoom: 10
+      minzoom: 9
     advanced: {}
   - id: "highway-area-fill"
     name: "highway-area-fill"
@@ -1239,7 +1239,7 @@ Layer:
         ) AS bridges
     properties:
       group-by: "layernotnull"
-      minzoom: 10
+      minzoom: 9
     advanced: {}
   - id: "guideways"
     name: "guideways"
