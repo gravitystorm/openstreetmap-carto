@@ -471,7 +471,7 @@ Layer:
       # an order is generated in SQL.
       table: |-
         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
-                horse, foot, bicycle, tracktype, access, construction,
+                horse, foot, bicycle, tracktype, int_surface, access, construction,
                 service, oneway, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
@@ -481,6 +481,8 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
+                CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 
+                	'grass_paver', 'gravel', 'ground', 'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay') THEN 'unpaved' ELSE 'paved' END AS int_surface,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
@@ -514,6 +516,7 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
+                'null',
                 CASE
                   WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
@@ -577,7 +580,8 @@ Layer:
           ORDER BY
             layernotnull,
             prio,
-            CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END
+            CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END,
+            CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
         ) AS tunnels
     properties:
       group-by: "layernotnull"
@@ -742,7 +746,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
-                horse, foot, bicycle, tracktype, access, construction,
+                horse, foot, bicycle, tracktype, int_surface, access, construction,
                 service, oneway, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
@@ -752,6 +756,8 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
+                CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 
+                	'grass_paver', 'gravel', 'ground', 'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay') THEN 'unpaved' ELSE 'paved' END AS int_surface,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
@@ -787,6 +793,7 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
+                'null',
                 CASE
                   WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
@@ -852,7 +859,8 @@ Layer:
           ORDER BY
             layernotnull,
             prio,
-            CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END
+            CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END,
+            CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
         ) AS roads_casing
     properties:
       minzoom: 10
@@ -890,7 +898,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
-                horse, foot, bicycle, tracktype, access, construction,
+                horse, foot, bicycle, tracktype, int_surface, access, construction,
                 service, oneway, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
@@ -900,6 +908,8 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
+                CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 
+                	'grass_paver', 'gravel', 'ground', 'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay') THEN 'unpaved' ELSE 'paved' END AS int_surface,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
@@ -935,6 +945,7 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
+                'null',
                 CASE
                   WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
@@ -1000,7 +1011,8 @@ Layer:
           ORDER BY
             layernotnull,
             prio,
-            CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END
+            CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END,
+            CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
         ) AS roads_fill
     properties:
       minzoom: 10
@@ -1068,7 +1080,9 @@ Layer:
               ('railway_' || (CASE WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' WHEN railway IN ('rail', 'tram', 'light_rail', 'funicular', 'narrow_gauge') THEN railway ELSE NULL END))
             ) AS feature,
             CASE WHEN tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes' THEN 'yes' ELSE 'no' END AS int_tunnel,
-            CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link
+            CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link,
+            CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 
+                	'grass_paver', 'gravel', 'ground', 'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay') THEN 'unpaved' ELSE 'paved' END AS int_surface
           FROM planet_osm_roads
           WHERE highway IS NOT NULL
             OR (railway IS NOT NULL AND railway != 'preserved'
@@ -1111,7 +1125,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
-                horse, foot, bicycle, tracktype, access, construction,
+                horse, foot, bicycle, tracktype, int_surface, access, construction,
                 service, oneway, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
@@ -1121,6 +1135,8 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
+                CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 
+                	'grass_paver', 'gravel', 'ground', 'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay') THEN 'unpaved' ELSE 'paved' END AS int_surface,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
@@ -1154,6 +1170,7 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
+                'null',
                 CASE
                   WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
@@ -1217,7 +1234,8 @@ Layer:
           ORDER BY
             layernotnull,
             prio,
-            CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END
+            CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END,
+            CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
         ) AS bridges
     properties:
       group-by: "layernotnull"
