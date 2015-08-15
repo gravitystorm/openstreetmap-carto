@@ -699,6 +699,13 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_sports'][zoom >= 17] {
+    marker-file: url('symbols/sports-14.svg');
+    marker-fill: @shop-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'shop_gift'][zoom >= 17] {
     marker-file: url('symbols/shop_gift.16.svg');
     marker-placement: interior;
@@ -1948,6 +1955,7 @@
   [feature = 'shop_photo_studio'],
   [feature = 'shop_photography'],
   [feature = 'shop_shoes'],
+  [feature = 'shop_sports'],
   [feature = 'shop_gift'],
   [feature = 'shop_electronics'],
   [feature = 'shop_alcohol'],
