@@ -235,6 +235,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_community_centre'][zoom >= 17] {
+    marker-file: url('symbols/community_centre-14.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_townhall'][zoom >= 16] {
     marker-file: url('symbols/town_hall.16.svg');
     marker-fill: @amenity-brown;
@@ -1127,6 +1134,7 @@
 
 
   [feature = 'amenity_police'][zoom >= 17],
+  [feature = 'amenity_community_centre'][zoom >= 17],
   [feature = 'amenity_fire_station'][zoom >= 17],
   [feature = 'amenity_drinking_water'][zoom >= 17],
   [feature = 'amenity_recyling'][zoom >= 17],
