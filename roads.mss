@@ -1974,6 +1974,35 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   }
 }
 
+#bridge-text  {
+  [man_made = 'bridge'] {
+    [zoom >= 12][way_pixels > 4] {
+      text-name: "[name]";
+      text-size: 7;
+      text-fill: black;
+      text-face-name: @oblique-fonts;
+      text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
+      text-min-distance: 2;
+      text-wrap-width: 30;
+      [way_pixels > 100] {
+        text-size: 9;
+      }
+      [way_pixels > 1000] {
+        text-size: 11;
+        text-halo-radius: 1.5;
+      }
+      [way_pixels > 4000] {
+        text-size: 12;
+      }
+      [way_pixels > 10000] {
+        text-size: 13;
+        text-halo-radius: 2;
+      }
+    }
+  }
+}
+
 .access::fill {
   [access = 'destination'] {
     [feature = 'highway_secondary'],

@@ -44,3 +44,9 @@
     }
   }
 }
+
+#bridge {
+  [zoom >= 12] {
+    polygon-fill: #B8B8B8;
+  }
+}
