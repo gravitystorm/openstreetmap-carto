@@ -100,7 +100,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way, name, way_pixels,\n    COALESCE(wetland, landuse, \"natural\") AS feature\n  FROM (SELECT\n      way, COALESCE(name, '') AS name,\n      ('landuse_' || (CASE WHEN landuse IN ('forest') THEN landuse ELSE NULL END)) AS landuse,\n      ('natural_' || (CASE WHEN \"natural\" IN ('wood', 'sand', 'scree', 'shingle', 'bare_rock') THEN \"natural\" ELSE NULL END)) AS \"natural\",\n      ('wetland_' || (CASE WHEN \"natural\" IN ('wetland', 'mud') THEN (CASE WHEN \"natural\" IN ('mud') THEN \"natural\" ELSE wetland END) ELSE NULL END)) AS wetland,\n      way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels\n    FROM planet_osm_polygon\n    WHERE (landuse IN ('forest')\n      OR \"natural\" IN ('wood', 'wetland', 'mud', 'sand', 'scree', 'shingle', 'bare_rock'))\n      AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real\n      AND building IS NULL\n    ORDER BY CASE WHEN layer~E'^-?\\\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END, way_area DESC\n  ) AS features\n) AS landcover_low_zoom",
+        "table": "(SELECT\n    way, name, way_pixels,\n    COALESCE(wetland, landuse, \"natural\") AS feature\n  FROM (SELECT\n      way, COALESCE(name, '') AS name,\n      ('landuse_' || (CASE WHEN landuse IN ('forest', 'military') THEN landuse ELSE NULL END)) AS landuse,\n      ('natural_' || (CASE WHEN \"natural\" IN ('wood', 'sand', 'scree', 'shingle', 'bare_rock') THEN \"natural\" ELSE NULL END)) AS \"natural\",\n      ('wetland_' || (CASE WHEN \"natural\" IN ('wetland', 'mud') THEN (CASE WHEN \"natural\" IN ('mud') THEN \"natural\" ELSE wetland END) ELSE NULL END)) AS wetland,\n      way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels\n    FROM planet_osm_polygon\n    WHERE (landuse IN ('forest', 'military')\n      OR \"natural\" IN ('wood', 'wetland', 'mud', 'sand', 'scree', 'shingle', 'bare_rock'))\n      AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real\n      AND building IS NULL\n    ORDER BY CASE WHEN layer~E'^-?\\\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END, way_area DESC\n  ) AS features\n) AS landcover_low_zoom",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -614,7 +614,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way, landuse\n  FROM planet_osm_polygon\n  WHERE landuse = 'military'\n    AND building IS NULL\n) AS landuse_overlay",
+        "table": "(SELECT\n    way,\n    landuse,\n    way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels\n  FROM planet_osm_polygon\n  WHERE landuse = 'military'\n    AND building IS NULL\n) AS landuse_overlay",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -627,7 +627,7 @@
         85.05112877980659
       ],
       "properties": {
-        "minzoom": 10
+        "minzoom": 7
       },
       "advanced": {}
     },
@@ -1684,7 +1684,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,\n    COALESCE(\n      'landuse_' || CASE WHEN landuse IN ('forest') THEN landuse ELSE NULL END,\n      'natural_' || CASE WHEN \"natural\" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock') THEN \"natural\" ELSE NULL END,\n      'place_' || CASE WHEN place IN ('island') THEN place ELSE NULL END,\n      'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,\n      'leisure_' || CASE WHEN leisure IN ('nature_reserve') THEN leisure ELSE NULL END\n    ) AS feature,\n    name,\n    CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building -- always no with the where conditions\n  FROM planet_osm_polygon\n  WHERE (landuse IN ('forest')\n      OR \"natural\" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock')\n      OR \"place\" IN ('island')\n      OR boundary IN ('national_park')\n      OR leisure IN ('nature_reserve'))\n    AND building IS NULL\n    AND name IS NOT NULL\n  ORDER BY way_area DESC\n) AS text_poly_low_zoom",
+        "table": "(SELECT\n    way,\n    way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,\n    COALESCE(\n      'landuse_' || CASE WHEN landuse IN ('forest', 'military') THEN landuse ELSE NULL END,\n      'natural_' || CASE WHEN \"natural\" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock') THEN \"natural\" ELSE NULL END,\n      'place_' || CASE WHEN place IN ('island') THEN place ELSE NULL END,\n      'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,\n      'leisure_' || CASE WHEN leisure IN ('nature_reserve') THEN leisure ELSE NULL END\n    ) AS feature,\n    name,\n    CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building -- always no with the where conditions\n  FROM planet_osm_polygon\n  WHERE (landuse IN ('forest', 'military')\n      OR \"natural\" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock')\n      OR \"place\" IN ('island')\n      OR boundary IN ('national_park')\n      OR leisure IN ('nature_reserve'))\n    AND building IS NULL\n    AND name IS NOT NULL\n  ORDER BY way_area DESC\n) AS text_poly_low_zoom",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
