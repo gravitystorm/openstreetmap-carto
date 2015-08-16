@@ -526,6 +526,7 @@
   }
 
   [feature = 'shop_clothes'],
+  [feature = 'shop_boutique'],
   [feature = 'shop_fashion'] {
     [zoom >= 17] {
       marker-file: url('symbols/shop_clothes.16.svg');
@@ -1921,6 +1922,7 @@
   [feature = 'shop_beauty'],
   [feature = 'shop_beverages'],
   [feature = 'shop_books'],
+  [feature = 'shop_boutique'],
   [feature = 'shop_clothes'],
   [feature = 'shop_computer'],
   [feature = 'shop_fashion'],
