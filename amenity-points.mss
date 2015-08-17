@@ -126,7 +126,7 @@
     marker-fill: @transportation-icon;
   }
 
-  [feature = 'amenity_car_sharing'][zoom >= 16] {
+  [feature = 'amenity_car_sharing'][zoom >= 18] {
     point-file: url('symbols/car_share.p.16.png');
     point-placement: interior;
   }
@@ -1091,7 +1091,7 @@
   }
 
   [feature = 'amenity_car_rental'][zoom >= 17],
-  [feature = 'amenity_car_sharing'][zoom >= 17],
+  [feature = 'amenity_car_sharing'][zoom >= 18],
   [feature = 'amenity_bicycle_rental'][zoom >= 17],
   [feature = 'leisure_slipway'][zoom >= 17] {
     text-name: "[name]";
