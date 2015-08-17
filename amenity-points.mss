@@ -938,7 +938,7 @@
 
   [feature = 'amenity_hunting_stand'][zoom >= 16] {
     marker-file: url('symbols/hunting-stand.16.svg');
-    marker-fill: @man-made-icon;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
