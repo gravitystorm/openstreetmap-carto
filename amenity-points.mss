@@ -131,7 +131,7 @@
     point-placement: interior;
   }
 
-  [feature = 'amenity_car_rental'][zoom >= 16] {
+  [feature = 'amenity_car_rental'][zoom >= 17] {
     marker-file: url('symbols/rental_car.16.svg');
     marker-fill: @transportation-icon;
     marker-placement: interior;
