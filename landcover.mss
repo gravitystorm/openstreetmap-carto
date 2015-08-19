@@ -327,6 +327,7 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
+  [feature = 'power_plant'][zoom >= 10],
   [feature = 'power_station'][zoom >= 10],
   [feature = 'power_generator'][zoom >= 10],
   [feature = 'power_sub_station'][zoom >= 13],

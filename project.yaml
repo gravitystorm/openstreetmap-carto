@@ -149,7 +149,7 @@ Layer:
               ('military_' || (CASE WHEN military IN ('danger_area') THEN military ELSE NULL END)) AS military,
               ('natural_' || (CASE WHEN "natural" IN ('beach', 'heath', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub') THEN "natural" ELSE NULL END)) AS "natural",
               ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'marsh', 'mud') THEN (CASE WHEN "natural" IN ('marsh', 'mud') THEN "natural" ELSE wetland END) ELSE NULL END)) AS wetland,
-              ('power_' || (CASE WHEN power IN ('station', 'sub_station', 'substation', 'generator') THEN power ELSE NULL END)) AS power,
+              ('power_' || (CASE WHEN power IN ('plant', 'station', 'sub_station', 'substation', 'generator') THEN power ELSE NULL END)) AS power,
               ('tourism_' || (CASE WHEN tourism IN ('attraction', 'camp_site', 'caravan_site', 'picnic_site') THEN tourism ELSE NULL END)) AS tourism,
               ('highway_' || (CASE WHEN highway IN ('services', 'rest_area') THEN highway ELSE NULL END)) AS highway,
               ('railway_' || (CASE WHEN railway = 'station' THEN railway ELSE NULL END)) AS railway,
@@ -162,7 +162,7 @@ Layer:
               OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'university', 'college', 'school', 'hospital', 'kindergarten', 'grave_yard', 'place_of_worship', 'prison', 'clinic')
               OR military IN ('danger_area')
               OR "natural" IN ('beach', 'heath', 'mud', 'marsh', 'wetland', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub')
-              OR power IN ('station', 'sub_station', 'substation', 'generator')
+              OR power IN ('plant', 'station', 'sub_station', 'substation', 'generator')
               OR tourism IN ('attraction', 'camp_site', 'caravan_site', 'picnic_site')
               OR highway IN ('services', 'rest_area')
               OR railway = 'station')
@@ -1936,7 +1936,7 @@ Layer:
               'military_' || CASE WHEN military IN ('danger_area') THEN military ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site') THEN historic ELSE NULL END,
               'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator', 'ford') THEN highway ELSE NULL END,
-              'power_' || CASE WHEN power IN ('station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,
+              'power_' || CASE WHEN power IN (plant', 'station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,
               'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
               'waterway_' || CASE WHEN waterway IN ('dam') THEN waterway ELSE NULL END,
               'tourism_' || CASE WHEN tourism IN ('attraction') THEN tourism ELSE NULL END
@@ -1961,7 +1961,7 @@ Layer:
               OR military IN ('danger_area')
               OR historic IN ('memorial', 'monument', 'archaeological_site')
               OR highway IN ('services', 'rest_area', 'bus_stop', 'elevator', 'ford')
-              OR power IN ('station', 'generator', 'sub_station', 'substation')
+              OR power IN ('plant', 'station', 'generator', 'sub_station', 'substation')
               OR boundary IN ('national_park')
               OR waterway = 'dam')
             AND name IS NOT NULL
@@ -2042,7 +2042,7 @@ Layer:
                   'military_' || CASE WHEN military IN ('danger_area') THEN military ELSE NULL END,
                   'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site') THEN historic ELSE NULL END,
                   'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator', 'ford') THEN highway ELSE NULL END,
-                  'power_' || CASE WHEN power IN ('station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,
+                  'power_' || CASE WHEN power IN ('plant', 'station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,
                   'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
                   'waterway_' || CASE WHEN waterway IN ('dam', 'weir') THEN waterway ELSE NULL END,
                   'tourism_' || CASE WHEN tourism IN ('attraction', 'viewpoint') THEN tourism ELSE NULL END
@@ -2076,7 +2076,7 @@ Layer:
                   OR military IN ('danger_area')
                   OR historic IN ('memorial', 'monument', 'archaeological_site')
                   OR highway IN ('bus_stop', 'services', 'rest_area', 'elevator', 'ford')
-                  OR power IN ('station', 'generator', 'sub_station', 'substation')
+                  OR power IN ('plant', 'station', 'generator', 'sub_station', 'substation')
                   OR boundary IN ('national_park')
                   OR waterway IN ('dam', 'weir'))
                 AND name IS NOT NULL
