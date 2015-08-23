@@ -678,7 +678,7 @@
     marker-file: url('symbols/shopping_car_repair.16.svg');
     marker-placement: interior;
     marker-clip: false;
-    marker-fill: @shop-icon;
+    marker-fill: @amenity-brown;
   }
 
   [feature = 'shop_bicycle'][zoom >= 17] {
@@ -1996,6 +1996,9 @@
       text-halo-fill: rgba(255, 255, 255, 0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
+      [feature = 'shop_car_repair'] {
+        text-fill: @amenity-brown;
+      }
     }
   }
 
