@@ -70,7 +70,7 @@
 @trunk-width-z5:                  0.4;
 
 @motorway-width-z7:               0.8;
-@trunk-width-z7:                  0.8;
+@trunk-width-z7:                  0.6;
 
 @motorway-width-z8:               1;
 @trunk-width-z8:                  1;
