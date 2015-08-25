@@ -2157,14 +2157,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'highway_tertiary'],
     [feature = 'highway_unclassified'],
     [feature = 'highway_residential'],
-    [feature = 'highway_road'],
-    [feature = 'highway_living_street'],
-    [feature = 'highway_track'],
-    [feature = 'highway_path'],
-    [feature = 'highway_footway'],
-    [feature = 'highway_steps'],
-    [feature = 'highway_cycleway'],
-    [feature = 'highway_bridleway'] {
+    [feature = 'highway_living_street'] {
       [zoom >= 15] {
         access/line-width: 6;
         access/line-color: @private-marking;
@@ -2174,15 +2167,43 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         access/line-cap: round;
       }
     }
-    [feature = 'highway_service'][service = 'INT-normal'][zoom >= 15],
-    [feature = 'highway_service'][zoom >= 16] {
-      access/line-width: 3;
-      access/line-color: @private-marking;
-      access/line-dasharray: 6,8;
-      access/line-opacity: 0.5;
-      access/line-join: round;
-      access/line-cap: round;
-      [zoom >= 16] { access/line-width: 6; }
+    [feature = 'highway_road'],
+    [feature = 'highway_track'],
+    [feature = 'highway_service'][service = 'INT-normal'][zoom >= 15] {
+      [zoom >= 15] {
+        access/line-width: 3;
+        access/line-color: @private-marking;
+        access/line-dasharray: 6,8;
+        access/line-opacity: 0.5;
+        access/line-join: round;
+        access/line-cap: round;
+        [zoom >= 16] { access/line-width: 6; }
+      }
+    }
+    [feature = 'highway_footway'],
+    [feature = 'highway_path'],
+    [feature = 'highway_cycleway'],
+    [feature = 'highway_bridleway'],
+    [feature = 'highway_steps'] {
+      [zoom >= 15] {
+        access/line-width: 5;
+        access/line-color: @private-marking;
+        access/line-dasharray: 6,8;
+        access/line-opacity: 0.5;
+        access/line-join: round;
+        access/line-cap: round;
+      }    
+    }
+
+    [feature = 'highway_service'][service = 'INT-minor'][zoom >= 16] {
+      [zoom >= 15] {
+        access/line-width: 2.5;
+        access/line-color: @private-marking;
+        access/line-dasharray: 6,8;
+        access/line-opacity: 0.5;
+        access/line-join: round;
+        access/line-cap: round;
+      }
     }
   }
 }
