@@ -2128,26 +2128,37 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'highway_tertiary'],
     [feature = 'highway_unclassified'],
     [feature = 'highway_residential'],
-    [feature = 'highway_road'],
     [feature = 'highway_living_street'] {
       [zoom >= 15] {
         access/line-width: 6;
         access/line-color: @destination-marking;
         access/line-dasharray: 6,8;
-        access/line-cap: round;
-        access/line-join: round;
         access/line-opacity: 0.5;
+        access/line-join: round;
+        access/line-cap: round;
       }
     }
-    [feature = 'highway_service'][service = 'INT-normal'][zoom >= 15],
-    [feature = 'highway_service'][zoom >= 16] {
-      access/line-width: 3;
-      access/line-color: @destination-marking;
-      access/line-dasharray: 6,8;
-      access/line-cap: round;
-      access/line-join: round;
-      access/line-opacity: 0.5;
-      [zoom >= 16] { access/line-width: 6; }
+    [feature = 'highway_road'],
+    [feature = 'highway_service'][service = 'INT-normal'][zoom >= 15] {
+      [zoom >= 15] {
+        access/line-width: 3;
+        access/line-color: @destination-marking;
+        access/line-dasharray: 6,8;
+        access/line-opacity: 0.5;
+        access/line-join: round;
+        access/line-cap: round;
+        [zoom >= 16] { access/line-width: 6; }
+      }
+    }
+    [feature = 'highway_service'][service = 'INT-minor'][zoom >= 16] {
+      [zoom >= 15] {
+        access/line-width: 2.5;
+        access/line-color: @destination-marking;
+        access/line-dasharray: 6,8;
+        access/line-opacity: 0.5;
+        access/line-join: round;
+        access/line-cap: round;
+      }
     }
   }
   [access = 'no'] {
