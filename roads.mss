@@ -54,6 +54,7 @@
 
 @destination-marking: #c2e0ff;
 @private-marking: #efa9a9;
+@private-marking-for-red: #C26363;
 
 @tunnel-casing: grey;
 @bridge-casing: black;
@@ -2165,6 +2166,11 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         access/line-opacity: 0.5;
         access/line-join: round;
         access/line-cap: round;
+        [feature = 'highway_motorway'],
+        [feature = 'highway_trunk'],
+        [feature = 'highway_primary'] {
+          access/line-color: @private-marking-for-red;
+        }
       }
     }
     [feature = 'highway_road'],
