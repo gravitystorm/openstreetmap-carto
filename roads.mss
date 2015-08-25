@@ -2083,9 +2083,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   [man_made = 'bridge'] {
     [zoom >= 12][way_pixels > 4] {
       text-name: "[name]";
-      text-size: 7;
+      text-size: 8;
       text-fill: black;
-      text-face-name: @oblique-fonts;
+      text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-halo-fill: rgba(255,255,255,0.6);
       text-min-distance: 2;
