@@ -20,9 +20,6 @@
 #icesheet-poly {
   [zoom >= 6] {
     polygon-fill: @glacier;
-    [zoom >= 8] {
-      polygon-pattern-file: url('symbols/glacier.png');
-    }
   }
 }
 
@@ -30,9 +27,15 @@
   [zoom >= 6] {
     [ice_edge = 'ice_ocean'],
     [ice_edge = 'ice_land'] {
-      line-dasharray: 4,2;
-      line-width: 0.75;
+      line-width: 0.375;
       line-color: @glacier-line;
+      [zoom >= 8] {
+        line-width: 0.5;
+      }
+      [zoom >= 10] {
+        line-dasharray: 4,2;
+        line-width: 0.75;
+      }
     }
   }
 }

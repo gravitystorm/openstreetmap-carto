@@ -5,12 +5,15 @@
 #water-areas {
   [natural = 'glacier']::natural {
     [zoom >= 6] {
-      line-dasharray: 4,2;
-      line-width: 1.5;
+      line-width: 0.75;
       line-color: @glacier-line;
       polygon-fill: @glacier;
       [zoom >= 8] {
-        polygon-pattern-file: url('symbols/glacier.png');
+        line-width: 1.0;
+      }
+      [zoom >= 10] {
+        line-dasharray: 4,2;
+        line-width: 1.5;
       }
     }
   }
