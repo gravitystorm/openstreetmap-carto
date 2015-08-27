@@ -83,12 +83,12 @@
 
 @motorway-width-z10:              1.9;
 @trunk-width-z10:                 1.9;
-@primary-width-z10:               1.9;
+@primary-width-z10:               1.8;
 @secondary-width-z10:             1;
 
 @motorway-width-z11:              2.0;
-@trunk-width-z11:                 1.8;
-@primary-width-z11:               1.3;
+@trunk-width-z11:                 1.9;
+@primary-width-z11:               1.8;
 @secondary-width-z11:             1;
 
 @motorway-width-z12:              3.5;
