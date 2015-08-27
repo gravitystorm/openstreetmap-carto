@@ -97,22 +97,6 @@ colors['secondary_shield'] = Color.lch(min_l+delta_l*i, c, secondary_hue)
 
 colors['tertiary_shield'] = Color.lch(min_l+delta_l*i, 0, 0)
 
-
-min_l = 70
-max_l = 97
-delta_l = (max_l - min_l)/3
-
-c = 35
-
-i = 0
-colors['motorway_fill'] = Color.lch(min_l+delta_l*i, c, motorway_hue)
-i = 1
-colors['trunk_fill'] = Color.lch(min_l+delta_l*i, c, trunk_hue)
-i = 2
-colors['primary_fill'] = Color.lch(min_l+delta_l*i, c, primary_hue)
-i = 3
-colors['secondary_fill'] = Color.lch(min_l+delta_l*i, c, secondary_hue)
-
 min_c = 29
 max_c = 35
 delta_c = max_c - min_c
