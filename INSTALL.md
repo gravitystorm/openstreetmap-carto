@@ -37,7 +37,8 @@ Put these shapefiles at `path/to/openstreetmap-carto/data`.
 ### Populated places shapefile
 
 The Natural Earth 2.0 populated places shapefile contains data that triggers a bug in mapnik. As
-a workaround we run the shapefile through ogr2ogr to clean up the data.
+a workaround we run the shapefile through ogr2ogr to clean up the data. This is not required for
+Mapnik 2.2 or later, where the shapefile can just be renamed.
 
 ```
 ogr2ogr ne_10m_populated_places_fixed.shp ne_10m_populated_places.shp
@@ -82,7 +83,7 @@ In Ubuntu 13.10 (Saucy) and lower, replace fonts-taml-tscu with ttf-tamil-fonts.
 If you aren't using TileMill, you can compile the CartoCSS stylesheets into Mapnik XML using the command-line `carto` command.
 
 * [carto](https://github.com/mapbox/carto) >= 0.9.5 (we're using instances with cascading rules and min/max zoom properties)
-* [mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 2.1.0. Mapnik 3.0.0 support is not yet complete.
+* [mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 2.1.0. Mapnik 3.0 is supported, but not required.
 
 ---
 
