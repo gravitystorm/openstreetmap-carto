@@ -186,7 +186,7 @@
 @secondary-casing-width-z13:      0.35;
 @major-casing-width-z13:          0.5;
 
-@casing-width-z14:                0.5;
+@casing-width-z14:                0.55;
 @secondary-casing-width-z14:      0.35;
 @major-casing-width-z14:          0.6;
 
