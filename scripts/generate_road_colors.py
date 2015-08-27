@@ -72,11 +72,11 @@ class Color:
 
 min_h = 10
 max_h = 106
-delta_h = (max_h - min_h)/3
-motorway_hue = min_h
-trunk_hue = min_h + delta_h
-primary_hue = min_h + delta_h*2
-secondary_hue = min_h + delta_h*3
+delta_h = (max_h - min_h) / 3
+motorway_hue = (min_h) % 360
+trunk_hue = (min_h + delta_h) % 360
+primary_hue = (min_h + delta_h*2) % 360
+secondary_hue = (min_h + delta_h*3) % 360
 
 colors = {}
 
