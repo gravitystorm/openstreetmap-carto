@@ -126,12 +126,12 @@
     marker-fill: @transportation-icon;
   }
 
-  [feature = 'amenity_car_sharing'][zoom >= 16] {
+  [feature = 'amenity_car_sharing'][zoom >= 18] {
     point-file: url('symbols/car_share.p.16.png');
     point-placement: interior;
   }
 
-  [feature = 'amenity_car_rental'][zoom >= 16] {
+  [feature = 'amenity_car_rental'][zoom >= 17] {
     marker-file: url('symbols/rental_car.16.svg');
     marker-fill: @transportation-icon;
     marker-placement: interior;
@@ -235,6 +235,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_community_centre'][zoom >= 17] {
+    marker-file: url('symbols/community_centre-14.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_townhall'][zoom >= 16] {
     marker-file: url('symbols/town_hall.16.svg');
     marker-fill: @amenity-brown;
@@ -293,6 +300,13 @@
 
   [feature = 'amenity_dentist'][zoom >= 17] {
     marker-file: url('symbols/dentist.16.svg');
+    marker-fill: @health-color;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'amenity_veterinary'][zoom >= 17] {
+    marker-file: url('symbols/veterinary-14.svg');
     marker-fill: @health-color;
     marker-placement: interior;
     marker-clip: false;
@@ -1077,7 +1091,7 @@
   }
 
   [feature = 'amenity_car_rental'][zoom >= 17],
-  [feature = 'amenity_car_sharing'][zoom >= 17],
+  [feature = 'amenity_car_sharing'][zoom >= 18],
   [feature = 'amenity_bicycle_rental'][zoom >= 17],
   [feature = 'leisure_slipway'][zoom >= 17] {
     text-name: "[name]";
@@ -1120,6 +1134,7 @@
 
 
   [feature = 'amenity_police'][zoom >= 17],
+  [feature = 'amenity_community_centre'][zoom >= 17],
   [feature = 'amenity_fire_station'][zoom >= 17],
   [feature = 'amenity_drinking_water'][zoom >= 17],
   [feature = 'amenity_recyling'][zoom >= 17],
@@ -1903,7 +1918,8 @@
   [feature = 'amenity_clinic'],
   [feature = 'amenity_pharmacy'],
   [feature = 'amenity_doctors'],
-  [feature = 'amenity_dentist'] {
+  [feature = 'amenity_dentist'],
+  [feature = 'amenity_veterinary'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 8;
@@ -2017,7 +2033,7 @@
   }
 
   [feature = 'landuse_military'][is_building = 'no'] {
-    [zoom >= 10][way_pixels > 3000],
+    [zoom >= 8][way_pixels > 3000],
     [zoom >= 17] {
       text-name: "[name]";
       text-size: @landcover-font-size;

@@ -169,7 +169,7 @@
     }
   }
 
-  [feature = 'amenity_prison'][zoom >= 10] {
+  [feature = 'amenity_prison'][zoom >= 10][way_pixels > 75] {
     polygon-pattern-file: url('symbols/grey_vertical_hatch.png');
     polygon-pattern-alignment: global;
     line-color: #888;
@@ -210,16 +210,6 @@
     }
   }
 
-  [feature = 'landuse_meadow'],
-  [feature = 'natural_grassland'],
-  [feature = 'landuse_grass'] {
-    [zoom >= 10] {
-      polygon-fill: @grass;
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
-    }
-  }
-
   [feature = 'leisure_park'],
   [feature = 'leisure_recreation_ground'] {
     [zoom >= 10] {
@@ -227,18 +217,6 @@
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-  }
-
-  [feature = 'leisure_common'][zoom >= 10] {
-    polygon-fill: @grass;
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
-  }
-
-  [feature = 'leisure_garden'][zoom >= 10] {
-    polygon-fill: @grass;
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
   [feature = 'leisure_golf_course'][zoom >= 10],
@@ -298,19 +276,19 @@
     }
   }
 
+  [feature = 'landuse_meadow'],
+  [feature = 'natural_grassland'],
+  [feature = 'landuse_grass'],
   [feature = 'landuse_recreation_ground'],
-  [feature = 'landuse_conservation'] {
+  [feature = 'landuse_conservation'],
+  [feature = 'landuse_village_green'],
+  [feature = 'leisure_common'],
+  [feature = 'leisure_garden'] {
     [zoom >= 10] {
       polygon-fill: @grass;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-  }
-
-  [feature = 'landuse_village_green'][zoom >= 10] {
-    polygon-fill: @grass;
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
   [feature = 'landuse_retail'][zoom >= 10] {
@@ -614,7 +592,9 @@
 }
 
 #landuse-overlay {
-  [landuse = 'military'][zoom >= 10] {
+  [landuse = 'military'][zoom >= 7][way_pixels > 900],
+  [landuse = 'military'][zoom >= 8][way_pixels > 100],
+  [landuse = 'military'][zoom >= 10][way_pixels > 75] {
     polygon-pattern-file: url('symbols/military_red_hatch.png');
     polygon-pattern-alignment: global;
     line-color: @military;
