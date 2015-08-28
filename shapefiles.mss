@@ -1,7 +1,7 @@
 #necountries {
   [zoom >= 1][zoom < 4] {
     line-width: 0.5;
-    line-color: grey;
+    line-color: @admin-boundaries;
   }
 }
 
