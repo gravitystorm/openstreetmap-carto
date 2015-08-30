@@ -50,6 +50,8 @@
 @primary-low-zoom-casing: #c48e37; // lch(63.3, 55, 74) Conversion error on moving from lch to rgb: 2.0 lch(-0.5, -1.0, 2.9)
 @secondary-low-zoom-casing: #a8b14f; // lch(70, 50, 106) Conversion error on moving from lch to rgb: 2.1 lch(-0.3, 1.4, 3.7)
 
+@unimportant-road: @residential-casing;
+
 @residential-construction: #aaa;
 @service-construction: #aaa;
 
@@ -1205,11 +1207,11 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
     [feature = 'highway_secondary'] {
       [zoom >= 9] {
-        line-color: @residential-casing;
+        line-color: @unimportant-road;
         line-width: @secondary-width-z9;
       }
       [zoom >=10] {
-        line-color: @residential-casing;
+        line-color: @unimportant-road;
         line-width: @secondary-width-z10;
       }
       [zoom >= 11] { line-width: @secondary-width-z11; }
@@ -1243,7 +1245,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
     [feature = 'highway_tertiary'] {
       [zoom >= 10] {
-        line-color: @residential-casing;
+        line-color: @unimportant-road;
         line-width: 0.55;
       }
       [zoom >= 12] {
@@ -1275,11 +1277,11 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'highway_residential'],
     [feature = 'highway_unclassified'] {
       [zoom = 12][feature = 'highway_residential'] {
-        line-color: @residential-casing;
+        line-color: @unimportant-road;
         line-width: 0.4;
       }
       [zoom = 12][feature = 'highway_unclassified'] {
-        line-color: @residential-casing;
+        line-color: @unimportant-road;
         line-width: 1;
       }
       [zoom >= 13] {
@@ -1334,7 +1336,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'highway_road'] {
       [zoom >= 10] {
         line-width: 1;
-        line-color: @residential-casing;
+        line-color: @unimportant-road;
         line-join: round;
         line-cap: round;
       }
@@ -1362,7 +1364,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'highway_service'] {
       [zoom >= 13][service = 'INT-normal'] {
         line-width: 1;
-        line-color: @residential-casing;
+        line-color: @unimportant-road;
       }
       [zoom >= 14][service = 'INT-normal'],
       [zoom >= 16][service = 'INT-minor'] {
