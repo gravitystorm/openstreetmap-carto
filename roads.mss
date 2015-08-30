@@ -237,12 +237,12 @@
 
 @oneway-arrow-color: #404040;
 @junction-text-color: #960000;
-@road-halo-color: white;
+@halo-color-for-minor-road: white;
 
 .roads-casing, .bridges-casing, .tunnels-casing {
   ::casing {
     [zoom = 9][feature = 'highway_secondary'] {
-      line-color: @road-halo-color;
+      line-color: @halo-color-for-minor-road;
       line-width: 2.2;
       line-opacity: 0.4;
       line-join: round;
@@ -251,7 +251,7 @@
     }
     [zoom = 10][feature = 'highway_secondary'],
     [zoom = 11][feature = 'highway_secondary'] {
-      line-color: @road-halo-color;
+      line-color: @halo-color-for-minor-road;
       line-width: 2.7;
       line-opacity: 0.4;
       line-join: round;
@@ -261,7 +261,7 @@
     [zoom = 10][feature = 'highway_tertiary'],
     [zoom = 11][feature = 'highway_tertiary'],
     [zoom = 12][feature = 'highway_unclassified'] {
-      line-color: @road-halo-color;
+      line-color: @halo-color-for-minor-road;
       line-width: 2.2;
       line-opacity: 0.3;
       line-join: round;
