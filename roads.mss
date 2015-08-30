@@ -442,7 +442,9 @@
           line-join: round;
           line-cap: round;
         }
-        .tunnels-casing { line-dasharray: 4,2; }
+        .tunnels-casing {
+          line-dasharray: 4,2;
+        }
         .bridges-casing {
           line-color: @bridge-casing;
           line-join: round;
@@ -469,7 +471,9 @@
           line-join: round;
           line-cap: round;
         }
-        .tunnels-casing { line-dasharray: 4,2; }
+        .tunnels-casing {
+          line-dasharray: 4,2;
+        }
         .bridges-casing {
           line-color: @bridge-casing;
           line-join: round;
