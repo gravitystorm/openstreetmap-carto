@@ -1062,6 +1062,9 @@
       [feature = 'amenity_bar']{
         text-dy: 13;
       }
+      [feature = 'amenity_nightclub']{
+        text-dy: 12;
+      }
     }
   }
 
