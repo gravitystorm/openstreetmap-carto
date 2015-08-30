@@ -2308,7 +2308,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
     [feature = 'highway_road'],
-    [feature = 'highway_service'][service = 'INT-normal'][zoom >= 15] {
+    [feature = 'highway_service'][service = 'INT-normal'] {
       [zoom >= 15] {
         access/line-width: 3;
         access/line-color: @destination-marking;
@@ -2319,8 +2319,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         [zoom >= 16] { access/line-width: 6; }
       }
     }
-    [feature = 'highway_service'][service = 'INT-minor'][zoom >= 16] {
-      [zoom >= 15] {
+    [feature = 'highway_service'][service = 'INT-minor'] {
+      [zoom >= 16] {
         access/line-width: 2.5;
         access/line-color: @destination-marking;
         access/line-dasharray: 6,8;
@@ -2355,7 +2355,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
     [feature = 'highway_road'],
     [feature = 'highway_track'],
-    [feature = 'highway_service'][service = 'INT-normal'][zoom >= 15] {
+    [feature = 'highway_service'][service = 'INT-normal'] {
       [zoom >= 15] {
         access/line-width: 3;
         access/line-color: @private-marking;
