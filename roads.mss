@@ -32,7 +32,7 @@
 @trunk-casing: #c84e2f; // lch(50, 65, 42) Conversion error on moving from lch to rgb: 0.8 lch(-0.7, -1.8, 0.0)
 @primary-casing: #a06b00; // lch(50, 60, 74) Conversion error on moving from lch to rgb: 1.6 lch(-0.4, -1.7, 2.2)
 @secondary-casing: #707d05; // lch(50, 55, 106) Conversion error on moving from lch to rgb: 1.9 lch(-0.2, 1.7, 3.2)
-@tertiary-casing: #8F8F8F;
+@tertiary-casing: #8f8f8f;
 @residential-casing: #bbb;
 @service-casing: @residential-casing;
 @living-street-casing: @residential-casing;
@@ -230,32 +230,33 @@
 @paths-bridge-casing-width:       0.5;
 @paths-tunnel-casing-width:       1;
 
-@oneway-arrow-color:              #404040;
-@junction-text-color:             #960000;
+@oneway-arrow-color: #404040;
+@junction-text-color: #960000;
+@road-halo-color: white;
 
 .roads-casing, .bridges-casing, .tunnels-casing {
   ::casing {
     [zoom = 9][feature = 'highway_secondary'] {
-      line-color: white;
+      line-color: @road-halo-color;
       line-width: 2.2;
       line-opacity: 0.4;
       line-join: round;
       //Missing line-cap: round; is intentional. It would cause rendering glow multiple times in some places - what as result of partial transparency would cause differences in rendering
-      //Also, bridges - including bridge casings are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
+      //Also, bridges - including bridge casings - are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
     }
     [zoom = 10][feature = 'highway_secondary'],
     [zoom = 11][feature = 'highway_secondary'] {
-      line-color: white;
+      line-color: @road-halo-color;
       line-width: 2.7;
       line-opacity: 0.4;
       line-join: round;
       //Missing line-cap: round; is intentional. It would cause rendering glow multiple times in some places - what as result of partial transparency would cause differences in rendering
-      //Also, bridges - including bridge casings are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
+      //Also, bridges - including bridge casings - are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
     }
     [zoom = 10][feature = 'highway_tertiary'],
     [zoom = 11][feature = 'highway_tertiary'],
     [zoom = 12][feature = 'highway_unclassified'] {
-      line-color: white;
+      line-color: @road-halo-color;
       line-width: 2.2;
       line-opacity: 0.3;
       line-join: round;
@@ -1071,9 +1072,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 5] {
         line-color: @motorway-low-zoom;
         line-width: @motorway-width-z5;
-        [zoom >= 12] {
-          line-color: @motorway-fill;
-        }
       }
       [zoom >= 7] { line-width: @motorway-width-z7; }
       [zoom >= 8] { line-width: @motorway-width-z8; }
@@ -1081,6 +1079,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 10] { line-width: @motorway-width-z10; }
       [zoom >= 11] { line-width: @motorway-width-z11; }
       [zoom >= 12] {
+        line-color: @motorway-fill;
         line-width: @motorway-width-z12 - 2 * @major-casing-width-z12;
         [zoom >= 13] { line-width: @motorway-width-z13 - 2 * @major-casing-width-z13; }
         [zoom >= 15] { line-width: @motorway-width-z15 - 2 * @major-casing-width-z15; }
@@ -1119,9 +1118,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 5] {
         line-width: @trunk-width-z5;
         line-color: @trunk-low-zoom;
-        [zoom >= 12] {
-          line-color: @trunk-fill;
-        }
       }
       [zoom >= 7] { line-width: @trunk-width-z7; }
       [zoom >= 8] { line-width: @trunk-width-z8; }
@@ -1129,6 +1125,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 10] { line-width: @trunk-width-z10; }
       [zoom >= 11] { line-width: @trunk-width-z11; }
       [zoom >= 12] {
+        line-color: @trunk-fill;
         line-width: @trunk-width-z12 - 2 * @major-casing-width-z12;
         [zoom >= 13] { line-width: @trunk-width-z13 - 2 * @major-casing-width-z13; }
         [zoom >= 15] { line-width: @trunk-width-z15 - 2 * @major-casing-width-z15; }
@@ -1153,14 +1150,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 8] {
         line-width: @primary-width-z8;
         line-color: @primary-low-zoom;
-        [zoom >= 12] {
-          line-color: @primary-fill;
-        }
       }
       [zoom >= 9] { line-width: @primary-width-z9; }
       [zoom >= 10] { line-width: @primary-width-z10; }
       [zoom >= 11] { line-width: @primary-width-z11; }
       [zoom >= 12] {
+        line-color: @primary-fill;
         line-width: @primary-width-z12 - 2 * @major-casing-width-z12;
         [zoom >= 13] { line-width: @primary-width-z13 - 2 * @major-casing-width-z13; }
         [zoom >= 15] { line-width: @primary-width-z15 - 2 * @major-casing-width-z15; }
