@@ -115,8 +115,10 @@
   }
 
   [feature = 'highway_ford'][zoom >= 16] {
-    point-file: url('symbols/transport_ford.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/ford.16.svg');
+    marker-fill: @transportation-icon;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'tourism_caravan_site'][zoom >= 16] {
