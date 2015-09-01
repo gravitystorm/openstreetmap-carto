@@ -1137,7 +1137,6 @@
   [feature = 'amenity_community_centre'][zoom >= 17],
   [feature = 'amenity_fire_station'][zoom >= 17],
   [feature = 'amenity_drinking_water'][zoom >= 17],
-  [feature = 'amenity_recyling'][zoom >= 17],
   [feature = 'tourism_picnic_site'][zoom >= 17],
   [feature = 'leisure_picnic_table'][zoom >= 17],
   [feature = 'amenity_post_office'][zoom >= 17] {
