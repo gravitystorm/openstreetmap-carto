@@ -77,8 +77,8 @@
 @footway-width-z13:               0.7;
 @cycleway-width-z13:              0.7;
 @path-width-z13:                  0.2;
-@track-width-z13:                 0.5;
-@track-grade1-width-z13:          0.5;
+@track-width-z13:                 0.3;
+@track-grade1-width-z13:          0.6;
 @track-grade2-width-z13:          0.5;
 @steps-width-z13:                 0.7;
 
@@ -102,8 +102,8 @@
 @cycleway-width-z15:              0.9;
 @path-width-z15:                  0.5;
 @track-width-z15:                 1.5;
-@track-grade1-width-z15:          0.75;
-@track-grade2-width-z15:          0.75;
+@track-grade1-width-z15:          1.5;
+@track-grade2-width-z15:          1.5;
 @steps-width-z15:                 3;
 
 @residential-width-z16:          11.2;
@@ -1480,46 +1480,41 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
         /* Set the properties of the brown inside */
         line/line-color: @track-fill;
-        line/line-dasharray: 5,4,2,4;
+        line/line-dasharray: 0,100;
         line/line-cap: round;
         line/line-join: round;
         line/line-opacity: 0.8;
         line/line-clip:false;
 
-        line/line-width: @track-width-z13;
-
-        [tracktype = 'grade1'] {
+        [zoom >= 13] {
+          line/line-width: @track-width-z13;
           line/line-dasharray: 100,0;
-        }
-        [tracktype = 'grade2'] {
-          line/line-dasharray: 8.8,3.2;
-        }
-        [tracktype = 'grade3'] {
-          line/line-dasharray: 5.6,4.0;
-        }
-        [tracktype = 'grade4'] {
-          line/line-dasharray: 3.2,4.8;
-        }
-        [tracktype = 'grade5'] {
-          line/line-dasharray: 1.6,6.4;
-        }
-
-        [zoom >= 15] {
-          line/line-width: @track-width-z15;
           [tracktype = 'grade1'] {
-            line/line-dasharray: 100,0;
+            line/line-width: @track-grade1-width-z13;
           }
           [tracktype = 'grade2'] {
-            line/line-dasharray: 11,4;
+            line/line-width: @track-grade2-width-z13;
           }
-          [tracktype = 'grade3'] {
-            line/line-dasharray: 7,5;
-          }
-          [tracktype = 'grade4'] {
-            line/line-dasharray: 4,6;
-          }
-          [tracktype = 'grade5'] {
-            line/line-dasharray: 2,8;
+          [zoom >= 15] {
+            line/line-dasharray: 5,4,2,4;
+            line/line-width: @track-width-z15;
+            [tracktype = 'grade1'] {
+              line/line-width: @track-grade1-width-z15;
+              line/line-dasharray: 100,0;
+            }
+            [tracktype = 'grade2'] {
+              line/line-width: @track-grade2-width-z15;
+              line/line-dasharray: 11,4;
+            }
+            [tracktype = 'grade3'] {
+              line/line-dasharray: 7,5;
+            }
+            [tracktype = 'grade4'] {
+              line/line-dasharray: 4,6;
+            }
+            [tracktype = 'grade5'] {
+              line/line-dasharray: 2,8;
+            }
           }
         }
       }
