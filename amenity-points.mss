@@ -1846,7 +1846,7 @@
       [way_pixels > 48000] { text-size: @landcover-font-size-bigger; }
       text-fill: #660033;
       text-face-name: @book-fonts;
-      text-halo-radius: 2;
+      text-halo-radius: 1;
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @landcover-wrap-width-size;
       [way_pixels > 12000] {text-wrap-width: @landcover-wrap-width-size-big; }
@@ -1882,7 +1882,7 @@
     text-fill: #6699cc;
     text-dy: 16;
     text-face-name: @book-fonts;
-    text-halo-radius: 2;
+    text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
@@ -1908,7 +1908,7 @@
     text-size: 8;
     text-dy: 10;
     text-face-name: @book-fonts;
-    text-halo-radius: 2;
+    text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
