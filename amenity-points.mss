@@ -869,7 +869,7 @@
   }
 
   [feature = 'aeroway_helipad'][zoom >= 16] {
-    marker-file: url('symbols/helipad.svg');
+    marker-file: url('symbols/helipad-14.svg');
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @airtransport;
