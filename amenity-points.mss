@@ -151,7 +151,7 @@
   }
 
   [feature = 'amenity_nightclub'][zoom >= 17] {
-    marker-file: url('symbols/nightclub.18.svg');
+    marker-file: url('symbols/nightclub.14.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
