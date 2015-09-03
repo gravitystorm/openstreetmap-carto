@@ -1879,7 +1879,7 @@
   [feature = 'man_made_lighthouse'][zoom >= 15] {
     text-name: "[name]";
     text-size: 9;
-    text-fill: #6699cc;
+    text-fill: @transportation-text;
     text-dy: 16;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
