@@ -166,6 +166,33 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_fountain'] {
+    ::basin {
+      [zoom = 17] {
+        marker-fill: @water-color;
+        marker-allow-overlap: true;
+        marker-line-width: 0;
+        marker-width: 10;
+        marker-height: 10;
+        marker-ignore-placement: true;
+      }
+    }
+    ::nozzle {
+      [zoom = 17] {
+        nozzle/marker-fill: @marina-text;
+        nozzle/marker-line-width: 0;
+        nozzle/marker-width: 3;
+        nozzle/marker-height: 3;
+      }
+      [zoom >= 18] {
+        nozzle/marker-file: url('symbols/fountain-14.svg');
+        nozzle/marker-fill: @marina-text;
+        nozzle/marker-placement: interior;
+        nozzle/marker-clip: false;
+      }
+    }
+  }
+
   [feature = 'amenity_fuel'][zoom >= 17] {
     marker-file: url('symbols/fuel.16.svg');
     marker-fill: @transportation-icon;
@@ -1808,6 +1835,21 @@
     }
   }
 
+  [feature = 'amenity_fountain'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: @marina-text;
+    text-dy: 4;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
+    text-wrap-width: @standard-wrap-width;
+    text-placement: interior;
+    [zoom >= 18] {
+      text-dy: 10;
+    }
+  }
+
   [feature = 'tourism_theme_park'][is_building = 'no'],
   [feature = 'tourism_zoo'][is_building = 'no'] {
     [zoom >= 13][way_pixels > 3000],
@@ -2348,3 +2390,4 @@
     }
   }
 }
+
