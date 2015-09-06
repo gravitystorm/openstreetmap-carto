@@ -94,4 +94,8 @@ If you aren't using TileMill, you can compile the CartoCSS stylesheets into Mapn
 * curl, unzip for downloading and decompressing files
 * shapeindex (a companion utility to Mapnik found in the mapnik-utils package) for indexing downloaded shapefiles
 
+### Development dependencies
+
+* Python and Ruby to run helper scripts
 * [PyYAML](http://pyyaml.org/wiki/PyYAML) if editing the MML (layer definition) file (packaged as `python-yaml` on Ubuntu, or installed with `pip install pyyaml`)
+* [Color Math](https://github.com/gtaylor/python-colormath) if running generate_road_colors.py helper script (may be obtained with `pip install colormath`)
