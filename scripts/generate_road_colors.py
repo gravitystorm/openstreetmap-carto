@@ -1,6 +1,7 @@
 from colormath.color_conversions import convert_color
 from colormath.color_objects import LabColor, LCHabColor, sRGBColor
 from colormath.color_diff import delta_e_cie2000
+import numpy
 
 def int_lch_to_string(lch):
 	lch = lch.get_value_tuple()
@@ -55,8 +56,7 @@ class Color:
 		if delta_e > 2.5:
 			print("high conversion error on moving to rgb")
 
-		delta = tuple(effective - target for effective, target in zip(effective_lch_tuple, lch_tuple))
-
+		delta = tuple(numpy.subtract(effective_lch_tuple, lch_tuple))
 		lch_delta = ' lch(' + str("{0:.1f}".format(delta[0])) + ', ' + str("{0:.1f}".format(delta[1])) + ', ' + str("{0:.1f}".format(delta[2])) + ')' 
 
 		returned.intended_lch_string = int_lch_to_string(lch) + ' Conversion error on moving from lch to rgb: ' + str("{0:.1f}".format(delta_e)) + lch_delta
