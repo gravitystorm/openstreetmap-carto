@@ -111,6 +111,15 @@
     [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
   }
 
+  [feature = 'landuse_aquaculture'][zoom >= 10] {
+    line-width: 0.5;
+    line-color: @water-text;
+    polygon-pattern-file: url('symbols/aquaculture.png');
+    polygon-pattern-alignment: global;
+    [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+  }
+
   [feature = 'landuse_vineyard'] {
     [zoom >= 10] {
       polygon-fill: @orchard;
