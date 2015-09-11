@@ -1,10 +1,10 @@
 /* For the main linear features, such as roads and railways. */
 
 //road colors for major roads were generated with scripts/generate_road_colors.py
-@motorway-fill: #e892a2; // lch(70, 35, 10) Conversion error on moving from lch to rgb: 0.5 lch(-0.3, -0.5, -0.9)
-@trunk-fill: #f9b29c; // lch(79, 33, 42) Conversion error on moving from lch to rgb: 0.8 lch(-0.4, -1.5, 1.1)
-@primary-fill: #fcd6a4; // lch(88, 31, 74) Conversion error on moving from lch to rgb: 1.8 lch(-0.3, -0.8, 4.0)
-@secondary-fill: #f7fabf; // lch(97, 29, 106) Conversion error on moving from lch to rgb: 1.8 lch(-0.2, 0.7, 4.4)
+@motorway-fill: #e892a2; // Lch(70,35,10), error 0.5
+@trunk-fill: #f9b29c; // Lch(79,33,42), error 0.7
+@primary-fill: #fcd6a4; // Lch(88,31,74), error 1.7
+@secondary-fill: #f7fabf; // Lch(97,29,106), error 1.7
 @tertiary-fill: #ffffff;
 @residential-fill: #ffffff;
 @service-fill: @residential-fill;
@@ -23,15 +23,16 @@
 @taxiway-fill: @aeroway-fill;
 @helipad-fill: @aeroway-fill;
 
-@motorway-low-zoom: #e66e89; // lch(62, 50, 10) Conversion error on moving from lch to rgb: 0.6 lch(-0.4, -0.4, -1.1)
-@trunk-low-zoom: #fa9476; // lch(72, 50, 42) Conversion error on moving from lch to rgb: 0.8 lch(-0.5, -1.9, 0.7)
-@primary-low-zoom: #f8c171; // lch(82, 50, 74) Conversion error on moving from lch to rgb: 2.1 lch(-0.5, -1.1, 3.4)
+@motorway-low-zoom: #e66e89; // Lch(62,50,10), error 0.7
+@trunk-low-zoom: #fa9476; // Lch(72,50,42), error 0.8
+@primary-low-zoom: #f8c171; // Lch(82,50,74), error 2.1
+@secondary-low-zoom: #e6ef89; // Lch(92,50,106), error 2.2
 
 @default-casing: white;
-@motorway-casing: #dc2a67; // lch(50, 70, 10) Conversion error on moving from lch to rgb: 1.0 lch(-0.7, -0.1, -1.2)
-@trunk-casing: #c84e2f; // lch(50, 65, 42) Conversion error on moving from lch to rgb: 0.8 lch(-0.7, -1.8, 0.0)
-@primary-casing: #a06b00; // lch(50, 60, 74) Conversion error on moving from lch to rgb: 1.6 lch(-0.4, -1.7, 2.2)
-@secondary-casing: #707d05; // lch(50, 55, 106) Conversion error on moving from lch to rgb: 1.9 lch(-0.2, 1.7, 3.2)
+@motorway-casing: #dc2a67; // Lch(50,70,10), error 1.1
+@trunk-casing: #c84e2f; // Lch(50,65,42), error 0.7
+@primary-casing: #a06b00; // Lch(50,60,74), error 1.6
+@secondary-casing: #707d05; // Lch(50,55,106), error 1.9
 @tertiary-casing: #8f8f8f;
 @residential-casing: #bbb;
 @road-casing: @residential-casing;
@@ -45,10 +46,10 @@
 @bridleway-casing: @default-casing;
 @track-casing: @default-casing;
 
-@motorway-low-zoom-casing: #d63668; // lch(50, 65, 10) Conversion error on moving from lch to rgb: 0.9 lch(-0.6, -0.2, -1.2)
-@trunk-low-zoom-casing: #d76444; // lch(56.7, 60, 42) Conversion error on moving from lch to rgb: 0.8 lch(-0.6, -1.9, 0.3)
-@primary-low-zoom-casing: #c48e37; // lch(63.3, 55, 74) Conversion error on moving from lch to rgb: 2.0 lch(-0.5, -1.0, 2.9)
-@secondary-low-zoom-casing: #a8b14f; // lch(70, 50, 106) Conversion error on moving from lch to rgb: 2.1 lch(-0.3, 1.4, 3.7)
+@motorway-low-zoom-casing: #c24e6b; // Lch(50,50,10), error 0.8
+@trunk-low-zoom-casing: #cf6649; // Lch(56,55,42), error 0.9
+@primary-low-zoom-casing: #c38a27; // Lch(62,60,74), error 2.1
+@secondary-low-zoom-casing: #9eae23; // Lch(68,65,106), error 2.3
 
 @unimportant-road: @residential-casing;
 
