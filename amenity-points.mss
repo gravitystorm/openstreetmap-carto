@@ -1365,7 +1365,6 @@
   [feature = 'leisure_park'][is_building = 'no'],
   [feature = 'leisure_recreation_ground'][is_building = 'no'],
   [feature = 'landuse_recreation_ground'][is_building = 'no'],
-  [feature = 'landuse_conservation'][is_building = 'no'],
   [feature = 'landuse_village_green'][is_building = 'no'],
   [feature = 'leisure_common'][is_building = 'no'],
   [feature = 'leisure_garden'][is_building = 'no'] {

@@ -1,6 +1,6 @@
 // --- Parks, woods, other green things ---
 
-@grass: #cdebb0; // also meadow, common, garden, village_green, conservation
+@grass: #cdebb0; // also meadow, common, garden, village_green
 @golf_course: #b5e3b5;
 @scrub: #b5e3b5;
 @forest: #add19e;       // Lch(80,30,135)
@@ -280,7 +280,6 @@
   [feature = 'natural_grassland'],
   [feature = 'landuse_grass'],
   [feature = 'landuse_recreation_ground'],
-  [feature = 'landuse_conservation'],
   [feature = 'landuse_village_green'],
   [feature = 'leisure_common'],
   [feature = 'leisure_garden'] {
