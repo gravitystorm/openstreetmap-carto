@@ -1473,7 +1473,7 @@ Layer:
                   (CASE
                     WHEN (population ~ '^[0-9]{1,8}$') THEN population::INTEGER
                     WHEN (place = 'city') THEN 100000
-                    WHEN (place = 'town') THEN 10000
+                    WHEN (place = 'town') THEN 1000
                     ELSE 1
                   END)
                   *
