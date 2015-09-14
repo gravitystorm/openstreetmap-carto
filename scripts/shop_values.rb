@@ -15,7 +15,8 @@ EXCEPTIONS = [
    "FIXME",
    "FixMe",
    "other",
-   "*"
+   "*",
+   "winery", #see discussion in https://github.com/gravitystorm/openstreetmap-carto/pull/1632
 ]
 
 
