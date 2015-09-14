@@ -1,6 +1,7 @@
 @marina-text: #576ddf; // also swimming_pool
 @wetland-text: darken(#4aa5fa, 25%); /* Also for marsh and mud */
 @shop-icon: #ac39ac;
+@shop-text: #939;
 @transportation-icon: #0092da;
 @transportation-text: #0066ff;
 @airtransport: #8461C4;
@@ -1991,7 +1992,7 @@
       text-name: "[name]";
       text-size: 10;
       text-dy: 12;
-      text-fill: #939;
+      text-fill: @shop-text;
       text-face-name: @book-fonts;
       text-halo-radius: 1.5;
       text-halo-fill: rgba(255, 255, 255, 0.6);
@@ -2006,7 +2007,7 @@
       text-name: "[name]";
       text-size: 10;
       text-dy: 12;
-      text-fill: #939;
+      text-fill: @shop-text;
       text-face-name: @book-fonts;
       text-halo-radius: 1.5;
       text-halo-fill: rgba(255, 255, 255, 0.6);
