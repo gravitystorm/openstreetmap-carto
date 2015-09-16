@@ -141,6 +141,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_car_wash'][zoom >= 17] {
+    marker-file: url('symbols/car_wash-14.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'tourism_chalet'][zoom >= 17] {
     point-file: url('symbols/chalet.p.16.png');
     point-placement: interior;
@@ -1140,6 +1147,7 @@
 
 
   [feature = 'amenity_police'][zoom >= 17],
+  [feature = 'amenity_car_wash'][zoom >= 17],
   [feature = 'amenity_community_centre'][zoom >= 17],
   [feature = 'amenity_fire_station'][zoom >= 17],
   [feature = 'amenity_drinking_water'][zoom >= 17],
