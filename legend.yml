@@ -1,0 +1,54 @@
+title: openstreetmap-carto legend
+width: 200
+height: 120
+background: "#f2efe9"
+fonts_dir: /usr/share/fonts/truetype
+features:
+  - name: Motorway
+    tags:
+      feature: highway_motorway
+    layers: [roads-casing, roads-fill]
+  - name: Trunk
+    tags:
+      feature: highway_trunk
+    layers: [roads-casing, roads-fill]
+  - name: Primary
+    tags:
+      feature: highway_primary
+    layers: [roads-casing, roads-fill]
+  - name: water
+    type: polygon
+    tags:
+      natural: water
+    layer: water-areas
+  - name: Pub
+    type: point
+    tags:
+      feature: amenity_pub
+      name: The Sultan
+    layers: [amenity-points, text-point]
+extra_tags:
+  - link
+  - service
+  - access
+  - horse
+  - foot
+  - bicycle
+  - tracktype
+  - int_surface
+  - access
+  - construction
+  - oneway
+  - layernotnull
+  - landuse
+  - natural
+  - waterway
+  - way_pixels
+  - denomination
+  - 'generator:source'
+  - power_source
+  - religion
+  - is_building
+  - operator
+  - ref
+  - way_area
