@@ -2065,6 +2065,7 @@
     text-placement: interior;
   }
 
+  [feature = 'power_plant'][is_building = 'no'][zoom >= 10],
   [feature = 'power_station'][is_building = 'no'][zoom >= 10],
   [feature = 'power_generator'][is_building = 'no'][zoom >= 10],
   [feature = 'power_sub_station'][is_building = 'no'][zoom >= 13],
