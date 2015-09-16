@@ -508,6 +508,13 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_bag'][zoom >= 17] {
+    marker-file: url('symbols/bag-14.svg');
+    marker-fill: @shop-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'shop_bakery'][zoom >= 17] {
     marker-file: url('symbols/shop_bakery.16.svg');
     marker-fill: @shop-icon;
@@ -1945,6 +1952,7 @@
     }
   }
 
+  [feature = 'shop_bag'],
   [feature = 'shop_bakery'],
   [feature = 'shop_beauty'],
   [feature = 'shop_beverages'],
