@@ -1258,59 +1258,6 @@
       "advanced": {}
     },
     {
-      "name": "nepopulated",
-      "srs-name": "WGS84",
-      "geometry": "point",
-      "class": "",
-      "id": "nepopulated",
-      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
-      "Datasource": {
-        "type": "shape",
-        "file": "data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp",
-        "encoding": "windows-1252"
-      },
-      "extent": [
-        -180,
-        -85.05112877980659,
-        180,
-        85.05112877980659
-      ],
-      "properties": {
-        "maxzoom": 4,
-        "minzoom": 3
-      },
-      "advanced": {
-        "encoding": "windows-1252"
-      }
-    },
-    {
-      "name": "placenames-capital",
-      "srs-name": "900913",
-      "geometry": "point",
-      "class": "",
-      "id": "placenames-capital",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "Datasource": {
-        "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    place,\n    name,\n    ref\n  FROM planet_osm_point\n  WHERE place IN ('city', 'town')\n    AND capital IN ('yes', '4')\n    AND name IS NOT NULL\n  ORDER BY CASE\n      WHEN place = 'city' THEN 1\n      WHEN place = 'town' THEN 2\n    END ASC\n) AS placenames_capital",
-        "geometry_field": "way",
-        "type": "postgis",
-        "key_field": "",
-        "dbname": "gis"
-      },
-      "extent": [
-        -180,
-        -85.05112877980659,
-        180,
-        85.05112877980659
-      ],
-      "properties": {
-        "maxzoom": 14,
-        "minzoom": 5
-      },
-      "advanced": {}
-    },
-    {
       "name": "placenames-medium",
       "srs-name": "900913",
       "geometry": "point",
@@ -1319,7 +1266,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    place,\n    name\n  FROM planet_osm_point\n  WHERE place IN ('city', 'town')\n    AND (capital IS NULL OR capital NOT IN ('yes', '4'))\n    AND name IS NOT NULL\n  ORDER BY CASE\n      WHEN place = 'city' THEN 1\n      WHEN place = 'town' THEN 2\n    END ASC\n) AS placenames_medium",
+        "table": "(SELECT\n    way,\n    name,\n    score,\n    CASE\n      WHEN (place = 'city' OR (capital = 'yes' AND score >= 100000)) THEN 1\n      ELSE 2\n    END as category\n  FROM \n    (SELECT\n        way,\n        place,\n        name,\n        capital,\n        (\n          (CASE\n            WHEN (population ~ '^[0-9]{1,8}$') THEN population::INTEGER\n            WHEN (place = 'city') THEN 100000\n            WHEN (place = 'town') THEN 1000\n            ELSE 1\n          END)\n          *\n          (CASE\n            WHEN (capital = 'yes') THEN 3\n            WHEN (capital = '4') THEN 2\n            ELSE 1\n          END)\n        ) AS score\n      FROM planet_osm_point\n      WHERE place IN ('city', 'town')\n    ) as p\n  ORDER BY category ASC, score DESC\n) AS placenames_medium",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1332,7 +1279,8 @@
         85.05112877980659
       ],
       "properties": {
-        "minzoom": 6
+        "maxzoom": 15,
+        "minzoom": 3
       },
       "advanced": {}
     },

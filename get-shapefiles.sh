@@ -4,12 +4,10 @@ set -e -u
 UNZIP_OPTS=-qqun
 
 # create and populate data dir
-
 mkdir -p data/
 mkdir -p data/world_boundaries
 mkdir -p data/simplified-land-polygons-complete-3857
 mkdir -p data/ne_110m_admin_0_boundary_lines_land
-mkdir -p data/ne_10m_populated_places
 mkdir -p data/land-polygons-split-3857
 
 # world_boundaries
@@ -40,18 +38,6 @@ unzip $UNZIP_OPTS data/ne_110m_admin_0_boundary_lines_land.zip \
   ne_110m_admin_0_boundary_lines_land.prj \
   ne_110m_admin_0_boundary_lines_land.dbf \
   -d data/ne_110m_admin_0_boundary_lines_land/
-
-# ne_10m_populated_places
-echo "downloading ne_10m_populated_places..."
-curl -z data/ne_10m_populated_places.zip -L -o data/ne_10m_populated_places.zip http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_populated_places.zip
-echo "expanding ne_10m_populated_places..."
-unzip $UNZIP_OPTS data/ne_10m_populated_places.zip \
-  ne_10m_populated_places.shp \
-  ne_10m_populated_places.shx \
-  ne_10m_populated_places.prj \
-  ne_10m_populated_places.dbf \
-  ne_10m_populated_places.cpg \
-  -d data/ne_10m_populated_places/
 
 # land-polygons-split-3857
 echo "downloading land-polygons-split-3857..."
@@ -87,25 +73,14 @@ unzip $UNZIP_OPTS data/antarctica-icesheet-outlines-3857.zip \
   antarctica-icesheet-outlines-3857/icesheet_outlines.dbf \
   -d data/
 
-#process populated places
-echo "processing ne_10m_populated_places..."
-rm -f data/ne_10m_populated_places/ne_10m_populated_places_fixed.*
-ogr2ogr --config SHAPE_ENCODING UTF8 data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp data/ne_10m_populated_places/ne_10m_populated_places.shp
-
 #index
 echo "indexing shapefiles"
-
 shapeindex --shape_files \
 data/simplified-land-polygons-complete-3857/simplified_land_polygons.shp \
 data/land-polygons-split-3857/land_polygons.shp \
 data/antarctica-icesheet-polygons-3857/icesheet_polygons.shp \
 data/antarctica-icesheet-outlines-3857/icesheet_outlines.shp \
-data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp \
 data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp
 
-
-#clean up
-echo "cleaning up..."
-rm data/ne_10m_populated_places/ne_10m_populated_places.*
-
+#finish
 echo "...done!"

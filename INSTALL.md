@@ -28,23 +28,10 @@ You can also download them manually at the following paths:
 * [`land-polygon.shp`](http://data.openstreetmapdata.com/land-polygons-split-3857.zip) (updated daily)
 * [`builtup_area.shp`](http://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz)
 * [`ne_110m_admin_0_boundary_lines_land.shp`](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip)
-* [`ne_10m_populated_places_fixed.shp`](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_populated_places.zip) (and see [below](#populated-places-shapefile))
 
 The repeated www.naturalearthdata.com in the Natural Earth shapefiles is correct.
 
 Put these shapefiles at `path/to/openstreetmap-carto/data`.
-
-### Populated places shapefile
-
-The Natural Earth 2.0 populated places shapefile contains data that triggers a bug in mapnik. As
-a workaround we run the shapefile through ogr2ogr to clean up the data. This is not required for
-Mapnik 2.2 or later, where the shapefile can just be renamed.
-
-```
-ogr2ogr ne_10m_populated_places_fixed.shp ne_10m_populated_places.shp
-```
-
-See https://github.com/mapnik/mapnik/issues/1605 for more details.
 
 ## Fonts
 The stylesheet depends on a number of openly licensed fonts for support of all the languages found on the map. The package which supplies these fonts on Ubuntu is indicated.
@@ -90,7 +77,6 @@ If you aren't using TileMill, you can compile the CartoCSS stylesheets into Mapn
 * [osm2pgsql](http://wiki.openstreetmap.org/wiki/Osm2pgsql) to import your data into a PostGIS database
 * [PostgreSQL](http://www.postgresql.org/)
 * [PostGIS](http://postgis.org/)
-* [ogr2ogr](http://www.gdal.org/) command line GDAL utility for processing vector data. here we use it to work around a encoding bug in the Nautral Earth data.
 * curl, unzip for downloading and decompressing files
 * shapeindex (a companion utility to Mapnik found in the mapnik-utils package) for indexing downloaded shapefiles
 

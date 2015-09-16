@@ -1447,46 +1447,6 @@ Layer:
     properties:
       minzoom: 2
     advanced: {}
-  - id: "nepopulated"
-    name: "nepopulated"
-    class: ""
-    geometry: "point"
-    <<: *extents84
-    Datasource:
-      file: "data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp"
-      type: "shape"
-      encoding: "windows-1252"
-    properties:
-      minzoom: 3
-      maxzoom: 4
-    advanced:
-      encoding: "windows-1252"
-  - id: "placenames-capital"
-    name: "placenames-capital"
-    class: ""
-    geometry: "point"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            place,
-            name,
-            ref
-          FROM planet_osm_point
-          WHERE place IN ('city', 'town')
-            AND capital IN ('yes', '4')
-            AND name IS NOT NULL
-          ORDER BY CASE
-              WHEN place = 'city' THEN 1
-              WHEN place = 'town' THEN 2
-            END ASC
-        ) AS placenames_capital
-    properties:
-      minzoom: 5
-      maxzoom: 14
-    advanced: {}
   - id: "placenames-medium"
     name: "placenames-medium"
     class: ""
@@ -1497,19 +1457,40 @@ Layer:
       table: |-
         (SELECT
             way,
-            place,
-            name
-          FROM planet_osm_point
-          WHERE place IN ('city', 'town')
-            AND (capital IS NULL OR capital NOT IN ('yes', '4'))
-            AND name IS NOT NULL
-          ORDER BY CASE
-              WHEN place = 'city' THEN 1
-              WHEN place = 'town' THEN 2
-            END ASC
+            name,
+            score,
+            CASE
+              WHEN (place = 'city' OR (capital = 'yes' AND score >= 100000)) THEN 1
+              ELSE 2
+            END as category
+          FROM 
+            (SELECT
+                way,
+                place,
+                name,
+                capital,
+                (
+                  (CASE
+                    WHEN (population ~ '^[0-9]{1,8}$') THEN population::INTEGER
+                    WHEN (place = 'city') THEN 100000
+                    WHEN (place = 'town') THEN 1000
+                    ELSE 1
+                  END)
+                  *
+                  (CASE
+                    WHEN (capital = 'yes') THEN 3
+                    WHEN (capital = '4') THEN 2
+                    ELSE 1
+                  END)
+                ) AS score
+              FROM planet_osm_point
+              WHERE place IN ('city', 'town')
+            ) as p
+          ORDER BY category ASC, score DESC
         ) AS placenames_medium
     properties:
-      minzoom: 6
+      minzoom: 3
+      maxzoom: 15
     advanced: {}
   - id: "placenames-small"
     name: "placenames-small"
