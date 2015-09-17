@@ -28,9 +28,27 @@ The `./scripts/yaml2mml.py` script is provided to convert YAML to JSON, and
 depends on PyYAML, available through `pip install pyyaml` or packaged on Ubuntu
 as `python-yaml`.
 
-After editing the YAML file, run `./scripts/yaml2mml.py < project.yaml > project.mml && touch project.mml` to update the file and force TileMill to reload it.
+[Kosmtik](https://github.com/kosmtik/kosmtik) can directly load the project from
+the YAML file with `node index.js serve path/to/openstreetmap-carto/project.yaml`,
+and the JSON file just needs updating before committing.
 
-When committing changes, add both the `project.yaml` and `project.mml` files to the commit. One of the big advantages of this system is that to resolve any layer merge conflicts, they only need to be resolved in the YAML file where they are easier to handle, then the JSON file can be regenerated, while at the same time the styles work with Tilemill out-of-the-box without needing to run the `yaml2mml` script.
+[TileMill](https://github.com/mapbox/tilemill) and Mapbox `carto` [do not directly support YAML](https://github.com/mapbox/carto/issues/401),
+so make edits to the YAML file then run the preprocessing step of
+`./scripts/yaml2mml.py < project.yaml > project.mml && touch project.mml` to
+update the file and force TileMill to reload it. You shouldn't use the text editor
+built-in to TileMill, it doesn't work with the number of .mss files in the style.
+Instead, hide the right pane and use an external text editor.
+
+Before committing changes, run `./scripts/yaml2mml.py < project.yaml > project.mml`
+to update the JSON MML file and `git add project.mml`
+
+When committing changes, add both the `project.yaml` and `project.mml` files to
+the commit with ./scripts/yaml2mml.py < project.yaml > project.mml && git add project.mml`.
+One of the big advantages of this system is that to resolve any layer merge
+conflicts, they only need to be resolved in the YAML file where they are easier
+to handle, then the JSON file can be regenerated, while at the same time the
+styles work with TileMill and carto out-of-the-box without needing to run the
+`yaml2mml` script.
 
 ## CartoCSS Style Guidelines
 

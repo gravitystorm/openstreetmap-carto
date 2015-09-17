@@ -65,9 +65,11 @@ In Ubuntu 13.10 (Saucy) and lower, replace fonts-taml-tscu with ttf-tamil-fonts.
 
 ## Dependencies
 
+For development, a style design studio is needed.
+* [Kosmtik](https://github.com/kosmtik/kosmtik) - Kosmtik can be launched with `node index.js serve path/to/openstreetmap-carto/project.yaml`
 * [TileMill](http://mapbox.com/tilemill) - This is a TileMill project you can copy (or symlink) directly into your Mapbox/project directory
 
-If you aren't using TileMill, you can compile the CartoCSS stylesheets into Mapnik XML using the command-line `carto` command.
+For deployment, `carto` and Mapnik are required.
 
 * [carto](https://github.com/mapbox/carto) >= 0.9.5 (we're using instances with cascading rules and min/max zoom properties)
 * [mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 2.1.0. Mapnik 3.0 is supported, but not required.
