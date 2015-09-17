@@ -76,13 +76,17 @@ For deployment, `carto` and Mapnik are required.
 
 ---
 
-* [osm2pgsql](http://wiki.openstreetmap.org/wiki/Osm2pgsql) to import your data into a PostGIS database
+For both development and deployment, a database and some utilities are required
+
+* [osm2pgsql](http://wiki.openstreetmap.org/wiki/Osm2pgsql) to [import your data](https://switch2osm.org/loading-osm-data/) into a PostGIS database
 * [PostgreSQL](http://www.postgresql.org/)
 * [PostGIS](http://postgis.org/)
-* curl, unzip for downloading and decompressing files
+* `curl` and `unzip` for downloading and decompressing files
 * shapeindex (a companion utility to Mapnik found in the mapnik-utils package) for indexing downloaded shapefiles
 
 ### Development dependencies
+
+Some colours, SVGs and other files are generated with helper scripts. Not all users will need these dependencies
 
 * Python and Ruby to run helper scripts
 * [PyYAML](http://pyyaml.org/wiki/PyYAML) if editing the MML (layer definition) file (packaged as `python-yaml` on Ubuntu, or installed with `pip install pyyaml`)
