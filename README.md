@@ -45,23 +45,18 @@ no interest in creating further point releases in the v1.x series.
 
 ## Current work (v2.x)
 
-The v2.x series focuses on refactoring the style, both to to fix glitches and to
-leverage new features in CartoCSS / mapnik to simplify the stylesheets with only
-small changes to the output. It's also appropriate to pull out the 'old-skool'
+The v2.x series initially focused on refactoring the style, both to to fix
+glitches and to leverage new features in CartoCSS / Mapnik to simplify the
+stylesheets with only small changes to the output, as well as removing 'old-skool'
 tagging methods that are now rarely used.
 
 Care is being taken to not get too clever with variables and expressions. While
 these often make it easier to customise, experience has shown that over-cleverness
 (e.g. [interpolated entities][cleverness]) can discourage contributions.
 
-The end goal will be a style that remains familiar but is much more suitable for
-further development, and/or forking for third-parties to customise.
-
-## Future (v3.x)
-
-There are over [300 open requests][issues], some that have been open for years. These need
-reviewing and dividing into obvious fixes, or additional new features that need some cartographic
-judgement. The work done already in v1.0 and v2.0 will make it much easier to process these.
+There are over [300 open requests][issues], some that have been open for years.
+These need reviewing and dividing into obvious fixes, or additional new features
+that need some cartographic judgement.
 
 [issues]: https://github.com/gravitystorm/openstreetmap-carto/issues
 [cleverness]: https://github.com/openstreetmap/mapnik-stylesheets/blob/master/inc/settings.xml.inc.template#L16
