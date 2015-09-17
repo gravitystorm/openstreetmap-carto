@@ -10,6 +10,13 @@ You should fork the project into your own repo, create a topic branch
 there and then make one or more pull requests back to the gravitystorm repository.
 Your pull requests will then be reviewed and discussed.
 
+## Reporting issues
+
+As OpenStreetMap data is always changing, rendering bug reports should **always**
+contain a cropped screenshot of the problem, and a link to the area. Don't assume
+that we will see exactly what you see. If a particular OSM object is an issue,
+the issue should contain the tagging of the object.
+
 ## Editing Layers
 
 OpenStreetMap Carto uses a YAML file for defining layers. Some of the rationale is outlined in [a GitHub issue](https://github.com/gravitystorm/openstreetmap-carto/issues/711). Editing multi-line SQL statements in a YAML file is much friendlier than editing escaped SQL in a JSON file.
@@ -71,8 +78,19 @@ Because SQL within JSON or YAML will not generally be syntax highlighted, indent
 * One space before and after = etc
 * Name SQL subqueries after the layer name (but use underscores)
 
-## Previews
+## Pull requests
 
-Some changes benefit from a review from a wider audience. In most cases some static images are sufficient, but sometimes a demo layer is necessary. pnorman has a private server which can host layers and has some data from parts of the world loaded. Before requesting this in a pull request, make sure that you don't anticipate any more changes to it.
+Pull requests that change the cartography should contain a few images selected
+to show the changes. The easiest way to make these is by taking screenshots and
+cropping them, then pasting them into the issue. Avoid adding an overwhelming
+number of screenshots.
 
-This does not replace reviewing your changes in Tilemill
+The images are not intended to replace reviewing changes in Kosmtik or TileMill,
+but to provide an overview.
+
+### Previews
+
+Some changes benefit from a review over a wider area and many zooms, where static
+images might not be sufficient and a demo layer is necessary. pnorman has a server
+ which can host layers and has some data from parts of the world loaded. Before
+ requesting this in a pull request, make sure that it is in a stable condition.
