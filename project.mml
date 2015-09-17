@@ -601,7 +601,7 @@
       ],
       "properties": {
         "group-by": "layernotnull",
-        "minzoom": 10
+        "minzoom": 9
       },
       "advanced": {}
     },
@@ -835,7 +835,7 @@
       ],
       "id": "roads-casing",
       "properties": {
-        "minzoom": 10
+        "minzoom": 9
       },
       "advanced": {}
     },
@@ -1018,7 +1018,7 @@
       ],
       "properties": {
         "group-by": "layernotnull",
-        "minzoom": 10
+        "minzoom": 9
       },
       "advanced": {}
     },

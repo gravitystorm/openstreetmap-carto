@@ -18,11 +18,20 @@ widths='
 10:75.75
 11:80.75'
 
-colours='motorway:#7788a1
-trunk:#87ab87
-primary:#bb7b7f
-secondary:#c6ad84
-tertiary:#c4c68f'
+#shield colors were generated with scripts/generate_road_colors.py
+colours='motorway:#d18996
+trunk:#da9b88
+primary:#d5b284
+secondary:#c6ca90
+tertiary:#c6c6c6'
+
+# motorway: Lch(65,30,10), error 0.5
+# trunk: Lch(70,30,42), error 0.7
+# primary: Lch(75,30,74), error 1.6
+# secondary: Lch(80,30,106), error 1.8
+# tertiary: Lch(80,0,0), error 0.1
+
+
 
 
 xoffset=1.25
