@@ -19,9 +19,14 @@ the issue should contain the tagging of the object.
 
 ## Editing Layers
 
-OpenStreetMap Carto uses a YAML file for defining layers. Some of the rationale is outlined in [a GitHub issue](https://github.com/gravitystorm/openstreetmap-carto/issues/711). Editing multi-line SQL statements in a YAML file is much friendlier than editing escaped SQL in a JSON file.
+OpenStreetMap Carto uses a YAML file for defining layers. Some of the rationale
+is outlined in [a GitHub issue](https://github.com/gravitystorm/openstreetmap-carto/issues/711).
+Editing multi-line SQL statements in a YAML file is much friendlier than editing
+escaped SQL in a JSON file.
 
-This requires a preprocessing step to convert the YAML to JSON. A script is provided at `scripts/yaml2mml.py`, which depends on PyYAML, available through `pip install pyyaml` or packaged on Ubuntu as `python-yaml`.
+The `./scripts/yaml2mml.py` script is provided to convert YAML to JSON, and
+depends on PyYAML, available through `pip install pyyaml` or packaged on Ubuntu
+as `python-yaml`.
 
 After editing the YAML file, run `./scripts/yaml2mml.py < project.yaml > project.mml && touch project.mml` to update the file and force TileMill to reload it.
 
@@ -35,10 +40,11 @@ When committing changes, add both the `project.yaml` and `project.mml` files to 
 * Two space indents. No tabs.
 * space after : but not before
 * Dashes, not underscores, in layer names
-* Avoid restating defaults, e.g. don't add `point-allow-overlap = false`
-* Avoid repeating the layer name for layers with mutiple attachments, i.e., prefer
+* Avoid restating defaults, e.g. don't add `point-allow-overlap = false`. Where
+  Mapnik 2.x and 3.0 have different defaults, they should be stated
+* Avoid repeating the layer name for layers with multiple attachments, i.e., prefer
 
-```css
+```mss
 #layer {
   ::outline {
     line-width: 6;
@@ -52,7 +58,7 @@ When committing changes, add both the `project.yaml` and `project.mml` files to 
 ```
 instead of
 
-```css
+```mss
 #layer::outline {
     line-width: 6;
     line-color: black;
@@ -62,7 +68,9 @@ instead of
     line-color: white;
 }
 ```
-* Order the selectors in a style-sheet in rough order of importance (i.e., highway=primary, then highway=secondary) and beyond that, add layers that are rendered later (i.e., higher) lower in the file.
+* Order the selectors in a style-sheet in rough order of importance (i.e.,
+  `highway=primary`, then `highway=secondary`) and beyond that, add layers that
+  are rendered later (i.e., higher) lower in the file.
 
 ## SQL Style Guidelines
 Because SQL within JSON or YAML will not generally be syntax highlighted, indentation and caps are particularly important.

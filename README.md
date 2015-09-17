@@ -8,7 +8,7 @@ These stylesheets can be used in your own cartography projects, and are designed
 customised. They work with [TileMill](http://www.mapbox.com/tilemill/) and also with the command-line [CartoCSS](https://github.com/mapbox/carto) processor.
 
 Since August 2013 these stylesheets have been used on the OSMF tileservers (tile.openstreetmap.org), and
-are updated from each point release. They supersede the previous [XML-based stylesheets](https://trac.openstreetmap.org/browser/subversion/applications/rendering/mapnik).
+are updated from each point release. They supersede the previous [XML-based stylesheets](https://github.com/openstreetmap/mapnik-stylesheets).
 
 # Installation
 
@@ -28,7 +28,7 @@ cartographic project you can expect the following:
 * PATCH: When a patch version is released, there would be no reason not to
   upgrade. PATCH versions contain only bugfixes e.g. stylesheets won't compile,
   features are missing by mistake, etc.
-* MINOR: These are routine releases and happen every 1-3 weeks. They will
+* MINOR: These are routine releases and happen every 2-5 weeks. They will
   contain changes to what's shown on the map, how they appear, new features
   added and old features removed. They may rarely contain changes to assets i.e.
   shapefiles and fonts but will not contain changes that require software or
@@ -50,9 +50,9 @@ leverage new features in CartoCSS / mapnik to simplify the stylesheets with only
 small changes to the output. It's also appropriate to pull out the 'old-skool'
 tagging methods that are now rarely used.
 
-Care is being taken to not get too clever with variables and expressions. While these often make
-it easier to customise, experience has shown that over-cleverness (e.g. [interpolated entities][cleverness])
-can discourage contributions.
+Care is being taken to not get too clever with variables and expressions. While
+these often make it easier to customise, experience has shown that over-cleverness
+(e.g. [interpolated entities][cleverness]) can discourage contributions.
 
 The end goal will be a style that remains familiar but is much more suitable for
 further development, and/or forking for third-parties to customise.
@@ -69,7 +69,7 @@ judgement. The work done already in v1.0 and v2.0 will make it much easier to pr
 # Alternatives
 
 There are many open-source stylesheets written for creating OpenStreetMap-based
-maps using mapnik, many based on this project. Some alternatives are:
+maps using Mapnik, many based on this project. Some alternatives are:
 
 * [OSM-Bright](https://github.com/mapbox/osm-bright)
 * [XML-based stylesheets](https://trac.openstreetmap.org/browser/subversion/applications/rendering/mapnik)
