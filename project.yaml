@@ -1486,7 +1486,7 @@ Layer:
               FROM planet_osm_point
               WHERE place IN ('city', 'town')
             ) as p
-          ORDER BY category ASC, score DESC
+          ORDER BY score DESC
         ) AS placenames_medium
     properties:
       minzoom: 3
