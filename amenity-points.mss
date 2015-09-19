@@ -1195,8 +1195,7 @@
     text-size: 10;
     text-fill: darken(#d08f55, 30%);
     [feature = 'natural_volcano'] { text-fill: #d40000; }
-    text-dy: 7;
-    [feature = 'tourism_viewpoint'] { text-dy: 11; }
+    text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
