@@ -913,21 +913,65 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way,
-            COALESCE(
-              ('highway_' || (CASE WHEN highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street', 
-                                                    'track', 'path', 'platform', 'services') THEN highway ELSE NULL END)),
-              ('railway_' || (CASE WHEN railway IN ('platform') THEN railway ELSE NULL END)),
-              (('aeroway_' || CASE WHEN aeroway IN ('runway', 'taxiway', 'helipad') THEN aeroway ELSE NULL END))
-            ) AS feature
-          FROM planet_osm_polygon
-          WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'living_street', 'track', 'path', 'platform', 'services')
-            OR railway IN ('platform')
-            OR aeroway IN ('runway', 'taxiway', 'helipad')
+            way, feature
+          FROM (
+            SELECT -- features mapped as polygons
+                way, 
+                COALESCE(
+                  ('highway_' || (CASE WHEN highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street', 
+                                                        'track', 'path', 'platform', 'services') THEN highway ELSE NULL END)),
+                  ('railway_' || (CASE WHEN railway IN ('platform') THEN railway ELSE NULL END)),
+                  ('aeroway_' || (CASE WHEN aeroway IN ('taxiway', 'helipad') THEN aeroway ELSE NULL END))
+                ) AS feature,
+                z_order, way_area FROM planet_osm_polygon
+              WHERE (highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'living_street', 'track', 'path', 'platform', 'services')
+                OR railway IN ('platform')
+                OR aeroway IN ('taxiway', 'helipad'))
+                AND way && !bbox!
+            UNION ALL
+            SELECT -- aeroway lines, converted to areas
+                way, feature, z_order, ST_Area(way) AS way_area
+              FROM
+                (SELECT 
+                    ST_Transform(
+                      ST_Buffer(
+                        ST_Transform( -- Use a projection that allows accurate buffering
+                          way,
+                          _ST_BestSRID(ST_Transform(way, 4326)::geography) -- Find the SRID to use
+                        ),
+                        0.5 * CASE -- Buffer by the half-width
+                          WHEN width ~ '^\d{1,3}(\.\d+)?$' -- Validate the width tag
+                            THEN LEAST(width::real, 150) -- Place a maximum on the width
+                          WHEN aeroway = 'runway' -- No valid width, so estimate from length if a runway
+                            THEN LEAST(GREATEST(ST_Length(ST_Transform(way,4326)::geography)/50,12.0),75.0)
+                          ELSE --taxiway
+                            6
+                          END,
+                        'endcap=flat join=round'
+                      ),
+                      ST_SRID(way)
+                    ) AS way,
+                    'aeroway_' || aeroway AS feature,
+                    z_order FROM planet_osm_line
+                  WHERE aeroway IN ('runway', 'taxiway')
+                    AND way && -- extend bounding box by maximum buffer width
+                      CASE 
+                        -- handle large bounding boxes that do not transform to 4326 or geography
+                        WHEN ST_Perimeter(!bbox!) > 3e+38 THEN !bbox!
+                      ELSE ST_Transform(
+                        ST_Expand(
+                          ST_Transform(
+                            !bbox!,
+                            _ST_BestSRID(ST_Transform(!bbox!,4326)::geography)),
+                          150),
+                        ST_SRID(!bbox!))
+                      END
+                ) AS p
+          ) AS features
           ORDER BY z_order, way_area desc
         ) AS highway_area_fill
     properties:
-      minzoom: 14
+      minzoom: 11
     advanced: {}
   - id: "roads-fill"
     name: "roads-fill"
