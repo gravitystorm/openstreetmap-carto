@@ -1,4 +1,5 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
+set -e
 
 # A simple script to generate a SVG road shield.
 # Copyright 2014 Paul Norman
