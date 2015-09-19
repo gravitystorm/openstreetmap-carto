@@ -12,7 +12,6 @@
 @pedestrian-fill: #dddde8;
 @raceway-fill: pink;
 @road-fill: #ddd;
-@path-fill: black;
 @footway-fill: salmon;
 @steps-fill: @footway-fill;
 @cycleway-fill: blue;
