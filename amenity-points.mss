@@ -1684,27 +1684,19 @@
     }
   }
 
-  [feature = 'natural_bay'][zoom >= 14] {
-    text-name: "[name]";
-    text-size: 10;
-    text-fill: #6699cc;
-    text-face-name: @book-fonts;
-    text-halo-radius: 1;
-    text-halo-fill: rgba(255,255,255,0.6);
-    text-wrap-width: @standard-wrap-width;
-    text-placement: interior;
-  }
-
+  [feature = 'natural_bay'][zoom >= 14],
   [feature = 'natural_spring'][zoom >= 16] {
     text-name: "[name]";
     text-size: 10;
-    text-fill: #6699cc;
+    text-fill: @water-text;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
-    text-dy: 6;
+    [feature = 'natural_spring'] {
+      text-dy: 6;
+    }
   }
 
   [feature = 'amenity_bank'][zoom >= 17],
