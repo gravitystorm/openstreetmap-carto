@@ -1,3 +1,5 @@
+#!/usr/bin/env python2
+
 from colormath.color_conversions import convert_color
 from colormath.color_objects import LabColor, LCHabColor, sRGBColor
 from colormath.color_diff import delta_e_cie2000
