@@ -2035,7 +2035,7 @@
       text-dy: 12;
       text-fill: @shop-text;
       text-face-name: @book-fonts;
-      text-halo-radius: 1.5;
+      text-halo-radius: 1;
       text-halo-fill: rgba(255, 255, 255, 0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
@@ -2053,7 +2053,7 @@
       text-dy: 12;
       text-fill: @shop-text;
       text-face-name: @book-fonts;
-      text-halo-radius: 1.5;
+      text-halo-radius: 1;
       text-halo-fill: rgba(255, 255, 255, 0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
