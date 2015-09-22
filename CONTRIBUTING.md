@@ -43,7 +43,7 @@ Before committing changes, run `./scripts/yaml2mml.py < project.yaml > project.m
 to update the JSON MML file and `git add project.mml`
 
 When committing changes, add both the `project.yaml` and `project.mml` files to
-the commit with ./scripts/yaml2mml.py < project.yaml > project.mml && git add project.mml`.
+the commit with `./scripts/yaml2mml.py < project.yaml > project.mml && git add project.mml`.
 One of the big advantages of this system is that to resolve any layer merge
 conflicts, they only need to be resolved in the YAML file where they are easier
 to handle, then the JSON file can be regenerated, while at the same time the
