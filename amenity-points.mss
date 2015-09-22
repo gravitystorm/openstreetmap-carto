@@ -358,6 +358,7 @@
   }
 
   [feature = 'man_made_cross'][zoom >= 17],
+  [feature = 'historic_wayside_shrine'][zoom >= 17][religion = 'christian'],
   [feature = 'historic_wayside_cross'][zoom >= 17] {
     marker-file: url('symbols/christian.9.svg');
     marker-fill: #000000;
@@ -972,6 +973,7 @@
 
 .amenity-low-priority {
   [man_made = 'cross'][zoom >= 15],
+  [historic = 'wayside_shrine'][zoom >= 15][religion = 'christian'],
   [historic = 'wayside_cross'][zoom >= 15] {
     marker-file: url('symbols/christian.9.svg');
     marker-fill: #000000;
@@ -1222,6 +1224,7 @@
   }
 
   [feature = 'man_made_cross'][zoom >= 17],
+  [feature = 'historic_wayside_shrine'][zoom >= 17][religion = 'christian'],
   [feature = 'historic_wayside_cross'][zoom >= 17],
   [feature = 'natural_cave_entrance'][zoom >= 15],
   [feature = 'man_made_mast'][zoom >= 17],
@@ -1234,6 +1237,7 @@
       text-dy: 11;
     }
     [feature = 'man_made_cross'],
+    [feature = 'historic_wayside_shrine'][religion = 'christian'],
     [feature = 'historic_wayside_cross'] {
       text-dy: 6;
     }

@@ -1728,7 +1728,7 @@ Layer:
               'power_' || CASE WHEN power IN ('generator') THEN power ELSE NULL END,
               'tourism_' || CASE WHEN tourism IN ('viewpoint') THEN tourism ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('cross') THEN man_made ELSE NULL END,
-              'historic_' || CASE WHEN historic IN ('wayside_cross') THEN historic ELSE NULL END
+              'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') THEN historic ELSE NULL END
             ) AS feature,
             access,
             CASE
@@ -1761,7 +1761,7 @@ Layer:
             OR leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'slipway')
             OR man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill', 'cross')
             OR "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance')
-            OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross')
+            OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'wayside_shrine')
             OR highway IN ('bus_stop', 'elevator', 'traffic_signals', 'ford')
             OR (power = 'generator' AND ("generator:source" = 'wind' OR power_source = 'wind'))
           ORDER BY score DESC NULLS LAST
@@ -2208,7 +2208,7 @@ Layer:
                   'waterway_' || CASE WHEN waterway IN ('dam', 'weir') THEN waterway ELSE NULL END,
                   'tourism_' || CASE WHEN tourism IN ('attraction', 'viewpoint') THEN tourism ELSE NULL END,
                   'man_made_' || CASE WHEN man_made IN ('cross') THEN man_made ELSE NULL END,
-                  'historic_' || CASE WHEN historic IN ('wayside_cross') THEN historic ELSE NULL END
+                  'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') THEN historic ELSE NULL END
                 ) AS feature,
                 access,
                 name,
@@ -2247,7 +2247,7 @@ Layer:
                                    'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier', 'tree')
                   OR place IN ('island', 'islet')
                   OR military IN ('danger_area')
-                  OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross')
+                  OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'wayside_shrine')
                   OR highway IN ('bus_stop', 'services', 'rest_area', 'elevator', 'ford')
                   OR power IN ('plant', 'station', 'generator', 'sub_station', 'substation')
                   OR boundary IN ('national_park')
@@ -2455,7 +2455,7 @@ Layer:
              OR highway IN ('mini_roundabout')
              OR railway = 'level_crossing'
              OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'bench', 'waste_basket')
-             OR historic = 'wayside_cross'
+             OR historic IN ('wayside_cross', 'wayside_shrine')
              OR man_made = 'cross'
           ORDER BY prio
           ) AS amenity_low_priority
