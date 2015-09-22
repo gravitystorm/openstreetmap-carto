@@ -8,6 +8,7 @@
 @health-color: #da0092;
 @amenity-brown: #734a08;
 @man-made-icon: #555;
+@landform-color: #d08f55;
 
 @landcover-font-size: 10;
 @landcover-font-size-big: 12;
@@ -914,7 +915,7 @@
 
   [feature = 'natural_peak'][zoom >= 11] {
     marker-file: url('symbols/peak.svg');
-    marker-fill: #d08f55;
+    marker-fill: @landform-color;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -928,7 +929,7 @@
 
   [feature = 'natural_saddle'][zoom >= 15] {
     marker-file: url('symbols/saddle.svg');
-    marker-fill: #d08f55;
+    marker-fill: @landform-color;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1209,7 +1210,7 @@
   [feature = 'tourism_viewpoint'][zoom >= 16] {
     text-name: "[name]";
     text-size: 10;
-    text-fill: darken(#d08f55, 30%);
+    text-fill: darken(@landform-color, 30%);
     [feature = 'natural_volcano'] { text-fill: #d40000; }
     text-dy: 7;
     [feature = 'tourism_viewpoint'] { text-dy: 11; }
