@@ -1,5 +1,5 @@
 #/bin/sh
-if json=$(scripts/yaml2mml.py < project.yaml); then
+if json=$(scripts/yaml2mml.py --check); then
   echo -n "${json}" | diff -q project.mml -
   ret=$?
   if [ $ret -ne 0 ]; then
