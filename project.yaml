@@ -1628,7 +1628,7 @@ Layer:
                                             'photo', 'photo_studio', 'photography', 'seafood', 'shoes', 'alcohol', 'gift', 'furniture', 'kiosk', 
                                             'mobile_phone', 'motorcycle', 'musical_instrument', 'newsagent', 'optician', 'jewelry', 'jewellery', 
                                             'electronics', 'chemist', 'toys', 'travel_agency', 'car_parts', 'greengrocer', 'farm', 'stationery', 
-                                            'laundry', 'dry_cleaning', 'beverages', 'perfumery', 'cosmetics', 'variety_store', 'wine') THEN shop 
+                                            'laundry', 'dry_cleaning', 'beverages', 'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor') THEN shop 
                               WHEN shop IN ('accessories', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bathroom_furnishing', 
                                             'bed', 'betting', 'boat', 'bookmaker', 'boutique', 'builder', 'building_materials', 'camera', 'car_service', 
                                             'carpet', 'charity', 'cheese', 'chocolate', 'coffee', 'communication', 'copyshop', 'craft', 'curtain', 'dairy', 
@@ -1637,7 +1637,7 @@ Layer:
                                             'gallery', 'gambling', 'games', 'gas', 'general', 'glaziery', 'grocery', 'health', 'health_food', 'hearing_aids', 
                                             'herbalist', 'hobby', 'household', 'houseware', 'hunting', 'insurance', 'interior_decoration', 'kitchen', 
                                             'leather', 'lighting', 'locksmith', 'lottery', 'market', 'massage', 'medical', 'medical_supply', 'money_lender', 
-                                            'motorcycle_repair', 'music', 'office_supplies', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 
+                                            'motorcycle_repair', 'music', 'office_supplies', 'organic', 'paint', 'pastry', 'pawnbroker', 
                                             'pharmacy', 'phone', 'pottery', 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 
                                             'scuba_diving', 'second_hand', 'sewing', 'shoe_repair', 'shopping_centre', 'solarium', 'souvenir', 'sports', 
                                             'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'trade', 'tyres', 'vacuum_cleaner', 'video', 
@@ -1707,7 +1707,7 @@ Layer:
                                             'photography', 'seafood', 'shoes', 'alcohol', 'gift', 'furniture', 'kiosk', 'mobile_phone', 'motorcycle', 
                                             'musical_instrument', 'newsagent', 'optician', 'jewelry', 'jewellery', 'electronics', 'chemist', 'toys', 
                                             'travel_agency', 'car_parts', 'greengrocer', 'farm', 'stationery', 'laundry', 'dry_cleaning', 'beverages', 
-                                            'perfumery', 'cosmetics', 'variety_store', 'wine') THEN shop 
+                                            'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor') THEN shop 
                               WHEN shop IN ('accessories', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bathroom_furnishing', 'bed', 'betting', 
                                             'boat', 'bookmaker', 'boutique', 'builder', 'building_materials', 'camera', 'car_service', 'carpet', 'charity', 
                                             'cheese', 'chocolate', 'coffee', 'communication', 'copyshop', 'craft', 'curtain', 'dairy', 'deli', 'delicatessen',  
@@ -1716,7 +1716,7 @@ Layer:
                                             'general', 'glaziery', 'grocery', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hobby', 'household',  
                                             'houseware', 'hunting', 'insurance', 'interior_decoration', 'kitchen', 'leather', 'lighting', 'locksmith', 'lottery',  
                                             'market', 'massage', 'medical', 'medical_supply', 'money_lender', 'motorcycle_repair', 'music', 'office_supplies',  
-                                            'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'pharmacy', 'phone', 'pottery', 'printing', 'radiotechnics', 
+                                            'organic', 'paint', 'pastry', 'pawnbroker', 'pharmacy', 'phone', 'pottery', 'printing', 'radiotechnics', 
                                             'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'second_hand', 'sewing', 'shoe_repair', 'shopping_centre', 
                                             'solarium', 'souvenir', 'sports', 'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'trade', 'tyres', 
                                             'vacuum_cleaner', 'video', 'video_games', 'watches', 'wholesale', 'yes') THEN 'other' ELSE NULL END,
@@ -2024,7 +2024,7 @@ Layer:
                                             'photography', 'seafood', 'shoes', 'alcohol', 'gift', 'furniture', 'kiosk', 'mobile_phone', 'motorcycle', 
                                             'musical_instrument', 'newsagent', 'optician', 'jewelry', 'jewellery', 'electronics', 'chemist', 'toys', 
                                             'travel_agency', 'car_parts', 'greengrocer', 'farm', 'stationery', 'laundry', 'dry_cleaning', 'beverages', 
-                                            'perfumery', 'cosmetics', 'variety_store', 'wine') THEN shop 
+                                            'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor') THEN shop 
                               WHEN shop IN ('accessories', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bathroom_furnishing', 'bed', 'betting', 
                                             'boat', 'bookmaker', 'boutique', 'builder', 'building_materials', 'camera', 'car_service', 'carpet', 'charity', 
                                             'cheese', 'chocolate', 'coffee', 'communication', 'copyshop', 'craft', 'curtain', 'dairy', 'deli', 'delicatessen', 
@@ -2033,7 +2033,7 @@ Layer:
                                             'general', 'glaziery', 'grocery', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hobby', 'household', 
                                             'houseware', 'hunting', 'insurance', 'interior_decoration', 'kitchen', 'leather', 'lighting', 'locksmith', 
                                             'lottery', 'market', 'massage', 'medical', 'medical_supply', 'money_lender', 'motorcycle_repair', 'music', 
-                                            'office_supplies', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'pharmacy', 'phone', 'pottery', 
+                                            'office_supplies', 'organic', 'paint', 'pastry', 'pawnbroker', 'pharmacy', 'phone', 'pottery', 
                                             'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'second_hand', 
                                             'sewing', 'shoe_repair', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'tailor', 'tanning', 'tattoo', 'tea', 
                                             'ticket', 'tiles', 'tobacco', 'trade', 'tyres', 'vacuum_cleaner', 'video', 'video_games', 'watches', 'wholesale', 
@@ -2173,7 +2173,7 @@ Layer:
                                                 'seafood', 'shoes', 'alcohol', 'gift', 'furniture', 'kiosk', 'mobile_phone', 'motorcycle', 'musical_instrument', 
                                                 'newsagent', 'optician', 'jewelry', 'jewellery', 'electronics', 'chemist', 'toys', 'travel_agency', 'car_parts', 
                                                 'greengrocer', 'farm', 'stationery', 'laundry', 'dry_cleaning', 'beverages', 'perfumery', 'cosmetics', 
-                                                'variety_store', 'wine') THEN shop 
+                                                'variety_store', 'wine', 'outdoor') THEN shop 
                                   WHEN shop IN ('accessories', 'antique', 'antiques', 'appliance', 'art', 
                                                 'baby_goods', 'bathroom_furnishing', 'bed', 'betting', 'boat', 'bookmaker', 'boutique', 'builder', 
                                                 'building_materials', 'camera', 'car_service', 'carpet', 'charity', 'cheese', 'chocolate', 'coffee', 
@@ -2183,7 +2183,7 @@ Layer:
                                                 'general', 'glaziery', 'grocery', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hobby', 'household', 
                                                 'houseware', 'hunting', 'insurance', 'interior_decoration', 'kitchen', 'leather', 'lighting', 'locksmith', 
                                                 'lottery', 'market', 'massage', 'medical', 'medical_supply', 'money_lender', 'motorcycle_repair', 'music', 
-                                                'office_supplies', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'pharmacy', 'phone', 'pottery', 
+                                                'office_supplies', 'organic', 'paint', 'pastry', 'pawnbroker', 'pharmacy', 'phone', 'pottery', 
                                                 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'second_hand', 
                                                 'sewing', 'shoe_repair', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'tailor', 'tanning', 'tattoo', 
                                                 'tea', 'ticket', 'tiles', 'tobacco', 'trade', 'tyres', 'vacuum_cleaner', 'video', 'video_games', 'watches', 
