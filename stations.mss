@@ -1,4 +1,5 @@
 @station-color: #7981b0;
+@station-text: #66f;
 
 .stations {
   [railway = 'subway_entrance'][zoom >= 18] {
@@ -21,7 +22,7 @@
       text-name: "[name]";
       text-face-name: @bold-fonts;
       text-size: 9;
-      text-fill: #66f;
+      text-fill: @station-text;
       text-dy: -8;
       text-halo-radius: 1;
       text-halo-fill: rgba(255,255,255,0.6);
@@ -36,7 +37,6 @@
   }
 
   [railway = 'halt'],
-  [railway = 'tram_stop'],
   [aerialway = 'station']::aerialway {
     [zoom >= 13] {
       marker-file: url('symbols/square.svg');
@@ -52,7 +52,7 @@
       text-name: "[name]";
       text-face-name: @book-fonts;
       text-size: 8;
-      text-fill: #66f;
+      text-fill: @station-text;
       text-dy: -8;
       text-halo-radius: 1;
       text-halo-fill: rgba(255,255,255,0.6);
@@ -62,6 +62,30 @@
         text-size: 10;
         text-dy: -10;
       }
+    }
+  }
+
+  [railway = 'tram_stop'] {
+    [zoom >= 13] {
+      marker-file: url('symbols/square.svg');
+      marker-placement: interior;
+      marker-fill: @station-color;
+      marker-width: 4;
+      marker-clip: false;
+    }
+    [zoom >= 15] {
+      marker-width: 6;
+    }
+    [zoom >= 16] {
+      text-name: "[name]";
+      text-face-name: @book-fonts;
+      text-size: 10;
+      text-fill: @station-text;
+      text-dy: -10;
+      text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
+      text-wrap-width: 0;
+      text-placement: interior;
     }
   }
 }
