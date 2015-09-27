@@ -1623,7 +1623,7 @@ Layer:
               'tourism_' || CASE WHEN tourism IN ('alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'guest_house', 
                                                   'hostel', 'hotel', 'motel', 'information', 'museum', 'picnic_site') THEN tourism ELSE NULL END,
               'amenity_' || CASE WHEN amenity IN ('shelter', 'atm', 'bank', 'bar', 'bicycle_rental', 'bus_station', 'cafe', 
-                                                  'car_rental', 'car_sharing', 'car_wash', 'cinema', 'clinic', 'community_centre', 'fire_station', 
+                                                  'car_rental', 'car_sharing', 'car_wash', 'cinema', 'clinic', 'community_centre', 'fire_station', 'fountain'
                                                   'fuel', 'hospital', 'ice_cream', 'embassy', 'library', 'courthouse', 'townhall', 'parking', 
                                                   'bicycle_parking', 'motorcycle_parking', 'pharmacy', 'doctors', 'dentist', 'place_of_worship', 
                                                   'police', 'post_box', 'post_office', 'pub', 'biergarten', 'recycling', 'restaurant', 'food_court', 
@@ -1670,7 +1670,7 @@ Layer:
                            'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site')
             OR amenity IN ('shelter', 'atm', 'bank', 'bar', 'bicycle_rental', 'bus_station', 'cafe', 
                            'car_rental', 'car_sharing', 'car_wash', 'cinema', 'clinic', 'community_centre', 
-                           'fire_station', 'fuel', 'hospital', 'ice_cream', 'embassy', 'library', 'courthouse', 
+                           'fire_station', 'fountain', 'fuel', 'hospital', 'ice_cream', 'embassy', 'library', 'courthouse', 
                            'townhall', 'parking', 'bicycle_parking', 'motorcycle_parking', 'pharmacy', 'doctors', 
                            'dentist', 'place_of_worship', 'police', 'post_box', 'post_office', 'pub', 'biergarten', 
                            'recycling', 'restaurant', 'food_court', 'fast_food', 'telephone', 'emergency_phone', 'taxi', 
@@ -1702,7 +1702,7 @@ Layer:
               'tourism_' || CASE WHEN tourism IN ('alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'guest_house', 'hostel', 
                                                   'hotel', 'motel', 'information', 'museum', 'picnic_site') THEN tourism ELSE NULL END,
               'amenity_' || CASE WHEN amenity IN ('shelter', 'atm', 'bank', 'bar', 'bicycle_rental', 'bus_station', 'cafe', 
-                                                  'car_rental', 'car_sharing', 'car_wash', 'cinema', 'clinic', 'community_centre', 'fire_station', 
+                                                  'car_rental', 'car_sharing', 'car_wash', 'cinema', 'clinic', 'community_centre', 'fire_station', 'fountain', 
                                                   'fuel', 'hospital', 'ice_cream', 'embassy', 'library', 'courthouse', 'townhall', 'parking', 
                                                   'bicycle_parking', 'motorcycle_parking', 'pharmacy', 'doctors', 'dentist', 'place_of_worship', 
                                                   'police', 'post_box', 'post_office', 'pub', 'biergarten', 'recycling', 'restaurant', 'food_court', 
@@ -1758,7 +1758,7 @@ Layer:
                            'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site')
             OR amenity IN ('shelter', 'atm', 'bank', 'bar', 'bicycle_rental', 'bus_station', 'cafe', 
                            'car_rental', 'car_sharing', 'car_wash', 'cinema', 'clinic', 'community_centre', 
-                           'fire_station', 'fuel', 'hospital', 'ice_cream', 'embassy', 'library', 'courthouse', 
+                           'fire_station', 'fountain', 'fuel', 'hospital', 'ice_cream', 'embassy', 'library', 'courthouse', 
                            'townhall', 'parking', 'bicycle_parking', 'motorcycle_parking', 'pharmacy', 'doctors', 
                            'dentist', 'place_of_worship', 'police', 'post_box', 'post_office', 'pub', 'biergarten', 
                            'recycling', 'restaurant', 'food_court', 'fast_food', 'telephone', 'emergency_phone', 
@@ -2019,7 +2019,7 @@ Layer:
                                                   'theme_park', 'museum', 'zoo', 'information', 'picnic_site') THEN tourism ELSE NULL END,
               'amenity_' || CASE WHEN amenity IN ('pub', 'restaurant', 'food_court', 'cafe', 'fast_food', 'biergarten', 'bar', 'library', 
                                                   'theatre', 'courthouse', 'townhall', 'cinema', 'clinic', 'community_centre', 'parking', 
-                                                  'bicycle_parking', 'motorcycle_parking', 'police', 'fire_station', 'place_of_worship', 
+                                                  'bicycle_parking', 'motorcycle_parking', 'police', 'fire_station', 'fountain', 'place_of_worship', 
                                                   'grave_yard', 'shelter', 'bank', 'embassy', 'fuel', 'bus_station', 'prison', 'university', 
                                                   'school', 'college', 'kindergarten', 'hospital', 'ice_cream', 'pharmacy', 'doctors', 'dentist', 
                                                   'atm', 'bicycle_rental', 'car_rental', 'car_sharing', 'car_wash', 'post_box', 'post_office', 
@@ -2077,7 +2077,7 @@ Layer:
                              'museum', 'attraction', 'zoo', 'information', 'picnic_site')
               OR amenity IN ('pub', 'restaurant', 'food_court', 'cafe', 'fast_food', 'biergarten', 'bar', 'library', 'theatre', 'courthouse', 
                              'townhall', 'cinema', 'clinic', 'community_centre', 'parking', 'bicycle_parking', 'motorcycle_parking', 'police', 
-                             'fire_station', 'place_of_worship', 'grave_yard', 'shelter', 'bank', 'embassy', 'fuel', 'bus_station', 'prison', 
+                             'fire_station', 'fountain', 'place_of_worship', 'grave_yard', 'shelter', 'bank', 'embassy', 'fuel', 'bus_station', 'prison', 
                              'university', 'school', 'college', 'kindergarten', 'hospital', 'ice_cream', 'pharmacy', 'doctors', 'dentist', 
                              'atm', 'bicycle_rental', 'car_rental', 'car_sharing', 'car_wash', 'post_box', 'post_office', 'recycling', 'telephone', 
                              'emergency_phone', 'toilets', 'taxi', 'drinking_water', 'hunting_stand', 'nightclub', 'veterinary')
@@ -2169,7 +2169,7 @@ Layer:
                                                       'theme_park', 'museum', 'zoo', 'information', 'picnic_site') THEN tourism ELSE NULL END,
                   'amenity_' || CASE WHEN amenity IN ('pub', 'restaurant', 'food_court', 'cafe', 'fast_food', 'biergarten', 'bar', 'library', 'theatre', 
                                                       'courthouse', 'townhall', 'cinema', 'clinic', 'community_centre', 'parking', 'bicycle_parking', 
-                                                      'motorcycle_parking', 'police', 'fire_station', 'place_of_worship', 'grave_yard', 'shelter', 'bank', 
+                                                      'motorcycle_parking', 'police', 'fire_station', 'fountain', 'place_of_worship', 'grave_yard', 'shelter', 'bank', 
                                                       'embassy', 'fuel', 'bus_station', 'prison', 'university', 'school', 'college', 'kindergarten', 'hospital', 
                                                       'ice_cream', 'pharmacy', 'doctors', 'dentist', 'atm', 'bicycle_rental', 'car_rental', 'car_sharing', 
                                                       'car_wash', 'post_box', 'post_office', 'recycling', 'telephone', 'emergency_phone', 'toilets', 'taxi', 
@@ -2239,7 +2239,7 @@ Layer:
                                  'museum', 'attraction', 'zoo', 'information', 'viewpoint', 'picnic_site')
                   OR amenity IN ('pub', 'restaurant', 'food_court', 'cafe', 'fast_food', 'biergarten', 'bar', 'library', 'theatre', 'courthouse', 
                                  'townhall', 'cinema', 'clinic', 'community_centre', 'parking', 'bicycle_parking', 'motorcycle_parking', 'police', 
-                                 'fire_station', 'place_of_worship', 'grave_yard', 'shelter', 'bank', 'embassy', 'fuel', 'bus_station', 'prison', 
+                                 'fire_station', 'fountain', 'place_of_worship', 'grave_yard', 'shelter', 'bank', 'embassy', 'fuel', 'bus_station', 'prison', 
                                  'university', 'school', 'college', 'kindergarten', 'hospital', 'ice_cream', 'pharmacy', 'doctors', 'dentist', 'atm', 
                                  'bicycle_rental', 'car_rental', 'car_sharing', 'car_wash', 'post_box', 'post_office', 'recycling', 'telephone', 
                                  'emergency_phone', 'toilets', 'taxi', 'drinking_water', 'hunting_stand', 'nightclub', 'veterinary')
