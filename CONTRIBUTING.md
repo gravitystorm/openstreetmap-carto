@@ -34,16 +34,16 @@ and the JSON file just needs updating before committing.
 
 [TileMill](https://github.com/mapbox/tilemill) and Mapbox `carto` [do not directly support YAML](https://github.com/mapbox/carto/issues/401),
 so make edits to the YAML file then run the preprocessing step of
-`./scripts/yaml2mml.py < project.yaml > project.mml && touch project.mml` to
+`./scripts/yaml2mml.py && touch project.mml` to
 update the file and force TileMill to reload it. You shouldn't use the text editor
 built-in to TileMill, it doesn't work with the number of .mss files in the style.
 Instead, hide the right pane and use an external text editor.
 
-Before committing changes, run `./scripts/yaml2mml.py < project.yaml > project.mml`
+Before committing changes, run `./scripts/yaml2mml.py`
 to update the JSON MML file and `git add project.mml`
 
 When committing changes, add both the `project.yaml` and `project.mml` files to
-the commit with `./scripts/yaml2mml.py < project.yaml > project.mml && git add project.mml`.
+the commit with `./scripts/yaml2mml.py && git add project.mml`.
 One of the big advantages of this system is that to resolve any layer merge
 conflicts, they only need to be resolved in the YAML file where they are easier
 to handle, then the JSON file can be regenerated, while at the same time the
