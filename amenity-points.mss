@@ -770,6 +770,13 @@
     marker-fill: @shop-icon;
   }
   
+  [feature = 'shop_outdoor'][zoom >= 17] {
+    marker-file: url('symbols/outdoor-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+  
   [feature = 'shop_furniture'][zoom >= 17] {
     marker-file: url('symbols/shop_furniture.16.svg');
     marker-placement: interior;
@@ -2011,6 +2018,7 @@
   [feature = 'shop_electronics'],
   [feature = 'shop_alcohol'],
   [feature = 'shop_optician'],
+  [feature = 'shop_outdoor'],
   [feature = 'shop_perfumery'],
   [feature = 'shop_furniture'],
   [feature = 'shop_kiosk'],
