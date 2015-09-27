@@ -259,9 +259,24 @@
 @paths-bridge-casing-width:       0.5;
 @paths-tunnel-casing-width:       1;
 
-@oneway-arrow-color: #404040;
-@junction-text-color: #960000;
+@junction-text-color:             #960000;
 @halo-color-for-minor-road: white;
+
+@motorway-oneway-arrow-color:     darken(@motorway-casing, 25%);
+@trunk-oneway-arrow-color:        darken(@trunk-casing, 25%);
+@primary-oneway-arrow-color:      darken(@primary-casing, 15%);
+@secondary-oneway-arrow-color:    darken(@secondary-casing, 10%);
+@tertiary-oneway-arrow-color:     darken(@tertiary-casing, 30%);
+@residential-oneway-arrow-color:  darken(@residential-casing, 40%);
+@living-street-oneway-arrow-color: darken(@residential-casing, 30%);
+@pedestrian-oneway-arrow-color:   darken(@pedestrian-casing, 25%);
+@raceway-oneway-arrow-color:      darken(@raceway-fill, 50%);
+@footway-oneway-arrow-color:      darken(@footway-fill, 35%);
+@steps-oneway-arrow-color:        darken(@steps-fill, 35%);
+@cycleway-oneway-arrow-color:     darken(@cycleway-fill, 25%);
+@track-oneway-arrow-color:        darken(@track-fill, 15%);
+@bridleway-oneway-arrow-color:    darken(@track-fill, 10%);
+
 
 .roads-casing, .bridges-casing, .tunnels-casing {
   ::casing {
@@ -2933,49 +2948,93 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
 .directions::directions {
   [zoom >= 16] {
-    [oneway = 'yes'] {
-      dira/line-width: 1;
-      dira/line-dasharray: 0,12,10,152;
-      dira/line-color: @oneway-arrow-color;
-      dira/line-join: bevel;
-      dira/line-clip: false;
-      dirb/line-width: 2;
-      dirb/line-dasharray: 0,12,9,153;
-      dirb/line-color: @oneway-arrow-color;
-      dirb/line-join: bevel;
-      dirb/line-clip: false;
-      dirc/line-width: 3;
-      dirc/line-dasharray: 0,18,2,154;
-      dirc/line-color: @oneway-arrow-color;
-      dirc/line-join: bevel;
-      dirc/line-clip: false;
-      dird/line-width: 4;
-      dird/line-dasharray: 0,18,1,155;
-      dird/line-color: @oneway-arrow-color;
-      dird/line-join: bevel;
-      dird/line-clip: false;
-    }
-    [oneway = '-1'] {
-      dira/line-width: 1;
-      dira/line-dasharray: 0,12,10,152;
-      dira/line-color: @oneway-arrow-color;
-      dira/line-join: bevel;
-      dira/line-clip: false;
-      dirb/line-width: 2;
-      dirb/line-dasharray: 0,13,9,152;
-      dirb/line-color: @oneway-arrow-color;
-      dirb/line-join: bevel;
-      dirb/line-clip: false;
-      dirc/line-width: 3;
-      dirc/line-dasharray: 0,14,2,158;
-      dirc/line-color: @oneway-arrow-color;
-      dirc/line-join: bevel;
-      dirc/line-clip: false;
-      dird/line-width: 4;
-      dird/line-dasharray: 0,15,1,158;
-      dird/line-color: @oneway-arrow-color;
-      dird/line-join: bevel;
-      dird/line-clip: false;
+    // intentionally omitting highway_platform, highway_construction
+    [feature = 'highway_motorway'],
+    [feature = 'highway_motorway_link'],
+    [feature = 'highway_trunk'],
+    [feature = 'highway_trunk_link'],
+    [feature = 'highway_primary'],
+    [feature = 'highway_primary_link'],
+    [feature = 'highway_secondary'],
+    [feature = 'highway_secondary_link'],
+    [feature = 'highway_tertiary'],
+    [feature = 'highway_tertiary_link'],
+    [feature = 'highway_residential'],
+    [feature = 'highway_unclassified'],
+    [feature = 'highway_living_street'],
+    [feature = 'highway_road'],
+    [feature = 'highway_service'],
+    [feature = 'highway_pedestrian'],
+    [feature = 'highway_raceway'],
+    [feature = 'highway_cycleway'],
+    [feature = 'highway_footway'],
+    [feature = 'highway_path'],
+    [feature = 'highway_steps'],
+    [feature = 'highway_track'],
+    [feature = 'highway_bridleway'] {
+      [oneway = 'yes'],
+      [oneway = '-1'] {
+        marker-placement: line;
+        marker-spacing: 180;
+        marker-max-error: 0.5;
+
+        marker-file: url('symbols/oneway.svg');
+        [oneway = '-1'] {
+          marker-file: url('symbols/oneway-reverse.svg');
+        }
+
+        [feature = 'highway_motorway'],
+        [feature = 'highway_motorway_link'] {
+          marker-fill: @motorway-oneway-arrow-color;
+        }
+        [feature = 'highway_trunk'],
+        [feature = 'highway_trunk_link'] {
+          marker-fill: @trunk-oneway-arrow-color;
+        }
+        [feature = 'highway_primary'],
+        [feature = 'highway_primary_link'] {
+          marker-fill: @primary-oneway-arrow-color;
+        }
+        [feature = 'highway_secondary'],
+        [feature = 'highway_secondary_link'] {
+          marker-fill: @secondary-oneway-arrow-color;
+        }
+        [feature = 'highway_tertiary'],
+        [feature = 'highway_tertiary_link'] {
+          marker-fill: @tertiary-oneway-arrow-color;
+        }
+        [feature = 'highway_residential'],
+        [feature = 'highway_unclassified'],
+        [feature = 'highway_road'],
+        [feature = 'highway_service'] {
+          marker-fill: @residential-oneway-arrow-color;
+        }
+        [feature = 'highway_living_street'] {
+          marker-fill: @living-street-oneway-arrow-color;
+        }
+        [feature = 'highway_pedestrian'] {
+          marker-fill: @pedestrian-oneway-arrow-color;
+        }
+        [feature = 'highway_raceway'] {
+          marker-fill: @raceway-oneway-arrow-color;
+        }
+        [feature = 'highway_footway'],
+        [feature = 'highway_path'] {
+          marker-fill: @footway-oneway-arrow-color;
+        }
+        [feature = 'highway_steps'] {
+          marker-fill: @steps-oneway-arrow-color;
+        }
+        [feature = 'highway_cycleway'] {
+          marker-fill: @cycleway-oneway-arrow-color;
+        }
+        [feature = 'highway_track'] {
+          marker-fill: @track-oneway-arrow-color;
+        }
+        [feature = 'highway_bridleway'] {
+          marker-fill: @bridleway-oneway-arrow-color;
+        }
+      }
     }
   }
 }
