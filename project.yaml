@@ -1985,6 +1985,7 @@ Layer:
               'leisure_' || CASE WHEN leisure IN ('nature_reserve') THEN leisure ELSE NULL END
             ) AS feature,
             name,
+            barrier,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building -- always no with the where conditions
           FROM planet_osm_polygon
           WHERE (landuse IN ('forest', 'military')
@@ -2068,6 +2069,7 @@ Layer:
             name,
             operator,
             ref,
+            barrier,
             way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
           FROM planet_osm_polygon
@@ -2097,7 +2099,8 @@ Layer:
               OR highway IN ('services', 'rest_area', 'bus_stop', 'elevator', 'ford')
               OR power IN ('plant', 'station', 'generator', 'sub_station', 'substation')
               OR boundary IN ('national_park')
-              OR waterway = 'dam')
+              OR waterway = 'dam'
+              OR barrier is NOT NULL)
             AND name IS NOT NULL
           ORDER BY way_area DESC
         ) AS text_poly
@@ -2115,17 +2118,23 @@ Layer:
         (SELECT
           way,
             NULL as way_pixels,
-            COALESCE('man_made_' || man_made, 'waterway_' || waterway, 'natural_' || "natural") AS feature,
+            COALESCE(
+              'man_made_' || CASE WHEN man_made IN ('pier', 'breakwater', 'groyne', 'embankment') THEN man_made ELSE NULL END,
+              'waterway_' || CASE WHEN waterway IN ('dam', 'weir') THEN waterway ELSE NULL END,
+              'natural_' || CASE WHEN "natural" IN ('cliff') THEN "natural" ELSE NULL END
+            ) AS feature,
             access,
             name,
             operator,
             ref,
+            barrier,
             NULL AS way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
           FROM planet_osm_line
           WHERE (man_made IN ('pier', 'breakwater', 'groyne', 'embankment')
               OR waterway IN ('dam', 'weir')
-              OR "natural" IN ('cliff'))
+              OR "natural" IN ('cliff')
+              OR barrier is NOT NULL)
             AND name IS NOT NULL
         ) AS text_line
     advanced: {}
@@ -2157,6 +2166,7 @@ Layer:
             END AS score,
             operator,
             ref,
+            barrier,
             way_area,
             is_building
           FROM
@@ -2230,6 +2240,7 @@ Layer:
                 "natural",
                 operator,
                 ref,
+                barrier,
                 NULL AS way_area,
                 CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
               FROM planet_osm_point
