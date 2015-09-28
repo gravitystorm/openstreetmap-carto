@@ -2119,6 +2119,18 @@
     text-placement: interior;
     text-wrap-width: @standard-wrap-width;
   }
+
+  [barrier != null][zoom >= 16] {
+      text-name: "[name]";
+      text-size: 10;
+      text-fill: black;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
+      text-wrap-width: @standard-wrap-width;
+      text-placement: line;
+      text-spacing: 400;
+  }
 }
 
 #trees [zoom >= 16] {
