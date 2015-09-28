@@ -1623,7 +1623,7 @@ Layer:
               'tourism_' || CASE WHEN tourism IN ('alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'guest_house', 
                                                   'hostel', 'hotel', 'motel', 'information', 'museum', 'picnic_site') THEN tourism ELSE NULL END,
               'amenity_' || CASE WHEN amenity IN ('shelter', 'atm', 'bank', 'bar', 'bicycle_rental', 'bus_station', 'cafe', 
-                                                  'car_rental', 'car_sharing', 'car_wash', 'cinema', 'clinic', 'community_centre', 'fire_station', 'fountain'
+                                                  'car_rental', 'car_sharing', 'car_wash', 'cinema', 'clinic', 'community_centre', 'fire_station', 'fountain',
                                                   'fuel', 'hospital', 'ice_cream', 'embassy', 'library', 'courthouse', 'townhall', 'parking', 
                                                   'bicycle_parking', 'motorcycle_parking', 'pharmacy', 'doctors', 'dentist', 'place_of_worship', 
                                                   'police', 'post_box', 'post_office', 'pub', 'biergarten', 'recycling', 'restaurant', 'food_court', 
