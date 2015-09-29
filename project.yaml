@@ -2456,12 +2456,17 @@ Layer:
             historic,
             access,
             name,
-            CASE WHEN amenity='waste_basket' THEN 2 ELSE 1 END AS prio
+            CASE WHEN amenity='waste_basket' THEN 4
+                 WHEN amenity IN ('bench', 'emergency_phone') THEN 3 
+                 WHEN amenity IN ('atm', 'telephone', 'post_box') THEN 1 
+                 ELSE 2 END
+            AS prio
           FROM planet_osm_point p
           WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'block')
              OR highway IN ('mini_roundabout')
              OR railway = 'level_crossing'
-             OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'bench', 'waste_basket')
+             OR amenity IN ('atm', 'parking', 'bicycle_parking', 'motorcycle_parking', 'bench', 
+                            'waste_basket', 'telephone', 'emergency_phone', 'post_box')
              OR historic = 'wayside_cross'
              OR man_made = 'cross'
           ORDER BY prio
@@ -2491,7 +2496,7 @@ Layer:
           WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'block')
              OR highway IN ('mini_roundabout')
              OR railway = 'level_crossing'
-                 OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking')
+             OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking')
           ) AS amenity_low_priority_poly
     properties:
       minzoom: 14
