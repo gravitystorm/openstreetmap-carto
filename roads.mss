@@ -277,12 +277,12 @@
 @track-oneway-arrow-color:        darken(@track-fill, 15%);
 @bridleway-oneway-arrow-color:    darken(@track-fill, 10%);
 
-@shield-size: 9;
-@shield-fill: #fff;
-@shield-halo-radius: 1;
+@shield-size: 8;
+@shield-fill: black;
+@shield-halo-radius: 0;
 @shield-spacing: 750;
-@shield-min-distance: 30;
-@shield-font: @bold-fonts;
+@shield-min-distance: 40;
+@shield-font: @book-fonts;
 @shield-clip: false;
 
 // same colour as shield outline
