@@ -84,7 +84,7 @@
 
   [feature = 'leisure_playground'][zoom >= 13] {
     polygon-fill: @playground;
-    line-color: saturate(darken(@playground, 60%), 30%);
+    line-color: darken(@playground, 60%);
     line-width: 0.3;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
