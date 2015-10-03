@@ -277,20 +277,19 @@
 @track-oneway-arrow-color:        darken(@track-fill, 15%);
 @bridleway-oneway-arrow-color:    darken(@track-fill, 10%);
 
-@shield-size: 8;
-@shield-fill: black;
-@shield-halo-radius: 0;
+@shield-size: 9;
+@shield-size-z16: 10;
+@shield-size-z18: 11;
 @shield-spacing: 750;
 @shield-min-distance: 40;
 @shield-font: @book-fonts;
 @shield-clip: false;
 
-// same colour as shield outline
-@shield-motorway-halo-fill: rgba(176, 95, 110, 0.5); // Lch(50,35,10)
-@shield-trunk-halo-fill: rgba(194, 125, 105, 0.5); // Lch(59,33,42)
-@shield-primary-halo-fill: rgba(184, 146, 100, 0.5); // Lch(63,31,74)
-@shield-secondary-halo-fill: rgba(181, 179, 125, 0.5); // Lch(72,29,106)
-@shield-tertiary-halo-fill: rgba(171, 171, 171, 0.5); // Lch(70,0,0)
+@shield-motorway-fill: #620728; // Lch(20,40,10), error 0.5
+@shield-trunk-fill: #5d1b0b; // Lch(21,40,42), error 0.5
+@shield-primary-fill: #4c2e00; // Lch(22,40,74), error 2.9
+@shield-secondary-fill: #323b00; // Lch(23,40,106), error 3.4
+@shield-tertiary-fill: #3b3b3b; // Lch(25,0,0), error 0.1
 
 .roads-casing, .bridges-casing, .tunnels-casing {
   ::casing {
@@ -2583,57 +2582,49 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   [highway = 'motorway'][zoom >= 10][zoom < 13] {
     shield-name: "[refs]";
     shield-size: @shield-size;
-    shield-fill: @shield-fill;
-    shield-halo-radius: @shield-halo-radius;
+    shield-fill: @shield-motorway-fill;
     shield-placement: line;
     shield-spacing: @shield-spacing;
     shield-min-distance: @shield-min-distance;
     shield-face-name: @shield-font;
     shield-clip: @shield-clip;
     shield-file: url("symbols/shields/motorway_[width]x[height].svg");
-    shield-halo-fill: @shield-motorway-halo-fill;
   }
 
   [highway = 'trunk'][zoom >= 11][zoom < 13] {
     shield-name: "[refs]";
     shield-size: @shield-size;
-    shield-fill: @shield-fill;
-    shield-halo-radius: @shield-halo-radius;
+    shield-fill: @shield-trunk-fill;
     shield-placement: line;
     shield-spacing: @shield-spacing;
     shield-min-distance: @shield-min-distance;
     shield-face-name: @shield-font;
     shield-clip: @shield-clip;
     shield-file: url("symbols/shields/trunk_[width]x[height].svg");
-    shield-halo-fill: @shield-trunk-halo-fill;
   }
 
   [highway = 'primary'][zoom >= 11][zoom < 13] {
     shield-name: "[refs]";
     shield-size: @shield-size;
-    shield-fill: @shield-fill;
-    shield-halo-radius: @shield-halo-radius;
+    shield-fill: @shield-primary-fill;
     shield-placement: line;
     shield-spacing: @shield-spacing;
     shield-min-distance: @shield-min-distance;
     shield-face-name: @shield-font;
     shield-clip: @shield-clip;
     shield-file: url("symbols/shields/primary_[width]x[height].svg");
-    shield-halo-fill: @shield-primary-halo-fill;
   }
 
   [highway = 'secondary'][zoom >= 12][zoom < 13] {
     shield-name: "[refs]";
     shield-size: @shield-size;
-    shield-fill: @shield-fill;
-    shield-halo-radius: @shield-halo-radius;
+    shield-fill: @shield-secondary-fill;
     shield-placement: line;
     shield-spacing: @shield-spacing;
     shield-min-distance: @shield-min-distance;
     shield-face-name: @shield-font;
     shield-clip: @shield-clip;
     shield-file: url("symbols/shields/secondary_[width]x[height].svg");
-    shield-halo-fill: @shield-secondary-halo-fill;
   }
 }
 
@@ -2641,71 +2632,106 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   [highway = 'motorway'][zoom >= 13] {
     shield-name: "[refs]";
     shield-size: @shield-size;
-    shield-fill: @shield-fill;
-    shield-halo-radius: @shield-halo-radius;
+    shield-fill: @shield-motorway-fill;
     shield-placement: line;
     shield-spacing: @shield-spacing;
     shield-min-distance: @shield-min-distance;
     shield-face-name: @shield-font;
     shield-clip: @shield-clip;
     shield-file: url("symbols/shields/motorway_[width]x[height].svg");
-    shield-halo-fill: @shield-motorway-halo-fill;
+
+    [zoom >= 16] {
+      shield-size: @shield-size-z16;
+      shield-file: url("symbols/shields/motorway_[width]x[height]_z16.svg");
+    }
+    [zoom >= 18] {
+      shield-size: @shield-size-z18;
+      shield-file: url("symbols/shields/motorway_[width]x[height]_z18.svg");
+    }
   }
 
   [highway = 'trunk'][zoom >= 13] {
     shield-name: "[refs]";
     shield-size: @shield-size;
-    shield-fill: @shield-fill;
-    shield-halo-radius: @shield-halo-radius;
+    shield-fill: @shield-trunk-fill;
     shield-placement: line;
     shield-spacing: @shield-spacing;
     shield-min-distance: @shield-min-distance;
     shield-face-name: @shield-font;
     shield-clip: @shield-clip;
     shield-file: url("symbols/shields/trunk_[width]x[height].svg");
-    shield-halo-fill: @shield-trunk-halo-fill;
+
+    [zoom >= 16] {
+      shield-size: @shield-size-z16;
+      shield-file: url("symbols/shields/trunk_[width]x[height]_z16.svg");
+    }
+    [zoom >= 18] {
+      shield-size: @shield-size-z18;
+      shield-file: url("symbols/shields/trunk_[width]x[height]_z18.svg");
+    }
   }
 
   [highway = 'primary'][zoom >= 13] {
     shield-name: "[refs]";
     shield-size: @shield-size;
-    shield-fill: @shield-fill;
-    shield-halo-radius: @shield-halo-radius;
+    shield-fill: @shield-primary-fill;
     shield-placement: line;
     shield-spacing: @shield-spacing;
     shield-min-distance: @shield-min-distance;
     shield-face-name: @shield-font;
     shield-clip: @shield-clip;
     shield-file: url("symbols/shields/primary_[width]x[height].svg");
-    shield-halo-fill: @shield-primary-halo-fill;
+
+    [zoom >= 16] {
+      shield-size: @shield-size-z16;
+      shield-file: url("symbols/shields/primary_[width]x[height]_z16.svg");
+    }
+    [zoom >= 18] {
+      shield-size: @shield-size-z18;
+      shield-file: url("symbols/shields/primary_[width]x[height]_z18.svg");
+    }
   }
 
   [highway = 'secondary'][zoom >= 13] {
     shield-name: "[refs]";
     shield-size: @shield-size;
-    shield-fill: @shield-fill;
-    shield-halo-radius: @shield-halo-radius;
+    shield-fill: @shield-secondary-fill;
     shield-placement: line;
     shield-spacing: @shield-spacing;
     shield-min-distance: @shield-min-distance;
     shield-face-name: @shield-font;
     shield-clip: @shield-clip;
     shield-file: url("symbols/shields/secondary_[width]x[height].svg");
-    shield-halo-fill: @shield-secondary-halo-fill;
+
+    [zoom >= 16] {
+      shield-size: @shield-size-z16;
+      shield-file: url("symbols/shields/secondary_[width]x[height]_z16.svg");
+    }
+    [zoom >= 18] {
+      shield-size: @shield-size-z18;
+      shield-file: url("symbols/shields/secondary_[width]x[height]_z18.svg");
+    }
   }
 
   [highway = 'tertiary'][zoom >= 13] {
     shield-name: "[refs]";
     shield-size: @shield-size;
-    shield-fill: @shield-fill;
-    shield-halo-radius: @shield-halo-radius;
+    shield-fill: @shield-tertiary-fill;
     shield-placement: line;
     shield-spacing: @shield-spacing;
     shield-min-distance: @shield-min-distance;
     shield-face-name: @shield-font;
     shield-clip: @shield-clip;
     shield-file: url("symbols/shields/tertiary_[width]x[height].svg");
-    shield-halo-fill: @shield-tertiary-halo-fill;
+
+    [zoom >= 16] {
+      shield-size: @shield-size-z16;
+      shield-file: url("symbols/shields/tertiary_[width]x[height]_z16.svg");
+    }
+    [zoom >= 18] {
+      shield-size: @shield-size-z18;
+      shield-file: url("symbols/shields/tertiary_[width]x[height]_z18.svg");
+    }
   }
 
   [highway = 'unclassified'],
