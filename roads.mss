@@ -280,7 +280,7 @@
 @shield-size: 9;
 @shield-size-z16: 10;
 @shield-size-z18: 11;
-@shield-spacing: 750;
+@shield-spacing: 760;
 @shield-min-distance: 40;
 @shield-font: @book-fonts;
 @shield-clip: false;
