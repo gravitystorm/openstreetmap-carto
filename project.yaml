@@ -2075,22 +2075,12 @@ Layer:
           WHERE (aeroway IN ('gate', 'apron', 'helipad', 'aerodrome')
               OR tourism IN ('alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'guest_house', 'camp_site', 'caravan_site', 'theme_park', 
                              'museum', 'attraction', 'zoo', 'information', 'picnic_site')
-              OR amenity IN ('pub', 'restaurant', 'food_court', 'cafe', 'fast_food', 'biergarten', 'bar', 'library', 'theatre', 'courthouse', 
-                             'townhall', 'cinema', 'clinic', 'community_centre', 'parking', 'bicycle_parking', 'motorcycle_parking', 'police', 
-                             'fire_station', 'fountain', 'place_of_worship', 'grave_yard', 'shelter', 'bank', 'embassy', 'fuel', 'bus_station', 'prison', 
-                             'university', 'school', 'college', 'kindergarten', 'hospital', 'ice_cream', 'pharmacy', 'doctors', 'dentist', 
-                             'atm', 'bicycle_rental', 'car_rental', 'car_sharing', 'car_wash', 'post_box', 'post_office', 'recycling', 'telephone', 
-                             'emergency_phone', 'toilets', 'taxi', 'drinking_water', 'hunting_stand', 'nightclub', 'veterinary')
-              OR shop IS NOT NULL -- skip checking a huge list and use a null check
-              OR leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'sports_centre', 'stadium', 'track', 'pitch', 
-                             'playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina', 'picnic_table')
-              OR landuse IN ('reservoir', 'basin', 'recreation_ground', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery', 
-                             'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farm', 'farmland', 
-                             'greenhouse_horticulture', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 
-                             'construction', 'military')
+              OR amenity IS NOT NULL -- skip checking a huge list and use a null check
+              OR shop IS NOT NULL
+              OR leisure IS NOT NULL
+              OR landuse IS NOT NULL
               OR man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower', 'pier', 'breakwater', 'groyne')
-              OR "natural" IN ('wood', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 
-                               'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier')
+              OR "natural" IS NOT NULL
               OR place IN ('island', 'islet')
               OR military IN ('danger_area')
               OR historic IN ('memorial', 'monument', 'archaeological_site')
@@ -2237,21 +2227,14 @@ Layer:
               WHERE (aeroway IN ('gate', 'apron', 'helipad', 'aerodrome')
                   OR tourism IN ('alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'guest_house', 'camp_site', 'caravan_site', 'theme_park', 
                                  'museum', 'attraction', 'zoo', 'information', 'viewpoint', 'picnic_site')
-                  OR amenity IN ('pub', 'restaurant', 'food_court', 'cafe', 'fast_food', 'biergarten', 'bar', 'library', 'theatre', 'courthouse', 
-                                 'townhall', 'cinema', 'clinic', 'community_centre', 'parking', 'bicycle_parking', 'motorcycle_parking', 'police', 
-                                 'fire_station', 'fountain', 'place_of_worship', 'grave_yard', 'shelter', 'bank', 'embassy', 'fuel', 'bus_station', 'prison', 
-                                 'university', 'school', 'college', 'kindergarten', 'hospital', 'ice_cream', 'pharmacy', 'doctors', 'dentist', 'atm', 
-                                 'bicycle_rental', 'car_rental', 'car_sharing', 'car_wash', 'post_box', 'post_office', 'recycling', 'telephone', 
-                                 'emergency_phone', 'toilets', 'taxi', 'drinking_water', 'hunting_stand', 'nightclub', 'veterinary')
-                  OR shop IS NOT NULL -- skip checking a huge list and use a null check
-                  OR leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'sports_centre', 'stadium', 'track', 'pitch', 
-                                 'playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina', 'slipway', 'picnic_table')
+                  OR amenity IS NOT NULL -- skip checking a huge list and use a null check
+                  OR shop IS NOT NULL
+                  OR leisure IS NOT NULL
                   OR landuse IN ('reservoir', 'basin', 'recreation_ground', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 
                                  'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farm', 'farmland', 'greenhouse_horticulture', 
                                  'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'construction', 'military')
                   OR man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower', 'cross')
-                  OR "natural" IN ('wood', 'peak', 'volcano', 'saddle', 'cave_entrance', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 
-                                   'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier', 'tree')
+                  OR "natural" IS NOT NULL
                   OR place IN ('island', 'islet')
                   OR military IN ('danger_area')
                   OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross')
