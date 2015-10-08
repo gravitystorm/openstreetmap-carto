@@ -130,11 +130,6 @@
     marker-fill: @transportation-icon;
   }
 
-  [feature = 'amenity_car_sharing'][zoom >= 18] {
-    point-file: url('symbols/car_share.p.16.png');
-    point-placement: interior;
-  }
-
   [feature = 'amenity_car_rental'][zoom >= 17] {
     marker-file: url('symbols/rental_car.16.svg');
     marker-fill: @transportation-icon;
@@ -1162,17 +1157,12 @@
   }
 
   [feature = 'amenity_car_rental'][zoom >= 17],
-  [feature = 'amenity_car_sharing'][zoom >= 18],
   [feature = 'amenity_bicycle_rental'][zoom >= 17],
   [feature = 'leisure_slipway'][zoom >= 17] {
     text-name: "[name]";
-    [feature = 'amenity_car_sharing'] {
-      text-name: "[operator]";
-    }
     text-size: 9;
     text-fill: @transportation-text;
     [feature = 'amenity_car_rental']     { text-dy: 10; }
-    [feature = 'amenity_car_sharing']    { text-dy: 11; }
     [feature = 'amenity_bicycle_rental'] { text-dy: 10; }
     [feature = 'leisure_slipway']        { text-dy: 13; }
     text-face-name: @book-fonts;
