@@ -1005,8 +1005,8 @@
 }
 
 .amenity-low-priority {
-  [man_made = 'cross'][zoom >= 15],
-  [historic = 'wayside_cross'][zoom >= 15] {
+  [man_made = 'cross'][zoom >= 16],
+  [historic = 'wayside_cross'][zoom >= 16] {
     marker-file: url('symbols/christian.9.svg');
     marker-fill: #000000;
     marker-placement: interior;
