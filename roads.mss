@@ -2680,13 +2680,21 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   [highway = 'residential'] {
     [zoom >= 15] {
       text-name: "[refs]";
-      text-size: 10;
+      text-size: 8;
+
+      [zoom >= 16] {
+        text-size: 9;
+      }
+      [zoom >= 18] {
+        text-size: 10;
+      }
+
       text-fill: #000;
-      text-face-name: @bold-fonts;
-      text-min-distance: 18;
-      text-halo-radius: 1;
+      text-face-name: @book-fonts;
+      text-min-distance: 40;
+      text-halo-radius: 2;
       text-halo-fill: rgba(255,255,255,0.6);
-      text-spacing: 750;
+      text-spacing: 760;
       text-clip: false;
     }
   }
