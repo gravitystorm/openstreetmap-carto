@@ -1,5 +1,5 @@
 @station-color: #7981b0;
-@station-text: #66f;
+@station-text: darken(saturate(@station-color, 15%), 10%);
 
 .stations {
   [railway = 'subway_entrance'][zoom >= 18] {
@@ -24,7 +24,7 @@
       text-size: 9;
       text-fill: @station-text;
       text-dy: 8;
-      text-halo-radius: 1;
+      text-halo-radius: 1.5;
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: 0;
       text-placement: interior;
@@ -53,7 +53,7 @@
       text-size: 9;
       text-fill: @station-text;
       text-dy: 9;
-      text-halo-radius: 1;
+      text-halo-radius: 1.5;
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: 0;
       text-placement: interior;
@@ -77,7 +77,7 @@
       text-size: 8;
       text-fill: @station-text;
       text-dy: 8;
-      text-halo-radius: 1;
+      text-halo-radius: 1.5;
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: 0;
       text-placement: interior;
@@ -105,7 +105,7 @@
       text-size: 10;
       text-fill: @station-text;
       text-dy: 10;
-      text-halo-radius: 1;
+      text-halo-radius: 1.5;
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: 0;
       text-placement: interior;
