@@ -1442,6 +1442,27 @@ Layer:
     properties:
       minzoom: 10
     advanced: {}
+  - id: "trees"
+    name: "trees"
+    class: ""
+    geometry: "polygon"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way, "natural"
+          FROM planet_osm_point
+          WHERE "natural" = 'tree'
+        UNION ALL
+        SELECT
+            way, "natural"
+          FROM planet_osm_line
+          WHERE "natural" = 'tree_row'
+        ) AS trees
+    properties:
+      minzoom: 16
+    advanced: {}
   - id: "placenames-large"
     name: "placenames-large"
     class: "country state"
@@ -1586,27 +1607,6 @@ Layer:
         ) AS stations_poly
     properties:
       minzoom: 12
-    advanced: {}
-  - id: "trees"
-    name: "trees"
-    class: ""
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way, "natural"
-          FROM planet_osm_point
-          WHERE "natural" = 'tree'
-        UNION ALL
-        SELECT
-            way, "natural"
-          FROM planet_osm_line
-          WHERE "natural" = 'tree_row'
-        ) AS trees
-    properties:
-      minzoom: 16
     advanced: {}
   - id: "amenity-points-poly"
     name: "amenity-points-poly"
