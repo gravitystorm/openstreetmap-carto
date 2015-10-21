@@ -72,25 +72,51 @@ for name, colour in colours.iteritems():
   print "@{name}: {rgb}; // {lch}, error {delta:.1f}".format(name = name, rgb = colour.rgb(), lch = colour.lch(), delta = colour.rgb_error())
 
 # Generate colours for the shields
-shield_colour_info = ColourInfo(start_l = 65, end_l = 80, start_c = 30, end_c = 30)
+shield_colour_info = {}
+shield_colour_info["fill"] = ColourInfo(start_l = 85, end_l = 95, start_c = 12, end_c = 14)
+shield_colour_info["stroke_fill"] = ColourInfo(start_l = 70, end_l = 80, start_c = 22, end_c = 24)
+shield_colour_info["text"] = ColourInfo(start_l = 20, end_l = 25, start_c = 40, end_c = 42)
 shield_colours = OrderedDict()
 
 
-c = shield_colour_info.start_c
-delta_c = (shield_colour_info.end_c - shield_colour_info.start_c) / colour_divisions
-l = shield_colour_info.start_l
-delta_l = (shield_colour_info.end_l - shield_colour_info.start_l) / colour_divisions
+c1 = shield_colour_info["fill"].start_c
+delta_c1 = (shield_colour_info["fill"].end_c - shield_colour_info["fill"].start_c) / colour_divisions
+l1 = shield_colour_info["fill"].start_l
+delta_l1 = (shield_colour_info["fill"].end_l - shield_colour_info["fill"].start_l) / colour_divisions
+
+c2 = shield_colour_info["stroke_fill"].start_c
+delta_c2 = (shield_colour_info["stroke_fill"].end_c - shield_colour_info["stroke_fill"].start_c) / colour_divisions
+l2 = shield_colour_info["stroke_fill"].start_l
+delta_l2 = (shield_colour_info["stroke_fill"].end_l - shield_colour_info["stroke_fill"].start_l) / colour_divisions
+
+c3 = shield_colour_info["text"].start_c
+delta_c3 = (shield_colour_info["text"].end_c - shield_colour_info["text"].start_c) / colour_divisions
+l3 = shield_colour_info["text"].start_l
+delta_l3 = (shield_colour_info["text"].end_l - shield_colour_info["text"].start_l) / colour_divisions
 
 for name in road_classes:
-  shield_colours[name] = Color((l, c, hues[name]))
-  c += delta_c
-  l += delta_l
+  shield_colours[name] = {}
+  shield_colours[name]["fill"] = Color((l1, c1, hues[name]))
+  shield_colours[name]["stroke_fill"] = Color((l2, c2, hues[name]))
+  shield_colours[name]["text"] = Color((l3, c3, hues[name]))
+  c1 += delta_c1
+  l1 += delta_l1
+  c2 += delta_c2
+  l2 += delta_l2
+  c3 += delta_c3
+  l3 += delta_l3
 
-shield_colours["tertiary"] = Color((shield_colour_info.end_l, 0, 0))
+shield_colours["tertiary"] = {}
+shield_colours["tertiary"]["fill"] = Color((shield_colour_info["fill"].end_l, 0, 0))
+shield_colours["tertiary"]["stroke_fill"] = Color((shield_colour_info["stroke_fill"].end_l, 0, 0))
+shield_colours["tertiary"]["text"] = Color((shield_colour_info["text"].end_l, 0, 0))
 
 print "\n\nRoad shield information\n\n"
 for name, colour in shield_colours.iteritems():
-  print "{name}:{rgb}".format(name = name, rgb = colour.rgb())
+  print "@shield-{name}-fill: {rgb}; // {lch}, error {delta:.1f}".format(name = name, rgb = colour["text"].rgb(), lch = colour["text"].lch(), delta = colour["text"].rgb_error())
 
+print "\n"
 for name, colour in shield_colours.iteritems():
-  print "# {name}: {lch}, error {delta:.1f}".format(name = name, lch = colour.lch(), delta = colour.rgb_error())
+  # note that the two additional blanks at the beginning are intentional
+  print "  config['{name}']['fill'] = '{rgb}' # {lch}, error {delta:.1f}".format(name = name, rgb = colour["fill"].rgb(), lch = colour["fill"].lch(), delta = colour["fill"].rgb_error())
+  print "  config['{name}']['stroke_fill'] = '{rgb}' # {lch}, error {delta:.1f}".format(name = name, rgb = colour["stroke_fill"].rgb(), lch = colour["stroke_fill"].lch(), delta = colour["stroke_fill"].rgb_error())

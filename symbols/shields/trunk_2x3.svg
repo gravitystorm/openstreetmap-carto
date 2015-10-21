@@ -1,5 +1,4 @@
-<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 26.50 45.75'>
-<rect x='1.25' y='1.75' height='44' width='25.25' rx='9' fill='#da9b88'/>
-<rect x='2.75' y='3.25' height='41.0' width='22.25' rx='7.5' fill='white'/>
-<rect x='4.25' y='4.75' height='38.0' width='19.25' rx='6.0' fill='#da9b88'/>
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 21.0 33.0">
+  <rect x="0.5" y="0.5" width="20.0" height="32.0" rx="2" ry="2" id="shield" style="fill:#f2d7ce;stroke:#d7a899;stroke-width:1;"/>
 </svg>
