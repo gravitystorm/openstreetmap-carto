@@ -88,7 +88,7 @@
     point-placement: interior;
   }
 
-  [feature = 'amenity_taxi'][zoom >= 16] {
+  [feature = 'amenity_taxi'][zoom >= 17] {
     marker-file: url('symbols/taxi.16.svg');
     marker-fill: @transportation-icon;
     marker-placement: interior;
@@ -1650,7 +1650,7 @@
     text-placement: interior;
   }
 
-  [feature = 'amenity_taxi'][zoom >= 16] {
+  [feature = 'amenity_taxi'][zoom >= 17] {
     text-name: "[name]";
     text-size: 9;
     text-fill: #0066ff;
