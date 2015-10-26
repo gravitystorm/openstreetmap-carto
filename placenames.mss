@@ -18,7 +18,7 @@
 
 .state {
   [admin_level = '4'] {
-    [zoom >= 4][zoom < 5][way_pixels > 750][way_pixels < 196000],
+    [zoom >= 4][zoom < 5][way_pixels > 750],
     [zoom >= 5][way_pixels > 3000][way_pixels < 196000] {
       text-name: "[ref]";
       text-size: 9;
