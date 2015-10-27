@@ -1311,6 +1311,38 @@ Layer:
     properties:
       minzoom: 13
     advanced: {}
+  - name: "admin-very-low-zoom"
+    id: "admin-very-low-zoom"
+    class: ""
+    geometry: "linestring"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            admin_level
+          FROM planet_osm_roads l
+          WHERE boundary = 'administrative'
+            AND (admin_level IN ('0', '1', '2')
+              OR (admin_level IN ('3', '4')
+                AND EXISTS
+                  (SELECT 1
+                    FROM planet_osm_polygon p
+                    WHERE boundary = 'administrative'
+                      AND admin_level = '2'
+                      AND way_area > 9e+12
+                      AND ST_Within(ST_Centroid(l.way), p.way)
+                  )
+              )
+            )
+            AND osm_id < 0
+          ORDER BY admin_level DESC
+          ) AS admin_very_low_zoom
+    properties:
+      minzoom: 4
+      maxzoom: 4
+    advanced: {}
   - name: "admin-low-zoom"
     id: "admin-low-zoom"
     class: ""
@@ -1325,9 +1357,11 @@ Layer:
           FROM planet_osm_roads
           WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4')
+            AND osm_id < 0
           ORDER BY admin_level DESC
         ) AS admin_low_zoom
     properties:
+      minzoom: 5
       maxzoom: 10
     advanced: {}
   - id: "admin-mid-zoom"
@@ -1344,6 +1378,7 @@ Layer:
           FROM planet_osm_roads
           WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')
+            AND osm_id < 0
           ORDER BY admin_level DESC
         ) AS admin_mid_zoom
     properties:
@@ -1364,6 +1399,7 @@ Layer:
           FROM planet_osm_roads
           WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
+            AND osm_id < 0
           ORDER BY admin_level::integer DESC -- With 10 as a valid value, we need to do a numeric ordering, not a text ordering
         ) AS admin_high_zoom
     properties:
@@ -1463,6 +1499,64 @@ Layer:
     properties:
       minzoom: 16
     advanced: {}
+  - id: "placenames-large-very-low-zoom"
+    name: "placenames-large-very-low-zoom"
+    class: "country state"
+    geometry: "point"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            name,
+            ref,
+            admin_level
+          FROM planet_osm_polygon
+          WHERE boundary = 'administrative'
+            AND admin_level = '2'
+            AND name IS NOT NULL
+          ORDER BY admin_level ASC, way_area DESC
+        ) AS placenames_large_very_low_zoom
+    properties:
+      minzoom: 2
+      maxzoom: 3
+    advanced: {}
+  - id: "placenames-large-low-zoom"
+    name: "placenames-large-low-zoom"
+    class: "country state"
+    geometry: "point"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            name,
+            ref,
+            admin_level
+          FROM planet_osm_polygon o
+          WHERE boundary = 'administrative'
+            AND (admin_level IN ('0', '1', '2')
+              OR (admin_level IN ('3', '4')
+                AND EXISTS
+                  (SELECT 1
+                    FROM planet_osm_polygon i
+                    WHERE boundary = 'administrative'
+                      AND admin_level = '2'
+                      AND way_area > 9e+12
+                      AND ST_Within(ST_Centroid(o.way), i.way)
+                  )
+              )
+            )
+          ORDER BY admin_level ASC, way_area DESC
+          ) AS placenames_large_low_zoom
+    properties:
+      minzoom: 4
+      maxzoom: 4
+    advanced: {}
   - id: "placenames-large"
     name: "placenames-large"
     class: "country state"
@@ -1484,7 +1578,7 @@ Layer:
           ORDER BY admin_level ASC, way_area DESC
         ) AS placenames_large
     properties:
-      minzoom: 2
+      minzoom: 5
     advanced: {}
   - id: "placenames-medium"
     name: "placenames-medium"

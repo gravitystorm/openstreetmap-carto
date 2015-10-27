@@ -1049,6 +1049,33 @@
       "advanced": {}
     },
     {
+      "name": "admin-very-low-zoom",
+      "srs-name": "900913",
+      "geometry": "linestring",
+      "class": "",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508",
+        "table": "(SELECT\n    way,\n    admin_level\n  FROM planet_osm_roads l\n  WHERE boundary = 'administrative'\n    AND (admin_level IN ('0', '1', '2')\n      OR (admin_level IN ('3', '4')\n        AND EXISTS\n          (SELECT 1\n            FROM planet_osm_polygon p\n            WHERE boundary = 'administrative'\n              AND admin_level = '2'\n              AND way_area > 9e+12\n              AND ST_Within(ST_Centroid(l.way), p.way)\n          )\n      )\n    )\n    AND osm_id < 0\n  ORDER BY admin_level DESC\n  ) AS admin_very_low_zoom",
+        "geometry_field": "way",
+        "type": "postgis",
+        "key_field": "",
+        "dbname": "gis"
+      },
+      "extent": [
+        -180,
+        -85.05112877980659,
+        180,
+        85.05112877980659
+      ],
+      "id": "admin-very-low-zoom",
+      "properties": {
+        "maxzoom": 4,
+        "minzoom": 4
+      },
+      "advanced": {}
+    },
+    {
       "name": "admin-low-zoom",
       "srs-name": "900913",
       "geometry": "linestring",
@@ -1056,7 +1083,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    admin_level\n  FROM planet_osm_roads\n  WHERE boundary = 'administrative'\n    AND admin_level IN ('0', '1', '2', '3', '4')\n  ORDER BY admin_level DESC\n) AS admin_low_zoom",
+        "table": "(SELECT\n    way,\n    admin_level\n  FROM planet_osm_roads\n  WHERE boundary = 'administrative'\n    AND admin_level IN ('0', '1', '2', '3', '4')\n    AND osm_id < 0\n  ORDER BY admin_level DESC\n) AS admin_low_zoom",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1070,7 +1097,8 @@
       ],
       "id": "admin-low-zoom",
       "properties": {
-        "maxzoom": 10
+        "maxzoom": 10,
+        "minzoom": 5
       },
       "advanced": {}
     },
@@ -1083,7 +1111,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    admin_level\n  FROM planet_osm_roads\n  WHERE boundary = 'administrative'\n    AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')\n  ORDER BY admin_level DESC\n) AS admin_mid_zoom",
+        "table": "(SELECT\n    way,\n    admin_level\n  FROM planet_osm_roads\n  WHERE boundary = 'administrative'\n    AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')\n    AND osm_id < 0\n  ORDER BY admin_level DESC\n) AS admin_mid_zoom",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1110,7 +1138,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    admin_level\n  FROM planet_osm_roads\n  WHERE boundary = 'administrative'\n    AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')\n  ORDER BY admin_level::integer DESC -- With 10 as a valid value, we need to do a numeric ordering, not a text ordering\n) AS admin_high_zoom",
+        "table": "(SELECT\n    way,\n    admin_level\n  FROM planet_osm_roads\n  WHERE boundary = 'administrative'\n    AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')\n    AND osm_id < 0\n  ORDER BY admin_level::integer DESC -- With 10 as a valid value, we need to do a numeric ordering, not a text ordering\n) AS admin_high_zoom",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1258,6 +1286,60 @@
       "advanced": {}
     },
     {
+      "name": "placenames-large-very-low-zoom",
+      "srs-name": "900913",
+      "geometry": "point",
+      "class": "country state",
+      "id": "placenames-large-very-low-zoom",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508",
+        "table": "(SELECT\n    way,\n    way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,\n    name,\n    ref,\n    admin_level\n  FROM planet_osm_polygon\n  WHERE boundary = 'administrative'\n    AND admin_level = '2'\n    AND name IS NOT NULL\n  ORDER BY admin_level ASC, way_area DESC\n) AS placenames_large_very_low_zoom",
+        "geometry_field": "way",
+        "type": "postgis",
+        "key_field": "",
+        "dbname": "gis"
+      },
+      "extent": [
+        -180,
+        -85.05112877980659,
+        180,
+        85.05112877980659
+      ],
+      "properties": {
+        "maxzoom": 3,
+        "minzoom": 2
+      },
+      "advanced": {}
+    },
+    {
+      "name": "placenames-large-low-zoom",
+      "srs-name": "900913",
+      "geometry": "point",
+      "class": "country state",
+      "id": "placenames-large-low-zoom",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508",
+        "table": "(SELECT\n    way,\n    way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,\n    name,\n    ref,\n    admin_level\n  FROM planet_osm_polygon o\n  WHERE boundary = 'administrative'\n    AND (admin_level IN ('0', '1', '2')\n      OR (admin_level IN ('3', '4')\n        AND EXISTS\n          (SELECT 1\n            FROM planet_osm_polygon i\n            WHERE boundary = 'administrative'\n              AND admin_level = '2'\n              AND way_area > 9e+12\n              AND ST_Within(ST_Centroid(o.way), i.way)\n          )\n      )\n    )\n  ORDER BY admin_level ASC, way_area DESC\n  ) AS placenames_large_low_zoom",
+        "geometry_field": "way",
+        "type": "postgis",
+        "key_field": "",
+        "dbname": "gis"
+      },
+      "extent": [
+        -180,
+        -85.05112877980659,
+        180,
+        85.05112877980659
+      ],
+      "properties": {
+        "maxzoom": 4,
+        "minzoom": 4
+      },
+      "advanced": {}
+    },
+    {
       "name": "placenames-large",
       "srs-name": "900913",
       "geometry": "point",
@@ -1279,7 +1361,7 @@
         85.05112877980659
       ],
       "properties": {
-        "minzoom": 2
+        "minzoom": 5
       },
       "advanced": {}
     },
