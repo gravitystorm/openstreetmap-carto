@@ -618,6 +618,15 @@
     marker-clip: false;
   }
 
+  [feature = 'shop_copyshop'] {
+    [zoom >= 17] {
+      marker-file: url('symbols/copyshop-14.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @shop-icon;
+    }
+  }
+
   [feature = 'shop_cosmetics'],
   [feature = 'shop_perfumery'] {
     [zoom >= 17] {
@@ -1795,6 +1804,7 @@
   [feature = 'shop_fashion'],
   [feature = 'shop_convenience'],
   [feature = 'shop_confectionery'],
+  [feature = 'shop_copyshop'],
   [feature = 'shop_doityourself'],
   [feature = 'shop_dry_cleaning'],
   [feature = 'shop_hardware'],
