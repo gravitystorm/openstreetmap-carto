@@ -179,7 +179,7 @@
   [place = 'farm'] {
     [zoom >= 15] {
       text-name: "[name]";
-      text-size: 9;
+      text-size: 10;
       text-fill: @placenames;
       text-face-name: @book-fonts;
       text-halo-radius: 1.5;
