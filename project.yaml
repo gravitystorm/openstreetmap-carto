@@ -144,8 +144,8 @@ Layer:
               way, COALESCE(name, '') AS name,
               ('aeroway_' || (CASE WHEN aeroway IN ('apron', 'aerodrome') THEN aeroway ELSE NULL END)) AS aeroway,
               ('amenity_' || (CASE WHEN amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'university', 'college', 'school', 
-                                                    'hospital', 'kindergarten', 'grave_yard', 'prison', 'place_of_worship', 'clinic') 
-                                                    THEN amenity ELSE NULL END)) AS amenity,
+                                                    'hospital', 'kindergarten', 'grave_yard', 'prison', 'place_of_worship', 'clinic', 
+                                                    'bicycle_repair_station') THEN amenity ELSE NULL END)) AS amenity,
               ('landuse_' || (CASE WHEN landuse IN ('quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'meadow', 'grass', 
                                                     'allotments', 'forest', 'farmyard', 'farm', 'farmland', 'greenhouse_horticulture', 
                                                     'recreation_ground', 'village_green', 'retail', 'industrial', 'railway', 'commercial', 
@@ -167,7 +167,7 @@ Layer:
               OR leisure IS NOT NULL
               OR aeroway IN ('apron', 'aerodrome')
               OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'university', 'college', 'school', 'hospital', 'kindergarten', 
-                             'grave_yard', 'place_of_worship', 'prison', 'clinic')
+                             'grave_yard', 'place_of_worship', 'prison', 'clinic', 'bicycle_repair_station')
               OR military IN ('danger_area')
               OR "natural" IN ('beach', 'heath', 'mud', 'marsh', 'wetland', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub')
               OR power IN ('station', 'sub_station', 'substation', 'generator')
@@ -1628,7 +1628,7 @@ Layer:
                                                   'bicycle_parking', 'motorcycle_parking', 'pharmacy', 'doctors', 'dentist', 'place_of_worship', 
                                                   'police', 'post_box', 'post_office', 'pub', 'biergarten', 'recycling', 'restaurant', 'food_court', 
                                                   'fast_food', 'telephone', 'emergency_phone', 'taxi', 'theatre', 'toilets', 'drinking_water', 
-                                                  'prison', 'hunting_stand', 'nightclub', 'veterinary') THEN amenity ELSE NULL END, 
+                                                  'prison', 'hunting_stand', 'nightclub', 'veterinary', 'bicycle_repair_station') THEN amenity ELSE NULL END, 
               'shop_' || CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'books', 'butcher', 'clothes', 'computer', 
                                             'confectionery', 'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'florist', 
                                             'garden_centre', 'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet', 
@@ -1674,7 +1674,8 @@ Layer:
                            'townhall', 'parking', 'bicycle_parking', 'motorcycle_parking', 'pharmacy', 'doctors', 
                            'dentist', 'place_of_worship', 'police', 'post_box', 'post_office', 'pub', 'biergarten', 
                            'recycling', 'restaurant', 'food_court', 'fast_food', 'telephone', 'emergency_phone', 'taxi', 
-                           'theatre', 'toilets', 'drinking_water', 'prison', 'hunting_stand', 'nightclub', 'veterinary')
+                           'theatre', 'toilets', 'drinking_water', 'prison', 'hunting_stand', 'nightclub', 'veterinary',
+                           'bicycle_repair_station')
             OR shop IS NOT NULL -- skip checking a huge list and use a null check
             OR leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table')
             OR man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill')
@@ -1707,7 +1708,7 @@ Layer:
                                                   'bicycle_parking', 'motorcycle_parking', 'pharmacy', 'doctors', 'dentist', 'place_of_worship', 
                                                   'police', 'post_box', 'post_office', 'pub', 'biergarten', 'recycling', 'restaurant', 'food_court', 
                                                   'fast_food', 'telephone', 'emergency_phone', 'taxi', 'theatre', 'toilets', 'drinking_water', 
-                                                  'prison', 'hunting_stand', 'nightclub', 'veterinary') THEN amenity ELSE NULL END,
+                                                  'prison', 'hunting_stand', 'nightclub', 'veterinary', 'bicycle_repair_station') THEN amenity ELSE NULL END,
               'shop_' || CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'books', 'butcher', 'clothes', 'computer', 'confectionery', 
                                             'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'florist', 'garden_centre', 
                                             'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet', 'photo', 'photo_studio', 
@@ -1763,7 +1764,7 @@ Layer:
                            'dentist', 'place_of_worship', 'police', 'post_box', 'post_office', 'pub', 'biergarten', 
                            'recycling', 'restaurant', 'food_court', 'fast_food', 'telephone', 'emergency_phone', 
                            'taxi', 'theatre', 'toilets', 'drinking_water', 'prison', 'hunting_stand', 'nightclub', 
-                           'veterinary')
+                           'veterinary', 'bicycle_repair_station')
             OR shop IS NOT NULL -- skip checking a huge list and use a null check
             OR leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'slipway')
             OR man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill', 'cross')
@@ -2024,7 +2025,7 @@ Layer:
                                                   'school', 'college', 'kindergarten', 'hospital', 'ice_cream', 'pharmacy', 'doctors', 'dentist', 
                                                   'atm', 'bicycle_rental', 'car_rental', 'car_wash', 'post_box', 'post_office',
                                                   'recycling', 'telephone', 'emergency_phone', 'toilets', 'taxi', 'drinking_water', 'hunting_stand', 
-                                                  'nightclub', 'veterinary') THEN amenity ELSE NULL END,
+                                                  'nightclub', 'veterinary', 'bicycle_repair_station') THEN amenity ELSE NULL END,
               'shop_' || CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'books', 'butcher', 'clothes', 'computer', 'confectionery', 
                                             'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'florist', 'garden_centre', 
                                             'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet', 'photo', 'photo_studio', 
@@ -2163,7 +2164,8 @@ Layer:
                                                       'embassy', 'fuel', 'bus_station', 'prison', 'university', 'school', 'college', 'kindergarten', 'hospital', 
                                                       'ice_cream', 'pharmacy', 'doctors', 'dentist', 'atm', 'bicycle_rental', 'car_rental',
                                                       'car_wash', 'post_box', 'post_office', 'recycling', 'telephone', 'emergency_phone', 'toilets', 'taxi', 
-                                                      'drinking_water', 'hunting_stand', 'nightclub', 'veterinary') THEN amenity ELSE NULL END,
+                                                      'drinking_water', 'hunting_stand', 'nightclub', 'veterinary', 'bicycle_repair_station') 
+                                                      THEN amenity ELSE NULL END,
                   'shop_' || CASE WHEN shop IN ('supermarket', 'bag','bakery', 'beauty', 'books', 'butcher', 'clothes', 'computer', 'confectionery', 'fashion', 
                                                 'convenience', 'department_store', 'doityourself', 'hardware', 'florist', 'garden_centre', 'hairdresser', 
                                                 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet', 'photo', 'photo_studio', 'photography', 
@@ -2444,7 +2446,7 @@ Layer:
           WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'block')
              OR highway IN ('mini_roundabout')
              OR railway = 'level_crossing'
-             OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'bench', 'waste_basket')
+             OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'bench', 'waste_basket', 'bicycle_repair_station')
              OR historic = 'wayside_cross'
              OR man_made = 'cross'
           ORDER BY prio
@@ -2474,7 +2476,7 @@ Layer:
           WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'block')
              OR highway IN ('mini_roundabout')
              OR railway = 'level_crossing'
-                 OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking')
+                 OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'bicycle_repair_station')
           ) AS amenity_low_priority_poly
     properties:
       minzoom: 14
