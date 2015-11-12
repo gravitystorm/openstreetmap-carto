@@ -1,7 +1,7 @@
 /* For the main linear features, such as roads and railways. */
 
 //road colors for major roads were generated with scripts/generate_road_colors.py
-@motorway-fill: #e892a2; // Lch(70,35,10), error 0.5
+@motorway-fill: #b45657; // Lch(70,35,10), error 0.5
 @trunk-fill: #f9b29c; // Lch(79,33,42), error 0.7
 @primary-fill: #fcd6a4; // Lch(88,31,74), error 1.7
 @secondary-fill: #f7fabf; // Lch(97,29,106), error 1.7
@@ -22,13 +22,13 @@
 @taxiway-fill: @aeroway-fill;
 @helipad-fill: @aeroway-fill;
 
-@motorway-low-zoom: #e66e89; // Lch(62,50,10), error 0.7
+@motorway-low-zoom: #b45657; // Lch(62,50,10), error 0.7
 @trunk-low-zoom: #fa9476; // Lch(72,50,42), error 0.8
 @primary-low-zoom: #f8c171; // Lch(82,50,74), error 2.1
 @secondary-low-zoom: #e6ef89; // Lch(92,50,106), error 2.2
 
 @default-casing: white;
-@motorway-casing: #dc2a67; // Lch(50,70,10), error 1.1
+@motorway-casing: #a3191a; // Lch(50,70,10), error 1.1
 @trunk-casing: #c84e2f; // Lch(50,65,42), error 0.7
 @primary-casing: #a06b00; // Lch(50,60,74), error 1.6
 @secondary-casing: #707d05; // Lch(50,55,106), error 1.9
@@ -45,7 +45,7 @@
 @bridleway-casing: @default-casing;
 @track-casing: @default-casing;
 
-@motorway-low-zoom-casing: #c24e6b; // Lch(50,50,10), error 0.8
+@motorway-low-zoom-casing: #a3191a; // Lch(50,50,10), error 0.8
 @trunk-low-zoom-casing: #cf6649; // Lch(56,55,42), error 0.9
 @primary-low-zoom-casing: #c38a27; // Lch(62,60,74), error 2.1
 @secondary-low-zoom-casing: #9eae23; // Lch(68,65,106), error 2.3
