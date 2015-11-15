@@ -2096,7 +2096,7 @@ Layer:
     advanced: {}
   - id: "text-line"
     name: "text-line"
-    class: "text"
+    class: ""
     geometry: "linestring"
     <<: *extents
     Datasource:

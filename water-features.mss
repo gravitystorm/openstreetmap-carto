@@ -114,7 +114,8 @@
   }
 }
 
-.text {
+.text,
+#text-line {
   [feature = 'waterway_dam'],
   [feature = 'waterway_weir'] {
     #text-poly[zoom >= 15],
