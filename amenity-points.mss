@@ -60,6 +60,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_bicycle_repair_station'][zoom >= 18] {
+    marker-file: url('symbols/bicycle_repair-14.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'highway_bus_stop'] {
     [zoom >= 16] {
       marker-file: url('symbols/square.svg');
