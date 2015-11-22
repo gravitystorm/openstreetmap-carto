@@ -1333,6 +1333,7 @@ Layer:
                       AND admin_level = '2'
                       AND way_area > 9e+12
                       AND ST_Within(ST_Centroid(l.way), p.way)
+                      AND osm_id < 0
                   )
               )
             )
@@ -1517,6 +1518,7 @@ Layer:
           WHERE boundary = 'administrative'
             AND admin_level = '2'
             AND name IS NOT NULL
+            AND way_area > 100*!pixel_width!::real*!pixel_height!::real -- Conditions in the MSS filter this down even more
           ORDER BY admin_level ASC, way_area DESC
         ) AS placenames_large_very_low_zoom
     properties:
@@ -1548,11 +1550,13 @@ Layer:
                       AND admin_level = '2'
                       AND way_area > 9e+12
                       AND ST_Within(ST_Centroid(o.way), i.way)
+                      AND osm_id < 0
                   )
               )
             )
+            AND way_area > 100*!pixel_width!::real*!pixel_height!::real -- Conditions in the MSS filter this down even more
           ORDER BY admin_level ASC, way_area DESC
-          ) AS placenames_large_low_zoom
+        ) AS placenames_large_low_zoom
     properties:
       minzoom: 4
       maxzoom: 4
@@ -1575,6 +1579,7 @@ Layer:
           WHERE boundary = 'administrative'
             AND admin_level IN ('2', '4')
             AND name IS NOT NULL
+            AND way_area > 100*!pixel_width!::real*!pixel_height!::real -- Conditions in the MSS filter this down even more
           ORDER BY admin_level ASC, way_area DESC
         ) AS placenames_large
     properties:
