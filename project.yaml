@@ -1332,7 +1332,7 @@ Layer:
                     WHERE boundary = 'administrative'
                       AND admin_level = '2'
                       AND way_area > 9e+12
-                      AND ST_Within(ST_Centroid(l.way), p.way)
+                      AND ST_Within(l.way, p.way)
                       AND osm_id < 0
                   )
               )
@@ -1549,7 +1549,7 @@ Layer:
                     WHERE boundary = 'administrative'
                       AND admin_level = '2'
                       AND way_area > 9e+12
-                      AND ST_Within(ST_Centroid(o.way), i.way)
+                      AND ST_Within(o.way, i.way)
                       AND osm_id < 0
                   )
               )
