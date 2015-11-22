@@ -107,8 +107,8 @@
 @trunk-width-z13:                 6;
 @primary-width-z13:               5;
 @secondary-width-z13:             5;
-@tertiary-width-z13:              5;
-@residential-width-z13:           3;
+@tertiary-width-z13:              4;
+@residential-width-z13:           2.5;
 @living-street-width-z13:         2;
 @pedestrian-width-z13:            2;
 @bridleway-width-z13:             0.3;
