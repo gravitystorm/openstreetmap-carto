@@ -1,18 +1,38 @@
 @placenames: #222;
 @placenames-light: #777777;
+@country-labels: darken(@admin-boundaries, 15%);
+@state-labels: desaturate(darken(@admin-boundaries, 5%), 20%);
 
 .country {
-  [admin_level = '2'][zoom >= 2][way_pixels > 3000][way_pixels < 196000] {
+  [admin_level = '2'][zoom >= 3][way_pixels > 1000][way_pixels < 360000] {
     text-name: "[name]";
     text-size: 9;
-    text-fill: #9d6c9d;
-    text-face-name: @book-fonts;
-    text-halo-radius: 1.5;
-    text-wrap-width: 50;
-    text-placement: interior;
-    [zoom >= 4] {
+
+    [zoom >= 3] {
       text-size: 10;
     }
+    [zoom >= 4] {
+      text-size: 11;
+    }
+    [zoom >= 5] {
+      text-size: 12;
+    }
+    [zoom >= 7] {
+      text-size: 13;
+    }
+    [zoom >= 10] {
+      text-size: 14;
+    }
+
+    text-fill: @country-labels;
+    text-face-name: @book-fonts;
+    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-radius: 1.5;
+    text-wrap-width: 35;
+    text-placement: interior;
+    text-character-spacing: 0.5;
+    text-min-distance: 3;
+    text-line-spacing: 1;
   }
 }
 
@@ -22,18 +42,20 @@
     [zoom >= 5][way_pixels > 3000][way_pixels < 196000] {
       text-name: "[ref]";
       text-size: 9;
-      text-fill: #9d6c9d;
+      text-fill: @state-labels;
       text-face-name: @oblique-fonts;
+      text-halo-fill: rgba(255,255,255,0.6);
       text-halo-radius: 1.5;
       text-wrap-width: 0;
       text-placement: interior;
+      text-min-distance: 3;
       [zoom >= 5] {
         text-name: "[name]";
-        text-wrap-width: 50;
+        text-wrap-width: 30;
       }
       [zoom >= 7] {
         text-size: 11;
-        text-wrap-width: 70;
+        text-wrap-width: 50;
       }
     }
   }
@@ -41,7 +63,6 @@
 
 #placenames-medium::high-importance {
   [category = 1][zoom < 14] {
-    [zoom >= 3][score >= 5000000],
     [zoom >= 4][score >= 3000000],
     [zoom >= 5][score >= 400000] {
       text-name: "[name]";
