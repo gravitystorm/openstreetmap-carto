@@ -951,27 +951,6 @@
     marker-fill: @transportation-icon;
   }
 
-  [feature = 'natural_peak'][zoom >= 11] {
-    marker-file: url('symbols/peak.svg');
-    marker-fill: @landform-color;
-    marker-placement: interior;
-    marker-clip: false;
-  }
-
-  [feature = 'natural_volcano'][zoom >= 11] {
-    marker-file: url('symbols/peak.svg');
-    marker-fill: #d40000;
-    marker-placement: interior;
-    marker-clip: false;
-  }
-
-  [feature = 'natural_saddle'][zoom >= 15] {
-    marker-file: url('symbols/saddle.svg');
-    marker-fill: @landform-color;
-    marker-placement: interior;
-    marker-clip: false;
-  }
-
   [feature = 'natural_cave_entrance'][zoom >= 15] {
     point-file: url('symbols/poi_cave.p.16.png');
     point-placement: interior;
@@ -1237,21 +1216,53 @@
     text-placement: interior;
   }
 
-  [feature = 'natural_peak'][zoom >= 13],
-  [feature = 'natural_volcano'][zoom >= 13],
-  [feature = 'natural_saddle'][zoom >= 15],
   [feature = 'tourism_viewpoint'][zoom >= 16] {
     text-name: "[name]";
     text-size: 10;
     text-fill: darken(@landform-color, 30%);
-    [feature = 'natural_volcano'] { text-fill: #d40000; }
-    text-dy: 7;
-    [feature = 'tourism_viewpoint'] { text-dy: 11; }
+    text-dy: 11;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
+  }
+
+  [feature = 'natural_peak'][zoom >= 11],
+  [feature = 'natural_volcano'][zoom >= 11],
+  [feature = 'natural_saddle'][zoom >= 13] {
+    [feature = 'natural_peak'] {
+      shield-file: url('symbols/peak.svg');
+    }
+    [feature = 'natural_volcano'] {
+      shield-file: url('symbols/volcano.svg');
+    }
+    [feature = 'natural_saddle'] {
+      shield-file: url('symbols/saddle.svg');
+    }
+    shield-name: '[name]';
+    shield-face-name: @book-fonts;
+    shield-fill: darken(@landform-color, 30%);
+    [feature = 'natural_volcano'] {
+      shield-fill: #d40000;
+    }
+    shield-size: 9;
+    shield-text-dy: 7;
+    shield-text-dx: 8;
+
+    [zoom >= 13] {
+      shield-size: 10;
+      shield-text-dy: 8;
+      shield-text-dx: 9;
+    }
+    shield-min-distance: 50;
+    shield-wrap-width: @standard-wrap-width;
+    shield-halo-fill: rgba(255,255,255,0.6);
+    shield-halo-radius: 1;
+    shield-placement-type: simple;
+    shield-placements: 'S,E,W';
+    shield-unlock-image: true;
+    shield-min-padding: 1;
   }
 
   [feature = 'man_made_cross'][zoom >= 17],

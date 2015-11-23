@@ -4,5 +4,5 @@
    version="1.1"
    width="8"
    height="8">
-	<path d="M 0,3 0,8 8,8 8,3 4,5 z" />
+	<path d="M 0,3 0,8 8,8 8,3 4,5 z" style="fill: #d08f55; fill-opacity: 1;" />
 </svg>
