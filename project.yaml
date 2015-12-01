@@ -1314,7 +1314,7 @@ Layer:
   - name: "admin-low-zoom"
     id: "admin-low-zoom"
     class: ""
-    geometry: "linestring"
+    geometry: "polygon"
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1322,7 +1322,7 @@ Layer:
         (SELECT
             way,
             admin_level
-          FROM planet_osm_roads
+          FROM planet_osm_polygon
           WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4')
           ORDER BY admin_level DESC
@@ -1333,7 +1333,7 @@ Layer:
   - id: "admin-mid-zoom"
     name: "admin-mid-zoom"
     class: ""
-    geometry: "linestring"
+    geometry: "polygon"
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1341,7 +1341,7 @@ Layer:
         (SELECT
             way,
             admin_level
-          FROM planet_osm_roads
+          FROM planet_osm_polygon
           WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')
           ORDER BY admin_level DESC
@@ -1353,7 +1353,7 @@ Layer:
   - id: "admin-high-zoom"
     name: "admin-high-zoom"
     class: ""
-    geometry: "linestring"
+    geometry: "polygon"
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1361,7 +1361,7 @@ Layer:
         (SELECT
             way,
             admin_level
-          FROM planet_osm_roads
+          FROM planet_osm_polygon
           WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
           ORDER BY admin_level::integer DESC -- With 10 as a valid value, we need to do a numeric ordering, not a text ordering
