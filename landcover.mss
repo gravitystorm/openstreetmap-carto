@@ -591,7 +591,9 @@
         polygon-pattern-alignment: global;
       }
       [surface = 'gravel'],
-      [surface = 'peeples'],
+      [surface = 'fine_gravel'],
+      [surface = 'pebbles'],
+      [surface = 'pebblestone'],
       [surface = 'shingle'],
       [surface = 'stones'],
       [surface = 'shells'] {
