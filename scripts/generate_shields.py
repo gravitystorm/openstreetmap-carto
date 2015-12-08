@@ -3,7 +3,7 @@
 # generate highway shields
 
 from __future__ import print_function
-import copy, lxml.etree, math, os
+import copy, lxml.etree, math, os, re, colorsys
 
 def main():
 
@@ -108,9 +108,9 @@ def main():
 
           stroke = ''
           if vars['stroke_width'] > 0:
-            stroke = 'stroke:' + vars['stroke_fill'] + ';stroke-width:' + str(vars['stroke_width']) + ';'
+            stroke = 'stroke:' + parseColor(vars['stroke_fill']) + ';stroke-width:' + str(vars['stroke_width']) + ';'
 
-          shield.set('style', 'fill:' + vars['fill'] + ';' + stroke)
+          shield.set('style', 'fill:' + parseColor(vars['fill']) + ';' + stroke)
 
           svg.append(shield)
 
@@ -128,5 +128,34 @@ def main():
           except IOError:
             print('Could not save file ' + filename + '.')
             continue
+  return
+
+# parse rgb, hex and hsl color definitions, return hex color or None on error
+def parseColor(color):
+  parsed_color = None
+  if re.match('^#[0-9a-f]{6}$', color) != None:
+    parsed_color = color
+  rgb_match = re.search('^rgb\(([0-9]{1,3}),\s*([0-9]{1,3}),\s*([0-9]{1,3})\)$', color)
+  if rgb_match is not None:
+    try:
+      r = int(rgb_match.group(1))
+      g = int(rgb_match.group(2))
+      b = int(rgb_match.group(3))
+      parsed_color = '#'+("%x" % r)+("%x" % g)+("%x" % b)
+    except ValueError:
+      pass
+  else:
+    hsl_match = re.search('^hsl\(([0-9]{1,3}(\.[0-9]*)?),\s*([0-9]{1,3}(\.[0-9]*)?)\%,\s*([0-9]{1,3}(\.[0-9]*)?)\%\)$', color)
+    if hsl_match is not None:
+      try:
+        h = float(hsl_match.group(1)) / 365
+        s = float(hsl_match.group(3)) / 100
+        l = float(hsl_match.group(5)) / 100
+        (r, g, b) = colorsys.hls_to_rgb(h, l, s)
+        parsed_color = '#'+("%x" % (r * 255))+("%x" % (g * 255))+("%x" % (b * 255))
+      except ValueError:
+        pass
+
+  return parsed_color
 
 if __name__ == "__main__": main()
