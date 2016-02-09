@@ -877,6 +877,13 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_sports'][zoom >= 17] {
+    marker-file: url('symbols/sports-14.svg');
+    marker-fill: @shop-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'shop_stationery'][zoom >= 17] {
     marker-file: url('symbols/stationery-14.svg');
     marker-placement: interior;
@@ -1882,6 +1889,7 @@
   [feature = 'shop_toys'],
   [feature = 'shop_travel_agency'],
   [feature = 'shop_seafood'],
+  [feature = 'shop_sports'],
   [feature = 'shop_stationery'],
   [feature = 'shop_variety_store'],
   [feature = 'shop_wine'],
