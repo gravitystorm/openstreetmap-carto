@@ -665,10 +665,12 @@ Layer:
         (SELECT
             way, barrier
           FROM planet_osm_line
-          WHERE barrier IS NOT NULL
+          WHERE barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
+                  'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall')
+            AND (waterway IS NULL OR waterway NOT IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi'))
         ) AS line_barriers
     properties:
-      minzoom: 16
+      minzoom: 14
     advanced: {}
   - id: "cliffs"
     name: "cliffs"
