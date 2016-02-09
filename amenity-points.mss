@@ -1486,6 +1486,8 @@
   [feature = 'natural_heath'],
   [feature = 'natural_scrub'],
   [feature = 'natural_beach'],
+  [feature = 'natural_shoal'],
+  [feature = 'natural_reef'],
   [feature = 'leisure_sports_centre'],
   [feature = 'leisure_stadium'],
   [feature = 'leisure_track'],
@@ -1509,6 +1511,7 @@
       text-halo-radius: 1;
       text-halo-fill: rgba(255,255,255,0.6);
       text-placement: interior;
+      [feature = 'natural_reef'],
       [feature = 'natural_wetland'],
       [feature = 'natural_marsh'],
       [feature = 'natural_mud'] {
@@ -1594,7 +1597,8 @@
       [feature = 'natural_scrub'] {
         text-fill: darken(@scrub, 60%);
       }
-      [feature = 'natural_beach'] {
+      [feature = 'natural_beach'],
+      [feature = 'natural_shoal'] {
         text-fill: darken(@beach, 60%);
       }
       [feature = 'leisure_sports_centre'],
