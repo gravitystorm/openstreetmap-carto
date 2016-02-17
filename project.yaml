@@ -508,11 +508,12 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
-                CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 
-                                      'grass_paver', 'gravel', 'ground', 'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay') THEN 'unpaved' ELSE 
-                  CASE WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes', 
-                                        'concrete:plates', 'paving_stones', 'metal', 'wood') THEN 'paved' 
-                  ELSE null END END AS int_surface,
+                CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
+                                      'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay') THEN 'unpaved'
+                  WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
+                                      'concrete:plates', 'paving_stones', 'metal', 'wood') THEN 'paved'
+                  ELSE NULL
+                END AS int_surface,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
@@ -792,11 +793,12 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
-                CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 
-                                      'grass_paver', 'gravel', 'ground', 'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay') THEN 'unpaved' ELSE 
-                  CASE WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes', 
-                                        'concrete:plates', 'paving_stones', 'metal', 'wood') THEN 'paved' 
-                  ELSE null END END AS int_surface,
+                CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
+                                      'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay') THEN 'unpaved'
+                  WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
+                                      'concrete:plates', 'paving_stones', 'metal', 'wood') THEN 'paved'
+                  ELSE NULL
+                END AS int_surface,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
@@ -938,23 +940,40 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
+      # This is one of the most complex layers, so it bears explaining in some detail
+      # It is necessary to
+      # - Have roads and railways in the same layer to get ordering right
+      # - Return two linestrings for ways which are both a road and railway
+      # - Compute z_order here, rather than rely on osm2pgsql z_order
       table: |-
-        (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
-                horse, foot, bicycle, tracktype, int_surface, access, construction,
-                service, oneway, link, layernotnull
-          FROM ( -- subselect that contains both roads and rail/aero
+        (SELECT
+            way,
+            (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
+            horse,
+            foot,
+            bicycle,
+            tracktype,
+            int_surface,
+            access,
+            construction,
+            service,
+            oneway,
+            link,
+            layernotnull
+          FROM ( -- begin "features" subselect that contains both roads and rail/aero
             SELECT
                 way,
-                ('highway_' || highway) AS feature, --only motorway to tertiary links are accepted later on
+                ('highway_' || highway) AS feature, -- only motorway to tertiary links are accepted later on
                 horse,
                 foot,
                 bicycle,
                 tracktype,
-                CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground', 
-                                      'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay') THEN 'unpaved' ELSE 
-                  CASE WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes', 
-                                        'concrete:plates', 'paving_stones', 'metal', 'wood') THEN 'paved' 
-                  ELSE null END END AS int_surface,
+                CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
+                                      'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay') THEN 'unpaved'
+                  WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
+                                      'concrete:plates', 'paving_stones', 'metal', 'wood') THEN 'paved'
+                  ELSE NULL
+                END AS int_surface,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
@@ -992,7 +1011,7 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
-                'null',
+                'null' AS surface, -- Should be a SQL NULL?
                 CASE
                   WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
@@ -1129,11 +1148,12 @@ Layer:
             ) AS feature,
             CASE WHEN tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes' THEN 'yes' ELSE 'no' END AS int_tunnel,
             CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link,
-                CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground', 
-                                      'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay') THEN 'unpaved' ELSE 
-                  CASE WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes', 
-                                        'concrete:plates', 'paving_stones', 'metal', 'wood') THEN 'paved' 
-                  ELSE null END END AS int_surface
+            CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
+                                  'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay') THEN 'unpaved'
+              WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
+                                  'concrete:plates', 'paving_stones', 'metal', 'wood') THEN 'paved'
+              ELSE NULL
+            END AS int_surface
           FROM planet_osm_roads
           WHERE highway IS NOT NULL
             OR (railway IS NOT NULL AND railway != 'preserved'
@@ -1186,11 +1206,12 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
-                CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 
-                                      'ground', 'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay') THEN 'unpaved' ELSE 
-                  CASE WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 
-                                        'concrete:lanes', 'concrete:plates', 'paving_stones', 'metal', 'wood') THEN 'paved' 
-                  ELSE null END END AS int_surface,
+                CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
+                                      'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay') THEN 'unpaved'
+                  WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
+                                      'concrete:plates', 'paving_stones', 'metal', 'wood') THEN 'paved'
+                  ELSE NULL
+                END AS int_surface,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
