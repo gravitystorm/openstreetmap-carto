@@ -987,8 +987,9 @@
   }
 
   [feature = 'natural_cave_entrance'][zoom >= 15] {
-    point-file: url('symbols/poi_cave.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/cave.14.svg');
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'natural_spring'][zoom >= 14] {
