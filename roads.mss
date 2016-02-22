@@ -3047,6 +3047,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         [feature = 'highway_footway'],
         [feature = 'highway_path'] {
           marker-fill: @footway-oneway-arrow-color;
+          [horse = 'designated'] {
+            marker-fill: @bridleway-oneway-arrow-color;
+          }
+          [bicycle = 'designated'] {
+            marker-fill: @cycleway-oneway-arrow-color;
+          }
         }
         [feature = 'highway_steps'] {
           marker-fill: @steps-oneway-arrow-color;
