@@ -1345,7 +1345,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    name,\n    railway,\n    aerialway,\n    disused,\n    CASE railway \n      WHEN 'station' THEN 1 \n      WHEN 'subway_entrance' THEN 3\n      ELSE 2\n    END\n      AS prio\n  FROM planet_osm_point\n  WHERE railway IN ('station', 'halt', 'tram_stop', 'subway_entrance')\n    OR aerialway = 'station'\n  ORDER BY prio\n) AS stations",
+        "table": "(SELECT\n    way,\n    name,\n    railway,\n    aerialway,\n    CASE railway \n      WHEN 'station' THEN 1 \n      WHEN 'subway_entrance' THEN 3\n      ELSE 2\n    END\n      AS prio\n  FROM planet_osm_point\n  WHERE railway IN ('station', 'halt', 'tram_stop', 'subway_entrance')\n    OR aerialway = 'station'\n  ORDER BY prio\n) AS stations",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1371,7 +1371,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    name,\n    railway,\n    aerialway,\n    disused\nFROM planet_osm_polygon\nWHERE railway IN ('station', 'halt', 'tram_stop')\n  OR aerialway = 'station'\n) AS stations_poly",
+        "table": "(SELECT\n    way,\n    name,\n    railway,\n    aerialway\nFROM planet_osm_polygon\nWHERE railway IN ('station', 'halt', 'tram_stop')\n  OR aerialway = 'station'\n) AS stations_poly",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",

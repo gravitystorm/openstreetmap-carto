@@ -1577,7 +1577,6 @@ Layer:
             name,
             railway,
             aerialway,
-            disused,
             CASE railway 
               WHEN 'station' THEN 1 
               WHEN 'subway_entrance' THEN 3
@@ -1604,8 +1603,7 @@ Layer:
             way,
             name,
             railway,
-            aerialway,
-            disused
+            aerialway
         FROM planet_osm_polygon
         WHERE railway IN ('station', 'halt', 'tram_stop')
           OR aerialway = 'station'
