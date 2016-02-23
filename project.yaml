@@ -2448,7 +2448,7 @@ Layer:
             name,
             CASE WHEN amenity='waste_basket' THEN 2 ELSE 1 END AS prio
           FROM planet_osm_point p
-          WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'block')
+          WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block')
              OR highway IN ('mini_roundabout')
              OR railway = 'level_crossing'
              OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'bench', 'waste_basket')
@@ -2478,7 +2478,7 @@ Layer:
             access,
             name
           FROM planet_osm_polygon
-          WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'block')
+          WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block')
              OR highway IN ('mini_roundabout')
              OR railway = 'level_crossing'
                  OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking')
