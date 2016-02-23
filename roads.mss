@@ -2055,6 +2055,54 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
   }
+
+  /* area fills */
+  ['mapnik::geometry_type' = 3] {
+    [feature = 'highway_living_street'][zoom >= 14] {
+      polygon-fill: @living-street-fill;
+    }
+
+    [feature = 'highway_residential'],
+    [feature = 'highway_unclassified'],
+    [feature = 'highway_service'] {
+      [zoom >= 14] {
+        polygon-fill: #fff;
+      }
+    }
+
+    [feature = 'highway_pedestrian'],
+    [feature = 'highway_footway'],
+    [feature = 'highway_cycleway'],
+    [feature = 'highway_path'] {
+      [zoom >= 14] {
+        polygon-fill: @pedestrian-fill;
+      }
+    }
+
+    [feature = 'highway_track'][zoom >= 14] {
+      polygon-fill: #cdbea0;
+    }
+
+    [feature = 'highway_platform'],
+    [feature = 'railway_platform'] {
+      [zoom >= 16] {
+        polygon-fill: #bbbbbb;
+        polygon-gamma: 0.65;
+      }
+    }
+
+    [feature = 'aeroway_runway'][zoom >= 11] {
+      polygon-fill: @runway-fill;
+    }
+
+    [feature = 'aeroway_taxiway'][zoom >= 13] {
+      polygon-fill: @taxiway-fill;
+    }
+
+    [feature = 'aeroway_helipad'][zoom >= 16] {
+      polygon-fill: @helipad-fill;
+    }
+  }
 }
 
 #turning-circle-casing {
@@ -2324,53 +2372,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       line-cap: round;
       line-join: round;
     }
-  }
-}
-
-#highway-area-fill {
-  [feature = 'highway_living_street'][zoom >= 14] {
-    polygon-fill: @living-street-fill;
-  }
-
-  [feature = 'highway_residential'],
-  [feature = 'highway_unclassified'],
-  [feature = 'highway_service'] {
-    [zoom >= 14] {
-      polygon-fill: #fff;
-    }
-  }
-
-  [feature = 'highway_pedestrian'],
-  [feature = 'highway_footway'],
-  [feature = 'highway_cycleway'],
-  [feature = 'highway_path'] {
-    [zoom >= 14] {
-      polygon-fill: @pedestrian-fill;
-    }
-  }
-
-  [feature = 'highway_track'][zoom >= 14] {
-    polygon-fill: #cdbea0;
-  }
-
-  [feature = 'highway_platform'],
-  [feature = 'railway_platform'] {
-    [zoom >= 16] {
-      polygon-fill: #bbbbbb;
-      polygon-gamma: 0.65;
-    }
-  }
-
-  [feature = 'aeroway_runway'][zoom >= 11] {
-    polygon-fill: @runway-fill;
-  }
-
-  [feature = 'aeroway_taxiway'][zoom >= 13] {
-    polygon-fill: @taxiway-fill;
-  }
-
-  [feature = 'aeroway_helipad'][zoom >= 16] {
-    polygon-fill: @helipad-fill;
   }
 }
 
