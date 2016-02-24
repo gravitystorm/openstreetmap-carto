@@ -28,8 +28,10 @@
   }
 
   [feature = 'amenity_shelter'][zoom >= 16] {
-    point-file: url('symbols/shelter2.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/shelter-14.svg');
+    marker-fill: @transportation-icon;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_atm'][zoom >= 17] {
