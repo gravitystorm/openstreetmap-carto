@@ -1073,7 +1073,8 @@
     }
   }
 
-  [barrier = 'lift_gate'][zoom >= 16]::barrier {
+  [barrier = 'lift_gate'][zoom >= 16]::barrier,
+  [barrier = 'swing_gate'][zoom >= 16]::barrier {
     marker-file: url('symbols/liftgate.svg');
     marker-fill: #3f3f3f;
     marker-placement: interior;
