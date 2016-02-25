@@ -247,8 +247,10 @@
   }
 
   [feature = 'tourism_information'][zoom >= 17] {
-    point-file: url('symbols/information.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/information.12.svg');
+    marker-placement: interior;
+    marker-fill: @amenity-brown;
+    marker-clip: false;
   }
 
   [feature = 'amenity_embassy'][zoom >= 17] {
