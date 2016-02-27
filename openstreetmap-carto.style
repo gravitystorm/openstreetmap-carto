@@ -24,6 +24,7 @@ node,way   denomination text         linear
 node       ele          text         linear
 node,way   foot         text         linear
 node,way   generator:source    text  linear
+node,way   harbour      text         phstore
 node,way   highway      text         linear
 node,way   historic     text         polygon
 node,way   horse        text         linear
