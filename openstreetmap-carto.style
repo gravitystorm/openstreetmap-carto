@@ -46,16 +46,19 @@ node,way   place        text         polygon
 node,way   population   text         linear
 node,way   power        text         polygon
 node,way   power_source text         linear
+node,way   public_transport text     phstore
 node,way   railway      text         linear
 node,way   ref          text         linear
 node,way   religion     text         nocache
 node,way   route        text         linear
 node,way   service      text         linear
 node,way   shop         text         polygon
+node,way   sport        text         phstore
 node,way   surface      text         linear
 node,way   tourism      text         polygon
 way        tracktype    text         linear
 node,way   tunnel       text         linear
+node,way   water        text         phstore
 node,way   waterway     text         polygon
 node,way   wetland      text         polygon
 node,way   z_order      int4         linear # This is calculated during import
