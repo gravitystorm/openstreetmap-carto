@@ -25,7 +25,9 @@ To download the shapefiles you can run the following script from this directory.
 You can also download them manually at the following paths:
 
 * [`simplified-land-polygons.shp`](http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip) (updated daily)
+* [`simplified-water-polygons.shp`](http://data.openstreetmapdata.com/simplified-water-polygons-complete-3857.zip) (updated daily)
 * [`land-polygon.shp`](http://data.openstreetmapdata.com/land-polygons-split-3857.zip) (updated daily)
+* [`water-polygon.shp`](http://data.openstreetmapdata.com/water-polygons-split-3857.zip) (updated daily)
 * [`builtup_area.shp`](http://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz)
 * [`ne_110m_admin_0_boundary_lines_land.shp`](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip)
 

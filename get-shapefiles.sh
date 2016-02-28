@@ -28,6 +28,18 @@ unzip $UNZIP_OPTS data/simplified-land-polygons-complete-3857.zip \
   simplified-land-polygons-complete-3857/simplified_land_polygons.cpg \
   -d data/
 
+# simplified-land-polygons-complete-3857
+echo "downloading simplified-water-polygons-complete-3857..."
+curl -z "data/simplified-water-polygons-complete-3857.zip" -L -o "data/simplified-water-polygons-complete-3857.zip" "http://data.openstreetmapdata.com/simplified-water-polygons-complete-3857.zip"
+echo "simplified-water-polygons-complete-3857..."
+unzip $UNZIP_OPTS data/simplified-water-polygons-complete-3857.zip \
+  simplified-water-polygons-complete-3857/simplified_water_polygons.shp \
+  simplified-water-polygons-complete-3857/simplified_water_polygons.shx \
+  simplified-water-polygons-complete-3857/simplified_water_polygons.prj \
+  simplified-water-polygons-complete-3857/simplified_water_polygons.dbf \
+  simplified-water-polygons-complete-3857/simplified_water_polygons.cpg \
+  -d data/
+
 # ne_110m_admin_0_boundary_lines_land
 echo "downloading ne_110m_admin_0_boundary_lines_land..."
 curl -z data/ne_110m_admin_0_boundary_lines_land.zip -L -o data/ne_110m_admin_0_boundary_lines_land.zip http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip
@@ -49,6 +61,17 @@ unzip $UNZIP_OPTS data/land-polygons-split-3857.zip \
   land-polygons-split-3857/land_polygons.prj \
   land-polygons-split-3857/land_polygons.dbf \
   land-polygons-split-3857/land_polygons.cpg \
+  -d data/
+
+echo "downloading water-polygons-split-3857..."
+curl -z "data/water-polygons-split-3857.zip" -L -o "data/water-polygons-split-3857.zip" "http://data.openstreetmapdata.com/water-polygons-split-3857.zip"
+echo "expanding water-polygons-split-3857..."
+unzip $UNZIP_OPTS data/water-polygons-split-3857.zip \
+  water-polygons-split-3857/water_polygons.shp \
+  water-polygons-split-3857/water_polygons.shx \
+  water-polygons-split-3857/water_polygons.prj \
+  water-polygons-split-3857/water_polygons.dbf \
+  water-polygons-split-3857/water_polygons.cpg \
   -d data/
 
 # antarctica-icesheet-polygons-3857
@@ -77,7 +100,9 @@ unzip $UNZIP_OPTS data/antarctica-icesheet-outlines-3857.zip \
 echo "indexing shapefiles"
 shapeindex --shape_files \
 data/simplified-land-polygons-complete-3857/simplified_land_polygons.shp \
+data/simplified-water-polygons-complete-3857/simplified_water_polygons.shp \
 data/land-polygons-split-3857/land_polygons.shp \
+data/water-polygons-split-3857/water_polygons.shp \
 data/antarctica-icesheet-polygons-3857/icesheet_polygons.shp \
 data/antarctica-icesheet-outlines-3857/icesheet_outlines.shp \
 data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp
