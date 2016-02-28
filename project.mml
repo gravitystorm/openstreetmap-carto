@@ -2,6 +2,50 @@
   "interactivity": false,
   "Layer": [
     {
+      "name": "ocean-lz",
+      "srs-name": "900913",
+      "geometry": "polygon",
+      "class": "ocean",
+      "id": "ocean-lz",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "Datasource": {
+        "type": "shape",
+        "file": "data/simplified-water-polygons-complete-3857/simplified_water_polygons.shp"
+      },
+      "extent": [
+        -180,
+        -85.05112877980659,
+        180,
+        85.05112877980659
+      ],
+      "properties": {
+        "maxzoom": 9
+      },
+      "advanced": {}
+    },
+    {
+      "name": "ocean",
+      "srs-name": "900913",
+      "geometry": "polygon",
+      "class": "ocean",
+      "id": "ocean",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "Datasource": {
+        "type": "shape",
+        "file": "data/water-polygons-split-3857/water_polygons.shp"
+      },
+      "extent": [
+        -180,
+        -85.05112877980659,
+        180,
+        85.05112877980659
+      ],
+      "properties": {
+        "minzoom": 10
+      },
+      "advanced": {}
+    },
+    {
       "name": "builtup",
       "srs-name": "mercator",
       "geometry": "polygon",
@@ -197,50 +241,6 @@
       ],
       "properties": {
         "minzoom": 4
-      },
-      "advanced": {}
-    },
-    {
-      "name": "ocean-lz",
-      "srs-name": "900913",
-      "geometry": "polygon",
-      "class": "ocean",
-      "id": "ocean-lz",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "Datasource": {
-        "type": "shape",
-        "file": "data/simplified-water-polygons-complete-3857/simplified_water_polygons.shp"
-      },
-      "extent": [
-        -180,
-        -85.05112877980659,
-        180,
-        85.05112877980659
-      ],
-      "properties": {
-        "maxzoom": 9
-      },
-      "advanced": {}
-    },
-    {
-      "name": "ocean",
-      "srs-name": "900913",
-      "geometry": "polygon",
-      "class": "ocean",
-      "id": "ocean",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "Datasource": {
-        "type": "shape",
-        "file": "data/water-polygons-split-3857/water_polygons.shp"
-      },
-      "extent": [
-        -180,
-        -85.05112877980659,
-        180,
-        85.05112877980659
-      ],
-      "properties": {
-        "minzoom": 10
       },
       "advanced": {}
     },

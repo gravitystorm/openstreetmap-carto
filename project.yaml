@@ -53,6 +53,28 @@ Stylesheet:
   - "admin.mss"
   - "addressing.mss"
 Layer:
+  - id: "ocean-lz"
+    name: "ocean-lz"
+    class: "ocean"
+    geometry: "polygon"
+    <<: *extents
+    Datasource:
+      file: "data/simplified-water-polygons-complete-3857/simplified_water_polygons.shp"
+      type: "shape"
+    advanced: {}
+    properties:
+      maxzoom: 9
+  - id: "ocean"
+    name: "ocean"
+    class: "ocean"
+    geometry: "polygon"
+    <<: *extents
+    Datasource:
+      file: "data/water-polygons-split-3857/water_polygons.shp"
+      type: "shape"
+    properties:
+      minzoom: 10
+    advanced: {}
   - id: "builtup"
     name: "builtup"
     geometry: "polygon"
@@ -218,28 +240,6 @@ Layer:
       type: "shape"
     properties:
       minzoom: 4
-    advanced: {}
-  - id: "ocean-lz"
-    name: "ocean-lz"
-    class: "ocean"
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      file: "data/simplified-water-polygons-complete-3857/simplified_water_polygons.shp"
-      type: "shape"
-    advanced: {}
-    properties:
-      maxzoom: 9
-  - id: "ocean"
-    name: "ocean"
-    class: "ocean"
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      file: "data/water-polygons-split-3857/water_polygons.shp"
-      type: "shape"
-    properties:
-      minzoom: 10
     advanced: {}
   - id: "water-areas"
     name: "water-areas"
