@@ -56,6 +56,9 @@
   }
 }
 
+.ocean {
+  polygon-fill: @water-color;
+}
 #water-lines-casing {
   [waterway = 'stream'],
   [waterway = 'ditch'],
