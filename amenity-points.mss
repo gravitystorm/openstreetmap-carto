@@ -1624,7 +1624,7 @@
       }
       [feature = 'leisure_sports_centre'],
       [feature = 'leisure_stadium'] {
-        text-fill: darken(@stadium, 30%);
+        text-fill: darken(@stadium, 70%);
       }
       [feature = 'leisure_track'] {
         text-fill: darken(@track, 40%);
