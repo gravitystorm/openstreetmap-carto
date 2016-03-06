@@ -5,7 +5,7 @@
 @trunk-fill: #f9b29c; // Lch(79,33,42), error 0.7
 @primary-fill: #fcd6a4; // Lch(88,31,74), error 1.7
 @secondary-fill: #f7fabf; // Lch(97,29,106), error 1.7
-@tertiary-fill: #ffffff;
+@tertiary-fill: #feffdf;
 @residential-fill: #ffffff;
 @service-fill: @residential-fill;
 @living-street-fill: #ededed;
