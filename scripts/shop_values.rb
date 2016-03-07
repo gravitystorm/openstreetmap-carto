@@ -1,4 +1,8 @@
 #!/usr/bin/ruby
+
+#this script generates list of popular shop values - more than MIN_COUNT occurences in OpenStreetMap database according to taginfo
+#it is useful during creating/updating list of shops displayed with generic dot icon
+
 require 'net/http'
 require 'json'
 require 'pp'
