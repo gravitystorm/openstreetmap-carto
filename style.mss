@@ -1,5 +1,5 @@
 Map {
-  background-color: @water-color;
+  background-color: @land-color;
 }
 
 @book-fonts:    "DejaVu Sans Book", "Arundina Sans Regular", "Padauk Regular", "Khmer OS Metal Chrieng Regular",
