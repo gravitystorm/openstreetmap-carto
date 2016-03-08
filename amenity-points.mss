@@ -1610,7 +1610,7 @@
       [feature = 'amenity_school'],
       [feature = 'amenity_college'],
       [feature = 'amenity_university'] {
-        text-fill: darken(@educational_areas_and_hospital, 70%);
+        text-fill: darken(@societal_amenities, 70%);
       }
       [feature = 'natural_heath'] {
         text-fill: darken(@heath, 40%);

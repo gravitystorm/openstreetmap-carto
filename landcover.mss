@@ -46,7 +46,7 @@
 @power-line: darken(@industrial-line, 5%);
 @rest_area: #efc8c8; // also services
 @sand: #f5e9c6;
-@educational_areas_and_hospital: #f0f0d8;
+@societal_amenities: #f0f0d8;
 @station: #d4aaaa;
 @tourism: #734a08;
 @quarry: #c5c3c3;
@@ -57,7 +57,7 @@
 
 @pitch: #80d7b5;
 @track: @pitch;
-@stadium: @educational_areas_and_hospital; // also sports_centre
+@stadium: @societal_amenities; // also sports_centre
 @golf_course: #b5e3b5;
 
 #landcover-low-zoom[zoom < 10],
@@ -450,7 +450,7 @@
     [zoom >= 10] {
       polygon-fill: @residential;
       [zoom >= 12] {
-        polygon-fill: @educational_areas_and_hospital;
+        polygon-fill: @societal_amenities;
         [zoom >= 13] {
           line-width: 0.3;
           line-color: brown;
