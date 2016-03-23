@@ -6,15 +6,7 @@
 
 **Closed issues:**
 
-- Render building with ruins=yes differently [\#2093](https://github.com/gravitystorm/openstreetmap-carto/issues/2093)
-- Barrier=retaining\_wall and Barrier=fence are rendered the same way [\#2091](https://github.com/gravitystorm/openstreetmap-carto/issues/2091)
-- Floating dock rendering [\#2088](https://github.com/gravitystorm/openstreetmap-carto/issues/2088)
-- amenity=research\_institute [\#2077](https://github.com/gravitystorm/openstreetmap-carto/issues/2077)
 - Switch to ocean polygons [\#1982](https://github.com/gravitystorm/openstreetmap-carto/issues/1982)
-- Not rendering shops with multiple tags [\#1979](https://github.com/gravitystorm/openstreetmap-carto/issues/1979)
-- Visually distinguish long-distance \(grade-separated\) roads and railways [\#1959](https://github.com/gravitystorm/openstreetmap-carto/issues/1959)
-- Inclined elevator [\#1953](https://github.com/gravitystorm/openstreetmap-carto/issues/1953)
-- highway/railway=platform closed way not rendered as area [\#1895](https://github.com/gravitystorm/openstreetmap-carto/issues/1895)
 
 **Merged pull requests:**
 
