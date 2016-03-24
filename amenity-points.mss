@@ -145,6 +145,13 @@
     marker-placement: interior;
     marker-clip: false;
   }
+  
+  [feature = 'amenity_vehicle_inspection'][zoom >= 17] {
+    marker-file: url('symbols/shop_car.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @amenity-brown;
+  }
 
   [feature = 'tourism_chalet'][zoom >= 17] {
     point-file: url('symbols/chalet.p.16.png');
