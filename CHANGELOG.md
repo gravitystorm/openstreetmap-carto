@@ -4,7 +4,7 @@
 
 [Full Changelog](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.39.0...HEAD)
 
-**Closed issues:**
+**Implemented enhancements:**
 
 - Switch to ocean polygons [\#1982](https://github.com/gravitystorm/openstreetmap-carto/issues/1982)
 
@@ -50,23 +50,7 @@
 
 **Closed issues:**
 
-- Request to render: landuse=plant\_nursery [\#2039](https://github.com/gravitystorm/openstreetmap-carto/issues/2039)
 - Large lakes not shown \(depending on resolution\) [\#2036](https://github.com/gravitystorm/openstreetmap-carto/issues/2036)
-- `place=suburb` rendering too visible on z14 [\#2035](https://github.com/gravitystorm/openstreetmap-carto/issues/2035)
-- hedge rendered as fill if combined with nature\_reserve  [\#2033](https://github.com/gravitystorm/openstreetmap-carto/issues/2033)
-- Render leisure=sports\_centre, sport=swimming as water park [\#2029](https://github.com/gravitystorm/openstreetmap-carto/issues/2029)
-- chinese characters unreadable [\#2028](https://github.com/gravitystorm/openstreetmap-carto/issues/2028)
-- Tunnel=culvert misrendered when in the middle of natural=water/water=river [\#2027](https://github.com/gravitystorm/openstreetmap-carto/issues/2027)
-- Emergency piers [\#2022](https://github.com/gravitystorm/openstreetmap-carto/issues/2022)
-- Font cut off [\#2021](https://github.com/gravitystorm/openstreetmap-carto/issues/2021)
-- Multipolygon rendered using tags from outer way [\#2019](https://github.com/gravitystorm/openstreetmap-carto/issues/2019)
-- Roads disappear on Cycle layer [\#2015](https://github.com/gravitystorm/openstreetmap-carto/issues/2015)
-- Odd node rendering for a protected\_area poly's node [\#2012](https://github.com/gravitystorm/openstreetmap-carto/issues/2012)
-- Turn Restriction Fields Cannot be Completed [\#2009](https://github.com/gravitystorm/openstreetmap-carto/issues/2009)
-- Icon for historic=wayside\_shrine [\#2008](https://github.com/gravitystorm/openstreetmap-carto/issues/2008)
-- Rendering of addresses of things that aren't rendered [\#2005](https://github.com/gravitystorm/openstreetmap-carto/issues/2005)
-- Diameter of turning\_circle to large [\#1996](https://github.com/gravitystorm/openstreetmap-carto/issues/1996)
-- Different names on different sides of the road [\#1988](https://github.com/gravitystorm/openstreetmap-carto/issues/1988)
 - Render railways tagged service=crossover as other service=\* railways [\#1971](https://github.com/gravitystorm/openstreetmap-carto/issues/1971)
 - Add special rendering for shop=sports [\#1530](https://github.com/gravitystorm/openstreetmap-carto/issues/1530)
 - Rendering issues in Bengali [\#1346](https://github.com/gravitystorm/openstreetmap-carto/issues/1346)
@@ -86,7 +70,6 @@
 
 **Closed issues:**
 
-- Minor roads rendering above trunk & primary links [\#1985](https://github.com/gravitystorm/openstreetmap-carto/issues/1985)
 - Country boundaries not well visible [\#1571](https://github.com/gravitystorm/openstreetmap-carto/issues/1571)
 
 **Merged pull requests:**
@@ -98,7 +81,9 @@
 
 **Implemented enhancements:**
 
+- Recognize and render power=plant [\#1835](https://github.com/gravitystorm/openstreetmap-carto/issues/1835)
 - Zoom level for car rental [\#1752](https://github.com/gravitystorm/openstreetmap-carto/issues/1752)
+- Special rendering for intermittent waterways [\#805](https://github.com/gravitystorm/openstreetmap-carto/issues/805)
 - Water parks are not rendered at any zoom level in the default OSM map [\#539](https://github.com/gravitystorm/openstreetmap-carto/issues/539)
 - Add rendering for amenity=community\_centre [\#506](https://github.com/gravitystorm/openstreetmap-carto/issues/506)
 - Add rendering for leisure=hackerspace [\#451](https://github.com/gravitystorm/openstreetmap-carto/issues/451)
@@ -166,6 +151,7 @@
 
 **Fixed bugs:**
 
+- Line-color of 'leisure\_playground' feature is invalid [\#1886](https://github.com/gravitystorm/openstreetmap-carto/issues/1886)
 - \*\_link highways now rendering above 'normal' highways [\#1456](https://github.com/gravitystorm/openstreetmap-carto/issues/1456)
 - Missing low-zoom land [\#1294](https://github.com/gravitystorm/openstreetmap-carto/issues/1294)
 - amenity=place\_of\_worship without building=\* is now not rendered as area [\#1193](https://github.com/gravitystorm/openstreetmap-carto/issues/1193)
@@ -249,27 +235,18 @@
 **Closed issues:**
 
 - Add rendering for healthcare=\* tags [\#1981](https://github.com/gravitystorm/openstreetmap-carto/issues/1981)
-- Highway tags are propagated from a containing relation [\#1980](https://github.com/gravitystorm/openstreetmap-carto/issues/1980)
--  building=\* should render over area=yes highway=pedestrian [\#1958](https://github.com/gravitystorm/openstreetmap-carto/issues/1958)
-- Rendering stale data? [\#1951](https://github.com/gravitystorm/openstreetmap-carto/issues/1951)
-- problems with rendering of highway=raceway [\#1939](https://github.com/gravitystorm/openstreetmap-carto/issues/1939)
-- inconsistent place names on metatile border [\#1927](https://github.com/gravitystorm/openstreetmap-carto/issues/1927)
-- tourism=zoo corners render strangely [\#1926](https://github.com/gravitystorm/openstreetmap-carto/issues/1926)
 - set z3 as minimum zoom level [\#1916](https://github.com/gravitystorm/openstreetmap-carto/issues/1916)
 - state name labels get rendered until z19 [\#1913](https://github.com/gravitystorm/openstreetmap-carto/issues/1913)
 - Mapnik rendering issue  [\#1912](https://github.com/gravitystorm/openstreetmap-carto/issues/1912)
-- cafe getting rendered as a pet shop \(?\) [\#1909](https://github.com/gravitystorm/openstreetmap-carto/issues/1909)
 - add different rendering for building=ruins \(or remove rendering\) [\#1898](https://github.com/gravitystorm/openstreetmap-carto/issues/1898)
 - Unclear construction in admin.mss [\#1896](https://github.com/gravitystorm/openstreetmap-carto/issues/1896)
 - Drop car\_sharing rendering [\#1891](https://github.com/gravitystorm/openstreetmap-carto/issues/1891)
-- Line-color of 'leisure\_playground' feature is invalid [\#1886](https://github.com/gravitystorm/openstreetmap-carto/issues/1886)
 - unify defitions for landuse names [\#1880](https://github.com/gravitystorm/openstreetmap-carto/issues/1880)
 - simplify yaml2mml.py execution [\#1866](https://github.com/gravitystorm/openstreetmap-carto/issues/1866)
 - Usability : New map openstreetmap-carto is too pale. [\#1863](https://github.com/gravitystorm/openstreetmap-carto/issues/1863)
 - Footway and path, no difference anymore? Cycleway. [\#1858](https://github.com/gravitystorm/openstreetmap-carto/issues/1858)
 - move bridge casing colour from black to hue of road colour [\#1852](https://github.com/gravitystorm/openstreetmap-carto/issues/1852)
 - render compacted footways the same as paved? [\#1842](https://github.com/gravitystorm/openstreetmap-carto/issues/1842)
-- Recognize and render power=plant [\#1835](https://github.com/gravitystorm/openstreetmap-carto/issues/1835)
 - tram\_stop label is rendered earlier than bus\_stop label [\#1834](https://github.com/gravitystorm/openstreetmap-carto/issues/1834)
 - railway=tram\_stop takes precedence over railway=station [\#1833](https://github.com/gravitystorm/openstreetmap-carto/issues/1833)
 - Scale marina label according to size of object [\#1827](https://github.com/gravitystorm/openstreetmap-carto/issues/1827)
@@ -336,7 +313,6 @@
 - One for the interface engineers [\#1510](https://github.com/gravitystorm/openstreetmap-carto/issues/1510)
 - Render flush toilets slightly differently from pit or chemical toilets [\#1508](https://github.com/gravitystorm/openstreetmap-carto/issues/1508)
 - More fine grained capital ordering [\#1505](https://github.com/gravitystorm/openstreetmap-carto/issues/1505)
-- Brown color flooding Europe / Germany at Z19 [\#1502](https://github.com/gravitystorm/openstreetmap-carto/issues/1502)
 - Building covers it's own label [\#1494](https://github.com/gravitystorm/openstreetmap-carto/issues/1494)
 - leisure=marina outline doesn't cover man\_made=pier at z18 and z19 [\#1492](https://github.com/gravitystorm/openstreetmap-carto/issues/1492)
 - Reconsider binary mode for project.mml [\#1487](https://github.com/gravitystorm/openstreetmap-carto/issues/1487)
@@ -344,7 +320,6 @@
 - Highway areas should be rendered above highway lines [\#1484](https://github.com/gravitystorm/openstreetmap-carto/issues/1484)
 - Icon for amenity=ice\_cream [\#1479](https://github.com/gravitystorm/openstreetmap-carto/issues/1479)
 - trees are covering station labels and symbols [\#1470](https://github.com/gravitystorm/openstreetmap-carto/issues/1470)
-- Priority of natural=tree [\#1467](https://github.com/gravitystorm/openstreetmap-carto/issues/1467)
 - Displaying way and area locations [\#1464](https://github.com/gravitystorm/openstreetmap-carto/issues/1464)
 - Add special rendering for shop=kiosk [\#1459](https://github.com/gravitystorm/openstreetmap-carto/issues/1459)
 - Station area / station building / platform rendering issues.  [\#1457](https://github.com/gravitystorm/openstreetmap-carto/issues/1457)
@@ -580,7 +555,6 @@
 - Multipolygon renders name multiple times [\#815](https://github.com/gravitystorm/openstreetmap-carto/issues/815)
 - Rendering conflict when railway and feature = 'highway\_motorway' are too close [\#808](https://github.com/gravitystorm/openstreetmap-carto/issues/808)
 - Render building=\* single nodes [\#806](https://github.com/gravitystorm/openstreetmap-carto/issues/806)
-- Special rendering for intermittent waterways [\#805](https://github.com/gravitystorm/openstreetmap-carto/issues/805)
 - Split POIs into prioritised groups [\#802](https://github.com/gravitystorm/openstreetmap-carto/issues/802)
 - Add label for natural=tree [\#801](https://github.com/gravitystorm/openstreetmap-carto/issues/801)
 - Add label for amenity=car\_sharing [\#800](https://github.com/gravitystorm/openstreetmap-carto/issues/800)
@@ -812,7 +786,6 @@
 - Railway K = station / area K = yes renders over everything but buildings [\#296](https://github.com/gravitystorm/openstreetmap-carto/issues/296)
 - Render highway=turning\_loop [\#295](https://github.com/gravitystorm/openstreetmap-carto/issues/295)
 - Unused symbol images [\#292](https://github.com/gravitystorm/openstreetmap-carto/issues/292)
-- Buildings [\#289](https://github.com/gravitystorm/openstreetmap-carto/issues/289)
 - addr:housename can be used to "hack" carto to show text for any object [\#288](https://github.com/gravitystorm/openstreetmap-carto/issues/288)
 - amenity=university label should be more prominently displayed [\#287](https://github.com/gravitystorm/openstreetmap-carto/issues/287)
 - unneded, unwanted and useless shields on highway=residential [\#285](https://github.com/gravitystorm/openstreetmap-carto/issues/285)
