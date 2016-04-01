@@ -17,6 +17,11 @@ contain a cropped screenshot of the problem, and a link to the area. Don't assum
 that we will see exactly what you see. If a particular OSM object is an issue,
 the issue should contain the tagging of the object.
 
+## Easy pickings
+
+Some [easy issues](https://github.com/gravitystorm/openstreetmap-carto/issues?q=is%3Aopen+is%3Aissue+label%3Aeasy) have been selected
+that are particularly suitable for new contributors to get familiar with the project's code base and the contribution process.
+
 ## Editing Layers
 
 OpenStreetMap Carto uses a YAML file for defining layers. Some of the rationale
