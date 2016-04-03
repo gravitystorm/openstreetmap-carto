@@ -103,8 +103,8 @@ function add_z_order(keyvalues)
    for i,k in ipairs(zordering_tags) do
       -- If the value in zordering_tags is specified, match key and value. Otherwise, match key only.
       if ((k[2]  and keyvalues[k[1]] == k[2]) or (k[2] == nil and keyvalues[k[1]] ~= nil)) then
-         -- If the fourth component of the element of zordering_tags is 1, add the object to planet_osm_roads
-         if (k[4] == 1) then
+         -- If the fifth component of the element of zordering_tags is 1, add the object to planet_osm_roads
+         if (k[5] == 1) then
             roads = 1
          end
          z_order = z_order + k[3]
