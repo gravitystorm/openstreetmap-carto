@@ -101,7 +101,7 @@ node,way   culvert      text         linear
 node,way   cutting      text         linear
 node,way   denomination text         linear
 node,way   disused      text         linear
-node       ele          text         linear
+node,way   ele          text         linear
 node,way   embankment   text         linear
 node,way   foot         text         linear
 node,way   generator:source    text  linear
