@@ -2,7 +2,7 @@
 
 from __future__ import print_function
 from six import iteritems
-import argparse, json, os, sys, yaml, glob
+import argparse, json, os, sys, yaml, glob, io
 
 def merge(dst, src):
   if src == None:
@@ -22,16 +22,21 @@ parser.add_argument('--check', dest='check', help='write generated JSON to stdou
 args = parser.parse_args()
 
 script_dir = os.path.dirname(__file__)
+yaml_preamble = os.path.join(script_dir, '../project.d/preamble.yaml')
 yaml_pattern = os.path.join(script_dir, '../project.d/*.yaml')
 mml_path = os.path.join(script_dir, '../project.mml')
 
 yaml_data = {}
 
 try:
+  preamble_buf = open(yaml_preamble, 'rb').read()
   yaml_files = glob.glob(yaml_pattern)
   yaml_files.sort()
   for filename in yaml_files:
-    yaml_stream = open(filename, 'rb')
+    basename = os.path.basename(filename)
+    if basename == 'preamble.yaml':
+      continue
+    yaml_stream = io.BytesIO(preamble_buf + open(filename, 'rb').read())
     partial_data = yaml.safe_load(yaml_stream)
     merge(yaml_data, partial_data)
     yaml_stream.close()
