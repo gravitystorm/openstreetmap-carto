@@ -10,21 +10,24 @@ args = parser.parse_args()
 yaml_path = os.path.join(os.path.dirname(__file__), '../project.yaml')
 mml_path = os.path.join(os.path.dirname(__file__), '../project.mml')
 
+yaml_data = None
+
 try:
   yaml_file = open(yaml_path)
-  yaml = yaml.safe_load(yaml_file)
+  yaml_data = yaml.safe_load(yaml_file)
   yaml_file.close()
 
-  try:
-    if (args.check == False):
-      mml_file = open(mml_path, 'w')
-      json.dump(yaml, mml_file, indent=2, separators=(',', ': '))
-      mml_file.close()
-    else:
-      json.dump(yaml, sys.stdout, indent=2, separators=(',', ': '))
-  except IOError:
-    print('Could not save MML file. Aborting.')
-    sys.exit(1)
 except IOError:
   print('Could not read YAML file. Aborting.')
+  sys.exit(1)
+
+try:
+  if (args.check == False):
+    mml_file = open(mml_path, 'w')
+    json.dump(yaml_data, mml_file, indent=2, separators=(',', ': '))
+    mml_file.close()
+  else:
+    json.dump(yaml_data, sys.stdout, indent=2, separators=(',', ': '))
+except IOError:
+  print('Could not save MML file. Aborting.')
   sys.exit(1)
