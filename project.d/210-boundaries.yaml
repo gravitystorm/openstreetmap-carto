@@ -1,0 +1,27 @@
+Layer:
+  - id: "builtup"
+    name: "builtup"
+    geometry: "polygon"
+    class: ""
+    extent: *world
+    srs-name: "mercator"
+    srs: "+proj=merc +datum=WGS84 +over"
+    Datasource:
+      file: "data/world_boundaries/builtup_area.shp"
+      type: "shape"
+    properties:
+      minzoom: 8
+      maxzoom: 9
+    advanced: {}
+  - id: "necountries"
+    name: "necountries"
+    class: ""
+    geometry: "linestring"
+    <<: *extents84
+    Datasource:
+      file: "data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp"
+      type: "shape"
+    properties:
+      minzoom: 1
+      maxzoom: 3
+    advanced: {}

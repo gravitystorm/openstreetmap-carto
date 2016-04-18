@@ -6,6 +6,7 @@ addons:
     packages:
     - python-demjson
     - python-yaml
+    - python-six
 node_js:
   - "0.10"
 install:
