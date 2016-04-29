@@ -1292,7 +1292,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    name,\n    score,\n    CASE\n      WHEN (place = 'city' OR (capital = 'yes' AND score >= 100000)) THEN 1\n      ELSE 2\n    END as category\n  FROM \n    (SELECT\n        way,\n        place,\n        name,\n        capital,\n        (\n          (CASE\n            WHEN (population ~ '^[0-9]{1,8}$') THEN population::INTEGER\n            WHEN (place = 'city') THEN 100000\n            WHEN (place = 'town') THEN 1000\n            ELSE 1\n          END)\n          *\n          (CASE\n            WHEN (capital = 'yes') THEN 3\n            WHEN (capital = '4') THEN 2\n            ELSE 1\n          END)\n        ) AS score\n      FROM planet_osm_point\n      WHERE place IN ('city', 'town')\n    ) as p\n  ORDER BY score DESC\n) AS placenames_medium",
+        "table": "(SELECT\n    way,\n    name,\n    score,\n    CASE\n      WHEN (place = 'city' OR (capital = 'yes' AND score >= 100000)) THEN 1\n      ELSE 2\n    END as category\n  FROM \n    (SELECT\n        way,\n        place,\n        name,\n        capital,\n        (\n          (CASE\n            WHEN (population ~ '^[0-9]{1,8}$') THEN population::INTEGER\n            WHEN (place = 'city') THEN 100000\n            WHEN (place = 'town') THEN 1000\n            ELSE 1\n          END)\n          *\n          (CASE\n            WHEN (capital = 'yes') THEN 3\n            WHEN (capital = '4') THEN 2\n            ELSE 1\n          END)\n        ) AS score\n      FROM planet_osm_point\n      WHERE place IN ('city', 'town')\n    ) as p\n  ORDER BY score DESC, length(name) DESC, name\n) AS placenames_medium",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1319,7 +1319,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    place,\n    name\n  FROM planet_osm_point\n  WHERE place IN ('suburb', 'village', 'hamlet', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')\n    AND name IS NOT NULL\n  ORDER BY CASE\n      WHEN place = 'suburb' THEN 3\n      WHEN place = 'village' THEN 4\n      WHEN place = 'hamlet' THEN 5\n      WHEN place = 'neighbourhood' THEN 6\n      WHEN place = 'locality' THEN 7\n      WHEN place = 'isolated_dwelling' THEN 8\n      WHEN place = 'farm' THEN 9\n    END ASC\n) AS placenames_small",
+        "table": "(SELECT\n    way,\n    place,\n    name\n  FROM planet_osm_point\n  WHERE place IN ('suburb', 'village', 'hamlet', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')\n    AND name IS NOT NULL\n  ORDER BY CASE\n      WHEN place = 'suburb' THEN 3\n      WHEN place = 'village' THEN 4\n      WHEN place = 'hamlet' THEN 5\n      WHEN place = 'neighbourhood' THEN 6\n      WHEN place = 'locality' THEN 7\n      WHEN place = 'isolated_dwelling' THEN 8\n      WHEN place = 'farm' THEN 9\n    END ASC, length(name) DESC, name\n) AS placenames_small",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
