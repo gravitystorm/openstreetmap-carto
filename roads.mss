@@ -709,6 +709,8 @@
           }
         }
         [zoom >= 15] {
+          line-color: @bridge-casing;
+          line-join: round;
           line-width: @track-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width);
           [tracktype = 'grade1'] {
             line-width: @track-grade1-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width);
@@ -958,6 +960,8 @@
           }
         }
         [zoom >= 15] {
+          line-color: @track-casing;
+          line-join: round;
           line-width: @track-width-z15 + 2 * @paths-background-width;
           [tracktype = 'grade1'] {
             line-width: @track-grade1-width-z15 + 2 * @paths-background-width;
