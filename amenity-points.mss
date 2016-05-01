@@ -478,6 +478,12 @@
     marker-placement: interior;
     marker-clip: false;
   }
+  
+  [feature = 'amenity_coworking_space'][zoom >= 16] {
+    marker-file: url('symbols/coworking.16.svg');
+    marker-placement: interior;
+    marker-clip: false;
+  }
 
   [feature = 'amenity_toilets'][zoom >= 17] {
     marker-file: url('symbols/toilets.16.svg');
