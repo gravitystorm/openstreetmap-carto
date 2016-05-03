@@ -4,3 +4,5 @@ data/
 *.xml
 node_modules/
 localconfig.json
+project-de.mml
+project-de.yaml

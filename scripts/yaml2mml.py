@@ -4,10 +4,11 @@ from __future__ import print_function
 import argparse, json, os, sys, yaml
 
 parser = argparse.ArgumentParser(description='Keeps project files in sync by converting project.yaml to project.mml.')
+parser.add_argument('--yaml', default="project.yaml", help='name of yaml input file')
 parser.add_argument('--check', dest='check', help='write generated JSON to stdout instead to project.mml', required=False, action='store_true', default=False)
 args = parser.parse_args()
 
-yaml_path = os.path.join(os.path.dirname(__file__), '../project.yaml')
+yaml_path = os.path.join(os.path.dirname(__file__), "../"+args.yaml)
 mml_path = os.path.join(os.path.dirname(__file__), '../project.mml')
 
 try:

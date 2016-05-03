@@ -1,0 +1,75 @@
+# hstore only Database schema which stores only objects
+# with one of the important tags defined here as nocolumn
+#
+# this does only make sence when --hstore-match-only ist used
+#
+# "important" are those tags which appear in the where clause of
+# select statements in the standard mapnik style
+#
+# import using the following command:
+# osm2pgsql -s -S <this-file> --hstore --hstore-match-only <osm-or-pbf-file>
+#
+
+node,way	3dshapes:ggmodelk	text	delete
+node,way	AND_nosr_r	text	delete
+node,way	b5m:*	text	delete
+node,way	bak:*	text	delete
+node,way	canvec:*	text	delete
+node,way	created_by	text	delete
+node,way	dcgis:*	text	delete
+node,way	FIXME	text	delete
+node,way	geobase:*	text	delete
+node,way	gnis:*	text	delete
+node,way	kms:*	text	delete
+node,way	KSJ2:*	text	delete
+node,way	massgis:*	text	delete
+node,way	mvdgis:*	text	delete
+node,way	naptan:*	text	delete
+node,way	ngbe:*	text	delete
+node,way	nhd:*	text	delete
+node,way	NHD:*	text	delete
+node,way	note	text	delete
+node,way	note:*	text	delete
+node,way	notes	text	delete
+node,way	osak:*	text	delete
+node,way	source	text	delete
+node,way	source:*	text	delete
+node,way	sourcedb:*	text	delete
+node,way	tiger:*	text	delete
+node,way	WroclawGIS:*	text	delete
+node,way	yh:*	text	delete
+node,way	rednap:* text	delete
+node,way	ideewfs:* text	delete
+node,way	ign:* text	delete
+
+node,way   aerialway    text         linear,nocolumn
+node,way   addr:housenumber text     linear,nocolumn
+node,way   aeroway      text         polygon,nocolumn
+node,way   amenity      text         nocache,polygon,nocolumn
+node,way   barrier      text         linear,nocolumn
+node,way   boundary     text         linear,nocolumn
+node,way   building     text         polygon,nocolumn
+node,way   highway      text         linear,nocolumn
+node,way   historic     text         polygon,nocolumn
+node,way   landuse      text         polygon,nocolumn
+node,way   leisure      text         polygon,nocolumn
+node,way   lock         text         linear,nocolumn
+node,way   man_made     text         polygon,nocolumn
+node,way   military     text         polygon,nocolumn
+node,way   place        text         polygon,nocolumn
+node,way   power        text         polygon,nocolumn
+node,way   railway      text         linear,nocolumn
+node,way   route        text         linear,nocolumn
+node,way   shop         text         polygon,nocolumn
+node,way   tourism      text         polygon,nocolumn
+node,way   waterway     text         polygon,nocolumn
+node,way   natural      text         polygon,nocolumn
+
+# numeric values should have a separate column
+# as hstore does only store strings
+node,way   width        real         linear
+node       ele          real         linear
+
+node,way   z_order      int4         linear # This is calculated during import
+way        way_area     real                # This is calculated during import
+

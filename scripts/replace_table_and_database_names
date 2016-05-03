@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Table name replacements
+planet_osm_line=view_osmde_carto_line
+planet_osm_point=view_osmde_carto_point
+planet_osm_polygon=view_osmde_carto_polygon
+planet_osm_roads=view_osmde_carto_roads
+
+# DBname replacement
+gis=osm
+
+if [ $# -ne 1 ]; then
+   echo "usage: $0 file"
+   exit 1
+fi
+
+sed -e "s/planet_osm_line/$planet_osm_line/g" -e "s/planet_osm_point/$planet_osm_point/g" \
+    -e "s/planet_osm_polygon/$planet_osm_polygon/g" -e "s/planet_osm_roads/$planet_osm_roads/g" \
+    -e "s/\"gis\"/\"$gis\"/g" $1

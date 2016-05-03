@@ -1745,10 +1745,7 @@ Layer:
             access,
             CASE
               WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
-                CASE
-                  WHEN ele ~ '^-?\d{1,4}(\.\d+)?$' THEN ele::NUMERIC
-                  ELSE NULL
-                END
+                ele
               ELSE NULL
             END AS score,
             religion,
@@ -2213,13 +2210,10 @@ Layer:
                   'historic_' || CASE WHEN historic IN ('wayside_cross') THEN historic ELSE NULL END
                 ) AS feature,
                 access,
-                name,
+                localized_name_without_brackets as name,
                 CASE
                   WHEN "natural" IN ('peak', 'volcano', 'saddle') OR tourism = 'alpine_hut' OR amenity = 'shelter' THEN
-                    CASE
-                      WHEN ele ~ '^-?\d{1,4}(\.\d+)?$' THEN ele::NUMERIC
-                      ELSE NULL
-                    END
+                    ele
                   ELSE NULL
                 END AS elevation,
                 "natural",
