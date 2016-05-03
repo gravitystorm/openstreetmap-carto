@@ -113,7 +113,7 @@ Layer:
             way, name, way_pixels,
             COALESCE(wetland, landuse, "natural") AS feature
           FROM (SELECT
-              way, COALESCE(name, '') AS name,
+              way, localized_name_without_brackets AS name,
               ('landuse_' || (CASE WHEN landuse IN ('forest', 'military') THEN landuse ELSE NULL END)) AS landuse,
               ('natural_' || (CASE WHEN "natural" IN ('wood', 'sand', 'scree', 'shingle', 'bare_rock') THEN "natural" ELSE NULL END)) AS "natural",
               ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'mud') THEN (CASE WHEN "natural" IN ('mud') THEN "natural" ELSE wetland END) ELSE NULL END)) AS wetland,
@@ -141,7 +141,7 @@ Layer:
             way, name, religion, way_pixels,
             COALESCE(aeroway, amenity, wetland, power, landuse, leisure, military, "natural", tourism, highway, railway) AS feature
           FROM (SELECT
-              way, COALESCE(name, '') AS name,
+              way, localized_name_without_brackets AS name,
               ('aeroway_' || (CASE WHEN aeroway IN ('apron', 'aerodrome') THEN aeroway ELSE NULL END)) AS aeroway,
               ('amenity_' || (CASE WHEN amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'university', 'college', 'school', 
                                                     'hospital', 'kindergarten', 'grave_yard', 'prison', 'place_of_worship', 'clinic') 
@@ -254,7 +254,7 @@ Layer:
             "natural",
             waterway,
             landuse,
-            name,
+            localized_name_inside_brackets as name,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
           WHERE
@@ -318,7 +318,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, waterway, name, intermittent,
+            way, waterway, localized_name_inside_brackets as name, intermittent,
             CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel,
             'no' AS bridge
           FROM planet_osm_line
@@ -337,7 +337,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT way, waterway, name
+        (SELECT way, waterway, localized_name_inside_brackets as name
           FROM planet_osm_line
           WHERE waterway IN ('dam', 'weir', 'lock_gate')
         ) AS water_barriers_line
@@ -352,7 +352,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT way, waterway, name
+        (SELECT way, waterway, localized_name_inside_brackets as name
           FROM planet_osm_polygon
           WHERE waterway IN ('dam', 'weir', 'lock_gate')
         ) AS water_barriers_poly
@@ -435,7 +435,7 @@ Layer:
             way,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
             man_made,
-            name
+            localized_name_inside_brackets as name
           FROM planet_osm_polygon
           WHERE man_made = 'bridge'
         ) AS bridge
@@ -1155,7 +1155,7 @@ Layer:
         (SELECT
             way,
             waterway,
-            name,
+            localized_name_inside_brackets as name,
             intermittent,
             CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel,
             'yes' AS bridge
@@ -1416,7 +1416,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            name,
+            localized_name_inside_brackets as name,
             boundary,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
@@ -1438,7 +1438,7 @@ Layer:
         (SELECT
             way,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
-            name,
+            localized_name_inside_brackets as name,
             tourism
           FROM planet_osm_polygon
           WHERE tourism = 'theme_park'
@@ -1479,7 +1479,7 @@ Layer:
         (SELECT
             way,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
-            name,
+            localized_name_outside_brackets as name,
             ref,
             admin_level
           FROM planet_osm_polygon
@@ -1511,7 +1511,7 @@ Layer:
             (SELECT
                 way,
                 place,
-                name,
+                localized_name_outside_brackets as name,
                 capital,
                 (
                   (CASE
@@ -1547,7 +1547,7 @@ Layer:
         (SELECT
             way,
             place,
-            name
+            localized_name_outside_brackets as name
           FROM planet_osm_point
           WHERE place IN ('suburb', 'village', 'hamlet', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')
             AND name IS NOT NULL
@@ -1574,7 +1574,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            name,
+            latin_name as name,
             railway,
             aerialway,
             CASE railway 
@@ -1601,7 +1601,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            name,
+            latin_name as name,
             railway,
             aerialway
         FROM planet_osm_polygon
@@ -1851,7 +1851,7 @@ Layer:
             highway,
             junction,
             ref,
-            name
+            localized_streetname_inside_brackets as name
           FROM planet_osm_point
           WHERE highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes'
         ) AS junctions
@@ -1870,7 +1870,7 @@ Layer:
             way,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
             man_made,
-            name
+            localized_streetname_inside_brackets as name
           FROM planet_osm_polygon
           WHERE man_made = 'bridge'
         ) AS bridge_text
@@ -1919,7 +1919,7 @@ Layer:
             way,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
             highway,
-            name
+            localized_streetname_inside_brackets as name
           FROM planet_osm_polygon
           WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street', 'track', 'path', 'platform')
             OR railway IN ('platform')
@@ -1940,7 +1940,7 @@ Layer:
             CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END,
             CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
             CASE WHEN construction IN ('service', 'footway', 'cycleway', 'bridleway', 'path', 'track') THEN 'yes' ELSE 'no' END AS int_construction_minor,
-            name
+            localized_streetname_inside_brackets as name
           FROM planet_osm_line
           WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 
                             'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction')
@@ -1960,7 +1960,7 @@ Layer:
         (SELECT
             way,
             highway,
-            name
+            localized_streetname_inside_brackets as name
           FROM planet_osm_line
           WHERE highway IN ('bridleway', 'footway', 'cycleway', 'path', 'track', 'steps')
             AND name IS NOT NULL
@@ -1986,7 +1986,7 @@ Layer:
               'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
               'leisure_' || CASE WHEN leisure IN ('nature_reserve') THEN leisure ELSE NULL END
             ) AS feature,
-            name,
+            localized_name_without_brackets as name,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building -- always no with the where conditions
           FROM planet_osm_polygon
           WHERE (landuse IN ('forest', 'military')
@@ -2067,7 +2067,7 @@ Layer:
               'tourism_' || CASE WHEN tourism IN ('attraction') THEN tourism ELSE NULL END
             ) AS feature,
             access,
-            name,
+            localized_name_without_brackets as name,
             operator,
             ref,
             way_area,
@@ -2109,7 +2109,7 @@ Layer:
             NULL as way_pixels,
             COALESCE('man_made_' || man_made, 'waterway_' || waterway, 'natural_' || "natural") AS feature,
             access,
-            name,
+            localized_name_without_brackets as name,
             operator,
             ref,
             NULL AS way_area,
@@ -2257,7 +2257,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            name,
+            localized_name_outside_brackets as name,
             way,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
@@ -2350,7 +2350,7 @@ Layer:
             way,
             waterway,
             lock,
-            name,
+            localized_name_inside_brackets as name,
             intermittent,
             CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel
           FROM planet_osm_line
@@ -2372,7 +2372,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            name
+            localized_name_inside_brackets as name
           FROM planet_osm_line
           WHERE route = 'ferry'
             AND name IS NOT NULL
@@ -2390,7 +2390,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            name,
+            localized_name_outside_brackets as name,
             admin_level
           FROM planet_osm_polygon
           WHERE boundary = 'administrative'
@@ -2411,7 +2411,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            name,
+            localized_name_inside_brackets as name,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
           WHERE (boundary = 'national_park' OR leisure = 'nature_reserve')
@@ -2437,7 +2437,7 @@ Layer:
             man_made,
             historic,
             access,
-            name,
+            localized_name_inside_brackets as name,
             CASE WHEN amenity='waste_basket' THEN 2 ELSE 1 END AS prio
           FROM planet_osm_point p
           WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block')
@@ -2468,7 +2468,7 @@ Layer:
             man_made,
             historic,
             access,
-            name
+            localized_name_inside_brackets as name
           FROM planet_osm_polygon
           WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block')
              OR highway IN ('mini_roundabout')
