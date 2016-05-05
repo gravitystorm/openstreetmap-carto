@@ -5,7 +5,8 @@
 polygon_keys = { 'building', 'landuse', 'amenity', 'harbour', 'historic', 'leisure',
       'man_made', 'military', 'natural', 'office', 'place', 'power',
       'public_transport', 'shop', 'sport', 'tourism', 'waterway',
-      'wetland', 'water', 'aeroway' }
+      'wetland', 'water', 'aeroway', 'abandoned:aeroway', 'abandoned:amenity',
+      'abandoned:building', 'abandoned:landuse', 'abandoned:power', 'area:highway' }
 
 -- Objects with any of the following key/value combinations will be treated as polygon
 polygon_values = {
@@ -35,7 +36,133 @@ linestring_values = {
    }
 
 -- The following keys will be deleted
-delete_tags = { 'FIXME', 'note', 'source' }
+delete_tags = {
+  'note',
+  'note:.*',
+  'source',
+  'source_ref',
+  'source:.*',
+  'attribution',
+  'comment',
+  'fixme',
+  -- Tags generally dropped by editors, not otherwise covered
+  'created_by',
+  'odbl',
+  'odbl:note',
+  -- Lots of import tags
+  -- EUROSHA (Various countries)
+  'project:eurosha_2012',
+  -- Corine (CLC) (Europe)
+  'CLC:.*',
+
+  -- UrbIS (Brussels, BE)
+  'ref:UrbIS',
+
+  -- Geobase (CA)
+  'geobase:.*',
+  -- NHN (CA)
+  'accuracy:meters',
+  'sub_sea:type',
+  'waterway:type',
+  -- CanVec (CA)
+  'canvec:.*',
+  -- StatsCan (CA)
+  'statscan:rbuid',
+  -- Geobase (CA)
+  'geobase:.*',
+
+  -- RUIAN (CZ)
+  'ref:ruian:addr',
+  'ref:ruian',
+  'building:ruian:type',
+  -- DIBAVOD (CZ)
+  'dibavod:id',
+  -- UIR-ADR (CZ)
+  'uir_adr:ADRESA_KOD',
+
+  -- osak (DK)
+  'osak:.*',
+  -- kms (DK)
+  'kms:.*',
+  -- GST (DK)
+  'gst:feat_id',
+
+  -- Maa-amet (EE)
+  'maaamet:ETAK',
+
+  -- ngbe (ES)
+  -- See also note:es and source:file above
+  'ngbe:.*',
+
+  -- FANTOIR (FR)
+  'ref:FR:FANTOIR',
+
+  -- Friuli Venezia Giulia (IT)
+  'it:fvg:.*',
+
+  -- KSJ2 (JA)
+  -- See also note:ja and source_ref above
+  'KSJ2:.*',
+  -- Yahoo/ALPS (JA)
+  'yh:.*',
+
+  -- 3dshapes (NL)
+  '3dshapes:ggmodelk',
+  -- AND (NL)
+  'AND_nosr_r',
+
+  -- OPPDATERIN (NO)
+  'OPPDATERIN',
+
+  -- LINZ (NZ)
+  'LINZ2OSM:.*',
+  'linz2osm:.*',
+  'LINZ:.*',
+
+  -- Various imports (PL)
+  'addr:city:simc',
+  'addr:street:sym_ul',
+  'building:usage:pl',
+  'building:use:pl',
+  -- WroclawGIS (PL)
+  'WroclawGIS:.*',
+  -- TERYT (PL)
+  'teryt:simc',
+
+  -- RABA (SK)
+  'raba:id',
+
+  -- Naptan (UK)
+  'naptan:.*',
+
+  -- TIGER (US)
+  'tiger:.*',
+  -- GNIS (US)
+  'gnis:.*',
+  -- DCGIS (Washington DC, US)
+  'dcgis:gis_id',
+  -- National Hydrography Dataset (US)
+  'NHD:.*',
+  'nhd:.*',
+  -- Building Identification Number (New York, US)
+  'nycdoitt:bin',
+  -- Chicago Building Inport (US)
+  'chicago:building_id',
+  -- Louisville, Kentucky/Building Outlines Import (US)
+  'lojic:bgnum',
+  -- MassGIS (Massachusetts, US)
+  'massgis:way_id',
+
+  -- mvdgis (Montevideo, UY)
+  'mvdgis:.*',
+
+  -- misc
+  'import',
+  'import_uuid',
+  'OBJTYPE',
+  'SK53_bulk:load'
+}
+
 
 -- Array used to specify z_order and osmcarto_z_order per key/value combination.
 -- The former is used for backwards compatibility and for uses that use a single
@@ -124,15 +251,22 @@ end
 function filter_tags_generic(keyvalues, numberofkeys)
    filter = 0   -- Will object be filtered out?
 
+   -- Delete tags listed in delete_tags
+   for k, v in pairs (keyvalues) do
+     match = false
+     for _, d in ipairs(delete_tags) do
+       match = match or string.find(k, d)
+     end
+     if match then
+       keyvalues[k] = nil
+       numberofkeys = numberofkeys - 1
+     end
+   end
+
    -- Filter out objects with 0 tags
    if numberofkeys == 0 then
       filter = 1
       return filter, keyvalues
-   end
-
-   -- Delete tags listed in delete_tags
-   for i,k in ipairs(delete_tags) do
-      keyvalues[k] = nil
    end
 
    return filter, keyvalues
