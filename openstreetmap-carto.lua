@@ -22,6 +22,7 @@ linestring_values = {
       {'natural', 'cliff'},
       {'natural', 'tree_row'},
       {'historic', 'citywalls'},
+      {'waterway', 'canal'},
       {'waterway', 'derelict_canal'},
       {'waterway', 'ditch'},
       {'waterway', 'drain'},
