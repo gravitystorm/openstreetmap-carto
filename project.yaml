@@ -1530,7 +1530,7 @@ Layer:
               FROM planet_osm_point
               WHERE place IN ('city', 'town')
             ) as p
-          ORDER BY score DESC
+          ORDER BY score DESC, length(name) DESC, name
         ) AS placenames_medium
     properties:
       minzoom: 3
@@ -1559,7 +1559,7 @@ Layer:
               WHEN place = 'locality' THEN 7
               WHEN place = 'isolated_dwelling' THEN 8
               WHEN place = 'farm' THEN 9
-            END ASC
+            END ASC, length(name) DESC, name
         ) AS placenames_small
     properties:
       minzoom: 12
