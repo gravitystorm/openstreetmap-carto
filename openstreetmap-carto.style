@@ -1,5 +1,7 @@
 # This is the .style file for OpenStreetMap Carto, which is currently
 # the same as the upstream osm2pgsql style
+# phstore is used instead of polygon,nocolumn to preserve compatibility
+# with older osm2pgsql versions
 
 # OsmType  Tag          DataType     Flags
 node,way   access       text         linear
@@ -10,9 +12,9 @@ node,way   admin_level  text         linear
 node,way   aerialway    text         linear
 node,way   aeroway      text         polygon
 node,way   amenity      text         polygon
-node,way   area         text         # hard coded support for area=1/yes => polygon is in osm2pgsql
+node,way   area         text         polygon # hard coded support for area=1/yes => polygon is in osm2pgsql
 node,way   barrier      text         linear
-node,way   bicycle      text
+node,way   bicycle      text         linear
 node,way   brand        text         linear
 node,way   bridge       text         linear
 node,way   boundary     text         linear
@@ -47,14 +49,13 @@ node,way   office       text         polygon
 node,way   oneway       text         linear
 node,way   operator     text         linear
 node,way   place        text         polygon
-node       poi          text
 node,way   population   text         linear
 node,way   power        text         polygon
 node,way   power_source text         linear
 node,way   public_transport text     polygon
 node,way   railway      text         linear
 node,way   ref          text         linear
-node,way   religion     text         nocache
+node,way   religion     text         linear
 node,way   route        text         linear
 node,way   service      text         linear
 node,way   shop         text         polygon
@@ -71,7 +72,7 @@ node,way   wetland      text         polygon
 node,way   width        text         linear
 node,way   wood         text         linear
 node,way   z_order      int4         linear # This is calculated during import
-way        way_area     real                # This is calculated during import
+way        way_area     real         linear # This is calculated during import
 
 # Area tags
 # We don't make columns for these tags, but objects with them are areas.
