@@ -1,6 +1,9 @@
 -- For documentation of Lua tag transformations, see:
 -- https://github.com/openstreetmap/osm2pgsql/blob/master/docs/lua.md
 
+-- Custom keys that are defined by this file
+custom_keys = { 'z_order', 'osmcarto_z_order' }
+
 -- Objects with any of the following keys will be treated as polygon
 polygon_keys = { 'building', 'landuse', 'amenity', 'harbour', 'historic', 'leisure',
       'man_made', 'military', 'natural', 'office', 'place', 'power',
@@ -393,7 +396,6 @@ function filter_tags_relation_member (keyvalues, keyvaluemembers, roles, memberc
             end
          end
       end
-
       -- Treat objects with a key/value combination in polygon_values as polygon
       if not haspolygontags then
          for index,tag in pairs(polygon_values) do
@@ -403,10 +405,43 @@ function filter_tags_relation_member (keyvalues, keyvaluemembers, roles, memberc
             end
          end
       end
+      -- Support for old-style multipolygons (1/2):
+      -- If there are no polygon tags, add tags from all outer elements to the multipolygon itself
+      if not haspolygontags then
+         for i = 1,membercount do
+            if (roles[i] == "outer") then
+               for k,v in pairs(keyvaluemembers[i]) do
+                  keyvalues[k] = v
+               end
+            end
+         end
+      end
+      -- Support for old-style multipolygons (2/2):
+      -- For any member of the multipolygon, set membersuperseded to 1 (i.e. don't deal with it as area as well),
+      -- except when the member has a (non-custom) key/value combination that is not also a key/value combination of the multipolygon itself
+      for i = 1,membercount do
+         superseded = 1
+         for k,v in pairs(keyvaluemembers[i]) do
+            if ((keyvalues[k] == nil or keyvalues[k] ~= v) and not is_in(k,custom_keys)) then
+              superseded = 0;
+              break
+            end
+         end
+         membersuperseded[i] = superseded
+      end
    end
 
    -- Add z_order key/value combination and determine if the object should also be added to planet_osm_roads
    keyvalues, roads = add_z_order(keyvalues)
 
    return filter, keyvalues, membersuperseded, linestring, polygon, roads
+end
+
+function is_in (needle, haystack)
+    for index, value in ipairs (haystack) do
+        if value == needle then
+            return true
+        end
+    end
+    return false
 end
