@@ -228,8 +228,8 @@ zordering_tags = {
 
 function add_z_order(keyvalues)
    -- The default z_order is 0
-   z_order = 0
-   osmcarto_z_order = 0
+   local z_order = 0
+   local osmcarto_z_order = 0
 
    -- Increase or decrease z_order based on the specific key/value combination as specified in zordering_tags
    for i,k in ipairs(zordering_tags) do
@@ -253,7 +253,7 @@ end
 
 -- Filtering on nodes, ways, and relations
 function filter_tags_generic(keyvalues, numberofkeys)
-   filter = 0   -- Will object be filtered out?
+   local filter = 0   -- Will object be filtered out?
 
    -- Delete tags listed in delete_tags
    for k, v in pairs (keyvalues) do
@@ -284,7 +284,7 @@ end
 -- Filtering on relations
 function filter_basic_tags_rel (keyvalues, numberofkeys)
    -- Filter out objects that are filtered out by filter_tags_generic
-   filter, keyvalues = filter_tags_generic(keyvalues, numberofkeys)
+   local filter, keyvalues = filter_tags_generic(keyvalues, numberofkeys)
    if filter == 1 then
       return filter, keyvalues
    end
@@ -300,9 +300,9 @@ end
 
 -- Filtering on ways
 function filter_tags_way (keyvalues, numberofkeys)
-   filter = 0  -- Will object be filtered out?
-   polygon = 0 -- Will object be treated as polygon?
-   roads = 0   -- Will object be added to planet_osm_roads?
+   local filter = 0  -- Will object be filtered out?
+   local polygon = 0 -- Will object be treated as polygon?
+   local roads = 0   -- Will object be added to planet_osm_roads?
 
    -- Filter out objects that are filtered out by filter_tags_generic
    filter, keyvalues = filter_tags_generic(keyvalues, numberofkeys)
@@ -319,16 +319,16 @@ function filter_tags_way (keyvalues, numberofkeys)
 end
 
 function filter_tags_relation_member (keyvalues, keyvaluemembers, roles, membercount)
-   filter = 0     -- Will object be filtered out?
-   linestring = 0 -- Will object be treated as linestring?
-   polygon = 0    -- Will object be treated as polygon?
-   roads = 0      -- Will object be added to planet_osm_roads?
-   membersuperseded = {}
+   local filter = 0     -- Will object be filtered out?
+   local linestring = 0 -- Will object be treated as linestring?
+   local polygon = 0    -- Will object be treated as polygon?
+   local roads = 0      -- Will object be added to planet_osm_roads?
+   local membersuperseded = {}
    for i = 1, membercount do
       membersuperseded[i] = 0 -- Will member be ignored when handling areas?
    end
 
-   type = keyvalues["type"]
+   local type = keyvalues["type"]
 
    -- Remove type key
    keyvalues["type"] = nil
@@ -373,7 +373,7 @@ function filter_tags_relation_member (keyvalues, keyvaluemembers, roles, memberc
    end
 
    -- Add z_order key/value combination and determine if the object should also be added to planet_osm_roads
-   keyvalues, roads = add_z_order(keyvalues)
+   local keyvalues, roads = add_z_order(keyvalues)
 
    return filter, keyvalues, membersuperseded, linestring, polygon, roads
 end
@@ -389,10 +389,10 @@ function haspolygontags (tags)
    end
 
    -- Treat objects with a key in polygon_keys as polygon
-   haspolytags = 0
+   local haspolytags = 0
    for i,k in ipairs(polygon_keys) do
       if tags[k] then
-         polygontag = 1
+         local polygontag = 1
          -- However, if the key/value combination occurs in linestring_values, do not treat the object as polygon
          for index,tag in pairs(linestring_values) do
             if k == tag[1] and tags[k] == tag[2] then
