@@ -310,41 +310,7 @@ function filter_tags_way (keyvalues, numberofkeys)
       return filter, keyvalues, polygon, roads
    end
 
-   -- Treat objects with a key in polygon_keys as polygon
-   for i,k in ipairs(polygon_keys) do
-      if keyvalues[k] then
-         polygontag = 1
-         -- However, if the key/value combination occurs in linestring_values, do not treat the object as polygon
-         for index,tag in pairs(linestring_values) do
-            if k == tag[1] and keyvalues[k] == tag[2] then
-               polygontag = 0
-               break
-            end
-         end
-         if polygontag == 1 then
-            polygon = 1
-            break
-         end
-      end
-   end
-
-   -- Treat objects with a key/value combination in polygon_values as polygon
-   if polygon == 0 then
-      for index,tag in pairs(polygon_values) do
-         if keyvalues[tag[1]] == tag[2] then
-            polygon=1
-            break
-         end
-      end
-   end
-   
-   -- Treat objects tagged as area=yes, area=1, or area=true as polygon,
-   -- and treat objects tagged as area=no, area=0, or area=false not as polygon
-   if ((keyvalues["area"] == "yes") or (keyvalues["area"] == "1") or (keyvalues["area"] == "true")) then
-      polygon = 1;
-   elseif ((keyvalues["area"] == "no") or (keyvalues["area"] == "0") or (keyvalues["area"] == "false")) then
-      polygon = 0;
-   end
+   polygon = haspolygontags(keyvalues)
 
    -- Add z_order key/value combination and determine if the object should also be added to planet_osm_roads
    keyvalues, roads = add_z_order(keyvalues)
@@ -378,37 +344,11 @@ function filter_tags_relation_member (keyvalues, keyvaluemembers, roles, memberc
    elseif (type == "multipolygon") then
       -- Treat as polygon
       polygon = 1
-      haspolygontags = false
-      -- Count the number of polygon tags
-      -- First count keys in polygon_keys
-      for i,k in ipairs(polygon_keys) do
-         if keyvalues[k] then
-            polygontag = 1
-            -- However, if the key/value combination occurs in linestring_values, do not count the object as polygon
-            for index,tag in pairs(linestring_values) do
-               if k == tag[1] and keyvalues[k] == tag[2] then
-                  polygontag = 0
-                  break
-               end
-            end
-            if polygontag == 1 then
-               haspolygontags = true
-               break
-            end
-         end
-      end
-      -- Treat objects with a key/value combination in polygon_values as polygon
-      if not haspolygontags then
-         for index,tag in pairs(polygon_values) do
-            if keyvalues[tag[1]] == tag[2] then
-               haspolygontags = true
-               break
-            end
-         end
-      end
+
       -- Support for old-style multipolygons (1/2):
       -- If there are no polygon tags, add tags from all outer elements to the multipolygon itself
-      if not haspolygontags then
+      haspolytags = haspolygontags(keyvalues)
+      if (haspolytags == 0) then
          for i = 1,membercount do
             if (roles[i] == "outer") then
                for k,v in pairs(keyvaluemembers[i]) do
@@ -436,6 +376,48 @@ function filter_tags_relation_member (keyvalues, keyvaluemembers, roles, memberc
    keyvalues, roads = add_z_order(keyvalues)
 
    return filter, keyvalues, membersuperseded, linestring, polygon, roads
+end
+
+-- Check if an object with given tags should be treated as polygon
+function haspolygontags (tags)
+   -- Treat objects tagged as area=yes, area=1, or area=true as polygon,
+   -- and treat objects tagged as area=no, area=0, or area=false not as polygon
+   if ((tags["area"] == "yes") or (tags["area"] == "1") or (tags["area"] == "true")) then
+      return 1
+   elseif ((tags["area"] == "no") or (tags["area"] == "0") or (tags["area"] == "false")) then
+      return 0
+   end
+
+   -- Treat objects with a key in polygon_keys as polygon
+   haspolytags = 0
+   for i,k in ipairs(polygon_keys) do
+      if tags[k] then
+         polygontag = 1
+         -- However, if the key/value combination occurs in linestring_values, do not treat the object as polygon
+         for index,tag in pairs(linestring_values) do
+            if k == tag[1] and tags[k] == tag[2] then
+               polygontag = 0
+               break
+            end
+         end
+         if polygontag == 1 then
+            haspolytags = 1
+            break
+         end
+      end
+   end
+
+   -- Treat objects with a key/value combination in polygon_values as polygon
+   if polygon == 0 then
+      for index,tag in pairs(polygon_values) do
+         if tags[tag[1]] == tag[2] then
+            haspolytags = 1
+            break
+         end
+      end
+   end
+
+   return haspolytags
 end
 
 function is_in (needle, haystack)
