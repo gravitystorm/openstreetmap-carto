@@ -258,7 +258,7 @@ function filter_tags_generic(keyvalues, numberofkeys)
    -- Filter out objects with 0 tags
    if numberofkeys == 0 then
       filter = 1
-      return filter, keyvalues
+      return 1, {}
    end
 
    -- Delete tags listed in delete_tags
