@@ -255,6 +255,12 @@ end
 function filter_tags_generic(keyvalues, numberofkeys)
    local filter = 0   -- Will object be filtered out?
 
+   -- Filter out objects with 0 tags
+   if numberofkeys == 0 then
+      filter = 1
+      return filter, keyvalues
+   end
+
    -- Delete tags listed in delete_tags
    for k, v in pairs (keyvalues) do
      match = false
@@ -267,10 +273,9 @@ function filter_tags_generic(keyvalues, numberofkeys)
      end
    end
 
-   -- Filter out objects with 0 tags
+   -- Filter out objects that have 0 tags after deleting tags
    if numberofkeys == 0 then
       filter = 1
-      return filter, keyvalues
    end
 
    return filter, keyvalues
