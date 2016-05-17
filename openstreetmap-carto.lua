@@ -2,14 +2,14 @@
 -- https://github.com/openstreetmap/osm2pgsql/blob/master/docs/lua.md
 
 -- Custom keys that are defined by this file
-custom_keys = { 'z_order', 'osmcarto_z_order' }
+custom_keys = {'z_order', 'osmcarto_z_order'}
 
 -- Objects with any of the following keys will be treated as polygon
-polygon_keys = { 'building', 'landuse', 'amenity', 'harbour', 'historic', 'leisure',
+polygon_keys = {'building', 'landuse', 'amenity', 'harbour', 'historic', 'leisure',
       'man_made', 'military', 'natural', 'office', 'place', 'power',
       'public_transport', 'shop', 'sport', 'tourism', 'waterway',
       'wetland', 'water', 'aeroway', 'abandoned:aeroway', 'abandoned:amenity',
-      'abandoned:building', 'abandoned:landuse', 'abandoned:power', 'area:highway' }
+      'abandoned:building', 'abandoned:landuse', 'abandoned:power', 'area:highway'}
 
 -- Objects with any of the following key/value combinations will be treated as polygon
 polygon_values = {
@@ -174,14 +174,14 @@ delete_tags = {
 -- Each element has the form {key, value, z_order, osmcarto_z_order, is_road}.
 -- If is_road=1, the object will be added to planet_osm_roads.
 zordering_tags = {
-   { 'railway', nil, 5, 0, 1},
-   { 'boundary', 'administrative', 0, 0, 1},
-   { 'bridge', 'yes', 10, 0, 0 },
-   { 'bridge', 'true', 10, 0, 0 },
-   { 'bridge', 1, 10, 0, 0 },
-   { 'tunnel', 'yes', -10, 0, 0},
-   { 'tunnel', 'true', -10, 0, 0},
-   { 'tunnel', 1, -10, 0, 0},
+   {'railway', nil, 5, 0, 1},
+   {'boundary', 'administrative', 0, 0, 1},
+   {'bridge', 'yes', 10, 0, 0},
+   {'bridge', 'true', 10, 0, 0},
+   {'bridge', 1, 10, 0, 0},
+   {'tunnel', 'yes', -10, 0, 0},
+   {'tunnel', 'true', -10, 0, 0},
+   {'tunnel', 1, -10, 0, 0},
    {'railway', 'rail', 0, 440, 1},
    {'railway', 'subway', 0, 420, 1},
    {'railway', 'narrow_gauge', 0, 420, 1},
