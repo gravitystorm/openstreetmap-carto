@@ -7,7 +7,7 @@ CREATE INDEX planet_osm_roads_admin
   WHERE boundary = 'administrative';
 CREATE INDEX planet_osm_roads_roads_ref
   ON planet_osm_roads USING GIST (way)
-  WHERE WHERE highway IS NOT NULL AND ref IS NOT NULL;
+  WHERE highway IS NOT NULL AND ref IS NOT NULL;
 CREATE INDEX planet_osm_roads_admin_low
   ON planet_osm_roads USING GIST (way)
   WHERE boundary = 'administrative' AND admin_level IN ('0', '1', '2', '3', '4');
@@ -29,9 +29,6 @@ CREATE INDEX planet_osm_polygon_nobuilding
 CREATE INDEX planet_osm_polygon_name
   ON planet_osm_polygon USING GIST (way)
   WHERE name IS NOT NULL;
-CREATE INDEX planet_osm_point_place_low
-  ON planet_osm_point USING GIST (way)
-  WHERE place IN ('city', 'town') AND name IS NOT NULL;
 CREATE INDEX planet_osm_point_place
   ON planet_osm_point USING GIST (way)
   WHERE place IS NOT NULL AND name IS NOT NULL;

@@ -4,8 +4,6 @@
 
 point:
   # The point table is small, but so are the partial indexes
-  place_low:
-    where: place IN ('city', 'town') AND name IS NOT NULL
   place:
     where: place IS NOT NULL AND name IS NOT NULL
 line:
@@ -31,4 +29,4 @@ roads:
   admin:
     where: boundary = 'administrative'
   roads_ref:
-    where: WHERE highway IS NOT NULL AND ref IS NOT NULL
+    where: highway IS NOT NULL AND ref IS NOT NULL
