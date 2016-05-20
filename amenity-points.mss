@@ -535,6 +535,16 @@
     marker-clip: false;
   }
 
+  [feature = 'historic_castle'][zoom >= 14] {
+    marker-file: url('symbols-de/atkis/burg.svg');
+    marker-fill: #000000;
+    marker-placement: interior;
+    marker-clip: false;
+    [ruins = 'yes'] {
+      marker-file: url('symbols-de/atkis/burgruine.svg');
+    }
+  }
+
   [feature = 'shop_other'][zoom >= 17] {
     marker-fill: @shop-icon;
     marker-width: 6;
@@ -1301,6 +1311,7 @@
 
   [feature = 'historic_memorial'][zoom >= 17],
   [feature = 'historic_monument'][zoom >= 16],
+  [feature = 'historic_castle'][zoom >= 16],
   [feature = 'historic_archaeological_site'][zoom >= 17] {
     text-name: "[name]";
     text-size: 9;
@@ -1311,6 +1322,10 @@
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
+    [feature = 'historic_castle'] {
+      text-fill: #000000;
+      text-dy: 13;
+    }
   }
 
   [feature = 'leisure_miniature_golf'][zoom >= 17],
