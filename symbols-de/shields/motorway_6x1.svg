@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="100%"
+   height="100%"
+   viewBox="0 0 45.0 15.0"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="autobahn_6x1.svg">
+  <metadata
+     id="metadata9">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs7" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1171"
+     inkscape:window-height="817"
+     id="namedview5"
+     showgrid="false"
+     inkscape:zoom="7.8444444"
+     inkscape:cx="22.5"
+     inkscape:cy="7.5"
+     inkscape:window-x="583"
+     inkscape:window-y="97"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2" />
+  <path
+     d="m 0.4985331,7.5014031 0,-4.8364371 q 0,-0.254552 0.7096783,-0.3818228 L 22.025475,0.51402905 q 0,-0.0126893 0.473118,-0.0126893 0.473118,0 0.473118,0.0126893 L 43.788978,2.2831432 q 0.709681,0.1272708 0.709681,0.3818228 l 0,9.672878 q 0,0.254552 -0.709681,0.381823 l -20.817267,1.769111 q 0,0.01269 -0.473118,0.01269 -0.473118,0 -0.473118,-0.01269 L 1.2082114,12.719667 Q 0.4985331,12.592396 0.4985331,12.337844 Z"
+     id="path6"
+     style="fill:#365eaf;fill-opacity:1;stroke:#0528a2;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     inkscape:connector-curvature="0" />
+</svg>

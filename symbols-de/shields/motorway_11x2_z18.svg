@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="100%"
+   height="100%"
+   viewBox="0 0 89.0 28.0"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="autobahn_11x2_z18.svg">
+  <metadata
+     id="metadata9">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs7" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="975"
+     inkscape:window-height="537"
+     id="namedview5"
+     showgrid="false"
+     inkscape:zoom="3.9662921"
+     inkscape:cx="44.5"
+     inkscape:cy="14"
+     inkscape:window-x="395"
+     inkscape:window-y="310"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2" />
+  <path
+     style="fill:#365eaf;fill-opacity:1;stroke:#0528a2;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 44.5,0.50000313 c -0.630821,0 -0.945314,0.003888 -0.945314,0.0137592 L 1.9212748,2.5910385 c -0.94623871,0.099608 -1.42127481,0.2501744 -1.42127481,0.4493879 0,7.3063836 0,14.6127706 0,21.9191506 0,0.199214 0.475035,0.349786 1.42127481,0.449389 l 41.6334112,2.077275 c 0,0.0099 0.314498,0.01376 0.945314,0.01376 0.630824,0 0.945312,-0.0039 0.945312,-0.01376 l 41.633412,-2.077275 c 0.94624,-0.09961 1.421275,-0.250175 1.421275,-0.449388 0,-7.306382 0,-14.612768 0,-21.9191516 0,-0.1992135 -0.475035,-0.349785 -1.421275,-0.4493879 L 45.445312,0.51376017 c 0,-0.009936 -0.314498,-0.0137592 -0.945312,-0.0137592 z"
+     id="path6"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="sccccccsccccccs" />
+</svg>

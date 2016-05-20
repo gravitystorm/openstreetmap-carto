@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="100%"
+   height="100%"
+   viewBox="0 0 68.0 16.0"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="autobahn_9x1_z16.svg">
+  <metadata
+     id="metadata9">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs7" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="955"
+     inkscape:window-height="635"
+     id="namedview5"
+     showgrid="false"
+     inkscape:zoom="5.1911765"
+     inkscape:cx="34"
+     inkscape:cy="8"
+     inkscape:window-x="674"
+     inkscape:window-y="307"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#365eaf;fill-opacity:1;stroke:#0528a2;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path6"
+     d="m 0.5,8.0000385 0,-5.181831 q 0,-0.27273 1.0806445,-0.40909 L 33.279561,0.5136595 q 0,-0.01366 0.720436,-0.01366 0.720427,0 0.720427,0.01366 l 31.698924,1.895458 Q 67.5,2.5454775 67.5,2.8182075 l 0,10.3636635 q 0,0.272731 -1.080652,0.409091 l -31.698924,1.895452 q 0,0.01359 -0.720427,0.01359 -0.720436,0 -0.720436,-0.01359 L 1.5806445,13.590962 Q 0.5,13.454602 0.5,13.181871 Z" />
+</svg>
