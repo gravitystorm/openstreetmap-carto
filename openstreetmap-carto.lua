@@ -413,7 +413,7 @@ function haspolygontags (tags)
    end
 
    -- Treat objects with a key/value combination in polygon_values as polygon
-   if polygon == 0 then
+   if haspolytags == 0 then
       for index,tag in pairs(polygon_values) do
          if tags[tag[1]] == tag[2] then
             haspolytags = 1
