@@ -263,14 +263,13 @@ function filter_tags_generic(keyvalues, numberofkeys)
 
    -- Delete tags listed in delete_tags
    for k, v in pairs (keyvalues) do
-     match = false
-     for _, d in ipairs(delete_tags) do
-       match = match or string.find(k, d)
-     end
-     if match then
-       keyvalues[k] = nil
-       numberofkeys = numberofkeys - 1
-     end
+      for _, d in ipairs(delete_tags) do
+         if string.find(k, d) then
+            keyvalues[k] = nil
+            numberofkeys = numberofkeys - 1
+            break
+         end
+      end
    end
 
    -- Filter out objects that have 0 tags after deleting tags
