@@ -1,5 +1,6 @@
 # Installation
 
+## OpenStreetMap data
 You need OpenStreetMap data loaded into a PostGIS database (see below for [dependencies](#dependencies)). These stylesheets currently work only with the osm2pgsql defaults (i.e. database name is `gis`, table names are `planet_osm_point`, etc).
 
 It's probably easiest to grab an PBF of OSM data from [Mapzen](https://mapzen.com/metro-extracts/) or [geofabrik](http://download.geofabrik.de/). Once you've set up your PostGIS database, import with osm2pgsql:
@@ -9,6 +10,13 @@ osm2pgsql -d gis ~/path/to/data.osm.pbf --style openstreetmap-carto.style
 ```
 
 You can find a more detailed guide to setting up a database and loading data with osm2pgsql at [switch2osm.org](http://switch2osm.org/loading-osm-data/).
+
+### Custom indexes
+Custom indexes are not required, but will speed up rendering, particularly for full planet databases, heavy load, or other production environments. They will not be as helpful with development using small extracts.
+
+```
+psql -d gis -f indexes.sql
+```
 
 Additionally you need some shapefiles.
 

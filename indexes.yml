@@ -1,0 +1,34 @@
+# A goal with the indexes is to have them general-purpose enough to not need
+# frequent changing with stylesheet changes, but to be usable with many
+# versions, and potentially other styles.
+
+point:
+  # The point table is small, but so are the partial indexes
+  place:
+    where: place IS NOT NULL AND name IS NOT NULL
+line:
+  name:
+    where: name IS NOT NULL
+  ferry:
+    where: route = 'ferry'
+  river:
+    where: waterway = 'river'
+polygon:
+  # The polygon table is by far the largest, and generally the slowest
+  name:
+    where: name IS NOT NULL
+  nobuilding:
+    where: building IS NULL
+  military:
+    where: landuse = 'military'
+  way_area_z6:
+    where: way_area > 59750
+roads:
+  # The roads table only has a subset of data, so it's just got some low-zoom
+  # indexes and some fairly selective ones for high zoom
+  admin_low:
+    where: boundary = 'administrative' AND admin_level IN ('0', '1', '2', '3', '4')
+  admin:
+    where: boundary = 'administrative'
+  roads_ref:
+    where: highway IS NOT NULL AND ref IS NOT NULL
