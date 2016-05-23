@@ -2595,6 +2595,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     shield-min-distance: @shield-min-distance;
     shield-face-name: @shield-font;
     shield-clip: @shield-clip;
+    shield-min-padding: 31;
 
     [highway = 'motorway'] {
       shield-face-name: @shield-motorway-font;
@@ -2641,6 +2642,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       shield-min-distance: @shield-min-distance;
       shield-face-name: @shield-font;
       shield-clip: @shield-clip;
+      shield-min-padding: 31;
 
       [highway = 'motorway'] {
         shield-fill: @shield-motorway-fill;
