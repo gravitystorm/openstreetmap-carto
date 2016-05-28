@@ -32,11 +32,13 @@
   }
 }
 
+// ircama: revised zoom and text size
 #building-text {
   [zoom >= 14][way_pixels > 3000],
-  [zoom >= 17] {
+  [zoom >= 13] {
     text-name: "[name]";
-    text-size: 11;
+    text-size: 8;
+    [zoom >= 17] { text-size: 11; }
     text-fill: #444;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
