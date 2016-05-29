@@ -689,18 +689,110 @@
   }
 }
 
+// Ircama: added rendering of ridges, valleys and glaciers
+@ridge-text:   #7A2F18;
+@valley-text:  #305040;
+@cliff-text:   #999;
+@glacier-text: #0080FF;
+
+#text-point,
 #text-line {
-  [feature = 'natural_cliff'][zoom >= 15],
+  [feature = 'natural_cliff'][zoom >= 11],
   [feature = 'man_made_embankment'][zoom >= 15] {
     text-name: "[name]";
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
-    text-fill: #999;
+    text-fill: @cliff-text;
     text-size: 10;
     text-face-name: @book-fonts;
-    text-placement: line;
     text-dy: 8;
     text-vertical-alignment: middle;
     text-spacing: 400;
+    #text-line {
+      text-placement: line;
+    }
+    #text-point {
+      text-placement: point;
+      text-dy: 8;
+	    text-size: 10;
+    }
+  }
+  [feature = 'natural_ridge'][zoom >= 10],
+  [feature = 'natural_glacier'][zoom >= 10],
+  [feature = 'natural_valley'][zoom >= 10] {
+    text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
+    text-vertical-alignment: middle;
+  	text-opacity: 0.7;
+    text-spacing: 2500;
+    text-face-name: @oblique-fonts;
+    text-wrap-width: 2;
+    text-name: "[name]";
+  	[feature = 'natural_glacier'],
+  	[feature = 'natural_valley'] {
+      [feature = 'natural_valley'] { text-fill: @valley-text; }
+      [feature = 'natural_glacier'] { text-fill: @glacier-text; }
+      text-label-position-tolerance: 40;
+      text-placement-type: simple;
+      text-halo-radius: 2;
+      [zoom >= 10] { text-size: 10; text-character-spacing: 4; text-opacity: 0.5; }
+      [zoom >= 11] { text-size: 12; text-character-spacing: 4; text-opacity: 0.6; }
+      [zoom >= 12] { text-size: 13; text-character-spacing: 5; text-opacity: 0.6; }
+      [zoom >= 13] { text-size: 13; text-character-spacing: 5; text-opacity: 0.6; }
+      [zoom >= 14] { text-size: 11; text-character-spacing: 3; } // this allows to also show small valleys within mountains
+	    [zoom >= 15] { text-size: 15; }
+	    [zoom >= 16] { text-size: 18; text-character-spacing: 4; }
+	     // long valleys and glaciers > 20km
+	    #text-line {
+		    [line_length>10000]             { text-size: 25; text-character-spacing: 10; text-opacity: 0.6; }
+		    [zoom <= 14][line_length>10000] { text-size: 20; text-character-spacing: 10; text-opacity: 0.5; }
+		    [line_length>15000]             { text-size: 25; text-character-spacing: 10; text-opacity: 0.6; }
+		    [zoom <= 13][line_length>15000] { text-size: 18; text-character-spacing: 10; text-opacity: 0.6; }
+		    [zoom <= 12][line_length>20000] { text-size: 15; text-character-spacing: 10; text-opacity: 0.6; }
+		    [zoom <= 10][line_length>20000] { text-size: 15; text-character-spacing: 1; text-opacity: 0.5; }
+	    }
+    }
+  	[feature = 'natural_ridge'] {
+      text-fill: @ridge-text;
+	    [zoom >= 10] { text-size: 10; }
+	    [zoom >= 11] { text-size: 12; }
+	    [zoom >= 12] { text-size: 12; }
+	    [zoom >= 13] { text-size: 12; }
+	    [zoom >= 14] { text-size: 11; }
+	    [zoom >= 15] { text-size: 15; }
+	    [zoom >= 16] { text-size: 18; }
+    }
+    #text-line {
+      text-placement: line;
+      text-allow-overlap: true;
+    }
+    #text-point {
+      text-placement: point;
+      text-dy: 8;
+	    text-size: 10;
+    }
+  }
+}
+
+#amenity-points-poly[zoom >= 10] { // Also show ridges and valleys made of polylines
+  [feature = 'natural_ridge'],
+  [feature = 'natural_valley'] {
+    text-halo-radius: 1;
+    text-halo-fill: rgba(255,255,255,0.6);
+    text-vertical-alignment: middle;
+  	text-opacity: 0.7;
+    text-spacing: 2500;
+    text-face-name: @oblique-fonts;
+    text-wrap-width: 2;
+	  text-placement: interior;
+    text-size: 12;
+    [way_pixels <= 4000] { text-size: 10; }
+    [way_pixels > 20000][zoom >=10] { text-size: 15; }
+    [way_pixels > 60000][zoom >=11] { text-size: 17; }
+    [way_pixels > 200000][zoom >=12] { text-size: 21; }
+    [way_pixels > 500000][zoom >=13] { text-size: 25; }
+    text-name: "[name]";
+    [feature = 'natural_ridge'] { text-fill: @ridge-text; }
+    [feature = 'natural_valley'] { text-fill: @valley-text; }
   }
 }
