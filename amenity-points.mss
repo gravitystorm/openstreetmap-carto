@@ -146,11 +146,9 @@
     marker-clip: false;
   }
 
-// Ircama (revised zoom for tourism_chalet; allowed it at lower zoom, but with reduced size)
-  [feature = 'tourism_chalet'][zoom >= 13] {
+  [feature = 'tourism_chalet'][zoom >= 17] {
     point-file: url('symbols/chalet.p.16.png');
     point-placement: interior;
-    [zoom <= 15] { point-transform:"scale(0.9)"; } // ircama: this reduces the size of the symbol for lower zooms
   }
 
   [feature = 'amenity_cinema'][zoom >= 16] {
@@ -358,8 +356,7 @@
     marker-clip: false;
   }
 
-// ircama: reduce zoom to 14 to mark references in the Alpes (with reduced size)
-  [feature = 'amenity_place_of_worship'][zoom >= 14] {
+  [feature = 'amenity_place_of_worship'][zoom >= 16] {
     marker-file: url('symbols/place_of_worship.16.svg');
     marker-fill: #000000;
     marker-placement: interior;
@@ -391,7 +388,6 @@
     [religion = 'taoist'] {
       marker-file: url('symbols/taoist.16.svg');
     }
-    [zoom <= 15] { marker-transform:"scale(0.8)"; } // ircama: this reduces the size of the symbol for lower zooms
   }
 
   [feature = 'man_made_cross'][zoom >= 17],
@@ -490,13 +486,11 @@
     marker-clip: false;
   }
 
-// ircama: reduce zoom >=14
-  [feature = 'amenity_drinking_water'][zoom >= 14] {
+  [feature = 'amenity_drinking_water'][zoom >= 17] {
     marker-file: url('symbols/drinking_water.16.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
-    [zoom <= 16] { marker-transform:"scale(0.8)"; } // ircama: this reduces the size of the symbol for lower zooms
   }
 
   [feature = 'amenity_prison'][zoom >= 17] {
@@ -506,13 +500,11 @@
     marker-clip: false;
   }
 
-// ircama: reduce viewpoint to zoom >=14
-  [feature = 'tourism_viewpoint'][zoom >= 14] {
+  [feature = 'tourism_viewpoint'][zoom >= 16] {
     marker-file: url('symbols/viewpoint.16.svg');
     marker-placement: interior;
     marker-fill: @amenity-brown;
     marker-clip: false;
-    [zoom <= 15] { marker-transform:"scale(0.8)"; } // ircama: this reduces the size of the symbol for lower zooms
   }
 
   [feature = 'man_made_water_tower'][zoom >= 17] {
@@ -1254,13 +1246,9 @@
     text-placement: interior;
   }
 
-// ircama: reduce zoom to 14 to mark references in the Alpes; text size reduced
-  [feature = 'amenity_place_of_worship'][zoom >= 14] {
+  [feature = 'amenity_place_of_worship'][zoom >= 17] {
     text-name: "[name]";
-    text-size: 9;
-    [zoom >= 17] {
     text-size: 10;
-    }
     text-fill: #000033;
     text-dy: 12;
     text-face-name: @book-fonts;
@@ -1679,13 +1667,12 @@
     text-face-name: @book-fonts;
   }
 
-// Ircama (revised zoom for text of tourism_chalet)
-  [feature = 'tourism_alpine_hut'][zoom >= 14],
-  [feature = 'amenity_shelter'][zoom >= 14],
+  [feature = 'tourism_alpine_hut'][zoom >= 15],
+  [feature = 'amenity_shelter'][zoom >= 17],
   [feature = 'tourism_hotel'][zoom >= 17],
   [feature = 'tourism_motel'][zoom >= 17],
   [feature = 'tourism_hostel'][zoom >= 17],
-  [feature = 'tourism_chalet'][zoom >= 14],
+  [feature = 'tourism_chalet'][zoom >= 17],
   [feature = 'tourism_guest_house'][zoom >= 17],
   [feature = 'tourism_camp_site'][zoom >= 17] {
     text-name: "[name]";

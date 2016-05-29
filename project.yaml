@@ -485,7 +485,6 @@ Layer:
     properties:
       minzoom: 12
     advanced: {}
-# Ircama: added support of tracks, paths and sac_scale
   - id: "tunnels"
     name: "tunnels"
     class: "tunnels-fill tunnels-casing access directions"
@@ -499,7 +498,7 @@ Layer:
       # an order is generated in SQL.
       table: |-
         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
-                horse, foot, bicycle, tracktype, sac_scale, ref, CHAR_LENGTH(ref) AS reflen, int_surface, access, construction,
+                horse, foot, bicycle, tracktype, int_surface, access, construction,
                 service, oneway, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
@@ -509,8 +508,6 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
-                sac_scale,
-                ref,
                 CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 
                                       'grass_paver', 'gravel', 'ground', 'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay') THEN 'unpaved' ELSE 
                   CASE WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes', 
@@ -551,8 +548,6 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
-                sac_scale,
-                ref,
                 'null',
                 CASE
                   WHEN access IN ('destination') THEN 'destination'::text
@@ -787,7 +782,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
-                horse, foot, bicycle, tracktype, sac_scale, ref, CHAR_LENGTH(ref) AS reflen, int_surface, access, construction,
+                horse, foot, bicycle, tracktype, int_surface, access, construction,
                 service, oneway, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
@@ -797,8 +792,6 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
-                sac_scale,
-                ref,
                 CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 
                                       'grass_paver', 'gravel', 'ground', 'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay') THEN 'unpaved' ELSE 
                   CASE WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes', 
@@ -841,8 +834,6 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
-                sac_scale,
-                ref,
                 'null',
                 CASE
                   WHEN access IN ('destination') THEN 'destination'::text
@@ -949,7 +940,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
-                horse, foot, bicycle, tracktype, sac_scale, ref, CHAR_LENGTH(ref) AS reflen, int_surface, access, construction,
+                horse, foot, bicycle, tracktype, int_surface, access, construction,
                 service, oneway, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
@@ -959,8 +950,6 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
-                sac_scale,
-                ref,
                 CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground', 
                                       'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay') THEN 'unpaved' ELSE 
                   CASE WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes', 
@@ -1003,8 +992,6 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
-                sac_scale,
-                ref,
                 'null',
                 CASE
                   WHEN access IN ('destination') THEN 'destination'::text
@@ -1189,7 +1176,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
-                horse, foot, bicycle, tracktype, sac_scale, ref, CHAR_LENGTH(ref) AS reflen, int_surface, access, construction,
+                horse, foot, bicycle, tracktype, int_surface, access, construction,
                 service, oneway, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
@@ -1199,8 +1186,6 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
-                sac_scale,
-                ref,
                 CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 
                                       'ground', 'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay') THEN 'unpaved' ELSE 
                   CASE WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 
@@ -1241,8 +1226,6 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
-                sac_scale,
-                ref,
                 'null',
                 CASE
                   WHEN access IN ('destination') THEN 'destination'::text
@@ -1672,7 +1655,7 @@ Layer:
                                             'video_games', 'watches', 'wholesale', 'yes') THEN 'other' ELSE NULL END,
               'leisure_' || CASE WHEN leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table') THEN leisure ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill') THEN man_made ELSE NULL END,
-              'natural_' || CASE WHEN "natural" IN ('spring', 'valley', 'ridge') THEN "natural" ELSE NULL END,
+              'natural_' || CASE WHEN "natural" IN ('spring') THEN "natural" ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site') THEN historic ELSE NULL END,
               'highway_'|| CASE WHEN highway IN ('bus_stop', 'elevator', 'traffic_signals') THEN highway ELSE NULL END,
               'power_' || CASE WHEN power IN ('generator') THEN power ELSE NULL END,
@@ -1683,7 +1666,6 @@ Layer:
             denomination,
             "generator:source",
             power_source,
-            name,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
@@ -1701,7 +1683,7 @@ Layer:
             OR shop IS NOT NULL -- skip checking a huge list and use a null check
             OR leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table')
             OR man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill')
-            OR "natural" IN ('spring', 'valley', 'ridge')
+            OR "natural" IN ('spring')
             OR historic IN ('memorial', 'monument', 'archaeological_site')
             OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
             OR (power = 'generator' AND ("generator:source" = 'wind' OR power_source = 'wind'))
@@ -1851,7 +1833,7 @@ Layer:
                   highway,
                   string_to_array(ref, ';') AS refs
               FROM planet_osm_roads
-                WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary', 'path', 'track')
+                WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary')
                 AND ref IS NOT NULL
               ) AS p) AS q
           WHERE height <= 4 AND width <= 11) AS roads_text_ref_low_zoom
@@ -1916,12 +1898,12 @@ Layer:
               SELECT
                   way,
                   COALESCE(
-                    CASE WHEN highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential', 'path', 'track') THEN highway ELSE NULL END,
+                    CASE WHEN highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential') THEN highway ELSE NULL END,
                     CASE WHEN aeroway IN ('runway', 'taxiway') THEN aeroway ELSE NULL END
                   ) AS highway,
                   string_to_array(ref, ';') AS refs
                 FROM planet_osm_line
-                  WHERE (highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential', 'path', 'track') OR aeroway IN ('runway', 'taxiway'))
+                  WHERE (highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential') OR aeroway IN ('runway', 'taxiway'))
                     AND ref IS NOT NULL
               ) AS p) AS q
           WHERE height <= 4 AND width <= 11) AS roads_text_ref
@@ -1964,7 +1946,7 @@ Layer:
             name
           FROM planet_osm_line
           WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 
-                            'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction', 'path', 'track')
+                            'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction')
             AND name IS NOT NULL
         ) AS roads_text_name
     properties:
@@ -2117,7 +2099,6 @@ Layer:
     properties:
       minzoom: 10
     advanced: {}
-# Ircama: added support of ridges, valleys and glaciers in text-line
   - id: "text-line"
     name: "text-line"
     class: ""
@@ -2134,13 +2115,12 @@ Layer:
             name,
             operator,
             ref,
-            ST_Length(way) AS line_length,
             NULL AS way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
           FROM planet_osm_line
           WHERE (man_made IN ('pier', 'breakwater', 'groyne', 'embankment')
               OR waterway IN ('dam', 'weir')
-              OR "natural" IN ('cliff', 'ridge', 'valley', 'glacier'))
+              OR "natural" IN ('cliff'))
             AND name IS NOT NULL
         ) AS text_line
     advanced: {}
@@ -2220,8 +2200,7 @@ Layer:
                                                       'construction', 'military') THEN landuse ELSE NULL END,
                   'man_made_' || CASE WHEN man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower') THEN man_made ELSE NULL END,
                   'natural_' || CASE WHEN "natural" IN ('wood', 'peak', 'volcano', 'saddle', 'cave_entrance', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring', 
-                                                        'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'cliff', 'valley',
-                                                        'ridge', 'glacier', 'tree')
+                                                        'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier', 'tree') 
                                                         THEN "natural" ELSE NULL END,
                   'place_' || CASE WHEN place IN ('island', 'islet') THEN place ELSE NULL END,
                   'military_' || CASE WHEN military IN ('danger_area') THEN military ELSE NULL END,

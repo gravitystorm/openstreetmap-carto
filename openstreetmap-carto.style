@@ -64,7 +64,6 @@ node,way   toll         text         linear
 node,way   tourism      text         polygon
 node,way   tower:type   text         linear
 way        tracktype    text         linear
-way        sac_scale    text         linear
 node,way   tunnel       text         linear
 node,way   water        text         polygon
 node,way   waterway     text         polygon
