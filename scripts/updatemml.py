@@ -1,4 +1,4 @@
-# updatemml, ircama, 2016
+# updatemml.py, ircama, 2016-5-30
 import re
 
 ####################### START CONFIG
