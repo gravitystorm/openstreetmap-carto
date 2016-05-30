@@ -335,12 +335,8 @@ function filter_tags_relation_member (keyvalues, keyvaluemembers, roles, memberc
    -- Remove type key
    keyvalues["type"] = nil
 
-   -- Relations with type=boundary are treated as linestring
-   if (type == "boundary") then
-      linestring = 1
-   end
-   -- Relations with type=multipolygon and boundary=* are treated as linestring
-   if ((type == "multipolygon") and keyvalues["boundary"]) then
+   -- Boundary relations are treated as linestring
+   if type == "boundary" or (type == "multipolygon" and keyvalues["boundary"]) then
       linestring = 1
    -- For multipolygons...
    elseif (type == "multipolygon") then
