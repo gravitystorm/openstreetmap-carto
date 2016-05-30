@@ -271,6 +271,8 @@ function filter_tags_generic(keyvalues, numberofkeys)
       end
    end
 
+   keyvalues['layer'] = layer(keyvalues['layer'])
+
    -- Filter out objects that have 0 tags after deleting tags
    if numberofkeys == 0 then
       return 1, {}
@@ -425,4 +427,11 @@ function is_in (needle, haystack)
         end
     end
     return false
+end
+
+--- Normalizes layer tags
+-- @param v The layer tag value
+-- @return An integer for the layer tag
+function layer (v)
+    return v and string.find(v, "^-?%d+$") and tonumber(v) < 100 and tonumber(v) > -100 and v or nil
 end
