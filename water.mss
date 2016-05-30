@@ -264,7 +264,7 @@
   }
 }
 
-// ircama_ revised text size
+// ircama: revised text size
 .text[zoom >= 10] {
   [feature = 'natural_water'],
   [feature = 'landuse_reservoir'],
