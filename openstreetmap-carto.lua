@@ -273,10 +273,10 @@ function filter_tags_generic(keyvalues, numberofkeys)
 
    -- Filter out objects that have 0 tags after deleting tags
    if numberofkeys == 0 then
-      filter = 1
+      return 1, {}
    end
 
-   return filter, keyvalues
+   return 0, keyvalues
 end
 
 -- Filtering on nodes
@@ -289,16 +289,15 @@ function filter_basic_tags_rel (keyvalues, numberofkeys)
    -- Filter out objects that are filtered out by filter_tags_generic
    local filter, keyvalues = filter_tags_generic(keyvalues, numberofkeys)
    if filter == 1 then
-      return filter, keyvalues
+      return 1, keyvalues
    end
 
    -- Filter out all relations except route, multipolygon and boundary relations
    if ((keyvalues["type"] ~= "route") and (keyvalues["type"] ~= "multipolygon") and (keyvalues["type"] ~= "boundary")) then
-      filter = 1
-      return filter, keyvalues
+      return 1, keyvalues
    end
 
-   return filter, keyvalues
+   return 0, keyvalues
 end
 
 -- Filtering on ways
