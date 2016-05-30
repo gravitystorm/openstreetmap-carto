@@ -1663,6 +1663,7 @@ Layer:
             ) AS feature,
             access,
             religion,
+            tourism,
             denomination,
             "generator:source",
             power_source,
@@ -1752,6 +1753,7 @@ Layer:
               ELSE NULL
             END AS score,
             religion,
+            tourism,
             denomination,
             "generator:source",
             power_source,
@@ -1990,6 +1992,7 @@ Layer:
               'leisure_' || CASE WHEN leisure IN ('nature_reserve') THEN leisure ELSE NULL END
             ) AS feature,
             name,
+            tourism,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building -- always no with the where conditions
           FROM planet_osm_polygon
           WHERE (landuse IN ('forest', 'military')
@@ -2072,6 +2075,7 @@ Layer:
             access,
             name,
             operator,
+            tourism,
             ref,
             way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
@@ -2114,6 +2118,7 @@ Layer:
             access,
             name,
             operator,
+            tourism,
             ref,
             NULL AS way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
@@ -2141,6 +2146,7 @@ Layer:
             way_pixels,
             feature,
             access,
+            tourism,
             CONCAT(
                 name,
                 CASE WHEN name IS NOT NULL AND elevation IS NOT NULL THEN E'\n' ELSE NULL END,
@@ -2224,6 +2230,7 @@ Layer:
                 END AS elevation,
                 "natural",
                 operator,
+                tourism,
                 ref,
                 NULL AS way_area,
                 CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
@@ -2443,6 +2450,7 @@ Layer:
             man_made,
             historic,
             access,
+            tourism,
             name,
             CASE WHEN amenity='waste_basket' THEN 2 ELSE 1 END AS prio
           FROM planet_osm_point p
@@ -2474,6 +2482,7 @@ Layer:
             man_made,
             historic,
             access,
+            tourism,
             name
           FROM planet_osm_polygon
           WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block')

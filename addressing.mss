@@ -32,7 +32,6 @@
   }
 }
 
-// ircama: revised zoom and text size
 #building-text {
   [zoom >= 14],
   [zoom >= 13][way_pixels > 3000] {
