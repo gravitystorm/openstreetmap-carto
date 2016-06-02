@@ -378,7 +378,9 @@ function filter_tags_relation_member (keyvalues, keyvaluemembers, roles, memberc
    return filter, keyvalues, membersuperseded, linestring, polygon, roads
 end
 
--- Check if an object with given tags should be treated as polygon
+--- Check if an object with given tags should be treated as polygon
+-- @param tags OSM tags
+-- @return 1 if area, 0 if linear
 function haspolygontags (tags)
    -- Treat objects tagged as area=yes, area=1, or area=true as polygon,
    -- and treat objects tagged as area=no, area=0, or area=false not as polygon
