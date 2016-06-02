@@ -305,7 +305,7 @@ function filter_tags_way (keyvalues, numberofkeys)
       return filter, keyvalues, polygon, roads
    end
 
-   polygon = haspolygontags(keyvalues)
+   polygon = isarea(keyvalues)
 
    -- Add z_order key/value combination and determine if the object should also be added to planet_osm_roads
    keyvalues, roads = add_z_order(keyvalues)
@@ -338,7 +338,7 @@ function filter_tags_relation_member (keyvalues, keyvaluemembers, roles, memberc
 
       -- Support for old-style multipolygons (1/2):
       -- If there are no polygon tags, add tags from all outer elements to the multipolygon itself
-      haspolytags = haspolygontags(keyvalues)
+      haspolytags = isarea(keyvalues)
       if (haspolytags == 0) then
          for i = 1,membercount do
             if (roles[i] == "outer") then
@@ -372,7 +372,7 @@ end
 --- Check if an object with given tags should be treated as polygon
 -- @param tags OSM tags
 -- @return 1 if area, 0 if linear
-function haspolygontags (tags)
+function isarea (tags)
    -- Treat objects tagged as area=yes polygon, other area as no
    if tags["area"] then
       return tags["area"] == "yes" and 1 or 0
