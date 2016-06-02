@@ -5,39 +5,30 @@
 custom_keys = {'z_order', 'osmcarto_z_order'}
 
 -- Objects with any of the following keys will be treated as polygon
-polygon_keys = {'building', 'landuse', 'amenity', 'harbour', 'historic', 'leisure',
-      'man_made', 'military', 'natural', 'office', 'place', 'power',
-      'public_transport', 'shop', 'sport', 'tourism', 'waterway',
-      'wetland', 'water', 'aeroway', 'abandoned:aeroway', 'abandoned:amenity',
-      'abandoned:building', 'abandoned:landuse', 'abandoned:power', 'area:highway'}
+polygon_keys = {
+   'building', 'landuse', 'amenity', 'harbour', 'historic', 'leisure',
+   'man_made', 'military', 'natural', 'office', 'place', 'power',
+   'public_transport', 'shop', 'sport', 'tourism', 'waterway',
+   'wetland', 'water', 'aeroway', 'abandoned:aeroway', 'abandoned:amenity',
+   'abandoned:building', 'abandoned:landuse', 'abandoned:power', 'area:highway'
+}
 
--- Objects with any of the following key/value combinations will be treated as polygon
-polygon_values = {
-      {'highway', 'services'},
-      {'highway', 'rest_area'},
-      {'junction', 'yes'}
-   }
 
 -- Objects with any of the following key/value combinations will be treated as linestring
 linestring_values = {
-      {'leisure', 'track'},
-      {'man_made', 'embankment'},
-      {'man_made', 'breakwater'},
-      {'man_made', 'groyne'},
-      {'natural', 'cliff'},
-      {'natural', 'tree_row'},
-      {'historic', 'citywalls'},
-      {'waterway', 'canal'},
-      {'waterway', 'derelict_canal'},
-      {'waterway', 'ditch'},
-      {'waterway', 'drain'},
-      {'waterway', 'river'},
-      {'waterway', 'stream'},
-      {'waterway', 'wadi'},
-      {'waterway', 'weir'},
-      {'power', 'line'},
-      {'power', 'minor_line'}
-   }
+   leisure = {track = true},
+   man_made = {embankment = true, breakwater = true, groyne = true},
+   natural = {cliff = true, tree_row = true},
+   historic = {citywalls = true},
+   waterway = {canal = true, derelict_canal = true, ditch = true, drain = true, river = true, stream = true, wadi = true, weir = true},
+   power = {line = true, minor_line = true}
+}
+
+-- Objects with any of the following key/value combinations will be treated as polygon
+polygon_values = {
+   highway = {services = true, rest_area = true},
+   junction = {yes = true}
+}
 
 -- The following keys will be deleted
 delete_tags = {
@@ -384,39 +375,18 @@ end
 function haspolygontags (tags)
    -- Treat objects tagged as area=yes polygon, other area as no
    if tags["area"] then
-      return tags["area"] == "yes"
+      return tags["area"] == "yes" and 1 or 0
    end
 
-   -- Treat objects with a key in polygon_keys as polygon
-   local haspolytags = 0
-   for i,k in ipairs(polygon_keys) do
-      if tags[k] then
-         local polygontag = 1
-         -- However, if the key/value combination occurs in linestring_values, do not treat the object as polygon
-         for index,tag in pairs(linestring_values) do
-            if k == tag[1] and tags[k] == tag[2] then
-               polygontag = 0
-               break
-            end
-         end
-         if polygontag == 1 then
-            haspolytags = 1
-            break
-         end
+   -- Search through object's tags
+   for k, v in pairs(tags) do
+      -- Check if it has a polygon key and not a linestring override, or a polygon k=v
+      if (polygon_keys[k] and not (linestring_values[k] and linestring_values[k][v])) or
+         (polygon_values[k] and polygon_values[k][v]) then
+         return 1
       end
    end
-
-   -- Treat objects with a key/value combination in polygon_values as polygon
-   if haspolytags == 0 then
-      for index,tag in pairs(polygon_values) do
-         if tags[tag[1]] == tag[2] then
-            haspolytags = 1
-            break
-         end
-      end
-   end
-
-   return haspolytags
+   return 0
 end
 
 function is_in (needle, haystack)
