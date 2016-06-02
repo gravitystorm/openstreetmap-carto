@@ -382,12 +382,9 @@ end
 -- @param tags OSM tags
 -- @return 1 if area, 0 if linear
 function haspolygontags (tags)
-   -- Treat objects tagged as area=yes, area=1, or area=true as polygon,
-   -- and treat objects tagged as area=no, area=0, or area=false not as polygon
-   if ((tags["area"] == "yes") or (tags["area"] == "1") or (tags["area"] == "true")) then
-      return 1
-   elseif ((tags["area"] == "no") or (tags["area"] == "0") or (tags["area"] == "false")) then
-      return 0
+   -- Treat objects tagged as area=yes polygon, other area as no
+   if tags["area"] then
+      return tags["area"] == "yes"
    end
 
    -- Treat objects with a key in polygon_keys as polygon
