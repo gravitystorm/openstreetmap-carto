@@ -42,10 +42,8 @@ linestring_values = {
 -- The following keys will be deleted
 delete_tags = {
   'note',
-  'note:.*',
   'source',
   'source_ref',
-  'source:.*',
   'attribution',
   'comment',
   'fixme',
@@ -56,24 +54,16 @@ delete_tags = {
   -- Lots of import tags
   -- EUROSHA (Various countries)
   'project:eurosha_2012',
-  -- Corine (CLC) (Europe)
-  'CLC:.*',
 
   -- UrbIS (Brussels, BE)
   'ref:UrbIS',
 
-  -- Geobase (CA)
-  'geobase:.*',
   -- NHN (CA)
   'accuracy:meters',
   'sub_sea:type',
   'waterway:type',
-  -- CanVec (CA)
-  'canvec:.*',
   -- StatsCan (CA)
   'statscan:rbuid',
-  -- Geobase (CA)
-  'geobase:.*',
 
   -- RUIAN (CZ)
   'ref:ruian:addr',
@@ -84,31 +74,13 @@ delete_tags = {
   -- UIR-ADR (CZ)
   'uir_adr:ADRESA_KOD',
 
-  -- osak (DK)
-  'osak:.*',
-  -- kms (DK)
-  'kms:.*',
   -- GST (DK)
   'gst:feat_id',
 
   -- Maa-amet (EE)
   'maaamet:ETAK',
-
-  -- ngbe (ES)
-  -- See also note:es and source:file above
-  'ngbe:.*',
-
   -- FANTOIR (FR)
   'ref:FR:FANTOIR',
-
-  -- Friuli Venezia Giulia (IT)
-  'it:fvg:.*',
-
-  -- KSJ2 (JA)
-  -- See also note:ja and source_ref above
-  'KSJ2:.*',
-  -- Yahoo/ALPS (JA)
-  'yh:.*',
 
   -- 3dshapes (NL)
   '3dshapes:ggmodelk',
@@ -117,37 +89,18 @@ delete_tags = {
 
   -- OPPDATERIN (NO)
   'OPPDATERIN',
-
-  -- LINZ (NZ)
-  'LINZ2OSM:.*',
-  'linz2osm:.*',
-  'LINZ:.*',
-
   -- Various imports (PL)
   'addr:city:simc',
   'addr:street:sym_ul',
   'building:usage:pl',
   'building:use:pl',
-  -- WroclawGIS (PL)
-  'WroclawGIS:.*',
   -- TERYT (PL)
   'teryt:simc',
 
   -- RABA (SK)
   'raba:id',
-
-  -- Naptan (UK)
-  'naptan:.*',
-
-  -- TIGER (US)
-  'tiger:.*',
-  -- GNIS (US)
-  'gnis:.*',
   -- DCGIS (Washington DC, US)
   'dcgis:gis_id',
-  -- National Hydrography Dataset (US)
-  'NHD:.*',
-  'nhd:.*',
   -- Building Identification Number (New York, US)
   'nycdoitt:bin',
   -- Chicago Building Inport (US)
@@ -166,7 +119,58 @@ delete_tags = {
   'OBJTYPE',
   'SK53_bulk:load'
 }
+delete_wildcards = {
+  'note:.*',
+  'source:.*',
+  -- Corine (CLC) (Europe)
+  'CLC:.*',
 
+  -- Geobase (CA)
+  'geobase:.*',
+  -- CanVec (CA)
+  'canvec:.*',
+  -- Geobase (CA)
+  'geobase:.*',
+
+  -- osak (DK)
+  'osak:.*',
+  -- kms (DK)
+  'kms:.*',
+
+  -- ngbe (ES)
+  -- See also note:es and source:file above
+  'ngbe:.*',
+
+ -- Friuli Venezia Giulia (IT)
+  'it:fvg:.*',
+
+  -- KSJ2 (JA)
+  -- See also note:ja and source_ref above
+  'KSJ2:.*',
+  -- Yahoo/ALPS (JA)
+  'yh:.*',
+
+  -- LINZ (NZ)
+  'LINZ2OSM:.*',
+  'linz2osm:.*',
+  'LINZ:.*',
+
+  -- WroclawGIS (PL)
+  'WroclawGIS:.*',
+  -- Naptan (UK)
+  'naptan:.*',
+
+  -- TIGER (US)
+  'tiger:.*',
+  -- GNIS (US)
+  'gnis:.*',
+  -- National Hydrography Dataset (US)
+  'NHD:.*',
+  'nhd:.*',
+  -- mvdgis (Montevideo, UY)
+  'mvdgis:.*'
+
+}
 
 -- Array used to specify z_order and osmcarto_z_order per key/value combination.
 -- The former is used for backwards compatibility and for uses that use a single
@@ -252,33 +256,34 @@ function add_z_order(keyvalues)
 end
 
 -- Filtering on nodes, ways, and relations
-function filter_tags_generic(keyvalues, numberofkeys)
-   -- Filter out objects with 0 tags
-   if numberofkeys == 0 then
-      return 1, {}
-   end
-
-   local filter = 0   -- Will object be filtered out?
-
+function filter_tags_generic(tags, n)
    -- Delete tags listed in delete_tags
-   for k, v in pairs (keyvalues) do
+   for tag, _ in pairs (tags) do
       for _, d in ipairs(delete_tags) do
-         if string.find(k, d) then
-            keyvalues[k] = nil
-            numberofkeys = numberofkeys - 1
+         if tag == d then
+            tags[tag] = nil
+            break -- Skip this tag from further checks since it's deleted
+         end
+      end
+   end
+   -- By using a second loop for wildcards we avoid checking already deleted tags
+   for tag, _ in pairs (tags) do
+      for _, d in ipairs(delete_wildcards) do
+         if string.find(tag, d) then
+            tags[tag] = nil
             break
          end
       end
    end
 
-   keyvalues['layer'] = layer(keyvalues['layer'])
-
-   -- Filter out objects that have 0 tags after deleting tags
-   if numberofkeys == 0 then
+   -- Filter out objects that have no tags after deleting
+   if next(tags) == nil then
       return 1, {}
    end
 
-   return 0, keyvalues
+   -- Convert layer to an integer
+   tags['layer'] = layer(tags['layer'])
+   return 0, tags
 end
 
 -- Filtering on nodes
