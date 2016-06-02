@@ -5,7 +5,7 @@
 custom_keys = {'z_order', 'osmcarto_z_order'}
 
 -- Objects with any of the following keys will be treated as polygon
-polygon_keys = {
+local polygon_keys = {
    'building', 'landuse', 'amenity', 'harbour', 'historic', 'leisure',
    'man_made', 'military', 'natural', 'office', 'place', 'power',
    'public_transport', 'shop', 'sport', 'tourism', 'waterway',
@@ -15,7 +15,7 @@ polygon_keys = {
 
 
 -- Objects with any of the following key/value combinations will be treated as linestring
-linestring_values = {
+local linestring_values = {
    leisure = {track = true},
    man_made = {embankment = true, breakwater = true, groyne = true},
    natural = {cliff = true, tree_row = true},
@@ -25,7 +25,7 @@ linestring_values = {
 }
 
 -- Objects with any of the following key/value combinations will be treated as polygon
-polygon_values = {
+local polygon_values = {
    highway = {services = true, rest_area = true},
    junction = {yes = true}
 }
