@@ -1666,6 +1666,7 @@ Layer:
             denomination,
             "generator:source",
             power_source,
+            tags->'shelter_type'::text AS shelter_type,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
@@ -1755,6 +1756,7 @@ Layer:
             denomination,
             "generator:source",
             power_source,
+            tags->'shelter_type'::text AS shelter_type,
             NULL AS way_pixels
           FROM planet_osm_point
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
@@ -2073,6 +2075,7 @@ Layer:
             name,
             operator,
             ref,
+            tags->'shelter_type'::text AS shelter_type,
             way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
           FROM planet_osm_polygon
@@ -2224,6 +2227,7 @@ Layer:
                 END AS elevation,
                 "natural",
                 operator,
+                tags->'shelter_type'::text AS shelter_type,
                 ref,
                 NULL AS way_area,
                 CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
