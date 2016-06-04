@@ -1,11 +1,11 @@
 /* For the main linear features, such as roads and railways. */
 
-//road colors for major roads were generated with scripts/generate_road_colors.py
-@motorway-fill: #e892a2; // Lch(70,35,10), error 0.5
-@trunk-fill: #f9b29c; // Lch(79,33,42), error 0.7
-@primary-fill: #fcd6a4; // Lch(88,31,74), error 1.7
-@secondary-fill: #f7fabf; // Lch(97,29,106), error 1.7
-@tertiary-fill: #ffffff;
+/* road colors for german style are hardcoded rather than generated with scripts/generate_road_colors.py */
+@motorway-fill: #eb7d54;
+@trunk-fill: #e27272;
+@primary-fill: #e27272;
+@secondary-fill: #f6e856;
+@tertiary-fill: #ffffb3;
 @residential-fill: #ffffff;
 @service-fill: @residential-fill;
 @living-street-fill: #ededed;
@@ -22,16 +22,19 @@
 @taxiway-fill: @aeroway-fill;
 @helipad-fill: @aeroway-fill;
 
-@motorway-low-zoom: #e66e89; // Lch(62,50,10), error 0.7
-@trunk-low-zoom: #fa9476; // Lch(72,50,42), error 0.8
-@primary-low-zoom: #f8c171; // Lch(82,50,74), error 2.1
-@secondary-low-zoom: #e6ef89; // Lch(92,50,106), error 2.2
+@motorway-overlay:#f6e856;
+@trunk-overlay:#f6f6f6;
+
+@motorway-low-zoom: @motorway-fill;
+@trunk-low-zoom: @trunk-fill;
+@primary-low-zoom: @primary-fill;
+@secondary-low-zoom: @secondary-fill;
 
 @default-casing: white;
-@motorway-casing: #dc2a67; // Lch(50,70,10), error 1.1
-@trunk-casing: #c84e2f; // Lch(50,65,42), error 0.7
-@primary-casing: #a06b00; // Lch(50,60,74), error 1.6
-@secondary-casing: #707d05; // Lch(50,55,106), error 1.9
+@motorway-casing: #b95331;
+@trunk-casing: #b93131;
+@primary-casing: #8d4346;
+@secondary-casing: #a37b48;
 @tertiary-casing: #8f8f8f;
 @residential-casing: #bbb;
 @road-casing: @residential-casing;
@@ -45,10 +48,10 @@
 @bridleway-casing: @default-casing;
 @track-casing: @default-casing;
 
-@motorway-low-zoom-casing: #c24e6b; // Lch(50,50,10), error 0.8
-@trunk-low-zoom-casing: #cf6649; // Lch(56,55,42), error 0.9
-@primary-low-zoom-casing: #c38a27; // Lch(62,60,74), error 2.1
-@secondary-low-zoom-casing: #9eae23; // Lch(68,65,106), error 2.3
+@motorway-low-zoom-casing: @motorway-fill;
+@trunk-low-zoom-casing: @trunk-fill;
+@primary-low-zoom-casing: @primary-casing;
+@secondary-low-zoom-casing: @secondary-casing;
 
 @unimportant-road: @residential-casing;
 
@@ -71,43 +74,45 @@
 @living-street-tunnel-fill: lighten(@living-street-fill, 10%);
 
 @motorway-width-z5:               0.5;
-@trunk-width-z5:                  0.4;
+@trunk-width-z5:                  0.5;
 
-@motorway-width-z7:               0.8;
-@trunk-width-z7:                  0.6;
+@motorway-width-z7:               1;
+@trunk-width-z7:                  1;
 
-@motorway-width-z8:               1;
-@trunk-width-z8:                  1;
-@primary-width-z8:                1;
+@motorway-width-z8:               2.2;
+@trunk-width-z8:                  2.2;
+@primary-width-z8:                0.9;
 
-@motorway-width-z9:               1.4;
-@trunk-width-z9:                  1.4;
+@motorway-width-z9:               3.5;
+@trunk-width-z9:                  3.5;
 @primary-width-z9:                1.4;
 @secondary-width-z9:              1;
 
-@motorway-width-z10:              1.9;
-@trunk-width-z10:                 1.9;
-@primary-width-z10:               1.8;
+@motorway-width-z10:              4.5;
+@trunk-width-z10:                 4.5;
+@primary-width-z10:               2.2;
 @secondary-width-z10:             1;
 
-@motorway-width-z11:              2.0;
-@trunk-width-z11:                 1.9;
-@primary-width-z11:               1.8;
+@motorway-width-z11:              4.5;
+@trunk-width-z11:                 4.5;
+@primary-width-z11:               2.5;
 @secondary-width-z11:             1;
 
-@motorway-width-z12:              3.5;
+@motorway-width-z12:              6;
 @motorway-link-width-z12:         1.5;
-@trunk-width-z12:                 3.5;
-@primary-width-z12:               3.5;
-@secondary-width-z12:             3.5;
+@trunk-width-z12:                 5.5;
+@trunk-link-width-z12:            1.5;
+@primary-width-z12:               3;
+@secondary-width-z12:             2.5;
 @tertiary-width-z12:              2.5;
 
-@motorway-width-z13:              6;
-@motorway-link-width-z13:         4;
-@trunk-width-z13:                 6;
-@primary-width-z13:               5;
-@secondary-width-z13:             5;
-@tertiary-width-z13:              4;
+@motorway-width-z13:              7.5;
+@motorway-link-width-z13:         4.5;
+@trunk-width-z13:                 7;
+@trunk-link-width-z13:            4.5;
+@primary-width-z13:               7.5;
+@secondary-width-z13:             7;
+@tertiary-width-z13:              5.5;
 @residential-width-z13:           2.5;
 @living-street-width-z13:         2;
 @pedestrian-width-z13:            2;
@@ -120,20 +125,21 @@
 @track-grade2-width-z13:          0.5;
 @steps-width-z13:                 0.7;
 
-@secondary-width-z14:             5;
-@tertiary-width-z14:              5;
+@secondary-width-z14:             7;
+@tertiary-width-z14:              6.5;
 @residential-width-z14:           3;
 @living-street-width-z14:         3;
 @pedestrian-width-z14:            3;
 @road-width-z14:                  2;
 @service-width-z14:               2;
 
-@motorway-width-z15:             10;
+@motorway-width-z15:             11.5;
 @motorway-link-width-z15:         7.8;
-@trunk-width-z15:                10;
-@primary-width-z15:              10;
-@secondary-width-z15:             9;
-@tertiary-width-z15:              9;
+@trunk-width-z15:                11;
+@trunk-link-width-z15:            7.8;
+@primary-width-z15:              11.5;
+@secondary-width-z15:            11.5;
+@tertiary-width-z15:             10.5;
 @residential-width-z15:           5;
 @living-street-width-z15:         5;
 @pedestrian-width-z15:            5;
@@ -146,8 +152,8 @@
 @track-grade2-width-z15:          0.75;
 @steps-width-z15:                 3;
 
-@secondary-width-z16:            10;
-@tertiary-width-z16:             10;
+@secondary-width-z16:            11.5;
+@tertiary-width-z16:             10.5;
 @residential-width-z16:           6;
 @living-street-width-z16:         6;
 @pedestrian-width-z16:            6;
@@ -157,12 +163,13 @@
 @footway-width-z16:               1.3;
 @cycleway-width-z16:              0.9;
 
-@motorway-width-z17:             18;
-@motorway-link-width-z17:        12;
-@trunk-width-z17:                18;
-@primary-width-z17:              18;
-@secondary-width-z17:            18;
-@tertiary-width-z17:             18;
+@motorway-width-z17:             16;
+@motorway-link-width-z17:        11;
+@trunk-width-z17:                16;
+@trunk-link-width-z17:           11;
+@primary-width-z17:              16;
+@secondary-width-z17:            16;
+@tertiary-width-z17:             16;
 @residential-width-z17:          12;
 @living-street-width-z17:        12;
 @pedestrian-width-z17:           12;
@@ -170,10 +177,11 @@
 @service-width-z17:               7;
 @minor-service-width-z17:         3.5;
 
-@motorway-width-z18:             21;
-@motorway-link-width-z18:        13;
-@trunk-width-z18:                21;
-@primary-width-z18:              21;
+@motorway-width-z18:             16;
+@motorway-link-width-z18:        11;
+@trunk-width-z18:                16;
+@trunk-link-width-z18:           11;
+@primary-width-z18:              14;
 @secondary-width-z18:            21;
 @tertiary-width-z18:             21;
 @residential-width-z18:          13;
@@ -186,6 +194,7 @@
 @motorway-width-z19:             27;
 @motorway-link-width-z19:        16;
 @trunk-width-z19:                27;
+@trunk-link-width-z19:           16;
 @primary-width-z19:              27;
 @secondary-width-z19:            27;
 @tertiary-width-z19:             27;
@@ -255,11 +264,33 @@
 @bridge-casing-width-z19:         0.8;
 @major-bridge-casing-width-z19:   1;
 
+@motorway-overlay-width-z9:  0.8;
+@motorway-overlay-width-z10: 1.0;
+@motorway-overlay-width-z11: 1.0;
+@motorway-overlay-width-z12: 1.1;
+@motorway-overlay-width-z13: 1.2;
+@motorway-overlay-width-z14: 1.3;
+@motorway-overlay-width-z15: 2.2;
+@motorway-overlay-width-z16: 2.5;
+@motorway-overlay-width-z17: 2.9;
+@motorway-overlay-width-z18: 3.0;
+
+@trunk-overlay-width-z9: @motorway-overlay-width-z9 - (0.3);
+@trunk-overlay-width-z10: @motorway-overlay-width-z10 - (0.3);
+@trunk-overlay-width-z11: @motorway-overlay-width-z11 - (0.3);
+@trunk-overlay-width-z12: @motorway-overlay-width-z12;
+@trunk-overlay-width-z13: @motorway-overlay-width-z13;
+@trunk-overlay-width-z14: @motorway-overlay-width-z14;
+@trunk-overlay-width-z15: @motorway-overlay-width-z15;
+@trunk-overlay-width-z16: @motorway-overlay-width-z16;
+@trunk-overlay-width-z17: @motorway-overlay-width-z17;
+@trunk-overlay-width-z18: @motorway-overlay-width-z18;
+
 @paths-background-width:          1;
 @paths-bridge-casing-width:       0.5;
 @paths-tunnel-casing-width:       1;
 
-@junction-text-color:             #960000;
+@junction-text-color:             #0528a2;
 @halo-color-for-minor-road: white;
 
 @motorway-oneway-arrow-color:     darken(@motorway-casing, 25%);
@@ -286,11 +317,11 @@
 @shield-clip: false;
 @shield-motorway-font: @bold-fonts;
 
-@shield-motorway-fill: #FFFFFF; // Lch(20,40,10), error 0.5
-@shield-trunk-fill: #000000; // Lch(21,40,42), error 0.5
-@shield-primary-fill: #000000; // Lch(22,40,74), error 2.9
-@shield-secondary-fill: #000000; // Lch(23,40,106), error 3.4
-@shield-tertiary-fill: #000000; // Lch(25,0,0), error 0.1
+@shield-motorway-fill: #FFFFFF;
+@shield-trunk-fill: #000000;
+@shield-primary-fill: #000000;
+@shield-secondary-fill: #000000;
+@shield-tertiary-fill: #000000;
 
 .roads-casing, .bridges-casing, .tunnels-casing {
   ::casing {
@@ -368,6 +399,14 @@
         [zoom >= 17] { line-width: @trunk-width-z17; }
         [zoom >= 18] { line-width: @trunk-width-z18; }
         [zoom >= 19] { line-width: @trunk-width-z19; }
+        [link = 'yes'] {
+          line-width: @trunk-link-width-z12;
+          [zoom >= 13] { line-width: @trunk-link-width-z13; }
+          [zoom >= 15] { line-width: @trunk-link-width-z15; }
+          [zoom >= 17] { line-width: @trunk-link-width-z17; }
+          [zoom >= 18] { line-width: @trunk-link-width-z18; }
+          [zoom >= 19] { line-width: @trunk-link-width-z19; }
+        }
         .roads-casing {
           line-join: round;
           line-cap: round;
@@ -1235,6 +1274,14 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         [zoom >= 17] { line-width: @trunk-width-z17 - 2 * @major-casing-width-z17; }
         [zoom >= 18] { line-width: @trunk-width-z18 - 2 * @major-casing-width-z18; }
         [zoom >= 19] { line-width: @trunk-width-z19 - 2 * @major-casing-width-z19; }
+        [link = 'yes'] {
+          line-width: @trunk-link-width-z12 - 2 * @casing-width-z12;
+          [zoom >= 13] { line-width: @trunk-link-width-z13 - 2 * @casing-width-z13; }
+          [zoom >= 15] { line-width: @trunk-link-width-z15 - 2 * @casing-width-z15; }
+          [zoom >= 17] { line-width: @trunk-link-width-z17 - 2 * @casing-width-z17; }
+          [zoom >= 18] { line-width: @trunk-link-width-z18 - 2 * @casing-width-z18; }
+          [zoom >= 19] { line-width: @trunk-link-width-z19 - 2 * @casing-width-z19; }
+        }
         .tunnels-fill {
           line-color: @trunk-tunnel-fill;
         }
@@ -2060,6 +2107,46 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
   }
+  /* German style uses overlays for "Autobahn" (motorway) and "Kraftfahrstraße" (trunk) */
+   ::overlay {
+    [feature = 'highway_motorway_link'],
+    [feature = 'highway_motorway'] {
+       [link != 'yes'] [zoom >= 9] {
+        line-width: @motorway-overlay-width-z9;
+        [zoom >= 10] {line-width: @motorway-overlay-width-z10; }
+        [zoom >= 11] {line-width: @motorway-overlay-width-z11; }
+        [zoom >= 12] {line-width: @motorway-overlay-width-z12; }
+        [zoom >= 13] {line-width: @motorway-overlay-width-z13; }
+        [zoom >= 14] {line-width: @motorway-overlay-width-z14; }
+        [zoom >= 15] {line-width: @motorway-overlay-width-z15; }
+        [zoom >= 16] {line-width: @motorway-overlay-width-z16; }
+        [zoom >= 17] {line-width: @motorway-overlay-width-z17; }
+        [zoom >= 18] {line-width: @motorway-overlay-width-z18;} 
+        line-color: @motorway-overlay;
+        line-cap: round;
+        line-join: round;
+      }
+    }  
+
+    [feature = 'highway_trunk_link'],
+    [feature = 'highway_trunk'] {
+      [link != 'yes'] [zoom >= 9] {
+        line-width: @trunk-overlay-width-z9;
+        [zoom >= 10] {line-width: @trunk-overlay-width-z10; }
+        [zoom >= 11] {line-width: @trunk-overlay-width-z11; }
+        [zoom >= 12] {line-width: @trunk-overlay-width-z12; }
+        [zoom >= 13] {line-width: @trunk-overlay-width-z13; }
+        [zoom >= 14] {line-width: @trunk-overlay-width-z14; }
+        [zoom >= 15] {line-width: @trunk-overlay-width-z15; }
+        [zoom >= 16] {line-width: @trunk-overlay-width-z16; }
+        [zoom >= 17] {line-width: @trunk-overlay-width-z17; }
+        [zoom >= 18] {line-width: @trunk-overlay-width-z18;} 
+        line-color: @trunk-overlay;
+        line-cap: round;
+        line-join: round;
+      }
+    }  
+ }
 }
 
 #turning-circle-casing {
