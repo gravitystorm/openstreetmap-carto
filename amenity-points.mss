@@ -33,13 +33,13 @@
     marker-file: url('symbols/shelter-14.svg');
     [feature = 'tourism_wilderness_hut'] {
     	marker-file: url('symbols/wilderness_hut.svg');
-    	marker-transform:"scale(0.6)";
-    	[zoom < 19] { marker-transform:"scale(0.5)"; }
+      marker-width: 13;
+      marker-height: 13;
     }
     ['shelter_type' = 'basic_hut'] {
     	marker-file: url('symbols/basic_hut.svg');
-    	marker-transform:"scale(0.6)";
-    	[zoom < 19] { marker-transform:"scale(0.5)"; }
+      marker-width: 13;
+      marker-height: 13;
     }
     marker-fill: @transportation-icon;
     marker-placement: interior;
