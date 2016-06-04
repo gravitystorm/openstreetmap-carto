@@ -7,6 +7,7 @@
 @secondary-fill: #f6e856;
 @tertiary-fill: #ffffb3;
 @residential-fill: #ffffff;
+@unclassified-fill:#ffffff;
 @service-fill: @residential-fill;
 @living-street-fill: #ededed;
 @pedestrian-fill: #dddde8;
@@ -47,6 +48,17 @@
 @cycleway-casing: @default-casing;
 @bridleway-casing: @default-casing;
 @track-casing: @default-casing;
+
+@motorway-construction-fill:@motorway-fill;
+@motorway-construction-overlay:@motorway-overlay;
+@trunk-construction-fill:@trunk-fill;
+@trunk-construction-overlay:@trunk-overlay;
+@primary-construction-fill:@primary-fill;
+@secondary-construction-fill:@secondary-fill;
+@tertiary-construction-fill:@tertiary-fill;
+
+@residential-construction: #aaa;
+@service-construction: #aaa;
 
 @motorway-low-zoom-casing: @motorway-fill;
 @trunk-low-zoom-casing: @trunk-fill;
@@ -325,6 +337,220 @@
 
 .roads-casing, .bridges-casing, .tunnels-casing {
   ::casing {
+
+    [feature = 'highway_proposed'][proposed =~ ".*motorway.*"]                 
+    ,[feature = 'highway_construction'][construction =~ ".*motorway.*"]{
+      [zoom >= 12]{
+        a/line-join:round;
+        a/line-width: 0.5;
+        a/line-color:@motorway-fill;
+        a/line-offset:2.75;
+        b/line-join:round;
+        b/line-width: 0.5;
+        b/line-color:@motorway-fill;
+        b/line-offset:-2.75;
+       [zoom >= 13]{
+          a/line-width: 1;
+          a/line-offset:3.25;
+          b/line-width: 1;
+          b/line-offset:-3.25;
+        }
+        [zoom >= 15]{
+          a/line-width: 1.5;
+          a/line-offset:5;
+          b/line-width: 1.5;
+          b/line-offset:-5;
+        }
+        [zoom >= 17]{
+          a/line-width: 2.75;
+          a/line-offset:6.625;
+          b/line-width: 2.75;
+          b/line-offset:-6.625;
+        }
+      }
+    }
+
+    [feature = 'highway_proposed'][proposed =~ ".*trunk.*"]                
+    ,[feature = 'highway_construction'][construction =~ ".*trunk.*"]{
+      [zoom >= 12]{
+        a/line-join:round;
+        a/line-width: 0.5;
+        a/line-color:@trunk-fill;
+        a/line-offset:2.75;
+        b/line-join:round;
+        b/line-width: 0.5;
+        b/line-color:@trunk-fill;
+        b/line-offset:-2.75;
+       [zoom >= 13]{
+          a/line-width: 1;
+          a/line-offset:3.25;
+          b/line-width: 1;
+          b/line-offset:-3.25;
+        }
+        [zoom >= 15]{
+          a/line-width: 1.5;
+          a/line-offset:5;
+          b/line-width: 1.5;
+          b/line-offset:-5;
+        }
+        [zoom >= 17]{
+          a/line-width: 2.75;
+          a/line-offset:6.625;
+          b/line-width: 2.75;
+          b/line-offset:-6.625;
+        }
+      }
+    }
+
+    [feature = 'highway_proposed'][proposed =~ ".*primary.*"]                  
+    ,[feature = 'highway_construction'][construction =~ ".*primary.*"]{
+      [zoom >= 12]{
+        a/line-join:round;
+        a/line-width: 0.5;
+        a/line-color:@primary-fill;
+        a/line-offset:1.25;
+        b/line-join:round;
+        b/line-width: 0.5;
+        b/line-color:@primary-fill;
+        b/line-offset:-1.25;
+       [zoom >= 13]{
+          a/line-width: 1;
+          a/line-offset:3.25;
+          b/line-width: 1;
+          b/line-offset:-3.25;
+        }
+        [zoom >= 15]{
+          a/line-width: 1.5;
+          a/line-offset:5;
+          b/line-width: 1.5;
+          b/line-offset:-5;
+        }
+        [zoom >= 17]{
+          a/line-width: 2.25;
+          a/line-offset:6.875;
+          b/line-width: 2.25;
+          b/line-offset:-6.875;
+        }
+      }
+    }
+
+    [feature = 'highway_proposed'][proposed =~ ".*secondary.*"]               
+    ,[feature = 'highway_construction'][construction =~ ".*secondary.*"]{
+      [zoom >= 12]{
+        a/line-join:round;
+        a/line-width: 0.5;
+        a/line-color:@secondary-fill;
+        a/line-offset:1;
+        b/line-join:round;
+        b/line-width: 0.5;
+        b/line-color:@secondary-fill;
+        b/line-offset:-1;
+       [zoom >= 13]{
+          a/line-width: 1;
+          a/line-offset:3;
+          b/line-width: 1;
+          b/line-offset:-3;
+        }
+        [zoom >= 15]{
+          a/line-width: 1.5;
+          a/line-offset:5;
+          b/line-width: 1.5;
+          b/line-offset:-5;
+        }
+        [zoom >= 17]{
+          a/line-width: 2.25;
+          a/line-offset:6.875;
+          b/line-width: 2.25;
+          b/line-offset:-6.875;
+        }
+      }
+    }
+
+    [feature = 'highway_proposed'][proposed =~ ".*tertiary.*"]               
+    ,[feature = 'highway_construction'][construction =~ ".*tertiary.*"]{
+      [zoom >= 14]{
+        a/line-join:round;
+        a/line-width: 0.75;
+        a/line-color:@tertiary-fill;
+        a/line-offset:2.875;
+        b/line-join:round;
+        b/line-width: 0.75;
+        b/line-color:@tertiary-fill;
+        b/line-offset:-2.875;
+       [zoom >= 15]{
+          a/line-width: 1.5;
+          a/line-offset:4.5;
+          b/line-width: 1.5;
+          b/line-offset:-4.5;
+        }
+       [zoom >= 17]{
+          a/line-width: 2;
+          a/line-offset:7;
+          b/line-width: 2;
+          b/line-offset:-7;
+        }
+      }
+    }
+
+    [feature = 'highway_proposed'][proposed_minor = 'yes'] 
+    ,[feature = 'highway_construction'][proposed_minor = 'yes']{
+      [zoom >= 14]{
+        a/line-join:round;
+        a/line-width: 0.75;
+        a/line-color:@unclassified-fill;
+        a/line-offset:1.875;
+        a/line-opacity:0.3;
+        b/line-join:round;
+        b/line-width: 0.75;
+        b/line-color:@unclassified-fill;
+        b/line-offset:-1.875; 
+        b/line-opacity:0.3;
+        c/line-join:round;
+        c/line-width: 0.75;
+        c/line-color:#999;
+        c/line-offset:1.875;
+        c/line-opacity:0.3;
+        d/line-join:round;
+        d/line-width: 0.75;
+        d/line-color:#999;
+        d/line-offset:-1.875; 
+        d/line-opacity:0.3;
+        }
+
+      [zoom >= 15]{         
+        a/line-join:round;
+        a/line-width: 0.75;
+        a/line-color:@unclassified-fill;
+        a/line-offset:3.625;
+        b/line-join:round;
+        b/line-width: 0.75;
+        b/line-color:@unclassified-fill;
+        b/line-offset:-3.625;  
+        }
+
+      [zoom >= 16]{         
+        a/line-join:round;
+        a/line-width: 0.8;
+        a/line-color:@unclassified-fill;
+        a/line-offset:5.1;
+        b/line-join:round;
+        b/line-width: 0.8;
+        b/line-color:@unclassified-fill;
+        b/line-offset:-5.1;  
+        }
+
+      [zoom >= 17]{         
+        a/line-join:round;
+        a/line-width: 2;
+        a/line-color:@unclassified-fill;
+        a/line-offset:7;
+        b/line-join:round;
+        b/line-width: 2;
+        b/line-color:@unclassified-fill;
+        b/line-offset:-7;  
+        }      
+    }
+
     [zoom = 9][feature = 'highway_secondary'] {
       line-color: @halo-color-for-minor-road;
       line-width: 2.2;
@@ -1130,78 +1356,139 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
      * https://github.com/mapbox/carto/issues/235
      * https://github.com/mapbox/carto/issues/237
      */
-    [feature = 'highway_construction'] {
-      [zoom >= 12] {
-        line-width: 2;
-        line-color: #9cc;
+    [feature = 'highway_construction'][construction =~ ".*motorway.*"]{
+      [zoom >= 12]{
+        a/line-join:round;
+        b/line-join:round;
+        a/line-dasharray: 25,10;
+        b/line-dasharray: 25,10;
+        a/line-width: 5;
+        a/line-color:@motorway-construction-fill;
+        a/line-opacity:0.5;
+        b/line-width:1;
+        b/line-color:@motorway-construction-overlay;
+        b/line-opacity:0.75;
 
-        [construction = 'motorway'],
-        [construction = 'motorway_link'] {
-          line-color: @motorway-fill;
+       [zoom >= 13]{
+        a/line-width: 5.5;
+        b/line-width:1.25
         }
-        [construction = 'trunk'],
-        [construction = 'trunk_link'] {
-          line-color: @trunk-fill;
+        [zoom >= 15]{
+        
+        a/line-width: 8.5;
+        b/line-width:1.5;
         }
-        [construction = 'primary'],
-        [construction = 'primary_link'] {
-          line-color: @primary-fill;
+        [zoom >= 17]{
+        
+        a/line-width: 10.5;
+        b/line-width:2;
         }
-        [construction = 'secondary'],
-        [construction = 'secondary_link'] {
-          line-color: @secondary-fill;
+      }
+    }
+
+    [feature = 'highway_construction'][construction =~ ".*trunk.*"]{
+       [zoom >= 12]{
+        a/line-join:round;
+        b/line-join:round;
+        a/line-dasharray: 25,10;
+        b/line-dasharray: 25,10;
+        a/line-width: 5;
+        a/line-color:@trunk-construction-fill;
+        a/line-opacity:0.5;
+        b/line-width:1;
+        b/line-color:@trunk-construction-overlay;
+        b/line-opacity:0.75;
+
+       [zoom >= 13]{
+        a/line-width: 5.5;
+        b/line-width:1.25
         }
-        [construction = 'tertiary'],
-        [construction = 'tertiary_link'],
-        [construction = 'residential'],
-        [construction = 'unclassified'],
-        [construction = 'living_street'] {
-          line-color: @residential-construction;
-          [zoom < 13] {
-            line-width: 0;
-            b/line-width: 0;
-          }
-          [zoom >= 13][zoom < 14] {
-            line-width: 3;
-            b/line-width: 2;
-            b/line-dasharray: 5,3;
-          }
+        [zoom >= 15]{
+        
+        a/line-width: 8.5;
+        b/line-width:1.5;
         }
-        [construction = 'service'] {
-          line-color: @service-construction;
-          [zoom < 14] {
-            line-width: 0;
-            b/line-width: 0;
-          }
+        [zoom >= 17]{
+        
+        a/line-width: 10.5;
+        b/line-width:2;
         }
-        b/line-width: 2;
-        b/line-dasharray: 4,2;
-        b/line-color: white;
-        [zoom >= 13] {
-          line-width: 4;
-          b/line-width: 3.5;
-          b/line-dasharray: 6,4;
+      }
+    }
+
+    [feature = 'highway_construction'][construction =~ ".*primary.*"]{
+       [zoom >= 12]{
+        line-join:round;
+        line-dasharray: 30,15;
+        line-width: 5;
+        line-color:@primary-construction-fill;
+        line-opacity:0.75;
+       
+       [zoom >= 13]{
+        line-width: 5.5;
+        
         }
-        [zoom >= 16] {
-          line-width: 8;
-          b/line-width: 7;
-          b/line-dasharray: 8,6;
+        [zoom >= 15]{
+        
+        line-width: 8.5;
+        
         }
-        [construction = 'footway'],
-        [construction = 'cycleway'],
-        [construction = 'bridleway'],
-        [construction = 'path'],
-        [construction = 'track'] {
-          [zoom < 14] {
-            line-width: 0;
-            b/line-width: 0;
-          }
-          line-color: white;
-          line-width: 3;
-          line-opacity: 0.4;
-          b/line-width: 1.2;
-          b/line-color: #69f;
-          b/line-dasharray: 2,6;
+        [zoom >= 17]{
+        
+        line-width: 10.5;
+        
+        }
+      }
+    }
+
+    [feature = 'highway_construction'][construction =~ ".*secondary.*"]{
+       [zoom >= 12]{
+        line-join:round;
+        line-dasharray: 30,15;
+        line-width: 5;
+        line-color:@secondary-construction-fill;
+        line-opacity:0.75;
+         
+         
+       [zoom >= 13]{
+        line-width: 5.5;
+        
+        }
+        [zoom >= 15]{
+        
+        line-width: 8.5;
+        
+        }
+        [zoom >= 17]{
+          
+        line-width: 10.5;
+          
+        }
+      }
+    }
+
+    [feature = 'highway_construction'][construction =~ ".*tertiary.*"]{
+       [zoom >= 12]{
+        line-join:round;
+        line-dasharray: 20,8;
+        line-width: 5;
+        line-color:@tertiary-construction-fill;
+        line-opacity:0.5;
+          
+         
+       [zoom >= 13]{
+        line-width: 5.5;
+         
+        }
+        [zoom >= 15]{
+          
+        line-width: 8.5;
+          
+        }
+        [zoom >= 17]{
+          
+        line-width: 10.5;
+        
         }
       }
     }

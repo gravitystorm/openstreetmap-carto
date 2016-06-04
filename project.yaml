@@ -498,11 +498,12 @@ Layer:
       # an order is generated in SQL.
       table: |-
         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
-                horse, foot, bicycle, tracktype, int_surface, access, construction,
+                horse, foot, bicycle, tracktype, int_surface, access, construction, proposed, proposed_minor,
                 service, oneway, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
-                way,
+                way, proposed,
+                case when proposed in ('residential','unclassified','road','living_street') then 'yes' else 'no' end as proposed_minor,
                 ('highway_' || highway) AS feature, --only motorway to tertiary links are accepted later on
                 horse,
                 foot,
@@ -537,7 +538,8 @@ Layer:
                 AND highway IS NOT NULL -- end of road select
             UNION ALL
             SELECT
-                way,
+                way, proposed,
+                case when proposed in ('residential','unclassified','road','living_street') then 'yes' else 'no' end as proposed_minor,
                 COALESCE(
                   ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text 
                                        WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'  
@@ -606,6 +608,7 @@ Layer:
               ('railway_platform', 90),
               ('aeroway_runway', 60),
               ('aeroway_taxiway', 50),
+              ('highway_proposed', 20),
               ('highway_construction', 10)
             ) AS ordertable (feature, prio)
             USING (feature)
@@ -782,11 +785,12 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
-                horse, foot, bicycle, tracktype, int_surface, access, construction,
+                horse, foot, bicycle, tracktype, int_surface, access, construction, proposed, proposed_minor,
                 service, oneway, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
-                way,
+                way, proposed,
+                case when proposed in ('residential','unclassified','road','living_street') then 'yes' else 'no' end as proposed_minor,
                 ('highway_' || highway) AS feature, --only motorway to tertiary links are accepted later on
                 horse,
                 foot,
@@ -823,7 +827,8 @@ Layer:
                 AND highway IS NOT NULL -- end of road select
             UNION ALL
             SELECT
-                way,
+                way, proposed,
+                case when proposed in ('residential','unclassified','road','living_street') then 'yes' else 'no' end as proposed_minor,
                 COALESCE(
                   ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text 
                                        WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'  
@@ -894,6 +899,7 @@ Layer:
               ('railway_platform', 90),
               ('aeroway_runway', 60),
               ('aeroway_taxiway', 50),
+              ('highway_proposed',20),
               ('highway_construction', 10)
             ) AS ordertable (feature, prio)
             USING (feature)
@@ -1176,11 +1182,12 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
-                horse, foot, bicycle, tracktype, int_surface, access, construction,
+                horse, foot, bicycle, tracktype, int_surface, access, construction, proposed, proposed_minor,
                 service, oneway, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
-                way,
+                way, proposed,
+                case when proposed in ('residential','unclassified','road','living_street') then 'yes' else 'no' end as proposed_minor,
                 ('highway_' || highway) AS feature, --only motorway to tertiary links are accepted later on
                 horse,
                 foot,
@@ -1215,7 +1222,8 @@ Layer:
                 AND highway IS NOT NULL -- end of road select
             UNION ALL
             SELECT
-                way,
+                way, proposed,
+                case when proposed in ('residential','unclassified','road','living_street') then 'yes' else 'no' end as proposed_minor,  
                 COALESCE(
                   ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text 
                                        WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' 
@@ -1284,6 +1292,7 @@ Layer:
               ('railway_platform', 90),
               ('aeroway_runway', 60),
               ('aeroway_taxiway', 50),
+              ('highway_proposed', 20),
               ('highway_construction', 10)
             ) AS ordertable (feature, prio)
             USING (feature)
