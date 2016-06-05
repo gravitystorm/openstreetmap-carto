@@ -1,5 +1,11 @@
 # Installation
 
+## Operating systems
+
+Linux (Ubuntu) is the preferred OS to install and run the development environment. Commands in this page mostly refer to Linux.
+
+Anyway, [TILEMILL.md](TILEMILL.md) reports a step-by-step guide to install and manage openstreetmap-carto under Windows through Tilemill.
+
 ## OpenStreetMap data
 You need OpenStreetMap data loaded into a PostGIS database (see below for [dependencies](#dependencies)). These stylesheets currently work only with the osm2pgsql defaults (i.e. database name is `gis`, table names are `planet_osm_point`, etc).
 
