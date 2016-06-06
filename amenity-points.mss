@@ -581,7 +581,7 @@
   }
 
   [feature = 'shop_books'][zoom >= 17] {
-    marker-file: url('symbols/shop_books.16.svg');
+    marker-file: url('symbols/library.14.svg');
     marker-fill: @shop-icon;
     marker-placement: interior;
     marker-clip: false;
