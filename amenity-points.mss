@@ -1291,7 +1291,7 @@
     [feature = 'historic_wayside_cross'] {
       text-dy: 6;
     }
-    [feature = 'man_made_mast']         { text-dy: 10; }
+    [feature = 'man_made_mast'] { text-dy: 10; }
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
