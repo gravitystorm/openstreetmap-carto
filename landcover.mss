@@ -607,9 +607,21 @@
   }
   //Also landuse = forest, converted in the SQL
   [natural = 'wood'][zoom >= 13]::wood {
-    polygon-pattern-file: url('symbols/forest.png'); // Lch(55,30,135)
-    polygon-pattern-alignment: global;
+    //polygon-pattern-alignment: global;
+    //polygon-pattern-file: url('symbols-de/wood_mixed.png');
     opacity: 0.4; // The entire layer has opacity to handle overlapping forests
+    [leaf_type = 'broadleaved'] {
+      polygon-pattern-file: url('symbols-de/wood_deciduous.png');
+      polygon-pattern-alignment: global;
+    }
+    [leaf_type = 'needleleaved'] {
+      polygon-pattern-file: url('symbols-de/wood_coniferous.png');
+      polygon-pattern-alignment: global;
+    }
+    [leaf_type = 'mixed'] {
+      polygon-pattern-file: url('symbols-de/wood_mixed.png');
+      polygon-pattern-alignment: global;
+    }
   }
 }
 

@@ -277,7 +277,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, surface, 
+            way, surface, leaf_type,
             COALESCE("natural", CASE WHEN landuse = 'forest' THEN 'wood' ELSE NULL END) AS "natural",
             CASE WHEN "natural" IN ('marsh', 'mud') 
                 THEN "natural" 
