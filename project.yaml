@@ -52,6 +52,7 @@ Stylesheet:
   - "aerialways.mss"
   - "admin.mss"
   - "addressing.mss"
+  - "sport.mss"
 Layer:
   - id: "ocean-lz"
     name: "ocean-lz"
@@ -621,6 +622,40 @@ Layer:
     properties:
       group-by: "layernotnull"
       minzoom: 9
+    advanced: {}
+  - id: "sports-grounds"  
+    name: "sports-grounds"
+    class: ""
+    geometry: "polygon"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,leisure,
+            case when leisure='pitch' then 2 when leisure='track' then 1 else 0 end as prio
+          FROM planet_osm_polygon
+          WHERE leisure in ('sports_centre','stadium','pitch','track')
+          ORDER BY z_order,prio,way_area desc)
+        AS sports_grounds
+    advanced: {}
+  - id: "sports"
+    name: "sports"
+    class: ""
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (select *, cast(abs(a12-a23) as integer)%180 as angle_diff, (a12+a23+90)/2 as angle, 1/coslat as labelsizefactor, d12*d23 as pitch_area from
+         (select *, st_npoints(way2) as nb, ST_Distance_sphere(st_transform(st_pointn(way2,1),4326),st_transform(st_pointn(way2,2),4326)) as d12,             
+         ST_Distance_sphere(st_transform(st_pointn(way2,3),4326),st_transform(st_pointn(way2,2),4326)) as d23,                                   
+         ST_Distance_sphere(st_transform(st_pointn(way2,1),4326),st_transform(st_pointn(way2,3),4326)) as d13,
+         cos(st_y(st_transform(st_pointn(way2,1),4326))/180*3.1415927) as coslat, degrees(st_azimuth(st_pointn(way2,1),st_pointn(way2,2))) as a12,
+         degrees(st_azimuth(st_pointn(way2,2),st_pointn(way2,3))) as a23 from                                                                     
+         (select *, st_area(way) as way_area, ST_ExteriorRing(ST_SimplifyPreserveTopology(way,100)) as way2 from (select (st_dump(way)).geom as way, sport, surface, access
+          from planet_osm_polygon
+          where sport in ('tennis','soccer','basketball','rugby','rugby_union','rugby_league','american_football') AND way && !bbox!) as dump) as simplified) as simplified2)
+          as sports
     advanced: {}
   - id: "citywalls"
     name: "citywalls"
