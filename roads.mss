@@ -160,9 +160,10 @@
 @cycleway-width-z15:              0.9;
 @path-width-z15:                  0.5;
 @track-width-z15:                 1.5;
-@track-grade1-width-z15:          0.75;
+@track-grade1-width-z15:          0.75; // unused in german style
 @track-grade2-width-z15:          0.75;
 @steps-width-z15:                 3;
+@service-width-z15:               3;
 
 @secondary-width-z16:            11.5;
 @tertiary-width-z16:             10.5;
@@ -779,12 +780,21 @@
       }
     }
 
-    [feature = 'highway_service'] {
+    [feature = 'highway_service'],
+    [feature = 'highway_track'][int_surface = 'paved'],
+    [feature = 'highway_track'][tracktype = 'grade1'] {
       [zoom >= 14][service = 'INT-normal'],
-      [zoom >= 16][service = 'INT-minor'] {
+      [zoom >= 16][service = 'INT-minor'],
+      [zoom >= 14][feature = 'highway_track'] {
         line-color: @service-casing;
-        [service = 'INT-normal'] {
+        // track grade1 casing in @track-fill color
+        [feature = 'highway_track'] {
+          line-color: @track-fill;
+        }
+        [service = 'INT-normal'],
+        [feature = 'highway_track'] {
           line-width: @service-width-z14;
+          [zoom >= 15] { line-width: @service-width-z15; }
           [zoom >= 16] { line-width: @service-width-z16; }
           [zoom >= 17] { line-width: @service-width-z17; }
           [zoom >= 18] { line-width: @service-width-z18; }
@@ -961,15 +971,12 @@
       }
     }
 
-    [feature = 'highway_track'] {
+    [feature = 'highway_track'][tracktype != 'grade1'][int_surface != 'paved'] {
       .bridges-casing {
         [zoom >= 13][access != 'no'] {
           line-color: @bridge-casing;
           line-join: round;
           line-width: @track-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
-          [tracktype = 'grade1'] {
-            line-width: @track-grade1-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
-          }
           [tracktype = 'grade2'] {
             line-width: @track-grade2-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
           }
@@ -978,9 +985,6 @@
           line-color: @bridge-casing;
           line-join: round;
           line-width: @track-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width);
-          [tracktype = 'grade1'] {
-            line-width: @track-grade1-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width);
-          }
           [tracktype = 'grade2'] {
             line-width: @track-grade2-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width);
           }
@@ -992,17 +996,11 @@
           line-color: @tunnel-casing;
           line-dasharray: 4,2;
           line-width: @track-width-z13 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
-          [tracktype = 'grade1'] {
-            line-width: @track-grade1-width-z13 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
-          }
           [tracktype = 'grade2'] {
             line-width: @track-grade2-width-z13 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
           }
           [zoom >= 15]{
             line-width: @track-width-z15 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
-            [tracktype = 'grade1'] {
-              line-width: @track-grade1-width-z15 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
-            }
             [tracktype = 'grade2'] {
               line-width: @track-grade2-width-z15 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
             }
@@ -1211,16 +1209,13 @@
       }
     }
 
-    [feature = 'highway_track'] {
+    [feature = 'highway_track'][tracktype != 'grade1'] {
       /* We don't set opacity here, so it's 1.0. Aside from that, it's basically a copy of roads-fill::background in the track part of ::fill */
       .bridges-casing {
         [zoom >= 13][access != 'no'] {
           line-color: @track-casing;
           line-join: round;
           line-width: @track-width-z13 + 2 * @paths-background-width;
-          [tracktype = 'grade1'] {
-            line-width: @track-grade1-width-z13 + 2 * @paths-background-width;
-          }
           [tracktype = 'grade2'] {
             line-width: @track-grade2-width-z13 + 2 * @paths-background-width;
           }
@@ -1229,9 +1224,6 @@
           line-color: @track-casing;
           line-join: round;
           line-width: @track-width-z15 + 2 * @paths-background-width;
-          [tracktype = 'grade1'] {
-            line-width: @track-grade1-width-z15 + 2 * @paths-background-width;
-          }
           [tracktype = 'grade2'] {
             line-width: @track-grade2-width-z15 + 2 * @paths-background-width;
           }
@@ -1244,19 +1236,13 @@
           line-join: round;
           line-cap: round;
           line-width: @track-width-z13 + 2 * @paths-background-width;
-          /* With the heavier dasharrays on grade1 and grade2 it helps to make the casing a bit larger */
-          [tracktype = 'grade1'] {
-            line-width: @track-grade1-width-z13 + 2 * @paths-background-width;
-          }
+          /* With the heavier dasharrays on grade2 it helps to make the casing a bit larger */
           [tracktype = 'grade2'] {
             line-width: @track-grade2-width-z13 + 2 * @paths-background-width;
           }
 
           [zoom >= 15] {
             line-width: @track-width-z15 + 2 * @paths-background-width;
-            [tracktype = 'grade1'] {
-              line-width: @track-grade1-width-z15 + 2 * @paths-background-width;
-            }
             [tracktype = 'grade2'] {
               line-width: @track-grade2-width-z15 + 2 * @paths-background-width;
             }
@@ -1787,16 +1773,25 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
 
-    [feature = 'highway_service'] {
+    [feature = 'highway_service'],
+    [feature = 'highway_track'][int_surface = 'paved'],
+    [feature = 'highway_track'][tracktype = 'grade1'] {
       [zoom >= 13][service = 'INT-normal'] {
         line-width: 1;
         line-color: @unimportant-road;
       }
+      [feature = 'highway_track'][zoom = 13] {
+         line-color: @track-fill;
+         line-width: @track-width-z13;
+      }
       [zoom >= 14][service = 'INT-normal'],
-      [zoom >= 16][service = 'INT-minor'] {
+      [zoom >= 16][service = 'INT-minor'],
+      [zoom >= 14][feature = 'highway_track'] {
         line-color: @service-fill;
-        [service = 'INT-normal'] {
+        [service = 'INT-normal'],
+	[feature = 'highway_track'] {
           line-width: @service-width-z14 - 2 * @casing-width-z14;
+          [zoom >= 15] { line-width: @service-width-z15 - 2 * @casing-width-z15; }
           [zoom >= 16] { line-width: @service-width-z16 - 2 * @casing-width-z16; }
           [zoom >= 17] { line-width: @service-width-z17 - 2 * @casing-width-z17; }
           [zoom >= 18] { line-width: @service-width-z18 - 2 * @casing-width-z18; }
@@ -1816,6 +1811,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         .bridges-fill {
           [service = 'INT-normal'] {
             line-width: @service-width-z14 - 2 * @bridge-casing-width-z14;
+            [zoom >= 15] { line-width: @service-width-z15 - 2 * @bridge-casing-width-z15; }
             [zoom >= 16] { line-width: @service-width-z16 - 2 * @bridge-casing-width-z16; }
             [zoom >= 17] { line-width: @service-width-z17 - 2 * @bridge-casing-width-z17; }
             [zoom >= 18] { line-width: @service-width-z18 - 2 * @bridge-casing-width-z18; }
@@ -2078,7 +2074,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
 
-    [feature = 'highway_track'] {
+    [feature = 'highway_track'][tracktype != 'grade1'][int_surface != 'paved'] {
       [zoom >= 13][access != 'no'],
       [zoom >= 15] {
         /* The white casing that you mainly see against forests and other dark features */
@@ -2088,10 +2084,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           background/line-join: round;
           background/line-cap: round;
           background/line-width: @track-width-z15 + 2 * @paths-background-width;
-          /* With the heavier dasharrays on grade1 and grade2 it helps to make the casing a bit larger */
-          [tracktype = 'grade1'] {
-            background/line-width: @track-grade1-width-z15 + 2 * @paths-background-width;
-          }
+          /* With the heavier dasharrays on grade2 it helps to make the casing a bit larger */
           [tracktype = 'grade2'] {
             background/line-width: @track-grade2-width-z15 + 2 * @paths-background-width;
           }
@@ -2107,9 +2100,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
         line/line-width: @track-width-z13;
 
-        [tracktype = 'grade1'] {
-          line/line-dasharray: 100,0;
-        }
         [tracktype = 'grade2'] {
           line/line-dasharray: 8.8,3.2;
         }
@@ -2125,9 +2115,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
         [zoom >= 15] {
           line/line-width: @track-width-z15;
-          [tracktype = 'grade1'] {
-            line/line-dasharray: 100,0;
-          }
           [tracktype = 'grade2'] {
             line/line-dasharray: 11,4;
           }
