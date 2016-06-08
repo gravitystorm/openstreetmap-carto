@@ -26,10 +26,10 @@
 @industrial-line: #C6B3C3;  // Lch(75,11,330)
 @railway: @industrial;
 @railway-line: @industrial-line;
-@farmland: #fbecd7;         // Lch(94,12,80) (Also used for farm)
+@farmland: #f2e9d7;
 @farmland-line: #d6c4ab;    // Lch(80,15,80)
 
-@farmyard: #EFD6B5;         // Lch(87,20,80)
+@farmyard: #ead8bd;         // Lch(87,20,80)
 @farmyard-line: #D1B48C;    // Lch(75,25,80)
 
 // --- Other ----
@@ -233,7 +233,7 @@
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
     [zoom >= 14] {
-      polygon-pattern-file: url('symbols/allotments.png');
+      polygon-pattern-file: url('symbols-de/allotments.png');
       polygon-pattern-alignment: global;
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
