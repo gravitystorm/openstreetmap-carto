@@ -9,7 +9,7 @@
 @residential-fill: #ffffff;
 @unclassified-fill:#ffffff;
 @service-fill: @residential-fill;
-@living-street-fill: #ededed;
+@living-street-fill: @residential-fill;
 @pedestrian-fill: #dddde8;
 @raceway-fill: pink;
 @road-fill: #ddd;
@@ -40,7 +40,7 @@
 @residential-casing: #bbb;
 @road-casing: @residential-casing;
 @service-casing: @residential-casing;
-@living-street-casing: @residential-casing;
+@living-street-casing: #66c;
 @pedestrian-casing: #999;
 @path-casing: @default-casing;
 @footway-casing: @default-casing;
