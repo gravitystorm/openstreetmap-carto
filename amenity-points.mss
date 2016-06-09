@@ -6,6 +6,7 @@
 @transportation-text: #0066ff;
 @airtransport: #8461C4;
 @health-color: #da0092;
+@pharmacy-color: #008000;
 @amenity-brown: #734a08;
 @man-made-icon: #555;
 @landform-color: #d08f55;
@@ -328,8 +329,8 @@
   }
 
   [feature = 'amenity_pharmacy'][zoom >= 17] {
-    marker-file: url('symbols/pharmacy.16.svg');
-    marker-fill: @health-color;
+    marker-file: url('symbols-de/pharmacy.16.svg');
+    marker-fill: @pharmacy-color;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1846,6 +1847,9 @@
   [feature = 'amenity_dentist'],
   [feature = 'amenity_veterinary'] {
     [zoom >= 17] {
+      [feature = 'amenity_pharmacy'] {
+        text-fill: @pharmacy-color;
+      }
       text-name: "[name]";
       text-size: 8;
       text-dy: 12;
