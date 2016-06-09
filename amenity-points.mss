@@ -684,7 +684,6 @@
     }
   }
 
-  [feature = 'shop_fishmonger'],
   [feature = 'shop_seafood'] {
     [zoom >= 17] {
       marker-file: url('symbols/seafood-14.svg');
@@ -1302,7 +1301,7 @@
     [feature = 'historic_wayside_cross'] {
       text-dy: 6;
     }
-    [feature = 'man_made_mast']         { text-dy: 10; }
+    [feature = 'man_made_mast'] { text-dy: 10; }
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-halo-fill: rgba(255,255,255,0.6);
@@ -1886,7 +1885,6 @@
   [feature = 'shop_cosmetics'],
   [feature = 'shop_bicycle'],
   [feature = 'shop_farm'],
-  [feature = 'shop_fishmonger'],
   [feature = 'shop_florist'],
   [feature = 'shop_garden_centre'],
   [feature = 'shop_greengrocer'],
