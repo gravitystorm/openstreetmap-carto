@@ -1,4 +1,4 @@
-@admin-boundaries: #ac46ac;
+@admin-boundaries: #50705a;
 
 /* For performance reasons, the admin border layers are split into three groups
 for low, middle and high zoom levels.
