@@ -1827,7 +1827,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           light/line-color: white;
           light/line-join: round;
           [feature = 'railway_rail'] {
-            dark/line-color: #787878;
+            dark/line-color: #707070;
             dark/line-width: 3;
             light/line-width: 1;
             light/line-dasharray: 8,8;
