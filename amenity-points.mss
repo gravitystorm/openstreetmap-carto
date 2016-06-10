@@ -261,8 +261,10 @@
   }
 
   [feature = 'amenity_library'][zoom >= 16] {
-    point-file: url('symbols/library.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/library.14.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_courthouse'][zoom >= 16] {
@@ -1176,6 +1178,7 @@
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
+      [feature = 'amenity_library'],
       [feature = 'tourism_museum'],
       [feature = 'amenity_theatre'],
       [feature = 'amenity_cinema'] {
