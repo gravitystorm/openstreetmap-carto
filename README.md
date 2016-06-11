@@ -1,3 +1,14 @@
+# OpenStreetMap Carto German
+
+An adaptation of the "German" Mapnik style to the CartoCSS structure used by the international
+style. The rest of this README is the original text from the international style.
+
+The style is designed to use with a HSTORE DATABASE in mind. But is also working without it if all the
+required columns are added to a style. In our production setup we are using the provided views to
+osm2pgsql tables with hstore to simulate columns.
+
+We are doing our best to keep this fork in sync with upstream.
+
 # OpenStreetMap Carto
 
 ![screenshot](https://raw.github.com/gravitystorm/openstreetmap-carto/master/preview.png)
@@ -16,6 +27,8 @@ are updated from each point release. They supersede the previous [XML-based styl
 
 You need a PostGIS database populated with OpenStreetMap data in the standard
 osm2pgsql database layout, along with auxillary shapefiles. See [INSTALL.md](INSTALL.md).
+Please read [INSTALL-de.md](INSTALL-de.md) first for differences of openstreetmap-carto-de.
+
 
 # Contributing
 

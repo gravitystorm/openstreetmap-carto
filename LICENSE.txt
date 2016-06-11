@@ -1,4 +1,8 @@
-OpenStreetMap Carto: A global map style for OpenStreetMap maps.
+German style is a fork of
+
+"OpenStreetMap Carto: A global map style for OpenStreetMap maps."
+
+and is distributed under the same license.
 
 Created by Andy Allan <andy@gravitystorm.co.uk> and contributors.
 Based on original cartography by Steve Chilton and others.

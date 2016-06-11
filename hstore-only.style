@@ -65,11 +65,6 @@ node,way   tourism      text         polygon,nocolumn
 node,way   waterway     text         polygon,nocolumn
 node,way   natural      text         polygon,nocolumn
 
-# numeric values should have a separate column
-# as hstore does only store strings
-node,way   width        real         linear
-node       ele          real         linear
-
 node,way   z_order      int4         linear # This is calculated during import
 way        way_area     real                # This is calculated during import
 

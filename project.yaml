@@ -1791,7 +1791,7 @@ Layer:
             ruins,
             CASE
               WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
-                ele
+                num_ele
               ELSE NULL
             END AS score,
             religion,
@@ -2261,7 +2261,7 @@ Layer:
                 localized_name_without_brackets as name,
                 CASE
                   WHEN "natural" IN ('peak', 'volcano', 'saddle') OR tourism = 'alpine_hut' OR amenity = 'shelter' THEN
-                    ele
+                    num_ele
                   ELSE NULL
                 END AS elevation,
                 "natural",
