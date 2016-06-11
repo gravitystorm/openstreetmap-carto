@@ -11,7 +11,7 @@ We are doing our best to keep this fork in sync with upstream.
 
 # OpenStreetMap Carto
 
-![screenshot](https://raw.github.com/gravitystorm/openstreetmap-carto/master/preview.png)
+![screenshot](https://raw.github.com/giggls/openstreetmap-carto-de/master/preview-de.png)
 
 These are the CartoCSS map stylesheets for the Standard map layer on [OpenStreetMap.org](http://www.openstreetmap.org).
 
