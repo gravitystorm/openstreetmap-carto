@@ -84,7 +84,7 @@ maps using Mapnik, many based on this project. Some alternatives are:
 * [OSM-Bright](https://github.com/mapbox/osm-bright)
 * [XML-based stylesheets](https://trac.openstreetmap.org/browser/subversion/applications/rendering/mapnik)
 * [osmfr-cartocss](https://github.com/cquest/osmfr-cartocss)
-* [openstreetmap-carto-german](https://github.com/woodpeck/openstreetmap-carto-german)
+* [openstreetmap-carto](https://github.com/gravitystorm/openstreetmap-carto)
 
 # Maintainers
 
