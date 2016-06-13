@@ -147,7 +147,8 @@
     marker-clip: false;
   }
 
-  [feature = 'tourism_chalet'][zoom >= 14] {
+  [feature = 'tourism_chalet'][tourism = 'viewpoint'][zoom >= 14],
+  [feature = 'tourism_chalet'][zoom >= 17] {
     point-file: url('symbols/chalet.p.16.png');
     point-placement: interior;
     [zoom < 16] {
@@ -1679,7 +1680,7 @@
   }
 
   [feature = 'tourism_alpine_hut'][zoom >= 14],
-  [feature = 'amenity_shelter'][zoom >= 14],
+  [feature = 'amenity_shelter'][tourism = 'viewpoint'][zoom >= 14],
   [feature = 'tourism_hotel'][zoom >= 17],
   [feature = 'tourism_motel'][zoom >= 17],
   [feature = 'tourism_hostel'][zoom >= 17],

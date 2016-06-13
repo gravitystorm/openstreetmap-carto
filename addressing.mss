@@ -33,7 +33,7 @@
 }
 
 #building-text {
-  [zoom >= 13][way_pixels > 3000],
+  [zoom >= 14][way_pixels > 3000],
   [zoom >= 17] {
     text-name: "[name]";
     text-size: 8;
