@@ -94,6 +94,35 @@ instead of
 * Order the selectors in a style-sheet in rough order of importance (i.e.,
   `highway=primary`, then `highway=secondary`) and beyond that, add layers that
   are rendered later (i.e., higher) lower in the file.
+* For features where the symbolizer attributes change on different zoom levels,
+  the main definition should be for the lowest zoom level. Also, avoid nesting
+  zoom-based overrides. For example:
+
+```
+#layer[feature = 'foo'][zoom >= 13] {
+  line-width: 6;
+  line-color: black;
+  [zoom >= 15] {
+    line-width: 7;
+  }
+  [zoom >= 17] {
+    line-width: 10;
+  }
+}
+```
+instead of
+```
+#layer[feature = 'foo'][zoom >= 13] {
+  line-width: 10;
+  line-color: black;
+  [zoom < 18] {
+    line-width: 7;
+    [zoom < 16] {
+      line-width: 6;
+    }
+  }
+}
+```
 
 ## SQL Style Guidelines
 Because SQL within JSON or YAML will not generally be syntax highlighted, indentation and caps are particularly important.
