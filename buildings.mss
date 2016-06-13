@@ -36,7 +36,7 @@
     [amenity = 'place_of_worship'] {
       polygon-fill: @building-major-fill;
       polygon-clip: false;
-      [zoom >= 14] {
+      [zoom >= 15] {
         line-width: .75;
         line-clip: false;
         line-color: @building-major-line;
