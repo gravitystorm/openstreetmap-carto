@@ -149,7 +149,9 @@
   [feature = 'tourism_chalet'][zoom >= 14] {
     point-file: url('symbols/chalet.p.16.png');
     point-placement: interior;
-    [zoom < 16] { point-transform:"scale(0.9)"; }
+    [zoom < 16] {
+      point-transform:"scale(0.9)";
+    }
   }
 
   [feature = 'amenity_cinema'][zoom >= 16] {
@@ -508,7 +510,7 @@
     marker-placement: interior;
     marker-fill: @amenity-brown;
     marker-clip: false;
-    [zoom <= 15] { marker-transform:"scale(0.8)"; }
+    [zoom < 16] { marker-transform:"scale(0.8)"; }
   }
 
   [feature = 'man_made_water_tower'][zoom >= 17] {
@@ -1253,10 +1255,7 @@
   [feature = 'amenity_place_of_worship'][tourism = 'viewpoint'][zoom >= 14],
   [feature = 'amenity_place_of_worship'][zoom >= 17] {
     text-name: "[name]";
-    text-size: 9;
-    [zoom >= 17] {
     text-size: 10;
-    }
     text-fill: #000033;
     text-dy: 12;
     text-face-name: @book-fonts;
@@ -1644,7 +1643,7 @@
   }
 
   [feature = 'natural_bay'][zoom >= 14],
-  [feature = 'natural_spring'][zoom >= 14] {
+  [feature = 'natural_spring'][zoom >= 16] {
     text-name: "[name]";
     text-size: 10;
     text-fill: @water-text;
@@ -1680,7 +1679,7 @@
   [feature = 'tourism_hotel'][zoom >= 17],
   [feature = 'tourism_motel'][zoom >= 17],
   [feature = 'tourism_hostel'][zoom >= 17],
-  [feature = 'tourism_chalet'][zoom >= 14],
+  [feature = 'tourism_chalet'][zoom >= 17],
   [feature = 'tourism_guest_house'][zoom >= 17],
   [feature = 'tourism_camp_site'][zoom >= 17] {
     text-name: "[name]";
