@@ -654,7 +654,9 @@ Layer:
          degrees(st_azimuth(st_pointn(way2,2),st_pointn(way2,3))) as a23 from                                                                     
          (select *, st_area(way) as way_area, ST_ExteriorRing(ST_SimplifyPreserveTopology(way,100)) as way2 from (select (st_dump(way)).geom as way, sport, surface, access
           from planet_osm_polygon
-          where sport in ('tennis','soccer','basketball','rugby','rugby_union','rugby_league','american_football') AND way && !bbox!) as dump) as simplified) as simplified2)
+          WHERE sport in ('tennis','soccer','basketball','rugby','rugby_union','rugby_league','american_football')
+            AND (building IS NULL OR building = 'no')
+            AND way && !bbox!) as dump) as simplified) as simplified2)
           as sports
     advanced: {}
   - id: "citywalls"
