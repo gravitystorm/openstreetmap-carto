@@ -30,3 +30,12 @@ project.yaml by the view names used in german style.
 The style is currently developed using Debian GNU/Linux 8.x with all the
 required software (postgresql-9.4, mapnik2.2 node-carto 0.9.5-2, ...)
 provided by the distribution itself. Using Ubuntu >=14.4 should also work.
+
+To get this style running it is currently also required to add the l10n code
+available at https://github.com/giggls/mapnik-german-l10n to the postgresql
+database.
+
+If l10n is not needed it is also possible to slightly mody either
+project.yaml or the database views provided in views_osmde directory.
+
+
