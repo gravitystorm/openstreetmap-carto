@@ -2156,7 +2156,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
             [zoom >= 15] {
               light/line-dasharray: 0,8,8,1;
             }
-            [zoom >= 19] {
+            [zoom >= 18] {
               dark/line-width: 4;
               light/line-width: 2;
             }
@@ -2166,6 +2166,10 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
             dark/line-color: #aaa;
             light/line-width: 0.8;
             light/line-dasharray: 0,8,8,1;
+            [zoom >= 18] {
+              dark/line-width: 3;
+              light/line-width: 1;
+            }
           }
         }
         .tunnels-fill {
@@ -2177,8 +2181,11 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
             line-color: #aaa;
             line-width: 1.9;
             line-dasharray: 3,3;
+            [zoom >= 18] {
+            line-width: 2.7;
+            }
           }
-          [feature = 'railway_rail'][zoom >= 19] {
+          [feature = 'railway_rail'][zoom >= 18] {
             line-dasharray: 8,6;
             line-width: 3.8;
           }
@@ -2449,32 +2456,30 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     marker-line-width: 0;
   }
 
-  [int_tc_type = 'residential'],
-  [int_tc_type = 'unclassified'] {
-    [zoom >= 15] {
-      marker-fill: @residential-casing;
-      marker-width: (@residential-width-z15 - 2 * @casing-width-z15) * 1.8 + 2 * @casing-width-z15;
-      marker-height: (@residential-width-z15 - 2 * @casing-width-z15) * 1.8 + 2 * @casing-width-z15;
-      [zoom >= 16] {
-        marker-width: (@residential-width-z16 - 2 * @casing-width-z16) * 1.8 + 2 * @casing-width-z16;
-        marker-height: (@residential-width-z16 - 2 * @casing-width-z16) * 1.8 + 2 * @casing-width-z16;
-      }
-      [zoom >= 17] {
-        marker-width: (@residential-width-z17 - 2 * @casing-width-z17) * 1.8 + 2 * @casing-width-z17;
-        marker-height: (@residential-width-z17 - 2 * @casing-width-z17) * 1.8 + 2 * @casing-width-z17;
-      }
-      [zoom >= 18] {
-        marker-width: (@residential-width-z18 - 2 * @casing-width-z18) * 1.8 + 2 * @casing-width-z18;
-        marker-height: (@residential-width-z18 - 2 * @casing-width-z18) * 1.8 + 2 * @casing-width-z18;
-      }
-      [zoom >= 19] {
-        marker-width: (@residential-width-z19 - 2 * @casing-width-z19) * 1.8 + 2 * @casing-width-z19;
-        marker-height: (@residential-width-z19 - 2 * @casing-width-z19) * 1.8 + 2 * @casing-width-z19;
-      }
-      marker-allow-overlap: true;
-      marker-ignore-placement: true;
-      marker-line-width: 0;
+  [int_tc_type = 'residential'][zoom >= 15],
+  [int_tc_type = 'unclassified'][zoom >= 15] {
+    marker-fill: @residential-casing;
+    marker-width: (@residential-width-z15 - 2 * @casing-width-z15) * 1.8 + 2 * @casing-width-z15;
+    marker-height: (@residential-width-z15 - 2 * @casing-width-z15) * 1.8 + 2 * @casing-width-z15;
+    [zoom >= 16] {
+      marker-width: (@residential-width-z16 - 2 * @casing-width-z16) * 1.8 + 2 * @casing-width-z16;
+      marker-height: (@residential-width-z16 - 2 * @casing-width-z16) * 1.8 + 2 * @casing-width-z16;
     }
+    [zoom >= 17] {
+      marker-width: (@residential-width-z17 - 2 * @casing-width-z17) * 1.8 + 2 * @casing-width-z17;
+      marker-height: (@residential-width-z17 - 2 * @casing-width-z17) * 1.8 + 2 * @casing-width-z17;
+    }
+    [zoom >= 18] {
+      marker-width: (@residential-width-z18 - 2 * @casing-width-z18) * 1.8 + 2 * @casing-width-z18;
+      marker-height: (@residential-width-z18 - 2 * @casing-width-z18) * 1.8 + 2 * @casing-width-z18;
+    }
+    [zoom >= 19] {
+      marker-width: (@residential-width-z19 - 2 * @casing-width-z19) * 1.8 + 2 * @casing-width-z19;
+      marker-height: (@residential-width-z19 - 2 * @casing-width-z19) * 1.8 + 2 * @casing-width-z19;
+    }
+    marker-allow-overlap: true;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
   }
 
   [int_tc_type = 'living_street'][zoom >= 15] {
