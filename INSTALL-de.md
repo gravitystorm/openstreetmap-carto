@@ -35,7 +35,7 @@ To get this style running it is currently also required to add the l10n code
 available at https://github.com/giggls/mapnik-german-l10n to the postgresql
 database.
 
-If l10n is not needed it is also possible to slightly mody either
+If l10n is not needed it is also possible to slightly modify either
 project.yaml or the database views provided in views_osmde directory.
 
 
