@@ -381,8 +381,13 @@ function isarea (tags)
    -- Search through object's tags
    for k, v in pairs(tags) do
       -- Check if it has a polygon key and not a linestring override, or a polygon k=v
-      if (polygon_keys[k] and not (linestring_values[k] and linestring_values[k][v])) or
-         (polygon_values[k] and polygon_values[k][v]) then
+      for _, ptag in ipairs(polygon_keys) do
+         if k == ptag and not (linestring_values[k] and linestring_values[k][v]) then
+            return 1
+         end
+      end
+
+      if (polygon_values[k] and polygon_values[k][v]) then
          return 1
       end
    end
