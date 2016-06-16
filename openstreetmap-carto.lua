@@ -172,87 +172,83 @@ delete_wildcards = {
 
 }
 
--- Array used to specify z_order and osmcarto_z_order per key/value combination.
--- The former is used for backwards compatibility and for uses that use a single
--- database for multiple rendering styles.
--- Each element has the form {key, value, z_order, osmcarto_z_order, is_road}.
--- If is_road=1, the object will be added to planet_osm_roads.
-zordering_tags = {
-   {'railway', nil, 5, 0, 1},
-   {'boundary', 'administrative', 0, 0, 1},
-   {'bridge', 'yes', 10, 0, 0},
-   {'bridge', 'true', 10, 0, 0},
-   {'bridge', 1, 10, 0, 0},
-   {'tunnel', 'yes', -10, 0, 0},
-   {'tunnel', 'true', -10, 0, 0},
-   {'tunnel', 1, -10, 0, 0},
-   {'railway', 'rail', 0, 440, 1},
-   {'railway', 'subway', 0, 420, 1},
-   {'railway', 'narrow_gauge', 0, 420, 1},
-   {'railway', 'light_rail', 0, 420, 1},
-   {'railway', 'preserved', 0, 420, 1},
-   {'railway', 'funicular', 0, 420, 1},
-   {'railway', 'monorail', 0, 420, 1},
-   {'railway', 'miniature', 0, 420, 1},
-   {'railway', 'turntable', 0, 420, 1},
-   {'railway', 'tram', 0, 410, 1},
-   {'railway', 'tram-service', 0, 405, 1},
-   {'railway', 'disused', 0, 400, 1},
-   {'railway', 'construction', 0, 400, 1},
-   {'highway', 'motorway', 9, 380, 1},
-   {'highway', 'trunk', 8, 370, 1},
-   {'highway', 'primary', 7, 360, 1},
-   {'highway', 'secondary', 6, 350, 1},
-   {'highway', 'tertiary', 4, 340, 0},
-   {'highway', 'residential', 3, 330, 0},
-   {'highway', 'unclassified', 3, 330, 0},
-   {'highway', 'road', 3, 330, 0},
-   {'highway', 'living_street', 0, 320, 0},
-   {'highway', 'pedestrian', 0, 310, 0},
-   {'highway', 'raceway', 0, 300, 0},
-   {'highway', 'motorway_link', 9, 240, 1},
-   {'highway', 'trunk_link', 6, 230, 1},
-   {'highway', 'primary_link', 5, 220, 1},
-   {'highway', 'secondary_link', 4, 210, 1},
-   {'highway', 'tertiary_link', 3, 200, 0},
-   {'highway', 'service', 0, 150, 0},
-   {'highway', 'track', 0, 110, 0},
-   {'highway', 'path', 0, 100, 0},
-   {'highway', 'footway', 0, 100, 0},
-   {'highway', 'bridleway', 0, 100, 0},
-   {'highway', 'cycleway', 0, 100, 0},
-   {'highway', 'steps', 0, 100, 0},
-   {'highway', 'platform', 0, 90, 0},
-   {'highway', 'minor', 3, 0, 0},
-   {'railway', 'platform', 0, 90, 0},
-   {'aeroway', 'runway', 0, 60, 0},
-   {'aeroway', 'taxiway', 0, 50, 0},
-   {'highway', 'construction', 0, 10, 0}
+-- Big table for z_order and roads status for certain tags. z=0 is turned into
+-- nil by the z_order function
+local roads_info = {
+    highway = {
+        motorway        = {z = 380, roads = true},
+        trunk           = {z = 370, roads = true},
+        primary         = {z = 360, roads = true},
+        secondary       = {z = 350, roads = true},
+        tertiary        = {z = 340, roads = false},
+        residential     = {z = 330, roads = false},
+        unclassified    = {z = 330, roads = false},
+        road            = {z = 330, roads = false},
+        living_street   = {z = 320, roads = false},
+        pedestrian      = {z = 310, roads = false},
+        raceway         = {z = 300, roads = false},
+        motorway_link   = {z = 240, roads = true},
+        trunk_link      = {z = 230, roads = true},
+        primary_link    = {z = 220, roads = true},
+        secondary_link  = {z = 210, roads = true},
+        tertiary_link   = {z = 200, roads = false},
+        service         = {z = 150, roads = false},
+        track	        = {z = 110, roads = false},
+        path	        = {z = 100, roads = false},
+        footway	        = {z = 100, roads = false},
+        bridleway	    = {z = 100, roads = false},
+        cycleway	    = {z = 100, roads = false},
+        steps	        = {z = 90, roads = false},
+        platform	    = {z = 90, roads = false},
+        construction    = {z = 10, roads = false}
+    },
+    railway = {
+        rail	        = {z = 440, roads = true},
+        subway	        = {z = 420, roads = true},
+        narrow_gauge	= {z = 420, roads = true},
+        light_rail	    = {z = 420, roads = true},
+        preserved	    = {z = 420, roads = true},
+        funicular	    = {z = 420, roads = true},
+        monorail	    = {z = 420, roads = true},
+        miniature	    = {z = 420, roads = true},
+        turntable	    = {z = 420, roads = true},
+        tram	        = {z = 410, roads = true},
+        disused	        = {z = 400, roads = true},
+        construction	= {z = 400, roads = true},
+        platform	    = {z = 90, roads = true},
+    },
+    aeroway = {
+        runway          = {z = 60, roads = false},
+        taxiway         = {z = 50, roads = false},
+    },
+    boundary = {
+        administrative  = {z = 0, roads = true}
+    },
 }
 
-function add_z_order(keyvalues)
-   -- The default z_order is 0
-   local z_order = 0
-   local osmcarto_z_order = 0
+--- Gets the z_order for a set of tags
+-- @param tags OSM tags
+-- @return z_order if an object with z_order, otherwise nil
+function z_order(tags)
+    local z = 0
+    for k, v in pairs(tags) do
+        if roads_info[k] and roads_info[k][v] then
+            z = math.max(z, roads_info[k][v].z)
+        end
+    end
+    return z ~= 0 and z or nil
+end
 
-   -- Increase or decrease z_order based on the specific key/value combination as specified in zordering_tags
-   for i,k in ipairs(zordering_tags) do
-      -- If the value in zordering_tags is specified, match key and value. Otherwise, match key only.
-      if ((k[2]  and keyvalues[k[1]] == k[2]) or (k[2] == nil and keyvalues[k[1]] ~= nil)) then
-         -- If the fifth component of the element of zordering_tags is 1, add the object to planet_osm_roads
-         if (k[5] == 1) then
-            roads = 1
-         end
-         z_order = z_order + k[3]
-         osmcarto_z_order = math.max(osmcarto_z_order, k[4])
-      end
-   end
-
-   -- Add z_order as key/value combination
-   keyvalues["osmcarto_z_order"] = osmcarto_z_order
-   keyvalues["z_order"] = z_order
-
-   return keyvalues, roads
+--- Gets the roads table status for a set of tags
+-- @param tags OSM tags
+-- @return 1 if it belongs in the roads table, 0 otherwise
+function roads(tags)
+    for k, v in pairs(tags) do
+        if roads_info[k] and roads_info[k][v] and roads_info[k][v].roads then
+            return 1
+        end
+    end
+    return 0
 end
 
 -- Filtering on nodes, ways, and relations
@@ -311,7 +307,6 @@ end
 function filter_tags_way (keyvalues, numberofkeys)
    local filter = 0  -- Will object be filtered out?
    local polygon = 0 -- Will object be treated as polygon?
-   local roads = 0   -- Will object be added to planet_osm_roads?
 
    -- Filter out objects that are filtered out by filter_tags_generic
    filter, keyvalues = filter_tags_generic(keyvalues, numberofkeys)
@@ -321,17 +316,16 @@ function filter_tags_way (keyvalues, numberofkeys)
 
    polygon = haspolygontags(keyvalues)
 
-   -- Add z_order key/value combination and determine if the object should also be added to planet_osm_roads
-   keyvalues, roads = add_z_order(keyvalues)
+   -- Add z_order column
+   keyvalues.z_order = z_order(keyvalues)
 
-   return filter, keyvalues, polygon, roads
+   return filter, keyvalues, polygon, roads(keyvalues)
 end
 
 function filter_tags_relation_member (keyvalues, keyvaluemembers, roles, membercount)
    local filter = 0     -- Will object be filtered out?
    local linestring = 0 -- Will object be treated as linestring?
    local polygon = 0    -- Will object be treated as polygon?
-   local roads = 0      -- Will object be added to planet_osm_roads?
    local membersuperseded = {}
    for i = 1, membercount do
       membersuperseded[i] = 0 -- Will member be ignored when handling areas?
@@ -377,10 +371,10 @@ function filter_tags_relation_member (keyvalues, keyvaluemembers, roles, memberc
       end
    end
 
-   -- Add z_order key/value combination and determine if the object should also be added to planet_osm_roads
-   local keyvalues, roads = add_z_order(keyvalues)
+   -- Add z_order column
+   keyvalues.z_order = z_order(keyvalues)
 
-   return filter, keyvalues, membersuperseded, linestring, polygon, roads
+   return filter, keyvalues, membersuperseded, linestring, polygon, roads(keyvalues)
 end
 
 -- Check if an object with given tags should be treated as polygon
