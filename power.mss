@@ -2,24 +2,33 @@
 
 #power-line {
   [zoom >= 14] {
-    line-width: 0.8;
+    line-width: 0.5;
     line-color: @power-line-color;
     [zoom >= 15] {
-      line-width: 0.9;
+      line-width: 0.6;
     }
     [zoom >= 16] {
-      line-width: 1.3;
+      line-width: 0.7;
     }
     [zoom >= 18] {
-      line-width: 1.5;
+      line-width: 1;
+    }
+    [zoom >= 19] {
+      line-width: 1.2;
     }
   }
 }
 
 #power-minorline {
   [zoom >= 16] {
-    line-width: 0.5;
+    line-width: 0.3;
     line-color: @power-line-color;
+    [zoom >= 17] {
+      line-width: 0.4;
+    }
+    [zoom >= 18] {
+      line-width: 0.5;
+    }
   }
 }
 
