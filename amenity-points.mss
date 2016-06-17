@@ -524,6 +524,7 @@
     marker-clip: false;
   }
 
+  [feature = 'man_made_obelisk'][zoom >= 16],
   [feature = 'historic_monument'][zoom >= 16] {
     marker-file: url('symbols/monument.16.svg');
     marker-fill: @amenity-brown;
@@ -1304,6 +1305,7 @@
   }
 
   [feature = 'historic_memorial'][zoom >= 17],
+  [feature = 'man_made_obelisk'][zoom >= 16],
   [feature = 'historic_monument'][zoom >= 16],
   [feature = 'historic_archaeological_site'][zoom >= 17] {
     text-name: "[name]";
