@@ -499,12 +499,14 @@ Layer:
       # an order is generated in SQL.
       table: |-
         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
-                horse, foot, bicycle, tracktype, int_surface, access, construction, proposed, proposed_minor,
+                horse, foot, bicycle, tracktype, int_surface, access, construction, proposed, proposed_construction_minor,
                 service, oneway, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
                 way, proposed,
-                case when proposed in ('residential','unclassified','road','living_street') then 'yes' else 'no' end as proposed_minor,
+                case when proposed in ('residential','unclassified','road','living_street') or
+                          construction in ('residential','unclassified','road','living_street')
+                then 'yes' else 'no' end as proposed_construction_minor,
                 ('highway_' || highway) AS feature, --only motorway to tertiary links are accepted later on
                 horse,
                 foot,
@@ -540,7 +542,9 @@ Layer:
             UNION ALL
             SELECT
                 way, proposed,
-                case when proposed in ('residential','unclassified','road','living_street') then 'yes' else 'no' end as proposed_minor,
+                case when proposed in ('residential','unclassified','road','living_street') or
+                          construction in ('residential','unclassified','road','living_street')
+                then 'yes' else 'no' end as proposed_construction_minor,
                 COALESCE(
                   ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text 
                                        WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'  
@@ -822,12 +826,14 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
-                horse, foot, bicycle, tracktype, int_surface, access, construction, proposed, proposed_minor,
+                horse, foot, bicycle, tracktype, int_surface, access, construction, proposed, proposed_construction_minor,
                 service, oneway, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
                 way, proposed,
-                case when proposed in ('residential','unclassified','road','living_street') then 'yes' else 'no' end as proposed_minor,
+                case when proposed in ('residential','unclassified','road','living_street') or
+                          construction in ('residential','unclassified','road','living_street')
+                then 'yes' else 'no' end as proposed_construction_minor,
                 ('highway_' || highway) AS feature, --only motorway to tertiary links are accepted later on
                 horse,
                 foot,
@@ -865,7 +871,9 @@ Layer:
             UNION ALL
             SELECT
                 way, proposed,
-                case when proposed in ('residential','unclassified','road','living_street') then 'yes' else 'no' end as proposed_minor,
+                case when proposed in ('residential','unclassified','road','living_street') or
+                          construction in ('residential','unclassified','road','living_street')
+                then 'yes' else 'no' end as proposed_construction_minor,
                 COALESCE(
                   ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text 
                                        WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'  
@@ -983,7 +991,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
-                horse, foot, bicycle, tracktype, int_surface, access, construction,
+                horse, foot, bicycle, tracktype, int_surface, access, construction, proposed_construction_minor,
                 service, oneway, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
@@ -1003,6 +1011,9 @@ Layer:
                   ELSE NULL
                 END AS access,
                 construction,
+                case when proposed in ('residential','unclassified','road','living_street') or
+                          construction in ('residential','unclassified','road','living_street')
+                then 'yes' else 'no' end as proposed_construction_minor,
                 CASE
                   WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
                   ELSE 'INT-normal'::text
@@ -1042,6 +1053,9 @@ Layer:
                   ELSE NULL
                 END AS access,
                 construction,
+                case when proposed in ('residential','unclassified','road','living_street') or
+                          construction in ('residential','unclassified','road','living_street')
+                then 'yes' else 'no' end as proposed_construction_minor,
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 NULL AS oneway,
                 'no' AS link,
@@ -1219,12 +1233,14 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
-                horse, foot, bicycle, tracktype, int_surface, access, construction, proposed, proposed_minor,
+                horse, foot, bicycle, tracktype, int_surface, access, construction, proposed, proposed_construction_minor,
                 service, oneway, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
                 way, proposed,
-                case when proposed in ('residential','unclassified','road','living_street') then 'yes' else 'no' end as proposed_minor,
+                case when proposed in ('residential','unclassified','road','living_street') or
+                          construction in ('residential','unclassified','road','living_street')
+                then 'yes' else 'no' end as proposed_construction_minor,
                 ('highway_' || highway) AS feature, --only motorway to tertiary links are accepted later on
                 horse,
                 foot,
@@ -1260,7 +1276,9 @@ Layer:
             UNION ALL
             SELECT
                 way, proposed,
-                case when proposed in ('residential','unclassified','road','living_street') then 'yes' else 'no' end as proposed_minor,  
+                case when proposed in ('residential','unclassified','road','living_street') or
+                          construction in ('residential','unclassified','road','living_street')
+                then 'yes' else 'no' end as proposed_construction_minor,  
                 COALESCE(
                   ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text 
                                        WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' 

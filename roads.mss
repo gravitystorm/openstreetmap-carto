@@ -56,9 +56,7 @@
 @primary-construction-fill:@primary-fill;
 @secondary-construction-fill:@secondary-fill;
 @tertiary-construction-fill:@tertiary-fill;
-
-@residential-construction: #aaa;
-@service-construction: #aaa;
+@unimportant-construction-fill:@residential-fill;
 
 @motorway-low-zoom-casing: @motorway-fill;
 @trunk-low-zoom-casing: @trunk-fill;
@@ -336,37 +334,58 @@
 @shield-secondary-fill: #000000;
 @shield-tertiary-fill: #000000;
 
+@proposed_casing_factor: 3.0;
+
 .roads-casing, .bridges-casing, .tunnels-casing {
   ::casing {
 
+/*
+
+In german style we render highway=proposed as "casing only" simulated by offset and
+highway=construction with an additional striped opaque fill.
+Casing width is @proposed_casing_factor the width of normal road casing.
+
+*/
     [feature = 'highway_proposed'][proposed =~ ".*motorway.*"]                 
     ,[feature = 'highway_construction'][construction =~ ".*motorway.*"]{
       [zoom >= 12]{
         a/line-join:round;
-        a/line-width: 0.5;
+        a/line-width: @proposed_casing_factor*@major-casing-width-z12;
         a/line-color:@motorway-fill;
-        a/line-offset:2.75;
+        a/line-offset:0.5 * (@motorway-width-z12 - @proposed_casing_factor*@major-casing-width-z12);
         b/line-join:round;
-        b/line-width: 0.5;
+        b/line-width: @proposed_casing_factor*@major-casing-width-z12;
         b/line-color:@motorway-fill;
-        b/line-offset:-2.75;
+        b/line-offset:-0.5 * (@motorway-width-z12 - @proposed_casing_factor*@major-casing-width-z12);
        [zoom >= 13]{
-          a/line-width: 1;
-          a/line-offset:3.25;
-          b/line-width: 1;
-          b/line-offset:-3.25;
+          a/line-width: @proposed_casing_factor*@major-casing-width-z13;
+          a/line-offset: 0.5 * (@motorway-width-z13 - @proposed_casing_factor*@major-casing-width-z13);
+          b/line-width: @proposed_casing_factor*@major-casing-width-z13;
+          b/line-offset:-0.5 * (@motorway-width-z13 - @proposed_casing_factor*@major-casing-width-z13);
         }
-        [zoom >= 15]{
-          a/line-width: 1.5;
-          a/line-offset:5;
-          b/line-width: 1.5;
-          b/line-offset:-5;
+       [zoom >= 15]{
+          a/line-width: @proposed_casing_factor*@major-casing-width-z15;
+          a/line-offset: 0.5 * (@motorway-width-z15 - @proposed_casing_factor*@major-casing-width-z15);
+          b/line-width: @proposed_casing_factor*@major-casing-width-z15;
+          b/line-offset:-0.5 * (@motorway-width-z15 - @proposed_casing_factor*@major-casing-width-z15);
         }
-        [zoom >= 17]{
-          a/line-width: 2.75;
-          a/line-offset:6.625;
-          b/line-width: 2.75;
-          b/line-offset:-6.625;
+       [zoom >= 17]{
+          a/line-width: @proposed_casing_factor*@major-casing-width-z17;
+          a/line-offset: 0.5 * (@motorway-width-z17 - @proposed_casing_factor*@major-casing-width-z17);
+          b/line-width: @proposed_casing_factor*@major-casing-width-z17;
+          b/line-offset:-0.5 * (@motorway-width-z17 - @proposed_casing_factor*@major-casing-width-z17);
+        }
+       [zoom >= 18]{
+          a/line-width: @proposed_casing_factor*@major-casing-width-z18;
+          a/line-offset: 0.5 * (@motorway-width-z18 - @proposed_casing_factor*@major-casing-width-z18);
+          b/line-width: @proposed_casing_factor*@major-casing-width-z18;
+          b/line-offset:-0.5 * (@motorway-width-z18 - @proposed_casing_factor*@major-casing-width-z18);
+        }
+       [zoom >= 19]{
+          a/line-width: @proposed_casing_factor*@major-casing-width-z19;
+          a/line-offset: 0.5 * (@motorway-width-z19 - @proposed_casing_factor*@major-casing-width-z19);
+          b/line-width: @proposed_casing_factor*@major-casing-width-z19;
+          b/line-offset:-0.5 * (@motorway-width-z19 - @proposed_casing_factor*@major-casing-width-z19);
         }
       }
     }
@@ -375,30 +394,42 @@
     ,[feature = 'highway_construction'][construction =~ ".*trunk.*"]{
       [zoom >= 12]{
         a/line-join:round;
-        a/line-width: 0.5;
+        a/line-width: @proposed_casing_factor*@major-casing-width-z12;
         a/line-color:@trunk-fill;
-        a/line-offset:2.75;
+        a/line-offset:0.5 * (@trunk-width-z12 - @proposed_casing_factor*@major-casing-width-z12);
         b/line-join:round;
-        b/line-width: 0.5;
+        b/line-width: @proposed_casing_factor*@major-casing-width-z12;
         b/line-color:@trunk-fill;
-        b/line-offset:-2.75;
+        b/line-offset:-0.5 * (@trunk-width-z12 - @proposed_casing_factor*@major-casing-width-z12);
        [zoom >= 13]{
-          a/line-width: 1;
-          a/line-offset:3.25;
-          b/line-width: 1;
-          b/line-offset:-3.25;
+          a/line-width: @proposed_casing_factor*@major-casing-width-z13;
+          a/line-offset: 0.5 * (@trunk-width-z13 - @proposed_casing_factor*@major-casing-width-z13);
+          b/line-width: @proposed_casing_factor*@major-casing-width-z13;
+          b/line-offset:-0.5 * (@trunk-width-z13 - @proposed_casing_factor*@major-casing-width-z13);
         }
-        [zoom >= 15]{
-          a/line-width: 1.5;
-          a/line-offset:5;
-          b/line-width: 1.5;
-          b/line-offset:-5;
+       [zoom >= 15]{
+          a/line-width: @proposed_casing_factor*@major-casing-width-z15;
+          a/line-offset: 0.5 * (@trunk-width-z15 - @proposed_casing_factor*@major-casing-width-z15);
+          b/line-width: @proposed_casing_factor*@major-casing-width-z15;
+          b/line-offset:-0.5 * (@trunk-width-z15 - @proposed_casing_factor*@major-casing-width-z15);
         }
-        [zoom >= 17]{
-          a/line-width: 2.75;
-          a/line-offset:6.625;
-          b/line-width: 2.75;
-          b/line-offset:-6.625;
+       [zoom >= 17]{
+          a/line-width: @proposed_casing_factor*@major-casing-width-z17;
+          a/line-offset: 0.5 * (@trunk-width-z17 - @proposed_casing_factor*@major-casing-width-z17);
+          b/line-width: @proposed_casing_factor*@major-casing-width-z17;
+          b/line-offset:-0.5 * (@trunk-width-z17 - @proposed_casing_factor*@major-casing-width-z17);
+        }
+       [zoom >= 18]{
+          a/line-width: @proposed_casing_factor*@major-casing-width-z18;
+          a/line-offset: 0.5 * (@trunk-width-z18 - @proposed_casing_factor*@major-casing-width-z18);
+          b/line-width: @proposed_casing_factor*@major-casing-width-z18;
+          b/line-offset:-0.5 * (@trunk-width-z18 - @proposed_casing_factor*@major-casing-width-z18);
+        }
+       [zoom >= 19]{
+          a/line-width: @proposed_casing_factor*@major-casing-width-z19;
+          a/line-offset: 0.5 * (@trunk-width-z19 - @proposed_casing_factor*@major-casing-width-z19);
+          b/line-width: @proposed_casing_factor*@major-casing-width-z19;
+          b/line-offset:-0.5 * (@trunk-width-z19 - @proposed_casing_factor*@major-casing-width-z19);
         }
       }
     }
@@ -407,30 +438,42 @@
     ,[feature = 'highway_construction'][construction =~ ".*primary.*"]{
       [zoom >= 12]{
         a/line-join:round;
-        a/line-width: 0.5;
+        a/line-width: @proposed_casing_factor*@major-casing-width-z12;
         a/line-color:@primary-fill;
-        a/line-offset:1.25;
+        a/line-offset:0.5 * (@primary-width-z12 - @proposed_casing_factor*@major-casing-width-z12);
         b/line-join:round;
-        b/line-width: 0.5;
+        b/line-width: @proposed_casing_factor*@major-casing-width-z12;
         b/line-color:@primary-fill;
-        b/line-offset:-1.25;
+        b/line-offset:-0.5 * (@primary-width-z12 - @proposed_casing_factor*@major-casing-width-z12);
        [zoom >= 13]{
-          a/line-width: 1;
-          a/line-offset:3.25;
-          b/line-width: 1;
-          b/line-offset:-3.25;
+          a/line-width: @proposed_casing_factor*@major-casing-width-z13;
+          a/line-offset: 0.5 * (@primary-width-z13 - @proposed_casing_factor*@major-casing-width-z13);
+          b/line-width: @proposed_casing_factor*@major-casing-width-z13;
+          b/line-offset:-0.5 * (@primary-width-z13 - @proposed_casing_factor*@major-casing-width-z13);
         }
-        [zoom >= 15]{
-          a/line-width: 1.5;
-          a/line-offset:5;
-          b/line-width: 1.5;
-          b/line-offset:-5;
+       [zoom >= 15]{
+          a/line-width: @proposed_casing_factor*@major-casing-width-z15;
+          a/line-offset: 0.5 * (@primary-width-z15 - @proposed_casing_factor*@major-casing-width-z15);
+          b/line-width: @proposed_casing_factor*@major-casing-width-z15;
+          b/line-offset:-0.5 * (@primary-width-z15 - @proposed_casing_factor*@major-casing-width-z15);
         }
-        [zoom >= 17]{
-          a/line-width: 2.25;
-          a/line-offset:6.875;
-          b/line-width: 2.25;
-          b/line-offset:-6.875;
+       [zoom >= 17]{
+          a/line-width: @proposed_casing_factor*@major-casing-width-z17;
+          a/line-offset: 0.5 * (@primary-width-z17 - @proposed_casing_factor*@major-casing-width-z17);
+          b/line-width: @proposed_casing_factor*@major-casing-width-z17;
+          b/line-offset:-0.5 * (@primary-width-z17 - @proposed_casing_factor*@major-casing-width-z17);
+        }
+       [zoom >= 18]{
+          a/line-width: @proposed_casing_factor*@major-casing-width-z18;
+          a/line-offset: 0.5 * (@primary-width-z18 - @proposed_casing_factor*@major-casing-width-z18);
+          b/line-width: @proposed_casing_factor*@major-casing-width-z18;
+          b/line-offset:-0.5 * (@primary-width-z18 - @proposed_casing_factor*@major-casing-width-z18);
+        }
+       [zoom >= 19]{
+          a/line-width: @proposed_casing_factor*@major-casing-width-z19;
+          a/line-offset: 0.5 * (@primary-width-z19 - @proposed_casing_factor*@major-casing-width-z19);
+          b/line-width: @proposed_casing_factor*@major-casing-width-z19;
+          b/line-offset:-0.5 * (@primary-width-z19 - @proposed_casing_factor*@major-casing-width-z19);
         }
       }
     }
@@ -439,117 +482,165 @@
     ,[feature = 'highway_construction'][construction =~ ".*secondary.*"]{
       [zoom >= 12]{
         a/line-join:round;
-        a/line-width: 0.5;
+        a/line-width: @proposed_casing_factor*@secondary-casing-width-z12;
         a/line-color:@secondary-fill;
-        a/line-offset:1;
+        a/line-offset:0.5 * (@secondary-width-z12 - @proposed_casing_factor*@secondary-casing-width-z12);
         b/line-join:round;
-        b/line-width: 0.5;
+        b/line-width: @proposed_casing_factor*@secondary-casing-width-z12;
         b/line-color:@secondary-fill;
-        b/line-offset:-1;
+        b/line-offset:-0.5 * (@secondary-width-z12 - @proposed_casing_factor*@secondary-casing-width-z12);
        [zoom >= 13]{
-          a/line-width: 1;
-          a/line-offset:3;
-          b/line-width: 1;
-          b/line-offset:-3;
+          a/line-width: @proposed_casing_factor*@secondary-casing-width-z13;
+          a/line-offset: 0.5 * (@secondary-width-z13 - @proposed_casing_factor*@secondary-casing-width-z13);
+          b/line-width: @proposed_casing_factor*@secondary-casing-width-z13;
+          b/line-offset:-0.5 * (@secondary-width-z13 - @proposed_casing_factor*@secondary-casing-width-z13);
         }
-        [zoom >= 15]{
-          a/line-width: 1.5;
-          a/line-offset:5;
-          b/line-width: 1.5;
-          b/line-offset:-5;
+       [zoom >= 14]{
+          a/line-width: @proposed_casing_factor*@secondary-casing-width-z14;
+          a/line-offset: 0.5 * (@secondary-width-z14 - @proposed_casing_factor*@secondary-casing-width-z14);
+          b/line-width: @proposed_casing_factor*@secondary-casing-width-z14;
+          b/line-offset:-0.5 * (@secondary-width-z14 - @proposed_casing_factor*@secondary-casing-width-z14);
         }
-        [zoom >= 17]{
-          a/line-width: 2.25;
-          a/line-offset:6.875;
-          b/line-width: 2.25;
-          b/line-offset:-6.875;
+       [zoom >= 15]{
+          a/line-width: @proposed_casing_factor*@secondary-casing-width-z15;
+          a/line-offset: 0.5 * (@secondary-width-z15 - @proposed_casing_factor*@secondary-casing-width-z15);
+          b/line-width: @proposed_casing_factor*@secondary-casing-width-z15;
+          b/line-offset:-0.5 * (@secondary-width-z15 - @proposed_casing_factor*@secondary-casing-width-z15);
+        }
+       [zoom >= 16]{
+          a/line-width: @proposed_casing_factor*@secondary-casing-width-z16;
+          a/line-offset: 0.5 * (@secondary-width-z16 - @proposed_casing_factor*@secondary-casing-width-z16);
+          b/line-width: @proposed_casing_factor*@secondary-casing-width-z16;
+          b/line-offset:-0.5 * (@secondary-width-z16 - @proposed_casing_factor*@secondary-casing-width-z16);
+        }
+       [zoom >= 17]{
+          a/line-width: @proposed_casing_factor*@secondary-casing-width-z17;
+          a/line-offset: 0.5 * (@secondary-width-z17 - @proposed_casing_factor*@secondary-casing-width-z17);
+          b/line-width: @proposed_casing_factor*@secondary-casing-width-z17;
+          b/line-offset:-0.5 * (@secondary-width-z17 - @proposed_casing_factor*@secondary-casing-width-z17);
+        }
+       [zoom >= 18]{
+          a/line-width: @proposed_casing_factor*@secondary-casing-width-z18;
+          a/line-offset: 0.5 * (@secondary-width-z18 - @proposed_casing_factor*@secondary-casing-width-z18);
+          b/line-width: @proposed_casing_factor*@secondary-casing-width-z18;
+          b/line-offset:-0.5 * (@secondary-width-z18 - @proposed_casing_factor*@secondary-casing-width-z18);
+        }
+       [zoom >= 19]{
+          a/line-width: @proposed_casing_factor*@secondary-casing-width-z19;
+          a/line-offset: 0.5 * (@secondary-width-z19 - @proposed_casing_factor*@secondary-casing-width-z19);
+          b/line-width: @proposed_casing_factor*@secondary-casing-width-z19;
+          b/line-offset:-0.5 * (@secondary-width-z19 - @proposed_casing_factor*@secondary-casing-width-z19);
         }
       }
     }
 
     [feature = 'highway_proposed'][proposed =~ ".*tertiary.*"]               
     ,[feature = 'highway_construction'][construction =~ ".*tertiary.*"]{
-      [zoom >= 14]{
+      [zoom >= 12]{
         a/line-join:round;
-        a/line-width: 0.75;
+        a/line-width: @proposed_casing_factor*@casing-width-z12;
         a/line-color:@tertiary-fill;
-        a/line-offset:2.875;
+        a/line-offset:0.5 * (@tertiary-width-z12 - @proposed_casing_factor*@casing-width-z12);
         b/line-join:round;
-        b/line-width: 0.75;
+        b/line-width: @proposed_casing_factor*@casing-width-z12;
         b/line-color:@tertiary-fill;
-        b/line-offset:-2.875;
+        b/line-offset:-0.5 * (@tertiary-width-z12 - @proposed_casing_factor*@casing-width-z12);
+       [zoom >= 13]{
+          a/line-width: @proposed_casing_factor*@casing-width-z13;
+          a/line-offset: 0.5 * (@tertiary-width-z13 - @proposed_casing_factor*@casing-width-z13);
+          b/line-width: @proposed_casing_factor*@casing-width-z13;
+          b/line-offset:-0.5 * (@tertiary-width-z13 - @proposed_casing_factor*@casing-width-z13);
+        }
+       [zoom >= 14]{
+          a/line-width: @proposed_casing_factor*@casing-width-z14;
+          a/line-offset: 0.5 * (@tertiary-width-z14 - @proposed_casing_factor*@casing-width-z14);
+          b/line-width: @proposed_casing_factor*@casing-width-z14;
+          b/line-offset:-0.5 * (@tertiary-width-z14 - @proposed_casing_factor*@casing-width-z14);
+        }
        [zoom >= 15]{
-          a/line-width: 1.5;
-          a/line-offset:4.5;
-          b/line-width: 1.5;
-          b/line-offset:-4.5;
+          a/line-width: @proposed_casing_factor*@casing-width-z15;
+          a/line-offset: 0.5 * (@tertiary-width-z15 - @proposed_casing_factor*@casing-width-z15);
+          b/line-width: @proposed_casing_factor*@casing-width-z15;
+          b/line-offset:-0.5 * (@tertiary-width-z15 - @proposed_casing_factor*@casing-width-z15);
+        }
+       [zoom >= 16]{
+          a/line-width: @proposed_casing_factor*@casing-width-z16;
+          a/line-offset: 0.5 * (@tertiary-width-z16 - @proposed_casing_factor*@casing-width-z16);
+          b/line-width: @proposed_casing_factor*@casing-width-z16;
+          b/line-offset:-0.5 * (@tertiary-width-z16 - @proposed_casing_factor*@casing-width-z16);
         }
        [zoom >= 17]{
-          a/line-width: 2;
-          a/line-offset:7;
-          b/line-width: 2;
-          b/line-offset:-7;
+          a/line-width: @proposed_casing_factor*@casing-width-z17;
+          a/line-offset: 0.5 * (@tertiary-width-z17 - @proposed_casing_factor*@casing-width-z17);
+          b/line-width: @proposed_casing_factor*@casing-width-z17;
+          b/line-offset:-0.5 * (@tertiary-width-z17 - @proposed_casing_factor*@casing-width-z17);
+        }
+       [zoom >= 18]{
+          a/line-width: @proposed_casing_factor*@casing-width-z18;
+          a/line-offset: 0.5 * (@tertiary-width-z18 - @proposed_casing_factor*@casing-width-z18);
+          b/line-width: @proposed_casing_factor*@casing-width-z18;
+          b/line-offset:-0.5 * (@tertiary-width-z18 - @proposed_casing_factor*@casing-width-z18);
+        }
+       [zoom >= 19]{
+          a/line-width: @proposed_casing_factor*@casing-width-z19;
+          a/line-offset: 0.5 * (@tertiary-width-z19 - @proposed_casing_factor*@casing-width-z19);
+          b/line-width: @proposed_casing_factor*@casing-width-z19;
+          b/line-offset:-0.5 * (@tertiary-width-z19 - @proposed_casing_factor*@casing-width-z19);
         }
       }
     }
 
-    [feature = 'highway_proposed'][proposed_minor = 'yes'] 
-    ,[feature = 'highway_construction'][proposed_minor = 'yes']{
-      [zoom >= 14]{
+    [feature = 'highway_proposed'][proposed_construction_minor = 'yes'] 
+    ,[feature = 'highway_construction'][proposed_construction_minor = 'yes']{
+      [zoom >= 13]{
         a/line-join:round;
-        a/line-width: 0.75;
-        a/line-color:@unclassified-fill;
-        a/line-offset:1.875;
+        a/line-width: @proposed_casing_factor*@casing-width-z13;
+        a/line-color:@residential-fill;
+        a/line-offset:0.5 * (@residential-width-z13 - @proposed_casing_factor*@casing-width-z13);
         a/line-opacity:0.3;
         b/line-join:round;
-        b/line-width: 0.75;
-        b/line-color:@unclassified-fill;
-        b/line-offset:-1.875; 
+        b/line-width: @proposed_casing_factor*@casing-width-z13;
+        b/line-color:@residential-fill;
+        b/line-offset:-0.5 * (@residential-width-z13 - @proposed_casing_factor*@casing-width-z13); 
         b/line-opacity:0.3;
-        c/line-join:round;
-        c/line-width: 0.75;
-        c/line-color:#999;
-        c/line-offset:1.875;
-        c/line-opacity:0.3;
-        d/line-join:round;
-        d/line-width: 0.75;
-        d/line-color:#999;
-        d/line-offset:-1.875; 
-        d/line-opacity:0.3;
         }
-
+      [zoom >= 14]{
+        a/line-width: @proposed_casing_factor*@casing-width-z14;
+        a/line-offset:0.5 * (@residential-width-z14 - @proposed_casing_factor*@casing-width-z14);
+        b/line-width: @proposed_casing_factor*@casing-width-z14;
+        b/line-offset:-0.5 * (@residential-width-z14 - @proposed_casing_factor*@casing-width-z14); 
+        }
       [zoom >= 15]{         
-        a/line-join:round;
-        a/line-width: 0.75;
-        a/line-color:@unclassified-fill;
-        a/line-offset:3.625;
-        b/line-join:round;
-        b/line-width: 0.75;
-        b/line-color:@unclassified-fill;
-        b/line-offset:-3.625;  
+        a/line-width: @proposed_casing_factor*@casing-width-z15;
+        a/line-offset:0.5 * (@residential-width-z15 - @proposed_casing_factor*@casing-width-z15);
+        b/line-width: @proposed_casing_factor*@casing-width-z15;
+        b/line-offset:-0.5 * (@residential-width-z15 - @proposed_casing_factor*@casing-width-z15);
         }
-
       [zoom >= 16]{         
-        a/line-join:round;
-        a/line-width: 0.8;
-        a/line-color:@unclassified-fill;
-        a/line-offset:5.1;
-        b/line-join:round;
-        b/line-width: 0.8;
-        b/line-color:@unclassified-fill;
-        b/line-offset:-5.1;  
+        a/line-width: @proposed_casing_factor*@casing-width-z16;
+        a/line-offset:0.5 * (@residential-width-z16 - @proposed_casing_factor*@casing-width-z16);
+        b/line-width: @proposed_casing_factor*@casing-width-z16;
+        b/line-offset:-0.5 * (@residential-width-z16 - @proposed_casing_factor*@casing-width-z16);
+        }
+      [zoom >= 17]{         
+        a/line-width: @proposed_casing_factor*@casing-width-z17;
+        a/line-offset:0.5 * (@residential-width-z17 - @proposed_casing_factor*@casing-width-z17);
+        b/line-width: @proposed_casing_factor*@casing-width-z17;
+        b/line-offset:-0.5 * (@residential-width-z17 - @proposed_casing_factor*@casing-width-z17);
+        }
+      [zoom >= 18]{
+        a/line-width: @proposed_casing_factor*@casing-width-z18;
+        a/line-offset:0.5 * (@residential-width-z18 - @proposed_casing_factor*@casing-width-z18);
+        b/line-width: @proposed_casing_factor*@casing-width-z18;
+        b/line-offset:-0.5 * (@residential-width-z18 - @proposed_casing_factor*@casing-width-z18);
+        }
+      [zoom >= 19]{
+        a/line-width: @proposed_casing_factor*@casing-width-z19;
+        a/line-offset:0.5 * (@residential-width-z19 - @proposed_casing_factor*@casing-width-z19);
+        b/line-width: @proposed_casing_factor*@casing-width-z19;
+        b/line-offset:-0.5 * (@residential-width-z19 - @proposed_casing_factor*@casing-width-z19);
         }
 
-      [zoom >= 17]{         
-        a/line-join:round;
-        a/line-width: 2;
-        a/line-color:@unclassified-fill;
-        a/line-offset:7;
-        b/line-join:round;
-        b/line-width: 2;
-        b/line-color:@unclassified-fill;
-        b/line-offset:-7;  
-        }      
     }
 
     [zoom = 9][feature = 'highway_secondary'] {
@@ -1457,26 +1548,33 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
        [zoom >= 12]{
         line-join:round;
         line-dasharray: 20,8;
-        line-width: 5;
+        line-width: @tertiary-width-z12 - 2 * @casing-width-z12;
         line-color:@tertiary-construction-fill;
         line-opacity:0.5;
-          
-         
+        [zoom >= 13] { line-width: @tertiary-width-z14 - 2 * @casing-width-z13; }
+	[zoom >= 14] { line-width: @tertiary-width-z14 - 2 * @casing-width-z14; }
+        [zoom >= 15] { line-width: @tertiary-width-z15 - 2 * @casing-width-z15; }
+        [zoom >= 16] { line-width: @tertiary-width-z16 - 2 * @casing-width-z16; }
+        [zoom >= 17] { line-width: @tertiary-width-z17 - 2 * @casing-width-z17; }
+        [zoom >= 18] { line-width: @tertiary-width-z18 - 2 * @casing-width-z18; }
+        [zoom >= 19] { line-width: @tertiary-width-z19 - 2 * @casing-width-z19; }
+       }
+    }
+
+    [feature = 'highway_construction'][proposed_construction_minor = 'yes']{
        [zoom >= 13]{
-        line-width: 5.5;
-         
-        }
-        [zoom >= 15]{
-          
-        line-width: 8.5;
-          
-        }
-        [zoom >= 17]{
-          
-        line-width: 10.5;
-        
-        }
-      }
+        line-join:round;
+        line-dasharray: 20,8;
+        line-width: @residential-width-z13 - 2 * @casing-width-z13;
+        line-color:@unimportant-construction-fill;
+        line-opacity:0.5;
+        [zoom >= 14] { line-width: @residential-width-z14 - 2 * @casing-width-z14; }
+        [zoom >= 15] { line-width: @residential-width-z15 - 2 * @casing-width-z15; }
+        [zoom >= 16] { line-width: @residential-width-z16 - 2 * @casing-width-z16; }
+        [zoom >= 17] { line-width: @residential-width-z17 - 2 * @casing-width-z17; }
+        [zoom >= 18] { line-width: @residential-width-z18 - 2 * @casing-width-z18; }
+        [zoom >= 19] { line-width: @residential-width-z19 - 2 * @casing-width-z19; }
+       }
     }
 
     [feature = 'highway_motorway'] {
