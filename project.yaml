@@ -53,24 +53,24 @@ Stylesheet:
   - "admin.mss"
   - "addressing.mss"
 Layer:
-  - id: "ocean-lz"
-    name: "ocean-lz"
-    class: "ocean"
+  - id: "world"
+    name: "world"
+    class: ""
     geometry: "polygon"
     <<: *extents
     Datasource:
-      file: "data/simplified-water-polygons-complete-3857/simplified_water_polygons.shp"
+      file: "data/simplified-land-polygons-complete-3857/simplified_land_polygons.shp"
       type: "shape"
     advanced: {}
     properties:
       maxzoom: 9
-  - id: "ocean"
-    name: "ocean"
-    class: "ocean"
+  - id: "coast-poly"
+    name: "coast-poly"
+    class: ""
     geometry: "polygon"
     <<: *extents
     Datasource:
-      file: "data/water-polygons-split-3857/water_polygons.shp"
+      file: "data/land-polygons-split-3857/land_polygons.shp"
       type: "shape"
     properties:
       minzoom: 10
