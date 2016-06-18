@@ -1306,7 +1306,7 @@
       ],
       "properties": {
         "maxzoom": 15,
-        "minzoom": 3
+        "minzoom": 4
       },
       "advanced": {}
     },

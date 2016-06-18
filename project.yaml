@@ -1554,7 +1554,7 @@ Layer:
           ORDER BY score DESC, length(name) DESC, name
         ) AS placenames_medium
     properties:
-      minzoom: 3
+      minzoom: 4
       maxzoom: 15
     advanced: {}
   - id: "placenames-small"
