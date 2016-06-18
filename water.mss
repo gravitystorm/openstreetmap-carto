@@ -17,28 +17,42 @@
       }
     }
   }
-}
 
-/*
- * Water areas, of all types. Because they are rendered all the same,
- * attachments can be used to reduce combinational rules
- */
-
-#water-areas[waterway = 'dock'][zoom >= 9]::waterway,
-#water-areas[waterway = 'canal'][zoom >= 9]::waterway,
-#water-areas[landuse = 'basin'][zoom >= 7]::landuse,
-#water-areas[natural = 'water'][zoom >= 6]::natural,
-#water-areas[landuse = 'reservoir'][zoom >= 6]::landuse,
-#water-areas[waterway = 'riverbank'][zoom >= 6]::waterway,
-.ocean {
-  polygon-fill: @water-color;
-
-  // Only the SQL layers have way_pixels
-  #water-areas[way_pixels >= 4] {
-    polygon-gamma: 0.75;
+  [waterway = 'dock'],
+  [waterway = 'canal'] {
+    [zoom >= 9]::waterway {
+      polygon-fill: @water-color;
+      [way_pixels >= 4] {
+        polygon-gamma: 0.75;
+      }
+      [way_pixels >= 64] {
+        polygon-gamma: 0.6;
+      }
+    }
   }
-  #water-areas[way_pixels >= 64] {
-    polygon-gamma: 0.6;
+
+  [landuse = 'basin'][zoom >= 7]::landuse {
+    polygon-fill: @water-color;
+    [way_pixels >= 4] {
+      polygon-gamma: 0.75;
+    }
+    [way_pixels >= 64] {
+      polygon-gamma: 0.6;
+    }
+  }
+
+  [natural = 'water']::natural,
+  [landuse = 'reservoir']::landuse,
+  [waterway = 'riverbank']::waterway {
+    [zoom >= 6] {
+      polygon-fill: @water-color;
+      [way_pixels >= 4] {
+        polygon-gamma: 0.75;
+      }
+      [way_pixels >= 64] {
+        polygon-gamma: 0.6;
+      }
+    }
   }
 }
 
