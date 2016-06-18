@@ -1039,7 +1039,7 @@
     marker-clip: false;
   }
 
-  [amenity = 'parking'][zoom >= 17],
+  [amenity = 'parking'][zoom >= 18],
   [amenity = 'bicycle_parking'][zoom >= 17],
   [amenity = 'motorcycle_parking'][zoom >= 17] {
     [amenity = 'parking'] {
