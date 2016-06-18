@@ -2490,16 +2490,12 @@ Layer:
         (SELECT
             way,
             COALESCE(
-              'highway_' || CASE WHEN highway IN ('mini_roundabout') THEN highway ELSE NULL END,
-              'railway_' || CASE WHEN railway IN ('level_crossing') THEN railway ELSE NULL END,
               'amenity_' || CASE WHEN amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking') THEN amenity ELSE NULL END,
               'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block') THEN barrier ELSE NULL END
             )  AS feature,
             access
           FROM planet_osm_polygon p
-          WHERE highway IN ('mini_roundabout')
-             OR railway IN ('level_crossing')
-             OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking')
+          WHERE amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking')
              OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block')
           ) AS amenity_low_priority_poly
     properties:
