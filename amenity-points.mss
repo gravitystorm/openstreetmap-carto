@@ -147,9 +147,13 @@
     marker-clip: false;
   }
 
+  [feature = 'tourism_chalet'][tourism = 'viewpoint'][zoom >= 14],
   [feature = 'tourism_chalet'][zoom >= 17] {
     point-file: url('symbols/chalet.p.16.png');
     point-placement: interior;
+    [zoom < 16] {
+      point-transform:"scale(0.9)";
+    }
   }
 
   [feature = 'amenity_cinema'][zoom >= 16] {
@@ -359,23 +363,57 @@
     marker-clip: false;
   }
 
+  [feature = 'man_made_campanile'][landmark != ''][zoom >= 14],
+  [feature = 'man_made_campanile'][tourism = 'viewpoint'][zoom >= 14],
+  [feature = 'man_made_campanile'][zoom >= 14],
+  [feature = 'building_shrine'][landmark != ''][zoom >= 13],
+  [feature = 'building_shrine'][tourism = 'viewpoint'][zoom >= 13],
+  [feature = 'building_shrine'][zoom >= 16],
+  [feature = 'building_synagogue'][landmark != ''][zoom >= 13],
+  [feature = 'building_synagogue'][tourism = 'viewpoint'][zoom >= 13],
+  [feature = 'building_synagogue'][zoom >= 16],
+  [feature = 'building_temple'][landmark != ''][zoom >= 13],
+  [feature = 'building_temple'][tourism = 'viewpoint'][zoom >= 13],
+  [feature = 'building_temple'][zoom >= 16],
+  [feature = 'building_mosque'][landmark != ''][zoom >= 13],
+  [feature = 'building_mosque'][tourism = 'viewpoint'][zoom >= 13],
+  [feature = 'building_mosque'][zoom >= 16],
+  [feature = 'building_church'][landmark != ''][zoom >= 13],
+  [feature = 'building_church'][tourism = 'viewpoint'][zoom >= 13],
+  [feature = 'building_church'][zoom >= 16],
+  [feature = 'building_chapel'][landmark != ''][zoom >= 13],
+  [feature = 'building_chapel'][tourism = 'viewpoint'][zoom >= 13],
+  [feature = 'building_chapel'][zoom >= 16],
+  [feature = 'building_cathedral'][landmark != ''][zoom >= 13],
+  [feature = 'building_cathedral'][tourism = 'viewpoint'][zoom >= 13],
+  [feature = 'building_cathedral'][zoom >= 16],
+  [feature = 'amenity_place_of_worship'][landmark != ''][zoom >= 13],
+  [feature = 'amenity_place_of_worship'][tourism = 'viewpoint'][zoom >= 13],
   [feature = 'amenity_place_of_worship'][zoom >= 16] {
     marker-file: url('symbols/place_of_worship.16.svg');
+    [feature = 'man_made_campanile'] {
+      marker-file: url('symbols/christian.9.svg');
+    }
     marker-fill: #000000;
     marker-placement: interior;
     marker-clip: false;
+    [feature = 'building_chapel'],
+    [feature = 'building_church'],
+    [feature = 'building_cathedral'],
     [religion = 'christian'] {
       marker-file: url('symbols/christian.16.svg');
       [denomination = 'jehovahs_witness']{
         marker-file: url('symbols/place_of_worship.16.svg');
       }
     }
+    [feature = 'building_mosque'],
     [religion = 'muslim'] {
       marker-file: url('symbols/muslim.16.svg');
     }
     [religion = 'sikh'] {
       marker-file: url('symbols/sikhist.16.svg');
     }
+    [feature = 'building_synagogue'],
     [religion = 'jewish'] {
       marker-file: url('symbols/jewish.16.svg');
     }
@@ -391,9 +429,14 @@
     [religion = 'taoist'] {
       marker-file: url('symbols/taoist.16.svg');
     }
+    [zoom < 16] { marker-transform:"scale(0.8)"; }
   }
 
+  [feature = 'man_made_cross'][landmark != ''][zoom >= 13],
+  [feature = 'man_made_cross'][tourism = 'viewpoint'][zoom >= 13],
   [feature = 'man_made_cross'][zoom >= 17],
+  [feature = 'historic_wayside_cross'][landmark != ''][zoom >= 13],
+  [feature = 'historic_wayside_cross'][tourism = 'viewpoint'][zoom >= 13],
   [feature = 'historic_wayside_cross'][zoom >= 17] {
     marker-file: url('symbols/christian.9.svg');
     marker-fill: #000000;
@@ -503,11 +546,12 @@
     marker-clip: false;
   }
 
-  [feature = 'tourism_viewpoint'][zoom >= 16] {
+  [feature = 'tourism_viewpoint'][zoom >= 14] {
     marker-file: url('symbols/viewpoint.16.svg');
     marker-placement: interior;
     marker-fill: @amenity-brown;
     marker-clip: false;
+    [zoom < 16] { marker-transform:"scale(0.8)"; }
   }
 
   [feature = 'man_made_water_tower'][zoom >= 17] {
@@ -977,6 +1021,21 @@
     marker-fill: @landform-color;
     marker-placement: interior;
     marker-clip: false;
+    [man_made = 'cross'][zoom >= 13] {
+      upper-icon/marker-file: url('symbols/christian.9.svg');
+      upper-icon/marker-fill: @landform-color;
+      upper-icon/marker-placement: interior;
+      upper-icon/marker-clip: false;
+      upper-icon/marker-allow-overlap: true;
+      upper-icon/marker-transform: translate(0, -5);
+    }
+    [man_made = 'cross'][zoom >= 14] {
+      upper-icon/marker-transform: translate(0, -5);
+      upper-icon/marker-file: url('symbols/christian.16.svg');
+    }
+    [man_made = 'cross'][zoom >= 16] {
+      upper-icon/marker-transform: translate(0, -6);
+    }
   }
 
   [feature = 'natural_volcano'][zoom >= 11] {
@@ -1250,7 +1309,33 @@
     text-placement: interior;
   }
 
-  [feature = 'amenity_place_of_worship'][zoom >= 17] {
+  [feature = 'man_made_campanile'][landmark != ''][zoom >= 14],
+  [feature = 'man_made_campanile'][tourism = 'viewpoint'][zoom >= 14],
+  [feature = 'man_made_campanile'][zoom >= 14],
+  [feature = 'building_shrine'][landmark != ''][zoom >= 13],
+  [feature = 'building_shrine'][tourism = 'viewpoint'][zoom >= 13],
+  [feature = 'building_shrine'][zoom >= 16],
+  [feature = 'building_synagogue'][landmark != ''][zoom >= 13],
+  [feature = 'building_synagogue'][tourism = 'viewpoint'][zoom >= 13],
+  [feature = 'building_synagogue'][zoom >= 16],
+  [feature = 'building_temple'][landmark != ''][zoom >= 13],
+  [feature = 'building_temple'][tourism = 'viewpoint'][zoom >= 13],
+  [feature = 'building_temple'][zoom >= 16],
+  [feature = 'building_mosque'][landmark != ''][zoom >= 13],
+  [feature = 'building_mosque'][tourism = 'viewpoint'][zoom >= 13],
+  [feature = 'building_mosque'][zoom >= 16],
+  [feature = 'building_church'][landmark != ''][zoom >= 13],
+  [feature = 'building_church'][tourism = 'viewpoint'][zoom >= 13],
+  [feature = 'building_church'][zoom >= 16],
+  [feature = 'building_chapel'][landmark != ''][zoom >= 13],
+  [feature = 'building_chapel'][tourism = 'viewpoint'][zoom >= 13],
+  [feature = 'building_chapel'][zoom >= 16],
+  [feature = 'building_cathedral'][landmark != ''][zoom >= 13],
+  [feature = 'building_cathedral'][tourism = 'viewpoint'][zoom >= 13],
+  [feature = 'building_cathedral'][zoom >= 16],
+  [feature = 'amenity_place_of_worship'][landmark != ''][zoom >= 13],
+  [feature = 'amenity_place_of_worship'][tourism = 'viewpoint'][zoom >= 13],
+  [feature = 'amenity_place_of_worship'][zoom >= 16] {
     text-name: "[name]";
     text-size: @standard-text-size;
     text-fill: #000033;
@@ -1279,11 +1364,28 @@
     text-placement: interior;
   }
 
+  [feature = 'man_made_cross'][landmark != ''][zoom >= 13],
+  [feature = 'man_made_cross'][tourism = 'viewpoint'][zoom >= 13],
   [feature = 'man_made_cross'][zoom >= 17],
+  [feature = 'historic_wayside_cross'][landmark != ''][zoom >= 13],
+  [feature = 'historic_wayside_cross'][tourism = 'viewpoint'][zoom >= 13],
   [feature = 'historic_wayside_cross'][zoom >= 17],
   [feature = 'natural_cave_entrance'][zoom >= 15],
   [feature = 'man_made_mast'][zoom >= 17],
-  [feature = 'man_made_water_tower'][zoom >= 17] {
+  [feature = 'building_transformer_tower'][landmark != ''][zoom >= 13],
+  [feature = 'building_transformer_tower'][tourism = 'viewpoint'][zoom >= 13],
+  [feature = 'man_made_chimney'][landmark != ''][zoom >= 13],
+  [feature = 'man_made_chimney'][tourism = 'viewpoint'][zoom >= 13],
+  [feature = 'man_made_communications_tower'][landmark != ''][zoom >= 13],
+  [feature = 'man_made_communications_tower'][tourism = 'viewpoint'][zoom >= 13],
+  [feature = 'man_made_tower'][landmark != ''][zoom >= 13],
+  [feature = 'man_made_tower'][tourism = 'viewpoint'][zoom >= 13],
+  [feature = 'man_made_tower'][zoom >= 17],
+  [feature = 'man_made_water_tower'][landmark != ''][zoom >= 13],
+  [feature = 'man_made_water_tower'][tourism = 'viewpoint'][zoom >= 13],
+  [feature = 'man_made_water_tower'][zoom >= 17],
+  [tourism = 'viewpoint'][zoom >= 17],
+  [landmark != ''][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-text-size;
     text-fill: black;
@@ -1671,8 +1773,8 @@
     text-face-name: @book-fonts;
   }
 
-  [feature = 'tourism_alpine_hut'][zoom >= 15],
-  [feature = 'amenity_shelter'][zoom >= 17],
+  [feature = 'tourism_alpine_hut'][zoom >= 14],
+  [feature = 'amenity_shelter'][tourism = 'viewpoint'][zoom >= 14],
   [feature = 'tourism_hotel'][zoom >= 17],
   [feature = 'tourism_motel'][zoom >= 17],
   [feature = 'tourism_hostel'][zoom >= 17],
@@ -2188,4 +2290,3 @@
     }
   }
 }
-

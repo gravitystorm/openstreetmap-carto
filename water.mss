@@ -285,7 +285,12 @@
     [zoom >= 10][way_pixels > 3000],
     [zoom >= 17] {
       text-name: "[name]";
-      text-size: 12;
+      text-size: 10;
+      [way_pixels >= 4000] { text-size: 12; }
+      [way_pixels >= 20000][zoom >=10] { text-size: 15; }
+      [way_pixels >= 60000][zoom >=11] { text-size: 17; }
+      [way_pixels >= 200000][zoom >=12] { text-size: 21; }
+      [way_pixels >= 500000][zoom >=13] { text-size: 25; }
       text-fill: @water-text;
       text-face-name: @oblique-fonts;
       text-halo-radius: 1;
