@@ -21,6 +21,7 @@
 @standard-wrap-width: 30;
 @standard-text-size: 10;
 @standard-font: @book-fonts;
+@standard-halo-radius: 1;
 
 /* Note that .points is also used in water-features.mss */
 .points {
@@ -1130,7 +1131,7 @@
     [way_pixels > 12000] { text-size: 12; }
     [way_pixels > 48000] { text-size: 15; }
     text-face-name: @oblique-fonts;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
@@ -1151,7 +1152,7 @@
       text-size: @standard-text-size;
       text-dy: 11;
       text-face-name: @standard-font;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
@@ -1177,7 +1178,7 @@
       text-dy: 13;
       text-face-name: @standard-font;
       [feature = 'tourism_museum'] { text-face-name: @standard-font; }
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
@@ -1200,7 +1201,7 @@
     [feature = 'amenity_bicycle_rental'] { text-dy: 10; }
     [feature = 'leisure_slipway']        { text-dy: 13; }
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
@@ -1214,7 +1215,7 @@
     text-fill: @transportation-text;
     text-dy: 9;
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
@@ -1245,7 +1246,7 @@
     [feature = 'amenity_fire_station'] { text-dy: 11; }
     [feature = 'amenity_post_office'] { text-dy: 11; }
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
@@ -1257,7 +1258,7 @@
     text-fill: #000033;
     text-dy: 12;
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
@@ -1274,7 +1275,7 @@
     text-dy: 7;
     [feature = 'tourism_viewpoint'] { text-dy: 11; }
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
@@ -1298,7 +1299,7 @@
     }
     [feature = 'man_made_mast'] { text-dy: 10; }
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
@@ -1312,7 +1313,7 @@
     text-fill: @amenity-brown;
     text-dy: 11;
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
@@ -1324,7 +1325,7 @@
     text-size: @standard-text-size;
     text-fill: darken(@park, 60%);
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-placement: interior;
     text-dy: 13;
@@ -1341,7 +1342,7 @@
       text-fill: darken(@park, 60%);
       text-dy: 11;
       text-face-name: @standard-font;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
@@ -1364,7 +1365,7 @@
       }
       text-fill: @marina-text;
       text-face-name: @landcover-face-name;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255,255,255,0.6);
       text-placement: interior;
     }
@@ -1380,7 +1381,7 @@
       text-dy: 13;
       text-fill: darken(@park, 60%);
       text-face-name: @standard-font;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
@@ -1409,7 +1410,7 @@
         text-wrap-width: @landcover-wrap-width-size-bigger;
       }
       text-face-name: @landcover-face-name;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255,255,255,0.6);
       text-placement: interior;
       [feature = 'landuse_military'] {
@@ -1442,7 +1443,7 @@
       }
       text-fill: darken(@danger_area, 40%);
       text-face-name: @bold-fonts;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255,255,255,0.6);
       text-placement: interior;
     }
@@ -1464,7 +1465,7 @@
       }
       text-fill: darken(@garages, 50%);
       text-face-name: @landcover-face-name;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255,255,255,0.6);
       text-placement: interior;
     }
@@ -1534,7 +1535,7 @@
         text-wrap-width: @landcover-wrap-width-size-bigger;
       }
       text-face-name: @landcover-face-name;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255,255,255,0.6);
       text-placement: interior;
       [feature = 'natural_reef'],
@@ -1646,7 +1647,7 @@
     text-size: 10;
     text-fill: @water-text;
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
@@ -1665,7 +1666,7 @@
     [feature = 'amenity_bank'] { text-dy: 9; }
     [feature = 'amenity_atm']  { text-dy: 10; }
     text-fill: @amenity-brown;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
@@ -1685,7 +1686,7 @@
     text-fill: #0066ff;
     text-dy: 11;
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
@@ -1703,7 +1704,7 @@
     text-fill: #0066ff;
     text-dy: 10;
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
@@ -1715,7 +1716,7 @@
     text-fill: #0066ff;
     text-dy: 11;
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
@@ -1730,7 +1731,7 @@
       text-fill: @transportation-text;
       text-dy: 11;
       text-face-name: @standard-font;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
@@ -1756,7 +1757,7 @@
       }
       text-fill: @marina-text;
       text-face-name: @landcover-face-name;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255,255,255,0.6);
       text-placement: interior;
     }
@@ -1768,7 +1769,7 @@
     text-fill: @marina-text;
     text-dy: 4;
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
@@ -1784,7 +1785,7 @@
     text-fill: @amenity-brown;
     text-dy: 12;
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
@@ -1797,7 +1798,7 @@
     text-fill: @transportation-text;
     text-dy: 16;
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
@@ -1811,7 +1812,7 @@
     text-dy: 12;
     [feature = 'amenity_recycling'] { text-dy: 10; }
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
@@ -1823,7 +1824,7 @@
     text-size: @standard-text-size;
     text-dy: 10;
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
@@ -1841,7 +1842,7 @@
       text-dy: 12;
       text-fill: @health-color;
       text-face-name: @standard-font;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
@@ -1911,7 +1912,7 @@
       text-dy: 12;
       text-fill: @shop-text;
       text-face-name: @standard-font;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255, 255, 255, 0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
@@ -1929,7 +1930,7 @@
       text-dy: 12;
       text-fill: @shop-text;
       text-face-name: @standard-font;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255, 255, 255, 0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
@@ -1941,7 +1942,7 @@
     text-size: @standard-text-size;
     text-fill: #aa66cc;
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
@@ -1967,7 +1968,7 @@
       }
       text-fill: darken(@power, 40%);
       text-face-name: @landcover-face-name;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255,255,255,0.6);
       text-placement: interior;
     }
@@ -1991,7 +1992,7 @@
         text-wrap-width: @landcover-wrap-width-size-bigger;
       }
       text-face-name: @landcover-face-name;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255,255,255,0.6);
       text-placement: interior;
       [feature = 'natural_scree'],
@@ -2021,7 +2022,7 @@
       }
       text-fill: darken(@apron, 60%);
       text-face-name: @landcover-face-name;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255,255,255,0.6);
       text-placement: interior;
     }
@@ -2044,7 +2045,7 @@
       }
       text-fill: darken(@rest_area, 40%);
       text-face-name: @landcover-face-name;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255,255,255,0.6);
       text-placement: interior;
     }
@@ -2067,7 +2068,7 @@
       }
       text-fill: mix(darken(@glacier, 40%), darken(@glacier-line, 30%), 50%);
       text-face-name: @landcover-face-name;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255,255,255,0.6);
       text-placement: interior;
     }
@@ -2079,7 +2080,7 @@
     text-fill: @airtransport;
     text-dy: -10;
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-placement: interior;
     text-wrap-width: @standard-wrap-width;
@@ -2091,7 +2092,7 @@
     text-fill: darken(@airtransport, 15%);
     text-dy: -10;
     text-face-name: @oblique-fonts;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-placement: interior;
     text-wrap-width: @standard-wrap-width;
@@ -2103,7 +2104,7 @@
     text-dy: 11;
     text-fill: @man-made-icon;
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-placement: interior;
     text-wrap-width: @standard-wrap-width;
@@ -2118,7 +2119,7 @@
     [zoom >= 19] { text-dy: 11; }
     [zoom >= 20] { text-dy: 18; }
     text-face-name: @standard-font;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255,255,255,0.6);
     text-placement: interior;
     text-wrap-width: @standard-wrap-width;
