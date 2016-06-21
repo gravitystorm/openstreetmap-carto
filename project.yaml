@@ -1329,7 +1329,7 @@ Layer:
         (SELECT
             way
           FROM planet_osm_line
-          WHERE highway = 'bus_guideway' AND (tunnel IS NULL OR tunnel != 'yes')
+          WHERE highway = 'bus_guideway'
         ) AS guideways
     properties:
       minzoom: 13
