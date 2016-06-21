@@ -1550,6 +1550,7 @@ Layer:
                 ) AS score
               FROM planet_osm_point
               WHERE place IN ('city', 'town')
+                AND name IS NOT NULL
             ) as p
           ORDER BY score DESC, length(name) DESC, name
         ) AS placenames_medium
