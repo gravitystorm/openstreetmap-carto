@@ -2106,5 +2106,5 @@
   ],
   "minzoom": 0,
   "maxzoom": 22,
-  "description": "A faithful reimplementation of the standard OpenStreetMap style"
+  "description": "A general-purpose OpenStreetMap mapnik style, in CartoCSS"
 }
