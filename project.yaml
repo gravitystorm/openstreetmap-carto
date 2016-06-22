@@ -2116,7 +2116,9 @@ Layer:
               OR power IN ('plant', 'station', 'generator', 'sub_station', 'substation')
               OR boundary IN ('national_park')
               OR waterway = 'dam')
-            AND name IS NOT NULL
+            AND (name IS NOT NULL
+                 OR (ref IS NOT NULL AND aeroway IN ('gate'))
+                )
           ORDER BY way_area DESC
         ) AS text_poly
     properties:
@@ -2270,7 +2272,10 @@ Layer:
                   OR power IN ('plant', 'station', 'generator', 'sub_station', 'substation')
                   OR boundary IN ('national_park')
                   OR waterway IN ('dam', 'weir'))
-                AND name IS NOT NULL
+                AND (name IS NOT NULL
+                     OR (ele IS NOT NULL AND ("natural" IN ('peak', 'volcano', 'saddle') OR tourism = 'alpine_hut' OR amenity = 'shelter'))
+                     OR (ref IS NOT NULL AND aeroway IN ('gate'))
+                    )
               ) AS p
           ORDER BY score DESC NULLS LAST
           ) AS text
