@@ -116,14 +116,14 @@ Layer:
               way, COALESCE(name, '') AS name,
               ('landuse_' || (CASE WHEN landuse IN ('forest', 'military') THEN landuse ELSE NULL END)) AS landuse,
               ('natural_' || (CASE WHEN "natural" IN ('wood', 'sand', 'scree', 'shingle', 'bare_rock') THEN "natural" ELSE NULL END)) AS "natural",
-              ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'mud') THEN (CASE WHEN "natural" IN ('mud') THEN "natural" ELSE wetland END) ELSE NULL END)) AS wetland,
+              ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'mud') THEN (CASE WHEN "natural" IN ('mud') THEN "natural" ELSE tags->'wetland' END) ELSE NULL END)) AS wetland,
               way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
             FROM planet_osm_polygon
             WHERE (landuse IN ('forest', 'military')
               OR "natural" IN ('wood', 'wetland', 'mud', 'sand', 'scree', 'shingle', 'bare_rock'))
               AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
               AND building IS NULL
-            ORDER BY CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END, way_area DESC
+            ORDER BY COALESCE(layer,0), way_area DESC
           ) AS features
         ) AS landcover_low_zoom
     properties:
@@ -155,7 +155,7 @@ Layer:
                                                     'track') THEN leisure ELSE NULL END)) AS leisure,
               ('military_' || (CASE WHEN military IN ('danger_area') THEN military ELSE NULL END)) AS military,
               ('natural_' || (CASE WHEN "natural" IN ('beach', 'shoal', 'heath', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub') THEN "natural" ELSE NULL END)) AS "natural",
-              ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'marsh', 'mud') THEN (CASE WHEN "natural" IN ('marsh', 'mud') THEN "natural" ELSE wetland END) ELSE NULL END)) AS wetland,
+              ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'marsh', 'mud') THEN (CASE WHEN "natural" IN ('marsh', 'mud') THEN "natural" ELSE tags->'wetland' END) ELSE NULL END)) AS wetland,
               ('power_' || (CASE WHEN power IN ('station', 'sub_station', 'substation', 'generator') THEN power ELSE NULL END)) AS power,
               ('tourism_' || (CASE WHEN tourism IN ('attraction', 'camp_site', 'caravan_site', 'picnic_site') THEN tourism ELSE NULL END)) AS tourism,
               ('highway_' || (CASE WHEN highway IN ('services', 'rest_area') THEN highway ELSE NULL END)) AS highway,
@@ -175,7 +175,7 @@ Layer:
               OR highway IN ('services', 'rest_area')
               OR railway = 'station')
               AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
-            ORDER BY CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END, way_area DESC
+            ORDER BY COALESCE(layer,0), way_area DESC
           ) AS landcover
         ) AS features
     properties:
@@ -206,7 +206,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, waterway, intermittent,
+            way, waterway, tags->'intermittent' as intermittent,
             CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel
           FROM planet_osm_line
           WHERE waterway IN ('stream', 'drain', 'ditch')
@@ -222,7 +222,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT way, waterway, intermittent
+        (SELECT way, waterway, tags->'intermittent' as intermittent
           FROM planet_osm_line
           WHERE waterway = 'river'
         ) AS water_lines_low_zoom
@@ -263,7 +263,7 @@ Layer:
               OR "natural" IN ('water', 'glacier'))
             AND building IS NULL
             AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
-          ORDER BY z_order, way_area DESC
+          ORDER BY COALESCE(layer,0), way_area DESC
         ) AS water_areas
     properties:
       minzoom: 4
@@ -281,10 +281,10 @@ Layer:
             COALESCE(CASE WHEN landuse = 'forest' THEN 'wood' ELSE NULL END, "natural") AS "natural",
             CASE WHEN "natural" IN ('marsh', 'mud') 
                 THEN "natural" 
-                ELSE CASE WHEN ("natural" = 'wetland' AND wetland IS NULL) 
+                ELSE CASE WHEN ("natural" = 'wetland' AND NOT tags ? 'wetland') 
                   THEN 'wetland' 
                   ELSE CASE WHEN ("natural" = 'wetland')
-                    THEN wetland
+                    THEN tags->'wetland'
                     ELSE NULL
                     END 
                 END
@@ -293,7 +293,7 @@ Layer:
           WHERE ("natural" IN ('marsh', 'mud', 'wetland', 'wood', 'beach', 'shoal', 'reef') OR landuse = 'forest')
             AND building IS NULL
             AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
-          ORDER BY z_order, way_area DESC
+          ORDER BY COALESCE(layer,0), way_area DESC
         ) AS landcover_area_symbols
     properties:
       minzoom: 10
@@ -318,13 +318,13 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, waterway, name, intermittent,
+            way, waterway, name, tags->'intermittent' as intermittent,
             CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel,
             'no' AS bridge
           FROM planet_osm_line
           WHERE waterway IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi')
             AND (bridge IS NULL OR bridge NOT IN ('yes', 'aqueduct'))
-          ORDER BY z_order
+          ORDER BY COALESCE(layer,0)
         ) AS water_lines
     properties:
       minzoom: 12
@@ -457,7 +457,7 @@ Layer:
           WHERE building IS NOT NULL
             AND building != 'no'
             AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
-          ORDER BY z_order, way_area DESC
+          ORDER BY COALESCE(layer,0), way_area DESC
         ) AS buildings
     properties:
       minzoom: 13
@@ -480,7 +480,7 @@ Layer:
             AND building != 'no'
             AND (aeroway = 'terminal' OR amenity = 'place_of_worship')
             AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
-          ORDER BY z_order, way_area DESC)
+          ORDER BY COALESCE(layer,0), way_area DESC)
         AS buildings_major
     properties:
       minzoom: 13
@@ -532,7 +532,7 @@ Layer:
                   WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
                   ELSE 'no'
                 END AS link,
-                CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
+                COALESCE(layer,0) AS layernotnull
               FROM planet_osm_line
               WHERE (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes')
                 AND highway IS NOT NULL -- end of road select
@@ -559,7 +559,7 @@ Layer:
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 NULL AS oneway,
                 'no' AS link,
-                CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
+                COALESCE(layer,0) AS layernotnull
               FROM planet_osm_line
               WHERE (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes')
                 AND (railway IS NOT NULL OR aeroway IS NOT NULL) -- end of rail/aero select
@@ -769,7 +769,7 @@ Layer:
           FROM planet_osm_polygon
           WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'track', 'path', 'platform')
             OR railway IN ('platform')
-          ORDER BY z_order, way_area DESC
+          ORDER BY COALESCE(layer,0), way_area DESC
         ) AS highway_area_casing
     properties:
       minzoom: 14
@@ -817,7 +817,7 @@ Layer:
                   WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
                   ELSE 'no'
                 END AS link,
-                CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
+                COALESCE(layer,0) AS layernotnull
               FROM planet_osm_line
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
                 AND (covered IS NULL OR NOT covered = 'yes')
@@ -846,7 +846,7 @@ Layer:
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 NULL AS oneway,
                 'no' AS link,
-                CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
+                COALESCE(layer,0) AS layernotnull
               FROM planet_osm_line
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
                 AND (covered IS NULL OR NOT covered = 'yes')
@@ -928,7 +928,7 @@ Layer:
           WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'living_street', 'track', 'path', 'platform', 'services')
             OR railway IN ('platform')
             OR aeroway IN ('runway', 'taxiway', 'helipad')
-          ORDER BY z_order, way_area desc
+          ORDER BY COALESCE(layer,0), way_area desc
         ) AS highway_area_fill
     properties:
       minzoom: 14
@@ -992,7 +992,7 @@ Layer:
                   WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
                   ELSE 'no'
                 END AS link,
-                CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
+                COALESCE(layer,0) AS layernotnull
               FROM planet_osm_line
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
                 AND (covered IS NULL OR NOT covered = 'yes')
@@ -1021,7 +1021,7 @@ Layer:
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 NULL AS oneway,
                 'no' AS link,
-                CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
+                COALESCE(layer,0) AS layernotnull
               FROM planet_osm_line
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
                 AND (covered IS NULL OR NOT covered = 'yes')
@@ -1158,7 +1158,7 @@ Layer:
           WHERE highway IS NOT NULL
             OR (railway IS NOT NULL AND railway != 'preserved'
               AND (service IS NULL OR service NOT IN ('spur', 'siding', 'yard')))
-          ORDER BY z_order
+          ORDER BY COALESCE(layer,0)
         ) AS roads_low_zoom
     properties:
       minzoom: 5
@@ -1176,13 +1176,13 @@ Layer:
             way,
             waterway,
             name,
-            intermittent,
+            tags->'intermittent' as intermittent,
             CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel,
             'yes' AS bridge
           FROM planet_osm_line
           WHERE waterway IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi')
             AND bridge IN ('yes', 'aqueduct')
-          ORDER BY z_order
+          ORDER BY COALESCE(layer,0)
         ) AS waterway_bridges
     properties:
       minzoom: 15
@@ -1230,7 +1230,7 @@ Layer:
                   WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
                   ELSE 'no'
                 END AS link,
-                CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
+                COALESCE(layer,0) AS layernotnull
               FROM planet_osm_line
               WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
                 AND highway IS NOT NULL -- end of road select
@@ -1257,7 +1257,7 @@ Layer:
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 NULL AS oneway,
                 'no' AS link,
-                CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
+                COALESCE(layer,0) AS layernotnull
               FROM planet_osm_line
               WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
                 AND (railway IS NOT NULL OR aeroway IS NOT NULL) -- end of rail/aero select
@@ -1537,7 +1537,7 @@ Layer:
                 capital,
                 (
                   (CASE
-                    WHEN (population ~ '^[0-9]{1,8}$') THEN population::INTEGER
+                    WHEN (tags->'population' ~ '^[0-9]{1,8}$') THEN (tags->'population')::INTEGER
                     WHEN (place = 'city') THEN 100000
                     WHEN (place = 'town') THEN 1000
                     ELSE 1
@@ -1686,9 +1686,9 @@ Layer:
             ) AS feature,
             access,
             religion,
-            denomination,
-            "generator:source",
-            power_source,
+            tags->'denomination' as denomination,
+            tags->'generator:source' as "generator:source",
+            tags->'power_source' as power_source,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
@@ -1709,7 +1709,7 @@ Layer:
             OR "natural" IN ('spring')
             OR historic IN ('memorial', 'monument', 'archaeological_site')
             OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
-            OR (power = 'generator' AND ("generator:source" = 'wind' OR power_source = 'wind'))
+            OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> 'power_source=>wind'))
           ORDER BY way_area desc
         ) AS amenity_points_poly
     properties:
@@ -1769,15 +1769,15 @@ Layer:
             CASE
               WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
                 CASE
-                  WHEN ele ~ '^-?\d{1,4}(\.\d+)?$' THEN ele::NUMERIC
+                  WHEN tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'ele')::NUMERIC
                   ELSE NULL
                 END
               ELSE NULL
             END AS score,
             religion,
-            denomination,
-            "generator:source",
-            power_source,
+            tags->'denomination' as denomination,
+            tags->'generator:source' as "generator:source",
+            tags->'power_source' as power_source,
             NULL AS way_pixels
           FROM planet_osm_point
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
@@ -1798,7 +1798,7 @@ Layer:
             OR "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance')
             OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross')
             OR highway IN ('bus_stop', 'elevator', 'traffic_signals', 'ford')
-            OR (power = 'generator' AND ("generator:source" = 'wind' OR power_source = 'wind'))
+            OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> 'power_source=>wind'))
           ORDER BY score DESC NULLS LAST
           ) AS amenity_points
     properties:
@@ -2094,7 +2094,7 @@ Layer:
             ) AS feature,
             access,
             name,
-            operator,
+            tags->'operator' as operator,
             ref,
             way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
@@ -2136,7 +2136,7 @@ Layer:
             COALESCE('man_made_' || man_made, 'waterway_' || waterway, 'natural_' || "natural") AS feature,
             access,
             name,
-            operator,
+            tags->'operator' as operator,
             ref,
             NULL AS way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
@@ -2240,13 +2240,13 @@ Layer:
                 CASE
                   WHEN "natural" IN ('peak', 'volcano', 'saddle') OR tourism = 'alpine_hut' OR amenity = 'shelter' THEN
                     CASE
-                      WHEN ele ~ '^-?\d{1,4}(\.\d+)?$' THEN ele::NUMERIC
+                      WHEN tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'ele')::NUMERIC
                       ELSE NULL
                     END
                   ELSE NULL
                 END AS elevation,
                 "natural",
-                operator,
+                tags->'operator' as operator,
                 ref,
                 NULL AS way_area,
                 CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
@@ -2380,13 +2380,13 @@ Layer:
             waterway,
             lock,
             name,
-            intermittent,
+            tags->'intermittent' as intermittent,
             CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel
           FROM planet_osm_line
           WHERE waterway IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi')
             AND (tunnel IS NULL or tunnel != 'culvert')
             AND name IS NOT NULL
-          ORDER BY z_order
+          ORDER BY COALESCE(layer,0)
         ) AS water_lines_text
     properties:
       minzoom: 13

@@ -6,7 +6,7 @@ You need OpenStreetMap data loaded into a PostGIS database (see below for [depen
 It's probably easiest to grab an PBF of OSM data from [Mapzen](https://mapzen.com/metro-extracts/) or [geofabrik](http://download.geofabrik.de/). Once you've set up your PostGIS database, import with osm2pgsql:
 
 ```
-osm2pgsql -d gis ~/path/to/data.osm.pbf --style openstreetmap-carto.style
+osm2pgsql -G --hstore -d gis ~/path/to/data.osm.pbf --style openstreetmap-carto.style --tag-transform-script ~/osm/openstreetmap-carto.lua
 ```
 
 You can find a more detailed guide to setting up a database and loading data with osm2pgsql at [switch2osm.org](http://switch2osm.org/loading-osm-data/).
