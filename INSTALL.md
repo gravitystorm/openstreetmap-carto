@@ -47,7 +47,7 @@ The stylesheet depends on a number of openly licensed fonts for support of all t
 If a font is missing, it will skip to the next available font which contains those characters. If you are not concerned with a particular language, you do not need its fonts. DejaVu Sans and Unifont are the two required fonts, and included on most systems.
 
 ### Global
-* DejaVu Sans, for most languages (`ttf-dejavu`)
+* DejaVu Sans, for most languages (`fonts-dejavu-core`)
 * Droid Sans Fallback, as a reasonable fallback (`fonts-droid`)
 * Unifont, as a last resort fallback (`ttf-unifont`)
 
@@ -65,7 +65,7 @@ If a font is missing, it will skip to the next available font which contains tho
 On Ubuntu you can install all the fonts with
 
 ```
-sudo apt-get install ttf-dejavu fonts-droid ttf-unifont fonts-sipa-arundina fonts-sil-padauk fonts-khmeros \
+sudo apt-get install fonts-dejavu-core fonts-droid ttf-unifont fonts-sipa-arundina fonts-sil-padauk fonts-khmeros \
 fonts-beng-extra fonts-gargi fonts-taml-tscu
 ```
 In Ubuntu 13.10 (Saucy) and lower, replace fonts-taml-tscu with ttf-tamil-fonts.
