@@ -63,13 +63,14 @@ Mapnik 3 is required for acceptable rendering of most non-Latin scripts, particu
 * Mukti Narrow, for Bangali (`fonts-beng-extra`)
 * Gargi Medium, for Devanagari (`fonts-gargi`)
 * TSCu_Paranar, for Tamil (`fonts-taml-tscu`)
+* Tibetan Machine Uni, for Tibetian (`fonts-tibetan-machine`)
 
 On Ubuntu you can install all the fonts with
 
 ```
 sudo apt-get install fonts-dejavu-core fonts-droid ttf-unifont \
   fonts-sipa-arundina fonts-sil-padauk fonts-khmeros \
-  fonts-beng-extra fonts-gargi fonts-taml-tscu
+  fonts-beng-extra fonts-gargi fonts-taml-tscu fonts-tibetan-machine
 ```
 
 ## Dependencies
