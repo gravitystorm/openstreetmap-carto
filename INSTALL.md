@@ -42,7 +42,7 @@ The repeated www.naturalearthdata.com in the Natural Earth shapefiles is correct
 Put these shapefiles at `path/to/openstreetmap-carto/data`.
 
 ## Fonts
-The stylesheet depends on a number of openly licensed fonts for support of all the languages found on the map. The package which supplies these fonts on Ubuntu 14.04 is indicated.
+The stylesheet depends on a number of openly licensed fonts for support of all the languages found on the map. The package which supplies these fonts on Ubuntu 16.04 is indicated.
 
 If a font is missing, it will skip to the next available font which contains those characters. If you are not concerned with a particular script, you do not need its fonts. DejaVu Sans and Unifont are the two required fonts, and included on most systems.
 
@@ -50,7 +50,7 @@ Mapnik 3 is required for acceptable rendering of most non-Latin scripts, particu
 
 ### Global
 * DejaVu Sans, for most languages (`fonts-dejavu-core`)
-* Droid Sans Fallback, as a reasonable fallback (`fonts-droid`)
+* Droid Sans Fallback, as a reasonable fallback (`fonts-droid-fallback`)
 * Unifont, as a last resort fallback (`ttf-unifont`)
 
 ### Southeast Asia
@@ -68,10 +68,12 @@ Mapnik 3 is required for acceptable rendering of most non-Latin scripts, particu
 On Ubuntu you can install all the fonts with
 
 ```
-sudo apt-get install fonts-dejavu-core fonts-droid ttf-unifont \
+sudo apt-get install fonts-dejavu-core fonts-droid-fallback ttf-unifont \
   fonts-sipa-arundina fonts-sil-padauk fonts-khmeros \
   fonts-beng-extra fonts-gargi fonts-taml-tscu fonts-tibetan-machine
 ```
+
+On Ubuntu 14.04, replace `fonts-droid-fallback` with `fonts-droid`.
 
 ## Dependencies
 
