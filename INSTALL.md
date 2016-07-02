@@ -54,7 +54,7 @@ Mapnik 3 is required for acceptable rendering of most non-Latin scripts, particu
 * Unifont, as a last resort fallback (`ttf-unifont`)
 
 ### Southeast Asia
-* Arundina Sans, for Thai (`fonts-sipa-arundina`)
+* Arundina, for Thai (`fonts-sipa-arundina`)
 * Padauk, for Burmese (`fonts-sil-padauk`)
 * Khmer OS Metal Chrieng Regular, for Khmer (`fonts-khmeros`)
 
