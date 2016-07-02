@@ -42,7 +42,7 @@ The repeated www.naturalearthdata.com in the Natural Earth shapefiles is correct
 Put these shapefiles at `path/to/openstreetmap-carto/data`.
 
 ## Fonts
-The stylesheet depends on a number of openly licensed fonts for support of all the languages found on the map. The package which supplies these fonts on Ubuntu 16.04 is indicated.
+The stylesheet depends on a number of openly licensed fonts for support of all the languages found on the map. The package which supplies these fonts on Ubuntu 16.04 or Debian Testing is indicated.
 
 If a font is missing, it will skip to the next available font which contains those characters. If you are not concerned with a particular script, you do not need its fonts. DejaVu Sans and Unifont are the two required fonts, and included on most systems.
 
@@ -65,7 +65,7 @@ Mapnik 3 is required for acceptable rendering of most non-Latin scripts, particu
 * TSCu_Paranar, for Tamil (`fonts-taml-tscu`)
 * Tibetan Machine Uni, for Tibetian (`fonts-tibetan-machine`)
 
-On Ubuntu you can install all the fonts with
+On Ubuntu 16.04 or Debian Testing you can install all the fonts with
 
 ```
 sudo apt-get install fonts-dejavu-core fonts-droid-fallback ttf-unifont \
