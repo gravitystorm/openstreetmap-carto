@@ -60,7 +60,7 @@ If a font is missing, it will skip to the next available font which contains tho
 
 * Mukti Narrow, for Bangali (`fonts-beng-extra`)
 * Gargi Medium, for Devanagari (`fonts-gargi`)
-* TSCu_Paranar, for Tamil (`ttf-tamil-fonts` or ``fonts-taml-tscu``, depending on your Ubuntu version)
+* TSCu_Paranar, for Tamil (`fonts-taml-tscu`)
 
 On Ubuntu you can install all the fonts with
 
@@ -68,7 +68,6 @@ On Ubuntu you can install all the fonts with
 sudo apt-get install fonts-dejavu-core fonts-droid ttf-unifont fonts-sipa-arundina fonts-sil-padauk fonts-khmeros \
 fonts-beng-extra fonts-gargi fonts-taml-tscu
 ```
-In Ubuntu 13.10 (Saucy) and lower, replace fonts-taml-tscu with ttf-tamil-fonts.
 
 ## Dependencies
 
