@@ -65,8 +65,9 @@ If a font is missing, it will skip to the next available font which contains tho
 On Ubuntu you can install all the fonts with
 
 ```
-sudo apt-get install fonts-dejavu-core fonts-droid ttf-unifont fonts-sipa-arundina fonts-sil-padauk fonts-khmeros \
-fonts-beng-extra fonts-gargi fonts-taml-tscu
+sudo apt-get install fonts-dejavu-core fonts-droid ttf-unifont \
+  fonts-sipa-arundina fonts-sil-padauk fonts-khmeros \
+  fonts-beng-extra fonts-gargi fonts-taml-tscu
 ```
 
 ## Dependencies
