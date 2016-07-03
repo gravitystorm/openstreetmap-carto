@@ -75,11 +75,11 @@ tags->'wood' as "wood",
 way as "way",
 way_area as way_area,
 z_order as z_order,
-get_localized_placename(tags->'name',tags->'name:de',tags->'int_name',tags->'name:en', true, way) as localized_name_inside_brackets,
-get_localized_placename(tags->'name',tags->'name:de',tags->'int_name',tags->'name:en', false, way) as localized_name_outside_brackets,
-get_localized_name_without_brackets(tags->'name',tags->'name:de',tags->'int_name',tags->'name:en', way) as localized_name_without_brackets,
-get_localized_streetname(tags->'name',tags->'name:de',tags->'int_name',tags->'name:en', true, way) as localized_streetname_inside_brackets,
-get_localized_streetname(tags->'name',tags->'name:de',tags->'int_name',tags->'name:en', false, way) as localized_streetname_outside_brackets,
+osml10n_get_placename(tags->'name',tags->'name:de',tags->'int_name',tags->'name:en', true, way) as localized_name_inside_brackets,
+osml10n_get_placename(tags->'name',tags->'name:de',tags->'int_name',tags->'name:en', false, way) as localized_name_outside_brackets,
+osml10n_get_name_without_brackets(tags->'name',tags->'name:de',tags->'int_name',tags->'name:en', way) as localized_name_without_brackets,
+osml10n_get_streetname(tags->'name',tags->'name:de',tags->'int_name',tags->'name:en', true, 'de', way) as localized_streetname_inside_brackets,
+osml10n_get_streetname(tags->'name',tags->'name:de',tags->'int_name',tags->'name:en', false, 'de', way) as localized_streetname_outside_brackets,
 tags as tags
 FROM planet_osm_line;
 
