@@ -1042,24 +1042,24 @@
 }
 
 .amenity-low-priority {
-  [man_made = 'cross'][zoom >= 16],
-  [historic = 'wayside_cross'][zoom >= 16] {
+  [feature = 'man_made_cross'][zoom >= 16],
+  [feature = 'historic_wayside_cross'][zoom >= 16] {
     marker-file: url('symbols/christian.9.svg');
     marker-fill: #000000;
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [amenity = 'parking'][zoom >= 17],
-  [amenity = 'bicycle_parking'][zoom >= 17],
-  [amenity = 'motorcycle_parking'][zoom >= 17] {
-    [amenity = 'parking'] {
+  [feature = 'amenity_parking'][zoom >= 17],
+  [feature = 'amenity_bicycle_parking'][zoom >= 17],
+  [feature = 'amenity_motorcycle_parking'][zoom >= 17] {
+    [feature = 'amenity_parking'] {
       marker-file: url('symbols/parking.svg');
     }
-    [amenity = 'bicycle_parking'] {
+    [feature = 'amenity_bicycle_parking'] {
       marker-file: url('symbols/bicycle_parking.16.svg');
     }
-    [amenity = 'motorcycle_parking'] {
+    [feature = 'amenity_motorcycle_parking'] {
       marker-file: url('symbols/motorcycle_parking.16.svg');
     }
     marker-placement: interior;
@@ -1070,7 +1070,7 @@
     }
   }
 
-  [railway = 'level_crossing'][zoom >= 14]::railway {
+  [feature = 'railway_level_crossing'][zoom >= 14]::railway {
     point-file: url('symbols/level_crossing.svg');
     point-placement: interior;
     [zoom >= 16] {
@@ -1078,13 +1078,13 @@
     }
   }
 
-  [highway = 'mini_roundabout'][zoom >= 16]::highway {
+  [feature = 'highway_mini_roundabout'][zoom >= 16]::highway {
     marker-file: url('symbols/mini_roundabout.svg');
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [barrier = 'gate']::barrier {
+  [feature = 'barrier_gate']::barrier {
     [zoom >= 16] {
       marker-file: url('symbols/gate.svg');
       marker-placement: interior;
@@ -1092,16 +1092,16 @@
     }
   }
 
-  [barrier = 'lift_gate'][zoom >= 16]::barrier,
-  [barrier = 'swing_gate'][zoom >= 16]::barrier {
+  [feature = 'barrier_lift_gate'][zoom >= 16]::barrier,
+  [feature = 'barrier_swing_gate'][zoom >= 16]::barrier {
     marker-file: url('symbols/liftgate.svg');
     marker-fill: #3f3f3f;
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [barrier = 'bollard'],
-  [barrier = 'block'] {
+  [feature = 'barrier_bollard'],
+  [feature = 'barrier_block'] {
     [zoom >= 16] {
       marker-width: 3;
       marker-line-width: 0;
@@ -1114,13 +1114,13 @@
     }
   }
 
-  [amenity = 'bench'][zoom >= 19]::amenity {
+  [feature = 'amenity_bench'][zoom >= 19]::amenity {
     marker-file: url('symbols/bench.16.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
   }
 
-  [amenity = 'waste_basket'][zoom >= 19]::amenity {
+  [feature = 'amenity_waste_basket'][zoom >= 19]::amenity {
     marker-file: url('symbols/waste_basket.10.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;

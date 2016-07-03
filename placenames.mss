@@ -31,7 +31,6 @@
     text-wrap-width: 35;
     text-placement: interior;
     text-character-spacing: 0.5;
-    text-min-distance: 3;
     text-line-spacing: 1;
   }
 }
@@ -48,7 +47,6 @@
       text-halo-radius: 1.5;
       text-wrap-width: 0;
       text-placement: interior;
-      text-min-distance: 3;
       [zoom >= 5] {
         text-name: "[name]";
         text-wrap-width: 30;
@@ -66,20 +64,27 @@
     [zoom >= 4][score >= 3000000],
     [zoom >= 5][score >= 400000] {
       text-name: "[name]";
-      text-size: 8;
+      text-size: 11;
       text-fill: @placenames;
       text-face-name: @book-fonts;
       text-halo-radius: 1.5;
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: 30;
-      text-min-distance: 10;
       [zoom >= 5] {
-        text-size: 10;
+        text-size: 11;
         text-wrap-width: 45;
       }
       [zoom >= 6] {
         text-size: 12;
         text-wrap-width: 60;
+      }
+      [zoom >= 8] {
+        text-size: 13;
+        text-wrap-width: 60;
+      }
+      [zoom >= 9] {
+        text-size: 14;
+        text-wrap-width: 65;
       }
       [zoom >= 11] {
         text-size: 15;
@@ -94,15 +99,14 @@
     [zoom >= 6][score >= 70000],
     [zoom >= 7] {
       text-name: "[name]";
-      text-size: 9;
+      text-size: 10;
       text-fill: @placenames;
       text-face-name: @book-fonts;
       text-halo-radius: 1.5;
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: 30;
-      text-min-distance: 10;
       [zoom >= 9] {
-        text-size: 11;
+        text-size: 12;
         text-wrap-width: 60;
       }
       [zoom >= 11] {
@@ -121,13 +125,12 @@
   [category = 2] {
     [zoom >= 9][zoom < 16] {
       text-name: "[name]";
-      text-size: 9;
+      text-size: 10;
       text-fill: @placenames;
       text-face-name: @book-fonts;
       text-halo-radius: 1.5;
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: 45;
-      text-min-distance: 10;
       [zoom >= 11] {
         text-size: 11;
         text-wrap-width: 55;
@@ -153,7 +156,6 @@
     text-halo-radius: 1.5;
     text-halo-fill: rgba(255,255,255,0.6);
     text-wrap-width: 55;
-    text-min-distance: 10;
     [zoom >= 14] {
       text-size: 14;
       text-wrap-width: 70;
@@ -177,7 +179,6 @@
       text-halo-radius: 1.5;
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: 50;
-      text-min-distance: 10;
       [zoom >= 14] {
         text-fill: @placenames-light;
         text-halo-fill: white;
@@ -206,7 +207,6 @@
       text-halo-radius: 1.5;
       text-halo-fill: rgba(255,255,255,0.6);
       text-wrap-width: 45;
-      text-min-distance: 10;
     }
     [zoom >= 16] {
       text-size: 12;
