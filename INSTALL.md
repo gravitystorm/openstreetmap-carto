@@ -42,34 +42,38 @@ The repeated www.naturalearthdata.com in the Natural Earth shapefiles is correct
 Put these shapefiles at `path/to/openstreetmap-carto/data`.
 
 ## Fonts
-The stylesheet depends on a number of openly licensed fonts for support of all the languages found on the map. The package which supplies these fonts on Ubuntu is indicated.
+The stylesheet depends on a number of openly licensed fonts for support of all the languages found on the map. The package which supplies these fonts on Ubuntu 16.04 or Debian Testing is indicated.
 
-If a font is missing, it will skip to the next available font which contains those characters. If you are not concerned with a particular language, you do not need its fonts. DejaVu Sans and Unifont are the two required fonts, and included on most systems.
+If a font is missing, it will skip to the next available font which contains those characters. If you are not concerned with a particular script, you do not need its fonts. DejaVu Sans and Unifont are the two required fonts, and included on most systems.
+
+Mapnik 3 is required for acceptable rendering of most non-Latin scripts, particularly those with complicated diacritics and tone marks.
 
 ### Global
-* DejaVu Sans, for most languages (`ttf-dejavu`)
-* Droid Sans Fallback, as a reasonable fallback (`fonts-droid`)
+* DejaVu Sans, for most languages (`fonts-dejavu-core`)
+* Droid Sans Fallback, as a reasonable fallback (`fonts-droid-fallback`)
 * Unifont, as a last resort fallback (`ttf-unifont`)
 
 ### Southeast Asia
-* Arundina Sans, for Thai (`fonts-sipa-arundina`)
+* Arundina, for Thai (`fonts-sipa-arundina`)
 * Padauk, for Burmese (`fonts-sil-padauk`)
 * Khmer OS Metal Chrieng Regular, for Khmer (`fonts-khmeros`)
 
 ### South Asia
 
-* Mukti Narrow, for Bangali (`ttf-indic-fonts-core`)
-* Gargi Medium, for Devanagari (`ttf-indic-fonts-core`)
-* TSCu_Paranar, for Tamil (`ttf-tamil-fonts` or ``fonts-taml-tscu``, depending on your Ubuntu version)
-* Mallige, for Kannada (`ttf-indic-fonts-core` for normal and bold and `ttf-kannada-fonts` for oblique) *The filename uses "Malige" but the font name uses "Mallige"*
+* Mukti Narrow, for Bangali (`fonts-beng-extra`)
+* Gargi Medium, for Devanagari (`fonts-gargi`)
+* TSCu_Paranar, for Tamil (`fonts-taml-tscu`)
+* Tibetan Machine Uni, for Tibetian (`fonts-tibetan-machine`)
 
-On Ubuntu you can install all the fonts with
+On Ubuntu 16.04 or Debian Testing you can install all the fonts with
 
 ```
-sudo apt-get install ttf-dejavu fonts-droid ttf-unifont fonts-sipa-arundina fonts-sil-padauk fonts-khmeros \
-ttf-indic-fonts-core fonts-taml-tscu ttf-kannada-fonts
+sudo apt-get install fonts-dejavu-core fonts-droid-fallback ttf-unifont \
+  fonts-sipa-arundina fonts-sil-padauk fonts-khmeros \
+  fonts-beng-extra fonts-gargi fonts-taml-tscu fonts-tibetan-machine
 ```
-In Ubuntu 13.10 (Saucy) and lower, replace fonts-taml-tscu with ttf-tamil-fonts.
+
+On Ubuntu 14.04, replace `fonts-droid-fallback` with `fonts-droid`.
 
 ## Dependencies
 
