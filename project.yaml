@@ -1662,7 +1662,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            latin_name as name,
+            localized_name_without_brackets as name,
             railway,
             aerialway,
             CASE railway 
@@ -1689,7 +1689,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            latin_name as name,
+            localized_name_without_brackets as name,
             railway,
             aerialway
         FROM planet_osm_polygon
