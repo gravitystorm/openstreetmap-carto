@@ -21,12 +21,13 @@ psql -d gis -f indexes.sql
 Additionally you need some shapefiles.
 
 ## Scripted download
-
-To download the shapefiles you can run the following script from this directory. No further steps should be needed as the data has been processed and placed in the requisite directories.
+To download the shapefiles you can run the following script. No further steps should be needed as the data has been processed and placed in the requisite directories.
 
 ```
-./get-shapefiles.sh
+scripts/get-shapefiles.py
 ```
+
+This script generates and populates the *data* directory with all needed shapefiles, including indexing them through *shapeindex*.
 
 ## Manual download
 
