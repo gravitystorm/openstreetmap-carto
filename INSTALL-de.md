@@ -7,7 +7,7 @@ to provide all important tags (see hstore-only.style osm2pgsql style).
 For this reason the osm2pgsql commandline required will look slightly different:
 
 ```
-osm2pgsql -S hstore-only.style --hstore --hstore-match-only -d osm planet-latest.osm.pbf
+osm2pgsql -S hstore-only.style --hstore --hstore-match-only -d osm planet-latest.osm.pbf -p planet_osm_hstore
 ```
 
 The actual rendering is done using database views providing virtual columns
@@ -23,17 +23,16 @@ psql -d osm -f views_osmde/view-polygon.sql
 psql -d osm -f views_osmde/view-roads.sql
 ```
 
-It is also possible to use this database scheme for the generic
-openstreetmap-carto style by replacing the hardcoded database table names in
-project.yaml by the view names used in german style.
+For compatibility reasons the views are given the same name as the default
+osm2pgsql tables used in upstream openstreetmap carto style.
 
 The style is currently developed using Debian GNU/Linux 8.x with all the
 required software (postgresql-9.4, mapnik2.2 node-carto 0.9.5-2, ...)
 provided by the distribution itself. Using Ubuntu >=14.4 should also work.
 
-To get this style running it is currently also required to add the l10n code
-available at https://github.com/giggls/mapnik-german-l10n to the postgresql
-database.
+To get this style running it is also required to add the
+[l10n code](https://github.com/giggls/mapnik-german-l10n)
+to the postgresql database.
 
 If l10n is not needed it is also possible to slightly modify either
 project.yaml or the database views provided in views_osmde directory.

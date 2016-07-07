@@ -1,5 +1,5 @@
-DROP VIEW IF EXISTS view_osmde_carto_line;
-CREATE VIEW view_osmde_carto_line AS
+DROP VIEW IF EXISTS planet_osm_line;
+CREATE VIEW planet_osm_line AS
 SELECT
 osm_id,
 tags->'access' as "access",
@@ -81,6 +81,6 @@ osml10n_get_name_without_brackets(tags->'name',tags->'name:de',tags->'int_name',
 osml10n_get_streetname(tags->'name',tags->'name:de',tags->'int_name',tags->'name:en', true, 'de', way) as localized_streetname_inside_brackets,
 osml10n_get_streetname(tags->'name',tags->'name:de',tags->'int_name',tags->'name:en', false, 'de', way) as localized_streetname_outside_brackets,
 tags as tags
-FROM planet_osm_line;
+FROM planet_osm_hstore_line;
 
-GRANT select ON view_osmde_carto_line to public;
+GRANT select ON planet_osm_line to public;

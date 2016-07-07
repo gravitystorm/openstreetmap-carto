@@ -1,5 +1,5 @@
-DROP VIEW IF EXISTS view_osmde_carto_roads;
-CREATE VIEW view_osmde_carto_roads AS
+DROP VIEW IF EXISTS planet_osm_roads;
+CREATE VIEW planet_osm_roads AS
 SELECT
 osm_id,
 tags->'admin_level' as "admin_level",
@@ -37,6 +37,6 @@ tags->'natural' as "natural",
 z_order as z_order,
 way as way,
 tags->'tags' as "tags"
-FROM planet_osm_roads;
+FROM planet_osm_hstore_roads;
 
-GRANT select ON view_osmde_carto_roads TO public;
+GRANT select ON planet_osm_roads TO public;

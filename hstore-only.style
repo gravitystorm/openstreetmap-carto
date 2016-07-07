@@ -7,7 +7,7 @@
 # select statements in the standard mapnik style
 #
 # import using the following command:
-# osm2pgsql -s -S <this-file> --hstore --hstore-match-only <osm-or-pbf-file>
+# osm2pgsql -s -S <this-file> --hstore --hstore-match-only  -p planet_osm_hstore <osm-or-pbf-file>
 #
 
 node,way	3dshapes:ggmodelk	text	delete
