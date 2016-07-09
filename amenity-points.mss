@@ -65,6 +65,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_clock'][zoom >= 18] {
+    marker-file: url('symbols/clock.16.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'highway_bus_stop'] {
     [zoom >= 16] {
       marker-file: url('symbols/square.svg');
