@@ -33,13 +33,6 @@ def main():
     parser = argparse.ArgumentParser(description='Generates road colours')
     parser.add_argument('-v', '--verbose', dest='verbose', help='Generates information about colour differences', action='store_true', default=False)
     args = parser.parse_args()
-    # Print a warning about the nature of these definitions.
-    print "/* This is generated code, do not change this file manually.         */"
-    print "/*                                                                   */"
-    print "/* To change these definitions, alter road-colors.yaml and run:      */"
-    print "/*                                                                   */"
-    print "/*   ./scripts/generate_road_colours.py > road-colors-generated.mss  */"
-    print "/*                                                                   */"
 
     settings = yaml.load(open('road-colors.yaml', 'r'))
 
@@ -89,13 +82,20 @@ def main():
             c += delta_c
             l += delta_l
 
+    # Print a warning about the nature of these definitions.
+    print "/* This is generated code, do not change this file manually.         */"
+    print "/*                                                                   */"
+    print "/* To change these definitions, alter road-colors.yaml and run:      */"
+    print "/*                                                                   */"
+    print "/*   ./scripts/generate_road_colours.py > road-colors-generated.mss  */"
+    print "/*                                                                   */"
+
     for name, colour in colours.iteritems():
         if args.verbose:
             line = "@{name}: {rgb}; // {lch}, error {delta:.1f}"
         else:
             line = "@{name}: {rgb};"
         print line.format(name = name, rgb = colour.rgb(), lch = colour.lch(), delta = colour.rgb_error())
-
 
 if __name__ == "__main__":
     main()
