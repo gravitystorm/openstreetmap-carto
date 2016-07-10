@@ -915,6 +915,13 @@
     marker-clip: false;
   }
 
+  [feature = 'leisure_dog_park'][zoom >= 17] {
+    marker-file: url('symbols/dog_park.16.svg');
+    marker-placement: interior;
+    marker-fill: darken(@park, 60%);
+    marker-clip: false;
+  }
+
   [feature = 'leisure_playground'][zoom >= 17] {
     marker-file: url('symbols/playground.16.svg');
     marker-fill: @amenity-brown;
@@ -1520,6 +1527,7 @@
   [feature = 'leisure_sports_centre'],
   [feature = 'leisure_stadium'],
   [feature = 'leisure_track'],
+  [feature = 'leisure_dog_park'],
   [feature = 'leisure_pitch'] {
     [zoom >= 10][way_pixels > 3000][is_building = 'no'],
     [zoom >= 17][is_building = 'no'],
@@ -1633,6 +1641,11 @@
       [feature = 'leisure_sports_centre'],
       [feature = 'leisure_stadium'] {
         text-fill: darken(@stadium, 70%);
+      }
+      [feature = 'leisure_dog_park'] {
+        text-fill: darken(@park, 60%);
+        text-halo-radius: 1.5; /* Extra halo needed to stand out from paw pattern. */
+        text-halo-fill: rgba(255,255,255,0.6);
       }
       [feature = 'leisure_track'] {
         text-fill: darken(@track, 40%);
