@@ -1,11 +1,5 @@
 /* For the main linear features, such as roads and railways. */
 
-//road colors for major roads were generated with scripts/generate_road_colors.py
-@motorway-fill: #e892a2; // Lch(70,35,10), error 0.5
-@trunk-fill: #f9b29c; // Lch(79,33,42), error 0.7
-@primary-fill: #fcd6a4; // Lch(88,31,74), error 1.7
-@secondary-fill: #f7fabf; // Lch(97,29,106), error 1.7
-@tertiary-fill: #ffffff;
 @residential-fill: #ffffff;
 @service-fill: @residential-fill;
 @living-street-fill: #ededed;
@@ -22,16 +16,7 @@
 @taxiway-fill: @aeroway-fill;
 @helipad-fill: @aeroway-fill;
 
-@motorway-low-zoom: #e66e89; // Lch(62,50,10), error 0.7
-@trunk-low-zoom: #fa9476; // Lch(72,50,42), error 0.8
-@primary-low-zoom: #f8c171; // Lch(82,50,74), error 2.1
-@secondary-low-zoom: #e6ef89; // Lch(92,50,106), error 2.2
-
 @default-casing: white;
-@motorway-casing: #dc2a67; // Lch(50,70,10), error 1.1
-@trunk-casing: #c84e2f; // Lch(50,65,42), error 0.7
-@primary-casing: #a06b00; // Lch(50,60,74), error 1.6
-@secondary-casing: #707d05; // Lch(50,55,106), error 1.9
 @tertiary-casing: #8f8f8f;
 @residential-casing: #bbb;
 @road-casing: @residential-casing;
@@ -44,11 +29,6 @@
 @cycleway-casing: @default-casing;
 @bridleway-casing: @default-casing;
 @track-casing: @default-casing;
-
-@motorway-low-zoom-casing: #c24e6b; // Lch(50,50,10), error 0.8
-@trunk-low-zoom-casing: #cf6649; // Lch(56,55,42), error 0.9
-@primary-low-zoom-casing: #c38a27; // Lch(62,60,74), error 2.1
-@secondary-low-zoom-casing: #9eae23; // Lch(68,65,106), error 2.3
 
 @unimportant-road: @residential-casing;
 
@@ -107,7 +87,7 @@
 @trunk-width-z13:                 6;
 @primary-width-z13:               5;
 @secondary-width-z13:             5;
-@tertiary-width-z13:              4;
+@tertiary-width-z13:              3.75;
 @residential-width-z13:           2.5;
 @living-street-width-z13:         2;
 @pedestrian-width-z13:            2;
@@ -121,7 +101,7 @@
 @steps-width-z13:                 0.7;
 
 @secondary-width-z14:             5;
-@tertiary-width-z14:              5;
+@tertiary-width-z14:              4;
 @residential-width-z14:           3;
 @living-street-width-z14:         3;
 @pedestrian-width-z14:            3;
@@ -147,7 +127,7 @@
 @steps-width-z15:                 3;
 
 @secondary-width-z16:            10;
-@tertiary-width-z16:             10;
+@tertiary-width-z16:              8;
 @residential-width-z16:           6;
 @living-street-width-z16:         6;
 @pedestrian-width-z16:            6;
@@ -162,7 +142,7 @@
 @trunk-width-z17:                18;
 @primary-width-z17:              18;
 @secondary-width-z17:            18;
-@tertiary-width-z17:             18;
+@tertiary-width-z17:             15;
 @residential-width-z17:          12;
 @living-street-width-z17:        12;
 @pedestrian-width-z17:           12;
@@ -175,7 +155,7 @@
 @trunk-width-z18:                21;
 @primary-width-z18:              21;
 @secondary-width-z18:            21;
-@tertiary-width-z18:             21;
+@tertiary-width-z18:             17;
 @residential-width-z18:          13;
 @living-street-width-z18:        13;
 @pedestrian-width-z18:           13;
@@ -188,7 +168,7 @@
 @trunk-width-z19:                27;
 @primary-width-z19:              27;
 @secondary-width-z19:            27;
-@tertiary-width-z19:             27;
+@tertiary-width-z19:             22;
 @residential-width-z19:          17;
 @living-street-width-z19:        17;
 @pedestrian-width-z19:           17;
