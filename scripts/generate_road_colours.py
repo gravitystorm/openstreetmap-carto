@@ -3,6 +3,7 @@
 from colormath.color_conversions import convert_color
 from colormath.color_objects import LabColor, LCHabColor, sRGBColor
 from colormath.color_diff import delta_e_cie2000
+import argparse
 import sys
 import yaml
 
@@ -29,6 +30,9 @@ class Color:
 
 
 def main():
+    parser = argparse.ArgumentParser(description='Generates road colours')
+    parser.add_argument('-v', '--verbose', dest='verbose', help='Generates information about colour differences', action='store_true', default=False)
+    args = parser.parse_args()
     # Print a warning about the nature of these definitions.
     print "/* This is generated code, do not change this file manually.         */"
     print "/*                                                                   */"
@@ -37,10 +41,6 @@ def main():
     print "/*   ./scripts/generate_road_colours.py > road-colors-generated.mss  */"
     print "/*                                                                   */"
 
-    verbose = False
-    if len(sys.argv) == 2:
-        if sys.argv[1] == "-v":
-            verbose = True
     settings = yaml.load(open('road-colors.yaml', 'r'))
 
     road_classes = settings['roads']
@@ -90,7 +90,7 @@ def main():
             l += delta_l
 
     for name, colour in colours.iteritems():
-        if verbose:
+        if args.verbose:
             line = "@{name}: {rgb}; // {lch}, error {delta:.1f}"
         else:
             line = "@{name}: {rgb};"
