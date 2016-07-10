@@ -77,8 +77,9 @@ def main():
         l = line_colour_info.start_l
         delta_l = (line_colour_info.end_l - line_colour_info.start_l) / colour_divisions
 
+        colours[line_name] = OrderedDict()
         for name in road_classes:
-            colours[name + "-" + line_name] = Color((l, c, hues[name]))
+            colours[line_name][name] = Color((l, c, hues[name]))
             c += delta_c
             l += delta_l
 
@@ -90,12 +91,14 @@ def main():
     print "/*   ./scripts/generate_road_colours.py > road-colors-generated.mss  */"
     print "/*                                                                   */"
 
-    for name, colour in colours.iteritems():
-        if args.verbose:
-            line = "@{name}: {rgb}; // {lch}, error {delta:.1f}"
-        else:
-            line = "@{name}: {rgb};"
-        print line.format(name = name, rgb = colour.rgb(), lch = colour.lch(), delta = colour.rgb_error())
+
+    for line_name, line_colours in colours.iteritems():
+        for name, colour in line_colours.iteritems():
+            if args.verbose:
+                line = "@{name}-{line_name}: {rgb}; // {lch}, error {delta:.1f}"
+            else:
+                line = "@{name}-{line_name}: {rgb};"
+            print line.format(name = name, line_name=line_name, rgb = colour.rgb(), lch = colour.lch(), delta = colour.rgb_error())
 
 if __name__ == "__main__":
     main()
