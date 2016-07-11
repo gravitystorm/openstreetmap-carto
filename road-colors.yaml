@@ -16,18 +16,28 @@ hue: [10, 106]
 # Lightness ranges from 0 to 100; dark to bright.
 # Chroma ranges from 0 to 100 too; unsaturated to fully saturated.
 classes:
-  fill:
-    lightness: [70, 97]
-    chroma: [35, 29]
-  casing:
-    lightness: [50, 50]
-    chroma: [70, 55]
-  low-zoom:
-    lightness: [62, 92]
-    chroma: [50, 40]
-  low-zoom-casing:
-    lightness: [50, 70]
-    chroma: [50, 65]
+  # Colours for output into the MSS file
+  mss:
+    fill:
+      lightness: [70, 97]
+      chroma: [35, 29]
+    casing:
+      lightness: [50, 50]
+      chroma: [70, 55]
+    low-zoom:
+      lightness: [62, 92]
+      chroma: [50, 40]
+    low-zoom-casing:
+      lightness: [50, 70]
+      chroma: [50, 65]
+    shield:
+      lightness: [20, 25]
+      chroma: [40, 42]
+  # Colours used by the road shields script
   shield:
-    lightness: [20, 25]
-    chroma: [40, 42]
+    fill:
+      lightness: [85, 95]
+      chroma: [12, 14]
+    stroke_fill:
+      lightness: [70, 80]
+      chroma: [22, 24]

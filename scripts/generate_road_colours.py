@@ -28,14 +28,18 @@ class Color:
         return delta_e_cie2000(convert_color(self.m_lch, LabColor),
                                convert_color(sRGBColor.new_from_rgb_hex(self.rgb()), LabColor))
 
+def load_settings():
+    """Read the settings from YAML."""
+    return yaml.load(open('road-colors.yaml', 'r'))
 
-def main():
-    parser = argparse.ArgumentParser(description='Generates road colours')
-    parser.add_argument('-v', '--verbose', dest='verbose', help='Generates information about colour differences', action='store_true', default=False)
-    args = parser.parse_args()
+def generate_colours(settings, section):
+    """Generate colour ranges.
 
-    settings = yaml.load(open('road-colors.yaml', 'r'))
-
+    Arguments:
+    settings -- The settings loaded by load_settings.
+    section -- Which section of the settings under 'classes' to use. Typically
+               'mss' or 'shields'.
+    """
     road_classes = settings['roads']
     colour_divisions = len(road_classes) - 1
     hues = OrderedDict()
@@ -62,7 +66,7 @@ def main():
     # The higher the road classification, the higher its saturation. Conversely,
     # the roads get brighter towards the lower end of the classification.
 
-    classes = settings['classes']
+    classes = settings['classes'][section]
     for cls, params in classes.iteritems():
         l = params['lightness']
         c = params['chroma']
@@ -83,6 +87,18 @@ def main():
             c += delta_c
             l += delta_l
 
+    return colours
+
+def main():
+    parser = argparse.ArgumentParser(description='Generates road colours')
+    parser.add_argument('-v', '--verbose', dest='verbose', help='Generates information about colour differences', action='store_true', default=False)
+    args = parser.parse_args()
+
+    settings = load_settings()
+    road_classes = settings['roads']
+    colour_divisions = len(road_classes) - 1
+    colours = generate_colours(settings, 'mss')
+
     # Print a warning about the nature of these definitions.
     print "/* This is generated code, do not change this file manually.         */"
     print "/*                                                                   */"
@@ -90,7 +106,6 @@ def main():
     print "/*                                                                   */"
     print "/*   ./scripts/generate_road_colours.py > road-colors-generated.mss  */"
     print "/*                                                                   */"
-
 
     for line_name, line_colours in colours.iteritems():
         for name, colour in line_colours.iteritems():
