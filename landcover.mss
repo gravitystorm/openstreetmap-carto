@@ -219,6 +219,20 @@
     }
   }
 
+  [feature = 'leisure_dog_park'] {
+    [zoom >= 10] {
+      polygon-fill: darken(@park, 5%);
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+    [zoom >= 16] {
+      polygon-pattern-file: url('symbols/dog_park.png');
+      polygon-pattern-alignment: global;
+      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+    }
+  }
+
   [feature = 'leisure_golf_course'][zoom >= 10],
   [feature = 'leisure_miniature_golf'][zoom >= 15] {
     polygon-fill: @golf_course;
