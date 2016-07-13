@@ -17,7 +17,7 @@ try:
 
   try:
     if (args.check == False):
-      mml_file = open(mml_path, 'w')
+      mml_file = open(mml_path, 'wb')
       json.dump(yaml, mml_file, indent=2, separators=(',', ': '))
       mml_file.close()
     else:
