@@ -2092,6 +2092,7 @@
     "landcover.mss",
     "water.mss",
     "water-features.mss",
+    "road-colors-generated.mss",
     "roads.mss",
     "power.mss",
     "citywalls.mss",
