@@ -1,18 +1,11 @@
 // --- Parks, woods, other green things ---
 
 @grass: #cdebb0; // also meadow, common, garden, village_green
-@golf_course: #b5e3b5;
 @scrub: #b5e3b5;
 @forest: #add19e;       // Lch(80,30,135)
 @forest-text: #46673b;  // Lch(40,30,135)
 @park: #c8facc;         // Lch(94,30,145) also recreation_ground
 @orchard: #aedfa3;
-
-// --- sports ---
-
-@stadium: #3c9; // also sports_centre
-@track: #74dcba;
-@pitch: #8ad3af;
 
 // --- "base" landuses ---
 
@@ -53,12 +46,19 @@
 @power-line: darken(@industrial-line, 5%);
 @rest_area: #efc8c8; // also services
 @sand: #f5e9c6;
-@educational_areas_and_hospital: #f0f0d8;
+@societal_amenities: #f0f0d8;
 @station: #d4aaaa;
 @tourism: #734a08;
 @quarry: #c5c3c3;
 @military: #f55;
 @beach: #fff1ba;
+
+// --- sports ---
+
+@pitch: #80d7b5;
+@track: @pitch;
+@stadium: @societal_amenities; // also sports_centre
+@golf_course: #b5e3b5;
 
 #landcover-low-zoom[zoom < 10],
 #landcover[zoom >= 10] {
@@ -216,6 +216,20 @@
       polygon-fill: @park;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+  }
+
+  [feature = 'leisure_dog_park'] {
+    [zoom >= 10] {
+      polygon-fill: darken(@park, 5%);
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+    [zoom >= 16] {
+      polygon-pattern-file: url('symbols/dog_park.png');
+      polygon-pattern-alignment: global;
+      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
   }
 
@@ -450,7 +464,7 @@
     [zoom >= 10] {
       polygon-fill: @residential;
       [zoom >= 12] {
-        polygon-fill: @educational_areas_and_hospital;
+        polygon-fill: @societal_amenities;
         [zoom >= 13] {
           line-width: 0.3;
           line-color: brown;
@@ -520,7 +534,7 @@
     polygon-fill: @track;
     [zoom >= 15] {
       line-width: 0.5;
-      line-color: saturate(darken(@track, 40%), 20%);
+      line-color: saturate(darken(@track, 30%), 20%);
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
@@ -530,7 +544,7 @@
     polygon-fill: @pitch;
     [zoom >= 15] {
       line-width: 0.5;
-      line-color: saturate(darken(@pitch, 40%), 20%);
+      line-color: saturate(darken(@pitch, 30%), 20%);
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
