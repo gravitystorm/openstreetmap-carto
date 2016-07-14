@@ -1,62 +1,443 @@
-shop ['node', 'area']
-bridge ['way', 'area']
-amenity ['node', 'area']
-int_name ['node', 'way', 'area']
-bicycle ['way', 'area']
-proposed ['way']
-addr:housename ['node', 'area']
-layer ['way', 'area']
-surface ['way', 'area']
-operator ['node', 'way', 'area']
-service ['node', 'way']
-wetland ['node', 'area']
-generator:source ['node', 'area']
-waterway ['node', 'way', 'area']
-ele ['node']
-addr:housenumber ['node', 'area']
-horse ['way']
-sport ['node', 'area']
-power ['node', 'way', 'area']
-aerialway ['node', 'way', 'area']
-width ['way']
-tracktype ['way']
-man_made ['node', 'way', 'area']
-leaf_type ['area']
-name:de ['node', 'way', 'area']
-access ['node', 'way', 'area']
-religion ['node', 'area']
-capital ['node']
-covered ['way']
-boundary ['node', 'area']
-ref ['node', 'way', 'area']
-highway ['node', 'way', 'area']
-admin_level ['area']
-junction ['node', 'way']
-barrier ['node', 'way', 'area']
-lock ['way']
-construction ['way']
-leisure ['node', 'area']
-denomination ['node', 'area']
-historic ['node', 'way', 'area']
-power_source ['node', 'area']
-foot ['way']
-tourism ['node', 'area']
-culvert ['way']
-population ['node']
-building ['node', 'way', 'area']
-name:en ['node', 'way', 'area']
-natural ['node', 'way', 'area']
-name ['node', 'way', 'area']
-intermittent ['way']
-tunnel ['way']
-disused ['way']
-route ['way']
-addr:interpolation ['way']
-aeroway ['node', 'way', 'area']
-place ['node', 'area']
-embankment ['way']
-oneway ['way']
-military ['node', 'area']
-railway ['node', 'way', 'area']
-landuse ['node', 'area']
-ruins ['node', 'area']
+{
+    "project": {
+        "contact_name": "Sven Geggus", 
+        "contact_email": "sven-osm@geggus.net", 
+        "name": "Keys used in german mapnik style", 
+        "project_url": "https://github.com/giggls/openstreetmap-carto-de", 
+        "description": "This files contains all keys used for rendering in german carto style"
+    }, 
+    "data_format": "1", 
+    "tags": [
+        {
+            "key": "shop", 
+            "object_types": [
+                "node", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "bridge", 
+            "object_types": [
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "amenity", 
+            "object_types": [
+                "node", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "int_name", 
+            "object_types": [
+                "node", 
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "bicycle", 
+            "object_types": [
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "proposed", 
+            "object_types": [
+                "way"
+            ]
+        }, 
+        {
+            "key": "addr:housename", 
+            "object_types": [
+                "node", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "layer", 
+            "object_types": [
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "surface", 
+            "object_types": [
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "operator", 
+            "object_types": [
+                "node", 
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "service", 
+            "object_types": [
+                "node", 
+                "way"
+            ]
+        }, 
+        {
+            "key": "wetland", 
+            "object_types": [
+                "node", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "generator:source", 
+            "object_types": [
+                "node", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "waterway", 
+            "object_types": [
+                "node", 
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "ele", 
+            "object_types": [
+                "node"
+            ]
+        }, 
+        {
+            "key": "addr:housenumber", 
+            "object_types": [
+                "node", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "horse", 
+            "object_types": [
+                "way"
+            ]
+        }, 
+        {
+            "key": "sport", 
+            "object_types": [
+                "node", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "power", 
+            "object_types": [
+                "node", 
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "aerialway", 
+            "object_types": [
+                "node", 
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "width", 
+            "object_types": [
+                "way"
+            ]
+        }, 
+        {
+            "key": "tracktype", 
+            "object_types": [
+                "way"
+            ]
+        }, 
+        {
+            "key": "man_made", 
+            "object_types": [
+                "node", 
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "leaf_type", 
+            "object_types": [
+                "area"
+            ]
+        }, 
+        {
+            "key": "name:de", 
+            "object_types": [
+                "node", 
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "access", 
+            "object_types": [
+                "node", 
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "religion", 
+            "object_types": [
+                "node", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "capital", 
+            "object_types": [
+                "node"
+            ]
+        }, 
+        {
+            "key": "covered", 
+            "object_types": [
+                "way"
+            ]
+        }, 
+        {
+            "key": "boundary", 
+            "object_types": [
+                "node", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "ref", 
+            "object_types": [
+                "node", 
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "highway", 
+            "object_types": [
+                "node", 
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "admin_level", 
+            "object_types": [
+                "area"
+            ]
+        }, 
+        {
+            "key": "junction", 
+            "object_types": [
+                "node", 
+                "way"
+            ]
+        }, 
+        {
+            "key": "barrier", 
+            "object_types": [
+                "node", 
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "lock", 
+            "object_types": [
+                "way"
+            ]
+        }, 
+        {
+            "key": "construction", 
+            "object_types": [
+                "way"
+            ]
+        }, 
+        {
+            "key": "leisure", 
+            "object_types": [
+                "node", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "denomination", 
+            "object_types": [
+                "node", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "historic", 
+            "object_types": [
+                "node", 
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "power_source", 
+            "object_types": [
+                "node", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "foot", 
+            "object_types": [
+                "way"
+            ]
+        }, 
+        {
+            "key": "tourism", 
+            "object_types": [
+                "node", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "culvert", 
+            "object_types": [
+                "way"
+            ]
+        }, 
+        {
+            "key": "population", 
+            "object_types": [
+                "node"
+            ]
+        }, 
+        {
+            "key": "building", 
+            "object_types": [
+                "node", 
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "name:en", 
+            "object_types": [
+                "node", 
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "natural", 
+            "object_types": [
+                "node", 
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "name", 
+            "object_types": [
+                "node", 
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "intermittent", 
+            "object_types": [
+                "way"
+            ]
+        }, 
+        {
+            "key": "tunnel", 
+            "object_types": [
+                "way"
+            ]
+        }, 
+        {
+            "key": "disused", 
+            "object_types": [
+                "way"
+            ]
+        }, 
+        {
+            "key": "route", 
+            "object_types": [
+                "way"
+            ]
+        }, 
+        {
+            "key": "addr:interpolation", 
+            "object_types": [
+                "way"
+            ]
+        }, 
+        {
+            "key": "aeroway", 
+            "object_types": [
+                "node", 
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "place", 
+            "object_types": [
+                "node", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "embankment", 
+            "object_types": [
+                "way"
+            ]
+        }, 
+        {
+            "key": "oneway", 
+            "object_types": [
+                "way"
+            ]
+        }, 
+        {
+            "key": "military", 
+            "object_types": [
+                "node", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "railway", 
+            "object_types": [
+                "node", 
+                "way", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "landuse", 
+            "object_types": [
+                "node", 
+                "area"
+            ]
+        }, 
+        {
+            "key": "ruins", 
+            "object_types": [
+                "node", 
+                "area"
+            ]
+        }
+    ]
+}

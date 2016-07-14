@@ -53,11 +53,11 @@ for arg in range(1,4):
       allkeys[key].append(type[arg-1])
 
 for k in allkeys:
-  print("%s %s" % (k,allkeys[k]))
+  #print("%s %s" % (k,allkeys[k]))
   taginfo["tags"].append(
   {
     "key": k,
     "object_types": allkeys[k]
   })
 
-#print(json.dumps(taginfo, indent=4))
+print(json.dumps(taginfo, indent=4))
