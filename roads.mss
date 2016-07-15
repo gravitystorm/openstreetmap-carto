@@ -871,21 +871,12 @@ Casing width is @proposed_casing_factor the width of normal road casing.
       }
     }
 
-    [feature = 'highway_service'],
-    [feature = 'highway_track'][int_surface = 'paved'],
-    [feature = 'highway_track'][tracktype = 'grade1'] {
+    [feature = 'highway_service'] {
       [zoom >= 14][service = 'INT-normal'],
-      [zoom >= 16][service = 'INT-minor'],
-      [zoom >= 14][feature = 'highway_track'] {
+      [zoom >= 16][service = 'INT-minor'] {
         line-color: @service-casing;
-        // track grade1 casing in @track-fill color
-        [feature = 'highway_track'] {
-          line-color: @track-fill;
-        }
-        [service = 'INT-normal'],
-        [feature = 'highway_track'] {
+        [service = 'INT-normal'] {
           line-width: @service-width-z14;
-          [zoom >= 15] { line-width: @service-width-z15; }
           [zoom >= 16] { line-width: @service-width-z16; }
           [zoom >= 17] { line-width: @service-width-z17; }
           [zoom >= 18] { line-width: @service-width-z18; }
@@ -897,6 +888,32 @@ Casing width is @proposed_casing_factor the width of normal road casing.
           [zoom >= 18] { line-width: @minor-service-width-z18; }
           [zoom >= 19] { line-width: @minor-service-width-z19; }
         }
+        .roads-casing {
+          line-join: round;
+          line-cap: round;
+        }
+        .tunnels-casing {
+          line-dasharray: 4,2;
+        }
+        .bridges-casing {
+          line-color: @bridge-casing;
+          line-join: round;
+        }
+      }
+    }
+   
+    // track casing starting from zoom 15 is drawn like service
+    // but with track-fill color as casing color
+    // zoom 13 and 14 is "casing" only
+    [feature = 'highway_track'][int_surface = 'paved'],
+    [feature = 'highway_track'][tracktype = 'grade1'] {
+      [zoom >= 13] {
+        line-color: @track-fill;
+        line-width: @track-width-z13;
+        [zoom >= 15] { line-width: @service-width-z16; }
+        [zoom >= 17] { line-width: @service-width-z17; }
+        [zoom >= 18] { line-width: @service-width-z18; }
+        [zoom >= 19] { line-width: @service-width-z19; }
         .roads-casing {
           line-join: round;
           line-cap: round;
@@ -1303,7 +1320,7 @@ Casing width is @proposed_casing_factor the width of normal road casing.
       }
     }
 
-    [feature = 'highway_track'][tracktype != 'grade1'] {
+    [feature = 'highway_track'][tracktype != 'grade1'][int_surface != 'paved'] {
       /* We don't set opacity here, so it's 1.0. Aside from that, it's basically a copy of roads-fill::background in the track part of ::fill */
       .bridges-casing {
         [zoom >= 13][access != 'no'] {
@@ -1874,25 +1891,16 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
 
-    [feature = 'highway_service'],
-    [feature = 'highway_track'][int_surface = 'paved'],
-    [feature = 'highway_track'][tracktype = 'grade1'] {
+    [feature = 'highway_service'] {
       [zoom >= 13][service = 'INT-normal'] {
         line-width: 1;
         line-color: @unimportant-road;
       }
-      [feature = 'highway_track'][zoom = 13] {
-         line-color: @track-fill;
-         line-width: @track-width-z13;
-      }
       [zoom >= 14][service = 'INT-normal'],
-      [zoom >= 16][service = 'INT-minor'],
-      [zoom >= 14][feature = 'highway_track'] {
+      [zoom >= 16][service = 'INT-minor'] {
         line-color: @service-fill;
-        [service = 'INT-normal'],
-	[feature = 'highway_track'] {
+        [service = 'INT-normal'] {
           line-width: @service-width-z14 - 2 * @casing-width-z14;
-          [zoom >= 15] { line-width: @service-width-z15 - 2 * @casing-width-z15; }
           [zoom >= 16] { line-width: @service-width-z16 - 2 * @casing-width-z16; }
           [zoom >= 17] { line-width: @service-width-z17 - 2 * @casing-width-z17; }
           [zoom >= 18] { line-width: @service-width-z18 - 2 * @casing-width-z18; }
@@ -1912,7 +1920,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         .bridges-fill {
           [service = 'INT-normal'] {
             line-width: @service-width-z14 - 2 * @bridge-casing-width-z14;
-            [zoom >= 15] { line-width: @service-width-z15 - 2 * @bridge-casing-width-z15; }
             [zoom >= 16] { line-width: @service-width-z16 - 2 * @bridge-casing-width-z16; }
             [zoom >= 17] { line-width: @service-width-z17 - 2 * @bridge-casing-width-z17; }
             [zoom >= 18] { line-width: @service-width-z18 - 2 * @bridge-casing-width-z18; }
@@ -1924,6 +1931,30 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
             [zoom >= 18] { line-width: @minor-service-width-z18 - 2 * @bridge-casing-width-z18; }
             [zoom >= 19] { line-width: @minor-service-width-z19 - 2 * @bridge-casing-width-z19; }
           }
+        }
+      }
+    }
+    
+    // track grade1 fill in service-fill color
+    [feature = 'highway_track'][int_surface = 'paved'],
+    [feature = 'highway_track'][tracktype = 'grade1'] {
+      [zoom >= 15] {
+        line-color: @service-fill;
+        line-width: @service-width-z16 - 2 * @casing-width-z16;
+        [zoom >= 17] { line-width: @service-width-z17 - 2 * @casing-width-z17; }
+        [zoom >= 18] { line-width: @service-width-z18 - 2 * @casing-width-z18; }
+        [zoom >= 19] { line-width: @service-width-z19 - 2 * @casing-width-z19; }
+        line-join: round;
+        line-cap: round;
+
+        .tunnels-fill {
+          line-color: darken(white, 5%);
+        }
+        .bridges-fill {
+          line-width: @service-width-z16 - 2 * @bridge-casing-width-z16;
+          [zoom >= 17] { line-width: @service-width-z17 - 2 * @bridge-casing-width-z17; }
+          [zoom >= 18] { line-width: @service-width-z18 - 2 * @bridge-casing-width-z18; }
+          [zoom >= 19] { line-width: @service-width-z19 - 2 * @bridge-casing-width-z19; }
         }
       }
     }
