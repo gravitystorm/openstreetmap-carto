@@ -2276,7 +2276,7 @@ Layer:
                   OR boundary IN ('national_park')
                   OR waterway IN ('dam', 'weir'))
                 AND (name IS NOT NULL
-                     OR (ele IS NOT NULL AND ("natural" IN ('peak', 'volcano', 'saddle') OR tourism = 'alpine_hut' OR amenity = 'shelter'))
+                     OR (tags?'ele' AND ("natural" IN ('peak', 'volcano', 'saddle') OR tourism = 'alpine_hut' OR amenity = 'shelter'))
                      OR (ref IS NOT NULL AND aeroway IN ('gate'))
                     )
               ) AS p
