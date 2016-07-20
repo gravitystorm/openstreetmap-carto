@@ -3262,6 +3262,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
+      // allow overlap (e.g. oneway-arrows)
+      text-allow-overlap: true;
       text-face-name: @book-fonts;
       [tunnel = 'no'] {
         text-halo-radius: 1;
@@ -3291,6 +3293,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
+      // allow overlap (e.g. oneway-arrows)
+      text-allow-overlap: true;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-halo-fill: @secondary-fill;
@@ -3317,6 +3321,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
+      // allow overlap (e.g. oneway-arrows)
+      text-allow-overlap: true;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-halo-fill: @tertiary-fill;
@@ -3358,6 +3364,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
+      // allow overlap (e.g. oneway-arrows)
+      text-allow-overlap: true;
       text-halo-radius: 1;
       text-halo-fill: @residential-fill;
       text-face-name: @book-fonts;
@@ -3403,6 +3411,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
+      // allow overlap (e.g. oneway-arrows)
+      text-allow-overlap: true;
       text-halo-radius: 1;
       [highway = 'living_street'] { text-halo-fill: @living-street-fill; }
       [highway = 'pedestrian'] { text-halo-fill: @pedestrian-fill; }
@@ -3518,7 +3528,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [oneway = 'yes'],
       [oneway = '-1'] {
         marker-placement: line;
-        marker-spacing: 180;
+        marker-spacing: 200;
         marker-max-error: 0.5;
 
         marker-file: url('symbols/oneway.svg');
