@@ -4,5 +4,13 @@ data/
 *.xml
 node_modules/
 localconfig.json
+# Generated at runtime by Python.
+*.pyc   
+**/*.pyc
 project-de.mml
 project-de.yaml
+localconfig.js
+data
+tmp
+**kosmtik
+

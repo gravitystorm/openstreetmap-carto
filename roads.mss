@@ -304,8 +304,8 @@
 @junction-text-color:             #0528a2;
 @halo-color-for-minor-road: white;
 
-@motorway-oneway-arrow-color:     darken(@motorway-casing, 25%);
-@trunk-oneway-arrow-color:        darken(@trunk-casing, 25%);
+@motorway-oneway-arrow-color:     #6c70d5;
+@trunk-oneway-arrow-color:        #6c70d5;
 @primary-oneway-arrow-color:      darken(@primary-casing, 15%);
 @secondary-oneway-arrow-color:    darken(@secondary-casing, 10%);
 @tertiary-oneway-arrow-color:     darken(@tertiary-casing, 30%);
@@ -327,12 +327,6 @@
 @shield-font: @book-fonts;
 @shield-clip: false;
 @shield-motorway-font: @bold-fonts;
-
-@shield-motorway-fill: #FFFFFF;
-@shield-trunk-fill: #000000;
-@shield-primary-fill: #000000;
-@shield-secondary-fill: #000000;
-@shield-tertiary-fill: #000000;
 
 @proposed_casing_factor: 3.0;
 
@@ -3107,22 +3101,22 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
     [highway = 'motorway'] {
       shield-face-name: @shield-motorway-font;
-      shield-fill: @shield-motorway-fill;
+      shield-fill: @motorway-shield;
       shield-file: url("symbols-de/shields/motorway_[width]x[height].svg");
     }
 
     [highway = 'trunk'] {
-      shield-fill: @shield-trunk-fill;
+      shield-fill: @trunk-shield;
       shield-file: url("symbols-de/shields/primary_[width]x[height].svg");
     }
 
     [highway = 'primary'] {
-      shield-fill: @shield-primary-fill;
+      shield-fill: @primary-shield;
       shield-file: url("symbols-de/shields/primary_[width]x[height].svg");
     }
 
     [highway = 'secondary'] {
-      shield-fill: @shield-secondary-fill;
+      shield-fill: @secondary-shield;
       shield-file: url("symbols-de/shields/secondary_[width]x[height].svg");
     }
   }
@@ -3153,10 +3147,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       shield-min-padding: 31;
 
       [highway = 'motorway'] {
-        shield-fill: @shield-motorway-fill;
+        shield-fill: @motorway-shield;
 	shield-face-name: @shield-motorway-font;
         shield-file: url("symbols-de/shields/motorway_[width]x[height].svg");
-
         [zoom >= 16] {
           shield-file: url("symbols-de/shields/motorway_[width]x[height]_z16.svg");
         }
@@ -3165,9 +3158,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         }
       }
       [highway = 'trunk'] {
-        shield-fill: @shield-trunk-fill;
+        shield-fill: @trunk-shield;
         shield-file: url("symbols-de/shields/primary_[width]x[height].svg");
-
         [zoom >= 16] {
           shield-file: url("symbols-de/shields/primary_[width]x[height]_z16.svg");
         }
@@ -3176,9 +3168,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         }
       }
       [highway = 'primary'] {
-        shield-fill: @shield-primary-fill;
+        shield-fill: @primary-shield;
         shield-file: url("symbols-de/shields/primary_[width]x[height].svg");
-
         [zoom >= 16] {
           shield-file: url("symbols-de/shields/primary_[width]x[height]_z16.svg");
         }
@@ -3187,9 +3178,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         }
       }
       [highway = 'secondary'] {
-        shield-fill: @shield-secondary-fill;
+        shield-fill: @secondary-shield;
         shield-file: url("symbols-de/shields/secondary_[width]x[height].svg");
-
         [zoom >= 16] {
           shield-file: url("symbols-de/shields/secondary_[width]x[height]_z16.svg");
         }
@@ -3198,9 +3188,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         }
       }
       [highway = 'tertiary'] {
-        shield-fill: @shield-tertiary-fill;
+        shield-fill: @tertiary-shield;
         shield-file: url("symbols-de/shields/secondary_[width]x[height].svg");
-
         [zoom >= 16] {
           shield-file: url("symbols-de/shields/secondary_[width]x[height]_z16.svg");
         }
@@ -3531,9 +3520,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         marker-spacing: 200;
         marker-max-error: 0.5;
 
-        marker-file: url('symbols/oneway.svg');
+        marker-file: url('symbols-de/oneway.svg');
         [oneway = '-1'] {
-          marker-file: url('symbols/oneway-reverse.svg');
+          marker-file: url('symbols-de/oneway-reverse.svg');
         }
 
         [feature = 'highway_motorway'],

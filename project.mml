@@ -1945,7 +1945,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    name,\n    admin_level\n  FROM planet_osm_roads\n  WHERE boundary = 'administrative'\n    AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')\n    AND name IS NOT NULL\n    AND osm_id < 0\n  ORDER BY admin_level::integer ASC, way_area DESC\n) AS admin_text",
+        "table": "(SELECT\n    way,\n    name,\n    admin_level\n  FROM planet_osm_polygon\n  WHERE boundary = 'administrative'\n    AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')\n    AND name IS NOT NULL\n  ORDER BY admin_level::integer ASC, way_area DESC\n) AS admin_text",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -2092,6 +2092,7 @@
     "landcover.mss",
     "water.mss",
     "water-features.mss",
+    "road-colors-generated.mss",
     "roads.mss",
     "power.mss",
     "citywalls.mss",

@@ -41,6 +41,7 @@ Stylesheet:
   - "landcover.mss"
   - "water.mss"
   - "water-features.mss"
+  - "road-colors-german.mss"
   - "roads.mss"
   - "power.mss"
   - "citywalls.mss"
@@ -2491,11 +2492,10 @@ Layer:
             way,
             localized_name_outside_brackets as name,
             admin_level
-          FROM planet_osm_roads
+          FROM planet_osm_polygon
           WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
             AND name IS NOT NULL
-            AND osm_id < 0
           ORDER BY admin_level::integer ASC, way_area DESC
         ) AS admin_text
     properties:
