@@ -223,7 +223,7 @@
   }
 
   [feature = 'tourism_hostel'][zoom >= 17] {
-    marker-file: url('symbols/hostel.16.svg');
+    marker-file: url('symbols-de/hostel.16.svg');
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @transportation-icon;
