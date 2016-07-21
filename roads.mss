@@ -13,6 +13,7 @@
 @pedestrian-fill: #dddde8;
 @raceway-fill: pink;
 @road-fill: #ddd;
+@path-fill: black;
 @footway-fill: salmon;
 @steps-fill: @footway-fill;
 @cycleway-fill: blue;
@@ -274,6 +275,10 @@
 @major-bridge-casing-width-z18:   1;
 @bridge-casing-width-z19:         0.8;
 @major-bridge-casing-width-z19:   1;
+
+@paths-background-width:          1;
+@paths-bridge-casing-width:       0.5;
+@paths-tunnel-casing-width:       1;
 
 @motorway-overlay-width-z9:  0.8;
 @motorway-overlay-width-z10: 1.0;
@@ -1021,7 +1026,7 @@ Casing width is @proposed_casing_factor the width of normal road casing.
     }
 
     [feature = 'highway_footway'],
-    [feature = 'highway_path'][bicycle != 'designated'][horse != 'designated'] {
+    [feature = 'highway_path'][foot = 'designated'] {
       .bridges-casing {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
@@ -1070,6 +1075,27 @@ Casing width is @proposed_casing_factor the width of normal road casing.
           [zoom >= 16] { line-width: @cycleway-width-z16 + 2 * (@paths-background-width + @paths-tunnel-casing-width); }
           [zoom >= 18] { line-width: @cycleway-width-z18 + 2 * (@paths-background-width + @paths-tunnel-casing-width); }
           [zoom >= 19] { line-width: @cycleway-width-z19 + 2 * (@paths-background-width + @paths-tunnel-casing-width); }
+          line-color: @tunnel-casing;
+          line-dasharray: 4,2;
+        }
+      }
+    }
+
+    [feature = 'highway_path'] {
+      .bridges-casing {
+        [zoom >= 14][access != 'no'],
+        [zoom >= 15] {
+          line-width: @path-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
+          [zoom >= 15] { line-width: @path-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
+          line-color: @bridge-casing;
+          line-join: round;
+        }
+      }
+      .tunnels-casing {
+        [zoom >= 13][access != 'no'],
+        [zoom >= 15] {
+          line-width: @path-width-z13 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
+          [zoom >= 15] { line-width: @path-width-z15 + 2 * (@paths-background-width + @paths-tunnel-casing-width); }
           line-color: @tunnel-casing;
           line-dasharray: 4,2;
         }
@@ -1235,7 +1261,7 @@ Casing width is @proposed_casing_factor the width of normal road casing.
     }
 
     [feature = 'highway_footway'],
-    [feature = 'highway_path'][bicycle != 'designated'][horse != 'designated'] {
+    [feature = 'highway_path'][foot = 'designated'] {
       .bridges-casing {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
@@ -1310,6 +1336,28 @@ Casing width is @proposed_casing_factor the width of normal road casing.
           line-join: round;
           line-width: @steps-width-z13 + 2 * @paths-background-width;
           [zoom >= 15] { line-width: @steps-width-z15 + 2 * @paths-background-width; }
+        }
+      }
+    }
+
+    [feature = 'highway_path'] {
+      .bridges-casing {
+        [zoom >= 14][access != 'no'],
+        [zoom >= 15] {
+          line-width: @path-width-z13 + 2 * @paths-background-width;
+          [zoom >= 15] { line-width: @path-width-z15 + 2 * @paths-background-width; }
+          line-color: @path-casing;
+          line-join: round;
+        }
+      }
+      .tunnels-casing {
+        [zoom >= 13][access != 'no'],
+        [zoom >= 15] {
+          line-color: @path-casing;
+          line-cap: round;
+          line-join: round;
+          line-width: @path-width-z13 + 2 * @paths-background-width;
+          [zoom >= 15] { line-width: @path-width-z15 + 2 * @paths-background-width; }
         }
       }
     }
@@ -2045,7 +2093,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
 
     [feature = 'highway_footway'],
-    [feature = 'highway_path'][bicycle != 'designated'][horse != 'designated'] {
+    [feature = 'highway_path'][foot = 'designated'] {
       [zoom >= 13][access != 'no'],
       [zoom >= 15] {
         .roads-fill[zoom >= 15] {
@@ -2197,6 +2245,29 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
             line/line-width:  @cycleway-width-z19;
           }
         }
+      }
+    }
+
+    /*
+    * The above defininitions should override this when needed
+    * given the specitivity precedence.
+    */
+    [feature = 'highway_path'] {
+      [zoom >= 13][access != 'no'],
+      [zoom >= 15] {
+        .roads-fill[zoom >= 15] {
+          background/line-color: @path-casing;
+          background/line-cap: round;
+          background/line-join: round;
+          background/line-width: @path-width-z15 + 2 * @paths-background-width;
+          background/line-opacity: 0.4;
+        }
+        line/line-color: @path-fill;
+        line/line-dasharray: 6,3;
+        line/line-join: round;
+        line/line-cap: round;
+        line/line-width: @path-width-z13;
+        [zoom >= 15] { line/line-width: @path-width-z15; }
       }
     }
 
