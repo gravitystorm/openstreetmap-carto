@@ -114,6 +114,13 @@
     marker-clip: false;
   }
 
+  [feature = 'tourism_artwork'][zoom >= 17] {
+    marker-file: url('symbols/artwork-14.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'tourism_camp_site'][zoom >= 16] {
     marker-file: url('symbols/camping.16.svg');
     marker-fill: @transportation-icon;
@@ -1313,6 +1320,7 @@
     text-placement: interior;
   }
 
+  [feature = 'tourism_artwork'][zoom >= 17],
   [feature = 'historic_memorial'][zoom >= 17],
   [feature = 'man_made_obelisk'][zoom >= 16],
   [feature = 'historic_monument'][zoom >= 16],
