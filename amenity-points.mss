@@ -655,8 +655,10 @@
   }
 
   [feature = 'shop_department_store'][zoom >= 16] {
-    point-file: url('symbols/department_store.p.16.png');
-    point-placement: interior;
+      marker-file: url('symbols/department_store.p.16.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @shop-icon;
   }
 
   [feature = 'shop_doityourself'],
