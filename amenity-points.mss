@@ -202,6 +202,13 @@
     }
   }
 
+  [feature = 'amenity_charging_station'][zoom >= 17] {
+    marker-file: url('symbols/charging_station.16.svg');
+    marker-fill: @transportation-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_fuel'][zoom >= 17] {
     marker-file: url('symbols/fuel.16.svg');
     marker-fill: @transportation-icon;
@@ -1738,6 +1745,7 @@
   }
 
   [feature = 'highway_bus_stop'],
+  [feature = 'amenity_charging_station'],
   [feature = 'amenity_fuel'],
   [feature = 'amenity_bus_station'] {
     [zoom >= 17] {
