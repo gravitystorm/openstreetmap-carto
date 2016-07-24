@@ -3165,7 +3165,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-clip: false;
       text-placement: line;
       // allow overlap (e.g. oneway-arrows)
-      text-allow-overlap: true;
+      [oneway = 'yes'],[oneway = '-1'] { text-allow-overlap: true; }
       text-face-name: @book-fonts;
       [tunnel = 'no'] {
         text-halo-radius: 1;
@@ -3196,7 +3196,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-clip: false;
       text-placement: line;
       // allow overlap (e.g. oneway-arrows)
-      text-allow-overlap: true;
+      [oneway = 'yes'],[oneway = '-1'] { text-allow-overlap: true; }
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-halo-fill: @secondary-fill;
@@ -3224,7 +3224,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-clip: false;
       text-placement: line;
       // allow overlap (e.g. oneway-arrows)
-      text-allow-overlap: true;
+      [oneway = 'yes'],[oneway = '-1'] { text-allow-overlap: true; }
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-halo-fill: @tertiary-fill;
