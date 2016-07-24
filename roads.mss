@@ -921,8 +921,12 @@ Casing width is @proposed_casing_factor the width of normal road casing.
           line-dasharray: 4,2;
         }
         .bridges-casing {
-          line-color: @bridge-casing;
+          line-color: @track-fill;
           line-join: round;
+          line-width: 2* @casing-width-z16 + @footway-width-z16;
+          [zoom >= 17] { line-width: 2* @casing-width-z17 + @service-width-z17; }
+          [zoom >= 18] { line-width: 2* @casing-width-z18 + @service-width-z18; }
+          [zoom >= 19] { line-width: 2* @casing-width-z19 + @service-width-z19; }
         }
       }
     }
