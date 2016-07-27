@@ -2400,7 +2400,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
   [junction = 'yes'],
   [highway = 'traffic_signals'] {
-    [zoom >= 14] {
+    [zoom >= 15] {
       text-name: "[name]";
       text-size: 10;
       text-fill: black;
