@@ -18,7 +18,7 @@ class tag_usage():
 
 
 taginfo = {
-    "data_format": "1",
+    "data_format": 1,
     "project": {
         "name": "Keys used in german mapnik style",
         "description": "This files contains all keys used for rendering in german carto style",

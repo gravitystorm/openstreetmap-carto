@@ -6,7 +6,7 @@
         "project_url": "https://github.com/giggls/openstreetmap-carto-de", 
         "description": "This files contains all keys used for rendering in german carto style"
     }, 
-    "data_format": "1", 
+    "data_format": 1, 
     "tags": [
         {
             "key": "shop", 
