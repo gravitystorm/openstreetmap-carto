@@ -1647,7 +1647,7 @@ Layer:
             way,
             COALESCE(
               'aeroway_' || CASE WHEN aeroway IN ('helipad', 'aerodrome') THEN aeroway ELSE NULL END,
-              'tourism_' || CASE WHEN tourism IN ('alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'guest_house', 
+              'tourism_' || CASE WHEN tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'guest_house', 
                                                   'hostel', 'hotel', 'motel', 'information', 'museum', 'picnic_site') THEN tourism ELSE NULL END,
               'amenity_' || CASE WHEN amenity IN ('shelter', 'atm', 'bank', 'bar', 'bicycle_rental', 'bus_station', 'cafe', 
                                                   'car_rental', 'car_wash', 'cinema', 'clinic', 'community_centre', 'fire_station', 'fountain',
@@ -1655,7 +1655,8 @@ Layer:
                                                   'bicycle_parking', 'motorcycle_parking', 'pharmacy', 'doctors', 'dentist', 'place_of_worship', 
                                                   'police', 'post_box', 'post_office', 'pub', 'biergarten', 'recycling', 'restaurant', 'food_court', 
                                                   'fast_food', 'telephone', 'emergency_phone', 'taxi', 'theatre', 'toilets', 'drinking_water', 
-                                                  'prison', 'hunting_stand', 'nightclub', 'veterinary', 'social_facility') THEN amenity ELSE NULL END, 
+                                                  'prison', 'hunting_stand', 'nightclub', 'veterinary', 'social_facility',
+                                                  'charging_station') THEN amenity ELSE NULL END,
               'shop_' || CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'books', 'butcher', 'clothes', 'computer', 
                                             'confectionery', 'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist', 
                                             'garden_centre', 'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet', 
@@ -1694,7 +1695,7 @@ Layer:
           FROM planet_osm_polygon
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
           WHERE aeroway IN ('helipad', 'aerodrome')
-            OR tourism IN ('alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'guest_house', 'hostel', 
+            OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'guest_house', 'hostel', 
                            'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site')
             OR amenity IN ('shelter', 'atm', 'bank', 'bar', 'bicycle_rental', 'bus_station', 'cafe', 
                            'car_rental', 'car_wash', 'cinema', 'clinic', 'community_centre',
@@ -1703,7 +1704,7 @@ Layer:
                            'dentist', 'place_of_worship', 'police', 'post_box', 'post_office', 'pub', 'biergarten', 
                            'recycling', 'restaurant', 'food_court', 'fast_food', 'telephone', 'emergency_phone', 'taxi', 
                            'theatre', 'toilets', 'drinking_water', 'prison', 'hunting_stand', 'nightclub', 'veterinary',
-                           'social_facility')
+                           'social_facility', 'charging_station')
             OR shop IS NOT NULL -- skip checking a huge list and use a null check
             OR leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table')
             OR man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill', 'obelisk')
@@ -1728,7 +1729,7 @@ Layer:
             way,
             COALESCE(
               'aeroway_' || CASE WHEN aeroway IN ('helipad', 'aerodrome') THEN aeroway ELSE NULL END,
-              'tourism_' || CASE WHEN tourism IN ('alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'guest_house', 'hostel', 
+              'tourism_' || CASE WHEN tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'guest_house', 'hostel', 
                                                   'hotel', 'motel', 'information', 'museum', 'picnic_site') THEN tourism ELSE NULL END,
               'amenity_' || CASE WHEN amenity IN ('shelter', 'atm', 'bank', 'bar', 'bicycle_rental', 'bus_station', 'cafe', 
                                                   'car_rental', 'car_wash', 'cinema', 'clinic', 'community_centre', 'fire_station', 'fountain',
@@ -1736,7 +1737,8 @@ Layer:
                                                   'bicycle_parking', 'motorcycle_parking', 'pharmacy', 'doctors', 'dentist', 'place_of_worship', 
                                                   'police', 'post_box', 'post_office', 'pub', 'biergarten', 'recycling', 'restaurant', 'food_court', 
                                                   'fast_food', 'telephone', 'emergency_phone', 'taxi', 'theatre', 'toilets', 'drinking_water', 
-                                                  'prison', 'hunting_stand', 'nightclub', 'veterinary', 'social_facility') THEN amenity ELSE NULL END,
+                                                  'prison', 'hunting_stand', 'nightclub', 'veterinary', 'social_facility',
+                                                  'charging_station') THEN amenity ELSE NULL END,
               'shop_' || CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'books', 'butcher', 'clothes', 'computer', 'confectionery', 
                                             'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist', 'garden_centre', 
                                             'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet', 'photo', 'photo_studio', 
@@ -1784,7 +1786,7 @@ Layer:
           FROM planet_osm_point
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
           WHERE aeroway IN ('helipad', 'aerodrome')
-            OR tourism IN ('alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'guest_house', 'hostel', 
+            OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'guest_house', 'hostel', 
                            'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site')
             OR amenity IN ('shelter', 'atm', 'bank', 'bar', 'bicycle_rental', 'bus_station', 'cafe', 
                            'car_rental',  'car_wash', 'cinema', 'clinic', 'community_centre',
@@ -1793,7 +1795,7 @@ Layer:
                            'dentist', 'place_of_worship', 'police', 'post_box', 'post_office', 'pub', 'biergarten', 
                            'recycling', 'restaurant', 'food_court', 'fast_food', 'telephone', 'emergency_phone', 
                            'taxi', 'theatre', 'toilets', 'drinking_water', 'prison', 'hunting_stand', 'nightclub', 
-                           'veterinary', 'social_facility')
+                           'veterinary', 'social_facility', 'charging_station')
             OR shop IS NOT NULL -- skip checking a huge list and use a null check
             OR leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'slipway',
                            'dog_park')
@@ -2046,7 +2048,7 @@ Layer:
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
             COALESCE(
               'aeroway_' || CASE WHEN aeroway IN ('gate', 'apron', 'helipad', 'aerodrome') THEN aeroway ELSE NULL END,
-              'tourism_' || CASE WHEN tourism IN ('alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'guest_house', 'camp_site', 'caravan_site', 
+              'tourism_' || CASE WHEN tourism IN ('artwork', 'alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'guest_house', 'camp_site', 'caravan_site', 
                                                   'theme_park', 'museum', 'zoo', 'information', 'picnic_site') THEN tourism ELSE NULL END,
               'amenity_' || CASE WHEN amenity IN ('pub', 'restaurant', 'food_court', 'cafe', 'fast_food', 'biergarten', 'bar', 'library', 
                                                   'theatre', 'courthouse', 'townhall', 'cinema', 'clinic', 'community_centre', 'parking', 
@@ -2055,7 +2057,7 @@ Layer:
                                                   'school', 'college', 'kindergarten', 'hospital', 'ice_cream', 'pharmacy', 'doctors', 'dentist', 
                                                   'atm', 'bicycle_rental', 'car_rental', 'car_wash', 'post_box', 'post_office',
                                                   'recycling', 'telephone', 'emergency_phone', 'toilets', 'taxi', 'drinking_water', 'hunting_stand', 
-                                                  'nightclub', 'veterinary', 'social_facility') THEN amenity ELSE NULL END,
+                                                  'nightclub', 'veterinary', 'social_facility', 'charging_station') THEN amenity ELSE NULL END,
               'shop_' || CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'books', 'butcher', 'clothes', 'computer', 'confectionery', 
                                             'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist', 'garden_centre', 
                                             'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet', 'photo', 'photo_studio', 
@@ -2104,7 +2106,7 @@ Layer:
           FROM planet_osm_polygon
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
           WHERE (aeroway IN ('gate', 'apron', 'helipad', 'aerodrome')
-              OR tourism IN ('alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'guest_house', 'camp_site', 'caravan_site', 'theme_park', 
+              OR tourism IN ('artwork', 'alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'guest_house', 'camp_site', 'caravan_site', 'theme_park', 
                              'museum', 'viewpoint', 'attraction', 'zoo', 'information', 'picnic_site')
               OR amenity IS NOT NULL -- skip checking a huge list and use a null check
               OR shop IS NOT NULL
@@ -2188,7 +2190,7 @@ Layer:
                 NULL AS way_pixels,
                 COALESCE(
                   'aeroway_' || CASE WHEN aeroway IN ('gate', 'apron', 'helipad', 'aerodrome') THEN aeroway ELSE NULL END,
-                  'tourism_' || CASE WHEN tourism IN ('alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'guest_house', 'camp_site', 'caravan_site', 
+                  'tourism_' || CASE WHEN tourism IN ('artwork', 'alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'guest_house', 'camp_site', 'caravan_site', 
                                                       'theme_park', 'museum', 'zoo', 'information', 'picnic_site') THEN tourism ELSE NULL END,
                   'amenity_' || CASE WHEN amenity IN ('pub', 'restaurant', 'food_court', 'cafe', 'fast_food', 'biergarten', 'bar', 'library', 'theatre', 
                                                       'courthouse', 'townhall', 'cinema', 'clinic', 'community_centre', 'parking', 'bicycle_parking', 
@@ -2196,7 +2198,8 @@ Layer:
                                                       'embassy', 'fuel', 'bus_station', 'prison', 'university', 'school', 'college', 'kindergarten', 'hospital', 
                                                       'ice_cream', 'pharmacy', 'doctors', 'dentist', 'atm', 'bicycle_rental', 'car_rental',
                                                       'car_wash', 'post_box', 'post_office', 'recycling', 'telephone', 'emergency_phone', 'toilets', 'taxi', 
-                                                      'drinking_water', 'hunting_stand', 'nightclub', 'veterinary', 'social_facility') THEN amenity ELSE NULL END,
+                                                      'drinking_water', 'hunting_stand', 'nightclub', 'veterinary', 'social_facility',
+                                                      'charging_station') THEN amenity ELSE NULL END,
                   'shop_' || CASE WHEN shop IN ('supermarket', 'bag','bakery', 'beauty', 'books', 'butcher', 'clothes', 'computer', 'confectionery', 'fashion', 
                                                 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist', 'garden_centre', 'hairdresser', 
                                                 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet', 'photo', 'photo_studio', 'photography', 
@@ -2258,7 +2261,7 @@ Layer:
               FROM planet_osm_point
               -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
               WHERE (aeroway IN ('gate', 'apron', 'helipad', 'aerodrome')
-                  OR tourism IN ('alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'guest_house', 'camp_site', 'caravan_site', 'theme_park', 
+                  OR tourism IN ('artwork', 'alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'guest_house', 'camp_site', 'caravan_site', 'theme_park', 
                                  'museum', 'viewpoint', 'attraction', 'zoo', 'information', 'picnic_site')
                   OR amenity IS NOT NULL -- skip checking a huge list and use a null check
                   OR shop IS NOT NULL
@@ -2429,11 +2432,10 @@ Layer:
             way,
             name,
             admin_level
-          FROM planet_osm_roads
+          FROM planet_osm_polygon
           WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
             AND name IS NOT NULL
-            AND osm_id < 0
           ORDER BY admin_level::integer ASC, way_area DESC
         ) AS admin_text
     properties:

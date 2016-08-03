@@ -41,7 +41,7 @@
 @parking: #f7efb7;
 @place_of_worship: #cdccc9;
 @place_of_worship_outline: #111;
-@playground: #ccfff1;
+@playground: lighten(@park, 5%);
 @power: darken(@industrial, 5%);
 @power-line: darken(@industrial-line, 5%);
 @rest_area: #efc8c8; // also services

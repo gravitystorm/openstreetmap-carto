@@ -114,6 +114,13 @@
     marker-clip: false;
   }
 
+  [feature = 'tourism_artwork'][zoom >= 17] {
+    marker-file: url('symbols/artwork-14.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'tourism_camp_site'][zoom >= 16] {
     marker-file: url('symbols/camping.16.svg');
     marker-fill: @transportation-icon;
@@ -200,6 +207,13 @@
         nozzle/marker-clip: false;
       }
     }
+  }
+
+  [feature = 'amenity_charging_station'][zoom >= 17] {
+    marker-file: url('symbols/charging_station.16.svg');
+    marker-fill: @transportation-icon;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_fuel'][zoom >= 17] {
@@ -635,13 +649,11 @@
     marker-clip: false;
   }
 
-  [feature = 'shop_copyshop'] {
-    [zoom >= 17] {
-      marker-file: url('symbols/copyshop-14.svg');
-      marker-placement: interior;
-      marker-clip: false;
-      marker-fill: @shop-icon;
-    }
+  [feature = 'shop_copyshop'][zoom >= 17] {
+    marker-file: url('symbols/copyshop-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
   }
 
   [feature = 'shop_cosmetics'],
@@ -655,8 +667,10 @@
   }
 
   [feature = 'shop_department_store'][zoom >= 16] {
-    point-file: url('symbols/department_store.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/department_store.p.16.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
   }
 
   [feature = 'shop_doityourself'],
@@ -1313,6 +1327,7 @@
     text-placement: interior;
   }
 
+  [feature = 'tourism_artwork'][zoom >= 17],
   [feature = 'historic_memorial'][zoom >= 17],
   [feature = 'man_made_obelisk'][zoom >= 16],
   [feature = 'historic_monument'][zoom >= 16],
@@ -1738,6 +1753,7 @@
   }
 
   [feature = 'highway_bus_stop'],
+  [feature = 'amenity_charging_station'],
   [feature = 'amenity_fuel'],
   [feature = 'amenity_bus_station'] {
     [zoom >= 17] {

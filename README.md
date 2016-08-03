@@ -63,6 +63,20 @@ that need some cartographic judgement.
 [issues]: https://github.com/gravitystorm/openstreetmap-carto/issues
 [cleverness]: https://github.com/openstreetmap/mapnik-stylesheets/blob/master/inc/settings.xml.inc.template#L16
 
+## Database schema change (v3.x)
+
+The v3.x series will include [osm2pgsql lua transforms](https://github.com/openstreetmap/osm2pgsql/blob/master/docs/lua.md)
+and a hstore column with all other tags, allowing use of more OpenStreetMap data.
+Work is being done in the [lua branch](https://github.com/gravitystorm/openstreetmap-carto/tree/lua)
+and issues have their own [tag](https://github.com/gravitystorm/openstreetmap-carto/issues?q=is%3Aopen+is%3Aissue+label%3Alua).
+
+Initial releases will not make use of the new features, maintaining compatibility
+with v2.x and v2.x releases will continue with backports, allowing the style to be
+rendered from either a new database or an old one.
+
+When sufficient time has passed for users to reload their databases, new features
+can be used and 2.x compatibility will not be maintained.
+
 # Alternatives
 
 There are many open-source stylesheets written for creating OpenStreetMap-based
