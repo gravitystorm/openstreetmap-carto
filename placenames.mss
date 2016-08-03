@@ -6,11 +6,7 @@
 .country {
   [admin_level = '2'][zoom >= 3][way_pixels > 1000][way_pixels < 360000] {
     text-name: "[name]";
-    text-size: 9;
-
-    [zoom >= 3] {
-      text-size: 10;
-    }
+    text-size: 10;
     [zoom >= 4] {
       text-size: 11;
     }
@@ -23,7 +19,6 @@
     [zoom >= 10] {
       text-size: 14;
     }
-
     text-fill: @country-labels;
     text-face-name: @book-fonts;
     text-halo-fill: rgba(255,255,255,0.6);
