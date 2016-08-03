@@ -649,13 +649,11 @@
     marker-clip: false;
   }
 
-  [feature = 'shop_copyshop'] {
-    [zoom >= 17] {
-      marker-file: url('symbols/copyshop-14.svg');
-      marker-placement: interior;
-      marker-clip: false;
-      marker-fill: @shop-icon;
-    }
+  [feature = 'shop_copyshop'][zoom >= 17] {
+    marker-file: url('symbols/copyshop-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
   }
 
   [feature = 'shop_cosmetics'],
@@ -669,10 +667,10 @@
   }
 
   [feature = 'shop_department_store'][zoom >= 16] {
-      marker-file: url('symbols/department_store.p.16.svg');
-      marker-placement: interior;
-      marker-clip: false;
-      marker-fill: @shop-icon;
+    marker-file: url('symbols/department_store.p.16.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
   }
 
   [feature = 'shop_doityourself'],
