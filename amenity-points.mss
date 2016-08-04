@@ -930,9 +930,9 @@
   }
 
   [feature = 'leisure_dog_park'][zoom >= 17] {
-    marker-file: url('symbols/dog_park.16.svg');
+    marker-file: url('symbols/shop_pet.16.svg');
     marker-placement: interior;
-    marker-fill: darken(@park, 60%);
+    marker-fill: @amenity-brown;
     marker-clip: false;
   }
 
@@ -1395,7 +1395,8 @@
     }
   }
 
-  [feature = 'leisure_playground'] {
+  [feature = 'leisure_playground'],
+  [feature = 'leisure_dog_park'] {
     [way_area >= 150000][zoom >= 14],
     [way_area >= 80000][zoom >= 15],
     [way_area >= 20000][zoom >= 16],
