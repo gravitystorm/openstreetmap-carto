@@ -2472,7 +2472,7 @@ Layer:
             way,
             COALESCE(
               'highway_' || CASE WHEN highway IN ('mini_roundabout') THEN highway ELSE NULL END,
-              'railway_' || CASE WHEN railway IN ('level_crossing') THEN railway ELSE NULL END,
+              'railway_' || CASE WHEN railway IN ('level_crossing', 'crossing') THEN railway ELSE NULL END,
               'amenity_' || CASE WHEN amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'bench', 'waste_basket') THEN amenity ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('wayside_cross') THEN historic ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('cross') THEN man_made ELSE NULL END,
@@ -2482,7 +2482,7 @@ Layer:
             CASE WHEN amenity='waste_basket' THEN 2 ELSE 1 END AS prio
           FROM planet_osm_point p
           WHERE highway IN ('mini_roundabout')
-             OR railway IN ('level_crossing')
+             OR railway IN ('level_crossing', 'crossing')
              OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'bench', 'waste_basket')
              OR historic IN ('wayside_cross')
              OR man_made IN ('cross')
