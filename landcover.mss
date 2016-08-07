@@ -22,13 +22,13 @@
 @farmland: #fbecd7;         // Lch(94,12,80) (Also used for farm)
 @farmland-line: #d6c4ab;    // Lch(80,15,80)
 
-@farmyard: #EFD6B5;         // Lch(87,20,80)
+@farmyard: #f5dcba;         // Lch(89,20,80)
 @farmyard-line: #D1B48C;    // Lch(75,25,80)
 
 // --- Other ----
 
 @aerodrome: #e9e7e2;
-@allotments: #e5c7ab;
+@allotments: #eecfb3;       // Lch(85,19,70)
 @apron: #e9d1ff;
 @bare_ground: #eee5dc;
 @campsite: #def6c0; // also caravan_site, picnic_site
@@ -241,7 +241,7 @@
   }
 
   [feature = 'landuse_allotments'] {
-    [zoom >= 10][zoom < 14] {
+    [zoom >= 10] {
       polygon-fill: @allotments;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
