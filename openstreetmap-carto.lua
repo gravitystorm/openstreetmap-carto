@@ -27,7 +27,6 @@ local polygon_keys = {
     'power',
     'public_transport',
     'shop',
-    'sport',
     'tourism',
     'water',
     'waterway',
