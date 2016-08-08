@@ -1083,7 +1083,8 @@
     }
   }
 
-  [feature = 'railway_level_crossing'][zoom >= 14]::railway {
+  [feature = 'railway_level_crossing'][zoom >= 14]::railway,
+  [feature = 'railway_crossing'][zoom >= 15]::railway{
     point-file: url('symbols/level_crossing.svg');
     point-placement: interior;
     [zoom >= 16] {
