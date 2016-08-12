@@ -677,8 +677,8 @@ Layer:
     properties:
       minzoom: 14
     advanced: {}
-  - id: "cliffs"
-    name: "cliffs"
+  - id: "relief-symbol"
+    name: "relief-symbol"
     class: ""
     geometry: "linestring"
     <<: *extents
@@ -686,12 +686,12 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, "natural", man_made
+            way, "natural", name, ST_Length(way)/NULLIF(SQRT(!pixel_width!::real*!pixel_height!::real),0) AS way_length, man_made
           FROM planet_osm_line
-          WHERE "natural" = 'cliff' OR man_made = 'embankment'
-        ) AS cliffs
+          WHERE "natural" in ('cliff', 'arete', 'ridge') OR man_made = 'embankment'
+        ) AS "relief-symbol"
     properties:
-      minzoom: 13
+      minzoom: 10
     advanced: {}
   - id: "area-barriers"
     name: "area-barriers"
@@ -1735,7 +1735,7 @@ Layer:
                                             'video_games', 'watches', 'wholesale', 'yes') THEN 'other' ELSE NULL END,
               'leisure_' || CASE WHEN leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table') THEN leisure ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill', 'obelisk') THEN man_made ELSE NULL END,
-              'natural_' || CASE WHEN "natural" IN ('spring') THEN "natural" ELSE NULL END,
+              'natural_' || CASE WHEN "natural" IN ('spring', 'valley', 'ridge', 'cliff', 'arete', 'dale', 'gorge', 'couloir', 'mountain_range', 'massif') THEN "natural" ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site') THEN historic ELSE NULL END,
               'highway_'|| CASE WHEN highway IN ('bus_stop', 'elevator', 'traffic_signals') THEN highway ELSE NULL END,
               'power_' || CASE WHEN power IN ('generator') THEN power ELSE NULL END,
@@ -1746,6 +1746,7 @@ Layer:
             denomination,
             "generator:source",
             power_source,
+            name,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
@@ -1763,7 +1764,7 @@ Layer:
             OR shop IS NOT NULL -- skip checking a huge list and use a null check
             OR leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table')
             OR man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill', 'obelisk')
-            OR "natural" IN ('spring')
+            OR "natural" IN ('spring', 'valley', 'ridge', 'cliff', 'arete', 'dale', 'gorge', 'couloir', 'mountain_range', 'massif')
             OR historic IN ('memorial', 'monument', 'archaeological_site')
             OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
             OR (power = 'generator' AND ("generator:source" = 'wind' OR power_source = 'wind'))
@@ -2221,12 +2222,13 @@ Layer:
             name,
             operator,
             ref,
+            ST_Length(way)/NULLIF(SQRT(!pixel_width!::real*!pixel_height!::real),0) AS way_length,
             NULL AS way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
           FROM planet_osm_line
           WHERE (man_made IN ('pier', 'breakwater', 'groyne', 'embankment')
               OR waterway IN ('dam', 'weir')
-              OR "natural" IN ('cliff'))
+              OR "natural" IN ('cliff', 'ridge', 'valley', 'glacier', 'arete', 'dale', 'gorge', 'couloir', 'mountain_range', 'massif'))
             AND name IS NOT NULL
         ) AS text_line
     advanced: {}
