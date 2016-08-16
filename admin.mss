@@ -22,7 +22,7 @@
     text-min-padding: 50;
     text-min-distance: 50;
     text-max-char-angle-delta: 10;
-    text-dy: -7;
+    text-dy: -4;
   }
 }
 
@@ -142,7 +142,7 @@
     [zoom >= 16] {
       line-color: purple;
       line-width: 1.5;
-      line-dasharray: 5,6;
+      line-dasharray: 3,5;
     }
   }
 }
