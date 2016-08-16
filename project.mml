@@ -1172,7 +1172,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,oneway,junction,toll,\n       coalesce(highway,aeroway) as highway,\n       horse,bicycle,foot,construction,coalesce(tags->'footway','') as footway, \n       case when coalesce(tunnel,covered) in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel,\n       case when bridge in ('yes','true','1','viaduct') then 'yes'::text else 'no'::text end as bridge,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'spur-siding-yard'::text else railway end as railway,\n       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service,\n   case  when (z_order<10 and z_order>3 and highway in ('motorway_link','trunk_link','primary_link','secondary_link','tertiary_link')) then 4+(z_order/10)  when (z_order<10 and z_order>3 and highway='tertiary') then 5 else z_order end as zz_order   from planet_osm_line\n       where (highway is not null\n          or aeroway in ('runway','taxiway','taxipath','parking_position')\n          or railway in ('light_rail','narrow_gauge','funicular','rail','subway','tram','spur','siding','platform','disused','abandoned','construction','miniature','turntable')) and route is null\n       order by zz_order) as roads",
+        "table": "      (select way,oneway,junction,toll,\n       coalesce(highway,aeroway) as highway,\n       horse,bicycle,foot,construction,coalesce(tags->'footway','') as footway, \n       case when coalesce(tunnel,covered) in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel,\n       case when bridge in ('yes','true','1','viaduct') then 'yes'::text else 'no'::text end as bridge,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'spur-siding-yard'::text else railway end as railway,\n       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service,\n   case  when (z_order<10 and z_order>3 and highway in ('motorway_link','trunk_link','primary_link','secondary_link','tertiary_link')) then 4+(z_order/10)  when (z_order<10 and z_order>3 and highway='tertiary') then 5 else z_order end as zz_order   from planet_osm_line\n       where (highway is not null\n          or aeroway in ('runway','taxiway','taxipath','parking_position')\n          or railway in ('light_rail','narrow_gauge','funicular','rail','subway','tram','spur','siding','platform','disused','abandoned','construction','miniature','turntable')) and route is null and z_order<0 \n       order by zz_order) as roads",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
@@ -1186,7 +1186,67 @@
         "password": "m4d31nfr4nc3"
       },
       "id": "minor-roads-fill",
-      "class": "",
+      "class": "minor-roads-fill",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "minor-roads-fill-tunnels"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select '-1' as oneway ,tunnel, coalesce(tags->'footway','') as footway, case when oneway in ('yes','true','1') or junction='roundabout' then ST_Reverse(way) else way end as way from planet_osm_line  where way && !bbox! and ((oneway is not null and oneway not in ('no','false','0')) or (junction='roundabout')) and (highway is not null or railway is not null or waterway is not null)  and (bridge is null or bridge not in ('yes','true','1','viaduct')) AND z_order<0) as directions",
+        "extent_cache": "custom",
+        "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "osm",
+        "asynchronous_request": "true",
+        "max_async_connection": "6",
+        "srid": "900913",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
+      },
+      "id": "direction-tunnels",
+      "class": "directions",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "direction-tunnels"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427098,
+        179.99999692067183,
+        84.96651228427099
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "      (select way,oneway,junction,toll,\n       coalesce(highway,aeroway) as highway,\n       horse,bicycle,foot,construction,coalesce(tags->'footway','') as footway, \n       case when coalesce(tunnel,covered) in ('yes','true','1') then 'yes'::text else 'no'::text end as tunnel,\n       case when bridge in ('yes','true','1','viaduct') then 'yes'::text else 'no'::text end as bridge,\n       case when railway in ('spur','siding')\n              or (railway='rail' and service in ('spur','siding','yard'))\n            then 'spur-siding-yard'::text else railway end as railway,\n       case when service in ('parking_aisle','drive-through','driveway') then 'INT-minor'::text else 'INT-normal'::text end as service,\n   case  when (z_order<10 and z_order>3 and highway in ('motorway_link','trunk_link','primary_link','secondary_link','tertiary_link')) then 4+(z_order/10)  when (z_order<10 and z_order>3 and highway='tertiary') then 5 else z_order end as zz_order   from planet_osm_line\n       where (highway is not null\n          or aeroway in ('runway','taxiway','taxipath','parking_position')\n          or railway in ('light_rail','narrow_gauge','funicular','rail','subway','tram','spur','siding','platform','disused','abandoned','construction','miniature','turntable')) and route is null and z_order>=0\n       order by zz_order) as roads",
+        "extent_cache": "custom",
+        "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "osm",
+        "asynchronous_request": "true",
+        "max_async_connection": "6",
+        "srid": "900913",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
+      },
+      "id": "minor-roads-fill",
+      "class": "minor-roads-fill",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
@@ -1411,7 +1471,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select '-1' as oneway ,tunnel, coalesce(tags->'footway','') as footway, case when oneway in ('yes','true','1') or junction='roundabout' then ST_Reverse(way) else way end as way from planet_osm_line  where way && !bbox! and ((oneway is not null and oneway not in ('no','false','0')) or (junction='roundabout')) and (highway is not null or railway is not null or waterway is not null)  and (bridge is null or bridge not in ('yes','true','1','viaduct'))) as directions",
+        "table": "(select '-1' as oneway ,tunnel, coalesce(tags->'footway','') as footway, case when oneway in ('yes','true','1') or junction='roundabout' then ST_Reverse(way) else way end as way from planet_osm_line  where way && !bbox! and ((oneway is not null and oneway not in ('no','false','0')) or (junction='roundabout')) and (highway is not null or railway is not null or waterway is not null)  and (bridge is null or bridge not in ('yes','true','1','viaduct')) AND z_order>=0) as directions",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",

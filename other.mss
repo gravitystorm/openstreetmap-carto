@@ -1629,7 +1629,7 @@
 }
 
 
-#minor-roads-fill {
+.minor-roads-fill {
 
   /*
    * The construction rules for small roads are strange, since if construction is null its assumed that
@@ -2174,8 +2174,8 @@
     		line-smooth: 0.7;
         line-color: grey;
         line-width: 2;
-        line-dasharray: 2,4;
-        [railway = 'abandoned'] {line-dasharray: 2,6;}
+        line-dasharray: 1,6;
+        [railway = 'abandoned'] {line-dasharray: 1,10;}
         line-join: round;
       }
     }
@@ -3630,66 +3630,65 @@
 }
 
 .directions [zoom >= 16] {
-    [oneway = 'yes'][footway=''],
-    [oneway = 'yes'][footway!=''][zoom>=19]
-    {
-      a/line-width: 1;
-      a/line-dasharray: 0,12,10,152;
-      a/line-color: #6c70d5;
-      a/line-join: bevel;
-      a/line-clip: false;
-      b/line-width: 2;
-      b/line-dasharray: 0,12,9,153;
-      b/line-color: #6c70d5;
-      b/line-join: bevel;
-      b/line-clip: false;
-      c/line-width: 3;
-      c/line-dasharray: 0,18,2,154;
-      c/line-color: #6c70d5;
-      c/line-join: bevel;
-      c/line-clip: false;
-      d/line-width: 4;
-      d/line-dasharray: 0,18,1,155;
-      d/line-color: #6c70d5;
-      d/line-join: bevel;
-      d/line-clip: false;
+  [oneway = 'yes'][footway=''],
+  [oneway = 'yes'][footway!=''][zoom>=19]
+  {
+    a/line-width: 1;
+    a/line-dasharray: 0,12,10,152;
+    a/line-color: #6c70d5;
+    a/line-join: bevel;
+    a/line-clip: false;
+    b/line-width: 2;
+    b/line-dasharray: 0,12,9,153;
+    b/line-color: #6c70d5;
+    b/line-join: bevel;
+    b/line-clip: false;
+    c/line-width: 3;
+    c/line-dasharray: 0,18,2,154;
+    c/line-color: #6c70d5;
+    c/line-join: bevel;
+    c/line-clip: false;
+    d/line-width: 4;
+    d/line-dasharray: 0,18,1,155;
+    d/line-color: #6c70d5;
+    d/line-join: bevel;
+    d/line-clip: false;
 		[tunnel='yes'] {
-			  a/line-color: #999;
-			  b/line-color: #999;
-			  c/line-color: #999;
-			  d/line-color: #999;
+		  a/line-color: #999;
+		  b/line-color: #999;
+		  c/line-color: #999;
+		  d/line-color: #999;
 		}
+  }
 
-    }
-
-    [oneway = '-1'][footway=''],
-    [oneway = '-1'][footway!=''][zoom>=19]
-    {
-      a/line-width: 1;
-      a/line-dasharray: 0,12,10,152;
-      a/line-color: #6c70d5;
-      a/line-join: bevel;
-      a/line-clip: false;
-      b/line-width: 2;
-      b/line-dasharray: 0,13,9,152;
-      b/line-color: #6c70d5;
-      b/line-join: bevel;
-      b/line-clip: false;
-      c/line-width: 3;
-      c/line-dasharray: 0,14,2,158;
-      c/line-color: #6c70d5;
-      c/line-join: bevel;
-      c/line-clip: false;
-      d/line-width: 4;
-      d/line-dasharray: 0,15,1,158;
-      d/line-color: #6c70d5;
-      d/line-join: bevel;
-      d/line-clip: false;
+  [oneway = '-1'][footway=''],
+  [oneway = '-1'][footway!=''][zoom>=19]
+  {
+    a/line-width: 1;
+    a/line-dasharray: 0,12,10,152;
+    a/line-color: #6c70d5;
+    a/line-join: bevel;
+    a/line-clip: false;
+    b/line-width: 2;
+    b/line-dasharray: 0,13,9,152;
+    b/line-color: #6c70d5;
+    b/line-join: bevel;
+    b/line-clip: false;
+    c/line-width: 3;
+    c/line-dasharray: 0,14,2,158;
+    c/line-color: #6c70d5;
+    c/line-join: bevel;
+    c/line-clip: false;
+    d/line-width: 4;
+    d/line-dasharray: 0,15,1,158;
+    d/line-color: #6c70d5;
+    d/line-join: bevel;
+    d/line-clip: false;
 		[tunnel='yes'] {
-			  a/line-color: #999;
-			  b/line-color: #999;
-			  c/line-color: #999;
-			  d/line-color: #999;
+		  a/line-color: #999;
+		  b/line-color: #999;
+		  c/line-color: #999;
+		  d/line-color: #999;
 		}
 	}
 }
