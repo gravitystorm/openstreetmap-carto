@@ -196,7 +196,7 @@
   }
 }
 
-#area-text [zoom >= 8]{
+#area-text [zoom >= 8] {
   [way_area >= 150000][zoom >= 14]::long,
   [way_area >= 80000][zoom >= 15]::long,
   [way_area >= 20000][zoom >= 16]::long,
@@ -218,52 +218,53 @@
     	text-label-position-tolerance: 8;
     }
     [heritage!=''] {
-	 	text-fill: #734a08;
-		text-face-name: @bold-fonts;
-	}
+  	 	text-fill: #734a08;
+  		text-face-name: @bold-fonts;
+  	}
 
 // variation de la texte du texte en fonction de la surface du polygone
     text-size: 10;
-    [zoom>=15][way_area>50000],[zoom>=16][way_area>25000],[zoom>=17][way_area>10000],[zoom>=18][way_area> 5000]
-	{ text-size: 12; text-label-position-tolerance: 6;}
-    [zoom>=15][way_area>250000],[zoom>=16][way_area>100000],[zoom>=17][way_area>25000],[zoom>=18][way_area>10000]
-	{ text-size: 14; text-label-position-tolerance: 7;}
+    [zoom>=15][way_area>50000],[zoom>=16][way_area>25000],[zoom>=17][way_area>10000],[zoom>=18][way_area> 5000] {
+      text-size: 12; text-label-position-tolerance: 6;
+    }
+    [zoom>=15][way_area>250000],[zoom>=16][way_area>100000],[zoom>=17][way_area>25000],[zoom>=18][way_area>10000] {
+      text-size: 14; text-label-position-tolerance: 7;
+    }
 
 // variation de la couleur en fonction du type
     text-fill: black;
     [landuse!=''] {
-	text-face-name: @oblique-fonts;
-	text-fill: #444;
-	[landuse='water'] {text-fill: #068;}
+    	text-face-name: @oblique-fonts;
+    	text-fill: #444;
+    	[landuse='water'] {text-fill: #068;}
     }
     [leisure!=''] {text-face-name: @oblique-fonts; text-fill: #060;} /* italique grisé pour les landuse */
-
   }
 
   /* placement du nom court si le long n'a pas pu trouver de place... et si il est différent ! */
-	  [way_area >= 150000][zoom >= 14]::short,
-	  [way_area >= 80000][zoom >= 15]::short,
-	  [way_area >= 20000][zoom >= 16]::short,
-	  [zoom >= 17]::short {
-		[boundary!=''] {
-			text-face-name: @oblique-fonts;
-			text-fill: #003;
-			text-halo-radius: 2;
-			text-halo-fill: fadeout(white, 30%);
-		}
-		text-name: "[nom]";
-		text-face-name: @book-fonts;
-		text-size: 10;
- 		[zoom>=15][way_area>50000],
- 		[zoom>=16][way_area>25000],
- 		[zoom>=17][way_area>10000],
-		[zoom>=18][way_area> 5000] { text-size: 12; text-label-position-tolerance: 6;}
-		text-fill: #000;
-		text-halo-radius: 1;
-		text-wrap-width: 20;
-		[landuse!=''] {text-face-name: @oblique-fonts; text-fill: #444;} /* italique grisé pour les landuse */
- 		[leisure!=''] {text-face-name: @oblique-fonts; text-fill: #060;} /* italique grisé pour les landuse */
-	  }
+  [way_area >= 150000][zoom >= 14]::short,
+  [way_area >= 80000][zoom >= 15]::short,
+  [way_area >= 20000][zoom >= 16]::short,
+  [zoom >= 17]::short {
+  	[boundary!=''] {
+  		text-face-name: @oblique-fonts;
+  		text-fill: #003;
+  		text-halo-radius: 2;
+  		text-halo-fill: fadeout(white, 30%);
+  	}
+  	text-name: "[nom]";
+  	text-face-name: @book-fonts;
+  	text-size: 10;
+  		[zoom>=15][way_area>50000],
+  		[zoom>=16][way_area>25000],
+  		[zoom>=17][way_area>10000],
+  	[zoom>=18][way_area> 5000] { text-size: 12; text-label-position-tolerance: 6;}
+  	text-fill: #000;
+  	text-halo-radius: 1;
+  	text-wrap-width: 20;
+  	[landuse!=''] {text-face-name: @oblique-fonts; text-fill: #444;} /* italique grisé pour les landuse */
+  	[leisure!=''] {text-face-name: @oblique-fonts; text-fill: #060;} /* italique grisé pour leisure */
+  }
 }
 
 #highway-junctions {
