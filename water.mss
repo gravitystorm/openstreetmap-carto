@@ -24,7 +24,7 @@
       polygon-gamma: 0.75;
       polygon-fill: @water-color;
   }
-  
+
   [water = 'intermittent'][zoom >= 13]::landuse,
   [landuse = 'salt_pond'][zoom >= 13]::landuse,
   [landuse = 'basin'][zoom >= 13]::landuse {
@@ -121,24 +121,28 @@
       line-width: 3;
       text-name: "[name]";
       text-face-name: @oblique-fonts;
+      [boat!='no'] { text-face-name: @bold-oblique-fonts;}
       text-placement: line;
       text-fill: #6699cc;
       text-spacing: 400;
-      text-character-spacing: 4;
+      text-character-spacing: 2;
       text-size: 9;
       text-halo-radius: 1;
-      [cemt='IV'],[cemt='V'],[cemt='Va'],[cemt='Vb'] {text-size: 12;}
-      [cemt='VI'],[cemt='VIa'],[cemt='VIb'],[cemt='VIc'],[cemt='VII'] {text-size: 13;}
+      [cemt=~'V'] {text-size: 12;} // larger river name for CEMT class IV and above...
     }
     [zoom >= 14] {
       line-width: 5;
       text-size: 10;
+      [cemt='I'],[cemt='II'],[cemt='III'] {text-size: 12;}
+      [cemt=~'V'] {text-size: 14;}
     }
     [zoom >= 15] {
       line-width: 6;
     }
     [zoom >= 17] {
       line-width: 10;
+      [cemt='I'],[cemt='II'],[cemt='III'] {text-size: 14;}
+      [cemt=~'V'] {text-size: 16;}
     }
     [zoom >= 18] {
       line-width: 12;
@@ -175,6 +179,7 @@
       line-width: 4;
       text-name: "[name]";
       text-face-name: @book-fonts;
+      [boat!='no'] { text-face-name: @bold-oblique-fonts;}
       text-halo-radius: 1;
       text-size: 8;
       text-placement: line;
@@ -248,6 +253,7 @@
     text-fill: #6699cc;
     text-placement: line;
     text-face-name: @book-fonts;
+    [boat!='no'] { text-face-name: @bold-oblique-fonts;}
     text-halo-radius: 1;
     [lock = 'yes'][zoom >= 17] {
       text-placement: point;

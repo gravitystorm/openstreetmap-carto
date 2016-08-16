@@ -6,6 +6,7 @@ Map {
 @book-fonts: "DejaVu Sans Book", "unifont Medium";
 @bold-fonts: "DejaVu Sans Bold", "unifont Medium";
 @oblique-fonts: "DejaVu Sans Oblique", "unifont Medium";
+@bold-oblique-fonts: "DejaVu Sans Bold Oblique", "unifont Medium";
 
 @water-color: #b5d0d0;
 @land-color: #f2efe9;
@@ -101,43 +102,43 @@ Map {
   [cycleway='share_busway']    {    line-width: 4; line-color: @couleur-voie;  line-opacity: 0.7;  }
   [cycleway_l='share_busway']  {    line-width: 4; line-color: @couleur-voie;  line-opacity: 0.7;  }
   [cycleway_r='share_busway']  {    line-width: 4; line-color: @couleur-voie;  line-opacity: 0.7;  }
-  
+
   // pistes (vert épais)
   [cycleway='track']    {    line-width: 4; line-color:@couleur-piste;  line-opacity: 0.7;  }
   [cycleway_l='track']  {    line-width: 4; line-color:@couleur-piste;  line-opacity: 0.7;  }
   [cycleway_r='track']  {    line-width: 4; line-color:@couleur-piste;  line-opacity: 0.7;  }
   [highway='cycleway']  {    line-width: 4; line-color:@couleur-piste; line-opacity: 0.7;  }
- 
+
   // inconnu
   [highway='footway']  {  line-dasharray: 8,6;  }
   [highway='path']  {  line-dasharray: 8,6;  }
 
   // interdit vélo (rouge)
   [bicycle='no'] {
-    line-width: 4;  
+    line-width: 4;
     line-color: @couleur-interdit;
-    line-opacity: 0.7; 
-  }
-  
-  // autorisé vélo (bleu)
-  [bicycle='yes'] {
-    line-width: 4;  
-    line-color: @couleur-autorise;
-    line-opacity: 0.7; 
-  }
-  
-  [bicycle='designated'] {
-    line-width: 4;  
+    line-opacity: 0.7;
   }
 
- 
+  // autorisé vélo (bleu)
+  [bicycle='yes'] {
+    line-width: 4;
+    line-color: @couleur-autorise;
+    line-opacity: 0.7;
+  }
+
+  [bicycle='designated'] {
+    line-width: 4;
+  }
+
+
   [route='bicycle'] {
     line-color: @route;
     line-width: 6;
     line-opacity: 0.5;
     line-dasharray: 6,12;
   }
-  
+
   line-width:4;
   line-color:#666;
   line-opacity: 0.5;
