@@ -113,7 +113,6 @@
     line-width: 2;
   }
 
-  [zoom >= 17][highway = 'platform'],
   [zoom >= 17][railway = 'platform'][tunnel!='yes'] {
       line-color: grey;
       line-width: 2;
@@ -150,7 +149,6 @@
     polygon-fill: #dfcc66;
   }
 
-  [highway = 'platform'],
   [railway = 'platform'][tunnel!='yes'] {
     [zoom >= 17] {
       polygon-fill: #bbbbbb;
@@ -219,11 +217,11 @@
     	text-halo-fill: fadeout(white, 30%);
     	text-label-position-tolerance: 8;
     }
-    [heritage!=''] { 
+    [heritage!=''] {
 	 	text-fill: #734a08;
 		text-face-name: @bold-fonts;
 	}
- 
+
 // variation de la texte du texte en fonction de la surface du polygone
     text-size: 10;
     [zoom>=15][way_area>50000],[zoom>=16][way_area>25000],[zoom>=17][way_area>10000],[zoom>=18][way_area> 5000]
@@ -504,7 +502,7 @@
       }
     }
   }
-  
+
   [natural = 'cave_entrance'][zoom >= 15]::natural {
     text-name: "[name]";
     text-size: 10;
@@ -870,7 +868,7 @@
 	  text-wrap-width: 14;
 	  text-placement: interior;
 		text-label-position-tolerance: 0;
-		
+
 	  [zoom<=16] {
 		[ecole != '']
 		{
@@ -966,7 +964,7 @@
 			text-halo-radius: 1;
 		 	text-wrap-width: 15;
 			text-placement: interior;
-	  		
+
 	  		[amenity = 'vehicle_inspection'],
 	  		[shop = 'bakery'],
 	  		[shop = 'beverages'],
@@ -998,7 +996,7 @@
 	  		{
 				text-dy: 8;
 			}
-			
+
 	  		[shop = 'furniture'],
 	  		[shop = 'interior_decoration'],
 	  		[shop = 'hairdresser'],
@@ -1022,7 +1020,7 @@
 			text-halo-radius: 1;
 		 	text-wrap-width: 15;
 			text-placement: interior;
-	  		
+
 	  		[amenity = 'vehicle_inspection'],
 	  		[shop = 'bakery'],
 	  		[shop = 'beverages'],
@@ -1054,7 +1052,7 @@
 	  		{
 				text-dy: 10;
 			}
-			
+
 	  		[shop = 'alcohol'],
 	  		[shop = 'furniture'],
 	  		[shop = 'interior_decoration'],
@@ -1101,7 +1099,7 @@
 		}
 	  }
   }
-  
+
   [military = 'danger_area'][zoom >= 12]::military {
     text-name: "[name]";
     text-size: 9;
@@ -1161,7 +1159,7 @@
       line-dasharray: 4,2;
       line-clip: false;
       line-smooth: 0.7;
-      
+
     }
     [zoom >= 13] { line-width: 8; }
     [zoom >= 15] { line-width: 11; }
@@ -1483,7 +1481,7 @@
 #minor-roads-casing {
   [zoom>=16][zoom<19][junction = 'roundabout'] { line-clip: false; line-smooth: 0.8; }
   // [zoom>=19][highway != ''] { line-clip: false; line-smooth: 1; }
-  
+
   [highway = 'motorway'][tunnel != 'yes'] {
     [zoom >= 12] {
       line-width: 3;
@@ -1646,7 +1644,7 @@
    */
   [zoom>=16][zoom<19][junction = 'roundabout'] { line-clip: false; line-smooth: 0.8; }
   // [zoom>=19][highway != ''] { line-clip: false; line-smooth: 1; }
-  
+
   [highway = 'proposed'],
   [highway = 'construction'] {
     [zoom >= 12] {
@@ -1700,7 +1698,7 @@
       b/line-width: 2;
       b/line-dasharray: 4,2;
       b/line-color: white;
-      
+
       [zoom >= 13] {
         line-width: 4;
         b/line-width: 3.5;
@@ -1903,7 +1901,7 @@
   [highway = 'steps'][zoom >= 15] {
     line-width: 5.0;
     line-color: salmon;
-    line-dasharray: 2,1;    
+    line-dasharray: 2,1;
   }
 
   [highway = 'bridleway'],
@@ -2017,24 +2015,23 @@
     }
   }
 
-  ::railway {
     [railway = 'rail'][tunnel = 'yes'][zoom >= 13],
     [railway = 'spur-siding-yard'][tunnel = 'yes'][zoom >= 13] {
-	a/line-clip: false;
-	b/line-clip: false;
-	c/line-clip: false;
-	d/line-clip: false;
-	e/line-clip: false;
-	f/line-clip: false;
-	g/line-clip: false;
-	a/line-smooth: 0.7;
-	b/line-smooth: 0.7;
-	c/line-smooth: 0.7;
-	f/line-smooth: 0.7;
-	d/line-smooth: 0.7;
-	e/line-smooth: 0.7;
-	f/line-smooth: 0.7;
-	g/line-smooth: 0.7;
+      a/line-clip: false;
+    	b/line-clip: false;
+    	c/line-clip: false;
+    	d/line-clip: false;
+    	e/line-clip: false;
+    	f/line-clip: false;
+    	g/line-clip: false;
+    	a/line-smooth: 0.7;
+    	b/line-smooth: 0.7;
+    	c/line-smooth: 0.7;
+    	f/line-smooth: 0.7;
+    	d/line-smooth: 0.7;
+    	e/line-smooth: 0.7;
+    	f/line-smooth: 0.7;
+    	g/line-smooth: 0.7;
       a/line-width: 3;
       b/line-width: 3;
       c/line-width: 3;
@@ -2075,10 +2072,10 @@
     }
 
     [railway = 'rail'][tunnel != 'yes'][zoom >= 13] {
-	a/line-clip: false;
-	b/line-clip: false;
-	a/line-smooth: 0.7;
-	b/line-smooth: 0.7;
+    	a/line-clip: false;
+    	b/line-clip: false;
+    	a/line-smooth: 0.7;
+    	b/line-smooth: 0.7;
       a/line-width: 3;
       a/line-color: #888;
       a/line-join: round;
@@ -2092,8 +2089,8 @@
     }
 
     [railway = 'spur-siding-yard'][zoom >= 11] {
-	  a/line-clip: false;
-	  a/line-smooth: 0.7;
+  	  a/line-clip: false;
+  	  a/line-smooth: 0.7;
       a/line-width: 0.5;
       a/line-color: #aaa;
       a/line-join: round;
@@ -2104,8 +2101,8 @@
         b/line-dasharray: 0,8,11,1;
         b/line-color: white;
         b/line-join: round;
-		b/line-clip: false;
-		b/line-smooth: 0.7;
+    		b/line-clip: false;
+    		b/line-smooth: 0.7;
       }
     }
 
@@ -2121,12 +2118,12 @@
           b/line-width: 4;
           c/line-color: #aaa;
           c/line-width: 1.5;
-	a/line-clip: false;
-	b/line-clip: false;
-	c/line-clip: false;
-	a/line-smooth: 0.7;
-	b/line-smooth: 0.7;
-	c/line-smooth: 0.7;
+        	a/line-clip: false;
+        	b/line-clip: false;
+        	c/line-clip: false;
+        	a/line-smooth: 0.7;
+        	b/line-smooth: 0.7;
+        	c/line-smooth: 0.7;
         }
       }
     }
@@ -2173,8 +2170,8 @@
     [railway = 'abandoned'],
     [railway = 'construction'] { /* and not [highway] != '' <- todo */
       [zoom >= 13] {
-		line-clip: false;
-		line-smooth: 0.7;
+    		line-clip: false;
+    		line-smooth: 0.7;
         line-color: grey;
         line-width: 2;
         line-dasharray: 2,4;
@@ -2200,7 +2197,7 @@
       line-width: 1.5;
       line-color: #999;
     }
-  }
+
 
   /* these are aeroway tags */
   [highway = 'runway'][zoom >= 11][zoom < 14] {
@@ -3088,7 +3085,7 @@
 		  [zoom >= 11] { line-width: 2.5; }
 		}
 	  }
-	
+
 	  [highway = 'trunk'],
 	  [highway = 'trunk_link'] {
 		[zoom >= 5][zoom < 12] {
@@ -3102,7 +3099,7 @@
 		  [zoom >= 11] { line-width: 2.5; }
 		}
 	  }
-	
+
 	  [highway = 'primary'],
 	  [highway = 'primary_link'] {
 		[zoom >= 7][zoom < 12] {
@@ -3113,7 +3110,7 @@
 		  [zoom >= 11] { line-width: 2.5; }
 		}
 	  }
-	
+
 	  [highway = 'secondary'],
 	  [highway = 'secondary_link'] {
 		[zoom >= 9][zoom < 12] {
@@ -3122,7 +3119,7 @@
 		  [zoom >= 11] { line-width: 2; }
 		}
 	  }
-	
+
 	  ::railway {
 		[railway = 'rail'][zoom >= 6][zoom < 13] {
 		  line-width: 0.6;
@@ -3133,7 +3130,7 @@
 			line-dasharray: 5,2;
 		  }
 		}
-	
+
 		[railway = 'tram'],
 		[railway = 'light_rail'],
 		[railway = 'narrow_gauge'],
@@ -3144,7 +3141,7 @@
 			[zoom >= 10] { line-color: #aaa }
 		  }
 		}
-	
+
 		[railway = 'preserved'][zoom >= 12] {
 		  line-width: 1.5;
 		  line-color: #aaa;
@@ -3158,7 +3155,7 @@
 			b/line-join: round;
 		  }
 		}
-	
+
 		[railway = 'INT-preserved-ssy'][zoom >= 12] {
 		  line-width: 1;
 		  line-color: #aaa;
@@ -3172,7 +3169,7 @@
 			b/line-join: round;
 		  }
 		}
-	
+
 		[railway = 'monorail'][zoom >= 14] {
 		  line-width: 4;
 		  line-color: #fff;
@@ -3382,19 +3379,19 @@
 	text-halo-fill: fadeout(white, 30%);
 	[highway != '']  { text-spacing: 300; }
 	[tunnel='yes'] { text-opacity: 0.5; }
-	
+
 	[zoom >= 15][zoom<17][railway!=''][way_len != ''][way_len < 1000] { text-name: ""; } /* pas d'affichage des nom des petites voies ferrées comme les quais avant le zoom 17 */
 
 	[zoom>=17] {
 		text-name: "[name]";
 		text-size: 10;
 	}
-	
+
   	[way_type = ''],					/* masquage du "nom" des objets sans highway,railway,aeroway,route,boundary (cf SQL) */
   	[way_type = 'administrative'] {  /* masquage du "nom" des limites administratives */
 		text-name: "";
   	}
-  	
+
   }
 
 
@@ -3533,7 +3530,7 @@
   	line-width: 2;
   	point-file: url('symbols/parking_disabled.svg');
   	point-transform: "scale(0.5)";
-  	
+
   	[zoom>=19][capacity!=''] {
   		text-name: [capacity]+" pl.";
   		text-face-name: @book-fonts;
@@ -3664,10 +3661,10 @@
 		}
 
     }
-    
+
     [oneway = '-1'][footway=''],
     [oneway = '-1'][footway!=''][zoom>=19]
-    {  
+    {
       a/line-width: 1;
       a/line-dasharray: 0,12,10,152;
       a/line-color: #6c70d5;
