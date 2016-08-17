@@ -198,14 +198,37 @@
 
 #area-text [zoom >= 8] {
   [way_area >= 150000][zoom >= 14]::long,
-  [way_area >= 80000][zoom >= 15]::long,
-  [way_area >= 20000][zoom >= 16]::long,
+  [way_area >= 50000][zoom >= 15]::long,
+  [way_area >= 25000][zoom >= 16]::long,
   [zoom >= 17]::long {
     [zoom >= 17] { text-name: "[name]"; }
     text-name: "[nom]";
-    text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: 30;
+    text-face-name: @book-fonts;
+
+    // variation de la texte du texte en fonction de la surface du polygone
+    text-size: 10;
+    [zoom>=14][way_area>100000],
+    [zoom>=15][way_area>50000],
+    [zoom>=16][way_area>25000],
+    [zoom>=17][way_area>10000],
+    [zoom>=18][way_area> 5000] {
+      text-size: 12; text-label-position-tolerance: 6;
+    }
+    [zoom>=14][way_area>400000],
+    [zoom>=15][way_area>200000],
+    [zoom>=16][way_area>100000],
+    [zoom>=17][way_area>25000],
+    [zoom>=18][way_area>10000] {
+      text-size: 14; text-label-position-tolerance: 7;
+    }
+    [zoom>=14][way_area>4000000],
+    [zoom>=15][way_area>2000000],
+    [zoom>=16][way_area>1000000] {
+      text-size: 16; text-label-position-tolerance: 7;
+    }
+
     [boundary!=''] {
     	text-face-name: @oblique-fonts;
     	[zoom >= 15]
@@ -217,19 +240,6 @@
     	text-halo-fill: fadeout(white, 30%);
     	text-label-position-tolerance: 8;
     }
-    [heritage!=''] {
-  	 	text-fill: #734a08;
-  		text-face-name: @bold-fonts;
-  	}
-
-// variation de la texte du texte en fonction de la surface du polygone
-    text-size: 10;
-    [zoom>=15][way_area>50000],[zoom>=16][way_area>25000],[zoom>=17][way_area>10000],[zoom>=18][way_area> 5000] {
-      text-size: 12; text-label-position-tolerance: 6;
-    }
-    [zoom>=15][way_area>250000],[zoom>=16][way_area>100000],[zoom>=17][way_area>25000],[zoom>=18][way_area>10000] {
-      text-size: 14; text-label-position-tolerance: 7;
-    }
 
 // variation de la couleur en fonction du type
     text-fill: black;
@@ -237,8 +247,16 @@
     	text-face-name: @oblique-fonts;
     	text-fill: #444;
     	[landuse='water'] {text-fill: #068;}
+      [landuse='forest'] {text-fill: #040;}
     }
-    [leisure!=''] {text-face-name: @oblique-fonts; text-fill: #060;} /* italique grisé pour les landuse */
+    [leisure!=''] {
+      text-face-name: @oblique-fonts;
+      text-fill: #060;
+    }
+    [heritage!=''] {
+      text-face-name: @bold-fonts;
+  	 	text-fill: #734a08;
+  	}
   }
 
   /* placement du nom court si le long n'a pas pu trouver de place... et si il est différent ! */
@@ -1127,12 +1145,13 @@
 			text-placement: interior;
 
   		[amenity = 'vehicle_inspection'],
+      [shop = 'bag'],
   		[shop = 'bakery'],
+      [shop = 'beauty'],
   		[shop = 'beverages'],
   		[shop = 'bicycle'],
   		[shop = 'butcher'],
-			[shop = 'car_repair'],
-			[shop = 'car'],
+			[shop =~ '^car'],
 			[shop = 'clothes'],
 			[shop = 'confectionery'],
 			[shop = 'convenience'],
@@ -1140,21 +1159,27 @@
 			[shop = 'copyshop'],
 			[shop = 'doityourself'],
 			[shop = 'dry_cleaning'],
+      [shop = 'electronics'],
   		[shop = 'fishmonger'],
+      [shop = 'florist'],
   		[shop = 'garden_centre'],
+      [shop = 'gift'],
 			[shop = 'greengrocer'],
 			[shop = 'hifi'],
+      [shop = 'ice_cream'],
 			[shop = 'jewelry'],
 			[shop = 'laundry'],
 			[shop = 'motorcycle'],
 			[shop = 'musical_instrument'],
   		[shop = 'optician'],
+      [shop = 'perfumery'],
 			[shop = 'photo_studio'],
 			[shop = 'photo'],
   		[shop = 'seafood'],
   		[shop = 'shoes'],
+      [shop = 'telephone'],
   		[shop = 'toys'] {
-				text-dy: 8;
+				text-dy: 9;
 			}
 
   		[shop = 'furniture'],
