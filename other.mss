@@ -1407,7 +1407,7 @@
   }
 }
 
-#minor-roads-fill::links {
+.minor-roads-fill::links {
   [highway = 'motorway_link'][tunnel != 'yes'] {
     [zoom >= 12] {
       line-width: 2.5;
