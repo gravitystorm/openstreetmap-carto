@@ -117,36 +117,12 @@
     line-width: 2;
     line-cap: round;
     line-join: round;
-    [zoom >= 13] {
-      line-width: 3;
-      text-name: "[name]";
-      text-face-name: @oblique-fonts;
-      [boat!='no'] { text-face-name: @bold-oblique-fonts;}
-      text-placement: line;
-      text-fill: #6699cc;
-      text-spacing: 400;
-      text-character-spacing: 2;
-      text-size: 9;
-      text-halo-radius: 1;
-      [cemt=~'V'] {text-size: 12;} // larger river name for CEMT class IV and above...
-    }
-    [zoom >= 14] {
-      line-width: 5;
-      text-size: 10;
-      [cemt='I'],[cemt='II'],[cemt='III'] {text-size: 12;}
-      [cemt=~'V'] {text-size: 14;}
-    }
-    [zoom >= 15] {
-      line-width: 6;
-    }
-    [zoom >= 17] {
-      line-width: 10;
-      [cemt='I'],[cemt='II'],[cemt='III'] {text-size: 14;}
-      [cemt=~'V'] {text-size: 16;}
-    }
-    [zoom >= 18] {
-      line-width: 12;
-    }
+    [zoom >= 13] { line-width: 3; }
+    [zoom >= 14] { line-width: 5; }
+    [zoom >= 15] { line-width: 6; }
+    [zoom >= 17] { line-width: 10; }
+    [zoom >= 18] { line-width: 12; }
+
     [tunnel = 'yes'] {
       [zoom >= 14] {
         a/line-width: 6;
@@ -154,19 +130,10 @@
         a/line-color: @water-color;
         b/line-width: 4;
         b/line-color: white;
-        text-min-distance: 200;
       }
-      [zoom >= 15] {
-        a/line-width: 7;
-      }
-      [zoom >= 17] {
-        a/line-width: 11;
-        b/line-width: 7;
-      }
-      [zoom >= 18] {
-        a/line-width: 13;
-        b/line-width: 9;
-      }
+      [zoom >= 15] { a/line-width: 7; }
+      [zoom >= 17] { a/line-width: 11; b/line-width: 7; }
+      [zoom >= 18] { a/line-width: 13; b/line-width: 9; }
     }
   }
 
@@ -175,16 +142,7 @@
     line-width: 3;
     line-cap: round;
     line-join: round;
-    [zoom >= 13] {
-      line-width: 4;
-      text-name: "[name]";
-      text-face-name: @book-fonts;
-      [boat!='no'] { text-face-name: @bold-oblique-fonts;}
-      text-halo-radius: 1;
-      text-size: 8;
-      text-placement: line;
-      text-fill: #6699cc;
-    }
+    [zoom >= 13] { line-width: 4; }
   }
 
   [waterway = 'stream'],
@@ -205,13 +163,6 @@
       a/line-width: 1.2;
       a/line-color: #f3f7f7;
     }
-    text-name: "[name]";
-    text-size: 8;
-    text-face-name: @book-fonts;
-    text-fill: #6699cc;
-    text-halo-radius: 1;
-    text-spacing: 600;
-    text-placement: line;
   }
 
   [waterway = 'drain'],
@@ -225,13 +176,6 @@
         a/line-width: 1;
         a/line-color: #f3f7f7;
       }
-      text-name: "[name]";
-      text-face-name: @book-fonts;
-      text-size: 8;
-      text-fill: #6699cc;
-      text-spacing: 600;
-      text-placement: line;
-      text-halo-radius: 1;
     }
   }
 
@@ -242,22 +186,11 @@
     line-join: round;
     line-cap: round;
     [tunnel = 'yes'] {
-	  line-cap: butt;
-	  line-dasharray: 4,2;
+	    line-cap: butt;
+	    line-dasharray: 4,2;
       b/line-width: 3;
       b/line-color: white;
       [zoom >= 17] { b/line-width: 7; }
-    }
-    text-name: "[name]";
-    text-size: 9;
-    text-fill: #6699cc;
-    text-placement: line;
-    text-face-name: @book-fonts;
-    [boat!='no'] { text-face-name: @bold-oblique-fonts;}
-    text-halo-radius: 1;
-    [lock = 'yes'][zoom >= 17] {
-      text-placement: point;
-      text-wrap-width: 20;
     }
   }
 
@@ -274,18 +207,80 @@
     [zoom >= 13] {
       line-width: 2.5;
       line-dasharray: 4,6;
-      text-name: "[name]";
-      text-size: 9;
-      text-fill: #80d1ae;
-      text-face-name: @book-fonts;
-      text-placement: line;
-      text-spacing: 600;
-      text-halo-radius: 1;
     }
     [zoom >= 14] {
       line-width: 4.5;
       line-dasharray: 4,8;
-      text-size: 10;
+    }
+  }
+
+  ::rivernames {
+    [waterway = 'river'][zoom >= 13] {
+      text-name: "[name]";
+      text-face-name: @oblique-fonts;
+      [boat!='no'] { text-face-name: @bold-oblique-fonts;}
+      text-placement: line;
+      text-fill: #6699cc;
+      text-spacing: 400;
+      text-character-spacing: 2;
+      text-size: 9;
+      text-halo-radius: 1;
+      [cemt=~'V'] {text-size: 12;} // larger river name for CEMT class IV and above...
+      [zoom >= 14] {
+        text-size: 10;
+        [cemt='I'],[cemt='II'],[cemt='III'] {text-size: 12;}
+        [cemt=~'V'] {text-size: 14;}
+      }
+      [zoom >= 17] {
+        text-size: 12;
+        [cemt='I'],[cemt='II'],[cemt='III'] {text-size: 14;}
+        [cemt=~'V'] {text-size: 16;}
+      }
+    }
+
+    [waterway = 'canal'][zoom >= 13] {
+      text-name: "[name]";
+      text-face-name: @book-fonts;
+      [boat!='no'] { text-face-name: @bold-oblique-fonts;}
+      text-halo-radius: 1;
+      text-size: 8;
+      text-placement: line;
+      text-fill: #6699cc;
+      [zoom >= 14] {
+        text-size: 9;
+        [lock = 'yes'][zoom >= 17] {
+          text-placement: point;
+          text-wrap-width: 20;
+        }
+      }
+    }
+
+    [waterway = 'stream'],
+    [waterway = 'drain'],
+    [waterway = 'ditch'] {
+      [zoom >= 15] {
+        text-name: "[name]";
+        text-face-name: @book-fonts;
+        text-size: 8;
+        text-fill: #6699cc;
+        text-spacing: 600;
+        text-placement: line;
+        text-halo-radius: 1;
+      }
+    }
+
+    [waterway = 'derelict_canal'],
+    [waterway = 'canal'][disused = 'yes'] {
+      [zoom >= 13] {
+        text-name: "[name]";
+        text-size: 9;
+        text-fill: #80d1ae;
+        text-face-name: @book-fonts;
+        text-placement: line;
+        text-spacing: 600;
+        text-halo-radius: 1;
+      }
+      [zoom >= 14] { text-size: 10; }
     }
   }
 }
