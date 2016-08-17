@@ -36,7 +36,7 @@
     "golf.mss"
   ],
   "Layer": [
-    {
+    { "name": "world",
       "geometry": "polygon",
       "extent": [
         -180,
@@ -52,10 +52,9 @@
       },
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "world"
+      "advanced": {}
     },
-    {
+    { "name": "coast-poly",
       "geometry": "polygon",
       "extent": [
         -180,
@@ -71,10 +70,9 @@
       },
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "coast-poly"
+      "advanced": {}
     },
-    {
+    { "name": "lowzoom",
       "geometry": "raster",
       "extent": [
         -180,
@@ -90,10 +88,9 @@
       },
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "lowzoom"
+      "advanced": {}
     },
-    {
+    { "name": "landcover",
       "extent": [
         -179.99999692067183,
         -84.96651228427099,
@@ -119,10 +116,9 @@
       "class": "",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "landcover"
+      "advanced": {}
     },
-    {
+    { "name": "landcover-line",
       "geometry": "linestring",
       "extent": [
         -179.99999692067183,
@@ -149,10 +145,9 @@
       "class": "",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "landcover-line"
+      "advanced": {}
     },
-    {
+    { "name": "water-lines-casing",
       "geometry": "linestring",
       "extent": [
         -179.99999692067183,
@@ -179,10 +174,9 @@
       "class": "",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "water-lines-casing"
+      "advanced": {}
     },
-    {
+    { "name": "water-lines-low-zoom",
       "geometry": "linestring",
       "extent": [
         -179.99999692067183,
@@ -192,7 +186,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,waterway\n      from planet_osm_line\n      where waterway='river' and osm_id>0 \n      ) as water_lines",
+        "table": "      (select way,waterway\n      from planet_osm_roads\n      where waterway='river' and osm_id>0 \n      ) as water_lines",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
@@ -209,10 +203,9 @@
       "class": "",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "water-lines-low-zoom"
+      "advanced": {}
     },
-    {
+    { "name": "contours",
       "geometry": "linestring",
       "extent": [
         -179.9999999749438,
@@ -240,10 +233,9 @@
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "contours",
       "status": "off"
     },
-    {
+    { "name": "water-areas",
       "extent": [
         -179.9999999749438,
         -85.051,
@@ -273,10 +265,9 @@
         "asynchronous_request": "true",
         "max_async_connection": "6",
         "srid": "900913"
-      },
-      "name": "water-areas"
+      }
     },
-    {
+    { "name": "water-areas-overlay",
       "extent": [
         -179.99999692067183,
         -84.96651228427099,
@@ -302,10 +293,9 @@
       "class": "",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "water-areas-overlay"
+      "advanced": {}
     },
-    {
+    { "name": "glaciers-text",
       "extent": [
         -179.99999692067183,
         -84.96651228427099,
@@ -331,10 +321,9 @@
       "class": "",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "glaciers-text"
+      "advanced": {}
     },
-    {
+    { "name": "water-lines",
       "geometry": "linestring",
       "extent": [
         -179.99999692067183,
@@ -361,10 +350,9 @@
       "class": "",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "water-lines"
+      "advanced": {}
     },
-    {
+    { "name": "dam",
       "geometry": "linestring",
       "extent": [
         -179.99999692067183,
@@ -391,8 +379,7 @@
       "class": "",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {},
-      "name": "dam"
+      "advanced": {}
     },
     {
       "extent": [
@@ -2121,7 +2108,7 @@
       "advanced": {},
       "name": "guideways"
     },
-    {
+    { "id": "admin-lz",
       "geometry": "linestring",
       "extent": [
         -179.99999692067183,
@@ -2131,7 +2118,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select ST_LineMerge(st_collect(way2)) as way, cast(regexp_replace('0' ||admin_level,'[^0-9]','','g') as integer) as admin_level, maritime from (select ST_SimplifyPreserveTopology(way,0.5) as way2,min(admin_level) as admin_level, tags->'maritime' as maritime from planet_osm_roads where way && !bbox! and boundary='administrative' and admin_level in ('0','1','2','3','4','5','6') and osm_id>0 and (\"natural\" is null or \"natural\" != 'coastline') group by way, maritime) as admins group by admin_level, maritime order by 2 desc) as admin",
+        "table": "(select ST_SnapToGrid(way,!pixel_width!/2) as way, admin_level, tags->'maritime' as maritime from planet_osm_roads where way && !bbox! and boundary='administrative' and admin_level in ('1','2','3','4','5','6') and osm_id>0 and (\"natural\" is null or \"natural\" != 'coastline') order by 2 desc, maritime) as admin",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
@@ -2144,14 +2131,13 @@
         "user": "fr",
         "password": "m4d31nfr4nc3"
       },
-      "id": "admin-01234",
       "class": "",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "admin-01234"
+      "name": "admin-lz"
     },
-    {
+    { "id": "admin-boundaries",
       "geometry": "linestring",
       "extent": [
         -179.99999692067183,
@@ -2161,7 +2147,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way, admin_level from planet_osm_roads r where boundary='administrative' and admin_level not in ('2','3','4') order by cast('0'||regexp_replace(admin_level,'[^0-9]','','g') as integer) desc ) as admin",
+        "table": "(select way, admin_level, tags->'maritime' as maritime from planet_osm_roads where boundary='administrative' and admin_level is not NULL order by cast('0'||regexp_replace(admin_level,'[^0-9]','','g') as integer) desc ) as admin",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
@@ -2174,12 +2160,11 @@
         "user": "fr",
         "password": "m4d31nfr4nc3"
       },
-      "id": "admin-5678",
       "class": "",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
-      "name": "admin-5678"
+      "name": "admin-boundaries"
     },
     {
       "geometry": "point",
