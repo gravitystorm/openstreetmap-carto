@@ -303,6 +303,19 @@
     text-face-name: @oblique-fonts;
     text-halo-radius: 1;
     text-placement: interior;
+    // variation de la texte du texte en fonction de la surface du polygone
+    [zoom>=15][way_area>50000],
+    [zoom>=16][way_area>25000],
+    [zoom>=17][way_area>10000],
+    [zoom>=18][way_area> 5000] {
+      text-size: 12;
+    }
+    [zoom>=15][way_area>250000],
+    [zoom>=16][way_area>100000],
+    [zoom>=17][way_area>25000],
+    [zoom>=18][way_area>10000] {
+      text-size: 14;
+    }
   }
 
   [amenity = 'restaurant']::amenity {
@@ -360,6 +373,17 @@
       text-face-name: @bold-fonts;
       text-halo-radius: 1;
       text-placement: interior;
+      // variation de la texte du texte en fonction de la surface du polygone
+      [zoom>=16][way_area>25000],
+      [zoom>=17][way_area>10000],
+      [zoom>=18][way_area> 5000] {
+        text-size: 12;
+      }
+      [zoom>=16][way_area>100000],
+      [zoom>=17][way_area>25000],
+      [zoom>=18][way_area>10000] {
+        text-size: 14;
+      }
     }
   }
 
@@ -371,6 +395,15 @@
     text-face-name: @bold-fonts;
     text-halo-radius: 1;
     text-placement: interior;
+    // variation de la texte du texte en fonction de la surface du polygone
+    [zoom>=17][way_area>10000],
+    [zoom>=18][way_area> 5000] {
+      text-size: 12;
+    }
+    [zoom>=17][way_area>25000],
+    [zoom>=18][way_area>10000] {
+      text-size: 14;
+    }
   }
 
   [amenity = 'parking'][zoom >= 17]::amenity {
@@ -391,17 +424,7 @@
 	  }
   }
 
-  [amenity = 'police'][zoom >= 17]::amenity {
-    text-name: "[name]";
-    text-size: 10;
-    text-fill: #734a08;
-    text-dy: 10;
-    text-face-name: @book-fonts;
-    text-halo-radius: 1;
-    text-wrap-width: 40;
-    text-placement: interior;
-  }
-
+  [amenity = 'police'][zoom >= 17]::amenity,
   [amenity = 'fire_station'][zoom >= 17]::amenity {
     text-name: "[name]";
     text-size: 10;
@@ -411,6 +434,19 @@
     text-halo-radius: 1;
     text-wrap-width: 40;
     text-placement: interior;
+    // variation de la texte du texte en fonction de la surface du polygone
+    [zoom>=15][way_area>50000],
+    [zoom>=16][way_area>25000],
+    [zoom>=17][way_area>10000],
+    [zoom>=18][way_area> 5000] {
+      text-size: 12;
+    }
+    [zoom>=15][way_area>250000],
+    [zoom>=16][way_area>100000],
+    [zoom>=17][way_area>25000],
+    [zoom>=18][way_area>10000] {
+      text-size: 14;
+    }
   }
 
   [heritage = '1'][zoom >= 15]::amenity,
@@ -427,6 +463,19 @@
     	text-face-name: @bold-fonts;
     	text-fill: #734a08;
     }
+    // variation de la texte du texte en fonction de la surface du polygone
+    [zoom>=15][way_area>50000],
+    [zoom>=16][way_area>25000],
+    [zoom>=17][way_area>10000],
+    [zoom>=18][way_area> 5000] {
+      text-size: 12;
+    }
+    [zoom>=15][way_area>250000],
+    [zoom>=16][way_area>100000],
+    [zoom>=17][way_area>25000],
+    [zoom>=18][way_area>10000] {
+      text-size: 14;
+    }
   }
 
   [landuse = 'forest'][zoom >= 15]::landuse,
@@ -439,12 +488,22 @@
     text-wrap-width: 40;
     text-placement: interior;
 
-// variation de la texte du texte en fonction de la surface du polygone
+    // variation de la texte du texte en fonction de la surface du polygone
     text-size: 10;
-    [zoom>=15][way_area>50000],[zoom>=16][way_area>25000],[zoom>=17][way_area>10000],[zoom>=18][way_area> 5000]
-	{ text-size: 12; text-label-position-tolerance: 8;}
-    [zoom>=15][way_area>250000],[zoom>=16][way_area>100000],[zoom>=17][way_area>25000],[zoom>=18][way_area>10000]
-	{ text-size: 14; text-label-position-tolerance: 10;}
+    [zoom>=15][way_area>50000],
+    [zoom>=16][way_area>25000],
+    [zoom>=17][way_area>10000],
+    [zoom>=18][way_area> 5000] {
+      text-size: 12;
+      text-label-position-tolerance: 8;
+    }
+    [zoom>=15][way_area>250000],
+    [zoom>=16][way_area>100000],
+    [zoom>=17][way_area>25000],
+    [zoom>=18][way_area>10000] {
+      text-size: 14;
+      text-label-position-tolerance: 10;
+    }
   }
 
   [natural = 'peak']::natural,
@@ -526,10 +585,10 @@
       text-halo-radius: 1;
       text-wrap-width: 20;
       text-placement: interior;
-	  [zoom >= 19] {
-		text-size: 10;
-		text-dy: 13;
-	  }
+  	  [zoom >= 19] {
+    		text-size: 10;
+    		text-dy: 13;
+  	  }
     }
   }
 
@@ -543,10 +602,10 @@
       text-halo-radius: 1;
       text-wrap-width: 25;
       text-placement: interior;
-	  [zoom >= 19] {
-		text-size: 10;
-		text-dy: 10;
-	  }
+  	  [zoom >= 19] {
+    		text-size: 10;
+    		text-dy: 10;
+  	  }
     }
   }
 
@@ -562,6 +621,19 @@
       text-halo-radius: 1;
       text-wrap-width: 20;
       text-placement: interior;
+      // variation de la texte du texte en fonction de la surface du polygone
+      [zoom>=15][way_area>50000],
+      [zoom>=16][way_area>25000],
+      [zoom>=17][way_area>10000],
+      [zoom>=18][way_area> 5000] {
+        text-size: 12;
+      }
+      [zoom>=15][way_area>250000],
+      [zoom>=16][way_area>100000],
+      [zoom>=17][way_area>25000],
+      [zoom>=18][way_area>10000] {
+        text-size: 14;
+      }
     }
   }
 
@@ -586,6 +658,19 @@
     text-halo-radius: 1;
     text-wrap-width: 20;
     text-placement: interior;
+    // variation de la texte du texte en fonction de la surface du polygone
+    [zoom>=15][way_area>50000],
+    [zoom>=16][way_area>25000],
+    [zoom>=17][way_area>10000],
+    [zoom>=18][way_area> 5000] {
+      text-size: 12;
+    }
+    [zoom>=15][way_area>250000],
+    [zoom>=16][way_area>100000],
+    [zoom>=17][way_area>25000],
+    [zoom>=18][way_area>10000] {
+      text-size: 14;
+    }
   }
 
   [natural = 'spring'][zoom >= 16]::natural {
@@ -729,6 +814,15 @@
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: 70;
+    // variation de la texte du texte en fonction de la surface du polygone
+    [zoom>=17][way_area>10000],
+    [zoom>=18][way_area> 5000] {
+      text-size: 12;
+    }
+    [zoom>=17][way_area>25000],
+    [zoom>=18][way_area>10000] {
+      text-size: 14;
+    }
   }
 
   [tourism = 'caravan_site'][zoom >= 17]::tourism {
@@ -739,6 +833,15 @@
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: 70;
+    // variation de la texte du texte en fonction de la surface du polygone
+    [zoom>=17][way_area>10000],
+    [zoom>=18][way_area> 5000] {
+      text-size: 12;
+    }
+    [zoom>=17][way_area>25000],
+    [zoom>=18][way_area>10000] {
+      text-size: 14;
+    }
   }
 
   [waterway = 'lock'][zoom >= 15]::waterway {
@@ -784,6 +887,19 @@
       text-face-name: @oblique-fonts;
       text-dy: 0;
     }
+    // variation de la texte du texte en fonction de la surface du polygone
+    [zoom>=15][way_area>50000],
+    [zoom>=16][way_area>25000],
+    [zoom>=17][way_area>10000],
+    [zoom>=18][way_area> 5000] {
+      text-size: 12;
+    }
+    [zoom>=15][way_area>250000],
+    [zoom>=16][way_area>100000],
+    [zoom>=17][way_area>25000],
+    [zoom>=18][way_area>10000] {
+      text-size: 14;
+    }
   }
 
   [tourism = 'theme_park'][zoom >= 14]::tourism {
@@ -796,6 +912,19 @@
     text-placement: interior;
     [zoom >= 16] {
       text-size: 10;
+    }
+    // variation de la texte du texte en fonction de la surface du polygone
+    [zoom>=15][way_area>50000],
+    [zoom>=16][way_area>25000],
+    [zoom>=17][way_area>10000],
+    [zoom>=18][way_area> 5000] {
+      text-size: 12;
+    }
+    [zoom>=15][way_area>250000],
+    [zoom>=16][way_area>100000],
+    [zoom>=17][way_area>25000],
+    [zoom>=18][way_area>10000] {
+      text-size: 14;
     }
   }
 
@@ -822,6 +951,17 @@
     text-halo-radius: 1;
     text-wrap-width: 70;
     text-placement: interior;
+    // variation de la texte du texte en fonction de la surface du polygone
+    [zoom>=16][way_area>25000],
+    [zoom>=17][way_area>10000],
+    [zoom>=18][way_area> 5000] {
+      text-size: 12;
+    }
+    [zoom>=16][way_area>100000],
+    [zoom>=17][way_area>25000],
+    [zoom>=18][way_area>10000] {
+      text-size: 14;
+    }
   }
 
   [amenity = 'prison'][zoom >= 17]::amenity {
@@ -859,24 +999,29 @@
   [amenity = 'school']::amenity,
   [amenity = 'college']::amenity {
     [zoom >= 15] {
-	  text-name: "[name]";
-	  text-size: 9;
-    	  [zoom>=15][way_area>75000],[zoom>=16][way_area>25000],[zoom>=17][way_area>10000],[zoom>=18][way_area>5000]
-		{ text-size: 11; text-label-position-tolerance: 8; text-wrap-width: 20;}
-	  text-fill: #440;
-	  text-face-name: @book-fonts;
-	  text-halo-radius: 2;
-	  text-wrap-width: 14;
-	  text-placement: interior;
-		text-label-position-tolerance: 0;
+  	  text-name: "[name]";
+  	  text-size: 9;
+      [zoom>=15][way_area>75000],
+      [zoom>=16][way_area>25000],
+      [zoom>=17][way_area>10000],
+      [zoom>=18][way_area>5000] {
+        text-size: 11;
+        text-wrap-width: 20;
+      }
+  	  text-fill: #440;
+  	  text-face-name: @book-fonts;
+  	  text-halo-radius: 2;
+  	  text-wrap-width: 14;
+  	  text-placement: interior;
+  		text-label-position-tolerance: 0;
 
-	  [zoom<=16] {
-		[ecole != '']
-		{
-			text-name: "[ecole]";
-			text-wrap-width: 0;
-	  	}
-	  }
+  	  [zoom<=16] {
+		    [ecole != '']
+		    {
+          text-name: "[ecole]";
+          text-wrap-width: 0;
+        }
+      }
     }
   }
 
@@ -886,8 +1031,13 @@
   [amenity = 'college']::amenity2 {
     [zoom >= 15][ecole != ''] {
 	  text-name: "[ecole]";
-    	  [zoom>=15][way_area>75000],[zoom>=16][way_area>25000],[zoom>=17][way_area>10000],[zoom>=18][way_area>5000]
-		{ text-size: 11; text-wrap-width: 20;}
+    [zoom>=15][way_area>75000],
+    [zoom>=16][way_area>25000],
+    [zoom>=17][way_area>10000],
+    [zoom>=18][way_area>5000] {
+      text-size: 11;
+      text-wrap-width: 20;
+    }
 	  text-fill: #440;
 	  text-face-name: @book-fonts;
 	  text-halo-radius: 2;
@@ -929,8 +1079,13 @@
     long/text-halo-radius: 2;
     long/text-wrap-width: 30;
     long/text-placement: interior;
-    [zoom>=15][way_area>50000],[zoom>=16][way_area>25000],[zoom>=17][way_area>10000],[zoom>=18][way_area> 5000]
-	{ long/text-size: 12; long/text-wrap-width: 40;}
+    [zoom>=15][way_area>50000],
+    [zoom>=16][way_area>25000],
+    [zoom>=17][way_area>10000],
+    [zoom>=18][way_area> 5000] {
+      long/text-size: 12;
+      long/text-wrap-width: 40;
+    }
 
     short/text-name: "[nom]";
     short/text-fill: #3366cc;
@@ -940,8 +1095,13 @@
     short/text-halo-radius: 2;
     short/text-wrap-width: 24;
     short/text-placement: interior;
-    [zoom>=15][way_area>50000],[zoom>=16][way_area>25000],[zoom>=17][way_area>10000],[zoom>=18][way_area> 5000]
-	{ short/text-size: 12; short/text-wrap-width: 30;}
+    [zoom>=15][way_area>50000],
+    [zoom>=16][way_area>25000],
+    [zoom>=17][way_area>10000],
+    [zoom>=18][way_area> 5000] {
+      short/text-size: 12;
+      short/text-wrap-width: 30;
+    }
  }
 
   [amenity = 'pharmacy'][zoom >= 17]::amenity {
@@ -966,52 +1126,49 @@
 		 	text-wrap-width: 15;
 			text-placement: interior;
 
-	  		[amenity = 'vehicle_inspection'],
-	  		[shop = 'bakery'],
-	  		[shop = 'beverages'],
-	  		[shop = 'bicycle'],
-	  		[shop = 'butcher'],
+  		[amenity = 'vehicle_inspection'],
+  		[shop = 'bakery'],
+  		[shop = 'beverages'],
+  		[shop = 'bicycle'],
+  		[shop = 'butcher'],
 			[shop = 'car_repair'],
 			[shop = 'car'],
 			[shop = 'clothes'],
 			[shop = 'confectionery'],
 			[shop = 'convenience'],
-	  		[shop = 'computer'],
+  		[shop = 'computer'],
 			[shop = 'copyshop'],
 			[shop = 'doityourself'],
 			[shop = 'dry_cleaning'],
-	  		[shop = 'fishmonger'],
-	  		[shop = 'garden_centre'],
+  		[shop = 'fishmonger'],
+  		[shop = 'garden_centre'],
 			[shop = 'greengrocer'],
 			[shop = 'hifi'],
 			[shop = 'jewelry'],
 			[shop = 'laundry'],
 			[shop = 'motorcycle'],
 			[shop = 'musical_instrument'],
-	  		[shop = 'optician'],
+  		[shop = 'optician'],
 			[shop = 'photo_studio'],
 			[shop = 'photo'],
-	  		[shop = 'seafood'],
-	  		[shop = 'shoes'],
-	  		[shop = 'toys']
-	  		{
+  		[shop = 'seafood'],
+  		[shop = 'shoes'],
+  		[shop = 'toys'] {
 				text-dy: 8;
 			}
 
-	  		[shop = 'furniture'],
-	  		[shop = 'interior_decoration'],
-	  		[shop = 'hairdresser'],
+  		[shop = 'furniture'],
+  		[shop = 'interior_decoration'],
+  		[shop = 'hairdresser'],
 			[shop = 'mobile_phone'],
-			[shop = 'travel_agency']
-			{
+			[shop = 'travel_agency'] {
 				text-dy: 10;
 			}
 
-	  		[shop = 'alcohol'],
-			{
+	  	[shop = 'alcohol'] {
 				text-dy: 12;
 			}
-	  	}
+	  }
 
 		[zoom >= 19] {
 			text-name: "[name]";
@@ -1022,82 +1179,80 @@
 		 	text-wrap-width: 15;
 			text-placement: interior;
 
-	  		[amenity = 'vehicle_inspection'],
-	  		[shop = 'bakery'],
-	  		[shop = 'beverages'],
-	  		[shop = 'bicycle'],
-	  		[shop = 'butcher'],
+  		[amenity = 'vehicle_inspection'],
+  		[shop = 'bakery'],
+  		[shop = 'beverages'],
+  		[shop = 'bicycle'],
+  		[shop = 'butcher'],
 			[shop = 'car_repair'],
 			[shop = 'car'],
 			[shop = 'clothes'],
 			[shop = 'confectionery'],
 			[shop = 'convenience'],
-	  		[shop = 'computer'],
+  		[shop = 'computer'],
 			[shop = 'copyshop'],
 			[shop = 'doityourself'],
 			[shop = 'dry_cleaning'],
-	  		[shop = 'fishmonger'],
-	  		[shop = 'garden_centre'],
+  		[shop = 'fishmonger'],
+  		[shop = 'garden_centre'],
 			[shop = 'greengrocer'],
 			[shop = 'hifi'],
 			[shop = 'jewelry'],
 			[shop = 'laundry'],
 			[shop = 'motorcycle'],
 			[shop = 'musical_instrument'],
-	  		[shop = 'optician'],
+  		[shop = 'optician'],
 			[shop = 'photo_studio'],
 			[shop = 'photo'],
-	  		[shop = 'seafood'],
-	  		[shop = 'shoes'],
-	  		[shop = 'toys']
-	  		{
+  		[shop = 'seafood'],
+  		[shop = 'shoes'],
+  		[shop = 'toys'] {
 				text-dy: 10;
 			}
 
-	  		[shop = 'alcohol'],
-	  		[shop = 'furniture'],
-	  		[shop = 'interior_decoration'],
-	  		[shop = 'hairdresser'],
+  		[shop = 'alcohol'],
+  		[shop = 'furniture'],
+  		[shop = 'interior_decoration'],
+  		[shop = 'hairdresser'],
 			[shop = 'mobile_phone'],
-			[shop = 'travel_agency']
-			{
+			[shop = 'travel_agency'] {
 				text-dy: 12;
 			}
-	  	}
+		}
 
 	  [shop = 'supermarket'] {
-		[zoom >= 16] {
-		  text-name: "[name]";
-		  text-size: 9;
-		  text-dy: 10;
-		  text-fill: #939;
-		  text-face-name: @book-fonts;
-		  text-halo-radius: 1;
-		  text-wrap-width: 20;
-		  text-placement: interior;
-		}
-		[zoom >= 19] {
-		  text-name: "[name]";
-		  text-size: 11;
-		  text-dy: 12;
-		  text-fill: #939;
-		  text-face-name: @book-fonts;
-		  text-halo-radius: 1;
-		  text-wrap-width: 20;
-		  text-placement: interior;
-		}
+  		[zoom >= 16] {
+  		  text-name: "[name]";
+  		  text-size: 9;
+  		  text-dy: 10;
+  		  text-fill: #939;
+  		  text-face-name: @book-fonts;
+  		  text-halo-radius: 1;
+  		  text-wrap-width: 20;
+  		  text-placement: interior;
+  		}
+  		[zoom >= 19] {
+  		  text-name: "[name]";
+  		  text-size: 11;
+  		  text-dy: 12;
+  		  text-fill: #939;
+  		  text-face-name: @book-fonts;
+  		  text-halo-radius: 1;
+  		  text-wrap-width: 20;
+  		  text-placement: interior;
+  		}
 	  }
 	  [shop = 'mall'], [shop = 'department_store'] {
-		[zoom >= 16] {
-		  text-name: "[name]";
-		  text-size: 11;
-		  text-dy: 13;
-		  text-fill: #939;
-		  text-face-name: @book-fonts;
-		  text-halo-radius: 1.5;
-		  text-wrap-width: 20;
-		  text-placement: interior;
-		}
+  		[zoom >= 16] {
+  		  text-name: "[name]";
+  		  text-size: 11;
+  		  text-dy: 13;
+  		  text-fill: #939;
+  		  text-face-name: @book-fonts;
+  		  text-halo-radius: 1.5;
+  		  text-wrap-width: 20;
+  		  text-placement: interior;
+  		}
 	  }
   }
 
