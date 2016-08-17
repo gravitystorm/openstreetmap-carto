@@ -538,7 +538,7 @@
   }
 
   [shop = 'garden_centre'][zoom >= 17]::shop {
-    marker-file: url('symbols/2016/florist.16.svg');
+    marker-file: url('symbols/2016/garden_centre-14.svg');
     marker-fill: @shop-icon;
     marker-placement: interior;
     marker-clip: false;
