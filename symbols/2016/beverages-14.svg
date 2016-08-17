@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="100%"
+   height="100%"
+   viewBox="0 0 14 14"
+   id="svg2"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="beverages-14.svg">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1855"
+     inkscape:window-height="1056"
+     id="namedview7"
+     showgrid="true"
+     inkscape:zoom="47.6792"
+     inkscape:cx="11.845001"
+     inkscape:cy="6.1610598"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2984" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata8">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6" />
+  <rect
+     width="14"
+     height="14"
+     x="0"
+     y="0"
+     id="canvas"
+     style="fill:none;stroke:none;visibility:hidden" />
+  <path
+     style="fill:#000000;fill-opacity:1;stroke:none"
+     d="M 3,0 C 2,0 2,0.50227551 2,2 2,3 0,7 0,8 l 0,5 c 0,0.566252 0.467057,1 1,1 l 4,0 c 0.599561,0 1,-0.400439 1,-1 L 6,8 C 6,7 4,3 4,2 4,0.46896661 4,0 3,0 z m 7.875,1 -1,4 L 11,5 11.75,2 14,2 14,1 z M 7,6 8,13 c 0,0 0,1 1,1 l 2,0 c 1,0 1,-1 1,-1 l 1,-7 z"
+     id="beverages"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="sssssssssscccccccccssccc" />
+</svg>
