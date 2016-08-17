@@ -18,6 +18,7 @@ Map {
 
 @health-color: #da0092;
 @shop-icon: #ac39ac;
+@brown-poi: #734a08;
 
 @casing_large_z12: 3;
 @casing_large_z13: 4.5;
