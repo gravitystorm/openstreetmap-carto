@@ -1,26 +1,26 @@
-# Go Community Code of Conduct
+# OpenStreetMap Carto Community Code of Conduct
 
 ## Why have a Code of Conduct?
 
-Online communities include people from many different backgrounds. The Go contributors are committed to providing a friendly, safe and welcoming environment for all, regardless of age, disability, gender, nationality, race, religion, sexuality, or similar personal characteristic.
+Online communities include people from many different backgrounds. The OpenStreetMap Carto contributors are committed to providing a friendly, safe and welcoming environment for all, regardless of age, disability, gender, nationality, race, religion, sexuality, or similar personal characteristic.
 
-The first goal of the Code of Conduct is to specify a baseline standard of behavior so that people with different social values and communication styles can talk about Go effectively, productively, and respectfully.
+The first goal of the Code of Conduct is to specify a baseline standard of behavior so that people with different social values and communication styles can talk about OpenStreetMap Carto effectively, productively, and respectfully.
 
 The second goal is to provide a mechanism for resolving conflicts in the community when they arise.
 
-The third goal of the Code of Conduct is to make our community welcoming to people from different backgrounds. Diversity is critical to the project; for Go to be successful, it needs contributors and users from all backgrounds. (See Go, Open Source, Community.)
+The third goal of the Code of Conduct is to make our community welcoming to people from different backgrounds. Diversity is critical to the project; for OpenStreetMap Carto to be successful, it needs contributors and users from all backgrounds.
 
 With that said, a healthy community must allow for disagreement and debate. The Code of Conduct is not a mechanism for people to silence others with whom they disagree.
 
 ## Where does the Code of Conduct apply?
 
-If you participate in or contribute to the Go ecosystem in any way, you are encouraged to follow the Code of Conduct while doing so.
+If you participate in or contribute to the OpenStreetMap Carto ecosystem in any way, you are encouraged to follow the Code of Conduct while doing so.
 
 Explicit enforcement of the Code of Conduct applies to the OpenStreetMap Carto GitHub project and code reviews.
 
-## Gopher values
+## Values
 
-These are the values to which people in the Go community (“Gophers”) should aspire.
+These are the values to which people in the OpenStreetMap Carto should aspire.
 
 - Be friendly and welcoming
 - Be patient
@@ -44,7 +44,7 @@ People are complicated. You should expect to be misunderstood and to misundersta
 
 ## Unwelcome behavior
 
-These actions are explicitly forbidden in Go spaces:
+These actions are explicitly forbidden in OpenStreetMap Carto spaces:
 
 - Insulting, demeaning, hateful, or threatening remarks.
 - Discrimination based on age, disability, gender, nationality, race, religion, sexuality, or similar personal characteristic.
@@ -54,9 +54,9 @@ These actions are explicitly forbidden in Go spaces:
 
 ## Moderation
 
-The Go spaces are not free speech venues; they are for discussion about Go. These spaces have moderators. The goal of the moderators is to facilitate civil discussion about Go.
+The OpenStreetMap Carto spaces are not free speech venues; they are for discussion about OpenStreetMap Carto. These spaces have moderators. The goal of the moderators is to facilitate civil discussion about OpenStreetMap Carto.
 
-When using the official Go spaces you should act in the spirit of the “Gopher values”. If you conduct yourself in a way that is explicitly forbidden by the CoC, you will be warned and asked to stop. If you do not stop, you will be removed from our community spaces temporarily. Repeated, willful breaches of the CoC will result in a permanent ban.
+When using the official OpenStreetMap Carto spaces you should act in the spirit of the values. If you conduct yourself in a way that is explicitly forbidden by the CoC, you will be warned and asked to stop. If you do not stop, you will be removed from our community spaces temporarily. Repeated, willful breaches of the CoC will result in a permanent ban.
 
 Moderators are held to a higher standard than other community members. If a moderator creates an inappropriate situation, they should expect less leeway than others, and should expect to be removed from their position if they cannot adhere to the CoC.
 
@@ -81,4 +81,4 @@ Changes to the Code of Conduct should be proposed as pull requests.
 
 ## Acknowledgements
 
-Parts of this document were derived from the Code of Conduct documents of the Django, FreeBSD, and Rust projects.
+This document is based on the Go Code of Conduct, which in turn has parts derived from the Code of Conduct documents of the Django, FreeBSD, and Rust projects.
