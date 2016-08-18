@@ -54,13 +54,9 @@ These actions are explicitly forbidden in OpenStreetMap Carto spaces:
 
 ## Moderation
 
-The OpenStreetMap Carto spaces are not free speech venues; they are for discussion about OpenStreetMap Carto. These spaces have moderators. The goal of the moderators is to facilitate civil discussion about OpenStreetMap Carto.
+The OpenStreetMap Carto spaces are not free speech venues; they are for discussion about OpenStreetMap Carto.
 
-When using the official OpenStreetMap Carto spaces you should act in the spirit of the values. If you conduct yourself in a way that is explicitly forbidden by the CoC, you will be warned and asked to stop. If you do not stop, you will be removed from our community spaces temporarily. Repeated, willful breaches of the CoC will result in a permanent ban.
-
-Moderators are held to a higher standard than other community members. If a moderator creates an inappropriate situation, they should expect less leeway than others, and should expect to be removed from their position if they cannot adhere to the CoC.
-
-Complaints about moderator actions must be handled using the reporting process below.
+When using the OpenStreetMap Carto spaces you should act in the spirit of the values. If you conduct yourself in a way that is explicitly forbidden by the CoC, you will be warned and asked to stop. If you do not stop, you will be removed from our community spaces temporarily. Repeated, willful breaches of the CoC will result in a permanent ban.
 
 ## Reporting issues
 
