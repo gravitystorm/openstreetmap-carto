@@ -16,13 +16,7 @@ With that said, a healthy community must allow for disagreement and debate. The 
 
 If you participate in or contribute to the Go ecosystem in any way, you are encouraged to follow the Code of Conduct while doing so.
 
-Explicit enforcement of the Code of Conduct applies to the official forums operated by the Go project (“Go spaces”):
-
-The official GitHub projects and code reviews.
-The golang-nuts and golang-dev mailing lists.
-The #go-nuts IRC channel on Freenode.
-The /r/golang subreddit.
-Other Go groups (such as conferences, meetups, and other unofficial forums) are encouraged to adopt this Code of Conduct. Those groups must provide their own moderators and/or working group (see below).
+Explicit enforcement of the Code of Conduct applies to the OpenStreetMap Carto GitHub project and code reviews.
 
 ## Gopher values
 
@@ -70,48 +64,20 @@ Complaints about moderator actions must be handled using the reporting process b
 
 ## Reporting issues
 
-The Code of Conduct Working Group is a group of people that represent the Go community. They are responsible for handling conduct-related issues. Their purpose is to de-escalate conflicts and try to resolve issues to the satisfaction of all parties. They are:
+The OpenStreetMap Carto maintainers are responsible for handling conduct-related issues. Their goal is to de-escalate conflicts and try to resolve issues to the satisfaction of all parties.
 
-- Aditya Mukerjee <dev@chimeracoder.net>
-- Andrew Gerrand <adg@golang.org>
-- Dave Cheney <dave@cheney.net>
-- Jason Buberel <jbuberel@google.com>
-- Peggy Li <peggyli.224@gmail.com>
-- Sarah Adams <sadams.codes@gmail.com>
-- Steve Francia <steve.francia@gmail.com>
-- Verónica López <gveronicalg@gmail.com>
+If you encounter a conduct-related issue, you should report it to the maintainers by email.
 
-If you encounter a conduct-related issue, you should report it to the Working Group using the process described below. Do not post about the issue publicly or try to rally sentiment against a particular individual or group.
+**Note that the goal of the Code of Conduct and the maintainers is to resolve conflicts in the most harmonious way possible.** We hope that in most cases issues may be resolved through polite discussion and mutual agreement. Bans and other forceful measures are to be employed only as a last resort.
 
-- Mail conduct@golang.org or submit an anonymous report.
-  - Your message will reach the Working Group.
-  - Reports are confidential within the Working Group.
-  - Should you choose to remain anonymous then the Working Group cannot notify you of the outcome of your report.
-  - You may contact a member of the group directly if you do not feel comfortable contacting the group as a whole. That member will then raise the issue with the Working Group as a whole, preserving the privacy of the reporter (if desired).
-  - If your report concerns a member of the Working Group they will be recused from Working Group discussions of the report.
-  - The Working Group will strive to handle reports with discretion and sensitivity, to protect the privacy of the involved parties, and to avoid conflicts of interest.
-- You should receive a response within 48 hours (likely sooner). (Should you choose to contact a single Working Group member, it may take longer to receive a response.)
-- The Working Group will meet to review the incident and determine what happened.
-  - With the permission of person reporting the incident, the Working Group may reach out to other community members for more context.
-- The Working Group will reach a decision as to how to act. These may include:
-  - Nothing.
-  - A request for a private or public apology.
-  - A private or public warning.
-  - An imposed vacation (for instance, asking someone to abstain for a week from a mailing list or IRC).
-  - A permanent or temporary ban from some or all Go spaces.
-- The Working Group will reach out to the original reporter to let them know the decision.
-- Appeals to the decision may be made to the Working Group, or to any of its members directly.
-
-**Note that the goal of the Code of Conduct and the Working Group is to resolve conflicts in the most harmonious way possible.** We hope that in most cases issues may be resolved through polite discussion and mutual agreement. Bannings and other forceful measures are to be employed only as a last resort.
-
-Changes to the Code of Conduct (including to the members of the Working Group) should be proposed using the change proposal process.
+Changes to the Code of Conduct should be proposed as pull requests.
 
 ## Summary
 
 - Treat everyone with respect and kindness.
 - Be thoughtful in how you communicate.
 - Don’t be destructive or inflammatory.
-- If you encounter an issue, please mail conduct@golang.org.
+- If you encounter an issue, please mail the maintainers.
 
 ## Acknowledgements
 
