@@ -37,7 +37,7 @@ These are the values to which people in the OpenStreetMap Carto should aspire.
   - Derailing: stay on topic; if you want to talk about something else, start a new conversation.
   - Unconstructive criticism: don't merely decry the current state of affairs; offer—or at least solicit—suggestions as to how things may be improved.
   - Snarking (pithy, unproductive, sniping comments)
-  - Discussing potentially offensive or sensitive issues; this all too often leads to unnecessary conflict.
+  - Discussing potentially offensive or sensitive issues unless directly technically relevant; this all too often leads to unnecessary conflict.
   - Microaggressions: brief and commonplace verbal, behavioral and environmental indignities that communicate hostile, derogatory or negative slights and insults to a person or group.
 
 People are complicated. You should expect to be misunderstood and to misunderstand others; when this inevitably occurs, resist the urge to be defensive or assign blame. Try not to take offense where no offense was intended. Give people the benefit of the doubt. Even if the intent was to provoke, do not rise to it. It is the responsibility of *all parties* to de-escalate conflict when it arises.
