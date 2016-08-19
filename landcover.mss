@@ -33,7 +33,7 @@
 @bare_ground: #eee5dc;
 @campsite: #def6c0; // also caravan_site, picnic_site
 @cemetery: #aacbaf; // also grave_yard
-@construction: #b6b592;
+@construction: #c7c7b4;
 @danger_area: pink;
 @garages: #dfddce;
 @heath: #d6d99f;
