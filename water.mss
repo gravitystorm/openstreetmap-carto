@@ -201,7 +201,7 @@
 }
 
 #water-lines-text {
-  [lock != 'yes'] {
+  [lock != 'yes'][int_tunnel != 'yes'] {
     [waterway = 'river'][zoom >= 13] {
       text-name: "[name]";
       text-face-name: @oblique-fonts;
