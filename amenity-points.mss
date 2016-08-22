@@ -1705,7 +1705,7 @@
     text-face-name: @standard-font;
   }
 
-  [feature = 'tourism_alpine_hut'][zoom >= 15],
+  [feature = 'tourism_alpine_hut'][zoom >= 14],
   [feature = 'amenity_shelter'][zoom >= 17],
   [feature = 'tourism_hotel'][zoom >= 17],
   [feature = 'tourism_motel'][zoom >= 17],
