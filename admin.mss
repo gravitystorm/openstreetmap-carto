@@ -113,10 +113,10 @@
   line-cap: round;
   line-width: 0;
   line-join: round;
+  line-color: @admin-boundary-line;
 
   [admin_level = '2'] {
     [zoom >= 4] {
-      line-color: @admin-boundary-line;
       line-width: 0.6;
       background/line-width: 0.6;
     }
@@ -127,9 +127,6 @@
     [zoom >= 7] {
       line-width: 2;
       background/line-width: 2;
-    }
-    [zoom >= 8] {
-    	line-color: @admin-boundary-line;
     }
     [zoom >= 10] {
       [admin_level = '2'] {
@@ -157,11 +154,9 @@
   }
   [admin_level = '3'],
   [admin_level = '4'] {
-    line-cap: round;
     line-width: 0;
     line-dasharray: 6,5,0.1,5,0.1,5;
     [zoom >= 5] {
-      line-color: @admin-boundary-line;
       line-width: 0.5;
       background/line-width: 0.5;
     }
@@ -170,16 +165,11 @@
       background/line-width: 1;
     }
     [zoom >= 8] {
-	    line-color: @admin-boundary-line;
 	    line-dasharray: 4,3;
     }
     [zoom >= 10] {
       line-width: 1.5;
       background/line-width: 1.5;
-    }
-    [zoom >= 11] {
-      line-width: 3;
-      background/line-width: 3;
     }
     [zoom>=6][maritime='yes']
     {
@@ -193,48 +183,9 @@
     	line-width: 0;
     }
   }
-  [admin_level = '5'][zoom >= 7][zoom <= 10],
-  [admin_level = '6'][zoom >= 7][zoom <= 10] {
-    line-color: @admin-boundary-line;
+  [admin_level = '5'][zoom >= 7],
+  [admin_level = '6'][zoom >= 7] {
     line-width: 0.33;
     background/line-width: 0.33;
-    line-cap: round;
-  }
-
-  background/line-color: white;
-  background/line-width: 0;
-  comp-op: darken;
-  opacity: 0.7;
-
-  [admin_level = '5'][zoom >= 11] {
-    line-color: @admin-boundary-line;
-    line-width: 2;
-    background/line-width: 2;
-    line-dasharray: 6,3,2,3,2,3;
-  }
-  [admin_level = '6'][zoom >= 11] {
-    line-color: @admin-boundary-line;
-    line-width: 2;
-    background/line-width: 2;
-    line-dasharray: 8,3,2,3;
-  }
-  [admin_level = '7'],
-  [admin_level = '8'] {
-    [zoom >= 12] {
-      line-color: @admin-boundary-line;
-      line-width: 1.5;
-      background/line-width: 1.5;
-      line-dasharray: 5,3;
-    }
-  }
-
-  [admin_level = '9'],
-  [admin_level = '10'] {
-    [zoom >= 16] {
-      line-color: @admin-boundary-line;
-      line-width: 1.5;
-      background/line-width: 1.5;
-      line-dasharray: 3,5;
-    }
   }
 }
