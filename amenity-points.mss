@@ -602,7 +602,8 @@
   }
 
   [amenity = 'charging_station'][zoom >= 17]::shop {
-    marker-file: url('symbols/2016/charging_station.16.svg');
+    marker-file: url('symbols/fr/IRVE_blue.svg');
+    marker-transform: "scale(0.05)";
     marker-placement: interior;
     marker-clip: false;
   }
@@ -682,6 +683,13 @@
 
   [shop = 'perfumery'][zoom >= 17]::shop {
     marker-file: url('symbols/2016/perfumery-14.svg');
+    marker-fill: @shop-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [shop = 'sports'][zoom >= 17]::shop {
+    marker-file: url('symbols/2016/sports-14.svg');
     marker-fill: @shop-icon;
     marker-placement: interior;
     marker-clip: false;
