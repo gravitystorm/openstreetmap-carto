@@ -998,6 +998,15 @@
 
   [feature = 'natural_peak'][zoom >= 11] {
     marker-file: url('symbols/peak.svg');
+    [man_made = 'cross'][zoom >= 13] {
+      marker-file: url('symbols/peak_cross-13.svg');
+    }
+    [man_made = 'cross'][zoom >= 14] {
+      marker-file: url('symbols/peak_cross-14.svg');
+    }
+    [man_made = 'cross'][zoom >= 16] {
+      marker-file: url('symbols/peak_cross-16.svg');
+    }
     marker-fill: @landform-color;
     marker-placement: interior;
     marker-clip: false;

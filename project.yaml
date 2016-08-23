@@ -1691,6 +1691,7 @@ Layer:
             denomination,
             "generator:source",
             power_source,
+            man_made,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
@@ -1782,6 +1783,7 @@ Layer:
             denomination,
             "generator:source",
             power_source,
+            man_made,
             NULL AS way_pixels
           FROM planet_osm_point
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
