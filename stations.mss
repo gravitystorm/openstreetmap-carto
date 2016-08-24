@@ -24,7 +24,7 @@
       text-placement: interior;
       [disused = 'yes'] { text-name: ""; }
     }
-    
+
 /* logos spécifiques aux réseaux et opérateurs */
 
     [zoom >= 11] [operator = 'SNCF'][type_ratp = ''][usage!='freight'] {
@@ -33,7 +33,7 @@
       [zoom>=14] { point-transform: 'scale(0.15)'; }
       [disused = 'yes'] { point-file: url('symbols/station_disused.png'); point-transform: 'scale(1)';}
     }
-    
+
     [zoom >= 13] {
     	[type_ratp = 'rer'],
     	[type_ratp = 'metro;rer'],
@@ -42,7 +42,7 @@
       		point-transform: 'scale(0.04)';
 		}
 	}
-	
+
     [zoom >= 14] [operator = 'SNCF'] {
       text-name: "[name]";
       text-face-name: @bold-fonts;
@@ -82,7 +82,7 @@
    	 		text-size: 10;
    	 		text-dy: 12;
    		}
-   		
+
    		[type_ratp = 'metro']{
    	 		point-file: url('symbols/fr/logo-ratp-metro.svg');
    	 		point-transform: 'scale(0.04)';
@@ -90,7 +90,7 @@
    	 		text-dy: 12;
    		}
     }
-    
+
     [zoom >= 15] {
       point-file: url('symbols/station.png');
       [disused = 'yes'] { point-file: url('symbols/station_disused.png'); }
@@ -139,7 +139,7 @@
     	  text-size: 9;
     	  text-dy: 12;
     	}
-    
+
     	[type_ratp = 'tram']{
 			point-file: url('symbols/fr/logo-ratp-tram.svg');
    	 		point-transform: 'scale(0.04)';
@@ -219,7 +219,7 @@
 		}
 		point-file: url('symbols/bus_stop.svg');
     }
-    
+
     [type_ratp = 'bus'],[operator='RATP'],[l_operator = 'RATP'] {
    	 	point-file: url('symbols/fr/logo-ratp-bus.svg');
    	 	point-transform: 'scale(0.04)';

@@ -51,8 +51,7 @@
     	line-width: 0;
     }
   }
-  [admin_level = '3'],
-  [admin_level = '4'] {
+  [admin_level =~ '(3|4)'] {
     line-width: 3;
     background/line-width: 3;
     line-dasharray: 6,5,0.1,5,0.1,5;
@@ -69,15 +68,13 @@
     }
   }
 
-  [admin_level = '5'],
-  [admin_level = '6'] {
+  [admin_level =~ '(5|6)'] {
     line-color: @admin-boundary-line;
     line-width: 2;
     background/line-width: 2;
     line-dasharray: 6,4,0.1,4;
   }
-  [admin_level = '7'],
-  [admin_level = '8'] {
+  [admin_level =~ '(7|8)'] {
     [zoom >= 12] {
       line-color: @admin-boundary-line;
       line-width: 1.5;
@@ -152,8 +149,7 @@
     }
 
   }
-  [admin_level = '3'],
-  [admin_level = '4'] {
+  [admin_level =~ '(3|4)'] {
     line-width: 0;
     line-dasharray: 6,5,0.1,5,0.1,5;
     [zoom >= 5] {
@@ -183,8 +179,7 @@
     	line-width: 0;
     }
   }
-  [admin_level = '5'][zoom >= 7],
-  [admin_level = '6'][zoom >= 7] {
+  [admin_level =~ '(5|6)'][zoom >= 7] {
     line-width: 0.33;
     background/line-width: 0.33;
   }

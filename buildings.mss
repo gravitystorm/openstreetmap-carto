@@ -20,9 +20,7 @@
       polygon-opacity: 0.5;
     }
 
-    [building = 'greenhouse'][wall='no'],
-    [building = 'greenhouse']
-    {
+    [building = 'greenhouse'] {
       polygon-fill: #c5d2b4;
     }
 

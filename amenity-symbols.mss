@@ -15,8 +15,7 @@
 	  [aeroway = 'aerodrome'][aerodrome = 'international'],
 	  [aeroway = 'aerodrome'][aerodrome = 'airport'],
 	  [aeroway = 'aerodrome'][aerodrome = 'continental'],
-	  [aerodrome = 'military'],
-	  [aerodrome = 'airfield'],
+	  [aerodrome =~ '(military|airfield)'],
 	  [aeroway = 'airport'] {
 		[zoom >= 14] {
 			text-dy: 0;
@@ -29,8 +28,7 @@
 			text-face-name: @oblique-fonts;
 		}
 		point-file: url('symbols/airport2.svg');
-		[aerodrome = 'military'],[aerodrome = 'airfield']
-		{
+		[aerodrome =~ '(military|airfield)'] {
 			point-file: url('symbols/airport-red.svg');
 		}
 		[zoom>=11] {
@@ -38,7 +36,10 @@
 			text-size: 9;
 			text-name: "[nom]";
 			text-fill: #6692da;
-			[aerodrome = 'military'],[aerodrome = 'airfield'] { text-fill: black; text-face-name: @book-fonts;}
+			[aerodrome =~ '(military|airfield)'] {
+        text-fill: black;
+        text-face-name: @book-fonts;
+      }
 			text-halo-radius: 1;
 			text-placement: interior;
 			text-face-name: @bold-fonts;
@@ -60,9 +61,8 @@
 		}
 	  }
   }
-  
-  [railway = 'level_crossing'][zoom >= 15]::railway,
-  [railway = 'crossing'][zoom >= 15]::railway {
+
+  [railway =~ '(level_crossing|crossing)'][zoom >= 15]::railway {
     point-file: url('symbols/level_crossing2.svg');
     point-transform: "scale(0.5)";
     point-placement: interior;
@@ -161,8 +161,7 @@
     point-placement: interior;
   }
 
-  [barrier = 'bollard'],
-  [barrier = 'block'] {
+  [barrier =~ '(bollard|block)'] {
     [zoom >= 16] {
       point-file: url('symbols/bollard.png');
       point-placement: interior;

@@ -239,7 +239,7 @@
 	text-halo-radius: 1.5;
   	text-halo-fill: fadeout(white, 30%);
     text-label-position-tolerance: 5;
-    
+
     [pop>1000],
     [zoom>=12] {
       text-size: 9;
@@ -255,8 +255,7 @@
 }
 
 #placenames-small::suburb [zoom >= 12] {
-	[place = 'neighbourhood'][zoom>=14],
-	[place = 'quarter'][zoom>=14],
+	[place =~ '(neighbourhood|quarter)'][zoom>=14],
 	[place = 'suburb'] {
     text-name: "[nom]";
     text-size: 8.5;
@@ -285,10 +284,7 @@
 }
 
 #placenames-small::hamlet [zoom >= 14] {
-  [place = 'hamlet'],
-  [place = 'locality'],
-  [place = 'isolated_dwelling'],
-  [place = 'farm'] {
+  [place =~ '(hamlet|locality|isolated_dwelling|farm)'] {
 	text-name: "[nom]";
     text-fill: #666;
     text-face-name: @oblique-fonts;

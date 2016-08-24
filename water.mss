@@ -11,9 +11,7 @@
     }
   }
 
-  [waterway = 'dock'],
-  [waterway = 'mill_pond'],
-  [waterway = 'canal'] {
+  [waterway =~ '(dock|mill_pond|canal)'] {
     [zoom >= 9]::waterway {
       polygon-gamma: 0.75;
       polygon-fill: @water-color;
@@ -51,8 +49,7 @@
 }
 
 #water-areas-overlay {
-  [natural = 'marsh'],
-  [natural = 'wetland'] {
+  [natural =~ '(marsh|wetland)'] {
     [zoom >= 13] {
       polygon-pattern-file: url('symbols/marsh.png');
     }
@@ -73,9 +70,7 @@
 }
 
 #water-lines-casing {
-  [waterway='stream'],
-  [waterway='ditch'],
-  [waterway='drain'] {
+  [waterway =~ '(stream|ditch|drain)'] {
     [zoom >= 13] {
       line-width: 1.5;
       line-color: white;

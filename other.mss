@@ -8,8 +8,7 @@
     }
   }
 
-  [int_tc_type = 'residential'],
-  [int_tc_type = 'unclassified'] {
+  [int_tc_type =~ '(residential|unclassified)'] {
       point-file: url('symbols/turning_circle-uncl-casing.14.png');
       point-allow-overlap: true;
       point-ignore-placement: true;
@@ -52,8 +51,7 @@
       point-file: url('symbols/turning_circle-tert-fill.22.png');
     }
   }
-  [int_tc_type = 'residential'],
-  [int_tc_type = 'unclassified'] {
+  [int_tc_type =~ '(residential|unclassified)'] {
       point-file: url('symbols/turning_circle-uncl-fill.12.png');
       point-allow-overlap: true;
       point-ignore-placement: true;
@@ -88,20 +86,16 @@
 }
 
 #highway-area-casing {
-  [highway = 'residential'],
-  [highway = 'unclassified'] {
+  [highway =~ '(residential|unclassified)'] {
     [zoom >= 14] {
       line-color: #999;
       line-width: 1;
     }
   }
 
-  [highway = 'pedestrian'],
-  [highway = 'service'],
+  [highway =~ '(pedestrian|service|cycleway|path)'],
   [highway = 'footway'][footway=''],
-  [highway = 'footway'][zoom>=19],
-  [highway = 'cycleway'],
-  [highway = 'path'] {
+  [highway = 'footway'][zoom>=19] {
     [zoom >= 14] {
       line-color: grey;
       line-width: 1;
@@ -126,19 +120,15 @@
     polygon-fill: #ccc;
   }
 
-  [highway = 'residential'],
-  [highway = 'unclassified'],
-  [highway = 'service'] {
+  [highway =~ '(residential|unclassified|service)'] {
     [zoom >= 14] {
       polygon-fill: #fff;
     }
   }
 
-  [highway = 'pedestrian'],
+  [highway =~ '(pedestrian|cycleway|path)'],
   [highway = 'footway'][footway=''],
-  [highway = 'footway'][zoom>=19],
-  [highway = 'cycleway'],
-  [highway = 'path'] {
+  [highway = 'footway'][zoom>=19] {
     [zoom >= 14] {
       polygon-fill: #ededed;
       opacity: 0.7;
@@ -1398,9 +1388,7 @@
     [zoom >= 19] { line-width: 32; }
   }
 
-  [highway = 'residential'],
-  [highway = 'unclassified'],
-  [highway = 'road'] {
+  [highway =~ '(residential|unclassified|road)'] {
     [zoom >= 13] {
       line-width: 3;
       line-color: #999;
@@ -1472,9 +1460,7 @@
     [zoom >= 19] { line-width: 26; }
   }
 
-  [highway = 'residential'],
-  [highway = 'unclassified'],
-  [highway = 'road'] {
+  [highway =~ '(residential|unclassified|road)'] {
     [zoom >= 13] {
       line-width: 2;
       line-color: #fff;
@@ -1696,9 +1682,7 @@
     [zoom >= 16] { line-width: 9; }
     [zoom >= 19] { line-width: 18; }
   }
-  [highway = 'residential'],
-  [highway = 'unclassified'],
-  [highway = 'road'] {
+  [highway =~ '(residential|unclassified|road)'] {
     [zoom >= 13] {
       line-width: 3;
       line-color: #999;
@@ -1734,7 +1718,7 @@
   }
 }
 
-#minor-roads-fill [zoom >= 12] {
+#minor-roads-fill [zoom >= 12] { // noregexp
   [zoom>=16][junction = 'roundabout'] { line-clip: false; line-smooth: 0.8; }
 
   [highway = 'proposed'],
@@ -2938,9 +2922,7 @@
         line-join: round;
       }
 
-      [railway = 'disused'],
-      [railway = 'abandoned'],
-      [railway = 'construction'] { /* and not [highway] != '' */
+      [railway =~ '(disused|abandoned|construction)'] { /* and not [highway] != '' */
         [zoom >= 13] {
           line-width: 6;
           line-color: black;
@@ -2960,8 +2942,7 @@
       [zoom >= 15] { line-width: 7; }
     }
 
-    [highway = 'parking_position'][zoom >= 14],
-    [highway = 'taxipath'][zoom >= 14] {
+    [highway =~ '(parking_position|taxipath)'][zoom >= 14] {
       line-width: 2;
       line-color: black;
       [zoom >= 15] { line-width: 3; }

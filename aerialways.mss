@@ -1,7 +1,5 @@
 #aerialways [zoom >= 12] {
-  [aerialway = 'cable_car'],
-  [aerialway = 'gondola'],
-  [aerialway = 'goods'] {
+  [aerialway =~ '(cable_car|gondola|goods)'] {
   	line-pattern-file: url('symbols/cable_car.png');
    	text-name: [name];
   	text-placement: line;
@@ -10,12 +8,7 @@
   	text-halo-radius: 2;
   }
 
-  [aerialway = 'chair_lift'],
-  [aerialway = 'drag_lift'],
-  [aerialway = 't-bar'],
-  [aerialway = 'j-bar'],
-  [aerialway = 'platter'],
-  [aerialway = 'rope_tow'] {
+  [aerialway =~ '(chair_lift|drag_lift|t-bar|j-bar|platter|rope_tow)'] {
     line-pattern-file: url('symbols/chair_lift.png');
     [zoom >= 16]
     {
