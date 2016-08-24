@@ -1364,7 +1364,7 @@
     line-dasharray: 4,2;
     [zoom >= 13] { line-width: 8; }
     [zoom >= 15] { line-width: 11; }
-    [zoom >= 17] { line-width: 14; line-smooth: 0.7; }
+    [zoom >= 17] { line-width: 14; line-clip: false; line-smooth: 0.7; }
     [zoom >= 19] { line-width: 28; }
   }
 
@@ -1435,7 +1435,7 @@
     line-cap: round;
     [zoom >= 13] { line-width: 6.5; }
     [zoom >= 15] { line-width: 9; }
-    [zoom >= 17] { line-width: 12; line-smooth: 0.7; }
+    [zoom >= 17] { line-width: 12; line-clip: false; line-smooth: 0.7; }
     [zoom >= 19] { line-width: 24; }
   }
 
@@ -1519,7 +1519,7 @@
     line-join: round;
     [zoom >= 13] { line-width: 7.5; }
     [zoom >= 15] { line-width: 11.5; }
-    [zoom >= 17] { line-width: 16; line-smooth: 0.7; }
+    [zoom >= 17] { line-width: 16; line-clip: false; line-smooth: 0.7; }
     [zoom >= 19] { line-width: 32; }
   }
 
@@ -1577,7 +1577,7 @@
     line-cap: round;
     [zoom >= 13] { line-width: 7; }
     [zoom >= 15] { line-width: 11; }
-    [zoom >= 17] { line-width: 15.5; line-smooth: 0.7; }
+    [zoom >= 17] { line-width: 15.5; line-clip: false; line-smooth: 0.7; }
     [zoom >= 19] { line-width: 31; }
   }
 
@@ -1639,7 +1639,7 @@
     line-join: round;
     [zoom >= 13] { line-width: 7.5; }
     [zoom >= 15] { line-width: 11.5; }
-    [zoom >= 17] { line-width: 16; line-smooth: 0.7; }
+    [zoom >= 17] { line-width: 16; line-clip: false; line-smooth: 0.7; }
     [zoom >= 19] { line-width: 32; }
   }
 
@@ -1831,7 +1831,7 @@
     line-color: @trunk_color;
     [zoom >= 13] { line-width: 7; }
     [zoom >= 15] { line-width: 11; }
-    [zoom >= 17] { line-width: 15.5; line-smooth: 0.7; }
+    [zoom >= 17] { line-width: 15.5; line-clip: false; line-smooth: 0.7; }
     [zoom >= 19] { line-width: 30;}
   }
 
@@ -1866,7 +1866,7 @@
     [zoom >= 14] { line-width: 6; }
     [zoom >= 15] { line-width: 9.4; }
     [zoom >= 17] { line-width: 13; }
-      [zoom >= 19] { line-width: 30; }
+    [zoom >= 19] { line-width: 30; }
   }
 
   [highway = 'living_street'] {
@@ -1946,7 +1946,7 @@
     [zoom >= 14] { line-width: 3; }
     [zoom >= 15] { line-width: 5.5; }
     [zoom >= 16] { line-width: 8; }
-      [zoom >= 19] { line-width: 16; }
+    [zoom >= 19] { line-width: 16; }
   }
 
   [highway = 'platform'][zoom >= 17] {
@@ -2789,7 +2789,7 @@
         line-color: black;
       }
       [zoom >= 15] { line-width: 11; }
-      [zoom >= 17] { line-width: 16; line-smooth: 0.7; }
+      [zoom >= 17] { line-width: 16; line-clip: false; line-smooth: 0.7; }
       [zoom >= 19] { line-width: 32; }
     }
 
@@ -3099,7 +3099,7 @@
       }
       [zoom >= 13] { line-width: 7; }
       [zoom >= 15] { line-width: 9.5; }
-      [zoom >= 17] { line-width: 14.5; line-smooth: 0.7; }
+      [zoom >= 17] { line-width: 14.5; line-clip: false; line-smooth: 0.7; }
       [zoom >= 19] { line-width: 30; }
     }
 
