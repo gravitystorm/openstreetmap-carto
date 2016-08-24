@@ -2117,12 +2117,9 @@
       }
     }
 
-    [railway = 'narrow_gauge'],
-    [railway = 'funicular'] {
-      [zoom >= 13] {
-        a/line-width: 2;
-        a/line-color: #666;
-      }
+    [railway =~ '(narrow_gauge|funicular)'][zoom >= 13] {
+      a/line-width: 2;
+      a/line-color: #666;
     }
 
     [railway = 'miniature'][zoom >= 15] {
@@ -2147,18 +2144,14 @@
       line-color: #999;
     }
 
-    [railway = 'disused'],
-    [railway = 'abandoned'],
-    [railway = 'construction'] {
-      [zoom >= 13] {
-    		line-clip: false;
-    		line-smooth: 0.7;
-        line-color: grey;
-        line-join: round;
-        line-width: 2;
-        line-dasharray: 1,6;
-        [railway = 'abandoned'] {line-dasharray: 1,10;}
-      }
+    [railway =~ '(disused|abandoned|construction)'][zoom >= 13] {
+      line-clip: false;
+      line-smooth: 0.7;
+      line-color: grey;
+      line-join: round;
+      line-width: 2;
+      line-dasharray: 1,6;
+      [railway = 'abandoned'] {line-dasharray: 1,10;}
     }
 
     [railway = 'platform'] {
