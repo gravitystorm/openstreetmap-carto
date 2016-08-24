@@ -190,7 +190,7 @@
       line-width: 0.3;
     }
   }
-  
+
   [feature = 'landuse_industrial'],
   [feature = 'landuse_harbour'],
   [feature = 'landuse_railway'] {
@@ -260,6 +260,7 @@
   [feature = 'amenity_school'],
   [feature = 'landuse_school'],
   [feature = 'amenity_hospital'],
+  [feature = 'amenity_clinic'],
   [feature = 'amenity_kindergarten'] {
     [zoom >= 10] {
       polygon-fill: #f0f0d8;
@@ -299,14 +300,14 @@
       polygon-fill: #efc8c8;
     }
   }
-  
+
   [feature = 'amenity_recycling'][zoom >= 14] {
     polygon-fill: #dfd1d6;
     [zoom >= 16]{
     	line-color: #093;
     	line-dasharray: 8,8;
     }
-  }  
+  }
 
   [zoom >= 12] {
   	[feature = 'amenity_place_of_worship'],
