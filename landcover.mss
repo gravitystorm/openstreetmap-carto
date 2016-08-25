@@ -278,8 +278,7 @@
 
   [feature = 'landuse_farm'],
   [feature = 'landuse_farmland'],
-  [feature = 'landuse_greenhouse_horticulture'],
-  [feature = 'plant_nursery'] {
+  [feature = 'landuse_greenhouse_horticulture'] {
     [zoom >= 10] {
       polygon-fill: @farmland;
       [zoom >= 16] {
