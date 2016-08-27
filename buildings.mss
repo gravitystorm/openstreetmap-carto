@@ -33,10 +33,17 @@
         line-color: @building-aeroway-line;
       }
     }
+    [building = 'cathedral'],
+    [building = 'chapel'],
+    [building = 'church'],
+    [building = 'mosque'],
+    [building = 'temple'],
+    [building = 'synagogue'],
+    [building = 'shrine'],
     [amenity = 'place_of_worship'] {
       polygon-fill: @building-major-fill;
       polygon-clip: false;
-      [zoom >= 15] {
+      [zoom >= 14] {
         line-width: .75;
         line-clip: false;
         line-color: @building-major-line;

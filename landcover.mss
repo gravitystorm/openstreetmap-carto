@@ -159,6 +159,14 @@
     }
   }
 
+  [feature = 'man_made_campanile'][zoom >= 13],
+  [feature = 'building_shrine'][zoom >= 13],
+  [feature = 'building_synagogue'][zoom >= 13],
+  [feature = 'building_temple'][zoom >= 13],
+  [feature = 'building_mosque'][zoom >= 13],
+  [feature = 'building_church'][zoom >= 13],
+  [feature = 'building_chapel'][zoom >= 13],
+  [feature = 'building_cathedral'][zoom >= 13],
   [feature = 'amenity_place_of_worship'][zoom >= 13] {
     polygon-fill: @place_of_worship;
     polygon-clip: false;

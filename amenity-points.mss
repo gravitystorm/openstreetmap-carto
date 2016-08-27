@@ -375,23 +375,39 @@
     marker-clip: false;
   }
 
+  [feature = 'man_made_campanile'][zoom >= 16],
+  [feature = 'building_shrine'][zoom >= 16],
+  [feature = 'building_synagogue'][zoom >= 16],
+  [feature = 'building_temple'][zoom >= 16],
+  [feature = 'building_mosque'][zoom >= 16],
+  [feature = 'building_church'][zoom >= 16],
+  [feature = 'building_chapel'][zoom >= 16],
+  [feature = 'building_cathedral'][zoom >= 16],
   [feature = 'amenity_place_of_worship'][zoom >= 16] {
     marker-file: url('symbols/place_of_worship.16.svg');
+    [feature = 'man_made_campanile'] {
+      marker-file: url('symbols/christian.9.svg');
+    }
     marker-fill: #000000;
     marker-placement: interior;
     marker-clip: false;
+    [feature = 'building_chapel'],
+    [feature = 'building_church'],
+    [feature = 'building_cathedral'],
     [religion = 'christian'] {
       marker-file: url('symbols/christian.16.svg');
       [denomination = 'jehovahs_witness']{
         marker-file: url('symbols/place_of_worship.16.svg');
       }
     }
+    [feature = 'building_mosque'],
     [religion = 'muslim'] {
       marker-file: url('symbols/muslim.16.svg');
     }
     [religion = 'sikh'] {
       marker-file: url('symbols/sikhist.16.svg');
     }
+    [feature = 'building_synagogue'],
     [religion = 'jewish'] {
       marker-file: url('symbols/jewish.16.svg');
     }
@@ -1275,7 +1291,15 @@
     text-placement: interior;
   }
 
-  [feature = 'amenity_place_of_worship'][zoom >= 17] {
+  [feature = 'man_made_campanile'][zoom >= 16],
+  [feature = 'building_shrine'][zoom >= 16],
+  [feature = 'building_synagogue'][zoom >= 16],
+  [feature = 'building_temple'][zoom >= 16],
+  [feature = 'building_mosque'][zoom >= 16],
+  [feature = 'building_church'][zoom >= 16],
+  [feature = 'building_chapel'][zoom >= 16],
+  [feature = 'building_cathedral'][zoom >= 16],
+  [feature = 'amenity_place_of_worship'][zoom >= 16] {
     text-name: "[name]";
     text-size: @standard-text-size;
     text-fill: #000033;
@@ -2223,4 +2247,3 @@
     }
   }
 }
-
