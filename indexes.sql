@@ -20,6 +20,11 @@ CREATE INDEX planet_osm_line_river
 CREATE INDEX planet_osm_line_name
   ON planet_osm_line USING GIST (way)
   WHERE name IS NOT NULL;
+CREATE INDEX planet_osm_polygon_water
+  ON planet_osm_polygon USING GIST (way)
+  WHERE waterway IN ('dock', 'riverbank', 'canal')
+    OR landuse IN ('reservoir', 'basin')
+    OR "natural" IN ('water', 'glacier');
 CREATE INDEX planet_osm_polygon_military
   ON planet_osm_polygon USING GIST (way)
   WHERE landuse = 'military';
