@@ -1258,15 +1258,15 @@
       "advanced": {}
     },
     {
-      "name": "placenames-large",
+      "name": "country-names",
       "srs-name": "900913",
       "geometry": "point",
-      "class": "country state",
-      "id": "placenames-large",
+      "class": "country",
+      "id": "country-names",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,\n    name,\n    ref,\n    admin_level\n  FROM planet_osm_polygon\n  WHERE boundary = 'administrative'\n    AND admin_level IN ('2', '4')\n    AND name IS NOT NULL\n    AND way_area > 750*!pixel_width!::real*!pixel_height!::real -- only labels for larger areas are displayed\n  ORDER BY admin_level ASC, way_area DESC\n) AS placenames_large",
+        "table": "(SELECT\n    way,\n    way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,\n    name\n  FROM planet_osm_polygon\n  WHERE boundary = 'administrative'\n    AND admin_level = '2'\n    AND name IS NOT NULL\n    AND way_area > 100*!pixel_width!::real*!pixel_height!::real\n  ORDER BY way_area DESC\n) AS country_names",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
@@ -1280,6 +1280,58 @@
       ],
       "properties": {
         "minzoom": 2
+      }
+    },
+    {
+      "name": "capital-names",
+      "srs-name": "900913",
+      "geometry": "point",
+      "class": "",
+      "id": "capital-names",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508",
+        "table": "(SELECT\n    way,\n    name,\n    CASE\n      WHEN population ~ '^-?\\d+(\\.\\d+)?$' THEN population::NUMERIC ELSE 0\n    END as population\n  FROM planet_osm_point\n  WHERE capital = 'yes'\n    AND (admin_level = '2' OR admin_level IS NULL)\n  ORDER BY population DESC\n) AS capital_names",
+        "geometry_field": "way",
+        "type": "postgis",
+        "key_field": "",
+        "dbname": "gis"
+      },
+      "extent": [
+        -180,
+        -85.05112877980659,
+        180,
+        85.05112877980659
+      ],
+      "properties": {
+        "maxzoom": 15,
+        "minzoom": 3
+      },
+      "advanced": {}
+    },
+    {
+      "name": "state-names",
+      "srs-name": "900913",
+      "geometry": "point",
+      "class": "state",
+      "id": "state-names",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508",
+        "table": "(SELECT\n    way,\n    way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,\n    name,\n    ref\n  FROM planet_osm_polygon\n  WHERE boundary = 'administrative'\n    AND admin_level = '4'\n    AND name IS NOT NULL\n    AND way_area > 100*!pixel_width!::real*!pixel_height!::real\n  ORDER BY way_area DESC\n) AS state_names",
+        "geometry_field": "way",
+        "type": "postgis",
+        "key_field": "",
+        "dbname": "gis"
+      },
+      "extent": [
+        -180,
+        -85.05112877980659,
+        180,
+        85.05112877980659
+      ],
+      "properties": {
+        "minzoom": 4
       },
       "advanced": {}
     },
@@ -1292,7 +1344,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    name,\n    score,\n    CASE\n      WHEN (place = 'city' OR (capital = 'yes' AND score >= 100000)) THEN 1\n      ELSE 2\n    END as category\n  FROM \n    (SELECT\n        way,\n        place,\n        name,\n        capital,\n        (\n          (CASE\n            WHEN (population ~ '^[0-9]{1,8}$') THEN population::INTEGER\n            WHEN (place = 'city') THEN 100000\n            WHEN (place = 'town') THEN 1000\n            ELSE 1\n          END)\n          *\n          (CASE\n            WHEN (capital = 'yes') THEN 3\n            WHEN (capital = '4') THEN 2\n            ELSE 1\n          END)\n        ) AS score\n      FROM planet_osm_point\n      WHERE place IN ('city', 'town')\n        AND name IS NOT NULL\n    ) as p\n  ORDER BY score DESC, length(name) DESC, name\n) AS placenames_medium",
+        "table": "(SELECT\n    way,\n    name,\n    score,\n    CASE\n      WHEN (place = 'city') THEN 1\n      ELSE 2\n    END as category\n  FROM \n    (SELECT\n        way,\n        place,\n        name,\n        (\n          (CASE\n            WHEN (population ~ '^[0-9]{1,8}$') THEN population::INTEGER\n            WHEN (place = 'city') THEN 100000\n            WHEN (place = 'town') THEN 1000\n            ELSE 1\n          END)\n          *\n          (CASE\n            WHEN (capital = '4' OR (capital = 'yes' AND admin_level = '4')) THEN 2\n            ELSE 1\n          END)\n        ) AS score\n      FROM planet_osm_point\n      WHERE place IN ('city', 'town')\n        AND name IS NOT NULL\n        AND capital IS NULL OR capital = '4' OR (capital = 'yes' AND admin_level = '4')\n    ) as p\n  ORDER BY score DESC, length(name) DESC, name\n) AS placenames_medium",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",

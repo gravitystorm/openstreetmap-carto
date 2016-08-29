@@ -1490,9 +1490,53 @@ Layer:
     properties:
       minzoom: 16
     advanced: {}
-  - id: "placenames-large"
-    name: "placenames-large"
-    class: "country state"
+  - id: "country-names"
+    name: "country-names"
+    class: "country"
+    geometry: "point"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            name
+          FROM planet_osm_polygon
+          WHERE boundary = 'administrative'
+            AND admin_level = '2'
+            AND name IS NOT NULL
+            AND way_area > 100*!pixel_width!::real*!pixel_height!::real
+          ORDER BY way_area DESC
+        ) AS country_names
+    properties:
+      minzoom: 2
+  - id: "capital-names"
+    name: "capital-names"
+    class: ""
+    geometry: "point"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            name,
+            CASE
+              WHEN population ~ '^-?\d+(\.\d+)?$' THEN population::NUMERIC ELSE 0
+            END as population
+          FROM planet_osm_point
+          WHERE capital = 'yes'
+            AND (admin_level = '2' OR admin_level IS NULL)
+          ORDER BY population DESC
+        ) AS capital_names
+    properties:
+      minzoom: 3
+      maxzoom: 15
+    advanced: {}
+  - id: "state-names"
+    name: "state-names"
+    class: "state"
     geometry: "point"
     <<: *extents
     Datasource:
@@ -1502,17 +1546,16 @@ Layer:
             way,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
             name,
-            ref,
-            admin_level
+            ref
           FROM planet_osm_polygon
           WHERE boundary = 'administrative'
-            AND admin_level IN ('2', '4')
+            AND admin_level = '4'
             AND name IS NOT NULL
-            AND way_area > 750*!pixel_width!::real*!pixel_height!::real -- only labels for larger areas are displayed
-          ORDER BY admin_level ASC, way_area DESC
-        ) AS placenames_large
+            AND way_area > 100*!pixel_width!::real*!pixel_height!::real
+          ORDER BY way_area DESC
+        ) AS state_names
     properties:
-      minzoom: 2
+      minzoom: 4
     advanced: {}
   - id: "placenames-medium"
     name: "placenames-medium"
@@ -1527,7 +1570,7 @@ Layer:
             name,
             score,
             CASE
-              WHEN (place = 'city' OR (capital = 'yes' AND score >= 100000)) THEN 1
+              WHEN (place = 'city') THEN 1
               ELSE 2
             END as category
           FROM 
@@ -1535,7 +1578,6 @@ Layer:
                 way,
                 place,
                 name,
-                capital,
                 (
                   (CASE
                     WHEN (population ~ '^[0-9]{1,8}$') THEN population::INTEGER
@@ -1545,14 +1587,14 @@ Layer:
                   END)
                   *
                   (CASE
-                    WHEN (capital = 'yes') THEN 3
-                    WHEN (capital = '4') THEN 2
+                    WHEN (capital = '4' OR (capital = 'yes' AND admin_level = '4')) THEN 2
                     ELSE 1
                   END)
                 ) AS score
               FROM planet_osm_point
               WHERE place IN ('city', 'town')
                 AND name IS NOT NULL
+                AND capital IS NULL OR capital = '4' OR (capital = 'yes' AND admin_level = '4')
             ) as p
           ORDER BY score DESC, length(name) DESC, name
         ) AS placenames_medium
