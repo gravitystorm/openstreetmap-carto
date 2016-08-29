@@ -2378,14 +2378,14 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       ref/text-fill: @junction-text-color;
       ref/text-min-distance: 2;
       ref/text-face-name: @oblique-fonts;
-      ref/text-halo-radius: 1.5;
+      ref/text-halo-radius: @standard-halo-radius * 1.5;
       [zoom >= 12] {
         name/text-name: "[name]";
         name/text-size: 9;
         name/text-fill: @junction-text-color;
         name/text-dy: -9;
         name/text-face-name: @oblique-fonts;
-        name/text-halo-radius: 1;
+        name/text-halo-radius: @standard-halo-radius;
         name/text-wrap-character: ";";
         name/text-wrap-width: 2;
         name/text-min-distance: 2;
@@ -2405,8 +2405,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-size: 10;
       text-fill: black;
       text-face-name: @book-fonts;
-      text-halo-radius: 1;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
       text-wrap-width: 30;
       text-min-distance: 2;
       [zoom >= 17] {
@@ -2428,8 +2428,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-size: 8;
       text-fill: black;
       text-face-name: @book-fonts;
-      text-halo-radius: 1;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
       text-min-distance: 2;
       text-wrap-width: 30;
       [way_pixels > 250] {
@@ -2437,7 +2437,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
       [way_pixels > 1000] {
         text-size: 11;
-        text-halo-radius: 1.5;
+        text-halo-radius: @standard-halo-radius * 1.5;
       }
       [way_pixels > 4000] {
         text-size: 12;
@@ -2701,7 +2701,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-face-name: @book-fonts;
       text-min-distance: 40;
       text-halo-radius: 2;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-fill: @standard-halo-fill;
       text-spacing: 760;
       text-clip: false;
     }
@@ -2718,8 +2718,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-placement: line;
       text-min-distance: 18;
       text-face-name: @book-fonts;
-      text-halo-radius: 1;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
     }
   }
 }
@@ -2737,7 +2737,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-placement: line;
       text-face-name: @book-fonts;
       [tunnel = 'no'] {
-        text-halo-radius: 1;
+        text-halo-radius: @standard-halo-radius;
         [highway = 'motorway'] { text-halo-fill: @motorway-fill; }
         [highway = 'trunk'] { text-halo-fill: @trunk-fill; }
         [highway = 'primary'] { text-halo-fill: @primary-fill; }
@@ -2765,7 +2765,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-clip: false;
       text-placement: line;
       text-face-name: @book-fonts;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: @secondary-fill;
     }
     [zoom >= 14] {
@@ -2791,7 +2791,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-clip: false;
       text-placement: line;
       text-face-name: @book-fonts;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: @tertiary-fill;
     }
     [zoom >= 17] {
@@ -2810,8 +2810,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
-      text-halo-radius: 1;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
       text-face-name: @book-fonts;
       [zoom >= 17] {
         text-size: 11;
@@ -2831,7 +2831,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: @residential-fill;
       text-face-name: @book-fonts;
     }
@@ -2857,7 +2857,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       [highway = 'raceway'] { text-halo-fill: @raceway-fill; }
       [highway = 'service'] { text-halo-fill: @service-fill; }
       text-face-name: @book-fonts;
@@ -2876,7 +2876,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       [highway = 'living_street'] { text-halo-fill: @living-street-fill; }
       [highway = 'pedestrian'] { text-halo-fill: @pedestrian-fill; }
       text-face-name: @book-fonts;
@@ -2918,8 +2918,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-name: "[name]";
       text-fill: #222;
       text-size: 8;
-      text-halo-radius: 1;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
@@ -2946,8 +2946,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-name: "[name]";
       text-fill: #222;
       text-size: 9;
-      text-halo-radius: 1;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
       text-spacing: 300;
       text-clip: false;
       text-placement: line;

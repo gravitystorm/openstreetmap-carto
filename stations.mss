@@ -24,8 +24,8 @@
       text-size: 10;
       text-fill: @station-text;
       text-dy: 9;
-      text-halo-radius: 1.5;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-radius: @standard-halo-radius * 1.5;
+      text-halo-fill: @standard-halo-fill;
       text-wrap-width: 0;
       text-placement: interior;
     }
@@ -53,8 +53,8 @@
       text-size: 10;
       text-fill: @station-text;
       text-dy: 10;
-      text-halo-radius: 1.5;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-radius: @standard-halo-radius * 1.5;
+      text-halo-fill: @standard-halo-fill;
       text-wrap-width: 0;
       text-placement: interior;
     }
@@ -77,8 +77,8 @@
       text-size: 10;
       text-fill: @station-text;
       text-dy: 10;
-      text-halo-radius: 1.5;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-radius: @standard-halo-radius * 1.5;
+      text-halo-fill: @standard-halo-fill;
       text-wrap-width: 0;
       text-placement: interior;
     }
@@ -101,8 +101,8 @@
       text-size: 10;
       text-fill: @station-text;
       text-dy: 10;
-      text-halo-radius: 1.5;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-radius: @standard-halo-radius * 1.5;
+      text-halo-fill: @standard-halo-fill;
       text-wrap-width: 0;
       text-placement: interior;
     }
