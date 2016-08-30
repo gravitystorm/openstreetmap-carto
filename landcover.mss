@@ -655,7 +655,7 @@
   [zoom >= 16] {
     line-color: #444;
     line-width: 0.4;
-    [barrier = 'hedge'] {
+    [feature = 'barrier_hedge'] {
       polygon-fill: #aed1a0;
     }
   }
@@ -666,13 +666,26 @@
     line-width: 0.4;
     line-color: #444;
   }
-  [barrier = 'embankment'][zoom >= 14] {
+  [feature = 'barrier_embankment'][zoom >= 14] {
     line-width: 0.4;
     line-color: #444;
   }
-  [barrier = 'hedge'][zoom >= 16] {
+  [feature = 'barrier_hedge'][zoom >= 16] {
     line-width: 3;
     line-color: #aed1a0;
+  }
+  [feature = 'historic_citywalls'],
+  [feature = 'barrier_city_wall'] {
+    [zoom >= 15] {
+      line-width: 1.5;
+      line-color: lighten(#444, 30%);
+    }
+
+    [zoom >= 17] {
+      line-width: 3;
+      barrier/line-width: 0.4;
+      barrier/line-color: #444;
+    }
   }
 }
 
