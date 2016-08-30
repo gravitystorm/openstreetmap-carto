@@ -1523,11 +1523,11 @@ Layer:
             way,
             name,
             CASE
-              WHEN population ~ '^-?\d+(\.\d+)?$' THEN population::NUMERIC ELSE 0
+              WHEN (population ~ '^[0-9]{1,8}$') THEN population::INTEGER ELSE 0
             END as population
           FROM planet_osm_point
           WHERE capital = 'yes'
-            AND (admin_level = '2' OR admin_level IS NULL)
+            AND admin_level = '2'
           ORDER BY population DESC
         ) AS capital_names
     properties:
@@ -1594,7 +1594,7 @@ Layer:
               FROM planet_osm_point
               WHERE place IN ('city', 'town')
                 AND name IS NOT NULL
-                AND capital IS NULL OR capital = '4' OR (capital = 'yes' AND admin_level = '4')
+                AND capital IS NULL OR capital != '2' OR (capital = 'yes' AND admin_level != '2')
             ) as p
           ORDER BY score DESC, length(name) DESC, name
         ) AS placenames_medium

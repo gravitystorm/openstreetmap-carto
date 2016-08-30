@@ -56,17 +56,18 @@
   [zoom >= 4][zoom < 8][population > 600000],
   [zoom >= 5][zoom < 8] {
     shield-file: url('symbols/place/place-capital-6.svg');
+    shield-text-dx: 6;
     shield-text-dy: 6;
     shield-name: '[name]';
     shield-face-name: @book-fonts;
     shield-fill: @placenames;
     shield-size: 11;
-    shield-min-distance: 10;
+    shield-min-distance: 5;
     shield-wrap-width: 30;
     shield-halo-fill: @standard-halo-fill;
     shield-halo-radius: @standard-halo-radius * 1.5;
     shield-placement-type: simple;
-    shield-placements: 'S,N';
+    shield-placements: 'S,N,E,W';
     shield-unlock-image: true;
 
     [zoom >= 5] {
@@ -78,6 +79,7 @@
     }
     [zoom >= 7] {
       shield-file: url('symbols/place/place-capital-8.svg');
+      shield-text-dx: 7;
       shield-text-dy: 7;
     }
   }
@@ -102,17 +104,18 @@
   [category = 1][zoom < 14][score >= 400000] {
     [zoom >= 5][zoom < 8] {
       shield-file: url('symbols/place/place-4.svg');
+      shield-text-dx: 4;
       shield-text-dy: 4;
       shield-name: '[name]';
       shield-face-name: @book-fonts;
       shield-fill: @placenames;
       shield-size: 11;
-      shield-min-distance: 10;
+      shield-min-distance: 5;
       shield-wrap-width: 30;
       shield-halo-fill: @standard-halo-fill;
       shield-halo-radius: @standard-halo-radius * 1.5;
       shield-placement-type: simple;
-      shield-placements: 'S,N';
+      shield-placements: 'S,N,E,W';
       shield-unlock-image: true;
 
       [zoom >= 5] {
@@ -123,6 +126,7 @@
         shield-wrap-width: 60;
 
         shield-file: url('symbols/place/place-6.svg');
+        shield-text-dx: 5;
         shield-text-dy: 5;
       }
     }
@@ -149,6 +153,7 @@
     [zoom >= 6][zoom < 8][score >= 70000],
     [zoom >= 7][zoom < 8] {
       shield-file: url('symbols/place/place-4.svg');
+      shield-text-dx: 4;
       shield-text-dy: 4;
       shield-name: "[name]";
       shield-size: 10;
@@ -157,9 +162,9 @@
       shield-halo-fill: @standard-halo-fill;
       shield-halo-radius: @standard-halo-radius * 1.5;
       shield-wrap-width: 30;
-      shield-min-distance: 10;
+      shield-min-distance: 5;
       shield-placement-type: simple;
-      shield-placements: 'S,N';
+      shield-placements: 'S,N,E,W';
       shield-unlock-image: true;
     }
     [zoom >= 7] {
