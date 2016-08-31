@@ -2965,29 +2965,29 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 .directions::directions {
   [zoom >= 16] {
     // intentionally omitting highway_platform, highway_construction
-    [feature = 'highway_motorway'],
-    [feature = 'highway_motorway_link'],
-    [feature = 'highway_trunk'],
-    [feature = 'highway_trunk_link'],
-    [feature = 'highway_primary'],
-    [feature = 'highway_primary_link'],
-    [feature = 'highway_secondary'],
-    [feature = 'highway_secondary_link'],
-    [feature = 'highway_tertiary'],
-    [feature = 'highway_tertiary_link'],
-    [feature = 'highway_residential'],
-    [feature = 'highway_unclassified'],
-    [feature = 'highway_living_street'],
-    [feature = 'highway_road'],
-    [feature = 'highway_service'],
-    [feature = 'highway_pedestrian'],
-    [feature = 'highway_raceway'],
-    [feature = 'highway_cycleway'],
-    [feature = 'highway_footway'],
-    [feature = 'highway_path'],
-    [feature = 'highway_steps'],
-    [feature = 'highway_track'],
-    [feature = 'highway_bridleway'] {
+    [highway = 'motorway'],
+    [highway = 'motorway_link'],
+    [highway = 'trunk'],
+    [highway = 'trunk_link'],
+    [highway = 'primary'],
+    [highway = 'primary_link'],
+    [highway = 'secondary'],
+    [highway = 'secondary_link'],
+    [highway = 'tertiary'],
+    [highway = 'tertiary_link'],
+    [highway = 'residential'],
+    [highway = 'unclassified'],
+    [highway = 'living_street'],
+    [highway = 'road'],
+    [highway = 'service'],
+    [highway = 'pedestrian'],
+    [highway = 'raceway'],
+    [highway = 'cycleway'],
+    [highway = 'footway'],
+    [highway = 'path'],
+    [highway = 'steps'],
+    [highway = 'track'],
+    [highway = 'bridleway'] {
       [oneway = 'yes'],
       [oneway = '-1'] {
         marker-placement: line;
@@ -2999,43 +2999,43 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           marker-file: url('symbols/oneway-reverse.svg');
         }
 
-        [feature = 'highway_motorway'],
-        [feature = 'highway_motorway_link'] {
+        [highway = 'motorway'],
+        [highway = 'motorway_link'] {
           marker-fill: @motorway-oneway-arrow-color;
         }
-        [feature = 'highway_trunk'],
-        [feature = 'highway_trunk_link'] {
+        [highway = 'trunk'],
+        [highway = 'trunk_link'] {
           marker-fill: @trunk-oneway-arrow-color;
         }
-        [feature = 'highway_primary'],
-        [feature = 'highway_primary_link'] {
+        [highway = 'primary'],
+        [highway = 'primary_link'] {
           marker-fill: @primary-oneway-arrow-color;
         }
-        [feature = 'highway_secondary'],
-        [feature = 'highway_secondary_link'] {
+        [highway = 'secondary'],
+        [highway = 'secondary_link'] {
           marker-fill: @secondary-oneway-arrow-color;
         }
-        [feature = 'highway_tertiary'],
-        [feature = 'highway_tertiary_link'] {
+        [highway = 'tertiary'],
+        [highway = 'tertiary_link'] {
           marker-fill: @tertiary-oneway-arrow-color;
         }
-        [feature = 'highway_residential'],
-        [feature = 'highway_unclassified'],
-        [feature = 'highway_road'],
-        [feature = 'highway_service'] {
+        [highway = 'residential'],
+        [highway = 'unclassified'],
+        [highway = 'road'],
+        [highway = 'service'] {
           marker-fill: @residential-oneway-arrow-color;
         }
-        [feature = 'highway_living_street'] {
+        [highway = 'living_street'] {
           marker-fill: @living-street-oneway-arrow-color;
         }
-        [feature = 'highway_pedestrian'] {
+        [highway = 'pedestrian'] {
           marker-fill: @pedestrian-oneway-arrow-color;
         }
-        [feature = 'highway_raceway'] {
+        [highway = 'raceway'] {
           marker-fill: @raceway-oneway-arrow-color;
         }
-        [feature = 'highway_footway'],
-        [feature = 'highway_path'] {
+        [highway = 'footway'],
+        [highway = 'path'] {
           marker-fill: @footway-oneway-arrow-color;
           [horse = 'designated'] {
             marker-fill: @bridleway-oneway-arrow-color;
@@ -3044,16 +3044,16 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
             marker-fill: @cycleway-oneway-arrow-color;
           }
         }
-        [feature = 'highway_steps'] {
+        [highway = 'steps'] {
           marker-fill: @steps-oneway-arrow-color;
         }
-        [feature = 'highway_cycleway'] {
+        [highway = 'cycleway'] {
           marker-fill: @cycleway-oneway-arrow-color;
         }
-        [feature = 'highway_track'] {
+        [highway = 'track'] {
           marker-fill: @track-oneway-arrow-color;
         }
-        [feature = 'highway_bridleway'] {
+        [highway = 'bridleway'] {
           marker-fill: @bridleway-oneway-arrow-color;
         }
       }

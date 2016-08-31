@@ -488,7 +488,7 @@ Layer:
     advanced: {}
   - id: "tunnels"
     name: "tunnels"
-    class: "tunnels-fill tunnels-casing access directions"
+    class: "tunnels-fill tunnels-casing access"
     geometry: "linestring"
     <<: *extents
     Datasource:
@@ -500,7 +500,7 @@ Layer:
       table: |-
         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
                 horse, foot, bicycle, tracktype, int_surface, access, construction,
-                service, oneway, link, layernotnull
+                service, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
                 way,
@@ -524,11 +524,6 @@ Layer:
                   WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
                   ELSE 'INT-normal'::text
                 END AS service,
-                CASE
-                  WHEN oneway IN ('yes', '-1') THEN oneway
-                  WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
-                  ELSE NULL
-                END AS oneway,
                 CASE
                   WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
                   ELSE 'no'
@@ -558,7 +553,6 @@ Layer:
                 END AS access,
                 construction,
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
-                NULL AS oneway,
                 'no' AS link,
                 CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
               FROM planet_osm_line
@@ -785,7 +779,7 @@ Layer:
       table: |-
         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
                 horse, foot, bicycle, tracktype, int_surface, access, construction,
-                service, oneway, link, layernotnull
+                service, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
                 way,
@@ -809,11 +803,6 @@ Layer:
                   WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
                   ELSE 'INT-normal'::text
                 END AS service,
-                CASE
-                  WHEN oneway IN ('yes', '-1') THEN oneway
-                  WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
-                  ELSE NULL
-                END AS oneway,
                 CASE
                   WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
                   ELSE 'no'
@@ -845,7 +834,6 @@ Layer:
                 END AS access,
                 construction,
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
-                NULL AS oneway,
                 'no' AS link,
                 CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
               FROM planet_osm_line
@@ -936,7 +924,7 @@ Layer:
     advanced: {}
   - id: "roads-fill"
     name: "roads-fill"
-    class: "roads-fill access directions"
+    class: "roads-fill access"
     geometry: "linestring"
     <<: *extents
     Datasource:
@@ -958,7 +946,6 @@ Layer:
             access,
             construction,
             service,
-            oneway,
             link,
             layernotnull
           FROM ( -- begin "features" subselect that contains both roads and rail/aero
@@ -984,11 +971,6 @@ Layer:
                   WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
                   ELSE 'INT-normal'::text
                 END AS service,
-                CASE
-                  WHEN oneway IN ('yes', '-1') THEN oneway
-                  WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
-                  ELSE NULL
-                END AS oneway,
                 CASE
                   WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
                   ELSE 'no'
@@ -1020,7 +1002,6 @@ Layer:
                 END AS access,
                 construction,
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
-                NULL AS oneway,
                 'no' AS link,
                 CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
               FROM planet_osm_line
@@ -1190,7 +1171,7 @@ Layer:
     advanced: {}
   - id: "bridges"
     name: "bridges"
-    class: "bridges-fill bridges-casing access directions"
+    class: "bridges-fill bridges-casing access"
     geometry: "linestring"
     <<: *extents
     Datasource:
@@ -1198,7 +1179,7 @@ Layer:
       table: |-
         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
                 horse, foot, bicycle, tracktype, int_surface, access, construction,
-                service, oneway, link, layernotnull
+                service, link, layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
                 way,
@@ -1222,11 +1203,6 @@ Layer:
                   WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
                   ELSE 'INT-normal'::text
                 END AS service,
-                CASE
-                  WHEN oneway IN ('yes', '-1') THEN oneway
-                  WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
-                  ELSE NULL
-                END AS oneway,
                 CASE
                   WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
                   ELSE 'no'
@@ -1256,7 +1232,6 @@ Layer:
                 END AS access,
                 construction,
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
-                NULL AS oneway,
                 'no' AS link,
                 CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
               FROM planet_osm_line
@@ -1961,7 +1936,7 @@ Layer:
     advanced: {}
   - id: "roads-text-name"
     name: "roads-text-name"
-    class: ""
+    class: "directions"
     geometry: "linestring"
     <<: *extents
     Datasource:
@@ -1971,7 +1946,13 @@ Layer:
             CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END,
             CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
             CASE WHEN construction IN ('service', 'footway', 'cycleway', 'bridleway', 'path', 'track') THEN 'yes' ELSE 'no' END AS int_construction_minor,
-            name
+            name,
+            CASE
+              WHEN oneway IN ('yes', '-1') THEN oneway
+              WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
+              ELSE NULL
+            END AS oneway,
+            horse, bicycle
           FROM planet_osm_line
           WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 
                             'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction')
