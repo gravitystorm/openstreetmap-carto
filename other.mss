@@ -2108,9 +2108,12 @@
       }
     }
 
-    [railway =~ '(narrow_gauge|funicular)'][zoom >= 13] {
-      a/line-width: 2;
-      a/line-color: #666;
+    [railway = 'funicular'],
+    [railway = 'narrow_gauge'] {
+      [zoom >= 13] {
+        a/line-width: 2;
+        a/line-color: #666;
+      }
     }
 
     [railway = 'miniature'][zoom >= 15] {
@@ -2135,16 +2138,20 @@
       line-color: #999;
     }
 
-    [railway =~ '(disused|abandoned|construction)'][zoom >= 13] {
-      line-clip: false;
-      line-smooth: 0.7;
-      line-color: grey;
-      line-join: round;
-      line-width: 2;
-      line-dasharray: 1,6;
-      [railway = 'abandoned'] {line-dasharray: 1,10;}
+    [railway = 'abandoned'],
+    [railway = 'construction)'],
+    [railway = 'disused'] {
+      [zoom >= 13] {
+        line-clip: false;
+        line-smooth: 0.7;
+        line-color: grey;
+        line-join: round;
+        line-width: 2;
+        line-dasharray: 1,6;
+        [railway = 'abandoned'] {line-dasharray: 1,10;}
+      }
     }
-
+    
     [railway = 'platform'] {
       [zoom >= 17] {
         line-join: round;
@@ -3019,8 +3026,9 @@
       [zoom >= 15] { line-width: 7; }
     }
 
-    [highway =~ '(parking_position|taxipath)'][zoom >= 14] {
-      line-width: 2;
+    [highway = 'parking_position'],
+    [highway = 'taxipath'] {
+      [zoom >= 14] { line-width: 2; }
       [zoom >= 15] { line-width: 3; }
     }
   }
