@@ -169,8 +169,8 @@ overlapping borders correctly.
   text-name: "[name]";
   text-face-name: @book-fonts;
   text-fill: @admin-boundaries;
-  text-halo-radius: 1.0;
-  text-halo-fill: rgba(255,255,255,0.6);
+  text-halo-radius: @standard-halo-radius;
+  text-halo-fill: @standard-halo-fill;
   text-placement: line;
   text-clip: true;
   text-vertical-alignment: middle;
@@ -181,8 +181,8 @@ overlapping borders correctly.
   text-name: "[name]";
   text-face-name: @book-fonts;
   text-fill: green;
-  text-halo-radius: 1.0;
-  text-halo-fill: rgba(255,255,255,0.6);
+  text-halo-radius: @standard-halo-radius;
+  text-halo-fill: @standard-halo-fill;
   text-placement: line;
   text-clip: true;
   text-vertical-alignment: middle;

@@ -707,8 +707,8 @@
   [feature = 'natural_cliff'][zoom >= 15],
   [feature = 'man_made_embankment'][zoom >= 15] {
     text-name: "[name]";
-    text-halo-radius: 1;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
     text-fill: #999;
     text-size: 10;
     text-face-name: @book-fonts;

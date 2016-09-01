@@ -39,7 +39,7 @@
     text-size: 11;
     text-fill: #444;
     text-face-name: @book-fonts;
-    text-halo-radius: 1;
+    text-halo-radius: @standard-halo-radius;
     text-wrap-width: 20;
     text-halo-fill: rgba(255,255,255,0.5);
     text-placement: interior;
