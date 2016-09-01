@@ -21,6 +21,12 @@ polygon:
     where: building IS NULL
   military:
     where: landuse = 'military'
+  water:
+    # The indentation here makes sense in the SQL output
+    where: |-
+      waterway IN ('dock', 'riverbank', 'canal')
+          OR landuse IN ('reservoir', 'basin')
+          OR "natural" IN ('water', 'glacier')
   way_area_z6:
     where: way_area > 59750
 roads:
