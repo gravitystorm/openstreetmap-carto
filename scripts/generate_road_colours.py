@@ -43,7 +43,7 @@ def generate_colours(settings, section):
     road_classes = settings['roads']
     colour_divisions = len(road_classes) - 1
     hues = OrderedDict()
-    
+
     min_h = settings['hue'][0]
     max_h = settings['hue'][1]
 
