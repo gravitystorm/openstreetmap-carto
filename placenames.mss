@@ -62,7 +62,8 @@
     shield-face-name: @book-fonts;
     shield-fill: @placenames;
     shield-size: 11;
-    shield-min-distance: 5;
+    shield-margin: 5;
+    shield-avoid-edges: true;
     shield-wrap-width: 30;
     shield-halo-fill: @standard-halo-fill;
     shield-halo-radius: @standard-halo-radius * 1.5;
@@ -114,7 +115,8 @@
       shield-face-name: @book-fonts;
       shield-fill: @placenames;
       shield-size: 11;
-      shield-min-distance: 5;
+      shield-margin: 5;
+      shield-avoid-edges: true;
       shield-wrap-width: 30;
       shield-halo-fill: @standard-halo-fill;
       shield-halo-radius: @standard-halo-radius * 1.5;
@@ -172,7 +174,8 @@
       shield-halo-fill: @standard-halo-fill;
       shield-halo-radius: @standard-halo-radius * 1.5;
       shield-wrap-width: 30;
-      shield-min-distance: 5;
+      shield-margin: 5;
+      shield-avoid-edges: true;
       shield-placement-type: simple;
       shield-placements: 'S,N,E,W';
       [dir = 1] {
