@@ -1524,7 +1524,8 @@ Layer:
             name,
             CASE
               WHEN (population ~ '^[0-9]{1,8}$') THEN population::INTEGER ELSE 0
-            END as population
+            END as population,
+            round(random()) AS dir
           FROM planet_osm_point
           WHERE capital = 'yes'
             AND admin_level = '2'
@@ -1572,7 +1573,8 @@ Layer:
             CASE
               WHEN (place = 'city') THEN 1
               ELSE 2
-            END as category
+            END as category,
+            round(random()) AS dir
           FROM 
             (SELECT
                 way,
