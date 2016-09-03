@@ -1,11 +1,10 @@
 #continent {
-  [place = 'continent'][zoom >= 1][zoom < 3] {
+  [place = 'continent'][zoom >= 1][zoom <= 2] {
     text-name: "[name]";
     text-size: 10;
     text-fill: #9d6c9d;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
-    text-wrap-width: 20;
   }
 }
 
@@ -31,7 +30,7 @@
 }
 
 .state {
-  [place = 'state'][zoom >= 5][zoom < 9] {
+  [place = 'state'][zoom >= 5][zoom <= 8] {
     text-size: 8;
     text-fill: #6c216c;
     text-face-name: @book-fonts;
@@ -62,15 +61,18 @@
 .placenames {
   [place = 'city'] {
     [zoom=4][is_capital='country'] {
-        marker-height: 2;
-        marker-width: 2;
-        marker-fill: #6c216c;
-        marker-ignore-placement: true;
+      marker-height: 2;
+      marker-width: 2;
+      marker-fill: #6c216c;
+      marker-ignore-placement: true;
     }
-    [zoom >= 5][zoom < 15][is_capital='country'],
-    [zoom >= 5][zoom < 15][pop>500000],
-    [zoom >= 6][zoom < 15] {
-  	  [is_capital='country'] { text-size: 11; text-face-name: @bold-fonts; }
+    [zoom >= 5][zoom <= 14][is_capital='country'],
+    [zoom >= 5][zoom <= 14][pop>500000],
+    [zoom >= 6][zoom <= 14] {
+  	  [is_capital='country'] {
+        text-size: 11;
+        text-face-name: @bold-fonts;
+      }
       text-face-name: @book-fonts;
       text-name: "[nom]";
       text-size: 10;
@@ -80,11 +82,11 @@
       text-min-distance: 10;
       text-clip: false;
   	  [zoom >= 6][zoom <= 7] {
-          text-dy: -4;
-          marker-height: 3;
-          marker-width: 3;
-          marker-fill: black;
-          marker-ignore-placement: true;
+        text-dy: -4;
+        marker-height: 3;
+        marker-width: 3;
+        marker-fill: black;
+        marker-ignore-placement: true;
   	  }
       [zoom >= 9] {
         text-size: 12;
