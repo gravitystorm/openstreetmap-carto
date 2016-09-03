@@ -2151,7 +2151,7 @@
         [railway = 'abandoned'] {line-dasharray: 1,10;}
       }
     }
-    
+
     [railway = 'platform'] {
       [zoom >= 17] {
         line-join: round;
@@ -2921,10 +2921,10 @@
 
     [highway = 'tertiary'][zoom >= 12],
     [highway = 'tertiary_link'][zoom >= 12] {
-      line-width: 3.5;
-      [zoom >= 13] { line-width: 7;  }
-      [zoom >= 14] { line-width: 8.5;  }
-      [zoom >= 15] { line-width: 12; }
+      line-width: 3;
+      [zoom >= 13] { line-width: 6.5;  }
+      [zoom >= 14] { line-width: 8;  }
+      [zoom >= 15] { line-width: 11; }
       [zoom >= 17] { line-width: 17; }
       [zoom >= 19] { line-width: 33; }
     }
