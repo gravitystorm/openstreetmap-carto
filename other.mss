@@ -2872,6 +2872,11 @@
   }
 }
 
+#bridges-poly [zoom >=16] {
+    polygon-fill: #ddd;
+    opacity: 0.75;
+}
+
 #bridges-l0::bridges [bridge='yes'][zoom >= 12],
 #bridges-l1::bridges [bridge='yes'][zoom >= 12],
 #bridges-l2::bridges [bridge='yes'][zoom >= 12],

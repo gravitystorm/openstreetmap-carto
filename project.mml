@@ -1297,35 +1297,6 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {}
     },
-    { "name": "waterway-bridges",
-      "geometry": "linestring",
-      "extent": [
-        -179.99999692067183,
-        -84.96651228427099,
-        179.99999692067183,
-        84.96651228427098
-      ],
-      "Datasource": {
-        "type": "postgis",
-        "table": "(select way,coalesce(tags->'name:fr',tags->'int_name',name) as name from planet_osm_line where waterway='canal' and bridge in ('yes','true','1','aqueduct') order by z_order) as water",
-        "extent_cache": "custom",
-        "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
-        "key_field": "",
-        "geometry_field": "way",
-        "dbname": "osm",
-        "asynchronous_request": "true",
-        "max_async_connection": "6",
-        "srid": "900913",
-        "host": "localhost",
-        "user": "fr",
-        "password": "m4d31nfr4nc3"
-      },
-      "id": "waterway-bridges",
-      "class": "",
-      "srs-name": "900913",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "advanced": {}
-    },
     { "name": "access-pre-bridges",
       "geometry": "linestring",
       "extent": [
@@ -1380,6 +1351,64 @@
       },
       "id": "direction-pre-bridges",
       "class": "directions",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {}
+    },
+    { "name": "bridges-poly",
+      "geometry": "polygon",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way from planet_osm_polygon where man_made='bridge' order by z_order) as bridge_poly",
+        "extent_cache": "custom",
+        "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "osm",
+        "asynchronous_request": "true",
+        "max_async_connection": "6",
+        "srid": "900913",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
+      },
+      "id": "bridges-poly",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {}
+    },
+    { "name": "waterway-bridges",
+      "geometry": "linestring",
+      "extent": [
+        -179.99999692067183,
+        -84.96651228427099,
+        179.99999692067183,
+        84.96651228427098
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way,coalesce(tags->'name:fr',tags->'int_name',name) as name from planet_osm_line where waterway='canal' and bridge in ('yes','true','1','aqueduct') order by z_order) as water",
+        "extent_cache": "custom",
+        "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
+        "key_field": "",
+        "geometry_field": "way",
+        "dbname": "osm",
+        "asynchronous_request": "true",
+        "max_async_connection": "6",
+        "srid": "900913",
+        "host": "localhost",
+        "user": "fr",
+        "password": "m4d31nfr4nc3"
+      },
+      "id": "waterway-bridges",
+      "class": "",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {}
@@ -1912,7 +1941,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select *, regexp_replace(regexp_replace(coalesce(tags->'name:fr',tags->'int_name',name),'^([Aa]éroport|[Aa]érodrome) ([Ii]nternational )?(d''|de la |de |du |)',''),'^Base [Aa]érienne ','B.A. ') as nom, tags->'mountain_pass' as mountain_pass, coalesce(tags->'aerodrome', p.military) as aerodrome \n      from planet_osm_point p \n      where aeroway in ('airport','aerodrome','helipad','military')\n or p.military='airfield' or barrier in ('bollard','gate','lift_gate','block','toll_booth') \n         or highway in ('mini_roundabout','gate')\n         or man_made in ('lighthouse','power_wind','windmill','mast')\n         or power in ('sub_station','substation','plant') or (power='generator' and (\"generator:source\"='wind' or power_source='wind'))\n         or \"natural\" in ('peak','volcano','spring','tree','cave_entrance')\n         or railway in ('level_crossing','buffer_stop') \n      ) as symbols",
+        "table": "(select *, regexp_replace(regexp_replace(coalesce(tags->'name:fr',tags->'int_name',name),'^([Aa]éroport|[Aa]érodrome) ([Ii]nternational )?(d''|de la |de |du |)',''),'^Base [Aa]érienne ','B.A. ') as nom, tags->'mountain_pass' as mountain_pass, coalesce(tags->'aerodrome', p.military) as aerodrome  FROM planet_osm_point p  WHERE aeroway in ('airport','aerodrome','helipad','military')  OR p.military='airfield' or barrier in ('bollard','gate','lift_gate','block','toll_booth')  OR highway in ('mini_roundabout','gate')  OR man_made in ('lighthouse','power_wind','windmill','mast')  OR power in ('sub_station','substation','plant')  OR (power='generator' and (\"generator:source\"='wind' or power_source='wind'))  OR \"natural\" in ('peak','volcano','spring','tree','cave_entrance')  OR railway in ('level_crossing','buffer_stop')) as amenity_symbols",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
