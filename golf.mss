@@ -1,71 +1,78 @@
 #golf [zoom>=16] {
-  [golf = 'rough'] {
-    polygon-fill: #adcc8f;
-    polygon-opacity: 1;
-    polygon-smooth: 0.8;
-  }
-  [golf = 'fairway'] {
-    polygon-fill: #adcc8f;
-    polygon-opacity: 1;
-    polygon-smooth: 0.8;
-  }
-  [golf = 'water_hazard'], [golf = 'lateral_water_hazard'] {
-    polygon-fill: #b5d0d0;
-    polygon-smooth: 0.8;
-  }
-  [golf = 'green'] {
-    polygon-fill: #bfe573;
-    polygon-opacity: 1;
-    polygon-smooth: 0.8;
-  }
-  [golf = 'bunker']{
-	polygon-fill: #ffdf88;
-	polygon-opacity: 1;
-	polygon-smooth: 0.8;
-  }
-  [golf = 'hole'][geo='line'] {
-	line-color: black;
-	line-width: 0.5;
-	[name!=''] {
-		text-placement: line;
-		text-name: "[name]";
-		text-face-name: @book-fonts;
-		text-halo-radius: 1;
-		text-halo-fill: fadeout(white, 30%);
-	}
-  }
-  [golf = 'hole'][geo='point'],
-  [golf='pin'] {
-	point-file: url('symbols/fr/golf.svg');
-	point-transform: "scale(0.4)";
-	[ref!=''] {
-		text-fill: #444;
-		text-name: "[ref]";
-		text-face-name: @book-fonts;
-		text-dy: -10;
-		text-halo-radius: 1;
-		text-halo-fill: fadeout(white, 30%);
-	}
-  }
-  [golf='tee'] {
-	marker-fill: grey;
-	marker-width: 3;
-	marker-height: 3;
-	[ref!=''] {
-		text-name: "[ref]";
-		text-face-name: @book-fonts;
-		text-dy: 6;
-		text-halo-radius: 1;
-		text-halo-fill: fadeout(white, 30%);
-	}
-  }
-  [golf = 'out_of_bounds'] {
-	line-color: white;
-	line-width: 2;
-	line-cap: round;
-	line-dasharray: 1,8;
+  ::area [geo='polygon'],[geo='line'] {
+    [golf = 'rough'],[golf = 'driving_range'] {
+      polygon-fill: #adcc8f;
+      polygon-opacity: 1;
+      polygon-smooth: 0.8;
+    }
+    [golf = 'fairway'] {
+      polygon-fill: #adcc8f;
+      polygon-opacity: 1;
+      polygon-smooth: 0.8;
+    }
+    [golf = 'water_hazard'], [golf = 'lateral_water_hazard'] {
+      polygon-fill: #b5d0d0;
+      polygon-smooth: 0.8;
+    }
+    [golf = 'green'],[golf='tee'] {
+      polygon-fill: #bfe573;
+      polygon-opacity: 1;
+      polygon-smooth: 0.8;
+    }
+    [golf = 'bunker']{
+    	polygon-fill: #ffdf88;
+    	polygon-opacity: 1;
+    	polygon-smooth: 0.8;
+    }
   }
 
+  ::line [geo='line'] {
+    [golf = 'hole'] {
+    	line-color: black;
+    	line-width: 0.5;
+    	[name!=''] {
+    		text-placement: line;
+    		text-name: "[name]";
+    		text-face-name: @book-fonts;
+    		text-halo-radius: 1;
+    		text-halo-fill: fadeout(white, 30%);
+    	}
+    }
+    [golf = 'out_of_bounds'] {
+    	line-color: white;
+    	line-width: 2;
+    	line-cap: round;
+    	line-dasharray: 1,8;
+    }
+  }
+
+  ::point [geo='point'] {
+    [golf = 'hole'],
+    [golf='pin'] {
+  	point-file: url('symbols/fr/golf.svg');
+  	point-transform: "scale(0.4)";
+  	[ref!=''] {
+  		text-fill: #444;
+  		text-name: "[ref]";
+  		text-face-name: @book-fonts;
+  		text-dy: -10;
+  		text-halo-radius: 1;
+  		text-halo-fill: fadeout(white, 30%);
+  	}
+    }
+    [golf='tee'] {
+    	marker-fill: grey;
+    	marker-width: 3;
+    	marker-height: 3;
+    	[ref!=''] {
+    		text-name: "[ref]";
+    		text-face-name: @book-fonts;
+    		text-dy: 6;
+    		text-halo-radius: 1;
+    		text-halo-fill: fadeout(white, 30%);
+    	}
+    }
+  }
 }
 
 
@@ -105,7 +112,7 @@
         	line-cap: round;
 		}
 	}
-	
+
 	[sport='soccer'] {
 		[surface='grass']::surface { polygon-fill: @sport-surface-grass; }
 		[d12>130][d12<200][d23>68][d23<160][d13>150][d13<250] { /* 1>2 = length / 2>3 = width */
@@ -172,7 +179,7 @@
 			}
 		}
 	}
-	
+
 	[sport='basketball'][zoom>=17] {
 		[way_area<1000][d13>30][d13<50] {
 			[d12>30][d12<40][d23>15][d23<25] { /* 12-longueur - 23-largeur */
@@ -193,7 +200,7 @@
 			}
 		}
 	}
-	
+
 	[sport='rugby'],
 	[sport='rugby_union'],
 	[sport='rugby_league'] {
