@@ -309,17 +309,9 @@
       point-placement: interior;
     }
 
-    [emergency = 'aed'][zoom >= 17],
-    [emergency = 'defibrillator'][zoom >= 17] {
-      point-file: url('symbols/fr/aed2.svg');
-      point-placement: interior;
-      [indoor='yes'] { point-opacity: 0.5; }
-    }
-
     [amenity = 'charging_station'][zoom >= 17]   {
       marker-file: url('symbols/fr/IRVE_blue.svg');
-      marker-transform: "scale(0.05)";
-      marker-fill: @shop-icon;
+      marker-transform: "scale(0.04)";
       marker-clip: false;
       marker-placement: interior;
     }
@@ -327,6 +319,13 @@
     [amenity = 'bench'][zoom >= 19] {
       point-file: url('symbols/bench.svg');
       point-placement: interior;
+    }
+
+    [emergency = 'aed'][zoom >= 17],
+    [emergency = 'defibrillator'][zoom >= 17] {
+      point-file: url('symbols/fr/aed2.svg');
+      point-placement: interior;
+      [indoor='yes'] { point-opacity: 0.5; }
     }
 
   } // ::amenity
