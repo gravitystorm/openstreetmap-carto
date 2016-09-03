@@ -1029,7 +1029,16 @@
   [amenity = 'school']::amenity,
   [amenity = 'college']::amenity {
     [zoom >= 15] {
-  	  text-name: "[name]";
+      // pas de rendu des "Section d'enseignement..."
+      text-name: "[name]";
+      [name =~ '^Section.*']{ text-name: "";}
+      [zoom=15] {
+		    [ecole != '']
+		    {
+          text-name: "[ecole]";
+          text-wrap-width: 0;
+        }
+      }
   	  text-size: 9;
       [zoom>=15][way_area>75000],
       [zoom>=16][way_area>25000],
@@ -1045,13 +1054,6 @@
   	  text-placement: interior;
   		text-label-position-tolerance: 0;
 
-  	  [zoom<=16] {
-		    [ecole != '']
-		    {
-          text-name: "[ecole]";
-          text-wrap-width: 0;
-        }
-      }
     }
   }
 
@@ -1061,6 +1063,7 @@
   [amenity = 'college']::amenity2 {
     [zoom >= 15][ecole != ''] {
 	  text-name: "[ecole]";
+    [ecole =~ '^Section.*']{ text-name: "";}
     [zoom>=15][way_area>75000],
     [zoom>=16][way_area>25000],
     [zoom>=17][way_area>10000],
