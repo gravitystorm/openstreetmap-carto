@@ -1029,9 +1029,8 @@
   [amenity = 'school']::amenity,
   [amenity = 'college']::amenity {
     [zoom >= 15] {
-      // pas de rendu des "Section d'enseignement..."
       text-name: "[name]";
-      [name =~ '^Section.*']{ text-name: "";}
+      [name =~ '^Section.*']{ text-name: "";} // pas de rendu des "Section d'enseignement..."
       [zoom=15] {
 		    [ecole != '']
 		    {
@@ -1063,7 +1062,7 @@
   [amenity = 'college']::amenity2 {
     [zoom >= 15][ecole != ''] {
 	  text-name: "[ecole]";
-    [ecole =~ '^Section.*']{ text-name: "";}
+    [ecole =~ '^Section.*']{ text-name: "";} // pas de rendu des "Section d'enseignement..."
     [zoom>=15][way_area>75000],
     [zoom>=16][way_area>25000],
     [zoom>=17][way_area>10000],
@@ -3755,8 +3754,11 @@
 
 
   [highway = 'motorway'],
+  [highway = 'motorway_link'],
   [highway = 'trunk'],
-  [highway = 'primary'] {
+  [highway = 'trunk_link'],
+  [highway = 'primary'],
+  [highway = 'primary_link'] {
 	[zoom >= 13] {
 	  [zoom>=17] { text-name: "[name]"; }
 	  text-name: "[nom]";
@@ -3781,7 +3783,8 @@
 	  text-fill: #444;
 	}
   }
-  [highway = 'secondary'] {
+  [highway = 'secondary'],
+  [highway = 'secondary_link'] {
 	[zoom >= 13] {
 	  [zoom>=17] { text-name: "[name]"; }
 	  text-name: "[nom]";
@@ -3806,7 +3809,8 @@
 	  text-fill: #444;
 	}
   }
-  [highway = 'tertiary'] {
+  [highway = 'tertiary'],
+  [highway = 'tertiary_link'] {
 	[zoom >= 15] {
 	  [zoom>=17] { text-name: "[name]"; }
 	  text-name: "[nom]";
@@ -3872,8 +3876,8 @@
 
   [zoom >= 15][zoom < 17][railway='platform'],
   [zoom >= 15][railway='platform'][tunnel!=""] {
-	text-name: "";
-	text-face-name: @book-fonts;
+  	text-name: "";
+  	text-face-name: @book-fonts;
   }
 
 
