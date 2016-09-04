@@ -77,7 +77,7 @@
       line-width: 1.5;
       background/line-width: 1.5;
       line-dasharray: 5,4;
-      [nb<2] { line-width: 0; background/line-width: 0; }
+      [nb<2],[maritime='yes'] { line-width: 0; background/line-width: 0; }
     }
   }
 
@@ -87,7 +87,7 @@
       line-width: 1.5;
       background/line-width: 1.5;
       line-dasharray: 3,6;
-      [nb<2] { line-width: 0; background/line-width: 0; }
+      [nb<2],[maritime='yes'] { line-width: 0; background/line-width: 0; }
     }
   }
 
