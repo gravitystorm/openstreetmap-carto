@@ -2806,15 +2806,20 @@
 		}
 	  }
 
+    [highway = 'tertiary'],
+	  [highway = 'unclassified'] {
+  		[zoom >= 9][zoom < 12] {
+  		  line-width: 0.75;
+  		  line-color: #bbb;
+  		}
+	  }
+
 	  ::railway {
 		[railway = 'rail'][zoom >= 6][zoom < 13] {
 		  line-width: 0.6;
 		  line-color: #666;
 		  [zoom >= 9] { line-width: 1; line-color: #777;}
 		  [zoom >= 10] { line-width: 1.5; line-color: #888;}
-		  [tunnel = 'yes'] {
-			line-dasharray: 5,2;
-		  }
 		}
 
 		[railway = 'tram'],
@@ -3024,12 +3029,12 @@
         [zoom >= 14] { line-width: 5.5; }
       }
 
-      [railway = 'rail'] {
+      [railway = 'rail'] [zoom >= 13] {
         line-width: 6.5;
         line-join: round;
       }
 
-      [railway = 'INT-spur-siding-yard'] {
+      [railway = 'INT-spur-siding-yard'] [zoom >= 14] {
         line-width: 5.7;
         line-join: round;
       }
@@ -3037,7 +3042,7 @@
       [railway = 'abandoned'],
       [railway = 'construction'],
       [railway = 'disused'] {
-        [zoom >= 13] { line-width: 6; }
+        [zoom >= 14] { line-width: 6; }
       }
     }
   }
