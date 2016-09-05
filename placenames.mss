@@ -208,7 +208,7 @@
   text-size: 8.5;
   text-fill: #333;
   text-face-name: @book-fonts;
-	text-halo-radius: 1.5;
+	text-halo-radius: 1.25;
 	text-halo-fill: fadeout(white, 30%);
   text-min-distance: 25;
   text-placement-type: simple;
@@ -216,6 +216,8 @@
   text-dx: 5;
   text-dy: 5;
   text-min-padding: 10;
+  text-wrap-width: 30;
+  text-align: center;
 }
 
 #placenames-small::village [zoom >= 11] {
@@ -231,6 +233,8 @@
     text-dx: 5;
     text-dy: 5;
     text-min-padding: 10;
+    text-wrap-width: 30;
+    text-align: center;
 
     [pop>1000],
     [zoom>=12] {
@@ -277,6 +281,8 @@
   text-placements: "E,NE,SE,W,NW,SW";
   text-dx: 5;
   text-dy: 5;
+  text-wrap-width: 30;
+  text-align: center;
 }
 
 #placenames-small::hamlet [zoom >= 14] {
