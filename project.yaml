@@ -1395,6 +1395,7 @@ Layer:
           ORDER BY admin_level DESC
         ) AS admin_low_zoom
     properties:
+      minzoom: 4
       maxzoom: 10
     advanced: {}
   - id: "admin-mid-zoom"
