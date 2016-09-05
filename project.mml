@@ -1070,7 +1070,8 @@
       ],
       "id": "admin-low-zoom",
       "properties": {
-        "maxzoom": 10
+        "maxzoom": 10,
+        "minzoom": 4
       },
       "advanced": {}
     },
