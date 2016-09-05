@@ -39,7 +39,8 @@
     text-wrap-width: 30;
     [zoom >= 7] {
       text-size: 12;
-      text-min-distance: 10;
+      text-wrap-width: 40;
+      text-min-distance: 5;
       text-face-name: @oblique-fonts;
     }
   }

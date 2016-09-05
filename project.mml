@@ -1794,7 +1794,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way,place,coalesce(tags->'short_name:fr',tags->'name:fr',tags->'short_name',tags->'int_name',name) as name, osm_id, cast(regexp_replace('0' || population,'[^0-9]','','g') as bigint) as pop, ref,0 as way_area from planet_osm_point where place is not null and place  in ('country','state','continent') order by place, pop desc ) as placenames",
+        "table": "(select way,place,coalesce(tags->'short_name:fr',tags->'name:fr',tags->'short_name',tags->'int_name',name) as name, osm_id, cast(regexp_replace('0' || population,'[^0-9]','','g') as bigint) as pop, ref,0 as way_area from planet_osm_point where place is not null and place  in ('country','state','continent') and NOT tags ? 'disused:admin_level' order by place, pop desc ) as placenames",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
