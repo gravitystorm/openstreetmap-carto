@@ -2,7 +2,7 @@
 @admin-boundaries: #ac46ac;
 @admin-boundary-line: #6c216c;
 
-#admin {
+#admin-boundaries-text {
   [zoom>=11][admin_level<=6],
   [zoom>=13][admin_level<=8],
   [zoom>=15] /* limites administratives locales (élément de relation) */
