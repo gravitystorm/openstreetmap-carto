@@ -1707,7 +1707,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way, admin_level, b.tags->'maritime' as maritime, count(r.*) as nb, string_agg(id::text,',') as rels from planet_osm_roads b LEFT JOIN planet_osm_rels r ON (r.parts @> ARRAY[osm_id] AND r.members @> ARRAY['w' || osm_id] AND regexp_replace(r.tags::text,'[{}]',',') ~ format('(,admin_level,%s.*,boundary,administrative|,boundary,administrative.*,admin_level,%s,)',admin_level,admin_level)) where boundary='administrative' and admin_level < (case when z(!scale_denominator!)<12 then '6' else '99' end) GROUP BY 1,2,3 order by cast('0'||regexp_replace(admin_level,'[^0-9]','','g') as integer) desc ) as admin_boundaries",
+        "table": "(select way, admin_level, coalesce(b.tags->'maritime','no') as maritime, count(r.*) as nb, string_agg(id::text,',') as rels from planet_osm_roads b LEFT JOIN planet_osm_rels r ON (r.parts @> ARRAY[osm_id] AND r.members @> ARRAY['w' || osm_id] AND regexp_replace(r.tags::text,'[{}]',',') ~ format('(,admin_level,%s.*,boundary,administrative|,boundary,administrative.*,admin_level,%s,)',admin_level,admin_level)) where boundary='administrative' and admin_level is not null GROUP BY 1,2,3 order by cast('0'||regexp_replace(admin_level,'[^0-9]','','g') as integer) desc, 4 ) as admin_boundaries",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
