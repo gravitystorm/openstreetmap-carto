@@ -28,7 +28,9 @@ For similar reasons, use of external non-OSM data should be avoided.
 
 ## Legibility
 
-I mean this not only in terms of font size, but in the ability of users to be able to "read" the map style. For example, a user might not be familiar with our exact road colours, but should be able to understand their relative importance via intensity of colour, width or other attributes. Important features should be more easily spotted and understood than less important information. It should be possible to gain an understanding of the majority of the map without using a legend.
+Legibility is not only about of font size, but also about the ability of users to be able to “read” the map style. For example, a user might not be familiar with our exact road colours, but should be able to understand their relative importance via intensity of colour, width or other attributes. Important features should be more easily spotted and understood than less important information. It should be possible to gain an understanding of the majority of the map without using a legend.
+
+Avoid font sizes smaller than 10.
 
 ## The Mapper Feedback Loop
 
