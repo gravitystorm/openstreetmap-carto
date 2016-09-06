@@ -46,11 +46,11 @@ tags->'wetland' as "wetland",
 osm_tag2num(tags->'width') as "num_width",
 way as "way",
 z_order as z_order,
-osml10n_get_placename(tags->'name',tags->'name:de',tags->'int_name',tags->'name:en', true, way) as localized_name_inside_brackets,
-osml10n_get_placename(tags->'name',tags->'name:de',tags->'int_name',tags->'name:en', false, way) as localized_name_outside_brackets,
-osml10n_get_name_without_brackets(tags->'name',tags->'name:de',tags->'int_name',tags->'name:en', way) as localized_name_without_brackets,
-osml10n_get_streetname(tags->'name',tags->'name:de',tags->'int_name',tags->'name:en', true, 'de', way) as localized_streetname_inside_brackets,
-osml10n_get_streetname(tags->'name',tags->'name:de',tags->'int_name',tags->'name:en', false, 'de', way) as localized_streetname_outside_brackets,
+osml10n_get_placename_from_tags(tags,true,'de',way) as localized_name_inside_brackets,
+osml10n_get_placename_from_tags(tags,false,'de',way) as localized_name_outside_brackets,
+osml10n_get_name_without_brackets_from_tags(tags,'de',way) as localized_name_without_brackets, 
+osml10n_get_streetname_from_tags(tags,true, 'de', way) as localized_streetname_inside_brackets,
+osml10n_get_streetname_from_tags(tags,false, 'de', way) as localized_streetname_outside_brackets,
 tags as "tags"
 FROM planet_osm_hstore_point;
 
