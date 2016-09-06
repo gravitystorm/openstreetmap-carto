@@ -1,9 +1,12 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.42.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.43.0...master)
+
+## [v2.43.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.42.0...v2.43.0) - 2016-09-05
 ### Changes
 - Adjust alotments pattern
 - Whitespace cleanups of code
 - Adjust colours of dog parks and construction sites
 - Increase font size of addresses
+- Fix combination of long names and oneway arrows
 
 ## [v2.42.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.41.0...v2.42.0) - 2016-08-03
 ### Changes
