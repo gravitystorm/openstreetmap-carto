@@ -113,7 +113,8 @@
         85.05112877980659
       ],
       "properties": {
-        "maxzoom": 9
+        "maxzoom": 9,
+        "minzoom": 7
       },
       "advanced": {}
     },
