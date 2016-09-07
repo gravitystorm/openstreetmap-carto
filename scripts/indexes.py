@@ -17,11 +17,11 @@ def index_statement(table, name, conditions=None, concurrent=False,notexist=Fals
     return ('CREATE INDEX{options} {table}_{name}\n' +
             '  ON {table} USING GIST (way)' +
             '{storage}' +
-            '{where};\n').format(table="planet_osm_"+table, name=name,
+            '{where};\n').format(table=args.prefix+'_'+table, name=name,
                 storage=storage, options=options, where=where)
 
 def parse(cb):
-    with open(os.path.join(os.path.dirname(__file__), '../indexes.yml')) as yaml_file:
+    with open(os.path.join(os.path.dirname(__file__), args.indexes)) as yaml_file:
         indexes = yaml.safe_load(yaml_file)
 
     for table, data in indexes.iteritems():
@@ -41,6 +41,8 @@ parser.add_argument('--fillfactor', help='Custom fillfactor to use')
 parser.add_argument('--notexist', help='Use IF NOT EXISTS (requires 9.5)', action='store_true', default=False)
 parser.add_argument('--osm2pgsql', help='Include indexes normally built by osm2pgsql', action='store_true', default=False)
 parser.add_argument('--reindex', help='Rebuild existing indexes', action='store_true', default=False)
+parser.add_argument('--prefix', help='osm2pgsql prefix in database', default='planet_osm')
+parser.add_argument('--indexes', help='input yaml file', default='../indexes.yml')
 args = parser.parse_args()
 
 def cb (table, name, where):

@@ -1,0 +1,40 @@
+# A goal with the indexes is to have them general-purpose enough to not need
+# frequent changing with stylesheet changes, but to be usable with many
+# versions, and potentially other styles.
+
+point:
+  # The point table is small, but so are the partial indexes
+  place:
+    where: (tags->'place') IS NOT NULL AND (tags->'name') IS NOT NULL
+line:
+  name:
+    where: (tags->'name') IS NOT NULL
+  ferry:
+    where: (tags->'route') = 'ferry'
+  river:
+    where: (tags->'waterway') = 'river'
+polygon:
+  # The polygon table is by far the largest, and generally the slowest
+  name:
+    where: (tags->'name') IS NOT NULL
+  nobuilding:
+    where: (tags->'building') IS NULL
+  military:
+    where: (tags->'landuse') = 'military'
+  water:
+    # The indentation here makes sense in the SQL output
+    where: |-
+      (tags->'waterway') IN ('dock', 'riverbank', 'canal')
+          OR (tags->'landuse') IN ('reservoir', 'basin')
+          OR (tags->'natural') IN ('water', 'glacier')
+  way_area_z6:
+    where: way_area > 59750
+roads:
+  # The roads table only has a subset of data, so it's just got some low-zoom
+  # indexes and some fairly selective ones for high zoom
+  admin_low:
+    where: (tags->'boundary') = 'administrative' AND (tags->'admin_level') IN ('0', '1', '2', '3', '4')
+  admin:
+    where: (tags->'boundary') = 'administrative'
+  roads_ref:
+    where: (tags->'highway') IS NOT NULL AND (tags->'ref') IS NOT NULL
