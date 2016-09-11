@@ -44,7 +44,6 @@ Stylesheet:
   - "road-colors-generated.mss"
   - "roads.mss"
   - "power.mss"
-  - "citywalls.mss"
   - "placenames.mss"
   - "buildings.mss"
   - "stations.mss"
@@ -635,22 +634,6 @@ Layer:
       group-by: "layernotnull"
       minzoom: 9
     advanced: {}
-  - id: "citywalls"
-    name: "citywalls"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way
-          FROM planet_osm_line
-          WHERE historic = 'citywalls')
-        AS citywalls
-    advanced: {}
-    properties:
-      minzoom: 14
   - id: "landuse-overlay"
     name: "landuse-overlay"
     class: ""
@@ -679,11 +662,17 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, barrier
-          FROM planet_osm_line
-          WHERE barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
+            way, COALESCE(historic, barrier) AS feature
+          FROM (SELECT way,
+            ('barrier_' || (CASE WHEN barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
+                  'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall') THEN barrier ELSE NULL END)) AS barrier,
+            ('historic_' || (CASE WHEN historic = 'citywalls' THEN historic ELSE NULL END)) AS historic
+            FROM planet_osm_line
+            WHERE barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
                   'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall')
-            AND (waterway IS NULL OR waterway NOT IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi'))
+              OR historic = 'city_wall'
+              AND (waterway IS NULL OR waterway NOT IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi'))
+          ) AS features
         ) AS line_barriers
     properties:
       minzoom: 14
@@ -713,9 +702,12 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, barrier
-          FROM planet_osm_polygon
-          WHERE barrier IS NOT NULL
+            way, barrier AS feature
+          FROM (SELECT way,
+            ('barrier_' || barrier) AS barrier
+            FROM planet_osm_polygon
+            WHERE barrier IS NOT NULL
+          ) AS features
         ) AS area_barriers
     properties:
       minzoom: 16
