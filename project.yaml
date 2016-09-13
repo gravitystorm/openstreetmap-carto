@@ -148,7 +148,7 @@ Layer:
                                                     'hospital', 'kindergarten', 'grave_yard', 'prison', 'place_of_worship', 'clinic') 
                                                     THEN amenity ELSE NULL END)) AS amenity,
               ('landuse_' || (CASE WHEN landuse IN ('quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'meadow', 'grass', 
-                                                    'allotments', 'forest', 'farmyard', 'farm', 'farmland', 'greenhouse_horticulture', 
+                                                    'allotments', 'forest', 'farmyard', 'farm', 'farmland', 'greenhouse_horticulture', 'plant_nursery', 
                                                     'recreation_ground', 'village_green', 'retail', 'industrial', 'railway', 'commercial', 
                                                     'brownfield', 'landfill', 'construction') THEN landuse ELSE NULL END)) AS landuse,
               ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'recreation_ground', 'common', 'garden', 
@@ -2111,8 +2111,8 @@ Layer:
               'power_' || CASE WHEN power IN ('plant', 'station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,
               'landuse_' || CASE WHEN landuse IN ('reservoir', 'basin', 'recreation_ground', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery', 
                                                   'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farm', 'farmland', 
-                                                  'greenhouse_horticulture', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 
-                                                  'construction', 'military') THEN landuse ELSE NULL END,
+                                                  'greenhouse_horticulture', 'plant_nursery', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 
+                                                  'landfill', 'construction', 'military') THEN landuse ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower', 'pier', 'breakwater', 'groyne', 'obelisk') THEN man_made ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('wood', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath', 
                                                     'grassland', 'scrub', 'beach', 'shoal', 'reef', 'glacier') THEN "natural" ELSE NULL END,
@@ -2254,8 +2254,8 @@ Layer:
                   'power_' || CASE WHEN power IN ('plant', 'station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,
                   'landuse_' || CASE WHEN landuse IN ('reservoir', 'basin', 'recreation_ground', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery', 
                                                       'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farm', 'farmland', 
-                                                      'greenhouse_horticulture', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 
-                                                      'construction', 'military') THEN landuse ELSE NULL END,
+                                                      'greenhouse_horticulture', 'plant_nursery', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 
+                                                      'landfill', 'construction', 'military') THEN landuse ELSE NULL END,
                   'man_made_' || CASE WHEN man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower', 'obelisk') THEN man_made ELSE NULL END,
                   'natural_' || CASE WHEN "natural" IN ('wood', 'peak', 'volcano', 'saddle', 'cave_entrance', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring', 
                                                         'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier', 'tree') 
@@ -2295,7 +2295,7 @@ Layer:
                   OR leisure IS NOT NULL
                   OR landuse IN ('reservoir', 'basin', 'recreation_ground', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 
                                  'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farm', 'farmland', 'greenhouse_horticulture', 
-                                 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'construction', 'military')
+                                 'plant_nursery', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'construction', 'military')
                   OR man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower', 'cross', 'obelisk')
                   OR "natural" IS NOT NULL
                   OR place IN ('island', 'islet')
