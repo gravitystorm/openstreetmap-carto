@@ -665,6 +665,15 @@
     }
   }
 
+  [feature = 'shop_deli'] {
+    [zoom >= 17] {
+      marker-file: url('symbols/deli-14.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @shop-icon;
+    }
+  }
+
   [feature = 'shop_department_store'][zoom >= 16] {
     marker-file: url('symbols/department_store.p.16.svg');
     marker-placement: interior;
@@ -1892,6 +1901,7 @@
   [feature = 'shop_convenience'],
   [feature = 'shop_confectionery'],
   [feature = 'shop_copyshop'],
+  [feature = 'shop_deli'],
   [feature = 'shop_doityourself'],
   [feature = 'shop_dry_cleaning'],
   [feature = 'shop_hardware'],
