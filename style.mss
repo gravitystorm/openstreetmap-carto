@@ -17,7 +17,9 @@ has fewer glyphs, so both are listed. Most of the list is in alphabetical order,
 but there are some exceptions
 
   - Noto Sans UI is before all other fonts
-  - The CJK fonts are manually ordered
+  - The CJK fonts are manually ordered. The used CJK font covers all CJK
+    languages, but defaults to the japanese glyph style if various glyph
+    styles are available.
 
 2. Noto provides three variants of Arabic: Noto Kufi Arabic, Noto Naskh Arabic
 and Noto Nastaliq Urdu. Noto Kufi Arabic is the one that is most similiar to a
@@ -44,6 +46,7 @@ be used because Mapnik does not support SBIT TTF.
 A regular style.
 */
 @book-fonts:    "Noto Sans UI Regular",
+                "Noto Sans CJK JP Regular",
                 "Noto Sans Armenian Regular",
                 "Noto Sans Balinese Regular",
                 "Noto Sans Bamum Regular",
@@ -54,12 +57,6 @@ A regular style.
                 "Noto Sans Canadian Aboriginal Regular",
                 "Noto Sans Cham Regular",
                 "Noto Sans Cherokee Regular",
-
-                "Noto Sans CJK JP Regular",
-                "Noto Sans CJK KR Regular",
-                "Noto Sans CJK SC Regular",
-                "Noto Sans CJK TC Regular",
-
                 "Noto Sans Coptic Regular",
                 "Noto Sans Devanagari UI Regular", "Noto Sans Devanagari Regular",
                 "Noto Sans Ethiopic Regular",
@@ -119,15 +116,10 @@ A bold style is available for almost all scripts. Bold text is heavier than
 regular text and can be used for emphasis. Fallback is a regular style.
 */
 @bold-fonts:    "Noto Sans UI Bold",
+                "Noto Sans CJK JP Bold",
                 "Noto Sans Armenian Bold",
                 "Noto Sans Bengali UI Bold",
                 "Noto Sans Cham Bold",
-
-                "Noto Sans CJK JP Bold",
-                "Noto Sans CJK KR Bold",
-                "Noto Sans CJK SC Bold",
-                "Noto Sans CJK TC Bold",
-
                 "Noto Sans Devanagari UI Bold", "Noto Sans Devanagari Bold",
                 "Noto Sans Ethiopic Bold",
                 "Noto Sans Georgian Bold",
@@ -148,6 +140,7 @@ regular text and can be used for emphasis. Fallback is a regular style.
                 "Noto Sans Tibetan Bold",
                 "Noto Kufi Arabic Bold", "Noto Emoji Bold",
 
+                "Noto Sans CJK JP Regular",
                 "Noto Sans Balinese Regular",
                 "Noto Sans Bamum Regular",
                 "Noto Sans Batak Regular",
@@ -155,12 +148,6 @@ regular text and can be used for emphasis. Fallback is a regular style.
                 "Noto Sans Buhid Regular",
                 "Noto Sans Canadian Aboriginal Regular",
                 "Noto Sans Cherokee Regular",
-
-                "Noto Sans CJK JP Regular",
-                "Noto Sans CJK KR Regular",
-                "Noto Sans CJK SC Regular",
-                "Noto Sans CJK TC Regular",
-
                 "Noto Sans Coptic Regular",
                 "Noto Sans Devanagari UI Regular", "Noto Sans Devanagari Regular",
                 "Noto Sans Georgian Regular",
@@ -207,6 +194,7 @@ For a considerable number of labels this style will make no difference to the re
 */
 @oblique-fonts: "Noto Sans UI Italic",
                 "Noto Sans UI Regular",
+                "Noto Sans CJK JP Regular",
                 "Noto Sans Armenian Regular",
                 "Noto Sans Balinese Regular",
                 "Noto Sans Bamum Regular",
@@ -217,12 +205,6 @@ For a considerable number of labels this style will make no difference to the re
                 "Noto Sans Canadian Aboriginal Regular",
                 "Noto Sans Cham Regular",
                 "Noto Sans Cherokee Regular",
-
-                "Noto Sans CJK JP Regular",
-                "Noto Sans CJK KR Regular",
-                "Noto Sans CJK SC Regular",
-                "Noto Sans CJK TC Regular",
-
                 "Noto Sans Coptic Regular",
                 "Noto Sans Devanagari UI Regular", "Noto Sans Devanagari Regular",
                 "Noto Sans Ethiopic Regular",
