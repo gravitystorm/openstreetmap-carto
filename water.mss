@@ -1,17 +1,13 @@
 @water-text: #6699cc;
 @glacier: #ddecec;
 @glacier-line: #9cf;
-@water-font-size-small: 10;
-@water-wrap-width-size-small: 25;
-@water-font-size: 12;
-@water-wrap-width-size: 30;
-@water-font-size-big: 15;
+
+@water-font-size: 10;
+@water-font-size-big: 12;
+@water-font-size-bigger: 15;
+@water-wrap-width-size: 25;
 @water-wrap-width-size-big: 35;
-@water-font-size-bigger48k: 17;
-@water-wrap-width-size-bigger48k: 45;
-@water-font-size-bigger1000k: 22;
-@water-wrap-width-size-bigger1000k: 150;
-@water-font-size-bigger1500k: 27;
+@water-wrap-width-size-bigger: 45;
 
 #water-areas {
   [natural = 'glacier']::natural {
@@ -296,32 +292,21 @@
     [zoom >= 10][way_pixels > 3000],
     [zoom >= 17] {
       text-name: "[name]";
-      text-size: @water-font-size-small;
-      text-fill: @water-text;
-      text-face-name: @oblique-fonts;
-      text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill;
-      text-wrap-width: @water-wrap-width-size-small;
-      text-placement: interior;
-      [way_pixels > 4000] {
       text-size: @water-font-size;
       text-wrap-width: @water-wrap-width-size;
-      }
       [way_pixels > 12000] {
         text-size: @water-font-size-big;
         text-wrap-width: @water-wrap-width-size-big;
       }
       [way_pixels > 48000] {
-        text-size: @water-font-size-bigger48k;
-        text-wrap-width: @water-wrap-width-size-bigger48k;
+        text-size: @water-font-size-bigger;
+        text-wrap-width: @water-wrap-width-size-bigger;
       }
-      [way_pixels > 1000000] {
-        text-size: @water-font-size-bigger1000k;
-        text-wrap-width: @water-wrap-width-size-bigger1000k;
-      }
-      [way_pixels > 1500000] {
-        text-size: @water-font-size-bigger1500k;
-      }
+      text-fill: @water-text;
+      text-face-name: @oblique-fonts;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
     }
   }
 }
