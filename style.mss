@@ -2,7 +2,6 @@ Map {
   background-color: @water-color;
 }
 
-
 /*
 About fonts:
 
