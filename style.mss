@@ -15,11 +15,9 @@ By order:
 1. Noto Sans is available for most scripts and it is used here. The list in is
 alphabetical order. Note that the “Noto Sans” base font MUST be before the
 “Noto Sans CJK *” fonts, because the CJK fonts contain non-Noto latin characters
-that should not be used. Noto Serif and Noto Mono are available for various
-(mostly latin-like) scripts. They are ignored here in favour of the respective
-Noto Sans variant. For fonts that are known to have an UI variant (a variant
-designed for user interface with tighter vertical metrics) the list contains
-both - the normal and the UI variant - but prefers the UI variant.
+that should not be used. For fonts that are known to have an UI variant (a
+variant designed for user interface with tighter vertical metrics) the list
+contains both - the normal and the UI variant - but prefers the UI variant.
 
 2. Noto provides three variants of Arabic: Noto Kufi Arabic, Noto Naskh Arabic
 and Noto Nastaliq Urdu. Noto Kufi Arabic is the one that is most similiar to a
@@ -33,14 +31,12 @@ colour variant is a SVG flavoured OpenType font that contains coloured emojis.
 This is not useful in cartography, so we use the “normal” monochromatic
 Noto Emoji.
 
-4. The list still includes the previously used font selection of this style
-to remain backward-compatible.
+4. The list still includes DejaVu for compatibility on systems without Noto.
 
-5. Unifont. This is a simple and not really beautiful font, but it has an
-extremely great coverage. Unifont Medium covers the hole Unicode BMP without
-surrogates and without PUA. Unifont Upper Medium covers some parts of the other
-Unicode planes. Unifont Medium Sample covers the BMP PUA with replacement
-characters.
+5. Unifont. This is a fallback of last resort with excellent coverage.
+Unifont Medium covers the whole Unicode BMP without surrogates and without PUA.
+Unifont Upper Medium covers some parts of the other Unicode planes. Unifont
+Medium Sample covers the BMP PUA with replacement characters.
 */
 
 /*
