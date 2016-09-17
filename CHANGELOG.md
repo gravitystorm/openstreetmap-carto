@@ -1,4 +1,9 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.43.0...master)
+### Major Changes
+- Rendering of restricted access roads and paths significantly changed
+### Changes
+- A code of conducted adopted, based on the Go code of conduct
+- Adjustments to city wall rendering
 
 ## [v2.43.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.42.0...v2.43.0) - 2016-09-05
 ### Changes
