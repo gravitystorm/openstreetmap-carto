@@ -108,10 +108,7 @@ A regular style.
                 "Noto Sans Ugaritic Regular", "Noto Sans Vai Regular",
                 "Noto Sans Yi Regular",
                 "Noto Kufi Arabic Regular", "Noto Emoji Regular",
-                "DejaVu Sans Book", "Arundina Regular", "Arundina Sans Regular",
-                "Padauk Regular", "Khmer OS Metal Chrieng Regular",
-                "Mukti Narrow Regular", "Gargi Regular", "TSCu_Paranar Regular",
-                "Tibetan Machine Uni Regular", "Droid Sans Fallback Regular",
+                "DejaVu Sans Book",
                 "Unifont Medium", "unifont Medium", "Unifont Upper Medium",
                 "Unifont Sample Medium";
 
@@ -243,12 +240,7 @@ regular text and can be used for emphasis. Fallback is a regular style.
                 "Noto Sans Ugaritic Regular", "Noto Sans Vai Regular",
                 "Noto Sans Yi Regular",
                 "Noto Kufi Arabic Regular", "Noto Emoji Regular",
-                "DejaVu Sans Bold", "Arundina Bold", "Arundina Sans Bold",
-                "Padauk Bold", "TSCu_Paranar Bold", "DejaVu Sans Book",
-                "Arundina Regular", "Arundina Sans Regular", "Padauk Regular",
-                "Khmer OS Metal Chrieng Regular", "Mukti Narrow Regular",
-                "gargi Medium", "TSCu_Paranar Regular",
-                "Tibetan Machine Uni Regular",
+                "DejaVu Sans Bold", "DejaVu Sans Book",
                 "Unifont Medium", "unifont Medium", "Unifont Upper Medium",
                 "Unifont Sample Medium";
 
@@ -323,12 +315,7 @@ difference to the regular style.
                 "Noto Sans Ugaritic Regular", "Noto Sans Vai Regular",
                 "Noto Sans Yi Regular",
                 "Noto Kufi Arabic Regular", "Noto Emoji Regular",
-                "DejaVu Sans Oblique", "Arundina Italic",
-                "Arundina Sans Italic", "TSCu_Paranar Italic",
-                "DejaVu Sans Book", "Arundina Regular", "Arundina Sans Regular",
-                "Padauk Regular", "Khmer OS Metal Chrieng Regular",
-                "Mukti Narrow Regular", "Gargi Regular", "TSCu_Paranar Regular",
-                "Tibetan Machine Uni Regular", "Droid Sans Fallback Regular",
+                "DejaVu Sans Oblique", "DejaVu Sans Book",
                 "Unifont Medium", "unifont Medium", "Unifont Upper Medium",
                 "Unifont Sample Medium";
 
