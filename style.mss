@@ -141,8 +141,6 @@ regular text and can be used for emphasis. Fallback is a regular style.
                 "Noto Sans Thai UI Bold",
                 "Noto Sans Tibetan Bold",
 
-                "Noto Kufi Arabic Bold",
-
                 "Noto Sans CJK JP Regular",
                 "Noto Sans Balinese Regular",
                 "Noto Sans Bamum Regular",
@@ -183,6 +181,8 @@ regular text and can be used for emphasis. Fallback is a regular style.
                 "Noto Sans Tifinagh Regular",
                 "Noto Sans Vai Regular",
                 "Noto Sans Yi Regular",
+
+                "Noto Kufi Arabic Bold",
 
                 "Noto Kufi Arabic Regular",
 
