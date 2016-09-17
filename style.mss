@@ -36,7 +36,8 @@ Noto Emoji.
 5. Unifont. This is a fallback of last resort with excellent coverage.
 Unifont Medium covers the whole Unicode BMP without surrogates and without PUA.
 Unifont Upper Medium covers some parts of the other Unicode planes. Unifont
-Medium Sample covers the BMP PUA with replacement characters.
+Medium Sample would cover the BMP PUA with replacement characters, but cannot
+be used because Mapnik does not support SBIT TTF.
 */
 
 /*
@@ -140,7 +141,7 @@ A regular style.
                 "Noto Emoji Regular",
 
                 "DejaVu Sans Book",
-                "Unifont Medium", "unifont Medium", "Unifont Upper Medium", "Unifont Sample Medium";
+                "Unifont Medium", "unifont Medium", "Unifont Upper Medium";
 
 /*
 A bold style is available for almost all scripts. Bold text is heavier than
@@ -256,7 +257,7 @@ regular text and can be used for emphasis. Fallback is a regular style.
                 "Noto Emoji Regular",
 
                 "DejaVu Sans Bold", "DejaVu Sans Book",
-                "Unifont Medium", "unifont Medium", "Unifont Upper Medium", "Unifont Sample Medium";
+                "Unifont Medium", "unifont Medium", "Unifont Upper Medium";
 
 /*
 Italics are only available for the base font, not the other scripts.
@@ -361,7 +362,7 @@ For a considerable number of labels this style will make no difference to the re
                 "Noto Emoji Regular",
 
                 "DejaVu Sans Oblique", "DejaVu Sans Book",
-                "Unifont Medium", "unifont Medium", "Unifont Upper Medium", "Unifont Sample Medium";
+                "Unifont Medium", "unifont Medium", "Unifont Upper Medium";
 
 @water-color: #b5d0d0;
 @land-color: #f2efe9;
