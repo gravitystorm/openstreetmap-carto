@@ -42,38 +42,21 @@ The repeated www.naturalearthdata.com in the Natural Earth shapefiles is correct
 Put these shapefiles at `path/to/openstreetmap-carto/data`.
 
 ## Fonts
-The stylesheet depends on a number of openly licensed fonts for support of all the languages found on the map. The package which supplies these fonts on Ubuntu 16.04 or Debian Testing is indicated.
+The stylesheet uses Noto Sans, an openly licensed font from Google with support for multiple scripts. The "UI" version is used where available, with its vertical metrics which fit better with Latin text. Other fonts from the Noto family are used for some other languages.
 
-If a font is missing, it will skip to the next available font which contains those characters. If you are not concerned with a particular script, you do not need its fonts. DejaVu Sans and Unifont are the two required fonts, and included on most systems.
+DejaVu Sans is used as an optional fallback font for systems without Noto Sans. If all the Noto fonts are installed, it should never be used.
+
+Unifont is used as a last resort fallback, with it's excellent coverage, common presence on machines, and ugly look.
 
 Mapnik 3 is required for acceptable rendering of most non-Latin scripts, particularly those with complicated diacritics and tone marks.
 
-### Global
-* DejaVu Sans, for most languages (`fonts-dejavu-core`)
-* Droid Sans Fallback, as a reasonable fallback (`fonts-droid-fallback`)
-* Unifont, as a last resort fallback (`ttf-unifont`)
-
-### Southeast Asia
-* Arundina, for Thai (`fonts-sipa-arundina`)
-* Padauk, for Burmese (`fonts-sil-padauk`)
-* Khmer OS Metal Chrieng Regular, for Khmer (`fonts-khmeros`)
-
-### South Asia
-
-* Mukti Narrow, for Bangali (`fonts-beng-extra`)
-* Gargi Medium, for Devanagari (`fonts-gargi`)
-* TSCu_Paranar, for Tamil (`fonts-taml-tscu`)
-* Tibetan Machine Uni, for Tibetian (`fonts-tibetan-machine`)
-
-On Ubuntu 16.04 or Debian Testing you can install all the fonts with
+On Ubuntu 16.04 or Debian Testing you can install all required fonts with
 
 ```
-sudo apt-get install fonts-dejavu-core fonts-droid-fallback ttf-unifont \
-  fonts-sipa-arundina fonts-sil-padauk fonts-khmeros \
-  fonts-beng-extra fonts-gargi fonts-taml-tscu fonts-tibetan-machine
+sudo apt-get install fonts-noto ttf-unifont
 ```
 
-On Ubuntu 14.04, replace `fonts-droid-fallback` with `fonts-droid`.
+DejaVu is packaged as `fonts-dejavu-core`.
 
 ## Dependencies
 
