@@ -1,4 +1,9 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.43.0...master)
+### Major Changes
+- Changed to use Noto fonts for all languages
+
+### Dependency Changes
+- The fonts required have changed
 
 ## [v2.43.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.42.0...v2.43.0) - 2016-09-05
 ### Changes
