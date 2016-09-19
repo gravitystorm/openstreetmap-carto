@@ -1,6 +1,11 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.43.0...master)
 ### Major Changes
 - Rendering of restricted access roads and paths significantly changed
+- Changed to use Noto fonts for all languages
+
+### Dependency Changes
+- The fonts required have changed
+
 ### Changes
 - A code of conduct adopted, based on the Go code of conduct
 - Adjustments to city wall rendering
