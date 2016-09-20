@@ -1672,8 +1672,8 @@ Layer:
                                             'mobile_phone', 'motorcycle', 'musical_instrument', 'newsagent', 'optician', 'jewelry', 'jewellery', 
                                             'electronics', 'chemist', 'toys', 'travel_agency', 'car_parts', 'greengrocer', 'farm', 'stationery', 
                                             'laundry', 'dry_cleaning', 'beverages', 'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor', 
-                                            'copyshop', 'sports') THEN shop 
-                              WHEN shop IN ('accessories', 'antiques', 'appliance', 'art', 'baby_goods', 'bathroom_furnishing', 
+                                            'copyshop', 'sports', 'art') THEN shop 
+                              WHEN shop IN ('accessories', 'antiques', 'appliance', 'baby_goods', 'bathroom_furnishing', 
                                             'bed', 'boat', 'bookmaker', 'boutique', 'builder', 'building_materials', 'camera', 'car_service', 
                                             'carpet', 'charity', 'cheese', 'chocolate', 'coffee', 'communication', 'craft', 'curtain', 'dairy', 
                                             'deli', 'discount', 'e-cigarette', 'electrical', 'energy', 'erotic', 'estate_agent', 
@@ -1753,8 +1753,8 @@ Layer:
                                             'photography', 'seafood', 'shoes', 'alcohol', 'gift', 'furniture', 'kiosk', 'mobile_phone', 'motorcycle', 
                                             'musical_instrument', 'newsagent', 'optician', 'jewelry', 'jewellery', 'electronics', 'chemist', 'toys', 
                                             'travel_agency', 'car_parts', 'greengrocer', 'farm', 'stationery', 'laundry', 'dry_cleaning', 'beverages', 
-                                            'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor', 'copyshop', 'sports') THEN shop 
-                              WHEN shop IN ('accessories', 'antiques', 'appliance', 'art', 'baby_goods', 'bathroom_furnishing', 'bed',  
+                                            'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor', 'copyshop', 'sports', 'art') THEN shop 
+                              WHEN shop IN ('accessories', 'antiques', 'appliance', 'baby_goods', 'bathroom_furnishing', 'bed',  
                                             'boat', 'bookmaker', 'boutique', 'builder', 'building_materials', 'camera', 'car_service', 'carpet', 'charity', 
                                             'cheese', 'chocolate', 'coffee', 'communication', 'craft', 'curtain', 'dairy', 'deli',   
                                             'discount', 'e-cigarette', 'electrical', 'energy', 'erotic', 'estate_agent', 'fabric', 'fishing', 
@@ -2091,8 +2091,8 @@ Layer:
                                             'photography', 'seafood', 'shoes', 'alcohol', 'gift', 'furniture', 'kiosk', 'mobile_phone', 'motorcycle', 
                                             'musical_instrument', 'newsagent', 'optician', 'jewelry', 'jewellery', 'electronics', 'chemist', 'toys', 
                                             'travel_agency', 'car_parts', 'greengrocer', 'farm', 'stationery', 'laundry', 'dry_cleaning', 'beverages', 
-                                            'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor', 'copyshop', 'sports') THEN shop 
-                              WHEN shop IN ('accessories', 'antiques', 'appliance', 'art', 'baby_goods', 'bathroom_furnishing', 'bed', 
+                                            'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor', 'copyshop', 'sports', 'art') THEN shop 
+                              WHEN shop IN ('accessories', 'antiques', 'appliance', 'baby_goods', 'bathroom_furnishing', 'bed', 
                                             'boat', 'bookmaker', 'boutique', 'builder', 'building_materials', 'camera', 'car_service', 'carpet', 'charity', 
                                             'cheese', 'chocolate', 'coffee', 'communication', 'craft', 'curtain', 'dairy', 'deli', 
                                             'discount', 'e-cigarette', 'electrical', 'energy', 'erotic', 'estate_agent', 'fabric', 'fishing', 
@@ -2233,8 +2233,8 @@ Layer:
                                                 'seafood', 'shoes', 'alcohol', 'gift', 'furniture', 'kiosk', 'mobile_phone', 'motorcycle', 'musical_instrument', 
                                                 'newsagent', 'optician', 'jewelry', 'jewellery', 'electronics', 'chemist', 'toys', 'travel_agency', 'car_parts', 
                                                 'greengrocer', 'farm', 'stationery', 'laundry', 'dry_cleaning', 'beverages', 'perfumery', 'cosmetics', 
-                                                'variety_store', 'wine', 'outdoor', 'copyshop', 'sports') THEN shop 
-                                  WHEN shop IN ('accessories', 'antiques', 'appliance', 'art', 
+                                                'variety_store', 'wine', 'outdoor', 'copyshop', 'sports', 'art') THEN shop 
+                                  WHEN shop IN ('accessories', 'antiques', 'appliance', 
                                                 'baby_goods', 'bathroom_furnishing', 'bed', 'boat', 'bookmaker', 'boutique', 'builder', 
                                                 'building_materials', 'camera', 'car_service', 'carpet', 'charity', 'cheese', 'chocolate', 'coffee', 
                                                 'communication', 'craft', 'curtain', 'dairy', 'deli', 'discount',  
