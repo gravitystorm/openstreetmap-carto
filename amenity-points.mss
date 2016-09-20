@@ -914,6 +914,13 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_tobacco'][zoom >= 17] {
+    marker-file: url('symbols/tobacco-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+
   [feature = 'shop_variety_store'][zoom >= 17] {
     marker-file: url('symbols/variety_store-14.svg');
     marker-placement: interior;
@@ -1935,6 +1942,7 @@
   [feature = 'shop_seafood'],
   [feature = 'shop_sports'],
   [feature = 'shop_stationery'],
+  [feature = 'shop_tobacco'],
   [feature = 'shop_variety_store'],
   [feature = 'shop_wine'],
   [feature = 'shop_other']{
