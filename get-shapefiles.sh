@@ -3,6 +3,21 @@ set -e -u
 
 UNZIP_OPTS=-qqun
 
+# check essential applications
+exists()
+{
+  command -v "$1" >/dev/null 2>&1
+}
+
+for application in curl tar unzip; do
+  if exists $application; then
+    echo $application 'detected...'
+  else
+    echo 'ERROR:' $application 'not detected, you need to install it first!'
+    exit 1
+  fi
+done
+
 # create and populate data dir
 mkdir -p data/
 mkdir -p data/world_boundaries
