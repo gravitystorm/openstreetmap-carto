@@ -311,6 +311,14 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_university'][zoom >= 16],
+  [feature = 'amenity_college'][zoom >= 16] {
+    marker-file: url('symbols/university-14.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'man_made_mast'][zoom >= 17] {
     marker-file: url('symbols/communications.16.svg');
     marker-fill: @man-made-icon;
@@ -1533,8 +1541,6 @@
   [feature = 'tourism_attraction'],
   [feature = 'amenity_kindergarten'],
   [feature = 'amenity_school'],
-  [feature = 'amenity_college'],
-  [feature = 'amenity_university'],
   [feature = 'natural_heath'],
   [feature = 'natural_scrub'],
   [feature = 'natural_beach'],
@@ -1639,9 +1645,7 @@
         text-face-name: @standard-font;
       }
       [feature = 'amenity_kindergarten'],
-      [feature = 'amenity_school'],
-      [feature = 'amenity_college'],
-      [feature = 'amenity_university'] {
+      [feature = 'amenity_school'] {
         text-fill: darken(@societal_amenities, 70%);
       }
       [feature = 'natural_heath'] {
@@ -1862,6 +1866,18 @@
     text-placement: interior;
   }
 
+  [feature = 'amenity_university'][zoom >= 16],
+  [feature = 'amenity_college'][zoom >= 16] {
+    text-name: "[name]";
+    text-fill: darken(@societal_amenities, 70%);
+    text-size: @standard-text-size;
+    text-dy: 10;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-wrap-width: @standard-wrap-width;
+    text-placement: interior;
+  }
 
   [feature = 'amenity_clinic'],
   [feature = 'amenity_pharmacy'],
