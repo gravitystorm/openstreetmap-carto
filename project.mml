@@ -1809,41 +1809,15 @@
       "advanced": {}
     },
     {
-      "name": "housenames",
+      "name": "addresses",
       "srs-name": "900913",
       "geometry": "point",
       "class": "",
-      "id": "housenames",
+      "id": "addresses",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    \"addr:housename\" AS addr_housename,\n    \"addr:housenumber\" AS addr_housenumber,\n    way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels\n  FROM planet_osm_polygon\n  WHERE \"addr:housename\" IS NOT NULL\n    AND building IS NOT NULL\nUNION ALL\nSELECT\n    way,\n    \"addr:housename\" AS addr_housename,\n    \"addr:housenumber\" AS addr_housenumber,\n    NULL AS way_pixels\n  FROM planet_osm_point WHERE \"addr:housename\" IS NOT NULL\nORDER BY way_pixels DESC NULLS LAST\n) AS housenames",
-        "geometry_field": "way",
-        "type": "postgis",
-        "key_field": "",
-        "dbname": "gis"
-      },
-      "extent": [
-        -180,
-        -85.05112877980659,
-        180,
-        85.05112877980659
-      ],
-      "properties": {
-        "minzoom": 17
-      },
-      "advanced": {}
-    },
-    {
-      "name": "housenumbers",
-      "srs-name": "900913",
-      "geometry": "point",
-      "class": "",
-      "id": "housenumbers",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "Datasource": {
-        "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    \"addr:housenumber\" AS addr_housenumber,\n    way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels\n  FROM planet_osm_polygon\n  WHERE \"addr:housenumber\" IS NOT NULL\n    AND building IS NOT NULL\nUNION ALL\nSELECT\n    way,\n    \"addr:housenumber\" AS addr_housenumber,\n    NULL AS way_pixels\n  FROM planet_osm_point\n  WHERE \"addr:housenumber\" IS NOT NULL\n  ORDER BY way_pixels DESC NULLS LAST\n) AS housenumbers",
+        "table": "(SELECT\n    way,\n    \"addr:housenumber\" AS addr_housenumber,\n    \"addr:housename\" AS addr_housename,\n    way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels\n  FROM planet_osm_polygon\n  WHERE ((\"addr:housenumber\" IS NOT NULL) OR (\"addr:housename\" IS NOT NULL))\n    AND building IS NOT NULL\nUNION ALL\nSELECT\n    way,\n    \"addr:housenumber\" AS addr_housenumber,\n    \"addr:housename\" AS addr_housename,\n    NULL AS way_pixels\n  FROM planet_osm_point\n  WHERE (\"addr:housenumber\" IS NOT NULL) OR (\"addr:housename\" IS NOT NULL)\n  ORDER BY way_pixels DESC NULLS LAST\n) AS addresses",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",

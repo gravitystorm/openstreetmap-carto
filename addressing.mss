@@ -10,31 +10,22 @@
   }
 }
 
-#housenames {
+#addresses {
   [zoom >= 17] {
     text-name: "[addr_housename]";
     ["addr_housenumber" != null] {
-      text-name: [addr_housenumber] + "\n" + [addr_housename] ;
+      text-name: [addr_housenumber];
+      ["addr_housename" != null] {
+        text-name: [addr_housenumber] + "\n" + [addr_housename];
+      }
     }
     text-placement: interior;
+    text-min-distance: 1;
     text-wrap-width: 20;
     text-face-name: @book-fonts;
     text-fill: @address-color;
-    text-size: 10;
-    [zoom >= 20] {
-        text-size: 11;
-    }
-  }
-}
-
-#housenumbers {
-  [zoom >= 17] {
-    text-name: "[addr_housenumber]";
-    text-placement: interior;
-    text-min-distance: 1;
-    text-wrap-width: 0;
-    text-face-name: @book-fonts;
-    text-fill: @address-color;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
     text-size: 10;
     [zoom >= 20] {
         text-size: 11;
@@ -49,12 +40,12 @@ no official postal addresses) */
   [zoom >= 14][way_pixels > 3000],
   [zoom >= 17] {
     text-name: "[name]";
-    text-size: 11;
-    text-fill: #444;
-    text-face-name: @book-fonts;
-    text-halo-radius: @standard-halo-radius;
-    text-wrap-width: 20;
-    text-halo-fill: rgba(255,255,255,0.5);
     text-placement: interior;
+    text-wrap-width: 20;
+    text-face-name: @book-fonts;
+    text-fill: #444;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-size: 11;
   }
 }
