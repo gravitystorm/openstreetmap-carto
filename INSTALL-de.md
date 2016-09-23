@@ -45,10 +45,10 @@ The easiest way to do this is using ```make```!
 Be aware, that ```project.mml``` is not used in this style at all. It is just a verbatim
 copy from the upstream repository.
 
-Thus the generation of ```osm-de.xml``` is a two-step procedure:
+Thus the manual generation of ```osm-de.xml``` (without using ```make```) is a two-step procedure:
 
-1. Generate project-de.mml from project.yaml using scripts/yaml2mml.py
-2. Generate osm-de.xml from project-de.mml using scripts/yaml2mml.py
+1. Generate ```project-de.mml``` from ```project.yaml``` using ```scripts/yaml2mml.py```
+2. Generate ```osm-de.xml``` from```project-de.mml``` ```using carto```
 
 It is also possible to use [Magnacarto](https://github.com/omniscale/magnacarto) or
 [Kosmtik](https://github.com/kosmtik/kosmtik).
