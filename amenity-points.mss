@@ -937,6 +937,13 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_tea'][zoom >= 17] {
+    marker-file: url('symbols/tea-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+
   [feature = 'shop_variety_store'][zoom >= 17] {
     marker-file: url('symbols/variety_store-14.svg');
     marker-placement: interior;
@@ -1961,6 +1968,7 @@
   [feature = 'shop_sports'],
   [feature = 'shop_stationery'],
   [feature = 'shop_tobacco'],
+  [feature = 'shop_tea'],
   [feature = 'shop_variety_store'],
   [feature = 'shop_wine'],
   [feature = 'shop_other']{
