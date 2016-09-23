@@ -193,9 +193,9 @@
 @motorway-link-width-z18:        11;
 @trunk-width-z18:                16;
 @trunk-link-width-z18:           11;
-@primary-width-z18:              14;
-@secondary-width-z18:            21;
-@tertiary-width-z18:             21;
+@primary-width-z18:              17;
+@secondary-width-z18:            17;
+@tertiary-width-z18:             17;
 @residential-width-z18:          13;
 @living-street-width-z18:        13;
 @pedestrian-width-z18:           13;
