@@ -662,6 +662,7 @@ Layer:
           from planet_osm_polygon
           WHERE sport in ('tennis','soccer','basketball','rugby','rugby_union','rugby_league','american_football')
             AND (building IS NULL OR building = 'no')
+            AND leisure = 'pitch'
             AND way && !bbox!) as dump) as simplified) as simplified2)
           as sports
     advanced: {}
