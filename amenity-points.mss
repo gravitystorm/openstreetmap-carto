@@ -569,6 +569,13 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_art'][zoom >= 17] {
+    marker-file: url('symbols/art-14.svg');
+    marker-fill: @shop-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'shop_bag'][zoom >= 17] {
     marker-file: url('symbols/bag-14.svg');
     marker-fill: @shop-icon;
@@ -1897,6 +1904,7 @@
     }
   }
 
+  [feature = 'shop_art'],
   [feature = 'shop_bag'],
   [feature = 'shop_bakery'],
   [feature = 'shop_beauty'],
