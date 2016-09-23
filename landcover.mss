@@ -33,7 +33,7 @@
 @bare_ground: #eee5dc;
 @campsite: #def6c0; // also caravan_site, picnic_site
 @cemetery: #aacbaf; // also grave_yard
-@construction: #c7c7b4;
+@construction: #c7c7b4; // also brownfield
 @danger_area: pink;
 @garages: #dfddce;
 @heath: #d6d99f;
@@ -373,10 +373,17 @@
   }
 
   [feature = 'landuse_brownfield'],
-  [feature = 'landuse_landfill'],
   [feature = 'landuse_construction'] {
     [zoom >= 10] {
       polygon-fill: @construction;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+  }
+
+  [feature = 'landuse_landfill'] {
+    [zoom >= 10] {
+      polygon-fill: #b6b592;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
