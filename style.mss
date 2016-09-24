@@ -19,7 +19,13 @@ but there are some exceptions
   - Noto Sans UI is before all other fonts
   - The CJK fonts are manually ordered. The used CJK font covers all CJK
     languages, but defaults to the japanese glyph style if various glyph
-    styles are available.
+    styles are available. (We have to default to one of JP, KR, SC, TC because
+    this carto style has no knowledge about what language the “names” tag
+    contains. As in Korea Han characters are not so widely used, it seems
+    better to default to either Chinese or Japanese. As Chinese exists in the
+    two variants SC/TC, it won’t be a uniform rendering anyway. So we default
+    to Japanese. However, this choise stays somewhat arbitrary and subjective.
+    See also https://github.com/gravitystorm/openstreetmap-carto/issues/2208)
 
 2. Noto provides three variants of Arabic: Noto Kufi Arabic, Noto Naskh Arabic
 and Noto Nastaliq Urdu. Noto Kufi Arabic is the one that is most similiar to a
