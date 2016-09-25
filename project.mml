@@ -562,7 +562,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    building,\n    amenity,\n    aeroway\n  FROM planet_osm_polygon\n  WHERE building IS NOT NULL\n    AND building != 'no'\n    AND (aeroway = 'terminal' OR amenity = 'place_of_worship')\n    AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real\n  ORDER BY z_order, way_area DESC)\nAS buildings_major",
+        "table": "(SELECT\n    way,\n    building,\n    amenity,\n    aeroway,\n    railway\n  FROM planet_osm_polygon\n  WHERE building IS NOT NULL\n    AND building != 'no'\n    AND (aeroway = 'terminal' OR amenity = 'place_of_worship' OR railway = 'station')\n    AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real\n  ORDER BY z_order, way_area DESC)\nAS buildings_major",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",

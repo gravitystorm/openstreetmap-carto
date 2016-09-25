@@ -33,7 +33,8 @@
         line-color: @building-aeroway-line;
       }
     }
-    [amenity = 'place_of_worship'] {
+    [amenity = 'place_of_worship'],
+    [railway = 'station'] {
       polygon-fill: @building-major-fill;
       polygon-clip: false;
       [zoom >= 15] {
