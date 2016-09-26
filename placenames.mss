@@ -62,8 +62,6 @@
     shield-face-name: @book-fonts;
     shield-fill: @placenames;
     shield-size: 11;
-    shield-margin: 5;
-    shield-avoid-edges: true;
     shield-wrap-width: 30;
     shield-halo-fill: @standard-halo-fill;
     shield-halo-radius: @standard-halo-radius * 1.5;
@@ -92,7 +90,6 @@
     text-face-name: @book-fonts;
     text-fill: @placenames;
     text-size: 13;
-    text-margin: 6;
     text-wrap-width: 60;
     text-halo-fill: @standard-halo-fill;
     text-halo-radius: @standard-halo-radius * 1.5;
@@ -115,8 +112,6 @@
       shield-face-name: @book-fonts;
       shield-fill: @placenames;
       shield-size: 11;
-      shield-margin: 5;
-      shield-avoid-edges: true;
       shield-wrap-width: 30;
       shield-halo-fill: @standard-halo-fill;
       shield-halo-radius: @standard-halo-radius * 1.5;
@@ -147,7 +142,6 @@
       text-face-name: @book-fonts;
       text-fill: @placenames;
       text-size: 13;
-      text-margin: 6;
       text-wrap-width: 60;
       text-halo-fill: @standard-halo-fill;
       text-halo-radius: @standard-halo-radius * 1.5;
@@ -174,8 +168,6 @@
       shield-halo-fill: @standard-halo-fill;
       shield-halo-radius: @standard-halo-radius * 1.5;
       shield-wrap-width: 30;
-      shield-margin: 5;
-      shield-avoid-edges: true;
       shield-placement-type: simple;
       shield-placements: 'S,N,E,W';
       [dir = 1] {
@@ -194,7 +186,6 @@
       text-halo-fill: @standard-halo-fill;
       text-halo-radius: @standard-halo-radius * 1.5;
       text-wrap-width: 60;
-      text-margin: 6;
       [zoom >= 9] {
         text-size: 12;
         text-wrap-width: 60;
@@ -221,7 +212,6 @@
       text-halo-fill: @standard-halo-fill;
       text-halo-radius: @standard-halo-radius * 1.5;
       text-wrap-width: 45;
-      text-margin: 6;
       [zoom >= 11] {
         text-size: 11;
         text-wrap-width: 55;
