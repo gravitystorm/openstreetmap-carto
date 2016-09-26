@@ -9,6 +9,9 @@
 ### Changes
 - A code of conduct adopted, based on the Go code of conduct
 - Adjustments to city wall rendering
+- Revised low zoom place rendering
+- Fixed oneway arrows on unnamed roads
+- Render both house name and number if address has both
 
 ## [v2.43.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.42.0...v2.43.0) - 2016-09-05
 ### Changes
