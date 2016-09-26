@@ -1972,7 +1972,8 @@
   [feature = 'shop_variety_store'],
   [feature = 'shop_wine'],
   [feature = 'shop_other']{
-    [zoom >= 17] {
+    [way_pixels > 3000][zoom >= 17],
+    [zoom >= 18] {
       text-name: "[name]";
       text-size: @standard-text-size;
       text-dy: 12;
