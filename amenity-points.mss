@@ -569,6 +569,13 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_art'][zoom >= 17] {
+    marker-file: url('symbols/art-14.svg');
+    marker-fill: @shop-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'shop_bag'][zoom >= 17] {
     marker-file: url('symbols/bag-14.svg');
     marker-fill: @shop-icon;
@@ -659,6 +666,15 @@
   [feature = 'shop_perfumery'] {
     [zoom >= 17] {
       marker-file: url('symbols/perfumery-14.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @shop-icon;
+    }
+  }
+
+  [feature = 'shop_deli'] {
+    [zoom >= 17] {
+      marker-file: url('symbols/deli-14.svg');
       marker-placement: interior;
       marker-clip: false;
       marker-fill: @shop-icon;
@@ -909,6 +925,20 @@
 
   [feature = 'shop_stationery'][zoom >= 17] {
     marker-file: url('symbols/stationery-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+
+  [feature = 'shop_tobacco'][zoom >= 17] {
+    marker-file: url('symbols/tobacco-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+
+  [feature = 'shop_tea'][zoom >= 17] {
+    marker-file: url('symbols/tea-14.svg');
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @shop-icon;
@@ -1881,6 +1911,7 @@
     }
   }
 
+  [feature = 'shop_art'],
   [feature = 'shop_bag'],
   [feature = 'shop_bakery'],
   [feature = 'shop_beauty'],
@@ -1892,6 +1923,7 @@
   [feature = 'shop_convenience'],
   [feature = 'shop_confectionery'],
   [feature = 'shop_copyshop'],
+  [feature = 'shop_deli'],
   [feature = 'shop_doityourself'],
   [feature = 'shop_dry_cleaning'],
   [feature = 'shop_hardware'],
@@ -1935,10 +1967,13 @@
   [feature = 'shop_seafood'],
   [feature = 'shop_sports'],
   [feature = 'shop_stationery'],
+  [feature = 'shop_tobacco'],
+  [feature = 'shop_tea'],
   [feature = 'shop_variety_store'],
   [feature = 'shop_wine'],
   [feature = 'shop_other']{
-    [zoom >= 17] {
+    [way_pixels > 3000][zoom >= 17],
+    [zoom >= 18] {
       text-name: "[name]";
       text-size: @standard-text-size;
       text-dy: 12;

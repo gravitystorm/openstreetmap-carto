@@ -8,14 +8,21 @@
 @raceway-fill: pink;
 @road-fill: #ddd;
 @footway-fill: salmon;
+@footway-fill-noaccess: #bbbbbb;
 @steps-fill: @footway-fill;
+@steps-fill-noaccess: #bbbbbb;
 @cycleway-fill: blue;
+@cycleway-fill-noaccess: #9999ff;
 @bridleway-fill: green;
+@bridleway-fill-noaccess: #aaddaa;
 @track-fill: #996600;
+@track-fill-noaccess: #e2c5bb;
 @aeroway-fill: #bbc;
 @runway-fill: @aeroway-fill;
 @taxiway-fill: @aeroway-fill;
 @helipad-fill: @aeroway-fill;
+@access-marking: #eaeaea;
+@access-marking-living-street: #cccccc;
 
 @default-casing: white;
 @tertiary-casing: #8f8f8f;
@@ -1536,6 +1543,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           background/line-opacity: 0.4;
         }
         line/line-color: @steps-fill;
+        [access = 'no'] { line/line-color: @steps-fill-noaccess; }
         line/line-dasharray: 2,1;
         line/line-width: @steps-width-z13;
         [zoom >= 15] { line/line-width:  @steps-width-z15; }
@@ -1554,6 +1562,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           background/line-opacity: 0.4;
         }
         line/line-color: @bridleway-fill;
+        [access = 'no'] { line/line-color: @bridleway-fill-noaccess; }
         line/line-dasharray: 4,2;
         line/line-width: @bridleway-width-z13;
         [zoom >= 15] { line/line-width: @bridleway-width-z15; }
@@ -1585,6 +1594,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           }
         }
         line/line-color: @footway-fill;
+        [access = 'no'] { line/line-color: @footway-fill-noaccess; }
         line/line-dasharray: 1,3;
         line/line-join: round;
         line/line-cap: round;
@@ -1608,6 +1618,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         }
         [zoom >= 15][int_surface = null] {
           line/line-color: @footway-fill;
+          [access = 'no'] { line/line-color: @footway-fill-noaccess; }
           line/line-dasharray: 1,3,2,4;
           line/line-join: round;
           line/line-cap: round;
@@ -1625,6 +1636,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         }
         [zoom >= 15][int_surface = 'unpaved'] {
           line/line-color: @footway-fill;
+          [access = 'no'] { line/line-color: @footway-fill-noaccess; }
           line/line-dasharray: 1,4;
           line/line-join: round;
           line/line-cap: round;
@@ -1663,6 +1675,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           }
         }
         line/line-color: @cycleway-fill;
+        [access = 'no'] { line/line-color: @cycleway-fill-noaccess; }
         line/line-dasharray: 1,3;
         line/line-join: round;
         line/line-cap: round;
@@ -1686,6 +1699,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         }
         [zoom >= 15][int_surface = null] {
           line/line-color: @cycleway-fill;
+          [access = 'no'] { line/line-color: @cycleway-fill-noaccess; }
           line/line-dasharray: 1,3,2,4;
           line/line-join: round;
           line/line-cap: round;
@@ -1703,6 +1717,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         }
         [zoom >= 15][int_surface = 'unpaved'] {
           line/line-color: @cycleway-fill;
+          [access = 'no'] { line/line-color: @cycleway-fill-noaccess; }
           line/line-dasharray: 1,4;
           line/line-join: round;
           line/line-cap: round;
@@ -1741,6 +1756,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
         /* Set the properties of the brown inside */
         line/line-color: @track-fill;
+        [access = 'no'] { line/line-color: @track-fill-noaccess; }
         line/line-dasharray: 5,4,2,4;
         line/line-cap: round;
         line/line-join: round;
@@ -2458,34 +2474,44 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'highway_residential'],
     [feature = 'highway_living_street'] {
       [zoom >= 15] {
-        access/line-width: 6;
-        access/line-color: @destination-marking;
-        access/line-dasharray: 6,8;
-        access/line-opacity: 0.5;
+        access/line-color: @access-marking;
+        [feature = 'highway_living_street'] {
+          access/line-color: @access-marking-living-street;
+        }
         access/line-join: round;
         access/line-cap: round;
+        access/line-width: 3;
+        access/line-dasharray: 0.1,9;
+        [zoom >= 17] {
+          access/line-width: 6;
+          access/line-dasharray: 0.1,12;
+        }
       }
     }
     [feature = 'highway_road'],
     [feature = 'highway_service'][service = 'INT-normal'] {
       [zoom >= 15] {
-        access/line-width: 3;
-        access/line-color: @destination-marking;
-        access/line-dasharray: 6,8;
-        access/line-opacity: 0.5;
+        access/line-color: @access-marking;
         access/line-join: round;
         access/line-cap: round;
-        [zoom >= 16] { access/line-width: 6; }
+        access/line-width: 2;
+        access/line-dasharray: 0.1,4;
+        [zoom >= 17] {
+          access/line-width: 4;
+          access/line-dasharray: 0.1,9;
+        }
       }
     }
     [feature = 'highway_service'][service = 'INT-minor'] {
       [zoom >= 16] {
-        access/line-width: 2.5;
-        access/line-color: @destination-marking;
-        access/line-dasharray: 6,8;
-        access/line-opacity: 0.5;
+        access/line-color: @access-marking;
         access/line-join: round;
         access/line-cap: round;
+        access/line-width: 1;
+        access/line-dasharray: 0.1,4;
+        [zoom >= 17] {
+          access/line-width: 2;
+        }
       }
     }
   }
@@ -2499,55 +2525,42 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'highway_residential'],
     [feature = 'highway_living_street'] {
       [zoom >= 15] {
-        access/line-width: 6;
-        access/line-color: @private-marking;
-        access/line-dasharray: 6,8;
-        access/line-opacity: 0.5;
+        access/line-color: @access-marking;
+        [feature = 'highway_living_street'] {
+          access/line-color: @access-marking-living-street;
+        }
         access/line-join: round;
         access/line-cap: round;
-        [feature = 'highway_motorway'],
-        [feature = 'highway_trunk'],
-        [feature = 'highway_primary'] {
-          access/line-color: @private-marking-for-red;
+        access/line-width: 2;
+        access/line-dasharray: 6,6;
+        [zoom >= 17] {
+          access/line-width: 6;
+          access/line-dasharray: 10,12;
         }
       }
     }
     [feature = 'highway_road'],
-    [feature = 'highway_track'],
     [feature = 'highway_service'][service = 'INT-normal'] {
       [zoom >= 15] {
-        access/line-width: 3;
-        access/line-color: @private-marking;
-        access/line-dasharray: 6,8;
-        access/line-opacity: 0.5;
+        access/line-color: @access-marking;
         access/line-join: round;
         access/line-cap: round;
-        [zoom >= 16] { access/line-width: 6; }
+        access/line-width: 2;
+        access/line-dasharray: 6,8;
+        [zoom >= 17] {
+          access/line-width: 3;
+          access/line-dasharray: 8,10;
+        }
       }
     }
-    [feature = 'highway_footway'],
-    [feature = 'highway_path'],
-    [feature = 'highway_cycleway'],
-    [feature = 'highway_bridleway'],
-    [feature = 'highway_steps'] {
-      [zoom >= 15] {
-        access/line-width: 5;
-        access/line-color: @private-marking;
-        access/line-dasharray: 6,8;
-        access/line-opacity: 0.5;
-        access/line-join: round;
-        access/line-cap: round;
-      }    
-    }
-
     [feature = 'highway_service'][service = 'INT-minor'][zoom >= 16] {
-      [zoom >= 15] {
-        access/line-width: 2.5;
-        access/line-color: @private-marking;
-        access/line-dasharray: 6,8;
-        access/line-opacity: 0.5;
-        access/line-join: round;
-        access/line-cap: round;
+      access/line-color: @access-marking;
+      access/line-join: round;
+      access/line-cap: round;
+      access/line-width: 1;
+      access/line-dasharray: 6,8;
+      [zoom >= 17] {
+        access/line-width: 2;
       }
     }
   }

@@ -44,7 +44,6 @@ Stylesheet:
   - "road-colors-generated.mss"
   - "roads.mss"
   - "power.mss"
-  - "citywalls.mss"
   - "placenames.mss"
   - "buildings.mss"
   - "stations.mss"
@@ -635,22 +634,6 @@ Layer:
       group-by: "layernotnull"
       minzoom: 9
     advanced: {}
-  - id: "citywalls"
-    name: "citywalls"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way
-          FROM planet_osm_line
-          WHERE historic = 'citywalls')
-        AS citywalls
-    advanced: {}
-    properties:
-      minzoom: 14
   - id: "landuse-overlay"
     name: "landuse-overlay"
     class: ""
@@ -679,11 +662,17 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, barrier
-          FROM planet_osm_line
-          WHERE barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
+            way, COALESCE(historic, barrier) AS feature
+          FROM (SELECT way,
+            ('barrier_' || (CASE WHEN barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
+                  'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall') THEN barrier ELSE NULL END)) AS barrier,
+            ('historic_' || (CASE WHEN historic = 'citywalls' THEN historic ELSE NULL END)) AS historic
+            FROM planet_osm_line
+            WHERE barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
                   'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall')
-            AND (waterway IS NULL OR waterway NOT IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi'))
+              OR historic = 'city_wall'
+              AND (waterway IS NULL OR waterway NOT IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi'))
+          ) AS features
         ) AS line_barriers
     properties:
       minzoom: 14
@@ -713,9 +702,12 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, barrier
-          FROM planet_osm_polygon
-          WHERE barrier IS NOT NULL
+            way, barrier AS feature
+          FROM (SELECT way,
+            ('barrier_' || barrier) AS barrier
+            FROM planet_osm_polygon
+            WHERE barrier IS NOT NULL
+          ) AS features
         ) AS area_barriers
     properties:
       minzoom: 16
@@ -1506,9 +1498,54 @@ Layer:
     properties:
       minzoom: 16
     advanced: {}
-  - id: "placenames-large"
-    name: "placenames-large"
-    class: "country state"
+  - id: "country-names"
+    name: "country-names"
+    class: "country"
+    geometry: "point"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            name
+          FROM planet_osm_polygon
+          WHERE boundary = 'administrative'
+            AND admin_level = '2'
+            AND name IS NOT NULL
+            AND way_area > 100*!pixel_width!::real*!pixel_height!::real
+          ORDER BY way_area DESC
+        ) AS country_names
+    properties:
+      minzoom: 2
+  - id: "capital-names"
+    name: "capital-names"
+    class: ""
+    geometry: "point"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            name,
+            CASE
+              WHEN (population ~ '^[0-9]{1,8}$') THEN population::INTEGER ELSE 0
+            END as population,
+            round(random()) AS dir
+          FROM planet_osm_point
+          WHERE capital = 'yes'
+            AND admin_level = '2'
+          ORDER BY population DESC
+        ) AS capital_names
+    properties:
+      minzoom: 3
+      maxzoom: 15
+    advanced: {}
+  - id: "state-names"
+    name: "state-names"
+    class: "state"
     geometry: "point"
     <<: *extents
     Datasource:
@@ -1518,17 +1555,16 @@ Layer:
             way,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
             name,
-            ref,
-            admin_level
+            ref
           FROM planet_osm_polygon
           WHERE boundary = 'administrative'
-            AND admin_level IN ('2', '4')
+            AND admin_level = '4'
             AND name IS NOT NULL
-            AND way_area > 750*!pixel_width!::real*!pixel_height!::real -- only labels for larger areas are displayed
-          ORDER BY admin_level ASC, way_area DESC
-        ) AS placenames_large
+            AND way_area > 100*!pixel_width!::real*!pixel_height!::real
+          ORDER BY way_area DESC
+        ) AS state_names
     properties:
-      minzoom: 2
+      minzoom: 4
     advanced: {}
   - id: "placenames-medium"
     name: "placenames-medium"
@@ -1543,15 +1579,15 @@ Layer:
             name,
             score,
             CASE
-              WHEN (place = 'city' OR (capital = 'yes' AND score >= 100000)) THEN 1
+              WHEN (place = 'city') THEN 1
               ELSE 2
-            END as category
+            END as category,
+            round(random()) AS dir
           FROM 
             (SELECT
                 way,
                 place,
                 name,
-                capital,
                 (
                   (CASE
                     WHEN (tags->'population' ~ '^[0-9]{1,8}$') THEN (tags->'population')::INTEGER
@@ -1561,14 +1597,14 @@ Layer:
                   END)
                   *
                   (CASE
-                    WHEN (capital = 'yes') THEN 3
-                    WHEN (capital = '4') THEN 2
+                    WHEN (capital = '4' OR (capital = 'yes' AND admin_level = '4')) THEN 2
                     ELSE 1
                   END)
                 ) AS score
               FROM planet_osm_point
               WHERE place IN ('city', 'town')
                 AND name IS NOT NULL
+                AND capital IS NULL OR capital != 'yes' OR (capital = 'yes' AND admin_level != '2')
             ) as p
           ORDER BY score DESC, length(name) DESC, name
         ) AS placenames_medium
@@ -1680,11 +1716,11 @@ Layer:
                                             'mobile_phone', 'motorcycle', 'musical_instrument', 'newsagent', 'optician', 'jewelry', 'jewellery', 
                                             'electronics', 'chemist', 'toys', 'travel_agency', 'car_parts', 'greengrocer', 'farm', 'stationery', 
                                             'laundry', 'dry_cleaning', 'beverages', 'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor', 
-                                            'copyshop', 'sports') THEN shop 
-                              WHEN shop IN ('accessories', 'antiques', 'appliance', 'art', 'baby_goods', 'bathroom_furnishing', 
+                                            'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea') THEN shop 
+                              WHEN shop IN ('accessories', 'antiques', 'appliance', 'baby_goods', 'bathroom_furnishing', 
                                             'bed', 'boat', 'bookmaker', 'boutique', 'builder', 'building_materials', 'camera', 'car_service', 
                                             'carpet', 'charity', 'cheese', 'chocolate', 'coffee', 'communication', 'craft', 'curtain', 'dairy', 
-                                            'deli', 'discount', 'e-cigarette', 'electrical', 'energy', 'erotic', 'estate_agent', 
+                                            'discount', 'e-cigarette', 'electrical', 'energy', 'erotic', 'estate_agent', 
                                             'fabric', 'fishing', 'flooring', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 
                                             'gallery', 'games', 'gas', 'general', 'glaziery', 'grocery', 'health', 'health_food', 'hearing_aids', 
                                             'herbalist', 'hobby', 'household', 'houseware', 'hunting', 'interior_decoration', 'kitchen', 
@@ -1692,7 +1728,7 @@ Layer:
                                             'motorcycle_repair', 'music', 'office_supplies', 'organic', 'paint', 'pastry', 'pawnbroker', 
                                             'phone', 'pottery', 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 
                                             'scuba_diving', 'second_hand', 'sewing', 'shoe_repair', 'shopping_centre', 'solarium', 'souvenir',  
-                                            'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'trade', 'tyres', 'vacuum_cleaner', 'video', 
+                                            'tailor', 'tanning', 'tattoo', 'ticket', 'tiles', 'trade', 'tyres', 'vacuum_cleaner', 'video', 
                                             'video_games', 'watches', 'wholesale', 'yes') THEN 'other' ELSE NULL END,
               'leisure_' || CASE WHEN leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table') THEN leisure ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill', 'obelisk') THEN man_made ELSE NULL END,
@@ -1761,10 +1797,10 @@ Layer:
                                             'photography', 'seafood', 'shoes', 'alcohol', 'gift', 'furniture', 'kiosk', 'mobile_phone', 'motorcycle', 
                                             'musical_instrument', 'newsagent', 'optician', 'jewelry', 'jewellery', 'electronics', 'chemist', 'toys', 
                                             'travel_agency', 'car_parts', 'greengrocer', 'farm', 'stationery', 'laundry', 'dry_cleaning', 'beverages', 
-                                            'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor', 'copyshop', 'sports') THEN shop 
-                              WHEN shop IN ('accessories', 'antiques', 'appliance', 'art', 'baby_goods', 'bathroom_furnishing', 'bed',  
+                                            'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor', 'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea') THEN shop 
+                              WHEN shop IN ('accessories', 'antiques', 'appliance', 'baby_goods', 'bathroom_furnishing', 'bed',  
                                             'boat', 'bookmaker', 'boutique', 'builder', 'building_materials', 'camera', 'car_service', 'carpet', 'charity', 
-                                            'cheese', 'chocolate', 'coffee', 'communication', 'craft', 'curtain', 'dairy', 'deli',   
+                                            'cheese', 'chocolate', 'coffee', 'communication', 'craft', 'curtain', 'dairy',   
                                             'discount', 'e-cigarette', 'electrical', 'energy', 'erotic', 'estate_agent', 'fabric', 'fishing', 
                                             'flooring', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'gallery', 'games', 'gas',  
                                             'general', 'glaziery', 'grocery', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hobby', 'household',  
@@ -1772,7 +1808,7 @@ Layer:
                                             'market', 'massage', 'medical', 'medical_supply', 'money_lender', 'motorcycle_repair', 'music', 'office_supplies',  
                                             'organic', 'paint', 'pastry', 'pawnbroker', 'phone', 'pottery', 'printing', 'radiotechnics', 
                                             'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'second_hand', 'sewing', 'shoe_repair', 'shopping_centre', 
-                                            'solarium', 'souvenir', 'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'trade', 'tyres', 
+                                            'solarium', 'souvenir', 'tailor', 'tanning', 'tattoo', 'ticket', 'tiles', 'trade', 'tyres', 
                                             'vacuum_cleaner', 'video', 'video_games', 'watches', 'wholesale', 'yes') THEN 'other' ELSE NULL END,
               'leisure_' || CASE WHEN leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'slipway',
                                                   'dog_park') THEN leisure ELSE NULL END,
@@ -2010,7 +2046,9 @@ Layer:
           FROM planet_osm_line
           WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 
                             'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction')
-            AND name IS NOT NULL
+            AND (name IS NOT NULL
+              OR oneway IN ('yes', '-1')
+              OR junction IN ('roundabout'))
         ) AS roads_text_name
     properties:
       minzoom: 13
@@ -2099,10 +2137,10 @@ Layer:
                                             'photography', 'seafood', 'shoes', 'alcohol', 'gift', 'furniture', 'kiosk', 'mobile_phone', 'motorcycle', 
                                             'musical_instrument', 'newsagent', 'optician', 'jewelry', 'jewellery', 'electronics', 'chemist', 'toys', 
                                             'travel_agency', 'car_parts', 'greengrocer', 'farm', 'stationery', 'laundry', 'dry_cleaning', 'beverages', 
-                                            'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor', 'copyshop', 'sports') THEN shop 
-                              WHEN shop IN ('accessories', 'antiques', 'appliance', 'art', 'baby_goods', 'bathroom_furnishing', 'bed', 
+                                            'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor', 'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea') THEN shop 
+                              WHEN shop IN ('accessories', 'antiques', 'appliance', 'baby_goods', 'bathroom_furnishing', 'bed', 
                                             'boat', 'bookmaker', 'boutique', 'builder', 'building_materials', 'camera', 'car_service', 'carpet', 'charity', 
-                                            'cheese', 'chocolate', 'coffee', 'communication', 'craft', 'curtain', 'dairy', 'deli', 
+                                            'cheese', 'chocolate', 'coffee', 'communication', 'craft', 'curtain', 'dairy', 
                                             'discount', 'e-cigarette', 'electrical', 'energy', 'erotic', 'estate_agent', 'fabric', 'fishing', 
                                             'flooring', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'gallery', 'games', 'gas', 
                                             'general', 'glaziery', 'grocery', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hobby', 'household', 
@@ -2110,8 +2148,8 @@ Layer:
                                             'lottery', 'market', 'massage', 'medical', 'medical_supply', 'money_lender', 'motorcycle_repair', 'music', 
                                             'office_supplies', 'organic', 'paint', 'pastry', 'pawnbroker', 'phone', 'pottery', 
                                             'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'second_hand', 
-                                            'sewing', 'shoe_repair', 'shopping_centre', 'solarium', 'souvenir', 'tailor', 'tanning', 'tattoo', 'tea', 
-                                            'ticket', 'tiles', 'tobacco', 'trade', 'tyres', 'vacuum_cleaner', 'video', 'video_games', 'watches', 'wholesale', 
+                                            'sewing', 'shoe_repair', 'shopping_centre', 'solarium', 'souvenir', 'tailor', 'tanning', 'tattoo',
+                                            'ticket', 'tiles', 'trade', 'tyres', 'vacuum_cleaner', 'video', 'video_games', 'watches', 'wholesale', 
                                             'yes') THEN 'other' ELSE NULL END,
               'leisure_' || CASE WHEN leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'sports_centre', 'stadium', 'track', 
                                                   'pitch', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina', 
@@ -2241,11 +2279,11 @@ Layer:
                                                 'seafood', 'shoes', 'alcohol', 'gift', 'furniture', 'kiosk', 'mobile_phone', 'motorcycle', 'musical_instrument', 
                                                 'newsagent', 'optician', 'jewelry', 'jewellery', 'electronics', 'chemist', 'toys', 'travel_agency', 'car_parts', 
                                                 'greengrocer', 'farm', 'stationery', 'laundry', 'dry_cleaning', 'beverages', 'perfumery', 'cosmetics', 
-                                                'variety_store', 'wine', 'outdoor', 'copyshop', 'sports') THEN shop 
-                                  WHEN shop IN ('accessories', 'antiques', 'appliance', 'art', 
+                                                'variety_store', 'wine', 'outdoor', 'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea') THEN shop 
+                                  WHEN shop IN ('accessories', 'antiques', 'appliance',
                                                 'baby_goods', 'bathroom_furnishing', 'bed', 'boat', 'bookmaker', 'boutique', 'builder', 
                                                 'building_materials', 'camera', 'car_service', 'carpet', 'charity', 'cheese', 'chocolate', 'coffee', 
-                                                'communication', 'craft', 'curtain', 'dairy', 'deli', 'discount',  
+                                                'communication', 'craft', 'curtain', 'dairy', 'discount',  
                                                 'e-cigarette', 'electrical', 'energy', 'erotic', 'estate_agent', 'fabric', 'fishing', 'flooring', 
                                                 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'gallery', 'games', 'gas', 
                                                 'general', 'glaziery', 'grocery', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hobby', 'household', 
@@ -2254,7 +2292,7 @@ Layer:
                                                 'office_supplies', 'organic', 'paint', 'pastry', 'pawnbroker', 'phone', 'pottery', 
                                                 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'second_hand', 
                                                 'sewing', 'shoe_repair', 'shopping_centre', 'solarium', 'souvenir', 'tailor', 'tanning', 'tattoo', 
-                                                'tea', 'ticket', 'tiles', 'tobacco', 'trade', 'tyres', 'vacuum_cleaner', 'video', 'video_games', 'watches', 
+                                                'ticket', 'tiles', 'trade', 'tyres', 'vacuum_cleaner', 'video', 'video_games', 'watches', 
                                                 'wholesale', 'yes') THEN 'other' ELSE NULL END,
                   'leisure_' || CASE WHEN leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'sports_centre', 'stadium', 'track',  
                                                       'pitch','playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina',  
@@ -2360,8 +2398,8 @@ Layer:
     properties:
       minzoom: 17
     advanced: {}
-  - id: "housenumbers"
-    name: "housenumbers"
+  - id: "addresses"
+    name: "addresses"
     class: ""
     geometry: "point"
     <<: *extents
@@ -2370,46 +2408,22 @@ Layer:
       table: |-
         (SELECT
             way,
-            "addr:housenumber",
+            "addr:housenumber" AS addr_housenumber,
+            "addr:housename" AS addr_housename,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
-          WHERE "addr:housenumber" IS NOT NULL
+          WHERE (("addr:housenumber" IS NOT NULL) OR ("addr:housename" IS NOT NULL))
             AND building IS NOT NULL
         UNION ALL
         SELECT
             way,
-            "addr:housenumber",
+            "addr:housenumber" AS addr_housenumber,
+            "addr:housename" AS addr_housename,
             NULL AS way_pixels
           FROM planet_osm_point
-          WHERE "addr:housenumber" IS NOT NULL
+          WHERE ("addr:housenumber" IS NOT NULL) OR ("addr:housename" IS NOT NULL)
           ORDER BY way_pixels DESC NULLS LAST
-        ) AS housenumbers
-    properties:
-      minzoom: 17
-    advanced: {}
-  - id: "housenames"
-    name: "housenames"
-    class: ""
-    geometry: "point"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            "addr:housename",
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
-          FROM planet_osm_polygon
-          WHERE "addr:housename" IS NOT NULL
-            AND building IS NOT NULL
-        UNION ALL
-        SELECT
-            way,
-            "addr:housename",
-            NULL AS way_pixels
-          FROM planet_osm_point WHERE "addr:housename" IS NOT NULL
-        ORDER BY way_pixels DESC NULLS LAST
-        ) AS housenames
+        ) AS addresses
     properties:
       minzoom: 17
     advanced: {}
