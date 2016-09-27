@@ -109,9 +109,11 @@
             ]
         }, 
         {
-            "key": "ele", 
+            "key": "name:de", 
             "object_types": [
-                "node"
+                "node", 
+                "way", 
+                "area"
             ]
         }, 
         {
@@ -177,11 +179,9 @@
             ]
         }, 
         {
-            "key": "name:de", 
+            "key": "ele", 
             "object_types": [
-                "node", 
-                "way", 
-                "area"
+                "node"
             ]
         }, 
         {
@@ -237,6 +237,7 @@
         {
             "key": "admin_level", 
             "object_types": [
+                "node", 
                 "area"
             ]
         }, 
