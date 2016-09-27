@@ -1,13 +1,24 @@
-all: wood_mixed.png wood_coniferous.png wood_deciduous.png
+WOOD_SYM = "\#6f965a"
 
-wood_mixed.png: wood_mixed.svg
-	inkscape -e wood_mixed.png wood_mixed.svg
+all: wood_mixed.png wood_needle.png wood_broad.png
 	
-wood_coniferous.png: wood_coniferous.svg
-	inkscape -e wood_coniferous.png wood_coniferous.svg
+wood_mixed.png: generating_patterns/wood_mixed.png
+	convert -depth 8 -size 512x512 xc:$(WOOD_SYM) \( $< -negate \) -set colorspace RGB -alpha off -compose CopyOpacity -composite -set colorspace sRGB +gamma - $@
+
+wood_needle.png: generating_patterns/wood_needle.png
+	convert -depth 8 -size 512x512 xc:$(WOOD_SYM) \( $< -negate \) -set colorspace RGB -alpha off -compose CopyOpacity -composite -set colorspace sRGB +gamma - $@
+
+wood_broad.png: generating_patterns/wood_broad.png
+	convert -depth 8 -size 512x512 xc:$(WOOD_SYM) \( $< -negate \) -set colorspace RGB -alpha off -compose CopyOpacity -composite -set colorspace sRGB +gamma - $@
+
+generating_patterns/wood_mixed.png: generating_patterns/wood_mixed.svg
+	convert $< $@
 	
-wood_deciduous.png: wood_deciduous.svg
-	inkscape -e wood_deciduous.png wood_deciduous.svg
+generating_patterns/wood_needle.png: generating_patterns/wood_needle.svg
+	convert $< $@
+	
+generating_patterns/wood_broad.png: generating_patterns/wood_broad.svg
+	convert $< $@
 
 clean:
 	rm wood*.png
