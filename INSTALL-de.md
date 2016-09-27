@@ -40,7 +40,7 @@ to the postgresql database.
 If l10n is not needed it is also possible to slightly modify either
 project.yaml or the database views provided in views_osmde directory.
 
-To aktually use this style you need to generate ```osm-de.xml``` from ```project.yaml```.
+To actually use this style you need to generate ```osm-de.xml``` from ```project.yaml```.
 The easiest way to do this is using ```make```!
 Be aware, that ```project.mml``` is not used in this style at all. It is just a verbatim
 copy from the upstream repository.
@@ -53,6 +53,3 @@ Thus the manual generation of ```osm-de.xml``` (without using ```make```) is a t
 It is also possible to use [Magnacarto](https://github.com/omniscale/magnacarto) or
 [Kosmtik](https://github.com/kosmtik/kosmtik).
 Both projekts can use ```project.yaml``` directly.
-
-
-
