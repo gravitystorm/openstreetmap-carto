@@ -198,9 +198,9 @@
 @motorway-link-width-z18:        11;
 @trunk-width-z18:                16;
 @trunk-link-width-z18:           11;
-@primary-width-z18:              14;
-@secondary-width-z18:            21;
-@tertiary-width-z18:             21;
+@primary-width-z18:              17;
+@secondary-width-z18:            17;
+@tertiary-width-z18:             17;
 @residential-width-z18:          13;
 @living-street-width-z18:        13;
 @pedestrian-width-z18:           13;
@@ -338,7 +338,8 @@
 @shield-clip: false;
 @shield-motorway-font: @bold-fonts;
 
-@proposed_casing_factor: 3.0;
+@proposed_casing_factor: 2.0;
+@proposed_casing_factor_lowzoom: 1.0;
 
 .roads-casing, .bridges-casing, .tunnels-casing {
   ::casing {
@@ -354,13 +355,13 @@ Casing width is @proposed_casing_factor the width of normal road casing.
     ,[feature = 'highway_construction'][construction =~ ".*motorway.*"]{
       [zoom >= 12]{
         a/line-join:round;
-        a/line-width: @proposed_casing_factor*@major-casing-width-z12;
+        a/line-width: @proposed_casing_factor_lowzoom*@major-casing-width-z12;
         a/line-color:@motorway-fill;
-        a/line-offset:0.5 * (@motorway-width-z12 - @proposed_casing_factor*@major-casing-width-z12);
+        a/line-offset:0.5 * (@motorway-width-z12 - @proposed_casing_factor_lowzoom*@major-casing-width-z12);
         b/line-join:round;
-        b/line-width: @proposed_casing_factor*@major-casing-width-z12;
+        b/line-width: @proposed_casing_factor_lowzoom*@major-casing-width-z12;
         b/line-color:@motorway-fill;
-        b/line-offset:-0.5 * (@motorway-width-z12 - @proposed_casing_factor*@major-casing-width-z12);
+        b/line-offset:-0.5 * (@motorway-width-z12 - @proposed_casing_factor_lowzoom*@major-casing-width-z12);
        [zoom >= 13]{
           a/line-width: @proposed_casing_factor*@major-casing-width-z13;
           a/line-offset: 0.5 * (@motorway-width-z13 - @proposed_casing_factor*@major-casing-width-z13);
@@ -398,13 +399,13 @@ Casing width is @proposed_casing_factor the width of normal road casing.
     ,[feature = 'highway_construction'][construction =~ ".*trunk.*"]{
       [zoom >= 12]{
         a/line-join:round;
-        a/line-width: @proposed_casing_factor*@major-casing-width-z12;
+        a/line-width: @proposed_casing_factor_lowzoom*@major-casing-width-z12;
         a/line-color:@trunk-fill;
-        a/line-offset:0.5 * (@trunk-width-z12 - @proposed_casing_factor*@major-casing-width-z12);
+        a/line-offset:0.5 * (@trunk-width-z12 - @proposed_casing_factor_lowzoom*@major-casing-width-z12);
         b/line-join:round;
-        b/line-width: @proposed_casing_factor*@major-casing-width-z12;
+        b/line-width: @proposed_casing_factor_lowzoom*@major-casing-width-z12;
         b/line-color:@trunk-fill;
-        b/line-offset:-0.5 * (@trunk-width-z12 - @proposed_casing_factor*@major-casing-width-z12);
+        b/line-offset:-0.5 * (@trunk-width-z12 - @proposed_casing_factor_lowzoom*@major-casing-width-z12);
        [zoom >= 13]{
           a/line-width: @proposed_casing_factor*@major-casing-width-z13;
           a/line-offset: 0.5 * (@trunk-width-z13 - @proposed_casing_factor*@major-casing-width-z13);
@@ -442,13 +443,13 @@ Casing width is @proposed_casing_factor the width of normal road casing.
     ,[feature = 'highway_construction'][construction =~ ".*primary.*"]{
       [zoom >= 12]{
         a/line-join:round;
-        a/line-width: @proposed_casing_factor*@major-casing-width-z12;
+        a/line-width: @proposed_casing_factor_lowzoom*@major-casing-width-z12;
         a/line-color:@primary-fill;
-        a/line-offset:0.5 * (@primary-width-z12 - @proposed_casing_factor*@major-casing-width-z12);
+        a/line-offset:0.5 * (@primary-width-z12 - @proposed_casing_factor_lowzoom*@major-casing-width-z12);
         b/line-join:round;
-        b/line-width: @proposed_casing_factor*@major-casing-width-z12;
+        b/line-width: @proposed_casing_factor_lowzoom*@major-casing-width-z12;
         b/line-color:@primary-fill;
-        b/line-offset:-0.5 * (@primary-width-z12 - @proposed_casing_factor*@major-casing-width-z12);
+        b/line-offset:-0.5 * (@primary-width-z12 - @proposed_casing_factor_lowzoom*@major-casing-width-z12);
        [zoom >= 13]{
           a/line-width: @proposed_casing_factor*@major-casing-width-z13;
           a/line-offset: 0.5 * (@primary-width-z13 - @proposed_casing_factor*@major-casing-width-z13);
@@ -486,13 +487,13 @@ Casing width is @proposed_casing_factor the width of normal road casing.
     ,[feature = 'highway_construction'][construction =~ ".*secondary.*"]{
       [zoom >= 12]{
         a/line-join:round;
-        a/line-width: @proposed_casing_factor*@secondary-casing-width-z12;
+        a/line-width: @proposed_casing_factor_lowzoom*@secondary-casing-width-z12;
         a/line-color:@secondary-fill;
-        a/line-offset:0.5 * (@secondary-width-z12 - @proposed_casing_factor*@secondary-casing-width-z12);
+        a/line-offset:0.5 * (@secondary-width-z12 - @proposed_casing_factor_lowzoom*@secondary-casing-width-z12);
         b/line-join:round;
-        b/line-width: @proposed_casing_factor*@secondary-casing-width-z12;
+        b/line-width: @proposed_casing_factor_lowzoom*@secondary-casing-width-z12;
         b/line-color:@secondary-fill;
-        b/line-offset:-0.5 * (@secondary-width-z12 - @proposed_casing_factor*@secondary-casing-width-z12);
+        b/line-offset:-0.5 * (@secondary-width-z12 - @proposed_casing_factor_lowzoom*@secondary-casing-width-z12);
        [zoom >= 13]{
           a/line-width: @proposed_casing_factor*@secondary-casing-width-z13;
           a/line-offset: 0.5 * (@secondary-width-z13 - @proposed_casing_factor*@secondary-casing-width-z13);
@@ -542,13 +543,13 @@ Casing width is @proposed_casing_factor the width of normal road casing.
     ,[feature = 'highway_construction'][construction =~ ".*tertiary.*"]{
       [zoom >= 12]{
         a/line-join:round;
-        a/line-width: @proposed_casing_factor*@casing-width-z12;
+        a/line-width: @proposed_casing_factor_lowzoom*@casing-width-z12;
         a/line-color:@tertiary-fill;
-        a/line-offset:0.5 * (@tertiary-width-z12 - @proposed_casing_factor*@casing-width-z12);
+        a/line-offset:0.5 * (@tertiary-width-z12 - @proposed_casing_factor_lowzoom*@casing-width-z12);
         b/line-join:round;
-        b/line-width: @proposed_casing_factor*@casing-width-z12;
+        b/line-width: @proposed_casing_factor_lowzoom*@casing-width-z12;
         b/line-color:@tertiary-fill;
-        b/line-offset:-0.5 * (@tertiary-width-z12 - @proposed_casing_factor*@casing-width-z12);
+        b/line-offset:-0.5 * (@tertiary-width-z12 - @proposed_casing_factor_lowzoom*@casing-width-z12);
        [zoom >= 13]{
           a/line-width: @proposed_casing_factor*@casing-width-z13;
           a/line-offset: 0.5 * (@tertiary-width-z13 - @proposed_casing_factor*@casing-width-z13);
