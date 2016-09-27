@@ -22,7 +22,6 @@
 @standard-wrap-width: 30;
 @standard-text-size: 10;
 @standard-font: @book-fonts;
-@standard-halo-radius: 1;
 
 /* Note that .points is also used in water-features.mss */
 .points {
@@ -115,6 +114,13 @@
     marker-clip: false;
   }
 
+  [feature = 'tourism_artwork'][zoom >= 17] {
+    marker-file: url('symbols/artwork-14.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'tourism_camp_site'][zoom >= 16] {
     marker-file: url('symbols/camping.16.svg');
     marker-fill: @transportation-icon;
@@ -201,6 +207,13 @@
         nozzle/marker-clip: false;
       }
     }
+  }
+
+  [feature = 'amenity_charging_station'][zoom >= 17] {
+    marker-file: url('symbols/charging_station.16.svg');
+    marker-fill: @transportation-icon;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_fuel'][zoom >= 17] {
@@ -567,6 +580,13 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_art'][zoom >= 17] {
+    marker-file: url('symbols/art-14.svg');
+    marker-fill: @shop-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'shop_bag'][zoom >= 17] {
     marker-file: url('symbols/bag-14.svg');
     marker-fill: @shop-icon;
@@ -646,13 +666,11 @@
     marker-clip: false;
   }
 
-  [feature = 'shop_copyshop'] {
-    [zoom >= 17] {
-      marker-file: url('symbols/copyshop-14.svg');
-      marker-placement: interior;
-      marker-clip: false;
-      marker-fill: @shop-icon;
-    }
+  [feature = 'shop_copyshop'][zoom >= 17] {
+    marker-file: url('symbols/copyshop-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
   }
 
   [feature = 'shop_cosmetics'],
@@ -665,9 +683,20 @@
     }
   }
 
+  [feature = 'shop_deli'] {
+    [zoom >= 17] {
+      marker-file: url('symbols/deli-14.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @shop-icon;
+    }
+  }
+
   [feature = 'shop_department_store'][zoom >= 16] {
-    point-file: url('symbols/department_store.p.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/department_store.p.16.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
   }
 
   [feature = 'shop_doityourself'],
@@ -912,6 +941,20 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_tobacco'][zoom >= 17] {
+    marker-file: url('symbols/tobacco-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+
+  [feature = 'shop_tea'][zoom >= 17] {
+    marker-file: url('symbols/tea-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+
   [feature = 'shop_variety_store'][zoom >= 17] {
     marker-file: url('symbols/variety_store-14.svg');
     marker-placement: interior;
@@ -927,9 +970,9 @@
   }
 
   [feature = 'leisure_dog_park'][zoom >= 17] {
-    marker-file: url('symbols/dog_park.16.svg');
+    marker-file: url('symbols/shop_pet.16.svg');
     marker-placement: interior;
-    marker-fill: darken(@park, 60%);
+    marker-fill: @amenity-brown;
     marker-clip: false;
   }
 
@@ -1080,7 +1123,8 @@
     }
   }
 
-  [feature = 'railway_level_crossing'][zoom >= 14]::railway {
+  [feature = 'railway_level_crossing'][zoom >= 14]::railway,
+  [feature = 'railway_crossing'][zoom >= 15]::railway{
     point-file: url('symbols/level_crossing.svg');
     point-placement: interior;
     [zoom >= 16] {
@@ -1151,7 +1195,7 @@
     [way_pixels > 48000] { text-size: 15; }
     text-face-name: @oblique-fonts;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1172,7 +1216,7 @@
       text-dy: 11;
       text-face-name: @standard-font;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-fill: @standard-halo-fill;
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       [feature = 'amenity_bar']{
@@ -1198,7 +1242,7 @@
       text-face-name: @standard-font;
       [feature = 'tourism_museum'] { text-face-name: @standard-font; }
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-fill: @standard-halo-fill;
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       [feature = 'amenity_library'],
@@ -1221,7 +1265,7 @@
     [feature = 'leisure_slipway']        { text-dy: 13; }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1235,7 +1279,7 @@
     text-dy: 9;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
     [access != ''][access != 'public'][access != 'yes'] {
@@ -1266,7 +1310,7 @@
     [feature = 'amenity_post_office'] { text-dy: 11; }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1278,7 +1322,7 @@
     text-dy: 12;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1295,7 +1339,7 @@
     [feature = 'tourism_viewpoint'] { text-dy: 11; }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1319,11 +1363,12 @@
     [feature = 'man_made_mast'] { text-dy: 10; }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
+  [feature = 'tourism_artwork'][zoom >= 17],
   [feature = 'historic_memorial'][zoom >= 17],
   [feature = 'man_made_obelisk'][zoom >= 16],
   [feature = 'historic_monument'][zoom >= 16],
@@ -1335,7 +1380,7 @@
     text-dy: 11;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
     [feature = 'historic_castle'] {
@@ -1351,7 +1396,7 @@
     text-fill: darken(@park, 60%);
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-placement: interior;
     text-dy: 13;
     text-wrap-width: 40;
@@ -1368,7 +1413,7 @@
       text-dy: 11;
       text-face-name: @standard-font;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-fill: @standard-halo-fill;
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
     }
@@ -1391,12 +1436,13 @@
       text-fill: @marina-text;
       text-face-name: @landcover-face-name;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-fill: @standard-halo-fill;
       text-placement: interior;
     }
   }
 
-  [feature = 'leisure_playground'] {
+  [feature = 'leisure_playground'],
+  [feature = 'leisure_dog_park'] {
     [way_area >= 150000][zoom >= 14],
     [way_area >= 80000][zoom >= 15],
     [way_area >= 20000][zoom >= 16],
@@ -1407,7 +1453,7 @@
       text-fill: darken(@park, 60%);
       text-face-name: @standard-font;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-fill: @standard-halo-fill;
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       [access != ''][access != 'yes'] {
@@ -1436,7 +1482,7 @@
       }
       text-face-name: @landcover-face-name;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-fill: @standard-halo-fill;
       text-placement: interior;
       [feature = 'landuse_military'] {
         text-fill: darken(@military, 40%);
@@ -1469,7 +1515,7 @@
       text-fill: darken(@danger_area, 40%);
       text-face-name: @bold-fonts;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-fill: @standard-halo-fill;
       text-placement: interior;
     }
   }
@@ -1491,7 +1537,7 @@
       text-fill: darken(@garages, 50%);
       text-face-name: @landcover-face-name;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-fill: @standard-halo-fill;
       text-placement: interior;
     }
   }
@@ -1562,7 +1608,7 @@
       }
       text-face-name: @landcover-face-name;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-fill: @standard-halo-fill;
       text-placement: interior;
       [feature = 'natural_reef'],
       [feature = 'natural_wetland'],
@@ -1588,7 +1634,7 @@
       [feature = 'landuse_cemetery'],
       [feature = 'amenity_grave_yard'] {
         text-fill: darken(@cemetery, 50%);
-        text-halo-radius: 1.5; /* extra halo needed to overpower the cemetery polygon pattern */
+        text-halo-radius: @standard-halo-radius * 1.5; /* extra halo needed to overpower the cemetery polygon pattern */
       }
       [feature = 'landuse_residential'] {
         text-fill: darken(@residential, 50%);
@@ -1660,8 +1706,8 @@
       }
       [feature = 'leisure_dog_park'] {
         text-fill: darken(@park, 60%);
-        text-halo-radius: 1.5; /* Extra halo needed to stand out from paw pattern. */
-        text-halo-fill: rgba(255,255,255,0.6);
+        text-halo-radius: @standard-halo-radius * 1.5; /* Extra halo needed to stand out from paw pattern. */
+        text-halo-fill: @standard-halo-fill;
       }
       [feature = 'leisure_track'] {
         text-fill: darken(@track, 40%);
@@ -1679,7 +1725,7 @@
     text-fill: @water-text;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
     [feature = 'natural_spring'] {
@@ -1698,13 +1744,13 @@
     [feature = 'amenity_atm']  { text-dy: 10; }
     text-fill: @amenity-brown;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
     text-face-name: @standard-font;
   }
 
-  [feature = 'tourism_alpine_hut'][zoom >= 15],
+  [feature = 'tourism_alpine_hut'][zoom >= 14],
   [feature = 'amenity_shelter'][zoom >= 17],
   [feature = 'tourism_hotel'][zoom >= 17],
   [feature = 'tourism_motel'][zoom >= 17],
@@ -1718,7 +1764,7 @@
     text-dy: 11;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
     [feature = 'tourism_motel'] {
@@ -1736,7 +1782,7 @@
     text-dy: 10;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1748,12 +1794,13 @@
     text-dy: 11;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
 
   [feature = 'highway_bus_stop'],
+  [feature = 'amenity_charging_station'],
   [feature = 'amenity_fuel'],
   [feature = 'amenity_bus_station'] {
     [zoom >= 17] {
@@ -1763,7 +1810,7 @@
       text-dy: 11;
       text-face-name: @standard-font;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-fill: @standard-halo-fill;
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       [feature = 'highway_bus_stop'] {
@@ -1789,7 +1836,7 @@
       text-fill: @marina-text;
       text-face-name: @landcover-face-name;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-fill: @standard-halo-fill;
       text-placement: interior;
     }
   }
@@ -1801,7 +1848,7 @@
     text-dy: 4;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
     [zoom >= 18] {
@@ -1817,7 +1864,7 @@
     text-dy: 12;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1830,7 +1877,7 @@
     text-dy: 16;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1844,7 +1891,7 @@
     [feature = 'amenity_recycling'] { text-dy: 10; }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1856,7 +1903,7 @@
     text-dy: 10;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -1877,12 +1924,13 @@
       text-fill: @health-color;
       text-face-name: @standard-font;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-fill: @standard-halo-fill;
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
     }
   }
 
+  [feature = 'shop_art'],
   [feature = 'shop_bag'],
   [feature = 'shop_bakery'],
   [feature = 'shop_beauty'],
@@ -1894,6 +1942,7 @@
   [feature = 'shop_convenience'],
   [feature = 'shop_confectionery'],
   [feature = 'shop_copyshop'],
+  [feature = 'shop_deli'],
   [feature = 'shop_doityourself'],
   [feature = 'shop_dry_cleaning'],
   [feature = 'shop_hardware'],
@@ -1937,10 +1986,13 @@
   [feature = 'shop_seafood'],
   [feature = 'shop_sports'],
   [feature = 'shop_stationery'],
+  [feature = 'shop_tobacco'],
+  [feature = 'shop_tea'],
   [feature = 'shop_variety_store'],
   [feature = 'shop_wine'],
   [feature = 'shop_other']{
-    [zoom >= 17] {
+    [way_pixels > 3000][zoom >= 17],
+    [zoom >= 18] {
       text-name: "[name]";
       text-size: @standard-text-size;
       text-dy: 12;
@@ -1977,7 +2029,7 @@
     text-fill: #aa66cc;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
@@ -2003,7 +2055,7 @@
       text-fill: darken(@power, 40%);
       text-face-name: @landcover-face-name;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-fill: @standard-halo-fill;
       text-placement: interior;
     }
   }
@@ -2027,7 +2079,7 @@
       }
       text-face-name: @landcover-face-name;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-fill: @standard-halo-fill;
       text-placement: interior;
       [feature = 'natural_scree'],
       [feature = 'natural_shingle'],
@@ -2057,7 +2109,7 @@
       text-fill: darken(@apron, 60%);
       text-face-name: @landcover-face-name;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-fill: @standard-halo-fill;
       text-placement: interior;
     }
   }
@@ -2080,7 +2132,7 @@
       text-fill: darken(@rest_area, 40%);
       text-face-name: @landcover-face-name;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-fill: @standard-halo-fill;
       text-placement: interior;
     }
   }
@@ -2103,7 +2155,7 @@
       text-fill: mix(darken(@glacier, 40%), darken(@glacier-line, 30%), 50%);
       text-face-name: @landcover-face-name;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: rgba(255,255,255,0.6);
+      text-halo-fill: @standard-halo-fill;
       text-placement: interior;
     }
   }
@@ -2115,7 +2167,7 @@
     text-dy: -10;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-placement: interior;
     text-wrap-width: @standard-wrap-width;
   }
@@ -2127,7 +2179,7 @@
     text-dy: -10;
     text-face-name: @oblique-fonts;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-placement: interior;
     text-wrap-width: @standard-wrap-width;
   }
@@ -2139,7 +2191,7 @@
     text-fill: @man-made-icon;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-placement: interior;
     text-wrap-width: @standard-wrap-width;
   }
@@ -2154,7 +2206,7 @@
     [zoom >= 20] { text-dy: 18; }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-halo-fill: @standard-halo-fill;
     text-placement: interior;
     text-wrap-width: @standard-wrap-width;
   }

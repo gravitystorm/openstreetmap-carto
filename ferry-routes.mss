@@ -24,10 +24,9 @@
     text-placement: line;
     text-fill: @ferry-route-text;
     text-spacing: 1000;
-    text-size: 8;
-    [zoom >= 14] { text-size: 10; }
-    text-halo-radius: 1;
-    text-halo-fill: rgba(255,255,255,0.6);
+    text-size: 10;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
     text-dy: -8;
   }
 }

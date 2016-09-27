@@ -12,9 +12,10 @@ Decide among the maintainers if a new release is due.
 
 # Tagging a release
 1. Check out master with git
-2. Tag a release with `git tag -a $NEW_VERSION -m "Tag $NEW_VERSION"`. *Optional: Add `-s` and GPG sign the tag.*
-3. Push the tag with `git push origin $NEW_VERSION`. If you use a different name for the gravitystorm/openstreetmap-carto remote, use it instead.
-4. If there are any long-running development branches (e.g. `lua`) check them out and merge the new release with `git merge $NEW_RELEASE`.
+2. Change the Unreleased section in [`CHANGELOG.md`](CHANGELOG.md) to the new version. Add any changes that are missing from the changelog and a new Unreleased section.
+3. Commit the changelog changes and tag a release with `git tag -a $NEW_VERSION -m "Tag $NEW_VERSION"`. *Optional: Add `-s` and GPG sign the tag.*
+4. Push the tag with `git push origin $NEW_VERSION`. If you use a different name for the gravitystorm/openstreetmap-carto remote, use it instead.
+5. If there are any long-running development branches (e.g. `lua`) check them out and merge the new release with `git merge $NEW_RELEASE`.
 
 # Notifications
 
