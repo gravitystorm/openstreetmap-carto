@@ -31,7 +31,7 @@ osm2pgsql tables used in upstream openstreetmap carto style.
 
 The style is currently developed using Debian GNU/Linux 8.x with all the
 required software (postgresql-9.4, mapnik2.2 node-carto 0.9.5-2, ...)
-provided by the distribution itself. Using Ubuntu >=14.4 should also work.
+provided by the distribution itself. Using Ubuntu >=14.04 should also work.
 
 To get this style running it is also required to add the
 [l10n code](https://github.com/giggls/mapnik-german-l10n)
@@ -48,7 +48,7 @@ copy from the upstream repository.
 Thus the manual generation of ```osm-de.xml``` (without using ```make```) is a two-step procedure:
 
 1. Generate ```project-de.mml``` from ```project.yaml``` using ```scripts/yaml2mml.py```
-2. Generate ```osm-de.xml``` from```project-de.mml``` ```using carto```
+2. Generate ```osm-de.xml``` from```project-de.mml``` using ```carto```
 
 It is also possible to use [Magnacarto](https://github.com/omniscale/magnacarto) or
 [Kosmtik](https://github.com/kosmtik/kosmtik).
