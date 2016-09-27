@@ -10,7 +10,7 @@ For this reason the osm2pgsql commandline required will look slightly different:
 osm2pgsql -S hstore-only.style --hstore --hstore-match-only -d osm planet-latest.osm.pbf -p planet_osm_hstore
 ```
 
-You also need to make shure, that the version of osm2pgsql used supports the nocolumn option!
+You also need to make sure, that the version of osm2pgsql used supports the nocolumn option!
 This is the case from 0.89 onwards. 
 
 The actual rendering is done using database views providing virtual columns
