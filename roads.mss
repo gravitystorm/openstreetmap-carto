@@ -915,7 +915,8 @@ Casing width is @proposed_casing_factor the width of normal road casing.
       [zoom >= 13] {
         line-color: @track-fill;
         line-width: @track-width-z13;
-        [zoom >= 15] { line-width: @service-width-z16; }
+        [zoom >= 15] { line-width: @service-width-z14; }
+        [zoom >= 16] { line-width: @service-width-z16; }
         [zoom >= 17] { line-width: @service-width-z17; }
         [zoom >= 18] { line-width: @service-width-z18; }
         [zoom >= 19] { line-width: @service-width-z19; }
@@ -929,7 +930,9 @@ Casing width is @proposed_casing_factor the width of normal road casing.
         .bridges-casing {
           line-color: @track-fill;
           line-join: round;
-          line-width: 2* @casing-width-z16 + @footway-width-z16;
+          line-width: @track-width-z13;
+	  [zoom >= 15] { line-width: 2* @casing-width-z14 + @service-width-z14; }
+          [zoom >= 16] { line-width: 2* @casing-width-z16 + @service-width-z16; }
           [zoom >= 17] { line-width: 2* @casing-width-z17 + @service-width-z17; }
           [zoom >= 18] { line-width: 2* @casing-width-z18 + @service-width-z18; }
           [zoom >= 19] { line-width: 2* @casing-width-z19 + @service-width-z19; }
@@ -1936,12 +1939,13 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
     
-    // track grade1 fill in service-fill color
+    // track grade1 fill in service-fill color (starting from z15)
     [feature = 'highway_track'][int_surface = 'paved'],
     [feature = 'highway_track'][tracktype = 'grade1'] {
       [zoom >= 15] {
         line-color: @service-fill;
-        line-width: @service-width-z16 - 2 * @casing-width-z16;
+        line-width: @service-width-z14 - 2 * @casing-width-z14;
+	[zoom >= 16] { line-width: @service-width-z16 - 2 * @casing-width-z16; }
         [zoom >= 17] { line-width: @service-width-z17 - 2 * @casing-width-z17; }
         [zoom >= 18] { line-width: @service-width-z18 - 2 * @casing-width-z18; }
         [zoom >= 19] { line-width: @service-width-z19 - 2 * @casing-width-z19; }
@@ -1952,7 +1956,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           line-color: darken(white, 5%);
         }
         .bridges-fill {
-          line-width: @service-width-z16 - 2 * @bridge-casing-width-z16;
+          line-width: @service-width-z14 - 2 * @bridge-casing-width-z14;
+          [zoom >= 16] { line-width: @service-width-z16 - 2 * @bridge-casing-width-z16; }
           [zoom >= 17] { line-width: @service-width-z17 - 2 * @bridge-casing-width-z17; }
           [zoom >= 18] { line-width: @service-width-z18 - 2 * @bridge-casing-width-z18; }
           [zoom >= 19] { line-width: @service-width-z19 - 2 * @bridge-casing-width-z19; }
