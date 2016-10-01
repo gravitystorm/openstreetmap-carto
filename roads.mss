@@ -3169,8 +3169,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
-      // allow overlap (e.g. oneway-arrows)
-      [oneway = 'yes'],[oneway = '-1'] { text-allow-overlap: true; }
       text-face-name: @book-fonts;
       [tunnel = 'no'] {
         text-halo-radius: @standard-halo-radius;
@@ -3200,8 +3198,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
-      // allow overlap (e.g. oneway-arrows)
-      [oneway = 'yes'],[oneway = '-1'] { text-allow-overlap: true; }
       text-face-name: @book-fonts;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @secondary-fill;
@@ -3228,8 +3224,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
-      // allow overlap (e.g. oneway-arrows)
-      [oneway = 'yes'],[oneway = '-1'] { text-allow-overlap: true; }
       text-face-name: @book-fonts;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @tertiary-fill;
@@ -3271,8 +3265,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
-      // allow overlap (e.g. oneway-arrows)
-      text-allow-overlap: true;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @residential-fill;
       text-face-name: @book-fonts;
@@ -3318,8 +3310,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
-      // allow overlap (e.g. oneway-arrows)
-      text-allow-overlap: true;
       text-halo-radius: @standard-halo-radius;
       [highway = 'living_street'] { text-halo-fill: @living-street-fill; }
       [highway = 'pedestrian'] { text-halo-fill: @pedestrian-fill; }
