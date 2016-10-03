@@ -53,7 +53,7 @@ Mapnik 3 is required for acceptable rendering of most non-Latin scripts, particu
 On Ubuntu 16.04 or Debian Testing you can install all required fonts with
 
 ```
-sudo apt-get install fonts-noto ttf-unifont
+sudo apt-get install fonts-noto fonts-noto-cjk ttf-unifont
 ```
 
 DejaVu is packaged as `fonts-dejavu-core`.
