@@ -1826,6 +1826,7 @@ Layer:
               'power_' || CASE WHEN power IN ('generator') THEN power ELSE NULL END,
               'tourism_' || CASE WHEN tourism IN ('viewpoint') THEN tourism ELSE NULL END
             ) AS feature,
+            CASE WHEN access = 'private' OR iata IS NULL THEN 'INT-minor'::text ELSE 'INT-major'::text END aeroway_class,
             access,
             ruins,
             religion,
@@ -1910,6 +1911,7 @@ Layer:
               'man_made_' || CASE WHEN man_made IN ('cross') THEN man_made ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('wayside_cross') THEN historic ELSE NULL END
             ) AS feature,
+            CASE WHEN access = 'private' OR iata IS NULL THEN 'INT-minor'::text ELSE 'INT-major'::text END aeroway_class,
             access,
             ruins,
             CASE
@@ -2257,6 +2259,7 @@ Layer:
               'waterway_' || CASE WHEN waterway IN ('dam') THEN waterway ELSE NULL END,
               'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism ELSE NULL END
             ) AS feature,
+            CASE WHEN access = 'private' OR iata IS NULL THEN 'INT-minor'::text ELSE 'INT-major'::text END aeroway_class,
             access,
             ruins,
             localized_name_without_brackets as name,
@@ -2331,6 +2334,7 @@ Layer:
             way,
             way_pixels,
             feature,
+            aeroway_class,
             access,
             CONCAT(
                 name,
@@ -2404,6 +2408,7 @@ Layer:
                   'man_made_' || CASE WHEN man_made IN ('cross') THEN man_made ELSE NULL END,
                   'historic_' || CASE WHEN historic IN ('wayside_cross') THEN historic ELSE NULL END
                 ) AS feature,
+                CASE WHEN access = 'private' OR iata IS NULL THEN 'INT-minor'::text ELSE 'INT-major'::text END aeroway_class,
                 access,
                 ruins,
                 localized_name_without_brackets as name,

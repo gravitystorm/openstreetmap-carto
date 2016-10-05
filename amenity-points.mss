@@ -1022,11 +1022,14 @@
     marker-fill: @airtransport;
   }
 
-  [feature = 'aeroway_aerodrome'][zoom >= 10][zoom < 14] {
-    marker-file: url('symbols/aerodrome.svg');
-    marker-placement: interior;
-    marker-clip: false;
-    marker-fill: @airtransport;
+  [feature = 'aeroway_aerodrome'][zoom < 14] {
+    [zoom >= 10][aeroway_class = 'INT-major'], 
+    [zoom >= 13][aeroway_class = 'INT-minor'] {
+      marker-file: url('symbols/aerodrome.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @airtransport;
+    }
   }
 
   [feature = 'man_made_lighthouse'][zoom >= 15] {
@@ -2172,16 +2175,19 @@
     text-wrap-width: @standard-wrap-width;
   }
 
-  [feature = 'aeroway_aerodrome'][zoom >= 10][zoom < 14] {
-    text-name: "[name]";
-    text-size: @standard-text-size;
-    text-fill: darken(@airtransport, 15%);
-    text-dy: -10;
-    text-face-name: @oblique-fonts;
-    text-halo-radius: @standard-halo-radius;
-    text-halo-fill: @standard-halo-fill;
-    text-placement: interior;
-    text-wrap-width: @standard-wrap-width;
+  [feature = 'aeroway_aerodrome'][zoom < 14] {
+    [zoom >= 10][aeroway_class = 'INT-major'],
+    [zoom >= 13][aeroway_class = 'INT-minor'] {
+      text-name: "[name]";
+      text-size: @standard-text-size;
+      text-fill: darken(@airtransport, 15%);
+      text-dy: -10;
+      text-face-name: @oblique-fonts;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+      text-wrap-width: @standard-wrap-width;
+    }
   }
 
   [feature = 'amenity_hunting_stand'][zoom >= 17] {
