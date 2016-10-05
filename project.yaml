@@ -2260,6 +2260,7 @@ Layer:
               'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism ELSE NULL END
             ) AS feature,
             CASE WHEN access = 'private' OR iata IS NULL THEN 'INT-minor'::text ELSE 'INT-major'::text END aeroway_class,
+            localized_name_without_brackets || '('|| iata || ')' as name_and_iata,
             access,
             ruins,
             localized_name_without_brackets as name,
@@ -2335,6 +2336,7 @@ Layer:
             way_pixels,
             feature,
             aeroway_class,
+            name_and_iata,
             access,
             CONCAT(
                 name,
@@ -2409,6 +2411,7 @@ Layer:
                   'historic_' || CASE WHEN historic IN ('wayside_cross') THEN historic ELSE NULL END
                 ) AS feature,
                 CASE WHEN access = 'private' OR iata IS NULL THEN 'INT-minor'::text ELSE 'INT-major'::text END aeroway_class,
+                localized_name_without_brackets || '('|| iata || ')' as name_and_iata,
                 access,
                 ruins,
                 localized_name_without_brackets as name,

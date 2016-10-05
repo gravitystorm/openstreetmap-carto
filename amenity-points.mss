@@ -2187,6 +2187,9 @@
       text-halo-fill: @standard-halo-fill;
       text-placement: interior;
       text-wrap-width: @standard-wrap-width;
+      [aeroway_class = 'INT-major'] {
+        text-name: "[name_and_iata]";
+      }
     }
   }
 
