@@ -1826,7 +1826,7 @@ Layer:
               'power_' || CASE WHEN power IN ('generator') THEN power ELSE NULL END,
               'tourism_' || CASE WHEN tourism IN ('viewpoint') THEN tourism ELSE NULL END
             ) AS feature,
-            CASE WHEN access = 'private' OR iata IS NULL THEN 'INT-minor'::text ELSE 'INT-major'::text END aeroway_class,
+            CASE WHEN access = 'private' OR iata IS NULL OR iata = 'none' THEN 'INT-minor'::text ELSE 'INT-major'::text END aeroway_class,
             access,
             ruins,
             religion,
@@ -1911,7 +1911,7 @@ Layer:
               'man_made_' || CASE WHEN man_made IN ('cross') THEN man_made ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('wayside_cross') THEN historic ELSE NULL END
             ) AS feature,
-            CASE WHEN access = 'private' OR iata IS NULL THEN 'INT-minor'::text ELSE 'INT-major'::text END aeroway_class,
+            CASE WHEN access = 'private' OR iata IS NULL OR iata = 'none' THEN 'INT-minor'::text ELSE 'INT-major'::text END aeroway_class,
             access,
             ruins,
             CASE
@@ -2260,7 +2260,7 @@ Layer:
               'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism ELSE NULL END
             ) AS feature,
             CASE WHEN access = 'private' OR iata IS NULL THEN 'INT-minor'::text ELSE 'INT-major'::text END aeroway_class,
-            localized_name_without_brackets || '('|| iata || ')' as name_and_iata,
+            CASE WHEN iata = 'none' THEN localized_name_without_brackets ELSE localized_name_without_brackets || '('|| iata || ')' END as name_and_iata,
             access,
             ruins,
             localized_name_without_brackets as name,
@@ -2411,7 +2411,7 @@ Layer:
                   'historic_' || CASE WHEN historic IN ('wayside_cross') THEN historic ELSE NULL END
                 ) AS feature,
                 CASE WHEN access = 'private' OR iata IS NULL THEN 'INT-minor'::text ELSE 'INT-major'::text END aeroway_class,
-                localized_name_without_brackets || '('|| iata || ')' as name_and_iata,
+                CASE WHEN iata = 'none' THEN localized_name_without_brackets ELSE localized_name_without_brackets || '('|| iata || ')' END as name_and_iata,
                 access,
                 ruins,
                 localized_name_without_brackets as name,
