@@ -638,11 +638,34 @@
   [landuse = 'military'][zoom >= 7][way_pixels > 900],
   [landuse = 'military'][zoom >= 8][way_pixels > 100],
   [landuse = 'military'][zoom >= 10][way_pixels > 75] {
-    polygon-pattern-file: url('symbols/military_red_hatch.png');
-    polygon-pattern-alignment: global;
-    line-color: @military;
-    line-width: 3;
-    line-opacity: 0.329;
+    [zoom < 10] {
+      ::fill {
+        opacity: 0.1;
+        polygon-fill: @military;
+      }
+    }
+    a/line-width: 1;
+    a/line-offset: -0.5;
+    a/line-color: @military;
+    a/line-opacity: 0.3;
+    a/line-join: round;
+    a/line-cap: round;
+    b/line-width: 2;
+    b/line-offset: -1;
+    b/line-color: @military;
+    b/line-opacity: 0.3;
+    b/line-join: round;
+    b/line-cap: round;
+    [zoom >= 10] {
+      a/line-width: 2;
+      a/line-offset: -1;
+      b/line-width: 4;
+      b/line-offset: -2;
+    }
+    [zoom >= 14] {
+      b/line-width: 6;
+      b/line-offset: -3;
+    }
   }
 }
 
