@@ -3360,6 +3360,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-face-name: @book-fonts;
       text-vertical-alignment: middle;
       text-dy: 5;
+      [int_surface = 'paved'] {
+        text-dy: 0;
+      }
     }
     [zoom >= 16] {
       text-size: 9;
