@@ -62,7 +62,7 @@ For proper rendering of non-latin scripts, particularly those with complicated d
 
 * Mapnik 3
 
-* FreeType 2.6.2 or later, or manually converting the Noto CJK fonts from otf to ttf
+* FreeType 2.6.2 or later for CJK characters
 
 * A recent enough version of Noto with coverage for the scripts needed.
 
