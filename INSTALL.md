@@ -48,8 +48,6 @@ DejaVu Sans is used as an optional fallback font for systems without Noto Sans. 
 
 Unifont is used as a last resort fallback, with it's excellent coverage, common presence on machines, and ugly look.
 
-Mapnik 3 is required for acceptable rendering of most non-Latin scripts, particularly those with complicated diacritics and tone marks.
-
 On Ubuntu 16.04 or Debian Testing you can install all required fonts with
 
 ```
@@ -57,6 +55,16 @@ sudo apt-get install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted ttf-un
 ```
 
 DejaVu is packaged as `fonts-dejavu-core`.
+
+### Non-latin scripts
+
+For proper rendering of non-latin scripts, particularly those with complicated diacritics and tone marks the requirements are
+
+* Mapnik 3
+
+* FreeType 2.6.2 or later for CJK characters
+
+* A recent enough version of Noto with coverage for the scripts needed.
 
 ## Dependencies
 
