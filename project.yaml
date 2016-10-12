@@ -1535,7 +1535,9 @@ Layer:
             END as population,
             round(ascii(md5(osm_id::text)) / 55) AS dir -- base direction factor on geometry to be consistent across metatiles
           FROM planet_osm_point
-          WHERE capital = 'yes'
+          WHERE place IN ('city', 'town')
+            AND name IS NOT NULL
+            AND capital = 'yes'
             AND admin_level = '2'
           ORDER BY population DESC
         ) AS capital_names
