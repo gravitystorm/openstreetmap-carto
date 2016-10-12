@@ -222,7 +222,8 @@
     marker-clip: false;
   }
 
-  [feature = 'tourism_guest_house'][zoom >= 17] {
+  [feature = 'tourism_guest_house'][zoom >= 17],
+  [feature = 'tourism_apartment'][zoom >= 18] {
     point-file: url('symbols/guest_house.p.16.png');
     point-placement: interior;
   }
@@ -1741,7 +1742,8 @@
   [feature = 'tourism_hostel'][zoom >= 17],
   [feature = 'tourism_chalet'][zoom >= 17],
   [feature = 'tourism_guest_house'][zoom >= 17],
-  [feature = 'tourism_camp_site'][zoom >= 17] {
+  [feature = 'tourism_camp_site'][zoom >= 17],
+  [feature = 'tourism_apartment'][zoom >= 18] {
     text-name: "[name]";
     text-size: @standard-text-size;
     text-fill: #0066ff;
