@@ -1,4 +1,9 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.44.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.44.1...master)
+
+## [v2.44.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.44.1...v2.44.0) - 2016-10-12
+### Changes
+- Bug fixes to low zoom place rendering changes
+- Documentation improvements for fonts and non-latin rendering
 
 ## [v2.44.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.44.0...v2.43.0) - 2016-09-26
 ### Major Changes

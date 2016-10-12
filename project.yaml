@@ -1620,9 +1620,11 @@ Layer:
             CASE
               WHEN (population ~ '^[0-9]{1,8}$') THEN population::INTEGER ELSE 0
             END as population,
-            round(random()) AS dir
+            round(ascii(md5(osm_id::text)) / 55) AS dir -- base direction factor on geometry to be consistent across metatiles
           FROM planet_osm_point
-          WHERE capital = 'yes'
+          WHERE place IN ('city', 'town')
+            AND name IS NOT NULL
+            AND capital = 'yes'
             AND admin_level = '2'
           ORDER BY population DESC
         ) AS capital_names
@@ -1669,9 +1671,10 @@ Layer:
               WHEN (place = 'city') THEN 1
               ELSE 2
             END as category,
-            round(random()) AS dir
+            round(ascii(md5(osm_id::text)) / 55) AS dir -- base direction factor on geometry to be consistent across metatiles
           FROM 
             (SELECT
+                osm_id,
                 way,
                 place,
                 localized_name_outside_brackets as name,
@@ -1692,7 +1695,7 @@ Layer:
               FROM planet_osm_point
               WHERE place IN ('city', 'town')
                 AND name IS NOT NULL
-                AND capital IS NULL OR capital != 'yes' OR (capital = 'yes' AND admin_level != '2')
+                AND (capital IS NULL OR capital != 'yes' OR (capital = 'yes' AND (admin_level IS NULL OR admin_level != '2')))
             ) as p
           ORDER BY score DESC, length(name) DESC, name
         ) AS placenames_medium
