@@ -1616,7 +1616,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            name,
+            localized_name_outside_brackets as name,
             CASE
               WHEN (population ~ '^[0-9]{1,8}$') THEN population::INTEGER ELSE 0
             END as population,
@@ -1643,7 +1643,7 @@ Layer:
         (SELECT
             way,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
-            name,
+            localized_name_outside_brackets as name,
             ref
           FROM planet_osm_polygon
           WHERE boundary = 'administrative'
