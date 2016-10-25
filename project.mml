@@ -633,32 +633,6 @@
       "advanced": {}
     },
     {
-      "name": "line-barriers",
-      "srs-name": "900913",
-      "geometry": "linestring",
-      "class": "barriers",
-      "id": "line-barriers",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "Datasource": {
-        "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way, COALESCE(historic, barrier) AS feature\n  FROM (SELECT way,\n    ('barrier_' || (CASE WHEN barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',\n          'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall') THEN barrier ELSE NULL END)) AS barrier,\n    ('historic_' || (CASE WHEN historic = 'citywalls' THEN historic ELSE NULL END)) AS historic\n    FROM planet_osm_line\n    WHERE barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',\n          'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall')\n      OR historic = 'city_wall'\n      AND (waterway IS NULL OR waterway NOT IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi'))\n  ) AS features\n) AS line_barriers",
-        "geometry_field": "way",
-        "type": "postgis",
-        "key_field": "",
-        "dbname": "gis"
-      },
-      "extent": [
-        -180,
-        -85.05112877980659,
-        180,
-        85.05112877980659
-      ],
-      "properties": {
-        "minzoom": 14
-      },
-      "advanced": {}
-    },
-    {
       "name": "cliffs",
       "srs-name": "900913",
       "geometry": "linestring",
@@ -681,32 +655,6 @@
       ],
       "properties": {
         "minzoom": 13
-      },
-      "advanced": {}
-    },
-    {
-      "name": "area-barriers",
-      "srs-name": "900913",
-      "geometry": "polygon",
-      "class": "barriers",
-      "id": "area-barriers",
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "Datasource": {
-        "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way, barrier AS feature\n  FROM (SELECT way,\n    ('barrier_' || barrier) AS barrier\n    FROM planet_osm_polygon\n    WHERE barrier IS NOT NULL\n  ) AS features\n) AS area_barriers",
-        "geometry_field": "way",
-        "type": "postgis",
-        "key_field": "",
-        "dbname": "gis"
-      },
-      "extent": [
-        -180,
-        -85.05112877980659,
-        180,
-        85.05112877980659
-      ],
-      "properties": {
-        "minzoom": 16
       },
       "advanced": {}
     },
@@ -888,6 +836,58 @@
       ],
       "properties": {
         "minzoom": 15
+      },
+      "advanced": {}
+    },
+    {
+      "name": "line-barriers",
+      "srs-name": "900913",
+      "geometry": "linestring",
+      "class": "barriers",
+      "id": "line-barriers",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508",
+        "table": "(SELECT\n    way, COALESCE(historic, barrier) AS feature\n  FROM (SELECT way,\n    ('barrier_' || (CASE WHEN barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',\n          'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall') THEN barrier ELSE NULL END)) AS barrier,\n    ('historic_' || (CASE WHEN historic = 'citywalls' THEN historic ELSE NULL END)) AS historic\n    FROM planet_osm_line\n    WHERE barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',\n          'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall')\n      OR historic = 'city_wall'\n      AND (waterway IS NULL OR waterway NOT IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi'))\n  ) AS features\n) AS line_barriers",
+        "geometry_field": "way",
+        "type": "postgis",
+        "key_field": "",
+        "dbname": "gis"
+      },
+      "extent": [
+        -180,
+        -85.05112877980659,
+        180,
+        85.05112877980659
+      ],
+      "properties": {
+        "minzoom": 14
+      },
+      "advanced": {}
+    },
+    {
+      "name": "area-barriers",
+      "srs-name": "900913",
+      "geometry": "polygon",
+      "class": "barriers",
+      "id": "area-barriers",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508",
+        "table": "(SELECT\n    way, barrier AS feature\n  FROM (SELECT way,\n    ('barrier_' || barrier) AS barrier\n    FROM planet_osm_polygon\n    WHERE barrier IS NOT NULL\n  ) AS features\n) AS area_barriers",
+        "geometry_field": "way",
+        "type": "postgis",
+        "key_field": "",
+        "dbname": "gis"
+      },
+      "extent": [
+        -180,
+        -85.05112877980659,
+        180,
+        85.05112877980659
+      ],
+      "properties": {
+        "minzoom": 16
       },
       "advanced": {}
     },
