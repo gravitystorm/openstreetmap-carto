@@ -1,0 +1,11 @@
+FROM debian:stretch
+
+RUN apt-get update && apt-get install --no-install-recommends -y \
+    curl ca-certificates osm2pgsql postgresql-client \
+    && rm -rf /var/lib/apt/lists/*
+
+ADD openstreetmap-carto.style /
+
+CMD createdb gis && psql -d gis -c 'CREATE EXTENSION postgis;' && \
+    osm2pgsql --slim --cache 512 -d gis --style openstreetmap-carto.style \
+    $OSM_DATA
