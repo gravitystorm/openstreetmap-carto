@@ -725,6 +725,13 @@
     marker-fill: @shop-icon;
   }
 
+  [feature = 'shop_funeral_directors'][zoom >= 17] {
+    marker-file: url('symbols/funeral_directors-14.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @amenity-brown;
+  }
+
   [feature = 'shop_garden_centre'][zoom >= 17] {
     marker-file: url('symbols/garden_centre-14.svg');
     marker-placement: interior;
@@ -1939,6 +1946,7 @@
   [feature = 'shop_farm'],
   [feature = 'shop_fishmonger'],
   [feature = 'shop_florist'],
+  [feature = 'shop_funeral_directors'],
   [feature = 'shop_garden_centre'],
   [feature = 'shop_greengrocer'],
   [feature = 'shop_pet'],
@@ -1983,7 +1991,8 @@
       text-halo-fill: rgba(255, 255, 255, 0.6);
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
-      [feature = 'shop_car_repair'] {
+      [feature = 'shop_car_repair'],
+      [feature = 'shop_funeral_directors'] {
         text-fill: @amenity-brown;
       }
     }
