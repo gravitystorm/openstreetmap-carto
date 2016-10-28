@@ -140,16 +140,18 @@ Because SQL within JSON or YAML will not generally be syntax highlighted, indent
 
 ## Map Icon Guidelines
 
-Design Guidelines
-* SVG only
-* flat meaning a single colour, no gradients, no outlines
-* common canvas size, which is usually 14x14 px
-* single point of view and avoid use of perspective where possible
+* All new icons must be SVG format only.  The SVG must be saved as standards compliant SVG without any prioprietery tags.  In Inksapce software, you will need to Save As... Plain SVG format.
+* Icons must be use fills and not outlines.
+* Use a single color, typically black, for the fill portion of the icon.  MSS (Map Style Sheets) replaces the single color with the appropriate thematic color.
+* Use a common canvas size, which is usually 14x14 px.
+* Draw a simple siloutte of the subject with an "on the shelf" perspective.
+* Align vectors to the pixel grid.
+* Make a clean design, so reduced complexity where possible.
 
-Best Practices
-* align to pixel grid
-* clean design, so reduced complexity where possible
-
+### External Icon Design Resources
+These are resources with some helpful information about icon design.  These resources may have a different goal or philosophy and should not be held as authoritative sources for this project's icon design.
+* [Maki Icons Design Guidelines](https://www.mapbox.com/maki-icons/guidelines/) has some great illustrations of a well designed icon.
+* [GNOME Icon Design Guildelines](https://developer.gnome.org/hig/stable/icons-and-artwork.html.en) has some great concepts about general icon design, but color ideas do not apply to this project.
 
 ## Pull requests
 
