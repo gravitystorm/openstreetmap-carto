@@ -142,13 +142,7 @@ Because SQL within JSON or YAML will not generally be syntax highlighted, indent
 
 * All new icons must be SVG format only.  The SVG must be saved as standards compliant SVG without any proprietary tags. In Inkscape software, you will need to "Save As..." and choose the format Optimized SVG (preferable) or Plain SVG.
 * Icons must use SVG fills only, not SVG strokes or any feature Mapnik does not support.
-* Use no color for the icon's fill.  MSS (Map Style Sheets) gives the icon the appropriate thematic color.  As an example the [parking symbol in parking.svg](https://github.com/gravitystorm/openstreetmap-carto/blob/master/symbols/parking.svg) has no color defined (XML code):
-```XML
-<?xml version="1.0" encoding="utf-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 9 12">
-<path fill-rule="evenodd" d="M 0,0 L 0,12 1.75,12 1.75,7 6,7 A 3.0,3.5 0 0,0 6,0 Z M 1.75,1.75 L 1.75,5.25 5.5,5.25 A 1.58,1.75 0 0,0 5.5,1.75 Z"/>
-</svg>
-```
+* Use no color for the icon's fill if the icon is monochromatic. This allows the color to be set in the MSS.
 * Use a common canvas size, which is usually 14x14 px.
 * Draw a simple siloutte of the subject with an "on the shelf" perspective.
 * Align vectors to the pixel grid.
