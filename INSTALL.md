@@ -56,7 +56,6 @@ sudo apt-get install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted ttf-un
 
 This will not install Noto Emoji Regular, and it might be useful to have a more recent version of the fonts for [rare non-latin scripts](#non-latin-scripts). This can be installed [from source](https://github.com/googlei18n/noto-fonts/blob/master/FAQ.md#where-are-the-fonts).
 
-
 DejaVu is packaged as `fonts-dejavu-core`.
 
 ### Non-latin scripts
