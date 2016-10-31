@@ -1,4 +1,6 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.44.1...master)
+### Changes
+- Render all shops without a specific icon as a dot, not just a whitelist
 
 ## [v2.44.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.44.0...v2.44.1) - 2016-10-12
 ### Changes
