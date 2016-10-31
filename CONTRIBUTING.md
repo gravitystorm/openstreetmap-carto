@@ -140,7 +140,7 @@ Because SQL within JSON or YAML will not generally be syntax highlighted, indent
 
 ## Map Icon Guidelines
 
-* All new icons must be SVG format only.  The SVG must be saved as standards compliant SVG without any proprietary tags.  In Inksapce software, you will need to "Save As..." and choose the format Optimized SVG (preferable) or Plain SVG.
+* All new icons must be SVG format only.  The SVG must be saved as standards compliant SVG without any proprietary tags. In Inkscape software, you will need to "Save As..." and choose the format Optimized SVG (preferable) or Plain SVG.
 * Icons must use SVG fills only, not SVG strokes or any feature Mapnik does not support.
 * Use no color for the icon's fill.  MSS (Map Style Sheets) gives the icon the appropriate thematic color.  As an example the [parking symbol in parking.svg](https://github.com/gravitystorm/openstreetmap-carto/blob/master/symbols/parking.svg) has no color defined (XML code):
 ```XML
