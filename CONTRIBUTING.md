@@ -149,9 +149,10 @@ Because SQL within JSON or YAML will not generally be syntax highlighted, indent
 * Make a clean design, so reduced complexity where possible.
 
 ### External Icon Design Resources
-These are resources with some helpful information about icon design.  These resources may have a different goal or philosophy and should not be held as authoritative sources for this project's icon design.
-* [Maki Icons Design Guidelines](https://www.mapbox.com/maki-icons/guidelines/) has some great illustrations of a well designed icon.
-* [GNOME Icon Design Guildelines](https://developer.gnome.org/hig/stable/icons-and-artwork.html.en) has some great concepts about general icon design, but color ideas do not apply to this project.
+The project's goals and design philsophy are different from other projects, but some external resources with general information about icon design are:
+
+* [Maki Icons Design Guidelines](https://www.mapbox.com/maki-icons/guidelines/)
+* [GNOME Icon Design Guildelines](https://developer.gnome.org/hig/stable/icons-and-artwork.html.en)
 
 ## Pull requests
 
