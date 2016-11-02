@@ -1019,7 +1019,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way,building,railway,amenity,shop from planet_osm_polygon\n       where railway='station'\n          or building in ('station','supermarket')\n          or amenity in ('place_of_worship', 'public_building','townhall','courthouse','police','post_office','theatre')\nor shop in ('mall','department_store') \n       order by z_order,way_area desc) as buildings",
+        "table": "(select way,building,railway,amenity,shop from planet_osm_polygon where (railway='station' or building in ('station','supermarket') or amenity in ('place_of_worship', 'public_building','townhall','courthouse','police','post_office','theatre') or shop in ('mall','department_store')) and way_area < 2000000 order by z_order,way_area desc) as buildings",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
@@ -1047,7 +1047,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "      (select way, aeroway, amenity, tags->'heritage' as heritage, case when building in ('residential','house','garage','garages','detached','terrace','apartments') then 'INT-light'::text else building end as building, tags->'wall' as wall  from planet_osm_polygon  where (building is not null  and building not in ('no','station','supermarket','planned')   and (railway is null or railway != 'station')   and (amenity is null or amenity not in ('place_of_worship', 'public_building','townhall','courthouse','police','post_office','theatre')))  or aeroway = 'terminal'   order by z_order,way_area desc) as buildings",
+        "table": "      (select way, aeroway, amenity, tags->'heritage' as heritage, case when building in ('residential','house','garage','garages','detached','terrace','apartments') then 'INT-light'::text else building end as building, tags->'wall' as wall  from planet_osm_polygon  where ()(building is not null  and building not in ('no','station','supermarket','planned')   and (railway is null or railway != 'station')   and (amenity is null or amenity not in ('place_of_worship', 'public_building','townhall','courthouse','police','post_office','theatre')))  or aeroway = 'terminal') and way_area < 2000000   order by z_order,way_area desc) as buildings",
         "extent_cache": "custom",
         "extent": "-20037508.34,-20037508.34,20037508.34,20037508.34",
         "key_field": "",
