@@ -11,7 +11,6 @@ node,way   admin_level  text         linear
 node,way   aerialway    text         linear
 node,way   aeroway      text         polygon
 node,way   amenity      text         polygon
-node,way   area         text         polygon # hard coded support for area=1/yes => polygon is in osm2pgsql
 node,way   barrier      text         linear
 node,way   bicycle      text         linear
 node,way   bridge       text         linear
