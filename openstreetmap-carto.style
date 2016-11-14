@@ -13,7 +13,7 @@ node,way   aeroway      text         polygon
 node,way   amenity      text         polygon
 node,way   barrier      text         linear
 way        bicycle      text         linear
-node,way   bridge       text         linear
+way        bridge       text         linear
 node,way   boundary     text         linear
 node,way   building     text         polygon
 node       capital      text         linear
@@ -44,7 +44,7 @@ node,way   shop         text         polygon
 node,way   surface      text         linear
 node,way   tourism      text         polygon
 way        tracktype    text         linear
-node,way   tunnel       text         linear
+way        tunnel       text         linear
 node,way   water        text         polygon
 node,way   waterway     text         polygon
 way        way_area     real         linear # This is calculated during import
