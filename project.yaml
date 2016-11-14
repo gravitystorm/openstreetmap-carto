@@ -1531,7 +1531,7 @@ Layer:
             way,
             name,
             CASE
-              WHEN (population ~ '^[0-9]{1,8}$') THEN population::INTEGER ELSE 0
+              WHEN (tags->'population' ~ '^[0-9]{1,8}$') THEN (tags->'population')::INTEGER ELSE 0
             END as population,
             round(ascii(md5(osm_id::text)) / 55) AS dir -- base direction factor on geometry to be consistent across metatiles
           FROM planet_osm_point
