@@ -1267,7 +1267,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508",
-        "table": "(SELECT\n    way,\n    name,\n    CASE\n      WHEN (population ~ '^[0-9]{1,8}$') THEN population::INTEGER ELSE 0\n    END as population,\n    round(ascii(md5(osm_id::text)) / 55) AS dir -- base direction factor on geometry to be consistent across metatiles\n  FROM planet_osm_point\n  WHERE place IN ('city', 'town')\n    AND name IS NOT NULL\n    AND capital = 'yes'\n    AND admin_level = '2'\n  ORDER BY population DESC\n) AS capital_names",
+        "table": "(SELECT\n    way,\n    name,\n    CASE\n      WHEN (tags->'population' ~ '^[0-9]{1,8}$') THEN (tags->'population')::INTEGER ELSE 0\n    END as population,\n    round(ascii(md5(osm_id::text)) / 55) AS dir -- base direction factor on geometry to be consistent across metatiles\n  FROM planet_osm_point\n  WHERE place IN ('city', 'town')\n    AND name IS NOT NULL\n    AND capital = 'yes'\n    AND admin_level = '2'\n  ORDER BY population DESC\n) AS capital_names",
         "geometry_field": "way",
         "type": "postgis",
         "key_field": "",
