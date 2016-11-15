@@ -55,7 +55,7 @@
 
 // --- sports ---
 
-@pitch: #80d7b5;
+@pitch: #aae0cb;
 @track: @pitch;
 @stadium: @societal_amenities; // also sports_centre
 @golf_course: #b5e3b5;
