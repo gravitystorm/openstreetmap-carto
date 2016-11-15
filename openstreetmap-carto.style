@@ -16,7 +16,6 @@ way        bicycle      text         linear
 way        bridge       text         linear
 node,way   boundary     text         linear
 node,way   building     text         polygon
-node       capital      text         linear
 way        construction text         linear
 way        covered      text         linear
 way        foot         text         linear
