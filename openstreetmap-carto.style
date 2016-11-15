@@ -6,24 +6,22 @@
 node,way   access       text         linear
 node,way   addr:housename      text  linear
 node,way   addr:housenumber    text  linear
-node,way   addr:interpolation  text  linear
+way        addr:interpolation  text  linear
 node,way   admin_level  text         linear
 node,way   aerialway    text         linear
 node,way   aeroway      text         polygon
 node,way   amenity      text         polygon
-node,way   area         text         polygon # hard coded support for area=1/yes => polygon is in osm2pgsql
 node,way   barrier      text         linear
-node,way   bicycle      text         linear
-node,way   bridge       text         linear
+way        bicycle      text         linear
+way        bridge       text         linear
 node,way   boundary     text         linear
 node,way   building     text         polygon
-node       capital      text         linear
-node,way   construction text         linear
-node,way   covered      text         linear
-node,way   foot         text         linear
+way        construction text         linear
+way        covered      text         linear
+way        foot         text         linear
 node,way   highway      text         linear
 node,way   historic     text         polygon
-node,way   horse        text         linear
+way        horse        text         linear
 node,way   junction     text         linear
 node,way   landuse      text         polygon
 node,way   layer        int4         linear
@@ -39,17 +37,16 @@ node,way   power        text         polygon
 node,way   railway      text         linear
 node,way   ref          text         linear
 node,way   religion     text         linear
-node,way   route        text         linear
-node,way   service      text         linear
+way        route        text         linear
+way        service      text         linear
 node,way   shop         text         polygon
-node,way   surface      text         linear
+way        surface      text         linear
 node,way   tourism      text         polygon
 way        tracktype    text         linear
-node,way   tunnel       text         linear
+way        tunnel       text         linear
 node,way   water        text         polygon
 node,way   waterway     text         polygon
 way        way_area     real         linear # This is calculated during import
 
 # Columns defined in openstreetmap-carto.lua file
 way        z_order      int4         linear
-way        osmcarto_z_order int4     linear
