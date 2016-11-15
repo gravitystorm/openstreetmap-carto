@@ -41,7 +41,7 @@ node,way   religion     text         linear
 node,way   route        text         linear
 node,way   service      text         linear
 node,way   shop         text         polygon
-node,way   surface      text         linear
+way        surface      text         linear
 node,way   tourism      text         polygon
 way        tracktype    text         linear
 way        tunnel       text         linear
