@@ -51,4 +51,3 @@ way        way_area     real         linear # This is calculated during import
 
 # Columns defined in openstreetmap-carto.lua file
 way        z_order      int4         linear
-way        osmcarto_z_order int4     linear
