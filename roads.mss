@@ -2448,6 +2448,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-halo-fill: @standard-halo-fill;
       text-min-distance: 2;
       text-wrap-width: 30;
+      text-placement: interior;
       [way_pixels > 250] {
         text-size: 9;
       }
