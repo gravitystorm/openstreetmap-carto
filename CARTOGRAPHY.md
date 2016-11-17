@@ -1,39 +1,49 @@
-# Cartography
 
-This is a style that serves multiple purposes, so here are some guidelines when considering cartographic changes.
+# Design goals and guidelines for this style
 
-## Purposes
+This is an attempt to outline the goals of this style and the principles under 
+which the maintainers make decisions.  These rules are not set in stone, they 
+can change and they may not be followed in all cases but contributors should 
+be able to expect they are generally the guiding principles design wise.
 
-There are multiple primary purposes of the map style, which pull in different directions
+It does not make much sense to try following these principles blindly as a 
+contributor without understanding them, they are meant to guide you to develop 
+an intuition and understanding how to make design decisions to fit into the 
+overall concept of this style.
 
-* It's the primary feedback mechanism for mappers to validate their edits - so detail is useful
-* It's a major part of the impression visitors to osm.org receive - so clear design is useful
-* It's an examplar stylesheet for rendering OSM data - so easy customisation is useful
+## General purpose
 
-It must always be borne in mind that a map style cannot show every detail of the OSM data, and in many cases it is more appropriate to show the detail in other, more specialist styles.
+This style has multiple purposes:
 
-## Colours
+* It's an important feedback mechanism for mappers to validate their edits.
+* It's a major part of the public face of OpenStreetMap, for many people the map on osm.org rendered with this style _is_ OpenStreetMap.
+* It's used in many map applications as a general purpose map.
+* It's an examplar stylesheet for rendering OSM data.
 
-Firstly, this is a map, not merely a colourful 2-dimensional visualisation of the database. Colours should be chosen based on their effectiveness and to make things look nice, not chosen for distinctiveness.
+There is no ranking of these purposes.  To allow serving all of them and to 
+avoid satisfying only some at the cost of the others the following main goals 
+have been identified.
 
-The colour palette should be moving towards pastel/light/desaturated for background layers, midtones for streets and save highlights/bolds/saturated for points of interest. If colourspace can be left unused, that enables overlays for third parties.
+## Main goals
 
-Colour definitions should, where useful, be put into variables at the top of the file, to enable easier customisation.
+The following goals form an ordered list with the most important on top.  This 
+essentially means pursuit of the goals further at the bottom should not 
+sacrifice the goals higher up.  All goals are however relevant to fulfill the 
+purposes above and should be balanced as far as possible.  Some compromises 
+need to be made with the higher priority goals on occasions to not completely 
+ruin the lower priority ones.  Apart from these goals there are of course also 
+technical constraints and requirements that need to be taken into account.
 
-## Data manipulation
+1. **Legibility** - The map should be intuitively readable by users with some general experience using maps without a map key.  A map key or more extensive experience using this map style can be required for clearly identifying minor differences or the exact meaning of certain features but in broad strokes orientation and identification of map elements should be possible on an intuitive level.
 
-OpenStreetMap data has to be manipulated for rendering, but since this style is intended for use by mappers to check their work, it should minimise any distortions. For example, line-smoothing improves the look of railways and rivers, but introduces confusion for mappers. Post processing of geometries can improve the cartographic results, but breaks the cause-and-effect between editing the data and seeing the results.
+2. **Being understandable and supportive for the mappers** - To serve as feedback for mappers and encourage correct mapping this style needs to render the data in a way that allows mappers to understand how the data produces a certain rendering result based on basic observation without in depth understanding how map rendering works or looking at the style implementation.
 
-For similar reasons, use of external non-OSM data should be avoided.
+3. **Diversity** - The style should represent the diversity of the OSM community and geography in general.  The most obvious element to serve this goal is showing the local names everywhere on earth in their respective scripts.  This goal however goes beyond labels.  Both physical and cultural geography differs a lot globally and the aim is to represent this variety with equal determination - well mapped areas are not supposed to have more weight here than less mapped parts of the world.  This also means the target map user is the potential global map user and no special consideration is given to the current geographic distribution of actual map use.
 
-## Legibility
+4. **Clarity** - This is strongly and directly related to legibility but more specifically means the map should be readable with as little effort as possible and be pleasant to look at both with high and low levels of interest and concentration.
 
-Legibility is not only about of font size, but also about the ability of users to be able to “read” the map style. For example, a user might not be familiar with our exact road colours, but should be able to understand their relative importance via intensity of colour, width or other attributes. Important features should be more easily spotted and understood than less important information. It should be possible to gain an understanding of the majority of the map without using a legend.
+5. **A rich map** - This style deliberately creating a fairly rich map showing a significant number of different features.  This way it shows the richness of OSM data and gives a broad recognition to the mappers' work.  The aim is not however to show all or even most of the OSM data.
 
-Avoid font sizes smaller than 10.
+6. **Maintainability** - The implementation of this style should not be too hard to maintain.  This means the amount of code should be kept small and complex and fragile interdependencies should be avoided.  If the code is difficult to maintain this would ultimately seriously affect all of the above goals.
 
-## The Mapper Feedback Loop
-
-If you thought that mappers were happy just to press "Save" on their editor, you'd be wrong. A key part of their feedback loop - to reassure them their work has been saved, and also to check that they have mapped 'correctly' - is waiting to see the results of their mapping on the main map layer on www.osm.org
-
-While this desire is in obvious conflict with the above comments on level of detail, it has a second impact on the map style. We need to, wherever possible, avoid accidentally encouraging mistakes - that is, avoiding the situation where a clearly misspelled or misused tag leads to the originally expected result. So `highway=mtorway` shouldn't show up as if it was `highway=motorway`, and so on. This has been a problem with "catch-all" rules in queries and filters, such as `where leisure is not null` or `[amenity != ""]`. Avoid these situations.
+7. **Adaptability** - The style should be easy to customize, like for creating localized or special purpose maps.
