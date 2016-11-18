@@ -488,7 +488,7 @@ Layer:
           FROM planet_osm_polygon
           WHERE building IS NOT NULL
             AND building != 'no'
-            AND (aeroway = 'terminal' OR amenity = 'place_of_worship')
+            AND (aeroway = 'terminal' OR amenity = 'place_of_worship' OR building = 'train_station')
             AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
           ORDER BY z_order, way_area DESC)
         AS buildings_major
