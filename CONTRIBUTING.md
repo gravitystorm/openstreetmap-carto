@@ -144,6 +144,7 @@ Because SQL within JSON or YAML will not generally be syntax highlighted, indent
 * Icons must use SVG fills only, not SVG strokes or any feature Mapnik does not support.
 * Use no color for the icon's fill if the icon is monochromatic. This allows the color to be set in the MSS.
 * Use a common canvas size, which is usually 14x14 px.
+* Convert shapes and other components to paths and merge them into a compound path.
 * Draw a simple siloutte of the subject with an "on the shelf" perspective.
 * Align vectors to the pixel grid.
 * Make a clean design, so reduced complexity where possible.
