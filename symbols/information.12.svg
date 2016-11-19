@@ -37,10 +37,10 @@
   <rect
      style="visibility:hidden;fill:none;stroke:none"
      id="canvas"
-     y="-2"
+     y="0"
      x="0"
-     height="14"
-     width="14" />
+     height="12"
+     width="12" />
   <path
      id="information"
      d="M 6 0 A 1 1 0 0 0 5 1 A 1 1 0 0 0 6 2 A 1 1 0 0 0 7 1 A 1 1 0 0 0 6 0 z M 7 4 L 4 5 L 4 6 L 4.921875 6 L 5 11 L 4 11 L 4 12 L 8 12 L 8 11 L 7 11 L 7 4 z "
