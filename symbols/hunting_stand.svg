@@ -8,9 +8,9 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    version="1.1"
-   width="16"
-   height="16"
-   viewBox="0 0 16 16"
+   width="14"
+   height="14"
+   viewBox="0 0 14 14"
    id="svg2">
   <metadata
      id="metadata8">
@@ -27,14 +27,13 @@
   <defs
      id="defs6" />
   <rect
-     width="16"
-     height="16"
+     width="14"
+     height="14"
      x="0"
      y="0"
      id="canvas"
      style="fill:none;stroke:none;visibility:hidden" />
   <path
-     d="m 4,1 0,1.25 8,2 L 12,3 z M 5,3.5 5,8 11,8 11,5 z M 4,9 l 0,1 1,0 -1,5 1.5,0 1,-5 3,0 1.03125,5 1.5,0 L 11,10 l 1,0 0,-1 z"
-     id="hunting-stand"
-     style="fill:#1a1a1a;fill-opacity:1;stroke:none" />
+     d="m 3,0 0,1.25 8,2 L 11,2 z M 4,2.5 4,7 10,7 10,4 z M 3,8 l 0,1 1,0 -1,5 1.5,0 1,-5 3,0 1.03125,5 1.5,0 L 10,9 11,9 11,8 z"
+     id="hunting-stand" />
 </svg>

@@ -100,7 +100,7 @@
   }
 
   [feature = 'highway_traffic_signals'][zoom >= 17] {
-    marker-file: url('symbols/traffic_light.svg');
+    marker-file: url('symbols/traffic_light.16.svg');
     marker-fill: #0a0a0a;
     marker-placement: interior;
     marker-clip: false;
@@ -1005,7 +1005,7 @@
   }
 
   [feature = 'aeroway_helipad'][zoom >= 16] {
-    marker-file: url('symbols/helipad.svg');
+    marker-file: url('symbols/helipad.16.svg');
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @airtransport;

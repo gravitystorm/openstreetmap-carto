@@ -24,6 +24,13 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
+  <rect
+     width="14"
+     height="14"
+     x="0"
+     y="0"
+     id="canvas"
+     style="fill:none;stroke:none;visibility:hidden" />
   <path
      id="perfumery"
      style="fill:#000000;fill-opacity:1;stroke:none"

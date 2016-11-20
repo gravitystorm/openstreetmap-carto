@@ -4,5 +4,12 @@
    version="1.1"
    width="8"
    height="8">
+  <rect
+     width="8"
+     height="8"
+     x="0"
+     y="0"
+     id="canvas"
+     style="fill:none;stroke:none;visibility:hidden" />
 	<path d="M 0,3 0,8 8,8 8,3 4,5 z" />
 </svg>
