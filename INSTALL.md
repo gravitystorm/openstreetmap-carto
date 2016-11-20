@@ -48,13 +48,15 @@ DejaVu Sans is used as an optional fallback font for systems without Noto Sans. 
 
 Unifont is used as a last resort fallback, with it's excellent coverage, common presence on machines, and ugly look.
 
-On Ubuntu 16.04 or Debian Testing you can install the required fonts with
+On Ubuntu 16.04 or Debian Testing you can install the required fonts except Noto Emoji Regular with
 
 ```
 sudo apt-get install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted ttf-unifont
 ```
 
-This will not install Noto Emoji Regular, and it might be useful to have a more recent version of the fonts for [rare non-latin scripts](#non-latin-scripts). This can be installed [from source](https://github.com/googlei18n/noto-fonts/blob/master/FAQ.md#where-are-the-fonts).
+Noto Emoji Regular can be downloaded [from the Noto Emoji repository](https://github.com/googlei18n/noto-emoji).
+
+It might be useful to have a more recent version of the fonts for [rare non-latin scripts](#non-latin-scripts). This can be installed [from source](https://github.com/googlei18n/noto-fonts/blob/master/FAQ.md#where-are-the-fonts).
 
 DejaVu is packaged as `fonts-dejavu-core`.
 
