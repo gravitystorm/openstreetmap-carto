@@ -24,7 +24,8 @@ try:
     try:
         if not args.check:
             mml_file = open(mml_path, 'wb')
-            json.dump(yaml, mml_file, indent=2, separators=(',', ': '))
+            json_bytes = (json.dumps(yaml, sort_keys=True, indent=2, separators=(',', ': '))).encode(encoding="ascii")
+            mml_file.write(json_bytes)
             mml_file.close()
         else:
             json.dump(yaml, sys.stdout, indent=2, separators=(',', ': '))
