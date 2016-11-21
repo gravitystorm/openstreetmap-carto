@@ -1403,8 +1403,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
     [feature = 'highway_living_street'] {
       [zoom >= 13] {
-        line-width: @living-street-width-z13 - 2 * @casing-width-z13;
-        [zoom >= 14] { line-width: @living-street-width-z14 - 2 * @casing-width-z14; }
+        line-width: @living-street-width-z13 - 2 * @residential-casing-width-z13;
+        [zoom >= 14] { line-width: @living-street-width-z14 - 2 * @residential-casing-width-z14; }
         [zoom >= 15] { line-width: @living-street-width-z15 - 2 * @casing-width-z15; }
         [zoom >= 16] { line-width: @living-street-width-z16 - 2 * @casing-width-z16; }
         [zoom >= 17] { line-width: @living-street-width-z17 - 2 * @casing-width-z17; }
