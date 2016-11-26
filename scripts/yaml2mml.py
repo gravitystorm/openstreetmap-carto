@@ -28,7 +28,7 @@ try:
             mml_file.write(json_bytes)
             mml_file.close()
         else:
-            json.dump(yaml, sys.stdout, indent=2, separators=(',', ': '))
+            json.dump(yaml, sys.stdout, sort_keys=True, indent=2, separators=(',', ': '))
     except IOError:
         print('Could not save MML file. Aborting.')
         sys.exit(1)
