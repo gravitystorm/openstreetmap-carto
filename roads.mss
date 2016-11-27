@@ -1341,11 +1341,11 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
     [feature = 'highway_residential'],
     [feature = 'highway_unclassified'] {
-      [zoom = 12][feature = 'highway_residential'] {
+      [zoom >= 12][zoom < 13][feature = 'highway_residential'] {
         line-color: @unimportant-road;
         line-width: 0.4;
       }
-      [zoom = 12][feature = 'highway_unclassified'] {
+      [zoom >= 12][zoom < 13][feature = 'highway_unclassified'] {
         line-color: @unimportant-road;
         line-width: 1;
       }
