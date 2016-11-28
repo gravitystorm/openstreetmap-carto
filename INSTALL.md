@@ -96,5 +96,4 @@ For both development and deployment, a database and some utilities are required
 Some colours, SVGs and other files are generated with helper scripts. Not all users will need these dependencies
 
 * Python and Ruby to run helper scripts
-* [PyYAML](http://pyyaml.org/wiki/PyYAML) if editing the MML (layer definition) file (packaged as `python-yaml` on Ubuntu, or installed with `pip install pyyaml`)
 * [Color Math](https://github.com/gtaylor/python-colormath) and [numpy](http://www.numpy.org/) if running generate_road_colors.py helper script (may be obtained with `pip install colormath numpy`)
