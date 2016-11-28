@@ -1,6 +1,13 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.44.1...master)
 ### Changes
 - Render all shops without a specific icon as a dot, not just a whitelist
+- Scrub pattern change to random
+- Change pitch and track color
+- Railway stations rendering as major buildings
+- Rendering the name of man_made=bridge inside the polygon
+- Documentation updates (including cartography design goals and icon design guidelines)
+- Icons general code cleaning
+- Various bug fixes
 
 ## [v2.44.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.44.0...v2.44.1) - 2016-10-12
 ### Changes
