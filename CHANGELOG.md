@@ -1,4 +1,8 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.45.1...master) 
+### Major Changes
+- Mapnik 3 is now required
+- CartoCSS 0.16.x is now required
+- Official Tilemill support is dropped
 
 ## [v2.45.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.45.0...v2.45.1) - 2016-12-03
 ### Changes
