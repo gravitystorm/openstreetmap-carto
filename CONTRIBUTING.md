@@ -24,36 +24,14 @@ that are particularly suitable for new contributors to get familiar with the pro
 
 ## Editing Layers
 
-OpenStreetMap Carto uses a YAML file for defining layers. Some of the rationale
-is outlined in [a GitHub issue](https://github.com/gravitystorm/openstreetmap-carto/issues/711).
-Editing multi-line SQL statements in a YAML file is much friendlier than editing
-escaped SQL in a JSON file.
+OpenStreetMap Carto uses a YAML file for defining layers, because it [works much
+better for big projects](https://github.com/gravitystorm/openstreetmap-carto/issues/711).
+This requires CartoCSS 0.16.0 or later. If you need JSON MML, you can generate it
+with `python -c 'import sys, yaml, json; json.dump(yaml.safe_load(sys.stdin), sys.stdout)' < project.yaml > project.json`
+or the equivalent in a different language.
 
-The `./scripts/yaml2mml.py` script is provided to convert YAML to JSON, and
-depends on PyYAML, available through `pip install pyyaml` or packaged on Ubuntu
-as `python-yaml`.
-
-[Kosmtik](https://github.com/kosmtik/kosmtik) can directly load the project from
-the YAML file with `node index.js serve path/to/openstreetmap-carto/project.yaml`,
-and the JSON file just needs updating before committing.
-
-[TileMill](https://github.com/mapbox/tilemill) and Mapbox `carto` [do not directly support YAML](https://github.com/mapbox/carto/issues/401),
-so make edits to the YAML file then run the preprocessing step of
-`./scripts/yaml2mml.py && touch project.mml` to
-update the file and force TileMill to reload it. You shouldn't use the text editor
-built-in to TileMill, it doesn't work with the number of .mss files in the style.
-Instead, hide the right pane and use an external text editor.
-
-Before committing changes, run `./scripts/yaml2mml.py`
-to update the JSON MML file and `git add project.mml`
-
-When committing changes, add both the `project.yaml` and `project.mml` files to
-the commit with `./scripts/yaml2mml.py && git add project.mml`.
-One of the big advantages of this system is that to resolve any layer merge
-conflicts, they only need to be resolved in the YAML file where they are easier
-to handle, then the JSON file can be regenerated, while at the same time the
-styles work with TileMill and carto out-of-the-box without needing to run the
-`yaml2mml` script.
+[Kosmtik](https://github.com/kosmtik/kosmtik) and CartoCSS can directly load the project from
+the YAML file with `node index.js serve path/to/openstreetmap-carto/project.yaml`
 
 ## CartoCSS Style Guidelines
 
