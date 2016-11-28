@@ -1,6 +1,6 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.45.0...master) 
 
-## [v2.45.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.45.0...master) - 2016-11-28
+## [v2.45.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.44.1...v2.45.0) - 2016-11-28
 ### Changes
 - Render all shops without a specific icon as a dot, not just a whitelist
 - Scrub pattern change to random
