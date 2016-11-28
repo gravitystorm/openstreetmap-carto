@@ -72,7 +72,7 @@ For proper rendering of non-latin scripts, particularly those with complicated d
 ## Dependencies
 
 For development, a style design studio is needed.
-* [Kosmtik](https://github.com/kosmtik/kosmtik) - Kosmtik can be launched with `node index.js serve path/to/openstreetmap-carto/project.yaml`
+* [Kosmtik](https://github.com/kosmtik/kosmtik) - Kosmtik can be launched with `node index.js serve path/to/openstreetmap-carto/project.mml`
 
 [TileMill](http://mapbox.com/tilemill) is not officially supported, but you may be able to use a recent TileMill version by copying or simlinking the project directly into your Mapbox/project directory.
 
