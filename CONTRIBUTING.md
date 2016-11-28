@@ -27,11 +27,11 @@ that are particularly suitable for new contributors to get familiar with the pro
 OpenStreetMap Carto uses a YAML file for defining layers, because it [works much
 better for big projects](https://github.com/gravitystorm/openstreetmap-carto/issues/711).
 This requires CartoCSS 0.16.0 or later. If you need JSON MML, you can generate it
-with `python -c 'import sys, yaml, json; json.dump(yaml.safe_load(sys.stdin), sys.stdout)' < project.yaml > project.json`
+with `python -c 'import sys, yaml, json; json.dump(yaml.safe_load(sys.stdin), sys.stdout)' < project.mml > project.json`
 or the equivalent in a different language.
 
 [Kosmtik](https://github.com/kosmtik/kosmtik) and CartoCSS can directly load the project from
-the YAML file with `node index.js serve path/to/openstreetmap-carto/project.yaml`
+the YAML file with `node index.js serve path/to/openstreetmap-carto/project.mml`
 
 ## CartoCSS Style Guidelines
 
