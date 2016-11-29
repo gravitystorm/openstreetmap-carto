@@ -7,7 +7,8 @@ This software and associated documentation files (the "Software") is
 released under the CC0 Public Domain Dedication, version 1.0, as
 published by Creative Commons. To the extent possible under law, the
 author(s) have dedicated all copyright and related and neighboring
-rights to the Software to the public domain worldwide. The Software is
+rights to the Software to the public domain worldwide. For avoidance
+of doubt, this includes the cartographic design. The Software is
 distributed WITHOUT ANY WARRANTY.
 
 If you did not receive a copy of the CC0 Public Domain Dedication
