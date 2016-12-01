@@ -123,6 +123,12 @@
       marker-clip: false;
     }
 
+    [amenity = 'fountain'][zoom >= 18] {
+      marker-file: url('symbols/2016/fountain-14.svg');
+      marker-placement: interior;
+      marker-clip: false;
+    }
+
     [amenity = 'fuel'][zoom >= 17] {
       [lpg='yes'] { point-file: url('symbols/fuel_gpl.svg'); }
       point-file: url('symbols/fuel.svg');
