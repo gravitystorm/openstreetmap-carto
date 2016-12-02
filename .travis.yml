@@ -16,3 +16,4 @@ script:
   - jsonlint project.mml
   - set -o pipefail && ./node_modules/carto/bin/carto project.mml | xmllint - | wc -l
   - ./scripts/travis_check_project_files
+  - find symbols/ -name '*.svg' | xargs xmllint --noout
