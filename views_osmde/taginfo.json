@@ -269,6 +269,13 @@
             ]
         }, 
         {
+            "key": "iata", 
+            "object_types": [
+                "node", 
+                "area"
+            ]
+        }, 
+        {
             "key": "leisure", 
             "object_types": [
                 "node", 
