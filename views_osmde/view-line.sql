@@ -46,11 +46,10 @@ osm_tag2num(tags->'width') as "num_width",
 way as "way",
 way_area as way_area,
 z_order as z_order,
-osml10n_get_placename_from_tags(tags,true,'de',way) as localized_name_inside_brackets,
-osml10n_get_placename_from_tags(tags,false,'de',way) as localized_name_outside_brackets,
+osml10n_get_placename_from_tags(tags,true,false,' - ','de',way) as localized_name_second,
+osml10n_get_placename_from_tags(tags,false,false,' - ','de',way) as localized_name_first,
 osml10n_get_name_without_brackets_from_tags(tags,'de',way) as localized_name_without_brackets,
-osml10n_get_streetname_from_tags(tags,true, 'de', way) as localized_streetname_inside_brackets,
-osml10n_get_streetname_from_tags(tags,false, 'de', way) as localized_streetname_outside_brackets,
+osml10n_get_streetname_from_tags(tags,true,false,' - ','de', way) as localized_streetname,
 tags as tags
 FROM planet_osm_hstore_line;
 

@@ -26,7 +26,7 @@
     text-wrap-width: 35;
     text-placement: interior;
     text-character-spacing: 0.5;
-    text-line-spacing: 1;
+    text-line-spacing: 0;
   }
 }
 
