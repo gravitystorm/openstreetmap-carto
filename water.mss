@@ -310,3 +310,51 @@
     }
   }
 }
+
+#ocean-text {
+  [zoom >= 1][minzoom = 1],
+  [zoom >= 2][minzoom = 2],
+  [zoom >= 3][minzoom = 3],
+  [zoom >= 4][minzoom = 4],
+  [minzoom=null] {
+    [zoom < 1][maxzoom = 1],
+    [zoom < 2][maxzoom = 2],
+    [zoom < 3][maxzoom = 3],
+    [zoom < 4][maxzoom = 4],
+    [maxzoom=null] {
+      text-name: "[name]";
+      // These are all large areas, so they get labeled with larger than normal labels
+      text-size: 15;
+      [size = 'big'] {
+        text-size: 18;
+      }
+      [size = 'bigger'] {
+        text-size: 24;
+      }
+      [zoom >= 2]{
+        text-size: 18;
+        [size = 'big'] {
+          text-size: 24;
+        }
+        [size = 'bigger'] {
+          text-size: 28;
+        }
+      }
+      text-fill: @water-text;
+      text-face-name: @landcover-face-name;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+      ['mapnik::geometry_type'=2] {
+        text-placement: line;
+        text-smooth: 1;
+        // Debugging code
+        /*
+        line-color: red;
+        line-width: 1;
+        line-smooth: 1;
+        */
+      }
+    }
+  }
+}

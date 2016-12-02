@@ -1,0 +1,151 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [-150, 0],
+        "type": "Point"
+      },
+      "properties": {
+        "maxzoom": 3,
+        "minzoom": 1,
+        "name": "Pacific\nOcean",
+        "size": "bigger"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [-40, 25],
+        "type": "Point"
+      },
+      "properties": {
+        "maxzoom": 3,
+        "minzoom": 1,
+        "name": "Atlantic\nOcean"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [75, -20],
+        "type": "Point"
+      },
+      "properties": {
+        "minzoom": 1,
+        "maxzoom": 4,
+        "name": "Indian\nOcean"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [-180, 80],
+        "type": "Point"
+      },
+      "properties": {
+        "minzoom": 1,
+        "maxzoom": 2,
+        "name": "Arctic Ocean"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [180, 80],
+        "type": "Point"
+      },
+      "properties": {
+        "minzoom": 1,
+        "maxzoom": 2,
+        "name": "Arctic Ocean"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [160, 77],
+          [190, 75],
+          [220, 77]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "minzoom": 2,
+        "maxzoom": 3,
+        "name": "Arctic Ocean",
+        "size": "big"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [-200, 77],
+          [-170, 75],
+          [-140, 77]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "minzoom": 2,
+        "maxzoom": 3,
+        "name": "Arctic Ocean",
+        "size": "big"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [5, 81],
+          [65, 83]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "minzoom": 2,
+        "maxzoom": 3,
+        "name": "Arctic Ocean"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [-5, -60],
+        "type": "Point"
+      },
+      "properties": {
+        "maxzoom": 3,
+        "minzoom": 1,
+        "name": "Southern Ocean"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [-160, -65],
+        "type": "Point"
+      },
+      "properties": {
+        "maxzoom": 3,
+        "minzoom": 2,
+        "name": "Southern Ocean"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [200, -65],
+        "type": "Point"
+      },
+      "properties": {
+        "maxzoom": 3,
+        "minzoom": 2,
+        "name": "Southern Ocean"
+      },
+      "type": "Feature"
+    }
+  ]
+}

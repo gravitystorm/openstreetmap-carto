@@ -27,7 +27,7 @@ _parts:
   extents84: &extents84
     extent: *world
     srs-name: "WGS84"
-    srs: "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+    srs: "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +over"
   osm2pgsql: &osm2pgsql
     type: "postgis"
     dbname: "gis"
@@ -100,6 +100,18 @@ Layer:
     properties:
       minzoom: 1
       maxzoom: 3
+    advanced: {}
+  - id: "ocean-text"
+    name: "ocean-text"
+    class: ""
+    geometry: "linestring"
+    <<: *extents84
+    Datasource:
+      file: "static/ocean.geojson"
+      type: "geojson"
+    properties:
+      minzoom: 1
+      maxzoom: 8
     advanced: {}
   - id: "landcover-low-zoom"
     name: "landcover-low-zoom"

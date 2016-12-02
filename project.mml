@@ -74,7 +74,7 @@
       "geometry": "linestring",
       "class": "",
       "id": "necountries",
-      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +over",
       "Datasource": {
         "type": "shape",
         "file": "data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp"
@@ -87,6 +87,29 @@
       ],
       "properties": {
         "maxzoom": 3,
+        "minzoom": 1
+      },
+      "advanced": {}
+    },
+    {
+      "name": "ocean-text",
+      "srs-name": "WGS84",
+      "geometry": "linestring",
+      "class": "",
+      "id": "ocean-text",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +over",
+      "Datasource": {
+        "type": "geojson",
+        "file": "static/ocean.geojson"
+      },
+      "extent": [
+        -180,
+        -85.05112877980659,
+        180,
+        85.05112877980659
+      ],
+      "properties": {
+        "maxzoom": 8,
         "minzoom": 1
       },
       "advanced": {}
@@ -2069,7 +2092,7 @@
       "key_field": ""
     },
     "extents84": {
-      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +over",
       "extent": [
         -180,
         -85.05112877980659,
