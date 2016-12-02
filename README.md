@@ -106,3 +106,6 @@ maps using Mapnik, many based on this project. Some alternatives are:
 * Matthijs Melissen [@math1985](https://github.com/math1985/)
 * Paul Norman [@pnorman](https://github.com/pnorman/)
 * Mateusz Konieczny [@matkoniecz](https://github.com/matkoniecz/)
+* Daniel Koć [@kocio-pl](https://github.com/kocio-pl)
+* Christoph Hormann [@imagico](https://github.com/imagico)
+* Michael Glanznig [@nebulon42](https://github.com/nebulon42)
