@@ -1538,7 +1538,6 @@ Layer:
           WHERE place IN ('city', 'town')
             AND name IS NOT NULL
             AND capital = 'yes'
-            AND admin_level = '2'
           ORDER BY population DESC
         ) AS capital_names
     properties:
@@ -1600,14 +1599,14 @@ Layer:
                   END)
                   *
                   (CASE
-                    WHEN (capital = '4' OR (capital = 'yes' AND admin_level = '4')) THEN 2
+                    WHEN (capital = '4') THEN 2
                     ELSE 1
                   END)
                 ) AS score
               FROM planet_osm_point
               WHERE place IN ('city', 'town')
                 AND name IS NOT NULL
-                AND (capital IS NULL OR capital != 'yes' OR (capital = 'yes' AND (admin_level IS NULL OR admin_level != '2')))
+                AND (capital IS NULL OR capital != 'yes')
             ) as p
           ORDER BY score DESC, length(name) DESC, name
         ) AS placenames_medium
