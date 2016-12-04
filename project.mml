@@ -1654,6 +1654,7 @@ Layer:
         (SELECT
             way,
             name,
+            ref,
             railway,
             aerialway,
             CASE railway 
@@ -1681,6 +1682,7 @@ Layer:
         (SELECT
             way,
             name,
+            ref,
             railway,
             aerialway
         FROM planet_osm_polygon
