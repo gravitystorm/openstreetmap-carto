@@ -138,6 +138,22 @@ Because SQL within JSON or YAML will not generally be syntax highlighted, indent
 * One space before and after = etc
 * Name SQL subqueries after the layer name (but use underscores)
 
+## Map Icon Guidelines
+
+* All new icons must be SVG format only.  The SVG must be saved as standards compliant SVG without any proprietary tags. In Inkscape software, you will need to "Save As..." and choose the format Optimized SVG (preferable) or Plain SVG.
+* Icons must use SVG fills only, not SVG strokes or any feature Mapnik does not support.
+* Use no color for the icon's fill if the icon is monochromatic. This allows the color to be set in the MSS.
+* Use a common canvas size, which is usually 14x14 px.
+* Draw a simple siloutte of the subject with an "on the shelf" perspective.
+* Align vectors to the pixel grid.
+* Make a clean design, so reduced complexity where possible.
+
+### External Icon Design Resources
+The project's goals and design philsophy are different from other projects, but some external resources with general information about icon design are:
+
+* [Maki Icons Design Guidelines](https://www.mapbox.com/maki-icons/guidelines/)
+* [GNOME Icon Design Guildelines](https://developer.gnome.org/hig/stable/icons-and-artwork.html.en)
+
 ## Pull requests
 
 Pull requests that change the cartography should contain a few images selected

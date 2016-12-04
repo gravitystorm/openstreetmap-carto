@@ -4,6 +4,7 @@ data/
 *.xml
 node_modules/
 localconfig.json
+localconfig.js
 
 # Generated at runtime by Python.
 *.pyc
