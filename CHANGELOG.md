@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.45.0...master) 
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.45.1...master) 
+
+## [v2.45.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.45.0...v2.45.1) - 2016-12-03
+### Changes
+- Bug fix for tobacco shop and memorial icons
 
 ## [v2.45.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.44.1...v2.45.0) - 2016-11-28
 ### Changes
