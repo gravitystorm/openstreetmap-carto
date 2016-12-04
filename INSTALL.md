@@ -21,12 +21,13 @@ psql -d gis -f indexes.sql
 Additionally you need some shapefiles.
 
 ## Scripted download
-
-To download the shapefiles you can run the following script from this directory. No further steps should be needed as the data has been processed and placed in the requisite directories.
+To download the shapefiles you can run the following script. No further steps should be needed as the data has been processed and placed in the requisite directories.
 
 ```
-./get-shapefiles.sh
+scripts/get-shapefiles.py
 ```
+
+This script generates and populates the *data* directory with all needed shapefiles, including indexing them through *shapeindex*.
 
 ## Manual download
 
@@ -64,8 +65,6 @@ DejaVu is packaged as `fonts-dejavu-core`.
 
 For proper rendering of non-latin scripts, particularly those with complicated diacritics and tone marks the requirements are
 
-* Mapnik 3
-
 * FreeType 2.6.2 or later for CJK characters
 
 * A recent enough version of Noto with coverage for the scripts needed.
@@ -73,13 +72,14 @@ For proper rendering of non-latin scripts, particularly those with complicated d
 ## Dependencies
 
 For development, a style design studio is needed.
-* [Kosmtik](https://github.com/kosmtik/kosmtik) - Kosmtik can be launched with `node index.js serve path/to/openstreetmap-carto/project.yaml`
-* [TileMill](http://mapbox.com/tilemill) - This is a TileMill project you can copy (or symlink) directly into your Mapbox/project directory
+* [Kosmtik](https://github.com/kosmtik/kosmtik) - Kosmtik can be launched with `node index.js serve path/to/openstreetmap-carto/project.mml`
+
+[TileMill](http://mapbox.com/tilemill) is not officially supported, but you may be able to use a recent TileMill version by copying or simlinking the project directly into your Mapbox/project directory.
 
 For deployment, `carto` and Mapnik are required.
 
-* [carto](https://github.com/mapbox/carto) >= 0.9.5 (we're using instances with cascading rules and min/max zoom properties)
-* [mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 2.1.0. Mapnik 3.0 is supported, but not required.
+* [Carto](https://github.com/mapbox/carto) >= 0.16.0 (we're using YAML)
+* [Mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) 3.0
 
 ---
 
@@ -96,5 +96,4 @@ For both development and deployment, a database and some utilities are required
 Some colours, SVGs and other files are generated with helper scripts. Not all users will need these dependencies
 
 * Python and Ruby to run helper scripts
-* [PyYAML](http://pyyaml.org/wiki/PyYAML) if editing the MML (layer definition) file (packaged as `python-yaml` on Ubuntu, or installed with `pip install pyyaml`)
 * [Color Math](https://github.com/gtaylor/python-colormath) and [numpy](http://www.numpy.org/) if running generate_road_colors.py helper script (may be obtained with `pip install colormath numpy`)
