@@ -236,6 +236,11 @@ local roads_info = {
     },
 }
 
+local excluded_railway_service = {
+    spur = true,
+    siding = true,
+    yard = true
+}
 --- Gets the z_order for a set of tags
 -- @param tags OSM tags
 -- @return z_order if an object with z_order, otherwise nil
@@ -255,7 +260,11 @@ end
 function roads(tags)
     for k, v in pairs(tags) do
         if roads_info[k] and roads_info[k][v] and roads_info[k][v].roads then
-            return 1
+            if not (k ~= 'railway' or tags.service) then
+                return 1
+            elseif not excluded_railway_service[tags.service] then
+                return 1
+            end
         end
     end
     return 0
