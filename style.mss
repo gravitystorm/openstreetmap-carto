@@ -79,7 +79,6 @@ Map {
 // raster pour landcover en lowzoom
 #lowzoom [zoom<=7]{
   raster-opacity:0.7;
-  raster-filter-factor: 0;
   raster-scaling: lanczos;
 }
 
