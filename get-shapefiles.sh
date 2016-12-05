@@ -4,48 +4,20 @@ set -e -u
 # create and populate data dir
 
 mkdir -p data/
-mkdir -p data/world_boundaries
-mkdir -p data/shoreline_300
-mkdir -p data/ne_110m_admin_0_boundary_lines_land
-mkdir -p data/ne_10m_populated_places
-mkdir -p data/processed_p
+cd data
 
-# world_boundaries
-echo "dowloading world_boundaries..."
-curl -z data/world_boundaries-spherical.tgz -L -o data/world_boundaries-spherical.tgz http://tile.openstreetmap.org/world_boundaries-spherical.tgz
-echo "expanding world_boundaries..."
-tar -xzf data/world_boundaries-spherical.tgz -C data/
+rm -f *-3857.zip
 
-# shoreline_300
-echo "dowloading shoreline_300..."
-curl -z data/shoreline_300.tar.bz2 -L -o data/shoreline_300.tar.bz2 http://tile.openstreetmap.org/shoreline_300.tar.bz2
-echo "expanding shoreline_300..."
-tar -xjf data/shoreline_300.tar.bz2 -C data/shoreline_300/
+wget http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip
+wget http://data.openstreetmapdata.com/land-polygons-split-3857.zip
 
-# ne_110m_admin_0_boundary_lines_land
-echo "dowloading ne_110m_admin_0_boundary_lines_land..."
-curl -z data/ne_110m_admin_0_boundary_lines_land.zip -L -o data/ne_110m_admin_0_boundary_lines_land.zip http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip
-echo "expanding ne_110m_admin_0_boundary_lines_land..."
-unzip -qq data/ne_110m_admin_0_boundary_lines_land.zip -d data/ne_110m_admin_0_boundary_lines_land/
+unzip simplified-land-polygons-complete-3857.zip
+unzip land-polygons-split-3857.zip
 
-# ne_10m_populated_places
-echo "dowloading ne_10m_populated_places..."
-curl -z data/ne_10m_populated_places.zip -L -o data/ne_10m_populated_places.zip http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_populated_places.zip
-echo "expanding ne_10m_populated_places..."
-unzip -qq data/ne_10m_populated_places.zip -d data/ne_10m_populated_places/
+cd simplified-land-polygons-complete-3857
+shapeindex *.shp
 
-# processed_p
-echo "dowloading processed_p..."
-curl -z data/processed_p.tar.bz2 -L -o data/processed_p.tar.bz2 http://tile.openstreetmap.org/processed_p.tar.bz2
-echo "expanding processed_p..."
-tar -xjf data/processed_p.tar.bz2 -C data/processed_p/
+cd ../land-polygons-split-3857
+shapeindex *.shp
 
-#process populated places
-echo "processing ne_10m_populated_places..."
-ogr2ogr data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp data/ne_10m_populated_places/ne_10m_populated_places.shp
-
-#clean up
-echo "cleaning up..."
-rm data/ne_10m_populated_places/ne_10m_populated_places.*
-
-echo "...done!"
+cd ..
