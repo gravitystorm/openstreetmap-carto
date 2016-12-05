@@ -76,14 +76,12 @@ The following guidelines have been found to be useful design principles that can
 
 ### Zoom levels
 
-* Styling of map elements should always work for all parts of earth shown on the map and for the whole range of map scales present in each zoom level the feature is shown in.
+* Styling of map elements should work for the entire range of displayed latitudes and the full bandwidth of geographic situations that exists on earth.
 
-* Design differences between zoom levels should be small.
-
-* Continuous or small step changes over multiple levels is preferable in comparison to constant styling across multiple levels followed by a huge step.
+* Design differences between subsequent zoom levels should be small.  Continuous or small step changes over multiple levels is preferable in comparison to constant styling across multiple levels followed by a huge step.
 
 * Size increase (line widths, text sizes, icon sizes etc.) with increasing zoom level should not be larger than the scale ratio between the zoom levels so sizes do not increase relative to ground units at higher zoom levels.
 
 * Features can start to appear at a certain zoom level when zooming in but they should not disappear again at a later zoom level - except possibly for labels of features becoming very large.
 
-* Starting zoom levels for showing features should be selected so that competition between elements does not result in the majority of features of a certain type not being shown, especially if there is no meaningful measure of priority that is used for selection.
+* Starting zoom levels for showing features should be selected so that competition between elements does not result in the majority of features of a certain type not being shown if there is no meaningful measure of priority that is used for selection.
