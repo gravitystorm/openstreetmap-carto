@@ -22,7 +22,7 @@
     text-min-padding: 50;
     text-min-distance: 50;
     text-max-char-angle-delta: 10;
-    text-dy: -7;
+    text-dy: 7;
     text-spacing: 500;
   }
 }
