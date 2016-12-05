@@ -217,15 +217,15 @@ local roads_info = {
         subway          = {z = 420, roads = true},
         narrow_gauge    = {z = 420, roads = true},
         light_rail      = {z = 420, roads = true},
-        preserved       = {z = 420, roads = true},
         funicular       = {z = 420, roads = true},
-        monorail        = {z = 420, roads = true},
-        miniature       = {z = 420, roads = true},
-        turntable       = {z = 420, roads = true},
-        tram            = {z = 410, roads = true},
-        disused         = {z = 400, roads = true},
-        construction    = {z = 400, roads = true},
-        platform        = {z = 90,  roads = true},
+        preserved       = {z = 420, roads = false},
+        monorail        = {z = 420, roads = false},
+        miniature       = {z = 420, roads = false},
+        turntable       = {z = 420, roads = false},
+        tram            = {z = 410, roads = false},
+        disused         = {z = 400, roads = false},
+        construction    = {z = 400, roads = false},
+        platform        = {z = 90,  roads = false},
     },
     aeroway = {
         runway          = {z = 60,  roads = false},
@@ -236,6 +236,11 @@ local roads_info = {
     },
 }
 
+local excluded_railway_service = {
+    spur = true,
+    siding = true,
+    yard = true
+}
 --- Gets the z_order for a set of tags
 -- @param tags OSM tags
 -- @return z_order if an object with z_order, otherwise nil
@@ -255,7 +260,11 @@ end
 function roads(tags)
     for k, v in pairs(tags) do
         if roads_info[k] and roads_info[k][v] and roads_info[k][v].roads then
-            return 1
+            if not (k ~= 'railway' or tags.service) then
+                return 1
+            elseif not excluded_railway_service[tags.service] then
+                return 1
+            end
         end
     end
     return 0
