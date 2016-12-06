@@ -95,8 +95,10 @@
   [feature = 'tourism_picnic_site'] {
     [zoom >= 10] {
       polygon-fill: @campsite;
-      line-color: saturate(darken(@campsite, 60%), 30%);
-      line-width: 0.3;
+      [zoom >= 13] {
+        line-color: saturate(darken(@campsite, 60%), 30%);
+        line-width: 0.3;
+      }
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
@@ -105,8 +107,10 @@
   [feature = 'landuse_quarry'][zoom >= 10] {
     polygon-fill: @quarry;
     polygon-pattern-file: url('symbols/quarry.png');
-    line-width: 0.5;
-    line-color: grey;
+    [zoom >= 13] {
+      line-width: 0.5;
+      line-color: grey;
+    }
     [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
     [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
   }
