@@ -28,11 +28,12 @@ but there are some exceptions
     See also https://github.com/gravitystorm/openstreetmap-carto/issues/2208)
 
 2. Noto provides three variants of Arabic: Noto Kufi Arabic, Noto Naskh Arabic
-and Noto Nastaliq Urdu. Noto Kufi Arabic is the one that is most similiar to a
-Sans style, so this one is used while both other variants are ignored. Arabic
-fonts are placed behind Sans fonts because they might re-define some commonly
-used signs like parenthesis or quotation marks, and the arabic design should
-not overwrite the standard design.
+and Noto Nastaliq Urdu. Naskh is the most commonly used style of Arabic.
+Furthermore, Noto Naskh is the Arabic font of the Noto family with the greatest
+coverage and the only one that has an UI variant. Therefor this style uses
+Noto Naskh Arabic UI. The Arabic fonts are placed behind Sans fonts because
+they might re-define some commonly used signs like parenthesis or quotation
+marks, and the arabic design should not overwrite the standard design.
 
 3. Noto provides two variants of Emoji: Noto Color Emoji and Noto Emoji. The
 colour variant is a SVG flavoured OpenType font that contains coloured emojis.
@@ -111,7 +112,7 @@ A regular style.
                 "Noto Sans Vai Regular",
                 "Noto Sans Yi Regular",
 
-                "Noto Kufi Arabic Regular",
+                "Noto Naskh Arabic UI Regular",
 
                 "Noto Emoji Regular",
 
@@ -188,9 +189,9 @@ regular text and can be used for emphasis. Fallback is a regular style.
                 "Noto Sans Vai Regular",
                 "Noto Sans Yi Regular",
 
-                "Noto Kufi Arabic Bold",
+                "Noto Naskh Arabic UI Bold",
 
-                "Noto Kufi Arabic Regular",
+                "Noto Naskh Arabic UI Regular",
 
                 "Noto Emoji Regular",
 
@@ -263,7 +264,7 @@ For a considerable number of labels this style will make no difference to the re
                 "Noto Sans Vai Regular",
                 "Noto Sans Yi Regular",
 
-                "Noto Kufi Arabic Regular",
+                "Noto Naskh Arabic UI Regular",
 
                 "Noto Emoji Regular",
 
