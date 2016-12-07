@@ -1,11 +1,5 @@
 language: node_js
 sudo: false
-cache: apt
-addons:
-  apt:
-    packages:
-    - python-demjson
-    - python-yaml
 node_js:
   - "0.10"
 install:
