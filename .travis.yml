@@ -1,17 +1,18 @@
 language: node_js
 sudo: false
-cache: apt
-addons:
-  apt:
-    packages:
-    - python-demjson
-    - python-yaml
 node_js:
   - "0.10"
+env:
+  - CARTO=0.16.0 MAPNIK='3.0.0 3.0.12'
+  - CARTO=0.16.3 MAPNIK='3.0.0 3.0.12'
 install:
-  - npm install carto@0.16.0
+  - npm install carto@$CARTO
   - mkdir -p data/world_boundaries data/simplified-land-polygons-complete-3857 data/ne_110m_admin_0_boundary_lines_land data/ne_10m_populated_places data/land-polygons-split-3857
   - touch data/world_boundaries/builtup_area.shp data/simplified-land-polygons-complete-3857/simplified_land_polygons.shp data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp data/land-polygons-split-3857/land_polygons.shp
 script:
-  - set -o pipefail && ./node_modules/carto/bin/carto project.mml | xmllint - | wc -l
+  # We're using pipes in the checks, so fail if any part fails
+  - set -o pipefail
+  # Validate the MML against multiple Mapnik versions, and report its lines for debugging purposes
+  - for m in $MAPNIK; do ./node_modules/carto/bin/carto -a $m project.mml | xmllint - | wc -l; done
+  # Validate that the SVGs are valid XML
   - find symbols/ -name '*.svg' | xargs xmllint --noout
