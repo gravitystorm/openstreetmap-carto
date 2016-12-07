@@ -221,7 +221,7 @@ def main():
         "of downloaded data")
     parser.add_argument(
         '-f', "--force", dest='option_force', action='store_true',
-        help="force continuing even if project.yaml does not exist")
+        help="force continuing even if project.mml does not exist")
     parser.add_argument(
         '-l', "--no-curl", dest='option_no_curl', action='store_true',
         help="do not use 'curl' even if available")
@@ -262,9 +262,9 @@ def main():
         os.chdir(os.path.dirname(__file__))
     else:
         os.chdir(os.path.join(os.path.dirname(__file__), '..'))
-        if not os.path.isfile("project.yaml"):
+        if not os.path.isfile("project.mml"):
             sys.exit(
-                """\n   Error: project.yaml not found.
+                """\n   Error: project.mml not found.
    Are you sure you are in the correct folder?
    Otherwise, use '-f' option to go on creating or updating the '""" +
                 args.data_dir + """' directory
