@@ -15,6 +15,7 @@ local polygon_keys = {
     'amenity',
     'area:highway',
     'building',
+    'building:part',
     'harbour',
     'historic',
     'landuse',
