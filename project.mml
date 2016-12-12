@@ -781,8 +781,8 @@ Layer:
     properties:
       minzoom: 14
     advanced: {}
-  - name: "roads-casing"
-    id: "roads-casing"
+  - id: "roads-casing"
+    name: "roads-casing"
     class: "roads-casing"
     geometry: "linestring"
     <<: *extents
@@ -1342,8 +1342,8 @@ Layer:
     properties:
       minzoom: 13
     advanced: {}
-  - name: "admin-low-zoom"
-    id: "admin-low-zoom"
+  - id: "admin-low-zoom"
+    name: "admin-low-zoom"
     class: ""
     geometry: "linestring"
     <<: *extents
