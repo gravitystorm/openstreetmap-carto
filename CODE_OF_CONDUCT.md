@@ -47,7 +47,7 @@ People are complicated. You should expect to be misunderstood and to misundersta
 These actions are explicitly forbidden in OpenStreetMap Carto spaces:
 
 - Insulting, demeaning, hateful, or threatening remarks.
-- Discrimination based on age, disability, gender, nationality, race, religion, sexuality, or similar personal characteristic.
+- Discrimination based on age, disability, gender, nationality, national origin, race, ethnicity, religion, sexuality, or similar personal characteristic.
 - Bullying or systematic harassment.
 - Unwelcome sexual advances.
 - Incitement to any of these.
