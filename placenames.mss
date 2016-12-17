@@ -43,22 +43,17 @@
 }
 
 .state {
-  [zoom >= 5][zoom < 6][way_pixels > 750],
-  [zoom >= 6][way_pixels > 3000][way_pixels < 196000] {
-    text-name: "[ref]";
+  [zoom >= 5][way_pixels > 3000][way_pixels < 196000] {
+    text-name: "[name]";
     text-size: 10;
+    text-wrap-width: 30; // 3.0 em
+    text-line-spacing: -1.5; // -0.15 em
+    text-margin: 7.0; // 0.7 em
     text-fill: @state-labels;
     text-face-name: @oblique-fonts;
     text-halo-fill: @standard-halo-fill;
     text-halo-radius: @standard-halo-radius * 1.5;
-    text-wrap-width: 0;
-    text-margin: 7.0; // 0.7 em
     text-placement: interior;
-    [zoom >= 6] {
-      text-name: "[name]";
-      text-wrap-width: 30; // 3.0 em
-      text-line-spacing: -1.5; // -0.15 em
-    }
     [zoom >= 7] {
       text-size: 11;
       text-wrap-width: 50; // 4.5 em
