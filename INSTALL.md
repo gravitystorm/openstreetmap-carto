@@ -76,10 +76,12 @@ For development, a style design studio is needed.
 
 [TileMill](http://mapbox.com/tilemill) is not officially supported, but you may be able to use a recent TileMill version by copying or simlinking the project directly into your Mapbox/project directory.
 
-For deployment, `carto` and Mapnik are required.
+For deployment, CartoCSS and Mapnik are required.
 
-* [Carto](https://github.com/mapbox/carto) >= 0.16.0 (we're using YAML)
-* [Mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) 3.0
+* [CartoCSS](https://github.com/mapbox/carto) >= 0.16.0 (we're using YAML)
+* [Mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 3.0
+
+Remember to run CartoCSS with proper API version to avoid errors (at least 3.0.0: `carto -a "3.0.0"`).
 
 ---
 
