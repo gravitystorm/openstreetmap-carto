@@ -30,8 +30,12 @@
     point-placement: interior;
   }
 
+  [feature = 'tourism_wilderness_hut'][zoom >= 13],
   [feature = 'amenity_shelter'][zoom >= 16] {
     marker-file: url('symbols/shelter.svg');
+    [feature = 'tourism_wilderness_hut'] {
+      marker-file: url('symbols/wilderness_hut.svg');
+    }
     marker-fill: @transportation-icon;
     marker-placement: interior;
     marker-clip: false;
@@ -1760,6 +1764,7 @@
   [feature = 'tourism_hostel'][zoom >= 17],
   [feature = 'tourism_chalet'][zoom >= 17],
   [feature = 'tourism_guest_house'][zoom >= 17],
+  [feature = 'tourism_wilderness_hut'][zoom >= 14],
   [feature = 'tourism_camp_site'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-text-size;

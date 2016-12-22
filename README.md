@@ -16,9 +16,8 @@ We are doing our best to keep this fork in sync with upstream.
 These are the CartoCSS map stylesheets for the Standard map layer on [OpenStreetMap.org](http://www.openstreetmap.org).
 
 These stylesheets can be used in your own cartography projects, and are designed
-to be easily customised. They work with [Kosmtik](https://github.com/kosmtik/kosmtik),
-[TileMill](http://www.mapbox.com/tilemill/) and also with the command-line
-[CartoCSS](https://github.com/mapbox/carto) processor.
+to be easily customised. They work with [Kosmtik](https://github.com/kosmtik/kosmtik)
+ and also with the command-line [CartoCSS](https://github.com/mapbox/carto) processor.
 
 Since August 2013 these stylesheets have been used on the OSMF tileservers (tile.openstreetmap.org), and
 are updated from each point release. They supersede the previous [XML-based stylesheets](https://github.com/openstreetmap/mapnik-stylesheets).
@@ -58,12 +57,17 @@ cartographic project you can expect the following:
 This was a full re-implementation of the original OSM style, with only a few bugs discovered later. There's been
 no interest in creating further point releases in the v1.x series.
 
-## Current work (v2.x)
+## Mapnik 2 work (v2.x)
 
 The v2.x series initially focused on refactoring the style, both to to fix
 glitches and to leverage new features in CartoCSS / Mapnik to simplify the
 stylesheets with only small changes to the output, as well as removing 'old-skool'
-tagging methods that are now rarely used.
+tagging methods that are now rarely used. It then started adding new features.
+
+
+## Current work (v3.x)
+The v3.x series was triggered by an update to the required Mapnik and CartoCSS
+versions.
 
 Care is being taken to not get too clever with variables and expressions. While
 these often make it easier to customise, experience has shown that over-cleverness
@@ -76,19 +80,19 @@ that need some cartographic judgement.
 [issues]: https://github.com/gravitystorm/openstreetmap-carto/issues
 [cleverness]: https://github.com/openstreetmap/mapnik-stylesheets/blob/master/inc/settings.xml.inc.template#L16
 
-## Database schema change (v3.x)
+## Database schema change (4.x)
 
-The v3.x series will include [osm2pgsql lua transforms](https://github.com/openstreetmap/osm2pgsql/blob/master/docs/lua.md)
+The v4.x series will include [osm2pgsql lua transforms](https://github.com/openstreetmap/osm2pgsql/blob/master/docs/lua.md)
 and a hstore column with all other tags, allowing use of more OpenStreetMap data.
 Work is being done in the [lua branch](https://github.com/gravitystorm/openstreetmap-carto/tree/lua)
 and issues have their own [tag](https://github.com/gravitystorm/openstreetmap-carto/issues?q=is%3Aopen+is%3Aissue+label%3Alua).
 
 Initial releases will not make use of the new features, maintaining compatibility
-with v2.x and v2.x releases will continue with backports, allowing the style to be
+with v3.x and v3.x releases will continue with backports, allowing the style to be
 rendered from either a new database or an old one.
 
 When sufficient time has passed for users to reload their databases, new features
-can be used and 2.x compatibility will not be maintained.
+can be used and 3.x compatibility will not be maintained.
 
 # Alternatives
 

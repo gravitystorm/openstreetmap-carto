@@ -2,7 +2,7 @@
 
 ## Why have a Code of Conduct?
 
-Online communities include people from many different backgrounds. The OpenStreetMap Carto contributors are committed to providing a friendly, safe and welcoming environment for all, regardless of age, disability, gender, nationality, race, religion, sexuality, or similar personal characteristic.
+Online communities include people from many different backgrounds. The OpenStreetMap Carto contributors are committed to providing a friendly, safe and welcoming environment for all, regardless of age, disability, gender, nationality, ethnicity, religion, sexuality, or similar personal characteristic.
 
 The first goal of the Code of Conduct is to specify a baseline standard of behavior so that people with different social values and communication styles can talk about OpenStreetMap Carto effectively, productively, and respectfully.
 
@@ -47,7 +47,7 @@ People are complicated. You should expect to be misunderstood and to misundersta
 These actions are explicitly forbidden in OpenStreetMap Carto spaces:
 
 - Insulting, demeaning, hateful, or threatening remarks.
-- Discrimination based on age, disability, gender, nationality, race, religion, sexuality, or similar personal characteristic.
+- Discrimination based on age, disability, gender, nationality, ethnicity, religion, sexuality, or similar personal characteristic.
 - Bullying or systematic harassment.
 - Unwelcome sexual advances.
 - Incitement to any of these.

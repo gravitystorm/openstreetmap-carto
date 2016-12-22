@@ -1,4 +1,21 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.45.1...master) 
+## Note: This is the upstream changelog not the one from openstreetmap-carto-de
+openstreetmap-carto-de does not maintain a changelog. Instead have a log at the
+git history. openstreetmap-carto-de commit messages are usually prefixed by "GERMAN STYLE:"
+
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.0.0...master)
+
+## [v3.0.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.45.1...v3.0.0) - 2016-12-21
+### Major Changes
+- Mapnik 3 is now required
+- CartoCSS 0.16.x is now required
+- Official Tilemill support is dropped
+- Shapefiles are downloaded with a new python script
+
+### Changes
+- Noto Naskh is now used for Arabic
+- Visual impact of campsites and quarries reduced below z13
+- Wilderness huts rendered
+- Subway entrances rendered
 
 ## [v2.45.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.45.0...v2.45.1) - 2016-12-03
 ### Changes
