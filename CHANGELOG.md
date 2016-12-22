@@ -11,7 +11,7 @@
 - Noto Naskh is now used for Arabic
 - Visual impact of campsites and quarries reduced below z13
 - Wilderness huts rendered
-- Subway entrances rendered
+- "ref" (reference) text of subway entrances rendered
 
 ## [v2.45.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.45.0...v2.45.1) - 2016-12-03
 ### Changes
