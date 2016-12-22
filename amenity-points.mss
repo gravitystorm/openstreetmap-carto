@@ -501,6 +501,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_arts_centre'][zoom >= 17] {
+    marker-file: url('symbols/shop/art.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_toilets'][zoom >= 17] {
     marker-file: url('symbols/toilets.svg');
     marker-fill: @amenity-brown;
@@ -1226,7 +1233,8 @@
   [feature = 'amenity_theatre'],
   [feature = 'amenity_courthouse'],
   [feature = 'amenity_townhall'],
-  [feature = 'amenity_cinema'] {
+  [feature = 'amenity_cinema'],
+  [feature = 'amenity_arts_centre'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-size: @standard-text-size;
@@ -1241,7 +1249,8 @@
       [feature = 'amenity_library'],
       [feature = 'tourism_museum'],
       [feature = 'amenity_theatre'],
-      [feature = 'amenity_cinema'] {
+      [feature = 'amenity_cinema'],
+      [feature = 'amenity_arts_centre'] {
         text-dy: 11;
       }
     }
