@@ -1924,33 +1924,10 @@ Layer:
             highway,
             junction,
             ref,
-            name,
-            NULL AS way_pixels
+            name
           FROM planet_osm_point
           WHERE highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes'
-          UNION(
-            SELECT
-              ST_BuildArea(way),
-              highway,
-              junction,
-              ref,
-              name,
-              NULL AS way_pixels
-            FROM planet_osm_line
-            WHERE junction = 'yes'
-            UNION
-            SELECT
-              way,
-              highway,
-              junction,
-              ref,
-              name,
-              way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
-            FROM planet_osm_polygon
-            WHERE junction = 'yes'
-            ORDER BY way_pixels DESC NULLS LAST
-          )
-         ) AS junctions
+        ) AS junctions
     properties:
       minzoom: 11
     advanced: {}
