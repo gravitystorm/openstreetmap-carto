@@ -344,7 +344,7 @@
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @transportation-icon;
-    [access != ''][access != 'public'][access != 'yes'] {
+    [access != ''][access != 'yes'] {
       marker-opacity: 0.33;
     }
   }
@@ -1111,7 +1111,7 @@
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @transportation-icon;
-    [access != ''][access != 'public'][access != 'yes'] {
+    [access != ''][access != 'yes'] {
       marker-opacity: 0.33;
     }
   }
@@ -1275,7 +1275,7 @@
     text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
-    [access != ''][access != 'public'][access != 'yes'] {
+    [access != ''][access != 'yes'] {
       text-fill: #66ccaf;
     }
     [feature = 'amenity_bicycle_parking'],
