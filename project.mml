@@ -1742,6 +1742,7 @@ Layer:
         (SELECT
             way,
             localized_name_without_brackets as name,
+            ref,
             railway,
             aerialway,
             CASE railway 
@@ -1769,6 +1770,7 @@ Layer:
         (SELECT
             way,
             localized_name_without_brackets as name,
+            ref,
             railway,
             aerialway
         FROM planet_osm_polygon
