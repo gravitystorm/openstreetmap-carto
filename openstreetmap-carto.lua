@@ -342,13 +342,46 @@ function filter_tags_way (keyvalues, numberofkeys)
     return filter, keyvalues, polygon, roads(keyvalues)
 end
 
+--- Handling for relation members and multipolygon generation
+-- Multipolygons are either old-style or new-style. As defined here,
+-- a new-style MP is one with any tags other than type on the relation, and for
+-- them the tags of the ways do not matter.
+--
+-- An old-style MP is one where the only tag on the relation is
+-- type=multipolygon and the tags of all the members are either the same or
+-- empty.
+--
+-- These are stricter definitions then have been used in the past by the C
+-- transforms, but cut down on bugs where a new-style MP suddenly gets treated
+-- as an old-style MP.
+--
+-- This has a few properties
+--
+-- - MP generation does not depend on polygon characteristics of tags on ways
+--
+-- - All tags are considered, except for deleted tags which are ignored for
+--   technical reasons
+--
+-- - Any new-style MP will never change to an old-style MP by only changing
+--   tags on its member ways, nor will it become invalid
+--
+-- - Any old-style MP will never change to an new-style MP by only changing
+--   tags on its member ways, but may become invalid if the tags become
+--   conflicting
+--
+-- - All multipolygons are polygons
+--
+-- @param keyvalues OSM tags, after processing by relation transform
+-- @param keyvaluemembers OSM tags of relation members, after processing by way transform
+-- @param roles OSM roles of relation members
+-- @param membercount number of members
+-- @return filter, cols, member_superseded, boundary, polygon, roads
 function filter_tags_relation_member (keyvalues, keyvaluemembers, roles, membercount)
-    local filter = 0     -- Will object be filtered out?
-    local linestring = 0 -- Will object be treated as linestring?
-    local polygon = 0    -- Will object be treated as polygon?
-    local membersuperseded = {}
+    local members_superseeded = {}
+
+    -- Start by assuming that this not an old-style MP
     for i = 1, membercount do
-        membersuperseded[i] = 0 -- Will member be ignored when handling areas?
+        members_superseeded[i] = 0
     end
 
     local type = keyvalues["type"]
@@ -358,43 +391,50 @@ function filter_tags_relation_member (keyvalues, keyvaluemembers, roles, memberc
 
     -- Boundary relations are treated as linestring
     if type == "boundary" or (type == "multipolygon" and keyvalues["boundary"]) then
-        linestring = 1
+        -- Avoid generating objects for untagged boundary relations
+        if next(keyvalues) ~= nil then
+            keyvalues.z_order = z_order(keyvalues)
+            return 0, keyvalues, members_superseeded, 1, 0, roads(keyvalues)
+        end
     -- For multipolygons...
     elseif (type == "multipolygon") then
-        -- Treat as polygon
-        polygon = 1
-
-        -- Support for old-style multipolygons (1/2):
-        -- If there are no polygon tags, add tags from all outer elements to the multipolygon itself
-        haspolytags = isarea(keyvalues)
-        if (haspolytags == 0) then
-            for i = 1,membercount do
-                if (roles[i] == "outer") then
-                    for k,v in pairs(keyvaluemembers[i]) do
-                        keyvalues[k] = v
-                    end
+        -- Multipolygons by definition are polygons, so we know roads = linestring = 0, polygon = 1
+        -- The type tag has been removed, so this checks for untagged MPs
+        if next(keyvalues) == nil then
+            -- This is an old-style MP
+            local combined_tags = combine_member_tags(keyvaluemembers)
+            if combined_tags == nil then
+                -- This is an invalid old-style MP with conflicting tags
+                return 1, {}, members_superseeded, 0, 1, 0
+            elseif next(combined_tags) == nil then
+                -- This is a valid old-style MP, but has no tags
+                return 1, {}, members_superseeded, 0, 1, 0
+            else
+                -- This is a valid old-style MP because a set of tags could be
+                -- made. For each member, the POLYGON its way tags generated is
+                -- superseded by the geometry from the MP, or the way was untagged.
+                -- Untagged ways generate no geom, so can be superseded too.
+                for i = 1, membercount do
+                    members_superseeded[i] = 1
                 end
+                combined_tags.z_order = z_order(keyvalues)
+                return 0, combined_tags, members_superseeded, 0, 1, 0
             end
+        else
+            -- This is a new-style MP
+            keyvalues.z_order = z_order(keyvalues)
+            return 0, keyvalues, members_superseeded, 0, 1, 0
         end
-        -- Support for old-style multipolygons (2/2):
-        -- For any member of the multipolygon, set membersuperseded to 1 (i.e. don't deal with it as area as well),
-        -- except when the member has a (non-custom) key/value combination that is not also a key/value combination of the multipolygon itself
-        for i = 1,membercount do
-            superseded = 1
-                for k,v in pairs(keyvaluemembers[i]) do
-                    if ((keyvalues[k] == nil or keyvalues[k] ~= v) and not is_in(k,custom_keys)) then
-                        superseded = 0;
-                        break
-                    end
-                end
-            membersuperseded[i] = superseded
+        assert(false, "End of control reached prematurely for MP")
+    elseif type == "route" then
+        if next(keyvalues) ~= nil then
+            keyvalues.z_order = z_order(keyvalues)
+            return 0, keyvalues, members_superseeded, 1, 0, roads(keyvalues)
         end
     end
 
-    -- Add z_order column
-    keyvalues.z_order = z_order(keyvalues)
-
-    return filter, keyvalues, membersuperseded, linestring, polygon, roads(keyvalues)
+    -- Untagged or unknown type
+    return 1, keyvalues, members_superseeded, 0, 0, 0
 end
 
 --- Check if an object with given tags should be treated as polygon
@@ -429,6 +469,45 @@ function is_in (needle, haystack)
         end
     end
     return false
+end
+
+--- compare two values.
+-- if they are tables, then compare their keys and fields recursively.
+-- @within Comparing
+-- @param t1 A value
+-- @param t2 A value
+-- @return true or false
+function equaltables (t1,t2)
+    for k, v in pairs(t1) do
+        if t2[k] ~= v then return false end
+    end
+    for k, v in pairs(t2) do
+        if t1[k] ~= v then return false end
+    end
+    return true
+end
+
+--- Combines the tags of relation members
+-- If the tags are conflicting then nil is returned. Members with no tags are ignored
+-- @param member_tags OSM tags of relation members
+-- @return combined tags, or nil if cannot combine
+function combine_member_tags (member_tags)
+    local combined_tags = {}
+    for _, tags in ipairs(member_tags) do
+        -- Check if the member has tags
+        if next(tags) ~= nil then
+            if next(combined_tags) == nil then
+                -- This is the first tagged member
+                combined_tags = tags
+            else
+                -- A different tagged member
+                if not equaltables(tags, combined_tags) then
+                    return nil
+                end
+            end
+        end
+    end
+    return combined_tags
 end
 
 --- Normalizes layer tags
