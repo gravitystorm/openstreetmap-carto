@@ -1821,7 +1821,17 @@ Layer:
             name
           FROM planet_osm_point
           WHERE highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes'
-        ) AS junctions
+          UNION ALL(
+            SELECT
+              ST_BuildArea(way) AS way,
+              highway,
+              junction,
+              ref,
+              name
+            FROM planet_osm_line
+            WHERE junction = 'yes'
+          )
+         ) AS junctions
     properties:
       minzoom: 11
   - id: bridge-text
