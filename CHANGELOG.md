@@ -1,5 +1,9 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.0.0...master)
 
+## [v3.0.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.0.0...v3.0.1) - 2016-12-22
+### Changes
+- Revert of junction area changes which were preventing index usage
+
 ## [v3.0.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.45.1...v3.0.0) - 2016-12-21
 ### Major Changes
 - Mapnik 3 is now required
