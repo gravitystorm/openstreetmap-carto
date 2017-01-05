@@ -1891,6 +1891,7 @@ Layer:
           WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street', 'track', 'path', 'platform')
             OR railway IN ('platform')
             AND name IS NOT NULL
+          ORDER BY way_area DESC
         ) AS roads_area_text_name
     properties:
       minzoom: 15
