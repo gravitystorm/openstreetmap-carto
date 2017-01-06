@@ -1789,20 +1789,41 @@ Layer:
             refs
           FROM (
             SELECT
-                way, highway,
+                way,
+                osm_id,
+                highway,
                 array_length(refs,1) AS height,
                 (SELECT MAX(char_length(ref)) FROM unnest(refs) AS u(ref)) AS width,
                 array_to_string(refs, E'\n') AS refs
               FROM (
                 SELECT
                     way,
+                    osm_id,
                     highway,
                     string_to_array(ref, ';') AS refs
                 FROM planet_osm_roads
                   WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary')
                   AND ref IS NOT NULL
               ) AS p) AS q
-          WHERE height <= 4 AND width <= 11) AS roads_text_ref_low_zoom
+          WHERE height <= 4 AND width <= 11
+          ORDER BY
+            CASE
+              WHEN highway = 'motorway' THEN 38
+              WHEN highway = 'trunk' THEN 37
+              WHEN highway = 'primary' THEN 36
+              WHEN highway = 'secondary' THEN 35
+              WHEN highway = 'tertiary' THEN 34
+              WHEN highway = 'unclassified' THEN 33
+              WHEN highway = 'residential' THEN 32
+              WHEN highway = 'runway' THEN 6
+              WHEN highway = 'taxiway' THEN 5
+              ELSE NULL
+            END DESC NULLS LAST,
+            height DESC,
+            width DESC,
+            refs,
+            osm_id
+        ) AS roads_text_ref_low_zoom
     properties:
       minzoom: 10
       maxzoom: 12
@@ -1856,12 +1877,15 @@ Layer:
             refs
           FROM (
             SELECT
-                way, highway,
+                osm_id,
+                way,
+                highway,
                 array_length(refs,1) AS height,
                 (SELECT MAX(char_length(ref)) FROM unnest(refs) AS u(ref)) AS width,
                 array_to_string(refs, E'\n') AS refs
               FROM (
                 SELECT
+                    osm_id,
                     way,
                     COALESCE(
                       CASE WHEN highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential') THEN highway ELSE NULL END,
@@ -1869,10 +1893,28 @@ Layer:
                     ) AS highway,
                     string_to_array(ref, ';') AS refs
                   FROM planet_osm_line
-                    WHERE (highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential') OR aeroway IN ('runway', 'taxiway'))
-                      AND ref IS NOT NULL
+                  WHERE (highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential') OR aeroway IN ('runway', 'taxiway'))
+                    AND ref IS NOT NULL
               ) AS p) AS q
-          WHERE height <= 4 AND width <= 11) AS roads_text_ref
+          WHERE height <= 4 AND width <= 11
+          ORDER BY
+            CASE
+              WHEN highway = 'motorway' THEN 38
+              WHEN highway = 'trunk' THEN 37
+              WHEN highway = 'primary' THEN 36
+              WHEN highway = 'secondary' THEN 35
+              WHEN highway = 'tertiary' THEN 34
+              WHEN highway = 'unclassified' THEN 33
+              WHEN highway = 'residential' THEN 32
+              WHEN highway = 'runway' THEN 6
+              WHEN highway = 'taxiway' THEN 5
+              ELSE NULL
+            END DESC NULLS LAST,
+            height DESC,
+            width DESC,
+            refs,
+            osm_id
+        ) AS roads_text_ref
     properties:
       minzoom: 13
   - id: roads-area-text-name
@@ -1891,6 +1933,7 @@ Layer:
           WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street', 'track', 'path', 'platform')
             OR railway IN ('platform')
             AND name IS NOT NULL
+          ORDER BY way_area DESC
         ) AS roads_area_text_name
     properties:
       minzoom: 15
@@ -1914,12 +1957,39 @@ Layer:
               ELSE NULL
             END AS oneway,
             horse, bicycle
-          FROM planet_osm_line
+          FROM planet_osm_line l
+          JOIN (VALUES -- this join is also putting a condition on what is selected. features not matching it do not make it into the results.
+              ('motorway', 380),
+              ('trunk', 370),
+              ('primary', 360),
+              ('secondary', 350),
+              ('tertiary', 340),
+              ('residential', 330),
+              ('unclassified', 330),
+              ('road', 330),
+              ('living_street', 320),
+              ('pedestrian', 310),
+              ('raceway', 300),
+              ('motorway_link', 240),
+              ('trunk_link', 230),
+              ('primary_link', 220),
+              ('secondary_link', 210),
+              ('tertiary_link', 200),
+              ('service', 150),
+              ('construction', 10)
+            ) AS ordertable (highway, prio)
+            USING (highway)
           WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 
                             'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction')
             AND (name IS NOT NULL
               OR oneway IN ('yes', '-1')
               OR junction IN ('roundabout'))
+          ORDER BY
+            prio DESC, -- put important roads first
+            CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END DESC, -- put top layered roads first
+            length(name) DESC, -- Try to fit big labels in first
+            name DESC, -- Force a consistent ordering between differently named streets
+            l.osm_id DESC -- Force an ordering for streets of the same name, e.g. dualized roads
         ) AS roads_text_name
     properties:
       minzoom: 13
