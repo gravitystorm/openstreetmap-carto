@@ -424,6 +424,9 @@ Layer:
           FROM planet_osm_polygon
           WHERE building IS NOT NULL
             AND building != 'no'
+            AND (aeroway IS NULL OR aeroway != 'terminal')
+            AND (amenity IS NULL OR amenity != 'place_of_worship')
+            AND building != 'train_station'
             AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
           ORDER BY z_order, way_area DESC
         ) AS buildings
