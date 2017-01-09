@@ -667,9 +667,9 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (select *, cast(abs(a12-a23) as integer)%180 as angle_diff, (a12+a23+90)/2 as angle, 1/coslat as labelsizefactor, d12*d23 as pitch_area from
-         (select *, st_npoints(way2) as nb, ST_Distance_sphere(st_transform(st_pointn(way2,1),4326),st_transform(st_pointn(way2,2),4326)) as d12,             
-         ST_Distance_sphere(st_transform(st_pointn(way2,3),4326),st_transform(st_pointn(way2,2),4326)) as d23,                                   
-         ST_Distance_sphere(st_transform(st_pointn(way2,1),4326),st_transform(st_pointn(way2,3),4326)) as d13,
+         (select *, st_npoints(way2) as nb, ST_DistanceSphere(st_transform(st_pointn(way2,1),4326),st_transform(st_pointn(way2,2),4326)) as d12,             
+         ST_DistanceSphere(st_transform(st_pointn(way2,3),4326),st_transform(st_pointn(way2,2),4326)) as d23,                                   
+         ST_DistanceSphere(st_transform(st_pointn(way2,1),4326),st_transform(st_pointn(way2,3),4326)) as d13,
          cos(st_y(st_transform(st_pointn(way2,1),4326))/180*3.1415927) as coslat, degrees(st_azimuth(st_pointn(way2,1),st_pointn(way2,2))) as a12,
          degrees(st_azimuth(st_pointn(way2,2),st_pointn(way2,3))) as a23 from                                                                     
          (select *, st_area(way) as way_area, ST_ExteriorRing(ST_SimplifyPreserveTopology(way,100)) as way2 from (select (st_dump(way)).geom as way, sport, surface, access
