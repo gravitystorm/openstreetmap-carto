@@ -59,7 +59,7 @@
 
 @pitch: #aae0cb; // also track
 @track: @pitch;
-@stadium: @societal_amenities; // also sports_centre
+@stadium: @societal_amenities; // also fitness_centre and sports_centre
 @golf_course: #b5e3b5;
 
 #landcover-low-zoom[zoom < 10],
@@ -528,6 +528,7 @@
     polygon-fill: @station;
   }
 
+  [feature = 'leisure_fitness_centre'],
   [feature = 'leisure_sports_centre'],
   [feature = 'leisure_stadium'] {
     [zoom >= 10] {
