@@ -1,6 +1,9 @@
 # This is the osm2pgsql .style file for openstreetmap-carto.
-# phstore is used instead of polygon,nocolumn to preserve compatibility
-# with older osm2pgsql versions
+# It is inteded to be used with openstreetmap-carto.lua and osm2pgsql Lua
+# transforms. Full usage details are in INSTALL.md
+# Among things, this means that the linear vs polygon distinction in this file
+# doesn't matter, because that is set in the Lua and this file is only used for
+# column names and types.
 
 # OsmType  Tag          DataType     Flags
 node,way   access       text         linear
@@ -30,7 +33,7 @@ node,way   lock         text         linear
 node,way   man_made     text         polygon
 node,way   military     text         polygon
 node,way   name         text         linear
-node,way   natural      text         polygon  # natural=coastline tags are discarded by a hard coded rule in osm2pgsql
+node,way   natural      text         polygon
 node,way   oneway       text         linear
 node,way   place        text         polygon
 node,way   power        text         polygon
