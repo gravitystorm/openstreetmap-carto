@@ -48,7 +48,7 @@ assert(combine_member_tags({{foo="bar"}, {baz="qax"}}) == nil, "test failed: two
 
 print("TESTING: filter_tags_relation_member")
 
--- Tests filter_tags_relation_member against expected values
+--- Tests filter_tags_relation_member against expected values
 -- @param keyvalues OSM tags, after processing by relation transform
 -- @param keyvaluemembers OSM tags of relation members, after processing by way transform
 -- @param filter expected filter result
