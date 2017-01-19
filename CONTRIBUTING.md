@@ -115,6 +115,8 @@ Because SQL within JSON or YAML will not generally be syntax highlighted, indent
 * Add indentation if necessary for complex function calls, WHERE parenthesis, and CASE statements
 * One space before and after = etc
 * Name SQL subqueries after the layer name (but use underscores)
+* When extracting tags from hstore, use `tags->'foo'`, not `tags -> 'foo'`, and only add parenthesis if needed for order of operations
+* To check if a tag is in the tags hstore, use `tags @> 'foo=>bar'`, relying on automatic conversion from `text` to `hstore`.
 
 ## Map Icon Guidelines
 
