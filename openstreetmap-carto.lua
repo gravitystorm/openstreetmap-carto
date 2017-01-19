@@ -377,11 +377,11 @@ end
 -- @param membercount number of members
 -- @return filter, cols, member_superseded, boundary, polygon, roads
 function filter_tags_relation_member (keyvalues, keyvaluemembers, roles, membercount)
-    local members_superseeded = {}
+    local members_superseded = {}
 
     -- Start by assuming that this not an old-style MP
     for i = 1, membercount do
-        members_superseeded[i] = 0
+        members_superseded[i] = 0
     end
 
     local type = keyvalues["type"]
@@ -394,7 +394,7 @@ function filter_tags_relation_member (keyvalues, keyvaluemembers, roles, memberc
         -- Avoid generating objects for untagged boundary relations
         if next(keyvalues) ~= nil then
             keyvalues.z_order = z_order(keyvalues)
-            return 0, keyvalues, members_superseeded, 1, 0, roads(keyvalues)
+            return 0, keyvalues, members_superseded, 1, 0, roads(keyvalues)
         end
     -- For multipolygons...
     elseif (type == "multipolygon") then
@@ -405,36 +405,36 @@ function filter_tags_relation_member (keyvalues, keyvaluemembers, roles, memberc
             local combined_tags = combine_member_tags(keyvaluemembers)
             if combined_tags == nil then
                 -- This is an invalid old-style MP with conflicting tags
-                return 1, {}, members_superseeded, 0, 1, 0
+                return 1, {}, members_superseded, 0, 1, 0
             elseif next(combined_tags) == nil then
                 -- This is a valid old-style MP, but has no tags
-                return 1, {}, members_superseeded, 0, 1, 0
+                return 1, {}, members_superseded, 0, 1, 0
             else
                 -- This is a valid old-style MP because a set of tags could be
                 -- made. For each member, the POLYGON its way tags generated is
                 -- superseded by the geometry from the MP, or the way was untagged.
                 -- Untagged ways generate no geom, so can be superseded too.
                 for i = 1, membercount do
-                    members_superseeded[i] = 1
+                    members_superseded[i] = 1
                 end
                 combined_tags.z_order = z_order(keyvalues)
-                return 0, combined_tags, members_superseeded, 0, 1, 0
+                return 0, combined_tags, members_superseded, 0, 1, 0
             end
         else
             -- This is a new-style MP
             keyvalues.z_order = z_order(keyvalues)
-            return 0, keyvalues, members_superseeded, 0, 1, 0
+            return 0, keyvalues, members_superseded, 0, 1, 0
         end
         assert(false, "End of control reached prematurely for MP")
     elseif type == "route" then
         if next(keyvalues) ~= nil then
             keyvalues.z_order = z_order(keyvalues)
-            return 0, keyvalues, members_superseeded, 1, 0, roads(keyvalues)
+            return 0, keyvalues, members_superseded, 1, 0, roads(keyvalues)
         end
     end
 
     -- Untagged or unknown type
-    return 1, keyvalues, members_superseeded, 0, 0, 0
+    return 1, keyvalues, members_superseded, 0, 0, 0
 end
 
 --- Check if an object with given tags should be treated as polygon
