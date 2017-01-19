@@ -272,7 +272,7 @@ function roads(tags)
 end
 
 -- Filtering on nodes, ways, and relations
-function filter_tags_generic(tags, n)
+function filter_tags_generic(tags)
     -- Delete tags listed in delete_tags
     for tag, _ in pairs (tags) do
         for _, d in ipairs(delete_tags) do
