@@ -306,13 +306,13 @@ end
 
 -- Filtering on nodes
 function filter_tags_node (keyvalues, numberofkeys)
-    return filter_tags_generic(keyvalues, numberofkeys)
+    return filter_tags_generic(keyvalues)
 end
 
 -- Filtering on relations
 function filter_basic_tags_rel (keyvalues, numberofkeys)
     -- Filter out objects that are filtered out by filter_tags_generic
-    local filter, keyvalues = filter_tags_generic(keyvalues, numberofkeys)
+    local filter, keyvalues = filter_tags_generic(keyvalues)
     if filter == 1 then
         return 1, keyvalues
     end
@@ -331,7 +331,7 @@ function filter_tags_way (keyvalues, numberofkeys)
     local polygon = 0 -- Will object be treated as polygon?
 
     -- Filter out objects that are filtered out by filter_tags_generic
-    filter, keyvalues = filter_tags_generic(keyvalues, numberofkeys)
+    filter, keyvalues = filter_tags_generic(keyvalues)
     if filter == 1 then
         return filter, keyvalues, polygon, roads
     end
