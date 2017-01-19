@@ -42,6 +42,12 @@ assert(({filter_tags_generic({note="foo"})})[1] == 1, "deleted filter")
 assert(equaltables(({filter_tags_generic({note="foo"})})[2], {}), "deleted tags")
 assert(({filter_tags_generic({foo="bar"})})[1] == 0, "single tag filter")
 assert(equaltables(({filter_tags_generic({foo="bar"})})[2], {foo="bar"}), "single tag tags")
+assert(({filter_tags_generic({foo="bar", note="baz"})})[1] == 0, "tag + deleted tag filter")
+assert(equaltables(({filter_tags_generic({foo="bar", note="baz"})})[2], {foo="bar"}), "tag + deleted tags")
+assert(({filter_tags_generic({["note:xx"]="foo"})})[1] == 1, "wildcard deleted filter")
+assert(equaltables(({filter_tags_generic({["note:xx"]="foo"})})[2], {}), "wildcard deleted tags")
+assert(({filter_tags_generic({["note:xx"]="foo", foo="bar"})})[1] == 0, "wildcard deleted + tag filter")
+assert(equaltables(({filter_tags_generic({["note:xx"]="foo", foo="bar"})})[2], {foo="bar"}), "wildcard deleted + tag tags")
 
 -- yay multipolygons?
 print("TESTING: combine_member_tags")
