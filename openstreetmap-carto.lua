@@ -275,15 +275,16 @@ end
 -- @param tags Raw OSM tags
 -- @return Filtered OSM tags
 function filter_tags_generic(tags)
-    -- Delete tags listed in delete_tags
-    for tag, _ in pairs (tags) do
-        for _, d in ipairs(delete_tags) do
-            if tag == d then
-              tags[tag] = nil
-              break -- Skip this tag from further checks since it's deleted
-            end
-        end
+    -- Short-circuit for untagged objects
+    if next(tags) == nil then
+        return 1, {}
     end
+
+    -- Delete tags listed in delete_tags
+    for _, d in ipairs(delete_tags) do
+        tags[d] = nil
+    end
+
     -- By using a second loop for wildcards we avoid checking already deleted tags
     for tag, _ in pairs (tags) do
         for _, d in ipairs(delete_wildcards) do
