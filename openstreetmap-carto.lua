@@ -271,7 +271,9 @@ function roads(tags)
     return 0
 end
 
--- Filtering on nodes, ways, and relations
+--- Generic filtering of OSM tags
+-- @param tags Raw OSM tags
+-- @return Filtered OSM tags
 function filter_tags_generic(tags)
     -- Delete tags listed in delete_tags
     for tag, _ in pairs (tags) do
