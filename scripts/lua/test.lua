@@ -35,6 +35,14 @@ assert(isarea({waterway = "river"}) == 0, "test failed: river")
 assert(isarea({waterway = "riverbank"}) == 1, "test failed: river")
 assert(isarea({highway = "services"}) == 1, "test failed: river")
 
+print("TESTING: filter_tags_generic")
+assert(({filter_tags_generic({})})[1] == 1, "Untagged filter")
+assert(equaltables(({filter_tags_generic({})})[2], {}), "Untagged tags")
+assert(({filter_tags_generic({note="foo"})})[1] == 1, "deleted filter")
+assert(equaltables(({filter_tags_generic({note="foo"})})[2], {}), "deleted tags")
+assert(({filter_tags_generic({foo="bar"})})[1] == 0, "single tag filter")
+assert(equaltables(({filter_tags_generic({foo="bar"})})[2], {foo="bar"}), "single tag tags")
+
 -- yay multipolygons?
 print("TESTING: combine_member_tags")
 assert(equaltables(combine_member_tags({}), {}), "test failed: no members")
