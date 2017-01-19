@@ -21,6 +21,7 @@ assert(roads({railway="rail"}) == 1, "test failed: rail")
 assert(roads({highway="residential", railway="rail"}) == 1, "test failed: rail+residential")
 assert(roads({railway="turntable"}) == 0, "test failed: rail=turntable")
 assert(roads({railway="rail", service="spur"}) == 0, "test failed: rail SSY")
+assert(roads({railway="rail", service="main"}) == 1, "test failed: rail non-SSY")
 assert(roads({boundary="administrative"}) == 1, "test failed: boundary administrative")
 
 print("TESTING: isarea")
