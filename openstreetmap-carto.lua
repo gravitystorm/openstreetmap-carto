@@ -122,9 +122,6 @@ local delete_tags = {
     -- MassGIS (Massachusetts, US)
     'massgis:way_id',
 
-    -- mvdgis (Montevideo, UY)
-    'mvdgis:.*',
-
     -- misc
     'import',
     'import_uuid',
