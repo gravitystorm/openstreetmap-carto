@@ -2,6 +2,10 @@ language: node_js
 sudo: false
 node_js:
   - "0.10"
+addons:
+  apt:
+    packages:
+    - lua5.1
 env:
   - CARTO=0.16.0 MAPNIK='3.0.0 3.0.12'
   - CARTO=0.16.3 MAPNIK='3.0.0 3.0.12'
@@ -16,3 +20,5 @@ script:
   - for m in $MAPNIK; do ./node_modules/carto/bin/carto -a $m project.mml | xmllint - | wc -l; done
   # Validate that the SVGs are valid XML
   - find symbols/ -name '*.svg' | xargs xmllint --noout
+  # Check the Lua transforms
+  - lua scripts/lua/test.lua
