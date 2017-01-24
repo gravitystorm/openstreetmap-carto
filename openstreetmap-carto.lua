@@ -337,7 +337,7 @@ function filter_tags_way (keyvalues, numberofkeys)
     polygon = isarea(keyvalues)
 
     -- Add z_order column
-    keyvalues.z_order = z_order(keyvalues)
+    keyvalues["z_order"] = z_order(keyvalues)
 
     return filter, keyvalues, polygon, roads(keyvalues)
 end
