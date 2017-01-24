@@ -471,11 +471,9 @@ function is_in (needle, haystack)
     return false
 end
 
---- compare two values.
--- if they are tables, then compare their keys and fields recursively.
--- @within Comparing
--- @param t1 A value
--- @param t2 A value
+--- compare two tables.
+-- @param t1 A table
+-- @param t2 A table
 -- @return true or false
 function equaltables (t1,t2)
     for k, v in pairs(t1) do
