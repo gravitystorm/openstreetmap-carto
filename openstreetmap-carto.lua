@@ -1,9 +1,6 @@
 -- For documentation of Lua tag transformations, see:
 -- https://github.com/openstreetmap/osm2pgsql/blob/master/docs/lua.md
 
--- Custom keys that are defined by this file
-custom_keys = {'z_order'}
-
 -- Objects with any of the following keys will be treated as polygon
 local polygon_keys = {
     'abandoned:aeroway',
