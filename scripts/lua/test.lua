@@ -50,6 +50,9 @@ assert(equaltables(({filter_tags_generic({["note:xx"]="foo"})})[2], {}), "wildca
 assert(({filter_tags_generic({["note:xx"]="foo", foo="bar"})})[1] == 0, "wildcard deleted + tag filter")
 assert(equaltables(({filter_tags_generic({["note:xx"]="foo", foo="bar"})})[2], {foo="bar"}), "wildcard deleted + tag tags")
 
+assert(({filter_tags_generic({["foo:note:xx"]="foo"})})[1] == 0, "prefix later in tag filter")
+assert(equaltables(({filter_tags_generic({["foo:note:xx"]="foo"})})[2], {["foo:note:xx"]="foo"}), "prefix later in tag tags")
+
 -- yay multipolygons?
 print("TESTING: combine_member_tags")
 assert(equaltables(combine_member_tags({}), {}), "test failed: no members")

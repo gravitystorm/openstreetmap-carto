@@ -125,56 +125,56 @@ local delete_tags = {
     'OBJTYPE',
     'SK53_bulk:load'
 }
-delete_wildcards = {
-    'note:.*',
-    'source:.*',
+delete_prefixes = {
+    'note:',
+    'source:',
     -- Corine (CLC) (Europe)
-    'CLC:.*',
+    'CLC:',
 
     -- Geobase (CA)
-    'geobase:.*',
+    'geobase:',
     -- CanVec (CA)
-    'canvec:.*',
+    'canvec:',
     -- Geobase (CA)
-    'geobase:.*',
+    'geobase:',
 
     -- osak (DK)
-    'osak:.*',
+    'osak:',
     -- kms (DK)
-    'kms:.*',
+    'kms:',
 
     -- ngbe (ES)
     -- See also note:es and source:file above
-    'ngbe:.*',
+    'ngbe:',
 
     -- Friuli Venezia Giulia (IT)
-    'it:fvg:.*',
+    'it:fvg:',
 
     -- KSJ2 (JA)
     -- See also note:ja and source_ref above
-    'KSJ2:.*',
+    'KSJ2:',
     -- Yahoo/ALPS (JA)
-    'yh:.*',
+    'yh:',
 
     -- LINZ (NZ)
-    'LINZ2OSM:.*',
-    'linz2osm:.*',
-    'LINZ:.*',
+    'LINZ2OSM:',
+    'linz2osm:',
+    'LINZ:',
 
     -- WroclawGIS (PL)
-    'WroclawGIS:.*',
+    'WroclawGIS:',
     -- Naptan (UK)
-    'naptan:.*',
+    'naptan:',
 
     -- TIGER (US)
-    'tiger:.*',
+    'tiger:',
     -- GNIS (US)
-    'gnis:.*',
+    'gnis:',
     -- National Hydrography Dataset (US)
-    'NHD:.*',
-    'nhd:.*',
+    'NHD:',
+    'nhd:',
     -- mvdgis (Montevideo, UY)
-    'mvdgis:.*'
+    'mvdgis:'
 }
 
 -- Big table for z_order and roads status for certain tags. z=0 is turned into
@@ -281,8 +281,8 @@ function filter_tags_generic(tags)
 
     -- By using a second loop for wildcards we avoid checking already deleted tags
     for tag, _ in pairs (tags) do
-        for _, d in ipairs(delete_wildcards) do
-            if string.find(tag, d) then
+        for _, d in ipairs(delete_prefixes) do
+            if string.sub(tag, 1, string.len(d)) == d then
                 tags[tag] = nil
                 break
             end
