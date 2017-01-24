@@ -294,7 +294,7 @@ function filter_tags_generic(tags)
         return 1, {}
     end
 
--- Convert layer to an integer
+    -- Convert layer to an integer
     tags['layer'] = layer(tags['layer'])
     return 0, tags
 end
