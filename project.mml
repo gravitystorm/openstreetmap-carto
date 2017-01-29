@@ -1,7 +1,7 @@
 scale: 1
 metatile: 2
-name: "OpenStreetMap Carto"
-description: "A general-purpose OpenStreetMap mapnik style, in CartoCSS"
+name: OpenStreetMap Carto
+description: A general-purpose OpenStreetMap mapnik style, in CartoCSS
 bounds: &world
   - -180
   - -85.05112877980659
@@ -11,7 +11,7 @@ center:
   - 0
   - 0
   - 4
-format: "png"
+format: png
 interactivity: false
 minzoom: 0
 maxzoom: 22
@@ -54,58 +54,49 @@ Stylesheet:
   - "addressing.mss"
   - "sport.mss"
 Layer:
-  - id: "world"
-    name: "world"
-    class: ""
-    geometry: "polygon"
+  - id: world
+    name: world
+    geometry: polygon
     <<: *extents
     Datasource:
-      file: "data/simplified-land-polygons-complete-3857/simplified_land_polygons.shp"
-      type: "shape"
-    advanced: {}
+      file: data/simplified-land-polygons-complete-3857/simplified_land_polygons.shp
+      type: shape
     properties:
       maxzoom: 9
-  - id: "coast-poly"
-    name: "coast-poly"
-    class: ""
-    geometry: "polygon"
+  - id: coast-poly
+    name: coast-poly
+    geometry: polygon
     <<: *extents
     Datasource:
-      file: "data/land-polygons-split-3857/land_polygons.shp"
-      type: "shape"
+      file: data/land-polygons-split-3857/land_polygons.shp
+      type: shape
     properties:
       minzoom: 10
-    advanced: {}
-  - id: "builtup"
-    name: "builtup"
-    geometry: "polygon"
-    class: ""
+  - id: builtup
+    name: builtup
+    geometry: polygon
     extent: *world
-    srs-name: "mercator"
+    srs-name: mercator
     srs: "+proj=merc +datum=WGS84 +over"
     Datasource:
-      file: "data/world_boundaries/builtup_area.shp"
-      type: "shape"
+      file: data/world_boundaries/builtup_area.shp
+      type: shape
     properties:
       minzoom: 8
       maxzoom: 9
-    advanced: {}
-  - id: "necountries"
-    name: "necountries"
-    class: ""
-    geometry: "linestring"
+  - id: necountries
+    name: necountries
+    geometry: linestring
     <<: *extents84
     Datasource:
-      file: "data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp"
-      type: "shape"
+      file: data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp
+      type: shape
     properties:
       minzoom: 1
       maxzoom: 3
-    advanced: {}
-  - id: "landcover-low-zoom"
-    name: "landcover-low-zoom"
-    class: ""
-    geometry: "polygon"
+  - id: landcover-low-zoom
+    name: landcover-low-zoom
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -130,11 +121,9 @@ Layer:
     properties:
       minzoom: 7
       maxzoom: 9
-    advanced: {}
-  - id: "landcover"
-    name: "landcover"
-    class: ""
-    geometry: "polygon"
+  - id: landcover
+    name: landcover
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -182,11 +171,9 @@ Layer:
         ) AS features
     properties:
       minzoom: 10
-    advanced: {}
-  - id: "landcover-line"
-    name: "landcover-line"
-    class: ""
-    geometry: "linestring"
+  - id: landcover-line
+    name: landcover-line
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -196,13 +183,11 @@ Layer:
           FROM planet_osm_line
           WHERE man_made = 'cutline'
         ) AS landcover_line
-    advanced: {}
     properties:
       minzoom: 14
-  - id: "water-lines-casing"
-    name: "water-lines-casing"
-    class: ""
-    geometry: "linestring"
+  - id: water-lines-casing
+    name: water-lines-casing
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -215,11 +200,9 @@ Layer:
         ) AS water_lines_casing
     properties:
       minzoom: 13
-    advanced: {}
-  - id: "water-lines-low-zoom"
-    name: "water-lines-low-zoom"
-    class: ""
-    geometry: "linestring"
+  - id: water-lines-low-zoom
+    name: water-lines-low-zoom
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -234,22 +217,18 @@ Layer:
     properties:
       minzoom: 8
       maxzoom: 11
-    advanced: {}
-  - id: "icesheet-poly"
-    name: "icesheet-poly"
-    class: ""
-    geometry: "polygon"
+  - id: icesheet-poly
+    name: icesheet-poly
+    geometry: polygon
     <<: *extents
     Datasource:
-      file: "data/antarctica-icesheet-polygons-3857/icesheet_polygons.shp"
-      type: "shape"
+      file: data/antarctica-icesheet-polygons-3857/icesheet_polygons.shp
+      type: shape
     properties:
       minzoom: 4
-    advanced: {}
-  - id: "water-areas"
-    name: "water-areas"
-    class: ""
-    geometry: "polygon"
+  - id: water-areas
+    name: water-areas
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -272,11 +251,9 @@ Layer:
         ) AS water_areas
     properties:
       minzoom: 4
-    advanced: {}
-  - id: "landcover-area-symbols"
-    name: "landcover-area-symbols"
-    class: ""
-    geometry: "polygon"
+  - id: landcover-area-symbols
+    name: landcover-area-symbols
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -302,22 +279,19 @@ Layer:
         ) AS landcover_area_symbols
     properties:
       minzoom: 10
-    advanced: {}
-  - id: "icesheet-outlines"
-    name: "icesheet-outlines"
-    class: ""
-    geometry: "linestring"
+  - id: icesheet-outlines
+    name: icesheet-outlines
+    geometry: linestring
     <<: *extents
     Datasource:
-      file: "data/antarctica-icesheet-outlines-3857/icesheet_outlines.shp"
-      type: "shape"
+      file: data/antarctica-icesheet-outlines-3857/icesheet_outlines.shp
+      type: shape
     properties:
       minzoom: 4
-    advanced: {}
-  - id: "water-lines"
-    name: "water-lines"
-    class: "water-lines"
-    geometry: "linestring"
+  - id: water-lines
+    name: water-lines
+    class: water-lines
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -333,11 +307,9 @@ Layer:
         ) AS water_lines
     properties:
       minzoom: 12
-    advanced: {}
-  - id: "water-barriers-line"
-    name: "water-barriers-line"
-    class: ""
-    geometry: "linestring"
+  - id: water-barriers-line
+    name: water-barriers-line
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -348,13 +320,11 @@ Layer:
           FROM planet_osm_line
           WHERE waterway IN ('dam', 'weir', 'lock_gate')
         ) AS water_barriers_line
-    advanced: {}
     properties:
       minzoom: 13
-  - id: "water-barriers-poly"
-    name: "water-barriers-poly"
-    class: ""
-    geometry: "polygon"
+  - id: water-barriers-poly
+    name: water-barriers-poly
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -366,13 +336,11 @@ Layer:
           FROM planet_osm_polygon
           WHERE waterway IN ('dam', 'weir', 'lock_gate')
         ) AS water_barriers_poly
-    advanced: {}
     properties:
       minzoom: 13
-  - id: "marinas-area"
-    name: "marinas-area"
-    class: ""
-    geometry: "polygon"
+  - id: marinas-area
+    name: marinas-area
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -384,11 +352,9 @@ Layer:
         ) AS marinas_area
     properties:
       minzoom: 14
-    advanced: {}
-  - id: "piers-poly"
-    name: "piers-poly"
-    class: ""
-    geometry: "polygon"
+  - id: piers-poly
+    name: piers-poly
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -400,11 +366,9 @@ Layer:
         ) AS piers_poly
     properties:
       minzoom: 12
-    advanced: {}
-  - id: "piers-line"
-    name: "piers-line"
-    class: ""
-    geometry: "linestring"
+  - id: piers-line
+    name: piers-line
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -416,11 +380,9 @@ Layer:
         ) AS piers_line
     properties:
       minzoom: 12
-    advanced: {}
-  - id: "water-barriers-point"
-    name: "water-barriers-point"
-    class: ""
-    geometry: "point"
+  - id: water-barriers-point
+    name: water-barriers-point
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -432,11 +394,9 @@ Layer:
         ) AS water_barriers_points
     properties:
       minzoom: 17
-    advanced: {}
-  - id: "bridge"
-    name: "bridge"
-    class: ""
-    geometry: "polygon"
+  - id: bridge
+    name: bridge
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -451,11 +411,9 @@ Layer:
         ) AS bridge
     properties:
       minzoom: 12
-    advanced: {}
-  - id: "buildings"
-    name: "buildings"
-    class: ""
-    geometry: "polygon"
+  - id: buildings
+    name: buildings
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -466,16 +424,17 @@ Layer:
           FROM planet_osm_polygon
           WHERE building IS NOT NULL
             AND building != 'no'
+            AND (aeroway IS NULL OR aeroway != 'terminal')
+            AND (amenity IS NULL OR amenity != 'place_of_worship')
+            AND building != 'train_station'
             AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
           ORDER BY z_order, way_area DESC
         ) AS buildings
     properties:
       minzoom: 13
-    advanced: {}
-  - id: "buildings-major"
-    name: "buildings-major"
-    class: ""
-    geometry: "polygon"
+  - id: buildings-major
+    name: buildings-major
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -494,11 +453,10 @@ Layer:
         AS buildings_major
     properties:
       minzoom: 13
-    advanced: {}
-  - id: "tunnels"
-    name: "tunnels"
-    class: "tunnels-fill tunnels-casing access"
-    geometry: "linestring"
+  - id: tunnels
+    name: tunnels
+    class: tunnels-fill tunnels-casing access
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -640,12 +598,10 @@ Layer:
             CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
         ) AS tunnels
     properties:
-      group-by: "layernotnull"
+      group-by: layernotnull
       minzoom: 9
-    advanced: {}
   - id: "sports-grounds"  
     name: "sports-grounds"
-    class: ""
     geometry: "polygon"
     <<: *extents
     Datasource:
@@ -658,10 +614,8 @@ Layer:
           WHERE leisure in ('sports_centre','stadium','pitch','track')
           ORDER BY z_order,prio,way_area desc)
         AS sports_grounds
-    advanced: {}
   - id: "sports"
     name: "sports"
-    class: ""
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -679,11 +633,9 @@ Layer:
             AND leisure = 'pitch'
             AND way && !bbox!) as dump) as simplified) as simplified2)
           as sports
-    advanced: {}
-  - id: "landuse-overlay"
-    name: "landuse-overlay"
-    class: ""
-    geometry: "polygon"
+  - id: landuse-overlay
+    name: landuse-overlay
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -698,11 +650,10 @@ Layer:
         ) AS landuse_overlay
     properties:
       minzoom: 7
-    advanced: {}
-  - id: "line-barriers"
-    name: "line-barriers"
-    class: "barriers"
-    geometry: "linestring"
+  - id: line-barriers
+    name: line-barriers
+    class: barriers
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -722,11 +673,9 @@ Layer:
         ) AS line_barriers
     properties:
       minzoom: 14
-    advanced: {}
-  - id: "cliffs"
-    name: "cliffs"
-    class: ""
-    geometry: "linestring"
+  - id: cliffs
+    name: cliffs
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -738,11 +687,10 @@ Layer:
         ) AS cliffs
     properties:
       minzoom: 13
-    advanced: {}
-  - id: "area-barriers"
-    name: "area-barriers"
-    class: "barriers"
-    geometry: "polygon"
+  - id: area-barriers
+    name: area-barriers
+    class: barriers
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -757,11 +705,9 @@ Layer:
         ) AS area_barriers
     properties:
       minzoom: 16
-    advanced: {}
-  - id: "ferry-routes"
-    name: "ferry-routes"
-    class: ""
-    geometry: "linestring"
+  - id: ferry-routes
+    name: ferry-routes
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -773,11 +719,9 @@ Layer:
         ) AS ferry_routes
     properties:
       minzoom: 7
-    advanced: {}
-  - id: "turning-circle-casing"
-    name: "turning-circle-casing"
-    class: ""
-    geometry: "point"
+  - id: turning-circle-casing
+    name: turning-circle-casing
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -804,11 +748,9 @@ Layer:
         ) AS turning_circle_casing
     properties:
       minzoom: 15
-    advanced: {}
-  - id: "highway-area-casing"
-    name: "highway-area-casing"
-    class: ""
-    geometry: "polygon"
+  - id: highway-area-casing
+    name: highway-area-casing
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -826,11 +768,10 @@ Layer:
         ) AS highway_area_casing
     properties:
       minzoom: 14
-    advanced: {}
-  - name: "roads-casing"
-    id: "roads-casing"
-    class: "roads-casing"
-    geometry: "linestring"
+  - id: roads-casing
+    name: roads-casing
+    class: roads-casing
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -980,10 +921,8 @@ Layer:
         ) AS roads_casing
     properties:
       minzoom: 9
-    advanced: {}
-  - id: "highway-area-fill"
-    name: "highway-area-fill"
-    class: ""
+  - id: highway-area-fill
+    name: highway-area-fill
     # FIXME: No geometry?
     <<: *extents
     Datasource:
@@ -1005,11 +944,10 @@ Layer:
         ) AS highway_area_fill
     properties:
       minzoom: 14
-    advanced: {}
-  - id: "roads-fill"
-    name: "roads-fill"
-    class: "roads-fill access"
-    geometry: "linestring"
+  - id: roads-fill
+    name: roads-fill
+    class: roads-fill access
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1155,11 +1093,9 @@ Layer:
         ) AS roads_fill
     properties:
       minzoom: 10
-    advanced: {}
-  - id: "turning-circle-fill"
-    name: "turning-circle-fill"
-    class: ""
-    geometry: "point"
+  - id: turning-circle-fill
+    name: turning-circle-fill
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1186,11 +1122,9 @@ Layer:
         ) AS turning_circle_fill
     properties:
       minzoom: 15
-    advanced: {}
-  - id: "aerialways"
-    name: "aerialways"
-    class: ""
-    geometry: "linestring"
+  - id: aerialways
+    name: aerialways
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1203,11 +1137,9 @@ Layer:
         ) AS aerialways
     properties:
       minzoom: 12
-    advanced: {}
-  - id: "roads-low-zoom"
-    name: "roads-low-zoom"
-    class: ""
-    geometry: "linestring"
+  - id: roads-low-zoom
+    name: roads-low-zoom
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1236,11 +1168,10 @@ Layer:
     properties:
       minzoom: 5
       maxzoom: 9
-    advanced: {}
-  - id: "waterway-bridges"
-    name: "waterway-bridges"
-    class: "water-lines"
-    geometry: "linestring"
+  - id: waterway-bridges
+    name: waterway-bridges
+    class: water-lines
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1259,11 +1190,10 @@ Layer:
         ) AS waterway_bridges
     properties:
       minzoom: 15
-    advanced: {}
-  - id: "bridges"
-    name: "bridges"
-    class: "bridges-fill bridges-casing access"
-    geometry: "linestring"
+  - id: bridges
+    name: bridges
+    class: bridges-fill bridges-casing access
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1408,13 +1338,11 @@ Layer:
             CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
         ) AS bridges
     properties:
-      group-by: "layernotnull"
+      group-by: layernotnull
       minzoom: 9
-    advanced: {}
-  - id: "guideways"
-    name: "guideways"
-    class: ""
-    geometry: "linestring"
+  - id: guideways
+    name: guideways
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1426,10 +1354,8 @@ Layer:
         ) AS guideways
     properties:
       minzoom: 13
-    advanced: {}
   - name: "admin-low-zoom"
     id: "admin-low-zoom"
-    class: ""
     geometry: "linestring"
     <<: *extents
     Datasource:
@@ -1447,11 +1373,9 @@ Layer:
     properties:
       minzoom: 4
       maxzoom: 10
-    advanced: {}
-  - id: "admin-mid-zoom"
-    name: "admin-mid-zoom"
-    class: ""
-    geometry: "linestring"
+  - id: admin-mid-zoom
+    name: admin-mid-zoom
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1468,11 +1392,9 @@ Layer:
     properties:
       minzoom: 11
       maxzoom: 12
-    advanced: {}
-  - id: "admin-high-zoom"
-    name: "admin-high-zoom"
-    class: ""
-    geometry: "linestring"
+  - id: admin-high-zoom
+    name: admin-high-zoom
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1488,11 +1410,9 @@ Layer:
         ) AS admin_high_zoom
     properties:
       minzoom: 13
-    advanced: {}
-  - id: "power-minorline"
-    name: "power-minorline"
-    class: ""
-    geometry: "linestring"
+  - id: power-minorline
+    name: power-minorline
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1504,11 +1424,9 @@ Layer:
         ) AS power_minorline
     properties:
       minzoom: 16
-    advanced: {}
-  - id: "power-line"
-    name: "power-line"
-    class: ""
-    geometry: "linestring"
+  - id: power-line
+    name: power-line
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1520,11 +1438,9 @@ Layer:
         ) AS power_line
     properties:
       minzoom: 14
-    advanced: {}
-  - id: "nature-reserve-boundaries"
-    name: "nature-reserve-boundaries"
-    class: ""
-    geometry: "polygon"
+  - id: nature-reserve-boundaries
+    name: nature-reserve-boundaries
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1541,11 +1457,9 @@ Layer:
         ) AS national_park_boundaries
     properties:
       minzoom: 7
-    advanced: {}
-  - id: "tourism-boundary"
-    name: "tourism-boundary"
-    class: ""
-    geometry: "polygon"
+  - id: tourism-boundary
+    name: tourism-boundary
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1561,11 +1475,9 @@ Layer:
         ) AS tourism_boundary
     properties:
       minzoom: 10
-    advanced: {}
-  - id: "trees"
-    name: "trees"
-    class: ""
-    geometry: "polygon"
+  - id: trees
+    name: trees
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1582,11 +1494,10 @@ Layer:
         ) AS trees
     properties:
       minzoom: 16
-    advanced: {}
-  - id: "country-names"
-    name: "country-names"
-    class: "country"
-    geometry: "point"
+  - id: country-names
+    name: country-names
+    class: country
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1606,10 +1517,9 @@ Layer:
         ) AS country_names
     properties:
       minzoom: 2
-  - id: "capital-names"
-    name: "capital-names"
-    class: ""
-    geometry: "point"
+  - id: capital-names
+    name: capital-names
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1631,11 +1541,10 @@ Layer:
     properties:
       minzoom: 3
       maxzoom: 15
-    advanced: {}
-  - id: "state-names"
-    name: "state-names"
-    class: "state"
-    geometry: "point"
+  - id: state-names
+    name: state-names
+    class: state
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1654,11 +1563,9 @@ Layer:
         ) AS state_names
     properties:
       minzoom: 4
-    advanced: {}
-  - id: "placenames-medium"
-    name: "placenames-medium"
-    class: ""
-    geometry: "point"
+  - id: placenames-medium
+    name: placenames-medium
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1702,11 +1609,9 @@ Layer:
     properties:
       minzoom: 4
       maxzoom: 15
-    advanced: {}
-  - id: "placenames-small"
-    name: "placenames-small"
-    class: ""
-    geometry: "point"
+  - id: placenames-small
+    name: placenames-small
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1730,11 +1635,10 @@ Layer:
         ) AS placenames_small
     properties:
       minzoom: 12
-    advanced: {}
-  - id: "stations"
-    class: "stations"
-    name: "stations"
-    geometry: "point"
+  - id: stations
+    class: stations
+    name: stations
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1758,11 +1662,10 @@ Layer:
         ) AS stations
     properties:
       minzoom: 12
-    advanced: {}
-  - id: "stations-poly"
-    name: "stations-poly"
-    class: "stations"
-    geometry: "polygon"
+  - id: stations-poly
+    name: stations-poly
+    class: stations
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1779,11 +1682,10 @@ Layer:
         ) AS stations_poly
     properties:
       minzoom: 12
-    advanced: {}
-  - id: "amenity-points-poly"
-    name: "amenity-points-poly"
-    class: "points"
-    geometry: "polygon"
+  - id: amenity-points-poly
+    name: amenity-points-poly
+    class: points
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1809,7 +1711,7 @@ Layer:
                                             'mobile_phone', 'motorcycle', 'musical_instrument', 'newsagent', 'optician', 'jewelry', 'jewellery', 
                                             'electronics', 'chemist', 'toys', 'travel_agency', 'car_parts', 'greengrocer', 'farm', 'stationery', 
                                             'laundry', 'dry_cleaning', 'beverages', 'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor', 
-                                            'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea') THEN shop 
+                                            'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea', 'coffee') THEN shop 
                               WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE 'other' END,
               'leisure_' || CASE WHEN leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table') THEN leisure ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill', 'obelisk') THEN man_made ELSE NULL END,
@@ -1851,11 +1753,10 @@ Layer:
         ) AS amenity_points_poly
     properties:
       minzoom: 10
-    advanced: {}
-  - id: "amenity-points"
-    name: "amenity-points"
-    class: "points"
-    geometry: "point"
+  - id: amenity-points
+    name: amenity-points
+    class: points
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1880,7 +1781,8 @@ Layer:
                                             'photography', 'seafood', 'shoes', 'alcohol', 'gift', 'furniture', 'kiosk', 'mobile_phone', 'motorcycle', 
                                             'musical_instrument', 'newsagent', 'optician', 'jewelry', 'jewellery', 'electronics', 'chemist', 'toys', 
                                             'travel_agency', 'car_parts', 'greengrocer', 'farm', 'stationery', 'laundry', 'dry_cleaning', 'beverages', 
-                                            'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor', 'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea') THEN shop 
+                                            'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor', 'copyshop', 'sports', 'deli', 'tobacco', 'art', 
+                                            'tea', 'coffee') THEN shop 
                               WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE 'other' END,
               'leisure_' || CASE WHEN leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'slipway',
                                                   'dog_park') THEN leisure ELSE NULL END,
@@ -1931,11 +1833,9 @@ Layer:
           ) AS amenity_points
     properties:
       minzoom: 10
-    advanced: {}
-  - id: "power-towers"
-    name: "power-towers"
-    class: ""
-    geometry: "point"
+  - id: power-towers
+    name: power-towers
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1947,11 +1847,9 @@ Layer:
         ) AS power_towers
     properties:
       minzoom: 14
-    advanced: {}
-  - id: "power-poles"
-    name: "power-poles"
-    class: ""
-    geometry: "point"
+  - id: power-poles
+    name: power-poles
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1963,11 +1861,9 @@ Layer:
         ) AS power_poles
     properties:
       minzoom: 16
-    advanced: {}
-  - id: "roads-text-ref-low-zoom"
-    name: "roads-text-ref-low-zoom"
-    class: ""
-    geometry: "linestring"
+  - id: roads-text-ref-low-zoom
+    name: roads-text-ref-low-zoom
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1980,28 +1876,47 @@ Layer:
             refs
           FROM (
             SELECT
-                way, highway,
+                way,
+                osm_id,
+                highway,
                 array_length(refs,1) AS height,
                 (SELECT MAX(char_length(ref)) FROM unnest(refs) AS u(ref)) AS width,
                 array_to_string(refs, E'\n') AS refs
               FROM (
                 SELECT
                     way,
+                    osm_id,
                     highway,
                     string_to_array(ref, ';') AS refs
                 FROM planet_osm_roads
                   WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary')
                   AND ref IS NOT NULL
               ) AS p) AS q
-          WHERE height <= 4 AND width <= 11) AS roads_text_ref_low_zoom
+          WHERE height <= 4 AND width <= 11
+          ORDER BY
+            CASE
+              WHEN highway = 'motorway' THEN 38
+              WHEN highway = 'trunk' THEN 37
+              WHEN highway = 'primary' THEN 36
+              WHEN highway = 'secondary' THEN 35
+              WHEN highway = 'tertiary' THEN 34
+              WHEN highway = 'unclassified' THEN 33
+              WHEN highway = 'residential' THEN 32
+              WHEN highway = 'runway' THEN 6
+              WHEN highway = 'taxiway' THEN 5
+              ELSE NULL
+            END DESC NULLS LAST,
+            height DESC,
+            width DESC,
+            refs,
+            osm_id
+        ) AS roads_text_ref_low_zoom
     properties:
       minzoom: 10
       maxzoom: 12
-    advanced: {}
-  - id: "junctions"
-    name: "junctions"
-    class: ""
-    geometry: "point"
+  - id: junctions
+    name: junctions
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -2017,11 +1932,9 @@ Layer:
         ) AS junctions
     properties:
       minzoom: 11
-    advanced: {}
-  - id: "bridge-text"
-    name: "bridge-text"
-    class: ""
-    geometry: "polygon"
+  - id: bridge-text
+    name: bridge-text
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -2036,11 +1949,9 @@ Layer:
         ) AS bridge_text
     properties:
       minzoom: 11
-    advanced: {}
-  - id: "roads-text-ref"
-    name: "roads-text-ref"
-    class: ""
-    geometry: "linestring"
+  - id: roads-text-ref
+    name: roads-text-ref
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -2053,12 +1964,15 @@ Layer:
             refs
           FROM (
             SELECT
-                way, highway,
+                osm_id,
+                way,
+                highway,
                 array_length(refs,1) AS height,
                 (SELECT MAX(char_length(ref)) FROM unnest(refs) AS u(ref)) AS width,
                 array_to_string(refs, E'\n') AS refs
               FROM (
                 SELECT
+                    osm_id,
                     way,
                     COALESCE(
                       CASE WHEN highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential') THEN highway ELSE NULL END,
@@ -2066,17 +1980,33 @@ Layer:
                     ) AS highway,
                     string_to_array(ref, ';') AS refs
                   FROM planet_osm_line
-                    WHERE (highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential') OR aeroway IN ('runway', 'taxiway'))
-                      AND ref IS NOT NULL
+                  WHERE (highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential') OR aeroway IN ('runway', 'taxiway'))
+                    AND ref IS NOT NULL
               ) AS p) AS q
-          WHERE height <= 4 AND width <= 11) AS roads_text_ref
+          WHERE height <= 4 AND width <= 11
+          ORDER BY
+            CASE
+              WHEN highway = 'motorway' THEN 38
+              WHEN highway = 'trunk' THEN 37
+              WHEN highway = 'primary' THEN 36
+              WHEN highway = 'secondary' THEN 35
+              WHEN highway = 'tertiary' THEN 34
+              WHEN highway = 'unclassified' THEN 33
+              WHEN highway = 'residential' THEN 32
+              WHEN highway = 'runway' THEN 6
+              WHEN highway = 'taxiway' THEN 5
+              ELSE NULL
+            END DESC NULLS LAST,
+            height DESC,
+            width DESC,
+            refs,
+            osm_id
+        ) AS roads_text_ref
     properties:
       minzoom: 13
-    advanced: {}
-  - id: "roads-area-text-name"
-    name: "roads-area-text-name"
-    class: ""
-    geometry: "polygon"
+  - id: roads-area-text-name
+    name: roads-area-text-name
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -2090,14 +2020,14 @@ Layer:
           WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street', 'track', 'path', 'platform')
             OR railway IN ('platform')
             AND name IS NOT NULL
+          ORDER BY way_area DESC
         ) AS roads_area_text_name
     properties:
       minzoom: 15
-    advanced: {}
-  - id: "roads-text-name"
-    name: "roads-text-name"
-    class: "directions"
-    geometry: "linestring"
+  - id: roads-text-name
+    name: roads-text-name
+    class: directions
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -2114,20 +2044,45 @@ Layer:
               ELSE NULL
             END AS oneway,
             horse, bicycle
-          FROM planet_osm_line
+          FROM planet_osm_line l
+          JOIN (VALUES -- this join is also putting a condition on what is selected. features not matching it do not make it into the results.
+              ('motorway', 380),
+              ('trunk', 370),
+              ('primary', 360),
+              ('secondary', 350),
+              ('tertiary', 340),
+              ('residential', 330),
+              ('unclassified', 330),
+              ('road', 330),
+              ('living_street', 320),
+              ('pedestrian', 310),
+              ('raceway', 300),
+              ('motorway_link', 240),
+              ('trunk_link', 230),
+              ('primary_link', 220),
+              ('secondary_link', 210),
+              ('tertiary_link', 200),
+              ('service', 150),
+              ('construction', 10)
+            ) AS ordertable (highway, prio)
+            USING (highway)
           WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 
                             'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction')
             AND (name IS NOT NULL
               OR oneway IN ('yes', '-1')
               OR junction IN ('roundabout'))
+          ORDER BY
+            prio DESC, -- put important roads first
+            CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END DESC, -- put top layered roads first
+            length(name) DESC, -- Try to fit big labels in first
+            name DESC, -- Force a consistent ordering between differently named streets
+            l.osm_id DESC -- Force an ordering for streets of the same name, e.g. dualized roads
         ) AS roads_text_name
     properties:
       minzoom: 13
-    advanced: {}
-  - id: "paths-text-name"
-    name: "paths-text-name"
-    class: ""
-    geometry: "linestring"
+  - id: paths-text-name
+    name: paths-text-name
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -2143,11 +2098,10 @@ Layer:
         ) AS paths_text_name
     properties:
       minzoom: 15
-    advanced: {}
-  - id: "text-poly-low-zoom"
-    name: "text-poly-low-zoom"
-    class: "text-low-zoom"
-    geometry: "polygon"
+  - id: text-poly-low-zoom
+    name: text-poly-low-zoom
+    class: text-low-zoom
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -2177,11 +2131,10 @@ Layer:
     properties:
       minzoom: 7
       maxzoom: 9
-    advanced: {}
-  - id: "text-poly"
-    name: "text-poly"
-    class: "text"
-    geometry: "polygon"
+  - id: text-poly
+    name: text-poly
+    class: text
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -2209,7 +2162,8 @@ Layer:
                                             'photography', 'seafood', 'shoes', 'alcohol', 'gift', 'furniture', 'kiosk', 'mobile_phone', 'motorcycle', 
                                             'musical_instrument', 'newsagent', 'optician', 'jewelry', 'jewellery', 'electronics', 'chemist', 'toys', 
                                             'travel_agency', 'car_parts', 'greengrocer', 'farm', 'stationery', 'laundry', 'dry_cleaning', 'beverages', 
-                                            'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor', 'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea') THEN shop 
+                                            'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor', 'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea', 
+                                            'coffee') THEN shop 
                               WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE 'other' END,
               'leisure_' || CASE WHEN leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'sports_centre', 'stadium', 'track', 
                                                   'pitch', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina', 
@@ -2264,11 +2218,9 @@ Layer:
         ) AS text_poly
     properties:
       minzoom: 10
-    advanced: {}
-  - id: "text-line"
-    name: "text-line"
-    class: ""
-    geometry: "linestring"
+  - id: text-line
+    name: text-line
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -2289,13 +2241,12 @@ Layer:
               OR "natural" IN ('cliff'))
             AND name IS NOT NULL
         ) AS text_line
-    advanced: {}
     properties:
       minzoom: 10
-  - id: "text-point"
-    name: "text-point"
-    class: "text"
-    geometry: "point"
+  - id: text-point
+    name: text-point
+    class: text
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -2344,7 +2295,7 @@ Layer:
                                                 'seafood', 'shoes', 'alcohol', 'gift', 'furniture', 'kiosk', 'mobile_phone', 'motorcycle', 'musical_instrument', 
                                                 'newsagent', 'optician', 'jewelry', 'jewellery', 'electronics', 'chemist', 'toys', 'travel_agency', 'car_parts', 
                                                 'greengrocer', 'farm', 'stationery', 'laundry', 'dry_cleaning', 'beverages', 'perfumery', 'cosmetics', 
-                                                'variety_store', 'wine', 'outdoor', 'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea') THEN shop 
+                                                'variety_store', 'wine', 'outdoor', 'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea', 'coffee') THEN shop 
                                   WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE 'other' END,
                   'leisure_' || CASE WHEN leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'sports_centre', 'stadium', 'track',  
                                                       'pitch','playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina',  
@@ -2412,11 +2363,9 @@ Layer:
           ) AS text
     properties:
       minzoom: 10
-    advanced: {}
-  - id: "building-text"
-    name: "building-text"
-    class: ""
-    geometry: "polygon"
+  - id: building-text
+    name: building-text
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -2433,11 +2382,9 @@ Layer:
         ) AS building_text
     properties:
       minzoom: 14
-    advanced: {}
-  - id: "interpolation"
-    name: "interpolation"
-    class: ""
-    geometry: "linestring"
+  - id: interpolation
+    name: interpolation
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -2449,11 +2396,9 @@ Layer:
         ) AS interpolation
     properties:
       minzoom: 17
-    advanced: {}
-  - id: "addresses"
-    name: "addresses"
-    class: ""
-    geometry: "point"
+  - id: addresses
+    name: addresses
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -2478,11 +2423,9 @@ Layer:
         ) AS addresses
     properties:
       minzoom: 17
-    advanced: {}
-  - id: "water-lines-text"
-    name: "water-lines-text"
-    class: ""
-    geometry: "linestring"
+  - id: water-lines-text
+    name: water-lines-text
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -2502,11 +2445,9 @@ Layer:
         ) AS water_lines_text
     properties:
       minzoom: 13
-    advanced: {}
-  - id: "ferry-routes-text"
-    name: "ferry-routes-text"
-    class: ""
-    geometry: "linestring"
+  - id: ferry-routes-text
+    name: ferry-routes-text
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -2520,11 +2461,9 @@ Layer:
         ) AS ferry_routes_text
     properties:
       minzoom: 13
-    advanced: {}
-  - id: "admin-text"
-    name: "admin-text"
-    class: ""
-    geometry: "linestring"
+  - id: admin-text
+    name: admin-text
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -2541,11 +2480,9 @@ Layer:
         ) AS admin_text
     properties:
       minzoom: 16
-    advanced: {}
-  - id: "nature-reserve-text"
-    name: "nature-reserve-text"
-    class: ""
-    geometry: "linestring"
+  - id: nature-reserve-text
+    name: nature-reserve-text
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -2560,11 +2497,10 @@ Layer:
         ) AS nature_reserve_text
     properties:
       minzoom: 13
-    advanced: {}
-  - id: "amenity-low-priority"
-    name: "amenity-low-priority"
-    class: "amenity-low-priority"
-    geometry: "point"
+  - id: amenity-low-priority
+    name: amenity-low-priority
+    class: amenity-low-priority
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -2593,11 +2529,10 @@ Layer:
           ) AS amenity_low_priority
     properties:
       minzoom: 14
-    advanced: {}
-  - id: "amenity-low-priority-poly"
-    name: "amenity-low-priority-poly"
-    class: "amenity-low-priority"
-    geometry: "polygon"
+  - id: amenity-low-priority-poly
+    name: amenity-low-priority-poly
+    class: amenity-low-priority
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -2616,4 +2551,3 @@ Layer:
           ) AS amenity_low_priority_poly
     properties:
       minzoom: 14
-    advanced: {}
