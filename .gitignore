@@ -13,6 +13,7 @@ localconfig.js
 data
 tmp
 **kosmtik
+test*.png
 
 # Generated at runtime by Python.
 *.pyc   
