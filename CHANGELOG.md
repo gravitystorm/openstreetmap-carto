@@ -1,4 +1,12 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.0.1...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.1.0...master)
+
+## [v3.1.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.0.1...v3.1.0) - 2017-01-28
+### Changes
+- Added coffee shop rendering
+- Added health clinic rendering
+- Adjusted place label typography
+- Road shield rendering improvements
+- Internal code cleanups
 
 ## [v3.0.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.0.0...v3.0.1) - 2016-12-22
 ### Changes
