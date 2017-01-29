@@ -1990,7 +1990,7 @@ Layer:
               OR junction IN ('roundabout'))
           ORDER BY
             prio DESC, -- put important roads first
-            CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END DESC, -- put top layered roads first
+            COALESCE(layer, 0), -- put top layered roads first
             length(name) DESC, -- Try to fit big labels in first
             name DESC, -- Force a consistent ordering between differently named streets
             l.osm_id DESC -- Force an ordering for streets of the same name, e.g. dualized roads
