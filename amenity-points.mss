@@ -344,7 +344,7 @@
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @transportation-icon;
-    [access != ''][access != 'public'][access != 'yes'] {
+    [access != ''][access != 'permissive'][access != 'yes'] {
       marker-opacity: 0.33;
     }
   }
@@ -460,7 +460,7 @@
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
-    [access != ''][access != 'yes'] {
+    [access != ''][access != 'permissive'][access != 'yes'] {
       marker-opacity: 0.33;
     }
   }
@@ -636,6 +636,13 @@
       marker-clip: false;
       marker-fill: @shop-icon;
     }
+  }
+
+  [feature = 'shop_coffee'][zoom >= 17] {
+    marker-file: url('symbols/shop/coffee.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
   }
 
   [feature = 'shop_computer'][zoom >= 17] {
@@ -974,7 +981,7 @@
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
-    [access != ''][access != 'yes'] {
+    [access != ''][access != 'permissive'][access != 'yes'] {
       marker-opacity: 0.33;
     }
   }
@@ -1111,7 +1118,7 @@
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @transportation-icon;
-    [access != ''][access != 'public'][access != 'yes'] {
+    [access != ''][access != 'permissive'][access != 'yes'] {
       marker-opacity: 0.33;
     }
   }
@@ -1275,7 +1282,7 @@
     text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
-    [access != ''][access != 'public'][access != 'yes'] {
+    [access != ''][access != 'permissive'][access != 'yes'] {
       text-fill: #66ccaf;
     }
     [feature = 'amenity_bicycle_parking'],
@@ -1444,7 +1451,7 @@
       text-halo-fill: @standard-halo-fill;
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
-      [access != ''][access != 'yes'] {
+      [access != ''][access != 'permissive'][access != 'yes'] {
         text-fill: darken(@park, 50%);
       }
     }
@@ -1923,6 +1930,7 @@
   [feature = 'shop_beverages'],
   [feature = 'shop_books'],
   [feature = 'shop_clothes'],
+  [feature = 'shop_coffee'],
   [feature = 'shop_computer'],
   [feature = 'shop_fashion'],
   [feature = 'shop_convenience'],

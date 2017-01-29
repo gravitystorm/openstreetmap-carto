@@ -1,6 +1,14 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.0.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.1.0...master)
 
-## [v3.0.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.0.0...v3.0.1) - 2016-12-22
+## [v3.1.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.0.1...v3.1.0) - 2017-01-28
+### Changes
+- Added coffee shop rendering
+- Added health clinic rendering
+- Adjusted place label typography
+- Road shield rendering improvements
+- Internal code cleanups
+
+## [v3.0.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.0.0...v3.0.1) - 2016-12-22
 ### Changes
 - Revert of junction area changes which were preventing index usage
 
@@ -15,7 +23,7 @@
 - Noto Naskh is now used for Arabic
 - Visual impact of campsites and quarries reduced below z13
 - Wilderness huts rendered
-- Subway entrances rendered
+- "ref" (reference) text of subway entrances rendered
 
 ## [v2.45.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v2.45.0...v2.45.1) - 2016-12-03
 ### Changes
