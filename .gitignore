@@ -7,8 +7,7 @@ localconfig.json
 localconfig.js
 
 # german style additions
-project-de.mml 
-project-de.yaml
+project-hrb.mml
 localconfig.js
 data
 tmp
