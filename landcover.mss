@@ -454,6 +454,7 @@
   }
 
   [feature = 'wetland_wet_meadow'],
+  [feature = 'wetland_fen'],
   [feature = 'wetland_marsh'] {
     [zoom >= 10] {
       polygon-fill: @grass;
@@ -586,8 +587,7 @@
   [zoom >= 14] {
     [int_wetland = 'marsh'],
     [int_wetland = 'saltmarsh'],
-    [int_wetland = 'wet_meadow'],
-    [int_wetland = 'fen'] {
+    [int_wetland = 'wet_meadow'] {
       polygon-pattern-file: url('symbols/wetland_marsh.png');
       polygon-pattern-alignment: global;
     }
@@ -604,6 +604,7 @@
       polygon-pattern-alignment: global;
     }
     [int_wetland = 'bog'],
+    [int_wetland = 'fen'],
     [int_wetland = 'string_bog'] {
       polygon-pattern-file: url('symbols/wetland_bog.png');
       polygon-pattern-alignment: global;
