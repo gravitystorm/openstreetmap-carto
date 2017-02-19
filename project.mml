@@ -241,7 +241,7 @@ Layer:
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
           WHERE
-            (waterway IN ('dock', 'riverbank', 'canal')
+            (waterway IN ('dock', 'riverbank')
               OR landuse IN ('reservoir', 'basin')
               OR "natural" IN ('water', 'glacier'))
             AND building IS NULL
