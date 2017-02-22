@@ -267,9 +267,14 @@
 @track-oneway-arrow-color:        darken(@track-fill, 15%);
 @bridleway-oneway-arrow-color:    darken(@track-fill, 10%);
 
-@shield-size: 9;
-@shield-size-z16: 10;
-@shield-size-z18: 11;
+// Shield’s line wrap is based on OpenStreetMap data and not on line-wrap-width,
+// but lines are typically rather short, so we use narrow line spacing.
+@shield-size: 10;
+@shield-line-spacing: -1.50; // -0.15 em
+@shield-size-z16: 11;
+@shield-line-spacing-z16: -1.65; // -0.15 em
+@shield-size-z18: 12;
+@shield-line-spacing-z18: -1.80; // -0.15 em
 @shield-spacing: 760;
 @shield-min-distance: 40;
 @shield-font: @book-fonts;
@@ -2397,19 +2402,21 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       ref/text-halo-radius: @standard-halo-radius * 1.5;
       [zoom >= 12] {
         name/text-name: "[name]";
-        name/text-size: 9;
+        name/text-size: 10;
         name/text-fill: @junction-text-color;
-        name/text-dy: -9;
+        name/text-dy: -10;
         name/text-face-name: @oblique-fonts;
         name/text-halo-radius: @standard-halo-radius;
         name/text-wrap-character: ";";
-        name/text-wrap-width: 2;
+        name/text-wrap-width: 2; // effectively break after every wrap character
+        name/text-line-spacing: -1.5; // -0.15 em
         name/text-min-distance: 2;
       }
       [zoom >= 15] {
-        ref/text-size: 12;
+        ref/text-size: 11;
         name/text-size: 11;
-        name/text-dy: -10;
+        name/text-dy: -11;
+        name/text-line-spacing: -1.65; // -0.15 em
       }
     }
   }
@@ -2423,10 +2430,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-face-name: @book-fonts;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
-      text-wrap-width: 30;
+      text-wrap-width: 30;  // 3.0 em
+      text-line-spacing: -1.5; // -0.15 em
       text-min-distance: 2;
       [zoom >= 17] {
         text-size: 11;
+        text-line-spacing: -1.65; // -0.15 em
         /* Offset name on traffic_signals on zoomlevels where they are displayed
         in order not to hide the text */
         [highway = 'traffic_signals'] {
@@ -2441,7 +2450,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   [man_made = 'bridge'] {
     [zoom >= 12][way_pixels > 62.5] {
       text-name: "[name]";
-      text-size: 8;
+      text-size: 10;
+      text-wrap-width: 30; // 3 em
+      text-line-spacing: -1.2; // -0.15 em
       text-fill: black;
       text-face-name: @book-fonts;
       text-halo-radius: @standard-halo-radius;
@@ -2450,17 +2461,25 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-wrap-width: 30;
       text-placement: interior;
       [way_pixels > 250] {
-        text-size: 9;
+        text-size: 11;
+        text-wrap-width: 33; // 3 em
+        text-line-spacing: -1.35; // -0.15 em
       }
       [way_pixels > 1000] {
-        text-size: 11;
+        text-size: 12;
+        text-wrap-width: 36; // 3 em
+        text-line-spacing: -1.65; // -0.15 em
         text-halo-radius: @standard-halo-radius * 1.5;
       }
       [way_pixels > 4000] {
-        text-size: 12;
+        text-size: 13;
+        text-wrap-width: 39; // 3 em
+        text-line-spacing: -1.80; // -0.15 em
       }
       [way_pixels > 16000] {
-        text-size: 13;
+        text-size: 14;
+        text-wrap-width: 42; // 3 em
+        text-line-spacing: -1.95; // -0.15 em
         text-halo-radius: 2;
       }
     }
@@ -2589,6 +2608,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   [highway = 'secondary'][zoom >= 12] {
     shield-name: "[refs]";
     shield-size: @shield-size;
+    shield-line-spacing: @shield-line-spacing;
     shield-placement: line;
     shield-spacing: @shield-spacing;
     shield-min-distance: @shield-min-distance;
@@ -2626,12 +2646,15 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [zoom >= 13] {
       shield-name: "[refs]";
       shield-size: @shield-size;
+      shield-line-spacing: @shield-line-spacing;
 
       [zoom >= 16] {
         shield-size: @shield-size-z16;
+        shield-line-spacing: @shield-line-spacing-z16;
       }
       [zoom >= 18] {
         shield-size: @shield-size-z18;
+        shield-line-spacing: @shield-line-spacing-z18;
       }
 
       shield-placement: line;
@@ -2910,19 +2933,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 #roads-area-text-name {
   [way_pixels > 3000],
   [zoom >= 17] {
-    [zoom >= 15] {
-      text-name: "[name]";
-      text-size: 8;
-      text-face-name: @book-fonts;
-      text-placement: interior;
-      text-wrap-width: 30;
-    }
-    [zoom >= 16] {
-      text-size: 9;
-    }
-    [zoom >= 17] {
-      text-size: 11;
-    }
+    text-name: "[name]";
+    text-size: 11;
+    text-face-name: @book-fonts;
+    text-placement: interior;
+    text-wrap-width: 30; // 2.7 em
+    text-line-spacing: -1.7; // -0.15 em
   }
 }
 
