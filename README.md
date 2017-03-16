@@ -9,6 +9,9 @@ osm2pgsql tables with hstore to simulate columns.
 
 We are doing our best to keep this fork in sync with upstream.
 
+As a result we will always require at least the same Software versions of carto, mapnik, postgis,
+etc. as upstream.
+
 # OpenStreetMap Carto
 
 ![screenshot](https://raw.github.com/giggls/openstreetmap-carto-de/master/preview-de.png)
