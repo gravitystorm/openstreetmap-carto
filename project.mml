@@ -1124,7 +1124,7 @@ Layer:
           ORDER BY z_order
         ) AS waterway_bridges
     properties:
-      minzoom: 15
+      minzoom: 12
   - id: bridges
     name: bridges
     class: bridges-fill bridges-casing access
