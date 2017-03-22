@@ -1,6 +1,7 @@
 #aerialways {
   [aerialway = 'cable_car'],
-  [aerialway = 'gondola'] {
+  [aerialway = 'gondola'],
+  [aerialway = 'mixed_lift'] {
     [zoom >= 12] {
       line/line-width: 1;
       line/line-join: round;
