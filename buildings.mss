@@ -5,9 +5,6 @@
 @building-major-fill: darken(@building-fill, 20%);
 @building-major-line: darken(@building-major-fill, 25%);
 
-@building-aeroway-fill: #cc99ff;
-@building-aeroway-line: darken(@building-aeroway-fill,15%);
-
 
 #buildings {
   [zoom >= 13] {
@@ -24,15 +21,7 @@
 
 #buildings-major {
   [zoom >= 13] {
-    [aeroway = 'terminal'] {
-      polygon-fill: @building-aeroway-fill;
-      polygon-clip: false;
-      [zoom >= 15] {
-        line-width: .75;
-        line-clip: false;
-        line-color: @building-aeroway-line;
-      }
-    }
+    [aeroway = 'terminal'],
     [amenity = 'place_of_worship'],
     [building = 'train_station'] {
       polygon-fill: @building-major-fill;
