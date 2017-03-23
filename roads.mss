@@ -2818,8 +2818,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-size: 12;
     }
   }
-  [highway = 'tertiary'],
-  [highway = 'tertiary_link'] {
+  [highway = 'tertiary'] {
     [zoom >= 14] {
       text-name: "[name]";
       text-size: 9;
