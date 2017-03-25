@@ -32,7 +32,7 @@
      id="canvas"
      style="fill:none;stroke:none;visibility:hidden" />
   <path
-     style="fill-rule:evenodd"
+     style="fill-rule:evenodd;fill:#0092da;stroke:none"
      id="path4"
      d="m 3,1 0,12 1.75,0 0,-5 L 9,8 A 3,3.5 0 0 0 9,1 Z m 1.75,1.75 0,3.5 3.75,0 a 1.58,1.75 0 0 0 0,-3.5 z" />
 </svg>

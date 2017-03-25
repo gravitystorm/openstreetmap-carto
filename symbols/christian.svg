@@ -16,5 +16,5 @@
      style="fill:none;stroke:none;visibility:hidden" />
   <path
      d="M 7,0 C 5.999999,0 6.000001,1 6.000001,1 L 6,4 2,4 l 0,2 4,0 1e-6,8 2.000001,0 -1e-6,-8 4,0 0,-2 -4,0 0,-3 c 0,0 0,-1 -1.000001,-1 z"
-     id="christian" />
+     style="fill:#000000;stroke:none" id="christian" />
 </svg>

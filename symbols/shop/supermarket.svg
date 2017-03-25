@@ -39,25 +39,25 @@
        height="5"
        width="0.5"
        y="2.5"
-       x="3.5" />
+       x="3.5" style="fill:#ac39ac;stroke:none" />
     <rect
        id="rect7"
        height="5.5"
        width="0.5"
        y="2.5"
-       x="5.5" />
+       x="5.5" style="fill:#ac39ac;stroke:none" />
     <rect
        id="rect9"
        height="6"
        width="0.5"
        y="2.5"
-       x="7.5" />
+       x="7.5" style="fill:#ac39ac;stroke:none" />
     <rect
        id="rect11"
        height="6"
        width="0.5"
        y="2.5"
-       x="9.5" />
+       x="9.5" style="fill:#ac39ac;stroke:none" />
   </g>
   <g
      transform="translate(0,1)"
@@ -67,13 +67,13 @@
        height="0.5"
        width="10.5"
        y="4"
-       x="1" />
+       x="1" style="fill:#ac39ac;stroke:none" />
     <rect
        id="rect16"
        height="0.5"
        width="10.5"
        y="6"
-       x="1" />
+       x="1" style="fill:#ac39ac;stroke:none" />
   </g>
   <g
      transform="translate(0,1)"
@@ -82,21 +82,21 @@
        id="circle19"
        r="1"
        cy="11.2"
-       cx="9.5" />
+       cx="9.5" style="fill:#ac39ac;stroke:none" />
     <circle
        id="circle21"
        r="1"
        cy="11.2"
-       cx="3.5" />
+       cx="3.5" style="fill:#ac39ac;stroke:none" />
   </g>
   <path
      d="m 11,10 0,2 -9.5,0 a 0.5,0.5 0 1 1 0,-1 l 8.5,0 0,-1.5 z"
-     id="base" />
+     id="base" style="fill:#ac39ac;stroke:none" />
   <path
      d="M 11.5,3 11.768,1.75 13.25,1.2 A 0.55339859,0.55339859 0 1 1 13.6,2.25 L 12.6,2.6 12.5,3"
-     id="handle" />
+     id="handle" style="fill:#ac39ac;stroke:none" />
   <path
-     style="fill-rule:evenodd"
+     style="fill-rule:evenodd;fill:#ac39ac;stroke:none"
      d="M 0,3 12.5,3 11,10 1,9 M 1.167,4 11.286,4 10.25,8.9 1.9,8.1 Z"
      id="body" />
 </svg>

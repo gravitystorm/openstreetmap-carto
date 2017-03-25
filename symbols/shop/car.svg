@@ -32,7 +32,7 @@
      id="canvas"
      style="fill:none;stroke:none;visibility:hidden" />
   <path
-     style="fill-rule:evenodd"
+     style="fill-rule:evenodd;fill:#ac39ac;stroke:none;"
      d="M 0,10.5 A 1.5,1.5 0 0 0 1.5,12 l 11,0 A 1.5,1.5 0 0 0 14,10.5 l 0,-3 A 1.5,1.5 0 0 0 12.5,6 L 1.5,6 A 1.5,1.5 0 0 0 0,7.5 Z m 1.6,-2 a 0.9,0.9 0 1 1 0,0.01 z m 9,0 a 0.9,0.9 0 1 1 0,0.01 z"
      id="body" />
   <g
@@ -43,15 +43,17 @@
        height="3"
        width="2"
        y="10"
-       x="1" />
+       x="1"
+       style="fill:#ac39ac;stroke:none;" />
     <rect
        id="rect8"
        height="3"
        width="2"
        y="10"
-       x="11" />
+       x="11"
+       style="fill:#ac39ac;stroke:none;" />
   </g>
   <path
      d="M 2,6 2,3.5 A 1.5,1.5 0 0 1 3.5,2 l 7,0 A 1.5,1.5 0 0 1 12,3.5 l 0,2.5 -1.5,0 0,-1.5 a 1,1 0 0 0 -1,-1 l -5,0 a 1,1 0 0 0 -1,1 l 0,1.5 z"
-     id="top" />
+     id="top" style="fill:#ac39ac;stroke:none;" />
 </svg>

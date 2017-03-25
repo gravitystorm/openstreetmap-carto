@@ -16,5 +16,5 @@
      style="fill:none;stroke:none;visibility:hidden" />
   <path
      d="m 4,4 -2,2 0,8 10,0 0,-8 -2,-2.0000003 z m 2,2 2,0 0,2 2,0 0,2 -2,0 0,2 -2,0 0,-2 -2,0 0,-2 2,0 z M 4,0 4,3 10,3 10,0 z"
-     id="pharmacy" />
+     style="fill:#da0092;stroke:none" id="pharmacy" />
 </svg>
