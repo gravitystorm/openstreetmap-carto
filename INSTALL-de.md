@@ -29,12 +29,13 @@ psql -d osm -f views_osmde/view-roads.sql
 For compatibility reasons, the views are given the same name as the default
 osm2pgsql tables used in upstream openstreetmap carto style.
 
-The style is currently developed using Debian GNU/Linux 8.x using
-[backports](https://tile.openstreetmap.de/debian8-backports/) if they are
-not available in plain Debian 8.
+The style is currently developed using Debian GNU/Linux 8.x with a few
+additional [backports](https://tile.openstreetmap.de/debian8-backports/)
+in cases where the required software is not available in plain Debian 8.
 Due to an incompatible change in PostGIS we will also need PostGIS >= 2.2
 which is available as a backport for Debian 8.  Currently it will however
-also work to undo commit 4f88f1f24c4288e957e74d0cc5ec4051d7a2273a and 
+also work to undo commit 4f88f1f24c4288e957e74d0cc5ec4051d7a2273a to
+recover compatibility with PostGIS 2.1.
 
 To get this style running it is also required to add the
 [l10n code](https://github.com/giggls/mapnik-german-l10n)
@@ -43,16 +44,9 @@ to the postgresql database.
 If l10n is not needed it is also possible to slightly modify either
 project.yaml or the database views provided in the `views_osmde` directory.
 
-To actually use this style you need to generate ```osm-de.xml``` from ```project.yaml```.
+To actually use this style you need to generate ```osm-de.xml``` from ```project.mml```.
 The easiest way to do this is using ```make```!
-Be aware that ```project.mml``` is not used in this style at all. It is just a verbatim
-copy from the upstream repository.
-
-Thus the manual generation of ```osm-de.xml``` (without using ```make```) is a two-step procedure:
-
-1. Generate ```project-de.mml``` from ```project.yaml``` using ```scripts/yaml2mml.py```
-2. Generate ```osm-de.xml``` from```project-de.mml``` using ```carto```
 
 It is also possible to use [Magnacarto](https://github.com/omniscale/magnacarto) or
 [Kosmtik](https://github.com/kosmtik/kosmtik).
-Both projects can use ```project.yaml``` directly.
+Both projects can use ```project.mml``` directly.
