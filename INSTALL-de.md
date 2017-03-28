@@ -29,9 +29,12 @@ psql -d osm -f views_osmde/view-roads.sql
 For compatibility reasons, the views are given the same name as the default
 osm2pgsql tables used in upstream openstreetmap carto style.
 
-The style is currently developed using Debian GNU/Linux 8.x with all the
-required software (postgresql-9.4, mapnik2.2 node-carto 0.9.5-2, ...)
-provided by the distribution itself. Using Ubuntu >=14.04 should also work.
+The style is currently developed using Debian GNU/Linux 8.x using
+[backports](https://tile.openstreetmap.de/debian8-backports/) if they are
+not available in plain Debian 8.
+Due to an incompatible change in PostGIS we will also need PostGIS >= 2.2
+which is available as a backport for Debian 8.  Currently it will however
+also work to undo commit 4f88f1f24c4288e957e74d0cc5ec4051d7a2273a and 
 
 To get this style running it is also required to add the
 [l10n code](https://github.com/giggls/mapnik-german-l10n)
