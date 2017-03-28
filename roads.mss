@@ -250,7 +250,9 @@
 @paths-tunnel-casing-width:       1;
 
 @junction-text-color:             #960000;
-@halo-color-for-minor-road: white;
+@halo-color-for-minor-road:       white;
+@lowzoom-halo-color:              white;
+@lowzoom-halo-width:              0.5;
 
 @motorway-oneway-arrow-color:     darken(@motorway-casing, 25%);
 @trunk-oneway-arrow-color:        darken(@trunk-casing, 25%);
@@ -280,7 +282,7 @@
 @shield-font: @book-fonts;
 @shield-clip: false;
 
-.roads-casing, .bridges-casing, .tunnels-casing {
+.roads-casing, .bridges-casing, .tunnels-casing, .roads-low-zoom {
   ::casing {
     [zoom = 9][feature = 'highway_secondary'][link != 'yes'] {
       line-color: @halo-color-for-minor-road;
@@ -308,6 +310,34 @@
       line-join: round;
       //Missing line-cap: round; is intentional. It would cause rendering glow multiple times in some places - what as result of partial transparency would cause differences in rendering
       //Also, bridges - including bridge casings are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
+    }
+
+    [feature = 'highway_motorway'][link != 'yes'][zoom >= 8][zoom < 12],
+    [feature = 'highway_trunk'][link != 'yes'][zoom >= 8][zoom < 12],
+    [feature = 'highway_primary'][link != 'yes'][zoom >= 8][zoom < 12],
+    [feature = 'highway_secondary'][link != 'yes'][zoom >= 11][zoom < 12] {
+      [feature = 'highway_motorway'] {
+        [zoom >= 8] { line-width: @motorway-width-z8 + 2 * @lowzoom-halo-width; }
+        [zoom >= 9] { line-width: @motorway-width-z9 + 2 * @lowzoom-halo-width; }
+        [zoom >= 10] { line-width: @motorway-width-z10 + 2 * @lowzoom-halo-width; }
+        [zoom >= 11] { line-width: @motorway-width-z11 + 2 * @lowzoom-halo-width; }
+      }
+      [feature = 'highway_trunk'] {
+        [zoom >= 8] { line-width: @trunk-width-z8 + 2 * @lowzoom-halo-width; }
+        [zoom >= 9] { line-width: @trunk-width-z9 + 2 * @lowzoom-halo-width; }
+        [zoom >= 10] { line-width: @trunk-width-z10 + 2 * @lowzoom-halo-width; }
+        [zoom >= 11] { line-width: @trunk-width-z11 + 2 * @lowzoom-halo-width; }
+      }
+      [feature = 'highway_primary'] {
+        [zoom >= 8] { line-width: @primary-width-z8 + 2 * @lowzoom-halo-width; }
+        [zoom >= 9] { line-width: @primary-width-z9 + 2 * @lowzoom-halo-width; }
+        [zoom >= 10] { line-width: @primary-width-z10 + 2 * @lowzoom-halo-width; }
+        [zoom >= 11] { line-width: @primary-width-z11 + 2 * @lowzoom-halo-width; }
+      }
+      [feature = 'highway_secondary'] {
+        [zoom >= 11] { line-width: @secondary-width-z11 + 2 * @lowzoom-halo-width; }
+      }
+      line-color: @lowzoom-halo-color;
     }
 
     [zoom >= 12] {
