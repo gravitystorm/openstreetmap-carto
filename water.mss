@@ -2,13 +2,6 @@
 @glacier: #ddecec;
 @glacier-line: #9cf;
 
-@water-font-size: 10;
-@water-font-size-big: 12;
-@water-font-size-bigger: 15;
-@water-wrap-width-size: 25;
-@water-wrap-width-size-big: 35;
-@water-wrap-width-size-bigger: 45;
-
 #water-areas {
   [natural = 'glacier']::natural {
     [zoom >= 6] {
@@ -291,15 +284,23 @@
     [zoom >= 10][way_pixels > 3000],
     [zoom >= 17] {
       text-name: "[name]";
-      text-size: @water-font-size;
-      text-wrap-width: @water-wrap-width-size;
+      text-size: 10;
+      text-wrap-width: 25; // 2.5 em
+      text-line-spacing: -1.5; // -0.15 em
       [way_pixels > 12000] {
-        text-size: @water-font-size-big;
-        text-wrap-width: @water-wrap-width-size-big;
+        text-size: 12;
+        text-wrap-width: 37; // 3.1 em
+        text-line-spacing: -1.6; // -0.13 em
       }
       [way_pixels > 48000] {
-        text-size: @water-font-size-bigger;
-        text-wrap-width: @water-wrap-width-size-bigger;
+        text-size: 15;
+        text-wrap-width: 59; // 3.9 em
+        text-line-spacing: -1.5; // -0.10 em
+      }
+      [way_pixels > 192000] {
+        text-size: 19;
+        text-wrap-width: 95; // 5.0 em
+        text-line-spacing: -0.95; // -0.05 em
       }
       text-fill: @water-text;
       text-face-name: @oblique-fonts;
