@@ -43,11 +43,19 @@ The repeated www.naturalearthdata.com in the Natural Earth shapefiles is correct
 Put these shapefiles at `path/to/openstreetmap-carto/data`.
 
 ## Fonts
-The stylesheet uses Noto Sans, an openly licensed font from Google with support for multiple scripts. The "UI" version is used where available, with its vertical metrics which fit better with Latin text. Other fonts from the Noto family are used for some other languages.
+The stylesheet uses Noto, an openly licensed font from Google with support for multiple scripts. The “UI” version is used where available, with its vertical metrics which fit better with Latin text. The stylesheet uses Noto’s “Sans” style where available. If not available, this stylesheet uses another appropriate style of the Noto family.
 
 DejaVu Sans is used as an optional fallback font for systems without Noto Sans. If all the Noto fonts are installed, it should never be used.
 
-Unifont is used as a last resort fallback, with it's excellent coverage, common presence on machines, and ugly look.
+Unifont is used as a last resort fallback, with it’s excellent coverage, common presence on machines, and ugly look.
+
+### Download
+
+Noto: http://www.google.com/get/noto/ and http://github.com/googlei18n?utf8=%E2%9C%93&q=noto
+DejaVu: http://dejavu-fonts.org/
+Unifont: http://unifoundry.com/
+
+### Download on Ubuntu/Debian
 
 On Ubuntu 16.04 or Debian Testing you can install the required fonts except Noto Emoji Regular with
 
