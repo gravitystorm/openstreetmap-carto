@@ -515,6 +515,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_sanitary_dump_station'][zoom >= 16] {
+    marker-file: url('symbols/toilet_dump_station-24.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_drinking_water'][zoom >= 17] {
     marker-file: url('symbols/drinking_water.svg');
     marker-fill: @amenity-brown;

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="18"
+   height="18"
+   id="svg4619">
+  <defs
+     id="defs4621" />
+  <metadata
+     id="metadata4624">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     d="m 14.99625,4.80875 c -0.087,-0.4583876 -0.5334,-0.8206883 -1,-0.8125 l -3,0 0,2 2,0 0,7 -9,0 0,-7 2,0 0,-2 -3,0 c -0.5236,9.89e-5 -0.9999,0.4764282 -1,1 l 0,9 c 10e-5,0.523572 0.4764,0.999901 1,1 l 11,0 c 0.5236,-9.9e-5 0.9999,-0.476428 1,-1 l 0,-9 c 0.01,-0.062316 0.01,-0.1251837 0,-0.1875 z m -3,2.1875 -2,0 0,-5 -3,0 0,5 -2,0 3.5,5 3.5,-5 z"
+     id="path4987"
+     style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;opacity:0.3;color:#000000;fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans" />
+  <path
+     d="m 14.99625,4.80875 c -0.087,-0.4583876 -0.5334,-0.8206883 -1,-0.8125 l -3,0 0,2 2,0 0,7 -9,0 0,-7 2,0 0,-2 -3,0 c -0.5236,9.89e-5 -0.9999,0.4764282 -1,1 l 0,9 c 10e-5,0.523572 0.4764,0.999901 1,1 l 11,0 c 0.5236,-9.9e-5 0.9999,-0.476428 1,-1 l 0,-9 c 0.01,-0.062316 0.01,-0.1251837 0,-0.1875 z m -3,2.1875 -2,0 0,-5 -3,0 0,5 -2,0 3.5,5 3.5,-5 z"
+     id="rect3795"
+     style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#444444;fill-opacity:1;stroke:none;stroke-width:2.00017786;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Sans;-inkscape-font-specification:Sans" />
+  <rect
+     width="18"
+     height="18"
+     x="0"
+     y="-18"
+     transform="matrix(0,1,-1,0,0,0)"
+     id="canvas"
+     style="fill:none;stroke:none;visibility:hidden" />
+</svg>
