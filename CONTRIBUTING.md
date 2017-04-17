@@ -17,6 +17,16 @@ contain a cropped screenshot of the problem, and a link to the area. Don't assum
 that we will see exactly what you see. If a particular OSM object is an issue,
 the issue should contain the tagging of the object.
 
+## 3.x compatibility
+
+OpenStreetMap Carto is currently maintaining compatibility in the output of 3.x
+and 4.x to allow users to smoothly transition and reload their databases. Pull
+requests which cannot be backported to 3.x are not being accepted at this time
+and will be closed.
+
+Whenever a pull request is merged into master, it also needs to be backported to
+the 3.x branch at the same time by the person merging.
+
 ## Easy pickings
 
 Some [easy issues](https://github.com/gravitystorm/openstreetmap-carto/issues?q=is%3Aopen+is%3Aissue+label%3Aeasy) have been selected
