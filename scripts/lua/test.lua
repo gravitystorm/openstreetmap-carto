@@ -6,6 +6,20 @@ Run it with lua test.lua
 
 require ("openstreetmap-carto")
 
+--- compare two tables.
+-- @param t1 A table
+-- @param t2 A table
+-- @return true or false
+function equaltables (t1,t2)
+    for k, v in pairs(t1) do
+        if t2[k] ~= v then return false end
+    end
+    for k, v in pairs(t2) do
+        if t1[k] ~= v then return false end
+    end
+    return true
+end
+
 print("TESTING: z_order")
 
 assert(z_order({}) == nil, "test failed: no tags")
@@ -52,17 +66,6 @@ assert(equaltables(({filter_tags_generic({["note:xx"]="foo", foo="bar"})})[2], {
 
 assert(({filter_tags_generic({["foo:note:xx"]="foo"})})[1] == 0, "prefix later in tag filter")
 assert(equaltables(({filter_tags_generic({["foo:note:xx"]="foo"})})[2], {["foo:note:xx"]="foo"}), "prefix later in tag tags")
-
--- yay multipolygons?
-print("TESTING: combine_member_tags")
-assert(equaltables(combine_member_tags({}), {}), "test failed: no members")
-assert(equaltables(combine_member_tags({{}}), {}), "test failed: no member tags")
-assert(equaltables(combine_member_tags({{}, {}}), {}), "test failed: no member tags, two members")
-assert(equaltables(combine_member_tags({{foo="bar"}}), {foo="bar"}), "test failed: one member, tags")
-assert(equaltables(combine_member_tags({{foo="bar"}, {}}), {foo="bar"}), "test failed: two members, tags on first")
-assert(equaltables(combine_member_tags({{}, {foo="bar"}}), {foo="bar"}), "test failed: two members, tags on second")
-assert(equaltables(combine_member_tags({{foo="bar"}, {foo="bar"}}), {foo="bar"}), "test failed: two members, tags on both")
-assert(combine_member_tags({{foo="bar"}, {baz="qax"}}) == nil, "test failed: two members, different tags")
 
 print("TESTING: filter_tags_relation_member")
 
@@ -118,7 +121,7 @@ end
 assert(check_rel_member({}, {}, 1, {}, {}, 0, 0, 0), "test failed: untagged memberless relation")
 assert(check_rel_member({}, {{}}, 1, {}, {0}, 0, 0, 0), "test failed: untagged relation")
 
-assert(check_rel_member({type="multipolygon"}, {{}}, 1, {}, {0}, 0, 1, 0),
+assert(check_rel_member({type="multipolygon"}, {{}}, 1, {}, {0}, 0, 0, 0),
        "test failed: untagged MP")
 assert(check_rel_member({type="multipolygon", foo="bar"}, {{}}, 0, {foo="bar"}, {0}, 0, 1, 0),
        "test failed: MP with tag")
@@ -138,11 +141,11 @@ assert(check_rel_member({type="multipolygon", foo="bar"}, {{foo="bar"}, {baz="qa
        "test failed: MP with tag, way with same tag")
 
 -- Old-style MPs
-assert(check_rel_member({type="multipolygon"}, {{foo="bar"}}, 0, {foo="bar"}, {1}, 0, 1, 0),
+assert(check_rel_member({type="multipolygon"}, {{foo="bar"}}, 1, {}, {0}, 0, 0, 0),
        "test failed: MP w/o tag, way with tag")
-assert(check_rel_member({type="multipolygon"}, {{foo="bar"}, {}}, 0, {foo="bar"}, {1,1}, 0, 1, 0),
+assert(check_rel_member({type="multipolygon"}, {{foo="bar"}, {}}, 1, {}, {0,0}, 0, 0, 0),
        "test failed: MP w/o tag, way with tag + untagged way")
-assert(check_rel_member({type="multipolygon"}, {{foo="bar"}, {baz="qax"}}, 1, {}, {0,0}, 0, 1, 0),
+assert(check_rel_member({type="multipolygon"}, {{foo="bar"}, {baz="qax"}}, 1, {}, {0,0}, 0, 0, 0),
        "test failed: MP w/o tag, way with tag + way with other tag")
 
 -- Boundary relations
