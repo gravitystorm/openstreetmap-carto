@@ -76,10 +76,9 @@ and issues have their own [tag](https://github.com/gravitystorm/openstreetmap-ca
 
 Initial releases will not make use of the new features, maintaining compatibility
 with v3.x and v3.x releases will continue with backports, allowing the style to be
-rendered from either a new database or an old one.
-
-When sufficient time has passed for users to reload their databases, new features
-can be used and 3.x compatibility will not be maintained.
+rendered from either a new database or an old one. In order to allow time for users
+to reload their databases, this will be maintained until at least two MINOR
+releases have occurred. After that compatibility will not be maintained.
 
 # Alternatives
 
