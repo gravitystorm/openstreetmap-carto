@@ -501,6 +501,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_arts_centre'][zoom >= 17] {
+    marker-file: url('symbols/shop/art.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_toilets'][zoom >= 17] {
     marker-file: url('symbols/toilets.svg');
     marker-fill: @amenity-brown;
@@ -1233,7 +1240,8 @@
   [feature = 'amenity_theatre'],
   [feature = 'amenity_courthouse'],
   [feature = 'amenity_townhall'],
-  [feature = 'amenity_cinema'] {
+  [feature = 'amenity_cinema'],
+  [feature = 'amenity_arts_centre'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-size: @standard-text-size;
@@ -1248,7 +1256,8 @@
       [feature = 'amenity_library'],
       [feature = 'tourism_museum'],
       [feature = 'amenity_theatre'],
-      [feature = 'amenity_cinema'] {
+      [feature = 'amenity_cinema'],
+      [feature = 'amenity_arts_centre'] {
         text-dy: 11;
       }
     }
@@ -1549,6 +1558,7 @@
   [feature = 'landuse_quarry'],
   [feature = 'landuse_vineyard'],
   [feature = 'landuse_orchard'],
+  [feature = 'landuse_plant_nursery'],
   [feature = 'landuse_cemetery'],
   [feature = 'amenity_grave_yard'],
   [feature = 'landuse_residential'],
@@ -1581,6 +1591,7 @@
   [feature = 'natural_beach'],
   [feature = 'natural_shoal'],
   [feature = 'natural_reef'],
+  [feature = 'leisure_fitness_centre'],
   [feature = 'leisure_sports_centre'],
   [feature = 'leisure_stadium'],
   [feature = 'leisure_track'],
@@ -1623,7 +1634,8 @@
         text-fill: darken(@quarry, 60%);
       }
       [feature = 'landuse_vineyard'],
-      [feature = 'landuse_orchard'] {
+      [feature = 'landuse_orchard'],
+      [feature = 'landuse_plant_nursery'] {
         text-fill: darken(@orchard, 50%);
       }
       [feature = 'landuse_cemetery'],
@@ -1695,6 +1707,7 @@
       [feature = 'natural_shoal'] {
         text-fill: darken(@beach, 60%);
       }
+      [feature = 'leisure_fitness_centre'],
       [feature = 'leisure_sports_centre'],
       [feature = 'leisure_stadium'] {
         text-fill: darken(@stadium, 70%);

@@ -18,7 +18,7 @@ This style has multiple purposes:
 * It's an important feedback mechanism for mappers to validate their edits and helps to prevent unfavorable fragmentation of tag use.
 * It's a major part of the public face of OpenStreetMap, for many people the map on osm.org rendered with this style _is_ OpenStreetMap.
 * It's used in many map applications as a general purpose map.
-* It's an examplar stylesheet for rendering OSM data.
+* It's an exemplar stylesheet for rendering OSM data.
 
 There is no ranking of these purposes.  To allow serving all of them and to 
 avoid satisfying only some at the cost of the others the following main goals 

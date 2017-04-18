@@ -5,7 +5,7 @@
 @forest: #add19e;       // Lch(80,30,135)
 @forest-text: #46673b;  // Lch(40,30,135)
 @park: #c8facc;         // Lch(94,30,145) also recreation_ground
-@orchard: #aedfa3;
+@orchard: #aedfa3; // also vineyard, plant_nursery
 
 // --- "Base" landuses ---
 
@@ -17,7 +17,7 @@
 @commercial-line: #d1b2b0;  // Lch(75,12,25)
 @industrial: #ebdbe8;       // Lch(89,9,330) (Also used for railway)
 @industrial-line: #c6b3c3;  // Lch(75,11,330) (Also used for railway-line)
-@farmland: #fbecd7;         // Lch(94,12,80) (Also used for farm)
+@farmland: #fbecd7;         // Lch(94,12,80)
 @farmland-line: #d6c4ab;    // Lch(80,15,80)
 @farmyard: #f5dcba;         // Lch(89,20,80)
 @farmyard-line: #d1b48c;    // Lch(75,25,80)
@@ -59,7 +59,7 @@
 
 @pitch: #aae0cb; // also track
 @track: @pitch;
-@stadium: @societal_amenities; // also sports_centre
+@stadium: @societal_amenities; // also fitness_centre and sports_centre
 @golf_course: #b5e3b5;
 
 #landcover-low-zoom[zoom < 10],
@@ -139,6 +139,20 @@
     }
     [zoom >= 14] {
       polygon-pattern-file: url('symbols/orchard.png');
+      polygon-pattern-alignment: global;
+      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+    }
+  }
+
+  [feature = 'landuse_plant_nursery'] {
+    [zoom >= 10] {
+      polygon-fill: @orchard;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+    [zoom >= 14] {
+      polygon-pattern-file: url('symbols/plant_nursery.png');
       polygon-pattern-alignment: global;
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
@@ -282,7 +296,6 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [feature = 'landuse_farm'],
   [feature = 'landuse_farmland'],
   [feature = 'landuse_greenhouse_horticulture'] {
     [zoom >= 10] {
@@ -454,6 +467,7 @@
   }
 
   [feature = 'wetland_wet_meadow'],
+  [feature = 'wetland_fen'],
   [feature = 'wetland_marsh'] {
     [zoom >= 10] {
       polygon-fill: @grass;
@@ -474,7 +488,7 @@
         polygon-fill: @societal_amenities;
         [zoom >= 13] {
           line-width: 0.3;
-          line-color: brown;
+          line-color: darken(@societal_amenities, 35%);
         }
       }
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -528,12 +542,17 @@
     polygon-fill: @station;
   }
 
+  [feature = 'leisure_fitness_centre'],
   [feature = 'leisure_sports_centre'],
   [feature = 'leisure_stadium'] {
     [zoom >= 10] {
       polygon-fill: @stadium;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
+      [zoom >= 13] {
+        line-width: 0.3;
+        line-color: darken(@stadium, 35%);
+      }
     }
   }
 
@@ -586,8 +605,7 @@
   [zoom >= 14] {
     [int_wetland = 'marsh'],
     [int_wetland = 'saltmarsh'],
-    [int_wetland = 'wet_meadow'],
-    [int_wetland = 'fen'] {
+    [int_wetland = 'wet_meadow'] {
       polygon-pattern-file: url('symbols/wetland_marsh.png');
       polygon-pattern-alignment: global;
     }
@@ -604,6 +622,7 @@
       polygon-pattern-alignment: global;
     }
     [int_wetland = 'bog'],
+    [int_wetland = 'fen'],
     [int_wetland = 'string_bog'] {
       polygon-pattern-file: url('symbols/wetland_bog.png');
       polygon-pattern-alignment: global;

@@ -267,9 +267,14 @@
 @track-oneway-arrow-color:        darken(@track-fill, 15%);
 @bridleway-oneway-arrow-color:    darken(@track-fill, 10%);
 
-@shield-size: 9;
-@shield-size-z16: 10;
-@shield-size-z18: 11;
+// Shield’s line wrap is based on OpenStreetMap data and not on line-wrap-width,
+// but lines are typically rather short, so we use narrow line spacing.
+@shield-size: 10;
+@shield-line-spacing: -1.50; // -0.15 em
+@shield-size-z16: 11;
+@shield-line-spacing-z16: -1.65; // -0.15 em
+@shield-size-z18: 12;
+@shield-line-spacing-z18: -1.80; // -0.15 em
 @shield-spacing: 760;
 @shield-min-distance: 40;
 @shield-font: @book-fonts;
@@ -2389,27 +2394,26 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 #junctions {
   [highway = 'motorway_junction'] {
     [zoom >= 11] {
-      ref/text-name: "[ref]";
-      ref/text-size: 10;
-      ref/text-fill: @junction-text-color;
-      ref/text-min-distance: 2;
-      ref/text-face-name: @oblique-fonts;
-      ref/text-halo-radius: @standard-halo-radius * 1.5;
+      text-name: "[ref]";
+      text-size: 10;
+      text-fill: @junction-text-color;
+      text-min-distance: 2;
+      text-face-name: @oblique-fonts;
+      text-halo-radius: @standard-halo-radius;
+      text-wrap-character: ";";
+      text-wrap-width: 2; // effectively break after every wrap character
+      text-line-spacing: -1.5; // -0.15 em
       [zoom >= 12] {
-        name/text-name: "[name]";
-        name/text-size: 9;
-        name/text-fill: @junction-text-color;
-        name/text-dy: -9;
-        name/text-face-name: @oblique-fonts;
-        name/text-halo-radius: @standard-halo-radius;
-        name/text-wrap-character: ";";
-        name/text-wrap-width: 2;
-        name/text-min-distance: 2;
+        ["name" != null]["ref" = null] {
+          text-name: "[name]";
+        }
+        ["name" != null]["ref" != null] {
+          text-name: [name] + "\n" + [ref];
+        }
       }
       [zoom >= 15] {
-        ref/text-size: 12;
-        name/text-size: 11;
-        name/text-dy: -10;
+        text-size: 11;
+        text-line-spacing: -1.65; // -0.15 em
       }
     }
   }
@@ -2423,10 +2427,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-face-name: @book-fonts;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
-      text-wrap-width: 30;
+      text-wrap-width: 30;  // 3.0 em
+      text-line-spacing: -1.5; // -0.15 em
       text-min-distance: 2;
       [zoom >= 17] {
         text-size: 11;
+        text-line-spacing: -1.65; // -0.15 em
         /* Offset name on traffic_signals on zoomlevels where they are displayed
         in order not to hide the text */
         [highway = 'traffic_signals'] {
@@ -2441,7 +2447,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   [man_made = 'bridge'] {
     [zoom >= 12][way_pixels > 62.5] {
       text-name: "[name]";
-      text-size: 8;
+      text-size: 10;
+      text-wrap-width: 30; // 3 em
+      text-line-spacing: -1.2; // -0.15 em
       text-fill: black;
       text-face-name: @book-fonts;
       text-halo-radius: @standard-halo-radius;
@@ -2450,17 +2458,25 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-wrap-width: 30;
       text-placement: interior;
       [way_pixels > 250] {
-        text-size: 9;
+        text-size: 11;
+        text-wrap-width: 33; // 3 em
+        text-line-spacing: -1.35; // -0.15 em
       }
       [way_pixels > 1000] {
-        text-size: 11;
+        text-size: 12;
+        text-wrap-width: 36; // 3 em
+        text-line-spacing: -1.65; // -0.15 em
         text-halo-radius: @standard-halo-radius * 1.5;
       }
       [way_pixels > 4000] {
-        text-size: 12;
+        text-size: 13;
+        text-wrap-width: 39; // 3 em
+        text-line-spacing: -1.80; // -0.15 em
       }
       [way_pixels > 16000] {
-        text-size: 13;
+        text-size: 14;
+        text-wrap-width: 42; // 3 em
+        text-line-spacing: -1.95; // -0.15 em
         text-halo-radius: 2;
       }
     }
@@ -2589,6 +2605,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   [highway = 'secondary'][zoom >= 12] {
     shield-name: "[refs]";
     shield-size: @shield-size;
+    shield-line-spacing: @shield-line-spacing;
     shield-placement: line;
     shield-spacing: @shield-spacing;
     shield-min-distance: @shield-min-distance;
@@ -2626,12 +2643,15 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [zoom >= 13] {
       shield-name: "[refs]";
       shield-size: @shield-size;
+      shield-line-spacing: @shield-line-spacing;
 
       [zoom >= 16] {
         shield-size: @shield-size-z16;
+        shield-line-spacing: @shield-line-spacing-z16;
       }
       [zoom >= 18] {
         shield-size: @shield-size-z18;
+        shield-line-spacing: @shield-line-spacing-z18;
       }
 
       shield-placement: line;
@@ -2741,7 +2761,10 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 #roads-text-name {
   [highway = 'motorway'],
   [highway = 'trunk'],
-  [highway = 'primary'] {
+  [highway = 'primary'],
+  [highway = 'construction'][construction = 'motorway'],
+  [highway = 'construction'][construction = 'trunk'],
+  [highway = 'construction'][construction = 'primary'] {
     [zoom >= 13] {
       text-name: "[name]";
       text-size: 8;
@@ -2770,7 +2793,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-size: 12;
     }
   }
-  [highway = 'secondary'] {
+  [highway = 'secondary'],
+  [highway = 'construction'][construction = 'secondary'] {
     [zoom >= 13] {
       text-name: "[name]";
       text-size: 8;
@@ -2796,7 +2820,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
   [highway = 'tertiary'],
-  [highway = 'tertiary_link'] {
+  [highway = 'construction'][construction = 'tertiary'] {
     [zoom >= 14] {
       text-name: "[name]";
       text-size: 9;
@@ -2815,29 +2839,32 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-size: 12;
     }
   }
-  [highway = 'construction'] {
-    [int_construction_minor = 'no'][zoom >= 13],
-    [int_construction_minor = 'yes'][zoom >= 14] {
-      text-name: "[name]";
-      text-size: 9;
-      text-fill: black;
-      text-spacing: 300;
-      text-clip: false;
-      text-placement: line;
-      text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill;
-      text-face-name: @book-fonts;
-      [zoom >= 17] {
-        text-size: 11;
-      }
-      [zoom >= 19] {
-        text-size: 12;
-      }
+  [highway = 'construction'][construction = null][zoom >= 16] {
+    text-name: "[name]";
+    text-size: 9;
+    text-fill: black;
+    text-spacing: 300;
+    text-clip: false;
+    text-placement: line;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-face-name: @book-fonts;
+
+    [zoom >= 17] {
+      text-size: 11;
+      text-spacing: 400;
+    }
+    [zoom >= 19] {
+      text-size: 12;
+      text-spacing: 400;
     }
   }
   [highway = 'residential'],
   [highway = 'unclassified'],
-  [highway = 'road'] {
+  [highway = 'road'],
+  [highway = 'construction'][construction = 'residential'],
+  [highway = 'construction'][construction = 'unclassified'],
+  [highway = 'construction'][construction = 'road'] {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 8;
@@ -2863,7 +2890,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   }
 
   [highway = 'raceway'],
-  [highway = 'service'] {
+  [highway = 'service'],
+  [highway = 'construction'][construction = 'raceway'],
+  [highway = 'construction'][construction = 'service'] {
     [zoom >= 16] {
       text-name: "[name]";
       text-size: 9;
@@ -2882,7 +2911,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   }
 
   [highway = 'living_street'],
-  [highway = 'pedestrian'] {
+  [highway = 'pedestrian'],
+  [highway = 'construction'][construction = 'living_street'],
+  [highway = 'construction'][construction = 'pedestrian'] {
     [zoom >= 15] {
       text-name: "[name]";
       text-size: 8;
@@ -2910,19 +2941,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 #roads-area-text-name {
   [way_pixels > 3000],
   [zoom >= 17] {
-    [zoom >= 15] {
-      text-name: "[name]";
-      text-size: 8;
-      text-face-name: @book-fonts;
-      text-placement: interior;
-      text-wrap-width: 30;
-    }
-    [zoom >= 16] {
-      text-size: 9;
-    }
-    [zoom >= 17] {
-      text-size: 11;
-    }
+    text-name: "[name]";
+    text-size: 11;
+    text-face-name: @book-fonts;
+    text-placement: interior;
+    text-wrap-width: 30; // 2.7 em
+    text-line-spacing: -1.7; // -0.15 em
   }
 }
 
