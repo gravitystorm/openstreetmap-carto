@@ -43,13 +43,15 @@ The repeated www.naturalearthdata.com in the Natural Earth shapefiles is correct
 Put these shapefiles at `path/to/openstreetmap-carto/data`.
 
 ## Fonts
-The stylesheet uses Noto Sans, an openly licensed font from Google with support for multiple scripts. The "UI" version is used where available, with its vertical metrics which fit better with Latin text. Other fonts from the Noto family are used for some other languages.
+The stylesheet uses Noto, an openly licensed font family from Google with support for multiple scripts. The stylesheet uses Noto's "Sans" style where available. If not available, this stylesheet uses another appropriate style of the Noto family. The "UI" version is used where available, with its vertical metrics which fit better with Latin text.
 
 DejaVu Sans is used as an optional fallback font for systems without Noto Sans. If all the Noto fonts are installed, it should never be used.
 
 Unifont is used as a last resort fallback, with it's excellent coverage, common presence on machines, and ugly look.
 
-On Ubuntu 16.04 or Debian Testing you can install the required fonts except Noto Emoji Regular with
+### Installation on Ubuntu/Debian
+
+On Ubuntu 16.04 or Debian Testing you can download and install the required fonts except Noto Emoji Regular with
 
 ```
 sudo apt-get install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted ttf-unifont
@@ -60,6 +62,16 @@ Noto Emoji Regular can be downloaded [from the Noto Emoji repository](https://gi
 It might be useful to have a more recent version of the fonts for [rare non-latin scripts](#non-latin-scripts). This can be installed [from source](https://github.com/googlei18n/noto-fonts/blob/master/FAQ.md#where-are-the-fonts).
 
 DejaVu is packaged as `fonts-dejavu-core`.
+
+### Installation on other operation systems
+
+The fonts can be downloaded here:
+
+* [Noto homepage](http://www.google.com/get/noto/) and [Noto github repositories](http://github.com/googlei18n?utf8=%E2%9C%93&q=noto)
+* [DejaVu homepage](http://dejavu-fonts.org/)
+* [Unifont homepage](http://unifoundry.com/)
+
+After the download, you have to install the font files in the usual way of your operation system.
 
 ### Non-latin scripts
 

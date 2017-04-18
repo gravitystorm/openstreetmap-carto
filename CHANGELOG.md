@@ -2,7 +2,17 @@
 openstreetmap-carto-de does not maintain a changelog. Instead have a log at the
 git history. openstreetmap-carto-de commit messages are usually prefixed by "GERMAN STYLE:"
 
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.1.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.2.0...master)
+
+## [v3.2.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.1.0...v3.2.0) - 2017-04-17
+### Changes
+- Render aeroway terminal buildings like other buildings
+- Removed rendering of `landuse=farm`
+- Added rendering for arts centre, fitness centre, plant nursery, mixed lift aerialways
+- Rendering for fens changed
+- Typography for point road-related features, addresses, and water features changed
+- Removed rendering of `waterway=canal` as an area
+- Take text properties of roads under construction from the type of road they will be
 
 ## [v3.1.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.0.1...v3.1.0) - 2017-01-28
 ### Changes
