@@ -590,7 +590,7 @@ Layer:
         ) AS tunnels
     properties:
       group-by: layernotnull
-      minzoom: 9
+      minzoom: 10
   - id: landuse-overlay
     name: landuse-overlay
     geometry: polygon
@@ -862,7 +862,7 @@ Layer:
             CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
         ) AS roads_casing
     properties:
-      minzoom: 9
+      minzoom: 10
   - id: highway-area-fill
     name: highway-area-fill
     # FIXME: No geometry?
@@ -1258,7 +1258,7 @@ Layer:
         ) AS bridges
     properties:
       group-by: layernotnull
-      minzoom: 9
+      minzoom: 10
   - id: guideways
     name: guideways
     geometry: linestring
