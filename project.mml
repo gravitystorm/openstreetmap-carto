@@ -37,6 +37,7 @@ _parts:
 
 Stylesheet:
   - style.mss
+  - fonts.mss
   - shapefiles.mss
   - landcover.mss
   - water.mss
