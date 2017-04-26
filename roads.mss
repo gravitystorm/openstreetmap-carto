@@ -1286,6 +1286,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 9] { line-width: @trunk-width-z9; }
       [zoom >= 10] { line-width: @trunk-width-z10; }
       [zoom >= 11] { line-width: @trunk-width-z11; }
+      [int_surface = 'unpaved'][zoom >= 5][zoom <12] {
+        line-dasharray: 8,2;
+      }
       [zoom >= 12] {
         line-color: @trunk-fill;
         line-width: @trunk-width-z12 - 2 * @major-casing-width-z12;
@@ -1318,6 +1321,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 9] { line-width: @primary-width-z9; }
       [zoom >= 10] { line-width: @primary-width-z10; }
       [zoom >= 11] { line-width: @primary-width-z11; }
+      [int_surface = 'unpaved'][zoom >= 8][zoom <12] {
+        line-dasharray: 8,2;
+      }
       [zoom >= 12] {
         line-color: @primary-fill;
         line-width: @primary-width-z12 - 2 * @major-casing-width-z12;
@@ -1352,7 +1358,10 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         line-width: @secondary-width-z10;
       }
       [zoom >= 11] { line-width: @secondary-width-z11; }
-      [zoom >= 12] { 
+      [int_surface = 'unpaved'][zoom >= 9][zoom <12] {
+        line-dasharray: 8,2;
+      }
+      [zoom >= 12] {
         line-color: @secondary-fill;
         line-width: @secondary-width-z12 - 2 * @secondary-casing-width-z12;
         line-cap: round;
@@ -1386,6 +1395,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 10] {
         line-color: @unimportant-road;
         line-width: 0.55;
+        [int_surface = 'unpaved'] {
+          line-dasharray: 8,2;
+        }
       }
       [zoom >= 12] {
         line-color: @tertiary-fill;
@@ -1424,6 +1436,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom = 12][feature = 'highway_unclassified'] {
         line-color: @unimportant-road;
         line-width: 1;
+      }
+      [int_surface = 'unpaved'][zoom = 12] {
+        line-dasharray: 8,2;
       }
       [zoom >= 13] {
         line-width: @residential-width-z13 - 2 * @residential-casing-width-z13;
@@ -1488,6 +1503,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         line-color: @unimportant-road;
         line-join: round;
         line-cap: round;
+        [int_surface = 'unpaved'] {
+          line-dasharray: 8,2;
+        }
       }
       [zoom >= 14] {
         line-width: @road-width-z14 - 2 * @casing-width-z14;
@@ -1516,6 +1534,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 13][service = 'INT-normal'] {
         line-width: 1;
         line-color: @unimportant-road;
+        [int_surface = 'unpaved'] {
+          line-dasharray: 8,2;
+        }
       }
       [zoom >= 14][service = 'INT-normal'],
       [zoom >= 16][service = 'INT-minor'] {
@@ -1593,6 +1614,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 18] { line-width: 8; }
       [zoom >= 19] { line-width: 12; }
       [zoom >= 20] { line-width: 24; }
+      [int_surface = 'unpaved'] {
+        line-dasharray: 8,2;
+      }
     }
 
     [feature = 'highway_platform'] {
