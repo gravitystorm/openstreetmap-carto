@@ -114,6 +114,7 @@ A regular style.
 
                 "DejaVu Sans Book",
 
+                "HanaMinA Regular", "HanaMinB Regular",
                 "Unifont Medium", "unifont Medium", "Unifont Upper Medium";
 
 /*
@@ -193,6 +194,7 @@ regular text and can be used for emphasis. Fallback is a regular style.
 
                 "DejaVu Sans Bold", "DejaVu Sans Book",
 
+                "HanaMinA Regular", "HanaMinB Regular",
                 "Unifont Medium", "unifont Medium", "Unifont Upper Medium";
 
 /*
@@ -266,4 +268,5 @@ For a considerable number of labels this style will make no difference to the re
 
                 "DejaVu Sans Oblique", "DejaVu Sans Book",
 
+                "HanaMinA Regular", "HanaMinB Regular",
                 "Unifont Medium", "unifont Medium", "Unifont Upper Medium";
