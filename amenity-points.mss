@@ -11,15 +11,19 @@
 @landform-color: #d08f55;
 
 @landcover-font-size: 10;
+@landcover-wrap-width-size: 25; // 2.50 em
+@landcover-line-spacing: -1.5; // -0.15 em
 @landcover-font-size-big: 12;
+@landcover-wrap-width-size-big: 33; // 2.75 em
+@landcover-line-spacing-big: -1.8; // -0.15 em
 @landcover-font-size-bigger: 15;
-@landcover-wrap-width-size: 25;
-@landcover-wrap-width-size-big: 35;
-@landcover-wrap-width-size-bigger: 45;
+@landcover-wrap-width-size-bigger: 45; // 3.00 em
+@landcover-line-spacing-big: -2.25; // -0.15 em
 @landcover-face-name: @oblique-fonts;
 
-@standard-wrap-width: 30;
 @standard-text-size: 10;
+@standard-wrap-width: 30; // 3.00 em
+@standard-line-spacing-big: -1.5; // -0.15 em
 @standard-font: @book-fonts;
 
 /* Note that .points is also used in water-features.mss */
@@ -1264,7 +1268,7 @@
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
     text-dy: 13;
-    text-wrap-width: 40;
+    text-wrap-width: @standard-wrap-width;
   }
 
   [feature = 'leisure_water_park'] {
