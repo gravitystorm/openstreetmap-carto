@@ -47,7 +47,7 @@ The stylesheet uses Noto, an openly licensed font family from Google with suppor
 
 DejaVu Sans is used as an optional fallback font for systems without Noto Sans. If all the Noto fonts are installed, it should never be used.
 
-Hanazono is used a fallback for seldom CJK characters that are not covered by Noto.
+Hanazono is used a fallback for seldom used CJK characters that are not covered by Noto.
 
 Unifont is used as a last resort fallback, with it's excellent coverage, common presence on machines, and ugly look.
 
