@@ -135,7 +135,7 @@ The project's goals and design philsophy are different from other projects, but 
 
 ## Typography
 
-This style uses the font "Noto" for a world-wide covering of scripts. The font
+This style uses the font "Noto" for a world-wide coverage of scripts. The font
 size should be ≥ 10 (legibility).
 
 ### Multi-line labels
@@ -148,8 +148,8 @@ text-size: 10;
 text-wrap-width: 30; // 3.0 em
 text-line-spacing: -1.5; // -0.15 em
 ```
-If text-size increases on higher zoom levels, the other parameters must also be
-adjusted:
+If text-size increases on higher zoom levels the other parameters also have
+to be adjusted:
 ```
 text-size: 12;
 text-wrap-width: 36; // 3.0 em
