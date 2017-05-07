@@ -6,6 +6,18 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 
 ADD openstreetmap-carto.style /
 
-CMD createdb gis && psql -d gis -c 'CREATE EXTENSION postgis;' && \
-    osm2pgsql --slim --cache 512 -d gis --style openstreetmap-carto.style \
-    $OSM_DATA
+RUN mkdir -p /openstreetmap-carto
+WORKDIR /openstreetmap-carto
+
+CMD psql -c "SELECT 1 FROM pg_database WHERE datname = 'gis';" | grep -q 1 || createdb gis && \
+    psql -d gis -c 'CREATE EXTENSION IF NOT EXISTS postgis;' && \
+    psql -d gis -c 'CREATE EXTENSION IF NOT EXISTS hstore;' && \
+    osm2pgsql \
+    --cache $OSM2PGSQL_CACHE \
+    --number-processes $OSM2PGSQL_NUMPROC \
+    --hstore \
+    --multi-geometry \
+    --database gis \
+    --style openstreetmap-carto.style \
+    --tag-transform-script openstreetmap-carto.lua \
+    $OSM2PGSQL_DATAFILE

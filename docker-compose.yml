@@ -14,7 +14,6 @@ services:
     environment:
       - PGHOST=db
       - PGUSER=postgres
-    restart: on-failure
   db:
     image: mdillon/postgis:9.6
   import:
@@ -22,7 +21,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.import
+    volumes:
+      - .:/openstreetmap-carto
     depends_on:
       - db
     environment:
-      - OSM_DATA
+      - PGHOST=db
+      - PGUSER=postgres
+      - OSM2PGSQL_CACHE
+      - OSM2PGSQL_NUMPROC
+      - OSM2PGSQL_DATAFILE
