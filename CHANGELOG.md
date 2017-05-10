@@ -1,4 +1,4 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.3.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.3.0...v3.x)
 
 ## [v3.3.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.2.0...v3.3.0) - 2017-05-10
 ### Changes
