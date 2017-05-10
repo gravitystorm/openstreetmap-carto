@@ -348,7 +348,6 @@
 
 .roads-casing, .bridges-casing, .tunnels-casing {
   ::casing {
-
 /*
 
 In german style we render highway=proposed as "casing only" simulated by offset and
@@ -652,35 +651,6 @@ Casing width is @proposed_casing_factor the width of normal road casing.
         }
 
     }
-
-    [zoom = 9][feature = 'highway_secondary'] {
-      line-color: @halo-color-for-minor-road;
-      line-width: 2.2;
-      line-opacity: 0.4;
-      line-join: round;
-      //Missing line-cap: round; is intentional. It would cause rendering glow multiple times in some places - what as result of partial transparency would cause differences in rendering
-      //Also, bridges - including bridge casings - are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
-    }
-    [zoom = 10][feature = 'highway_secondary'],
-    [zoom = 11][feature = 'highway_secondary'] {
-      line-color: @halo-color-for-minor-road;
-      line-width: 2.7;
-      line-opacity: 0.4;
-      line-join: round;
-      //Missing line-cap: round; is intentional. It would cause rendering glow multiple times in some places - what as result of partial transparency would cause differences in rendering
-      //Also, bridges - including bridge casings - are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
-    }
-    [zoom = 10][feature = 'highway_tertiary'],
-    [zoom = 11][feature = 'highway_tertiary'],
-    [zoom = 12][feature = 'highway_unclassified'] {
-      line-color: @halo-color-for-minor-road;
-      line-width: 2.2;
-      line-opacity: 0.3;
-      line-join: round;
-      //Missing line-cap: round; is intentional. It would cause rendering glow multiple times in some places - what as result of partial transparency would cause differences in rendering
-      //Also, bridges - including bridge casings are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
-    }
-
     [zoom >= 12] {
       [feature = 'highway_motorway'] {
         line-width: @motorway-width-z12;
@@ -1450,6 +1420,36 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 .roads-fill[zoom >= 10],
 .bridges-fill[zoom >= 10],
 .tunnels-fill[zoom >= 10] {
+  ::halo {
+    [zoom = 9][feature = 'highway_secondary'] {
+      line-color: @halo-color-for-minor-road;
+      line-width: 2.2;
+      line-opacity: 0.4;
+      line-join: round;
+      //Missing line-cap: round; is intentional. It would cause rendering glow multiple times in some places - what as result of partial transparency would cause differences in rendering
+      //Also, bridges - including bridge casings - are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
+    }
+    [zoom = 10][feature = 'highway_secondary'],
+    [zoom = 11][feature = 'highway_secondary'] {
+      line-color: @halo-color-for-minor-road;
+      line-width: 2.7;
+      line-opacity: 0.4;
+      line-join: round;
+      //Missing line-cap: round; is intentional. It would cause rendering glow multiple times in some places - what as result of partial transparency would cause differences in rendering
+      //Also, bridges - including bridge casings - are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
+    }
+    [zoom = 10][feature = 'highway_tertiary'],
+    [zoom = 11][feature = 'highway_tertiary'],
+    [zoom = 12][feature = 'highway_unclassified'] {
+      line-color: @halo-color-for-minor-road;
+      line-width: 2.2;
+      line-opacity: 0.3;
+      line-join: round;
+      //Missing line-cap: round; is intentional. It would cause rendering glow multiple times in some places - what as result of partial transparency would cause differences in rendering
+      //Also, bridges - including bridge casings are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
+    }
+  }
+
   ::fill {
     /*
      * The construction rules for small roads are strange, since if construction is null its assumed that

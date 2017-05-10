@@ -133,6 +133,42 @@ The project's goals and design philsophy are different from other projects, but 
 * [Maki Icons Design Guidelines](https://www.mapbox.com/maki-icons/guidelines/)
 * [GNOME Icon Design Guildelines](https://developer.gnome.org/hig/stable/icons-and-artwork.html.en)
 
+## Typography
+
+This style uses the font "Noto" for a world-wide coverage of scripts. The font
+size should be ≥ 10 (legibility).
+
+### Multi-line labels
+
+Additional to text-size we have to set text-wrap-width and text-line-spacing.
+For both, the absolute value is meaningless; it should be interpreted relative
+to the font size (em):
+```
+text-size: 10;
+text-wrap-width: 30; // 3.0 em
+text-line-spacing: -1.5; // -0.15 em
+```
+If text-size increases on higher zoom levels the other parameters also have
+to be adjusted:
+```
+text-size: 12;
+text-wrap-width: 36; // 3.0 em
+text-line-spacing: -1.8; // -0.15 em
+```
+Usually, with higher zoom levels we increase the line length
+(text-wrap-width in em). Following an old typography convention, we use narrow
+line spacing for short lines and wider line spacing for longer lines.
+```
+text-size: 15;
+text-wrap-width: 75; // 5.0 em
+text-line-spacing: -0.75; // -0.05 em
+```
+Noto’s line spacing is rather large to allow also tall scripts like Myanmar
+to be rendered without collisions. But the line spacing is too large for
+cartographic usage; therefore we reduce the line spacing. Currently, the
+line spacing ranges from -0.15 em to -0.05 em. (Even at -0.15 em, collisions
+are seldom and even then the text stays legible).
+
 ## Pull requests
 
 Pull requests that change the cartography should contain a few images selected

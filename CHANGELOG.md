@@ -2,7 +2,14 @@
 openstreetmap-carto-de does not maintain a changelog. Instead have a log at the
 git history. openstreetmap-carto-de commit messages are usually prefixed by "GERMAN STYLE:"
 
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.2.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.3.0...master)
+
+## [v3.3.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.2.0...v3.3.0) - 2017-05-10
+### Changes
+- Most shops are now rendered as dots z17 to deal with overcrowding
+- Font selection is moved to its own file to make customization easier, and to make it easier for other styles to reuse our font work
+- Rare CJK characters outside the BMP should now render better
+- Waterway tunnels in forests and lakes are clearer
 
 ## [v3.2.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.1.0...v3.2.0) - 2017-04-17
 ### Changes

@@ -18,9 +18,10 @@ def main():
     config = {}
     config['base'] = {}
 
+    # font_height and font_width are determined by trial and error
     config['base']['rounded_corners'] = 2
-    config['base']['font_height'] = 9.1
-    config['base']['font_width'] = 5.9
+    config['base']['font_height'] = 12.1
+    config['base']['font_width'] = 6.2
     config['base']['padding_x'] = 4
     config['base']['padding_y'] = 2
     config['base']['stroke_width'] = 1
@@ -54,10 +55,10 @@ def main():
     config['z16'] = {}
     config['z18'] = {}
 
-    config['z16']['font_width'] = 6.5
-    config['z16']['font_height'] = 10.1
-    config['z18']['font_width'] = 7.2
-    config['z18']['font_height'] = 11.1
+    config['z16']['font_width'] = 6.1
+    config['z16']['font_height'] = 14.1
+    config['z18']['font_width'] = 6.9
+    config['z18']['font_height'] = 15.1
 
     if not os.path.exists(os.path.dirname(config['global']['output_dir'])):
         os.makedirs(os.path.dirname(config['global']['output_dir']))
