@@ -47,6 +47,8 @@ The stylesheet uses Noto, an openly licensed font family from Google with suppor
 
 DejaVu Sans is used as an optional fallback font for systems without Noto Sans. If all the Noto fonts are installed, it should never be used.
 
+Hanazono is used a fallback for seldom used CJK characters that are not covered by Noto.
+
 Unifont is used as a last resort fallback, with it's excellent coverage, common presence on machines, and ugly look.
 
 ### Installation on Ubuntu/Debian
@@ -54,7 +56,7 @@ Unifont is used as a last resort fallback, with it's excellent coverage, common 
 On Ubuntu 16.04 or Debian Testing you can download and install the required fonts except Noto Emoji Regular with
 
 ```
-sudo apt-get install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted ttf-unifont
+sudo apt-get install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted fonts-hanazono ttf-unifont
 ```
 
 Noto Emoji Regular can be downloaded [from the Noto Emoji repository](https://github.com/googlei18n/noto-emoji).
@@ -69,6 +71,7 @@ The fonts can be downloaded here:
 
 * [Noto homepage](http://www.google.com/get/noto/) and [Noto github repositories](http://github.com/googlei18n?utf8=%E2%9C%93&q=noto)
 * [DejaVu homepage](http://dejavu-fonts.org/)
+* [Hanazono homepage](http://fonts.jp/hanazono/)
 * [Unifont homepage](http://unifoundry.com/)
 
 After the download, you have to install the font files in the usual way of your operation system.

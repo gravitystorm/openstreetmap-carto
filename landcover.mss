@@ -672,13 +672,13 @@
 
 #cliffs {
   [natural = 'cliff'][zoom >= 13] {
-    line-pattern-file: url('symbols/cliff.png');
+    line-pattern-file: url('symbols/cliff.svg');
     [zoom >= 15] {
-      line-pattern-file: url('symbols/cliff2.png');
+      line-pattern-file: url('symbols/cliff2.svg');
     }
   }
   [man_made = 'embankment'][zoom >= 15]::man_made {
-    line-pattern-file: url('symbols/embankment.png');
+    line-pattern-file: url('symbols/embankment.svg');
   }
 }
 
