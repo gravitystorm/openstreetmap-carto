@@ -7,8 +7,7 @@ addons:
     packages:
     - lua5.1
 env:
-  - CARTO=0.16.0 MAPNIK='3.0.0 3.0.12'
-  - CARTO=0.16.3 MAPNIK='3.0.0 3.0.12'
+  - CARTO=0.18.0 MAPNIK='3.0.0 3.0.12'
 install:
   - npm install carto@$CARTO
   - mkdir -p data/world_boundaries data/simplified-land-polygons-complete-3857 data/ne_110m_admin_0_boundary_lines_land data/ne_10m_populated_places data/land-polygons-split-3857
