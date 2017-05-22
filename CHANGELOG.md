@@ -4,6 +4,10 @@ git history. openstreetmap-carto-de commit messages are usually prefixed by "GER
 
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.3.0...master)
 
+## [v3.3.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.3.0...v3.3.1) - 2017-05-22
+### Changes
+- Fix a regression in intermittent waterways
+
 ## [v3.3.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.2.0...v3.3.0) - 2017-05-10
 ### Changes
 - Most shops are now rendered as dots z17 to deal with overcrowding
