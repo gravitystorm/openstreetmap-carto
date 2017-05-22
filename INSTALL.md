@@ -93,7 +93,7 @@ For development, a style design studio is needed.
 
 For deployment, CartoCSS and Mapnik are required.
 
-* [CartoCSS](https://github.com/mapbox/carto) >= 0.16.0 (we're using YAML)
+* [CartoCSS](https://github.com/mapbox/carto) >= 0.18.0 (we're using YAML)
 * [Mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 3.0
 
 Remember to run CartoCSS with proper API version to avoid errors (at least 3.0.0: `carto -a "3.0.0"`).
