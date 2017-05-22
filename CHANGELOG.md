@@ -1,4 +1,15 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.3.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.0.0...master)
+
+## [v4.0.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.3.0...v4.0.0)
+### Major changes
+- The database schema has changed from the osm2pgsql default. This requires a database reload.
+- osm2pgsql Lua transforms are used for some preprocessing. This requires osm2pgsql built with lua support, which most versions will have.
+
+### Changes
+- Old-style multipolygons (those with tags on the outer way instead of the relation) are no longer supported
+- Multipolygons composed of multiple areas are now rendered with one label
+- Fixes to various problems determining if an object is an area or not
+- CartoCSS 0.18.0 is required
 
 ## [v3.3.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.3.0...v3.3.1) - 2017-05-22
 ### Changes
