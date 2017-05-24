@@ -7,8 +7,13 @@ to provide all important tags (see hstore-only.style osm2pgsql style).
 For this reason the osm2pgsql commandline required will look slightly different:
 
 ```
-osm2pgsql -S hstore-only.style --hstore --hstore-match-only -d osm planet-latest.osm.pbf -p planet_osm_hstore
+osm2pgsql -G -S hstore-only.style --hstore --tag-transform-script openstreetmap-carto.lua planet-latest.osm.pbf -p planet_osm_hstore
 ```
+
+The database layout of the git master branch is aiming to be compatible witch
+openstreetmap-carto 4.x
+
+For older databases without lua transform script use the de3.x branch.
 
 You also need to make sure that the version of osm2pgsql used supports the `nocolumn` option!
 This is the case from 0.89 onwards. 

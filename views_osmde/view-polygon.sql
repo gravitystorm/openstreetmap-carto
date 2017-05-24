@@ -20,7 +20,6 @@ tags->'highway' as "highway",
 tags->'historic' as "historic",
 tags->'iata' as "iata",
 tags->'landuse' as "landuse",
-tags->'layer' as "layer",
 tags->'leaf_type' as "leaf_type",
 tags->'leisure' as "leisure",
 tags->'man_made' as "man_made",
@@ -54,6 +53,7 @@ osml10n_get_name_without_brackets_from_tags(tags,'de',way) as localized_name_wit
 osml10n_get_streetname_from_tags(tags,true,false,chr(10),'de', way) as localized_streetname,
 osml10n_get_country_name(tags,chr(10),'de') as country_name,
 COALESCE(tags->'name:hsb',tags->'name:dsb',tags->'name') as name_hrb,
+layer as layer,
 tags as "tags"
 FROM planet_osm_hstore_polygon;
 

@@ -37,6 +37,7 @@ osml10n_get_placename_from_tags(tags,false,false,' - ','de',way) as localized_na
 osml10n_get_name_without_brackets_from_tags(tags,'de',way) as localized_name_without_brackets,
 osml10n_get_streetname_from_tags(tags,true,false,' - ','de', way) as localized_streetname,
 COALESCE(tags->'name:hsb',tags->'name:dsb',tags->'name') as name_hrb,
+layer as layer,
 tags->'tags' as "tags"
 FROM planet_osm_hstore_roads;
 

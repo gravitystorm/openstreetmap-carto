@@ -1,12 +1,12 @@
 # Installation
 
 ## OpenStreetMap data
-You need OpenStreetMap data loaded into a PostGIS database (see below for [dependencies](#dependencies)). These stylesheets currently work only with the osm2pgsql defaults (i.e. database name is `gis`, table names are `planet_osm_point`, etc).
+You need OpenStreetMap data loaded into a PostGIS database (see below for [dependencies](#dependencies)). These stylesheets expect a database generated with osm2pgsql using the pgsql backend (table names of `planet_osm_point`, etc), the default database name (`gis`), and the [lua transforms](https://github.com/openstreetmap/osm2pgsql/blob/master/docs/lua.md) documented in the instructions below.
 
-It's probably easiest to grab an PBF of OSM data from [Mapzen](https://mapzen.com/metro-extracts/) or [geofabrik](http://download.geofabrik.de/). Once you've set up your PostGIS database, import with osm2pgsql:
+Start by setting up your database to have PostGIS and hstore with ``psql -d gis -c 'CREATE EXTENSION postgis; CREATE EXTENSION hstore;'``, then grab some OSM data. It's probably easiest to grab an PBF of OSM data from [Mapzen](https://mapzen.com/metro-extracts/) or [geofabrik](http://download.geofabrik.de/). Once you've done that, import with osm2pgsql:
 
 ```
-osm2pgsql -d gis ~/path/to/data.osm.pbf --style openstreetmap-carto.style
+osm2pgsql -G --hstore --style openstreetmap-carto.style --tag-transform-script openstreetmap-carto.lua -d gis ~/path/to/data.osm.pbf
 ```
 
 You can find a more detailed guide to setting up a database and loading data with osm2pgsql at [switch2osm.org](http://switch2osm.org/loading-osm-data/).
@@ -93,7 +93,7 @@ For development, a style design studio is needed.
 
 For deployment, CartoCSS and Mapnik are required.
 
-* [CartoCSS](https://github.com/mapbox/carto) >= 0.16.0 (we're using YAML)
+* [CartoCSS](https://github.com/mapbox/carto) >= 0.18.0 (we're using YAML)
 * [Mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 3.0
 
 Remember to run CartoCSS with proper API version to avoid errors (at least 3.0.0: `carto -a "3.0.0"`).

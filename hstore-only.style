@@ -7,64 +7,56 @@
 # select statements in the standard mapnik style
 #
 # import using the following command:
-# osm2pgsql -s -S <this-file> --hstore --hstore-match-only  -p planet_osm_hstore <osm-or-pbf-file>
+# osm2pgsql -G -s -S <this-file> --hstore --tag-transform-script openstreetmap-carto.lua -p planet_osm_hstore <osm-or-pbf-file>
 #
 
-node,way	3dshapes:ggmodelk	text	delete
-node,way	AND_nosr_r	text	delete
-node,way	b5m:*	text	delete
-node,way	bak:*	text	delete
-node,way	canvec:*	text	delete
-node,way	created_by	text	delete
-node,way	dcgis:*	text	delete
-node,way	FIXME	text	delete
-node,way	geobase:*	text	delete
-node,way	gnis:*	text	delete
-node,way	kms:*	text	delete
-node,way	KSJ2:*	text	delete
-node,way	massgis:*	text	delete
-node,way	mvdgis:*	text	delete
-node,way	naptan:*	text	delete
-node,way	ngbe:*	text	delete
-node,way	nhd:*	text	delete
-node,way	NHD:*	text	delete
-node,way	note	text	delete
-node,way	note:*	text	delete
-node,way	notes	text	delete
-node,way	osak:*	text	delete
-node,way	source	text	delete
-node,way	source:*	text	delete
-node,way	sourcedb:*	text	delete
-node,way	tiger:*	text	delete
-node,way	WroclawGIS:*	text	delete
-node,way	yh:*	text	delete
-node,way	rednap:* text	delete
-node,way	ideewfs:* text	delete
-node,way	ign:* text	delete
-
+# OsmType  Tag          DataType     Flags
+node,way   access       text         linear,nocolumn
+node,way   addr:housename      text  linear,nocolumn
+node,way   addr:housenumber    text  linear,nocolumn
+way        addr:interpolation  text  linear,nocolumn
+node,way   admin_level  text         linear,nocolumn
 node,way   aerialway    text         linear,nocolumn
-node,way   addr:housenumber text     linear,nocolumn
 node,way   aeroway      text         polygon,nocolumn
-node,way   amenity      text         nocache,polygon,nocolumn
+node,way   amenity      text         polygon,nocolumn
 node,way   barrier      text         linear,nocolumn
+way        bicycle      text         linear,nocolumn
+way        bridge       text         linear,nocolumn
 node,way   boundary     text         linear,nocolumn
 node,way   building     text         polygon,nocolumn
+way        construction text         linear,nocolumn
+way        covered      text         linear,nocolumn
+way        foot         text         linear,nocolumn
 node,way   highway      text         linear,nocolumn
 node,way   historic     text         polygon,nocolumn
+way        horse        text         linear,nocolumn
+node,way   junction     text         linear,nocolumn
 node,way   landuse      text         polygon,nocolumn
 node,way   leisure      text         polygon,nocolumn
 node,way   lock         text         linear,nocolumn
 node,way   man_made     text         polygon,nocolumn
 node,way   military     text         polygon,nocolumn
+node,way   name         text         linear,nocolumn
+node,way   natural      text         polygon,nocolumn
+node,way   oneway       text         linear,nocolumn
 node,way   place        text         polygon,nocolumn
 node,way   power        text         polygon,nocolumn
 node,way   railway      text         linear,nocolumn
-node,way   route        text         linear,nocolumn
+node,way   ref          text         linear,nocolumn
+node,way   religion     text         linear,nocolumn
+way        route        text         linear,nocolumn
+way        service      text         linear,nocolumn
 node,way   shop         text         polygon,nocolumn
+way        surface      text         linear,nocolumn
 node,way   tourism      text         polygon,nocolumn
+way        tracktype    text         linear,nocolumn
+way        tunnel       text         linear,nocolumn
+node,way   water        text         polygon,nocolumn
 node,way   waterway     text         polygon,nocolumn
-node,way   natural      text         polygon,nocolumn
 
-node,way   z_order      int4         linear # This is calculated during import
-way        way_area     real                # This is calculated during import
+node,way   layer        int4         linear
+way        way_area     real         linear # This is calculated during import
+
+# Columns defined in openstreetmap-carto.lua file
+node,way        z_order      int4         linear
 
