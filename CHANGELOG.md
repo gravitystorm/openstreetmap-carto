@@ -2,8 +2,6 @@
 openstreetmap-carto-de does not maintain a changelog. Instead have a log at the
 git history. openstreetmap-carto-de commit messages are usually prefixed by "GERMAN STYLE:"
 
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.3.0...master)
-
 ## [v3.3.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.3.0...v3.3.1) - 2017-05-22
 ### Changes
 - Fix a regression in intermittent waterways
