@@ -55,7 +55,6 @@ Stylesheet:
   - addressing.mss
 Layer:
   - id: world
-    name: world
     geometry: polygon
     <<: *extents
     Datasource:
@@ -64,7 +63,6 @@ Layer:
     properties:
       maxzoom: 9
   - id: coast-poly
-    name: coast-poly
     geometry: polygon
     <<: *extents
     Datasource:
@@ -73,7 +71,6 @@ Layer:
     properties:
       minzoom: 10
   - id: builtup
-    name: builtup
     geometry: polygon
     extent: *world
     srs-name: mercator
@@ -85,7 +82,6 @@ Layer:
       minzoom: 8
       maxzoom: 9
   - id: necountries
-    name: necountries
     geometry: linestring
     <<: *extents84
     Datasource:
@@ -95,7 +91,6 @@ Layer:
       minzoom: 1
       maxzoom: 3
   - id: landcover-low-zoom
-    name: landcover-low-zoom
     geometry: polygon
     <<: *extents
     Datasource:
@@ -122,7 +117,6 @@ Layer:
       minzoom: 7
       maxzoom: 9
   - id: landcover
-    name: landcover
     geometry: polygon
     <<: *extents
     Datasource:
@@ -172,7 +166,6 @@ Layer:
     properties:
       minzoom: 10
   - id: landcover-line
-    name: landcover-line
     geometry: linestring
     <<: *extents
     Datasource:
@@ -186,7 +179,6 @@ Layer:
     properties:
       minzoom: 14
   - id: water-lines-casing
-    name: water-lines-casing
     geometry: linestring
     <<: *extents
     Datasource:
@@ -201,7 +193,6 @@ Layer:
     properties:
       minzoom: 13
   - id: water-lines-low-zoom
-    name: water-lines-low-zoom
     geometry: linestring
     <<: *extents
     Datasource:
@@ -218,7 +209,6 @@ Layer:
       minzoom: 8
       maxzoom: 11
   - id: icesheet-poly
-    name: icesheet-poly
     geometry: polygon
     <<: *extents
     Datasource:
@@ -227,7 +217,6 @@ Layer:
     properties:
       minzoom: 4
   - id: water-areas
-    name: water-areas
     geometry: polygon
     <<: *extents
     Datasource:
@@ -252,7 +241,6 @@ Layer:
     properties:
       minzoom: 4
   - id: landcover-area-symbols
-    name: landcover-area-symbols
     geometry: polygon
     <<: *extents
     Datasource:
@@ -280,7 +268,6 @@ Layer:
     properties:
       minzoom: 10
   - id: icesheet-outlines
-    name: icesheet-outlines
     geometry: linestring
     <<: *extents
     Datasource:
@@ -289,7 +276,6 @@ Layer:
     properties:
       minzoom: 4
   - id: water-lines
-    name: water-lines
     class: water-lines
     geometry: linestring
     <<: *extents
@@ -308,7 +294,6 @@ Layer:
     properties:
       minzoom: 12
   - id: water-barriers-line
-    name: water-barriers-line
     geometry: linestring
     <<: *extents
     Datasource:
@@ -324,7 +309,6 @@ Layer:
     properties:
       minzoom: 13
   - id: water-barriers-poly
-    name: water-barriers-poly
     geometry: polygon
     <<: *extents
     Datasource:
@@ -340,7 +324,6 @@ Layer:
     properties:
       minzoom: 13
   - id: marinas-area
-    name: marinas-area
     geometry: polygon
     <<: *extents
     Datasource:
@@ -354,7 +337,6 @@ Layer:
     properties:
       minzoom: 14
   - id: piers-poly
-    name: piers-poly
     geometry: polygon
     <<: *extents
     Datasource:
@@ -368,7 +350,6 @@ Layer:
     properties:
       minzoom: 12
   - id: piers-line
-    name: piers-line
     geometry: linestring
     <<: *extents
     Datasource:
@@ -382,7 +363,6 @@ Layer:
     properties:
       minzoom: 12
   - id: water-barriers-point
-    name: water-barriers-point
     geometry: point
     <<: *extents
     Datasource:
@@ -396,7 +376,6 @@ Layer:
     properties:
       minzoom: 17
   - id: bridge
-    name: bridge
     geometry: polygon
     <<: *extents
     Datasource:
@@ -413,7 +392,6 @@ Layer:
     properties:
       minzoom: 12
   - id: buildings
-    name: buildings
     geometry: polygon
     <<: *extents
     Datasource:
@@ -434,7 +412,6 @@ Layer:
     properties:
       minzoom: 13
   - id: buildings-major
-    name: buildings-major
     geometry: polygon
     <<: *extents
     Datasource:
@@ -455,7 +432,6 @@ Layer:
     properties:
       minzoom: 13
   - id: tunnels
-    name: tunnels
     class: tunnels-fill tunnels-casing access
     geometry: linestring
     <<: *extents
@@ -593,7 +569,6 @@ Layer:
       group-by: layernotnull
       minzoom: 10
   - id: landuse-overlay
-    name: landuse-overlay
     geometry: polygon
     <<: *extents
     Datasource:
@@ -610,7 +585,6 @@ Layer:
     properties:
       minzoom: 7
   - id: line-barriers
-    name: line-barriers
     class: barriers
     geometry: linestring
     <<: *extents
@@ -633,7 +607,6 @@ Layer:
     properties:
       minzoom: 14
   - id: cliffs
-    name: cliffs
     geometry: linestring
     <<: *extents
     Datasource:
@@ -647,7 +620,6 @@ Layer:
     properties:
       minzoom: 13
   - id: area-barriers
-    name: area-barriers
     class: barriers
     geometry: polygon
     <<: *extents
@@ -665,7 +637,6 @@ Layer:
     properties:
       minzoom: 16
   - id: ferry-routes
-    name: ferry-routes
     geometry: linestring
     <<: *extents
     Datasource:
@@ -679,7 +650,6 @@ Layer:
     properties:
       minzoom: 7
   - id: turning-circle-casing
-    name: turning-circle-casing
     geometry: point
     <<: *extents
     Datasource:
@@ -708,7 +678,6 @@ Layer:
     properties:
       minzoom: 15
   - id: highway-area-casing
-    name: highway-area-casing
     geometry: polygon
     <<: *extents
     Datasource:
@@ -728,7 +697,6 @@ Layer:
     properties:
       minzoom: 14
   - id: roads-casing
-    name: roads-casing
     class: roads-casing
     geometry: linestring
     <<: *extents
@@ -865,7 +833,6 @@ Layer:
     properties:
       minzoom: 10
   - id: highway-area-fill
-    name: highway-area-fill
     # FIXME: No geometry?
     <<: *extents
     Datasource:
@@ -888,7 +855,6 @@ Layer:
     properties:
       minzoom: 14
   - id: roads-fill
-    name: roads-fill
     class: roads-fill access
     geometry: linestring
     <<: *extents
@@ -1030,7 +996,6 @@ Layer:
     properties:
       minzoom: 10
   - id: turning-circle-fill
-    name: turning-circle-fill
     geometry: point
     <<: *extents
     Datasource:
@@ -1059,7 +1024,6 @@ Layer:
     properties:
       minzoom: 15
   - id: aerialways
-    name: aerialways
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1074,7 +1038,6 @@ Layer:
     properties:
       minzoom: 12
   - id: roads-low-zoom
-    name: roads-low-zoom
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1105,7 +1068,6 @@ Layer:
       minzoom: 5
       maxzoom: 9
   - id: waterway-bridges
-    name: waterway-bridges
     class: water-lines
     geometry: linestring
     <<: *extents
@@ -1127,7 +1089,6 @@ Layer:
     properties:
       minzoom: 12
   - id: bridges
-    name: bridges
     class: bridges-fill bridges-casing access
     geometry: linestring
     <<: *extents
@@ -1261,7 +1222,6 @@ Layer:
       group-by: layernotnull
       minzoom: 10
   - id: guideways
-    name: guideways
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1275,7 +1235,6 @@ Layer:
     properties:
       minzoom: 13
   - id: admin-low-zoom
-    name: admin-low-zoom
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1294,7 +1253,6 @@ Layer:
       minzoom: 4
       maxzoom: 10
   - id: admin-mid-zoom
-    name: admin-mid-zoom
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1313,7 +1271,6 @@ Layer:
       minzoom: 11
       maxzoom: 12
   - id: admin-high-zoom
-    name: admin-high-zoom
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1331,7 +1288,6 @@ Layer:
     properties:
       minzoom: 13
   - id: power-minorline
-    name: power-minorline
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1345,7 +1301,6 @@ Layer:
     properties:
       minzoom: 16
   - id: power-line
-    name: power-line
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1359,7 +1314,6 @@ Layer:
     properties:
       minzoom: 14
   - id: nature-reserve-boundaries
-    name: nature-reserve-boundaries
     geometry: polygon
     <<: *extents
     Datasource:
@@ -1378,7 +1332,6 @@ Layer:
     properties:
       minzoom: 7
   - id: tourism-boundary
-    name: tourism-boundary
     geometry: polygon
     <<: *extents
     Datasource:
@@ -1396,7 +1349,6 @@ Layer:
     properties:
       minzoom: 10
   - id: trees
-    name: trees
     geometry: polygon
     <<: *extents
     Datasource:
@@ -1415,7 +1367,6 @@ Layer:
     properties:
       minzoom: 16
   - id: country-names
-    name: country-names
     class: country
     geometry: point
     <<: *extents
@@ -1436,7 +1387,6 @@ Layer:
     properties:
       minzoom: 2
   - id: capital-names
-    name: capital-names
     geometry: point
     <<: *extents
     Datasource:
@@ -1459,7 +1409,6 @@ Layer:
       minzoom: 3
       maxzoom: 15
   - id: state-names
-    name: state-names
     class: state
     geometry: point
     <<: *extents
@@ -1481,7 +1430,6 @@ Layer:
     properties:
       minzoom: 4
   - id: placenames-medium
-    name: placenames-medium
     geometry: point
     <<: *extents
     Datasource:
@@ -1526,7 +1474,6 @@ Layer:
       minzoom: 4
       maxzoom: 15
   - id: placenames-small
-    name: placenames-small
     geometry: point
     <<: *extents
     Datasource:
@@ -1556,7 +1503,6 @@ Layer:
       minzoom: 12
   - id: stations
     class: stations
-    name: stations
     geometry: point
     <<: *extents
     Datasource:
@@ -1582,7 +1528,6 @@ Layer:
     properties:
       minzoom: 12
   - id: stations-poly
-    name: stations-poly
     class: stations
     geometry: polygon
     <<: *extents
@@ -1602,7 +1547,6 @@ Layer:
     properties:
       minzoom: 12
   - id: amenity-points-poly
-    name: amenity-points-poly
     class: points
     geometry: polygon
     <<: *extents
@@ -1672,7 +1616,6 @@ Layer:
     properties:
       minzoom: 10
   - id: amenity-points
-    name: amenity-points
     class: points
     geometry: point
     <<: *extents
@@ -1754,7 +1697,6 @@ Layer:
     properties:
       minzoom: 10
   - id: power-towers
-    name: power-towers
     geometry: point
     <<: *extents
     Datasource:
@@ -1768,7 +1710,6 @@ Layer:
     properties:
       minzoom: 14
   - id: power-poles
-    name: power-poles
     geometry: point
     <<: *extents
     Datasource:
@@ -1782,7 +1723,6 @@ Layer:
     properties:
       minzoom: 16
   - id: roads-text-ref-low-zoom
-    name: roads-text-ref-low-zoom
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1835,7 +1775,6 @@ Layer:
       minzoom: 10
       maxzoom: 12
   - id: junctions
-    name: junctions
     geometry: point
     <<: *extents
     Datasource:
@@ -1853,7 +1792,6 @@ Layer:
     properties:
       minzoom: 11
   - id: bridge-text
-    name: bridge-text
     geometry: polygon
     <<: *extents
     Datasource:
@@ -1870,7 +1808,6 @@ Layer:
     properties:
       minzoom: 11
   - id: roads-text-ref
-    name: roads-text-ref
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1925,7 +1862,6 @@ Layer:
     properties:
       minzoom: 13
   - id: roads-area-text-name
-    name: roads-area-text-name
     geometry: polygon
     <<: *extents
     Datasource:
@@ -1945,7 +1881,6 @@ Layer:
     properties:
       minzoom: 15
   - id: roads-text-name
-    name: roads-text-name
     class: directions
     geometry: linestring
     <<: *extents
@@ -2001,7 +1936,6 @@ Layer:
     properties:
       minzoom: 13
   - id: paths-text-name
-    name: paths-text-name
     geometry: linestring
     <<: *extents
     Datasource:
@@ -2018,7 +1952,6 @@ Layer:
     properties:
       minzoom: 15
   - id: text-poly-low-zoom
-    name: text-poly-low-zoom
     class: text-low-zoom
     geometry: polygon
     <<: *extents
@@ -2051,7 +1984,6 @@ Layer:
       minzoom: 7
       maxzoom: 9
   - id: text-poly
-    name: text-poly
     class: text
     geometry: polygon
     <<: *extents
@@ -2135,7 +2067,6 @@ Layer:
     properties:
       minzoom: 10
   - id: text-line
-    name: text-line
     geometry: linestring
     <<: *extents
     Datasource:
@@ -2160,7 +2091,6 @@ Layer:
     properties:
       minzoom: 10
   - id: text-point
-    name: text-point
     class: text
     geometry: point
     <<: *extents
@@ -2278,7 +2208,6 @@ Layer:
     properties:
       minzoom: 10
   - id: building-text
-    name: building-text
     geometry: polygon
     <<: *extents
     Datasource:
@@ -2297,7 +2226,6 @@ Layer:
     properties:
       minzoom: 14
   - id: interpolation
-    name: interpolation
     geometry: linestring
     <<: *extents
     Datasource:
@@ -2311,7 +2239,6 @@ Layer:
     properties:
       minzoom: 17
   - id: addresses
-    name: addresses
     geometry: point
     <<: *extents
     Datasource:
@@ -2338,7 +2265,6 @@ Layer:
     properties:
       minzoom: 17
   - id: water-lines-text
-    name: water-lines-text
     geometry: linestring
     <<: *extents
     Datasource:
@@ -2360,7 +2286,6 @@ Layer:
     properties:
       minzoom: 13
   - id: ferry-routes-text
-    name: ferry-routes-text
     geometry: linestring
     <<: *extents
     Datasource:
@@ -2376,7 +2301,6 @@ Layer:
     properties:
       minzoom: 13
   - id: admin-text
-    name: admin-text
     geometry: linestring
     <<: *extents
     Datasource:
@@ -2395,7 +2319,6 @@ Layer:
     properties:
       minzoom: 16
   - id: nature-reserve-text
-    name: nature-reserve-text
     geometry: linestring
     <<: *extents
     Datasource:
@@ -2412,7 +2335,6 @@ Layer:
     properties:
       minzoom: 13
   - id: amenity-low-priority
-    name: amenity-low-priority
     class: amenity-low-priority
     geometry: point
     <<: *extents
@@ -2443,7 +2365,6 @@ Layer:
     properties:
       minzoom: 14
   - id: amenity-low-priority-poly
-    name: amenity-low-priority-poly
     class: amenity-low-priority
     geometry: polygon
     <<: *extents
