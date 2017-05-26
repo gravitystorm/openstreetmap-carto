@@ -3,7 +3,7 @@ About fonts:
 
 Noto is a font family that wants to cover most of Unicode with a harmonic
 design across various scripts. We use Noto for most text, with some support
-for backward-compatibility and Unifont as fallback.
+for backward-compatibility and some fallback fonts.
 
 By order:
 
@@ -38,11 +38,12 @@ Noto Emoji.
 
 4. The list still includes DejaVu for compatibility on systems without Noto.
 
-5. Unifont. This is a fallback of last resort with excellent coverage.
-Unifont Medium covers the whole Unicode BMP without surrogates and without PUA.
-Unifont Upper Medium covers some parts of the other Unicode planes. Unifont
-Medium Sample would cover the BMP PUA with replacement characters, but cannot
-be used because Mapnik does not support SBIT TTF.
+5. Fallback fonts. Hanazono covers almost all CJK characters, even in Unicode
+Plane 2. Unifont is a fallback of last resort with full coverage in Plane 0
+(Unifont Medium), some coverage in Plane 1 (Unifont Upper Medium) and no
+coverage in Plane 2. Unifont Medium Sample would cover the BMP PUA with
+replacement characters, but cannot be used because Mapnik does not
+support SBIT TTF.
 */
 
 /*
