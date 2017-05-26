@@ -10,6 +10,8 @@ You should fork the project into your own repo, create a topic branch
 there and then make one or more pull requests back to the gravitystorm repository.
 Your pull requests will then be reviewed and discussed.
 
+A comprehensive description of this workflow, including guidelines and recommendations on how contributors should operate when collaborating to OpenStreetMap Carto through pull requests (PRs) via Git and GitHub, is provided in [GIT-WORKFLOW.md](https://github.com/gravitystorm/openstreetmap-carto/blob/master/GIT-WORKFLOW.md).
+
 ## Reporting issues
 
 As OpenStreetMap data is always changing, rendering bug reports should **always**
