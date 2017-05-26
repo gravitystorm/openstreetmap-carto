@@ -137,6 +137,11 @@
     marker-placement: interior;
     marker-clip: false;
   }
+  
+   [amenity = 'boat_sharing'][zoom >= 16]::amenity {
+    point-file: url('symbols/boat_share.p.16.png');
+    point-placement: interior;
+  }
 
   [feature = 'tourism_caravan_site'][zoom >= 16] {
     marker-file: url('symbols/caravan_park.svg');
@@ -160,6 +165,11 @@
   }
 
   [feature = 'tourism_chalet'][zoom >= 17] {
+    point-file: url('symbols/chalet.p.16.png');
+    point-placement: interior;
+  }
+  
+  [tourism = 'apartment'][zoom >= 17]::tourism {
     point-file: url('symbols/chalet.p.16.png');
     point-placement: interior;
   }
