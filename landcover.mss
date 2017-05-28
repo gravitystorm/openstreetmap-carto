@@ -62,6 +62,16 @@
 @stadium: @societal_amenities; // also fitness_centre and sports_centre
 @golf_course: #b5e3b5;
 
+// --- Text ---
+
+@landcover-font-size: 10;
+@landcover-font-size-big: 12;
+@landcover-font-size-bigger: 15;
+@landcover-wrap-width-size: 25;
+@landcover-wrap-width-size-big: 35;
+@landcover-wrap-width-size-bigger: 45;
+@landcover-face-name: @oblique-fonts;
+
 #landcover-low-zoom[zoom < 10],
 #landcover[zoom >= 10] {
 
@@ -90,20 +100,6 @@
     line-width: 0.3;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
-  }
-
-  [feature = 'tourism_camp_site'],
-  [feature = 'tourism_caravan_site'],
-  [feature = 'tourism_picnic_site'] {
-    [zoom >= 10] {
-      polygon-fill: @campsite;
-      [zoom >= 13] {
-        line-color: saturate(darken(@campsite, 60%), 30%);
-        line-width: 0.3;
-      }
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
-    }
   }
 
   [feature = 'landuse_quarry'][zoom >= 10] {
@@ -575,6 +571,20 @@
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
+
+  [feature = 'tourism_camp_site'],
+  [feature = 'tourism_caravan_site'],
+  [feature = 'tourism_picnic_site'] {
+    [zoom >= 10] {
+      polygon-fill: @campsite;
+      [zoom >= 13] {
+        line-color: saturate(darken(@campsite, 60%), 30%);
+        line-width: 0.3;
+      }
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+  }
 }
 
 /* man_made=cutline */
@@ -760,5 +770,528 @@
     text-dy: 8;
     text-vertical-alignment: middle;
     text-spacing: 400;
+  }
+}
+
+#trees[zoom >= 16] {
+  ::canopy {
+    opacity: 0.3;
+    [natural = 'tree_row'] {
+      line-color: green;
+      line-cap: round;
+      line-width: 2.5;
+      [zoom >= 17] { line-width: 5; }
+      [zoom >= 18] { line-width: 10; }
+      [zoom >= 19] { line-width: 15; }
+      [zoom >= 20] { line-width: 30; }
+    }
+    [natural = 'tree'] {
+      marker-fill: green;
+      marker-allow-overlap: true;
+      marker-line-width: 0;
+      marker-width: 2.5;
+      marker-height: 2.5;
+      marker-ignore-placement: true;
+      [zoom >= 17] {
+        marker-width: 5;
+        marker-height: 5;
+      }
+      [zoom >= 18] {
+        marker-width: 10;
+        marker-height: 10;
+      }
+      [zoom >= 19] {
+        marker-width: 15;
+        marker-height: 15;
+      }
+      [zoom >= 20] {
+        marker-width: 30;
+        marker-height: 30;
+      }
+    }
+  }
+  [natural = 'tree']::trunk {
+    [zoom >= 18] {
+      trunk/marker-fill: #b27f36;
+      trunk/marker-allow-overlap: true;
+      trunk/marker-line-width: 0;
+      trunk/marker-width: 2;
+      trunk/marker-height: 2;
+      trunk/marker-ignore-placement: true;
+    }
+    [zoom >= 19] {
+      trunk/marker-width: 3;
+      trunk/marker-height: 3;
+    }
+    [zoom >= 20] {
+      trunk/marker-width: 6;
+      trunk/marker-height: 6;
+    }
+  }
+}
+
+.text-low-zoom[zoom < 10],
+.text[zoom >= 10] {
+  [feature = 'landuse_military'],
+  [feature = 'natural_wood'],
+  [feature = 'landuse_forest'],
+  [feature = 'boundary_national_park'],
+  [feature = 'leisure_nature_reserve'] {
+    [zoom >= 8][way_pixels > 3000][is_building = 'no'],
+    [zoom >= 17] {  
+      text-name: "[name]";
+      text-size: @landcover-font-size;
+      text-wrap-width: @landcover-wrap-width-size;
+      [way_pixels > 12000] {
+        text-size: @landcover-font-size-big;
+        text-wrap-width: @landcover-wrap-width-size-big;
+      }
+      [way_pixels > 48000] {
+        text-size: @landcover-font-size-bigger;
+        text-wrap-width: @landcover-wrap-width-size-bigger;
+      }
+      text-face-name: @landcover-face-name;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+      [feature = 'landuse_military'] {
+        text-fill: darken(@military, 40%);
+      }
+      [feature = 'natural_wood'],
+      [feature = 'landuse_forest'] {
+        text-fill: @forest-text;
+      }
+      [feature = 'boundary_national_park'],
+      [feature = 'leisure_nature_reserve'] {
+        text-fill: darken(@park, 70%);
+      }
+    }
+  }
+
+  [feature = 'military_danger_area'][is_building = 'no'] {
+    [zoom >= 9][way_pixels > 3000],
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: @landcover-font-size;
+      text-wrap-width: @landcover-wrap-width-size;
+      [way_pixels > 12000] {
+        text-size: @landcover-font-size-big;
+        text-wrap-width: @landcover-wrap-width-size-big;
+      }
+      [way_pixels > 48000] {
+        text-size: @landcover-font-size-bigger;
+        text-wrap-width: @landcover-wrap-width-size-bigger;
+      }
+      text-fill: darken(@danger_area, 40%);
+      text-face-name: @bold-fonts;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+    }
+  }
+
+  [feature = 'landuse_garages'][is_building = 'no'] {
+    [zoom >= 13][way_pixels > 3000],
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: @landcover-font-size;
+      text-wrap-width: @landcover-wrap-width-size;
+      [way_pixels > 12000] {
+        text-size: @landcover-font-size-big;
+        text-wrap-width: @landcover-wrap-width-size-big;
+      }
+      [way_pixels > 48000] {
+        text-size: @landcover-font-size-bigger;
+        text-wrap-width: @landcover-wrap-width-size-bigger;
+      }
+      text-fill: darken(@garages, 50%);
+      text-face-name: @landcover-face-name;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+    }
+  }
+
+  [feature = 'natural_wetland'],
+  [feature = 'natural_marsh'],
+  [feature = 'natural_mud'],
+  [feature = 'leisure_park'],
+  [feature = 'leisure_recreation_ground'],
+  [feature = 'landuse_recreation_ground'],
+  [feature = 'landuse_village_green'],
+  [feature = 'leisure_common'],
+  [feature = 'leisure_garden'],
+  [feature = 'landuse_quarry'],
+  [feature = 'landuse_vineyard'],
+  [feature = 'landuse_orchard'],
+  [feature = 'landuse_plant_nursery'],
+  [feature = 'landuse_cemetery'],
+  [feature = 'amenity_grave_yard'],
+  [feature = 'landuse_residential'],
+  [feature = 'landuse_meadow'],
+  [feature = 'natural_grassland'],
+  [feature = 'landuse_grass'],
+  [feature = 'landuse_allotments'],
+  [feature = 'landuse_farmyard'],
+  [feature = 'landuse_farm'],
+  [feature = 'landuse_farmland'],
+  [feature = 'landuse_greenhouse_horticulture'],
+  [feature = 'shop_mall'],
+  [feature = 'landuse_retail'],
+  [feature = 'landuse_industrial'],
+  [feature = 'landuse_railway'],
+  [feature = 'landuse_commercial'],
+  [feature = 'landuse_brownfield'],
+  [feature = 'landuse_landfill'],
+  [feature = 'landuse_construction'],
+  [feature = 'tourism_caravan_site'],
+  [feature = 'tourism_theme_park'],
+  [feature = 'tourism_zoo'],
+  [feature = 'tourism_attraction'],
+  [feature = 'amenity_kindergarten'],
+  [feature = 'amenity_school'],
+  [feature = 'amenity_college'],
+  [feature = 'amenity_university'],
+  [feature = 'natural_heath'],
+  [feature = 'natural_scrub'],
+  [feature = 'natural_beach'],
+  [feature = 'natural_shoal'],
+  [feature = 'natural_reef'],
+  [feature = 'leisure_fitness_centre'],
+  [feature = 'leisure_sports_centre'],
+  [feature = 'leisure_stadium'],
+  [feature = 'leisure_track'],
+  [feature = 'leisure_dog_park'],
+  [feature = 'leisure_playground'],
+  [feature = 'leisure_pitch'],
+  [feature = 'leisure_water_park'] {
+    [zoom >= 10][way_pixels > 3000][is_building = 'no'],
+    [zoom >= 17][is_building = 'no'],
+    [zoom >= 10][way_pixels > 3000][feature = 'shop_mall'],
+    [zoom >= 17][feature = 'shop_mall'] {
+      text-name: "[name]";
+      text-size: @landcover-font-size;
+      text-wrap-width: @landcover-wrap-width-size;
+      [way_pixels > 12000] {
+        text-size: @landcover-font-size-big;
+        text-wrap-width: @landcover-wrap-width-size-big;
+      }
+      [way_pixels > 48000] {
+        text-size: @landcover-font-size-bigger;
+        text-wrap-width: @landcover-wrap-width-size-bigger;
+      }
+      text-face-name: @landcover-face-name;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+      [feature = 'natural_reef'],
+      [feature = 'natural_wetland'],
+      [feature = 'natural_marsh'],
+      [feature = 'natural_mud'] {
+        text-fill: @wetland-text;
+      }
+      [feature = 'leisure_park'],
+      [feature = 'leisure_recreation_ground'],
+      [feature = 'landuse_recreation_ground'],
+      [feature = 'landuse_village_green'],
+      [feature = 'leisure_common'],
+      [feature = 'leisure_garden'],
+      [feature = 'leisure_water_park'],
+      [feature = 'leisure_playground'] {
+        text-fill: darken(@park, 60%);
+        [feature = 'leisure_playground'][access != ''][access != 'permissive'][access != 'yes'] {
+          text-fill: darken(@park, 50%);
+        }
+      }
+      [feature = 'landuse_quarry'] {
+        text-fill: darken(@quarry, 60%);
+      }
+      [feature = 'landuse_vineyard'],
+      [feature = 'landuse_orchard'],
+      [feature = 'landuse_plant_nursery'] {
+        text-fill: darken(@orchard, 50%);
+      }
+      [feature = 'landuse_cemetery'],
+      [feature = 'amenity_grave_yard'] {
+        text-fill: darken(@cemetery, 50%);
+        text-halo-radius: @standard-halo-radius * 1.5; /* extra halo needed to overpower the cemetery polygon pattern */
+      }
+      [feature = 'landuse_residential'] {
+        text-fill: darken(@residential, 50%);
+      }
+      [feature = 'landuse_meadow'],
+      [feature = 'natural_grassland'],
+      [feature = 'landuse_grass'] {
+        text-fill: darken(@grass, 50%);
+      }
+      [feature = 'landuse_allotments'] {
+        text-fill: darken(@allotments, 50%);
+      }
+      [feature = 'landuse_farmyard'] {
+        text-fill: darken(@farmyard, 50%);
+      }
+      [feature = 'landuse_farm'],
+      [feature = 'landuse_farmland'],
+      [feature = 'landuse_greenhouse_horticulture'] {
+        text-fill: darken(@farmland, 50%);
+      }
+      [feature = 'shop_mall'],
+      [feature = 'landuse_retail'] {
+        text-fill: darken(@retail, 50%);
+      }
+      [feature = 'landuse_industrial'],
+      [feature = 'landuse_railway'] {
+        text-fill: darken(@industrial, 60%);
+      }
+      [feature = 'landuse_commercial'] {
+        text-fill: darken(@commercial, 60%);
+      }
+      [feature = 'landuse_brownfield'],
+      [feature = 'landuse_landfill'],
+      [feature = 'landuse_construction'] {
+        text-fill: darken(@construction, 50%);
+      }
+      [feature = 'tourism_caravan_site'] {
+        text-fill: darken(@campsite, 50%);
+        text-dy: 15;
+      }
+      [feature = 'tourism_theme_park'],
+      [feature = 'tourism_zoo'] {
+        text-fill: @tourism;
+        text-face-name: @bold-fonts; /*rendered bold to improve visibility since theme parks tend to have crowded backgrounds*/
+      }
+      [feature = 'tourism_attraction'] {
+        text-fill: #660033;
+        text-face-name: @standard-font;
+      }
+      [feature = 'amenity_kindergarten'],
+      [feature = 'amenity_school'],
+      [feature = 'amenity_college'],
+      [feature = 'amenity_university'] {
+        text-fill: darken(@societal_amenities, 70%);
+      }
+      [feature = 'natural_heath'] {
+        text-fill: darken(@heath, 40%);
+      }
+      [feature = 'natural_scrub'] {
+        text-fill: darken(@scrub, 60%);
+      }
+      [feature = 'natural_beach'],
+      [feature = 'natural_shoal'] {
+        text-fill: darken(@beach, 60%);
+      }
+      [feature = 'leisure_fitness_centre'],
+      [feature = 'leisure_sports_centre'],
+      [feature = 'leisure_stadium'] {
+        text-fill: darken(@stadium, 70%);
+      }
+      [feature = 'leisure_dog_park'] {
+        text-fill: darken(@park, 60%);
+        text-halo-radius: @standard-halo-radius * 1.5; /* Extra halo needed to stand out from paw pattern. */
+        text-halo-fill: @standard-halo-fill;
+      }
+      [feature = 'leisure_track'] {
+        text-fill: darken(@track, 40%);
+      }
+      [feature = 'leisure_pitch'] {
+        text-fill: darken(@pitch, 40%);
+      }
+    }
+  }
+
+  [feature = 'natural_scree'],
+  [feature = 'natural_shingle'],
+  [feature = 'natural_bare_rock'],
+  [feature = 'natural_sand'] {
+    [zoom >= 9][way_pixels > 3000][is_building = 'no'],
+    [zoom >= 17][is_building = 'no'] {
+      text-name: "[name]";
+      text-size: @landcover-font-size;
+      text-wrap-width: @landcover-wrap-width-size;
+      [way_pixels > 12000] {
+        text-size: @landcover-font-size-big;
+        text-wrap-width: @landcover-wrap-width-size-big;
+      }
+      [way_pixels > 48000] {
+        text-size: @landcover-font-size-bigger;
+        text-wrap-width: @landcover-wrap-width-size-bigger;
+      }
+      text-face-name: @landcover-face-name;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+      [feature = 'natural_scree'],
+      [feature = 'natural_shingle'],
+      [feature = 'natural_bare_rock'] {
+        text-fill: darken(@bare_ground, 50%);
+      }
+      [feature = 'natural_sand'] {
+        text-fill: darken(@sand, 50%);
+      }
+    }
+  }
+
+  [feature = 'aeroway_apron'][is_building = 'no'] {
+    [zoom >= 10][way_pixels > 3000],
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: @landcover-font-size;
+      text-wrap-width: @landcover-wrap-width-size;
+      [way_pixels > 12000] {
+        text-size: @landcover-font-size-big;
+        text-wrap-width: @landcover-wrap-width-size-big;
+      }
+      [way_pixels > 48000] {
+        text-size: @landcover-font-size-bigger;
+        text-wrap-width: @landcover-wrap-width-size-bigger;
+      }
+      text-fill: darken(@apron, 60%);
+      text-face-name: @landcover-face-name;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+    }
+  }
+
+  [feature = 'highway_services'][is_building = 'no'],
+  [feature = 'highway_rest_area'][is_building = 'no'] {
+    [zoom >= 10][way_pixels > 3000],
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: @landcover-font-size;
+      text-wrap-width: @landcover-wrap-width-size;
+      [way_pixels > 12000] {
+        text-size: @landcover-font-size-big;
+        text-wrap-width: @landcover-wrap-width-size-big;
+      }
+      [way_pixels > 48000] {
+        text-size: @landcover-font-size-bigger;
+        text-wrap-width: @landcover-wrap-width-size-bigger;
+      }
+      text-fill: darken(@rest_area, 40%);
+      text-face-name: @landcover-face-name;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+    }
+  }
+
+  [feature = 'natural_bay'][zoom >= 14] {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: @water-text;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-wrap-width: @standard-wrap-width;
+    text-placement: interior;
+  }
+
+  [feature = 'leisure_marina'][zoom >= 15] {
+    [zoom >= 10][way_pixels > 3000],
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: @landcover-font-size;
+      text-wrap-width: @landcover-wrap-width-size;
+      [way_pixels > 12000] {
+        text-size: @landcover-font-size-big;
+        text-wrap-width: @landcover-wrap-width-size-big;
+      }
+      [way_pixels > 48000] {
+        text-size: @landcover-font-size-bigger;
+        text-wrap-width: @landcover-wrap-width-size-bigger;
+      }
+      text-fill: @marina-text;
+      text-face-name: @landcover-face-name;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+    }
+  }
+
+  [feature = 'natural_glacier'][is_building = 'no'] {
+    [zoom >= 8][way_pixels > 10000],
+    [zoom >= 10][way_pixels > 750],
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: @landcover-font-size;
+      text-wrap-width: @landcover-wrap-width-size;
+      [way_pixels > 12000] {
+        text-size: @landcover-font-size-big;
+        text-wrap-width: @landcover-wrap-width-size-big;
+      }
+      [way_pixels > 48000] {
+        text-size: @landcover-font-size-bigger;
+        text-wrap-width: @landcover-wrap-width-size-bigger;
+      }
+      text-fill: mix(darken(@glacier, 40%), darken(@glacier-line, 30%), 50%);
+      text-face-name: @landcover-face-name;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+    }
+  }
+
+  [feature = 'natural_tree'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-text-size;
+    text-fill: green;
+    text-dy: 7;
+    [zoom >= 18] { text-dy: 8; }
+    [zoom >= 19] { text-dy: 11; }
+    [zoom >= 20] { text-dy: 18; }
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+    text-wrap-width: @standard-wrap-width;
+  }
+
+  [feature = 'power_plant'][is_building = 'no'][zoom >= 10],
+  [feature = 'power_generator'][is_building = 'no'][zoom >= 10],
+  [feature = 'power_station'][is_building = 'no'][zoom >= 10],
+  [feature = 'power_sub_station'][is_building = 'no'][zoom >= 13],
+  [feature = 'power_substation'][is_building = 'no'][zoom >= 13] {
+    [way_pixels > 3000],
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: @landcover-font-size;
+      text-wrap-width: @landcover-wrap-width-size;
+      [way_pixels > 12000] {
+        text-size: @landcover-font-size-big;
+        text-wrap-width: @landcover-wrap-width-size-big;
+      }
+      [way_pixels > 48000] {
+        text-size: @landcover-font-size-bigger;
+        text-wrap-width: @landcover-wrap-width-size-bigger;
+      }
+      text-fill: darken(@power, 40%);
+      text-face-name: @landcover-face-name;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+    }
+  }
+
+  [feature = 'leisure_swimming_pool'][is_building = 'no'] {
+    [zoom >= 14][way_pixels > 3000],
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: @landcover-font-size;
+      text-wrap-width: @landcover-wrap-width-size;
+      [way_pixels > 12000] {
+        text-size: @landcover-font-size-big;
+        text-wrap-width: @landcover-wrap-width-size-big;
+      }
+      [way_pixels > 48000] {
+        text-size: @landcover-font-size-bigger;
+        text-wrap-width: @landcover-wrap-width-size-bigger;
+      }
+      text-fill: @marina-text;
+      text-face-name: @landcover-face-name;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+    }
   }
 }

@@ -17,5 +17,5 @@
      id="canvas"
      style="fill:none;stroke:none;visibility:hidden" />
   <rect width="16" height="16" x="0" y="0" id="canvas" style="fill:none;stroke:none;visibility:hidden"/>
-  <path d="M 7,0 C 7,0 5,1.4966359 5,2 l 0,8 4,0 0,-8 C 9,1.5206056 7,0 7,0 z M 4,11 c -1,0 -1,1 -1,2 l -1,0 -1,1 12,0 -1,-1 -1,0 c 0,-1 0,-2 -1,-2 z" id="monument" style="fill:#000000;fill-opacity:1;stroke:none" />
+  <path d="M 7,0 C 7,0 5,1.4966359 5,2 l 0,8 4,0 0,-8 C 9,1.5206056 7,0 7,0 z M 4,11 c -1,0 -1,1 -1,2 l -1,0 -1,1 12,0 -1,-1 -1,0 c 0,-1 0,-2 -1,-2 z" id="monument" style="fill:#734a08;fill-opacity:1;stroke:none" />
 </svg>

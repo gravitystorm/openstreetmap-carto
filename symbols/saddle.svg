@@ -11,5 +11,5 @@
      y="0"
      id="canvas"
      style="fill:none;stroke:none;visibility:hidden" />
-	<path d="M 0,3 0,8 8,8 8,3 4,5 z" />
+	<path d="M 0,3 0,8 8,8 8,3 4,5 z" style="fill:#d08f55;stroke:none" />
 </svg>

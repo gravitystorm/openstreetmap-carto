@@ -16,5 +16,5 @@
      style="fill:none;stroke:none;visibility:hidden" />
   <path
      d="m 1,1 5.5,6 0,4 C 6.5,11 2,12 2,13 l 10,0 C 12,12 7.5,11 7.5,11 L 7.5,7 13,1 z"
-     id="bar" />
+     style="fill:#734a08;stroke:none" id="bar" />
 </svg>
