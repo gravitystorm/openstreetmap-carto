@@ -20,6 +20,8 @@ import tempfile
 import logging
 import time
 import email.utils
+import atexit
+import time
 
 if sys.version_info >= (3,):
     import urllib.request as urllib2
@@ -28,6 +30,7 @@ else:
     import urllib2
     import urlparse
 
+start = time.time()
 data_dir = 'data'
 settings = {
     # Keys 1, 2, 3, ... set the arg short-options and the related process
@@ -36,11 +39,11 @@ settings = {
         'directory': 'world_boundaries',
         'url': 'http://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz',  # noqa
         'type': 'tgz',
-        'index': [
-            'world_bnd_m.shp',
-            'builtup_area.shp',
-            'places.shp',
-            'world_boundaries_m.shp'],
+        'shp_basename': [
+            'world_bnd_m',
+            'builtup_area',
+            'places',
+            'world_boundaries_m'],
         'long_opt': '--world-boundaries'
     },
 
@@ -48,7 +51,7 @@ settings = {
         'directory': 'simplified-land-polygons-complete-3857',
         'url': 'http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip',  # noqa
         'type': 'zip',
-        'index': ['simplified_land_polygons.shp'],
+        'shp_basename': ['simplified_land_polygons'],
         'long_opt': '--simplified-land'
     },
 
@@ -56,7 +59,7 @@ settings = {
         'directory': 'ne_110m_admin_0_boundary_lines_land',
         'url': 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip',  # noqa
         'type': 'zip_dir',
-        'index': ['ne_110m_admin_0_boundary_lines_land.shp'],
+        'shp_basename': ['ne_110m_admin_0_boundary_lines_land'],
         'long_opt': '--ne-admin'
     },
 
@@ -64,7 +67,7 @@ settings = {
         'directory': 'land-polygons-split-3857',
         'url': 'http://data.openstreetmapdata.com/land-polygons-split-3857.zip',  # noqa
         'type': 'zip',
-        'index': ['land_polygons.shp'],
+        'shp_basename': ['land_polygons'],
         'long_opt': '--land-polygons'
     },
 
@@ -72,7 +75,7 @@ settings = {
         'directory': 'antarctica-icesheet-polygons-3857',
         'url': 'http://data.openstreetmapdata.com/antarctica-icesheet-polygons-3857.zip',  # noqa
         'type': 'zip',
-        'index': ['icesheet_polygons.shp'],
+        'shp_basename': ['icesheet_polygons'],
         'long_opt': '--icesheet-polygons'
     },
 
@@ -80,12 +83,20 @@ settings = {
         'directory': 'antarctica-icesheet-outlines-3857',
         'url': 'http://data.openstreetmapdata.com/antarctica-icesheet-outlines-3857.zip',  # noqa
         'type': 'zip',
-        'index': ['icesheet_outlines.shp'],
+        'shp_basename': ['icesheet_outlines'],
         'long_opt': '--icesheet-outlines'
     }
 }
 
 u_prompt = True
+
+
+def exit_handler(dir_path):
+    # Removing empty directory
+    try:
+        os.rmdir(dir_path)
+    except Exception:
+        pass
 
 
 def download_file(
@@ -101,6 +112,12 @@ def download_file(
             file_name = 'downloaded.file'
         if desc:
             file_name = os.path.join(desc, file_name)
+
+        org_file_modified = None
+        org_file_size = None
+        if os.path.exists(file_name):
+            org_file_modified = time.localtime((os.path.getmtime(file_name)))
+            org_file_size = int(os.path.getsize(file_name))
 
         curl_used = 0
         if not option_no_curl and distutils.spawn.find_executable("curl"):
@@ -145,7 +162,13 @@ def download_file(
             curl_used = 0
         if curl_used > 0:
             u.close()
-            return file_name
+            if (not option_force_update and local_file_size is not None and
+                    (org_file_modified == local_file_modified) and
+                    (org_file_size == local_file_size)):
+                print("     No newer file to download.")
+                return file_name, 0
+            else:
+                return file_name, 1
 
         if (not option_force_update and os.path.exists(file_name) and
                 (host_file_modified <= local_file_modified) and
@@ -156,7 +179,7 @@ def download_file(
                 u_prompt = False
             print()
             u.close()
-            return file_name
+            return file_name, 0
 
         with open(file_name, 'wb') as f:
             print(" Bytes: {0:10}".format(host_file_size))
@@ -189,7 +212,7 @@ def download_file(
                     time.mktime(host_file_modified)))
             print()
 
-        return file_name
+        return file_name, 2
     except urllib2.HTTPError as e:
         sys.exit(
             "\n\n   Error: download failed. (error code: " +
@@ -239,8 +262,8 @@ def main():
         help="do not run shapeindex")
     parser.add_argument(
         '-u', "--update", dest='option_force_update', action='store_true',
-        help="force downloading files even if not newer than the locally " +
-        "existing ones")
+        help="force performing an update operation even if not needed " +
+        "(e.g., downloading, expanding, indexing)")
     for element in sorted(settings):
         parser.add_argument(
             settings[element]['long_opt'],
@@ -270,8 +293,13 @@ def main():
                 args.data_dir + """' directory
    placed in the same path of this script.\n""")
 
+    if os.path.isfile(args.data_dir):
+        sys.exit(
+            """\n   Error: existing file named '""" +
+            args.data_dir +
+            """'\n""")
     if args.option_check_mode:
-        if os.path.isdir("data"):
+        if os.path.isdir(args.data_dir):
             sys.exit(
                 """\n   A directory named '""" + args.data_dir +
                 """' already exists.
@@ -289,7 +317,8 @@ def main():
         except Exception:
             pass
 
-    print()
+    print("\nStarting " + os.path.basename(__file__) + "...")
+
     # Processing
 
     for element in sorted(settings):
@@ -305,18 +334,23 @@ def main():
                 settings[element]['url'].rsplit('/', 1)[-1])
 
             # Creating directory
-            if not os.path.exists(dir_path):
+            try:
                 os.makedirs(dir_path)
+                atexit.register(exit_handler, dir_path)
+            except Exception:
+                pass
 
             # Downloading
+            download_type = -1
             if not args.option_no_download or not os.path.isfile(path_name):
                 print(str(element) + "-1. Downloading '" + dir_name + "'...")
-                file_name = download_file(
+                archive_file_name, download_type = download_file(
                     settings[element]['url'], args.data_dir,
                     args.option_force_update, args.option_no_curl)
 
             # Expanding
-            if not args.option_no_extract:
+            if ((not args.option_no_extract and download_type > 0) or
+                    args.option_force_update):
                 sys.stdout.flush()
                 print()
                 print(
@@ -356,32 +390,83 @@ def main():
                 try:
                     os.remove(path_name)
                 except OSError:
-                    pass
+                    sys.exit("\n\n\nCannot remove '" + path_name + "'\n")
 
             # Indexing
-            if not args.option_no_shape:
-                for item, index in enumerate(settings[element]['index']):
-                    if len(settings[element]['index']) == 1:
-                        print(str(element) + "-3" + ". Indexing '" +
-                              index + "'...")
-                    else:
-                        print(str(element) + "-3-" + str(
-                            item + 1) + ". Indexing '" + index + "'...")
-                    sys.stdout.flush()
-                    if (subprocess.call(["shapeindex", "--shape_files",
-                                        os.path.join(dir_path, index)],
-                                        stderr=subprocess.STDOUT) != 0):
-                        sys.exit("\n   Indexing error: shapeindex failed.\n")
-                    sys.stdout.flush()
-                    print()
+            for item, shp_basename in enumerate(
+                    settings[element]['shp_basename']):
+                shp_file_name = os.path.join(dir_path, shp_basename + ".shp")
+                index_file_name = os.path.join(
+                    dir_path, shp_basename + ".index")
+                shp_file_modified = None
+                if os.path.exists(shp_file_name):
+                    shp_file_modified = time.localtime(
+                        (os.path.getmtime(shp_file_name)))
+                index_file_modified = None
+                if os.path.exists(index_file_name):
+                    index_file_modified = time.localtime(
+                        (os.path.getmtime(index_file_name)))
+                if (not args.option_no_shape and shp_file_modified is None
+                        and index_file_modified is not None):
+                    try:
+                        os.remove(index_file_name)
+                    except OSError:
+                        sys.exit(
+                            "\n\n\nCannot remove '" +
+                            index_file_name +
+                            "'\n")
+                if shp_file_modified is None:
+                    sys.exit("\n\n\nMissing '" + shp_file_name + "'\n")
+                if (args.option_force_update or index_file_modified is None or
+                        (shp_file_modified is not None and index_file_modified is not None and
+                         (shp_file_modified > index_file_modified))):
+                    if args.option_no_shape and index_file_modified is not None:
+                        if len(settings[element]['shp_basename']) == 1:
+                            print(
+                                str(element) +
+                                "-3" +
+                                ". Removing old index '" +
+                                index_file_name +
+                                "'...")
+                        else:
+                            print(str(element) + "-3-" + str(item + 1) +
+                                  ". Removing old index '" + index_file_name + "'...")
+                        sys.stdout.flush()
+                        try:
+                            os.remove(index_file_name)
+                        except OSError:
+                            sys.exit(
+                                "\n\n\nCannot remove old index '" +
+                                index_file_name +
+                                "'\n")
+                            pass
+                        print()
+                    if not args.option_no_shape:
+                        if len(settings[element]['shp_basename']) == 1:
+                            print(str(element) + "-3" + ". Indexing '" +
+                                  shp_file_name + "'...")
+                        else:
+                            print(str(element) + "-3-" + str(item + 1) +
+                                  ". Indexing '" + shp_file_name + "'...")
+                        sys.stdout.flush()
+                        if (subprocess.call(["shapeindex", "--shape_files",
+                                             shp_file_name],
+                                            stderr=subprocess.STDOUT) != 0):
+                            sys.exit(
+                                "\n   Indexing error: shapeindex failed.\n")
+                        sys.stdout.flush()
+                        print()
 
     # Finishing
-    print("...script completed.\n")
+    if time.time()-start < 2:
+        print ("...script completed.\n")
+    else:
+        print ("...script completed in %.1f seconds.\n" % (time.time()-start))
 
 if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        sys.exit("\n\n\nYou pressed Ctrl+C!\n")
+        sys.exit("\n\n\nInterrupted: you pressed Ctrl+C!\n")
     except Exception as e:
         sys.exit("\n   Error. " + str(e) + "\n")
