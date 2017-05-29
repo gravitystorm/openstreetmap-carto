@@ -16,6 +16,14 @@
       line-width: .75;
       line-clip: false;
     }
+    [building = 'greenhouse'] {
+      polygon-fill: lighten(@building-fill, 3%);
+      [zoom >= 15] {
+        line-color: lighten(@building-line, 3%);
+        line-width: .75;
+        line-clip: false;
+      }
+    }
   }
 }
 
