@@ -18,8 +18,8 @@
     }
   }
 
-  [waterway = 'dock'] {
-    [zoom >= 9]::waterway {
+  [waterway = 'dock']::waterway {
+    [zoom >= 9] {
       polygon-fill: @water-color;
       [way_pixels >= 4] {
         polygon-gamma: 0.75;
@@ -314,6 +314,7 @@
 }
 
 .text[zoom >= 10] {
+  [feature = 'waterway_dock'],
   [feature = 'natural_water'],
   [feature = 'landuse_reservoir'],
   [feature = 'landuse_basin'] {
