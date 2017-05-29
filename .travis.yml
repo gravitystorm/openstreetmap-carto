@@ -16,7 +16,9 @@ install:
 script:
   # We're using pipes in the checks, so fail if any part fails
   - set -o pipefail
-  # Validate the MML against multiple Mapnik versions, and report its lines for debugging purposes
+  # Check with the default Mapnik version for the Carto range we use, and report its lines for debugging purposes
+  - ./node_modules/carto/bin/carto project.mml | xmllint - | wc -l
+  # Validate the MML against other Mapnik versions
   - for m in $MAPNIK; do ./node_modules/carto/bin/carto -a $m project.mml | xmllint - | wc -l; done
   # Validate that the SVGs are valid XML
   - find symbols/ -name '*.svg' | xargs xmllint --noout
