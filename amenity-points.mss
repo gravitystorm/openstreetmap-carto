@@ -92,8 +92,9 @@
   }
 
   [feature = 'amenity_bus_station'][zoom >= 16] {
-    point-file: url('symbols/bus_station.n.16.png');
-    point-placement: interior;
+    marker-file: url('symbols/bus_station.14.svg');
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_taxi'][zoom >= 17] {
@@ -1685,6 +1686,10 @@
       text-placement: interior;
       [feature = 'highway_bus_stop'] {
         text-dy: 9;
+      }
+      [feature = 'amenity_bus_station'] {
+        text-size: 10;
+        text-face-name: @bold-fonts;
       }
     }
   }
