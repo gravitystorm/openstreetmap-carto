@@ -102,10 +102,10 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, name, way_pixels,
+            way, name, way_pixels, religion,
             COALESCE(wetland, landuse, "natural") AS feature
           FROM (SELECT
-              way, COALESCE(name, '') AS name,
+              way, COALESCE(name, '') AS name, religion,
               ('landuse_' || (CASE WHEN landuse IN ('forest', 'military') THEN landuse ELSE NULL END)) AS landuse,
               ('natural_' || (CASE WHEN "natural" IN ('wood', 'sand', 'scree', 'shingle', 'bare_rock') THEN "natural" ELSE NULL END)) AS "natural",
               ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'mud') THEN (CASE WHEN "natural" IN ('mud') THEN "natural" ELSE tags->'wetland' END) ELSE NULL END)) AS wetland,

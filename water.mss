@@ -1,4 +1,4 @@
-@water-text: #6699cc;
+@water-text: darken(#6699cc, 10%);
 @glacier: #ddecec;
 @glacier-line: #9cf;
 
