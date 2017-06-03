@@ -575,9 +575,6 @@
     }
 
     [zoom >= 17][zoom < 18][shop != 'supermarket'][shop != 'department_store'] {
-      marker-placement: interior;
-      marker-clip: false;
-      marker-fill: @shop-icon;
       marker-width: 4;
       marker-line-width: 0;
     }
