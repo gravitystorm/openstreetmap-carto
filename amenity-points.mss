@@ -566,7 +566,7 @@
   }
 
   [feature = 'shop'] {
-    [zoom >= 17],
+    [shop != 'mall'][zoom >= 17],
     [shop = 'supermarket'][zoom >= 16],
     [shop = 'department_store'][zoom >= 16] {
       marker-placement: interior;
@@ -574,7 +574,7 @@
       marker-fill: @shop-icon;
     }
 
-    [zoom >= 17][zoom < 18][shop != 'supermarket'][shop != 'department_store'] {
+    [zoom >= 17][zoom < 18][shop != 'supermarket'][shop != 'department_store'][shop != 'mall'] {
       marker-placement: interior;
       marker-clip: false;
       marker-fill: @shop-icon;
