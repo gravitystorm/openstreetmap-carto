@@ -327,6 +327,22 @@
   }
 }
 
+#placenames-small::neighbourhood {
+  [place = 'neighbourhood'] {
+    [zoom >=13] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: #000;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      [zoom >= 15] {
+        text-size: 12;
+        text-fill: #777777;
+      }
+    }
+  }
+}
+
 #placenames-small::village {
   [place = 'village'] {
     [zoom >= 12][zoom < 17] {
