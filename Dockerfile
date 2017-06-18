@@ -2,7 +2,7 @@ FROM debian:stretch
 
 # Style dependencies
 RUN apt-get update && apt-get install --no-install-recommends -y \
-    unzip curl ca-certificates gnupg python \
+    unzip curl ca-certificates gnupg python postgresql-client \
     fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted ttf-unifont \
     mapnik-utils \
     && rm -rf /var/lib/apt/lists/*
@@ -18,4 +18,4 @@ RUN mkdir -p /openstreetmap-carto
 WORKDIR /openstreetmap-carto
 
 USER 1000
-CMD sh scripts/docker-startup.sh
+CMD sh scripts/docker-startup.sh kosmtik
