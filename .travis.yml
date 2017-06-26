@@ -2,11 +2,12 @@ language: node_js
 dist: trusty
 sudo: false
 node_js:
-  - "4"
+  - "6"
 addons:
   apt:
     packages:
     - lua5.1
+    - libxml2-utils
 env:
   - CARTO=0.18.0 MAPNIK='3.0.0 3.0.12'
 install:
