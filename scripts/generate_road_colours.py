@@ -1,5 +1,7 @@
 #!/usr/bin/env python2
 
+# Generates a set of highway colors to be stored in road-colors-generated.mss.
+
 from colormath.color_conversions import convert_color
 from colormath.color_objects import LabColor, LCHabColor, sRGBColor
 from colormath.color_diff import delta_e_cie2000
