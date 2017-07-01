@@ -13,8 +13,8 @@ are updated from each point release. They supersede the previous [XML-based styl
 
 # Installation
 
-You need a PostGIS database populated with OpenStreetMap data in the standard
-osm2pgsql database layout, along with auxillary shapefiles. See [INSTALL.md](INSTALL.md).
+You need a PostGIS database populated with OpenStreetMap data along with auxillary shapefiles. 
+See [INSTALL.md](INSTALL.md).
 
 # Contributing
 
@@ -51,34 +51,32 @@ glitches and to leverage new features in CartoCSS / Mapnik to simplify the
 stylesheets with only small changes to the output, as well as removing 'old-skool'
 tagging methods that are now rarely used. It then started adding new features.
 
+## Mapnik and CartoCSS update (v3.x)
 
-## Current work (v3.x)
 The v3.x series was triggered by an update to the required Mapnik and CartoCSS
 versions.
 
-Care is being taken to not get too clever with variables and expressions. While
+Care has been taken to not get too clever with variables and expressions. While
 these often make it easier to customise, experience has shown that over-cleverness
 (e.g. [interpolated entities][cleverness]) can discourage contributions.
-
-There are over [300 open requests][issues], some that have been open for years.
-These need reviewing and dividing into obvious fixes, or additional new features
-that need some cartographic judgement.
 
 [issues]: https://github.com/gravitystorm/openstreetmap-carto/issues
 [cleverness]: https://github.com/openstreetmap/mapnik-stylesheets/blob/master/inc/settings.xml.inc.template#L16
 
-## Database schema change (4.x)
+## Database schema change (v4.x)
 
-The v4.x series will include [osm2pgsql lua transforms](https://github.com/openstreetmap/osm2pgsql/blob/master/docs/lua.md)
+The v4.x series includes [osm2pgsql lua transforms](https://github.com/openstreetmap/osm2pgsql/blob/master/docs/lua.md)
 and a hstore column with all other tags, allowing use of more OpenStreetMap data.
-Work is being done in the [lua branch](https://github.com/gravitystorm/openstreetmap-carto/tree/lua)
-and issues have their own [tag](https://github.com/gravitystorm/openstreetmap-carto/issues?q=is%3Aopen+is%3Aissue+label%3Alua).
 
-Initial releases will not make use of the new features, maintaining compatibility
+Initial releases do not make use of the new features, maintaining compatibility
 with v3.x and v3.x releases will continue with backports, allowing the style to be
 rendered from either a new database or an old one. In order to allow time for users
 to reload their databases, this will be maintained until at least two MINOR
 releases have occurred. After that compatibility will not be maintained.
+
+There are over [300 open requests][issues], some that have been open for years.
+These need reviewing and dividing into obvious fixes, or additional new features
+that need some cartographic judgement.
 
 # Alternatives
 
