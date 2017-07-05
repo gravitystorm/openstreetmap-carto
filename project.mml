@@ -1581,6 +1581,8 @@ Layer:
             tags->'denomination' as denomination,
             tags->'generator:source' as "generator:source",
             tags->'power_source' as power_source,
+            tags->'icao' as icao,
+            tags->'iata' as iata,
             CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'books', 'butcher', 'clothes', 'computer', 
                                'confectionery', 'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist', 
                                'garden_centre', 'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet', 
@@ -1661,6 +1663,8 @@ Layer:
             tags->'denomination' as denomination,
             tags->'generator:source' as "generator:source",
             tags->'power_source' as power_source,
+            tags->'icao' as icao,
+            tags->'iata' as iata,
             CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'books', 'butcher', 'clothes', 'computer', 
                                'confectionery', 'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist', 
                                'garden_centre', 'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet', 
@@ -2038,6 +2042,8 @@ Layer:
             access,
             name,
             tags->'operator' as operator,
+            tags->'icao' as icao,
+            tags->'iata' as iata,
             ref,
             way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
@@ -2114,6 +2120,8 @@ Layer:
               ELSE NULL
             END AS score,
             operator,
+            icao,
+            iata,
             ref,
             way_area,
             is_building
@@ -2175,6 +2183,8 @@ Layer:
                 END AS elevation,
                 "natural",
                 tags->'operator' as operator,
+                tags->'icao' as icao,
+                tags->'iata' as iata,
                 ref,
                 NULL AS way_area,
                 CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
