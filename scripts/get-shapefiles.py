@@ -259,7 +259,7 @@ def main():
    (indexing shapes is suggested for performance improvement).\n""")
 
     if args.option_force:
-        os.chdir(os.path.dirname(__file__))
+        os.chdir(os.path.join(os.path.dirname(__file__)))
     else:
         os.chdir(os.path.join(os.path.dirname(__file__), '..'))
         if not os.path.isfile("project.mml"):

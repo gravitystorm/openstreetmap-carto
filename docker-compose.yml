@@ -1,0 +1,33 @@
+version: '2'
+services:
+  kosmtik:
+    image: kosmtik:v1
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/openstreetmap-carto
+    depends_on:
+      - db
+    ports:
+      - "6789:6789"
+    environment:
+      - PGHOST=db
+      - PGUSER=postgres
+  db:
+    image: mdillon/postgis:9.6
+  import:
+    image: import:v1
+    build:
+      context: .
+      dockerfile: Dockerfile.import
+    volumes:
+      - .:/openstreetmap-carto
+    depends_on:
+      - db
+    environment:
+      - PGHOST=db
+      - PGUSER=postgres
+      - OSM2PGSQL_CACHE
+      - OSM2PGSQL_NUMPROC
+      - OSM2PGSQL_DATAFILE
