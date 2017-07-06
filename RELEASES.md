@@ -20,7 +20,7 @@ Decide among the maintainers if a new release is due.
 
 # Notifications
 
-1. Notify OSMF tile server admins [with an issue on OpenStreetMap Chef](https://github.com/openstreetmap/chef/issues/new?title=New openstreetmap-carto release, $NEW_RELEASE&body=A new version of openstreetmap-carto, [$NEW_RELEASE]%28https://github.com/gravitystorm/openstreetmap-carto/releases/tag/$NEW_RELEASE%29, has been released.). Add any deployment-related changes like new shapefiles or font changes to the ticket.
+1. Notify OSMF tile server admins [with an issue on OpenStreetMap Chef](https://github.com/openstreetmap/chef/issues/new?title=New%20openstreetmap-carto%20release,%20$NEW_RELEASE&body=A%20new%20version%20of%20openstreetmap-carto,%20[$NEW_RELEASE]%28https://github.com/gravitystorm/openstreetmap-carto/releases/tag/$NEW_RELEASE%29,%20has%20been%20released.). Add any deployment-related changes like new shapefiles or font changes to the ticket.
 
 2. Write an email to dev@openstreetmap.org and talk@openstreetmap.org with the subject "OpenStreetMap Carto release $NEW_VERSION" and the body
 
