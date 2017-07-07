@@ -39,10 +39,12 @@ This script generates and populates the *data* directory with all needed shapefi
 
 You can also download them manually at the following paths:
 
-* [`simplified-land-polygons.shp`](http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip) (updated daily)
-* [`land-polygon.shp`](http://data.openstreetmapdata.com/land-polygons-split-3857.zip) (updated daily)
-* [`builtup_area.shp`](http://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz)
+* [`world_bnd_m.shp`, `builtup_area.shp`, `places.shp`, `world_boundaries_m.shp`](http://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz)
+* [`simplified_land_polygons.shp`](http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip) (updated daily)
 * [`ne_110m_admin_0_boundary_lines_land.shp`](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip)
+* [`land_polygons.shp`](http://data.openstreetmapdata.com/land-polygons-split-3857.zip) (updated daily)
+* [`icesheet_polygons.shp`](http://data.openstreetmapdata.com/antarctica-icesheet-polygons-3857.zip)
+* [`icesheet_outlines.shp`](http://data.openstreetmapdata.com/antarctica-icesheet-outlines-3857.zip)
 
 The repeated www.naturalearthdata.com in the Natural Earth shapefiles is correct.
 
