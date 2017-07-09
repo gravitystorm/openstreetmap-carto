@@ -4,8 +4,6 @@ In the first step visit [jsdotpattern (command sequence is recorded)](http://www
 
 Generate file - use "render (px aligned)" followed by using "get pattern SVG data" (it is expected that background will be transparent, background colour in jsdotpattern is only for display).
 
-Generated SVG image is present in this folder (forest.svg).
+Generated SVG image is sanitized for use with Mapnik by the script svg_pattern.sh from the jsdotpattern repository at http://github.com/imagico/jsdotpattern.
 
-Due to limitations of Mapnik it is impossible to use this svg file.
-
-Currently used workaround is to export png file (this image is used in rendering).
+The final file is forest.svg

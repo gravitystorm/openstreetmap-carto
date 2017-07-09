@@ -652,7 +652,7 @@
 
   //Also landuse = forest, converted in the SQL
   [natural = 'wood'][zoom >= 13]::wood {
-    polygon-pattern-file: url('symbols/forest.png'); // Lch(55,30,135)
+    polygon-pattern-file: url('symbols/forest.svg'); // Lch(55,30,135)
     polygon-pattern-alignment: global;
     opacity: 0.4; // The entire layer has opacity to handle overlapping forests
   }
