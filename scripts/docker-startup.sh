@@ -32,11 +32,8 @@ import)
 kosmtik)
   python scripts/get-shapefiles.py -n
 
-  mkdir -p .config
   if [ ! -e ".kosmtik-config.yml" ]; then
-    touch .kosmtik-config.yml
-    # this can be removed once https://github.com/kosmtik/kosmtik/issues/236 is resolved
-    echo "plugins:" >> .kosmtik-config.yml
+    cp /tmp/.kosmtik-config.yml .kosmtik-config.yml  
   fi
   export KOSMTIK_CONFIGPATH=".kosmtik-config.yml"
 
