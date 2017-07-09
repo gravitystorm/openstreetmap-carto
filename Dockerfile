@@ -12,8 +12,21 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash \
     && apt-get install --no-install-recommends -y nodejs \
     && rm -rf /var/lib/apt/lists/*
 
+# Kosmtik with plugins
 RUN npm install -g kosmtik
 
+WORKDIR /usr/lib/node_modules/kosmtik/ 
+RUN kosmtik plugins --install kosmtik-overpass-layer \
+                    --install kosmtik-fetch-remote \
+                    --install kosmtik-overlay \
+                    --install kosmtik-open-in-josm \
+                    --install kosmtik-map-compare \ 
+                    --install kosmtik-osm-data-overlay \
+                    --install kosmtik-mapnik-reference \
+                    --install kosmtik-geojson-overlay \
+    && cp /root/.config/kosmtik.yml /tmp/.kosmtik-config.yml
+
+# Closing section
 RUN mkdir -p /openstreetmap-carto
 WORKDIR /openstreetmap-carto
 
