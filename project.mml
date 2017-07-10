@@ -1349,6 +1349,23 @@ Layer:
     properties:
       minzoom: 10
   - id: trees
+    geometry: point
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way, "natural",
+            tags->'denotation' as denotation,
+            tags->'circumference' as circumference,
+            tags->'height' as height
+          FROM planet_osm_point
+          WHERE "natural" = 'tree'
+            OR tags->'denotation' = 'natural_monument'
+        ) AS trees
+    properties:
+      minzoom: 14
+  - id: trees-poly
     geometry: polygon
     <<: *extents
     Datasource:
@@ -1356,14 +1373,9 @@ Layer:
       table: |-
         (SELECT
             way, "natural"
-          FROM planet_osm_point
-          WHERE "natural" = 'tree'
-        UNION ALL
-        SELECT
-            way, "natural"
           FROM planet_osm_line
           WHERE "natural" = 'tree_row'
-        ) AS trees
+        ) AS trees_poly
     properties:
       minzoom: 16
   - id: country-names
