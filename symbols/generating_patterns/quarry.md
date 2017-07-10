@@ -10,10 +10,8 @@ SVG file is generated using JSDotPattern generator (http://www.imagico.de/map/js
 - rendering: render (px aligned)
 - patten size: 512
 
-and then converted to PNG file:
+Generated SVG image is sanitized for use with Mapnik by the script svg_pattern.sh from the jsdotpattern repository at http://github.com/imagico/jsdotpattern.
 
-```
-convert quarry.svg quarry.png
-```
+The final file is quarry.svg
 
-Original SVG pattern file (included in this folder) was however made also with scale 0.12 using https://commons.wikimedia.org/wiki/File:Schlaegel_und_Eisen_nach_DIN_21800.svg and then manually converted to PNG.
+Original SVG pattern file (included in this style) was however made also with scale 0.12 using https://commons.wikimedia.org/wiki/File:Schlaegel_und_Eisen_nach_DIN_21800.svg.
