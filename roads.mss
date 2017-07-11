@@ -3106,3 +3106,113 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
 }
+#railways-text-name {
+  /* Mostly started from z17. */
+  [railway = 'rail'],
+  [railway = 'subway'],
+  [railway = 'narrow_gauge'],
+  [railway = 'light_rail'],
+  [railway = 'preserved'],
+  [railway = 'funicular'],
+  [railway = 'monorail'],
+  [railway = 'tram'] {
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-fill: #666666;
+      text-size: 10;
+      text-dy: 6;
+      text-spacing: 900;
+      text-clip: false;
+      text-placement: line;
+      text-min-distance: 18;
+      text-face-name: @book-fonts;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+    }
+    [zoom >= 19] {
+      text-size: 11;
+      text-dy: 7;
+    }
+  }
+  [railway = 'rail'] {
+    /* Render highspeed rails from z11,
+       other main routes at z14. */
+    [highspeed = 'yes'] {
+      [zoom >= 11] {
+        text-name: "[name]";
+        text-fill: #666666;
+        text-size: 10;
+        text-dy: 3;
+        text-spacing: 300;
+        text-clip: false;
+        text-placement: line;
+        text-min-distance: 18;
+        text-face-name: @book-fonts;
+        text-halo-radius: @standard-halo-radius;
+        text-halo-fill: @standard-halo-fill;
+      }
+      [zoom >= 13] {
+        text-dy: 6;
+      }
+      [zoom >= 14] {
+        text-spacing: 600;
+      }
+      [zoom >= 17] {
+        text-size: 11;
+        text-dy: 7;
+      }
+      [zoom >= 19] {
+        text-size: 12;
+        text-dy: 8;
+      }
+    }
+    [highspeed != 'yes'][usage = 'main'] {
+      [zoom >= 14] {
+        text-name: "[name]";
+        text-fill: #666666;
+        text-size: 10;
+        text-dy: 6;
+        text-spacing: 300;
+        text-clip: false;
+        text-placement: line;
+        text-min-distance: 18;
+        text-face-name: @book-fonts;
+        text-halo-radius: @standard-halo-radius;
+        text-halo-fill: @standard-halo-fill;
+      }
+      [zoom >= 17] {
+        text-spacing: 600;
+        text-size: 11;
+        text-dy: 7;
+      }
+      [zoom >= 19] {
+        text-size: 12;
+        text-dy: 8;
+      }
+    }
+  }
+  /* Other minor railway styles. For service rails, see:
+     https://github.com/gravitystorm/openstreetmap-carto/pull/2687 */
+  [railway = 'preserved'],
+  [railway = 'miniature'],
+  [railway = 'disused'],
+  [railway = 'construction'] {
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-fill: #666666;
+      text-size: 10;
+      text-dy: 6;
+      text-spacing: 900;
+      text-clip: false;
+      text-placement: line;
+      text-min-distance: 18;
+      text-face-name: @book-fonts;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+    }
+    [zoom >= 19] {
+      text-size: 11;
+      text-dy: 7;
+    }
+  }
+}
