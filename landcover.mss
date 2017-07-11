@@ -9,9 +9,10 @@
 
 // --- "Base" landuses ---
 
+@built-up-upper-lowzoom: #c0c0c0;
+@built-up-lower-lowzoom: #aaaaaa;
 @residential: #e0dfdf;      // Lch(89,0,0)
 @residential-line: #b9b9b9; // Lch(75,0,0)
-@built-up-lowzoom: #aaaaaa;
 @retail: #ffd6d1;           // Lch(89,16,30)
 @retail-line: #d99c95;      // Lch(70,25,30)
 @commercial: #f2dad9;       // Lch(89,8.5,25)
@@ -210,10 +211,9 @@
   }
 
   [feature = 'landuse_residential'][zoom >= 10] {
-    polygon-fill: @residential;
-    [zoom < 13] {
-      polygon-fill: @built-up-lowzoom;
-    }
+    polygon-fill: @built-up-lower-lowzoom;
+    [zoom >= 11] { polygon-fill: @built-up-upper-lowzoom; }
+    [zoom >= 13] { polygon-fill: @residential; }
     [zoom >= 16] {
       line-width: .5;
       line-color: @residential-line;
@@ -339,10 +339,9 @@
   }
 
   [feature = 'landuse_retail'][zoom >= 10] {
-    polygon-fill: @retail;
-    [zoom < 13] {
-      polygon-fill: @built-up-lowzoom;
-    }
+    polygon-fill: @built-up-lower-lowzoom;
+    [zoom >= 11] { polygon-fill: @built-up-upper-lowzoom; }
+    [zoom >= 13] { polygon-fill: @retail; }
     [zoom >= 16] {
       line-width: 0.5;
       line-color: @retail-line;
@@ -355,10 +354,9 @@
   }
 
   [feature = 'landuse_industrial'][zoom >= 10] {
-    polygon-fill: @industrial;
-    [zoom < 13] {
-      polygon-fill: @built-up-lowzoom;
-    }
+    polygon-fill: @built-up-lower-lowzoom;
+    [zoom >= 11] { polygon-fill: @built-up-upper-lowzoom; }
+    [zoom >= 13] { polygon-fill: @industrial; }
     [zoom >= 16] {
       line-width: .5;
       line-color: @industrial-line;
@@ -400,10 +398,9 @@
   }
 
   [feature = 'landuse_commercial'][zoom >= 10] {
-    polygon-fill: @commercial;
-    [zoom < 13] {
-      polygon-fill: @built-up-lowzoom;
-    }
+    polygon-fill: @built-up-lower-lowzoom;
+    [zoom >= 11] { polygon-fill: @built-up-upper-lowzoom; }
+    [zoom >= 13] { polygon-fill: @commercial; }
     [zoom >= 16] {
       line-width: 0.5;
       line-color: @commercial-line;
