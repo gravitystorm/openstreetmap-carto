@@ -645,7 +645,7 @@
       }
     }
     [natural = 'scrub'] {
-      polygon-pattern-file: url('symbols/scrub.png');
+      polygon-pattern-file: url('symbols/scrub.svg');
       polygon-pattern-alignment: global;
     }
   }
