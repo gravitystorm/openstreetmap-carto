@@ -316,7 +316,8 @@
 .text[zoom >= 10] {
   [feature = 'natural_water'],
   [feature = 'landuse_reservoir'],
-  [feature = 'landuse_basin'] {
+  [feature = 'landuse_basin'],
+  [feature = 'waterway_dock'] {
     [zoom >= 10][way_pixels > 3000],
     [zoom >= 17] {
       text-name: "[name]";
