@@ -16,7 +16,7 @@
 @landcover-wrap-width-size: 25;
 @landcover-wrap-width-size-big: 35;
 @landcover-wrap-width-size-bigger: 45;
-@landcover-face-name: @oblique-fonts;
+@landcover-face-name: @alternative-fonts;
 
 @standard-wrap-width: 30;
 @standard-text-size: 10;
@@ -1066,7 +1066,7 @@
     text-size: @standard-text-size;
     [way_pixels > 12000] { text-size: 12; }
     [way_pixels > 48000] { text-size: 15; }
-    text-face-name: @oblique-fonts;
+    text-face-name: @alternative-fonts;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-wrap-width: @standard-wrap-width;
@@ -2052,7 +2052,7 @@
     text-size: @standard-text-size;
     text-fill: darken(@airtransport, 15%);
     text-dy: 10;
-    text-face-name: @oblique-fonts;
+    text-face-name: @alternative-fonts;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;

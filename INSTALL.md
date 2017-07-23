@@ -63,15 +63,21 @@ Unifont is used as a last resort fallback, with it's excellent coverage, common 
 
 ### Installation on Ubuntu/Debian
 
-On Ubuntu 16.04 or Debian Testing you can download and install the required fonts except Noto Emoji Regular with
+On Ubuntu 16.04 or Debian Testing you can download and install most of the required fonts with
 
 ```
 sudo apt-get install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted fonts-hanazono ttf-unifont
 ```
 
-Noto Emoji Regular can be downloaded [from the Noto Emoji repository](https://github.com/googlei18n/noto-emoji).
+It might be useful to have a more recent version of the fonts for [rare non-latin scripts](#non-latin-scripts).
 
-It might be useful to have a more recent version of the fonts for [rare non-latin scripts](#non-latin-scripts). This can be installed [from source](https://github.com/googlei18n/noto-fonts/blob/master/FAQ.md#where-are-the-fonts).
+These fonts are not available on Ubuntu 16.04:
+* Noto Emoji Regular
+* Noto Serif CJK JP Medium
+* Noto Serif Devanagari Regular
+* Noto Serif Hebrew Regular
+
+The up-to-date comprehensive Noto fonts can be installed [from source](https://github.com/googlei18n/noto-fonts/blob/master/FAQ.md#where-are-the-fonts).
 
 DejaVu is packaged as `fonts-dejavu-core`.
 

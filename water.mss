@@ -239,7 +239,7 @@
   [lock != 'yes'][int_tunnel != 'yes'] {
     [waterway = 'river'][zoom >= 13] {
       text-name: "[name]";
-      text-face-name: @oblique-fonts;
+      text-face-name: @alternative-fonts;
       text-placement: line;
       text-fill: @water-text;
       text-spacing: 400;
@@ -252,7 +252,7 @@
 
     [waterway = 'canal'][zoom >= 13][zoom < 14] {
       text-name: "[name]";
-      text-face-name: @oblique-fonts;
+      text-face-name: @alternative-fonts;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-size: 10;
@@ -263,7 +263,7 @@
     [waterway = 'stream'][zoom >= 15] {
       text-name: "[name]";
       text-size: 10;
-      text-face-name: @oblique-fonts;
+      text-face-name: @alternative-fonts;
       text-fill: @water-text;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
@@ -277,7 +277,7 @@
     [waterway = 'ditch'] {
       [zoom >= 15] {
         text-name: "[name]";
-        text-face-name: @oblique-fonts;
+        text-face-name: @alternative-fonts;
         text-size: 10;
         text-fill: @water-text;
         text-spacing: 600;
@@ -292,7 +292,7 @@
       text-size: 10;
       text-fill: @water-text;
       text-placement: line;
-      text-face-name: @oblique-fonts;
+      text-face-name: @alternative-fonts;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
     }
@@ -301,7 +301,7 @@
       text-name: "[name]";
       text-size: 10;
       text-fill: #80d1ae;
-      text-face-name: @oblique-fonts;
+      text-face-name: @alternative-fonts;
       text-placement: line;
       text-spacing: 600;
       text-halo-radius: @standard-halo-radius;
@@ -339,7 +339,7 @@
         text-line-spacing: -0.95; // -0.05 em
       }
       text-fill: @water-text;
-      text-face-name: @oblique-fonts;
+      text-face-name: @alternative-fonts;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-placement: interior;

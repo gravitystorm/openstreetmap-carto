@@ -2406,7 +2406,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-size: 10;
       text-fill: @junction-text-color;
       text-min-distance: 2;
-      text-face-name: @oblique-fonts;
+      text-face-name: @alternative-fonts;
       text-halo-radius: @standard-halo-radius;
       text-wrap-character: ";";
       text-wrap-width: 2; // effectively break after every wrap character

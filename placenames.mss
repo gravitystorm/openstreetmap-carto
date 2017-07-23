@@ -50,7 +50,7 @@
     text-line-spacing: -1.5; // -0.15 em
     text-margin: 7.0; // 0.7 em
     text-fill: @state-labels;
-    text-face-name: @oblique-fonts;
+    text-face-name: @alternative-fonts;
     text-halo-fill: @standard-halo-fill;
     text-halo-radius: @standard-halo-radius * 1.5;
     text-placement: interior;

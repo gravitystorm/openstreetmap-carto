@@ -119,6 +119,7 @@ A regular style.
                 "Unifont Medium", "unifont Medium", "Unifont Upper Medium";
 
 /*
+A bold version of the regular style.
 A bold style is available for almost all scripts. Bold text is heavier than
 regular text and can be used for emphasis. Fallback is a regular style.
 */
@@ -148,7 +149,28 @@ regular text and can be used for emphasis. Fallback is a regular style.
                 @book-fonts;
 
 /*
-Italics are only available for the base font, not the other scripts.
-For a considerable number of labels this style will make no difference to the regular style.
+An alternative style.
+While the regular style and its bold variant has low contrast between thick and
+thin strokes, the alternative style is a high-contrast style. Furthermore, the
+alternative style has serifs and italic glyphs for LGC scripts and serif-like
+decorations for CJK scripts. This alternative style is available for many
+scripts. Its weight matches the weight of the regular style. For CJK, we
+use Medium weight because it’ a better match with the Regular weight of the
+other fonts.
 */
-@oblique-fonts: "Noto Sans UI Italic", @book-fonts;
+@alternative-fonts: "Noto Serif Italic", "Noto Serif Regular",
+                "Noto Serif CJK JP Medium",
+                "Noto Serif Armenian Regular",
+                "Noto Serif Bengali Regular",
+                "Noto Serif Devanagari Regular",
+                "Noto Serif Georgian Regular",
+                "Noto Serif Gujarati Regular",
+                "Noto Serif Hebrew Regular",
+                "Noto Serif Kannada Regular",
+                "Noto Serif Khmer Regular",
+                "Noto Serif Lao Regular",
+                "Noto Serif Malayalam Regular",
+                "Noto Serif Tamil Regular",
+                "Noto Serif Telugu Regular",
+                "Noto Serif Thai Regular",
+                @book-fonts;
