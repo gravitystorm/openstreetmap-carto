@@ -258,7 +258,8 @@ Layer:
                     ELSE NULL
                     END 
                 END
-              END AS int_wetland
+              END AS int_wetland,
+            tags->'leaf_type' AS leaf_type
           FROM planet_osm_polygon
           WHERE ("natural" IN ('marsh', 'mud', 'wetland', 'wood', 'beach', 'shoal', 'reef', 'scrub') OR landuse = 'forest')
             AND building IS NULL
