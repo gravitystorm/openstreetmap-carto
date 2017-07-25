@@ -825,10 +825,6 @@
       marker-file: url('symbols/shop/tea.svg');
     }
 
-    [shop = 'tyres'][zoom >= 18] {
-      marker-file: url('symbols/shop/tyres.svg');
-    }
-
     [shop = 'variety_store'][zoom >= 18] {
       marker-file: url('symbols/shop/variety_store.svg');
     }
@@ -1860,7 +1856,6 @@
   [feature = 'shop_stationery'],
   [feature = 'shop_tobacco'],
   [feature = 'shop_tea'],
-  [feature = 'shop_tyres'],
   [feature = 'shop_variety_store'],
   [feature = 'shop_wine'],
   [feature = 'shop_other']{
