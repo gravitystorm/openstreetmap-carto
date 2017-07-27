@@ -2049,7 +2049,7 @@
     text-name: "[name]";
     text-size: @standard-text-size;
     text-fill: darken(@airtransport, 15%);
-    text-dy: -10;
+    text-dy: 10;
     text-face-name: @oblique-fonts;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
