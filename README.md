@@ -66,13 +66,8 @@ these often make it easier to customise, experience has shown that over-cleverne
 ## Database schema change (v4.x)
 
 The v4.x series includes [osm2pgsql lua transforms](https://github.com/openstreetmap/osm2pgsql/blob/master/docs/lua.md)
-and a hstore column with all other tags, allowing use of more OpenStreetMap data.
-
-Initial releases do not make use of the new features, maintaining compatibility
-with v3.x and v3.x releases will continue with backports, allowing the style to be
-rendered from either a new database or an old one. In order to allow time for users
-to reload their databases, this will be maintained until at least two MINOR
-releases have occurred. After that compatibility will not be maintained.
+and a hstore column with all other tags, allowing use of more OpenStreetMap data. Users need 
+to reload their databases, v3.x compatibility is not maintained.
 
 There are over [300 open requests][issues], some that have been open for years.
 These need reviewing and dividing into obvious fixes, or additional new features
