@@ -1,6 +1,16 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.0.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.1.0...master)
 
-## [v4.0.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.3.0...v4.0.0)
+## [v4.1.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.0.0...v4.1.0) - 2017-07-30
+### Changes
+- Malls are no longer rendered as dots (bug fix)
+- Special icon for shop=tyres
+- Airports rendering changes: removing clutter on z10 and moving name labels under the icon
+- Switching forest, scrub and quarry patterns to SVG
+- Introducing easy to use Docker-based development environment
+- New version of script get-shapefiles.py
+- Small code and documentation improvements
+
+## [v4.0.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v3.3.0...v4.0.0) - 2017-05-22
 ### Major changes
 - The database schema has changed from the osm2pgsql default. This requires a database reload.
 - osm2pgsql Lua transforms are used for some preprocessing. This requires osm2pgsql built with lua support, which most versions will have.
