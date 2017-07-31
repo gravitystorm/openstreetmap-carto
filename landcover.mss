@@ -182,7 +182,7 @@
     [zoom >= 14] {
       [religion = 'jewish'] { polygon-pattern-file: url('symbols/grave_yard_jewish.png'); }
       [religion = 'christian'] { polygon-pattern-file: url('symbols/grave_yard_christian.png'); }
-      [religion = 'INT-generic'] { polygon-pattern-file: url('symbols/grave_yard_generic.png'); }
+      [religion = 'INT-generic'] { polygon-pattern-file: url('symbols/grave_yard_generic.svg'); }
       [religion = 'jewish'],
       [religion = 'christian'],
       [religion = 'INT-generic'] {
