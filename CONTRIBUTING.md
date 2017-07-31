@@ -4,7 +4,7 @@
 
 We operate the "Fork & Pull" model explained at
 
-https://help.github.com/articles/using-pull-requests
+https://help.github.com/articles/about-pull-requests/
 
 You should fork the project into your own repo, create a topic branch
 there and then make one or more pull requests back to the gravitystorm repository.
@@ -17,22 +17,12 @@ contain a cropped screenshot of the problem, and a link to the area. Don't assum
 that we will see exactly what you see. If a particular OSM object is an issue,
 the issue should contain the tagging of the object.
 
-## 3.x compatibility
-
-OpenStreetMap Carto is currently maintaining compatibility in the output of 3.x
-and 4.x to allow users to smoothly transition and reload their databases. Pull
-requests which cannot be backported to 3.x are not being accepted at this time
-and will be closed.
-
-Whenever a pull request is merged into master, it also needs to be backported to
-the 3.x branch at the same time by the person merging.
-
 ## Easy pickings
 
 Some [easy issues](https://github.com/gravitystorm/openstreetmap-carto/issues?q=is%3Aopen+is%3Aissue+label%3Aeasy) have been selected
 that are particularly suitable for new contributors to get familiar with the project's code base and the contribution process.
 
-## Editing Layers
+## Editing layers
 
 OpenStreetMap Carto uses a YAML file for defining layers, because it [works much
 better for big projects](https://github.com/gravitystorm/openstreetmap-carto/issues/711).
@@ -43,7 +33,7 @@ or the equivalent in a different language.
 [Kosmtik](https://github.com/kosmtik/kosmtik) and CartoCSS can directly load the project from
 the YAML file with `node index.js serve path/to/openstreetmap-carto/project.mml`
 
-## CartoCSS Style Guidelines
+## CartoCSS style guidelines
 
 * Always specify zoom levels as either >= or < . Don't use = or =< or >
 * Open curly braces on the same line, and close on an empty line.
@@ -112,7 +102,7 @@ instead of
 }
 ```
 
-## SQL Style Guidelines
+## SQL style guidelines
 Because SQL within JSON or YAML will not generally be syntax highlighted, indentation and caps are particularly important.
 
 * SQL keywords in caps, as in PostgreSQL documentation
@@ -128,7 +118,7 @@ Because SQL within JSON or YAML will not generally be syntax highlighted, indent
 * When extracting tags from hstore, use `tags->'foo'`, not `tags -> 'foo'`, and only add parenthesis if needed for order of operations
 * To check if a tag is in the tags hstore, use `tags @> 'foo=>bar'`, relying on automatic conversion from `text` to `hstore`.
 
-## Map Icon Guidelines
+## Map icon guidelines
 
 * All new icons must be SVG format only.  The SVG must be saved as standards compliant SVG without any proprietary tags. In Inkscape software, you will need to "Save As..." and choose the format Optimized SVG (preferable) or Plain SVG.
 * Icons must use SVG fills only, not SVG strokes or any feature Mapnik does not support.
@@ -139,7 +129,7 @@ Because SQL within JSON or YAML will not generally be syntax highlighted, indent
 * Align vectors to the pixel grid.
 * Make a clean design, so reduced complexity where possible.
 
-### External Icon Design Resources
+### External icon design resources
 The project's goals and design philsophy are different from other projects, but some external resources with general information about icon design are:
 
 * [Maki Icons Design Guidelines](https://www.mapbox.com/maki-icons/guidelines/)
