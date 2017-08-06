@@ -33,7 +33,6 @@
 @railway: @industrial;
 @railway-line: @industrial-line;
 @rest_area: #efc8c8; // also services
-@station: #d4aaaa;
 
 // --- Other ----
 
@@ -560,7 +559,7 @@
   }
 
   [feature = 'railway_station'][zoom >= 10] {
-    polygon-fill: @station;
+    polygon-fill: @railway;
   }
 
   [feature = 'leisure_fitness_centre'],
