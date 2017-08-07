@@ -1,11 +1,9 @@
+Pattern file for beach is generated in two steps.
 
-The beach and reef patterns are rasterized and colored versions of the provided SVGs
+In the first step visit [jsdotpattern (command sequence is recorded)](http://www.imagico.de/map/jsdotpattern.php#x,128,jdp59980;g,2.25,16,16;rx,250,2,8,8;rx,250,2,8,8;s,jdp58799;s,jdp49103;rx,250,2,8,8;rd,0,0,1,scree,0.1,5,10,0,jdp31724,dbb677,fff1ba;)
 
-```
-convert -depth 8 beach.svg beach_raw.png
-convert -depth 8 reef.svg reef_raw.png
+Use "get pattern SVG data" (it is expected that background will be transparent, background colour in jsdotpattern is only for display).
 
-convert -depth 8 -size 128x128 xc:"#685d45" \( beach_raw.png -negate \) -set colorspace RGB -alpha Off -compose CopyOpacity -composite -set colorspace sRGB +gamma - beach.png
-convert -depth 8 -size 256x256 xc:"#969696" \( reef_raw.png -negate \) -set colorspace RGB -alpha Off -compose CopyOpacity -composite -set colorspace sRGB +gamma - beach_coarse.png
-convert -depth 8 -size 256x256 xc:"#549ccd" \( reef_raw.png -negate \) -set colorspace RGB -alpha Off -compose CopyOpacity -composite -set colorspace sRGB +gamma - reef.png
-```
+Generated SVG image is sanitized for use with Mapnik by the script svg_pattern.sh from the jsdotpattern repository at http://github.com/imagico/jsdotpattern.
+
+The final file is beach.svg
