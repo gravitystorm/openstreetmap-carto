@@ -444,7 +444,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
+            (CASE WHEN substr(feature, length(feature)-4, 5) = '_link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
             horse,
             foot,
             bicycle,
@@ -479,7 +479,7 @@ Layer:
                   ELSE 'INT-normal'::text
                 END AS service,
                 CASE
-                  WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
+                  WHEN substr(highway, length(highway)-4, 5) = '_link' THEN 'yes'
                   ELSE 'no'
                 END AS link,
                 COALESCE(layer,0) AS layernotnull,
@@ -707,7 +707,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
+            (CASE WHEN substr(feature, length(feature)-4, 5) = '_link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
             horse,
             foot,
             bicycle,
@@ -742,7 +742,7 @@ Layer:
                   ELSE 'INT-normal'::text
                 END AS service,
                 CASE
-                  WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
+                  WHEN substr(highway, length(highway)-4, 5) = '_link' THEN 'yes'
                   ELSE 'no'
                 END AS link,
                 COALESCE(layer,0) AS layernotnull,
@@ -872,7 +872,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
+            (CASE WHEN substr(feature, length(feature)-4, 5) = '_link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
             horse,
             foot,
             bicycle,
@@ -907,7 +907,7 @@ Layer:
                   ELSE 'INT-normal'::text
                 END AS service,
                 CASE
-                  WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
+                  WHEN substr(highway, length(highway)-4, 5) = '_link' THEN 'yes'
                   ELSE 'no'
                 END AS link,
                 COALESCE(layer,0) AS layernotnull,
@@ -1052,12 +1052,12 @@ Layer:
         (SELECT
             way,
             COALESCE(
-              ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end)),
+              ('highway_' || (CASE WHEN substr(highway, length(highway)-4, 5) = '_link' THEN substr(highway, 0, length(highway)-4) ELSE highway end)),
               ('railway_' || (CASE WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' 
                                    WHEN railway IN ('rail', 'tram', 'light_rail', 'funicular', 'narrow_gauge') THEN railway ELSE NULL END))
             ) AS feature,
             CASE WHEN tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes' THEN 'yes' ELSE 'no' END AS int_tunnel,
-            CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link,
+            CASE WHEN substr(highway, length(highway)-4, 5) = '_link' THEN 'yes' ELSE 'no' END AS link,
             CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
                                   'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay') THEN 'unpaved'
               WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
@@ -1103,7 +1103,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
+            (CASE WHEN substr(feature, length(feature)-4, 5) = '_link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
             horse,
             foot,
             bicycle,
@@ -1138,7 +1138,7 @@ Layer:
                   ELSE 'INT-normal'::text
                 END AS service,
                 CASE
-                  WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
+                  WHEN substr(highway, length(highway)-4, 5) = '_link' THEN 'yes'
                   ELSE 'no'
                 END AS link,
                 COALESCE(layer,0) AS layernotnull,
@@ -1901,7 +1901,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END,
+            CASE WHEN substr(highway, length(highway)-4, 5) = '_link' THEN substr(highway, 0, length(highway)-4) ELSE highway END,
             CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
             construction,
             name,
