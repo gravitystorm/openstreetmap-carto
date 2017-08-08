@@ -312,7 +312,7 @@
 
   [feature = 'landuse_farmland'],
   [feature = 'landuse_greenhouse_horticulture'] {
-    [zoom >= 10] {
+    [zoom >= 8] {
       polygon-fill: @farmland;
       [zoom >= 16] {
         line-width: .5;
