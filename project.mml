@@ -145,7 +145,7 @@ Layer:
               ('tourism_' || (CASE WHEN tourism IN ('attraction', 'camp_site', 'caravan_site', 'picnic_site') THEN tourism ELSE NULL END)) AS tourism,
               ('highway_' || (CASE WHEN highway IN ('services', 'rest_area') THEN highway ELSE NULL END)) AS highway,
               ('railway_' || (CASE WHEN railway = 'station' THEN railway ELSE NULL END)) AS railway,
-              CASE WHEN religion IN ('christian', 'jewish') THEN religion ELSE 'INT-generic'::text END AS religion,
+              CASE WHEN religion IN ('christian', 'jewish', 'muslim') THEN religion ELSE 'INT-generic'::text END AS religion,
               way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
             FROM planet_osm_polygon
             WHERE (landuse IS NOT NULL
