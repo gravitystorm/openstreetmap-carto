@@ -2071,11 +2071,12 @@
     text-wrap-width: @standard-wrap-width;
   }
 
-  [feature = 'natural_tree'][zoom >= 17] {
+    [feature = 'natural_tree'] {
     text-name: "[name]";
     text-size: @standard-text-size;
     text-fill: green;
-    text-dy: 7;
+    [zoom >= 16][denotation = 'natural_monument'] { text-dy: 6; }
+    [zoom >= 17] { text-dy: 7; }
     [zoom >= 18] { text-dy: 8; }
     [zoom >= 19] { text-dy: 11; }
     [zoom >= 20] { text-dy: 18; }
@@ -2087,7 +2088,7 @@
   }
 }
 
-#trees [zoom >= 16] {
+#trees_poly [zoom >= 16] {
   ::canopy {
     opacity: 0.3;
     [natural = 'tree_row'] {
@@ -2107,6 +2108,12 @@
         line-width: 30;
       }
     }
+  }
+}
+
+#trees [zoom >= 16] {
+  ::canopy {
+    opacity: 0.3;
     [natural = 'tree'] {
       marker-fill: green;
       marker-allow-overlap: true;
@@ -2114,40 +2121,115 @@
       marker-width: 2.5;
       marker-height: 2.5;
       marker-ignore-placement: true;
+      [zoom >= 14][circumference >=500 ][height >=29 ][denotation = 'natural_monument'] {
+        marker-fill: #448833;
+        marker-width: 3;
+        marker-height: 3;
+      }
+      [zoom >= 15][circumference >=400 ][height >=25 ][denotation = 'natural_monument'] {
+        marker-fill: #448833;
+        marker-width: 4;
+        marker-height: 4;
+      }
+      [zoom >= 16][circumference >=300 ][height >=22 ][denotation = 'natural_monument'] {
+        marker-fill:#448833;
+        marker-width: 5;
+        marker-height: 5;
+      }
       [zoom >= 17] {
         marker-width: 5;
         marker-height: 5;
+        [denotation = 'natural_monument'] {
+          marker-fill: #448833;
+          marker-width: 7.5;
+          marker-height: 7.5;
+        }
       }
       [zoom >= 18] {
         marker-width: 10;
         marker-height: 10;
+        [denotation = 'natural_monument'] {
+          marker-fill: #448833;
+          marker-width: 15;
+          marker-height: 15;
+        }
       }
       [zoom >= 19] {
         marker-width: 15;
         marker-height: 15;
+        [denotation = 'natural_monument'] {
+          marker-fill: #448833;
+          marker-width: 22.5;
+          marker-height: 22.5;
+        }
       }
       [zoom >= 20] {
         marker-width: 30;
         marker-height: 30;
+        [denotation = 'natural_monument'] {
+          marker-fill: #448833;
+          marker-width: 45;
+          marker-height: 45;
+        }
       }
     }
   }
   [natural = 'tree']::trunk {
-    [zoom >= 18] {
+    [zoom >= 17] {
       trunk/marker-fill: #b27f36;
       trunk/marker-allow-overlap: true;
       trunk/marker-line-width: 0;
+      trunk/marker-width: 1;
+      trunk/marker-height: 1;
+      trunk/marker-ignore-placement: true;
+    }
+    [zoom >= 18] {
       trunk/marker-width: 2;
       trunk/marker-height: 2;
-      trunk/marker-ignore-placement: true;
+      [circumference >=500 ] {
+        marker-width: 5;  
+        marker-height: 5;
+      }
+      [circumference >=400 ] {
+        marker-width: 4;
+        marker-height: 4;
+      }
+      [circumference >=300 ] {
+        trunk/marker-width: 3;
+        trunk/marker-height: 3;
+      }
     }
     [zoom >= 19] {
       trunk/marker-width: 3;
       trunk/marker-height: 3;
+      [circumference >=500 ] {
+        marker-width: 7.5;
+        marker-height: 7.5;
+      }
+      [circumference >=400 ] {
+        marker-width: 6;
+        marker-height: 6;
+      }
+      [circumference >=300 ] {
+        trunk/marker-width: 4.5;
+        trunk/marker-height: 4.5;
+      }
     }
     [zoom >= 20] {
       trunk/marker-width: 6;
       trunk/marker-height: 6;
+      [circumference >=500 ] {
+        marker-width: 15;
+        marker-height: 15;
+      }
+      [circumference >=400 ] {
+        marker-width: 12;
+        marker-height: 12;
+      }
+      [circumference >=300 ] {
+        trunk/marker-width: 9;
+        trunk/marker-height: 9;
+      }
     }
   }
 }
