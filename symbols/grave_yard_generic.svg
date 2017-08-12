@@ -33,6 +33,6 @@
      width="32" />
   <path
      style="fill:#88b78e;fill-opacity:1;stroke:none;stroke-width:0.69631088"
-     d="M 8,3 C 8,3 6,2.9542995 6,6 l 0,4 H 4 v 1 h 8 v -1 h -2 l 0.05808,-4.0453721 C 10.10114,2.954937 8,3 8,3 Z"
+     d="m 6,6 v 4 H 4 v 1 h 8 V 10 H 10 V 6 C 10,3 8,3 8,3 8,3 6,3 6,6 Z"
      id="generic" />
 </svg>
