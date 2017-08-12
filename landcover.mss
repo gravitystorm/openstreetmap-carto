@@ -42,6 +42,7 @@
 @cemetery: #aacbaf; // also grave_yard
 @construction: #c7c7b4; // also brownfield
 @danger_area: pink;
+@danger_background: #fcd8db;
 @heath: #d6d99f;
 @mud: rgba(203,177,154,0.3); // produces #e6dcd1 over @land
 @place_of_worship: #cdccc9;
@@ -240,7 +241,8 @@
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
     [zoom >= 11] {
-      polygon-pattern-file: url('symbols/danger.png');
+      polygon-fill: @danger_background;
+      polygon-pattern-file: url('symbols/danger.svg');
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
