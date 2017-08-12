@@ -536,7 +536,8 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [feature = 'aeroway_aerodrome'][zoom >= 10] {
+  [feature = 'aeroway_aerodrome'][zoom >= 10],
+  [feature = 'amenity_ferry_terminal'][zoom >= 15] {
     polygon-fill: @aerodrome;
     line-width: 0.2;
     line-color: saturate(darken(@aerodrome, 40%), 20%);
