@@ -880,8 +880,10 @@
   }
 
   [feature = 'leisure_slipway'][zoom >= 17] {
-    point-file: url('symbols/transport_slipway.p.20.png');
-    point-placement: interior;
+    marker-file: url('symbols/transport_slipway.p.20.svg');
+    marker-fill: @transportation-icon;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'aeroway_helipad'][zoom >= 16] {
