@@ -24,16 +24,15 @@
 
 /* Note that .points is also used in water-features.mss */
 .points {
-  [feature = 'tourism_alpine_hut'][zoom >= 13] {
-    point-file: url('symbols/alpinehut.p.16.png');
-    point-placement: interior;
-  }
-
+  [feature = 'tourism_alpine_hut'][zoom >= 13],
   [feature = 'tourism_wilderness_hut'][zoom >= 13],
   [feature = 'amenity_shelter'][zoom >= 16] {
     marker-file: url('symbols/shelter.svg');
     [feature = 'tourism_wilderness_hut'] {
       marker-file: url('symbols/wilderness_hut.svg');
+    }
+    [feature = 'tourism_alpine_hut'] {
+      marker-file: url('symbols/alpinehut.svg');
     }
     marker-fill: @transportation-icon;
     marker-placement: interior;
@@ -1632,7 +1631,7 @@
   [feature = 'tourism_camp_site'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-text-size;
-    text-fill: #0066ff;
+    text-fill: @transportation-text;
     text-dy: 11;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
@@ -1650,7 +1649,7 @@
   [feature = 'amenity_embassy'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-text-size;
-    text-fill: #0066ff;
+    text-fill: @transportation-text;
     text-dy: 10;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
@@ -1662,7 +1661,7 @@
   [feature = 'amenity_taxi'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-text-size;
-    text-fill: #0066ff;
+    text-fill: @transportation-text;
     text-dy: 11;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
