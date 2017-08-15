@@ -15,7 +15,13 @@ services:
       - PGHOST=db
       - PGUSER=postgres
   db:
-    image: mdillon/postgis:9.6
+    image: db:v1
+    build:
+      context: .
+      dockerfile: Dockerfile.db
+    environment:
+      - PG_WORK_MEM
+      - PG_MAINTENANCE_WORK_MEM
   import:
     image: import:v1
     build:
@@ -28,6 +34,8 @@ services:
     environment:
       - PGHOST=db
       - PGUSER=postgres
+      - PG_WORK_MEM
+      - PG_MAINTENANCE_WORK_MEM
       - OSM2PGSQL_CACHE
       - OSM2PGSQL_NUMPROC
       - OSM2PGSQL_DATAFILE

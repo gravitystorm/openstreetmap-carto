@@ -26,15 +26,16 @@ import)
   if [ ! -e ".env" ]; then
     cat > .env <<EOF
 # Environment settings for importing to a Docker container database
-
-OSM2PGSQL_CACHE=512
-OSM2PGSQL_NUMPROC=1
-OSM2PGSQL_DATAFILE=data.osm.pbf
+PG_WORK_MEM=${PG_WORK_MEM:-16MB}
+PG_MAINTENANCE_WORK_MEM=${PG_MAINTENANCE_WORK_MEM:-256MB}
+OSM2PGSQL_CACHE=${OSM2PGSQL_CACHE:-512}
+OSM2PGSQL_NUMPROC=${OSM2PGSQL_NUMPROC:-1}
+OSM2PGSQL_DATAFILE=${OSM2PGSQL_DATAFILE:-data.osm.pbf}
 EOF
     chmod a+rw .env
-    export OSM2PGSQL_CACHE=512
-    export OSM2PGSQL_NUMPROC=1
-    export OSM2PGSQL_DATAFILE=data.osm.pbf
+    export OSM2PGSQL_CACHE=${OSM2PGSQL_CACHE:-512}
+    export OSM2PGSQL_NUMPROC=${OSM2PGSQL_NUMPROC:-1}
+    export OSM2PGSQL_DATAFILE=${OSM2PGSQL_DATAFILE:-data.osm.pbf}
   fi
 
   # Importing data to a database
