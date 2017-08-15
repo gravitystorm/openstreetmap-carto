@@ -110,7 +110,7 @@ Layer:
               OR "natural" IN ('wood', 'wetland', 'mud', 'sand', 'scree', 'shingle', 'bare_rock'))
               AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
               AND building IS NULL
-            ORDER BY COALESCE(layer,0), way_area DESC
+            ORDER BY way_area DESC
           ) AS features
         ) AS landcover_low_zoom
     properties:
