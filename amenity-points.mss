@@ -544,7 +544,14 @@
   }
 
   [feature = 'historic_memorial'][zoom >= 17] {
-    marker-file: url('symbols/memorial.svg');
+    marker-file: url('symbols/memorial.svg');    
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'historic_memorial_plaque'][zoom >= 19] {
+    marker-file: url('symbols/plaque.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
@@ -1245,6 +1252,7 @@
 
   [feature = 'tourism_artwork'][zoom >= 17],
   [feature = 'historic_memorial'][zoom >= 17],
+  [feature = 'historic_memorial_plaque'][zoom >= 19],
   [feature = 'man_made_obelisk'][zoom >= 16],
   [feature = 'historic_monument'][zoom >= 16],
   [feature = 'historic_archaeological_site'][zoom >= 17] {
