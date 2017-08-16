@@ -95,8 +95,10 @@
   }
 
   [feature = 'amenity_bus_station'][zoom >= 16] {
-    point-file: url('symbols/bus_station.n.16.png');
+    marker-file: url('symbols/bus_station.svg');
+    // use colors from SVG to allow for white background
     point-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_taxi'][zoom >= 17] {
@@ -163,8 +165,10 @@
   }
 
   [feature = 'tourism_chalet'][zoom >= 17] {
-    point-file: url('symbols/chalet.p.16.png');
+    marker-file: url('symbols/chalet.svg');
+    marker-fill: @transportation-icon;
     point-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_cinema'][zoom >= 16] {
@@ -230,8 +234,10 @@
   }
 
   [feature = 'tourism_guest_house'][zoom >= 17] {
-    point-file: url('symbols/guest_house.p.16.png');
+    marker-file: url('symbols/guest_house.svg');
+    marker-fill: @transportation-icon;
     point-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_hospital'][zoom >= 15] {
@@ -623,7 +629,7 @@
     }
 
     [shop = 'butcher'][zoom >= 18] {
-      marker-file: url('symbols/shop/butcher.png');
+      marker-file: url('symbols/shop/butcher.svg');
     }
 
     [shop = 'chemist'][zoom >= 18] {
@@ -866,13 +872,17 @@
   }
 
   [feature = 'leisure_miniature_golf'][zoom >= 17] {
-    point-file: url('symbols/miniature_golf.p.20.png');
+    marker-file: url('symbols/miniature_golf.svg');
+    marker-fill: darken(@park, 60%);
     point-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'leisure_golf_course'][zoom >= 15] {
-    point-file: url('symbols/golf.p.20.png');
+    marker-file: url('symbols/golf.svg');
+    marker-fill: darken(@park, 60%);
     point-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'tourism_picnic_site'][zoom >= 16] {
