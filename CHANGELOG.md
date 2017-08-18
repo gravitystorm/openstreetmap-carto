@@ -7,9 +7,10 @@
   - Less important roads are rendered less prominently, more impportant roads are better legible
 
 ### Changes
-- Smaller line spaces in labels
+- Leaf type rendering in woods and forests
 - Cemetary symbols are not so dense now and muslim cemetary has its own symbol
 - Plaque rendering is now different and moved to z19
+- Smaller line spaces in labels
 - Area color for railway=station is the same as for railways
 - Database perfomance tuning available for Docker
 - Different patterns and icons moved to SVG
