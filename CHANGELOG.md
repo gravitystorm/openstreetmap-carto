@@ -11,6 +11,7 @@
 - Cemetary symbols are not so dense now and muslim cemetary has its own symbol
 - Plaque rendering is now different and moved to z19
 - Smaller line spaces in labels
+- Junction names on areas 
 - Area color for railway=station is the same as for railways
 - Database perfomance tuning available for Docker
 - Different patterns and icons moved to SVG
