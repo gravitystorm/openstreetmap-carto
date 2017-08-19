@@ -14,7 +14,7 @@
 - Junction names on areas 
 - Area color for railway=station is the same as for railways
 - Database perfomance tuning available for Docker
-- Different patterns and icons moved to SVG
+- Different patterns and all remaining icons moved to SVG
 - Some documentation and code cleaning
 
 ## [v4.1.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.0.0...v4.1.0) - 2017-07-30
