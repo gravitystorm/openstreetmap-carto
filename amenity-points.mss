@@ -4,7 +4,7 @@
 @shop-text: #939;
 @transportation-icon: #0092da;
 @transportation-text: #0066ff;
-@airtransport: #8461C4;
+@airtransport: #8461C4; //also ferry_terminal
 @health-color: #da0092;
 @amenity-brown: #734a08;
 @man-made-icon: #555;
@@ -916,6 +916,13 @@
   [feature = 'aeroway_aerodrome']['access' != 'private']['icao' != null]['iata' != null][zoom >= 10][zoom < 14],
   [feature = 'aeroway_aerodrome'][zoom >= 11][zoom < 14] {
     marker-file: url('symbols/aerodrome.12.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @airtransport;
+  }
+
+  [feature = 'amenity_ferry_terminal'][zoom >= 15] {
+    marker-file: url('symbols/ferry.svg');
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @airtransport;
@@ -2137,7 +2144,8 @@
   }
 
   [feature = 'aeroway_aerodrome']['access' != 'private']['icao' != null]['iata' != null][zoom >= 10][zoom < 14],
-  [feature = 'aeroway_aerodrome'][zoom >= 11][zoom < 14] {
+  [feature = 'aeroway_aerodrome'][zoom >= 11][zoom < 14],
+  [feature = 'amenity_ferry_terminal'][zoom >= 15] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
