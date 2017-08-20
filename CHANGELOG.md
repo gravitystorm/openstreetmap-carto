@@ -9,6 +9,7 @@
 ### Changes
 - Leaf type rendering in woods and forests
 - Cemetary symbols are not so dense now and muslim cemetary has its own symbol
+- Rendering of amenity=ferry_terminal
 - Plaque rendering is now different and moved to z19
 - Smaller line spaces in labels
 - Junction names on areas 
