@@ -1506,7 +1506,6 @@
   [feature = 'landuse_brownfield'],
   [feature = 'landuse_landfill'],
   [feature = 'landuse_construction'],
-  [feature = 'tourism_caravan_site'],
   [feature = 'tourism_theme_park'],
   [feature = 'tourism_zoo'],
   [feature = 'tourism_attraction'],
@@ -1699,7 +1698,8 @@
   [feature = 'tourism_chalet'][zoom >= 17],
   [feature = 'tourism_guest_house'][zoom >= 17],
   [feature = 'tourism_wilderness_hut'][zoom >= 14],
-  [feature = 'tourism_camp_site'][zoom >= 17] {
+  [feature = 'tourism_camp_site'][zoom >= 17],
+  [feature = 'tourism_caravan_site'][zoom >= 17], {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
@@ -1713,7 +1713,8 @@
     [feature = 'tourism_motel'] {
       text-dy: 13;
     }
-    [feature = 'tourism_camp_site'] {
+    [feature = 'tourism_camp_site'],
+    [feature = 'tourism_caravan_site'] {
       text-dy: 15;
     }
   }
