@@ -180,7 +180,7 @@
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
     [zoom >= 14] {
-      [religion = 'jewish'] { polygon-pattern-file: url('symbols/grave_yard_jewish.png'); }
+      [religion = 'jewish'] { polygon-pattern-file: url('symbols/grave_yard_jewish.svg'); }
       [religion = 'christian'] { polygon-pattern-file: url('symbols/grave_yard_christian.svg'); }
       [religion = 'muslim'] { polygon-pattern-file: url('symbols/grave_yard_muslim.svg'); }
       [religion = 'INT-generic'] { polygon-pattern-file: url('symbols/grave_yard_generic.svg'); }
