@@ -16,9 +16,11 @@ Docker itself. Otherwise you need to [install Docker Compose manually](https://d
 If you are eager to get started here is an overview over the necessary steps.
 Read on below to get the details.
 
-* Download OpenStreetMap data in osm.pbf format to a file `data.osm.pbf` and place it within the openstreetmap-carto directory.
+* clone openstreetmap-carto repository
+* download OpenStreetMap data in osm.pbf format to a file `data.osm.pbf` and place it within the openstreetmap-carto directory
 * `docker-compose up import` to import the data (only necessary the first time or when you change the data file)
 * `docker-compose up kosmtik` to run the style preview application
+* browse to [http://localhost:6789](http://localhost:6789) to view the output of Kosmtik
 * Ctrl+C to stop the style preview application
 * `docker-compose stop db` to stop the database container
 
