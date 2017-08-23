@@ -4,6 +4,8 @@
 @shop-text: #939;
 @transportation-icon: #0092da;
 @transportation-text: #0066ff;
+@accommodation-icon: @transportation-icon;
+@accommodation-text: @transportation-text;
 @airtransport: #8461C4; //also ferry_terminal
 @health-color: #da0092;
 @amenity-brown: #734a08;
@@ -38,7 +40,7 @@
     [feature = 'tourism_alpine_hut'] {
       marker-file: url('symbols/alpinehut.svg');
     }
-    marker-fill: @transportation-icon;
+    marker-fill: @accommodation-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -131,7 +133,7 @@
 
   [feature = 'tourism_camp_site'][zoom >= 16] {
     marker-file: url('symbols/camping.svg');
-    marker-fill: @transportation-icon;
+    marker-fill: @accommodation-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -147,7 +149,7 @@
     marker-file: url('symbols/caravan_park.svg');
     marker-placement: interior;
     marker-clip: false;
-    marker-fill: @transportation-icon;
+    marker-fill: @accommodation-icon;
   }
 
   [feature = 'amenity_car_rental'][zoom >= 17] {
@@ -166,7 +168,7 @@
 
   [feature = 'tourism_chalet'][zoom >= 17] {
     marker-file: url('symbols/chalet.svg');
-    marker-fill: @transportation-icon;
+    marker-fill: @accommodation-icon;
     point-placement: interior;
     marker-clip: false;
   }
@@ -235,7 +237,7 @@
 
   [feature = 'tourism_guest_house'][zoom >= 17] {
     marker-file: url('symbols/guest_house.svg');
-    marker-fill: @transportation-icon;
+    marker-fill: @accommodation-icon;
     point-placement: interior;
     marker-clip: false;
   }
@@ -251,21 +253,21 @@
     marker-file: url('symbols/hostel.svg');
     marker-placement: interior;
     marker-clip: false;
-    marker-fill: @transportation-icon;
+    marker-fill: @accommodation-icon;
   }
 
   [feature = 'tourism_hotel'][zoom >= 17] {
     marker-file: url('symbols/hotel.svg');
     marker-placement: interior;
     marker-clip: false;
-    marker-fill: @transportation-icon;
+    marker-fill: @accommodation-icon;
   }
 
   [feature = 'tourism_motel'][zoom >= 17] {
     marker-file: url('symbols/motel.svg');
     marker-placement: interior;
     marker-clip: false;
-    marker-fill: @transportation-icon;
+    marker-fill: @accommodation-icon;
   }
 
   [feature = 'amenity_ice_cream'][zoom >= 17] {
@@ -1504,7 +1506,6 @@
   [feature = 'landuse_brownfield'],
   [feature = 'landuse_landfill'],
   [feature = 'landuse_construction'],
-  [feature = 'tourism_caravan_site'],
   [feature = 'tourism_theme_park'],
   [feature = 'tourism_zoo'],
   [feature = 'tourism_attraction'],
@@ -1697,12 +1698,13 @@
   [feature = 'tourism_chalet'][zoom >= 17],
   [feature = 'tourism_guest_house'][zoom >= 17],
   [feature = 'tourism_wilderness_hut'][zoom >= 14],
-  [feature = 'tourism_camp_site'][zoom >= 17] {
+  [feature = 'tourism_camp_site'][zoom >= 17],
+  [feature = 'tourism_caravan_site'][zoom >= 17], {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: @transportation-text;
+    text-fill: @accommodation-text;
     text-dy: 11;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
@@ -1711,7 +1713,8 @@
     [feature = 'tourism_motel'] {
       text-dy: 13;
     }
-    [feature = 'tourism_camp_site'] {
+    [feature = 'tourism_camp_site'],
+    [feature = 'tourism_caravan_site'] {
       text-dy: 15;
     }
   }
