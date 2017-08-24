@@ -621,7 +621,7 @@
 
 #landcover-area-symbols {
   [int_wetland != null][zoom >= 10] {
-    polygon-pattern-file: url('symbols/wetland.svg');
+    polygon-pattern-file: url('symbols/wetland.png');
     polygon-pattern-alignment: global;
   }
   [natural = 'reef'][zoom >= 10] {
@@ -656,7 +656,7 @@
     [natural = 'beach'],
     [natural = 'shoal'] {
       [surface = 'sand'] {
-        polygon-pattern-file: url('symbols/beach.svg');
+        polygon-pattern-file: url('symbols/beach.png');
         polygon-pattern-alignment: global;
       }
       [surface = 'gravel'],
