@@ -40,7 +40,7 @@
 
 @tertiary-shield: #3b3b3b;
 
-@unimportant-road: white;
+@unimportant-road: @residential-casing;
 
 @residential-construction: #aaa;
 @service-construction: #aaa;
@@ -1048,6 +1048,33 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 .tunnels-fill[zoom >= 10] {
 
   ::halo {
+    [zoom = 9][feature = 'highway_secondary'] {
+      line-color: @halo-color-for-minor-road;
+      line-width: 2.2;
+      line-opacity: 0.4;
+      line-join: round;
+      //Missing line-cap: round; is intentional. It would cause rendering glow multiple times in some places - what as result of partial transparency would cause differences in rendering
+      //Also, bridges - including bridge casings - are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
+    }
+    [zoom = 10][feature = 'highway_secondary'],
+    [zoom = 11][feature = 'highway_secondary'] {
+      line-color: @halo-color-for-minor-road;
+      line-width: 2.7;
+      line-opacity: 0.4;
+      line-join: round;
+      //Missing line-cap: round; is intentional. It would cause rendering glow multiple times in some places - what as result of partial transparency would cause differences in rendering
+      //Also, bridges - including bridge casings - are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
+    }
+    [zoom = 10][feature = 'highway_tertiary'],
+    [zoom = 11][feature = 'highway_tertiary'],
+    [zoom = 12][feature = 'highway_unclassified'] {
+      line-color: @halo-color-for-minor-road;
+      line-width: 2.2;
+      line-opacity: 0.3;
+      line-join: round;
+      //Missing line-cap: round; is intentional. It would cause rendering glow multiple times in some places - what as result of partial transparency would cause differences in rendering
+      //Also, bridges - including bridge casings are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
+    }
     [feature = 'highway_motorway'][link != 'yes'][zoom >= 8][zoom < 12],
     [feature = 'highway_trunk'][link != 'yes'][zoom >= 8][zoom < 12],
     [feature = 'highway_primary'][link != 'yes'][zoom >= 8][zoom < 12],
