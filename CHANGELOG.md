@@ -1,10 +1,12 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.1.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.2.0...master)
+
+## [v4.2.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.1.0...v4.2.0) - 2017-08-25
 ### Major changes
 - Water color and default water text color are changed to be more visible
 - Medium zoom level (z8-z12) rework:
   - Landuses colors are faded and some of them are visible earlier
   - Most of the man related landuses are combined into one color and more visible
-  - Less important roads are rendered less prominently, more impportant roads are better legible
+  - More important roads are better legible
 
 ### Changes
 - Leaf type rendering in woods and forests
