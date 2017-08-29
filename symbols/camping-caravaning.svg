@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="14"
+   height="28"
+   viewBox="0 0 13.125 26.25"
+   id="svg2"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="camping-caravaning.svg">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1686"
+     inkscape:window-height="1108"
+     id="namedview6"
+     showgrid="false"
+     inkscape:zoom="31.64"
+     inkscape:cx="2.2517015"
+     inkscape:cy="14.24532"
+     inkscape:window-x="107"
+     inkscape:window-y="18"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2" />
+  <rect
+     width="14"
+     height="14"
+     x="0"
+     y="12.25"
+     id="canvas"
+     style="visibility:hidden;fill:none;stroke:none" />
+  <path
+     d="M 1.8750001,15.937501 C 0.93750012,15.937501 1.2539292e-7,16.875 1.2539292e-7,17.812499 v 3.750002 c 0,0.9375 0.93749999460708,1.875 1.87499997460708,1.875 h 0.9960936 c 0.2185464,-1.068009 1.1525411,-1.875 2.2851563,-1.875 1.1326152,0 2.0666104,0.806991 2.2851561,1.875 H 13.125 c 0,0 0,-0.9375 -0.937501,-0.9375 h -1.40625 v -4.687502 c 0,-0.900622 -0.9603152,-1.874998 -1.8749986,-1.874998 z m 0.7910155,1.874998 c 0.087889,-0.01462 0.146485,0 0.146485,0 h 1.8749999 c 0,0 0.9375,0 0.9375,0.937502 0,0.9375 -0.9375,0.9375 -0.9375,0.9375 H 2.8125006 c 0,0 -0.9374998,0 -0.9374998,-0.9375 0,-0.703126 0.5273437,-0.893555 0.7910148,-0.937502 z m 4.8339838,0 h 0.4687497 c 0,0 0.9375013,0 0.9375013,0.937502 0,0.9375 -0.9375011,0.9375 -0.9375011,0.9375 H 7.4999997 c 0,0 -0.9374996,0 -0.9374996,-0.9375 0,-0.937502 0.9374996,-0.937502 0.9374993,-0.937502 z M 5.15625,22.500001 c -0.7766504,0 -1.40625,0.629598 -1.40625,1.40625 0,0.776649 0.6295996,1.406249 1.40625,1.406249 0.7766501,0 1.4062498,-0.6296 1.4062498,-1.406249 0,-0.776652 -0.6295997,-1.40625 -1.4062498,-1.40625 z"
+     id="caravan"
+     style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.29974675"
+     inkscape:connector-curvature="0" />
+  <path
+     inkscape:connector-curvature="0"
+     d="M 13.278783,14.0625 7.6537832,3.7499985 8.5912831,0.93749913 H 7.6537832 L 6.7162834,2.8124987 5.7787824,0.93749913 H 4.8412822 L 5.7787824,3.7499985 0.15378273,14.0625 Z M 6.7162831,7.4999991 9.5287829,13.124999 H 3.9037824 Z"
+     id="camping"
+     style="stroke-width:2.09659433" />
+</svg>

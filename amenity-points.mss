@@ -136,6 +136,12 @@
     marker-fill: @accommodation-icon;
     marker-placement: interior;
     marker-clip: false;
+    [tents = 'yes'][caravans = 'yes'] {
+      marker-file: url('symbols/camping-caravaning.svg');
+    }
+    [backcountry = 'yes'] {
+      marker-file: url('symbols/backcountry.svg');
+    }
   }
 
   [feature = 'highway_ford'][zoom >= 16] {
@@ -1716,6 +1722,12 @@
     [feature = 'tourism_camp_site'],
     [feature = 'tourism_caravan_site'] {
       text-dy: 15;
+      [tents = 'yes'][caravans = 'yes'] {
+        text-dy: 22;
+      }
+      [backcountry = 'yes'] {
+        text-dy: 18.5;
+      }
     }
   }
 
