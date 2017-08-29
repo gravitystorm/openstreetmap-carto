@@ -440,8 +440,7 @@ Layer:
       <<: *osm2pgsql
       # This query is quite large, having to deal with both roads, railways and
       # runways. To allow for ways that are both railways and roads, a UNION
-      # ALL is present, and to use an ordering different than current osm2pgsql
-      # an order is generated in SQL.
+      # ALL is present.
       table: |-
         (SELECT
             way,
@@ -777,7 +776,6 @@ Layer:
       # It is necessary to
       # - Have roads and railways in the same layer to get ordering right
       # - Return two linestrings for ways which are both a road and railway
-      # - Compute z_order here, rather than rely on osm2pgsql z_order
       table: |-
         (SELECT
             way,
