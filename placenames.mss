@@ -339,7 +339,7 @@
       text-wrap-width: 50; // 5.0 em
       text-line-spacing: -0.50; // -0.05 em
       text-margin: 7.0; // 0.7 em
-      [zoom >= 11] {
+      [zoom >= 13] {
         text-size: 11;
         text-wrap-width: 55; // 5.0 em
         text-line-spacing: -0.55; // -0.05 em
