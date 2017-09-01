@@ -2212,17 +2212,11 @@
       }
     }
     [natural = 'tree'] {
-      marker-fill: green;
-      marker-allow-overlap: true;
-      marker-line-width: 0;
-      marker-width: 2.5;
-      marker-height: 2.5;
-      marker-ignore-placement: true;
-      [zoom >= 17] {
-        marker-width: 5;
-        marker-height: 5;
-      }
       [zoom >= 18] {
+        marker-fill: green;
+        marker-allow-overlap: true;
+        marker-line-width: 0;
+        marker-ignore-placement: true;
         marker-width: 10;
         marker-height: 10;
       }
