@@ -555,7 +555,7 @@
   }
 
   [feature = 'historic_memorial'][zoom >= 17] {
-    marker-file: url('symbols/memorial.svg');
+    marker-file: url('symbols/memorial.svg');    
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
@@ -1523,9 +1523,7 @@
   [feature = 'leisure_stadium'],
   [feature = 'leisure_track'],
   [feature = 'leisure_dog_park'],
-  [feature = 'leisure_pitch'],
-  [feature = 'place_village'],
-  [feature = 'place_hamlet' ] {
+  [feature = 'leisure_pitch'] {
     [zoom >= 10][way_pixels > 3000][is_building = 'no'],
     [zoom >= 17][is_building = 'no'],
     [zoom >= 10][way_pixels > 3000][feature = 'shop_mall'],
@@ -1575,9 +1573,7 @@
         text-fill: darken(@cemetery, 50%);
         text-halo-radius: @standard-halo-radius * 1.5; /* extra halo needed to overpower the cemetery polygon pattern */
       }
-      [feature = 'landuse_residential'],
-      [feature = 'place_village'],
-      [feature = 'place_hamlet'] {
+      [feature = 'landuse_residential'] {
         text-fill: darken(@residential, 50%);
       }
       [feature = 'landuse_meadow'],
