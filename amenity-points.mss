@@ -555,7 +555,7 @@
   }
 
   [feature = 'historic_memorial'][zoom >= 17] {
-    marker-file: url('symbols/memorial.svg');    
+    marker-file: url('symbols/memorial.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
