@@ -1905,7 +1905,7 @@ Layer:
               'man_made_' || CASE WHEN man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower', 'pier', 'breakwater', 'groyne', 'obelisk') THEN man_made ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('wood', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath',
                                                     'grassland', 'scrub', 'beach', 'shoal', 'reef', 'glacier') THEN "natural" ELSE NULL END,
-              'place_' || CASE WHEN place IN ('island', 'islet') THEN place ELSE NULL END,
+              'place_' || CASE WHEN place IN ('island', 'islet', 'village', 'hamlet') THEN place ELSE NULL END,
               'military_' || CASE WHEN military IN ('danger_area') THEN military ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site')
                              THEN concat_ws('_', historic, CASE WHEN tags->'memorial' IN ('plaque') THEN tags->'memorial' ELSE NULL END)
@@ -1934,7 +1934,7 @@ Layer:
               OR landuse IS NOT NULL
               OR man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower', 'pier', 'breakwater', 'groyne', 'obelisk')
               OR "natural" IS NOT NULL
-              OR place IN ('island', 'islet')
+              OR place IN ('island', 'islet', 'village', 'hamlet')
               OR military IN ('danger_area')
               OR historic IN ('memorial', 'monument', 'archaeological_site')
               OR tags->'memorial' IN ('plaque')
