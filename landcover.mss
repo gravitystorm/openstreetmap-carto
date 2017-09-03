@@ -227,6 +227,25 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
+  [feature = 'place_village'],
+  [feature = 'place_hamlet'] {
+    [zoom >= 10] {
+      polygon-fill: @built-up-lower-lowzoom;
+      polygon-opacity: 0.3;
+      [zoom >= 11] { polygon-fill: @built-up-upper-lowzoom; }
+      [zoom >= 13] { polygon-fill: @residential; }
+      [zoom >= 16] {
+        line-width: .5;
+        line-color: @residential-line;
+        [name != ''] {
+          line-width: 0.7;
+        }
+      }
+    }
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+  
   [feature = 'landuse_garages'][zoom >= 13] {
     polygon-fill: @garages;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -474,7 +493,7 @@
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
- 
+
   [feature = 'wetland_swamp'][zoom >= 8] {
     polygon-fill: @forest;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -766,7 +785,7 @@
       b/line-color: @tourism;
       b/line-opacity: 0.3;
       b/line-join: round;
-      b/line-cap: round;    
+      b/line-cap: round;
     }
     [zoom >= 17] {
       a/line-width: 2;
