@@ -474,7 +474,7 @@
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
- 
+
   [feature = 'wetland_swamp'][zoom >= 8] {
     polygon-fill: @forest;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -766,7 +766,7 @@
       b/line-color: @tourism;
       b/line-opacity: 0.3;
       b/line-join: round;
-      b/line-cap: round;    
+      b/line-cap: round;
     }
     [zoom >= 17] {
       a/line-width: 2;
