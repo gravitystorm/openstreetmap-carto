@@ -620,6 +620,10 @@
 }
 
 #landcover-area-symbols {
+  [natural = 'sand'][zoom >= 8] {
+    polygon-pattern-file: url('symbols/beach.png');
+    polygon-pattern-alignment: global;
+  }
   [int_wetland != null][zoom >= 10] {
     polygon-pattern-file: url('symbols/wetland.png');
     polygon-pattern-alignment: global;
