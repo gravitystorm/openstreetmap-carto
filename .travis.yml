@@ -12,8 +12,8 @@ env:
   - CARTO=0.18.0 MAPNIK='3.0.0 3.0.12'
 install:
   - npm install carto@$CARTO
-  - mkdir -p data/world_boundaries data/simplified-land-polygons-complete-3857 data/ne_110m_admin_0_boundary_lines_land data/ne_10m_populated_places data/land-polygons-split-3857
-  - touch data/world_boundaries/builtup_area.shp data/simplified-land-polygons-complete-3857/simplified_land_polygons.shp data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp data/ne_10m_populated_places/ne_10m_populated_places_fixed.shp data/land-polygons-split-3857/land_polygons.shp
+  - mkdir -p data/world_boundaries data/simplified-land-polygons-complete-3857 data/ne_110m_admin_0_boundary_lines_land data/land-polygons-split-3857
+  - touch data/world_boundaries/builtup_area.shp data/simplified-land-polygons-complete-3857/simplified_land_polygons.shp data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp data/land-polygons-split-3857/land_polygons.shp
 script:
   # We're using pipes in the checks, so fail if any part fails
   - set -o pipefail
