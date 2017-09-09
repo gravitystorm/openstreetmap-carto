@@ -13,7 +13,7 @@
 @landform-color: #d08f55;
 
 @landcover-font-size: 10;
-@landcover-wrap-width-size: 25; // 2.5 em
+@landcover-wrap-width-size: 30; // 3 em
 @landcover-line-spacing-size: -1.5; // -0.15 em
 @landcover-font-size-big: 12;
 @landcover-wrap-width-size-big: 36; // 3 em
