@@ -1232,11 +1232,30 @@ Layer:
               WHEN (tags->'population' ~ '^[0-9]{1,8}$') THEN (tags->'population')::INTEGER ELSE 0
             END as population,
             round(ascii(md5(osm_id::text)) / 55) AS dir -- base direction factor on geometry to be consistent across metatiles
-          FROM planet_osm_point
-          WHERE place IN ('city', 'town', 'village', 'hamlet')
-            AND name IS NOT NULL
-            AND tags @> 'capital=>yes'
-          ORDER BY population DESC
+          FROM
+            (SELECT
+                way,
+                osm_id,
+                name,
+                place,
+                tags,
+                NULL AS way_area
+              FROM planet_osm_point
+            UNION ALL
+            SELECT
+                way,
+                osm_id,
+                name,
+                place,
+                tags,
+                way_area
+              FROM planet_osm_polygon
+              ) places
+              WHERE place IN ('city', 'town', 'village', 'hamlet')
+                AND name IS NOT NULL
+                AND tags @> 'capital=>yes'
+          ORDER BY population DESC,
+            way_area DESC NULLS LAST
         ) AS capital_names
     properties:
       minzoom: 3
@@ -1296,7 +1315,25 @@ Layer:
                     ELSE 1
                   END)
                 ) AS score
-              FROM planet_osm_point
+              FROM
+              (SELECT
+                  osm_id,
+                  way,
+                  place,
+                  name,
+                  tags,
+                  NULL AS way_area
+                FROM planet_osm_point
+              UNION ALL
+              SELECT
+                  osm_id,
+                  way,
+                  place,
+                  name,
+                  tags,
+                  way_area
+                FROM planet_osm_polygon
+              ) places
               WHERE place IN ('city', 'town')
                 AND name IS NOT NULL
                 AND NOT (tags @> 'capital=>yes')
@@ -1316,7 +1353,23 @@ Layer:
             way,
             place,
             name
-          FROM planet_osm_point
+          FROM
+          (SELECT
+              way,
+              place,
+              name,
+              tags,
+              NULL AS way_area
+            FROM planet_osm_point
+          UNION ALL
+          SELECT
+              way,
+              place,
+              name,
+              tags,
+              NULL AS way_area
+            FROM planet_osm_polygon
+            ) AS places
           WHERE place IN ('village', 'hamlet')
              AND name IS NOT NULL
              AND NOT tags @> 'capital=>yes'
@@ -1330,7 +1383,10 @@ Layer:
               WHEN place = 'locality' THEN 7
               WHEN place = 'isolated_dwelling' THEN 8
               WHEN place = 'farm' THEN 9
-            END ASC, length(name) DESC, name
+            END ASC,
+            way_area DESC NULLS LAST,
+            length(name) DESC,
+            name
         ) AS placenames_small
     properties:
       minzoom: 12
