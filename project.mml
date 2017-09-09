@@ -1920,7 +1920,7 @@ Layer:
                              ELSE NULL END,
               'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator', 'ford') THEN highway ELSE NULL END,
               'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
-              'waterway_' || CASE WHEN waterway IN ('dam') THEN waterway ELSE NULL END,
+              'waterway_' || CASE WHEN waterway IN ('dam', 'dock') THEN waterway ELSE NULL END,
               'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism ELSE NULL END
             ) AS feature,
             access,
@@ -1949,7 +1949,7 @@ Layer:
               OR highway IN ('services', 'rest_area', 'bus_stop', 'elevator', 'ford')
               OR power IN ('plant', 'station', 'generator', 'sub_station', 'substation')
               OR boundary IN ('national_park')
-              OR waterway = 'dam')
+              OR waterway IN ('dam', 'dock'))
             AND (name IS NOT NULL
                  OR (ref IS NOT NULL AND aeroway IN ('gate'))
                 )
@@ -2053,7 +2053,7 @@ Layer:
                                  ELSE NULL END,
                   'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator', 'ford') THEN highway ELSE NULL END,
                   'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
-                  'waterway_' || CASE WHEN waterway IN ('dam', 'weir') THEN waterway ELSE NULL END,
+                  'waterway_' || CASE WHEN waterway IN ('dam', 'weir', 'dock') THEN waterway ELSE NULL END,
                   'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism ELSE NULL END,
                   'man_made_' || CASE WHEN man_made IN ('cross') THEN man_made ELSE NULL END,
                   'historic_' || CASE WHEN historic IN ('wayside_cross') THEN historic ELSE NULL END
@@ -2095,7 +2095,7 @@ Layer:
                   OR highway IN ('bus_stop', 'services', 'rest_area', 'elevator', 'ford')
                   OR power IN ('plant', 'station', 'generator', 'sub_station', 'substation')
                   OR boundary IN ('national_park')
-                  OR waterway IN ('dam', 'weir'))
+                  OR waterway IN ('dam', 'weir', 'dock'))
                 AND (name IS NOT NULL
                      OR (tags?'ele' AND ("natural" IN ('peak', 'volcano', 'saddle') OR tourism = 'alpine_hut' OR amenity = 'shelter'))
                      OR (ref IS NOT NULL AND aeroway IN ('gate'))
