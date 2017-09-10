@@ -498,7 +498,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_emergency_phone'][zoom >= 17] {
+  [feature = 'emergency_phone'][zoom >= 17] {
     marker-file: url('symbols/emergency_phone.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
