@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM ubuntu:xenial
 
 # Style dependencies
 RUN apt-get update && apt-get install --no-install-recommends -y \
