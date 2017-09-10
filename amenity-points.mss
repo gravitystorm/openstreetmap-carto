@@ -138,6 +138,7 @@
     marker-clip: false;
   }
 
+  // Ford tagging on points - ford on lines is defined later 
   [feature = 'highway_ford'][zoom >= 16] {
     marker-file: url('symbols/ford.svg');
     marker-fill: @transportation-icon;
@@ -2188,6 +2189,14 @@
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
+  }
+}
+
+#amenity-line {
+  // Ford tagging on ways
+  [feature = 'highway_ford'][zoom >= 16] {
+    marker-file: url('symbols/ford.svg');
+    marker-fill: @transportation-icon;
   }
 }
 
