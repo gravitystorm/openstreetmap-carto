@@ -76,7 +76,7 @@ instead of
   the main definition should be for the lowest zoom level. Also, avoid nesting
   zoom-based overrides. For example:
 
-```
+```mss
 #layer[feature = 'foo'][zoom >= 13] {
   line-width: 6;
   line-color: black;
@@ -89,7 +89,7 @@ instead of
 }
 ```
 instead of
-```
+```mss
 #layer[feature = 'foo'][zoom >= 13] {
   line-width: 10;
   line-color: black;
@@ -145,14 +145,14 @@ size should be ≥ 10 (legibility).
 Additional to text-size we have to set text-wrap-width and text-line-spacing.
 For both, the absolute value is meaningless; it should be interpreted relative
 to the font size (em):
-```
+```mss
 text-size: 10;
 text-wrap-width: 30; // 3.0 em
 text-line-spacing: -1.5; // -0.15 em
 ```
 If text-size increases on higher zoom levels the other parameters also have
 to be adjusted:
-```
+```mss
 text-size: 12;
 text-wrap-width: 36; // 3.0 em
 text-line-spacing: -1.8; // -0.15 em
@@ -160,7 +160,7 @@ text-line-spacing: -1.8; // -0.15 em
 Usually, with higher zoom levels we increase the line length
 (text-wrap-width in em). Following an old typography convention, we use narrow
 line spacing for short lines and wider line spacing for longer lines.
-```
+```mss
 text-size: 15;
 text-wrap-width: 75; // 5.0 em
 text-line-spacing: -0.75; // -0.05 em
