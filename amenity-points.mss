@@ -286,7 +286,7 @@
 
   [feature = 'amenity_embassy'][zoom >= 17] {
     marker-file: url('symbols/embassy.svg');
-    marker-fill: @transportation-icon;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1724,7 +1724,7 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: @transportation-text;
+    text-fill: @amenity-brown;
     text-dy: 10;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
