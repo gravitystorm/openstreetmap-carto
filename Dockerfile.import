@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM ubuntu:xenial
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     curl ca-certificates osm2pgsql postgresql-client \
