@@ -936,7 +936,6 @@ Layer:
             OR (railway IS NOT NULL AND railway != 'preserved'
               AND (service IS NULL OR service NOT IN ('spur', 'siding', 'yard')))
           ORDER BY
-            COALESCE(layer,0),
             z_order
         ) AS roads_low_zoom
     properties:
