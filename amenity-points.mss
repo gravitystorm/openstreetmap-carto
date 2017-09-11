@@ -9,6 +9,7 @@
 @airtransport: #8461C4; //also ferry_terminal
 @health-color: #da0092;
 @amenity-brown: #734a08;
+@gastronomy: @amenity-brown;
 @man-made-icon: #555;
 @landform-color: #d08f55;
 
@@ -61,7 +62,7 @@
 
   [feature = 'amenity_bar'][zoom >= 17] {
     marker-file: url('symbols/bar.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @gastronomy;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -119,7 +120,7 @@
 
   [feature = 'amenity_cafe'][zoom >= 17] {
     marker-file: url('symbols/cafe.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @gastronomy;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -183,7 +184,7 @@
 
   [feature = 'amenity_nightclub'][zoom >= 17] {
     marker-file: url('symbols/nightclub.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @gastronomy;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -273,7 +274,7 @@
 
   [feature = 'amenity_ice_cream'][zoom >= 17] {
     marker-file: url('symbols/shop/ice_cream.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @gastronomy;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -455,14 +456,14 @@
 
   [feature = 'amenity_pub'][zoom >= 17] {
     marker-file: url('symbols/pub.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @gastronomy;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'amenity_biergarten'][zoom >= 17] {
     marker-file: url('symbols/biergarten.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @gastronomy;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -480,14 +481,14 @@
   [feature = 'amenity_restaurant'][zoom >= 17],
   [feature = 'amenity_food_court'][zoom >= 17] {
     marker-file: url('symbols/restaurant.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @gastronomy;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'amenity_fast_food'][zoom >= 17] {
     marker-file: url('symbols/fast_food.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @gastronomy;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1122,7 +1123,7 @@
   [feature = 'amenity_nightclub'] {
     [zoom >= 17] {
       text-name: "[name]";
-      text-fill: @amenity-brown;
+      text-fill: @gastronomy;
       text-size: @standard-font-size;
       text-wrap-width: @standard-wrap-width;
       text-line-spacing: @standard-line-spacing-size;
