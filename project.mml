@@ -1452,6 +1452,23 @@ Layer:
         ) AS amenity_points_poly
     properties:
       minzoom: 10
+  - id: amenity-line
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+          way,
+          COALESCE(
+           'highway_' || CASE WHEN tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones' THEN 'ford' ELSE NULL END
+            ) AS feature
+          FROM planet_osm_line
+          -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
+          WHERE tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones'
+        ) AS amenity_line
+    properties:
+      minzoom: 16
   - id: amenity-points
     class: points
     geometry: point
@@ -1482,7 +1499,8 @@ Layer:
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site')
                              THEN concat_ws('_', historic, CASE WHEN tags->'memorial' IN ('plaque') THEN tags->'memorial' ELSE NULL END)
                              ELSE NULL END,
-              'highway_'|| CASE WHEN highway IN ('bus_stop', 'elevator', 'traffic_signals', 'ford') THEN highway ELSE NULL END,
+              'highway_'|| CASE WHEN highway IN ('bus_stop', 'elevator', 'traffic_signals') THEN highway 
+                                WHEN tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones' THEN 'ford' ELSE NULL END,
               'power_' || CASE WHEN power IN ('generator') THEN power ELSE NULL END,
               'tourism_' || CASE WHEN tourism IN ('viewpoint') THEN tourism ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('cross') THEN man_made ELSE NULL END,
@@ -1534,7 +1552,8 @@ Layer:
             OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross')
             OR tags->'memorial' IN ('plaque')
             OR tags @> 'emergency=>phone'
-            OR highway IN ('bus_stop', 'elevator', 'traffic_signals', 'ford')
+            OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
+            OR tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones'
             OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> 'power_source=>wind'))
           ORDER BY score DESC NULLS LAST
           ) AS amenity_points
@@ -1919,7 +1938,7 @@ Layer:
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site')
                              THEN concat_ws('_', historic, CASE WHEN tags->'memorial' IN ('plaque') THEN tags->'memorial' ELSE NULL END)
                              ELSE NULL END,
-              'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator', 'ford') THEN highway ELSE NULL END,
+              'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator') THEN highway ELSE NULL END,
               'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
               'waterway_' || CASE WHEN waterway IN ('dam', 'dock') THEN waterway ELSE NULL END,
               'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism ELSE NULL END
@@ -1947,7 +1966,7 @@ Layer:
               OR military IN ('danger_area')
               OR historic IN ('memorial', 'monument', 'archaeological_site')
               OR tags->'memorial' IN ('plaque')
-              OR highway IN ('services', 'rest_area', 'bus_stop', 'elevator', 'ford')
+              OR highway IN ('services', 'rest_area', 'bus_stop', 'elevator')
               OR power IN ('plant', 'station', 'generator', 'sub_station', 'substation')
               OR boundary IN ('national_park')
               OR waterway IN ('dam', 'dock'))
@@ -2052,7 +2071,7 @@ Layer:
                   'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site')
                                  THEN concat_ws('_', historic, CASE WHEN tags->'memorial' IN ('plaque') THEN tags->'memorial' ELSE NULL END)
                                  ELSE NULL END,
-                  'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator', 'ford') THEN highway ELSE NULL END,
+                  'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator') THEN highway ELSE NULL END,
                   'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
                   'waterway_' || CASE WHEN waterway IN ('dam', 'weir', 'dock') THEN waterway ELSE NULL END,
                   'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism ELSE NULL END,
@@ -2093,7 +2112,7 @@ Layer:
                   OR military IN ('danger_area')
                   OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross')
                   OR tags->'memorial' IN ('plaque')
-                  OR highway IN ('bus_stop', 'services', 'rest_area', 'elevator', 'ford')
+                  OR highway IN ('bus_stop', 'services', 'rest_area', 'elevator')
                   OR power IN ('plant', 'station', 'generator', 'sub_station', 'substation')
                   OR boundary IN ('national_park')
                   OR waterway IN ('dam', 'weir', 'dock'))
