@@ -160,7 +160,7 @@ Layer:
               OR highway IN ('services', 'rest_area')
               OR railway = 'station')
               AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
-            ORDER BY COALESCE(layer,0), way_area DESC
+            ORDER BY way_area DESC
           ) AS landcover
         ) AS features
     properties:
