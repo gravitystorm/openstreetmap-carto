@@ -371,6 +371,14 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
+  [feature = 'man_made_works'][zoom >= 16] {
+    line-width: .5;
+    line-color: @industrial-line;
+    [name != ''] {
+      line-width: 0.7;
+    }
+  }
+
   [feature = 'landuse_railway'][zoom >= 10] {
     polygon-fill: @railway;
     [zoom >= 16][name != ''] {
