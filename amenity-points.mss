@@ -1504,6 +1504,7 @@
   [feature = 'landuse_retail'],
   [feature = 'landuse_industrial'],
   [feature = 'landuse_railway'],
+  [feature = 'man_made_works'],
   [feature = 'landuse_commercial'],
   [feature = 'landuse_brownfield'],
   [feature = 'landuse_landfill'],
@@ -1599,7 +1600,8 @@
         text-fill: darken(@retail, 50%);
       }
       [feature = 'landuse_industrial'],
-      [feature = 'landuse_railway'] {
+      [feature = 'landuse_railway'],
+      [feature = 'man_made_works'] {
         text-fill: darken(@industrial, 60%);
       }
       [feature = 'landuse_commercial'] {
