@@ -13,6 +13,7 @@
 @memorials: @amenity-brown;
 @man-made-icon: #555;
 @landform-color: #d08f55;
+@leisure-green: darken(@park, 60%);
 
 @landcover-font-size: 10;
 @landcover-wrap-width-size: 30; // 3 em
@@ -855,20 +856,20 @@
   [feature = 'leisure_water_park'][zoom >= 17] {
     marker-file: url('symbols/water_park.svg');
     marker-placement: interior;
-    marker-fill: @amenity-brown;
+    marker-fill: @leisure-green;
     marker-clip: false;
   }
 
   [feature = 'leisure_dog_park'][zoom >= 17] {
     marker-file: url('symbols/shop/pet.svg');
     marker-placement: interior;
-    marker-fill: @amenity-brown;
+    marker-fill: @leisure-green;
     marker-clip: false;
   }
 
   [feature = 'leisure_playground'][zoom >= 17] {
     marker-file: url('symbols/playground.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @leisure-green;
     marker-placement: interior;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
@@ -878,14 +879,14 @@
 
   [feature = 'leisure_miniature_golf'][zoom >= 17] {
     marker-file: url('symbols/miniature_golf.svg');
-    marker-fill: darken(@park, 60%);
+    marker-fill: @leisure-green;
     point-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'leisure_golf_course'][zoom >= 15] {
     marker-file: url('symbols/golf.svg');
-    marker-fill: darken(@park, 60%);
+    marker-fill: @leisure-green;
     point-placement: interior;
     marker-clip: false;
   }
@@ -1316,7 +1317,7 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: darken(@park, 60%);
+    text-fill: @leisure-green;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
@@ -1333,7 +1334,7 @@
       text-size: @standard-font-size;
       text-wrap-width: @standard-wrap-width;
       text-line-spacing: @standard-line-spacing-size;
-      text-fill: darken(@park, 60%);
+      text-fill: @leisure-green;
       text-dy: 11;
       text-face-name: @standard-font;
       text-halo-radius: @standard-halo-radius;
@@ -1378,7 +1379,7 @@
       text-wrap-width: @standard-wrap-width;
       text-line-spacing: @standard-line-spacing-size;
       text-dy: 13;
-      text-fill: darken(@park, 60%);
+      text-fill: @leisure-green;
       text-face-name: @standard-font;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
@@ -1562,7 +1563,7 @@
       [feature = 'landuse_village_green'],
       [feature = 'leisure_common'],
       [feature = 'leisure_garden'] {
-        text-fill: darken(@park, 60%);
+        text-fill: @leisure-green;
       }
       [feature = 'landuse_quarry'] {
         text-fill: darken(@quarry, 60%);
@@ -1647,7 +1648,7 @@
         text-fill: darken(@stadium, 70%);
       }
       [feature = 'leisure_dog_park'] {
-        text-fill: darken(@park, 60%);
+        text-fill: @leisure-green;
         text-halo-radius: @standard-halo-radius * 1.5; /* Extra halo needed to stand out from paw pattern. */
         text-halo-fill: @standard-halo-fill;
       }
