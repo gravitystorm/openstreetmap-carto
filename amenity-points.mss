@@ -938,7 +938,7 @@
     marker-file: url('symbols/lighthouse.svg');
     marker-placement: interior;
     marker-clip: false;
-    marker-fill: @transportation-icon;
+    marker-fill: @man-made-icon;
   }
 
   [feature = 'natural_peak'][zoom >= 11] {
@@ -1832,7 +1832,7 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: @transportation-text;
+    text-fill: @man-made-icon;
     text-dy: 16;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
