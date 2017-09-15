@@ -10,6 +10,7 @@
 @health-color: #da0092;
 @amenity-brown: #734a08;
 @gastronomy: @amenity-brown;
+@memorials: @amenity-brown;
 @man-made-icon: #555;
 @landform-color: #d08f55;
 
@@ -127,7 +128,7 @@
 
   [feature = 'tourism_artwork'][zoom >= 17] {
     marker-file: url('symbols/artwork.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @memorials;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -558,14 +559,14 @@
 
   [feature = 'historic_memorial'][zoom >= 17] {
     marker-file: url('symbols/memorial.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @memorials;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'historic_memorial_plaque'][zoom >= 19] {
     marker-file: url('symbols/plaque.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @memorials;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -573,7 +574,7 @@
   [feature = 'man_made_obelisk'][zoom >= 16],
   [feature = 'historic_monument'][zoom >= 16] {
     marker-file: url('symbols/monument.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @memorials;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1147,7 +1148,8 @@
   [feature = 'amenity_courthouse'],
   [feature = 'amenity_townhall'],
   [feature = 'amenity_cinema'],
-  [feature = 'amenity_arts_centre'] {
+  [feature = 'amenity_arts_centre'],
+  [feature = 'historic_archaeological_site'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-size: @standard-font-size;
@@ -1164,7 +1166,8 @@
       [feature = 'tourism_museum'],
       [feature = 'amenity_theatre'],
       [feature = 'amenity_cinema'],
-      [feature = 'amenity_arts_centre'] {
+      [feature = 'amenity_arts_centre'],
+      [feature = 'historic_archaeological_site'] {
         text-dy: 11;
       }
     }
@@ -1294,13 +1297,12 @@
   [feature = 'historic_memorial'][zoom >= 17],
   [feature = 'historic_memorial_plaque'][zoom >= 19],
   [feature = 'man_made_obelisk'][zoom >= 16],
-  [feature = 'historic_monument'][zoom >= 16],
-  [feature = 'historic_archaeological_site'][zoom >= 17] {
+  [feature = 'historic_monument'][zoom >= 16] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: @amenity-brown;
+    text-fill: @memorials;
     text-dy: 11;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
