@@ -25,8 +25,6 @@
     text-fill: @ferry-route-text;
     text-spacing: 1000;
     text-size: 10;
-    text-halo-radius: @standard-halo-radius;
-    text-halo-fill: @standard-halo-fill;
     text-dy: -8;
   }
 }
