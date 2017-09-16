@@ -1076,9 +1076,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       //Also, bridges - including bridge casings are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
     }
     [feature = 'highway_motorway'][link != 'yes'][zoom >= 8][zoom < 12],
+    [feature = 'highway_motorway'][link = 'yes'][zoom >= 10][zoom < 12],
     [feature = 'highway_trunk'][link != 'yes'][zoom >= 8][zoom < 12],
+    [feature = 'highway_trunk'][link = 'yes'][zoom >= 10][zoom < 12],
     [feature = 'highway_primary'][link != 'yes'][zoom >= 8][zoom < 12],
-    [feature = 'highway_secondary'][link != 'yes'][zoom >= 11][zoom < 12] {
+    [feature = 'highway_primary'][link = 'yes'][zoom >= 10][zoom < 12],
+    [feature = 'highway_secondary'][zoom >= 11][zoom < 12] {
       [feature = 'highway_motorway'] {
         [zoom >= 8] { line-width: @motorway-width-z8 + 2 * @lowzoom-halo-width; }
         [zoom >= 9] { line-width: @motorway-width-z9 + 2 * @lowzoom-halo-width; }
@@ -1192,7 +1195,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
     [feature = 'highway_motorway'] {
       [zoom >= 5][link != 'yes'],
-      [zoom >= 11] {
+      [zoom >= 10] {
         line-color: @motorway-low-zoom;
         line-width: @motorway-width-z5;
         [zoom >= 7] { line-width: @motorway-width-z7; }
@@ -1243,7 +1246,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
     [feature = 'highway_trunk'] {
       [zoom >= 5][link != 'yes'],
-      [zoom >= 11] {
+      [zoom >= 10] {
         line-width: @trunk-width-z5;
         line-color: @trunk-low-zoom;
         [zoom >= 7] { line-width: @trunk-width-z7; }
@@ -1278,7 +1281,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
     [feature = 'highway_primary'] {
       [zoom >= 8][link != 'yes'],
-      [zoom >= 11] {
+      [zoom >= 10] {
         line-width: @primary-width-z8;
         line-color: @primary-low-zoom;
         [zoom >= 9] { line-width: @primary-width-z9; }
@@ -1311,7 +1314,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
     [feature = 'highway_secondary'] {
       [zoom >= 9][link != 'yes'],
-      [zoom >= 11] {
+      [zoom >= 10] {
         line-color: @unimportant-road;
         line-width: @secondary-width-z9;
         [zoom >= 10] { line-width: @secondary-width-z10; }
@@ -1348,8 +1351,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
 
     [feature = 'highway_tertiary'] {
-      [zoom >= 10][link != 'yes'],
-      [zoom >= 11] {
+      [zoom >= 10] {
         line-color: @unimportant-road;
         line-width: @tertiary-width-z10;
         [zoom >= 11] {
