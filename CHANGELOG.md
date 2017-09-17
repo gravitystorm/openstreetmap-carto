@@ -1,5 +1,6 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.2.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.3.0...master)
 
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.2.0...v4.3.0)
 ### Changes
 - Moving ford and emergency phone to a new tagging scheme
 - Moving natural=tree to higher zoom level (z18+)
