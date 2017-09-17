@@ -50,7 +50,7 @@ For a full list of commits, see
 https://github.com/gravitystorm/openstreetmap-carto/compare/$OLD_VERSION...$NEW_VERSION
 
 As always, we welcome any bug reports at
-https://github.com/gravitystorm/openstreetmap-carto/issues.
+https://github.com/gravitystorm/openstreetmap-carto/issues
 ```
 
 3. Post an [openstreetmap.org diary entry](http://www.openstreetmap.org/diary/new) with the text from the email. Add links and other markdown if needed.
