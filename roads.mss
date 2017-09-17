@@ -785,28 +785,6 @@
       }
     }
 
-    [feature = 'aeroway_runway'] {
-      .bridges-casing {
-        [zoom >= 14] {
-          line-width: 13;
-          [zoom >= 15] { line-width: 19; }
-          [zoom >= 16] { line-width: 25; }
-          line-color: @bridge-casing;
-          line-join: round;
-        }
-      }
-    }
-
-    [feature = 'aeroway_taxiway'] {
-      .bridges-casing {
-        [zoom >= 14] {
-          line-width: 5;
-          line-color: @bridge-casing;
-          line-join: round;
-          [zoom >= 15] { line-width: 7; }
-        }
-      }
-    }
   }
 
   ::bridges_and_tunnels_background {
@@ -2082,29 +2060,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         line-color: #999;
       }
     }
-
-    [feature = 'aeroway_runway'] {
-      [zoom >= 11] {
-        line-color: @runway-fill;
-        line-width: 2;
-        [zoom >= 12] { line-width: 4; }
-        [zoom >= 13] { line-width: 6; }
-        [zoom >= 14] { line-width: 12; }
-        [zoom >= 15] { line-width: 18; }
-        [zoom >= 16] { line-width: 24; }
-      }
-    }
-
-    [feature = 'aeroway_taxiway'] {
-      [zoom >= 11] {
-        line-color: @taxiway-fill;
-        line-width: 1;
-        [zoom >= 13] { line-width: 2; }
-        [zoom >= 14] { line-width: 4; }
-        [zoom >= 15] { line-width: 6; }
-        [zoom >= 16] { line-width: 8; }
-      }
-    }
   }
 }
 
@@ -2637,6 +2592,52 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   }
   [zoom >= 14] {
     b/line-dasharray: 0,11,8,1;
+  }
+}
+
+#aeroways {
+  [aeroway = 'runway'] {
+    [zoom >= 11] {
+      ::casing[bridge = true][zoom >= 14] {
+        line-width: 12 + 2*@major-casing-width-z14;
+        line-color: @bridge-casing;
+        line-join: round;
+        [zoom >= 15] { line-width: 18 + 2*@major-casing-width-z15; }
+        [zoom >= 16] { line-width: 24 + 2*@major-casing-width-z16; }
+        [zoom >= 17] { line-width: 24 + 2*@major-casing-width-z17; }
+        [zoom >= 18] { line-width: 24 + 2*@major-casing-width-z18; }
+      }
+      ::fill {
+        line-color: @runway-fill;
+        line-width: 2;
+        [zoom >= 12] { line-width: 4; }
+        [zoom >= 13] { line-width: 6; }
+        [zoom >= 14] { line-width: 12; }
+        [zoom >= 15] { line-width: 18; }
+        [zoom >= 16] { line-width: 24; }
+      }
+    }
+  }
+  [aeroway = 'taxiway'] {
+    [zoom >= 11] {
+      ::casing[bridge = true][zoom >= 14] {
+        line-width: 4 + 2*@secondary-casing-width-z14;
+        line-color: @bridge-casing;
+        line-join: round;
+        [zoom >= 15] { line-width: 6 + 2*@secondary-casing-width-z15; }
+        [zoom >= 16] { line-width: 8 + 2*@secondary-casing-width-z16; }
+        [zoom >= 17] { line-width: 8 + 2*@secondary-casing-width-z17; }
+        [zoom >= 18] { line-width: 8 + 2*@secondary-casing-width-z18; }
+      }
+      ::fill {
+        line-color: @taxiway-fill ;
+        line-width: 1;
+        [zoom >= 13] { line-width: 2; }
+        [zoom >= 14] { line-width: 4; }
+        [zoom >= 15] { line-width: 6; }
+        [zoom >= 16] { line-width: 8; }
+      }
+    }
   }
 }
 

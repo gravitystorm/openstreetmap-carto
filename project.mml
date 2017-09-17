@@ -440,9 +440,8 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      # This query is quite large, having to deal with both roads, railways and
-      # runways. To allow for ways that are both railways and roads, a UNION
-      # ALL is present.
+      # This query is quite large, having to deal with both roads, railways. To
+      # allow for ways that are both railways and roads, a UNION ALL is present.
       table: |-
         (SELECT
             way,
@@ -457,7 +456,7 @@ Layer:
             service,
             link,
             layernotnull
-          FROM ( -- subselect that contains both roads and rail/aero
+          FROM ( -- subselect that contains both roads and rail
             SELECT
                 way,
                 ('highway_' || highway) AS feature, --only motorway to tertiary links are accepted later on
@@ -492,11 +491,9 @@ Layer:
             UNION ALL
             SELECT
                 way,
-                COALESCE(
-                  ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
+                ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
                                        WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
-                                       WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service' ELSE railway END)),
-                  ('aeroway_' || aeroway)
+                                       WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service' ELSE railway END)
                 ) AS feature,
                 horse,
                 foot,
@@ -515,12 +512,12 @@ Layer:
                 z_order
               FROM planet_osm_line
               WHERE (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes')
-                AND (railway IS NOT NULL OR aeroway IS NOT NULL) -- end of rail/aero select
+                AND railway IS NOT NULL -- end of rail select
             ) AS features
           ORDER BY
             layernotnull,
             z_order,
-            CASE WHEN substring(feature for 8) = 'aeroway_' THEN 0 WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
+            CASE WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
             CASE WHEN feature IN ('railway_INT-preserved-ssy', 'railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
             CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END,
             CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
@@ -713,11 +710,9 @@ Layer:
             UNION ALL
             SELECT
                 way,
-                COALESCE(
-                  ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
+                ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
                                        WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
-                                       WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service' ELSE railway END)),
-                  ('aeroway_' || aeroway)
+                                       WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service' ELSE railway END)
                 ) AS feature,
                 horse,
                 foot,
@@ -738,12 +733,12 @@ Layer:
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
                 AND (covered IS NULL OR NOT covered = 'yes')
                 AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
-                AND (railway IS NOT NULL OR aeroway IS NOT NULL) -- end of rail/aero select
+                AND railway IS NOT NULL -- end of rail select
             ) AS features
           ORDER BY
             layernotnull,
             z_order,
-            CASE WHEN substring(feature for 8) = 'aeroway_' THEN 0 WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
+            CASE WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
             CASE WHEN feature IN ('railway_INT-preserved-ssy', 'railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
             CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END,
             CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
@@ -833,11 +828,9 @@ Layer:
             UNION ALL
             SELECT
                 way,
-                COALESCE(
-                  ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
+                ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
                                        WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
-                                       WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service' ELSE railway END)),
-                  ('aeroway_' || aeroway)
+                                       WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service' ELSE railway END)
                 ) AS feature,
                 horse,
                 foot,
@@ -858,12 +851,12 @@ Layer:
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
                 AND (covered IS NULL OR NOT covered = 'yes')
                 AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
-                AND (railway IS NOT NULL OR aeroway IS NOT NULL) -- end of rail/aero select
+                AND railway IS NOT NULL -- end of rail select
             ) AS features
           ORDER BY
             layernotnull,
             z_order,
-            CASE WHEN substring(feature for 8) = 'aeroway_' THEN 0 WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
+            CASE WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
             CASE WHEN feature IN ('railway_INT-preserved-ssy', 'railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
             CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END,
             CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
@@ -1019,11 +1012,9 @@ Layer:
             UNION ALL
             SELECT
                 way,
-                COALESCE(
-                  ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
+                ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
                                        WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
-                                       WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service' ELSE railway END)),
-                  ('aeroway_' || aeroway)
+                                       WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service' ELSE railway END)
                 ) AS feature,
                 horse,
                 foot,
@@ -1042,12 +1033,12 @@ Layer:
                 z_order
               FROM planet_osm_line
               WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
-                AND (railway IS NOT NULL OR aeroway IS NOT NULL) -- end of rail/aero select
+                AND railway IS NOT NULL -- end of rail select
             ) AS features
           ORDER BY
             layernotnull,
             z_order,
-            CASE WHEN substring(feature for 8) = 'aeroway_' THEN 0 WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
+            CASE WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
             CASE WHEN feature IN ('railway_INT-preserved-ssy', 'railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
             CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END,
             CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
@@ -1068,6 +1059,23 @@ Layer:
         ) AS guideways
     properties:
       minzoom: 13
+  - id: aeroways
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            aeroway,
+            bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct') AS bridge
+          FROM planet_osm_line
+          WHERE aeroway IN ('runway', 'taxiway')
+          ORDER BY bridge NULLS FIRST,
+            CASE WHEN aeroway = 'runway' THEN 10 ELSE 0 END
+        ) AS aeroways
+    properties:
+      minzoom: 11
   - id: admin-low-zoom
     geometry: linestring
     <<: *extents
