@@ -10,6 +10,8 @@
 - Fixing line wrapping bug in Docker
 - Some documentation and code cleaning
 - Improve ferry line text legibility
+- Hide small theme parks and zoos
+- Use solid lines for admin borders at low zooms
 
 ## [v4.2.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.1.0...v4.2.0) - 2017-08-25
 ### Major changes
