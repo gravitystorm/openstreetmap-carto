@@ -488,4 +488,27 @@
       }
     }
   }
+
+  [highway = 'bridleway'] {
+    ::casing {
+    }
+    ::fill {
+      ['mapnik::geometry_type' = linestring][zoom >= 13][access != 'no'],
+      ['mapnik::geometry_type' = linestring][zoom >= 15] {
+        [zoom >= 15] { // TODO: should this be non-tunnel non-bridge only?
+                       // TODO: Should this be moved to ::casing?
+          background/line-color: @bridleway-casing;
+          background/line-cap: round;
+          background/line-join: round;
+          background/line-width: @bridleway-width-z15 + 2 * @paths-background-width;
+          background/line-opacity: 0.4;
+        }
+        line/line-color: @bridleway-fill;
+        [access = 'no'] { line/line-color: @bridleway-fill-noaccess; }
+        line/line-dasharray: 4,2;
+        line/line-width: @bridleway-width-z13;
+        [zoom >= 15] { line/line-width: @bridleway-width-z15; }
+      }
+    }
+  }
 }
