@@ -489,25 +489,91 @@
     }
   }
 
-  [highway = 'bridleway'] {
+  [highway = 'bridleway'],
+  [highway = 'cycleway'],
+  [highway = 'footway'] {
     ::casing {
+      ['mapnik::geometry_type' = linestring][zoom >= 14][access != 'no'],
+      ['mapnik::geometry_type' = linestring][zoom >= 15] {
+        [bridge = true] {
+          line-width: @footway-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
+          [zoom >= 15] { line-width: @footway-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
+          [zoom >= 16] { line-width: @footway-width-z16 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
+          [zoom >= 18] { line-width: @footway-width-z18 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
+          [zoom >= 19] { line-width: @footway-width-z19 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
+          line-color: @bridge-casing;
+          line-join: round;
+        }
+      }
     }
     ::fill {
       ['mapnik::geometry_type' = linestring][zoom >= 13][access != 'no'],
       ['mapnik::geometry_type' = linestring][zoom >= 15] {
-        [zoom >= 15] { // TODO: should this be non-tunnel non-bridge only?
+        [zoom >= 15] { // TODO: should this be non-tunnel non-bridge only? orig has it in ::bridges_and_tunnels_background
                        // TODO: Should this be moved to ::casing?
-          background/line-color: @bridleway-casing;
+          background/line-color: @footway-casing;
+          [highway = 'bridleway'] {
+            background/line-color: @bridleway-casing;
+          }
+          [highway = 'cycleway'] {
+            background/line-color: @cycleway-casing;
+          }
           background/line-cap: round;
           background/line-join: round;
-          background/line-width: @bridleway-width-z15 + 2 * @paths-background-width;
+          background/line-width: @footway-width-z15 + 2 * @paths-background-width;
+          [zoom >= 16] { background/line-width: @footway-width-z16 + 2 * @paths-background-width; }
+          [zoom >= 18] { background/line-width: @footway-width-z18 + 2 * @paths-background-width; }
+          [zoom >= 19] { background/line-width: @footway-width-z19 + 2 * @paths-background-width; }
           background/line-opacity: 0.4;
+          [bridge = true] { // TODO: Does this need to go into its own attachment?
+            background/line-opacity: 1;
+          }
         }
-        line/line-color: @bridleway-fill;
-        [access = 'no'] { line/line-color: @bridleway-fill-noaccess; }
-        line/line-dasharray: 4,2;
-        line/line-width: @bridleway-width-z13;
-        [zoom >= 15] { line/line-width: @bridleway-width-z15; }
+
+        line/line-color: @footway-fill;
+        [highway = 'bridleway'] {
+          line/line-color: @bridleway-fill;
+        }
+        [highway = 'cycleway'] {
+          line/line-color: @cycleway-fill;
+        }
+        [access = 'no'] {
+          line/line-color: @footway-fill-noaccess;
+          [highway = 'bridleway'] {
+            line/line-color: @bridleway-fill-noaccess;
+          }
+          [highway = 'cycleway'] {
+            line/line-color: @cycleway-fill-noaccess;
+          }
+        }
+
+        line/line-width: @footway-width-z13;
+        [zoom >= 15] { line/line-width: @footway-width-z15; }
+        [zoom >= 16] { line/line-width: @footway-width-z16; }
+        [zoom >= 18] { line/line-width: @footway-width-z18; }
+        [zoom >= 19] { line/line-width: @footway-width-z19; }
+
+        line/line-dasharray: 1,3;
+        [highway = 'bridleway'] {
+          line/line-dasharray: 4,2;
+        }
+        // Unknown surfaces
+        [highway = 'cycleway'][zoom >= 15],
+        [highway = 'footway'][zoom >= 15] {
+          line/line-dasharray: 1,3,2,4;
+          [zoom >= 16] { line/line-dasharray: 1,4,2,3; }
+        }
+
+        [highway = 'cycleway'][paved = true][zoom >= 15],
+        [highway = 'footway'][paved = true][zoom >= 15], {
+          line/line-dasharray: 2,3.5;
+          [zoom >= 16] { line/line-dasharray: 3,3.5; }
+          [zoom >= 17] { line/line-dasharray: 3,3; }
+        }
+        [highway = 'cycleway'][paved = false][zoom >= 15],
+        [highway = 'footway'][paved = false][zoom >= 15], {
+          line/line-dasharray: 1,4;
+        }
       }
     }
   }
