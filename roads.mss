@@ -358,30 +358,6 @@
     }
 
     [feature = 'highway_track'] {
-      .bridges-casing {
-        [zoom >= 13][access != 'no'] {
-          line-color: @bridge-casing;
-          line-join: round;
-          line-width: @track-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
-          [tracktype = 'grade1'] {
-            line-width: @track-grade1-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
-          }
-          [tracktype = 'grade2'] {
-            line-width: @track-grade2-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
-          }
-        }
-        [zoom >= 15] {
-          line-color: @bridge-casing;
-          line-join: round;
-          line-width: @track-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width);
-          [tracktype = 'grade1'] {
-            line-width: @track-grade1-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width);
-          }
-          [tracktype = 'grade2'] {
-            line-width: @track-grade2-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width);
-          }
-        }
-      }
       .tunnels-casing {
         [zoom >= 13][access != 'no'],
         [zoom >= 15] {
@@ -553,31 +529,6 @@
     }
 
     [feature = 'highway_track'] {
-      /* We don't set opacity here, so it's 1.0. Aside from that, it's basically a copy of roads-fill::background in the track part of ::fill */
-      .bridges-casing {
-        [zoom >= 13][access != 'no'] {
-          line-color: @track-casing;
-          line-join: round;
-          line-width: @track-width-z13 + 2 * @paths-background-width;
-          [tracktype = 'grade1'] {
-            line-width: @track-grade1-width-z13 + 2 * @paths-background-width;
-          }
-          [tracktype = 'grade2'] {
-            line-width: @track-grade2-width-z13 + 2 * @paths-background-width;
-          }
-        }
-        [zoom >= 15] {
-          line-color: @track-casing;
-          line-join: round;
-          line-width: @track-width-z15 + 2 * @paths-background-width;
-          [tracktype = 'grade1'] {
-            line-width: @track-grade1-width-z15 + 2 * @paths-background-width;
-          }
-          [tracktype = 'grade2'] {
-            line-width: @track-grade2-width-z15 + 2 * @paths-background-width;
-          }
-        }
-      }
       .tunnels-casing {
         [zoom >= 13][access != 'no'],
         [zoom >= 15] {
@@ -842,73 +793,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         b/line-color: #bbbbbb;
         b/line-cap: round;
         b/line-join: round;
-      }
-    }
-
-    [feature = 'highway_track'] {
-      [zoom >= 13][access != 'no'],
-      [zoom >= 15] {
-        /* The white casing that you mainly see against forests and other dark features */
-        .roads-fill[zoom >= 15] {
-          background/line-opacity: 0.4;
-          background/line-color: @track-casing;
-          background/line-join: round;
-          background/line-cap: round;
-          background/line-width: @track-width-z15 + 2 * @paths-background-width;
-          /* With the heavier dasharrays on grade1 and grade2 it helps to make the casing a bit larger */
-          [tracktype = 'grade1'] {
-            background/line-width: @track-grade1-width-z15 + 2 * @paths-background-width;
-          }
-          [tracktype = 'grade2'] {
-            background/line-width: @track-grade2-width-z15 + 2 * @paths-background-width;
-          }
-        }
-
-        /* Set the properties of the brown inside */
-        line/line-color: @track-fill;
-        [access = 'no'] { line/line-color: @track-fill-noaccess; }
-        line/line-dasharray: 5,4,2,4;
-        line/line-cap: round;
-        line/line-join: round;
-        line/line-opacity: 0.8;
-        line/line-clip:false;
-
-        line/line-width: @track-width-z13;
-
-        [tracktype = 'grade1'] {
-          line/line-dasharray: 100,0;
-        }
-        [tracktype = 'grade2'] {
-          line/line-dasharray: 8.8,3.2;
-        }
-        [tracktype = 'grade3'] {
-          line/line-dasharray: 5.6,4.0;
-        }
-        [tracktype = 'grade4'] {
-          line/line-dasharray: 3.2,4.8;
-        }
-        [tracktype = 'grade5'] {
-          line/line-dasharray: 1.6,6.4;
-        }
-
-        [zoom >= 15] {
-          line/line-width: @track-width-z15;
-          [tracktype = 'grade1'] {
-            line/line-dasharray: 100,0;
-          }
-          [tracktype = 'grade2'] {
-            line/line-dasharray: 11,4;
-          }
-          [tracktype = 'grade3'] {
-            line/line-dasharray: 7,5;
-          }
-          [tracktype = 'grade4'] {
-            line/line-dasharray: 4,6;
-          }
-          [tracktype = 'grade5'] {
-            line/line-dasharray: 2,8;
-          }
-        }
       }
     }
 

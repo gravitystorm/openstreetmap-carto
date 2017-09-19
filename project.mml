@@ -651,6 +651,7 @@ Layer:
               bridge,
               access,
               paved,
+              tracktype,
               layernotnull,
               z_order
             FROM lines
@@ -667,6 +668,7 @@ Layer:
               NULL AS bridge,
               NULL AS access,
               NULL AS paved,
+              NULL AS tracktype,
               layernotnull,
               z_order
             FROM tc_points
@@ -683,6 +685,7 @@ Layer:
               NULL AS bridge,
               NULL AS access,
               NULL AS paved,
+              NULL AS tracktype,
               layernotnull,
               z_order
             FROM areas
