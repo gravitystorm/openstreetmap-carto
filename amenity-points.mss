@@ -11,6 +11,7 @@
 @amenity-brown: #734a08;
 @gastronomy: @amenity-brown;
 @memorials: @amenity-brown;
+@culture: @amenity-brown;
 @man-made-icon: #555;
 @landform-color: #d08f55;
 @leisure-green: darken(@park, 60%);
@@ -179,7 +180,7 @@
 
   [feature = 'amenity_cinema'][zoom >= 16] {
     marker-file: url('symbols/cinema.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @culture;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -297,7 +298,7 @@
 
   [feature = 'amenity_library'][zoom >= 16] {
     marker-file: url('symbols/library.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @culture;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -311,7 +312,7 @@
 
   [feature = 'amenity_community_centre'][zoom >= 17] {
     marker-file: url('symbols/community_centre.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @culture;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -339,7 +340,7 @@
 
   [feature = 'tourism_museum'][zoom >= 16] {
     marker-file: url('symbols/museum.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @culture;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -511,14 +512,14 @@
 
   [feature = 'amenity_theatre'][zoom >= 16] {
     marker-file: url('symbols/theatre.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @culture;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'amenity_arts_centre'][zoom >= 17] {
     marker-file: url('symbols/shop/art.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @culture;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -582,7 +583,7 @@
 
   [feature = 'historic_archaeological_site'][zoom >= 16] {
     marker-file: url('symbols/archaeological_site.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @culture;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1146,31 +1147,22 @@
   [feature = 'amenity_library'],
   [feature = 'tourism_museum'],
   [feature = 'amenity_theatre'],
-  [feature = 'amenity_courthouse'],
-  [feature = 'amenity_townhall'],
   [feature = 'amenity_cinema'],
   [feature = 'amenity_arts_centre'],
+  [feature = 'amenity_community_centre'],
   [feature = 'historic_archaeological_site'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-size: @standard-font-size;
       text-wrap-width: @standard-wrap-width;
       text-line-spacing: @standard-line-spacing-size;
-      text-fill: @amenity-brown;
-      text-dy: 13;
+      text-fill: @culture;
+      text-dy: 11;
+      [feature = 'amenity_community_centre'] { text-dy: 10; }
       text-face-name: @standard-font;
-      [feature = 'tourism_museum'] { text-face-name: @standard-font; }
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-placement: interior;
-      [feature = 'amenity_library'],
-      [feature = 'tourism_museum'],
-      [feature = 'amenity_theatre'],
-      [feature = 'amenity_cinema'],
-      [feature = 'amenity_arts_centre'],
-      [feature = 'historic_archaeological_site'] {
-        text-dy: 11;
-      }
     }
   }
 
@@ -1213,10 +1205,10 @@
     }
   }
 
-
+  [feature = 'amenity_courthouse'][zoom >= 17],
+  [feature = 'amenity_townhall'][zoom >= 17],
   [feature = 'amenity_police'][zoom >= 17],
   [feature = 'amenity_car_wash'][zoom >= 17],
-  [feature = 'amenity_community_centre'][zoom >= 17],
   [feature = 'amenity_social_facility'][zoom >= 17],
   [feature = 'amenity_fire_station'][zoom >= 17],
   [feature = 'amenity_drinking_water'][zoom >= 17],
@@ -1232,6 +1224,8 @@
     [feature = 'amenity_police'] { text-dy: 11; }
     [feature = 'amenity_fire_station'] { text-dy: 11; }
     [feature = 'amenity_post_office'] { text-dy: 11; }
+    [feature = 'amenity_courthouse'] { text-dy: 13; }
+    [feature = 'amenity_townhall'] { text-dy: 13; }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
