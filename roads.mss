@@ -898,47 +898,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
 
-    [feature = 'highway_motorway'] {
-      [zoom >= 5][link != 'yes'],
-      [zoom >= 10] {
-        line-color: @motorway-low-zoom;
-        line-width: @motorway-width-z5;
-        [zoom >= 7] { line-width: @motorway-width-z7; }
-        [zoom >= 8] { line-width: @motorway-width-z8; }
-        [zoom >= 9] { line-width: @motorway-width-z9; }
-      }
-    }
-
-    [feature = 'highway_trunk'] {
-      [zoom >= 5][link != 'yes'],
-      [zoom >= 10] {
-        line-width: @trunk-width-z5;
-        line-color: @trunk-low-zoom;
-        [zoom >= 7] { line-width: @trunk-width-z7; }
-        [zoom >= 8] { line-width: @trunk-width-z8; }
-        [zoom >= 9] { line-width: @trunk-width-z9; }
-      }
-    }
-
-    [feature = 'highway_primary'] {
-      [zoom >= 8][link != 'yes'],
-      [zoom >= 10] {
-        line-width: @primary-width-z8;
-        line-color: @primary-low-zoom;
-        [zoom >= 9] { line-width: @primary-width-z9; }
-        [zoom >= 10] { line-width: @primary-width-z10; }
-        [zoom >= 11] { line-width: @primary-width-z11; }
-      }
-    }
-
-    [feature = 'highway_secondary'] {
-      [zoom >= 9][link != 'yes'],
-      [zoom >= 10] {
-        line-color: @unimportant-road;
-        line-width: @secondary-width-z9;
-      }
-    }
-
     [feature = 'highway_platform'] {
       [zoom >= 16] {
         line-join: round;

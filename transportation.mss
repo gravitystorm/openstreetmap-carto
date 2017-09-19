@@ -27,11 +27,15 @@
       }
     }
     ::fill {
-      ['mapnik::geometry_type' = linestring][zoom >= 10] {
+      ['mapnik::geometry_type' = linestring][zoom >= 5] { // TODO: exclude link until z10
         line-color: @motorway-low-zoom;
         [zoom >= 12] { line-color: @motorway-fill; }
 
-        line-width: @motorway-width-z10;
+        line-width: @motorway-width-z5;
+        [zoom >= 7] { line-width: @motorway-width-z7; }
+        [zoom >= 8] { line-width: @motorway-width-z8; }
+        [zoom >= 9] { line-width: @motorway-width-z9; }
+        [zoom >= 10] { line-width: @motorway-width-z10; }
         [zoom >= 11] { line-width: @motorway-width-z11; }
         [zoom >= 12] { line-width: @motorway-width-z12 - 2 * @major-casing-width-z12; }
         [zoom >= 13] { line-width: @motorway-width-z13 - 2 * @major-casing-width-z13; }
@@ -71,10 +75,14 @@
       }
     }
     ::fill {
-      ['mapnik::geometry_type' = linestring][zoom >= 12] {
+      ['mapnik::geometry_type' = linestring][zoom >= 5] {
         line-color: @trunk-low-zoom;
         [zoom >= 12] { line-color: @trunk-fill; }
-        line-width: @trunk-width-z10;
+        line-width: @trunk-width-z5;
+        [zoom >= 7] { line-width: @trunk-width-z7; }
+        [zoom >= 8] { line-width: @trunk-width-z8; }
+        [zoom >= 9] { line-width: @trunk-width-z9; }
+        [zoom >= 10] { line-width: @trunk-width-z10; }
         [zoom >= 11] { line-width: @trunk-width-z11; }
         [zoom >= 12] { line-width: @trunk-width-z12 - 2 * @major-casing-width-z12; }
         [zoom >= 13] { line-width: @trunk-width-z13 - 2 * @major-casing-width-z13; }
@@ -106,10 +114,15 @@
       }
     }
     ::fill {
-      ['mapnik::geometry_type' = linestring][zoom >= 12] {
+      ['mapnik::geometry_type' = linestring][zoom >= 8] {
         line-color: @primary-low-zoom;
         [zoom >= 12] { line-color: @primary-fill; }
-        line-width: @primary-width-z12 - 2 * @major-casing-width-z12;
+
+        line-width: @primary-width-z8;
+        [zoom >= 9] { line-width: @primary-width-z9; }
+        [zoom >= 10] { line-width: @primary-width-z10; }
+        [zoom >= 11] { line-width: @primary-width-z11; }
+        [zoom >= 12] { line-width: @primary-width-z12 - 2 * @major-casing-width-z12; }
         [zoom >= 13] { line-width: @primary-width-z13 - 2 * @major-casing-width-z13; }
         [zoom >= 15] { line-width: @primary-width-z15 - 2 * @major-casing-width-z15; }
         [zoom >= 17] { line-width: @primary-width-z17 - 2 * @major-casing-width-z17; }
@@ -139,10 +152,11 @@
       }
     }
     ::fill {
-      ['mapnik::geometry_type' = linestring][zoom >= 10] {
+      ['mapnik::geometry_type' = linestring][zoom >= 9] {
         line-color: @unimportant-road;
         [zoom >= 12] { line-color: @secondary-fill; }
-        line-width: @secondary-width-z10;
+        line-width: @secondary-width-z9;
+        [zoom >= 10] { line-width: @secondary-width-z10; }
         [zoom >= 11] { line-width: @secondary-width-z11; }
         [zoom >= 12] { line-width: @secondary-width-z12 - 2 * @secondary-casing-width-z12; }
         [zoom >= 13] { line-width: @secondary-width-z13 - 2 * @secondary-casing-width-z13; }
