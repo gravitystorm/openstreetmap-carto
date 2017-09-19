@@ -157,41 +157,88 @@
   }
 
   [highway = 'tertiary'] {
-    [zoom >= 12] {
-      ::casing {
-        ['mapnik::geometry_type' = 2] {
-          line-color: @tertiary-casing;
-          line-width: @tertiary-width-z12;
-          [zoom >= 13] { line-width: @tertiary-width-z13; }
-          [zoom >= 14] { line-width: @tertiary-width-z14; }
-          [zoom >= 15] { line-width: @tertiary-width-z15; }
-          [zoom >= 16] { line-width: @tertiary-width-z16; }
-          [zoom >= 17] { line-width: @tertiary-width-z17; }
-          [zoom >= 18] { line-width: @tertiary-width-z18; }
-          [zoom >= 19] { line-width: @tertiary-width-z19; }
-            [bridge = true][zoom >= 14] {
-            line-color: @bridge-casing;
-          }
-          line-join: round;
+    ::casing {
+      ['mapnik::geometry_type' = linestring][zoom >= 12] {
+        line-color: @tertiary-casing;
+        line-width: @tertiary-width-z12;
+        [zoom >= 13] { line-width: @tertiary-width-z13; }
+        [zoom >= 14] { line-width: @tertiary-width-z14; }
+        [zoom >= 15] { line-width: @tertiary-width-z15; }
+        [zoom >= 16] { line-width: @tertiary-width-z16; }
+        [zoom >= 17] { line-width: @tertiary-width-z17; }
+        [zoom >= 18] { line-width: @tertiary-width-z18; }
+        [zoom >= 19] { line-width: @tertiary-width-z19; }
+          [bridge = true][zoom >= 14] {
+          line-color: @bridge-casing;
         }
+        line-join: round;
       }
-      ::fill {
-        ['mapnik::geometry_type' = 2][zoom >= 10] {
-          line-color: @unimportant-road;
-          [zoom >= 12] { line-color: @tertiary-fill; }
-          line-width: @tertiary-width-z10;
-          line-width: @tertiary-width-z11;
-          [zoom >= 12] { line-width: @tertiary-width-z12 - 2 * @casing-width-z12; }
-          [zoom >= 13] { line-width: @tertiary-width-z13 - 2 * @casing-width-z13; }
-          [zoom >= 14] { line-width: @tertiary-width-z14 - 2 * @casing-width-z14; }
-          [zoom >= 15] { line-width: @tertiary-width-z15 - 2 * @casing-width-z15; }
-          [zoom >= 16] { line-width: @tertiary-width-z16 - 2 * @casing-width-z16; }
-          [zoom >= 17] { line-width: @tertiary-width-z17 - 2 * @casing-width-z17; }
-          [zoom >= 18] { line-width: @tertiary-width-z18 - 2 * @casing-width-z18; }
-          [zoom >= 19] { line-width: @tertiary-width-z19 - 2 * @casing-width-z19; }
-          line-cap: round;
-          line-join: round;
+      ['mapnik::geometry_type' = point][zoom >= 15] {
+        marker-fill: @tertiary-casing;
+        marker-width: @tertiary-width-z15 * 1.6 + 2 * @casing-width-z15;
+        marker-height: @tertiary-width-z15 * 1.6 + 2 * @casing-width-z15;
+        [zoom >= 16] {
+          marker-width: @tertiary-width-z16 * 1.6 + 2 * @casing-width-z16;
+          marker-height: @tertiary-width-z16 * 1.6 + 2 * @casing-width-z16;
         }
+        [zoom >= 17] {
+          marker-width: @tertiary-width-z17 * 1.6 + 2 * @casing-width-z17;
+          marker-height: @tertiary-width-z17 * 1.6 + 2 * @casing-width-z17;
+        }
+        [zoom >= 18] {
+          marker-width: @tertiary-width-z18 * 1.6 + 2 * @casing-width-z18;
+          marker-height: @tertiary-width-z18 * 1.6 + 2 * @casing-width-z18;
+        }
+        [zoom >= 19] {
+          marker-width: @tertiary-width-z19 * 1.6 + 2 * @casing-width-z19;
+          marker-height: @tertiary-width-z19 * 1.6 + 2 * @casing-width-z19;
+        }
+        marker-allow-overlap: true;
+        marker-ignore-placement: true;
+        marker-line-width: 0;
+      }
+
+    }
+    ::fill {
+      ['mapnik::geometry_type' = linestring][zoom >= 10] {
+        line-color: @unimportant-road;
+        [zoom >= 12] { line-color: @tertiary-fill; }
+        line-width: @tertiary-width-z10;
+        line-width: @tertiary-width-z11;
+        [zoom >= 12] { line-width: @tertiary-width-z12 - 2 * @casing-width-z12; }
+        [zoom >= 13] { line-width: @tertiary-width-z13 - 2 * @casing-width-z13; }
+        [zoom >= 14] { line-width: @tertiary-width-z14 - 2 * @casing-width-z14; }
+        [zoom >= 15] { line-width: @tertiary-width-z15 - 2 * @casing-width-z15; }
+        [zoom >= 16] { line-width: @tertiary-width-z16 - 2 * @casing-width-z16; }
+        [zoom >= 17] { line-width: @tertiary-width-z17 - 2 * @casing-width-z17; }
+        [zoom >= 18] { line-width: @tertiary-width-z18 - 2 * @casing-width-z18; }
+        [zoom >= 19] { line-width: @tertiary-width-z19 - 2 * @casing-width-z19; }
+        line-cap: round;
+        line-join: round;
+      }
+      ['mapnik::geometry_type' = point][zoom >= 15] {
+        marker-fill: @residential-fill;
+        marker-width: @residential-width-z15 * 1.6;
+        marker-height: @residential-width-z15 * 1.6;
+        [zoom >= 16] {
+          marker-width: @residential-width-z16 * 1.6;
+          marker-height: @residential-width-z16 * 1.6;
+        }
+        [zoom >= 17] {
+          marker-width: @residential-width-z17 * 1.6;
+          marker-height: @residential-width-z17 * 1.6;
+        }
+        [zoom >= 18] {
+          marker-width: @residential-width-z18 * 1.6;
+          marker-height: @residential-width-z18 * 1.6;
+        }
+        [zoom >= 19] {
+          marker-width: @residential-width-z19 * 1.6;
+          marker-height: @residential-width-z19 * 1.6;
+        }
+        marker-allow-overlap: true;
+        marker-ignore-placement: true;
+        marker-line-width: 0;
       }
     }
   }
@@ -212,6 +259,30 @@
           line-color: @bridge-casing;
         }
         line-join: round;
+      }
+      ['mapnik::geometry_type' = point][zoom >= 15] {
+        marker-fill: @residential-casing;
+        marker-width: @residential-width-z15 * 1.6 + 2 * @casing-width-z15;
+        marker-height: @residential-width-z15 * 1.6 + 2 * @casing-width-z15;
+        [zoom >= 16] {
+          marker-width: @residential-width-z16 * 1.6 + 2 * @casing-width-z16;
+          marker-height: @residential-width-z16 * 1.6 + 2 * @casing-width-z16;
+        }
+        [zoom >= 17] {
+          marker-width: @residential-width-z17 * 1.6 + 2 * @casing-width-z17;
+          marker-height: @residential-width-z17 * 1.6 + 2 * @casing-width-z17;
+        }
+        [zoom >= 18] {
+          marker-width: @residential-width-z18 * 1.6 + 2 * @casing-width-z18;
+          marker-height: @residential-width-z18 * 1.6 + 2 * @casing-width-z18;
+        }
+        [zoom >= 19] {
+          marker-width: @residential-width-z19 * 1.6 + 2 * @casing-width-z19;
+          marker-height: @residential-width-z19 * 1.6 + 2 * @casing-width-z19;
+        }
+        marker-allow-overlap: true;
+        marker-ignore-placement: true;
+        marker-line-width: 0;
       }
     }
     ::fill {
