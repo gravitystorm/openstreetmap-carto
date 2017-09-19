@@ -845,24 +845,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
 
-    [feature = 'highway_steps'] {
-      [zoom >= 13][access != 'no'],
-      [zoom >= 15] {
-        .roads-fill[zoom >= 15] {
-          background/line-color: @steps-casing;
-          background/line-cap: round;
-          background/line-join: round;
-          background/line-width: @steps-width-z15 + 2 * @paths-background-width;
-          background/line-opacity: 0.4;
-        }
-        line/line-color: @steps-fill;
-        [access = 'no'] { line/line-color: @steps-fill-noaccess; }
-        line/line-dasharray: 2,1;
-        line/line-width: @steps-width-z13;
-        [zoom >= 15] { line/line-width:  @steps-width-z15; }
-      }
-    }
-
     [feature = 'highway_track'] {
       [zoom >= 13][access != 'no'],
       [zoom >= 15] {

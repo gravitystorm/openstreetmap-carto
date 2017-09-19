@@ -577,4 +577,41 @@
       }
     }
   }
+
+  [highway = 'steps'] {
+    ::casing {
+      ['mapnik::geometry_type' = linestring][zoom >= 14][access != 'no'],
+      ['mapnik::geometry_type' = linestring][zoom >= 15] {
+        [bridge = true] {
+          line-width: @footway-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
+          [zoom >= 15] { line-width: @footway-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
+          [zoom >= 16] { line-width: @footway-width-z16 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
+          [zoom >= 18] { line-width: @footway-width-z18 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
+          [zoom >= 19] { line-width: @footway-width-z19 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
+          line-color: @bridge-casing;
+          line-join: round;
+        }
+      }
+    }
+    ::fill {
+      ['mapnik::geometry_type' = linestring][zoom >= 13][access != 'no'],
+      ['mapnik::geometry_type' = linestring][zoom >= 15] {
+        [zoom >= 15] {
+          background/line-color: @steps-casing;
+          background/line-cap: round;
+          background/line-join: round;
+          background/line-width: @steps-width-z15 + 2 * @paths-background-width;
+          background/line-opacity: 0.4;
+          [bridge = true] { // TODO: Does this need to go into its own attachment?
+            background/line-opacity: 1;
+          }
+        }
+        line/line-color: @steps-fill;
+        [access = 'no'] { line/line-color: @steps-fill-noaccess; }
+        line/line-width: @steps-width-z13;
+        [zoom >= 15] { line/line-width:  @steps-width-z15; }
+        line/line-dasharray: 2,1;
+      }
+    }
+  }
 }
