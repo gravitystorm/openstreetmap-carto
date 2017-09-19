@@ -457,4 +457,21 @@
       }
     }
   }
+
+  [highway = 'raceway'] {
+    ::fill {
+      ['mapnik::geometry_type' = linestring][zoom >= 12] {
+        line-color: @raceway-fill;
+        line-width: 1.2;
+        [zoom >= 13] { line-width: 2; }
+        [zoom >= 14] { line-width: 3; }
+        [zoom >= 15] { line-width: 6; }
+        [zoom >= 18] { line-width: 8; }
+        [zoom >= 19] { line-width: 12; }
+        [zoom >= 20] { line-width: 24; }
+        line-join: round;
+        line-cap: round;
+      }
+    }
+  }
 }
