@@ -44,6 +44,7 @@ Stylesheet:
   - water-features.mss
   - road-colors-generated.mss
   - roads.mss
+  - transportation.mss
   - power.mss
   - placenames.mss
   - buildings.mss
@@ -487,7 +488,8 @@ Layer:
                 z_order
               FROM planet_osm_line
               WHERE (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes')
-                AND highway IS NOT NULL -- end of road select
+                AND highway IS NOT NULL
+                AND FALSE -- end of road select
             UNION ALL
             SELECT
                 way,
@@ -706,7 +708,8 @@ Layer:
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
                 AND (covered IS NULL OR NOT covered = 'yes')
                 AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
-                AND highway IS NOT NULL -- end of road select
+                AND highway IS NOT NULL
+                AND FALSE -- end of road select
             UNION ALL
             SELECT
                 way,
@@ -824,7 +827,8 @@ Layer:
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
                 AND (covered IS NULL OR NOT covered = 'yes')
                 AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
-                AND highway IS NOT NULL -- end of road select
+                AND highway IS NOT NULL
+                AND FALSE -- end of road select
             UNION ALL
             SELECT
                 way,
@@ -1008,7 +1012,8 @@ Layer:
                 z_order
               FROM planet_osm_line
               WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
-                AND highway IS NOT NULL -- end of road select
+                AND highway IS NOT NULL
+                AND FALSE -- end of road select
             UNION ALL
             SELECT
                 way,
@@ -1046,6 +1051,149 @@ Layer:
     properties:
       group-by: layernotnull
       minzoom: 10
+  - id: transportation
+    geometry: linestring
+    <<: *extents
+    properties:
+      group-by: layernotnull
+      minzoom: 10
+    Datasource:
+      geometry_table: planet_osm_line
+      <<: *osm2pgsql
+      table: |-
+        (WITH lines AS (
+          SELECT
+              osm_id, -- for dev debugging
+              way,
+              CASE 
+                WHEN substr(highway, length(highway)-4, 5) = '_link' THEN substr(highway, 0, length(highway)-4) -- Handle link roads
+                WHEN highway = 'path' -- Logic to disambiguate highway=path. Because there's no path_link, it's never caught by the previous logic.
+                  THEN CASE
+                    WHEN horse = 'designated' THEN 'bridleway'
+                    WHEN bicycle = 'designated' THEN 'cycleway'
+                    ELSE 'footway'
+                  END
+                ELSE highway END AS highway,
+              railway,
+              construction,
+              substr(highway, length(highway)-4, 5) = '_link' AS link,
+              COALESCE(tunnel IN ('yes', 'building_passage') OR covered = 'yes', FALSE) AS tunnel,
+              COALESCE(bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'), FALSE) AS bridge,
+              COALESCE(layer,0) AS layernotnull,
+              z_order,
+              surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes', 'concrete:plates', 'paving_stones', 'metal', 'wood')
+                OR NOT surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground', 'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay')
+                AS paved,
+              tracktype,
+              CASE WHEN access IN ('destination') THEN 'destination'
+                WHEN access IN ('no', 'private') THEN 'no'
+                ELSE NULL END AS access,
+              COALESCE(service IN ('parking_aisle', 'drive-through', 'driveway', 'spur', 'siding', 'yard'), FALSE) AS service
+            FROM planet_osm_line
+            WHERE way && !bbox!
+              AND (highway IS NOT NULL OR railway IS NOT NULL)
+        ),
+        tc_points AS (
+          -- We need the turning_circle/loop point and the highway type
+          SELECT
+            DISTINCT ON (points.osm_id)
+              points.osm_id, -- for dev debugging
+              points.way,
+              lines.highway,
+              lines.service,
+              points.highway AS turning_type,
+              COALESCE(layer,0) AS layernotnull,
+              0 AS z_order -- TODO: handle this somehow?
+            FROM planet_osm_point points
+              JOIN lines ON ST_DWithin(points.way, lines.way, 0.1)
+            WHERE points.way && !bbox!
+              AND points.highway IN ('turning_circle', 'turning_loop')
+              AND lines.highway IN ('tertiary', 'unclassified', 'residential', 'living_street', 'service', 'track')
+              ORDER BY points.osm_id, -- for DISTINCT ON
+                CASE lines.highway -- Use the most important type for cases where the TC is at an intersection. TODO: Should lines.layer be in here?
+                  WHEN 'tertiary' THEN 6
+                  WHEN 'unclassified' THEN 5
+                  WHEN 'residential' THEN 4
+                  WHEN 'living_street' THEN 3
+                  WHEN 'service' THEN 2
+                  WHEN 'track' THEN 1
+                END DESC,
+                service
+        ),
+        areas AS (
+          SELECT
+              osm_id, -- for dev debugging
+              way,
+              highway,
+              railway,
+              aeroway,
+              COALESCE(layer,0) AS layernotnull,
+              0 AS z_order, -- TODO: handle this somehow?
+              way_area
+            FROM planet_osm_polygon
+            WHERE way && !bbox!
+              AND (highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'living_street', 'track', 'path', 'platform', 'services')
+              OR railway IN ('platform')
+              OR aeroway IN ('runway', 'taxiway', 'helipad'))
+        )
+        SELECT
+            * 
+          FROM (
+          SELECT
+              osm_id, -- for dev debugging
+              way,
+              highway,
+              railway,
+              link,
+              service,
+              construction,
+              tunnel,
+              bridge,
+              access,
+              paved,
+              layernotnull,
+              z_order
+            FROM lines
+          UNION ALL
+          SELECT
+              osm_id, -- for dev debugging
+              way,
+              highway,
+              NULL AS railway,
+              NULL AS link,
+              NULL AS service,
+              NULL AS construction,
+              NULL AS tunnel,
+              NULL AS bridge,
+              NULL AS access,
+              NULL AS paved,
+              layernotnull,
+              z_order
+            FROM tc_points
+          UNION ALL
+          SELECT
+              osm_id, -- for dev debugging
+              way,
+              highway,
+              CASE WHEN railway = 'platform' THEN railway ELSE aeroway END AS railway, -- pretend the aeroway tags are railway ones
+              NULL AS link,
+              NULL AS service,
+              NULL AS construction,
+              NULL AS tunnel,
+              NULL AS bridge,
+              NULL AS access,
+              NULL AS paved,
+              layernotnull,
+              z_order
+            FROM areas
+          ) AS t
+          ORDER BY
+            layernotnull,
+            z_order,
+            service,
+            CASE access WHEN 'no' THEN 0 WHEN 'destination' THEN 1 ELSE 2 END,
+            paved DESC
+        ) AS transportation
   - id: guideways
     geometry: linestring
     <<: *extents
