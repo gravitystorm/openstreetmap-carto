@@ -109,7 +109,6 @@
 @bridleway-width-z13:             0.3;
 @footway-width-z13:               0.7;
 @cycleway-width-z13:              0.7;
-@path-width-z13:                  0.2;
 @track-width-z13:                 0.5;
 @track-grade1-width-z13:          0.5;
 @track-grade2-width-z13:          0.5;
@@ -135,7 +134,6 @@
 @bridleway-width-z15:             1.2;
 @footway-width-z15:               1;
 @cycleway-width-z15:              0.9;
-@path-width-z15:                  0.5;
 @track-width-z15:                 1.5;
 @track-grade1-width-z15:          0.75;
 @track-grade2-width-z15:          0.75;
