@@ -12,6 +12,7 @@
 @gastronomy: @amenity-brown;
 @memorials: @amenity-brown;
 @culture: @amenity-brown;
+@public-service: @amenity-brown;
 @man-made-icon: #555;
 @landform-color: #d08f55;
 @leisure-green: darken(@park, 60%);
@@ -58,7 +59,7 @@
 
   [feature = 'amenity_bank'][zoom >= 17] {
     marker-file: url('symbols/bank.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @public-service;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -194,7 +195,7 @@
 
   [feature = 'amenity_fire_station'][zoom >= 16] {
     marker-file: url('symbols/firestation.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @public-service;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -291,7 +292,7 @@
 
   [feature = 'amenity_embassy'][zoom >= 17] {
     marker-file: url('symbols/embassy.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @public-service;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -306,7 +307,7 @@
   [feature = 'amenity_courthouse'][zoom >= 16] {
     marker-file: url('symbols/courthouse.svg');
     marker-placement: interior;
-    marker-fill: @amenity-brown;
+    marker-fill: @public-service;
     marker-clip: false;
   }
 
@@ -319,14 +320,14 @@
 
   [feature = 'amenity_social_facility'][zoom >= 17] {
     marker-file: url('symbols/social_facility.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @public-service;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'amenity_townhall'][zoom >= 16] {
     marker-file: url('symbols/town_hall.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @public-service;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -438,7 +439,7 @@
 
   [feature = 'amenity_police'][zoom >= 16] {
     marker-file: url('symbols/police.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @public-service;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -452,7 +453,7 @@
 
   [feature = 'amenity_post_office'][zoom >= 17] {
     marker-file: url('symbols/post_office.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @public-service;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -540,7 +541,7 @@
 
   [feature = 'amenity_prison'][zoom >= 17] {
     marker-file: url('symbols/prison.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @public-service;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1208,24 +1209,39 @@
   [feature = 'amenity_courthouse'][zoom >= 17],
   [feature = 'amenity_townhall'][zoom >= 17],
   [feature = 'amenity_police'][zoom >= 17],
-  [feature = 'amenity_car_wash'][zoom >= 17],
   [feature = 'amenity_social_facility'][zoom >= 17],
   [feature = 'amenity_fire_station'][zoom >= 17],
+  [feature = 'amenity_post_office'][zoom >= 17],
+  [feature = 'amenity_prison'][zoom >= 17],
+  [feature = 'amenity_embassy'][zoom >= 17],
+  [feature = 'amenity_bank'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: @public-service;
+    text-dy: 11;
+    [feature = 'amenity_courthouse'] { text-dy: 13; }
+    [feature = 'amenity_townhall'] { text-dy: 13; }
+    [feature = 'amenity_prison'] { text-dy: 12; }
+    [feature = 'amenity_embassy'] { text-dy: 10; }
+    [feature = 'amenity_bank'] { text-dy: 9; }
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+  }
+
+  [feature = 'amenity_car_wash'][zoom >= 17],
   [feature = 'amenity_drinking_water'][zoom >= 17],
   [feature = 'tourism_picnic_site'][zoom >= 17],
-  [feature = 'leisure_picnic_table'][zoom >= 17],
-  [feature = 'amenity_post_office'][zoom >= 17] {
+  [feature = 'leisure_picnic_table'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: @amenity-brown;
     text-dy: 10;
-    [feature = 'amenity_police'] { text-dy: 11; }
-    [feature = 'amenity_fire_station'] { text-dy: 11; }
-    [feature = 'amenity_post_office'] { text-dy: 11; }
-    [feature = 'amenity_courthouse'] { text-dy: 13; }
-    [feature = 'amenity_townhall'] { text-dy: 13; }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
@@ -1673,17 +1689,12 @@
     }
   }
 
-  [feature = 'amenity_bank'][zoom >= 17],
   [feature = 'amenity_atm'][zoom >= 17] {
-    text-name: "[name]";
-    [feature = 'amenity_atm'] {
-      text-name: "[operator]";
-    }
+    text-name: "[operator]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    [feature = 'amenity_bank'] { text-dy: 9; }
-    [feature = 'amenity_atm']  { text-dy: 10; }
+    text-dy: 10;
     text-fill: @amenity-brown;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
@@ -1718,19 +1729,6 @@
     [feature = 'tourism_caravan_site'] {
       text-dy: 15;
     }
-  }
-
-  [feature = 'amenity_embassy'][zoom >= 17] {
-    text-name: "[name]";
-    text-size: @standard-font-size;
-    text-wrap-width: @standard-wrap-width;
-    text-line-spacing: @standard-line-spacing-size;
-    text-fill: @amenity-brown;
-    text-dy: 10;
-    text-face-name: @standard-font;
-    text-halo-radius: @standard-halo-radius;
-    text-halo-fill: @standard-halo-fill;
-    text-placement: interior;
   }
 
   [feature = 'amenity_taxi'][zoom >= 17] {
@@ -1807,21 +1805,6 @@
       text-dy: 10;
     }
   }
-
-
-  [feature = 'amenity_prison'][zoom >= 17] {
-    text-name: "[name]";
-    text-size: @standard-font-size;
-    text-wrap-width: @standard-wrap-width;
-    text-line-spacing: @standard-line-spacing-size;
-    text-fill: @amenity-brown;
-    text-dy: 12;
-    text-face-name: @standard-font;
-    text-halo-radius: @standard-halo-radius;
-    text-halo-fill: @standard-halo-fill;
-    text-placement: interior;
-  }
-
 
   [feature = 'man_made_lighthouse'][zoom >= 15] {
     text-name: "[name]";
