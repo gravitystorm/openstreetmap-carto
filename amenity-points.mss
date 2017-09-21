@@ -2024,7 +2024,7 @@
 
   [feature = 'natural_scree'][zoom >= 9],
   [feature = 'natural_shingle'][zoom >= 9],
-  [feature = 'natural_bare_rock'][zoom >= 9],
+  [feature = 'natural_bare_rock'],
   [feature = 'natural_sand'] {
     [zoom >= 8][way_pixels > 3000][is_building = 'no'],
     [zoom >= 17][is_building = 'no'] {
