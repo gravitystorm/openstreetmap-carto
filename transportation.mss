@@ -1,6 +1,135 @@
 /* For the main linear features, such as roads and railways. */
 
 #transportation {
+  [railway = 'rail'] {
+    ::casing {
+      [bridge = true][zoom >= 13] {
+        line-width: 6.5;
+        [service = true] {
+          line-width: 5.7;
+        }
+        line-color: @bridge-casing;
+        line-join: round;
+      }
+    }
+    ::fill {
+      [bridge = true][zoom >= 13] {
+        line-width: 5;
+        [service = true] {
+          line-width: 4;
+        }
+        line-color: white;
+        line-join: round;
+
+      }
+    }
+    ::rw-line {
+      [zoom < 13][service != true] {
+        line-color: #787878;
+        line-width: 0.5;
+        [zoom >= 8] { line-width: 0.8; }
+        [zoom >= 12] { line-width: 0.9; }
+        line-join: round;
+        [tunnel = true] {
+          line-dasharray: 5,2;
+        }
+      }
+      [zoom >= 13] {
+        [tunnel != true] {
+          dark/line-color: #707070;
+          dark/line-width: 3;
+          light/line-width: 1;
+          light/line-dasharray: 8,8;
+          [zoom >= 15] {
+            light/line-dasharray: 0,8,8,1;
+          }
+          [zoom >= 18] {
+            dark/line-width: 4;
+            light/line-width: 2;
+          }
+          [service = true] {
+            dark/line-width: 2;
+            dark/line-color: #aaa;
+            light/line-width: 0.8;
+            light/line-dasharray: 0,8,8,1;
+            [zoom >= 18] {
+              dark/line-width: 3;
+              light/line-width: 1;
+            }
+          }
+          dark/line-join: round;
+          light/line-color: white;
+          light/line-join: round;
+        }
+        [tunnel = true] {
+          line-color: #787878;
+          line-width: 2.8;
+          line-dasharray: 6,4;
+          [zoom >= 18] {
+            line-dasharray: 8,6;
+            line-width: 3.8;
+          }
+          [tunnel = true] {
+            line-color: #aaa;
+            line-width: 1.9;
+            line-dasharray: 3,3;
+            [zoom >= 18] {
+              line-width: 2.7;
+            }
+          }
+          line-clip: false;
+        }
+      }
+    }
+  }
+
+  [railway = 'tram'] {
+    ::fill {
+      [bridge = true][zoom >= 13][service != true], // TODO: is expressing it this way resulting in too many combinations?
+      [bridge = true][zoom >= 15] {
+        line-width: 5;
+        [service = true] {
+          line-width: 4;
+        }
+        line-color: white;
+        line-join: round;
+
+      }
+    }
+    ::rw-line {
+      [zoom >= 12][service != true],
+      [zoom >= 15] {
+        line-color: #6E6E6E;
+        line-width: 0.75;
+        [zoom >= 13] {
+          line-color: #444;
+        }
+        [zoom >= 14] {
+          line-width: 1;
+        }
+        [zoom >= 15] {
+          line-width: 1.5;
+        }
+        [zoom >= 17] {
+          line-width: 2;
+        }
+        [zoom >= 15][service = true] {
+          line-width: 0.5;
+          [zoom >= 17] {
+            line-width: 1;
+          }
+          [zoom >= 18] {
+            line-width: 1.5;
+          }
+          [zoom >= 19] {
+            line-width: 2;
+          }
+        }
+      }
+    }
+
+  }
+
   [highway = 'motorway'] {
     ::casing {
       ['mapnik::geometry_type' = linestring][zoom >= 12] {
@@ -297,6 +426,16 @@
         }
         line-join: round;
       }
+      ['mapnik::geometry_type' = polygon][zoom >= 14] {
+        line-color: @residential-casing;
+        line-width: 2 * @casing-width-z14;
+        [zoom >= 14] { line-width: 2 * @casing-width-z14; }
+        [zoom >= 15] { line-width: 2 * @casing-width-z15; }
+        [zoom >= 16] { line-width: 2 * @casing-width-z16; }
+        [zoom >= 17] { line-width: 2 * @casing-width-z17; }
+        [zoom >= 18] { line-width: 2 * @casing-width-z18; }
+        [zoom >= 19] { line-width: 2 * @casing-width-z19; }
+      }
       ['mapnik::geometry_type' = point][zoom >= 15] {
         marker-fill: @residential-casing;
         marker-width: @residential-width-z15 * 1.6 + 2 * @casing-width-z15;
@@ -334,6 +473,9 @@
         [zoom >= 19] { line-width: @residential-width-z19 - 2 * @casing-width-z19; }
         line-cap: round;
         line-join: round;
+      }
+      ['mapnik::geometry_type' = polygon][zoom >= 14] {
+        polygon-fill: @residential-fill;
       }
       ['mapnik::geometry_type' = point][zoom >= 15] {
         marker-fill: @residential-fill;
@@ -381,6 +523,19 @@
         }
         line-join: round;
       }
+      ['mapnik::geometry_type' = polygon][zoom >= 14] {
+        line-color: @pedestrian-fill;
+        [highway = 'living_street'] {
+          line-color: @living-street-fill;
+        }
+        line-width: 2 * @casing-width-z14;
+        [zoom >= 14] { line-width: 2 * @casing-width-z14; }
+        [zoom >= 15] { line-width: 2 * @casing-width-z15; }
+        [zoom >= 16] { line-width: 2 * @casing-width-z16; }
+        [zoom >= 17] { line-width: 2 * @casing-width-z17; }
+        [zoom >= 18] { line-width: 2 * @casing-width-z18; }
+        [zoom >= 19] { line-width: 2 * @casing-width-z19; }
+      }
       ['mapnik::geometry_type' = point][zoom >= 15] {
         marker-fill: @pedestrian-casing;
         [highway = 'living_street'] {
@@ -424,6 +579,12 @@
         [zoom >= 19] { line-width: @pedestrian-width-z19 - 2 * @casing-width-z19; }
         line-cap: round;
         line-join: round;
+      }
+      ['mapnik::geometry_type' = polygon][zoom >= 14] {
+        polygon-fill: @pedestrian-fill;
+        [highway = 'living_street'] {
+          polygon-fill: @living-street-fill;
+        }
       }
       ['mapnik::geometry_type' = point][zoom >= 15] {
         marker-fill: @pedestrian-fill;
@@ -503,6 +664,16 @@
         }
         line-join: round;
       }
+      ['mapnik::geometry_type' = polygon][zoom >= 14] {
+        line-color: @service-casing;
+        line-width: 2 * @casing-width-z14;
+        [zoom >= 14] { line-width: 2 * @casing-width-z14; }
+        [zoom >= 15] { line-width: 2 * @casing-width-z15; }
+        [zoom >= 16] { line-width: 2 * @casing-width-z16; }
+        [zoom >= 17] { line-width: 2 * @casing-width-z17; }
+        [zoom >= 18] { line-width: 2 * @casing-width-z18; }
+        [zoom >= 19] { line-width: 2 * @casing-width-z19; }
+      }
       ['mapnik::geometry_type' = point][zoom >= 16] {
         marker-fill: @service-casing;
         marker-width: @service-width-z16 * 1.6 + 2 * @casing-width-z16;
@@ -539,6 +710,9 @@
         [zoom >= 19] { line-width: @service-width-z19 - 2 * @casing-width-z19; }
         line-join: round;
         line-cap: round;
+      }
+      ['mapnik::geometry_type' = polygon][zoom >= 14] {
+        polygon-fill: @service-fill;
       }
       ['mapnik::geometry_type' = point][zoom >= 16] {
         marker-fill: @service-fill;
@@ -743,7 +917,7 @@
     ::fill {
       ['mapnik::geometry_type' = linestring][zoom >= 13][access != 'no'],
       ['mapnik::geometry_type' = linestring][zoom >= 15] {
-        [zoom >= 15] { // TODO: should this be non-tunnel non-bridge only? orig has it in ::bridges_and_tunnels_background
+        [zoom >= 14] { // TODO: should this be non-tunnel non-bridge only? orig has it in ::bridges_and_tunnels_background
                        // TODO: Should this be moved to ::casing?
           background/line-color: @footway-casing;
           [highway = 'bridleway'] {
@@ -808,6 +982,9 @@
         [highway = 'footway'][paved = false][zoom >= 15], {
           line/line-dasharray: 1,4;
         }
+      }
+      [highway != 'bridleway']['mapnik::geometry_type' = polygon][zoom >= 14] {
+        polygon-fill: @pedestrian-fill;
       }
     }
   }
