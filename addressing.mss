@@ -18,6 +18,12 @@
       ["addr_housename" != null] {
         text-name: [addr_housenumber] + "\n" + [addr_housename];
       }
+      ["addr_unit" != null] {
+        text-name: [addr_housenumber] + " " + [addr_unit];
+        ["addr_housename" != null] {
+          text-name: [addr_housenumber] + " " + [addr_unit] + "\n" + [addr_housename];
+        }
+      }
     }
     text-placement: interior;
     text-min-distance: 1;
@@ -26,8 +32,11 @@
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-size: 10;
-    text-wrap-width: 20; // 2.0 em
+    text-wrap-width: 30; // 3.0 em
     text-line-spacing: -1.5; // -0.15 em
+    [zoom >= 18]["addr_unit" != null]["addr_housenumber" = null] {
+      text-name: [addr_unit];
+    }
     [zoom >= 20] {
         text-size: 11;
         text-wrap-width: 22; // 2.0 em
