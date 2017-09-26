@@ -1442,15 +1442,8 @@ Layer:
           WHERE aeroway IN ('helipad', 'aerodrome')
             OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'hostel',
                            'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site')
-            OR amenity IN ('shelter', 'atm', 'bank', 'bar', 'bicycle_rental', 'bus_station', 'cafe',
-                           'car_rental', 'car_wash', 'cinema', 'clinic', 'community_centre',
-                           'fire_station', 'fountain', 'fuel', 'hospital', 'ice_cream', 'embassy', 'library', 'courthouse',
-                           'townhall', 'parking', 'bicycle_parking', 'motorcycle_parking', 'pharmacy', 'doctors',
-                           'dentist', 'place_of_worship', 'police', 'post_box', 'post_office', 'pub', 'biergarten',
-                           'recycling', 'restaurant', 'food_court', 'fast_food', 'telephone', 'taxi',
-                           'theatre', 'toilets', 'drinking_water', 'prison', 'hunting_stand', 'nightclub', 'veterinary',
-                           'social_facility', 'charging_station', 'arts_centre', 'ferry_terminal')
-            OR shop IS NOT NULL -- skip checking a huge list and use a null check
+            OR amenity IS NOT NULL -- skip checking a huge list and use a null check
+            OR shop IS NOT NULL
             OR leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table')
             OR man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill', 'obelisk')
             OR "natural" IN ('spring')
@@ -1546,15 +1539,8 @@ Layer:
           WHERE aeroway IN ('helipad', 'aerodrome')
             OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'hostel',
                            'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site')
-            OR amenity IN ('shelter', 'atm', 'bank', 'bar', 'bicycle_rental', 'bus_station', 'cafe',
-                           'car_rental',  'car_wash', 'cinema', 'clinic', 'community_centre',
-                           'fire_station', 'fountain', 'fuel', 'hospital', 'ice_cream', 'embassy', 'library', 'courthouse',
-                           'townhall', 'parking', 'bicycle_parking', 'motorcycle_parking', 'pharmacy', 'doctors',
-                           'dentist', 'place_of_worship', 'police', 'post_box', 'post_office', 'pub', 'biergarten',
-                           'recycling', 'restaurant', 'food_court', 'fast_food', 'telephone',
-                           'taxi', 'theatre', 'toilets', 'drinking_water', 'prison', 'hunting_stand', 'nightclub',
-                           'veterinary', 'social_facility', 'charging_station', 'arts_centre', 'ferry_terminal')
-            OR shop IS NOT NULL -- skip checking a huge list and use a null check
+            OR amenity IS NOT NULL -- skip checking a huge list and use a null check
+            OR shop IS NOT NULL
             OR leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'slipway',
                            'dog_park')
             OR man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill', 'cross', 'obelisk')
