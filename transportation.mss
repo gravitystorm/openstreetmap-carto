@@ -1039,3 +1039,36 @@
     }
   }
 }
+
+[highway = 'platform'],
+[railway = 'platform'] {
+  ::casing {
+    ['mapnik::geometry_type' = polygon][zoom >= 14] {
+      line-color: grey;
+      line-width: 2 * @casing-width-z14;
+      [zoom >= 14] { line-width: 2 * @casing-width-z14; }
+      [zoom >= 15] { line-width: 2 * @casing-width-z15; }
+      [zoom >= 16] { line-width: 2 * @casing-width-z16; }
+      [zoom >= 17] { line-width: 2 * @casing-width-z17; }
+      [zoom >= 18] { line-width: 2 * @casing-width-z18; }
+      [zoom >= 19] { line-width: 2 * @casing-width-z19; }
+    }
+
+  }
+
+  ::fill {
+    ['mapnik::geometry_type' = linestring][zoom >= 16] {
+      line-join: round;
+      line-width: 6;
+      line-color: grey;
+      line-cap: round;
+      b/line-width: 4;
+      b/line-color: #bbbbbb;
+      b/line-cap: round;
+      b/line-join: round;
+    }
+    ['mapnik::geometry_type' = polygon][zoom >= 14] {
+      polygon-fill: #bbbbbb;
+    }
+  }
+}
