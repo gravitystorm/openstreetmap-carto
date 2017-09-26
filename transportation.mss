@@ -86,6 +86,7 @@
   [railway = 'tram'] {
     ::casing {
       [bridge = true][zoom >= 13][service != true],
+      [bridge = true][zoom >= 15] {
         line-width: 4; // TODO: Check these existing sizes make sense
         [service = true] {
           line-width: 5;
