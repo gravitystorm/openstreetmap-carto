@@ -383,21 +383,6 @@
       }
     }
 
-
-    [feature = 'railway_tram'],
-    [feature = 'railway_tram-service'][zoom >= 15] {
-      .bridges-casing {
-        [zoom >= 13] {
-          line-width: 4;
-          [zoom >= 15] {
-            line-width: 5;
-          }
-          line-color: @bridge-casing;
-          line-join: round;
-        }
-      }
-    }
-
     [feature = 'railway_subway'] {
       .bridges-casing {
         [zoom >= 14] {
@@ -939,17 +924,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 }
 
 #highway-area-casing {
-  [feature = 'highway_pedestrian'],
-  [feature = 'highway_service'],
-  [feature = 'highway_footway'],
-  [feature = 'highway_cycleway'],
-  [feature = 'highway_path'] {
-    [zoom >= 14] {
-      line-color: grey;
-      line-width: 1;
-    }
-  }
-
   [feature = 'highway_track'][zoom >= 14] {
     line-color: @track-fill;
     line-width: 1;

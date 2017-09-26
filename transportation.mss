@@ -84,16 +84,14 @@
   }
 
   [railway = 'tram'] {
-    ::fill {
-      [bridge = true][zoom >= 13][service != true], // TODO: is expressing it this way resulting in too many combinations?
-      [bridge = true][zoom >= 15] {
-        line-width: 5;
+    ::casing {
+      [bridge = true][zoom >= 13][service != true],
+        line-width: 4; // TODO: Check these existing sizes make sense
         [service = true] {
-          line-width: 4;
+          line-width: 5;
         }
-        line-color: white;
+        line-color: @bridge-casing;
         line-join: round;
-
       }
     }
     ::rw-line {
@@ -127,7 +125,17 @@
         }
       }
     }
-
+    ::fill {
+      [bridge = true][zoom >= 13][service != true], // TODO: is expressing it this way resulting in too many combinations?
+      [bridge = true][zoom >= 15] {
+        line-width: 5;
+        [service = true] {
+          line-width: 4;
+        }
+        line-color: white;
+        line-join: round;
+      }
+    }
   }
 
   [highway = 'motorway'] {
@@ -749,6 +757,16 @@
           line-color: @bridge-casing;
         }
         line-join: round;
+      }
+      ['mapnik::geometry_type' = polygon][zoom >= 14] {
+        line-color: @service-casing;
+        line-width: 2 * @casing-width-z14;
+        [zoom >= 14] { line-width: 2 * @casing-width-z14; }
+        [zoom >= 15] { line-width: 2 * @casing-width-z15; }
+        [zoom >= 16] { line-width: 2 * @casing-width-z16; }
+        [zoom >= 17] { line-width: 2 * @casing-width-z17; }
+        [zoom >= 18] { line-width: 2 * @casing-width-z18; }
+        [zoom >= 19] { line-width: 2 * @casing-width-z19; }
       }
       ['mapnik::geometry_type' = point][zoom >= 18] {
         marker-fill: @service-casing;
