@@ -227,6 +227,22 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
+  [feature = 'place_village'],
+  [feature = 'place_hamlet'][zoom >= 10] {
+    polygon-fill: @built-up-lower-lowzoom;
+    [zoom >= 11] { polygon-fill: @built-up-upper-lowzoom; }
+    [zoom >= 13] { polygon-fill: lighten(@residential, 30%); }
+    [zoom >= 16] {
+      line-width: .5;
+      line-color: lighten(@residential-line, 30%);
+      [name != ''] {
+        line-width: 0.7;
+      }
+    }
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
   [feature = 'landuse_garages'][zoom >= 13] {
     polygon-fill: @garages;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
