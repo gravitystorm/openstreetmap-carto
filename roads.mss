@@ -395,8 +395,6 @@
       }
     }
 
-    [feature = 'railway_rail'],
-    [feature = 'railway_preserved'],
     [feature = 'railway_monorail'][zoom >= 14] {
       .bridges-casing {
         [zoom >= 13] {
@@ -407,20 +405,9 @@
       }
     }
 
-    [feature = 'railway_INT-spur-siding-yard'] {
-      .bridges-casing {
-        [zoom >= 13] {
-          line-width: 5.7;
-          line-color: @bridge-casing;
-          line-join: round;
-        }
-      }
-    }
-
     [feature = 'railway_disused'][zoom >= 15],
     [feature = 'railway_construction'],
-    [feature = 'railway_miniature'][zoom >= 15],
-    [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
+    [feature = 'railway_miniature'][zoom >= 15] {
       .bridges-casing {
         [zoom >= 13] {
           line-width: 6;
@@ -532,7 +519,6 @@
       }
     }
 
-    [feature = 'railway_preserved'][zoom >= 13],
     [feature = 'railway_monorail'][zoom >= 14] {
       .bridges-casing {
         line-width: 5;
@@ -543,11 +529,9 @@
 
     [feature = 'railway_disused'][zoom >= 15],
     [feature = 'railway_construction'],
-    [feature = 'railway_miniature'][zoom >= 15],
-    [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
+    [feature = 'railway_miniature'][zoom >= 15] {
       .bridges-casing {
         [zoom >= 13] {
-          line-width: 4.5;
           line-color: white;
           line-join: round;
         }
@@ -780,38 +764,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 12] {
         .tunnels-fill {
           line-dasharray: 5,3;
-        }
-      }
-    }
-
-    [feature = 'railway_preserved'] {
-      [zoom >= 12] {
-        dark/line-width: 1.5;
-        dark/line-color: #aaa;
-        dark/line-join: round;
-        [zoom >= 13] {
-          dark/line-width: 3;
-          dark/line-color: #999999;
-          light/line-width: 1;
-          light/line-color: white;
-          light/line-dasharray: 0,1,8,1;
-          light/line-join: round;
-        }
-      }
-    }
-
-    [feature = 'railway_INT-preserved-ssy'] {
-      [zoom >= 12] {
-        dark/line-width: 1;
-        dark/line-color: #aaa;
-        dark/line-join: round;
-        [zoom >= 13] {
-          dark/line-width: 2;
-          dark/line-color: #999999;
-          light/line-width: 0.8;
-          light/line-color: white;
-          light/line-dasharray: 0,1,8,1;
-          light/line-join: round;
         }
       }
     }

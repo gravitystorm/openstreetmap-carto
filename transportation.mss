@@ -83,6 +83,55 @@
     }
   }
 
+  [railway = 'preserved'] {
+    ::casing {
+      [bridge = true][zoom >= 13] {
+        line-width: 6.5;
+        [service = true] {
+          line-width: 6;
+        }
+        line-color: @bridge-casing;
+        line-join: round;
+      }
+    }
+    ::fill {
+      [bridge = true][zoom >= 13] {
+        line-width: 5;
+        [service = true] {
+          line-width: 4.5;
+        }
+        line-color: white;
+        line-join: round;
+
+      }
+    }
+    ::rw-line {
+      [zoom < 13] {
+        // TODO: These were as dark/ originally, does that make more sense?
+        line-color: #aaa;
+        line-width: 1.5;
+        [service = true] {
+          line-width: 1;
+        }
+        line-join: round;
+      }
+      [zoom >= 13] {
+        dark/line-color: #999;
+        dark/line-width: 3;
+        light/line-width: 1;
+        light/line-dasharray: 0,1,8,1;
+        [service = true] {
+          dark/line-width: 2;
+          dark/line-color: #999;
+          light/line-width: 0.8;
+        }
+        dark/line-join: round;
+        light/line-color: white;
+        light/line-join: round;
+      }
+    }
+  }
+
   [railway = 'tram'] {
     ::casing {
       [bridge = true][zoom >= 13][service != true],
