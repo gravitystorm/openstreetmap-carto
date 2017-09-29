@@ -95,6 +95,17 @@
         line-join: round;
       }
     }
+    ::fill {
+      [bridge = true][zoom >= 13][service != true], // TODO: is expressing it this way resulting in too many combinations?
+      [bridge = true][zoom >= 15] {
+        line-width: 5;
+        [service = true] {
+          line-width: 4;
+        }
+        line-color: white;
+        line-join: round;
+      }
+    }
     ::rw-line {
       [zoom >= 12][service != true],
       [zoom >= 15] {
@@ -126,19 +137,30 @@
         }
       }
     }
+  }
+
+  [railway = 'subway'] {
+    ::casing {
+      [bridge = true][zoom >= 14] {
+        line-width: 5.5;
+        line-color: @bridge-casing;
+        line-join: round;
+      }
+    }
     ::fill {
-      [bridge = true][zoom >= 13][service != true], // TODO: is expressing it this way resulting in too many combinations?
-      [bridge = true][zoom >= 15] {
-        line-width: 5;
-        [service = true] {
-          line-width: 4;
-        }
+      [bridge = true][zoom >= 14] {
+        line-width: 4;
         line-color: white;
         line-join: round;
       }
     }
+    ::rw-line {
+      [zoom >= 12] {
+        line-width: 2;
+        line-color: #999;
+      }
+    }
   }
-
   [highway = 'motorway'] {
     ::casing {
       ['mapnik::geometry_type' = linestring][zoom >= 12] {
