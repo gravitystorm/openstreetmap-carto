@@ -1,4 +1,11 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.3.0...master)
+### Changes
+- Rendering shop=pastry like shop=confectionery 
+- Rendering of addr:unit
+- Rendering natural=bare_rock earlier
+- Moving aeroways to their own layer
+- Creating amenity POI categories
+- Some other documentation and code cleaning
 
 ## [v4.3.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.2.0...v4.3.0) - 2017-09-16
 ### Changes
