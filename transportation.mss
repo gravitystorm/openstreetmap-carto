@@ -160,6 +160,37 @@
     }
   }
 
+  [railway = 'monorail'] {
+    ::casing {
+      [bridge = true][zoom >= 14] {
+        line-width: 6.5;
+        line-color: @bridge-casing;
+        line-join: round;
+      }
+    }
+    ::fill {
+      [bridge = true][zoom >= 14] {
+        line-width: 5;
+        line-color: white;
+        line-join: round;
+      }
+    }
+    ::rw-line {
+      [zoom >= 14] {
+        background/line-width: 4;
+        background/line-color: white;
+        background/line-opacity: 0.4;
+        background/line-cap: round;
+        background/line-join: round;
+        line/line-width: 3;
+        line/line-color: #777;
+        line/line-dasharray: 2,3;
+        line/line-cap: round;
+        line/line-join: round;
+      }
+    }
+  }
+
   [railway = 'tram'] {
     ::casing {
       [bridge = true][zoom >= 13][service != true],
