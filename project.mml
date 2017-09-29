@@ -610,14 +610,7 @@ Layer:
               AND points.highway IN ('turning_circle', 'turning_loop')
               AND lines.highway IN ('tertiary', 'unclassified', 'residential', 'living_street', 'service', 'track')
               ORDER BY points.osm_id, -- for DISTINCT ON
-                CASE lines.highway -- Use the most important type for cases where the TC is at an intersection. TODO: Should lines.layer be in here?
-                  WHEN 'tertiary' THEN 6
-                  WHEN 'unclassified' THEN 5
-                  WHEN 'residential' THEN 4
-                  WHEN 'living_street' THEN 3
-                  WHEN 'service' THEN 2
-                  WHEN 'track' THEN 1
-                END DESC,
+                lines.z_order DESC,
                 service
         ),
         areas AS (
