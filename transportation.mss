@@ -534,6 +534,7 @@
       }
     }
   }
+
   [highway = 'pedestrian'],
   [highway = 'living_street'] { // with only the colours differing, these can share code
     ::casing {
