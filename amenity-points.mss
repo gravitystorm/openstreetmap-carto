@@ -1524,7 +1524,9 @@
   [feature = 'leisure_stadium'],
   [feature = 'leisure_track'],
   [feature = 'leisure_dog_park'],
-  [feature = 'leisure_pitch'] {
+  [feature = 'leisure_pitch'],
+  [feature = 'place_village'],
+  [feature = 'place_hamlet'] {
     [zoom >= 10][way_pixels > 3000][is_building = 'no'],
     [zoom >= 17][is_building = 'no'],
     [zoom >= 10][way_pixels > 3000][feature = 'shop_mall'],
@@ -1574,7 +1576,9 @@
         text-fill: darken(@cemetery, 50%);
         text-halo-radius: @standard-halo-radius * 1.5; /* extra halo needed to overpower the cemetery polygon pattern */
       }
-      [feature = 'landuse_residential'] {
+      [feature = 'landuse_residential'],
+      [feature = 'place_village'],
+      [feature = 'place_hamlet'] {
         text-fill: darken(@residential, 50%);
       }
       [feature = 'landuse_meadow'],
