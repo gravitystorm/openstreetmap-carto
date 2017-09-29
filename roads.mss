@@ -383,18 +383,6 @@
       }
     }
 
-    [feature = 'railway_light_rail'],
-    [feature = 'railway_funicular'],
-    [feature = 'railway_narrow_gauge'] {
-      .bridges-casing {
-        [zoom >= 14] {
-          line-width: 5.5;
-          line-color: @bridge-casing;
-          line-join: round;
-        }
-      }
-    }
-
     [feature = 'railway_monorail'][zoom >= 14] {
       .bridges-casing {
         [zoom >= 13] {
@@ -532,18 +520,6 @@
     [feature = 'railway_miniature'][zoom >= 15] {
       .bridges-casing {
         [zoom >= 13] {
-          line-color: white;
-          line-join: round;
-        }
-      }
-    }
-
-    [feature = 'railway_light_rail'],
-    [feature = 'railway_funicular'],
-    [feature = 'railway_narrow_gauge'] {
-      .bridges-casing {
-        [zoom >= 14] {
-          line-width: 4;
           line-color: white;
           line-join: round;
         }
@@ -730,11 +706,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'railway_funicular'],
     [feature = 'railway_narrow_gauge'] {
       [zoom >= 8] {
-        line-color: #ccc;
-        [zoom >= 10] { line-color: #aaa; }
-        [zoom >= 13] { line-color: #666; }
-        line-width: 1;
-        [zoom >= 13] { line-width: 2; }
         .tunnels-fill {
           line-dasharray: 5,3;
         }

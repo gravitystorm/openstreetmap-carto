@@ -132,6 +132,34 @@
     }
   }
 
+  [railway = 'light_rail'],
+  [railway = 'funicular'],
+  [railway = 'narrow_gauge'] {
+    ::casing {
+      [bridge = true][zoom >= 13] {
+        line-width: 5.5;
+        line-color: @bridge-casing;
+        line-join: round;
+      }
+    }
+    ::fill {
+      [bridge = true][zoom >= 13] {
+        line-width: 4;
+        line-color: white;
+        line-join: round;
+      }
+    }
+    ::rw-line {
+      [zoom >= 13] {
+        line-color: #ccc;
+        [zoom >= 10] { line-color: #aaa; }
+        [zoom >= 13] { line-color: #666; }
+        line-width: 1;
+        [zoom >= 13] { line-width: 2; }
+      }
+    }
+  }
+
   [railway = 'tram'] {
     ::casing {
       [bridge = true][zoom >= 13][service != true],
