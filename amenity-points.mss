@@ -588,6 +588,14 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_marketplace'][zoom >= 16][way_pixels > 3000],
+  [feature = 'amenity_marketplace'][zoom >= 17] {
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+    marker-file: url('symbols/shop/marketplace.svg');
+  }
+
   [feature = 'shop'] {
     [shop != 'mall'][zoom >= 17],
     [shop = 'supermarket'][zoom >= 16],
@@ -1244,6 +1252,20 @@
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+  }
+
+  [feature = 'amenity_marketplace'][zoom >= 16][way_pixels > 3000],
+  [feature = 'amenity_marketplace'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-dy: 12;
+    text-fill: @shop-text;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: rgba(255, 255, 255, 0.6);
     text-placement: interior;
   }
 

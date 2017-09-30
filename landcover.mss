@@ -342,18 +342,21 @@
     }
   }
 
-  [feature = 'landuse_retail'][zoom >= 10] {
-    polygon-fill: @built-up-lower-lowzoom;
-    [zoom >= 11] { polygon-fill: @built-up-upper-lowzoom; }
-    [zoom >= 13] { polygon-fill: @retail; }
-    [zoom >= 16] {
-      line-width: 0.5;
-      line-color: @retail-line;
-      [name != ''] {
-        line-width: 0.7;
+  [feature = 'landuse_retail'],
+  [feature = 'amenity_marketplace'] {
+    [zoom >= 10] {
+      polygon-fill: @built-up-lower-lowzoom;
+      [zoom >= 11] { polygon-fill: @built-up-upper-lowzoom; }
+      [zoom >= 13] { polygon-fill: @retail; }
+      [zoom >= 16] {
+        line-width: 0.5;
+        line-color: @retail-line;
+        [name != ''] {
+          line-width: 0.7;
+        }
+        [way_pixels >= 4]  { polygon-gamma: 0.75; }
+        [way_pixels >= 64] { polygon-gamma: 0.3;  }
       }
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
   }
 
