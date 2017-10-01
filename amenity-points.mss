@@ -365,6 +365,13 @@
     }
   }
 
+  [feature = 'amenity_parking_entrance'][parking = 'underground'][zoom >= 18] {
+      marker-file: url('symbols/parking_entrance.svg');
+      marker-fill: @transportation-icon;
+      marker-placement: interior;
+      marker-clip: false;
+  }
+
   [feature = 'amenity_pharmacy'][zoom >= 17] {
     marker-file: url('symbols/pharmacy.svg');
     marker-fill: @health-color;
