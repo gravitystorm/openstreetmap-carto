@@ -55,7 +55,7 @@ Put these shapefiles at `path/to/openstreetmap-carto/data`.
 ## Fonts
 The stylesheet uses Noto, an openly licensed font family from Google with support for multiple scripts. The stylesheet uses Noto's "Sans" style where available. If not available, this stylesheet uses another appropriate style of the Noto family. The "UI" version is used where available, with its vertical metrics which fit better with Latin text.
 
-DejaVu Sans is used as an optional fallback font for systems without Noto Sans. If all the Noto fonts are installed, it should never be used.
+DejaVu Sans is used as an optional fallback font for systems without Noto Sans. If all the Noto fonts are installed, it should never be used. Noto Naskh Arabic UI is used an an optional fallback font for systems without Noto Sans Arabic.
 
 Hanazono is used a fallback for seldom used CJK characters that are not covered by Noto.
 
@@ -63,13 +63,13 @@ Unifont is used as a last resort fallback, with it's excellent coverage, common 
 
 ### Installation on Ubuntu/Debian
 
-On Ubuntu 16.04 or Debian Testing you can download and install the required fonts except Noto Emoji Regular with
+On Ubuntu 16.04 or Debian Testing you can download and install the required fonts except Noto Emoji Regular and Noto Sans Arabic UI Regular/Bold with
 
 ```
 sudo apt-get install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted fonts-hanazono ttf-unifont
 ```
 
-Noto Emoji Regular can be downloaded [from the Noto Emoji repository](https://github.com/googlei18n/noto-emoji).
+Noto Emoji Regular can be downloaded [from the Noto Emoji repository](https://github.com/googlei18n/noto-emoji). Noto Sans Arabic UI Regular/Bold can be downloaded [from the Noto repository](https://github.com/googlei18n/noto-fonts).
 
 It might be useful to have a more recent version of the fonts for [rare non-latin scripts](#non-latin-scripts). This can be installed [from source](https://github.com/googlei18n/noto-fonts/blob/master/FAQ.md#where-are-the-fonts).
 
