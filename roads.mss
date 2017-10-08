@@ -383,7 +383,6 @@
       }
     }
 
-    [feature = 'railway_disused'][zoom >= 15],
     [feature = 'railway_construction'],
     [feature = 'railway_miniature'][zoom >= 15] {
       .bridges-casing {
@@ -497,11 +496,11 @@
       }
     }
 
-    [feature = 'railway_disused'][zoom >= 15],
     [feature = 'railway_construction'],
     [feature = 'railway_miniature'][zoom >= 15] {
       .bridges-casing {
         [zoom >= 13] {
+          line-width: 6;
           line-color: white;
           line-join: round;
         }
@@ -734,15 +733,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           line-width: 3;
           line-dasharray: 3,3;
         }
-      }
-    }
-
-    [feature = 'railway_disused'] {
-      [zoom >= 15] {
-        line-color: #aaa;
-        line-width: 2;
-        line-dasharray: 2,4;
-        line-join: round;
       }
     }
 
