@@ -25,7 +25,7 @@ but there are some exceptions
 
 2. Noto provides various variants of Arabic: Noto Kufi Arabic, Noto Naskh
 Arabic, Noto Nastaliq Urdu and Noto Sans Arabic. Kufi and Urdu styles are not
-widespread in use. Noto Sans Arabic (a Naskh-like low-contrast “Sans” font) and
+widespread in use. Noto Sans Arabic (a Naskh-style low-contrast “Sans” font) and
 Noto Naskh Arabic are the fonts with the greatest coverage and provide an UI
 variant. This style uses Noto Sans Arabic UI because it’s consistent with the
 other Sans fonts and legible. The Arabic fonts are placed behind Sans fonts
@@ -37,11 +37,12 @@ colour variant is a SVG flavoured OpenType font that contains coloured emojis.
 This is not useful in cartography, so we use the “normal” monochromatic
 Noto Emoji.
 
-4. The list still includes DejaVu for compatibility on systems without Noto.
-The list still includes Noto Naskh Arabic UI for compatibility on systems
+4. The list still includes Noto Naskh Arabic UI for compatibility on systems
 without Noto Sans Arabic UI.
 
-5. Fallback fonts. Hanazono covers almost all CJK characters, even in Unicode
+5. The list still includes DejaVu for compatibility on systems without Noto.
+
+6. Fallback fonts. Hanazono covers almost all CJK characters, even in Unicode
 Plane 2. Unifont is a fallback of last resort with full coverage in Plane 0
 (Unifont Medium), some coverage in Plane 1 (Unifont Upper Medium) and no
 coverage in Plane 2. Unifont Medium Sample would cover the BMP PUA with
@@ -116,7 +117,9 @@ A regular style.
 
                 "Noto Emoji Regular",
 
-                "DejaVu Sans Book", "Noto Naskh Arabic UI Regular",
+                "Noto Naskh Arabic UI Regular",
+
+                "DejaVu Sans Book",
 
                 "HanaMinA Regular", "HanaMinB Regular",
                 "Unifont Medium", "unifont Medium", "Unifont Upper Medium";
@@ -151,7 +154,9 @@ regular text and can be used for emphasis. Fallback is a regular style.
 
                 "Noto Sans Arabic UI Bold",
 
-                "DejaVu Sans Bold", "Noto Naskh Arabic UI Bold",
+                "Noto Naskh Arabic UI Bold",
+
+                "DejaVu Sans Bold",
 
                 @book-fonts;
 
