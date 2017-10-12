@@ -293,7 +293,7 @@
     }
   }
 
-    [railway = 'disused'] {
+  [railway = 'disused'] {
     ::casing {
       [bridge = true][zoom >= 15] {
         line-width: 6;
