@@ -318,6 +318,32 @@
     }
   }
 
+  [railway = 'miniature'] {
+    ::casing {
+      [bridge = true][zoom >= 15] {
+        line-width: 6;
+        line-color: @bridge-casing;
+        line-join: round;
+      }
+    }
+    ::fill {
+      [bridge = true][zoom >= 15] {
+        line-width: 6;
+        line-color: white;
+        line-join: round;
+      }
+    }
+    ::rw-line {
+      [zoom >= 15] {
+        line/line-width: 1.2;
+        line/line-color: #999;
+        dashes/line-width: 3;
+        dashes/line-color: #999;
+        dashes/line-dasharray: 1,10;
+      }
+    }
+  }
+
   [highway = 'motorway'] {
     ::casing {
       ['mapnik::geometry_type' = linestring][zoom >= 12] {
