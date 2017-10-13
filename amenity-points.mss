@@ -907,6 +907,7 @@
     marker-clip: false;
   }
 
+  // Slipway tagging on points - slipway on lines is defined later 
   [feature = 'leisure_slipway'][zoom >= 17] {
     marker-file: url('symbols/transport_slipway.p.20.svg');
     marker-fill: @transportation-icon;
@@ -2198,6 +2199,11 @@
   // Ford tagging on ways
   [feature = 'highway_ford'][zoom >= 16] {
     marker-file: url('symbols/ford.svg');
+    marker-fill: @transportation-icon;
+  }
+  // Slipway tagging on ways
+  [feature = 'leisure_slipway'][zoom >= 17] {
+    marker-file: url('symbols/transport_slipway.p.20.svg');
     marker-fill: @transportation-icon;
   }
 }
