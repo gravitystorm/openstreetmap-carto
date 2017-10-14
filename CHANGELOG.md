@@ -1,8 +1,14 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.3.0...master)
+### Major changes
+- Rendering inland water areas and labels from z0
+
 ### Changes
-- Rendering shop=pastry like shop=confectionery 
+- Adding rendering for landuse=religious 
+- Rendering shop=pastry like shop=confectionery
 - Rendering of addr:unit
 - Rendering natural=bare_rock earlier
+- Rendering icon for slipway ways
+- Better minimal distance between housenumbers
 - Moving aeroways to their own layer
 - Creating amenity POI categories
 - Some other documentation and code cleaning
