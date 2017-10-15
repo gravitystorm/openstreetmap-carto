@@ -862,6 +862,14 @@
     marker-clip: false;
   }
 
+  [feature = 'leisure_fitness_centre'][zoom >= 17],
+  [feature = 'leisure_fitness_station'][zoom >= 17] {
+    marker-file: url('symbols/fitness.svg');
+    marker-placement: interior;
+    marker-fill: @leisure-green;
+    marker-clip: false;
+  }
+
   [feature = 'leisure_dog_park'][zoom >= 17] {
     marker-file: url('symbols/shop/pet.svg');
     marker-placement: interior;
@@ -1365,7 +1373,9 @@
   }
 
   [feature = 'leisure_playground'],
-  [feature = 'leisure_dog_park'] {
+  [feature = 'leisure_dog_park'],
+  [feature = 'leisure_fitness_centre'],
+  [feature = 'leisure_fitness_station'] {
     [way_area >= 150000][zoom >= 14],
     [way_area >= 80000][zoom >= 15],
     [way_area >= 20000][zoom >= 16],
@@ -1521,6 +1531,7 @@
   [feature = 'natural_shoal'],
   [feature = 'natural_reef'],
   [feature = 'leisure_fitness_centre'],
+  [feature = 'leisure_fitness_station'],
   [feature = 'leisure_sports_centre'],
   [feature = 'leisure_stadium'],
   [feature = 'leisure_track'],
@@ -1640,11 +1651,13 @@
       [feature = 'natural_shoal'] {
         text-fill: darken(@beach, 60%);
       }
-      [feature = 'leisure_fitness_centre'],
       [feature = 'leisure_sports_centre'],
       [feature = 'leisure_stadium'] {
         text-fill: darken(@stadium, 70%);
       }
+      [feature = 'leisure_dog_park'],
+      [feature = 'leisure_fitness_centre'],
+      [feature = 'leisure_fitness_station'],
       [feature = 'leisure_dog_park'] {
         text-fill: @leisure-green;
         text-halo-radius: @standard-halo-radius * 1.5; /* Extra halo needed to stand out from paw pattern. */
