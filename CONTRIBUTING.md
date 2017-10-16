@@ -19,7 +19,7 @@ the issue should contain the tagging of the object.
 
 ## Easy pickings
 
-Some [easy issues](https://github.com/gravitystorm/openstreetmap-carto/issues?q=is%3Aopen+is%3Aissue+label%3Aeasy) have been selected
+Some [easy issues](https://github.com/gravitystorm/openstreetmap-carto/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) have been selected
 that are particularly suitable for new contributors to get familiar with the project's code base and the contribution process.
 
 ## Editing layers
