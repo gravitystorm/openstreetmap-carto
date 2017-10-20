@@ -23,22 +23,26 @@ but there are some exceptions
     to Japanese. However, this choise stays somewhat arbitrary and subjective.
     See also https://github.com/gravitystorm/openstreetmap-carto/issues/2208)
 
-2. Noto provides three variants of Arabic: Noto Kufi Arabic, Noto Naskh Arabic
-and Noto Nastaliq Urdu. Naskh is the most commonly used style of Arabic.
-Furthermore, Noto Naskh is the Arabic font of the Noto family with the greatest
-coverage and the only one that has an UI variant. Therefor this style uses
-Noto Naskh Arabic UI. The Arabic fonts are placed behind Sans fonts because
-they might re-define some commonly used signs like parenthesis or quotation
-marks, and the arabic design should not overwrite the standard design.
+2. Noto provides various variants of Arabic: Noto Kufi Arabic, Noto Naskh
+Arabic, Noto Nastaliq Urdu and Noto Sans Arabic. Kufi and Urdu styles are not
+widespread in use. Noto Sans Arabic (a Naskh-style low-contrast “Sans” font) and
+Noto Naskh Arabic are the fonts with the greatest coverage and provide an UI
+variant. This style uses Noto Sans Arabic UI because it’s consistent with the
+other Sans fonts and legible. The Arabic fonts are placed behind Sans fonts
+because they might re-define some commonly used signs like parenthesis or
+quotation marks, and the arabic design should not overwrite the standard design.
 
 3. Noto provides two variants of Emoji: Noto Color Emoji and Noto Emoji. The
 colour variant is a SVG flavoured OpenType font that contains coloured emojis.
 This is not useful in cartography, so we use the “normal” monochromatic
 Noto Emoji.
 
-4. The list still includes DejaVu for compatibility on systems without Noto.
+4. The list still includes Noto Naskh Arabic UI for compatibility on systems
+without Noto Sans Arabic UI.
 
-5. Fallback fonts. Hanazono covers almost all CJK characters, even in Unicode
+5. The list still includes DejaVu for compatibility on systems without Noto.
+
+6. Fallback fonts. Hanazono covers almost all CJK characters, even in Unicode
 Plane 2. Unifont is a fallback of last resort with full coverage in Plane 0
 (Unifont Medium), some coverage in Plane 1 (Unifont Upper Medium) and no
 coverage in Plane 2. Unifont Medium Sample would cover the BMP PUA with
@@ -109,9 +113,11 @@ A regular style.
                 "Noto Sans Vai Regular",
                 "Noto Sans Yi Regular",
 
-                "Noto Naskh Arabic UI Regular",
+                "Noto Sans Arabic UI Regular",
 
                 "Noto Emoji Regular",
+
+                "Noto Naskh Arabic UI Regular",
 
                 "DejaVu Sans Book",
 
@@ -145,6 +151,13 @@ regular text and can be used for emphasis. Fallback is a regular style.
                 "Noto Sans Thaana Bold",
                 "Noto Sans Thai UI Bold",
                 "Noto Sans Tibetan Bold",
+
+                "Noto Sans Arabic UI Bold",
+
+                "Noto Naskh Arabic UI Bold",
+
+                "DejaVu Sans Bold",
+
                 @book-fonts;
 
 /*
