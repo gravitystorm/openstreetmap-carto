@@ -1,12 +1,18 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.3.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.4.0...master)
+
+## [v4.4.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.3.0...v4.4.0) - 2017-10-20
 ### Major changes
 - Rendering inland water areas and labels from z0
+- Rendering island and islet labels earlier
 
 ### Changes
-- Adding rendering for landuse=religious 
+- Rendering of amenity=marketplace
+- Rendering of landuse=religious 
 - Rendering shop=pastry like shop=confectionery
 - Rendering of addr:unit
 - Rendering natural=bare_rock earlier
+- Rendering elevation also on polygon alpine_hut and shelter
+- Introducing Noto Sans Arabic 
 - Rendering icon for slipway ways
 - Better minimal distance between housenumbers
 - Moving aeroways to their own layer
