@@ -23,7 +23,9 @@
   [zoom >= 13] {
     [aeroway = 'terminal'],
     [amenity = 'place_of_worship'],
-    [building = 'train_station'] {
+    [building = 'train_station'],
+    [aerialway = 'station'],
+    [public_transport = 'station'] {
       polygon-fill: @building-major-fill;
       polygon-clip: false;
       [zoom >= 15] {
