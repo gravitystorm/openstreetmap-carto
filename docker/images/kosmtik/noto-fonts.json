@@ -1,0 +1,10 @@
+{
+  "googlei18n/noto-emoji/blob/master/fonts": [
+    "NotoColorEmoji.ttf",
+    "NotoEmoji-Regular.ttf"
+  ],
+  "googlei18n/noto-fonts/blob/master/hinted": [
+    "NotoSansArabicUI-Regular.ttf",
+    "NotoSansArabicUI-Bold.ttf"
+  ]
+}

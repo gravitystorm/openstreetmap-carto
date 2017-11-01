@@ -1,12 +1,15 @@
-version: '2'
+version: '3.2'
+
 services:
+
   kosmtik:
     image: kosmtik:v1
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: images/kosmtik
+      args:
+        - APP_UID=1000
     volumes:
-      - .:/openstreetmap-carto
+      - ../:/openstreetmap-carto
     depends_on:
       - db
     ports:
@@ -14,21 +17,25 @@ services:
     environment:
       - PGHOST=db
       - PGUSER=postgres
+
   db:
     image: db:v1
     build:
-      context: .
-      dockerfile: Dockerfile.db
+      context: images/db
+    volumes:
+      - db:/openstreetmap-carto
     environment:
       - PG_WORK_MEM
       - PG_MAINTENANCE_WORK_MEM
+
   import:
     image: import:v1
     build:
-      context: .
-      dockerfile: Dockerfile.import
+      context: images/import
+      args:
+        - APP_UID=1000
     volumes:
-      - .:/openstreetmap-carto
+      - ../:/openstreetmap-carto
     depends_on:
       - db
     environment:
@@ -37,5 +44,8 @@ services:
       - PG_WORK_MEM
       - PG_MAINTENANCE_WORK_MEM
       - OSM2PGSQL_CACHE
-      - OSM2PGSQL_NUMPROC
+      - OSM2PGSQL_NUMPROC=8
       - OSM2PGSQL_DATAFILE
+
+volumes:
+  db:
