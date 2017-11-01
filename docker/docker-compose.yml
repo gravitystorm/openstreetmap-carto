@@ -44,7 +44,7 @@ services:
       - PG_WORK_MEM
       - PG_MAINTENANCE_WORK_MEM
       - OSM2PGSQL_CACHE
-      - OSM2PGSQL_NUMPROC=8
+      - OSM2PGSQL_NUMPROC
       - OSM2PGSQL_DATAFILE
 
 volumes:
