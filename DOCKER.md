@@ -24,6 +24,10 @@ Read on below to get the details.
 * Ctrl+C to stop the style preview application
 * `docker-compose stop db` to stop the database container
 
+## Repositories
+
+Instructions above will clone main openstreetmap-carto repository. To test your own changes you should [fork](https://help.github.com/articles/fork-a-repo/) gravitystorm/openstreetmap-carto repository and [clone your fork](https://help.github.com/articles/cloning-a-repository/).
+
 ## Importing data
 
 openstreetmap-carto needs a database populated with rendering data to work. You first need a data file to import.
