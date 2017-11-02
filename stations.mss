@@ -37,7 +37,8 @@
       text-dy: 9;
       text-halo-radius: @standard-halo-radius * 1.5;
       text-halo-fill: @standard-halo-fill;
-      text-wrap-width: 0;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
       text-placement: interior;
     }
     [zoom >= 15] {
@@ -66,7 +67,8 @@
       text-dy: 10;
       text-halo-radius: @standard-halo-radius * 1.5;
       text-halo-fill: @standard-halo-fill;
-      text-wrap-width: 0;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
       text-placement: interior;
     }
   }
@@ -90,7 +92,8 @@
       text-dy: 10;
       text-halo-radius: @standard-halo-radius * 1.5;
       text-halo-fill: @standard-halo-fill;
-      text-wrap-width: 0;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
       text-placement: interior;
     }
   }
@@ -114,7 +117,8 @@
       text-dy: 10;
       text-halo-radius: @standard-halo-radius * 1.5;
       text-halo-fill: @standard-halo-fill;
-      text-wrap-width: 0;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
       text-placement: interior;
     }
   }
