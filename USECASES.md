@@ -6,6 +6,7 @@ For now, this table covers zoom levels 5, 6 and 7.
 
 |Use case|Map subject|Map context|Zoom level|
 |---|---|---|---|---|
+
 |Looking up country location|Country names, country borders|Seas and oceans|z5,z6|
 |Looking up province/state location|Province/state names and borders|Country borders|z6,z7|
 |Looking up city location|City names|Seas, oceans, country names, country borders|z5,z6,z7|
