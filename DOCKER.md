@@ -31,12 +31,11 @@ Read on below to get the details.
 openstreetmap-carto needs a database populated with rendering data to work. You first need a data file to import.
 It's probably easiest to grab an PBF of OSM data from [Mapzen](https://mapzen.com/data/metro-extracts/) or [Geofabrik](http://download.geofabrik.de/).
 Once you have that file put it into the openstreetmap-carto directory and run `docker-compose up import` in the openstreetmap-carto directory.
-This starts the PostgreSQL container (downloads it if it not exists) and starts a container that runs [osm2pgsql](https://github.com/openstreetmap/osm2pgsql) 
-to import the data. The container is built the first time you run that command if it not exists.
-At startup of the container the script `scripts/docker-startup.sh` is invoked which prepares the database and itself starts osm2pgsql for importing the data.
+This starts the PostgreSQL container and starts a container that runs [osm2pgsql](https://github.com/openstreetmap/osm2pgsql) 
+to import the data.
 
 osm2pgsql has a few [command line options](https://manpages.debian.org/testing/osm2pgsql/osm2pgsql.1.en.html) and the import by default uses a 
-RAM cache of 512 MB, 1 worker and expects the import file to be named `data.osm.pbf` and located in `docker/` subdirectory. If you want to customize 
+RAM cache of 512 MB, 1 worker and expects the import file to be named `data.osm.pbf` and located in the `docker/` subdirectory. If you want to customize 
 any of these parameters you have to set the environment variables `OSM2PGSQL_CACHE` (e.g. `export OSM2PGSQL_CACHE=1024` on Linux to set the cache to 1 GB) 
 for the RAM cache (the value depends on the amount of RAM you have available, the more you can use here the faster the import may be), `OSM2PGSQL_NUMPROC` 
 for the number of workers (this depends on the number of processors you have and whether your harddisk is fast enough e.g. is a SSD), or `OSM2PGSQL_DATAFILE` 
