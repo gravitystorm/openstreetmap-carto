@@ -13,12 +13,14 @@ As we are still experimenting with this way of design, this document is restrict
 | Long distance road trip planning | Motorways | City names | z6, z7 |
 
 This gives us the following features:
+
 * z5: Map subject: Country names, country borders, city names. Map context: seas, oceans.
 * z5 in USA: Map subject: Province/state names and borders. Map context: Country names, country borders, seas oceans
 * z6: Map subject: Country names, country borders, province/state names and borders, motorways, city names. Map context: Seas, oceans, country borders, city names.
 * z7: Map subject: Province/state names and borders, city names, motorways. Map context: Seas, oceans, country names, country borders.
 
 Some features that we currently render for which we do not (yet) have a use case:
+
 * Province/state names and borders (except USA) on z5
 * Roads on z5
 * National parks on z7
