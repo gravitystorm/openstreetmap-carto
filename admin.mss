@@ -190,7 +190,7 @@ overlapping borders correctly.
 }
 
 #nature-reserve-boundaries {
-  [way_pixels > 100][zoom >= 7] {
+  [way_pixels > 100][zoom >= 8] {
     [zoom < 10] {
       ::fill {
         opacity: 0.05;
