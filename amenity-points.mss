@@ -979,6 +979,13 @@
     marker-placement: interior;
     marker-clip: false;
   }
+  
+  [feature = 'military_bunker'][zoom >= 17] {
+    marker-file: url('symbols/bunker.svg');
+    marker-fill: @man-made-icon;    
+    marker-placement: interior;
+    marker-clip: false;
+  }  
 
   [feature = 'natural_spring'][zoom >= 14] {
     marker-file: url('symbols/spring.svg');
@@ -1338,6 +1345,19 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: @memorials;
+    text-dy: 11;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+  }
+  
+  [feature = 'military_bunker'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: @man-made-icon;
     text-dy: 11;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;

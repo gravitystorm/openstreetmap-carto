@@ -1425,6 +1425,7 @@ Layer:
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site')
                              THEN concat_ws('_', historic, CASE WHEN tags->'memorial' IN ('plaque') THEN tags->'memorial' ELSE NULL END)
                              ELSE NULL END,
+              'military_'|| CASE WHEN military IN ('bunker') THEN military ELSE NULL END,                             
               'highway_'|| CASE WHEN highway IN ('bus_stop', 'elevator', 'traffic_signals') THEN highway ELSE NULL END,
               'power_' || CASE WHEN power IN ('generator') THEN power ELSE NULL END,
               'tourism_' || CASE WHEN tourism IN ('viewpoint') THEN tourism ELSE NULL END
@@ -1458,6 +1459,7 @@ Layer:
             OR "natural" IN ('spring')
             OR historic IN ('memorial', 'monument', 'archaeological_site')
             OR tags->'memorial' IN ('plaque')
+            OR military IN ('bunker')
             OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
             OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> 'power_source=>wind'))
           ORDER BY way_area desc
@@ -1513,6 +1515,7 @@ Layer:
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site')
                              THEN concat_ws('_', historic, CASE WHEN tags->'memorial' IN ('plaque') THEN tags->'memorial' ELSE NULL END)
                              ELSE NULL END,
+              'military_'|| CASE WHEN military IN ('bunker') THEN military ELSE NULL END,
               'highway_'|| CASE WHEN highway IN ('bus_stop', 'elevator', 'traffic_signals') THEN highway 
                                 WHEN tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones' THEN 'ford' ELSE NULL END,
               'power_' || CASE WHEN power IN ('generator') THEN power ELSE NULL END,
@@ -1558,6 +1561,7 @@ Layer:
             OR "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance')
             OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross')
             OR tags->'memorial' IN ('plaque')
+            OR military IN ('bunker')
             OR tags @> 'emergency=>phone'
             OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
             OR tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones'
@@ -1941,7 +1945,7 @@ Layer:
               'natural_' || CASE WHEN "natural" IN ('wood', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath',
                                                     'grassland', 'scrub', 'beach', 'shoal', 'reef', 'glacier') THEN "natural" ELSE NULL END,
               'place_' || CASE WHEN place IN ('island', 'islet') THEN place ELSE NULL END,
-              'military_' || CASE WHEN military IN ('danger_area') THEN military ELSE NULL END,
+              'military_' || CASE WHEN military IN ('danger_area', 'bunker') THEN military ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site')
                              THEN concat_ws('_', historic, CASE WHEN tags->'memorial' IN ('plaque') THEN tags->'memorial' ELSE NULL END)
                              ELSE NULL END,
@@ -1978,7 +1982,7 @@ Layer:
               OR man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower', 'pier', 'breakwater', 'groyne', 'obelisk', 'works')
               OR "natural" IS NOT NULL
               OR place IN ('island', 'islet')
-              OR military IN ('danger_area')
+              OR military IN ('danger_area', 'bunker')
               OR historic IN ('memorial', 'monument', 'archaeological_site')
               OR tags->'memorial' IN ('plaque')
               OR highway IN ('services', 'rest_area', 'bus_stop', 'elevator')
@@ -2083,7 +2087,7 @@ Layer:
                                                         'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier', 'tree')
                                                         THEN "natural" ELSE NULL END,
                   'place_' || CASE WHEN place IN ('island', 'islet') THEN place ELSE NULL END,
-                  'military_' || CASE WHEN military IN ('danger_area') THEN military ELSE NULL END,
+                  'military_' || CASE WHEN military IN ('danger_area', 'bunker') THEN military ELSE NULL END,
                   'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site')
                                  THEN concat_ws('_', historic, CASE WHEN tags->'memorial' IN ('plaque') THEN tags->'memorial' ELSE NULL END)
                                  ELSE NULL END,
@@ -2125,7 +2129,7 @@ Layer:
                   OR man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower', 'cross', 'obelisk', 'works')
                   OR "natural" IS NOT NULL
                   OR place IN ('island', 'islet')
-                  OR military IN ('danger_area')
+                  OR military IN ('danger_area', 'bunker')
                   OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross')
                   OR tags->'memorial' IN ('plaque')
                   OR highway IN ('bus_stop', 'services', 'rest_area', 'elevator')
