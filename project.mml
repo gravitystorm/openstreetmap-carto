@@ -1267,11 +1267,19 @@ Layer:
                 place,
                 tags,
                 way_area
-              FROM planet_osm_polygon
-              ) places
-              WHERE place IN ('city', 'town', 'village', 'hamlet')
-                AND name IS NOT NULL
-                AND tags @> 'capital=>yes'
+            FROM planet_osm_polygon a
+            WHERE 
+                NOT EXISTS (
+                    SELECT
+                      FROM planet_osm_point p
+                     WHERE a.place = p.place 
+                       AND a.name = p.name 
+                       AND ST_Intesects(a.geom, p.geom)
+                 )
+            ) places
+          WHERE place IN ('city', 'town', 'village', 'hamlet')
+            AND name IS NOT NULL
+            AND tags @> 'capital=>yes'
           ORDER BY population DESC,
             way_area DESC NULLS LAST
         ) AS capital_names
@@ -1350,7 +1358,15 @@ Layer:
                   name,
                   tags,
                   way_area
-                FROM planet_osm_polygon
+              FROM planet_osm_polygon a
+              WHERE 
+                  NOT EXISTS (
+                      SELECT
+                        FROM planet_osm_point p
+                       WHERE a.place = p.place 
+                         AND a.name = p.name 
+                         AND ST_Intesects(a.geom, p.geom)
+                  )
               ) places
               WHERE place IN ('city', 'town')
                 AND name IS NOT NULL
@@ -1386,7 +1402,15 @@ Layer:
               name,
               tags,
               NULL AS way_area
-            FROM planet_osm_polygon
+           FROM planet_osm_polygon a
+           WHERE 
+               NOT EXISTS (
+                   SELECT
+                     FROM planet_osm_point p
+                    WHERE a.place = p.place 
+                      AND a.name = p.name 
+                      AND ST_Intesects(a.geom, p.geom)
+                )
             ) AS places
           WHERE place IN ('village', 'hamlet')
              AND name IS NOT NULL
