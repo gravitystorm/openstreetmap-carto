@@ -1006,7 +1006,7 @@
   [feature = 'man_made_windmill'][zoom >= 16] {
     marker-file: url('symbols/windmill.svg');
     marker-placement: interior;
-    marker-fill: @amenity-brown;
+    marker-fill: @man-made-icon;
     marker-clip: false;
   }
 
@@ -1850,28 +1850,28 @@
     }
   }
 
-  [feature = 'man_made_lighthouse'][zoom >= 15] {
+  [feature = 'man_made_lighthouse'][zoom >= 15],
+  [feature = 'man_made_windmill'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: @man-made-icon;
     text-dy: 16;
+    [feature = 'man_made_windmill'] { text-dy: 12; }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
   }
 
-  [feature = 'man_made_windmill'][zoom >= 17],
   [feature = 'amenity_recycling'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: @amenity-brown;
-    text-dy: 12;
-    [feature = 'amenity_recycling'] { text-dy: 10; }
+    text-dy: 10;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
