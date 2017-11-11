@@ -943,7 +943,7 @@ Layer:
             z_order
         ) AS roads_low_zoom
     properties:
-      minzoom: 5
+      minzoom: 6
       maxzoom: 9
   - id: waterway-bridges
     class: water-lines
@@ -1181,7 +1181,7 @@ Layer:
             AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
         ) AS national_park_boundaries
     properties:
-      minzoom: 7
+      minzoom: 8
   - id: tourism-boundary
     geometry: polygon
     <<: *extents

@@ -60,8 +60,8 @@
 @residential-tunnel-fill: darken(@residential-fill, 5%);
 @living-street-tunnel-fill: lighten(@living-street-fill, 10%);
 
-@motorway-width-z5:               0.5;
-@trunk-width-z5:                  0.4;
+@motorway-width-z6:               0.5;
+@trunk-width-z6:                  0.4;
 
 @motorway-width-z7:               0.8;
 @trunk-width-z7:                  0.6;
@@ -1170,10 +1170,10 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
 
     [feature = 'highway_motorway'] {
-      [zoom >= 5][link != 'yes'],
+      [zoom >= 6][link != 'yes'],
       [zoom >= 10] {
         line-color: @motorway-low-zoom;
-        line-width: @motorway-width-z5;
+        line-width: @motorway-width-z6;
         [zoom >= 7] { line-width: @motorway-width-z7; }
         [zoom >= 8] { line-width: @motorway-width-z8; }
         [zoom >= 9] { line-width: @motorway-width-z9; }
@@ -1221,9 +1221,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
 
     [feature = 'highway_trunk'] {
-      [zoom >= 5][link != 'yes'],
+      [zoom >= 6][link != 'yes'],
       [zoom >= 10] {
-        line-width: @trunk-width-z5;
+        line-width: @trunk-width-z6;
         line-color: @trunk-low-zoom;
         [zoom >= 7] { line-width: @trunk-width-z7; }
         [zoom >= 8] { line-width: @trunk-width-z8; }
@@ -1825,7 +1825,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
 
-    [feature = 'railway_rail'][zoom >= 7],
+    [feature = 'railway_rail'][zoom >= 8],
     [feature = 'railway_INT-spur-siding-yard'][zoom >= 13] {
       [zoom < 13] {
         line-color: #787878;
