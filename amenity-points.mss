@@ -35,6 +35,25 @@
 
 /* Note that .points is also used in water-features.mss */
 .points {
+  [feature = 'amenity_pub'],
+  [feature = 'amenity_restaurant'],
+  [feature = 'amenity_food_court'],
+  [feature = 'amenity_cafe'],
+  [feature = 'amenity_fast_food'],
+  [feature = 'amenity_biergarten'],
+  [feature = 'amenity_bar'],
+  [feature = 'amenity_ice_cream'],
+  [feature = 'amenity_nightclub'] {
+    [zoom >= 17][zoom < 18] {
+      marker-file: url('symbols/square.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @amenity-brown;
+      marker-width: 4;
+      marker-line-width: 0;
+    }
+  }
+
   [feature = 'tourism_alpine_hut'][zoom >= 13],
   [feature = 'tourism_wilderness_hut'][zoom >= 13],
   [feature = 'amenity_shelter'][zoom >= 16] {
@@ -64,7 +83,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_bar'][zoom >= 17] {
+  [feature = 'amenity_bar'][zoom >= 18] {
     marker-file: url('symbols/bar.svg');
     marker-fill: @gastronomy;
     marker-placement: interior;
@@ -122,7 +141,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_cafe'][zoom >= 17] {
+  [feature = 'amenity_cafe'][zoom >= 18] {
     marker-file: url('symbols/cafe.svg');
     marker-fill: @gastronomy;
     marker-placement: interior;
@@ -186,7 +205,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_nightclub'][zoom >= 17] {
+  [feature = 'amenity_nightclub'][zoom >= 18] {
     marker-file: url('symbols/nightclub.svg');
     marker-fill: @gastronomy;
     marker-placement: interior;
@@ -276,7 +295,7 @@
     marker-fill: @accommodation-icon;
   }
 
-  [feature = 'amenity_ice_cream'][zoom >= 17] {
+  [feature = 'amenity_ice_cream'][zoom >= 18] {
     marker-file: url('symbols/shop/ice_cream.svg');
     marker-fill: @gastronomy;
     marker-placement: interior;
@@ -458,14 +477,14 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_pub'][zoom >= 17] {
+  [feature = 'amenity_pub'][zoom >= 18] {
     marker-file: url('symbols/pub.svg');
     marker-fill: @gastronomy;
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [feature = 'amenity_biergarten'][zoom >= 17] {
+  [feature = 'amenity_biergarten'][zoom >= 18] {
     marker-file: url('symbols/biergarten.svg');
     marker-fill: @gastronomy;
     marker-placement: interior;
@@ -482,15 +501,15 @@
     }
   }
 
-  [feature = 'amenity_restaurant'][zoom >= 17],
-  [feature = 'amenity_food_court'][zoom >= 17] {
+  [feature = 'amenity_restaurant'][zoom >= 18],
+  [feature = 'amenity_food_court'][zoom >= 18] {
     marker-file: url('symbols/restaurant.svg');
     marker-fill: @gastronomy;
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [feature = 'amenity_fast_food'][zoom >= 17] {
+  [feature = 'amenity_fast_food'][zoom >= 18] {
     marker-file: url('symbols/fast_food.svg');
     marker-fill: @gastronomy;
     marker-placement: interior;
