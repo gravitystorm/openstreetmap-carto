@@ -6,10 +6,10 @@ As we are still experimenting with this way of design, this document is restrict
 
 | Use case | Map subject | Map context | Zoom level |
 | --- | --- | --- | --- |
-| Looking up country location | Country names, country borders | Seas and oceans | z5, z6 |
-| Looking up U.S. state location | state names and borders in USA  | Seas and oceans, country bnorders | z5, z6, z7 |
+| Looking up country location | Country names, country borders | Coastlines | z5, z6 |
+| Looking up U.S. state location | state names and borders in USA  | Coastlines, country bnorders | z5, z6, z7 |
 | Looking up province/state location|Province/state names and borders|Country borders | z6, z7 |
-| Looking up city location | City names | Seas, oceans, country names, country borders | z5, z6, z7 |
+| Looking up city location | City names | Coastlines, country names, country borders | z5, z6, z7 |
 | Long distance road trip planning | Motorways | City names | z6, z7 |
 
 This gives us the following features:
@@ -22,7 +22,8 @@ This gives us the following features:
 Some features that we currently render for which we do not (yet) have a use case:
 
 * Province/state names and borders (except USA) on z5
-* Roads on z5
-* National parks on z7
-* Railways on z7
 * Minor water areas on z5/6/7
+* Glaciers and icesheets on z6 and z7
+* Military areas on z7
+* Ferry routes on z7
+* Island names on z5/6/7
