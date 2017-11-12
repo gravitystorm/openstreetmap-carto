@@ -47,7 +47,7 @@
 @mud: rgba(203,177,154,0.3); // produces #e6dcd1 over @land
 @place_of_worship: #cdccc9;
 @place_of_worship_outline: #111;
-@playground: lighten(@park, 5%);
+@leisure: lighten(@park, 5%);
 @power: darken(@industrial, 5%);
 @power-line: darken(@industrial-line, 5%);
 @sand: #f5e9c6;
@@ -61,7 +61,7 @@
 
 @pitch: #aae0cb; // also track
 @track: @pitch;
-@stadium: @societal_amenities; // also fitness_centre and sports_centre
+@stadium: @societal_amenities; // also sports_centre
 @golf_course: #b5e3b5;
 
 #landcover-low-zoom[zoom < 10],
@@ -97,9 +97,10 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [feature = 'leisure_playground'][zoom >= 13] {
-    polygon-fill: @playground;
-    line-color: darken(@playground, 60%);
+  [feature = 'leisure_playground'][zoom >= 13],
+  [feature = 'leisure_fitness_station'][zoom >= 13] {
+    polygon-fill: @leisure;
+    line-color: darken(@leisure, 60%);
     line-width: 0.3;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
@@ -260,7 +261,7 @@
 
   [feature = 'leisure_dog_park'] {
     [zoom >= 10] {
-      polygon-fill: @playground;
+      polygon-fill: @leisure;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
@@ -581,7 +582,6 @@
     polygon-fill: @railway;
   }
 
-  [feature = 'leisure_fitness_centre'],
   [feature = 'leisure_sports_centre'],
   [feature = 'leisure_stadium'] {
     [zoom >= 10] {
