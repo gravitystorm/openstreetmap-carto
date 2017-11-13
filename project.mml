@@ -1274,7 +1274,7 @@ Layer:
                       FROM planet_osm_point p
                      WHERE a.place = p.place 
                        AND a.name = p.name 
-                       AND ST_Intesects(a.geom, p.geom)
+                       AND ST_Intersects(a.way, p.way)
                  )
             ) places
           WHERE place IN ('city', 'town', 'village', 'hamlet')
@@ -1365,7 +1365,7 @@ Layer:
                         FROM planet_osm_point p
                        WHERE a.place = p.place 
                          AND a.name = p.name 
-                         AND ST_Intesects(a.geom, p.geom)
+                         AND ST_Intersects(a.way, p.way)
                   )
               ) places
               WHERE place IN ('city', 'town')
@@ -1409,7 +1409,7 @@ Layer:
                      FROM planet_osm_point p
                     WHERE a.place = p.place 
                       AND a.name = p.name 
-                      AND ST_Intesects(a.geom, p.geom)
+                      AND ST_Intersects(a.way, p.way)
                 )
             ) AS places
           WHERE place IN ('village', 'hamlet')
