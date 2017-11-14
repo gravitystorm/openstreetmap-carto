@@ -29,7 +29,7 @@
 @aerodrome: #e9e7e2;
 @apron: #e9d1ff;
 @garages: #dfddce;
-@parking: #f7efb7;
+@parking: #eeeeee;
 @railway: @industrial;
 @railway-line: @industrial-line;
 @rest_area: #efc8c8; // also services
