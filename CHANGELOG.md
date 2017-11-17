@@ -1,4 +1,6 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.4.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.5.0...master)
+
+## [v4.5.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.4.0...v4.5.0) - 2017-11-17
 ### Major changes
 - Cleaning up low zoom levels (z5-z7):
   - Rendering roads from z6 instead of z5
