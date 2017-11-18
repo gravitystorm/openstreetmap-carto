@@ -376,7 +376,8 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [feature = 'man_made_works'][zoom >= 16] {
+  [feature = 'man_made_works'][zoom >= 16],
+  [feature = 'power_plant'][zoom >= 16] {
     line-width: .5;
     line-color: @industrial-line;
     [name != ''] {
