@@ -613,7 +613,7 @@ Layer:
           WHERE route = 'ferry'
         ) AS ferry_routes
     properties:
-      minzoom: 7
+      minzoom: 8
   - id: turning-circle-casing
     geometry: point
     <<: *extents
