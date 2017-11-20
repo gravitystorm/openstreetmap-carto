@@ -30,20 +30,24 @@
     }
   }
 
-  [landuse = 'basin'][zoom >= 7]::landuse {
-    polygon-fill: @water-color;
-    [way_pixels >= 4] {
-      polygon-gamma: 0.75;
-    }
-    [way_pixels >= 64] {
-      polygon-gamma: 0.6;
+  [landuse = 'basin']::landuse {
+    [zoom >= 7][way_pixels >= 32],
+    [zoom >= 8] {
+      polygon-fill: @water-color;
+      [way_pixels >= 4] {
+        polygon-gamma: 0.75;
+      }
+      [way_pixels >= 64] {
+        polygon-gamma: 0.6;
+      }
     }
   }
 
   [natural = 'water']::natural,
   [landuse = 'reservoir']::landuse,
   [waterway = 'riverbank']::waterway {
-    [zoom >= 0] {
+    [zoom >= 0][way_pixels >= 32],
+    [zoom >= 8] {
       polygon-fill: @water-color;
       [way_pixels >= 4] {
         polygon-gamma: 0.75;
