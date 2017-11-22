@@ -35,7 +35,7 @@ show the new rendering.
 If the tile server admins have rolled out the new version, change it to:
 
   Today, $NEW_VERSION of the openstreetmap-carto stylesheet (the default
-  stylesheet on OSM website) has been released and rolled out 
+  stylesheet on the OSM website) has been released and rolled out 
   to the openstreetmap.org servers. It might take a couple of days 
   before all tiles show the new rendering. 
 
