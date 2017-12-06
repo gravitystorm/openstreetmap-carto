@@ -1067,7 +1067,7 @@ Layer:
           WHERE highway = 'bus_guideway'
         ) AS guideways
     properties:
-      minzoom: 13
+      minzoom: 11
   - id: aeroways
     geometry: linestring
     <<: *extents
