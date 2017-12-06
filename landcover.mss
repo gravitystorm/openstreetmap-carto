@@ -216,7 +216,7 @@
     line-opacity: 0.329;
   }
 
-  [feature = 'landuse_residential'][zoom >= 10] {
+  [feature = 'landuse_residential'][zoom >= 8] {
     polygon-fill: @built-up-lower-lowzoom;
     [zoom >= 11] { polygon-fill: @built-up-upper-lowzoom; }
     [zoom >= 13] { polygon-fill: @residential; }
@@ -345,7 +345,7 @@
 
   [feature = 'landuse_retail'],
   [feature = 'amenity_marketplace'] {
-    [zoom >= 10] {
+    [zoom >= 8] {
       polygon-fill: @built-up-lower-lowzoom;
       [zoom >= 11] { polygon-fill: @built-up-upper-lowzoom; }
       [zoom >= 13] { polygon-fill: @retail; }
@@ -361,7 +361,7 @@
     }
   }
 
-  [feature = 'landuse_industrial'][zoom >= 10] {
+  [feature = 'landuse_industrial'][zoom >= 8] {
     polygon-fill: @built-up-lower-lowzoom;
     [zoom >= 11] { polygon-fill: @built-up-upper-lowzoom; }
     [zoom >= 13] { polygon-fill: @industrial; }
@@ -413,7 +413,7 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [feature = 'landuse_commercial'][zoom >= 10] {
+  [feature = 'landuse_commercial'][zoom >= 8] {
     polygon-fill: @built-up-lower-lowzoom;
     [zoom >= 11] { polygon-fill: @built-up-upper-lowzoom; }
     [zoom >= 13] { polygon-fill: @commercial; }
