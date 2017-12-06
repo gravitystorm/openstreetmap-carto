@@ -1,10 +1,10 @@
 // --- Parks, woods, other green things ---
 
-@grass: #cdebb0; // also meadow, common, garden, village_green
+@grass: #cdebb0; // also grassland, meadow, common, village_green
 @scrub: #b5e3b5;
 @forest: #add19e;       // Lch(80,30,135)
 @forest-text: #46673b;  // Lch(40,30,135)
-@park: #c8facc;         // Lch(94,30,145) also recreation_ground
+@park: #c8facc;         // Lch(94,30,145) also garden
 @orchard: #aedfa3; // also vineyard, plant_nursery
 
 // --- "Base" landuses ---
@@ -97,6 +97,8 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
+  [feature = 'leisure_recreation_ground'][zoom >= 10],
+  [feature = 'landuse_recreation_ground'][zoom >= 10],
   [feature = 'leisure_playground'][zoom >= 13],
   [feature = 'leisure_fitness_station'][zoom >= 13] {
     polygon-fill: @leisure;
@@ -251,7 +253,7 @@
   }
 
   [feature = 'leisure_park'],
-  [feature = 'leisure_recreation_ground'] {
+  [feature = 'leisure_garden'] {
     [zoom >= 10] {
       polygon-fill: @park;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -332,10 +334,8 @@
   [feature = 'landuse_meadow'],
   [feature = 'natural_grassland'],
   [feature = 'landuse_grass'],
-  [feature = 'landuse_recreation_ground'],
   [feature = 'landuse_village_green'],
-  [feature = 'leisure_common'],
-  [feature = 'leisure_garden'] {
+  [feature = 'leisure_common'] {
     [zoom >= 10] {
       polygon-fill: @grass;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
