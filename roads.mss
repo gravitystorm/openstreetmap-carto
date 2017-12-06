@@ -1051,20 +1051,24 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       //Missing line-cap: round; is intentional. It would cause rendering glow multiple times in some places - what as result of partial transparency would cause differences in rendering
       //Also, bridges - including bridge casings are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
     }
-    [feature = 'highway_motorway'][link != 'yes'][zoom >= 8][zoom < 12],
+    [feature = 'highway_motorway'][link != 'yes'][zoom >= 6][zoom < 12],
     [feature = 'highway_motorway'][link = 'yes'][zoom >= 10][zoom < 12],
-    [feature = 'highway_trunk'][link != 'yes'][zoom >= 8][zoom < 12],
+    [feature = 'highway_trunk'][link != 'yes'][zoom >= 6][zoom < 12],
     [feature = 'highway_trunk'][link = 'yes'][zoom >= 10][zoom < 12],
     [feature = 'highway_primary'][link != 'yes'][zoom >= 8][zoom < 12],
     [feature = 'highway_primary'][link = 'yes'][zoom >= 10][zoom < 12],
     [feature = 'highway_secondary'][zoom >= 11][zoom < 12] {
       [feature = 'highway_motorway'] {
+        [zoom >= 6] { line-width: @motorway-width-z6 + 2 * @lowzoom-halo-width; }
+        [zoom >= 7] { line-width: @motorway-width-z7 + 2 * @lowzoom-halo-width; }
         [zoom >= 8] { line-width: @motorway-width-z8 + 2 * @lowzoom-halo-width; }
         [zoom >= 9] { line-width: @motorway-width-z9 + 2 * @lowzoom-halo-width; }
         [zoom >= 10] { line-width: @motorway-width-z10 + 2 * @lowzoom-halo-width; }
         [zoom >= 11] { line-width: @motorway-width-z11 + 2 * @lowzoom-halo-width; }
       }
       [feature = 'highway_trunk'] {
+        [zoom >= 6] { line-width: @trunk-width-z6 + 2 * @lowzoom-halo-width; }
+        [zoom >= 7] { line-width: @trunk-width-z7 + 2 * @lowzoom-halo-width; }
         [zoom >= 8] { line-width: @trunk-width-z8 + 2 * @lowzoom-halo-width; }
         [zoom >= 9] { line-width: @trunk-width-z9 + 2 * @lowzoom-halo-width; }
         [zoom >= 10] { line-width: @trunk-width-z10 + 2 * @lowzoom-halo-width; }
