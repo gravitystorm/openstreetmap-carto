@@ -217,7 +217,7 @@ Layer:
       file: data/antarctica-icesheet-polygons-3857/icesheet_polygons.shp
       type: shape
     properties:
-      minzoom: 4
+      minzoom: 8
   - id: water-areas
     geometry: polygon
     <<: *extents
@@ -277,7 +277,7 @@ Layer:
       file: data/antarctica-icesheet-outlines-3857/icesheet_outlines.shp
       type: shape
     properties:
-      minzoom: 4
+      minzoom: 8
   - id: water-lines
     class: water-lines
     geometry: linestring
