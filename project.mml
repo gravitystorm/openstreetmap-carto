@@ -443,7 +443,7 @@ Layer:
     properties:
       minzoom: 13
   - id: tunnels
-    class: tunnels-fill tunnels-casing access
+    class: access
     geometry: linestring
     <<: *extents
     Datasource:
@@ -662,7 +662,6 @@ Layer:
     properties:
       minzoom: 14
   - id: roads-casing
-    class: roads-casing
     geometry: linestring
     <<: *extents
     Datasource:
@@ -776,7 +775,7 @@ Layer:
     properties:
       minzoom: 14
   - id: roads-fill
-    class: roads-fill access
+    class: access
     geometry: linestring
     <<: *extents
     Datasource:
@@ -967,7 +966,7 @@ Layer:
     properties:
       minzoom: 12
   - id: bridges
-    class: bridges-fill bridges-casing access
+    class: access
     geometry: linestring
     <<: *extents
     Datasource:
