@@ -48,7 +48,7 @@
   [waterway = 'riverbank']::waterway {
     [zoom >= 0][way_pixels >= 4],
     [zoom >= 1][way_pixels >= 16],
-    [zoom >= 2][way_pixels >= 32],
+    [zoom >= 2][way_pixels >= 64],
     [zoom >= 8] {
       polygon-fill: @water-color;
       [way_pixels >= 4] {
