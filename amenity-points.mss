@@ -472,7 +472,8 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_recycling'][zoom >= 17] {
+  [feature = 'amenity_recycling'][recycling_type = 'centre'][zoom >= 17],
+  [feature = 'amenity_recycling'][zoom >= 19] {
     marker-file: url('symbols/recycling.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
@@ -1893,7 +1894,8 @@
     text-placement: interior;
   }
 
-  [feature = 'amenity_recycling'][zoom >= 17] {
+  [feature = 'amenity_recycling'][recycling_type = 'centre'][zoom >= 17],
+  [feature = 'amenity_recycling'][zoom >= 19] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
