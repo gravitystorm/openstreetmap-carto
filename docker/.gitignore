@@ -1,0 +1,3 @@
+*.osm.pbf
+.kosmtik-config.yml
+.env

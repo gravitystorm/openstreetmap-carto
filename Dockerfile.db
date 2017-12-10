@@ -1,3 +1,0 @@
-FROM mdillon/postgis:9.6
-
-ADD ./scripts/tune-postgis.sh /docker-entrypoint-initdb.d

@@ -1,0 +1,52 @@
+version: '3.2'
+
+services:
+
+  import:
+    image: import:v2
+    build:
+      context: images/import
+      args:
+        - APP_UID=1000
+    volumes:
+      - ../:/openstreetmap-carto
+    depends_on:
+      - db
+    environment:
+      - PGHOST=db
+      - PGUSER=postgres
+      - PG_WORK_MEM
+      - PG_MAINTENANCE_WORK_MEM
+      - OSM2PGSQL_CACHE
+      - OSM2PGSQL_NUMPROC
+      - OSM2PGSQL_DATAFILE
+
+  kosmtik:
+    image: kosmtik:v2
+    build:
+      context: images/kosmtik
+      args:
+        - APP_UID=1000
+    volumes:
+      - ../:/openstreetmap-carto
+    depends_on:
+      - db
+    ports:
+      - "6789:6789"
+    environment:
+      - PGHOST=db
+      - PGUSER=postgres
+
+  db:
+    image: db:v2
+    build:
+      context: images/db
+    volumes:
+      - db:/openstreetmap-carto
+    environment:
+      - PG_WORK_MEM
+      - PG_MAINTENANCE_WORK_MEM
+
+
+volumes:
+  db:
