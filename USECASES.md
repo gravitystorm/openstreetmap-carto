@@ -7,7 +7,7 @@ As we are still experimenting with this way of design, this document is restrict
 | Use case | Map subject | Map context | Zoom level |
 | --- | --- | --- | --- |
 | Looking up country location | Country names, country borders | Coastlines | z5, z6 |
-| Looking up U.S. state location | state names and borders in USA  | Coastlines, country bnorders | z5, z6, z7 |
+| Looking up U.S. state location | state names and borders in USA  | Coastlines, country borders | z5, z6, z7 |
 | Looking up province/state location|Province/state names and borders|Country borders | z6, z7 |
 | Looking up city location | City names | Coastlines, country names, country borders | z5, z6, z7 |
 | Long distance road trip planning | Motorways | City names | z6, z7 |
