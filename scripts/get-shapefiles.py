@@ -41,7 +41,6 @@ settings = {
         'type': 'tgz',
         'shp_basename': [
             'world_bnd_m',
-            'builtup_area',
             'places',
             'world_boundaries_m'],
         'long_opt': '--world-boundaries'
