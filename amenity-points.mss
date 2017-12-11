@@ -804,6 +804,10 @@
     [shop = 'furniture'][zoom >= 18] {
       marker-file: url('symbols/shop/furniture.svg');
     }
+    
+    [shop = 'funeral_directors'][zoom >= 18] {
+      marker-file: url('symbols/shop/funeral_directors.svg');
+    }
 
     [shop = 'mobile_phone'][zoom >= 18] {
       marker-file: url('symbols/shop/mobile_phone.svg');
@@ -1969,6 +1973,7 @@
   [feature = 'shop_farm'],
   [feature = 'shop_fishmonger'],
   [feature = 'shop_florist'],
+  [feature = 'shop_funeral_directors'],
   [feature = 'shop_garden_centre'],
   [feature = 'shop_greengrocer'],
   [feature = 'shop_pet'],
