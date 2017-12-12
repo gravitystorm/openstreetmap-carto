@@ -520,7 +520,9 @@
   [feature = 'amenity_university'],
   [feature = 'amenity_college'],
   [feature = 'amenity_school'],
-  [feature = 'amenity_kindergarten'] {
+  [feature = 'amenity_kindergarten'],
+  [feature = 'amenity_community_centre'],
+  [feature = 'amenity_social_facility'] {
     [zoom >= 10] {
       polygon-fill: @residential;
       [zoom >= 12] {
