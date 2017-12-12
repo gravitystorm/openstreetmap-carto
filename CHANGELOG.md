@@ -8,6 +8,7 @@
 - Do not render small national parks and nature reserves
 - Move ferry lines to z8
 - Improved rendering for bus guideways
+- Replace external data for built-up areas with OSM data
 - Push non-car parking icons to z18
 - Some other documentation and code changes
 
