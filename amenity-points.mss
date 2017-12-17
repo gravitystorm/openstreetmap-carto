@@ -13,7 +13,7 @@
 @memorials: @amenity-brown;
 @culture: @amenity-brown;
 @public-service: @amenity-brown;
-@man-made: #555;
+@man-made-icon: #555;
 @landform-color: #d08f55;
 @leisure-green: darken(@park, 60%);
 
@@ -334,7 +334,7 @@
 
   [feature = 'man_made_mast'][zoom >= 17] {
     marker-file: url('symbols/communications.svg');
-    marker-fill: @man-made;
+    marker-fill: @man-made-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -555,7 +555,7 @@
 
   [feature = 'man_made_water_tower'][zoom >= 17] {
     marker-file: url('symbols/water_tower.svg');
-    marker-fill: @man-made;
+    marker-fill: @man-made-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -958,7 +958,7 @@
     marker-file: url('symbols/lighthouse.svg');
     marker-placement: interior;
     marker-clip: false;
-    marker-fill: @man-made;
+    marker-fill: @man-made-icon;
   }
 
   [feature = 'natural_peak'][zoom >= 11] {
@@ -990,7 +990,7 @@
   
   [feature = 'military_bunker'][zoom >= 17] {
     marker-file: url('symbols/bunker.svg');
-    marker-fill: @man-made;
+    marker-fill: @man-made-icon;    
     marker-placement: interior;
     marker-clip: false;
   }  
@@ -1006,7 +1006,7 @@
     [zoom >= 15] {
       marker-file: url('symbols/power_wind.svg');
       marker-placement: interior;
-      marker-fill: @man-made;
+      marker-fill: black;
       marker-clip: false;
     }
   }
@@ -1014,13 +1014,13 @@
   [feature = 'man_made_windmill'][zoom >= 16] {
     marker-file: url('symbols/windmill.svg');
     marker-placement: interior;
-    marker-fill: @man-made;
+    marker-fill: @man-made-icon;
     marker-clip: false;
   }
 
   [feature = 'amenity_hunting_stand'][zoom >= 16] {
     marker-file: url('symbols/hunting_stand.svg');
-    marker-fill: @man-made;
+    marker-fill: @man-made-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1320,29 +1320,14 @@
 
   [feature = 'man_made_cross'][zoom >= 17],
   [feature = 'historic_wayside_cross'][zoom >= 17],
-  [feature = 'natural_cave_entrance'][zoom >= 15] {
-    text-name: "[name]";
-    text-size: @standard-font-size;
-    text-wrap-width: @standard-wrap-width;
-    text-line-spacing: @standard-line-spacing-size;
-    text-dy: 11;
-    [feature = 'man_made_cross'],
-    [feature = 'historic_wayside_cross'] {
-      text-dy: 6;
-    }
-    text-face-name: @standard-font;
-    text-halo-radius: @standard-halo-radius;
-    text-halo-fill: @standard-halo-fill;
-    text-placement: interior;
-  }
-
-
-  [feature = 'mast'][zoom >= 17],
+  [feature = 'natural_cave_entrance'][zoom >= 15],
+  [feature = 'man_made_mast'][zoom >= 17],
   [feature = 'man_made_water_tower'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
+    text-fill: black;
     [feature = 'natural_cave_entrance'],
     [feature = 'man_made_water_tower'] {
       text-dy: 11;
@@ -1380,7 +1365,7 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: @man-made;
+    text-fill: @man-made-icon;
     text-dy: 11;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
@@ -1884,7 +1869,7 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: @man-made;
+    text-fill: @man-made-icon;
     text-dy: 16;
     [feature = 'man_made_windmill'] { text-dy: 12; }
     text-face-name: @standard-font;
@@ -2224,7 +2209,7 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-dy: 11;
-    text-fill: @man-made;
+    text-fill: @man-made-icon;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
