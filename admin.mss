@@ -203,7 +203,7 @@ overlapping borders correctly.
     a/line-opacity: 0.15;
     a/line-join: round;
     a/line-cap: round;
-    b/line-width: 2;
+    b/line-width: 1;
     b/line-offset: -1;
     b/line-color: green;
     b/line-opacity: 0.15;
@@ -212,7 +212,7 @@ overlapping borders correctly.
     [zoom >= 10] {
       a/line-width: 2;
       a/line-offset: -1;
-      b/line-width: 4;
+      b/line-width: 2;
       b/line-offset: -2;
     }
     [zoom >= 14] {
