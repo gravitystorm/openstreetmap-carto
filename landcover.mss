@@ -478,7 +478,7 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [feature = 'natural_heath'][zoom >= 10] {
+  [feature = 'natural_heath'][zoom >= 8] {
     polygon-fill: @heath;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
