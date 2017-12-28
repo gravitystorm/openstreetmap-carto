@@ -8,11 +8,13 @@ for backward-compatibility and some fallback fonts.
 By order:
 
 1. Noto Sans is available for most scripts and it is used as a first choice.
-Where available the UI version of the fonts is used. In some cases the UI version
-has fewer glyphs, so both are listed. Most of the list is in alphabetical order,
-but there are some exceptions
+Where available the UI version of the fonts – which provides tighter vertical
+metrics – is used (except for the base font, where the UI version is deprecated
+since Noto Phase III, and Sinhala where both versions are used for backwards
+compatibility with Ubuntu 16.04). Most of the list is in alphabetical order,
+but there are some exceptions.
 
-  - Noto Sans UI is before all other fonts
+  - Noto Sans is before all other fonts
   - The CJK fonts are manually ordered. The used CJK font covers all CJK
     languages, but defaults to the japanese glyph style if various glyph
     styles are available. (We have to default to one of JP, KR, SC, TC because
@@ -53,8 +55,9 @@ support SBIT TTF.
 /*
 A regular style.
 */
-@book-fonts:    "Noto Sans UI Regular",
+@book-fonts:    "Noto Sans Regular",
                 "Noto Sans CJK JP Regular",
+                "Noto Sans Adlam Regular", "Noto Sans Adlam Unjoined Regular"
                 "Noto Sans Armenian Regular",
                 "Noto Sans Balinese Regular",
                 "Noto Sans Bamum Regular",
@@ -63,13 +66,14 @@ A regular style.
                 "Noto Sans Buginese Regular",
                 "Noto Sans Buhid Regular",
                 "Noto Sans Canadian Aboriginal Regular",
+                "Noto Sans Chakma Regular",
                 "Noto Sans Cham Regular",
                 "Noto Sans Cherokee Regular",
                 "Noto Sans Coptic Regular",
-                "Noto Sans Devanagari UI Regular", "Noto Sans Devanagari Regular",
+                "Noto Sans Devanagari UI Regular",
                 "Noto Sans Ethiopic Regular",
                 "Noto Sans Georgian Regular",
-                "Noto Sans Gujarati UI Regular", "Noto Sans Gujarati Regular",
+                "Noto Sans Gujarati UI Regular",
                 "Noto Sans Gurmukhi UI Regular",
                 "Noto Sans Hanunoo Regular",
                 "Noto Sans Hebrew Regular",
@@ -88,14 +92,17 @@ A regular style.
                 "Noto Sans New Tai Lue Regular",
                 "Noto Sans NKo Regular",
                 "Noto Sans Ol Chiki Regular",
-                "Noto Sans Oriya UI Regular", "Noto Sans Oriya Regular",
+                "Noto Sans Oriya UI Regular",
+                "Noto Sans Osage Regular",
                 "Noto Sans Osmanya Regular",
                 "Noto Sans Samaritan Regular",
                 "Noto Sans Saurashtra Regular",
                 "Noto Sans Shavian Regular",
+                "Noto Sans Sinhala UI Regular",
                 "Noto Sans Sinhala Regular",
                 "Noto Sans Sundanese Regular",
                 "Noto Sans Symbols Regular",
+                "Noto Sans Symbols2 Regular",
                 "Noto Sans Syriac Eastern Regular",
                 "Noto Sans Syriac Estrangela Regular",
                 "Noto Sans Syriac Western Regular",
@@ -128,15 +135,16 @@ A regular style.
 A bold style is available for almost all scripts. Bold text is heavier than
 regular text and can be used for emphasis. Fallback is a regular style.
 */
-@bold-fonts:    "Noto Sans UI Bold",
+@bold-fonts:    "Noto Sans Bold",
                 "Noto Sans CJK JP Bold",
                 "Noto Sans Armenian Bold",
                 "Noto Sans Bengali UI Bold",
                 "Noto Sans Cham Bold",
-                "Noto Sans Devanagari UI Bold", "Noto Sans Devanagari Bold",
+                "Noto Sans Cherokee Bold",
+                "Noto Sans Devanagari UI Bold",
                 "Noto Sans Ethiopic Bold",
                 "Noto Sans Georgian Bold",
-                "Noto Sans Gujarati UI Bold", "Noto Sans Gujarati Bold",
+                "Noto Sans Gujarati UI Bold",
                 "Noto Sans Gurmukhi UI Bold",
                 "Noto Sans Hebrew Bold",
                 "Noto Sans Kannada UI Bold",
@@ -144,8 +152,10 @@ regular text and can be used for emphasis. Fallback is a regular style.
                 "Noto Sans Lao UI Bold",
                 "Noto Sans Malayalam UI Bold",
                 "Noto Sans Myanmar UI Bold",
-                "Noto Sans Oriya UI Bold", "Noto Sans Oriya Bold",
+                "Noto Sans Oriya UI Bold",
+                "Noto Sans Sinhala UI Bold",
                 "Noto Sans Sinhala Bold",
+                "Noto Sans Symbols Bold",
                 "Noto Sans Tamil UI Bold",
                 "Noto Sans Telugu UI Bold",
                 "Noto Sans Thaana Bold",
@@ -164,4 +174,4 @@ regular text and can be used for emphasis. Fallback is a regular style.
 Italics are only available for the base font, not the other scripts.
 For a considerable number of labels this style will make no difference to the regular style.
 */
-@oblique-fonts: "Noto Sans UI Italic", @book-fonts;
+@oblique-fonts: "Noto Sans Italic", @book-fonts;
