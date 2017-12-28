@@ -175,3 +175,9 @@ Italics are only available for the base font, not the other scripts.
 For a considerable number of labels this style will make no difference to the regular style.
 */
 @oblique-fonts: "Noto Sans Italic", @book-fonts;
+
+/*
+Tailoring OpenType features:
+- “zero” (Slashed zero): enabled to make O and 0 easy to distinguish
+*/
+@opentype-features: "zero 1";
