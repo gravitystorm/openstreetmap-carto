@@ -1680,6 +1680,7 @@ Layer:
             name
           FROM planet_osm_polygon
           WHERE man_made = 'bridge'
+          ORDER BY way_area DESC
         ) AS bridge_text
     properties:
       minzoom: 11
