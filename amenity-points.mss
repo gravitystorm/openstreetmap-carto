@@ -923,6 +923,13 @@
     marker-placement: interior;
     marker-clip: false;
   }
+  
+  [feature = 'leisure_firepit'][zoom >= 17] {
+    marker-file: url('symbols/firepit.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }  
 
   // Slipway tagging on points - slipway on lines is defined later 
   [feature = 'leisure_slipway'][zoom >= 17] {
