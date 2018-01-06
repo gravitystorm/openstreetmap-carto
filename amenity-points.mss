@@ -122,6 +122,13 @@
     marker-clip: false;
   }
 
+  [feature = 'barrier_toll_booth'][zoom >= 16] {
+    marker-file: url('symbols/toll_booth.svg');
+    marker-fill: @transportation-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_cafe'][zoom >= 17] {
     marker-file: url('symbols/cafe.svg');
     marker-fill: @gastronomy;
@@ -1209,6 +1216,7 @@
 
   [feature = 'amenity_car_rental'][zoom >= 17],
   [feature = 'amenity_bicycle_rental'][zoom >= 17],
+  [feature = 'barrier_toll_booth'][zoom >= 17],
   [feature = 'leisure_slipway'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
@@ -1217,6 +1225,7 @@
     text-fill: @transportation-text;
     [feature = 'amenity_car_rental']     { text-dy: 10; }
     [feature = 'amenity_bicycle_rental'] { text-dy: 10; }
+    [feature = 'barrier_toll_booth']     { text-dy: 13; }
     [feature = 'leisure_slipway']        { text-dy: 13; }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
