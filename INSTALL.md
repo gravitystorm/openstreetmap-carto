@@ -116,7 +116,7 @@ For both development and deployment, a database and some utilities are required
 * [PostgreSQL](http://www.postgresql.org/)
 * [PostGIS](http://postgis.org/)
 * `curl` and `unzip` for downloading and decompressing files
-* shapeindex (a companion utility to Mapnik found in the mapnik-utils package) for indexing downloaded shapefiles
+* shapeindex (a companion utility to Mapnik found in the `mapnik-utils` package) for indexing downloaded shapefiles
 
 ### Development dependencies
 
