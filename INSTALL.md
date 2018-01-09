@@ -105,7 +105,7 @@ To display any map a database containing OpenStreetMap data and some utilities a
 
 * [PostgreSQL](http://www.postgresql.org/)
 * [PostGIS](http://postgis.org/)
-* [osm2pgsql](http://wiki.openstreetmap.org/wiki/Osm2pgsql) to [import your data](https://switch2osm.org/loading-osm-data/) into a PostGIS database
+* [osm2pgsql](https://github.com/openstreetmap/osm2pgsql#installing) to [import your data](https://switch2osm.org/loading-osm-data/) into a PostGIS database
 * `curl` and `unzip` for downloading and decompressing files
 * shapeindex (a companion utility to Mapnik found in the `mapnik-utils` package) for indexing downloaded shapefiles
 
