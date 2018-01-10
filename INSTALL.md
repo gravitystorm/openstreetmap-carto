@@ -101,26 +101,26 @@ For development, a style design studio is needed.
 
 [TileMill](http://mapbox.com/tilemill) is not officially supported, but you may be able to use a recent TileMill version by copying or symlinking the project directly into your Mapbox/project directory.
 
+To display any map a database containing OpenStreetMap data and some utilities are required
+
+* [PostgreSQL](http://www.postgresql.org/)
+* [PostGIS](http://postgis.org/)
+* [osm2pgsql](https://github.com/openstreetmap/osm2pgsql#installing) to [import your data](https://switch2osm.org/loading-osm-data/) into a PostGIS database
+* `curl` and `unzip` for downloading and decompressing files
+* shapeindex (a companion utility to Mapnik found in the `mapnik-utils` package) for indexing downloaded shapefiles
+
+### Optional development dependencies
+
+Some colours, SVGs and other files are generated with helper scripts. Not all users will need these dependencies
+
+* Python and Ruby to run helper scripts
+* [Color Math](https://github.com/gtaylor/python-colormath) and [numpy](http://www.numpy.org/) if running generate_road_colors.py helper script (may be obtained with `pip install colormath numpy`)
+
+### Additional deployment dependencies
+
 For deployment, CartoCSS and Mapnik are required.
 
 * [CartoCSS](https://github.com/mapbox/carto) >= 0.18.0 (we're using YAML)
 * [Mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 3.0
 
 Remember to run CartoCSS with proper API version to avoid errors (at least 3.0.0: `carto -a "3.0.0"`).
-
----
-
-For both development and deployment, a database and some utilities are required
-
-* [osm2pgsql](http://wiki.openstreetmap.org/wiki/Osm2pgsql) to [import your data](https://switch2osm.org/loading-osm-data/) into a PostGIS database
-* [PostgreSQL](http://www.postgresql.org/)
-* [PostGIS](http://postgis.org/)
-* `curl` and `unzip` for downloading and decompressing files
-* shapeindex (a companion utility to Mapnik found in the `mapnik-utils` package) for indexing downloaded shapefiles
-
-### Development dependencies
-
-Some colours, SVGs and other files are generated with helper scripts. Not all users will need these dependencies
-
-* Python and Ruby to run helper scripts
-* [Color Math](https://github.com/gtaylor/python-colormath) and [numpy](http://www.numpy.org/) if running generate_road_colors.py helper script (may be obtained with `pip install colormath numpy`)
