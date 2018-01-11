@@ -26,16 +26,16 @@ Custom indexes are not required, but will speed up rendering, particularly for f
 psql -d gis -f indexes.sql
 ```
 
-Additionally you need some shapefiles.
-
 ## Scripted download
-To download the shapefiles you can run the following script. No further steps should be needed as the data has been processed and placed in the requisite directories.
+Some features are rendered using preprocessed shapefiles.
+
+To obtain them you can run the following script.
 
 ```
 scripts/get-shapefiles.py
 ```
 
-This script generates and populates the *data* directory with all needed shapefiles, including indexing them through *shapeindex*.
+This script downloads necessary files, generates and populates the *data* directory with all needed shapefiles, including indexing them through *shapeindex*.
 
 ## Manual download
 
