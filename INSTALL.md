@@ -5,7 +5,14 @@ This document describes how to manually configure your system for running openst
 ## OpenStreetMap data
 You need OpenStreetMap data loaded into a PostGIS database (see below for [dependencies](#dependencies)). These stylesheets expect a database generated with osm2pgsql using the pgsql backend (table names of `planet_osm_point`, etc), the default database name (`gis`), and the [lua transforms](https://github.com/openstreetmap/osm2pgsql/blob/master/docs/lua.md) documented in the instructions below.
 
-Start by setting up your database to have PostGIS and hstore with
+Start by creating a database
+
+```
+sudo -u postgres createuser -s $USER
+createdb gis
+```
+
+Enable PostGIS and hstore extensions with
 
 ```
 psql -d gis -c 'CREATE EXTENSION postgis; CREATE EXTENSION hstore;'
