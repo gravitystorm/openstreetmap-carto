@@ -1,6 +1,6 @@
 # Running OpenStreetMap Carto with Docker
 
-[Docker](https://docker.com) is an environment that allows you to create a _virtual machine_, in which you can run software without altering your host system permanently. Within the virtual machine, the software components run in _containers_ that are easy to setup and tear down individually. 
+[Docker](https://docker.com) is a virtualized environment running a [_Docker demon_](https://docs.docker.com/engine/docker-overview), in which you can run software without altering your host system permanently. The software components run in _containers_ that are easy to setup and tear down individually. The Docker demon can use operating-system-level virtualization (Linux, Windows) or a virtual machine (macOS, Windows).
 
 This allows to set up a development environment for openstreetmap-carto easily. Specifically, this environment consists of a
 PostgreSQL database to store the OpenStreetMap data and [Kosmtik](https://github.com/kosmtik/kosmtik) for previewing the style.
@@ -30,7 +30,7 @@ Read on below to get the details.
 
 Instructions above will clone main openstreetmap-carto repository. To test your own changes you should [fork](https://help.github.com/articles/fork-a-repo/) gravitystorm/openstreetmap-carto repository and [clone your fork](https://help.github.com/articles/cloning-a-repository/).
 
-This openstreetmap-carto repository needs to be a directory that is shared between your host system and the Docker virtual machine. Home directories are shared by default; if your repository is in another place you need to add this to the Docker Preferences to the File Sharing list.
+This openstreetmap-carto repository needs to be a directory that is shared between your host system and the Docker virtual machine. Home directories are shared by default; if your repository is in another place you need to add this to the Docker sharing list (e.g. macOS: Docker Preferences > File Sharing; Windows: Docker Settings > Shared Drives).
 
 ## Importing data
 
@@ -69,10 +69,10 @@ After startup is complete you can browse to [http://localhost:6789](http://local
 
 ## Troubleshooting
 
-Importing the data needs a substantial amount of RAM in the virtual machine. If you find the import process (Reading in file: data.osm.pbf, Processing) being _killed_ by the virtual machine, exiting with error code 137, increase the Memory assigned in the Docker Preferences > Advanced > Adjust the computing resources.
+Importing the data needs a substantial amount of RAM in the virtual machine. If you find the import process (Reading in file: data.osm.pbf, Processing) being _killed_ by the Docker demon, exiting with error code 137, increase the Memory assigned to Docker (e.g. macOS: Docker Preferences / Windows: Docker Settings > Advanced > Adjust the computing resources).
 
 Docker copies log files from the virtual machine into the host system, their [location depends on the host OS](https://stackoverflow.com/questions/30969435/where-is-the-docker-daemon-log). E.g. the 'console-ring' appears to be a ringbuffer of the console log, which can help to find reasons for killings. 
 
-While installing software in the containers and populating the database, the disk image of the virtual machine grows in size, by Docker allocating more clusters. When the disk on the host system is full (only a few MB remaining), Docker can appear stuck. Watch the system log files of your host system.
+While installing software in the containers and populating the database, the disk image of the virtual machine grows in size, by Docker allocating more clusters. When the disk on the host system is full (only a few MB remaining), Docker can appear stuck. Watch the system log files of your host system for failed allocations.
 
-Docker stores its disk image by default in the home directories of the user. If you don't have enough space here, you can move it elsewhere in Docker > Preferences > Disk. 
+Docker stores its disk image by default in the home directories of the user. If you don't have enough space here, you can move it elsewhere. (E.g. macOS: Docker > Preferences > Disk). 
