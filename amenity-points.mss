@@ -672,6 +672,7 @@
       marker-file: url('symbols/shop/convenience.svg');
     }
 
+    [shop = 'chocolate'][zoom >= 18],
     [shop = 'confectionery'][zoom >= 18],
     [shop = 'pastry'][zoom >= 18] {
       marker-file: url('symbols/shop/confectionery.svg');
