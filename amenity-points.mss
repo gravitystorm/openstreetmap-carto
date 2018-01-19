@@ -248,6 +248,13 @@
     marker-clip: false;
   }
 
+  [feature = 'tourism_apartment'][zoom >= 18] {
+    marker-file: url('symbols/apartment.svg');
+    marker-fill: @accommodation-icon;
+    point-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_hospital'][zoom >= 15] {
     marker-file: url('symbols/hospital.svg');
     marker-fill: @health-color;
@@ -1774,6 +1781,7 @@
   [feature = 'tourism_hostel'][zoom >= 17],
   [feature = 'tourism_chalet'][zoom >= 17],
   [feature = 'tourism_guest_house'][zoom >= 17],
+  [feature = 'tourism_apartment'][zoom >= 18],
   [feature = 'tourism_wilderness_hut'][zoom >= 14],
   [feature = 'tourism_camp_site'][zoom >= 17],
   [feature = 'tourism_caravan_site'][zoom >= 17], {
