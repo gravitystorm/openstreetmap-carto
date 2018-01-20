@@ -1070,6 +1070,22 @@ Layer:
         ) AS guideways
     properties:
       minzoom: 11
+  - id: entrances
+    geometry: point
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            tags->'entrance' AS entrance,
+            access
+          FROM planet_osm_point
+          WHERE tags->'indoor' = 'no'
+            OR tags->'indoor' IS NULL)
+        AS entrances
+    properties:
+      minzoom: 18
   - id: aeroways
     geometry: linestring
     <<: *extents
