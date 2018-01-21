@@ -920,7 +920,7 @@
 
   [feature = 'tourism_picnic_site'][zoom >= 16] {
     marker-file: url('symbols/picnic.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @leisure-green;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1281,6 +1281,9 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: @amenity-brown;
+    [feature = 'tourism_picnic_site'] {
+      text-fill: @leisure-green;
+    }
     text-dy: 10;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
