@@ -1,5 +1,16 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.6.0...master)
-
+### Changes
+- Adding icon for tourism=apartment
+- Adding icon for leisure=firepit
+- Yellow background for amenity=arts_centre
+- Start rendering natural=heath earlier
+- Start rendering entrances
+- Changing tourism=picnic_site icon colour to green
+- Move emergency=phone to higher zoom level
+- Rendering seasonal waterways as intermittent
+- Update Noto fonts to Phase III
+- Fine-tuning of bridge labels
+- Documentation changes and updates
 
 ## [v4.6.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.5.0...v4.6.0) - 2017-12-17
 ### Changes
