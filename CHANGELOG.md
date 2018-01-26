@@ -1,4 +1,6 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.6.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.7.0...master)
+
+## [v4.7.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.6.0...v4.7.0) - 2018-01-26
 ### Changes
 - Adding icon for tourism=apartment
 - Adding icon for leisure=firepit
