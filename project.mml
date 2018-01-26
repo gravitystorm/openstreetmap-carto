@@ -551,6 +551,23 @@ Layer:
         ) AS landuse_overlay
     properties:
       minzoom: 7
+  - id: tourism-boundary
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            name,
+            tourism
+          FROM planet_osm_polygon
+          WHERE tourism = 'theme_park'
+            OR tourism = 'zoo'
+        ) AS tourism_boundary
+    properties:
+      minzoom: 10
   - id: line-barriers
     class: barriers
     geometry: linestring
@@ -1201,23 +1218,6 @@ Layer:
         ) AS national_park_boundaries
     properties:
       minzoom: 8
-  - id: tourism-boundary
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
-            name,
-            tourism
-          FROM planet_osm_polygon
-          WHERE tourism = 'theme_park'
-            OR tourism = 'zoo'
-        ) AS tourism_boundary
-    properties:
-      minzoom: 10
   - id: trees
     geometry: polygon
     <<: *extents
