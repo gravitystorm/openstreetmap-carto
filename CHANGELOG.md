@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.7.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.7.1...master)
+
+## [v4.7.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.7.0...v4.7.1) - 2018-01-31
+### Changes
+- Fix rendering bug (#3043) with access=yes|permissive tags
 
 ## [v4.7.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.6.0...v4.7.0) - 2018-01-26
 ### Changes
