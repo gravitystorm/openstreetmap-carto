@@ -59,7 +59,7 @@
       marker-file: url('symbols/square.svg');
     }
   }
-  [zoom >= 19] {
+  [zoom >= 19]["entrance" != null] {
     ["entrance" = "yes"],
     ["entrance" = "main"],
     ["entrance" = "home"],
