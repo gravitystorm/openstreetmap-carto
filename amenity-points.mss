@@ -1114,7 +1114,8 @@
   }
 
   [feature = 'barrier_bollard'],
-  [feature = 'barrier_block'] {
+  [feature = 'barrier_block'],
+  [feature = 'barrier_log'] {
     [zoom >= 16] {
       marker-width: 3;
       marker-line-width: 0;
