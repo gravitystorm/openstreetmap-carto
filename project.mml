@@ -1123,58 +1123,100 @@ Layer:
     properties:
       minzoom: 11
   - id: admin-low-zoom
+    class: admin
     geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT
+        (
+          (SELECT
             way,
             admin_level,
-            tags->'maritime' as maritime
+            'false' as maritime
+          FROM planet_osm_roads
+          WHERE boundary = 'administrative'
+            AND admin_level IN ('0', '1', '2', '3', '4')
+            AND osm_id < 0
+          )
+          UNION
+          (SELECT
+            way,
+            admin_level,
+            'true' as maritime
           FROM planet_osm_roads
           WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4')
             AND osm_id > 0
-          ORDER BY admin_level DESC
+            AND tags->'maritime' = 'yes'
+          )
+          ORDER BY maritime, admin_level DESC
         ) AS admin_low_zoom
     properties:
       minzoom: 4
       maxzoom: 10
   - id: admin-mid-zoom
+    class: admin
     geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT
+        (
+          (SELECT
             way,
             admin_level,
-            boundary
+            'false'as maritime
+          FROM planet_osm_roads
+          WHERE boundary = 'administrative'
+            AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')
+            AND osm_id < 0
+          )
+          UNION
+          (SELECT
+            way,
+            admin_level,
+            'true' as maritime
           FROM planet_osm_roads
           WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')
             AND osm_id > 0
-          ORDER BY admin_level DESC
+            AND tags->'maritime' = 'yes'
+          )
+          ORDER BY maritime, admin_level DESC
         ) AS admin_mid_zoom
     properties:
       minzoom: 11
       maxzoom: 12
   - id: admin-high-zoom
+    class: admin
     geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT
+        (
+          (SELECT
             way,
-            admin_level,
-            boundary
+            admin_level::integer, -- With 10 as a valid value, we need to do a numeric ordering, not a text ordering
+            'false' as maritime
+          FROM planet_osm_roads
+          WHERE boundary = 'administrative'
+            AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
+            AND osm_id < 0
+          )
+          UNION
+          (SELECT
+            way,
+            admin_level::integer, -- With 10 as a valid value, we need to do a numeric ordering, not a text ordering
+            'true' as maritime
           FROM planet_osm_roads
           WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
             AND osm_id > 0
-          ORDER BY admin_level::integer DESC -- With 10 as a valid value, we need to do a numeric ordering, not a text ordering
+            AND tags->'maritime' = 'yes'
+          )
+          ORDER BY maritime, admin_level DESC
         ) AS admin_high_zoom
     properties:
       minzoom: 13
