@@ -1024,6 +1024,17 @@
     marker-placement: interior;
     marker-clip: false;
   }
+  
+  // waste_disposal tagging on ways - tagging on nodes is defined later 
+  [feature = 'amenity_waste_disposal'][zoom >= 19] {
+    [access = null],
+    [access = 'permissive'],
+    [access = 'yes'] {
+      marker-file: url('symbols/waste_disposal.svg');
+      marker-fill: @amenity-brown;
+      marker-placement: interior;
+    }
+  }
 }
 
 .amenity-low-priority {
@@ -1110,6 +1121,17 @@
     marker-file: url('symbols/waste_basket.10.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
+  }
+
+  // waste_disposal tagging on nodes - tagging on ways is defined earlier 
+  [feature = 'amenity_waste_disposal'][zoom >= 19]::amenity {
+    [access = null],
+    [access = 'permissive'],
+    [access = 'yes'] {
+      marker-file: url('symbols/waste_disposal.svg');
+      marker-fill: @amenity-brown;
+      marker-placement: interior;
+    }
   }
 }
 
