@@ -1437,7 +1437,7 @@ Layer:
                                                   'police', 'post_box', 'post_office', 'pub', 'biergarten', 'recycling', 'restaurant', 'food_court',
                                                   'fast_food', 'telephone', 'taxi', 'theatre', 'toilets', 'drinking_water',
                                                   'prison', 'hunting_stand', 'nightclub', 'veterinary', 'social_facility',
-                                                  'charging_station', 'arts_centre', 'ferry_terminal', 'marketplace') THEN amenity ELSE NULL END,
+                                                  'charging_station', 'arts_centre', 'ferry_terminal', 'marketplace', 'waste_disposal') THEN amenity ELSE NULL END,
               'shop' || CASE WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE '' END,
               'leisure_' || CASE WHEN leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table',
                                                   'fitness_centre', 'fitness_station', 'firepit') THEN leisure ELSE NULL END,
@@ -2316,17 +2316,18 @@ Layer:
             COALESCE(
               'highway_' || CASE WHEN highway IN ('mini_roundabout') THEN highway ELSE NULL END,
               'railway_' || CASE WHEN railway IN ('level_crossing', 'crossing') THEN railway ELSE NULL END,
-              'amenity_' || CASE WHEN amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'bench', 'waste_basket') THEN amenity ELSE NULL END,
+              'amenity_' || CASE WHEN amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'bench', 
+                            'waste_basket', 'waste_disposal') THEN amenity ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('wayside_cross') THEN historic ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('cross') THEN man_made ELSE NULL END,
               'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block') THEN barrier ELSE NULL END
             )  AS feature,
             access,
-            CASE WHEN amenity='waste_basket' THEN 2 ELSE 1 END AS prio
+            CASE WHEN amenity IN ('waste_basket', 'waste_disposal') THEN 2 ELSE 1 END AS prio
           FROM planet_osm_point p
           WHERE highway IN ('mini_roundabout')
              OR railway IN ('level_crossing', 'crossing')
-             OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'bench', 'waste_basket')
+             OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'bench', 'waste_basket', 'waste_disposal')
              OR historic IN ('wayside_cross')
              OR man_made IN ('cross')
              OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block')
