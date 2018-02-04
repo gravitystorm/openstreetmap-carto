@@ -45,6 +45,8 @@ EOF
   --hstore \
   --multi-geometry \
   --database gis \
+  --slim \
+  --drop \
   --style openstreetmap-carto.style \
   --tag-transform-script openstreetmap-carto.lua \
   $OSM2PGSQL_DATAFILE
