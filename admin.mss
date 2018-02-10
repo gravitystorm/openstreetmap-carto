@@ -1,4 +1,4 @@
-@admin-boundaries: #000000;
+@admin-boundaries: black;
 @admin-boundaries-maritime: darken(@water-color,30%);
 
 @admin-simplify: 4;
@@ -10,9 +10,11 @@ For each zoomlevel, all borders come from a single attachment, to handle
 overlapping borders correctly.
 */
 
+
 #admin-low-zoom[zoom < 11],
 #admin-mid-zoom[zoom >= 11][zoom < 13],
 #admin-high-zoom[zoom >= 13] {
+
   [admin_level = '2'] {
     [zoom >= 4] {
       background/line-join: bevel;
@@ -34,8 +36,8 @@ overlapping borders correctly.
       line-width: 0.4;
     }
     [zoom >= 6] {
-      background/line-width: 0.4;
-      line-width: 0.4;
+      background/line-width: 0.5;
+      line-width: 0.5;
     }
     [zoom >= 7] {
       background/line-width: 2;
@@ -87,7 +89,7 @@ overlapping borders correctly.
         line-color: @admin-boundaries-maritime;
       }
       line-join: bevel;
-      line-width: 0.2;
+      line-width: 0.4;
       line-clip: false;
       line-simplify: @admin-simplify;
       line-simplify-algorithm: @admin-simplify-algorithm;
@@ -118,8 +120,8 @@ overlapping borders correctly.
       background/line-width: 3;
       line-width: 3;
     }
-    opacity: 0.6;
   }
+  opacity: 1;
   /*
   The following code prevents admin boundaries from being rendered on top of
   each other. Comp-op works on the entire attachment, not on the individual

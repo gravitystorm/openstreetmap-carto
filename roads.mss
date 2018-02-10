@@ -60,7 +60,7 @@
 @residential-tunnel-fill: darken(@residential-fill, 5%);
 @living-street-tunnel-fill: lighten(@living-street-fill, 10%);
 
-@motorway-width-z6:               0.5;
+@motorway-width-z6:               0.8;
 @trunk-width-z6:                  0.4;
 
 @motorway-width-z7:               0.8;
@@ -255,7 +255,7 @@
 @junction-text-color:             #960000;
 @halo-color-for-minor-road:       white;
 @lowzoom-halo-color:              white;
-@lowzoom-halo-width:              1;
+@lowzoom-halo-width:              2;
 
 @motorway-oneway-arrow-color:     darken(@motorway-casing, 25%);
 @trunk-oneway-arrow-color:        darken(@trunk-casing, 25%);
