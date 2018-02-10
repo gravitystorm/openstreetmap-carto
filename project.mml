@@ -1439,6 +1439,12 @@ Layer:
                                                   'prison', 'hunting_stand', 'nightclub', 'veterinary', 'social_facility',
                                                   'charging_station', 'arts_centre', 'ferry_terminal', 'marketplace', 'waste_disposal') THEN amenity ELSE NULL END,
               'shop' || CASE WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE '' END,
+              'office_' || CASE WHEN tags->'office' IN ('accountant', 'adoption_agency', 'advertising_agency', 'architect', 'association', 'charity',
+                                                        'company', 'educational_institution', 'employment_agency', 'energy_supplier', 'estate_agent',
+                                                        'forestry', 'foundation', 'government', 'guide', 'insurance', 'it', 'lawyer', 'logistics',
+                                                        'moving_company', 'newspaper', 'ngo', 'notary', 'political_party', 'private_investigator',
+                                                        'property_management', 'quango', 'religion', 'research', 'surveyor', 'tax', 'tax_advisor',
+                                                        'telecommunication', 'therapist', 'travel_agent', 'water_utility', 'real_estate_agent') THEN tags->'office' ELSE NULL END,
               'leisure_' || CASE WHEN leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table',
                                                   'fitness_centre', 'fitness_station', 'firepit') THEN leisure ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill', 'obelisk') THEN man_made ELSE NULL END,
@@ -1476,6 +1482,7 @@ Layer:
                            'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site')
             OR amenity IS NOT NULL -- skip checking a huge list and use a null check
             OR shop IS NOT NULL
+            OR tags->'office' IS NOT NULL
             OR leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'fitness_centre',
                            'fitness_station', 'firepit')
             OR man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill', 'obelisk')
@@ -1531,6 +1538,12 @@ Layer:
                                                   'charging_station', 'arts_centre', 'ferry_terminal', 'marketplace') THEN amenity ELSE NULL END,
               'emergency_' || CASE WHEN tags->'emergency' IN ('phone') THEN tags->'emergency' ELSE NULL END,
               'shop' || CASE WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE '' END,
+              'office_' || CASE WHEN tags->'office' IN ('accountant', 'adoption_agency', 'advertising_agency', 'architect', 'association', 'charity',
+                                                        'company', 'educational_institution', 'employment_agency', 'energy_supplier', 'estate_agent',
+                                                        'forestry', 'foundation', 'government', 'guide', 'insurance', 'it', 'lawyer', 'logistics',
+                                                        'moving_company', 'newspaper', 'ngo', 'notary', 'political_party', 'private_investigator',
+                                                        'property_management', 'quango', 'religion', 'research', 'surveyor', 'tax', 'tax_advisor',
+                                                        'telecommunication', 'therapist', 'travel_agent', 'water_utility', 'real_estate_agent') THEN tags->'office' ELSE NULL END,
               'leisure_' || CASE WHEN leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'slipway',
                                                   'dog_park', 'fitness_centre', 'fitness_station', 'firepit') THEN leisure ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill', 'obelisk') THEN man_made ELSE NULL END,
@@ -1579,6 +1592,7 @@ Layer:
                            'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site')
             OR amenity IS NOT NULL -- skip checking a huge list and use a null check
             OR shop IS NOT NULL
+            OR tags->'office' IS NOT NULL
             OR leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'slipway',
                            'dog_park', 'fitness_centre', 'fitness_station', 'firepit')
             OR man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill', 'cross', 'obelisk')
@@ -1958,6 +1972,12 @@ Layer:
                                             'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor', 'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea',
                                             'coffee', 'tyres', 'pastry', 'chocolate') THEN shop
                               WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE 'other' END,
+              'office_' || CASE WHEN tags->'office' IN ('accountant', 'adoption_agency', 'advertising_agency', 'architect', 'association', 'charity',
+                                                        'company', 'educational_institution', 'employment_agency', 'energy_supplier', 'estate_agent',
+                                                        'forestry', 'foundation', 'government', 'guide', 'insurance', 'it', 'lawyer', 'logistics',
+                                                        'moving_company', 'newspaper', 'ngo', 'notary', 'political_party', 'private_investigator',
+                                                        'property_management', 'quango', 'religion', 'research', 'surveyor', 'tax', 'tax_advisor',
+                                                        'telecommunication', 'therapist', 'travel_agent', 'water_utility', 'real_estate_agent') THEN tags->'office' ELSE NULL END,
               'leisure_' || CASE WHEN leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'fitness_centre', 'sports_centre', 'stadium', 'track',
                                                   'pitch', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina',
                                                   'picnic_table', 'dog_park', 'fitness_station', 'firepit') THEN leisure ELSE NULL END,
@@ -2003,6 +2023,7 @@ Layer:
                              'museum', 'viewpoint', 'attraction', 'zoo', 'information', 'picnic_site')
               OR amenity IS NOT NULL -- skip checking a huge list and use a null check
               OR shop IS NOT NULL
+              OR tags->'office' IS NOT NULL
               OR leisure IS NOT NULL
               OR landuse IS NOT NULL
               OR man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower', 'pier', 'breakwater', 'groyne', 'obelisk', 'works')
@@ -2101,6 +2122,12 @@ Layer:
                                                 'variety_store', 'wine', 'outdoor', 'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea', 'coffee', 'tyres', 
                                                 'pastry', 'chocolate') THEN shop
                                   WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE 'other' END,
+                  'office_' || CASE WHEN tags->'office' IN ('accountant', 'adoption_agency', 'advertising_agency', 'architect', 'association', 'charity',
+                                                            'company', 'educational_institution', 'employment_agency', 'energy_supplier', 'estate_agent',
+                                                            'forestry', 'foundation', 'government', 'guide', 'insurance', 'it', 'lawyer', 'logistics',
+                                                            'moving_company', 'newspaper', 'ngo', 'notary', 'political_party', 'private_investigator',
+                                                            'property_management', 'quango', 'religion', 'research', 'surveyor', 'tax', 'tax_advisor',
+                                                            'telecommunication', 'therapist', 'travel_agent', 'water_utility', 'real_estate_agent') THEN tags->'office' ELSE NULL END,
                   'leisure_' || CASE WHEN leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'fitness_centre', 'sports_centre', 'stadium', 'track',
                                                       'pitch','playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina',
                                                       'slipway', 'picnic_table', 'dog_park', 'fitness_station', 'firepit') THEN leisure ELSE NULL END,
@@ -2150,6 +2177,7 @@ Layer:
                                  'museum', 'viewpoint', 'attraction', 'zoo', 'information', 'picnic_site')
                   OR amenity IS NOT NULL -- skip checking a huge list and use a null check
                   OR shop IS NOT NULL
+                  OR tags->'office' IS NOT NULL
                   OR leisure IS NOT NULL
                   OR landuse IN ('reservoir', 'basin', 'recreation_ground', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery', 'residential',
                                  'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farmland', 'greenhouse_horticulture',
