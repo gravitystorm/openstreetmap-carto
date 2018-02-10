@@ -27,6 +27,8 @@
 #coast-poly {
   [zoom >= 10] {
     polygon-fill: @land-color;
+    line-color: darken(@water-color,30%);
+    line-width: 0.5;
   }
 }
 
