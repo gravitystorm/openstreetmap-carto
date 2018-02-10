@@ -1,5 +1,5 @@
-@admin-boundaries: #ac46ac;
-@admin-boundaries-maritime: darken(@water-color,20%);
+@admin-boundaries: #000000;
+@admin-boundaries-maritime: darken(@water-color,30%);
 
 @admin-simplify: 4;
 @admin-simplify-algorithm: visvalingam-whyatt;
@@ -17,7 +17,7 @@ overlapping borders correctly.
     [zoom >= 4] {
       background/line-join: bevel;
       background/line-color: white;
-      background/line-width: 1.2;
+      background/line-width: 1;
       background/line-simplify: @admin-simplify;
       background/line-simplify-algorithm: @admin-simplify-algorithm;
       line-join: bevel;
@@ -25,17 +25,17 @@ overlapping borders correctly.
       [maritime = 'true'] {
         line-color: @admin-boundaries-maritime;
       }
-      line-width: 1.2;
+      line-width: 1;
       line-simplify: @admin-simplify;
       line-simplify-algorithm: @admin-simplify-algorithm;
     }
     [zoom >= 5] {
-      background/line-width: 1.5;
-      line-width: 1.5;
+      background/line-width: 1;
+      line-width: 1;
     }
     [zoom >= 6] {
-      background/line-width: 1.8;
-      line-width: 1.8;
+      background/line-width: 1;
+      line-width: 1;
     }
     [zoom >= 7] {
       background/line-width: 2;
@@ -83,7 +83,7 @@ overlapping borders correctly.
       background/line-simplify: @admin-simplify;
       background/line-simplify-algorithm: @admin-simplify-algorithm;
       line-color: @admin-boundaries;
-      [maritime = 'true'] {
+      [maritime = 'yes'] {
         line-color: @admin-boundaries-maritime;
       }
       line-join: bevel;
@@ -93,12 +93,12 @@ overlapping borders correctly.
       line-clip: false;
     }
     [zoom >= 5] {
-      background/line-width: 0.5;
-      line-width: 0.5;
+      background/line-width: 0.4;
+      line-width: 0.4;
     }
     [zoom >= 6] {
-      background/line-width: 0.6;
-      line-width: 0.6;
+      background/line-width: 0.4;
+      line-width: 0.4;
     }
     [zoom >= 7] {
       background/line-width: 1;
@@ -107,6 +107,7 @@ overlapping borders correctly.
     }
     [zoom >= 9] {
       background/line-width: 1.8;
+      line-dasharray: 4,3;
       line-width: 1.8;
     }
     [zoom >= 10] {

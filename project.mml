@@ -39,9 +39,20 @@ Stylesheet:
   - style.mss
   - fonts.mss
   - shapefiles.mss
+  - landcover.mss
   - water.mss
+  - water-features.mss
+  - road-colors-generated.mss
+  - roads.mss
+  - power.mss
   - placenames.mss
+  - buildings.mss
+  - stations.mss
+  - amenity-points.mss
+  - ferry-routes.mss
+  - aerialways.mss
   - admin.mss
+  - addressing.mss
 Layer:
   - id: world
     geometry: polygon
@@ -1122,28 +1133,15 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (
-          (SELECT
+        (SELECT
             way,
             admin_level,
-            'false' as maritime
-          FROM planet_osm_roads
-          WHERE boundary = 'administrative'
-            AND admin_level IN ('0', '1', '2', '3', '4')
-            AND osm_id < 0
-          )
-          UNION
-          (SELECT
-            way,
-            admin_level,
-            'true' as maritime
+            tags->'maritime' AS maritime
           FROM planet_osm_roads
           WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4')
             AND osm_id > 0
-            AND tags->'maritime' = 'yes'
-          )
-          ORDER BY maritime, admin_level DESC
+          ORDER BY admin_level DESC
         ) AS admin_low_zoom
     properties:
       minzoom: 4
@@ -1155,28 +1153,15 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (
-          (SELECT
+        (SELECT
             way,
             admin_level,
-            'false'as maritime
-          FROM planet_osm_roads
-          WHERE boundary = 'administrative'
-            AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')
-            AND osm_id < 0
-          )
-          UNION
-          (SELECT
-            way,
-            admin_level,
-            'true' as maritime
+            tags->'maritime' AS maritime
           FROM planet_osm_roads
           WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')
             AND osm_id > 0
-            AND tags->'maritime' = 'yes'
-          )
-          ORDER BY maritime, admin_level DESC
+          ORDER BY admin_level DESC
         ) AS admin_mid_zoom
     properties:
       minzoom: 11
@@ -1188,28 +1173,15 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (
-          (SELECT
+        (SELECT
             way,
-            admin_level::integer, -- With 10 as a valid value, we need to do a numeric ordering, not a text ordering
-            'false' as maritime
-          FROM planet_osm_roads
-          WHERE boundary = 'administrative'
-            AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
-            AND osm_id < 0
-          )
-          UNION
-          (SELECT
-            way,
-            admin_level::integer, -- With 10 as a valid value, we need to do a numeric ordering, not a text ordering
-            'true' as maritime
+            admin_level,
+            tags->'maritime' AS maritime
           FROM planet_osm_roads
           WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
             AND osm_id > 0
-            AND tags->'maritime' = 'yes'
-          )
-          ORDER BY maritime, admin_level DESC
+          ORDER BY admin_level::integer DESC -- With 10 as a valid value, we need to do a numeric ordering, not a text ordering
         ) AS admin_high_zoom
     properties:
       minzoom: 13
