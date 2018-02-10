@@ -590,6 +590,13 @@
     marker-clip: false;
   }
 
+  [feature = 'historic_fort'][zoom >= 16] {
+    marker-file: url('symbols/fort.svg');
+    marker-fill: @memorials;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'historic_archaeological_site'][zoom >= 16] {
     marker-file: url('symbols/archaeological_site.svg');
     marker-fill: @culture;
@@ -1389,7 +1396,8 @@
   [feature = 'historic_memorial'][zoom >= 17],
   [feature = 'historic_memorial_plaque'][zoom >= 19],
   [feature = 'man_made_obelisk'][zoom >= 16],
-  [feature = 'historic_monument'][zoom >= 16] {
+  [feature = 'historic_monument'][zoom >= 16],
+  [feature = 'historic_fort'][zoom >= 16] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
