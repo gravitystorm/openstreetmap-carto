@@ -1551,7 +1551,7 @@
         text-wrap-width: @landcover-wrap-width-size-bigger;
         text-line-spacing: @landcover-line-spacing-size-bigger;
       }
-      text-fill: darken(@danger_area, 40%);
+      text-fill: darken(@military, 40%);
       text-face-name: @bold-fonts;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
