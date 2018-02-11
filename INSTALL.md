@@ -9,10 +9,12 @@ Start by creating a database
 
 ```
 sudo -u postgres createuser -s $USER
-createdb gis
+createdb -E UTF8 -l en_GB.UTF8 gis
 ```
 
-Enable PostGIS and hstore extensions with
+The character encoding scheme to be used in the database is *UTF8* and the adopted collation is *en_GB.UTF8*.
+
+Enable *PostGIS* and *hstore* extensions with
 
 ```
 psql -d gis -c 'CREATE EXTENSION postgis; CREATE EXTENSION hstore;'
