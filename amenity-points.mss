@@ -13,7 +13,7 @@
 @memorials: @amenity-brown;
 @culture: @amenity-brown;
 @public-service: @amenity-brown;
-@office: @amenity-brown;
+@office: black;
 @man-made-icon: #555;
 @landform-color: #d08f55;
 @leisure-green: darken(@park, 60%);
@@ -874,44 +874,82 @@
     }
   }
 
-  [feature = 'office_accountant'],
-  [feature = 'office_adoption_agency'],
-  [feature = 'office_advertising_agency'],
-  [feature = 'office_architect'],
-  [feature = 'office_association'],
-  [feature = 'office_charity'],
-  [feature = 'office_company'],
-  [feature = 'office_educational_institution'],
-  [feature = 'office_employment_agency'],
-  [feature = 'office_energy_supplier'],
-  [feature = 'office_estate_agent'],
-  [feature = 'office_forestry'],
-  [feature = 'office_foundation'],
-  [feature = 'office_government'],
-  [feature = 'office_guide'],
-  [feature = 'office_insurance'],
-  [feature = 'office_it'],
-  [feature = 'office_lawyer'],
-  [feature = 'office_logistics'],
-  [feature = 'office_moving_company'],
-  [feature = 'office_newspaper'],
-  [feature = 'office_ngo'],
-  [feature = 'office_notary'],
-  [feature = 'office_political_party'],
-  [feature = 'office_private_investigator'],
-  [feature = 'office_property_management'],
-  [feature = 'office_quango'],
-  [feature = 'office_religion'],
-  [feature = 'office_research'],
-  [feature = 'office_surveyor'],
-  [feature = 'office_tax'],
-  [feature = 'office_tax_advisor'],
-  [feature = 'office_telecommunication'],
-  [feature = 'office_therapist'],
-  [feature = 'office_travel_agent'],
-  [feature = 'office_water_utility'],
-  [feature = 'office_real_estate_agent'] {
-    [zoom >= 17] {
+
+
+  // government and public institutions
+  [zoom >= 17] {
+    [feature = 'office_administrative'],
+    [feature = 'office_adoption_agency'],
+    [feature = 'office_government'],
+    [feature = 'office_employment_agency'],
+    [feature = 'office_educational_institution'],
+    [feature = 'office_government'],
+    [feature = 'office_ngo'],
+    [feature = 'office_political_party'],
+    [feature = 'office_quango'],
+    [feature = 'office_religion'],
+    [feature = 'office_tax'] {
+      marker-width: 4;
+      marker-line-width: 0;
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @public-service;
+    }
+  }
+
+  // potentially larger businesses
+  [zoom >= 17] {
+    [feature = 'office_energy_supplier'],
+    [feature = 'office_financial'],
+    [feature = 'office_newspaper'],
+    [feature = 'office_research'],
+    [feature = 'office_telecommunication'],
+    [feature = 'office_water_utility'],
+    {
+      marker-width: 4;
+      marker-line-width: 0;
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @office;
+    }
+  }
+
+  // smaller businesses, treated as shops
+  [zoom >= 18] {
+    [feature = 'office_accountant'],
+    [feature = 'office_advertising_agency'],
+    [feature = 'office_architect'],
+    [feature = 'office_estate_agent'],
+    [feature = 'office_guide'],
+    [feature = 'office_insurance'],
+    [feature = 'office_it'],
+    [feature = 'office_lawyer'],
+    [feature = 'office_logistics'],
+    [feature = 'office_moving_company'],
+    [feature = 'office_notary'],
+    [feature = 'office_physician'],
+    [feature = 'office_private_investigator'],
+    [feature = 'office_property_management'],
+    [feature = 'office_surveyor'],
+    [feature = 'office_tax_advisor'],
+    [feature = 'office_travel_agent'],
+    [feature = 'office_therapist'] {
+      marker-width: 4;
+      marker-line-width: 0;
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @shop-icon;
+    }
+  }
+
+  // other offices
+  [zoom >= 18] {
+    [feature = 'office_association'],
+    [feature = 'office_charity'],
+    [feature = 'office_company'],
+    [feature = 'office_forestry'],
+    [feature = 'office_foundation'],
+    [feature = 'office_yes'] {
       marker-width: 4;
       marker-line-width: 0;
       marker-placement: interior;
@@ -2079,7 +2117,25 @@
   [feature = 'shop_tyres'],
   [feature = 'shop_variety_store'],
   [feature = 'shop_wine'],
-  [feature = 'shop_other']{
+  [feature = 'shop_other'],
+  [feature = 'office_accountant'],
+  [feature = 'office_advertising_agency'],
+  [feature = 'office_architect'],
+  [feature = 'office_estate_agent'],
+  [feature = 'office_guide'],
+  [feature = 'office_insurance'],
+  [feature = 'office_it'],
+  [feature = 'office_lawyer'],
+  [feature = 'office_logistics'],
+  [feature = 'office_moving_company'],
+  [feature = 'office_notary'],
+  [feature = 'office_physician'],
+  [feature = 'office_private_investigator'],
+  [feature = 'office_property_management'],
+  [feature = 'office_surveyor'],
+  [feature = 'office_tax_advisor'],
+  [feature = 'office_therapist'],
+  [feature = 'office_travel_agent'] {
     [way_pixels > 3000][zoom >= 17],
     [zoom >= 18] {
       text-name: "[name]";
@@ -2098,45 +2154,42 @@
     }
   }
 
-  [feature = 'office_accountant'],
+  // government and public institutions
+  [feature = 'office_administrative'],
   [feature = 'office_adoption_agency'],
-  [feature = 'office_advertising_agency'],
-  [feature = 'office_architect'],
+  [feature = 'office_educational_institution'],
+  [feature = 'office_employment_agency'],
+  [feature = 'office_government'],
+  [feature = 'office_ngo'],
+  [feature = 'office_political_party'],
+  [feature = 'office_quango'],
+  [feature = 'office_religion'],
+  [feature = 'office_tax'] {
+    [zoom >= 18],
+    [zoom >= 17][way_pixels > 3000] {
+      marker-width: 4;
+      marker-line-width: 0;
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @public-service;
+    }
+  }
+
+  // offices
   [feature = 'office_association'],
   [feature = 'office_charity'],
   [feature = 'office_company'],
-  [feature = 'office_educational_institution'],
-  [feature = 'office_employment_agency'],
   [feature = 'office_energy_supplier'],
-  [feature = 'office_estate_agent'],
+  [feature = 'office_financial'],
   [feature = 'office_forestry'],
   [feature = 'office_foundation'],
-  [feature = 'office_government'],
-  [feature = 'office_guide'],
-  [feature = 'office_insurance'],
-  [feature = 'office_it'],
-  [feature = 'office_lawyer'],
-  [feature = 'office_logistics'],
-  [feature = 'office_moving_company'],
   [feature = 'office_newspaper'],
-  [feature = 'office_ngo'],
-  [feature = 'office_notary'],
-  [feature = 'office_political_party'],
-  [feature = 'office_private_investigator'],
-  [feature = 'office_property_management'],
-  [feature = 'office_quango'],
-  [feature = 'office_religion'],
   [feature = 'office_research'],
-  [feature = 'office_surveyor'],
-  [feature = 'office_tax'],
-  [feature = 'office_tax_advisor'],
   [feature = 'office_telecommunication'],
-  [feature = 'office_therapist'],
-  [feature = 'office_travel_agent'],
   [feature = 'office_water_utility'],
-  [feature = 'office_real_estate_agent'] {
-    [way_pixels > 3000][zoom >= 17],
-    [zoom >= 18] {
+  [feature = 'office_yes'] {
+    [zoom >= 18],
+    [zoom >= 17][way_pixels > 3000] {
       text-name: "[name]";
       text-size: @standard-font-size;
       text-wrap-width: @standard-wrap-width;
