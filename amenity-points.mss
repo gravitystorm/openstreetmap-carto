@@ -1495,6 +1495,7 @@
     }
   }
 
+  [feature = 'landuse_military'],
   [feature = 'natural_wood'],
   [feature = 'landuse_forest'],
   [feature = 'boundary_national_park'],
@@ -1519,6 +1520,9 @@
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-placement: interior;
+      [feature = 'landuse_military'] {
+        text-fill: darken(@military, 40%);
+      }
       [feature = 'natural_wood'],
       [feature = 'landuse_forest'] {
         text-fill: @forest-text;
@@ -1530,7 +1534,6 @@
     }
   }
 
-  [feature = 'military_area'][is_building = 'no'],
   [feature = 'military_danger_area'][is_building = 'no'] {
     [zoom >= 9][way_pixels > 3000],
     [zoom >= 17] {
