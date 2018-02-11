@@ -1530,7 +1530,7 @@
     }
   }
 
-  [feature = 'landuse_military'][is_building = 'no'],
+  [feature = 'military_area'][is_building = 'no'],
   [feature = 'military_danger_area'][is_building = 'no'] {
     [zoom >= 9][way_pixels > 3000],
     [zoom >= 17] {
@@ -1549,12 +1549,7 @@
         text-line-spacing: @landcover-line-spacing-size-bigger;
       }
       text-fill: darken(@military, 40%);
-      [feature = 'landuse_military'] {
-        text-face-name: @landcover-face-name;
-      }
-      [feature = 'military_danger_area'] {
-        text-face-name: @bold-fonts;
-      }
+      text-face-name: @bold-fonts;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-placement: interior;
