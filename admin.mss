@@ -1,4 +1,4 @@
-@admin-boundaries: black;
+@admin-boundaries: #006600;
 @admin-boundaries-maritime: darken(@water-color,30%);
 
 @admin-simplify: 4;
@@ -19,7 +19,7 @@ overlapping borders correctly.
     [zoom >= 4] {
       background/line-join: bevel;
       background/line-color: white;
-      background/line-width: 0.4;
+      background/line-width: 0.2;
       background/line-simplify: @admin-simplify;
       background/line-simplify-algorithm: @admin-simplify-algorithm;
       line-join: bevel;
@@ -27,25 +27,25 @@ overlapping borders correctly.
       [maritime = 'true'] {
         line-color: @admin-boundaries-maritime;
       }
-      line-width: 0.4;
+      line-width: 0.2;
       line-simplify: @admin-simplify;
       line-simplify-algorithm: @admin-simplify-algorithm;
     }
     [zoom >= 5] {
-      background/line-width: 0.4;
-      line-width: 0.4;
+      background/line-width: 0.1;
+      line-width: 0.1;
     }
     [zoom >= 6] {
       background/line-width: 0.5;
       line-width: 0.5;
     }
     [zoom >= 7] {
-      background/line-width: 2;
-      line-width: 2;
+      background/line-width: 0.8;
+      line-width: 0.8;
     }
     [zoom >= 10] {
-      background/line-width: 6;
-      line-width: 6;
+      background/line-width: 1;
+      line-width: 1;
     }
   }
 
@@ -81,7 +81,7 @@ overlapping borders correctly.
     [zoom >= 4] {
       background/line-join: bevel;
       background/line-color: white;
-      background/line-width: 0.2;
+      background/line-width: 0;
       background/line-simplify: @admin-simplify;
       background/line-simplify-algorithm: @admin-simplify-algorithm;
       line-color: @admin-boundaries;
@@ -89,14 +89,14 @@ overlapping borders correctly.
         line-color: @admin-boundaries-maritime;
       }
       line-join: bevel;
-      line-width: 0.4;
+      line-width: 0;
       line-clip: false;
       line-simplify: @admin-simplify;
       line-simplify-algorithm: @admin-simplify-algorithm;
     }
     [zoom >= 5] {
-      background/line-width: 0.2;
-      line-width: 0.2;
+      background/line-width: 0;
+      line-width: 0;
     }
     [zoom >= 6] {
       background/line-width: 0.2;
