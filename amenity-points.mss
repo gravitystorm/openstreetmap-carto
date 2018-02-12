@@ -188,7 +188,7 @@
 
   [feature = 'amenity_public_bath'][zoom >= 17] {
     marker-file: url('symbols/public_bath.svg');
-    marker-fill: @culture;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1243,7 +1243,7 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: @culture;
+    text-fill: @amenity-brown;
     text-dy: 11;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
