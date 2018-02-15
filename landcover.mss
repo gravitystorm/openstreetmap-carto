@@ -41,8 +41,6 @@
 @campsite: #def6c0; // also caravan_site, picnic_site
 @cemetery: #aacbaf; // also grave_yard
 @construction: #c7c7b4; // also brownfield
-@danger_area: pink;
-@danger_background: #fcd8db;
 @heath: #d6d99f;
 @mud: rgba(203,177,154,0.3); // produces #e6dcd1 over @land
 @place_of_worship: #cdccc9;
@@ -237,19 +235,13 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [feature = 'military_danger_area'] {
-    [zoom >= 9][zoom < 11] {
-      polygon-fill: @danger_area;
-      polygon-opacity: 0.3;
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
-    }
-    [zoom >= 11] {
-      polygon-fill: @danger_background;
-      polygon-pattern-file: url('symbols/danger.svg');
-      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
-    }
+  [feature = 'military_danger_area'][zoom >= 9] {
+    polygon-pattern-file: url('symbols/danger_red_hatch.png');
+    polygon-pattern-alignment: global;
+    line-color: @military;
+    line-width: 2.0;
+    line-offset: -1.0;
+    line-opacity: 0.2;
   }
 
   [feature = 'leisure_park'],
@@ -710,14 +702,18 @@
 }
 
 #landuse-overlay {
-  [landuse = 'military'][zoom >= 7][way_pixels > 900],
-  [landuse = 'military'][zoom >= 8][way_pixels > 100],
-  [landuse = 'military'][zoom >= 10][way_pixels > 75] {
+  [landuse = 'military'][zoom >= 8][way_pixels > 900],
+  [landuse = 'military'][zoom >= 13] {
     polygon-pattern-file: url('symbols/military_red_hatch.png');
     polygon-pattern-alignment: global;
-    line-color: @military;
-    line-width: 3;
-    line-opacity: 0.329;
+    line-color: @military; 
+    line-opacity: 0.24;
+    line-width: 1.0; 
+    line-offset: -0.5;
+    [zoom >= 15] {
+      line-width: 2; 
+      line-offset: -1.0;
+    }
   }
 }
 
