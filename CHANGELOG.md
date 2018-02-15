@@ -1,4 +1,12 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.7.1...master)
+### Changes
+- Made military area rendering less prominent
+- Adding rendering for historic=fort
+- Adding rendering for amenity=public_bath
+- Rendering barrier=log like block
+- Adding rendering for amenity=waste_disposal
+- Moving tourism-boundary under barrier layer
+- Docker: run osm2pgsql in slim mode
 
 ## [v4.7.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.7.0...v4.7.1) - 2018-01-31
 ### Changes
