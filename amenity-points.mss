@@ -186,6 +186,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_public_bath'][zoom >= 17] {
+    marker-file: url('symbols/public_bath.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_nightclub'][zoom >= 17] {
     marker-file: url('symbols/nightclub.svg');
     marker-fill: @gastronomy;
@@ -1236,6 +1243,19 @@
       text-halo-fill: @standard-halo-fill;
       text-placement: interior;
     }
+  }
+
+  [feature = 'amenity_public_bath'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: @amenity-brown;
+    text-dy: 11;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
   }
 
   [feature = 'amenity_car_rental'][zoom >= 17],
