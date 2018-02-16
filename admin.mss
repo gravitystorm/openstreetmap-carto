@@ -95,17 +95,9 @@ overlapping borders correctly.
       line-width: 0.3;
     }
     [zoom >= 9] {
-      background/line-width: 1.8;
+      background/line-width: 1;
       line-dasharray: 4,3;
-      line-width: 1.8;
-    }
-    [zoom >= 10] {
-      background/line-width: 2.5;
-      line-width: 2.5;
-    }
-    [zoom >= 12] {
-      background/line-width: 3;
-      line-width: 3;
+      line-width: 1;
     }
   }
   opacity: 1;
