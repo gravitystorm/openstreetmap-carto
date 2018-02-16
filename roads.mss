@@ -1,5 +1,6 @@
 /* For the main linear features, such as roads and railways. */
-
+/* Colors for motorway, trunk, primary and secdonary are defined in road-colors-generated.mss */
+@motorway-lowest-zoom: lighten(@motorway-low-zoom, 10%);
 @tertiary-fill: #ffffff;
 @residential-fill: #ffffff;
 @service-fill: @residential-fill;
@@ -1177,10 +1178,13 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'highway_motorway'] {
       [zoom >= 6][link != 'yes'],
       [zoom >= 10] {
-        line-color: @motorway-low-zoom;
+        line-color: @motorway-lowest-zoom;
         line-width: @motorway-width-z6;
         [zoom >= 7] { line-width: @motorway-width-z7; }
-        [zoom >= 8] { line-width: @motorway-width-z8; }
+        [zoom >= 8] {
+          line-width: @motorway-width-z8;
+          line-color: @motorway-low-zoom;
+        }
         [zoom >= 9] { line-width: @motorway-width-z9; }
         [zoom >= 10] { line-width: @motorway-width-z10; }
         [zoom >= 11] { line-width: @motorway-width-z11; }
