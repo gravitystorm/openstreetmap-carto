@@ -412,7 +412,7 @@ Layer:
             AND (amenity IS NULL OR amenity != 'place_of_worship')
             AND building != 'train_station'
             AND (aerialway IS NULL OR aerialway != 'station')
-            AND (tags->'public_transport' IS NULL OR tags->'public_transport' != 'station')
+            AND ((tags->'public_transport') IS NULL OR tags->'public_transport' != 'station')
             AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
           ORDER BY COALESCE(layer,0), way_area DESC
         ) AS buildings
@@ -1099,9 +1099,9 @@ Layer:
             tags->'entrance' AS entrance,
             access
           FROM planet_osm_point
-          WHERE tags->'entrance' IS NOT NULL AND
+          WHERE (tags->'entrance') IS NOT NULL AND
             (tags->'indoor' = 'no'
-            OR tags->'indoor' IS NULL))
+            OR (tags->'indoor') IS NULL))
         AS entrances
     properties:
       minzoom: 18
