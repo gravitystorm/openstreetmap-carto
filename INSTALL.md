@@ -110,7 +110,7 @@ For development, a style design studio is needed.
 
 To display any map a database containing OpenStreetMap data and some utilities are required
 
-* [PostgreSQL](http://www.postgresql.org/)
+* [PostgreSQL](http://www.postgresql.org/) 9.5+
 * [PostGIS](http://postgis.org/)
 * [osm2pgsql](https://github.com/openstreetmap/osm2pgsql#installing) to [import your data](https://switch2osm.org/loading-osm-data/) into a PostGIS database
 * `curl` and `unzip` for downloading and decompressing files
