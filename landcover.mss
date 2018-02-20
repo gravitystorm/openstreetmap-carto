@@ -543,6 +543,21 @@
     }
   }
 
+  [feature = 'amenity_fire_station'][zoom >= 8][way_pixels > 900],
+  [feature = 'amenity_police'][zoom >= 8][way_pixels > 900],
+  [feature = 'amenity_fire_station'][zoom >= 13],
+  [feature = 'amenity_police'][zoom >= 13] {
+    polygon-fill: #F3E3DD;
+    line-color: @military; 
+    line-opacity: 0.24;
+    line-width: 1.0; 
+    line-offset: -0.5;
+    [zoom >= 15] {
+      line-width: 2; 
+      line-offset: -1.0;
+    }
+  }
+
   [feature = 'amenity_parking'][zoom >= 10],
   [feature = 'amenity_bicycle_parking'][zoom >= 10],
   [feature = 'amenity_motorcycle_parking'][zoom >= 10],
