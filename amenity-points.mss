@@ -451,6 +451,13 @@
     marker-clip: false;
   }
 
+  [feature = 'historic_wayside_shrine'][zoom >= 17] {
+    marker-file: url('symbols/shrine.svg');
+    marker-fill: @man-made-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+    
   [feature = 'amenity_police'][zoom >= 16] {
     marker-file: url('symbols/police.svg');
     marker-fill: @public-service;
@@ -1389,6 +1396,7 @@
 
   [feature = 'man_made_cross'][zoom >= 17],
   [feature = 'historic_wayside_cross'][zoom >= 17],
+  [feature = 'historic_wayside_shrine'][zoom >= 17],
   [feature = 'natural_cave_entrance'][zoom >= 15],
   [feature = 'man_made_mast'][zoom >= 17],
   [feature = 'man_made_water_tower'][zoom >= 17] {
@@ -1430,7 +1438,8 @@
     text-placement: interior;
   }
   
-  [feature = 'military_bunker'][zoom >= 17] {
+  [feature = 'military_bunker'][zoom >= 17],
+  [feature = 'historic_wayside_shrine'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
