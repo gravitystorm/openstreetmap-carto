@@ -2117,25 +2117,7 @@
   [feature = 'shop_tyres'],
   [feature = 'shop_variety_store'],
   [feature = 'shop_wine'],
-  [feature = 'shop_other'],
-  [feature = 'office_accountant'],
-  [feature = 'office_advertising_agency'],
-  [feature = 'office_architect'],
-  [feature = 'office_estate_agent'],
-  [feature = 'office_guide'],
-  [feature = 'office_insurance'],
-  [feature = 'office_it'],
-  [feature = 'office_lawyer'],
-  [feature = 'office_logistics'],
-  [feature = 'office_moving_company'],
-  [feature = 'office_notary'],
-  [feature = 'office_physician'],
-  [feature = 'office_private_investigator'],
-  [feature = 'office_property_management'],
-  [feature = 'office_surveyor'],
-  [feature = 'office_tax_advisor'],
-  [feature = 'office_therapist'],
-  [feature = 'office_travel_agent'] {
+  [feature = 'shop_other'] {
     [way_pixels > 3000][zoom >= 17],
     [zoom >= 18] {
       text-name: "[name]";
@@ -2154,6 +2136,40 @@
     }
   }
 
+  // smaller businesses, treated as shops
+  [feature = 'office_accountant'],
+  [feature = 'office_advertising_agency'],
+  [feature = 'office_architect'],
+  [feature = 'office_estate_agent'],
+  [feature = 'office_guide'],
+  [feature = 'office_insurance'],
+  [feature = 'office_it'],
+  [feature = 'office_lawyer'],
+  [feature = 'office_logistics'],
+  [feature = 'office_moving_company'],
+  [feature = 'office_notary'],
+  [feature = 'office_physician'],
+  [feature = 'office_private_investigator'],
+  [feature = 'office_property_management'],
+  [feature = 'office_surveyor'],
+  [feature = 'office_tax_advisor'],
+  [feature = 'office_therapist'],
+  [feature = 'office_travel_agent'] {
+    [zoom >= 18],
+    [way_pixels > 3000][zoom >= 17] {
+      text-name: "[name]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-dy: 8;
+      text-fill: @shop-text;
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: rgba(255, 255, 255, 0.6);
+      text-placement: interior;
+    }
+  }
+
   // government and public institutions
   [feature = 'office_administrative'],
   [feature = 'office_adoption_agency'],
@@ -2167,11 +2183,16 @@
   [feature = 'office_tax'] {
     [zoom >= 18],
     [zoom >= 17][way_pixels > 3000] {
-      marker-width: 4;
-      marker-line-width: 0;
-      marker-placement: interior;
-      marker-clip: false;
-      marker-fill: @public-service;
+      text-name: "[name]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-dy: 8;
+      text-fill: @public-service;
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: rgba(255, 255, 255, 0.6);
+      text-placement: interior;
     }
   }
 
@@ -2194,7 +2215,7 @@
       text-size: @standard-font-size;
       text-wrap-width: @standard-wrap-width;
       text-line-spacing: @standard-line-spacing-size;
-      text-dy: 12;
+      text-dy: 8;
       text-fill: @office;
       text-face-name: @standard-font;
       text-halo-radius: @standard-halo-radius;
@@ -2210,7 +2231,7 @@
       text-size: @standard-font-size;
       text-wrap-width: @standard-wrap-width;
       text-line-spacing: @standard-line-spacing-size;
-      text-dy: 12;
+      text-dy: 8;
       text-fill: @shop-text;
       text-face-name: @standard-font;
       text-halo-radius: @standard-halo-radius;
