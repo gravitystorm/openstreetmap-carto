@@ -13,7 +13,7 @@
 @memorials: @amenity-brown;
 @culture: @amenity-brown;
 @public-service: @amenity-brown;
-@office: black;
+@office: darkblue;
 @man-made-icon: #555;
 @landform-color: #d08f55;
 @leisure-green: darken(@park, 60%);
