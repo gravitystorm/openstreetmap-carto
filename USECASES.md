@@ -23,5 +23,4 @@ Some features that we currently render for which we do not (yet) have a use case
 
 * Province/state names and borders (except USA) on z5
 * Minor water areas on z5/6/7
-* Military areas on z7
 * Island names on z5/6/7
