@@ -327,7 +327,8 @@
   [feature = 'natural_grassland'],
   [feature = 'landuse_grass'],
   [feature = 'landuse_village_green'],
-  [feature = 'leisure_common'] {
+  [feature = 'leisure_common'],
+  [feature = 'landcover_grass'] {
     [zoom >= 10] {
       polygon-fill: @grass;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
