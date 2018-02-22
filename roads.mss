@@ -2059,7 +2059,43 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
   }
+
+  ::unpaved {
+    [int_surface = 'unpaved'] {
+      [feature = 'highway_primary'] {
+        [zoom >= 8][link != 'yes'],
+        [zoom >= 10] {
+          [zoom >= 12] {
+            line-color: white;
+            line-width: @primary-width-z12;
+            line-dasharray: @primary-width-z12,@primary-width-z12*2;
+            [zoom >= 13] {
+              line-width: @primary-width-z13;
+              line-dasharray: @primary-width-z13,@primary-width-z13*2;
+            }
+            [zoom >= 15] {
+              line-width: @primary-width-z15;
+              line-dasharray: @primary-width-z15,@primary-width-z15*2;
+            }
+            [zoom >= 17] {
+              line-width: @primary-width-z17;
+              line-dasharray: @primary-width-z17,@primary-width-z17*2;
+            }
+            [zoom >= 18] {
+              line-width: @primary-width-z18;
+              line-dasharray: @primary-width-z18,@primary-width-z18*2;
+            }
+            [zoom >= 19] {
+              line-width: @primary-width-z19;
+              line-dasharray: @primary-width-z19,@primary-width-z19*2;
+            }
+          }
+        }
+      }
+    }
+  }
 }
+
 
 #turning-circle-casing {
   [int_tc_type = 'tertiary'][zoom >= 15] {
