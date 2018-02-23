@@ -1,12 +1,19 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.7.1...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.8.0...master)
+
+## [v4.8.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.7.0...v4.8.0) - 2018-02-23
 ### Changes
 - Made military area rendering less prominent
+- Adding rendering for historic=wayside_shrine
 - Adding rendering for historic=fort
 - Adding rendering for amenity=public_bath
-- Rendering barrier=log like block
+- Adding rendering for shop=chocolate
+- Adding rendering for barrier=toll_booth (nodes)
+- Adding rendering barrier=log
 - Adding rendering for amenity=waste_disposal
 - Moving tourism-boundary under barrier layer
 - Docker: run osm2pgsql in slim mode
+- Fix operator precedence for hstore queries
+- Small documentation fixes
 
 ## [v4.7.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.7.0...v4.7.1) - 2018-01-31
 ### Changes
