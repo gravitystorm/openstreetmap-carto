@@ -1784,10 +1784,14 @@ Layer:
             way,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
             highway,
+            place,
+            leisure,
             name
           FROM planet_osm_polygon
           WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street', 'track', 'path', 'platform')
             OR railway IN ('platform')
+            OR (place IN ('square') 
+                AND (leisure IS NULL OR NOT leisure IN ('park', 'common', 'recreation_ground', 'garden')))
             AND name IS NOT NULL
           ORDER BY way_area DESC
         ) AS roads_area_text_name
