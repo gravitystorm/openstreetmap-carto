@@ -104,7 +104,7 @@
   [feature = 'amenity_bus_station'][zoom >= 16] {
     marker-file: url('symbols/bus_station.svg');
     // use colors from SVG to allow for white background
-    point-placement: interior;
+    marker-placement: interior;
     marker-clip: false;
   }
 
@@ -182,7 +182,7 @@
   [feature = 'tourism_chalet'][zoom >= 17] {
     marker-file: url('symbols/chalet.svg');
     marker-fill: @accommodation-icon;
-    point-placement: interior;
+    marker-placement: interior;
     marker-clip: false;
   }
 
@@ -258,14 +258,14 @@
   [feature = 'tourism_guest_house'][zoom >= 17] {
     marker-file: url('symbols/guest_house.svg');
     marker-fill: @accommodation-icon;
-    point-placement: interior;
+    marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'tourism_apartment'][zoom >= 18] {
     marker-file: url('symbols/apartment.svg');
     marker-fill: @accommodation-icon;
-    point-placement: interior;
+    marker-placement: interior;
     marker-clip: false;
   }
 
@@ -936,14 +936,14 @@
   [feature = 'leisure_miniature_golf'][zoom >= 17] {
     marker-file: url('symbols/miniature_golf.svg');
     marker-fill: @leisure-green;
-    point-placement: interior;
+    marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'leisure_golf_course'][zoom >= 15] {
     marker-file: url('symbols/golf.svg');
     marker-fill: @leisure-green;
-    point-placement: interior;
+    marker-placement: interior;
     marker-clip: false;
   }
 
@@ -1112,10 +1112,10 @@
 
   [feature = 'railway_level_crossing'][zoom >= 14]::railway,
   [feature = 'railway_crossing'][zoom >= 15]::railway{
-    point-file: url('symbols/level_crossing.svg');
-    point-placement: interior;
+    marker-file: url('symbols/level_crossing.svg');
+    marker-placement: interior;
     [zoom >= 16] {
-      point-file: url('symbols/level_crossing2.svg');
+      marker-file: url('symbols/level_crossing2.svg');
     }
   }
 
