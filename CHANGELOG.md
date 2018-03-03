@@ -1,4 +1,10 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.8.0...master)
+### Major Changes
+- A bug where closed ways with natural=cliff or natural=tree_row were not
+  rendering has been fixed. This required fixing a transform bug. The fix
+  will apply to all objects when they are created in OSM, but there is no
+  migration for existing databases. Deployments will have to decide if the
+  effects are serious enough to require them to reload the database.
 
 ## [v4.8.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.7.0...v4.8.0) - 2018-02-23
 ### Changes
