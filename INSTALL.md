@@ -130,4 +130,10 @@ For deployment, CartoCSS and Mapnik are required.
 * [CartoCSS](https://github.com/mapbox/carto) >= 0.18.0 (we're using YAML)
 * [Mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 3.0
 
-Remember to run CartoCSS with proper API version to avoid errors (at least 3.0.0: `carto -a "3.0.0"`).
+With CartoCSS you compile these sources into a Mapnik compatible XML file. When running CartoCSS, specify the Mapnik API version you are using (at least 3.0.0: `carto -a "3.0.0"`).
+
+If you're calling Mapnik in your own program, remember to load the XML file in non strict mode. This way, fonts declared with alternative names will only generate warnings, not errors. For instance, using the Python bindings, this becomes:
+
+```python
+mapnik.load_map(mapnik.Map(width, height), xml_filename, False)  # False for non-strict mode
+```
