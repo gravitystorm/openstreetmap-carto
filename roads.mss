@@ -1,6 +1,6 @@
 /* For the main linear features, such as roads and railways. */
 /* Colors for motorway, trunk, primary and secdonary are defined in road-colors-generated.mss */
-@motorway-lowest-zoom: lighten(@motorway-low-zoom, 10%);
+@motorway-lowest-zoom: lighten(@motorway-low-zoom, 15%);
 @tertiary-fill: #ffffff;
 @residential-fill: #ffffff;
 @service-fill: @residential-fill;
@@ -256,7 +256,7 @@
 @junction-text-color:             #960000;
 @halo-color-for-minor-road:       white;
 @lowzoom-halo-color:              white;
-@lowzoom-halo-width:              2;
+@lowzoom-halo-width:              1.5;
 
 @motorway-oneway-arrow-color:     darken(@motorway-casing, 25%);
 @trunk-oneway-arrow-color:        darken(@trunk-casing, 25%);

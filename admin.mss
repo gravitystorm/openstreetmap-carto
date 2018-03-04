@@ -1,4 +1,4 @@
-@admin-boundaries: #002200;
+@admin-boundaries: #446644;
 @admin-boundaries-maritime: darken(@water-color,30%);
 
 @admin-simplify: 4;
@@ -32,8 +32,8 @@ overlapping borders correctly.
       line-simplify-algorithm: @admin-simplify-algorithm;
     }
     [zoom >= 6] {
-      background/line-width: 0.7;
-      line-width: 0.7;
+      background/line-width: 1;
+      line-width: 1;
     }
     [zoom >= 10] {
       background/line-width: 1;
@@ -58,8 +58,8 @@ overlapping borders correctly.
       line-simplify-algorithm: @admin-simplify-algorithm;
     }
     [zoom >= 6] {
-      background/line-width: 0.5;
-      line-width: 0.5;
+      background/line-width: 1;
+      line-width: 1;
     }
     [zoom >= 9] {
       background/line-width: 4;
