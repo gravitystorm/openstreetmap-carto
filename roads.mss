@@ -61,10 +61,10 @@
 @residential-tunnel-fill: darken(@residential-fill, 5%);
 @living-street-tunnel-fill: lighten(@living-street-fill, 10%);
 
-@motorway-width-z6:               0.8;
+@motorway-width-z6:               1.2;
 @trunk-width-z6:                  0.4;
 
-@motorway-width-z7:               0.8;
+@motorway-width-z7:               1.2;
 @trunk-width-z7:                  0.6;
 
 @motorway-width-z8:               1;
@@ -1233,9 +1233,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 6][link != 'yes'],
       [zoom >= 10] {
         line-width: @trunk-width-z6;
-        line-color: @trunk-low-zoom;
+        line-color: #cccccc;
         [zoom >= 7] { line-width: @trunk-width-z7; }
-        [zoom >= 8] { line-width: @trunk-width-z8; }
+        [zoom >= 8] {
+          line-width: @trunk-width-z8;
+          line-color: @trunk-low-zoom;
+        }
         [zoom >= 9] { line-width: @trunk-width-z9; }
         [zoom >= 10] { line-width: @trunk-width-z10; }
         [zoom >= 11] { line-width: @trunk-width-z11; }

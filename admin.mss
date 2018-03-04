@@ -207,14 +207,15 @@ overlapping borders correctly.
   comp-op: darken;
 }
 
-#admin-text[zoom >= 16] {
+#admin-text[zoom >= 1][way_pixels > 192000] {
   text-name: "[name]";
   text-face-name: @book-fonts;
   text-fill: @admin-boundaries;
   text-halo-radius: @standard-halo-radius;
   text-halo-fill: @standard-halo-fill;
   text-placement: line;
-  text-clip: true;
+  text-clip: false;
+  text-spacing: 600;
   text-vertical-alignment: middle;
   text-dy: -10;
 }
