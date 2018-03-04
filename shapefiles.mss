@@ -7,7 +7,8 @@
 
 #world {
   [zoom >= 0][zoom < 10] {
-    polygon-fill: @land-color;
+    polygon-fill: @land-color-low-zoom;
+    [zoom > 8] { polygon-fill: @land-color; }
     polygon-simplify: 0.4;
     [zoom < 8] {
       line-color: darken(@water-color,20%);
