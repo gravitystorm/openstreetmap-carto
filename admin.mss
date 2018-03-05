@@ -1,4 +1,5 @@
 @admin-boundaries: #ac46ac;
+@admin-boundaries-maritime: darken(@water-color,20%);
 
 /* For performance reasons, the admin border layers are split into three groups
 for low, middle and high zoom levels.
@@ -16,6 +17,9 @@ overlapping borders correctly.
       background/line-width: 1.2;
       line-join: bevel;
       line-color: @admin-boundaries;
+      [maritime = 'true'] {
+        line-color: @admin-boundaries-maritime;
+      }
       line-width: 1.2;
     }
     [zoom >= 5] {
@@ -43,6 +47,9 @@ overlapping borders correctly.
       background/line-width: 0.6;
       line-join: bevel;
       line-color: @admin-boundaries;
+      [maritime = 'true'] {
+        line-color: @admin-boundaries-maritime;
+      }
       line-width: 0.6;
     }
     [zoom >= 7] {
@@ -63,6 +70,9 @@ overlapping borders correctly.
       background/line-color: white;
       background/line-width: 0.4;
       line-color: @admin-boundaries;
+      [maritime = 'true'] {
+        line-color: @admin-boundaries-maritime;
+      }
       line-join: bevel;
       line-width: 0.4;
       line-clip: false;
@@ -116,6 +126,9 @@ overlapping borders correctly.
     background/line-width: 2;
     line-join: bevel;
     line-color: @admin-boundaries;
+    [maritime = 'true'] {
+      line-color: @admin-boundaries-maritime;
+    }
     line-width: 2;
     line-dasharray: 6,3,2,3,2,3;
     line-clip: false;
@@ -126,6 +139,9 @@ overlapping borders correctly.
     background/line-width: 2;
     line-join: bevel;
     line-color: @admin-boundaries;
+    [maritime = 'true'] {
+      line-color: @admin-boundaries-maritime;
+    }
     line-width: 2;
     line-dasharray: 6,3,2,3;
     line-clip: false;
@@ -138,6 +154,9 @@ overlapping borders correctly.
       background/line-width: 1.5;
       line-join: bevel;
       line-color: @admin-boundaries;
+      [maritime = 'true'] {
+        line-color: @admin-boundaries-maritime;
+      }
       line-width: 1.5;
       line-dasharray: 5,2;
       line-clip: false;
@@ -147,7 +166,8 @@ overlapping borders correctly.
   comp-op: darken;
 }
 
-#admin-high-zoom[zoom >= 13] {
+#admin-high-zoom[zoom >= 13],
+#admin-high-zoom-maritime[zoom >= 13] {
   [admin_level = '9'],
   [admin_level = '10'] {
     [zoom >= 13] {
@@ -156,6 +176,9 @@ overlapping borders correctly.
       background/line-width: 2;
       line-join: bevel;
       line-color: @admin-boundaries;
+      [maritime = 'true'] {
+        line-color: @admin-boundaries-maritime;
+      }
       line-width: 2;
       line-dasharray: 2,3;
       line-clip: false;
