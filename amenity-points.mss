@@ -554,11 +554,14 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_toilets'][zoom >= 17] {
-    marker-file: url('symbols/toilets.svg');
-    marker-fill: @amenity-brown;
-    marker-placement: interior;
-    marker-clip: false;
+  [feature = 'amenity_toilets'] {
+    [access = 'yes'][zoom >= 18],
+    [zoom >= 19] {
+      marker-file: url('symbols/toilets.svg');
+      marker-fill: @amenity-brown;
+      marker-placement: interior;
+      marker-clip: false;
+    }
   }
 
   [feature = 'amenity_drinking_water'][zoom >= 17] {
