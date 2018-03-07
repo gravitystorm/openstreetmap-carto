@@ -338,7 +338,7 @@
   }
 
   [feature = 'natural_grassland'][zoom >= 8],
-  [feature = 'landuse_meadow'][zoom >= 10],
+  [feature = 'landuse_meadow'][zoom >= 8],
   [feature = 'landuse_grass'][zoom >= 10],
   [feature = 'landuse_village_green'][zoom >= 10],
   [feature = 'leisure_common'][zoom >= 10] {
