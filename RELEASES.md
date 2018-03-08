@@ -57,6 +57,6 @@ As always, we welcome any bug reports at
 https://github.com/gravitystorm/openstreetmap-carto/issues
 ```
 
-3. Post an [openstreetmap.org diary entry](http://www.openstreetmap.org/diary/new) with the text from the email. Add links and other markdown if needed.
+3. Post an [openstreetmap.org diary entry](https://www.openstreetmap.org/diary/new) with the text from the email. Add links and other markdown if needed.
 
 4. *Optional: Post on twitter with a link to the diary entry.*
