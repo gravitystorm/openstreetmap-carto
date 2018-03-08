@@ -30,6 +30,7 @@
 @apron: #e9d1ff;
 @garages: #dfddce;
 @parking: #eeeeee;
+@parking-outline: saturate(darken(@parking, 40%), 20%);
 @railway: @industrial;
 @railway-line: @industrial-line;
 @rest_area: #efc8c8; // also services
@@ -548,10 +549,15 @@
     polygon-fill: @parking;
     [zoom >= 15] {
       line-width: 0.3;
-      line-color: saturate(darken(@parking, 40%), 20%);
+      line-color: @parking-outline;
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+  
+  [feature = 'amenity_parking_space'][zoom >= 18] {
+    line-width: 0.3;
+    line-color: mix(@parking-outline, @parking, 50%);
   }
 
   [feature = 'aeroway_apron'][zoom >= 10] {
