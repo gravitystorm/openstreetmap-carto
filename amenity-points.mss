@@ -2231,7 +2231,7 @@
       text-size: @standard-font-size;
       text-wrap-width: @standard-wrap-width;
       text-line-spacing: @standard-line-spacing-size;
-      text-dy: 8;
+      text-dy: 12;
       text-fill: @shop-text;
       text-face-name: @standard-font;
       text-halo-radius: @standard-halo-radius;
