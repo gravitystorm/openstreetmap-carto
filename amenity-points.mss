@@ -890,6 +890,9 @@
     [feature = 'office_religion'],
     [feature = 'office_tax'] {
       marker-width: 4;
+      [zoom >= 18] {
+        marker-width: 6;
+      }
       marker-line-width: 0;
       marker-placement: interior;
       marker-clip: false;
@@ -907,6 +910,9 @@
     [feature = 'office_water_utility'],
     {
       marker-width: 4;
+      [zoom >= 18] {
+        marker-width: 6;
+      }
       marker-line-width: 0;
       marker-placement: interior;
       marker-clip: false;
@@ -936,6 +942,9 @@
     [feature = 'office_travel_agent'],
     [feature = 'office_therapist'] {
       marker-width: 4;
+      [zoom >= 18] {
+        marker-width: 6;
+      }
       marker-line-width: 0;
       marker-placement: interior;
       marker-clip: false;
@@ -953,6 +962,9 @@
     [feature = 'office_foundation'],
     [feature = 'office_yes'] {
       marker-width: 4;
+      [zoom >= 18] {
+        marker-width: 6;
+      }
       marker-line-width: 0;
       marker-placement: interior;
       marker-clip: false;
