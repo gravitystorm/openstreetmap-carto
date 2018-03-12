@@ -1308,7 +1308,8 @@
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
     [access != ''][access != 'permissive'][access != 'yes'] {
-      text-fill: #66ccaf;
+      text-opacity: 0.33;
+      text-halo-radius: 0;
     }
     [feature = 'amenity_bicycle_parking'],
     [feature = 'amenity_motorcycle_parking'] {
