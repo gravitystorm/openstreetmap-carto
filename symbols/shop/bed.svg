@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14" height="14" version="1.1" viewBox="-1 -1 14 14" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(-1,-1)">
+  <path id="canvas" d="m0 0h14v14h-14z" fill="none"/>
+  <path id="bed" d="m0.625 3c-0.375 0-0.625 0.25-0.625 0.75v7.25h1.25v-1.75s10.381 0.019 11.5 0v1.75h1.25v-6.25c0-0.33-0.138-0.75-0.625-0.75s-0.625 0.42-0.625 0.75v3.25h-11.5v-4.25c0-0.5-0.25-0.75-0.625-0.75zm1.389 2.556zm-0.03065-0.55604 0.01401 2h10.003c0-1-1.036-2-2-2z"/>
+ </g>
+</svg>
