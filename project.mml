@@ -929,7 +929,8 @@ Layer:
       table: |-
         (SELECT
             way,
-            aerialway
+            aerialway,
+            name
           FROM planet_osm_line
           WHERE aerialway IS NOT NULL
         ) AS aerialways
