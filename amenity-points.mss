@@ -911,6 +911,10 @@
       marker-file: url('symbols/motorcycle.svg');
     }
 
+    [shop = 'music'][zoom >= 18] {
+      marker-file: url('symbols/shop/music.svg');
+    }
+
     [shop = 'musical_instrument'][zoom >= 18] {
       marker-file: url('symbols/shop/musical_instrument.svg');
     }
@@ -2127,6 +2131,7 @@
   [feature = 'shop_medical_supply'],
   [feature = 'shop_mobile_phone'],
   [feature = 'shop_motorcycle'],
+  [feature = 'shop_music'],
   [feature = 'shop_musical_instrument'],
   [feature = 'shop_newsagent'],
   [feature = 'shop_jewelry'],
