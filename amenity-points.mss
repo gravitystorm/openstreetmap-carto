@@ -207,12 +207,7 @@
     marker-clip: false;
   }
 
-  [feature = 'shop_music'][zoom >= 17] {
-    marker-file: url('symbols/shop_music.svg');
-    marker-fill: @gastronomy;
-    marker-placement: interior;
-    marker-clip: false;
-  }
+
 
   [feature = 'amenity_fire_station'][zoom >= 16] {
     marker-file: url('symbols/firestation.svg');
@@ -962,6 +957,10 @@
 
     [shop = 'variety_store'][zoom >= 18] {
       marker-file: url('symbols/shop/variety_store.svg');
+    }
+
+    [shop = 'music'][zoom >= 18] {
+      marker-file: url('symbols/shop/music.svg');
     }
   }
 
@@ -2145,7 +2144,8 @@
   [feature = 'shop_tyres'],
   [feature = 'shop_variety_store'],
   [feature = 'shop_wine'],
-  [feature = 'shop_other']{
+  [feature = 'shop_other'],
+  [feature = 'shop_music']{
     [way_pixels > 3000][zoom >= 17],
     [zoom >= 18] {
       text-name: "[name]";
