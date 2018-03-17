@@ -2126,6 +2126,7 @@
   [feature = 'shop_kiosk'],
   [feature = 'shop_mobile_phone'],
   [feature = 'shop_motorcycle'],
+  [feature = 'shop_music'],
   [feature = 'shop_musical_instrument'],
   [feature = 'shop_newsagent'],
   [feature = 'shop_jewelry'],
@@ -2142,7 +2143,6 @@
   [feature = 'shop_tyres'],
   [feature = 'shop_variety_store'],
   [feature = 'shop_wine'],
-  [feature = 'shop_music'],
   [feature = 'shop_other']{
     [way_pixels > 3000][zoom >= 17],
     [zoom >= 18] {
