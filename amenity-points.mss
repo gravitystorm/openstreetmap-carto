@@ -852,6 +852,10 @@
       marker-fill: @amenity-brown;
     }
 
+    [shop = 'dairy'][zoom >= 18] {
+      marker-file: url('symbols/shop/dairy.svg');
+    }
+
     [shop = 'bicycle'][zoom >= 18] {
       marker-file: url('symbols/shop/bicycle.svg');
     }
@@ -2101,6 +2105,7 @@
   [feature = 'shop_car_repair'],
   [feature = 'shop_car_parts'],
   [feature = 'shop_cosmetics'],
+  [feature = 'shop_dairy'],
   [feature = 'shop_bicycle'],
   [feature = 'shop_farm'],
   [feature = 'shop_fishmonger'],
