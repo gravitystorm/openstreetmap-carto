@@ -907,6 +907,10 @@
       marker-file: url('symbols/motorcycle.svg');
     }
 
+    [shop = 'music'][zoom >= 18] {
+      marker-file: url('symbols/shop/music.svg');
+    }
+
     [shop = 'musical_instrument'][zoom >= 18] {
       marker-file: url('symbols/shop/musical_instrument.svg');
     }
@@ -955,10 +959,6 @@
 
     [shop = 'variety_store'][zoom >= 18] {
       marker-file: url('symbols/shop/variety_store.svg');
-    }
-
-    [shop = 'music'][zoom >= 18] {
-      marker-file: url('symbols/shop/music.svg');
     }
   }
 
