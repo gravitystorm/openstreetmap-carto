@@ -899,7 +899,7 @@
       marker-file: url('symbols/shop/furniture.svg');
     }
 
-    [shop = 'medical_supply][zoom >= 18]{
+    [shop = 'medical_supply'][zoom >= 18]{
       marker-file: url('symbols/shop/medical_supply.svg');
     }
 
