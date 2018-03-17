@@ -2144,8 +2144,8 @@
   [feature = 'shop_tyres'],
   [feature = 'shop_variety_store'],
   [feature = 'shop_wine'],
-  [feature = 'shop_other'],
-  [feature = 'shop_music']{
+  [feature = 'shop_music'],
+  [feature = 'shop_other']{
     [way_pixels > 3000][zoom >= 17],
     [zoom >= 18] {
       text-name: "[name]";
