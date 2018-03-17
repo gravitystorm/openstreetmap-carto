@@ -903,12 +903,20 @@
       marker-file: url('symbols/shop/furniture.svg');
     }
 
+    [shop = 'medical_supply'][zoom >= 18]{
+      marker-file: url('symbols/shop/medical_supply.svg');
+    }
+
     [shop = 'mobile_phone'][zoom >= 18] {
       marker-file: url('symbols/shop/mobile_phone.svg');
     }
 
     [shop = 'motorcycle'][zoom >= 18] {
       marker-file: url('symbols/motorcycle.svg');
+    }
+
+    [shop = 'music'][zoom >= 18] {
+      marker-file: url('symbols/shop/music.svg');
     }
 
     [shop = 'musical_instrument'][zoom >= 18] {
@@ -2125,8 +2133,10 @@
   [feature = 'shop_perfumery'],
   [feature = 'shop_furniture'],
   [feature = 'shop_kiosk'],
+  [feature = 'shop_medical_supply'],
   [feature = 'shop_mobile_phone'],
   [feature = 'shop_motorcycle'],
+  [feature = 'shop_music'],
   [feature = 'shop_musical_instrument'],
   [feature = 'shop_newsagent'],
   [feature = 'shop_jewelry'],
