@@ -207,6 +207,13 @@
     marker-clip: false;
   }
 
+  [feature = 'shop_music'][zoom >= 17] {
+    marker-file: url('symbols/shop_music.svg');
+    marker-fill: @gastronomy;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_fire_station'][zoom >= 16] {
     marker-file: url('symbols/firestation.svg');
     marker-fill: @public-service;
