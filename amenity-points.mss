@@ -207,8 +207,6 @@
     marker-clip: false;
   }
 
-
-
   [feature = 'amenity_fire_station'][zoom >= 16] {
     marker-file: url('symbols/firestation.svg');
     marker-fill: @public-service;
