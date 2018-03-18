@@ -49,6 +49,7 @@ assert(isarea({area = "yes", leisure = "track"}) == 1, "test failed: leisure=tra
 assert(isarea({waterway = "river"}) == 0, "test failed: river")
 assert(isarea({waterway = "riverbank"}) == 1, "test failed: river")
 assert(isarea({highway = "services"}) == 1, "test failed: river")
+assert(isarea({natural="cliff"}) == 0, "test failed: cliff") -- issue #3084
 
 print("TESTING: filter_tags_generic")
 assert(({filter_tags_generic({})})[1] == 1, "Untagged filter")
