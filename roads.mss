@@ -1154,7 +1154,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         [construction = 'cycleway'],
         [construction = 'bridleway'],
         [construction = 'path'],
-        [construction = 'track'] {
+        [construction = 'track'],
+        [construction = 'steps'] {
           [zoom < 14] {
             line-width: 0;
             b/line-width: 0;
