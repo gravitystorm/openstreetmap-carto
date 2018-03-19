@@ -1035,7 +1035,14 @@
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
-  }  
+  }
+
+  [feature = 'leisure_sauna'][zoom >= 17] {
+     marker-file: url('symbols/sauna.svg');
+     marker-fill: @leisure-green;
+     marker-placement: interior;
+     marker-clip: false;
+   }
 
   // Slipway tagging on points - slipway on lines is defined later 
   [feature = 'leisure_slipway'][zoom >= 17] {
@@ -1334,6 +1341,19 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: @amenity-brown;
+    text-dy: 11;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+  }
+
+  [feature = 'leisure_sauna'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: @leisure-green;
     text-dy: 11;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
