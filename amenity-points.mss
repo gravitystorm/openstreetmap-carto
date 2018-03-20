@@ -338,6 +338,13 @@
     marker-placement: interior;
     marker-clip: false;
   }
+  
+  [feature = 'amenity_shower'][zoom >= 18] {
+    marker-file: url('symbols/shower.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
 
   [feature = 'amenity_social_facility'][zoom >= 17] {
     marker-file: url('symbols/social_facility.svg');
@@ -1904,6 +1911,19 @@
     [feature = 'natural_spring'] {
       text-dy: 6;
     }
+  }
+  
+  [feature = 'amenity_shower'][zoom >= 18] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-dy: 10;
+    text-fill: @amenity-brown;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+    text-face-name: @standard-font;
   }
 
   [feature = 'amenity_atm'][zoom >= 17] {
