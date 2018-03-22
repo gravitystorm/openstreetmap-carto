@@ -14,6 +14,7 @@
 @culture: @amenity-brown;
 @public-service: @amenity-brown;
 @man-made-icon: #555;
+@advertising-grey: @man-made-icon;
 @landform-color: #d08f55;
 @leisure-green: darken(@park, 60%);
 
@@ -975,6 +976,13 @@
     [shop = 'variety_store'][zoom >= 18] {
       marker-file: url('symbols/shop/variety_store.svg');
     }
+  }
+
+  [feature = 'advertising_column'][zoom >= 19]{
+      marker-file: url('symbols/advertising/column.svg');
+      marker-fill: @advertising-grey;
+      marker-placement: interior;
+      marker-clip: false;
   }
 
   [feature = 'leisure_water_park'][zoom >= 17] {
