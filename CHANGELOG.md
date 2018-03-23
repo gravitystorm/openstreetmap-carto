@@ -6,6 +6,24 @@
   migration for existing databases. Deployments will have to decide if the
   effects are serious enough to require them to reload the database.
 
+### Changes
+- Adding place=square name rendering
+- Adding rendering for different types of towers and masts
+- Making gardens to use grass color with plant nursery pattern
+- Adding rendering for intermittent water bodies
+- Give oceans outline and simplify shapefiles on z0-7
+- Simplify (generalize) admin borders
+- Move natural=grassland and landuse=meadow earlier
+- Start rendering aerialway name
+- Adding icons for amenity=bbq, amenity=shower, leisure=sauna and advertising=column
+- Adding special icons for shop=dairy, shop=medical_supply and shop=music
+- Move amenity=toilets to higher zoom levels
+- Fixing some SVG icons artifacts
+- Make military=danger_area font dark pink and slanted
+- Changing rendering for construction=steps to distinguish it from roads
+- Changing label colour of private parking
+- Small documentation and code fixes
+
 ## [v4.8.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.7.0...v4.8.0) - 2018-02-23
 ### Changes
 - Made military area rendering less prominent
