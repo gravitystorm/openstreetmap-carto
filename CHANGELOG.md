@@ -1,4 +1,6 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.8.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.9.0...master)
+
+## [v4.9.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.8.0...v4.9.0) - 2018-03-23
 ### Major Changes
 - A bug where closed ways with natural=cliff or natural=tree_row were not
   rendering has been fixed. This required fixing a transform bug. The fix
