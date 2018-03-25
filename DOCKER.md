@@ -19,12 +19,17 @@ If you are eager to get started here is an overview over the necessary steps.
 Read on below to get the details.
 
 * `git clone https://github.com/gravitystorm/openstreetmap-carto.git` to clone openstreetmap-carto repository into a directory on your host system
-* download OpenStreetMap data in osm.pbf format to a file `data.osm.pbf` and place it within the openstreetmap-carto directory (for example some small area from [Geofabrik](https://download.geofabrik.de/))
+* download OpenStreetMap data in osm.pbf format to a file `data.osm.pbf` and place it within the openstreetmap-carto directory (for example some small area from [Geofabrik](https://download.geofabrik.de/)) or download data with JOSM, save in .osm format and use osmconvert (command below)
 * `docker-compose up import` to import the data (only necessary the first time or when you change the data file)
 * `docker-compose up kosmtik` to run the style preview application
 * browse to [http://localhost:6789](http://localhost:6789) to view the output of Kosmtik
 * Ctrl+C to stop the style preview application
 * `docker-compose stop db` to stop the database container
+
+Convert .osm to .osm.pbf with osmconvert:
+```
+osmconvert data.osm --out-pbf >data.osm.pbf
+```
 
 ## Repositories
 
