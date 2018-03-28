@@ -1,0 +1,699 @@
+{
+    "data_format": 1,
+    "project": {
+        "name": "openstreetmap.org carto keys",
+        "description": "OpenStreetMap.org mapnik style, in CartoCSS",
+        "project_url": "https://github.com/gravitystorm/openstreetmap-carto",
+        "contact_name": "openstreetmap-carto maintainers",
+        "contact_email": "openstreetmap-carto (at) gravitystorm (dot) co (dot) uk"
+    },
+    "tags": [
+        {
+            "key": "access",
+            "object_types": [
+                "node",
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=access"
+        },
+        {
+            "key": "addr:housename",
+            "object_types": [
+                "node",
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=addr:housename"
+        },
+        {
+            "key": "addr:housenumber",
+            "object_types": [
+                "node",
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=addr:housenumber"
+        },
+        {
+            "key": "addr:interpolation",
+            "object_types": [
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=addr:interpolation"
+        },
+        {
+            "key": "admin_level",
+            "object_types": [
+                "node",
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=admin_level"
+        },
+        {
+            "key": "aerialway",
+            "object_types": [
+                "node",
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=aerialway"
+        },
+        {
+            "key": "aeroway",
+            "object_types": [
+                "node",
+                "way",
+                "area",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=aeroway"
+        },
+        {
+            "key": "amenity",
+            "object_types": [
+                "node",
+                "way",
+                "area",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=amenity"
+        },
+        {
+            "key": "barrier",
+            "object_types": [
+                "node",
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=barrier"
+        },
+        {
+            "key": "bicycle",
+            "object_types": [
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=bicycle"
+        },
+        {
+            "key": "bridge",
+            "object_types": [
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=bridge"
+        },
+        {
+            "key": "boundary",
+            "object_types": [
+                "node",
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=boundary"
+        },
+        {
+            "key": "building",
+            "object_types": [
+                "node",
+                "way",
+                "area",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=building"
+        },
+        {
+            "key": "construction",
+            "object_types": [
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=construction"
+        },
+        {
+            "key": "covered",
+            "object_types": [
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=covered"
+        },
+        {
+            "key": "foot",
+            "object_types": [
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=foot"
+        },
+        {
+            "key": "highway",
+            "object_types": [
+                "node",
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=highway"
+        },
+        {
+            "key": "historic",
+            "object_types": [
+                "node",
+                "way",
+                "area",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=historic"
+        },
+        {
+            "key": "horse",
+            "object_types": [
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=horse"
+        },
+        {
+            "key": "junction",
+            "object_types": [
+                "node",
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=junction"
+        },
+        {
+            "key": "landuse",
+            "object_types": [
+                "node",
+                "way",
+                "area",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=landuse"
+        },
+        {
+            "key": "layer",
+            "object_types": [
+                "node",
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=layer"
+        },
+        {
+            "key": "leisure",
+            "object_types": [
+                "node",
+                "way",
+                "area",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=leisure"
+        },
+        {
+            "key": "lock",
+            "object_types": [
+                "node",
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=lock"
+        },
+        {
+            "key": "man_made",
+            "object_types": [
+                "node",
+                "way",
+                "area",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=man_made"
+        },
+        {
+            "key": "military",
+            "object_types": [
+                "node",
+                "way",
+                "area",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=military"
+        },
+        {
+            "key": "name",
+            "object_types": [
+                "node",
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=name"
+        },
+        {
+            "key": "natural",
+            "object_types": [
+                "node",
+                "way",
+                "area",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=natural"
+        },
+        {
+            "key": "oneway",
+            "object_types": [
+                "node",
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=oneway"
+        },
+        {
+            "key": "place",
+            "object_types": [
+                "node",
+                "way",
+                "area",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=place"
+        },
+        {
+            "key": "power",
+            "object_types": [
+                "node",
+                "way",
+                "area",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=power"
+        },
+        {
+            "key": "railway",
+            "object_types": [
+                "node",
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=railway"
+        },
+        {
+            "key": "ref",
+            "object_types": [
+                "node",
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=ref"
+        },
+        {
+            "key": "religion",
+            "object_types": [
+                "node",
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=religion"
+        },
+        {
+            "key": "route",
+            "object_types": [
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=route"
+        },
+        {
+            "key": "service",
+            "object_types": [
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=service"
+        },
+        {
+            "key": "shop",
+            "object_types": [
+                "node",
+                "way",
+                "area",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=shop"
+        },
+        {
+            "key": "surface",
+            "object_types": [
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=surface"
+        },
+        {
+            "key": "tourism",
+            "object_types": [
+                "node",
+                "way",
+                "area",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=tourism"
+        },
+        {
+            "key": "tracktype",
+            "object_types": [
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=tracktype"
+        },
+        {
+            "key": "tunnel",
+            "object_types": [
+                "way",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=tunnel"
+        },
+        {
+            "key": "water",
+            "object_types": [
+                "node",
+                "way",
+                "area",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=water"
+        },
+        {
+            "key": "waterway",
+            "object_types": [
+                "node",
+                "way",
+                "area",
+                "relation"
+            ],
+            "description": "Used in the osm2pgsql database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=waterway"
+        },
+        {
+            "key": "wetland",
+            "object_types": [
+                "area",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=wetland"
+        },
+        {
+            "key": "intermittent",
+            "object_types": [
+                "way",
+                "area",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=intermittent"
+        },
+        {
+            "key": "seasonal",
+            "object_types": [
+                "way",
+                "area",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=seasonal"
+        },
+        {
+            "key": "leaf_type",
+            "object_types": [
+                "area",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=leaf_type"
+        },
+        {
+            "key": "public_transport",
+            "object_types": [
+                "area",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=public_transport"
+        },
+        {
+            "key": "entrance",
+            "object_types": [
+                "node"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=entrance"
+        },
+        {
+            "key": "indoor",
+            "object_types": [
+                "node"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=indoor"
+        },
+        {
+            "key": "population",
+            "object_types": [
+                "node"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=population"
+        },
+        {
+            "key": "capital",
+            "object_types": [
+                "node"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=capital"
+        },
+        {
+            "key": "advertising",
+            "object_types": [
+                "area",
+                "node",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=advertising"
+        },
+        {
+            "key": "memorial",
+            "object_types": [
+                "area",
+                "node",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=memorial"
+        },
+        {
+            "key": "denomination",
+            "object_types": [
+                "area",
+                "node",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=denomination"
+        },
+        {
+            "key": "generator:source",
+            "object_types": [
+                "area",
+                "node",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=generator:source"
+        },
+        {
+            "key": "height",
+            "object_types": [
+                "area",
+                "node",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=height"
+        },
+        {
+            "key": "power_source",
+            "object_types": [
+                "area",
+                "node",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=power_source"
+        },
+        {
+            "key": "icao",
+            "object_types": [
+                "area",
+                "node",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=icao"
+        },
+        {
+            "key": "iata",
+            "object_types": [
+                "area",
+                "node",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=iata"
+        },
+        {
+            "key": "recycling_type",
+            "object_types": [
+                "area",
+                "node",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=recycling_type"
+        },
+        {
+            "key": "tower:construction",
+            "object_types": [
+                "area",
+                "node",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=tower:construction"
+        },
+        {
+            "key": "tower:type",
+            "object_types": [
+                "area",
+                "node",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=tower:type"
+        },
+        {
+            "key": "ford",
+            "object_types": [
+                "way",
+                "node",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=ford"
+        },
+        {
+            "key": "emergency",
+            "object_types": [
+                "node"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=emergency"
+        },
+        {
+            "key": "ele",
+            "object_types": [
+                "node",
+                "area",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=ele"
+        },
+        {
+            "key": "highspeed",
+            "object_types": [
+                "way",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=highspeed"
+        },
+        {
+            "key": "usage",
+            "object_types": [
+                "way",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=usage"
+        },
+        {
+            "key": "operator",
+            "object_types": [
+                "area",
+                "way",
+                "node",
+                "relation"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=operator"
+        },
+        {
+            "key": "addr:unit",
+            "object_types": [
+                "node"
+            ],
+            "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
+            "doc_url": "https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=addr:unit"
+        }
+    ]
+}
