@@ -111,7 +111,7 @@ For development, a style design studio is needed.
 To display any map a database containing OpenStreetMap data and some utilities are required
 
 * [PostgreSQL](https://www.postgresql.org/)
-* [PostGIS](https://postgis.org/)
+* [PostGIS](https://postgis.net/)
 * [osm2pgsql](https://github.com/openstreetmap/osm2pgsql#installing) to [import your data](https://switch2osm.org/loading-osm-data/) into a PostGIS database
 * `curl` and `unzip` for downloading and decompressing files
 * shapeindex (a companion utility to Mapnik found in the `mapnik-utils` package) for indexing downloaded shapefiles
