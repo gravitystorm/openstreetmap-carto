@@ -17,7 +17,7 @@ import yaml
 taginfo = {
     "data_format": 1,
     "project": {
-        "name": "openstreetmap.org carto keys",
+        "name": "OpenStreetMap Carto keys",
         "description": "OpenStreetMap.org mapnik style, in CartoCSS",
         "project_url": "https://github.com/gravitystorm/openstreetmap-carto",
         "contact_name": "openstreetmap-carto maintainers",
