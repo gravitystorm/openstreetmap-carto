@@ -18,7 +18,7 @@ taginfo = {
     "data_format": 1,
     "project": {
         "name": "OpenStreetMap Carto keys",
-        "description": "OpenStreetMap.org mapnik style, in CartoCSS",
+        "description": "Default OpenStreetMap.org style using CartoCSS",
         "project_url": "https://github.com/gravitystorm/openstreetmap-carto",
         "contact_name": "openstreetmap-carto maintainers",
         "contact_email": "openstreetmap-carto (at) gravitystorm (dot) co (dot) uk"
