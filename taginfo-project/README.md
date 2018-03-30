@@ -1,13 +1,13 @@
 
 
-The taginfo database keeps the information which projects use which OSM keys and tags 
+The taginfo database keeps the information which projects use which OSM keys and tags
 * site: https://taginfo.openstreetmap.org
 * wiki: https://wiki.openstreetmap.org/wiki/Taginfo
 
-Now We can generate only a minimal info - about the used 'keys'  
+Now We can generate only a minimal info - about the used 'keys'
 see more  https://github.com/gravitystorm/openstreetmap-carto/issues/961
 
-### WHEN to run? 
+### WHEN to run?
 *  when the `../openstreetmap-carto.style` or `../project.mml` change  , this is the 2 input files for detecting osm keys
 
 ### HOW to run:
@@ -18,9 +18,18 @@ see more  https://github.com/gravitystorm/openstreetmap-carto/issues/961
 
 ### Known limitations
 * Only a subset of hstore `tags->` is parsed from the  `../project.mml`
-* Don't work the hstore ARRAY parsing:   `tags @> ARRAY['building:level','building:color']`  TODO
 * This code tested only on Ubuntu Linux
 * Check the result!
+
+### Examples for parsing
+* `tags @> 'capital=>yes'"]`
+* `tags ? 'wetland'"`
+* `tags->'wetland' `
+* `tags->'leaf_type'`
+* `tags @> '"generator:source"=>wind'`
+* `tags -> ARRAY['wheelchair',ramp:wheelchair']`
+* `tags ?& ARRAY['wheelchair',ramp:wheelchair']`
+* `tags ?| ARRAY['wheelchair',ramp:wheelchair']`
 
 ### How to debug:
 The taginfo project_list file should contain a link to this repo ( /taginfo-project/taginfo-openstreetmap-carto.json )
