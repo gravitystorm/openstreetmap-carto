@@ -14,6 +14,7 @@
 @culture: @amenity-brown;
 @public-service: @amenity-brown;
 @man-made-icon: #555;
+@advertising-grey: @man-made-icon;
 @landform-color: #d08f55;
 @leisure-green: darken(@park, 60%);
 
@@ -67,6 +68,13 @@
   [feature = 'amenity_bar'][zoom >= 17] {
     marker-file: url('symbols/bar.svg');
     marker-fill: @gastronomy;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+  
+  [feature = 'amenity_bbq'][zoom >= 17] {
+    marker-file: url('symbols/bbq.svg');
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -335,6 +343,13 @@
   [feature = 'amenity_community_centre'][zoom >= 17] {
     marker-file: url('symbols/community_centre.svg');
     marker-fill: @culture;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+  
+  [feature = 'amenity_shower'][zoom >= 18] {
+    marker-file: url('symbols/shower.svg');
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -856,6 +871,10 @@
       marker-fill: @amenity-brown;
     }
 
+    [shop = 'dairy'][zoom >= 18] {
+      marker-file: url('symbols/shop/dairy.svg');
+    }
+
     [shop = 'bicycle'][zoom >= 18] {
       marker-file: url('symbols/shop/bicycle.svg');
     }
@@ -903,12 +922,20 @@
       marker-file: url('symbols/shop/furniture.svg');
     }
 
+    [shop = 'medical_supply'][zoom >= 18]{
+      marker-file: url('symbols/shop/medical_supply.svg');
+    }
+
     [shop = 'mobile_phone'][zoom >= 18] {
       marker-file: url('symbols/shop/mobile_phone.svg');
     }
 
     [shop = 'motorcycle'][zoom >= 18] {
       marker-file: url('symbols/motorcycle.svg');
+    }
+
+    [shop = 'music'][zoom >= 18] {
+      marker-file: url('symbols/shop/music.svg');
     }
 
     [shop = 'musical_instrument'][zoom >= 18] {
@@ -960,6 +987,13 @@
     [shop = 'variety_store'][zoom >= 18] {
       marker-file: url('symbols/shop/variety_store.svg');
     }
+  }
+
+  [feature = 'advertising_column'][zoom >= 19]{
+      marker-file: url('symbols/advertising/column.svg');
+      marker-fill: @advertising-grey;
+      marker-placement: interior;
+      marker-clip: false;
   }
 
   [feature = 'leisure_water_park'][zoom >= 17] {
@@ -1027,7 +1061,14 @@
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
-  }  
+  }
+
+  [feature = 'leisure_sauna'][zoom >= 17] {
+     marker-file: url('symbols/sauna.svg');
+     marker-fill: @leisure-green;
+     marker-placement: interior;
+     marker-clip: false;
+   }
 
   // Slipway tagging on points - slipway on lines is defined later 
   [feature = 'leisure_slipway'][zoom >= 17] {
@@ -1180,7 +1221,7 @@
     }
   }
 
-  [feature = 'highway_mini_roundabout'][zoom >= 16]::highway {
+  [feature = 'highway_mini_roundabout'][zoom >= 17]::highway {
     marker-file: url('symbols/mini_roundabout.svg');
     marker-placement: interior;
     marker-clip: false;
@@ -1326,6 +1367,19 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: @amenity-brown;
+    text-dy: 11;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+  }
+
+  [feature = 'leisure_sauna'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: @leisure-green;
     text-dy: 11;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
@@ -1662,8 +1716,8 @@
         text-wrap-width: @landcover-wrap-width-size-bigger;
         text-line-spacing: @landcover-line-spacing-size-bigger;
       }
-      text-fill: darken(@military, 40%);
-      text-face-name: @bold-fonts;
+      text-fill: darken(@military, 20%);
+      text-face-name: @landcover-face-name;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-placement: interior;
@@ -1897,6 +1951,32 @@
       text-dy: 6;
     }
   }
+  
+  [feature = 'amenity_shower'][zoom >= 18] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-dy: 10;
+    text-fill: @amenity-brown;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+    text-face-name: @standard-font;
+  }
+
+  [feature = 'amenity_bbq'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-dy: 10;
+    text-fill: @amenity-brown;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+    text-face-name: @standard-font;
+  }
 
   [feature = 'amenity_atm'][zoom >= 17] {
     text-name: "[operator]";
@@ -2106,6 +2186,7 @@
   [feature = 'shop_car_repair'],
   [feature = 'shop_car_parts'],
   [feature = 'shop_cosmetics'],
+  [feature = 'shop_dairy'],
   [feature = 'shop_bicycle'],
   [feature = 'shop_farm'],
   [feature = 'shop_fishmonger'],
@@ -2125,8 +2206,10 @@
   [feature = 'shop_perfumery'],
   [feature = 'shop_furniture'],
   [feature = 'shop_kiosk'],
+  [feature = 'shop_medical_supply'],
   [feature = 'shop_mobile_phone'],
   [feature = 'shop_motorcycle'],
+  [feature = 'shop_music'],
   [feature = 'shop_musical_instrument'],
   [feature = 'shop_newsagent'],
   [feature = 'shop_jewelry'],
