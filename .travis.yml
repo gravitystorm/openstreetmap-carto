@@ -8,9 +8,14 @@ addons:
     packages:
     - lua5.1
     - libxml2-utils
+    - python3
+
 env:
   - CARTO=0.18.0 MAPNIK='3.0.0 3.0.12' TRAVIS_PYTHON_VERSION=3.6
 
+before_install:
+  - pyenv global system 3.6 # Workaround for travis-ci/issues/8363
+  
 install:
   - sudo pip install -U PyYAML
   - npm install carto@$CARTO
