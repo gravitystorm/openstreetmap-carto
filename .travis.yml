@@ -23,3 +23,5 @@ script:
   - find symbols/ -name '*.svg' | xargs xmllint --noout
   # Check the Lua transforms
   - lua scripts/lua/test.lua
+  # Check the Taginfo-project 
+  - cd ./taginfo-project && python3 ./generate-taginfo-project-file.py && cd ..
