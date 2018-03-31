@@ -11,6 +11,8 @@ addons:
     - python3
 env:
   - CARTO=0.18.0 MAPNIK='3.0.0 3.0.12'
+before_install:
+  - pyenv global system 3.6 # Workaround for travis-ci/issues/8363  
 install:
   - pip3 install PyYAML
   - npm install carto@$CARTO
