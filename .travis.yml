@@ -1,6 +1,6 @@
 language: node_js
 dist: trusty
-sudo: false
+sudo: required
 node_js:
   - "6"
 addons:
@@ -8,24 +8,24 @@ addons:
     packages:
     - lua5.1
     - libxml2-utils
-    - python3
 env:
   - CARTO=0.18.0 MAPNIK='3.0.0 3.0.12'
-before_install:
-  - pyenv global system 3.6 # Workaround for travis-ci/issues/8363  
+  - TRAVIS_PYTHON_VERSION=3.6
+
 install:
-  - pip3 install PyYAML
+  - sudo pip install -U PyYAML
   - npm install carto@$CARTO
   - mkdir -p data/world_boundaries data/simplified-land-polygons-complete-3857 data/ne_110m_admin_0_boundary_lines_land data/land-polygons-split-3857
   - touch data/simplified-land-polygons-complete-3857/simplified_land_polygons.shp data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp data/land-polygons-split-3857/land_polygons.shp
 script:
   # We're using pipes in the checks, so fail if any part fails
   - set -o pipefail
+  # Check the Taginfo-project
+  - cd ./taginfo-project && ./generate-taginfo-project-file.py && cd ..  
   # Validate the MML against multiple Mapnik versions, and report its lines for debugging purposes
   - for m in $MAPNIK; do ./node_modules/carto/bin/carto -a $m project.mml | xmllint - | wc -l; done
   # Validate that the SVGs are valid XML
   - find symbols/ -name '*.svg' | xargs xmllint --noout
   # Check the Lua transforms
   - lua scripts/lua/test.lua
-  # Check the Taginfo-project
-  - cd ./taginfo-project && python3 ./generate-taginfo-project-file.py && cd ..
+
