@@ -9,8 +9,7 @@ addons:
     - lua5.1
     - libxml2-utils
 env:
-  - CARTO=0.18.0 MAPNIK='3.0.0 3.0.12'
-  - TRAVIS_PYTHON_VERSION=3.6
+  - CARTO=0.18.0 MAPNIK='3.0.0 3.0.12' TRAVIS_PYTHON_VERSION=3.6
 
 install:
   - sudo pip install -U PyYAML
@@ -28,4 +27,3 @@ script:
   - find symbols/ -name '*.svg' | xargs xmllint --noout
   # Check the Lua transforms
   - lua scripts/lua/test.lua
-
