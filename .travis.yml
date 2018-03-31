@@ -23,5 +23,6 @@ script:
   - find symbols/ -name '*.svg' | xargs xmllint --noout
   # Check the Lua transforms
   - lua scripts/lua/test.lua
-  # Check the Taginfo-project 
+  # Check the Taginfo-project
+  - pip install pyyaml
   - cd ./taginfo-project && python3 ./generate-taginfo-project-file.py && cd ..
