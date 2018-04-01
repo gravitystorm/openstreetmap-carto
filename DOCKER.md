@@ -1,23 +1,25 @@
 # Running OpenStreetMap Carto with Docker
 
-[Docker](https://docker.com) is a virtualized environment that allows you to run software without altering your system permanently.
-The software runs in so called containers that are easy to setup and tear down. It makes setting up a
-development environment for openstreetmap-carto much easier. The development environment consists of a
-PostgreSQL database to store the data and [Kosmtik](https://github.com/kosmtik/kosmtik) for previewing the style.
+[Docker](https://docker.com) is a virtualized environment running a [_Docker demon_](https://docs.docker.com/engine/docker-overview), in which you can run software without altering your host system permanently. The software components run in _containers_ that are easy to setup and tear down individually. The Docker demon can use operating-system-level virtualization (Linux, Windows) or a virtual machine (macOS, Windows).
+
+This allows to set up a development environment for openstreetmap-carto easily. Specifically, this environment consists of a
+PostgreSQL database to store the OpenStreetMap data and [Kosmtik](https://github.com/kosmtik/kosmtik) for previewing the style.
 
 ## Prerequisites
 
-Docker is available for Linux, macOS and Windows. [Install](https://www.docker.com/get-docker) the software in order
+Docker is available for Linux, macOS and Windows. [Install](https://www.docker.com/get-docker) the software packaged for your host system in order
 to be able to run Docker containers. You also need Docker Compose, which should be available once you installed
 Docker itself. Otherwise you need to [install Docker Compose manually](https://docs.docker.com/compose/install/).
+
+You need sufficient disk space of _several Gigabytes_. Docker creates a disk image for its virtual machine that holds the virtualised operating system and the containers. The format (Docker.raw, Docker.qcow2, \*.vhdx, etc.) depends on the host system. It can be a sparse file allocating large amounts of disk space, but still the physical size starts with 2-3 GB for the virtual OS and grows to 6-7 GB when filled with the containers needed for the database, Kosmtik, and a small OSM region. Further 1-2 GB are needed for shape files in the openstreetmap-carto/data repository.
 
 ## Quick start
 
 If you are eager to get started here is an overview over the necessary steps.
 Read on below to get the details.
 
-* `git clone https://github.com/gravitystorm/openstreetmap-carto.git` to clone openstreetmap-carto repository
-* download OpenStreetMap data in osm.pbf format to a file `data.osm.pbf` and place it within the openstreetmap-carto directory (for example some small area from [Geofabrik](http://download.geofabrik.de/))
+* `git clone https://github.com/gravitystorm/openstreetmap-carto.git` to clone openstreetmap-carto repository into a directory on your host system
+* download OpenStreetMap data in osm.pbf format to a file `data.osm.pbf` and place it within the openstreetmap-carto directory (for example some small area from [Geofabrik](https://download.geofabrik.de/))
 * `docker-compose up import` to import the data (only necessary the first time or when you change the data file)
 * `docker-compose up kosmtik` to run the style preview application
 * browse to [http://localhost:6789](http://localhost:6789) to view the output of Kosmtik
@@ -28,10 +30,12 @@ Read on below to get the details.
 
 Instructions above will clone main openstreetmap-carto repository. To test your own changes you should [fork](https://help.github.com/articles/fork-a-repo/) gravitystorm/openstreetmap-carto repository and [clone your fork](https://help.github.com/articles/cloning-a-repository/).
 
+This openstreetmap-carto repository needs to be a directory that is shared between your host system and the Docker virtual machine. Home directories are shared by default; if your repository is in another place you need to add this to the Docker sharing list (e.g. macOS: Docker Preferences > File Sharing; Windows: Docker Settings > Shared Drives).
+
 ## Importing data
 
 openstreetmap-carto needs a database populated with rendering data to work. You first need a data file to import.
-It's probably easiest to grab an PBF of OSM data from [Geofabrik](http://download.geofabrik.de/).
+It's probably easiest to grab an PBF of OSM data from [Geofabrik](https://download.geofabrik.de/).
 Once you have that file put it into the openstreetmap-carto directory and run `docker-compose up import` in the openstreetmap-carto directory.
 This starts the PostgreSQL container (downloads it if it not exists) and starts a container that runs [osm2pgsql](https://github.com/openstreetmap/osm2pgsql) to import the data. The container is built the first time you run that command if it not exists.
 At startup of the container the script `scripts/docker-startup.sh` is invoked which prepares the database and itself starts osm2pgsql for importing the data.
@@ -62,3 +66,13 @@ If you want to have a [local configuration](https://github.com/kosmtik/kosmtik#l
 The shapefile data that is downloaded is owned by the user with UID 1000. If you have another default user id on your system, consider changing the line `USER 1000` in the file `Dockerfile`.
 
 After startup is complete you can browse to [http://localhost:6789](http://localhost:6789) to view the output of Kosmtik. By pressing Ctrl+C on the command line you can stop the container. The PostgreSQL database container is still running then (you can check with `docker ps`). If you want to stop the database container as well you can do so by running `docker-compose stop db` in the openstreetmap-carto directory.
+
+## Troubleshooting
+
+Importing the data needs a substantial amount of RAM in the virtual machine. If you find the import process (Reading in file: data.osm.pbf, Processing) being _killed_ by the Docker demon, exiting with error code 137, increase the Memory assigned to Docker (e.g. macOS: Docker Preferences / Windows: Docker Settings > Advanced > Adjust the computing resources).
+
+Docker copies log files from the virtual machine into the host system, their [location depends on the host OS](https://stackoverflow.com/questions/30969435/where-is-the-docker-daemon-log). E.g. the 'console-ring' appears to be a ringbuffer of the console log, which can help to find reasons for killings. 
+
+While installing software in the containers and populating the database, the disk image of the virtual machine grows in size, by Docker allocating more clusters. When the disk on the host system is full (only a few MB remaining), Docker can appear stuck. Watch the system log files of your host system for failed allocations.
+
+Docker stores its disk image by default in the home directories of the user. If you don't have enough space here, you can move it elsewhere. (E.g. macOS: Docker > Preferences > Disk). 

@@ -18,7 +18,7 @@ Enable PostGIS and hstore extensions with
 psql -d gis -c 'CREATE EXTENSION postgis; CREATE EXTENSION hstore;'
 ```
 
-then grab some OSM data. It's probably easiest to grab an PBF of OSM data from [Geofabrik](http://download.geofabrik.de/). Once you've done that, import with osm2pgsql:
+then grab some OSM data. It's probably easiest to grab an PBF of OSM data from [Geofabrik](https://download.geofabrik.de/). Once you've done that, import with osm2pgsql:
 
 ```
 osm2pgsql -G --hstore --style openstreetmap-carto.style --tag-transform-script openstreetmap-carto.lua -d gis ~/path/to/data.osm.pbf
@@ -48,7 +48,7 @@ This script downloads necessary files, generates and populates the *data* direct
 
 You can also download them manually at the following paths:
 
-* [`world_bnd_m.shp`, `places.shp`, `world_boundaries_m.shp`](http://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz)
+* [`world_bnd_m.shp`, `places.shp`, `world_boundaries_m.shp`](https://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz)
 * [`simplified_land_polygons.shp`](http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip) (updated daily)
 * [`ne_110m_admin_0_boundary_lines_land.shp`](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip)
 * [`land_polygons.shp`](http://data.openstreetmapdata.com/land-polygons-split-3857.zip) (updated daily)
@@ -86,7 +86,7 @@ DejaVu is packaged as `fonts-dejavu-core`.
 
 The fonts can be downloaded here:
 
-* [Noto homepage](http://www.google.com/get/noto/) and [Noto github repositories](http://github.com/googlei18n?utf8=%E2%9C%93&q=noto)
+* [Noto homepage](https://www.google.com/get/noto/) and [Noto github repositories](https://github.com/googlei18n?utf8=%E2%9C%93&q=noto)
 * [DejaVu homepage](http://dejavu-fonts.org/)
 * [Hanazono homepage](http://fonts.jp/hanazono/)
 * [Unifont homepage](http://unifoundry.com/)
@@ -106,12 +106,12 @@ For proper rendering of non-latin scripts, particularly those with complicated d
 For development, a style design studio is needed.
 * [Kosmtik](https://github.com/kosmtik/kosmtik) - Kosmtik can be launched with `node index.js serve path/to/openstreetmap-carto/project.mml`
 
-[TileMill](http://mapbox.com/tilemill) is not officially supported, but you may be able to use a recent TileMill version by copying or symlinking the project directly into your Mapbox/project directory.
+[TileMill](https://tilemill-project.github.io/tilemill/) is not officially supported, but you may be able to use a recent TileMill version by copying or symlinking the project directly into your Mapbox/project directory.
 
 To display any map a database containing OpenStreetMap data and some utilities are required
 
-* [PostgreSQL](http://www.postgresql.org/)
-* [PostGIS](http://postgis.org/)
+* [PostgreSQL](https://www.postgresql.org/)
+* [PostGIS](https://postgis.net/)
 * [osm2pgsql](https://github.com/openstreetmap/osm2pgsql#installing) to [import your data](https://switch2osm.org/loading-osm-data/) into a PostGIS database
 * `curl` and `unzip` for downloading and decompressing files
 * shapeindex (a companion utility to Mapnik found in the `mapnik-utils` package) for indexing downloaded shapefiles
@@ -130,4 +130,10 @@ For deployment, CartoCSS and Mapnik are required.
 * [CartoCSS](https://github.com/mapbox/carto) >= 0.18.0 (we're using YAML)
 * [Mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 3.0
 
-Remember to run CartoCSS with proper API version to avoid errors (at least 3.0.0: `carto -a "3.0.0"`).
+With CartoCSS you compile these sources into a Mapnik compatible XML file. When running CartoCSS, specify the Mapnik API version you are using (at least 3.0.0: `carto -a "3.0.0"`).
+
+If you're calling Mapnik in your own program, remember to load the XML file in non strict mode. This way, fonts declared with alternative names will only generate warnings, not errors. For instance, using the Python bindings, this becomes:
+
+```python
+mapnik.load_map(mapnik.Map(width, height), xml_filename, False)  # False for non-strict mode
+```

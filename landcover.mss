@@ -1,10 +1,10 @@
 // --- Parks, woods, other green things ---
 
-@grass: #cdebb0; // also grassland, meadow, common, village_green
+@grass: #cdebb0; // also grassland, meadow, common, village_green, garden
 @scrub: #b5e3b5;
 @forest: #add19e;       // Lch(80,30,135)
 @forest-text: #46673b;  // Lch(40,30,135)
-@park: #c8facc;         // Lch(94,30,145) also garden
+@park: #c8facc;         // Lch(94,30,145)
 @orchard: #aedfa3; // also vineyard, plant_nursery
 
 // --- "Base" landuses ---
@@ -30,6 +30,7 @@
 @apron: #e9d1ff;
 @garages: #dfddce;
 @parking: #eeeeee;
+@parking-outline: saturate(darken(@parking, 40%), 20%);
 @railway: @industrial;
 @railway-line: @industrial-line;
 @rest_area: #efc8c8; // also services
@@ -159,6 +160,21 @@
     }
   }
 
+  [feature = 'leisure_garden'] {
+    [zoom >= 10] {
+      polygon-fill: @grass;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+    [zoom >= 14] {
+      polygon-pattern-file: url('symbols/plant_nursery.png');
+      polygon-pattern-opacity: 0.6;
+      polygon-pattern-alignment: global;
+      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+    }
+  }
+
   [feature = 'landuse_plant_nursery'] {
     [zoom >= 10] {
       polygon-fill: @orchard;
@@ -244,8 +260,7 @@
     line-opacity: 0.2;
   }
 
-  [feature = 'leisure_park'],
-  [feature = 'leisure_garden'] {
+  [feature = 'leisure_park'] {
     [zoom >= 10] {
       polygon-fill: @park;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -323,16 +338,14 @@
     }
   }
 
-  [feature = 'landuse_meadow'],
-  [feature = 'natural_grassland'],
-  [feature = 'landuse_grass'],
-  [feature = 'landuse_village_green'],
-  [feature = 'leisure_common'] {
-    [zoom >= 10] {
-      polygon-fill: @grass;
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
-    }
+  [feature = 'natural_grassland'][zoom >= 8],
+  [feature = 'landuse_meadow'][zoom >= 8],
+  [feature = 'landuse_grass'][zoom >= 10],
+  [feature = 'landuse_village_green'][zoom >= 10],
+  [feature = 'leisure_common'][zoom >= 10] {
+    polygon-fill: @grass;
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
   [feature = 'landuse_retail'],
@@ -536,10 +549,15 @@
     polygon-fill: @parking;
     [zoom >= 15] {
       line-width: 0.3;
-      line-color: saturate(darken(@parking, 40%), 20%);
+      line-color: @parking-outline;
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+  
+  [feature = 'amenity_parking_space'][zoom >= 18] {
+    line-width: 0.3;
+    line-color: mix(@parking-outline, @parking, 50%);
   }
 
   [feature = 'aeroway_apron'][zoom >= 10] {

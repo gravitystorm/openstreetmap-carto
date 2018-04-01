@@ -6,14 +6,12 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    version="1.1"
-   id="svg2"
-   viewBox="0 0 14 14"
+   width="14"
    height="14"
-   width="14">
-  <defs
-     id="defs4" />
+   viewBox="0 0 14 14"
+   id="svg4138">
   <metadata
-     id="metadata7">
+     id="metadata4146">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -24,9 +22,16 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
-    <path
-       id="path4136"
-       d="M 7.1679688 4.5117188 L 0 6 L 0 14.009766 L 6 14.009766 L 6 11.5 A 1 1 0 0 0 6.9960938 10.560547 L 13.722656 7.1972656 L 13.277344 6.3027344 L 6.5527344 9.6660156 A 1 1 0 0 0 6 9.5 L 6 6.7695312 L 7.6035156 5.3789062 L 7.1679688 4.5117188 z M 1 7 L 5 7 L 5 10 L 1 10 L 1 7 z "
-        />
-
+  <defs
+     id="defs4144" />
+  <rect
+     width="14"
+     height="14"
+     x="0"
+     y="0"
+     id="canvas"
+     style="fill:none;stroke:none;visibility:hidden" />
+  <path
+     d="M 7,1 C 6.4022075,1 6,1.4692172 6,2 L 6,9 3.1132812,14 4.2675781,14 6,11 6,14 8,14 8,11 9.7324219,14 10.886719,14 8,9 8,2 C 8,1.5039063 7.5977925,1 7,1 Z"
+     id="mast" />
 </svg>

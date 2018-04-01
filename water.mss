@@ -47,12 +47,23 @@
     [zoom >= 1][zoom < 2][way_pixels >= 16],
     [zoom >= 2][zoom < 8][way_pixels >= 32],
     [zoom >= 8] {
-      polygon-fill: @water-color;
-      [way_pixels >= 4] {
-        polygon-gamma: 0.75;
+      [int_intermittent = 'no'] {
+        polygon-fill: @water-color;
+        [way_pixels >= 4] {
+          polygon-gamma: 0.75;
+        }
+        [way_pixels >= 64] {
+          polygon-gamma: 0.6;
+        }
       }
-      [way_pixels >= 64] {
-        polygon-gamma: 0.6;
+      [int_intermittent = 'yes'] {
+        polygon-pattern-file: url('symbols/intermittent_water.png');
+        [way_pixels >= 4] {
+          polygon-pattern-gamma: 0.75;
+        }
+        [way_pixels >= 64] {
+          polygon-pattern-gamma: 0.6;
+        }
       }
     }
   }
@@ -319,6 +330,7 @@
 .text-low-zoom[zoom < 10],
 .text[zoom >= 10] {
   [feature = 'natural_water'],
+  [feature = 'natural_bay'],
   [feature = 'landuse_reservoir'],
   [feature = 'landuse_basin'],
   [feature = 'waterway_dock'] {
