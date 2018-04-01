@@ -743,7 +743,7 @@
     [shop = 'beauty'][zoom >= 18] {
       marker-file: url('symbols/shop/beauty.svg');
     }
-    
+
     [shop = 'bed'][zoom >= 18] {
       marker-file: url('symbols/shop/bed.svg');
     }
