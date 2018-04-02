@@ -41,10 +41,10 @@ The taginfo project_list file should contain a link to this repo ( /taginfo-proj
 * https://github.com/taginfo/taginfo-projects/blob/master/project_list.txt
 
 the expected line:
-*  openstreetmap_carto  https://raw.githubusercontent.com/gravitystorm/openstreetmap-carto/master/taginfo-project/taginfo-openstreetmap-carto.json
+*  openstreetmap-carto  https://raw.githubusercontent.com/gravitystorm/openstreetmap-carto/master/taginfo-project/taginfo-openstreetmap-carto.json
 
 After the daily refresh the project info should be find here:
-* https://taginfo.openstreetmap.org/projects/openstreetmap_carto
+* https://taginfo.openstreetmap.org/projects/openstreetmap-carto
 
 ### Disclaimer and Attribution : This code is based on
 * Paul Norman code : https://github.com/osmlab/osm2pgsql_taginfo
