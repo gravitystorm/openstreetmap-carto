@@ -25,7 +25,8 @@ script:
   # We're using pipes in the checks, so fail if any part fails
   - set -o pipefail
   # Check the Taginfo-project
-  - cd ./taginfo-project && ./generate-taginfo-project-file.py && cd ..  
+  - cd ./taginfo-project && ./generate-taginfo-project-file.py         && cd ..  
+  - cd ./taginfo-project && git diff taginfo-openstreetmap-carto.json  && cd ..
   # Validate the MML against multiple Mapnik versions, and report its lines for debugging purposes
   - for m in $MAPNIK; do ./node_modules/carto/bin/carto -a $m project.mml | xmllint - | wc -l; done
   # Validate that the SVGs are valid XML
