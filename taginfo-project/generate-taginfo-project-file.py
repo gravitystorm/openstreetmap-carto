@@ -2,18 +2,23 @@
 
 # -------------------------------------------------------------------------------
 #
-# This code generate a taginfo project list file (see more https://wiki.openstreetmap.org/wiki/Taginfo/Projects )
+# This code generates a taginfo project list file (see more https://wiki.openstreetmap.org/wiki/Taginfo/Projects )
 #
-### Attribution & Disclaimer: 
+### Attribution & Disclaimer:
 # This code is based on :
 # Paul Norman code : https://github.com/osmlab/osm2pgsql_taginfo
 # Sven Geggus code : https://github.com/giggls/openstreetmap-carto-de/blob/master/views_osmde/generate_taginfo.py
 # -------------------------------------------------------
 
-import re
 import json
+import os
+import re
 import yaml
-import sys
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("-v", "--verbose", help="Print debug info",action="store_true")
+args = parser.parse_args()
+
 
 # -------------------------  parameters ----------------------------
 taginfo = {
@@ -27,24 +32,40 @@ taginfo = {
     },
     "tags": []
 }
+cwd = os.getcwd()
 
-osm2pgsql_file        = '../openstreetmap-carto.style'
-cartocss_project_file = '../project.mml' 
+osm2pgsql_file        = os.path.join(cwd, '..', 'openstreetmap-carto.style')
+cartocss_project_file = os.path.join(cwd, '..', 'project.mml')
 search_url            = 'https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q='
-# -------------------------------------------------------------------------------
+
+# ----------------------------------  Examples --------------------
+#  tags @> 'capital=>yes'"]
+#  tags ? 'wetland'"
+#  tags->'wetland'
+#  tags->'leaf_type'
+#  tags @> '"generator:source"=>wind'
+re_tags_one     = re.compile(r"[^a-zA-Z0-9_]tags[^'^)^\[^\]]*'.+?'")
 
 
+# ----------------------------------  Examples --------------------
+#  tags -> ARRAY['wheelchair',ramp:wheelchair']
+#  tags ?& ARRAY['wheelchair',ramp:wheelchair']
+#  tags ?| ARRAY['wheelchair',ramp:wheelchair']
+re_tags_array = re.compile(  r"[^a-zA-Z0-9_]tags\s*[@\?-][>&\|]\s*[aA][rR][rR][aA][yY]\[.+?\]"  )
 
-def processOSMkeys(_ds_geometry,_osmtype,_tag):
+allhstoretags={}
+
+def processOSMkeys(_layer, _ds_geometry, _osmtype,_tag):
     key=_tag.split("'")[1].split("=")[0].replace('"','')
     if key:
-        print("--:", _ds_geometry,"->", _osmtype, " key:", key)
+        if args.verbose:
+            print("--:", _ds_geometry,"->", _osmtype, " key:", key)
         if key not in allhstoretags:
             k = [ _osmtype ]
             allhstoretags[key]=k
         elif _osmtype not in allhstoretags[key]:
             allhstoretags[key].append(_osmtype)
-    return     
+    return
 
 
 #
@@ -64,14 +85,14 @@ with open( osm2pgsql_file , 'r') as style:
         if 'node' in keyline[0]:
             object_types.append('node')
         if 'way' in keyline[0]:
-            object_types.append('way')            
+            object_types.append('way')
             if 'polygon' in keyline[3]:
                 object_types.append('area')
 
         if ('area' in object_types) or ('way' in object_types ):
                 object_types.append('relation')
-     
-        if key not in ('z_order','way_area'):        
+
+        if key not in ('z_order','way_area'):
             taginfo["tags"].append(
                 {
                     "key": key,
@@ -86,34 +107,15 @@ with open( osm2pgsql_file , 'r') as style:
 # Parsing "project.mml" file for the HSTORE keys (  tags-> )
 #
 
-
 with open( cartocss_project_file , 'r') as f:
   newf = yaml.load(f.read())
 f.closed
 
-
-# ----------------------------------  Examples --------------------
-#  tags @> 'capital=>yes'"]
-#  tags ? 'wetland'"
-#  tags->'wetland' 
-#  tags->'leaf_type'
-#  tags @> '"generator:source"=>wind' 
-re_tags_b     = re.compile(r"[^a-zA-Z0-9_]tags[^'^)^\[^\]]*'.+?'")
-
-
-# ----------------------------------  Examples --------------------
-#  tags -> ARRAY['wheelchair',ramp:wheelchair']
-#  tags ?& ARRAY['wheelchair',ramp:wheelchair']
-#  tags ?| ARRAY['wheelchair',ramp:wheelchair']
-re_tags_array = re.compile(  r"[^a-zA-Z0-9_]tags\s*[@\?-][>&\|]\s*[aA][rR][rR][aA][yY]\[.+?\]"  )
-
-
-allhstoretags={}
-
 for layer in newf["Layer"]:
-    print( "########### processing Layer: ", layer["id"]," ###########" )  
+    if args.verbose:
+        print( "########### processing Layer: ", layer["id"]," ###########" )
+    _layer      = layer["id"]
     ds_geometry = layer.get("geometry")
-
 
     ds_type = layer["Datasource"].get("type")
     if ds_type and ds_type == "postgis":
@@ -124,38 +126,39 @@ for layer in newf["Layer"]:
             if ds_geometry:
                 if (ds_geometry=='point'):
                     osmtype='node'
-                elif ds_geometry=='linestring':    
+                elif ds_geometry=='linestring':
                     osmtype='way'
-                elif ds_geometry=='polygon':    
+                elif ds_geometry=='polygon':
                     osmtype='area'
             else:
                 # If no Geometry type - we try to guess the type.
                 if 'planet_osm_point' in ds_table.lower():
-                    osmtype='node'                    
+                    osmtype='node'
                 elif 'planet_osm_polygon'  in ds_table.lower():
-                    osmtype='area'                    
+                    osmtype='area'
                 elif 'planet_osm_line'  in ds_table.lower():
                     osmtype='way'
                 elif 'planet_osm_ways'  in ds_table.lower():
                     osmtype='way'
                 else:
-                    print( ds_table.lower() )
+                    if args.verbose:
+                        print( 'table Not found:', ds_table.lower() )
 
+            tags_one = re_tags_one.findall(ds_table)
+            if tags_one:
+                if args.verbose:
+                    print(tags_one)
+                for tag in tags_one:
+                    processOSMkeys(_layer,ds_geometry,osmtype,tag)
 
-            tags01 = re_tags_b.findall(ds_table)
-            if tags01:
-                print(tags01)
-                for tag in tags01:
-                    processOSMkeys(ds_geometry,osmtype,tag)
-
-            tagsa = re_tags_array.findall(ds_table)
-            if tagsa:
-                for tags in tagsa:
+            tags_array = re_tags_array.findall(ds_table)
+            if tags_array:
+                for tags in tags_array:
                     for tag in tags.split(','):
-                        processOSMkeys(ds_geometry,osmtype,tag)
+                        processOSMkeys(_layer,ds_geometry,osmtype,tag)
 
 for k in allhstoretags:
-  # add "relation" if  "area" or "way"  
+  # add "relation" if  "area" or "way"
   if ('area' in allhstoretags[k]) or ('way' in allhstoretags[k]):
     allhstoretags[k].append("relation")
 

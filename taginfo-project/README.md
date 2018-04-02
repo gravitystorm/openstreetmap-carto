@@ -4,8 +4,12 @@ The taginfo database keeps the information which projects use which OSM keys and
 * site: https://taginfo.openstreetmap.org
 * wiki: https://wiki.openstreetmap.org/wiki/Taginfo
 
-Now We can generate only a minimal info - about the used 'keys'
-see more  https://github.com/gravitystorm/openstreetmap-carto/issues/961
+
+_"There are many projects using OSM tags in some way: editors, routers, maps, data extraction tools, ... Taginfo can get information from those projects about their use of OSM tags through 'project files'."_
+_"Taginfo will periodically (usually daily) poll the project file and add the information to its own database."_ see more: https://wiki.openstreetmap.org/wiki/Taginfo/Projects
+
+
+Now We can generate only a minimal info - about the used 'keys' ( see more  https://github.com/gravitystorm/openstreetmap-carto/issues/961 )
 
 ### WHEN to run?
 *  when the `../openstreetmap-carto.style` or `../project.mml` change  , this is the 2 input files for detecting osm keys
@@ -17,16 +21,17 @@ see more  https://github.com/gravitystorm/openstreetmap-carto/issues/961
 *  the new:  `taginfo-openstreetmap-carto.json`   ( and some debug info in the screen! )
 
 ### Known limitations
-* Only a subset of hstore `tags->` is parsed from the  `../project.mml`
+* Only a small subset of [hstore operators](https://www.postgresql.org/docs/10/static/hstore.html#HSTORE-OP-TABLE) is parsed from the  `../project.mml`
+* Be carefull with the SQL comments or use as a simple hack:  ` /* tags->'wetland' */ `
 * This code tested only on Ubuntu Linux
 * Check the result!
 
-### Examples for parsing
-* `tags @> 'capital=>yes'"]`
+### Valid examples for parsing
 * `tags ? 'wetland'"`
-* `tags->'wetland' `
-* `tags->'leaf_type'`
 * `tags @> '"generator:source"=>wind'`
+* `tags @> 'capital=>yes'"]`
+* `tags -> 'leaf_type'`
+* `tags -> 'wetland'`
 * `tags -> ARRAY['wheelchair',ramp:wheelchair']`
 * `tags ?& ARRAY['wheelchair',ramp:wheelchair']`
 * `tags ?| ARRAY['wheelchair',ramp:wheelchair']`
