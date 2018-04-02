@@ -10,11 +10,12 @@
 # Sven Geggus code : https://github.com/giggls/openstreetmap-carto-de/blob/master/views_osmde/generate_taginfo.py
 # -------------------------------------------------------
 
+import argparse
 import json
 import os
 import re
 import yaml
-import argparse
+
 parser = argparse.ArgumentParser()
 parser.add_argument("-v", "--verbose", help="Print debug info",action="store_true")
 args = parser.parse_args()
@@ -173,5 +174,6 @@ for k in allhstoretags:
 
 
 with open('taginfo-openstreetmap-carto.json', 'w') as outfile:
-    json.dump(taginfo, outfile, indent=4)
-
+    taginfo_sorted=taginfo
+    taginfo_sorted["tags"]= sorted(taginfo["tags"],key= lambda k: k['key'] )
+    json.dump(taginfo_sorted, outfile, indent=4)
