@@ -35,9 +35,13 @@ taginfo = {
 }
 cwd = os.getcwd()
 
-osm2pgsql_file        = os.path.join(cwd, '..', 'openstreetmap-carto.style')
-cartocss_project_file = os.path.join(cwd, '..', 'project.mml')
+osm2pgsql_file        = os.path.join(cwd, '..','..', 'openstreetmap-carto.style')
+cartocss_project_file = os.path.join(cwd, '..','..', 'project.mml')
 search_url            = 'https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q='
+
+# output
+taginfo_project_file  = os.path.join(cwd, '..','..', 'taginfo-openstreetmap-carto.json')
+
 
 # ----------------------------------  Examples --------------------
 #  tags @> 'capital=>yes'"]
@@ -173,7 +177,7 @@ for k in allhstoretags:
 
 
 
-with open('taginfo-openstreetmap-carto.json', 'w') as outfile:
+with open(taginfo_project_file, 'w') as outfile:
     taginfo_sorted=taginfo
     taginfo_sorted["tags"]= sorted(taginfo["tags"],key= lambda k: k['key'] )
     json.dump(taginfo_sorted, outfile, indent=4)

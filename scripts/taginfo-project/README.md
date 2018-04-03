@@ -12,16 +12,16 @@ _"Taginfo will periodically (usually daily) poll the project file and add the in
 Now We can generate only a minimal info - about the used 'keys' ( see more  https://github.com/gravitystorm/openstreetmap-carto/issues/961 )
 
 ### WHEN to run?
-*  when the `../openstreetmap-carto.style` or `../project.mml` change  , this is the 2 input files for detecting osm keys
+*  when the `../,,/openstreetmap-carto.style` or `../../project.mml` change  , this is the 2 input files for detecting osm keys
 
 ### HOW to run:
 *  from this directory:  `python3  ./generate-taginfo-project-file.py`
 
 ### RESULT:
-*  the new:  `taginfo-openstreetmap-carto.json`   ( and some debug info in the screen! )
+*  the new:  `../../taginfo-openstreetmap-carto.json` 
 
 ### Known limitations
-* Only a small subset of [hstore operators](https://www.postgresql.org/docs/10/static/hstore.html#HSTORE-OP-TABLE) is parsed from the  `../project.mml`
+* Only a small subset of [hstore operators](https://www.postgresql.org/docs/10/static/hstore.html#HSTORE-OP-TABLE) is parsed from the  `../../project.mml`
 * Be carefull with the SQL comments or use as a simple hack:  ` /* tags->'wetland' */ `
 * This code tested only on Ubuntu Linux
 * Check the result!
@@ -37,11 +37,11 @@ Now We can generate only a minimal info - about the used 'keys' ( see more  http
 * `tags ?| ARRAY['wheelchair',ramp:wheelchair']`
 
 ### How to debug:
-The taginfo project_list file should contain a link to this repo ( /taginfo-project/taginfo-openstreetmap-carto.json )
+The taginfo project_list file should contain a link to this repo ( `taginfo-openstreetmap-carto.json` )
 * https://github.com/taginfo/taginfo-projects/blob/master/project_list.txt
 
 the expected line:
-*  openstreetmap-carto  https://raw.githubusercontent.com/gravitystorm/openstreetmap-carto/master/taginfo-project/taginfo-openstreetmap-carto.json
+*  openstreetmap-carto  https://raw.githubusercontent.com/gravitystorm/openstreetmap-carto/master/taginfo-openstreetmap-carto.json
 
 After the daily refresh the project info should be find here:
 * https://taginfo.openstreetmap.org/projects/openstreetmap-carto
