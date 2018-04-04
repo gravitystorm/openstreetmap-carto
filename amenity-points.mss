@@ -1129,7 +1129,17 @@
     marker-placement: interior;
     marker-clip: false;
   }
-  
+
+  [feature = 'waterway_waterfall'] {
+    [zoom >= 13][height > 10],
+    [zoom >= 15] {
+      marker-file: url('symbols/waterfall.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @water-text;
+    }
+  }
+
   [feature = 'military_bunker'][zoom >= 17] {
     marker-file: url('symbols/bunker.svg');
     marker-fill: @man-made-icon;    
@@ -1513,6 +1523,22 @@
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
+  }
+
+  [feature = 'waterway_waterfall'] {
+    [zoom >= 13][height > 10],
+    [zoom >= 15] {
+      text-name: "[name]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-fill: @water-text;
+      text-dy: 10;
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+    }
   }
 
   [feature = 'man_made_cross'][zoom >= 17],

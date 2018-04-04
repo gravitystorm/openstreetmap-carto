@@ -379,10 +379,10 @@ Layer:
         (SELECT
             way, waterway
           FROM planet_osm_point
-          WHERE waterway IN ('dam', 'weir', 'lock_gate', 'waterfall')
+          WHERE waterway IN ('dam', 'weir', 'lock_gate')
         ) AS water_barriers_points
     properties:
-      minzoom: 13
+      minzoom: 17
   - id: bridge
     geometry: polygon
     <<: *extents
@@ -1552,6 +1552,7 @@ Layer:
                                                   'dog_park', 'fitness_centre', 'fitness_station', 'firepit', 'sauna') THEN leisure ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk') THEN man_made ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance') THEN "natural" ELSE NULL END,
+              'waterway_' || CASE WHEN "waterway" IN ('waterfall') THEN waterway ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'fort')
                              THEN concat_ws('_', historic, CASE WHEN tags->'memorial' IN ('plaque') THEN tags->'memorial' ELSE NULL END)
                              ELSE NULL END,
@@ -1571,13 +1572,18 @@ Layer:
                   WHEN tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'ele')::NUMERIC
                   ELSE NULL
                 END
+              WHEN "waterway" IN ('waterfall') THEN
+                CASE
+                  WHEN tags->'height' ~ '^\d{1,4}(\.\d+)?$' THEN (tags->'height')::NUMERIC
+                  ELSE NULL
+                END
               ELSE NULL
             END AS score,
             religion,
             tags->'denomination' as denomination,
             tags->'generator:source' as "generator:source",
             CASE
-              WHEN man_made IN ('mast', 'tower') THEN
+              WHEN man_made IN ('mast', 'tower') OR waterway IN ('waterfall') THEN
                 CASE
                   WHEN tags->'height' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'height')::NUMERIC
                   ELSE NULL
@@ -2026,6 +2032,14 @@ Layer:
                     NULL
                 END
             ) AS name,
+            CASE
+              WHEN "waterway" IN ('waterfall') THEN
+                CASE
+                  WHEN tags->'height' ~ '^\d{1,4}(\.\d+)?$' THEN (tags->'height')::NUMERIC
+                  ELSE NULL
+                END
+              ELSE NULL
+            END AS height,
             tags->'operator' as operator,
             tags->'icao' as icao,
             tags->'iata' as iata,
@@ -2105,8 +2119,10 @@ Layer:
             ) AS name,
             CASE
               WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN elevation
+              WHEN "waterway" IN ('waterfall') THEN height
               ELSE NULL
             END AS score,
+            height,
             operator,
             icao,
             iata,
@@ -2152,6 +2168,7 @@ Layer:
                   'natural_' || CASE WHEN "natural" IN ('wood', 'peak', 'volcano', 'saddle', 'cave_entrance', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring',
                                                         'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier', 'tree')
                                                         THEN "natural" ELSE NULL END,
+                  'waterway_' || CASE WHEN waterway IN ('waterfall') THEN waterway ELSE NULL END,
                   'place_' || CASE WHEN place IN ('island', 'islet') THEN place ELSE NULL END,
                   'barrier_' || CASE WHEN barrier IN ('toll_booth') THEN barrier ELSE NULL END,
                   'military_' || CASE WHEN military IN ('danger_area', 'bunker') THEN military ELSE NULL END,
@@ -2160,7 +2177,7 @@ Layer:
                                  ELSE NULL END,
                   'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator') THEN highway ELSE NULL END,
                   'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
-                  'waterway_' || CASE WHEN waterway IN ('dam', 'weir', 'dock', 'waterfall') THEN waterway ELSE NULL END,
+                  'waterway_' || CASE WHEN waterway IN ('dam', 'weir', 'dock') THEN waterway ELSE NULL END,
                   'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism ELSE NULL END,
                   'man_made_' || CASE WHEN man_made IN ('cross') THEN man_made ELSE NULL END,
                   'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') THEN historic ELSE NULL END
@@ -2175,7 +2192,16 @@ Layer:
                     END
                   ELSE NULL
                 END AS elevation,
+                CASE
+                  WHEN "waterway" IN ('waterfall') THEN
+                    CASE
+                      WHEN tags->'height' ~ '^\d{1,4}(\.\d+)?$' THEN (tags->'height')::NUMERIC
+                      ELSE NULL
+                    END
+                  ELSE NULL
+                END AS height,
                 "natural",
+                waterway,
                 tags->'operator' as operator,
                 tags->'icao' as icao,
                 tags->'iata' as iata,
@@ -2197,6 +2223,7 @@ Layer:
                                  'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'construction', 'military', 'plant_nursery')
                   OR man_made IN ('lighthouse', 'windmill', 'mast', 'tower', 'water_tower', 'cross', 'obelisk', 'works')
                   OR "natural" IS NOT NULL
+                  OR waterway IN ('waterfall')
                   OR place IN ('island', 'islet')
                   OR barrier IN ('toll_booth')
                   OR military IN ('danger_area', 'bunker')
