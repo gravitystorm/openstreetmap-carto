@@ -2152,7 +2152,6 @@ Layer:
                   'natural_' || CASE WHEN "natural" IN ('wood', 'peak', 'volcano', 'saddle', 'cave_entrance', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring',
                                                         'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier', 'tree')
                                                         THEN "natural" ELSE NULL END,
-                  'waterway_' || CASE WHEN waterway IN ('waterfall') THEN waterway ELSE NULL END,
                   'place_' || CASE WHEN place IN ('island', 'islet') THEN place ELSE NULL END,
                   'barrier_' || CASE WHEN barrier IN ('toll_booth') THEN barrier ELSE NULL END,
                   'military_' || CASE WHEN military IN ('danger_area', 'bunker') THEN military ELSE NULL END,
@@ -2161,7 +2160,7 @@ Layer:
                                  ELSE NULL END,
                   'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator') THEN highway ELSE NULL END,
                   'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
-                  'waterway_' || CASE WHEN waterway IN ('dam', 'weir', 'dock') THEN waterway ELSE NULL END,
+                  'waterway_' || CASE WHEN waterway IN ('dam', 'weir', 'dock', 'waterfall') THEN waterway ELSE NULL END,
                   'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism ELSE NULL END,
                   'man_made_' || CASE WHEN man_made IN ('cross') THEN man_made ELSE NULL END,
                   'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') THEN historic ELSE NULL END
