@@ -2114,8 +2114,9 @@ Layer:
             access,
             CONCAT(
                 name,
-                CASE WHEN name IS NOT NULL AND elevation IS NOT NULL THEN E'\n' ELSE NULL END,
-                CASE WHEN elevation IS NOT NULL THEN CONCAT(REPLACE(ROUND(elevation)::TEXT, '-', U&'\2212'), U&'\00A0', 'm') ELSE NULL END
+                CASE WHEN name IS NOT NULL AND elevation IS NOT NULL OR height IS NOT NULL THEN E'\n' ELSE NULL END,
+                CASE WHEN elevation IS NOT NULL THEN CONCAT(REPLACE(ROUND(elevation)::TEXT, '-', U&'\2212'), U&'\00A0', 'm') ELSE NULL END,
+                CASE WHEN height IS NOT NULL THEN CONCAT(ROUND(height)::TEXT, U&'\00A0', 'm') ELSE NULL END
             ) AS name,
             CASE
               WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN elevation
