@@ -1131,8 +1131,10 @@
   }
 
   [feature = 'waterway_waterfall'] {
-    [zoom >= 13][height > 10],
-    [zoom >= 15] {
+    [zoom >= 13][height > 20],
+    [zoom >= 14][height > 10],
+    [zoom >= 15][name != null],
+    [zoom >= 16] {
       marker-file: url('symbols/waterfall.svg');
       marker-placement: interior;
       marker-clip: false;
@@ -1526,8 +1528,10 @@
   }
 
   [feature = 'waterway_waterfall'] {
-    [zoom >= 13][height > 10],
-    [zoom >= 15] {
+    [zoom >= 13][height > 20],
+    [zoom >= 14][height > 10],
+    [zoom >= 15][name != null],
+    [zoom >= 16] {
       text-name: "[name]";
       text-size: @standard-font-size;
       text-wrap-width: @standard-wrap-width;
