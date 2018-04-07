@@ -1576,7 +1576,7 @@ Layer:
                 END
               WHEN "waterway" IN ('waterfall') THEN
                 CASE
-                  WHEN tags->'height' ~ '^\d{1,4}(\.\d+)?$' THEN (tags->'height')::NUMERIC
+                  WHEN tags->'height' ~ '^\d{1,4}(\.\d+)?\s?m?$' THEN (SUBSTRING(tags->'height', '^(\d{1,4}(\.\d+)?)\s?m?$'))::NUMERIC
                   ELSE NULL
                 END
               ELSE NULL
@@ -1587,7 +1587,7 @@ Layer:
             CASE
               WHEN man_made IN ('mast', 'tower') OR waterway IN ('waterfall') THEN
                 CASE
-                  WHEN tags->'height' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'height')::NUMERIC
+                  WHEN tags->'height' ~ '^\d{1,4}(\.\d+)?\s?m?$' THEN (SUBSTRING(tags->'height', '^(\d{1,4}(\.\d+)?)\s?m?$'))::NUMERIC
                   ELSE NULL
                 END
               ELSE NULL
@@ -2037,7 +2037,7 @@ Layer:
             CASE
               WHEN "waterway" IN ('waterfall') THEN
                 CASE
-                  WHEN tags->'height' ~ '^\d{1,4}(\.\d+)?$' THEN (tags->'height')::NUMERIC
+                  WHEN tags->'height' ~ '^\d{1,4}(\.\d+)?\s?m?$' THEN (SUBSTRING(tags->'height', '^(\d{1,4}(\.\d+)?)\s?m?$'))::NUMERIC
                   ELSE NULL
                 END
               ELSE NULL
@@ -2116,9 +2116,8 @@ Layer:
             access,
             CONCAT(
                 name,
-                CASE WHEN name IS NOT NULL AND elevation IS NOT NULL OR height IS NOT NULL THEN E'\n' ELSE NULL END,
-                CASE WHEN elevation IS NOT NULL THEN CONCAT(REPLACE(ROUND(elevation)::TEXT, '-', U&'\2212'), U&'\00A0', 'm') ELSE NULL END,
-                CASE WHEN height IS NOT NULL THEN CONCAT(ROUND(height)::TEXT, U&'\00A0', 'm') ELSE NULL END
+                CASE WHEN elevation IS NOT NULL THEN CONCAT(E'\n', REPLACE(ROUND(elevation)::TEXT, '-', U&'\2212'), U&'\00A0', 'm') ELSE NULL END,
+                CASE WHEN height IS NOT NULL THEN CONCAT(E'\n', ROUND(height)::TEXT, U&'\00A0', 'm') ELSE NULL END
             ) AS name,
             CASE
               WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN elevation
@@ -2198,7 +2197,7 @@ Layer:
                 CASE
                   WHEN "waterway" IN ('waterfall') THEN
                     CASE
-                      WHEN tags->'height' ~ '^\d{1,4}(\.\d+)?$' THEN (tags->'height')::NUMERIC
+                      WHEN tags->'height' ~ '^\d{1,4}(\.\d+)?\s?m?$' THEN (SUBSTRING(tags->'height', '^(\d{1,4}(\.\d+)?)\s?m?$'))::NUMERIC
                       ELSE NULL
                     END
                   ELSE NULL
