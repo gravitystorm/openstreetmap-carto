@@ -1357,13 +1357,16 @@ Layer:
         (SELECT
             way,
             place,
+            leisure,
             name
           FROM planet_osm_point
           WHERE place IN ('village', 'hamlet')
              AND name IS NOT NULL
              AND NOT tags @> 'capital=>yes'
-             OR place IN ('suburb', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')
-             AND name IS NOT NULL
+             OR (place IN ('suburb', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')
+                 OR (place IN ('square')
+                     AND (leisure is NULL OR NOT leisure IN ('park', 'common', 'recreation_ground', 'garden')))
+             ) AND name IS NOT NULL
           ORDER BY CASE
               WHEN place = 'suburb' THEN 3
               WHEN place = 'village' THEN 4
@@ -1372,6 +1375,7 @@ Layer:
               WHEN place = 'locality' THEN 7
               WHEN place = 'isolated_dwelling' THEN 8
               WHEN place = 'farm' THEN 9
+              WHEN place = 'square' THEN 10
             END ASC, length(name) DESC, name
         ) AS placenames_small
     properties:
