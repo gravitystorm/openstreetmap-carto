@@ -690,6 +690,30 @@
     marker-clip: false;
   }
 
+  [feature = 'historic_castle'][castle_type != 'stately'][zoom >= 15],
+  [feature = 'historic_castle'][castle_type = 'stately'][zoom >= 16],
+  [feature = 'historic_manor'][zoom >= 15] {
+    marker-file: url('symbols/castle.svg');
+    marker-fill: @memorials;
+    marker-placement: interior;
+    marker-clip: false;
+    [castle_type = 'palace'],
+    [castle_type = 'stately'] {
+      marker-file: url('symbols/palace.svg');
+    }
+    [castle_type = 'manor'],
+    [feature = 'historic_manor'] {
+      marker-file: url('symbols/manor.svg');
+    }
+    [castle_type = 'fortress'],
+    [castle_type = 'defensive'],
+    [castle_type = 'castrum'],
+    [castle_type = 'shiro'],
+    [castle_type = 'kremlin'] {
+      marker-file: url('symbols/fortress.svg');
+    }
+  }
+
   [feature = 'historic_archaeological_site'][zoom >= 16] {
     marker-file: url('symbols/archaeological_site.svg');
     marker-fill: @culture;
@@ -1561,7 +1585,9 @@
   [feature = 'historic_memorial_plaque'][zoom >= 19],
   [feature = 'man_made_obelisk'][zoom >= 16],
   [feature = 'historic_monument'][zoom >= 16],
-  [feature = 'historic_fort'][zoom >= 16] {
+  [feature = 'historic_fort'][zoom >= 16],
+  [feature = 'historic_castle'][zoom >= 16],
+  [feature = 'historic_manor'][zoom >= 16] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
