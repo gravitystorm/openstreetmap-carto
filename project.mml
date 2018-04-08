@@ -1577,7 +1577,7 @@ Layer:
                 END
               WHEN "waterway" IN ('waterfall') THEN
                 CASE
-                  WHEN tags->'height' ~ '^\d{1,4}(\.\d+)?\s?m?$' THEN (SUBSTRING(tags->'height', '^(\d{1,4}(\.\d+)?)\s?m?$'))::NUMERIC
+                  WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?(\sm)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)(\sm)?$'))::NUMERIC
                   ELSE NULL
                 END
               ELSE NULL
@@ -1588,7 +1588,7 @@ Layer:
             CASE
               WHEN man_made IN ('mast', 'tower') OR waterway IN ('waterfall') THEN
                 CASE
-                  WHEN tags->'height' ~ '^\d{1,4}(\.\d+)?\s?m?$' THEN (SUBSTRING(tags->'height', '^(\d{1,4}(\.\d+)?)\s?m?$'))::NUMERIC
+                  WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?(\sm)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)(\sm)?$'))::NUMERIC
                   ELSE NULL
                 END
               ELSE NULL
@@ -2039,7 +2039,7 @@ Layer:
             CASE
               WHEN "waterway" IN ('waterfall') THEN
                 CASE
-                  WHEN tags->'height' ~ '^\d{1,4}(\.\d+)?\s?m?$' THEN (SUBSTRING(tags->'height', '^(\d{1,4}(\.\d+)?)\s?m?$'))::NUMERIC
+                  WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?(\sm)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)(\sm)?$'))::NUMERIC
                   ELSE NULL
                 END
               ELSE NULL
@@ -2203,7 +2203,7 @@ Layer:
                 CASE
                   WHEN "waterway" IN ('waterfall') THEN
                     CASE
-                      WHEN tags->'height' ~ '^\d{1,4}(\.\d+)?\s?m?$' THEN (SUBSTRING(tags->'height', '^(\d{1,4}(\.\d+)?)\s?m?$'))::NUMERIC
+                      WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?(\sm)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)(\sm)?$'))::NUMERIC
                       ELSE NULL
                     END
                   ELSE NULL
