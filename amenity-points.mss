@@ -768,6 +768,10 @@
       marker-file: url('symbols/shop/beauty.svg');
     }
 
+    [shop = 'bed'][zoom >= 18] {
+      marker-file: url('symbols/shop/bed.svg');
+    }
+
     [shop = 'beverages'][zoom >= 18] {
       marker-file: url('symbols/shop/beverages.svg');
     }
@@ -2223,6 +2227,7 @@
   [feature = 'shop_bag'],
   [feature = 'shop_bakery'],
   [feature = 'shop_beauty'],
+  [feature = 'shop_bed'],
   [feature = 'shop_beverages'],
   [feature = 'shop_books'],
   [feature = 'shop_clothes'],
