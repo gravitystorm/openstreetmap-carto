@@ -27,7 +27,7 @@ Decide among the maintainers if a new release is due.
 ```
 Dear all,
 
-Today, $NEW_VERSION of the openstreetmap-carto stylesheet (the default
+Today, $NEW_VERSION of the OpenStreetMap Carto stylesheet (the default
 stylesheet on the OSM website) has been released. Once changes are deployed 
 on the openstreetmap.org it will take couple of days before all tiles 
 show the new rendering.
