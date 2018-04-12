@@ -60,7 +60,7 @@
 @residential-tunnel-fill: darken(@residential-fill, 5%);
 @living-street-tunnel-fill: lighten(@living-street-fill, 10%);
 
-@motorway-width-z6:               0.5;
+@motorway-width-z6:               0.4;
 @trunk-width-z6:                  0.4;
 
 @motorway-width-z7:               0.8;
