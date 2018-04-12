@@ -1,19 +1,14 @@
 #necountries {
   [zoom >= 1][zoom < 4] {
     line-width: 0.2;
-    [zoom >= 2] {
-      line-width: 0.3;
-    }
-    [zoom >= 3] {
-      line-width: 0.4;
-    }
     line-color: @admin-boundaries;
   }
 }
 
 #world {
   [zoom >= 0][zoom < 10] {
-    polygon-fill: @land-color;
+    polygon-fill: @land-color-low-zoom;
+    [zoom > 8] { polygon-fill: @land-color; }
     polygon-simplify: 0.4;
     [zoom < 8] {
       line-color: darken(@water-color,20%);
@@ -27,6 +22,8 @@
 #coast-poly {
   [zoom >= 10] {
     polygon-fill: @land-color;
+    line-color: darken(@water-color,30%);
+    line-width: 0.5;
   }
 }
 

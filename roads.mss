@@ -1,5 +1,6 @@
 /* For the main linear features, such as roads and railways. */
-
+/* Colors for motorway, trunk, primary and secdonary are defined in road-colors-generated.mss */
+@motorway-lowest-zoom: lighten(@motorway-low-zoom, 15%);
 @tertiary-fill: #ffffff;
 @residential-fill: #ffffff;
 @service-fill: @residential-fill;
@@ -60,10 +61,10 @@
 @residential-tunnel-fill: darken(@residential-fill, 5%);
 @living-street-tunnel-fill: lighten(@living-street-fill, 10%);
 
-@motorway-width-z6:               0.5;
+@motorway-width-z6:               0.9;
 @trunk-width-z6:                  0.4;
 
-@motorway-width-z7:               0.8;
+@motorway-width-z7:               1.2;
 @trunk-width-z7:                  0.6;
 
 @motorway-width-z8:               1;
@@ -255,7 +256,7 @@
 @junction-text-color:             #960000;
 @halo-color-for-minor-road:       white;
 @lowzoom-halo-color:              white;
-@lowzoom-halo-width:              1;
+@lowzoom-halo-width:              1.5;
 
 @motorway-oneway-arrow-color:     darken(@motorway-casing, 25%);
 @trunk-oneway-arrow-color:        darken(@trunk-casing, 25%);
@@ -1051,20 +1052,24 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       //Missing line-cap: round; is intentional. It would cause rendering glow multiple times in some places - what as result of partial transparency would cause differences in rendering
       //Also, bridges - including bridge casings are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
     }
-    [feature = 'highway_motorway'][link != 'yes'][zoom >= 8][zoom < 12],
+    [feature = 'highway_motorway'][link != 'yes'][zoom >= 6][zoom < 12],
     [feature = 'highway_motorway'][link = 'yes'][zoom >= 10][zoom < 12],
-    [feature = 'highway_trunk'][link != 'yes'][zoom >= 8][zoom < 12],
+    [feature = 'highway_trunk'][link != 'yes'][zoom >= 6][zoom < 12],
     [feature = 'highway_trunk'][link = 'yes'][zoom >= 10][zoom < 12],
     [feature = 'highway_primary'][link != 'yes'][zoom >= 8][zoom < 12],
     [feature = 'highway_primary'][link = 'yes'][zoom >= 10][zoom < 12],
     [feature = 'highway_secondary'][zoom >= 11][zoom < 12] {
       [feature = 'highway_motorway'] {
+        [zoom >= 6] { line-width: @motorway-width-z6 + 2 * @lowzoom-halo-width; }
+        [zoom >= 7] { line-width: @motorway-width-z7 + 2 * @lowzoom-halo-width; }
         [zoom >= 8] { line-width: @motorway-width-z8 + 2 * @lowzoom-halo-width; }
         [zoom >= 9] { line-width: @motorway-width-z9 + 2 * @lowzoom-halo-width; }
         [zoom >= 10] { line-width: @motorway-width-z10 + 2 * @lowzoom-halo-width; }
         [zoom >= 11] { line-width: @motorway-width-z11 + 2 * @lowzoom-halo-width; }
       }
       [feature = 'highway_trunk'] {
+        [zoom >= 6] { line-width: @trunk-width-z6 + 2 * @lowzoom-halo-width; }
+        [zoom >= 7] { line-width: @trunk-width-z7 + 2 * @lowzoom-halo-width; }
         [zoom >= 8] { line-width: @trunk-width-z8 + 2 * @lowzoom-halo-width; }
         [zoom >= 9] { line-width: @trunk-width-z9 + 2 * @lowzoom-halo-width; }
         [zoom >= 10] { line-width: @trunk-width-z10 + 2 * @lowzoom-halo-width; }
@@ -1173,10 +1178,13 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'highway_motorway'] {
       [zoom >= 6][link != 'yes'],
       [zoom >= 10] {
-        line-color: @motorway-low-zoom;
+        line-color: @motorway-lowest-zoom;
         line-width: @motorway-width-z6;
         [zoom >= 7] { line-width: @motorway-width-z7; }
-        [zoom >= 8] { line-width: @motorway-width-z8; }
+        [zoom >= 8] {
+          line-width: @motorway-width-z8;
+          line-color: @motorway-low-zoom;
+        }
         [zoom >= 9] { line-width: @motorway-width-z9; }
         [zoom >= 10] { line-width: @motorway-width-z10; }
         [zoom >= 11] { line-width: @motorway-width-z11; }
@@ -1225,9 +1233,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 6][link != 'yes'],
       [zoom >= 10] {
         line-width: @trunk-width-z6;
-        line-color: @trunk-low-zoom;
+        line-color: #cccccc;
         [zoom >= 7] { line-width: @trunk-width-z7; }
-        [zoom >= 8] { line-width: @trunk-width-z8; }
+        [zoom >= 8] {
+          line-width: @trunk-width-z8;
+          line-color: @trunk-low-zoom;
+        }
         [zoom >= 9] { line-width: @trunk-width-z9; }
         [zoom >= 10] { line-width: @trunk-width-z10; }
         [zoom >= 11] { line-width: @trunk-width-z11; }
