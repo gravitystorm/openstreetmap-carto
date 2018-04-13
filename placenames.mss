@@ -78,6 +78,7 @@
     shield-margin: 7.7; // 0.7 em
     shield-halo-fill: @standard-halo-fill;
     shield-halo-radius: @standard-halo-radius * 1.5;
+    shield-placement: interior;
     shield-placement-type: simple;
     shield-placements: 'S,N,E,W';
     [dir = 1] {
@@ -111,6 +112,7 @@
     text-margin: 9.1; // 0.7 em
     text-halo-fill: @standard-halo-fill;
     text-halo-radius: @standard-halo-radius * 1.5;
+    text-placement: interior;
 
     [zoom >= 10] {
       text-size: 14;
@@ -143,6 +145,7 @@
       shield-margin: 7.7; // 0.7 em
       shield-halo-fill: @standard-halo-fill;
       shield-halo-radius: @standard-halo-radius * 1.5;
+      shield-placement: interior;
       shield-placement-type: simple;
       shield-placements: 'S,N,E,W';
       [dir = 1] {
@@ -178,6 +181,7 @@
       text-margin: 9.1; // 0.7 em
       text-halo-fill: @standard-halo-fill;
       text-halo-radius: @standard-halo-radius * 1.5;
+      text-placement: interior;
 
       [zoom >= 10] {
         text-size: 14;
@@ -211,6 +215,7 @@
       shield-wrap-width: 30; // 3.0 em
       shield-line-spacing: -1.5; // -0.15 em
       shield-margin: 7.0; // 0.7 em
+      shield-placement: interior;
       shield-placement-type: simple;
       shield-placements: 'S,N,E,W';
       [dir = 1] {
@@ -228,6 +233,7 @@
       text-face-name: @book-fonts;
       text-halo-fill: @standard-halo-fill;
       text-halo-radius: @standard-halo-radius * 1.5;
+      text-placement: interior;
       text-wrap-width: 40; // 4.0 em
       text-line-spacing: -1.0; // -0.10 em
       text-margin: 7.0; // 0.7 em
@@ -268,6 +274,7 @@
       text-face-name: @book-fonts;
       text-halo-fill: @standard-halo-fill;
       text-halo-radius: @standard-halo-radius * 1.5;
+      text-placement: interior;
       text-wrap-width: 45; // 4.5 em
       text-line-spacing: -0.8; // -0.08 em
       text-margin: 7; // 0.7 em
@@ -301,6 +308,7 @@
     text-face-name: @book-fonts;
     text-halo-fill: @standard-halo-fill;
     text-halo-radius: @standard-halo-radius * 1.5;
+    text-placement: interior;
     text-wrap-width: 55; // 5.0 em
     text-line-spacing: -0.55; // -0.05 em
     text-margin: 7.7; // 0.7 em
@@ -336,6 +344,7 @@
       text-face-name: @book-fonts;
       text-halo-fill: @standard-halo-fill;
       text-halo-radius: @standard-halo-radius * 1.5;
+      text-placement: interior;
       text-wrap-width: 50; // 5.0 em
       text-line-spacing: -0.50; // -0.05 em
       text-margin: 7.0; // 0.7 em
@@ -382,6 +391,7 @@
       text-face-name: @book-fonts;
       text-halo-fill: @standard-halo-fill;
       text-halo-radius: @standard-halo-radius * 1.5;
+      text-placement: interior;
       text-wrap-width: 45; // 4.5 em
       text-line-spacing: -0.8; // -0.08 em
       text-margin: 7.0; // 0.7 em
