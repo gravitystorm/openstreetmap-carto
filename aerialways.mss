@@ -71,7 +71,8 @@
   [aerialway = 't-bar'],
   [aerialway = 'j-bar'],
   [aerialway = 'platter'],
-  [aerialway = 'rope_tow'] {
+  [aerialway = 'rope_tow'],
+  [aerialway = 'zip_line'] {
     [zoom >= 12] {
       line/line-width: 1;
       line/line-join: round;
