@@ -395,5 +395,14 @@
       text-halo-fill: white;
     }
   }
+  [place = 'square'] {
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: 11;
+      text-face-name: @book-fonts;
+      text-wrap-width: 30; // 2.7 em
+      text-line-spacing: -1.7; // -0.15 em
+    }
+  }
 }
 
