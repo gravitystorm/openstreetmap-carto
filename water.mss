@@ -231,22 +231,6 @@
     }
   }
 
-  [waterway = 'derelict_canal'][zoom >= 12] {
-    line-width: 1.5;
-    line-color: #b5e4d0;
-    line-dasharray: 4,4;
-    line-opacity: 0.5;
-    line-join: round;
-    line-cap: round;
-    [zoom >= 13] {
-      line-width: 2.5;
-      line-dasharray: 4,6;
-    }
-    [zoom >= 14] {
-      line-width: 4.5;
-      line-dasharray: 4,8;
-    }
-  }
 }
 
 #water-lines-text {
@@ -311,19 +295,6 @@
       text-halo-fill: @standard-halo-fill;
     }
 
-    [waterway = 'derelict_canal'][zoom >= 13] {
-      text-name: "[name]";
-      text-size: 10;
-      text-fill: #80d1ae;
-      text-face-name: @oblique-fonts;
-      text-placement: line;
-      text-spacing: 600;
-      text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill;
-      [zoom >= 14] {
-        text-size: 12;
-      }
-    }
   }
 }
 
