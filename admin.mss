@@ -203,8 +203,7 @@ overlapping borders correctly.
   text-halo-radius: @standard-halo-radius;
   text-halo-fill: @standard-halo-fill;
   text-placement: line;
-  text-clip: false;
-  text-spacing: 600;
+  text-clip: true;
   text-vertical-alignment: middle;
   text-dy: -10;
 }
@@ -216,8 +215,7 @@ overlapping borders correctly.
   text-halo-radius: @standard-halo-radius;
   text-halo-fill: @standard-halo-fill;
   text-placement: line;
-  text-clip: false;
-  text-spacing: 600;
+  text-clip: true;
   text-vertical-alignment: middle;
   text-dy: -10;
 }
