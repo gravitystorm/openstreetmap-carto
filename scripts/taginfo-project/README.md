@@ -31,7 +31,6 @@ Now We can generate only a minimal info - about the used 'keys' ( see more  http
 * `tags @> '"generator:source"=>wind'`
 * `tags @> 'capital=>yes'"]`
 * `tags -> 'leaf_type'`
-* `tags -> 'wetland'`
 * `tags -> ARRAY['wheelchair',ramp:wheelchair']`
 * `tags ?& ARRAY['wheelchair',ramp:wheelchair']`
 * `tags ?| ARRAY['wheelchair',ramp:wheelchair']`
