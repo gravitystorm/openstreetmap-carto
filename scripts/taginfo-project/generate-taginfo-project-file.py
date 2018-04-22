@@ -49,14 +49,14 @@ taginfo_project_file  = os.path.join(cwd, '..','..', 'taginfo-openstreetmap-cart
 #  tags->'wetland'
 #  tags->'leaf_type'
 #  tags @> '"generator:source"=>wind'
-re_tags_one     = re.compile(r"[^a-zA-Z0-9_]tags[^'^)^\[^\]]*'.+?'")
+re_tags_one     = re.compile(r"[^a-z0-9_]tags[^'^)^\[^\]]*'.+?'")   # calling with re.IGNORECASE
 
 
 # ----------------------------------  Examples --------------------
 #  tags -> ARRAY['wheelchair',ramp:wheelchair']
 #  tags ?& ARRAY['wheelchair',ramp:wheelchair']
 #  tags ?| ARRAY['wheelchair',ramp:wheelchair']
-re_tags_array = re.compile(  r"[^a-zA-Z0-9_]tags\s*[@\?-][>&\|]\s*[aA][rR][rR][aA][yY]\[.+?\]"  )
+re_tags_array = re.compile(  r"[^a-z0-9_]tags\s*[@\?-][>&\|]\s*array\[.+?\]"  )  # calling with re.IGNORECASE
 
 allhstoretags={}
 
@@ -149,14 +149,14 @@ for layer in newf["Layer"]:
                     if args.verbose:
                         print( 'table Not found:', ds_table.lower() )
 
-            tags_one = re_tags_one.findall(ds_table)
+            tags_one = re_tags_one.findall(ds_table,re.IGNORECASE)
             if tags_one:
                 if args.verbose:
                     print(tags_one)
                 for tag in tags_one:
                     processOSMkeys(_layer,ds_geometry,osmtype,tag)
 
-            tags_array = re_tags_array.findall(ds_table)
+            tags_array = re_tags_array.findall(ds_table,re.IGNORECASE)
             if tags_array:
                 for tags in tags_array:
                     for tag in tags.split(','):
