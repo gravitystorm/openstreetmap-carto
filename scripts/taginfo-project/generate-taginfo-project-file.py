@@ -114,7 +114,6 @@ with open( osm2pgsql_file , 'r') as style:
 
 with open( cartocss_project_file , 'r') as f:
   newf = yaml.load(f.read())
-f.closed
 
 for layer in newf["Layer"]:
     if args.verbose:
@@ -143,7 +142,7 @@ for layer in newf["Layer"]:
                     osmtype='area'
                 elif 'planet_osm_line'  in ds_table.lower():
                     osmtype='way'
-                elif 'planet_osm_ways'  in ds_table.lower():
+                elif 'planet_osm_roads'  in ds_table.lower():
                     osmtype='way'
                 else:
                     if args.verbose:
