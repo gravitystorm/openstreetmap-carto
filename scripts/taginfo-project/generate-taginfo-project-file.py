@@ -17,36 +17,39 @@ import re
 import yaml
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-v", "--verbose", help="Print debug info",action="store_true")
-args = parser.parse_args()
+parser.add_argument("-v", "--verbose",              help="Print debug info",action="store_true")
 
+parser.add_argument("--osm2pgsql_file",             help="osm2pgsql config file",    default="./openstreetmap-carto.style")
+parser.add_argument("--cartocss_project_file",      help="project cartocss yml file",default="./project.mml")
+parser.add_argument("--taginfo_project_file", "-o", help="output taginfo json file ",default="./taginfo-openstreetmap-carto.json")
+
+parser.add_argument("--project_name",       help="taginfo project name "          ,default="OpenStreetMap Carto keys")
+parser.add_argument("--project_description",help="taginfo project description"    ,default="Default OpenStreetMap.org style using CartoCSS")
+parser.add_argument("--project_url",        help="taginfo project url  "          ,default="https://github.com/gravitystorm/openstreetmap-carto")
+parser.add_argument("--contact_name",       help="taginfo project - contact name ",default="openstreetmap-carto maintainers")
+parser.add_argument("--contact_email",      help="taginfo project - contact_email",default="openstreetmap-carto (at) gravitystorm (dot) co (dot) uk")
+
+parser.add_argument("--search_url",help="taginfo project - search_url for every keys",default='https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q=')
+
+args = parser.parse_args()
 
 # -------------------------  parameters ----------------------------
 taginfo = {
     "data_format": 1,
     "project": {
-        "name": "OpenStreetMap Carto keys",
-        "description": "Default OpenStreetMap.org style using CartoCSS",
-        "project_url": "https://github.com/gravitystorm/openstreetmap-carto",
-        "contact_name": "openstreetmap-carto maintainers",
-        "contact_email": "openstreetmap-carto (at) gravitystorm (dot) co (dot) uk"
+        "name":         args.project_name,
+        "description":  args.project_description,
+        "project_url":  args.project_url,
+        "contact_name": args.contact_name,
+        "contact_email":args.contact_email
     },
     "tags": []
 }
-cwd = os.getcwd()
-
-osm2pgsql_file        = os.path.join(cwd, '..','..', 'openstreetmap-carto.style')
-cartocss_project_file = os.path.join(cwd, '..','..', 'project.mml')
-search_url            = 'https://github.com/gravitystorm/openstreetmap-carto/search?utf8=%E2%9C%93&q='
-
-# output
-taginfo_project_file  = os.path.join(cwd, '..','..', 'taginfo-openstreetmap-carto.json')
 
 
 # ----------------------------------  Examples --------------------
 #  tags @> 'capital=>yes'"]
 #  tags ? 'wetland'"
-#  tags->'wetland'
 #  tags->'leaf_type'
 #  tags @> '"generator:source"=>wind'
 re_tags_one     = re.compile(r"[^a-z0-9_]tags[^'^)^\[^\]]*'.+?'")   # calling with re.IGNORECASE
@@ -60,11 +63,31 @@ re_tags_array = re.compile(  r"[^a-z0-9_]tags\s*[@\?-][>&\|]\s*array\[.+?\]"  ) 
 
 allhstoretags={}
 
-def processOSMkeys(_layer, _ds_geometry, _osmtype,_tag):
-    key=_tag.split("'")[1].split("=")[0].replace('"','')
+
+
+def processOSMkeys(_layer, _ds_geometry, _osmtype, _tag):
+    """Processing  sql codefragment(_tag)  to allhstoretags[key]
+
+        example input:
+            _layer        = amenity-points
+            _ds_geometry  = point
+            _osmtype      = node
+            _tag          = (tags @> '"generator:source"=>wind'
+
+        should append/create
+            allhstoretags['generator:source']= [ node ] 
+
+    """
+
+    key=_tag.split("'")[1].split("=")[0].replace('"','')    
+    # key=generator:source
+
     if key:
         if args.verbose:
-            print("--:", _ds_geometry,"->", _osmtype, " key:", key)
+            print("--:[", _layer , _ds_geometry, _osmtype, '] parse:', _tag,  "   ----> key:", key)
+            # --:[ amenity-points point node ] parse: (tags @> '"generator:source"=>wind'    ----> key: generator:source
+
+        # based on example add/append:        allhstoretags['generator:source']= [ node ] 
         if key not in allhstoretags:
             k = [ _osmtype ]
             allhstoretags[key]=k
@@ -76,7 +99,7 @@ def processOSMkeys(_layer, _ds_geometry, _osmtype,_tag):
 #
 # Parsing openstreetmap-carto.style file
 #
-with open( osm2pgsql_file , 'r') as style:
+with open( args.osm2pgsql_file , 'r') as style:
     for line in style:
         if line[0] == '#':
             continue
@@ -103,7 +126,7 @@ with open( osm2pgsql_file , 'r') as style:
                     "key": key,
                     "object_types": object_types,
                     "description": "Used in the osm2pgsql database backend, see more in the github repo",
-                    "doc_url": search_url+key
+                    "doc_url": args.search_url+key
                 })
 
 
@@ -112,7 +135,7 @@ with open( osm2pgsql_file , 'r') as style:
 # Parsing "project.mml" file for the HSTORE keys (  tags-> )
 #
 
-with open( cartocss_project_file , 'r') as f:
+with open( args.cartocss_project_file , 'r') as f:
   newf = yaml.load(f.read())
 
 for layer in newf["Layer"]:
@@ -171,12 +194,12 @@ for k in allhstoretags:
     "key": k,
     "object_types": allhstoretags[k],
     "description": "Used as a hstore tags-> in the database backend, see more in the github repo",
-    "doc_url": search_url+k
+    "doc_url": args.search_url+k
   })
 
 
-
-with open(taginfo_project_file, 'w') as outfile:
+# write the json output
+with open(args.taginfo_project_file, 'w') as outfile:
     taginfo_sorted=taginfo
     taginfo_sorted["tags"]= sorted(taginfo["tags"],key= lambda k: k['key'] )
     json.dump(taginfo_sorted, outfile, indent=4)

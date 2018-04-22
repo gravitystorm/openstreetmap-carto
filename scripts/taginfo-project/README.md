@@ -12,13 +12,15 @@ _"Taginfo will periodically (usually daily) poll the project file and add the in
 Now We can generate only a minimal info - about the used 'keys' ( see more  https://github.com/gravitystorm/openstreetmap-carto/issues/961 )
 
 ### WHEN to run?
-*  when the `../,,/openstreetmap-carto.style` or `../../project.mml` change  , this is the 2 input files for detecting osm keys
+*  when the `openstreetmap-carto.style` or `project.mml` change, this is the 2 input files for detecting osm keys
 
 ### HOW to run:
-*  from this directory:  `python3  ./generate-taginfo-project-file.py`
+*  from the project directory:  `python3 scripts/taginfo-project/generate-taginfo-project-file.py`
+*  output:
+    *  `taginfo-openstreetmap-carto.json`  file
+### With verbose mode and different file output
+* `python3 ./scripts/taginfo-project/generate-taginfo-project-file.py -o ./new_carto_taginfo.json -v`
 
-### RESULT:
-*  the new:  `../../taginfo-openstreetmap-carto.json` 
 
 ### Known limitations
 * Only a small subset of [hstore operators](https://www.postgresql.org/docs/10/static/hstore.html#HSTORE-OP-TABLE) is parsed from the  `../../project.mml`
@@ -44,6 +46,44 @@ the expected line:
 
 After the daily refresh the project info should be find here:
 * https://taginfo.openstreetmap.org/projects/openstreetmap-carto
+
+### Command line parameters
+```
+$ python3 scripts/taginfo-project/generate-taginfo-project-file.py -h
+
+usage: generate-taginfo-project-file.py [-h] [-v]
+                                        [--osm2pgsql_file OSM2PGSQL_FILE]
+                                        [--cartocss_project_file CARTOCSS_PROJECT_FILE]
+                                        [--taginfo_project_file TAGINFO_PROJECT_FILE]
+                                        [--project_name PROJECT_NAME]
+                                        [--project_description PROJECT_DESCRIPTION]
+                                        [--project_url PROJECT_URL]
+                                        [--contact_name CONTACT_NAME]
+                                        [--contact_email CONTACT_EMAIL]
+                                        [--search_url SEARCH_URL]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --verbose         Print debug info
+  --osm2pgsql_file OSM2PGSQL_FILE
+                        osm2pgsql config file
+  --cartocss_project_file CARTOCSS_PROJECT_FILE
+                        project cartocss yml file
+  --taginfo_project_file TAGINFO_PROJECT_FILE, -o TAGINFO_PROJECT_FILE
+                        output taginfo json file
+  --project_name PROJECT_NAME
+                        taginfo project name
+  --project_description PROJECT_DESCRIPTION
+                        taginfo project description
+  --project_url PROJECT_URL
+                        taginfo project url
+  --contact_name CONTACT_NAME
+                        taginfo project - contact name
+  --contact_email CONTACT_EMAIL
+                        taginfo project - contact_email
+  --search_url SEARCH_URL
+                        taginfo project - search_url for every keys
+```
 
 ### Disclaimer and Attribution : This code is based on
 * Paul Norman code : https://github.com/osmlab/osm2pgsql_taginfo
