@@ -278,6 +278,24 @@ Layer:
       type: shape
     properties:
       minzoom: 8
+  - id: springs
+    geometry: point
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+             St_Centroid(way) AS way, "natural"
+           FROM planet_osm_polygon
+           WHERE "natural" IN ('spring')
+         UNION ALL
+         SELECT
+             way, "natural"
+           FROM planet_osm_point
+           WHERE "natural" IN ('spring')
+        ) AS springs
+    properties:
+      minzoom: 14
   - id: water-lines
     class: water-lines
     geometry: linestring
