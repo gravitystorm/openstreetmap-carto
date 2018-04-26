@@ -554,7 +554,7 @@
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
-  
+
   [feature = 'amenity_parking_space'][zoom >= 18] {
     line-width: 0.3;
     line-color: mix(@parking-outline, @parking, 50%);
@@ -724,12 +724,12 @@
   [landuse = 'military'][zoom >= 13] {
     polygon-pattern-file: url('symbols/military_red_hatch.png');
     polygon-pattern-alignment: global;
-    line-color: @military; 
+    line-color: @military;
     line-opacity: 0.24;
-    line-width: 1.0; 
+    line-width: 1.0;
     line-offset: -0.5;
     [zoom >= 15] {
-      line-width: 2; 
+      line-width: 2;
       line-offset: -1.0;
     }
   }
