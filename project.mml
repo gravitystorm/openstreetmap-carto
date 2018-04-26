@@ -1969,6 +1969,7 @@ Layer:
               'leisure_' || CASE WHEN leisure IN ('nature_reserve') THEN leisure ELSE NULL END
             ) AS feature,
             name,
+            NULL as office,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building -- always no with the where conditions
           FROM planet_osm_polygon
           WHERE (landuse IN ('forest', 'military', 'farmland')
