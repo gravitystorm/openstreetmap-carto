@@ -684,16 +684,16 @@
     marker-clip: false;
   }
 
-  [feature = 'historic_fort'][zoom >= 16] {
+  [feature = 'historic_fort'][ruins = null][zoom >= 16] {
     marker-file: url('symbols/fort.svg');
     marker-fill: @memorials;
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [feature = 'historic_castle'][castle_type != 'stately'][zoom >= 15],
-  [feature = 'historic_castle'][castle_type = 'stately'][zoom >= 16],
-  [feature = 'historic_manor'][zoom >= 15] {
+  [feature = 'historic_castle'][ruins = null][castle_type != 'stately'][zoom >= 15],
+  [feature = 'historic_castle'][ruins = null][castle_type = 'stately'][zoom >= 16],
+  [feature = 'historic_manor'][ruins = null][zoom >= 15] {
     marker-file: url('symbols/castle.svg');
     marker-fill: @memorials;
     marker-placement: interior;
@@ -1632,9 +1632,9 @@
   [feature = 'historic_memorial_plaque'][zoom >= 19],
   [feature = 'man_made_obelisk'][zoom >= 16],
   [feature = 'historic_monument'][zoom >= 16],
-  [feature = 'historic_fort'][zoom >= 16],
-  [feature = 'historic_castle'][zoom >= 16],
-  [feature = 'historic_manor'][zoom >= 16] {
+  [feature = 'historic_fort'][ruins = null][zoom >= 16],
+  [feature = 'historic_castle'][ruins = null][zoom >= 16],
+  [feature = 'historic_manor'][ruins = null][zoom >= 16] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
