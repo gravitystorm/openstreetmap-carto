@@ -1500,6 +1500,7 @@ Layer:
             tags->'tower:construction' as "tower:construction",
             tags->'tower:type' as "tower:type",
             tags->'castle_type' as castle_type,
+            tags->'information' as information,
             CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'bed', 'books', 'butcher', 'clothes', 'computer',
                                'confectionery', 'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist',
                                'garden_centre', 'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet',
@@ -1628,6 +1629,7 @@ Layer:
             tags->'tower:construction' as "tower:construction",
             tags->'tower:type' as "tower:type",
             tags->'castle_type' as castle_type,
+            tags->'information' as information,
             CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'bed', 'books', 'butcher', 'clothes', 'computer',
                                'confectionery', 'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist',
                                'garden_centre', 'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet',
@@ -2081,6 +2083,7 @@ Layer:
             tags->'office' as office,
             tags->'recycling_type' as recycling_type,
             tags->'castle_type' as castle_type,
+            tags->'information' as information,
             ref,
             way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
@@ -2168,6 +2171,7 @@ Layer:
             office,
             recycling_type,
             castle_type,
+            information,
             ref,
             way_area,
             is_building
@@ -2227,7 +2231,9 @@ Layer:
                 access,
                 name,
                 CASE
-                  WHEN "natural" IN ('peak', 'volcano', 'saddle') OR tourism = 'alpine_hut' OR amenity = 'shelter' THEN
+                  WHEN "natural" IN ('peak', 'volcano', 'saddle')
+                    OR tourism = 'alpine_hut' OR (tourism = 'information' AND tags->'information' = 'guidepost')
+                    OR amenity = 'shelter' THEN
                     CASE
                       WHEN tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'ele')::NUMERIC
                       ELSE NULL
@@ -2250,6 +2256,7 @@ Layer:
                 tags->'office' as office,
                 tags->'recycling_type' as recycling_type,
                 tags->'castle_type' as castle_type,
+                tags->'information' as information,
                 ref,
                 NULL AS way_area,
                 CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
@@ -2279,7 +2286,10 @@ Layer:
                   OR boundary IN ('national_park')
                   OR waterway IN ('dam', 'weir', 'dock'))
                 AND (name IS NOT NULL
-                     OR (tags?'ele' AND ("natural" IN ('peak', 'volcano', 'saddle') OR tourism = 'alpine_hut' OR amenity = 'shelter'))
+                     OR (tags?'ele' AND ("natural" IN ('peak', 'volcano', 'saddle')
+                         OR tourism = 'alpine_hut'
+                         OR (tourism = 'information' AND tags->'information' = 'guidepost')
+                         OR amenity = 'shelter'))
                      OR (ref IS NOT NULL AND aeroway IN ('gate'))
                     )
               ) AS p
