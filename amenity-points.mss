@@ -72,7 +72,7 @@
     marker-placement: interior;
     marker-clip: false;
   }
-  
+
   [feature = 'amenity_bbq'][zoom >= 17] {
     marker-file: url('symbols/bbq.svg');
     marker-fill: @amenity-brown;
@@ -159,7 +159,7 @@
     marker-clip: false;
   }
 
-  // Ford tagging on points - ford on lines is defined later 
+  // Ford tagging on points - ford on lines is defined later
   [feature = 'highway_ford'][zoom >= 16] {
     marker-file: url('symbols/ford.svg');
     marker-fill: @transportation-icon;
@@ -347,7 +347,7 @@
     marker-placement: interior;
     marker-clip: false;
   }
-  
+
   [feature = 'amenity_shower'][zoom >= 18] {
     marker-file: url('symbols/shower.svg');
     marker-fill: @amenity-brown;
@@ -374,7 +374,7 @@
     [zoom >= 16][height > 40],
     [zoom >= 17][height > 20],
     [zoom >= 18] {
-      ["tower:type" != 'lighting'] {  
+      ["tower:type" != 'lighting'] {
         marker-file: url('symbols/towers/mast.svg');
         marker-fill: @man-made-icon;
         marker-placement: interior;
@@ -385,7 +385,7 @@
         marker-fill: @man-made-icon;
         marker-placement: interior;
         marker-clip: false;
-      }      
+      }
       ["tower:type" = 'communication'] {
         marker-file: url('symbols/towers/mast_communications.svg');
       }
@@ -404,10 +404,10 @@
       marker-placement: interior;
       marker-clip: false;
       ["tower:type" = 'defensive'] {
-        marker-file: url('symbols/towers/tower_defensive.svg');  
+        marker-file: url('symbols/towers/tower_defensive.svg');
       }
       ["tower:type" = 'observation'] {
-        marker-file: url('symbols/towers/tower_observation.svg');  
+        marker-file: url('symbols/towers/tower_observation.svg');
       }
       ["tower:type" = 'bell_tower'] {
         marker-file: url('symbols/towers/bell_tower.svg');
@@ -417,7 +417,7 @@
         ["tower:construction" = 'lattice'] {
           marker-file: url('symbols/towers/tower_lattice_lighting.svg');
         }
-      }      
+      }
       ["tower:construction" = 'lattice'] {
         marker-file: url('symbols/towers/tower_lattice.svg');
       }
@@ -534,7 +534,7 @@
     marker-placement: interior;
     marker-clip: false;
   }
-    
+
   [feature = 'amenity_police'][zoom >= 16] {
     marker-file: url('symbols/police.svg');
     marker-fill: @public-service;
@@ -1096,7 +1096,7 @@
     marker-placement: interior;
     marker-clip: false;
   }
-  
+
   [feature = 'leisure_firepit'][zoom >= 17] {
     marker-file: url('symbols/firepit.svg');
     marker-fill: @amenity-brown;
@@ -1118,7 +1118,7 @@
      marker-clip: false;
    }
 
-  // Slipway tagging on points - slipway on lines is defined later 
+  // Slipway tagging on points - slipway on lines is defined later
   [feature = 'leisure_slipway'][zoom >= 17] {
     marker-file: url('symbols/transport_slipway.p.20.svg');
     marker-fill: @transportation-icon;
@@ -1196,10 +1196,10 @@
 
   [feature = 'military_bunker'][zoom >= 17] {
     marker-file: url('symbols/bunker.svg');
-    marker-fill: @man-made-icon;    
+    marker-fill: @man-made-icon;
     marker-placement: interior;
     marker-clip: false;
-  }  
+  }
 
   [feature = 'natural_spring'][zoom >= 14] {
     marker-file: url('symbols/spring.svg');
@@ -1230,8 +1230,8 @@
     marker-placement: interior;
     marker-clip: false;
   }
-  
-  // waste_disposal tagging on ways - tagging on nodes is defined later 
+
+  // waste_disposal tagging on ways - tagging on nodes is defined later
   [feature = 'amenity_waste_disposal'][zoom >= 19] {
     [access = null],
     [access = 'permissive'],
@@ -1330,7 +1330,7 @@
     marker-placement: interior;
   }
 
-  // waste_disposal tagging on nodes - tagging on ways is defined earlier 
+  // waste_disposal tagging on nodes - tagging on ways is defined earlier
   [feature = 'amenity_waste_disposal'][zoom >= 19]::amenity {
     [access = null],
     [access = 'permissive'],
@@ -1646,7 +1646,7 @@
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
   }
-  
+
   [feature = 'military_bunker'][zoom >= 17],
   [feature = 'historic_wayside_shrine'][zoom >= 17] {
     text-name: "[name]";
@@ -2033,7 +2033,7 @@
       text-dy: 6;
     }
   }
-  
+
   [feature = 'amenity_shower'][zoom >= 18] {
     text-name: "[name]";
     text-size: @standard-font-size;
