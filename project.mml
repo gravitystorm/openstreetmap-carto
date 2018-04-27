@@ -1575,7 +1575,8 @@ Layer:
               'tourism_' || CASE WHEN tourism IN ('viewpoint') THEN tourism ELSE NULL END,
               'barrier_' || CASE WHEN barrier IN ('toll_booth') THEN barrier ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('cross') THEN man_made ELSE NULL END,
-              'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') THEN historic ELSE NULL END
+              'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') THEN historic ELSE NULL END,
+              'playground_' || CASE WHEN tags->'playground' IN ('swing','springy','climbing_frame', 'sandpit', 'slide') THEN tags->'playground' ELSE NULL END
             ) AS feature,
             access,
             CASE
@@ -1643,6 +1644,7 @@ Layer:
             OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
             OR tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones'
             OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> 'power_source=>wind'))
+            OR tags->'playground' IS NOT NULL
           ORDER BY score DESC NULLS LAST
           ) AS amenity_points
     properties:

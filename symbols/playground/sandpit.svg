@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 33.866666 33.866668"
+   height="128"
+   width="128">
+  <defs
+     id="defs2" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     style="display:inline"
+     id="layer2">
+    <path
+       id="path816"
+       d="m 18.580027,18.988922 6.542113,2.879025 c 2.204292,-4.761851 3.064564,-6.97312 -0.162527,-8.374641 -3.227093,-1.401519 -4.239594,0.714104 -6.379586,5.495616 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.18418837px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <ellipse
+       cx="27.594181"
+       cy="-4.3684826"
+       rx="1.9230459"
+       ry="1.4098495"
+       transform="matrix(0.92140333,0.38860764,-0.41621458,0.90926642,0,0)"
+       id="path840"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.1897825;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       y="20.746578"
+       x="0.21737148"
+       height="13.059174"
+       width="1.308773"
+       id="rect861"
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.64351404;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       y="31.795328"
+       x="0.20045215"
+       height="2.0713389"
+       width="33.609142"
+       id="rect863"
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.08080196;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <rect
+       y="20.788979"
+       x="32.492786"
+       height="13.059174"
+       width="1.308773"
+       id="rect861-6"
+       style="display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.64351404;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  </g>
+  <g
+     id="layer4">
+    <path
+       id="path814"
+       d="m 19.811532,18.578079 c 1.366947,-3.241163 2.381016,-5.18129 4.698062,-4.146665 2.317028,1.034649 1.589417,2.98711 0.08172,6.176376"
+       style="display:inline;fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.36837679;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       id="path830"
+       d="m 17.75904,22.292952 0.525154,-8.481549 c 0,0 -10.1329879,1.16276 -10.1069227,1.34451 0.026065,0.18175 3.4185217,8.22424 3.3924567,8.042491 1.972791,-0.307165 4.134275,-0.650879 6.189312,-0.905452 z"
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26626986px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       id="path814-3"
+       d="m 9.363621,15.266988 c -0.6949781,-3.92706 -0.049623,-6.3109023 2.947055,-6.9098757 2.996679,-0.5989734 4.346615,1.7974937 4.818917,5.7656617"
+       style="display:inline;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.48168224;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  </g>
+  <g
+     id="layer5">
+    <path
+       id="path895"
+       d="m 2.8034032,23.193235 c 6.6149208,4.810851 11.3257978,0.27759 12.2258808,-0.291932 2.608204,-1.650324 8.564252,-4.242109 15.369697,0.626019"
+       style="display:inline;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.32291663;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  </g>
+  <g
+     id="layer3" />
+  <g
+     style="display:inline"
+     transform="translate(0,-263.1333)"
+     id="layer1">
+    <rect
+       ry="0"
+       transform="matrix(0.84851824,0.52916614,-0.38274867,0.92385251,0,0)"
+       y="219.25803"
+       x="129.97322"
+       height="5.4096298"
+       width="0.95519638"
+       id="rect842"
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.09377027;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  </g>
+</svg>
