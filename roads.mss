@@ -359,7 +359,7 @@
         [zoom >= 17] { line-width: @primary-width-z17; }
         [zoom >= 18] { line-width: @primary-width-z18; }
         [zoom >= 19] { line-width: @primary-width-z19; }
-        #roads {
+        #roads-casing {
           line-join: round;
           line-cap: round;
         }
