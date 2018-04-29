@@ -2283,7 +2283,6 @@ Layer:
           WHERE building IS NOT NULL
             AND building NOT IN ('no')
             AND name IS NOT NULL
-            AND amenity IS NULL AND shop IS NULL AND tags->'office' IS NULL
           ORDER BY way_area DESC
         ) AS building_text
     properties:
@@ -2315,7 +2314,7 @@ Layer:
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
           WHERE (("addr:housenumber" IS NOT NULL) OR ("addr:housename" IS NOT NULL) OR ((tags->'addr:unit') IS NOT NULL))
-            AND (building IS NOT NULL) AND (amenity IS NULL) AND (shop IS NULL) AND (tags->'office' IS NULL)
+            AND building IS NOT NULL
         UNION ALL
         SELECT
             way,
@@ -2324,8 +2323,7 @@ Layer:
             tags->'addr:unit' AS addr_unit,
             NULL AS way_pixels
           FROM planet_osm_point
-          WHERE (("addr:housenumber" IS NOT NULL) OR ("addr:housename" IS NOT NULL) OR ((tags->'addr:unit') IS NOT NULL))
-            AND (amenity IS NULL) AND (shop IS NULL) AND (tags->'office' IS NULL)
+          WHERE ("addr:housenumber" IS NOT NULL) OR ("addr:housename" IS NOT NULL) OR ((tags->'addr:unit') IS NOT NULL)
           ORDER BY way_pixels DESC NULLS LAST
         ) AS addresses
     properties:
