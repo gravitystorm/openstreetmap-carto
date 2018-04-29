@@ -1026,7 +1026,7 @@
   }
 
   // office points
-  [office != null][zoom >= 17] {
+  [feature = 'office'][zoom >= 17] {
     marker-width: 4;
     [zoom >= 18] {
       marker-width: 6;
@@ -2328,25 +2328,79 @@
     }
   }
 
-  // potentially larger offices
-  [zoom >= 17] {
-    [feature = 'office_administrative'],
-    [feature = 'office_adoption_agency'],
-    [feature = 'office_educational_institution'],
-    [feature = 'office_employment_agency'],
-    [feature = 'office_energy_supplier'],
-    [feature = 'office_financial'],
-    [feature = 'office_government'],
-    [feature = 'office_newspaper'],
-    [feature = 'office_ngo'],
-    [feature = 'office_political_party'],
-    [feature = 'office_quango'],
-    [feature = 'office_religion'],
-    [feature = 'office_research'],
-    [feature = 'office_tax'],
-    [feature = 'office_telecommunication'],
-    [feature = 'office_water_utility'],
-    {
+  [feature = 'office'] {
+    // potentially larger offices
+    [zoom >= 17] {
+      [office = 'administrative'],
+      [office = 'adoption_agency'],
+      [office = 'educational_institution'],
+      [office = 'employment_agency'],
+      [office = 'energy_supplier'],
+      [office = 'financial'],
+      [office = 'government'],
+      [office = 'newspaper'],
+      [office = 'ngo'],
+      [office = 'political_party'],
+      [office = 'quango'],
+      [office = 'religion'],
+      [office = 'research'],
+      [office = 'tax'],
+      [office = 'telecommunication'],
+      [office = 'water_utility'],
+      {
+        text-name: "[name]";
+        text-size: @standard-font-size;
+        text-wrap-width: @standard-wrap-width;
+        text-line-spacing: @standard-line-spacing-size;
+        text-dy: 8;
+        text-fill: @office;
+        text-face-name: @standard-font;
+        text-halo-radius: @standard-halo-radius;
+        text-halo-fill: rgba(255, 255, 255, 0.6);
+        text-placement: interior;
+      }
+    }
+
+    // other documented office types
+    [zoom >= 18] {
+      [office = 'accountant'],
+      [office = 'advertising_agency'],
+      [office = 'architect'],
+      [office = 'association'],
+      [office = 'charity'],
+      [office = 'company'],
+      [office = 'estate_agent'],
+      [office = 'forestry'],
+      [office = 'foundation'],
+      [office = 'guide'],
+      [office = 'insurance'],
+      [office = 'it'],
+      [office = 'lawyer'],
+      [office = 'logistics'],
+      [office = 'moving_company'],
+      [office = 'notary'],
+      [office = 'physician'],
+      [office = 'private_investigator'],
+      [office = 'property_management'],
+      [office = 'surveyor'],
+      [office = 'tax_advisor'],
+      [office = 'therapist'],
+      [office = 'travel_agent'] {
+        text-name: "[name]";
+        text-size: @standard-font-size;
+        text-wrap-width: @standard-wrap-width;
+        text-line-spacing: @standard-line-spacing-size;
+        text-dy: 8;
+        text-fill: @office;
+        text-face-name: @standard-font;
+        text-halo-radius: @standard-halo-radius;
+        text-halo-fill: rgba(255, 255, 255, 0.6);
+        text-placement: interior;
+      }
+    }
+
+    // all other offices
+    [zoom >= 19] {
       text-name: "[name]";
       text-size: @standard-font-size;
       text-wrap-width: @standard-wrap-width;
@@ -2358,58 +2412,6 @@
       text-halo-fill: rgba(255, 255, 255, 0.6);
       text-placement: interior;
     }
-  }
-
-  // other documented office types
-  [zoom >= 18] {
-    [feature = 'office_accountant'],
-    [feature = 'office_advertising_agency'],
-    [feature = 'office_architect'],
-    [feature = 'office_association'],
-    [feature = 'office_charity'],
-    [feature = 'office_company'],
-    [feature = 'office_estate_agent'],
-    [feature = 'office_forestry'],
-    [feature = 'office_foundation'],
-    [feature = 'office_guide'],
-    [feature = 'office_insurance'],
-    [feature = 'office_it'],
-    [feature = 'office_lawyer'],
-    [feature = 'office_logistics'],
-    [feature = 'office_moving_company'],
-    [feature = 'office_notary'],
-    [feature = 'office_physician'],
-    [feature = 'office_private_investigator'],
-    [feature = 'office_property_management'],
-    [feature = 'office_surveyor'],
-    [feature = 'office_tax_advisor'],
-    [feature = 'office_therapist'],
-    [feature = 'office_travel_agent'] {
-      text-name: "[name]";
-      text-size: @standard-font-size;
-      text-wrap-width: @standard-wrap-width;
-      text-line-spacing: @standard-line-spacing-size;
-      text-dy: 8;
-      text-fill: @office;
-      text-face-name: @standard-font;
-      text-halo-radius: @standard-halo-radius;
-      text-halo-fill: rgba(255, 255, 255, 0.6);
-      text-placement: interior;
-    }
-  }
-
-  // all other offices
-  [office != null][zoom >= 19] {
-    text-name: "[name]";
-    text-size: @standard-font-size;
-    text-wrap-width: @standard-wrap-width;
-    text-line-spacing: @standard-line-spacing-size;
-    text-dy: 8;
-    text-fill: @office;
-    text-face-name: @standard-font;
-    text-halo-radius: @standard-halo-radius;
-    text-halo-fill: rgba(255, 255, 255, 0.6);
-    text-placement: interior;
   }
 
   [feature = 'shop_supermarket'],
