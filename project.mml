@@ -285,7 +285,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-             St_Centroid(way) AS way, "natural"
+             way, "natural"
            FROM planet_osm_polygon
            WHERE "natural" IN ('spring')
          UNION ALL
