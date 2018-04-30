@@ -1288,15 +1288,15 @@
   }
 
   [feature = 'barrier_gate']::barrier {
-    [zoom >= 16] {
+    [zoom >= 17] {
       marker-file: url('symbols/gate.svg');
       marker-placement: interior;
       marker-clip: false;
     }
   }
 
-  [feature = 'barrier_lift_gate'][zoom >= 16]::barrier,
-  [feature = 'barrier_swing_gate'][zoom >= 16]::barrier {
+  [feature = 'barrier_lift_gate'][zoom >= 17]::barrier,
+  [feature = 'barrier_swing_gate'][zoom >= 17]::barrier {
     marker-file: url('symbols/liftgate.svg');
     marker-fill: #3f3f3f;
     marker-placement: interior;
@@ -1306,7 +1306,7 @@
   [feature = 'barrier_bollard'],
   [feature = 'barrier_block'],
   [feature = 'barrier_log'] {
-    [zoom >= 16] {
+    [zoom >= 17] {
       marker-width: 3;
       marker-line-width: 0;
       marker-fill: #7d7c7c;
