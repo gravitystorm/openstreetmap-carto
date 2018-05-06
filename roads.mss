@@ -2436,7 +2436,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         /* Offset name on traffic_signals on zoomlevels where they are displayed
         in order not to hide the text */
         [highway = 'traffic_signals'] {
-          text-dy: 14;
+          text-dy: 9;
         }
       }
     }

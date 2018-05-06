@@ -125,8 +125,8 @@
   }
 
   [feature = 'highway_traffic_signals'][zoom >= 17] {
-    marker-file: url('symbols/traffic_light.16.svg');
-    marker-fill: #0a0a0a;
+    marker-file: url('symbols/traffic_light.13.svg');
+    marker-fill: #545454;
     marker-placement: interior;
     marker-clip: false;
   }
