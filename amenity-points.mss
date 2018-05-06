@@ -1846,7 +1846,6 @@
   [feature = 'landuse_grass'],
   [feature = 'landuse_allotments'],
   [feature = 'landuse_farmyard'],
-  [feature = 'landuse_farm'],
   [feature = 'landuse_farmland'],
   [feature = 'landuse_greenhouse_horticulture'],
   [feature = 'shop_mall'],
