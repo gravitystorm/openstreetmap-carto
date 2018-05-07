@@ -2350,19 +2350,32 @@ Layer:
             "addr:housenumber" AS addr_housenumber,
             "addr:housename" AS addr_housename,
             tags->'addr:unit' AS addr_unit,
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+            CAST(NULL as text)  AS render,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0)
+              AS way_pixels
           FROM planet_osm_polygon
-          WHERE (("addr:housenumber" IS NOT NULL) OR ("addr:housename" IS NOT NULL) OR ((tags->'addr:unit') IS NOT NULL))
+          WHERE (("addr:housenumber" IS NOT NULL)
+            OR ("addr:housename" IS NOT NULL)
+            OR ((tags->'addr:unit') IS NOT NULL))
             AND building IS NOT NULL
         UNION ALL
         SELECT
-            way,
-            "addr:housenumber" AS addr_housenumber,
-            "addr:housename" AS addr_housename,
-            tags->'addr:unit' AS addr_unit,
-            NULL AS way_pixels
-          FROM planet_osm_point
-          WHERE ("addr:housenumber" IS NOT NULL) OR ("addr:housename" IS NOT NULL) OR ((tags->'addr:unit') IS NOT NULL)
+            p.way AS way,
+            p."addr:housenumber" AS addr_housenumber,
+            p."addr:housename" AS addr_housename,
+            p.tags->'addr:unit' AS addr_unit,
+            CASE p."addr:housenumber" = (SELECT poly."addr:housenumber"
+                FROM planet_osm_polygon AS poly
+                WHERE ST_Intersects(poly.way, p.way)
+                    AND poly.building IS NOT NULL
+                    AND p.tags ? 'entrance'
+                LIMIT 1)
+            WHEN True THEN 'unit-only' ELSE NULL END AS render,
+            CAST(NULL as real) AS way_pixels
+          FROM planet_osm_point AS p
+          WHERE ((p."addr:housenumber" IS NOT NULL)
+              OR (p."addr:housename" IS NOT NULL)
+              OR ((p.tags->'addr:unit') IS NOT NULL))
           ORDER BY way_pixels DESC NULLS LAST
         ) AS addresses
     properties:
