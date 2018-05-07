@@ -26,7 +26,7 @@
 
 // --- Transport ----
 
-@aerodrome: #e9e7e2;
+@transportation-area: #e9e7e2;
 @apron: #e9d1ff;
 @garages: #dfddce;
 @parking: #eeeeee;
@@ -568,10 +568,11 @@
   }
 
   [feature = 'aeroway_aerodrome'][zoom >= 10],
-  [feature = 'amenity_ferry_terminal'][zoom >= 15] {
-    polygon-fill: @aerodrome;
+  [feature = 'amenity_ferry_terminal'][zoom >= 15],
+  [feature = 'amenity_bus_station'][zoom >= 15] {
+    polygon-fill: @transportation-area;
     line-width: 0.2;
-    line-color: saturate(darken(@aerodrome, 40%), 20%);
+    line-color: saturate(darken(@transportation-area, 40%), 20%);
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
