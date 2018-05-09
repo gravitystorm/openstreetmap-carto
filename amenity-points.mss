@@ -14,6 +14,7 @@
 @culture: @amenity-brown;
 @public-service: @amenity-brown;
 @office: #4863A0;
+@craft: @amenity-brown;
 @man-made-icon: #555;
 @advertising-grey: @man-made-icon;
 @landform-color: #d08f55;
@@ -753,6 +754,46 @@
     marker-clip: false;
     marker-fill: @shop-icon;
     marker-file: url('symbols/shop/marketplace.svg');
+  }
+
+  [feature = 'craft']{
+    [zoom >= 17]{
+      marker-fill: @craft;
+      marker-placement: interior;
+      marker-clip: false;
+    }
+
+    [craft = 'brewery'][zoom >= 17] {
+      marker-file: url('symbols/craft/brewery.svg');
+    }
+
+    [craft = 'carpenter'][zoom >= 17] {
+      marker-file: url('symbols/craft/carpenter.svg');
+    }
+
+    [craft = 'electrician'][zoom >= 17] {
+      marker-file: url('symbols/craft/electrician.svg');
+    }
+
+    [craft = 'plumber'][zoom >= 17] {
+      marker-file: url('symbols/craft/plumber.svg');
+    }
+
+    [craft = 'shoemaker'][zoom >= 17] {
+      marker-file: url('symbols/craft/shoemaker.svg');
+    }
+
+    [craft = 'winery'][zoom >= 17] {
+      marker-file: url('symbols/craft/winery.svg');
+    }
+
+    [craft = 'photographer'][zoom >= 17] {
+      marker-file: url('symbols/shop/photo.svg');
+    }
+
+    [craft = 'tailor'][zoom >= 17] {
+      marker-file: url('symbols/craft/tailor.svg');
+    }
   }
 
   [feature = 'shop'] {
@@ -1580,6 +1621,28 @@
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255, 255, 255, 0.6);
     text-placement: interior;
+  }
+
+  [feature = 'craft_brewery'],
+  [feature = 'craft_carpenter'],
+  [feature = 'craft_eletrician'],
+  [feature = 'craft_plumber'],
+  [feature = 'craft_shoemaker'],
+  [feature = 'craft_winery'],
+  [feature = 'craft_photographer'],
+  [feature = 'craft_tailor']{
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-fill: @craft;
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-dy: 11;
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;      
+    }
   }
 
   [feature = 'natural_peak'][zoom >= 13],

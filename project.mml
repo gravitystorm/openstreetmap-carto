@@ -1493,7 +1493,8 @@ Layer:
               'military_'|| CASE WHEN military IN ('bunker') THEN military ELSE NULL END,
               'highway_'|| CASE WHEN highway IN ('bus_stop', 'elevator', 'traffic_signals') THEN highway ELSE NULL END,
               'power_' || CASE WHEN power IN ('generator') THEN power ELSE NULL END,
-              'tourism_' || CASE WHEN tourism IN ('viewpoint') THEN tourism ELSE NULL END
+              'tourism_' || CASE WHEN tourism IN ('viewpoint') THEN tourism ELSE NULL END,
+              'craft' || CASE WHEN tags->'craft' IN ('brewery','carpenter','electrician','plumber','shoemaker','winery','photographer','tailor') THEN '' ELSE NULL END
             ) AS feature,
             access,
             religion,
@@ -1515,6 +1516,8 @@ Layer:
             tags->'tower:construction' as "tower:construction",
             tags->'tower:type' as "tower:type",
             tags->'castle_type' as castle_type,
+            CASE WHEN tags->'craft' IN ('brewery','carpenter','electrician','plumber','shoemaker','winery','photographer','tailor') THEN tags->'craft'
+                               ELSE '' END AS craft,
             CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'bed', 'books', 'butcher', 'clothes', 'computer',
                                'confectionery', 'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist',
                                'garden_centre', 'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet',
@@ -1543,7 +1546,8 @@ Layer:
             OR tags->'memorial' IN ('plaque')
             OR military IN ('bunker')
             OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
-            OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> 'power_source=>wind'))
+            OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> 'power_source=>wind')
+            OR tags->'craft' IN ('brewery','carpenter','electrician','plumber','shoemaker','winery','photographer','tailor'))
           ORDER BY way_area desc
         ) AS amenity_points_poly
     properties:
@@ -1609,7 +1613,8 @@ Layer:
               'tourism_' || CASE WHEN tourism IN ('viewpoint') THEN tourism ELSE NULL END,
               'barrier_' || CASE WHEN barrier IN ('toll_booth') THEN barrier ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('cross') THEN man_made ELSE NULL END,
-              'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') THEN historic ELSE NULL END
+              'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') THEN historic ELSE NULL END,
+              'craft' || CASE WHEN tags->'craft' IN ('brewery','carpenter','electrician','plumber','shoemaker','winery','photographer','tailor') THEN '' ELSE NULL END
             ) AS feature,
             access,
             CASE
@@ -1644,6 +1649,8 @@ Layer:
             tags->'tower:construction' as "tower:construction",
             tags->'tower:type' as "tower:type",
             tags->'castle_type' as castle_type,
+            CASE WHEN tags->'craft' IN ('brewery','carpenter','electrician','plumber','shoemaker','winery','photographer','tailor') THEN tags->'craft'
+                               ELSE '' END AS craft,
             CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'bed', 'books', 'butcher', 'clothes', 'computer',
                                'confectionery', 'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist',
                                'garden_centre', 'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet',
@@ -1676,7 +1683,8 @@ Layer:
             OR tags @> 'emergency=>phone'
             OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
             OR tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones'
-            OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> 'power_source=>wind'))
+            OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> 'power_source=>wind')
+            OR tags->'craft' IN ('brewery','carpenter','electrician','plumber','shoemaker','winery','photographer','tailor'))
           ORDER BY score DESC NULLS LAST
           ) AS amenity_points
     properties:
@@ -2075,7 +2083,8 @@ Layer:
               'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator') THEN highway ELSE NULL END,
               'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
               'waterway_' || CASE WHEN waterway IN ('dam', 'dock') THEN waterway ELSE NULL END,
-              'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism ELSE NULL END
+              'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism ELSE NULL END,
+              'craft_' || CASE WHEN tags->'craft' IN ('brewery','carpenter','electrician','plumber','shoemaker','winery','photographer','tailor') THEN tags->'craft' ELSE NULL END
             ) AS feature,
             access,
             CONCAT(
@@ -2101,6 +2110,7 @@ Layer:
             tags->'office' as office,
             tags->'recycling_type' as recycling_type,
             tags->'castle_type' as castle_type,
+            CASE WHEN tags->'craft' in ('brewery','carpenter','electrician','plumber','shoemaker','winery','photographer','tailor') then tags->'craft' else NULL END craft,
             ref,
             way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
@@ -2124,7 +2134,8 @@ Layer:
               OR highway IN ('services', 'rest_area', 'bus_stop', 'elevator')
               OR power IN ('plant', 'station', 'generator', 'sub_station', 'substation')
               OR boundary IN ('national_park')
-              OR waterway IN ('dam', 'dock'))
+              OR waterway IN ('dam', 'dock')
+              OR tags->'craft' in ('brewery','carpenter','electrician','plumber','shoemaker','winery','photographer','tailor'))
             AND (name IS NOT NULL
                  OR (ref IS NOT NULL AND aeroway IN ('gate'))
                 )
@@ -2243,7 +2254,8 @@ Layer:
                   'waterway_' || CASE WHEN waterway IN ('dam', 'weir', 'dock') THEN waterway ELSE NULL END,
                   'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism ELSE NULL END,
                   'man_made_' || CASE WHEN man_made IN ('cross') THEN man_made ELSE NULL END,
-                  'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') THEN historic ELSE NULL END
+                  'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') THEN historic ELSE NULL END,
+                  'craft_' || CASE WHEN tags->'craft' IN ('brewery','carpenter','electrician','plumber','shoemaker','winery','photographer','tailor') THEN tags->'craft' ELSE NULL END
                 ) AS feature,
                 access,
                 name,
@@ -2271,6 +2283,7 @@ Layer:
                 tags->'office' as office,
                 tags->'recycling_type' as recycling_type,
                 tags->'castle_type' as castle_type,
+                CASE WHEN tags->'craft' in ('brewery','carpenter','electrician','plumber','shoemaker','winery','photographer','tailor') THEN tags->'craft' ELSE NULL END craft,
                 ref,
                 NULL AS way_area,
                 CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
@@ -2298,7 +2311,8 @@ Layer:
                   OR highway IN ('bus_stop', 'services', 'rest_area', 'elevator')
                   OR power IN ('plant', 'station', 'generator', 'sub_station', 'substation')
                   OR boundary IN ('national_park')
-                  OR waterway IN ('dam', 'weir', 'dock'))
+                  OR waterway IN ('dam', 'weir', 'dock')
+                  OR tags->'craft' in ('brewery','carpenter','electrician','plumber','shoemaker','winery','photographer','tailor'))
                 AND (name IS NOT NULL
                      OR (tags?'ele' AND ("natural" IN ('peak', 'volcano', 'saddle') OR tourism = 'alpine_hut' OR amenity = 'shelter'))
                      OR (ref IS NOT NULL AND aeroway IN ('gate'))

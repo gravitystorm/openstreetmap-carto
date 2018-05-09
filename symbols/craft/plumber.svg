@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="14"
+   height="14"
+   id="craft_plumber"
+   version="1.1"
+   viewBox="0 0 14 14">
+  <defs
+     id="defs3802" />
+  <metadata
+     id="metadata3805">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(1.5520395,2.8104498)"
+     id="g97">
+    <g
+       id="g105">
+      <rect
+         style="visibility:hidden;fill:none;stroke:none"
+         id="canvas"
+         y="-5.268003"
+         x="1.7010086"
+         height="14"
+         width="14" />
+      <path
+         id="drinking-water"
+         transform="translate(-1.5520395,-2.8104498)"
+         d="M 2.4667969,-0.0078125 C 1.1044897,-0.00765061 1.6189306e-4,1.0966772 0,2.4589844 9.9682045e-4,2.5879102 0.01209853,2.7165594 0.03320312,2.84375 L 1.9414062,1.7421875 3.1660156,3.8632812 1.6015625,4.7675781 c 0.2766066,0.1041366 0.5696749,0.1577224 0.8652344,0.1582031 0.9270901,-8.97e-5 1.7758676,-0.5199188 2.1972656,-1.3457031 2.7467448,0 5.4934895,0 8.2402345,0 0.612878,0 1.107422,-0.4925906 1.107422,-1.1054687 0,-0.6128781 -0.494544,-1.1074219 -1.107422,-1.1074219 -2.742839,0 -5.4856772,0 -8.2285158,0 -0.4151376,-0.84093213 -1.2711653,-1.37377344 -2.2089843,-1.375 z M 3.7011719,1.3261719 4.3828125,2.4921875 3.5234375,2.9824219 2.8398438,1.8144531 Z m 9.0917971,0.5898437 c 0.16071,-0.010223 0.320799,0.05124 0.4375,0.1679688 0.219019,0.218451 0.22689,0.5656532 0.01758,0.7753906 -0.20919,0.2098914 -0.556406,0.2028946 -0.775391,-0.015625 -0.219019,-0.218451 -0.22689,-0.5656532 -0.01758,-0.7753906 0.08935,-0.089927 0.209062,-0.1438996 0.337891,-0.1523438 z M 4.6660156,6.2207031 c -1.5555559,0 -1.5555559,1.5546875 0,1.5546875 H 6.2226562 V 9.3320312 H 4.6660156 C 1.554904,9.3320312 0,10.887905 0,14 h 2.3339844 c 0,-1.583315 0.6446576,-2.347818 2.3320312,-2.333984 H 14 V 9.3320312 H 7.7773438 V 7.7753906 h 1.5566406 c 1.5555546,0 1.5555546,-1.5546875 0,-1.5546875 z"
+         style="fill:#000000;fill-opacity:1;stroke-width:1.55580175" />
+      <rect
+         transform="rotate(-45)"
+         style="visibility:hidden;fill:none;stroke:none;stroke-width:0.77901787"
+         id="canvas-9"
+         y="-3.9270513"
+         x="1.0027622"
+         height="10.90625"
+         width="10.90625" />
+      <rect
+         transform="rotate(-90)"
+         y="3.3439262"
+         x="-1.3369218"
+         height="4.3101954"
+         width="0.56772053"
+         id="rect233"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.56633157;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
+    </g>
+  </g>
+</svg>
+
