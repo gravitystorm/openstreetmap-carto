@@ -1,4 +1,17 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.10.0...master)
+### Changes
+- Fixed office/amenity conflict
+- Refurbished natural=spring icon
+- Added rendering for amenity=police and amenity=fire_station areas
+- Added rendering of amenity=nursing_home
+- Added rendering of amenity=childcare
+- Added rendering of amenity=driving_school
+- Added area rendering for amenity=bus_station
+- Added rendering of amenity=taxi surface
+- Made highway=traffic_signals icon less obtrusive
+- Moved barriers to higher zoom level
+- Hiding railway=platform with location=underground, tunnels and covered=yes
+- Small documentation and code fixes
 
 ## [v4.10.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.9.0...v4.10.0) - 2018-04-20
 ### Changes
