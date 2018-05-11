@@ -248,25 +248,27 @@
   [lock != 'yes'][int_tunnel != 'yes'] {
     [waterway = 'river'][zoom >= 13] {
       text-name: "[name]";
-      text-face-name: @oblique-fonts;
-      text-placement: line;
-      text-fill: @water-text;
-      text-spacing: 400;
       text-size: 10;
+      text-face-name: @oblique-fonts;
+      text-fill: @water-text;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
+      text-spacing: 400;
+      text-placement: line;
       [zoom >= 14] { text-size: 12; }
       [int_tunnel = 'yes'] { text-min-distance: 200; }
     }
 
     [waterway = 'canal'][zoom >= 13] {
       text-name: "[name]";
+      text-size: 10;
       text-face-name: @oblique-fonts;
+      text-fill: @water-text;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
-      text-size: 10;
       text-placement: line;
-      text-fill: @water-text;
+      text-vertical-alignment: middle;
+      text-dy: 10;
     }
 
     [waterway = 'stream'][zoom >= 15] {
@@ -286,13 +288,15 @@
     [waterway = 'ditch'] {
       [zoom >= 15] {
         text-name: "[name]";
-        text-face-name: @oblique-fonts;
         text-size: 10;
+        text-face-name: @oblique-fonts;
         text-fill: @water-text;
-        text-spacing: 600;
-        text-placement: line;
         text-halo-radius: @standard-halo-radius;
         text-halo-fill: @standard-halo-fill;
+        text-spacing: 600;
+        text-placement: line;
+        text-vertical-alignment: middle;
+        text-dy: 8;
       }
     }
   }
