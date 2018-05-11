@@ -24,6 +24,12 @@ but there are some exceptions.
     two variants SC/TC, it won’t be a uniform rendering anyway. So we default
     to Japanese. However, this choise stays somewhat arbitrary and subjective.
     See also https://github.com/gravitystorm/openstreetmap-carto/issues/2208)
+  - For the Syriac script, there exist Noto Sans Syriac Eastern,
+    Noto Sans Syriac Western Regular and Noto Sans Syriac Estrangela Regular.
+    As for CJK fonts, we have no knowledge about what language the “names” tag
+    contains. We choose Syriac Eastern because it seems to be the most
+    widespreaded script variant (Syriac Western is less common, and Syriac
+    Estrangela mostly of historic interest.)
 
 2. Noto provides various variants of Arabic: Noto Kufi Arabic, Noto Naskh
 Arabic, Noto Nastaliq Urdu and Noto Sans Arabic. Kufi and Urdu styles are not
@@ -104,8 +110,6 @@ A regular style.
                 "Noto Sans Symbols Regular",
                 "Noto Sans Symbols2 Regular",
                 "Noto Sans Syriac Eastern Regular",
-                "Noto Sans Syriac Estrangela Regular",
-                "Noto Sans Syriac Western Regular",
                 "Noto Sans Tagalog Regular",
                 "Noto Sans Tagbanwa Regular",
                 "Noto Sans Tai Le Regular",
