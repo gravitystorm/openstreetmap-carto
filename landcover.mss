@@ -9,8 +9,9 @@
 
 // --- "Base" landuses ---
 
-@built-up-upper-lowzoom: #c0c0c0;
-@built-up-lower-lowzoom: #aaaaaa;
+@built-up-lowzoom: #aaaaaa;
+@built-up-z11: #c0c0c0;
+@built-up-z12: #d0d0d0;
 @residential: #e0dfdf;      // Lch(89,0,0)
 @residential-line: #b9b9b9; // Lch(75,0,0)
 @retail: #ffd6d1;           // Lch(89,16,30)
@@ -231,8 +232,9 @@
   }
 
   [feature = 'landuse_residential'][zoom >= 8] {
-    polygon-fill: @built-up-lower-lowzoom;
-    [zoom >= 11] { polygon-fill: @built-up-upper-lowzoom; }
+    polygon-fill: @built-up-lowzoom;
+    [zoom >= 11] { polygon-fill: @built-up-z11; }
+    [zoom >= 12] { polygon-fill: @built-up-z12; }
     [zoom >= 13] { polygon-fill: @residential; }
     [zoom >= 16] {
       line-width: .5;
@@ -351,8 +353,9 @@
   [feature = 'landuse_retail'],
   [feature = 'amenity_marketplace'] {
     [zoom >= 8] {
-      polygon-fill: @built-up-lower-lowzoom;
-      [zoom >= 11] { polygon-fill: @built-up-upper-lowzoom; }
+      polygon-fill: @built-up-lowzoom;
+      [zoom >= 11] { polygon-fill: @built-up-z11; }
+      [zoom >= 12] { polygon-fill: @built-up-z12; }
       [zoom >= 13] { polygon-fill: @retail; }
       [zoom >= 16] {
         line-width: 0.5;
@@ -367,8 +370,9 @@
   }
 
   [feature = 'landuse_industrial'][zoom >= 8] {
-    polygon-fill: @built-up-lower-lowzoom;
-    [zoom >= 11] { polygon-fill: @built-up-upper-lowzoom; }
+    polygon-fill: @built-up-lowzoom;
+    [zoom >= 11] { polygon-fill: @built-up-z11; }
+    [zoom >= 12] { polygon-fill: @built-up-z12; }
     [zoom >= 13] { polygon-fill: @industrial; }
     [zoom >= 16] {
       line-width: .5;
@@ -419,8 +423,9 @@
   }
 
   [feature = 'landuse_commercial'][zoom >= 8] {
-    polygon-fill: @built-up-lower-lowzoom;
-    [zoom >= 11] { polygon-fill: @built-up-upper-lowzoom; }
+    polygon-fill: @built-up-lowzoom;
+    [zoom >= 11] { polygon-fill: @built-up-z11; }
+    [zoom >= 12] { polygon-fill: @built-up-z12; }
     [zoom >= 13] { polygon-fill: @commercial; }
     [zoom >= 16] {
       line-width: 0.5;
