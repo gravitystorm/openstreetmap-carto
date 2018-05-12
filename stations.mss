@@ -4,7 +4,6 @@
 .stations {
   [railway = 'subway_entrance'][zoom >= 18] {
     marker-file: url('symbols/entrance.10.svg');
-    marker-placement: interior;
     marker-fill: @transportation-icon;
     marker-clip: false;
     [zoom >= 19] {
@@ -16,13 +15,11 @@
       text-halo-radius: @standard-halo-radius * 1.5;
       text-halo-fill: @standard-halo-fill;
       text-wrap-width: 0;
-      text-placement: interior;
     }
   }
 
   [railway = 'station'][zoom >= 12] {
     marker-file: url('symbols/square.svg');
-    marker-placement: interior;
     marker-fill: @station-color;
     marker-width: 4;
     marker-clip: false;
@@ -39,7 +36,6 @@
       text-halo-fill: @standard-halo-fill;
       text-wrap-width: 30; // 3 em
       text-line-spacing: -1.5; // -0.15 em
-      text-placement: interior;
     }
     [zoom >= 15] {
       marker-width: 9;
@@ -53,7 +49,6 @@
   [railway = 'halt'] {
     [zoom >= 13] {
       marker-file: url('symbols/square.svg');
-      marker-placement: interior;
       marker-fill: @station-color;
       marker-width: 4;
       marker-clip: false;
@@ -71,14 +66,12 @@
       text-halo-fill: @standard-halo-fill;
       text-wrap-width: @standard-wrap-width;
       text-line-spacing: @standard-line-spacing-size;
-      text-placement: interior;
     }
   }
 
   [aerialway = 'station']::aerialway {
     [zoom >= 13] {
       marker-file: url('symbols/square.svg');
-      marker-placement: interior;
       marker-fill: @station-color;
       marker-width: 4;
       marker-clip: false;
@@ -96,14 +89,12 @@
       text-halo-fill: @standard-halo-fill;
       text-wrap-width: @standard-wrap-width;
       text-line-spacing: @standard-line-spacing-size;
-      text-placement: interior;
     }
   }
 
   [railway = 'tram_stop'] {
     [zoom >= 13] {
       marker-file: url('symbols/square.svg');
-      marker-placement: interior;
       marker-fill: @station-color;
       marker-width: 4;
       marker-clip: false;
@@ -121,7 +112,6 @@
       text-halo-fill: @standard-halo-fill;
       text-wrap-width: @standard-wrap-width;
       text-line-spacing: @standard-line-spacing-size;
-      text-placement: interior;
     }
   }
 }

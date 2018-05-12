@@ -1565,27 +1565,33 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
+        (SELECT *, ST_PointOnSurface(w) AS way
+        FROM
         (SELECT
-            way,
+            way AS w,
             name,
             ref,
             railway,
             aerialway
         FROM planet_osm_polygon
-        WHERE railway IN ('station', 'halt', 'tram_stop')
-          OR aerialway = 'station'
+        WHERE (railway IN ('station', 'halt', 'tram_stop')
+          OR aerialway = 'station')
+          AND way && !bbox!
+        ) AS sub
         ) AS stations_poly
     properties:
       minzoom: 12
   - id: amenity-points-poly
     class: points
-    geometry: polygon
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT
-            way,
+        (SELECT *, ST_PointOnSurface(w) AS way
+         FROM
+          (SELECT
+            way AS w,
             name,
             COALESCE(
               'aeroway_' || CASE WHEN aeroway IN ('helipad', 'aerodrome') THEN aeroway ELSE NULL END,
@@ -1648,7 +1654,7 @@ Layer:
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
-          WHERE aeroway IN ('helipad', 'aerodrome')
+          WHERE (aeroway IN ('helipad', 'aerodrome')
             OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
                            'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site')
             OR amenity IS NOT NULL -- skip checking a huge list and use a null check
@@ -1663,8 +1669,10 @@ Layer:
             OR tags->'memorial' IN ('plaque')
             OR military IN ('bunker')
             OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
-            OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> 'power_source=>wind'))
+            OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> 'power_source=>wind')))
+            AND way && !bbox!
           ORDER BY way_area desc
+          ) AS sub
         ) AS amenity_points_poly
     properties:
       minzoom: 10
@@ -1895,7 +1903,9 @@ Layer:
           FROM planet_osm_point
           WHERE highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes'
         UNION ALL
-          SELECT
+          SELECT ST_PointOnSurface(way) AS way, highway, junction, ref, name, way_pixels
+          FROM
+          (SELECT
             way,
             highway,
             junction,
@@ -1904,7 +1914,8 @@ Layer:
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
           WHERE junction = 'yes'
-          ORDER BY way_pixels DESC NULLS LAST
+          and way && !bbox!
+          ORDER BY way_pixels DESC NULLS LAST) AS sub
         ) AS junctions
     properties:
       minzoom: 11
@@ -1914,14 +1925,18 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
+        (SELECT *, ST_PointOnSurface(w) AS way
+        FROM
         (SELECT
-            way,
+            way AS w,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
             man_made,
             name
           FROM planet_osm_polygon
           WHERE man_made = 'bridge'
+            AND way && !bbox!
           ORDER BY way_area DESC
+        ) AS sub
         ) AS bridge_text
     properties:
       minzoom: 11
@@ -1980,13 +1995,15 @@ Layer:
     properties:
       minzoom: 13
   - id: roads-area-text-name
-    geometry: polygon
+    geometry: POINT
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
+        (SELECT *, ST_PointOnSurface(w) AS way
+        FROM
         (SELECT
-            way,
+            way AS w,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
             highway,
             place,
@@ -2001,7 +2018,9 @@ Layer:
             OR (place IN ('square')
                 AND (leisure IS NULL OR NOT leisure IN ('park', 'common', 'recreation_ground', 'garden')))
             AND name IS NOT NULL
+            AND way && !bbox!
           ORDER BY way_area DESC
+        ) AS sub
         ) AS roads_area_text_name
     properties:
       minzoom: 15
@@ -2109,13 +2128,15 @@ Layer:
       minzoom: 11
   - id: text-poly-low-zoom
     class: text-low-zoom
-    geometry: polygon
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT
-            way,
+        (SELECT *, ST_PointOnSurface(w) AS way
+        FROM
+          (SELECT
+            way AS w,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
             COALESCE(
               'landuse_' || CASE WHEN landuse IN ('forest', 'military', 'farmland') THEN landuse ELSE NULL END,
@@ -2135,22 +2156,26 @@ Layer:
               OR leisure IN ('nature_reserve'))
             AND building IS NULL
             AND name IS NOT NULL
+            AND way && !bbox!
           ORDER BY way_area DESC
+          ) AS sub
         ) AS text_poly_low_zoom
     properties:
       minzoom: 0
       maxzoom: 9
   - id: text-poly
     class: text
-    geometry: polygon
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       # Include values that are rendered as icon without label to prevent mismatch between icons and labels,
       # see https://github.com/gravitystorm/openstreetmap-carto/pull/1349#issuecomment-77805678
       table: |-
-        (SELECT
-            way,
+        (SELECT *, ST_PointOnSurface(w) AS way
+        FROM
+          (SELECT
+            way AS w,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
             COALESCE(
               'aeroway_' || CASE WHEN aeroway IN ('gate', 'apron', 'helipad', 'aerodrome') THEN aeroway ELSE NULL END,
@@ -2248,7 +2273,9 @@ Layer:
             AND (name IS NOT NULL
                  OR (ref IS NOT NULL AND aeroway IN ('gate'))
                 )
+            AND way && !bbox!
           ORDER BY way_area DESC
+          ) AS sub
         ) AS text_poly
     properties:
       minzoom: 10
@@ -2429,20 +2456,24 @@ Layer:
     properties:
       minzoom: 10
   - id: building-text
-    geometry: polygon
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT
+        (SELECT *, ST_PointOnSurface(w) AS way
+        FROM
+          (SELECT
             name,
-            way,
+            way AS w,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
           WHERE building IS NOT NULL
             AND building NOT IN ('no')
             AND name IS NOT NULL
+            AND way && !bbox!
           ORDER BY way_area DESC
+          ) AS sub
         ) AS building_text
     properties:
       minzoom: 14
@@ -2465,6 +2496,8 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
+        (SELECT ST_PointOnSurface(way) AS way, addr_housenumber, addr_housename, addr_unit, way_pixels
+        FROM
         (SELECT
             way,
             "addr:housenumber" AS addr_housenumber,
@@ -2474,6 +2507,7 @@ Layer:
           FROM planet_osm_polygon
           WHERE (("addr:housenumber" IS NOT NULL) OR ("addr:housename" IS NOT NULL) OR ((tags->'addr:unit') IS NOT NULL))
             AND building IS NOT NULL
+            AND way && !bbox!) AS sub
         UNION ALL
         SELECT
             way,
@@ -2531,15 +2565,19 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
+        (SELECT *, ST_PointOnSurface(w) AS way
+        FROM
         (SELECT
-            way,
+            way AS w,
             name,
             admin_level
           FROM planet_osm_polygon
           WHERE boundary = 'administrative'
             AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
             AND name IS NOT NULL
+            AND way && !bbox!
           ORDER BY admin_level::integer ASC, way_area DESC
+        ) AS sub
         ) AS admin_text
     properties:
       minzoom: 16
@@ -2549,13 +2587,17 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
+        (SELECT *, ST_PointOnSurface(w) AS way
+        FROM
         (SELECT
-            way,
+            way AS w,
             name,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
           WHERE (boundary = 'national_park' OR leisure = 'nature_reserve')
             AND name IS NOT NULL
+            AND way && !bbox!
+        ) AS sub
         ) AS nature_reserve_text
     properties:
       minzoom: 13
@@ -2592,21 +2634,25 @@ Layer:
       minzoom: 14
   - id: amenity-low-priority-poly
     class: amenity-low-priority
-    geometry: polygon
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT
-            way,
-            COALESCE(
-              'amenity_' || CASE WHEN amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking') THEN amenity ELSE NULL END,
-              'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log') THEN barrier ELSE NULL END
-            )  AS feature,
-            access
-          FROM planet_osm_polygon p
-          WHERE amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking')
-             OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log')
+        (SELECT *, ST_PointOnSurface(w) AS way
+        FROM
+          (SELECT
+              way AS w,
+              COALESCE(
+                'amenity_' || CASE WHEN amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking') THEN amenity ELSE NULL END,
+                'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log') THEN barrier ELSE NULL END
+              )  AS feature,
+              access
+            FROM planet_osm_polygon p
+            WHERE (amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking')
+               OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log'))
+            AND way && !bbox!
+            ) AS sub
           ) AS amenity_low_priority_poly
     properties:
       minzoom: 14
