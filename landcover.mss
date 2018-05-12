@@ -482,6 +482,12 @@
     }
   }
 
+  [feature = 'sandpit'][zoom >= 17] {
+    polygon-fill: @sand;
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
   [feature = 'natural_sand'][zoom >= 8] {
     polygon-fill: @sand;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
