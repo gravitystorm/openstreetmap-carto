@@ -1612,6 +1612,7 @@ Layer:
                              ELSE NULL END,
               'military_'|| CASE WHEN military IN ('bunker') THEN military ELSE NULL END,
               'highway_'|| CASE WHEN highway IN ('bus_stop', 'elevator', 'traffic_signals') THEN highway ELSE NULL END,
+              'public_transport_'|| CASE WHEN tags->'public_transport' IN ('platform') THEN tags->'public_transport' ELSE NULL END,
               'power_' || CASE WHEN power IN ('generator') THEN power ELSE NULL END,
               'tourism_' || CASE WHEN tourism IN ('viewpoint') THEN tourism ELSE NULL END
             ) AS feature,
@@ -1619,6 +1620,7 @@ Layer:
             religion,
             tags->'denomination' as denomination,
             tags->'generator:source' as "generator:source",
+            tags->'bus' as bus,
             CASE
               WHEN man_made IN ('mast', 'tower') THEN
                 CASE
@@ -1635,6 +1637,7 @@ Layer:
             tags->'tower:construction' as "tower:construction",
             tags->'tower:type' as "tower:type",
             tags->'castle_type' as castle_type,
+            tags->'public_transport' as public_transport,
             CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'bed', 'books', 'butcher', 'clothes', 'computer',
                                'confectionery', 'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist',
                                'garden_centre', 'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet',
@@ -1663,6 +1666,8 @@ Layer:
             OR tags->'memorial' IN ('plaque')
             OR military IN ('bunker')
             OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
+            OR tags->'public_transport' IN ('platform')
+            OR tags->'bus' IN ('yes')
             OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> 'power_source=>wind'))
           ORDER BY way_area desc
         ) AS amenity_points_poly
@@ -1725,6 +1730,7 @@ Layer:
               'military_'|| CASE WHEN military IN ('bunker') THEN military ELSE NULL END,
               'highway_'|| CASE WHEN highway IN ('bus_stop', 'elevator', 'traffic_signals') THEN highway
                                 WHEN tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones' THEN 'ford' ELSE NULL END,
+              'public_transport_'|| CASE WHEN tags->'public_transport' IN ('platform') THEN tags->'public_transport' ELSE NULL END,
               'power_' || CASE WHEN power IN ('generator') THEN power ELSE NULL END,
               'tourism_' || CASE WHEN tourism IN ('viewpoint') THEN tourism ELSE NULL END,
               'barrier_' || CASE WHEN barrier IN ('toll_booth') THEN barrier ELSE NULL END,
@@ -1764,6 +1770,8 @@ Layer:
             tags->'tower:construction' as "tower:construction",
             tags->'tower:type' as "tower:type",
             tags->'castle_type' as castle_type,
+            tags->'public_transport' as public_transport,
+            tags->'bus' as bus,
             CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'bed', 'books', 'butcher', 'clothes', 'computer',
                                'confectionery', 'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist',
                                'garden_centre', 'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet',
@@ -1795,6 +1803,8 @@ Layer:
             OR military IN ('bunker')
             OR tags @> 'emergency=>phone'
             OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
+            OR tags->'public_transport' IN ('platform')
+            OR tags->'bus' IN ('yes')
             OR tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones'
             OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> 'power_source=>wind'))
           ORDER BY score DESC NULLS LAST
@@ -2193,6 +2203,7 @@ Layer:
                              THEN concat_ws('_', historic, CASE WHEN tags->'memorial' IN ('plaque') THEN tags->'memorial' ELSE NULL END)
                              ELSE NULL END,
               'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator') THEN highway ELSE NULL END,
+              'public_transport_'|| CASE WHEN tags->'public_transport' IN ('platform') THEN tags->'public_transport' ELSE NULL END,
               'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
               'waterway_' || CASE WHEN waterway IN ('dam', 'dock') THEN waterway ELSE NULL END,
               'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism ELSE NULL END
@@ -2221,6 +2232,8 @@ Layer:
             tags->'office' as office,
             tags->'recycling_type' as recycling_type,
             tags->'castle_type' as castle_type,
+            tags->'public_transport' as public_transport,
+            tags->'bus' as bus,
             ref,
             way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
@@ -2242,6 +2255,8 @@ Layer:
               OR historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor')
               OR tags->'memorial' IN ('plaque')
               OR highway IN ('services', 'rest_area', 'bus_stop', 'elevator')
+              OR tags->'public_transport' IN ('platform')
+              OR tags->'bus' IN ('yes')
               OR power IN ('plant', 'station', 'generator', 'sub_station', 'substation')
               OR boundary IN ('national_park')
               OR waterway IN ('dam', 'dock'))
@@ -2308,6 +2323,7 @@ Layer:
             office,
             recycling_type,
             castle_type,
+            bus,
             ref,
             way_area,
             is_building
@@ -2359,6 +2375,7 @@ Layer:
                                  THEN concat_ws('_', historic, CASE WHEN tags->'memorial' IN ('plaque') THEN tags->'memorial' ELSE NULL END)
                                  ELSE NULL END,
                   'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator') THEN highway ELSE NULL END,
+                  'public_transport_'|| CASE WHEN tags->'public_transport' IN ('platform') THEN tags->'public_transport' ELSE NULL END,
                   'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
                   'waterway_' || CASE WHEN waterway IN ('dam', 'weir', 'dock') THEN waterway ELSE NULL END,
                   'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism ELSE NULL END,
@@ -2391,6 +2408,8 @@ Layer:
                 tags->'office' as office,
                 tags->'recycling_type' as recycling_type,
                 tags->'castle_type' as castle_type,
+                tags->'public_transport' as public_transport,
+                tags->'bus' as bus,
                 ref,
                 NULL AS way_area,
                 CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
@@ -2416,6 +2435,8 @@ Layer:
                   OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor')
                   OR tags->'memorial' IN ('plaque')
                   OR highway IN ('bus_stop', 'services', 'rest_area', 'elevator')
+                  OR tags->'public_transport' IN ('platform')
+                  OR tags->'bus' IN ('yes')
                   OR power IN ('plant', 'station', 'generator', 'sub_station', 'substation')
                   OR boundary IN ('national_park')
                   OR waterway IN ('dam', 'weir', 'dock'))

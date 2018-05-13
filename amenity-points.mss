@@ -87,7 +87,8 @@
     marker-clip: false;
   }
 
-  [feature = 'highway_bus_stop'] {
+  [feature = 'highway_bus_stop'],
+  [feature = 'public_transport_platform'][bus = 'yes'] {
     [zoom >= 16] {
       marker-file: url('symbols/square.svg');
       marker-fill: @transportation-icon;
@@ -2135,6 +2136,7 @@
   }
 
   [feature = 'highway_bus_stop'],
+  [feature = 'public_transport_platform'][bus = 'yes'],
   [feature = 'amenity_charging_station'],
   [feature = 'amenity_fuel'],
   [feature = 'amenity_bus_station'] {
@@ -2149,7 +2151,8 @@
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-placement: interior;
-      [feature = 'highway_bus_stop'] {
+      [feature = 'highway_bus_stop'],
+      [feature = 'public_transport_platform'][bus = 'yes'] {
         text-dy: 9;
       }
     }
