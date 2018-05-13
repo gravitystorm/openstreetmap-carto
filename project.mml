@@ -284,15 +284,19 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
+        (SELECT *, ST_PointOnSurface(w) AS way
+        FROM
         (SELECT
-             way, "natural"
+             way AS w, "natural"
            FROM planet_osm_polygon
            WHERE "natural" IN ('spring')
+           AND way && !bbox!
          UNION ALL
          SELECT
              way, "natural"
            FROM planet_osm_point
            WHERE "natural" IN ('spring')
+        ) AS sub
         ) AS springs
     properties:
       minzoom: 14
@@ -1381,15 +1385,19 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
+        (SELECT *, ST_PointOnSurface(w) AS way
+        FROM
         (SELECT
-            way, "natural"
+            way AS w, "natural"
           FROM planet_osm_point
           WHERE "natural" = 'tree'
+            AND way && !bbox!
         UNION ALL
         SELECT
             way, "natural"
           FROM planet_osm_line
           WHERE "natural" = 'tree_row'
+        ) AS sub
         ) AS trees
     properties:
       minzoom: 16
@@ -1400,8 +1408,10 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
+        (SELECT *, ST_PointOnSurface(w) AS way
+        FROM
         (SELECT
-            way,
+            way AS w,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
             name
           FROM planet_osm_polygon
@@ -1409,7 +1419,9 @@ Layer:
             AND admin_level = '2'
             AND name IS NOT NULL
             AND way_area > 100*!pixel_width!::real*!pixel_height!::real
+            AND way && !bbox!
           ORDER BY way_area DESC
+        ) AS sub
         ) AS country_names
     properties:
       minzoom: 2
@@ -1419,8 +1431,10 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
+        (SELECT *, ST_PointOnSurface(w) AS way
+        FROM
         (SELECT
-            way,
+            way AS w, 
             name,
             CASE
               WHEN (tags->'population' ~ '^[0-9]{1,8}$') THEN (tags->'population')::INTEGER ELSE 0
@@ -1430,8 +1444,10 @@ Layer:
           WHERE place IN ('city', 'town', 'village', 'hamlet')
             AND name IS NOT NULL
             AND tags @> 'capital=>yes'
+            AND way && !bbox!
           ORDER BY population DESC
         ) AS capital_names
+        ) AS sub
     properties:
       minzoom: 3
       maxzoom: 15
@@ -1442,8 +1458,10 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
+        (SELECT *, ST_PointOnSurface(w) AS way
+        FROM
         (SELECT
-            way,
+            way AS w,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
             name,
             ref
@@ -1452,7 +1470,9 @@ Layer:
             AND admin_level = '4'
             AND name IS NOT NULL
             AND way_area > 100*!pixel_width!::real*!pixel_height!::real
+            AND way && !bbox!
           ORDER BY way_area DESC
+        ) AS sub
         ) AS state_names
     properties:
       minzoom: 4
@@ -1462,8 +1482,10 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
+        (SELECT *, ST_PointOnSurface(w) AS way
+        FROM
         (SELECT
-            way,
+            way AS w,
             name,
             score,
             CASE
@@ -1494,8 +1516,10 @@ Layer:
               WHERE place IN ('city', 'town')
                 AND name IS NOT NULL
                 AND NOT (tags @> 'capital=>yes')
+                AND way && !bbox!
             ) as p
           ORDER BY score DESC, length(name) DESC, name
+        ) AS sub
         ) AS placenames_medium
     properties:
       minzoom: 4
@@ -1506,8 +1530,10 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
+        (SELECT *, ST_PointOnSurface(w) AS way
+        FROM
         (SELECT
-            way,
+            way AS w,
             place,
             leisure,
             name
@@ -1519,6 +1545,7 @@ Layer:
                  OR (place IN ('square')
                      AND (leisure is NULL OR NOT leisure IN ('park', 'common', 'recreation_ground', 'garden')))
              ) AND name IS NOT NULL
+             AND way && !bbox!
           ORDER BY CASE
               WHEN place = 'suburb' THEN 3
               WHEN place = 'village' THEN 4
@@ -1529,6 +1556,7 @@ Layer:
               WHEN place = 'farm' THEN 9
               WHEN place = 'square' THEN 10
             END ASC, length(name) DESC, name
+        ) AS sub
         ) AS placenames_small
     properties:
       minzoom: 12
