@@ -267,8 +267,6 @@
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-placement: line;
-      text-vertical-alignment: middle;
-      text-dy: 10;
     }
 
     [waterway = 'stream'][zoom >= 15] {
