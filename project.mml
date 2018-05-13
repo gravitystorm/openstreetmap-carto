@@ -1395,7 +1395,7 @@ Layer:
           WHERE place IN ('village', 'hamlet')
              AND name IS NOT NULL
              AND NOT tags @> 'capital=>yes'
-             OR (place IN ('suburb', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')
+             OR (place IN ('suburb', 'quarter', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')
                  OR (place IN ('square')
                      AND (leisure is NULL OR NOT leisure IN ('park', 'common', 'recreation_ground', 'garden')))
              ) AND name IS NOT NULL
@@ -1403,11 +1403,12 @@ Layer:
               WHEN place = 'suburb' THEN 3
               WHEN place = 'village' THEN 4
               WHEN place = 'hamlet' THEN 5
-              WHEN place = 'neighbourhood' THEN 6
-              WHEN place = 'locality' THEN 7
-              WHEN place = 'isolated_dwelling' THEN 8
-              WHEN place = 'farm' THEN 9
-              WHEN place = 'square' THEN 10
+              WHEN place = 'quarter' THEN 6
+              WHEN place = 'neighbourhood' THEN 7
+              WHEN place = 'locality' THEN 8
+              WHEN place = 'isolated_dwelling' THEN 9
+              WHEN place = 'farm' THEN 10
+              WHEN place = 'square' THEN 11
             END ASC, length(name) DESC, name
         ) AS placenames_small
     properties:
