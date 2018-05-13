@@ -144,22 +144,29 @@ size should be ≥ 10 (legibility).
 ### Multi-line labels
 
 Additional to text-size we have to set text-wrap-width and text-line-spacing.
-For both, the absolute value is meaningless; it should be interpreted relative
-to the font size (em):
+For both, the absolute value is quite meaningless; it should rather be
+interpreted relative to the font size (em) that has been set in “text-size”:
 ```mss
 text-size: 10;
 text-wrap-width: 30; // 3.0 em
 text-line-spacing: -1.5; // -0.15 em
 ```
+- The text-size is 10, so we have: 1 em = 10
+- The text-wrap-width should be 3.0 em, so we have: 3.0 * 10 = 30
+- The text-linze-spacing should be -0.15 em, so we have: -0.15 * 10 = -1.5
+
 If text-size increases on higher zoom levels the other parameters also have
-to be adjusted:
+to be adjusted to guarantee the same line wrap and same relative line spacing:
 ```mss
 text-size: 12;
 text-wrap-width: 36; // 3.0 em
 text-line-spacing: -1.8; // -0.15 em
 ```
+
 Usually, with higher zoom levels we increase the line length
-(text-wrap-width in em). Following an old typography convention, we use narrow
+(text-wrap-width measured in em!).
+
+Following an old typography convention, we use narrow
 line spacing for short lines and wider line spacing for longer lines.
 ```mss
 text-size: 15;

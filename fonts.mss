@@ -11,7 +11,9 @@ By order:
 Where available the UI version of the fonts – which provides tighter vertical
 metrics – is used (except for the base font, where the UI version is deprecated
 since Noto Phase III, and Sinhala where both versions are used for backwards
-compatibility with Ubuntu 16.04). Most of the list is in alphabetical order,
+compatibility with Ubuntu 16.04). We intent to have all scripts of Noto in
+our list except dead (historic) scripts of whom we assume that they are not
+used in “name” tags in OSM. Most of the list is in alphabetical order,
 but there are some exceptions.
 
   - Noto Sans is before all other fonts
