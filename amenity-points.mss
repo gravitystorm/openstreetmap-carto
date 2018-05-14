@@ -47,6 +47,9 @@
     [feature = 'tourism_alpine_hut'] {
       marker-file: url('symbols/alpinehut.svg');
     }
+    [feature = 'amenity_shelter'] {
+      marker-fill: @amenity-brown;
+    }
     marker-fill: @accommodation-icon;
     marker-placement: interior;
     marker-clip: false;
@@ -2118,6 +2121,9 @@
     [feature = 'tourism_camp_site'],
     [feature = 'tourism_caravan_site'] {
       text-dy: 15;
+    }
+    [feature = 'amenity_shelter'] {
+      text-fill: @amenity-brown;
     }
   }
 
