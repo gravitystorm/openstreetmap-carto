@@ -430,6 +430,13 @@
     }
   }
 
+  [feature = 'historic_city_gate'][zoom >= 17] {
+    marker-file: url('symbols/city_gate.svg');
+    marker-fill: @man-made-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'tourism_museum'][zoom >= 16] {
     marker-file: url('symbols/museum.svg');
     marker-fill: @culture;
@@ -1621,6 +1628,7 @@
   [feature = 'man_made_cross'][zoom >= 17],
   [feature = 'historic_wayside_cross'][zoom >= 17],
   [feature = 'historic_wayside_shrine'][zoom >= 17],
+  [feature = 'historic_city_gate'][zoom >= 17],
   [feature = 'natural_cave_entrance'][zoom >= 15],
   [feature = 'man_made_mast'][zoom >= 18],
   [feature = 'man_made_tower'][zoom >= 17],
@@ -1638,6 +1646,7 @@
     [feature = 'historic_wayside_cross'] {
       text-dy: 6;
     }
+    [feature = 'historic_city_gate'] { text-dy: 10; }
     [feature = 'man_made_mast'] { text-dy: 10; }
     [feature = 'man_made_tower'] { text-dy: 10; }
     text-face-name: @standard-font;
