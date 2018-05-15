@@ -288,12 +288,13 @@ Layer:
              ST_PointOnSurface(way) AS way, "natural"
            FROM planet_osm_polygon
            WHERE "natural" IN ('spring')
-           AND way && !bbox!
+             AND way && !bbox!
          UNION ALL
          SELECT
              way, "natural"
            FROM planet_osm_point
            WHERE "natural" IN ('spring')
+             AND way && !bbox!
         ) AS springs
     properties:
       minzoom: 14
@@ -1392,6 +1393,7 @@ Layer:
             way, "natural"
           FROM planet_osm_line
           WHERE "natural" = 'tree_row'
+            AND way && !bbox!
         ) AS trees
     properties:
       minzoom: 16
@@ -1447,7 +1449,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            ST_PointOnSurface(way) AS way,
+            way,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
             name,
             ref
@@ -1456,7 +1458,6 @@ Layer:
             AND admin_level = '4'
             AND name IS NOT NULL
             AND way_area > 100*!pixel_width!::real*!pixel_height!::real
-            AND way && !bbox!
           ORDER BY way_area DESC
         ) AS state_names
     properties:
@@ -1468,7 +1469,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            ST_PointOnSurface(way) AS way,
+            way,
             name,
             score,
             CASE
@@ -1499,7 +1500,6 @@ Layer:
               WHERE place IN ('city', 'town')
                 AND name IS NOT NULL
                 AND NOT (tags @> 'capital=>yes')
-                AND way && !bbox!
             ) as p
           ORDER BY score DESC, length(name) DESC, name
         ) AS placenames_medium
@@ -1513,7 +1513,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            ST_PointOnSurface(way) AS way,
+            way,
             place,
             leisure,
             name
@@ -1525,7 +1525,6 @@ Layer:
                  OR (place IN ('square')
                      AND (leisure is NULL OR NOT leisure IN ('park', 'common', 'recreation_ground', 'garden')))
              ) AND name IS NOT NULL
-             AND way && !bbox!
           ORDER BY CASE
               WHEN place = 'suburb' THEN 3
               WHEN place = 'village' THEN 4
@@ -1903,6 +1902,7 @@ Layer:
             NULL AS way_pixels
           FROM planet_osm_point
           WHERE highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes'
+          AND way && !bbox!
         UNION ALL
           SELECT
             ST_PointOnSurface(way) AS way,
