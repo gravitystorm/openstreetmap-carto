@@ -2616,16 +2616,16 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-              ST_PointOnSurface(way) AS way,
-              COALESCE(
-                'amenity_' || CASE WHEN amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking') THEN amenity ELSE NULL END,
-                'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log') THEN barrier ELSE NULL END
-              )  AS feature,
-              access
-            FROM planet_osm_polygon p
-            WHERE (amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking')
-               OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log'))
-            AND way && !bbox!
-          ) AS amenity_low_priority_poly
+            ST_PointOnSurface(way) AS way,
+            COALESCE(
+              'amenity_' || CASE WHEN amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking') THEN amenity ELSE NULL END,
+              'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log') THEN barrier ELSE NULL END
+            )  AS feature,
+            access
+          FROM planet_osm_polygon p
+          WHERE (amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking')
+            OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log'))
+          AND way && !bbox!
+        ) AS amenity_low_priority_poly
     properties:
       minzoom: 14
