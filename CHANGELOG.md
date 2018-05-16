@@ -1,4 +1,122 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.4.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.11.0...master)
+
+## [v4.11.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.10.0...v4.11.0) - 2018-05-11
+### Changes
+- Fixed office/amenity conflict
+- Brightened built-up areas on z12
+- Refurbished natural=spring icon
+- Added rendering for amenity=police and amenity=fire_station areas
+- Added rendering of amenity=nursing_home
+- Added rendering of amenity=childcare
+- Added rendering of amenity=driving_school
+- Added area rendering for amenity=bus_station
+- Added area rendering of amenity=taxi
+- Made highway=traffic_signals icon less obtrusive
+- Moved barriers to higher zoom level
+- Hiding railway=platform with location=underground, tunnels and covered=yes
+- Small documentation and code fixes
+
+## [v4.10.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.9.0...v4.10.0) - 2018-04-20
+### Changes
+- Adding rendering for historic=castle and historic=manor
+- Adding rendering office=* as dots + names
+- Adding rendering for waterway=waterfall
+- Adding place=square name rendering for nodes
+- Adding rendering for big natural=bay
+- Adding rendering for leisure=beach_resort
+- Adding rendering for amenity=parking_space
+- Adding rendering of aerialway=zip_line
+- Adding rendering for shop=bed
+- Adding rendering for shop=video_games
+- Adding halo to roads on z6 and z7
+- Extending intermittent waterbody rendering to landuse=basin
+- Moving highway=mini_roundabout rendering to higher zoom level
+- Dropping waterway=derelict_canal rendering
+- Small documentation and code fixes
+
+## [v4.9.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.8.0...v4.9.0) - 2018-03-23
+### Major changes
+- A bug where closed ways with natural=cliff or natural=tree_row were not rendering has been fixed. This required fixing a transform bug. The fix will apply to all objects when they are created in OSM, but there is no migration for existing databases. Deployments will have to decide if the effects are serious enough to require them to reload the database.
+
+### Changes
+- Adding place=square name rendering
+- Adding rendering for different types of towers and masts
+- Making gardens to use grass color with plant nursery pattern
+- Adding rendering for intermittent water bodies
+- Give oceans outline and simplify shapefiles on z0-7
+- Simplify (generalize) admin borders
+- Move natural=grassland and landuse=meadow earlier
+- Start rendering aerialway name
+- Adding icons for amenity=bbq, amenity=shower, leisure=sauna and advertising=column
+- Adding special icons for shop=dairy, shop=medical_supply and shop=music
+- Move amenity=toilets to higher zoom levels
+- Fixing some SVG icons artifacts
+- Make military=danger_area font dark pink and slanted
+- Changing rendering for construction=steps to distinguish it from roads
+- Changing label colour of private parking
+- Small documentation and code fixes
+
+## [v4.8.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.7.0...v4.8.0) - 2018-02-23
+### Changes
+- Made military area rendering less prominent
+- Adding rendering for historic=wayside_shrine
+- Adding rendering for historic=fort
+- Adding rendering for amenity=public_bath
+- Adding rendering for shop=chocolate
+- Adding rendering for barrier=toll_booth (nodes)
+- Adding rendering barrier=log
+- Adding rendering for amenity=waste_disposal
+- Moving tourism-boundary under barrier layer
+- Docker: run osm2pgsql in slim mode
+- Fix operator precedence for hstore queries
+- Small documentation fixes
+
+## [v4.7.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.7.0...v4.7.1) - 2018-01-31
+### Changes
+- Fix rendering bug (#3043) with access=yes|permissive tags
+
+## [v4.7.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.6.0...v4.7.0) - 2018-01-26
+### Changes
+- Adding icon for tourism=apartment
+- Adding icon for leisure=firepit
+- Yellow background for amenity=arts_centre
+- Start rendering natural=heath earlier
+- Start rendering entrances
+- Changing tourism=picnic_site icon colour to green
+- Move emergency=phone to higher zoom level
+- Rendering seasonal waterways as intermittent
+- Update Noto fonts to Phase III
+- Fine-tuning of bridge labels
+- Documentation changes and updates
+
+## [v4.6.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.5.0...v4.6.0) - 2017-12-17
+### Changes
+- Change sports_centre and stadium color to light green
+- Change shades of green for landuse/leisure=recreation_ground and garden
+- Do not render glaciers and icesheets on z6 and z7 
+- Do not render very small water areas on low zoom
+- Do not render small national parks and nature reserves
+- Do not render ferries on z7
+- Improve rendering for bus guideways
+- For built-up areas, replace the external data on z8 and z9 by OSM data
+- Do not render bicycle/motorbike parking icons to z17
+- Render community_centre and social_facility areas in light yellow
+
+## [v4.5.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.4.0...v4.5.0) - 2017-11-17
+### Major changes
+- Cleaning up low zoom levels (z5-z7):
+  - Rendering roads from z6 instead of z5
+  - Rendering national parks from z8 instead of z7
+  - Rendering railways from z8 instead of z7
+- Changing parking color from yellow to gray
+
+### Changes
+- Unified rendering of leisure=fitness_station and leisure=fitness_centre 
+- Rendering of military=bunker
+- Rendering all station buildings as major buildings 
+- Text wrapping for station labels
+- Changing windmill color from amenity brown to man_made gray
+- Some other documentation and code changes
 
 ## [v4.4.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.3.0...v4.4.0) - 2017-10-20
 ### Major changes

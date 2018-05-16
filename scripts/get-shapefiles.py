@@ -37,11 +37,10 @@ settings = {
     # ordering. Use > 0 to allow processing.
     1: {
         'directory': 'world_boundaries',
-        'url': 'http://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz',  # noqa
+        'url': 'https://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz',  # noqa
         'type': 'tgz',
         'shp_basename': [
             'world_bnd_m',
-            'builtup_area',
             'places',
             'world_boundaries_m'],
         'long_opt': '--world-boundaries'

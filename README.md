@@ -2,7 +2,7 @@
 
 ![screenshot](https://raw.github.com/gravitystorm/openstreetmap-carto/master/preview.png)
 
-These are the CartoCSS map stylesheets for the Standard map layer on [OpenStreetMap.org](http://www.openstreetmap.org).
+These are the CartoCSS map stylesheets for the Standard map layer on [OpenStreetMap.org](https://www.openstreetmap.org).
 
 These stylesheets can be used in your own cartography projects, and are designed
 to be easily customised. They work with [Kosmtik](https://github.com/kosmtik/kosmtik)
@@ -86,7 +86,7 @@ maps using Mapnik, many based on this project. Some alternatives are:
 # Maintainers
 
 * Andy Allan [@gravitystorm](https://github.com/gravitystorm/)
-* Matthijs Melissen [@math1985](https://github.com/math1985/)
+* Matthijs Melissen [@matthijsmelissen](https://github.com/matthijsmelissen/)
 * Paul Norman [@pnorman](https://github.com/pnorman/)
 * Mateusz Konieczny [@matkoniecz](https://github.com/matkoniecz/)
 * Daniel Koć [@kocio-pl](https://github.com/kocio-pl)

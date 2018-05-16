@@ -369,6 +369,38 @@
   }
 }
 
+#placenames-small::quarter {
+  [place = 'quarter'] {
+    [zoom >= 14][zoom < 17] {
+      text-name: "[name]";
+      text-fill: @placenames;
+      text-face-name: @book-fonts;
+      text-halo-fill: @standard-halo-fill;
+      text-halo-radius: @standard-halo-radius * 1.5;
+      [zoom >= 14] {
+        text-halo-fill: white;
+        text-size: 11;
+        text-wrap-width: 55; // 5.0 em
+        text-line-spacing: -0.55; // -0.05 em
+        text-margin: 7.7; // 0.7 em
+      }
+      [zoom >= 15] {
+        text-fill: @placenames-light;
+        text-size: 12;
+        text-wrap-width: 60; // 5.0 em
+        text-line-spacing: -0.60; // -0.05 em
+        text-margin: 8.4; // 0.7 em
+      }
+      [zoom >= 16] {
+        text-size: 14;
+        text-wrap-width: 70; // 5.0 em
+        text-line-spacing: -0.70; // -0.05 em
+        text-margin: 9.8; // 0.7 em
+      }
+    }
+  }
+}
+
 #placenames-small::hamlet {
   [place = 'hamlet'],
   [place = 'locality'],
@@ -395,5 +427,13 @@
       text-halo-fill: white;
     }
   }
+  [place = 'square'] {
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: 11;
+      text-face-name: @book-fonts;
+      text-wrap-width: 30; // 2.7 em
+      text-line-spacing: -1.7; // -0.15 em
+    }
+  }
 }
-

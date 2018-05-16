@@ -2,7 +2,7 @@
 @ferry-route-text: @ferry-route;
 
 #ferry-routes {
-  [zoom >= 7] {
+  [zoom >= 8] {
     /* background prevents problems with overlapping ferry-routes, see #457 */
     background/line-color: @water-color;
     background/line-width: 1; /* Needs to be a bit wider than the route itself because of antialiasing */

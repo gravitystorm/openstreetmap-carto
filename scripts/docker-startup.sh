@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# This script is used to start the import or kosmtik containers for the Docker development environment.
+# This script is used to start the import of kosmtik containers for the Docker development environment.
 # You can read details about that in DOCKER.md
 
 # Testing if database is ready
@@ -45,6 +45,8 @@ EOF
   --hstore \
   --multi-geometry \
   --database gis \
+  --slim \
+  --drop \
   --style openstreetmap-carto.style \
   --tag-transform-script openstreetmap-carto.lua \
   $OSM2PGSQL_DATAFILE

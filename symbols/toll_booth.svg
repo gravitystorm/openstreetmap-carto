@@ -5,34 +5,28 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   id="svg8"
    version="1.1"
-   viewBox="0 0 32 32"
-   height="32"
-   width="32">
+   id="svg2"
+   viewBox="0 0 14 14"
+   height="14"
+   width="14">
   <defs
-     id="defs2" />
+     id="defs4" />
   <metadata
-     id="metadata5">
+     id="metadata7">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <rect
-     width="32"
-     height="32"
-     x="0"
-     y="0"
-     id="canvas"
-     style="visibility:hidden;fill:none;stroke:none" />
-  <path
-     d="m 13,13 2.5,3 -2.5,3 h 2 L 16.5,17.199206 18,19 h 2 L 17.5,16 20,13 H 18 L 16.5,14.800794 15,13 Z"
-     style="opacity:1;fill:#f9e4e6;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.99999988;stroke-opacity:1"
-     id="path4" />
+    <path
+       id="path4136"
+       d="M 7.1679688 4.5117188 L 0 6 L 0 14.009766 L 6 14.009766 L 6 11.5 A 1 1 0 0 0 6.9960938 10.560547 L 13.722656 7.1972656 L 13.277344 6.3027344 L 6.5527344 9.6660156 A 1 1 0 0 0 6 9.5 L 6 6.7695312 L 7.6035156 5.3789062 L 7.1679688 4.5117188 z M 1 7 L 5 7 L 5 10 L 1 10 L 1 7 z "
+        />
+
 </svg>

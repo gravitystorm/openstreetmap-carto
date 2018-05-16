@@ -14,6 +14,13 @@
 #world {
   [zoom >= 0][zoom < 10] {
     polygon-fill: @land-color;
+    polygon-simplify: 0.4;
+    [zoom < 8] {
+      line-color: darken(@water-color,20%);
+      line-simplify: 0.4;
+      line-width: 0.5;
+      line-offset: 0.5;
+    }
   }
 }
 
@@ -24,13 +31,13 @@
 }
 
 #icesheet-poly {
-  [zoom >= 6] {
+  [zoom >= 8] {
     polygon-fill: @glacier;
   }
 }
 
 #icesheet-outlines {
-  [zoom >= 6] {
+  [zoom >= 8] {
     [ice_edge = 'ice_ocean'],
     [ice_edge = 'ice_land'] {
       line-width: 0.375;
@@ -43,11 +50,5 @@
         line-width: 0.75;
       }
     }
-  }
-}
-
-#builtup {
-  [zoom >= 8][zoom < 10] {
-    polygon-fill: #ddd;
   }
 }
