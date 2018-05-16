@@ -11,16 +11,16 @@ As we are still experimenting with this way of design, this document is restrict
 | Looking up province/state location|Province/state names and borders|Country borders | z6, z7 |
 | Looking up city location | City names | Coastlines, country names, country borders | z5, z6, z7 |
 | Long distance road trip planning | Motorways | City names | z6, z7 |
+| Understanding what the area looks like | Natural areas (woods, grass, scrubs, heath, ice, lakes, rocks, sands etc.) <br/> natural lines (big rivers) <br/> semi-natural areas (farmlands, vineyards, orchards, parks etc.) <br/> semi-natural lines (big canals) | Coastlines, relief | z5, z6, z7 |
 
 This gives us the following features:
 
-* z5: Map subject: Country names, country borders, city names. Map context: seas, oceans.
-* z5 in USA: Map subject: Province/state names and borders. Map context: Country names, country borders, seas oceans
-* z6: Map subject: Country names, country borders, province/state names and borders, motorways, city names. Map context: Seas, oceans, country borders, city names.
-* z7: Map subject: Province/state names and borders, city names, motorways. Map context: Seas, oceans, country names, country borders.
+* z5: Map subject: Country names, country borders, city names, (semi-)natural areas+lines. Map context: seas, oceans, relief.
+* z5 in USA: Map subject: Province/state names and borders, (semi-)natural areas+lines. Map context: Country names, country borders, seas oceans, relief.
+* z6: Map subject: Country names, country borders, province/state names and borders, motorways, city names, (semi-)natural areas+lines. Map context: Seas, oceans, country borders, city names, relief.
+* z7: Map subject: Province/state names and borders, city names, motorways, (semi-)natural areas+lines. Map context: Seas, oceans, country names, country borders, relief.
 
 Some features that we currently render for which we do not (yet) have a use case:
 
 * Province/state names and borders (except USA) on z5
-* Minor water areas on z5/6/7
 * Island names on z5/6/7
