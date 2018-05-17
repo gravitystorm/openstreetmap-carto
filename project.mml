@@ -97,7 +97,7 @@ Layer:
             FROM planet_osm_polygon
             WHERE (landuse IN ('forest', 'military', 'farmland', 'residential', 'commercial', 'retail', 'industrial', 'meadow')
               OR "natural" IN ('wood', 'wetland', 'mud', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland'))
-              AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
+              AND way_area > 1*!pixel_width!::real*!pixel_height!::real
               AND building IS NULL
             ORDER BY way_area DESC
           ) AS features
@@ -152,7 +152,7 @@ Layer:
               OR tourism IN ('camp_site', 'caravan_site', 'picnic_site')
               OR highway IN ('services', 'rest_area')
               OR railway = 'station')
-              AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
+              AND way_area > 1*!pixel_width!::real*!pixel_height!::real
             ORDER BY way_area DESC
           ) AS landcover
         ) AS features
@@ -265,7 +265,7 @@ Layer:
           FROM planet_osm_polygon
           WHERE ("natural" IN ('marsh', 'mud', 'wetland', 'wood', 'beach', 'shoal', 'reef', 'scrub', 'sand') OR landuse = 'forest')
             AND building IS NULL
-            AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
+            AND way_area > 1*!pixel_width!::real*!pixel_height!::real
           ORDER BY COALESCE(layer,0), way_area DESC
         ) AS landcover_area_symbols
     properties:
@@ -434,7 +434,7 @@ Layer:
             AND building != 'train_station'
             AND (aerialway IS NULL OR aerialway != 'station')
             AND ((tags->'public_transport') IS NULL OR tags->'public_transport' != 'station')
-            AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
+            AND way_area > 1*!pixel_width!::real*!pixel_height!::real
           ORDER BY COALESCE(layer,0), way_area DESC
         ) AS buildings
     properties:
@@ -460,7 +460,7 @@ Layer:
                  OR building = 'train_station'
                  OR aerialway = 'station'
                  OR tags->'public_transport' = 'station')
-            AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
+            AND way_area > 1*!pixel_width!::real*!pixel_height!::real
           ORDER BY COALESCE(layer,0), way_area DESC)
         AS buildings_major
     properties:
@@ -1372,7 +1372,7 @@ Layer:
           FROM planet_osm_polygon
           WHERE (boundary = 'national_park' OR leisure = 'nature_reserve')
             AND building IS NULL
-            AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
+            AND way_area > 1*!pixel_width!::real*!pixel_height!::real
         ) AS national_park_boundaries
     properties:
       minzoom: 8

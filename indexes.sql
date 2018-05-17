@@ -25,18 +25,21 @@ CREATE INDEX planet_osm_polygon_water
   WHERE waterway IN ('dock', 'riverbank', 'canal')
     OR landuse IN ('reservoir', 'basin')
     OR "natural" IN ('water', 'glacier');
-CREATE INDEX planet_osm_polygon_military
-  ON planet_osm_polygon USING GIST (way)
-  WHERE landuse = 'military';
 CREATE INDEX planet_osm_polygon_nobuilding
   ON planet_osm_polygon USING GIST (way)
   WHERE building IS NULL;
 CREATE INDEX planet_osm_polygon_name
   ON planet_osm_polygon USING GIST (way)
   WHERE name IS NOT NULL;
+CREATE INDEX planet_osm_polygon_way_area_z10
+  ON planet_osm_polygon USING GIST (way)
+  WHERE way_area > 23300;
+CREATE INDEX planet_osm_polygon_military
+  ON planet_osm_polygon USING GIST (way)
+  WHERE landuse = 'military';
 CREATE INDEX planet_osm_polygon_way_area_z6
   ON planet_osm_polygon USING GIST (way)
-  WHERE way_area > 59750;
+  WHERE way_area > 5980000;
 CREATE INDEX planet_osm_point_place
   ON planet_osm_point USING GIST (way)
   WHERE place IS NOT NULL AND name IS NOT NULL;
