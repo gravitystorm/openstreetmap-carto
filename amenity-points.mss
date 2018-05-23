@@ -316,11 +316,17 @@
     marker-clip: false;
   }
 
-  [feature = 'tourism_information'][zoom >= 17] {
-    marker-file: url('symbols/information.12.svg');
-    marker-placement: interior;
-    marker-fill: @amenity-brown;
-    marker-clip: false;
+  [feature = 'tourism_information'] {
+    [information != 'guidepost'][zoom >= 17],
+    [information = 'guidepost'][zoom >= 19] {
+      marker-file: url('symbols/information.12.svg');
+      [information = 'guidepost'] {
+        marker-file: url('symbols/guidepost.svg');
+      }
+      marker-placement: interior;
+      marker-fill: @amenity-brown;
+      marker-clip: false;
+    }
   }
 
   [feature = 'amenity_embassy'][zoom >= 17] {
@@ -1608,6 +1614,19 @@
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
+  }
+
+  [feature = 'tourism_information'][information = 'guidepost'][zoom >= 19] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: darken(@landform-color, 30%);
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+    text-dy: 11;
   }
 
   [feature = 'waterway_waterfall'] {
