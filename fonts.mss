@@ -24,7 +24,7 @@ but there are some exceptions.
     contains. As in Korea Han characters are not so widely used, it seems
     better to default to either Chinese or Japanese. As Chinese exists in the
     two variants SC/TC, it won’t be a uniform rendering anyway. So we default
-    to Japanese. However, this choise stays somewhat arbitrary and subjective.
+    to Japanese. However, this choice stays somewhat arbitrary and subjective.
     See also https://github.com/gravitystorm/openstreetmap-carto/issues/2208)
   - For the Syriac script, there exist Noto Sans Syriac Eastern,
     Noto Sans Syriac Western Regular and Noto Sans Syriac Estrangela Regular.
