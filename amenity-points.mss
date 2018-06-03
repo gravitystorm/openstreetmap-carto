@@ -1093,13 +1093,6 @@
     marker-clip: false;
   }
 
-  [feature = 'leisure_dog_park'][zoom >= 17] {
-    marker-file: url('symbols/shop/pet.svg');
-    marker-placement: interior;
-    marker-fill: @leisure-green;
-    marker-clip: false;
-  }
-
   [feature = 'leisure_playground'][zoom >= 17] {
     marker-file: url('symbols/playground.svg');
     marker-fill: @leisure-green;
@@ -1769,7 +1762,6 @@
   }
 
   [feature = 'leisure_playground'],
-  [feature = 'leisure_dog_park'],
   [feature = 'leisure_fitness_centre'],
   [feature = 'leisure_fitness_station'] {
     [way_area >= 150000][zoom >= 14],
@@ -2052,8 +2044,7 @@
       }
       [feature = 'leisure_dog_park'],
       [feature = 'leisure_fitness_centre'],
-      [feature = 'leisure_fitness_station'],
-      [feature = 'leisure_dog_park'] {
+      [feature = 'leisure_fitness_station'] {
         text-fill: @leisure-green;
         text-halo-radius: @standard-halo-radius * 1.5; /* Extra halo needed to stand out from paw pattern. */
         text-halo-fill: @standard-halo-fill;
