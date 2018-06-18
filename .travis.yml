@@ -13,6 +13,7 @@ addons:
     - libxml2-utils
     - python-yaml
     - postgresql-9.4-postgis-2.3
+    - osm2pgsql
 env:
   - CARTO=0.18.0 MAPNIK='3.0.0 3.0.12'
 install:
@@ -32,3 +33,7 @@ script:
   - find symbols/ -name '*.svg' | xargs xmllint --noout
   # Check the Lua transforms
   - lua scripts/lua/test.lua
+  # Create the PostgreSQL tables
+  # Because we're not processing any data, we don't need to use the tag transform script,
+  # which the ancient verson of osm2pgsql on Travis' Ubuntu doesn't support
+  - osm2pgsql -G --hstore --style openstreetmap-carto.style -U postgres -d gis -r libxml2 <(echo '<osm version="0.6"/>')
