@@ -316,17 +316,33 @@
     marker-clip: false;
   }
 
-  [feature = 'tourism_information'] {
-    [information != 'guidepost'][zoom >= 17],
-    [information = 'guidepost'][zoom >= 19] {
-      marker-file: url('symbols/information.12.svg');
-      [information = 'guidepost'] {
-        marker-file: url('symbols/guidepost.svg');
-      }
-      marker-placement: interior;
-      marker-fill: @amenity-brown;
-      marker-clip: false;
+  [feature = 'tourism_information'][zoom >= 19],
+  [feature = 'tourism_information']["information"='office'][zoom >= 17] {
+    marker-file: url('symbols/tourism/information.svg');
+    [information = 'audioguide'] {
+      marker-file: url('symbols/tourism/audioguide.svg');
+    }    
+    [information = 'board'],
+    [information = 'tactile_model'] {
+      marker-file: url('symbols/tourism/board.svg');
     }
+    [information = 'guidepost'] {
+      marker-file: url('symbols/tourism/guidepost.svg');
+    }
+    [information = 'office'] {
+      marker-file: url('symbols/tourism/office.svg');
+      marker-fill: @amenity-brown;
+    }
+    [information = 'map'],
+    [information = 'tactile_map'] {
+      marker-file: url('symbols/tourism/map.svg');
+    }
+    [information = 'terminal'] {
+      marker-file: url('symbols/tourism/terminal.svg');
+    }
+      marker-placement: interior;
+      marker-fill: @man-made-icon;
+      marker-clip: false;
   }
 
   [feature = 'amenity_embassy'][zoom >= 17] {
@@ -1616,17 +1632,19 @@
     text-placement: interior;
   }
 
-  [feature = 'tourism_information'][information = 'guidepost'][zoom >= 19] {
-    text-name: "[name]";
-    text-size: @standard-font-size;
-    text-wrap-width: @standard-wrap-width;
-    text-line-spacing: @standard-line-spacing-size;
-    text-fill: darken(@landform-color, 30%);
-    text-face-name: @standard-font;
-    text-halo-radius: @standard-halo-radius;
-    text-halo-fill: @standard-halo-fill;
-    text-placement: interior;
-    text-dy: 11;
+  [feature = 'tourism_information'][zoom >= 19],
+  [feature = 'tourism_information']["information"='office'][zoom >= 17] {
+      text-name: "[name]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-fill: darken(black, 30%);
+      [information = 'office'] { text-fill: @amenity-brown; }
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+      text-dy: 11;
   }
 
   [feature = 'waterway_waterfall'] {
