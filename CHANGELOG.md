@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.12.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.12.1...master)
+
+## [v4.12.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.12.0...v4.12.1)
+## Changes
+## Stop rendering "surface" tag, which was causing breaking performance issues
 
 ## [v4.12.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.11.0...v4.12.0) - 2018-06-22
 ### Major changes
