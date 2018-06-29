@@ -68,7 +68,7 @@ scripts/get-fonts.sh
 ## Dependencies
 
 For development, a style design studio is needed.
-* [Kosmtik](https://github.com/kosmtik/kosmtik) - Kosmtik can be launched with `node index.js serve path/to/openstreetmap-carto/project.mml`
+* [Kosmtik](https://github.com/kosmtik/kosmtik) - Kosmtik can be launched with `node index.js serve path/to/openstreetmap-carto/project.mml` The 0.0.17 release of Kosmtik is not enough because we need up-to-date CartoCSS and Mapnik versions. To install the current master branch of Kosmtik, you can clone the Kosmtik repository and execute `npm install` within it.
 
 [TileMill](https://tilemill-project.github.io/tilemill/) is not officially supported, but you may be able to use a recent TileMill version by copying or symlinking the project directly into your Mapbox/project directory.
 
@@ -91,7 +91,7 @@ Some colours, SVGs and other files are generated with helper scripts. Not all us
 
 For deployment, CartoCSS and Mapnik are required.
 
-* [CartoCSS](https://github.com/mapbox/carto) >= 0.18.0 (we're using YAML)
-* [Mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 3.0
+* [CartoCSS](https://github.com/mapbox/carto) >= 1.2.0 *(we're using YAML)*
+* [Mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 3.0.22
 
-With CartoCSS you compile these sources into a Mapnik compatible XML file. When running CartoCSS, specify the Mapnik API version you are using (at least 3.0.0: `carto -a "3.0.0"`).
+With CartoCSS you compile these sources into a Mapnik compatible XML file. When running CartoCSS, specify the Mapnik API version you are using (at least 3.0.22: `carto -a "3.0.22"`).
