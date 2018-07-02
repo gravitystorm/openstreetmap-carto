@@ -1,4 +1,27 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.11.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.12.1...master)
+
+## [v4.12.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.12.0...v4.12.1) - 2018-06-29
+## Changes
+- Stop rendering "surface" tag, which was causing breaking performance issues
+
+## [v4.12.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.11.0...v4.12.0) - 2018-06-22
+### Major changes
+- Dropped subpixel accuracy for areas, which includes tuning some database indexes. When deployed, it might speed up reading data.
+
+### Changes
+- Added rendering “surface” tag on roads with a pattern
+- More vertical objects rendering and tuning (man_made=tower types, man_made=chimney, man_made=communications_tower) 
+- tourism=information types rendering and tuning (information=audioguide, board, guidepost, map, office, tactile_map, tactile_model and terminal)
+- Added rendering for place=quarter
+- Added rendering of historic=city_gate
+- Added rendering of lock_name
+- Ditch and drain name labels are rendered with some offset
+- Pixel aligned ford icon
+- Made amenity=shelter icon brown
+- Finer man_made=pier width rendering
+- Rendering living street tunnels different from residential
+- Added rendering of overground power=cable like power=line
+- Small documentation and code fixes
 
 ## [v4.11.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.10.0...v4.11.0) - 2018-05-11
 ### Changes

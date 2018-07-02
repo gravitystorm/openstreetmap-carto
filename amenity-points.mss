@@ -316,17 +316,33 @@
     marker-clip: false;
   }
 
-  [feature = 'tourism_information'] {
-    [information != 'guidepost'][zoom >= 17],
-    [information = 'guidepost'][zoom >= 19] {
-      marker-file: url('symbols/information.12.svg');
-      [information = 'guidepost'] {
-        marker-file: url('symbols/guidepost.svg');
-      }
-      marker-placement: interior;
-      marker-fill: @amenity-brown;
-      marker-clip: false;
+  [feature = 'tourism_information'][zoom >= 19],
+  [feature = 'tourism_information']["information"='office'][zoom >= 17] {
+    marker-file: url('symbols/tourism/information.svg');
+    [information = 'audioguide'] {
+      marker-file: url('symbols/tourism/audioguide.svg');
+    }    
+    [information = 'board'],
+    [information = 'tactile_model'] {
+      marker-file: url('symbols/tourism/board.svg');
     }
+    [information = 'guidepost'] {
+      marker-file: url('symbols/tourism/guidepost.svg');
+    }
+    [information = 'office'] {
+      marker-file: url('symbols/tourism/office.svg');
+      marker-fill: @amenity-brown;
+    }
+    [information = 'map'],
+    [information = 'tactile_map'] {
+      marker-file: url('symbols/tourism/map.svg');
+    }
+    [information = 'terminal'] {
+      marker-file: url('symbols/tourism/terminal.svg');
+    }
+      marker-placement: interior;
+      marker-fill: @man-made-icon;
+      marker-clip: false;
   }
 
   [feature = 'amenity_embassy'][zoom >= 17] {
@@ -378,32 +394,30 @@
     marker-clip: false;
   }
 
-  [feature = 'man_made_mast'] {
+  [feature = 'man_made_mast']["tower:type" != 'lighting'],
+  [feature = 'man_made_mast']["tower:type" = 'lighting'][zoom >= 18]   {
     [zoom >= 15][height > 80],
     [zoom >= 16][height > 40],
     [zoom >= 17][height > 20],
     [zoom >= 18] {
-      ["tower:type" != 'lighting'] {
-        marker-file: url('symbols/towers/mast.svg');
-        marker-fill: @man-made-icon;
-        marker-placement: interior;
-        marker-clip: false;
-      }
-      ["tower:type" = 'lighting'][zoom >= 18] {
+      marker-file: url('symbols/towers/mast.svg');
+      marker-fill: @man-made-icon;
+      marker-placement: interior;
+      marker-clip: false;
+      ["tower:type" = 'lighting'] {
         marker-file: url('symbols/towers/mast_lighting.svg');
-        marker-fill: @man-made-icon;
-        marker-placement: interior;
-        marker-clip: false;
-      }
+      }      
       ["tower:type" = 'communication'] {
         marker-file: url('symbols/towers/mast_communications.svg');
       }
     }
   }
 
+  [feature = 'man_made_tower']["tower:type" = 'cooling'][zoom >= 15],
   [feature = 'man_made_tower']["tower:type" = 'lighting'][zoom >= 18],
   [feature = 'man_made_tower']["tower:type" = 'bell_tower'][zoom >= 18],
-  [feature = 'man_made_tower']["tower:type" != 'lighting']["tower:type" != 'bell_tower'] {
+  [feature = 'man_made_tower']["tower:type" = 'watchtower'][zoom >= 18],
+  [feature = 'man_made_tower']["tower:type" != 'cooling']["tower:type" != 'lighting']["tower:type" != 'bell_tower']["tower:type" != 'watchtower'] {
     [zoom >= 13][height > 100],
     [zoom >= 14][height > 50],
     [zoom >= 15][height > 30],
@@ -415,27 +429,61 @@
       ["tower:type" = 'defensive'] {
         marker-file: url('symbols/towers/tower_defensive.svg');
       }
-      ["tower:type" = 'observation'] {
-        marker-file: url('symbols/towers/tower_observation.svg');
+      ["tower:type" = 'observation'],
+      ["tower:type" = 'watchtower'] {
+        marker-file: url('symbols/towers/tower_observation.svg');  
       }
       ["tower:type" = 'bell_tower'] {
         marker-file: url('symbols/towers/bell_tower.svg');
       }
-      ["tower:type" = 'lighting'] {
-        marker-file: url('symbols/towers/tower_lighting.svg');
-        ["tower:construction" = 'lattice'] {
-          marker-file: url('symbols/towers/tower_lattice_lighting.svg');
-        }
+      ["tower:type" = 'cooling'] {
+        marker-file: url('symbols/towers/tower_cooling.svg');
       }
       ["tower:construction" = 'lattice'] {
         marker-file: url('symbols/towers/tower_lattice.svg');
+      }
+      ["tower:construction" = 'dish'] {
+        marker-file: url('symbols/towers/tower_dish.svg');
+      }
+      ["tower:construction" = 'dome'] {
+        marker-file: url('symbols/towers/tower_dome.svg');
       }
       ["tower:type" = 'communication'] {
         marker-file: url('symbols/towers/tower_cantilever_communication.svg');
         ["tower:construction" = 'lattice'] {
           marker-file: url('symbols/towers/tower_lattice_communication.svg');
         }
+        ["tower:construction" = 'dish'] {
+          marker-file: url('symbols/towers/tower_dish.svg');
+        }
+        ["tower:construction" = 'dome'] {
+          marker-file: url('symbols/towers/tower_dome.svg');
+        }
       }
+      ["tower:type" = 'lighting'] {
+        marker-file: url('symbols/towers/tower_lighting.svg');
+        ["tower:construction" = 'lattice'] {
+          marker-file: url('symbols/towers/tower_lattice_lighting.svg');
+        }
+      }   
+    }
+  }
+
+  [feature = 'man_made_communications_tower'][zoom >= 13] {
+    marker-file: url('symbols/towers/communications_tower.svg');
+    marker-fill: @man-made-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+  
+  [feature = 'man_made_chimney'] {
+    [zoom >= 16][height > 50],
+    [zoom >= 17][height > 30],
+    [zoom >= 18] {
+      marker-file: url('symbols/towers/chimney.svg');
+      marker-fill: @man-made-icon;
+      marker-placement: interior;
+      marker-clip: false;
     }
   }
 
@@ -1616,17 +1664,19 @@
     text-placement: interior;
   }
 
-  [feature = 'tourism_information'][information = 'guidepost'][zoom >= 19] {
-    text-name: "[name]";
-    text-size: @standard-font-size;
-    text-wrap-width: @standard-wrap-width;
-    text-line-spacing: @standard-line-spacing-size;
-    text-fill: darken(@landform-color, 30%);
-    text-face-name: @standard-font;
-    text-halo-radius: @standard-halo-radius;
-    text-halo-fill: @standard-halo-fill;
-    text-placement: interior;
-    text-dy: 11;
+  [feature = 'tourism_information'][zoom >= 19],
+  [feature = 'tourism_information']["information"='office'][zoom >= 17] {
+      text-name: "[name]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-fill: darken(black, 30%);
+      [information = 'office'] { text-fill: @amenity-brown; }
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+      text-dy: 11;
   }
 
   [feature = 'waterway_waterfall'] {
@@ -1654,23 +1704,27 @@
   [feature = 'natural_cave_entrance'][zoom >= 15],
   [feature = 'man_made_mast'][zoom >= 18],
   [feature = 'man_made_tower'][zoom >= 17],
-  [feature = 'man_made_water_tower'][zoom >= 17] {
+  [feature = 'man_made_communications_tower'][zoom >= 17],
+  [feature = 'man_made_water_tower'][zoom >= 17],
+  [feature = 'man_made_chimney'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: black;
-    [feature = 'natural_cave_entrance'],
-    [feature = 'man_made_water_tower'] {
-      text-dy: 11;
-    }
+    [feature = 'natural_cave_entrance'] { text-dy: 11; }
     [feature = 'man_made_cross'],
     [feature = 'historic_wayside_cross'] {
       text-dy: 6;
     }
-    [feature = 'historic_city_gate'] { text-dy: 10; }
-    [feature = 'man_made_mast'] { text-dy: 10; }
-    [feature = 'man_made_tower'] { text-dy: 10; }
+    [feature = 'historic_city_gate'],
+    [feature = 'man_made_mast'],
+    [feature = 'man_made_tower'],
+    [feature = 'man_made_communications_tower'],
+    [feature = 'man_made_water_tower'],
+    [feature = 'man_made_chimney'] { 
+      text-dy: 10;
+    }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
