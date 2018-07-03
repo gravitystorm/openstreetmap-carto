@@ -90,6 +90,22 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_clock']["tower:type" != 'bell_tower'][feature != 'advertising_column'][zoom >= 18] {
+    [visibility = 'area'] {
+      marker-file: url('symbols/clock.svg');
+      marker-fill: @man-made-icon;
+      marker-placement: interior;
+      marker-clip: false;
+    }
+  }
+
+  [feature = 'amenity_clock']["tower:type" != 'bell_tower'][feature != 'advertising_column']['support' != 'wall']['support' != 'wall_mounted'][zoom >= 19] {
+    marker-file: url('symbols/clock.svg');
+    marker-fill: @man-made-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'highway_bus_stop'] {
     [zoom >= 16] {
       marker-file: url('symbols/square.svg');
