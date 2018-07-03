@@ -967,6 +967,10 @@
     [shop = 'hifi'][zoom >= 18] {
       marker-file: url('symbols/shop/hifi.svg');
     }
+    
+    [shop = 'houseware'][zoom >= 18] {
+      marker-file: url('symbols/shop/houseware.svg');
+    }
 
     [shop = 'ice_cream'][zoom >= 18] {
       marker-file: url('symbols/shop/ice_cream.svg');
@@ -2407,6 +2411,7 @@
   [feature = 'shop_hardware'],
   [feature = 'shop_hairdresser'],
   [feature = 'shop_hifi'],
+  [feature = 'shop_houseware'],
   [feature = 'shop_ice_cream'],
   [feature = 'shop_butcher'],
   [feature = 'shop_car'],
