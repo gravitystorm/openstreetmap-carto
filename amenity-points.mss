@@ -1324,6 +1324,14 @@
       marker-placement: interior;
     }
   }
+
+  [feature = 'amenity_casino'][zoom >= 16] {
+    marker-file: url('symbols/casino.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
 }
 
 .amenity-low-priority {
@@ -2776,6 +2784,20 @@
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
   }
+
+  [feature = 'amenity_casino'][zoom >= 16] {
+    text-name: "[name]";
+    text-fill: @amenity-brown;
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-dy: 10;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+  }
+
 }
 
 #amenity-line {
