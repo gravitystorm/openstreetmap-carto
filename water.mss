@@ -288,6 +288,7 @@
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-spacing: 600;
+      text-repeat-distance: 400;
       text-placement: line;
       text-vertical-alignment: middle;
       text-dy: 8;
@@ -303,6 +304,7 @@
         text-halo-radius: @standard-halo-radius;
         text-halo-fill: @standard-halo-fill;
         text-spacing: 600;
+        text-repeat-distance: 400;
         text-placement: line;
         text-vertical-alignment: middle;
         text-dy: 8;
