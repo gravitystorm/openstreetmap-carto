@@ -288,6 +288,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_casino'][zoom >= 16] {
+    marker-file: url('symbols/casino.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'tourism_hostel'][zoom >= 17] {
     marker-file: url('symbols/hostel.svg');
     marker-placement: interior;
@@ -1328,14 +1335,6 @@
       marker-placement: interior;
     }
   }
-
-  [feature = 'amenity_casino'][zoom >= 16] {
-    marker-file: url('symbols/casino.svg');
-    marker-fill: @amenity-brown;
-    marker-placement: interior;
-    marker-clip: false;
-  }
-
 }
 
 .amenity-low-priority {
