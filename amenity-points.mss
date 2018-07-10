@@ -288,7 +288,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_casino'][zoom >= 16] {
+  [feature = 'amenity_casino'][zoom >= 17] {
     marker-file: url('symbols/casino.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
@@ -2789,7 +2789,7 @@
     text-placement: interior;
   }
 
-  [feature = 'amenity_casino'][zoom >= 16] {
+  [feature = 'amenity_casino'][zoom >= 17] {
     text-name: "[name]";
     text-fill: @amenity-brown;
     text-size: @standard-font-size;
@@ -2801,7 +2801,6 @@
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
   }
-
 }
 
 #amenity-line {
