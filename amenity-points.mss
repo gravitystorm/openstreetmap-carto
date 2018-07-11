@@ -1123,7 +1123,7 @@
   }
 
   [feature = 'advertising_column'][zoom >= 19]{
-      marker-file: url('symbols/advertising/column.svg');
+      marker-file: url('symbols/advertising_column.svg');
       marker-fill: @advertising-grey;
       marker-placement: interior;
       marker-clip: false;
