@@ -874,6 +874,10 @@
       marker-file: url('symbols/shop/butcher.svg');
     }
 
+    [shop = 'charity'][zoom >= 18] {
+      marker-file: url('symbols/shop/charity.svg');
+    }
+
     [shop = 'chemist'][zoom >= 18] {
       marker-file: url('symbols/shop/chemist.svg');
     }
@@ -1075,7 +1079,11 @@
     }
 
     [shop = 'travel_agency'][zoom >= 18] {
-      marker-file: url('symbols/shop/travel_agency.svg');
+      marker-file: url('symbols/shop/second_hand.svg');
+    }
+
+    [shop = 'second_hand'][zoom >= 18] {
+      marker-file: url('symbols/shop/second_hand.svg');
     }
 
     [shop = 'sports'][zoom >= 18] {
@@ -2384,6 +2392,7 @@
   [feature = 'shop_bed'],
   [feature = 'shop_beverages'],
   [feature = 'shop_books'],
+  [feature = 'shop_charity'],
   [feature = 'shop_clothes'],
   [feature = 'shop_coffee'],
   [feature = 'shop_computer'],
@@ -2438,6 +2447,7 @@
   [feature = 'shop_toys'],
   [feature = 'shop_travel_agency'],
   [feature = 'shop_seafood'],
+  [feature = 'shop_second_hand'],
   [feature = 'shop_sports'],
   [feature = 'shop_stationery'],
   [feature = 'shop_tobacco'],
