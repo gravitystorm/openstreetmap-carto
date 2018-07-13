@@ -1117,6 +1117,10 @@
       marker-file: url('symbols/shop/variety_store.svg');
     }
 
+    [shop = 'video'][zoom >= 18] {
+      marker-file: url('symbols/shop/video.svg');
+    }
+
     [shop = 'video_games'][zoom >= 18] {
       marker-file: url('symbols/shop/video_games.svg');
     }
@@ -2461,6 +2465,7 @@
   [feature = 'shop_ticket'],
   [feature = 'shop_tyres'],
   [feature = 'shop_variety_store'],
+  [feature = 'shop_video'],
   [feature = 'shop_video_games'],
   [feature = 'shop_wine'],
   [feature = 'shop_other'] {
