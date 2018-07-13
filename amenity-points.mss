@@ -288,6 +288,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_casino'][zoom >= 17] {
+    marker-file: url('symbols/casino.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'tourism_hostel'][zoom >= 17] {
     marker-file: url('symbols/hostel.svg');
     marker-placement: interior;
@@ -971,6 +978,10 @@
     [shop = 'hifi'][zoom >= 18] {
       marker-file: url('symbols/shop/hifi.svg');
     }
+    
+    [shop = 'houseware'][zoom >= 18] {
+      marker-file: url('symbols/shop/houseware.svg');
+    }
 
     [shop = 'ice_cream'][zoom >= 18] {
       marker-file: url('symbols/shop/ice_cream.svg');
@@ -1102,6 +1113,10 @@
       marker-file: url('symbols/shop/tea.svg');
     }
 
+    [shop = 'ticket'][zoom >= 18] {
+      marker-file: url('symbols/shop/ticket.svg');
+    }
+    
     [shop = 'tyres'][zoom >= 18] {
       marker-file: url('symbols/shop/tyres.svg');
     }
@@ -1116,7 +1131,7 @@
   }
 
   [feature = 'advertising_column'][zoom >= 19]{
-      marker-file: url('symbols/advertising/column.svg');
+      marker-file: url('symbols/advertising_column.svg');
       marker-fill: @advertising-grey;
       marker-placement: interior;
       marker-clip: false;
@@ -2408,6 +2423,7 @@
   [feature = 'shop_hardware'],
   [feature = 'shop_hairdresser'],
   [feature = 'shop_hifi'],
+  [feature = 'shop_houseware'],
   [feature = 'shop_ice_cream'],
   [feature = 'shop_butcher'],
   [feature = 'shop_car'],
@@ -2452,6 +2468,7 @@
   [feature = 'shop_stationery'],
   [feature = 'shop_tobacco'],
   [feature = 'shop_tea'],
+  [feature = 'shop_ticket'],
   [feature = 'shop_tyres'],
   [feature = 'shop_variety_store'],
   [feature = 'shop_video_games'],
@@ -2781,6 +2798,19 @@
     [zoom >= 18] { text-dy: 8; }
     [zoom >= 19] { text-dy: 11; }
     [zoom >= 20] { text-dy: 18; }
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+  }
+
+  [feature = 'amenity_casino'][zoom >= 17] {
+    text-name: "[name]";
+    text-fill: @amenity-brown;
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-dy: 10;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
