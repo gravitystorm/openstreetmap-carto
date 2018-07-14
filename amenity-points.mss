@@ -1090,7 +1090,7 @@
     }
 
     [shop = 'travel_agency'][zoom >= 18] {
-      marker-file: url('symbols/shop/second_hand.svg');
+      marker-file: url('symbols/shop/travel_agency.svg');
     }
 
     [shop = 'second_hand'][zoom >= 18] {
