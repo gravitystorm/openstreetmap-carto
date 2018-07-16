@@ -272,7 +272,7 @@
 @track-oneway-arrow-color:        darken(@track-fill, 15%);
 @bridleway-oneway-arrow-color:    darken(@track-fill, 10%);
 
-@text-repeat-distance: 600;
+@text-repeat-distance: 50;
 
 // Shield’s line wrap is based on OpenStreetMap data and not on line-wrap-width,
 // but lines are typically rather short, so we use narrow line spacing.
@@ -2941,7 +2941,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @residential-fill;
       text-face-name: @book-fonts;
-      text-repeat-distance: @text-repeat-distance;
     }
     [zoom >= 16] {
       text-size: 9;
@@ -2993,7 +2992,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [highway = 'living_street'] { text-halo-fill: @living-street-fill; }
       [highway = 'pedestrian'] { text-halo-fill: @pedestrian-fill; }
       text-face-name: @book-fonts;
-      text-repeat-distance: @text-repeat-distance;
     }
     [zoom >= 16] {
       text-size: 9;
