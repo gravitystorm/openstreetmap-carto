@@ -62,6 +62,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_bureau_de_change'][zoom >= 17] {
+    marker-file: url('symbols/bureau_de_change.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_bank'][zoom >= 17] {
     marker-file: url('symbols/bank.svg');
     marker-fill: @public-service;
@@ -2189,6 +2196,19 @@
 
   [feature = 'amenity_atm'][zoom >= 17] {
     text-name: "[operator]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-dy: 10;
+    text-fill: @amenity-brown;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+    text-face-name: @standard-font;
+  }
+
+  [feature = 'amenity_bureau_de_change'][zoom >= 17] {
+    text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
