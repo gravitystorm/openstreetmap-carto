@@ -1004,6 +1004,11 @@
       marker-file: url('symbols/shop/bicycle.svg');
     }
 
+    [shop = 'massage'][zoom >= 17] {
+      marker-file: url('symbols/shop/massage.svg');
+      marker-fill: @leisure-green;
+    }
+
     [shop = 'pet'][zoom >= 18] {
       marker-file: url('symbols/shop/pet.svg');
     }
@@ -2441,6 +2446,7 @@
   [feature = 'shop_perfumery'],
   [feature = 'shop_furniture'],
   [feature = 'shop_kiosk'],
+  [feature = 'shop_massage'],
   [feature = 'shop_medical_supply'],
   [feature = 'shop_mobile_phone'],
   [feature = 'shop_motorcycle'],
@@ -2478,6 +2484,9 @@
       text-placement: interior;
       [feature = 'shop_car_repair'] {
         text-fill: @amenity-brown;
+      }
+      [feature = 'shop_massage'] {
+        text-fill: @leisure-green;
       }
     }
   }
