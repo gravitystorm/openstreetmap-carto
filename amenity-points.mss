@@ -62,6 +62,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_bureau_de_change'][zoom >= 17] {
+    marker-file: url('symbols/bureau_de_change.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_bank'][zoom >= 17] {
     marker-file: url('symbols/bank.svg');
     marker-fill: @public-service;
@@ -881,6 +888,10 @@
       marker-file: url('symbols/shop/butcher.svg');
     }
 
+    [shop = 'charity'][zoom >= 18] {
+      marker-file: url('symbols/shop/charity.svg');
+    }
+
     [shop = 'chemist'][zoom >= 18] {
       marker-file: url('symbols/shop/chemist.svg');
     }
@@ -1094,6 +1105,10 @@
       marker-file: url('symbols/shop/travel_agency.svg');
     }
 
+    [shop = 'second_hand'][zoom >= 18] {
+      marker-file: url('symbols/shop/second_hand.svg');
+    }
+
     [shop = 'sports'][zoom >= 18] {
       marker-file: url('symbols/shop/sports.svg');
     }
@@ -1230,6 +1245,13 @@
   // Slipway tagging on points - slipway on lines is defined later
   [feature = 'leisure_slipway'][zoom >= 17] {
     marker-file: url('symbols/transport_slipway.p.20.svg');
+    marker-fill: @transportation-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'amenity_boat_rental'][zoom >= 17] {
+    marker-file: url('symbols/boat_rental.svg');
     marker-fill: @transportation-icon;
     marker-placement: interior;
     marker-clip: false;
@@ -1552,6 +1574,7 @@
 
   [feature = 'amenity_car_rental'][zoom >= 17],
   [feature = 'amenity_bicycle_rental'][zoom >= 17],
+  [feature = 'amenity_boat_rental'][zoom >= 17],
   [feature = 'barrier_toll_booth'][zoom >= 17],
   [feature = 'leisure_slipway'][zoom >= 17] {
     text-name: "[name]";
@@ -1561,6 +1584,7 @@
     text-fill: @transportation-text;
     [feature = 'amenity_car_rental']     { text-dy: 10; }
     [feature = 'amenity_bicycle_rental'] { text-dy: 10; }
+    [feature = 'amenity_boat_rental']    { text-dy: 13; }
     [feature = 'barrier_toll_booth']     { text-dy: 13; }
     [feature = 'leisure_slipway']        { text-dy: 13; }
     text-face-name: @standard-font;
@@ -2196,6 +2220,19 @@
     text-face-name: @standard-font;
   }
 
+  [feature = 'amenity_bureau_de_change'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-dy: 10;
+    text-fill: @amenity-brown;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+    text-face-name: @standard-font;
+  }
+
   [feature = 'tourism_alpine_hut'][zoom >= 14],
   [feature = 'amenity_shelter'][zoom >= 17],
   [feature = 'tourism_hotel'][zoom >= 17],
@@ -2404,6 +2441,7 @@
   [feature = 'shop_bed'],
   [feature = 'shop_beverages'],
   [feature = 'shop_books'],
+  [feature = 'shop_charity'],
   [feature = 'shop_clothes'],
   [feature = 'shop_coffee'],
   [feature = 'shop_computer'],
@@ -2460,6 +2498,7 @@
   [feature = 'shop_toys'],
   [feature = 'shop_travel_agency'],
   [feature = 'shop_seafood'],
+  [feature = 'shop_second_hand'],
   [feature = 'shop_sports'],
   [feature = 'shop_stationery'],
   [feature = 'shop_tobacco'],

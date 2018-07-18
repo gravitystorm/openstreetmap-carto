@@ -1,4 +1,14 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.12.1...master)
+## Changes
+- Added icon for shop=ticket
+- Added icon for shop=houseware
+- Added icon for shop=charity 
+- Added icon for shop=second_hand
+- Added icon for amenity=bureau_de_change
+- Added icon for amenity=casino
+- Added icon for amenity=boat_rental
+- Updated shop=department_store icon 
+- Small documentation and code fixes
 
 ## [v4.12.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.12.0...v4.12.1) - 2018-06-29
 ## Changes
