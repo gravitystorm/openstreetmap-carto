@@ -1058,6 +1058,10 @@
       marker-file: url('symbols/shop/furniture.svg');
     }
 
+    [shop = 'interior_decoration'][zoom >= 18] {
+      marker-file: url('symbols/shop/interior_decoration.svg');
+    }
+    
     [shop = 'medical_supply'][zoom >= 18]{
       marker-file: url('symbols/shop/medical_supply.svg');
     }
@@ -2454,6 +2458,7 @@
   [feature = 'shop_hifi'],
   [feature = 'shop_houseware'],
   [feature = 'shop_ice_cream'],
+  [feature = 'shop_interior_decoration'],
   [feature = 'shop_butcher'],
   [feature = 'shop_car'],
   [feature = 'shop_car_repair'],
