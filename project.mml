@@ -1111,7 +1111,8 @@ Layer:
             link,
             layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
-            SELECT
+            WITH features_real AS ( -- this is the actual data (which is used both as is and to determine the distinct layer values present in it)
+              SELECT
                 way,
                 'highway_' || highway AS feature, --only motorway to tertiary links are accepted later on
                 horse,
@@ -1142,6 +1143,23 @@ Layer:
               FROM planet_osm_line
               WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
                 AND highway IS NOT NULL -- end of road select
+                AND way && !bbox!
+            )
+            SELECT
+                way,
+                feature,
+                horse,
+                foot,
+                bicycle,
+                tracktype,
+                int_surface,
+                access,
+                construction,
+                service,
+                link,
+                layernotnull,
+                z_order
+              FROM features_real
             UNION ALL
             SELECT
                 ST_MakeEnvelope(-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244, 900913) AS way,
@@ -1158,18 +1176,7 @@ Layer:
                 layernotnull,
                 NULL AS z_order
               FROM
-                (SELECT DISTINCT
-                    layernotnull
-                  FROM
-                    (SELECT
-                        COALESCE(layer,0) AS layernotnull
-                      FROM planet_osm_line
-                      WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
-                        AND highway IS NOT NULL
-                        AND surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
-                                        'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow', 'unhewn_cobblestone') -- end of road select
-                    ) AS roads
-                ) AS layers_list
+                (SELECT DISTINCT layernotnull FROM features_real) AS layers_list
             UNION ALL
             SELECT
                 way,
@@ -1195,6 +1202,7 @@ Layer:
               FROM planet_osm_line
               WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
                 AND railway IS NOT NULL -- end of rail select
+                AND way && !bbox!
             ) AS features
           ORDER BY
             layernotnull,
