@@ -834,7 +834,7 @@
   }
 
   [feature = 'shop'] {
-    [shop != 'mall'][zoom >= 17],
+    [shop != 'mall'][shop != 'massage'][zoom >= 17],
     [shop = 'supermarket'][zoom >= 16],
     [shop = 'department_store'][zoom >= 16] {
       marker-placement: interior;
@@ -842,7 +842,7 @@
       marker-fill: @shop-icon;
     }
 
-    [zoom >= 17][zoom < 18][shop != 'supermarket'][shop != 'department_store'][shop != 'mall'] {
+    [zoom >= 17][zoom < 18][shop != 'supermarket'][shop != 'department_store'][shop != 'mall'][shop != 'massage'] {
       marker-width: 4;
       marker-line-width: 0;
     }
@@ -1015,11 +1015,6 @@
       marker-file: url('symbols/shop/bicycle.svg');
     }
 
-    [shop = 'massage'][zoom >= 17] {
-      marker-file: url('symbols/shop/massage.svg');
-      marker-fill: @leisure-green;
-    }
-
     [shop = 'pet'][zoom >= 18] {
       marker-file: url('symbols/shop/pet.svg');
     }
@@ -1065,6 +1060,11 @@
 
     [shop = 'interior_decoration'][zoom >= 18] {
       marker-file: url('symbols/shop/interior_decoration.svg');
+    }
+
+    [shop = 'massage'][zoom >= 18] {
+      marker-file: url('symbols/shop/massage.svg');
+      marker-fill: @leisure-green;
     }
     
     [shop = 'medical_supply'][zoom >= 18]{
