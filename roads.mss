@@ -198,7 +198,7 @@
 
 @major-casing-width-z11:          0.3;
 
-@casing-width-z12:                0.1;
+@casing-width-z12:                0.3;
 @secondary-casing-width-z12:      0.3;
 @major-casing-width-z12:          0.5;
 
