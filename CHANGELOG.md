@@ -1,9 +1,13 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.12.1...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.13.0...master)
+
+## [v4.13.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.12.0...v4.13.0) - 2018-07-23
 ## Changes
+- Increased shield distances on roads
 - Added icon for shop=ticket
 - Added icon for shop=houseware
 - Added icon for shop=charity 
 - Added icon for shop=second_hand
+- Added icon for shop=interior_decoration
 - Added icon for amenity=bureau_de_change
 - Added icon for amenity=casino
 - Added icon for amenity=boat_rental
