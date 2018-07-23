@@ -281,7 +281,8 @@
 @shield-size-z18: 12;
 @shield-line-spacing-z18: -1.80; // -0.15 em
 @shield-spacing: 760;
-@shield-min-distance: 40;
+@shield-repeat-distance: 400;
+@shield-margin: 40;
 @shield-font: @book-fonts;
 @shield-clip: false;
 
@@ -2665,7 +2666,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     shield-line-spacing: @shield-line-spacing;
     shield-placement: line;
     shield-spacing: @shield-spacing;
-    shield-min-distance: @shield-min-distance;
+    shield-repeat-distance: @shield-repeat-distance;
+    shield-margin: @shield-margin;
     shield-face-name: @shield-font;
     shield-clip: @shield-clip;
 
@@ -2713,7 +2715,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
       shield-placement: line;
       shield-spacing: @shield-spacing;
-      shield-min-distance: @shield-min-distance;
+      shield-repeat-distance: @shield-repeat-distance;
+      shield-margin: @shield-margin;
       shield-face-name: @shield-font;
       shield-clip: @shield-clip;
 
