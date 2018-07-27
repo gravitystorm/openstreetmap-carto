@@ -285,7 +285,7 @@
 @shield-font: @book-fonts;
 @shield-clip: false;
 
-@railway-text-repeat-distance: 600;
+@railway-text-repeat-distance: 200;
 
 #roads-casing, #bridges, #tunnels {
   ::casing {
