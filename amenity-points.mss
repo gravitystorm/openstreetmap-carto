@@ -2864,6 +2864,24 @@
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
   }
+
+  [feature = 'indoor_corridor'][zoom >= 18][way_area >= 150],
+  [feature = 'indoor_room'][zoom >= 18][way_area >= 150],
+  [feature = 'indoor_area'][zoom >= 18][way_area >= 150],
+  [feature = 'indoor_corridor'][zoom >= 19][way_area >= 50],
+  [feature = 'indoor_room'][zoom >= 19][way_area >= 50],
+  [feature = 'indoor_area'][zoom >= 19][way_area >= 50] {
+    text-name: "[name]";
+    text-size: 9;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: @indoor-text;
+    text-dy: 0;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+  }
 }
 
 #amenity-line {

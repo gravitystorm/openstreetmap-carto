@@ -5,6 +5,8 @@
 @building-major-fill: darken(@building-fill, 20%);
 @building-major-line: darken(@building-major-fill, 25%);
 
+@indoor-text: darken(@building-fill, 40%);
+
 @entrance-permissive: darken(@building-line, 15%);
 @entrance-normal: @building-line;
 
@@ -35,6 +37,30 @@
         line-clip: false;
         line-color: @building-major-line;
       }
+    }
+  }
+}
+
+#indoor-areas {
+  [zoom >= 17] {
+    [indoor = 'room'] {
+      polygon-fill: lighten(@building-fill, 3%);
+      polygon-clip: false;
+      line-width: 0.5;
+      line-clip: false;
+      line-color: @building-line;
+    }
+    [indoor = 'corridor'] {
+      polygon-fill: lighten(@building-fill, 6%);
+      polygon-clip: false;
+      line-width: 0.5;
+      line-clip: false;
+      line-color: @building-line;
+    }
+    [indoor = 'area'] {
+      line-width: 0.5;
+      line-clip: false;
+      line-color: @building-line;
     }
   }
 }

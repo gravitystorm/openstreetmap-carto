@@ -15,6 +15,7 @@ local polygon_keys = {
     'building:part',
     'harbour',
     'historic',
+    'indoor',
     'landuse',
     'leisure',
     'man_made',
