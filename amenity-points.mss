@@ -1136,6 +1136,10 @@
       marker-file: url('symbols/shop/variety_store.svg');
     }
 
+    [shop = 'video'][zoom >= 18] {
+      marker-file: url('symbols/shop/video.svg');
+    }
+
     [shop = 'video_games'][zoom >= 18] {
       marker-file: url('symbols/shop/video_games.svg');
     }
@@ -1236,6 +1240,13 @@
 
   [feature = 'leisure_beach_resort'][zoom >= 16] {
      marker-file: url('symbols/beach_resort.svg');
+     marker-fill: @leisure-green;
+     marker-placement: interior;
+     marker-clip: false;
+   }
+
+  [feature = 'leisure_bowling_alley'][zoom >= 17] {
+     marker-file: url('symbols/bowling_alley.svg');
      marker-fill: @leisure-green;
      marker-placement: interior;
      marker-clip: false;
@@ -1644,6 +1655,7 @@
   [feature = 'amenity_car_wash'][zoom >= 17],
   [feature = 'amenity_drinking_water'][zoom >= 17],
   [feature = 'tourism_picnic_site'][zoom >= 17],
+  [feature = 'leisure_bowling_alley'][zoom >= 17],
   [feature = 'leisure_beach_resort'][zoom >= 17],
   [feature = 'leisure_picnic_table'][zoom >= 17] {
     text-name: "[name]";
@@ -1652,6 +1664,7 @@
     text-line-spacing: @standard-line-spacing-size;
     text-fill: @amenity-brown;
     [feature = 'tourism_picnic_site'],
+    [feature = 'leisure_bowling_alley'],
     [feature = 'leisure_beach_resort'] {
       text-fill: @leisure-green;
     }
@@ -2147,9 +2160,10 @@
       [feature = 'leisure_stadium'] {
         text-fill: darken(@stadium, 70%);
       }
-      [feature = 'leisure_dog_park'],
       [feature = 'leisure_fitness_centre'],
-      [feature = 'leisure_fitness_station'],
+      [feature = 'leisure_fitness_station'] {
+        text-fill: @leisure-green;
+      }
       [feature = 'leisure_dog_park'] {
         text-fill: @leisure-green;
         text-halo-radius: @standard-halo-radius * 1.5; /* Extra halo needed to stand out from paw pattern. */
@@ -2505,6 +2519,7 @@
   [feature = 'shop_ticket'],
   [feature = 'shop_tyres'],
   [feature = 'shop_variety_store'],
+  [feature = 'shop_video'],
   [feature = 'shop_video_games'],
   [feature = 'shop_wine'],
   [feature = 'shop_other'] {
