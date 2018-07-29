@@ -2160,9 +2160,10 @@
       [feature = 'leisure_stadium'] {
         text-fill: darken(@stadium, 70%);
       }
-      [feature = 'leisure_dog_park'],
       [feature = 'leisure_fitness_centre'],
-      [feature = 'leisure_fitness_station'],
+      [feature = 'leisure_fitness_station'] {
+        text-fill: @leisure-green;
+      }
       [feature = 'leisure_dog_park'] {
         text-fill: @leisure-green;
         text-halo-radius: @standard-halo-radius * 1.5; /* Extra halo needed to stand out from paw pattern. */
