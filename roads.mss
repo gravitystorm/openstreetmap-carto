@@ -2798,11 +2798,11 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
       text-fill: #000;
       text-face-name: @book-fonts;
+      text-min-distance: 40;
       text-halo-radius: 2;
       text-halo-fill: @standard-halo-fill;
       text-spacing: 760;
       text-clip: false;
-      text-repeat-distance: @minor-highways-text-repeat-distance;
     }
   }
 
