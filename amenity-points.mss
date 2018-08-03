@@ -1027,6 +1027,10 @@
       }
     }
 
+    [shop = 'paint'][zoom >= 18] {
+      marker-file: url('symbols/shop/paint.svg');
+    }
+
     [shop = 'shoes'][zoom >= 18] {
       marker-file: url('symbols/shop/shoes.svg');
     }
@@ -2508,6 +2512,7 @@
   [feature = 'shop_jewellery'],
   [feature = 'shop_laundry'],
   [feature = 'shop_chemist'],
+  [feature = 'shop_paint'],
   [feature = 'shop_toys'],
   [feature = 'shop_travel_agency'],
   [feature = 'shop_seafood'],
