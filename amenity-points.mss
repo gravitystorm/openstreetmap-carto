@@ -1900,6 +1900,7 @@
   [feature = 'leisure_stadium'],
   [feature = 'leisure_track'],
   [feature = 'leisure_dog_park'],
+  [feature = 'leisure_ice_rink'],
   [feature = 'leisure_pitch'] {
     [zoom >= 10][way_pixels > 3000][is_building = 'no'],
     [zoom >= 17][is_building = 'no'],
@@ -2030,6 +2031,7 @@
       [feature = 'leisure_track'] {
         text-fill: darken(@track, 40%);
       }
+      [feature = 'leisure_ice_rink'],
       [feature = 'leisure_pitch'] {
         text-fill: darken(@pitch, 40%);
       }

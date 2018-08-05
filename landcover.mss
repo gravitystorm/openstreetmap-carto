@@ -270,6 +270,14 @@
     }
   }
 
+  [feature = 'leisure_ice_rink'] {
+    [zoom >= 10] {
+      polygon-fill: @glacier;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+  }
+
   [feature = 'leisure_dog_park'] {
     [zoom >= 10] {
       polygon-fill: @leisure;
