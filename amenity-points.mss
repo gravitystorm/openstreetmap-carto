@@ -834,7 +834,7 @@
   }
 
   [feature = 'shop'] {
-    [shop != 'mall'][zoom >= 17],
+    [shop != 'mall'][shop != 'massage'][zoom >= 17],
     [shop = 'supermarket'][zoom >= 16],
     [shop = 'department_store'][zoom >= 16] {
       marker-placement: interior;
@@ -842,7 +842,7 @@
       marker-fill: @shop-icon;
     }
 
-    [zoom >= 17][zoom < 18][shop != 'supermarket'][shop != 'department_store'][shop != 'mall'] {
+    [zoom >= 17][zoom < 18][shop != 'supermarket'][shop != 'department_store'][shop != 'mall'][shop != 'massage'] {
       marker-width: 4;
       marker-line-width: 0;
     }
@@ -1064,6 +1064,11 @@
 
     [shop = 'interior_decoration'][zoom >= 18] {
       marker-file: url('symbols/shop/interior_decoration.svg');
+    }
+
+    [shop = 'massage'][zoom >= 18] {
+      marker-file: url('symbols/shop/massage.svg');
+      marker-fill: @leisure-green;
     }
     
     [shop = 'medical_supply'][zoom >= 18]{
@@ -2502,6 +2507,7 @@
   [feature = 'shop_perfumery'],
   [feature = 'shop_furniture'],
   [feature = 'shop_kiosk'],
+  [feature = 'shop_massage'],
   [feature = 'shop_medical_supply'],
   [feature = 'shop_mobile_phone'],
   [feature = 'shop_motorcycle'],
@@ -2542,6 +2548,9 @@
       text-placement: interior;
       [feature = 'shop_car_repair'] {
         text-fill: @amenity-brown;
+      }
+      [feature = 'shop_massage'] {
+        text-fill: @leisure-green;
       }
     }
   }
