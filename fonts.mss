@@ -11,7 +11,9 @@ By order:
 Where available the UI version of the fonts – which provides tighter vertical
 metrics – is used (except for the base font, where the UI version is deprecated
 since Noto Phase III, and Sinhala where both versions are used for backwards
-compatibility with Ubuntu 16.04). Most of the list is in alphabetical order,
+compatibility with Ubuntu 16.04). We intent to have all scripts of Noto in
+our list except dead (historic) scripts of whom we assume that they are not
+used in “name” tags in OSM. Most of the list is in alphabetical order,
 but there are some exceptions.
 
   - Noto Sans is before all other fonts
@@ -22,7 +24,7 @@ but there are some exceptions.
     contains. As in Korea Han characters are not so widely used, it seems
     better to default to either Chinese or Japanese. As Chinese exists in the
     two variants SC/TC, it won’t be a uniform rendering anyway. So we default
-    to Japanese. However, this choise stays somewhat arbitrary and subjective.
+    to Japanese. However, this choice stays somewhat arbitrary and subjective.
     See also https://github.com/gravitystorm/openstreetmap-carto/issues/2208)
   - For the Syriac script, there exist Noto Sans Syriac Eastern,
     Noto Sans Syriac Western Regular and Noto Sans Syriac Estrangela Regular.

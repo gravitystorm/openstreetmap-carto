@@ -1,0 +1,20 @@
+# http://EditorConfig.org
+
+root = true
+
+# Defaults apply to all files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 2
+
+# 4 space indentation for Lua and Python
+[*.{lua,py}]
+indent_size = 4
+
+# Leave SVG files alone, we have a mix of tabs and spaces
+[*.svg]
+indent_style = undef
+indent_size = undef

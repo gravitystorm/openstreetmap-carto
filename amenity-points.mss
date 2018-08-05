@@ -47,6 +47,9 @@
     [feature = 'tourism_alpine_hut'] {
       marker-file: url('symbols/alpinehut.svg');
     }
+    [feature = 'amenity_shelter'] {
+      marker-fill: @amenity-brown;
+    }
     marker-fill: @accommodation-icon;
     marker-placement: interior;
     marker-clip: false;
@@ -54,6 +57,13 @@
 
   [feature = 'amenity_atm'][zoom >= 17] {
     marker-file: url('symbols/atm.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'amenity_bureau_de_change'][zoom >= 17] {
+    marker-file: url('symbols/bureau_de_change.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
@@ -285,6 +295,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_casino'][zoom >= 17] {
+    marker-file: url('symbols/casino.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'tourism_hostel'][zoom >= 17] {
     marker-file: url('symbols/hostel.svg');
     marker-placement: interior;
@@ -313,11 +330,33 @@
     marker-clip: false;
   }
 
-  [feature = 'tourism_information'][zoom >= 17] {
-    marker-file: url('symbols/information.12.svg');
-    marker-placement: interior;
-    marker-fill: @amenity-brown;
-    marker-clip: false;
+  [feature = 'tourism_information'][zoom >= 19],
+  [feature = 'tourism_information']["information"='office'][zoom >= 17] {
+    marker-file: url('symbols/tourism/information.svg');
+    [information = 'audioguide'] {
+      marker-file: url('symbols/tourism/audioguide.svg');
+    }    
+    [information = 'board'],
+    [information = 'tactile_model'] {
+      marker-file: url('symbols/tourism/board.svg');
+    }
+    [information = 'guidepost'] {
+      marker-file: url('symbols/tourism/guidepost.svg');
+    }
+    [information = 'office'] {
+      marker-file: url('symbols/tourism/office.svg');
+      marker-fill: @amenity-brown;
+    }
+    [information = 'map'],
+    [information = 'tactile_map'] {
+      marker-file: url('symbols/tourism/map.svg');
+    }
+    [information = 'terminal'] {
+      marker-file: url('symbols/tourism/terminal.svg');
+    }
+      marker-placement: interior;
+      marker-fill: @man-made-icon;
+      marker-clip: false;
   }
 
   [feature = 'amenity_embassy'][zoom >= 17] {
@@ -369,32 +408,30 @@
     marker-clip: false;
   }
 
-  [feature = 'man_made_mast'] {
+  [feature = 'man_made_mast']["tower:type" != 'lighting'],
+  [feature = 'man_made_mast']["tower:type" = 'lighting'][zoom >= 18]   {
     [zoom >= 15][height > 80],
     [zoom >= 16][height > 40],
     [zoom >= 17][height > 20],
     [zoom >= 18] {
-      ["tower:type" != 'lighting'] {
-        marker-file: url('symbols/towers/mast.svg');
-        marker-fill: @man-made-icon;
-        marker-placement: interior;
-        marker-clip: false;
-      }
-      ["tower:type" = 'lighting'][zoom >= 18] {
+      marker-file: url('symbols/towers/mast.svg');
+      marker-fill: @man-made-icon;
+      marker-placement: interior;
+      marker-clip: false;
+      ["tower:type" = 'lighting'] {
         marker-file: url('symbols/towers/mast_lighting.svg');
-        marker-fill: @man-made-icon;
-        marker-placement: interior;
-        marker-clip: false;
-      }
+      }      
       ["tower:type" = 'communication'] {
         marker-file: url('symbols/towers/mast_communications.svg');
       }
     }
   }
 
+  [feature = 'man_made_tower']["tower:type" = 'cooling'][zoom >= 15],
   [feature = 'man_made_tower']["tower:type" = 'lighting'][zoom >= 18],
   [feature = 'man_made_tower']["tower:type" = 'bell_tower'][zoom >= 18],
-  [feature = 'man_made_tower']["tower:type" != 'lighting']["tower:type" != 'bell_tower'] {
+  [feature = 'man_made_tower']["tower:type" = 'watchtower'][zoom >= 18],
+  [feature = 'man_made_tower']["tower:type" != 'cooling']["tower:type" != 'lighting']["tower:type" != 'bell_tower']["tower:type" != 'watchtower'] {
     [zoom >= 13][height > 100],
     [zoom >= 14][height > 50],
     [zoom >= 15][height > 30],
@@ -406,28 +443,69 @@
       ["tower:type" = 'defensive'] {
         marker-file: url('symbols/towers/tower_defensive.svg');
       }
-      ["tower:type" = 'observation'] {
-        marker-file: url('symbols/towers/tower_observation.svg');
+      ["tower:type" = 'observation'],
+      ["tower:type" = 'watchtower'] {
+        marker-file: url('symbols/towers/tower_observation.svg');  
       }
       ["tower:type" = 'bell_tower'] {
         marker-file: url('symbols/towers/bell_tower.svg');
       }
-      ["tower:type" = 'lighting'] {
-        marker-file: url('symbols/towers/tower_lighting.svg');
-        ["tower:construction" = 'lattice'] {
-          marker-file: url('symbols/towers/tower_lattice_lighting.svg');
-        }
+      ["tower:type" = 'cooling'] {
+        marker-file: url('symbols/towers/tower_cooling.svg');
       }
       ["tower:construction" = 'lattice'] {
         marker-file: url('symbols/towers/tower_lattice.svg');
+      }
+      ["tower:construction" = 'dish'] {
+        marker-file: url('symbols/towers/tower_dish.svg');
+      }
+      ["tower:construction" = 'dome'] {
+        marker-file: url('symbols/towers/tower_dome.svg');
       }
       ["tower:type" = 'communication'] {
         marker-file: url('symbols/towers/tower_cantilever_communication.svg');
         ["tower:construction" = 'lattice'] {
           marker-file: url('symbols/towers/tower_lattice_communication.svg');
         }
+        ["tower:construction" = 'dish'] {
+          marker-file: url('symbols/towers/tower_dish.svg');
+        }
+        ["tower:construction" = 'dome'] {
+          marker-file: url('symbols/towers/tower_dome.svg');
+        }
       }
+      ["tower:type" = 'lighting'] {
+        marker-file: url('symbols/towers/tower_lighting.svg');
+        ["tower:construction" = 'lattice'] {
+          marker-file: url('symbols/towers/tower_lattice_lighting.svg');
+        }
+      }   
     }
+  }
+
+  [feature = 'man_made_communications_tower'][zoom >= 13] {
+    marker-file: url('symbols/towers/communications_tower.svg');
+    marker-fill: @man-made-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+  
+  [feature = 'man_made_chimney'] {
+    [zoom >= 16][height > 50],
+    [zoom >= 17][height > 30],
+    [zoom >= 18] {
+      marker-file: url('symbols/towers/chimney.svg');
+      marker-fill: @man-made-icon;
+      marker-placement: interior;
+      marker-clip: false;
+    }
+  }
+
+  [feature = 'historic_city_gate'][zoom >= 17] {
+    marker-file: url('symbols/city_gate.svg');
+    marker-fill: @man-made-icon;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'tourism_museum'][zoom >= 16] {
@@ -810,6 +888,10 @@
       marker-file: url('symbols/shop/butcher.svg');
     }
 
+    [shop = 'charity'][zoom >= 18] {
+      marker-file: url('symbols/shop/charity.svg');
+    }
+
     [shop = 'chemist'][zoom >= 18] {
       marker-file: url('symbols/shop/chemist.svg');
     }
@@ -903,6 +985,10 @@
     [shop = 'hifi'][zoom >= 18] {
       marker-file: url('symbols/shop/hifi.svg');
     }
+    
+    [shop = 'houseware'][zoom >= 18] {
+      marker-file: url('symbols/shop/houseware.svg');
+    }
 
     [shop = 'ice_cream'][zoom >= 18] {
       marker-file: url('symbols/shop/ice_cream.svg');
@@ -941,6 +1027,10 @@
       }
     }
 
+    [shop = 'paint'][zoom >= 18] {
+      marker-file: url('symbols/shop/paint.svg');
+    }
+
     [shop = 'shoes'][zoom >= 18] {
       marker-file: url('symbols/shop/shoes.svg');
     }
@@ -972,6 +1062,10 @@
       marker-file: url('symbols/shop/furniture.svg');
     }
 
+    [shop = 'interior_decoration'][zoom >= 18] {
+      marker-file: url('symbols/shop/interior_decoration.svg');
+    }
+    
     [shop = 'medical_supply'][zoom >= 18]{
       marker-file: url('symbols/shop/medical_supply.svg');
     }
@@ -1014,6 +1108,10 @@
       marker-file: url('symbols/shop/travel_agency.svg');
     }
 
+    [shop = 'second_hand'][zoom >= 18] {
+      marker-file: url('symbols/shop/second_hand.svg');
+    }
+
     [shop = 'sports'][zoom >= 18] {
       marker-file: url('symbols/shop/sports.svg');
     }
@@ -1030,6 +1128,10 @@
       marker-file: url('symbols/shop/tea.svg');
     }
 
+    [shop = 'ticket'][zoom >= 18] {
+      marker-file: url('symbols/shop/ticket.svg');
+    }
+    
     [shop = 'tyres'][zoom >= 18] {
       marker-file: url('symbols/shop/tyres.svg');
     }
@@ -1038,13 +1140,17 @@
       marker-file: url('symbols/shop/variety_store.svg');
     }
 
+    [shop = 'video'][zoom >= 18] {
+      marker-file: url('symbols/shop/video.svg');
+    }
+
     [shop = 'video_games'][zoom >= 18] {
       marker-file: url('symbols/shop/video_games.svg');
     }
   }
 
   [feature = 'advertising_column'][zoom >= 19]{
-      marker-file: url('symbols/advertising/column.svg');
+      marker-file: url('symbols/advertising_column.svg');
       marker-fill: @advertising-grey;
       marker-placement: interior;
       marker-clip: false;
@@ -1143,9 +1249,23 @@
      marker-clip: false;
    }
 
+  [feature = 'leisure_bowling_alley'][zoom >= 17] {
+     marker-file: url('symbols/bowling_alley.svg');
+     marker-fill: @leisure-green;
+     marker-placement: interior;
+     marker-clip: false;
+   }
+
   // Slipway tagging on points - slipway on lines is defined later
   [feature = 'leisure_slipway'][zoom >= 17] {
     marker-file: url('symbols/transport_slipway.p.20.svg');
+    marker-fill: @transportation-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'amenity_boat_rental'][zoom >= 17] {
+    marker-file: url('symbols/boat_rental.svg');
     marker-fill: @transportation-icon;
     marker-placement: interior;
     marker-clip: false;
@@ -1468,6 +1588,7 @@
 
   [feature = 'amenity_car_rental'][zoom >= 17],
   [feature = 'amenity_bicycle_rental'][zoom >= 17],
+  [feature = 'amenity_boat_rental'][zoom >= 17],
   [feature = 'barrier_toll_booth'][zoom >= 17],
   [feature = 'leisure_slipway'][zoom >= 17] {
     text-name: "[name]";
@@ -1477,6 +1598,7 @@
     text-fill: @transportation-text;
     [feature = 'amenity_car_rental']     { text-dy: 10; }
     [feature = 'amenity_bicycle_rental'] { text-dy: 10; }
+    [feature = 'amenity_boat_rental']    { text-dy: 13; }
     [feature = 'barrier_toll_booth']     { text-dy: 13; }
     [feature = 'leisure_slipway']        { text-dy: 13; }
     text-face-name: @standard-font;
@@ -1537,6 +1659,7 @@
   [feature = 'amenity_car_wash'][zoom >= 17],
   [feature = 'amenity_drinking_water'][zoom >= 17],
   [feature = 'tourism_picnic_site'][zoom >= 17],
+  [feature = 'leisure_bowling_alley'][zoom >= 17],
   [feature = 'leisure_beach_resort'][zoom >= 17],
   [feature = 'leisure_picnic_table'][zoom >= 17] {
     text-name: "[name]";
@@ -1545,6 +1668,7 @@
     text-line-spacing: @standard-line-spacing-size;
     text-fill: @amenity-brown;
     [feature = 'tourism_picnic_site'],
+    [feature = 'leisure_bowling_alley'],
     [feature = 'leisure_beach_resort'] {
       text-fill: @leisure-green;
     }
@@ -1600,6 +1724,21 @@
     text-placement: interior;
   }
 
+  [feature = 'tourism_information'][zoom >= 19],
+  [feature = 'tourism_information']["information"='office'][zoom >= 17] {
+      text-name: "[name]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-fill: darken(black, 30%);
+      [information = 'office'] { text-fill: @amenity-brown; }
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+      text-dy: 11;
+  }
+
   [feature = 'waterway_waterfall'] {
     [zoom >= 13][height > 20],
     [zoom >= 14][height > 10],
@@ -1621,25 +1760,31 @@
   [feature = 'man_made_cross'][zoom >= 17],
   [feature = 'historic_wayside_cross'][zoom >= 17],
   [feature = 'historic_wayside_shrine'][zoom >= 17],
+  [feature = 'historic_city_gate'][zoom >= 17],
   [feature = 'natural_cave_entrance'][zoom >= 15],
   [feature = 'man_made_mast'][zoom >= 18],
   [feature = 'man_made_tower'][zoom >= 17],
-  [feature = 'man_made_water_tower'][zoom >= 17] {
+  [feature = 'man_made_communications_tower'][zoom >= 17],
+  [feature = 'man_made_water_tower'][zoom >= 17],
+  [feature = 'man_made_chimney'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: black;
-    [feature = 'natural_cave_entrance'],
-    [feature = 'man_made_water_tower'] {
-      text-dy: 11;
-    }
+    [feature = 'natural_cave_entrance'] { text-dy: 11; }
     [feature = 'man_made_cross'],
     [feature = 'historic_wayside_cross'] {
       text-dy: 6;
     }
-    [feature = 'man_made_mast'] { text-dy: 10; }
-    [feature = 'man_made_tower'] { text-dy: 10; }
+    [feature = 'historic_city_gate'],
+    [feature = 'man_made_mast'],
+    [feature = 'man_made_tower'],
+    [feature = 'man_made_communications_tower'],
+    [feature = 'man_made_water_tower'],
+    [feature = 'man_made_chimney'] { 
+      text-dy: 10;
+    }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
@@ -2020,9 +2165,10 @@
       [feature = 'leisure_stadium'] {
         text-fill: darken(@stadium, 70%);
       }
-      [feature = 'leisure_dog_park'],
       [feature = 'leisure_fitness_centre'],
-      [feature = 'leisure_fitness_station'],
+      [feature = 'leisure_fitness_station'] {
+        text-fill: @leisure-green;
+      }
       [feature = 'leisure_dog_park'] {
         text-fill: @leisure-green;
         text-halo-radius: @standard-halo-radius * 1.5; /* Extra halo needed to stand out from paw pattern. */
@@ -2093,6 +2239,19 @@
     text-face-name: @standard-font;
   }
 
+  [feature = 'amenity_bureau_de_change'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-dy: 10;
+    text-fill: @amenity-brown;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+    text-face-name: @standard-font;
+  }
+
   [feature = 'tourism_alpine_hut'][zoom >= 14],
   [feature = 'amenity_shelter'][zoom >= 17],
   [feature = 'tourism_hotel'][zoom >= 17],
@@ -2120,6 +2279,9 @@
     [feature = 'tourism_camp_site'],
     [feature = 'tourism_caravan_site'] {
       text-dy: 15;
+    }
+    [feature = 'amenity_shelter'] {
+      text-fill: @amenity-brown;
     }
   }
 
@@ -2298,6 +2460,7 @@
   [feature = 'shop_bed'],
   [feature = 'shop_beverages'],
   [feature = 'shop_books'],
+  [feature = 'shop_charity'],
   [feature = 'shop_clothes'],
   [feature = 'shop_coffee'],
   [feature = 'shop_computer'],
@@ -2313,7 +2476,9 @@
   [feature = 'shop_hardware'],
   [feature = 'shop_hairdresser'],
   [feature = 'shop_hifi'],
+  [feature = 'shop_houseware'],
   [feature = 'shop_ice_cream'],
+  [feature = 'shop_interior_decoration'],
   [feature = 'shop_butcher'],
   [feature = 'shop_car'],
   [feature = 'shop_car_repair'],
@@ -2349,15 +2514,19 @@
   [feature = 'shop_jewellery'],
   [feature = 'shop_laundry'],
   [feature = 'shop_chemist'],
+  [feature = 'shop_paint'],
   [feature = 'shop_toys'],
   [feature = 'shop_travel_agency'],
   [feature = 'shop_seafood'],
+  [feature = 'shop_second_hand'],
   [feature = 'shop_sports'],
   [feature = 'shop_stationery'],
   [feature = 'shop_tobacco'],
   [feature = 'shop_tea'],
+  [feature = 'shop_ticket'],
   [feature = 'shop_tyres'],
   [feature = 'shop_variety_store'],
+  [feature = 'shop_video'],
   [feature = 'shop_video_games'],
   [feature = 'shop_wine'],
   [feature = 'shop_other'] {
@@ -2685,6 +2854,19 @@
     [zoom >= 18] { text-dy: 8; }
     [zoom >= 19] { text-dy: 11; }
     [zoom >= 20] { text-dy: 18; }
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+  }
+
+  [feature = 'amenity_casino'][zoom >= 17] {
+    text-name: "[name]";
+    text-fill: @amenity-brown;
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-dy: 10;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
