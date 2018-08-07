@@ -273,6 +273,8 @@
   [feature = 'leisure_ice_rink'] {
     [zoom >= 10] {
       polygon-fill: @glacier;
+      line-width: 0.5;
+      line-color: saturate(darken(@pitch, 30%), 20%);
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
