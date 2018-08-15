@@ -880,6 +880,10 @@
       marker-file: url('symbols/shop/beverages.svg');
     }
 
+    [shop = 'bookmaker'][zoom >= 18] {
+      marker-file: url('symbols/shop/bookmaker.svg');
+    }
+    
     [shop = 'books'][zoom >= 18] {
       marker-file: url('symbols/library.svg');
     }
@@ -2480,6 +2484,7 @@
   [feature = 'shop_beauty'],
   [feature = 'shop_bed'],
   [feature = 'shop_beverages'],
+  [feature = 'shop_bookmaker'],
   [feature = 'shop_books'],
   [feature = 'shop_charity'],
   [feature = 'shop_clothes'],
