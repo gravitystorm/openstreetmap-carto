@@ -1,15 +1,19 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.13.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.14.0...master)
+
+## [v4.14.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.13.0...v4.14.0) - 2018-08-17
 ## Changes
 - Added text-repeat-distance for waterways
 - Added text-repeat-distance for railways
 - Added icon for leisure=bowling_alley
 - Added icon for leisure=outdoor_seating
+- Added icon for leisure=bird_hide
 - Added icon for shop=video
 - Added icon for shop=paint
 - Added icon for shop=massage
 - Increased casing width of tertiary road on z12
-- Updated Docker definitions
 - Standard text halo for fitness_centre and fitness_station
+- Updated Docker images definitions
+- Small documentation updates
 
 ## [v4.13.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.12.0...v4.13.0) - 2018-07-23
 ## Changes
