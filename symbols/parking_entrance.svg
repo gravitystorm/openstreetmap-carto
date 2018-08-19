@@ -1,42 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   width="14"
-   height="14"
-   viewBox="0 0 14 14"
-   id="svg2"
-   version="1.1">
-  <metadata
-     id="metadata10">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs8" />
-  <rect
-     style="fill:none;stroke:none;visibility:hidden"
-     id="canvas"
-     y="0"
-     x="0"
-     height="14"
-     width="14" />
-  <path
-     d="M 0,0 V 10 H 1.3629558 V 5.8333334 H 4.3806715 C 7.8852087,5.8095485 7.8852087,0 4.3806715,0 Z M 1.3629558,1.4583334 V 4.375 L 4.3806715,4.305705 c 1.6403287,-4.853e-4 1.6403287,-2.870955 0,-2.8704696 z"
-     id="path4"
-     style="fill-rule:evenodd;stroke-width:0.80562186" />
-  <path
-     id="path816"
-     d="M 8 6 L 6 8 L 10.308594 11.691406 L 8 14 L 13 14 L 14 14 L 14 13 L 14 8 L 11.691406 10.308594 L 8 6 z "
-     style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-opacity:1" />
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14" height="14" version="1.1" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <path d="m0 0v10h2v-4h2.3807c3.5045-0.023785 3.5045-6 0-6zm2 2.0115v1.9885l2-2.255e-4c1.5622 2.255e-4 1.5728-1.9998 0-2.0115z" fill-rule="evenodd" stroke-width=".80562"/>
+ <path d="m8.3438 6.9297-1.4141 1.4141 3.3633 3.3633-2.293 2.293h4.5859 1.4141v-1.4141-4.5859l-2.293 2.293-3.3633-3.3633z"/>
 </svg>
