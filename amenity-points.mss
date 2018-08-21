@@ -2910,6 +2910,39 @@
     marker-file: url('symbols/transport_slipway.p.20.svg');
     marker-fill: @transportation-icon;
   }
+
+  [feature = 'attraction_water_slide'] {
+    [zoom >= 16] {
+      [zoom >= 17] {
+        bridgecasing/line-color: black;
+        bridgecasing/line-join: round;
+        bridgecasing/line-smooth: 1;
+        bridgecasing/line-width: 1.25;
+        [zoom >= 18] { bridgecasing/line-width: 2.5; }
+        [zoom >= 19] { bridgecasing/line-width: 5; }
+      }
+      line-color: @pitch;
+      line-join: round;
+      line-cap: round;
+      line-smooth: 1;
+      line-width: 1;
+      [zoom >= 18] { line-width: 2; }
+      [zoom >= 19] { line-width: 4; }
+
+      [zoom >= 19] {
+        text-name: "[name]";
+        text-size: 10;
+        text-face-name: @oblique-fonts;
+        text-fill: darken(@pitch, 40%);
+        text-halo-radius: @standard-halo-radius;
+        text-halo-fill: @standard-halo-fill;
+        text-placement: line;
+        text-vertical-alignment: middle;
+        text-repeat-distance: @waterway-text-repeat-distance;
+        text-dy: 8;
+      }
+    }
+  }
 }
 
 #trees [zoom >= 16] {
