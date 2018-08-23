@@ -1140,6 +1140,14 @@
     [shop = 'ticket'][zoom >= 18] {
       marker-file: url('symbols/shop/ticket.svg');
     }
+   
+    [shop = 'trade'][zoom >= 18] {
+      marker-file: url('symbols/shop/trade.svg');
+    } 
+      
+    [shop = 'wholesale'][zoom >= 18] {
+      marker-file: url('symbols/shop/trade.svg');
+    } 
     
     [shop = 'tyres'][zoom >= 18] {
       marker-file: url('symbols/shop/tyres.svg');
@@ -2551,10 +2559,12 @@
   [feature = 'shop_tobacco'],
   [feature = 'shop_tea'],
   [feature = 'shop_ticket'],
+  [feature = 'shop_trade'],
   [feature = 'shop_tyres'],
   [feature = 'shop_variety_store'],
   [feature = 'shop_video'],
   [feature = 'shop_video_games'],
+  [feature = 'shop_wholesale'],
   [feature = 'shop_wine'],
   [feature = 'shop_other'] {
     [way_pixels > 3000][zoom >= 17],
