@@ -9,7 +9,8 @@
 @airtransport: #8461C4; //also ferry_terminal
 @health-color: #da0092;
 @amenity-brown: #734a08;
-@gastronomy: @amenity-brown;
+@gastronomy-icon: #C77400;
+@gastronomy-text: #BA6D00;
 @memorials: @amenity-brown;
 @culture: @amenity-brown;
 @public-service: @amenity-brown;
@@ -78,7 +79,7 @@
 
   [feature = 'amenity_bar'][zoom >= 17] {
     marker-file: url('symbols/bar.svg');
-    marker-fill: @gastronomy;
+    marker-fill: @gastronomy-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -150,7 +151,7 @@
 
   [feature = 'amenity_cafe'][zoom >= 17] {
     marker-file: url('symbols/cafe.svg');
-    marker-fill: @gastronomy;
+    marker-fill: @gastronomy-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -221,7 +222,7 @@
 
   [feature = 'amenity_nightclub'][zoom >= 17] {
     marker-file: url('symbols/nightclub.svg');
-    marker-fill: @gastronomy;
+    marker-fill: @gastronomy-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -325,7 +326,7 @@
 
   [feature = 'amenity_ice_cream'][zoom >= 17] {
     marker-file: url('symbols/shop/ice_cream.svg');
-    marker-fill: @gastronomy;
+    marker-fill: @gastronomy-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -636,14 +637,14 @@
 
   [feature = 'amenity_pub'][zoom >= 17] {
     marker-file: url('symbols/pub.svg');
-    marker-fill: @gastronomy;
+    marker-fill: @gastronomy-icon;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'amenity_biergarten'][zoom >= 17] {
     marker-file: url('symbols/biergarten.svg');
-    marker-fill: @gastronomy;
+    marker-fill: @gastronomy-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -662,14 +663,14 @@
   [feature = 'amenity_restaurant'][zoom >= 17],
   [feature = 'amenity_food_court'][zoom >= 17] {
     marker-file: url('symbols/restaurant.svg');
-    marker-fill: @gastronomy;
+    marker-fill: @gastronomy-icon;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'amenity_fast_food'][zoom >= 17] {
     marker-file: url('symbols/fast_food.svg');
-    marker-fill: @gastronomy;
+    marker-fill: @gastronomy-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1543,7 +1544,7 @@
   [feature = 'amenity_nightclub'] {
     [zoom >= 17] {
       text-name: "[name]";
-      text-fill: @gastronomy;
+      text-fill: @gastronomy-text;
       text-size: @standard-font-size;
       text-wrap-width: @standard-wrap-width;
       text-line-spacing: @standard-line-spacing-size;
