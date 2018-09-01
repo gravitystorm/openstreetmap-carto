@@ -1,19 +1,14 @@
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 
 # Style dependencies
 RUN apt-get update && apt-get install --no-install-recommends -y \
-    unzip curl ca-certificates gnupg python postgresql-client \
-    fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted ttf-unifont \
-    mapnik-utils \
-    && rm -rf /var/lib/apt/lists/*
+    ca-certificates curl gnupg postgresql-client python fonts-hanazono \
+    fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted mapnik-utils \
+    nodejs npm ttf-unifont unzip && rm -rf /var/lib/apt/lists/*
 
-# Node.js 6.x LTS
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash \
-    && apt-get install --no-install-recommends -y nodejs \
-    && rm -rf /var/lib/apt/lists/*
-
-# Kosmtik with plugins
-RUN npm install -g kosmtik
+# Kosmtik with plugins, forcing prefix to /usr because bionic sets
+# npm prefix to /usr/local, which breaks the install
+RUN npm set prefix /usr && npm install -g kosmtik
 
 WORKDIR /usr/lib/node_modules/kosmtik/ 
 RUN kosmtik plugins --install kosmtik-overpass-layer \

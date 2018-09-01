@@ -834,7 +834,7 @@
   }
 
   [feature = 'shop'] {
-    [shop != 'mall'][zoom >= 17],
+    [shop != 'mall'][shop != 'massage'][zoom >= 17],
     [shop = 'supermarket'][zoom >= 16],
     [shop = 'department_store'][zoom >= 16] {
       marker-placement: interior;
@@ -842,7 +842,7 @@
       marker-fill: @shop-icon;
     }
 
-    [zoom >= 17][zoom < 18][shop != 'supermarket'][shop != 'department_store'][shop != 'mall'] {
+    [zoom >= 17][zoom < 18][shop != 'supermarket'][shop != 'department_store'][shop != 'mall'][shop != 'massage'] {
       marker-width: 4;
       marker-line-width: 0;
     }
@@ -880,6 +880,10 @@
       marker-file: url('symbols/shop/beverages.svg');
     }
 
+    [shop = 'bookmaker'][zoom >= 18] {
+      marker-file: url('symbols/shop/bookmaker.svg');
+    }
+    
     [shop = 'books'][zoom >= 18] {
       marker-file: url('symbols/library.svg');
     }
@@ -1027,6 +1031,10 @@
       }
     }
 
+    [shop = 'paint'][zoom >= 18] {
+      marker-file: url('symbols/shop/paint.svg');
+    }
+
     [shop = 'shoes'][zoom >= 18] {
       marker-file: url('symbols/shop/shoes.svg');
     }
@@ -1060,6 +1068,11 @@
 
     [shop = 'interior_decoration'][zoom >= 18] {
       marker-file: url('symbols/shop/interior_decoration.svg');
+    }
+
+    [shop = 'massage'][zoom >= 18] {
+      marker-file: url('symbols/shop/massage.svg');
+      marker-fill: @leisure-green;
     }
     
     [shop = 'medical_supply'][zoom >= 18]{
@@ -1127,6 +1140,14 @@
     [shop = 'ticket'][zoom >= 18] {
       marker-file: url('symbols/shop/ticket.svg');
     }
+   
+    [shop = 'trade'][zoom >= 18] {
+      marker-file: url('symbols/shop/trade.svg');
+    } 
+      
+    [shop = 'wholesale'][zoom >= 18] {
+      marker-file: url('symbols/shop/trade.svg');
+    } 
     
     [shop = 'tyres'][zoom >= 18] {
       marker-file: url('symbols/shop/tyres.svg');
@@ -1247,6 +1268,20 @@
 
   [feature = 'leisure_bowling_alley'][zoom >= 17] {
      marker-file: url('symbols/bowling_alley.svg');
+     marker-fill: @leisure-green;
+     marker-placement: interior;
+     marker-clip: false;
+   }
+
+  [feature = 'leisure_outdoor_seating'][zoom >= 19] {
+     marker-file: url('symbols/outdoor_seating.svg');
+     marker-fill: @leisure-green;
+     marker-placement: interior;
+     marker-clip: false;
+   }
+
+  [feature = 'leisure_bird_hide'][zoom >= 17] {
+     marker-file: url('symbols/bird_hide.svg');
      marker-fill: @leisure-green;
      marker-placement: interior;
      marker-clip: false;
@@ -1657,6 +1692,8 @@
   [feature = 'tourism_picnic_site'][zoom >= 17],
   [feature = 'leisure_bowling_alley'][zoom >= 17],
   [feature = 'leisure_beach_resort'][zoom >= 17],
+  [feature = 'leisure_bird_hide'][zoom >= 17],
+  [feature = 'leisure_outdoor_seating'][zoom >= 19],
   [feature = 'leisure_picnic_table'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
@@ -1664,7 +1701,9 @@
     text-line-spacing: @standard-line-spacing-size;
     text-fill: @amenity-brown;
     [feature = 'tourism_picnic_site'],
+    [feature = 'leisure_outdoor_seating'],
     [feature = 'leisure_bowling_alley'],
+    [feature = 'leisure_bird_hide'],
     [feature = 'leisure_beach_resort'] {
       text-fill: @leisure-green;
     }
@@ -2453,6 +2492,7 @@
   [feature = 'shop_beauty'],
   [feature = 'shop_bed'],
   [feature = 'shop_beverages'],
+  [feature = 'shop_bookmaker'],
   [feature = 'shop_books'],
   [feature = 'shop_charity'],
   [feature = 'shop_clothes'],
@@ -2498,6 +2538,7 @@
   [feature = 'shop_perfumery'],
   [feature = 'shop_furniture'],
   [feature = 'shop_kiosk'],
+  [feature = 'shop_massage'],
   [feature = 'shop_medical_supply'],
   [feature = 'shop_mobile_phone'],
   [feature = 'shop_motorcycle'],
@@ -2508,6 +2549,7 @@
   [feature = 'shop_jewellery'],
   [feature = 'shop_laundry'],
   [feature = 'shop_chemist'],
+  [feature = 'shop_paint'],
   [feature = 'shop_toys'],
   [feature = 'shop_travel_agency'],
   [feature = 'shop_seafood'],
@@ -2517,10 +2559,12 @@
   [feature = 'shop_tobacco'],
   [feature = 'shop_tea'],
   [feature = 'shop_ticket'],
+  [feature = 'shop_trade'],
   [feature = 'shop_tyres'],
   [feature = 'shop_variety_store'],
   [feature = 'shop_video'],
   [feature = 'shop_video_games'],
+  [feature = 'shop_wholesale'],
   [feature = 'shop_wine'],
   [feature = 'shop_other'] {
     [way_pixels > 3000][zoom >= 17],
@@ -2537,6 +2581,9 @@
       text-placement: interior;
       [feature = 'shop_car_repair'] {
         text-fill: @amenity-brown;
+      }
+      [feature = 'shop_massage'] {
+        text-fill: @leisure-green;
       }
     }
   }
@@ -2877,6 +2924,39 @@
   [feature = 'leisure_slipway'][zoom >= 17] {
     marker-file: url('symbols/transport_slipway.p.20.svg');
     marker-fill: @transportation-icon;
+  }
+
+  [feature = 'attraction_water_slide'] {
+    [zoom >= 16] {
+      [zoom >= 17] {
+        bridgecasing/line-color: black;
+        bridgecasing/line-join: round;
+        bridgecasing/line-smooth: 1;
+        bridgecasing/line-width: 1.25;
+        [zoom >= 18] { bridgecasing/line-width: 2.5; }
+        [zoom >= 19] { bridgecasing/line-width: 5; }
+      }
+      line-color: @pitch;
+      line-join: round;
+      line-cap: round;
+      line-smooth: 1;
+      line-width: 1;
+      [zoom >= 18] { line-width: 2; }
+      [zoom >= 19] { line-width: 4; }
+
+      [zoom >= 19] {
+        text-name: "[name]";
+        text-size: 10;
+        text-face-name: @oblique-fonts;
+        text-fill: darken(@pitch, 40%);
+        text-halo-radius: @standard-halo-radius;
+        text-halo-fill: @standard-halo-fill;
+        text-placement: line;
+        text-vertical-alignment: middle;
+        text-repeat-distance: @waterway-text-repeat-distance;
+        text-dy: 8;
+      }
+    }
   }
 }
 

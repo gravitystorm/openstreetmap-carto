@@ -2,7 +2,7 @@
 
 [Docker](https://docker.com) is a virtualized environment running a [_Docker demon_](https://docs.docker.com/engine/docker-overview), in which you can run software without altering your host system permanently. The software components run in _containers_ that are easy to setup and tear down individually. The Docker demon can use operating-system-level virtualization (Linux, Windows) or a virtual machine (macOS, Windows).
 
-This allows to set up a development environment for openstreetmap-carto easily. Specifically, this environment consists of a
+This allows to set up a development environment for OpenStreetMap Carto easily. Specifically, this environment consists of a
 PostgreSQL database to store the OpenStreetMap data and [Kosmtik](https://github.com/kosmtik/kosmtik) for previewing the style.
 
 ## Prerequisites
@@ -28,13 +28,13 @@ Read on below to get the details.
 
 ## Repositories
 
-Instructions above will clone main openstreetmap-carto repository. To test your own changes you should [fork](https://help.github.com/articles/fork-a-repo/) gravitystorm/openstreetmap-carto repository and [clone your fork](https://help.github.com/articles/cloning-a-repository/).
+Instructions above will clone main OpenStreetMap Carto repository. To test your own changes you should [fork](https://help.github.com/articles/fork-a-repo/) gravitystorm/openstreetmap-carto repository and [clone your fork](https://help.github.com/articles/cloning-a-repository/).
 
-This openstreetmap-carto repository needs to be a directory that is shared between your host system and the Docker virtual machine. Home directories are shared by default; if your repository is in another place you need to add this to the Docker sharing list (e.g. macOS: Docker Preferences > File Sharing; Windows: Docker Settings > Shared Drives).
+This OpenStreetMap Carto repository needs to be a directory that is shared between your host system and the Docker virtual machine. Home directories are shared by default; if your repository is in another place you need to add this to the Docker sharing list (e.g. macOS: Docker Preferences > File Sharing; Windows: Docker Settings > Shared Drives).
 
 ## Importing data
 
-openstreetmap-carto needs a database populated with rendering data to work. You first need a data file to import.
+OpenStreetMap Carto needs a database populated with rendering data to work. You first need a data file to import.
 It's probably easiest to grab an PBF of OSM data from [Geofabrik](https://download.geofabrik.de/).
 Once you have that file put it into the openstreetmap-carto directory and run `docker-compose up import` in the openstreetmap-carto directory.
 This starts the PostgreSQL container (downloads it if it not exists) and starts a container that runs [osm2pgsql](https://github.com/openstreetmap/osm2pgsql) to import the data. The container is built the first time you run that command if it not exists.
@@ -55,7 +55,7 @@ docker-compose up import
 
 Variables will be remembered in `.env` if you don't have that file, and values in the file will be applied unless you manually assign them.
 
-Depending on your machine and the size of the extract the import can take a while. When it is finished you should have the data necessary to render it with openstreetmap-carto.
+Depending on your machine and the size of the extract the import can take a while. When it is finished you should have the data necessary to render it with OpenStreetMap Carto.
 
 ## Test rendering
 
