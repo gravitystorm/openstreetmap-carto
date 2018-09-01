@@ -558,6 +558,7 @@ Layer:
     properties:
       group-by: layernotnull
       minzoom: 10
+      cache-features: true
   - id: landuse-overlay
     geometry: polygon
     <<: *extents
@@ -803,6 +804,7 @@ Layer:
         ) AS roads_casing
     properties:
       minzoom: 10
+      cache-features: true
   - id: highway-area-fill
     # FIXME: No geometry?
     <<: *extents
@@ -957,6 +959,7 @@ Layer:
         ) AS roads_fill
     properties:
       minzoom: 10
+      cache-features: true
   - id: turning-circle-fill
     geometry: point
     <<: *extents
@@ -1011,6 +1014,7 @@ Layer:
         ) AS turning_circle_fill_outer_query
     properties:
       minzoom: 15
+      cache-features: true
   - id: aerialways
     geometry: linestring
     <<: *extents
@@ -1067,6 +1071,7 @@ Layer:
     properties:
       minzoom: 6
       maxzoom: 9
+      cache-features: true
   - id: waterway-bridges
     class: water-lines
     geometry: linestring
@@ -1217,6 +1222,7 @@ Layer:
     properties:
       group-by: layernotnull
       minzoom: 10
+      cache-features: true
   - id: guideways
     geometry: linestring
     <<: *extents
@@ -1288,6 +1294,7 @@ Layer:
         ) AS aeroways
     properties:
       minzoom: 11
+      cache-features: true
   - id: admin-low-zoom
     geometry: linestring
     <<: *extents
