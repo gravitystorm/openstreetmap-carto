@@ -1287,6 +1287,13 @@
      marker-clip: false;
    }
 
+  [feature = 'leisure_amusement_arcade'][zoom >= 17] {
+     marker-file: url('symbols/amusement_arcade.svg');
+     marker-fill: @leisure-green;
+     marker-placement: interior;
+     marker-clip: false;
+   }
+
   // Slipway tagging on points - slipway on lines is defined later
   [feature = 'leisure_slipway'][zoom >= 17] {
     marker-file: url('symbols/transport_slipway.p.20.svg');
@@ -1693,6 +1700,7 @@
   [feature = 'leisure_bowling_alley'][zoom >= 17],
   [feature = 'leisure_beach_resort'][zoom >= 17],
   [feature = 'leisure_bird_hide'][zoom >= 17],
+  [feature = 'leisure_amusement_arcade'][zoom >= 17],
   [feature = 'leisure_outdoor_seating'][zoom >= 19],
   [feature = 'leisure_picnic_table'][zoom >= 17] {
     text-name: "[name]";
@@ -1704,6 +1712,7 @@
     [feature = 'leisure_outdoor_seating'],
     [feature = 'leisure_bowling_alley'],
     [feature = 'leisure_bird_hide'],
+    [feature = 'leisure_amusement_arcade'],
     [feature = 'leisure_beach_resort'] {
       text-fill: @leisure-green;
     }
