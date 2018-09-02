@@ -794,9 +794,9 @@
     marker-clip: false;
   }
 
-  [feature = 'historic_castle'][castle_type != 'stately'][zoom >= 15],
+  [feature = 'historic_castle'][castle_type != 'stately'][zoom >= 16],
   [feature = 'historic_castle'][castle_type = 'stately'][zoom >= 16],
-  [feature = 'historic_manor'][zoom >= 15] {
+  [feature = 'historic_manor'][zoom >= 16] {
     marker-file: url('symbols/historic/castle.svg');
     marker-fill: @memorials;
     marker-placement: interior;
