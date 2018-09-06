@@ -550,12 +550,15 @@ Layer:
             z_order,
             CASE WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
             CASE WHEN feature IN ('railway_INT-preserved-ssy', 'railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
+            CASE WHEN feature IN ('highway_road') THEN 0 ELSE 1 END,
+            CASE WHEN feature IN ('highway_platform', 'railway_platform') THEN 0 ELSE 1 END,
             CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END,
             CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
         ) AS tunnels
     properties:
       group-by: layernotnull
       minzoom: 10
+      cache-features: true
   - id: landuse-overlay
     geometry: polygon
     <<: *extents
@@ -794,11 +797,14 @@ Layer:
             z_order,
             CASE WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
             CASE WHEN feature IN ('railway_INT-preserved-ssy', 'railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
+            CASE WHEN feature IN ('highway_road') THEN 0 ELSE 1 END,
+            CASE WHEN feature IN ('highway_platform', 'railway_platform') THEN 0 ELSE 1 END,
             CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END,
             CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
         ) AS roads_casing
     properties:
       minzoom: 10
+      cache-features: true
   - id: highway-area-fill
     # FIXME: No geometry?
     <<: *extents
@@ -816,7 +822,13 @@ Layer:
                               AND (covered NOT IN ('yes') OR covered IS NULL))
                               THEN railway ELSE NULL END)),
               (('aeroway_' || CASE WHEN aeroway IN ('runway', 'taxiway', 'helipad') THEN aeroway ELSE NULL END))
-            ) AS feature
+            ) AS feature,
+            CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
+                                  'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow') THEN 'unpaved'
+              WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
+                                  'concrete:plates', 'paving_stones', 'metal', 'wood', 'unhewn_cobblestone') THEN 'paved'
+              ELSE NULL
+            END AS int_surface
           FROM planet_osm_polygon
           WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'living_street', 'track', 'path', 'platform', 'services')
             OR (railway IN ('platform') 
@@ -897,7 +909,12 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
-                'null' AS surface, -- Should be a SQL NULL?
+                CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
+                                      'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow') THEN 'unpaved'
+                  WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
+                                      'concrete:plates', 'paving_stones', 'metal', 'wood', 'unhewn_cobblestone') THEN 'paved'
+                  ELSE NULL
+                END AS int_surface,
                 CASE
                   WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
@@ -914,17 +931,35 @@ Layer:
                 AND (covered IS NULL OR NOT covered = 'yes')
                 AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
                 AND railway IS NOT NULL -- end of rail select
+            UNION ALL
+            (SELECT
+                ST_MakeEnvelope(-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244, 900913) AS way,
+                'globalboundingbox' AS feature,
+                NULL AS horse,
+                NULL AS foot,
+                NULL AS bicycle,
+                NULL AS tracktype,
+                NULL AS surface,
+                NULL AS access,
+                NULL AS construction,
+                NULL AS service,
+                NULL AS link,
+                NULL AS layernotnull,
+                NULL AS z_order
+            )
             ) AS features
           ORDER BY
-            layernotnull,
             z_order,
             CASE WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
             CASE WHEN feature IN ('railway_INT-preserved-ssy', 'railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
+            CASE WHEN feature IN ('highway_road') THEN 0 ELSE 1 END,
+            CASE WHEN feature IN ('highway_platform', 'railway_platform') THEN 0 ELSE 1 END,
             CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END,
             CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
         ) AS roads_fill
     properties:
       minzoom: 10
+      cache-features: true
   - id: turning-circle-fill
     geometry: point
     <<: *extents
@@ -932,27 +967,54 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            DISTINCT on (p.way)
-            p.way AS way, l.highway AS int_tc_type,
-            CASE WHEN l.service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
-              ELSE 'INT-normal'::text END AS int_tc_service
-          FROM planet_osm_point p
-            JOIN planet_osm_line l
-              ON ST_DWithin(p.way, l.way, 0.1)
-            JOIN (VALUES
-              ('tertiary', 1),
-              ('unclassified', 2),
-              ('residential', 3),
-              ('living_street', 4),
-              ('service', 5),
-              ('track', 6)
-            ) AS v (highway, prio)
-              ON v.highway=l.highway
-          WHERE p.highway = 'turning_circle' OR p.highway = 'turning_loop'
-          ORDER BY p.way, v.prio
-        ) AS turning_circle_fill
+          way,
+          feature,
+          int_tc_type,
+          int_surface,
+          int_tc_service
+        FROM
+          (SELECT DISTINCT on (p.way)
+              p.way AS way,
+              NULL::TEXT AS feature,
+              l.highway AS int_tc_type,
+              CASE
+                WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
+                    'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow') THEN 'unpaved'
+                WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
+                                 'concrete:plates', 'paving_stones', 'metal', 'wood', 'unhewn_cobblestone') THEN 'paved'
+                ELSE NULL
+              END AS int_surface,
+              CASE
+                WHEN l.service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
+                ELSE 'INT-normal'::text
+              END AS int_tc_service
+            FROM planet_osm_point p
+              JOIN planet_osm_line l
+                ON ST_DWithin(p.way, l.way, 0.1)
+              JOIN (VALUES
+                ('tertiary', 1),
+                ('unclassified', 2),
+                ('residential', 3),
+                ('living_street', 4),
+                ('service', 5),
+                ('track', 6)
+              ) AS v (highway, prio)
+                ON v.highway=l.highway
+            WHERE p.highway = 'turning_circle' OR p.highway = 'turning_loop'
+            ORDER BY p.way, v.prio
+          ) AS turning_circle_fill_inner_query
+          UNION ALL
+          (SELECT
+              ST_MakeEnvelope(-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244, 900913) AS way,
+              'globalboundingbox' AS feature,
+              NULL AS int_tc_type,
+              NULL AS int_surface,
+              NULL AS int_tc_service
+          )
+        ) AS turning_circle_fill_outer_query
     properties:
       minzoom: 15
+      cache-features: true
   - id: aerialways
     geometry: linestring
     <<: *extents
@@ -988,17 +1050,28 @@ Layer:
               WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
                                   'concrete:plates', 'paving_stones', 'metal', 'wood', 'unhewn_cobblestone') THEN 'paved'
               ELSE NULL
-            END AS int_surface
+            END AS int_surface,
+            z_order
           FROM planet_osm_roads
           WHERE highway IS NOT NULL
             OR (railway IS NOT NULL AND railway != 'preserved'
               AND (service IS NULL OR service NOT IN ('spur', 'siding', 'yard')))
+        UNION ALL
+        (SELECT
+            ST_MakeEnvelope(-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244, 900913) AS way,
+            'globalboundingbox' AS feature,
+            NULL AS int_tunnel,
+            NULL AS link,
+            NULL AS int_surface,
+            NULL AS z_order
+        )
           ORDER BY
             z_order
         ) AS roads_low_zoom
     properties:
       minzoom: 6
       maxzoom: 9
+      cache-features: true
   - id: waterway-bridges
     class: water-lines
     geometry: linestring
@@ -1043,7 +1116,8 @@ Layer:
             link,
             layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
-            SELECT
+            WITH features_real AS ( -- this is the actual data (which is used both as is and to determine the distinct layer values present in it)
+              SELECT
                 way,
                 'highway_' || highway AS feature, --only motorway to tertiary links are accepted later on
                 horse,
@@ -1074,6 +1148,40 @@ Layer:
               FROM planet_osm_line
               WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
                 AND highway IS NOT NULL -- end of road select
+                AND way && !bbox!
+            )
+            SELECT
+                way,
+                feature,
+                horse,
+                foot,
+                bicycle,
+                tracktype,
+                int_surface,
+                access,
+                construction,
+                service,
+                link,
+                layernotnull,
+                z_order
+              FROM features_real
+            UNION ALL
+            SELECT
+                ST_MakeEnvelope(-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244, 900913) AS way,
+                'globalboundingbox' AS feature,
+                NULL AS horse,
+                NULL AS foot,
+                NULL AS bicycle,
+                NULL AS tracktype,
+                NULL AS surface,
+                NULL AS access,
+                NULL AS construction,
+                NULL AS service,
+                NULL AS link,
+                layernotnull,
+                NULL AS z_order
+              FROM
+                (SELECT DISTINCT layernotnull FROM features_real) AS layers_list
             UNION ALL
             SELECT
                 way,
@@ -1099,18 +1207,22 @@ Layer:
               FROM planet_osm_line
               WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
                 AND railway IS NOT NULL -- end of rail select
+                AND way && !bbox!
             ) AS features
           ORDER BY
             layernotnull,
             z_order,
             CASE WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
             CASE WHEN feature IN ('railway_INT-preserved-ssy', 'railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
+            CASE WHEN feature IN ('highway_road') THEN 0 ELSE 1 END,
+            CASE WHEN feature IN ('highway_platform', 'railway_platform') THEN 0 ELSE 1 END,
             CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END,
             CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
         ) AS bridges
     properties:
       group-by: layernotnull
       minzoom: 10
+      cache-features: true
   - id: guideways
     geometry: linestring
     <<: *extents
@@ -1148,16 +1260,41 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
+          way,
+          feature,
+          aeroway,
+          bridge,
+          int_surface
+        FROM 
+          (SELECT
             way,
+            NULL as feature,
             aeroway,
-            bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct') AS bridge
+            bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct') AS bridge,
+            CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
+                                  'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow') THEN 'unpaved'
+              WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
+                                  'concrete:plates', 'paving_stones', 'metal', 'wood', 'unhewn_cobblestone') THEN 'paved'
+              ELSE NULL
+            END AS int_surface
           FROM planet_osm_line
           WHERE aeroway IN ('runway', 'taxiway')
+          UNION ALL
+          (SELECT
+              ST_MakeEnvelope(-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244, 900913) AS way,
+              'globalboundingbox' AS feature,
+              NULL AS aeroway,
+              NULL AS bridge,
+              NULL AS int_surface
+          )
+          ) AS features
           ORDER BY bridge NULLS FIRST,
-            CASE WHEN aeroway = 'runway' THEN 10 ELSE 0 END
+            CASE WHEN aeroway = 'runway' THEN 10 ELSE 0 END,
+            CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
         ) AS aeroways
     properties:
       minzoom: 11
+      cache-features: true
   - id: admin-low-zoom
     geometry: linestring
     <<: *extents
