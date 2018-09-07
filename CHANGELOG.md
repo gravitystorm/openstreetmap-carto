@@ -1,4 +1,56 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.11.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.14.0...master)
+
+## [v4.14.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.13.0...v4.14.0) - 2018-08-17
+## Changes
+- Added text-repeat-distance for waterways
+- Added text-repeat-distance for railways
+- Added icon for leisure=bowling_alley
+- Added icon for leisure=outdoor_seating
+- Added icon for leisure=bird_hide
+- Added icon for shop=video
+- Added icon for shop=paint
+- Added icon for shop=massage
+- Increased casing width of tertiary road on z12
+- Standard text halo for fitness_centre and fitness_station
+- Updated Docker images definitions
+- Small documentation updates
+
+## [v4.13.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.12.0...v4.13.0) - 2018-07-23
+## Changes
+- Increased shield distances on roads
+- Added icon for shop=ticket
+- Added icon for shop=houseware
+- Added icon for shop=charity 
+- Added icon for shop=second_hand
+- Added icon for shop=interior_decoration
+- Added icon for amenity=bureau_de_change
+- Added icon for amenity=casino
+- Added icon for amenity=boat_rental
+- Updated shop=department_store icon 
+- Small documentation and code fixes
+
+## [v4.12.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.12.0...v4.12.1) - 2018-06-29
+## Changes
+- Stop rendering "surface" tag, which was causing breaking performance issues
+
+## [v4.12.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.11.0...v4.12.0) - 2018-06-22
+### Major changes
+- Dropped subpixel accuracy for areas, which includes tuning some database indexes. When deployed, it might speed up reading data.
+
+### Changes
+- Added rendering “surface” tag on roads with a pattern
+- More vertical objects rendering and tuning (man_made=tower types, man_made=chimney, man_made=communications_tower) 
+- tourism=information types rendering and tuning (information=audioguide, board, guidepost, map, office, tactile_map, tactile_model and terminal)
+- Added rendering for place=quarter
+- Added rendering of historic=city_gate
+- Added rendering of lock_name
+- Ditch and drain name labels are rendered with some offset
+- Pixel aligned ford icon
+- Made amenity=shelter icon brown
+- Finer man_made=pier width rendering
+- Rendering living street tunnels different from residential
+- Added rendering of overground power=cable like power=line
+- Small documentation and code fixes
 
 ## [v4.11.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.10.0...v4.11.0) - 2018-05-11
 ### Changes
