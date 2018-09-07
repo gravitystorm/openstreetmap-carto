@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-<svg width="14" height="14" version="1.1" viewBox="0 0 3.7042 3.7042" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<svg width="14" height="14" version="1.1" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
  <metadata>
   <rdf:RDF>
    <cc:Work rdf:about="">
@@ -10,13 +9,5 @@
    </cc:Work>
   </rdf:RDF>
  </metadata>
- <g transform="translate(0 -293.3)">
-  <g>
-   <rect y="293.3" width="1.0583" height=".52917"/>
-   <rect x="2.6458" y="293.3" width="1.0583" height=".52917"/>
-   <rect x="2.1167" y="293.82" width=".52917" height=".52917"/>
-   <rect x="1.0583" y="293.82" width=".52917" height=".52917"/>
-  </g>
-  <path transform="matrix(.26458 0 0 .26458 0 293.3)" d="m2 4v2h-2v8h2v-4h2v4h2v-4h2v4h2v-4h2v4h2v-8h-2v-2h-10zm2 2h2v2h-2v-2zm4 0h2v2h-2v-2z"/>
- </g>
+ <path d="m11.5 0a2.5 2.5 0 0 0-2.5 2.5 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0-2.5-2.5zm-8.5 4c-1.6569 0-3 1.3431-3 3 5.9691e-5 1.2078 0.7244 2.2978 1.8379 2.7656l0.0039063 0.0019531 10.08 4.1172v-0.001954c0.18305 0.076993 0.37956 0.11678 0.57812 0.11719 0.82843 0 1.5-0.67157 1.5-1.5-1e-3 -0.40703-0.16738-0.79617-0.46094-1.0781-2.4915-2.335-6.2357-4.8668-8.8652-6.9102l-0.0097656-0.0078126v0.0019532c-0.49256-0.32924-1.0716-0.50526-1.6641-0.50586zm0 2a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1z" style="paint-order:markers stroke fill"/>
 </svg>
