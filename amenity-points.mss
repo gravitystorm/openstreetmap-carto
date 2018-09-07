@@ -704,8 +704,7 @@
   }
 
   [feature = 'historic_memorial'][zoom >= 17],
-  [feature = 'historic_memorial_stele'][zoom >= 19],
-  [feature = 'historic_memorial_war_memorial'][zoom >= 19] {
+  [feature = 'historic_memorial_stele'][zoom >= 19] {
     marker-file: url('symbols/memorial/memorial.svg');
     [memorial = 'bust'][zoom >= 19] {
       marker-file: url('symbols/memorial/bust.svg');
