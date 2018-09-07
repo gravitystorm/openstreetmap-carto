@@ -705,20 +705,20 @@
 
   [feature = 'historic_memorial'][zoom >= 17],
   [feature = 'historic_memorial_stele'][zoom >= 19] {
-    marker-file: url('symbols/memorial/memorial.svg');
+    marker-file: url('symbols/historic/memorial.svg');
     [memorial = 'bust'][zoom >= 19] {
-      marker-file: url('symbols/memorial/bust.svg');
+      marker-file: url('symbols/historic/bust.svg');
     }
     [memorial = 'blue_plaque'][zoom >= 19],
     [memorial = 'plaque'][zoom >= 19],
     [memorial = 'stolperstein'][zoom >= 19] {
-      marker-file: url('symbols/memorial/plaque.svg');
+      marker-file: url('symbols/historic/plaque.svg');
     }
     [memorial = 'statue'][zoom >= 19] {
-      marker-file: url('symbols/memorial/statue.svg');
+      marker-file: url('symbols/historic/statue.svg');
     }
     [memorial = 'stone'][zoom >= 19] {
-      marker-file: url('symbols/memorial/stone.svg');
+      marker-file: url('symbols/historic/stone.svg');
     }
     marker-fill: @memorials;
     marker-placement: interior;
@@ -726,14 +726,14 @@
   }
 
   [feature = 'man_made_obelisk'][zoom >= 17] {
-    marker-file: url('symbols/memorial/obelisk.svg');
+    marker-file: url('symbols/historic/obelisk.svg');
     marker-fill: @memorials;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'historic_monument'][zoom >= 16] {
-    marker-file: url('symbols/memorial/monument.svg');
+    marker-file: url('symbols/historic/monument.svg');
     marker-fill: @memorials;
     marker-placement: interior;
     marker-clip: false;
