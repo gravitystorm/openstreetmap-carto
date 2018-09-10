@@ -606,6 +606,14 @@
     marker-clip: false;
   }
 
+  [feature = 'man_made_storage_tank'][zoom >= 18],
+  [feature = 'man_made_silo'][zoom >= 18] {
+    marker-file: url('symbols/man_made/storage_tank.svg');
+    marker-fill: @man-made-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+  
   [feature = 'historic_wayside_shrine'][zoom >= 17] {
     marker-file: url('symbols/historic/shrine.svg');
     marker-fill: @man-made-icon;
@@ -1799,6 +1807,8 @@
   [feature = 'natural_cave_entrance'][zoom >= 15],
   [feature = 'man_made_mast'][zoom >= 18],
   [feature = 'man_made_tower'][zoom >= 17],
+  [feature = 'man_made_storage_tank'][zoom >= 18],
+  [feature = 'man_made_silo'][zoom >= 18],
   [feature = 'man_made_communications_tower'][zoom >= 17],
   [feature = 'man_made_water_tower'][zoom >= 17],
   [feature = 'man_made_chimney'][zoom >= 17] {
@@ -1817,6 +1827,8 @@
     [feature = 'man_made_tower'],
     [feature = 'man_made_communications_tower'],
     [feature = 'man_made_water_tower'],
+    [feature = 'man_made_storage_tank'],
+    [feature = 'man_made_silo'],
     [feature = 'man_made_chimney'] { 
       text-dy: 10;
     }
