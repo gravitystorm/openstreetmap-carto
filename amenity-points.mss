@@ -1811,7 +1811,8 @@
   [feature = 'man_made_silo'][zoom >= 18],
   [feature = 'man_made_communications_tower'][zoom >= 17],
   [feature = 'man_made_water_tower'][zoom >= 17],
-  [feature = 'man_made_chimney'][zoom >= 17] {
+  [feature = 'man_made_chimney'][zoom >= 17],
+  [feature = 'man_made_waste_water_plant'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
@@ -1830,6 +1831,8 @@
     [feature = 'man_made_storage_tank'],
     [feature = 'man_made_silo'],
     [feature = 'man_made_chimney'] { 
+    [feature = 'man_made_water_works'],
+    [feature = 'man_made_wastewater_plant'] { 
       text-dy: 10;
     }
     text-face-name: @standard-font;
@@ -2070,6 +2073,8 @@
   [feature = 'landuse_industrial'],
   [feature = 'landuse_railway'],
   [feature = 'man_made_works'],
+  [feature = 'man_made_water_works'],
+  [feature = 'man_made_wastewater_plant'],
   [feature = 'landuse_commercial'],
   [feature = 'landuse_brownfield'],
   [feature = 'landuse_landfill'],
@@ -2167,6 +2172,8 @@
       }
       [feature = 'landuse_industrial'],
       [feature = 'landuse_railway'],
+      [feature = 'man_made_wastewater_plant'],
+      [feature = 'man_made_water_works'],
       [feature = 'man_made_works'] {
         text-fill: darken(@industrial, 60%);
       }
