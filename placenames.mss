@@ -4,7 +4,8 @@
 @state-labels: desaturate(darken(@admin-boundaries, 5%), 20%);
 
 .country {
-  [zoom >= 3][way_pixels > 1000][way_pixels < 360000] {
+  [zoom >= 3][zoom < 5][way_pixels > 1000], 
+  [zoom >= 5][way_pixels < 360000] {
     text-name: "[name]";
     text-size: 10;
     text-wrap-width: 35; // 3.5 em
