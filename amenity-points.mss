@@ -289,6 +289,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_bicycle_repair_station'][zoom >= 19] {
+    marker-file: url('symbols/amenity/bicycle_repair_station.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_hospital'][zoom >= 15] {
     marker-file: url('symbols/amenity/hospital.svg');
     marker-fill: @health-color;
@@ -2315,6 +2322,18 @@
     text-face-name: @standard-font;
   }
 
+  [feature = 'amenity_bicycle_repair_station'][zoom >= 19] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-dy: 10;
+    text-fill: @amenity-brown;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+    text-face-name: @standard-font;
+  }
   [feature = 'tourism_alpine_hut'][zoom >= 14],
   [feature = 'amenity_shelter'][zoom >= 17],
   [feature = 'tourism_hotel'][zoom >= 17],
