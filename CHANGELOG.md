@@ -4,6 +4,7 @@
 - Changing farmland and societal amenities (like school, hospital etc.) colors to fit better into the overall color systematic
 - Adding rendering for man_made=wastewater_plant and man_made=water_works
 - Adding icon for man_made=storage_tank and man_made=silo
+- Adding icon for amenity=bicycle_repair_station
 - Adding icon for leisure=amusement_arcade
 - Adding icon for shop=bookmaker
 - Adding icon for shop=trade
