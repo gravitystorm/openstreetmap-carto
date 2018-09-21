@@ -1,4 +1,6 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.14.0...master)
+
+## [v4.15.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.14.0...v4.15.0) - 2018-09-21
 ## Changes
 - Changing gastronomy objects color to orange (affects restaurant, fast_food, ice_cream, food_court, bar, cafe, nightclub, pub and biergarten)
 - Changing farmland and societal amenities (like school, hospital etc.) colors to fit better into the overall color systematic
