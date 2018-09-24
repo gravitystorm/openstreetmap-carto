@@ -49,7 +49,7 @@
       marker-file: url('symbols/tourism/alpinehut.svg');
     }
     [feature = 'amenity_shelter'] {
-      marker-fill: @man-made-icon;
+      marker-fill: @amenity-brown;
     }
     marker-fill: @accommodation-icon;
     marker-placement: interior;
@@ -285,6 +285,13 @@
   [feature = 'tourism_apartment'][zoom >= 18] {
     marker-file: url('symbols/tourism/apartment.svg');
     marker-fill: @accommodation-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'amenity_bicycle_repair_station'][zoom >= 19] {
+    marker-file: url('symbols/amenity/bicycle_repair_station.svg');
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -667,17 +674,7 @@
       marker-opacity: 0.33;
     }
   }
-  
-  [feature = 'amenity_recycling'][recycling_type = 'container'][zoom >= 17] {
-    marker-file: url('symbols/amenity/recycling.svg');
-    marker-fill: @man-made-icon;
-    marker-placement: interior;
-    marker-clip: false;
-    [access != ''][access != 'permissive'][access != 'yes'] {
-      marker-opacity: 0.33;
-    }
-  }
-  
+
   [feature = 'amenity_restaurant'][zoom >= 17],
   [feature = 'amenity_food_court'][zoom >= 17] {
     marker-file: url('symbols/amenity/restaurant.svg');
@@ -755,7 +752,7 @@
       marker-line-width: 0;
       marker-placement: interior;
       marker-clip: false;
-      marker-fill: darken(@societal_amenities, 70%);
+      marker-fill: darken(@societal_amenities, 80%);
     }
   }
 
@@ -813,9 +810,10 @@
     marker-clip: false;
   }
 
-  [feature = 'historic_castle'][castle_type != 'stately'][zoom >= 15],
+  [feature = 'historic_castle'][castle_type != 'stately'][castle_type != 'manor'][zoom >= 15],
   [feature = 'historic_castle'][castle_type = 'stately'][zoom >= 16],
-  [feature = 'historic_manor'][zoom >= 15] {
+  [feature = 'historic_castle'][castle_type = 'manor'][zoom >= 16],
+  [feature = 'historic_manor'][zoom >= 16] {
     marker-file: url('symbols/historic/castle.svg');
     marker-fill: @memorials;
     marker-placement: interior;
@@ -1259,7 +1257,7 @@
 
   [feature = 'leisure_picnic_table'][zoom >= 17] {
     marker-file: url('symbols/tourism/picnic.svg');
-    marker-fill: @man-made-icon;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1301,6 +1299,13 @@
 
   [feature = 'leisure_bird_hide'][zoom >= 17] {
      marker-file: url('symbols/leisure/bird_hide.svg');
+     marker-fill: @leisure-green;
+     marker-placement: interior;
+     marker-clip: false;
+   }
+
+  [feature = 'leisure_amusement_arcade'][zoom >= 17] {
+     marker-file: url('symbols/amusement_arcade.svg');
      marker-fill: @leisure-green;
      marker-placement: interior;
      marker-clip: false;
@@ -1426,7 +1431,7 @@
     [access = 'permissive'],
     [access = 'yes'] {
       marker-file: url('symbols/amenity/waste_disposal.svg');
-      marker-fill: @man-made-icon;
+      marker-fill: @amenity-brown;
       marker-placement: interior;
     }
   }
@@ -1509,13 +1514,13 @@
 
   [feature = 'amenity_bench'][zoom >= 19]::amenity {
     marker-file: url('symbols/amenity/bench.svg');
-    marker-fill: @man-made-icon;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
   }
 
   [feature = 'amenity_waste_basket'][zoom >= 19]::amenity {
     marker-file: url('symbols/amenity/waste_basket.svg');
-    marker-fill: @man-made-icon;
+    marker-fill: @amenity-brown;
     marker-placement: interior;
   }
 
@@ -1525,7 +1530,7 @@
     [access = 'permissive'],
     [access = 'yes'] {
       marker-file: url('symbols/amenity/waste_disposal.svg');
-      marker-fill: @man-made-icon;
+      marker-fill: @amenity-brown;
       marker-placement: interior;
     }
   }
@@ -1712,7 +1717,9 @@
   [feature = 'leisure_bowling_alley'][zoom >= 17],
   [feature = 'leisure_beach_resort'][zoom >= 17],
   [feature = 'leisure_bird_hide'][zoom >= 17],
-  [feature = 'leisure_outdoor_seating'][zoom >= 19] {
+  [feature = 'leisure_amusement_arcade'][zoom >= 17],
+  [feature = 'leisure_outdoor_seating'][zoom >= 19],
+  [feature = 'leisure_picnic_table'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
@@ -1722,6 +1729,7 @@
     [feature = 'leisure_outdoor_seating'],
     [feature = 'leisure_bowling_alley'],
     [feature = 'leisure_bird_hide'],
+    [feature = 'leisure_amusement_arcade'],
     [feature = 'leisure_beach_resort'] {
       text-fill: @leisure-green;
     }
@@ -2212,7 +2220,7 @@
       [feature = 'amenity_school'],
       [feature = 'amenity_college'],
       [feature = 'amenity_university'] {
-        text-fill: darken(@societal_amenities, 70%);
+        text-fill: darken(@societal_amenities, 80%);
       }
       [feature = 'natural_heath'] {
         text-fill: darken(@heath, 40%);
@@ -2314,8 +2322,19 @@
     text-face-name: @standard-font;
   }
 
+  [feature = 'amenity_bicycle_repair_station'][zoom >= 19] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-dy: 10;
+    text-fill: @amenity-brown;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+    text-face-name: @standard-font;
+  }
   [feature = 'tourism_alpine_hut'][zoom >= 14],
- [feature = 'leisure_picnic_table'][zoom >= 17],
   [feature = 'amenity_shelter'][zoom >= 17],
   [feature = 'tourism_hotel'][zoom >= 17],
   [feature = 'tourism_motel'][zoom >= 17],
@@ -2343,9 +2362,8 @@
     [feature = 'tourism_caravan_site'] {
       text-dy: 15;
     }
-   [feature = 'leisure_picnic_table'],
-   [feature = 'amenity_shelter'] {
-      text-fill: @man-made-icon;
+    [feature = 'amenity_shelter'] {
+      text-fill: @amenity-brown;
     }
   }
 
@@ -2445,7 +2463,7 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: @man-made-icon;
+    text-fill: @amenity-brown;
     text-dy: 10;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
@@ -2498,7 +2516,7 @@
       text-halo-fill: @standard-halo-fill;
       text-placement: interior;
       text-dy: 8;
-      text-fill: darken(@societal_amenities, 70%);
+      text-fill: darken(@societal_amenities, 80%);
     }
   }
 
