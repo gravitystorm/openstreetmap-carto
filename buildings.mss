@@ -1,40 +1,43 @@
-@building-fill: #d9d0c9; //Lch(84, 5, 70)
-@building-line: darken(@building-fill, 15%);
+@building-fill: lighten(#d9d0c9, 2%);
+@building-line: darken(@building-fill, 18%);
 @building-low-zoom: darken(@building-fill, 4%);
 
-@building-major-fill: darken(@building-fill, 20%);
-@building-major-line: darken(@building-major-fill, 25%);
+@building-major-fill: darken(@building-fill, 8%);
+@building-major-line: darken(@building-line, 4%);
+
+@building-minor-fill: lighten(@building-fill, 4%);
+@building-minor-line: lighten(@building-line, 14%);
 
 @entrance-permissive: darken(@building-line, 15%);
 @entrance-normal: @building-line;
 
 #buildings {
   [zoom >= 13] {
-    polygon-fill: @building-low-zoom;
+    polygon-fill: @building-fill;
+    line-color: @building-line;
     polygon-clip: false;
-    [zoom >= 15] {
-      line-color: @building-line;
-      polygon-fill: @building-fill;
-      line-width: .75;
-      line-clip: false;
-    }
-  }
-}
-
-#buildings-major {
-  [zoom >= 13] {
+    line-width: .75;
+    line-clip: false;
     [aeroway = 'terminal'],
     [amenity = 'place_of_worship'],
     [building = 'train_station'],
     [aerialway = 'station'],
     [public_transport = 'station'] {
       polygon-fill: @building-major-fill;
-      polygon-clip: false;
-      [zoom >= 15] {
-        line-width: .75;
-        line-clip: false;
-        line-color: @building-major-line;
-      }
+      line-color: @building-major-line;
+    }
+    [building = 'garage'],
+    [building = 'garages'],
+    [building = 'carport'],
+    [building = 'shed'],
+    [building = 'greenhouse'],
+    [building = 'farm_auxiliary'],
+    [building = 'construction'],
+    [building = 'service'],
+    [building = 'ger'],
+    [building = 'ruins'] {
+      polygon-fill: @building-minor-fill;
+      line-color: @building-minor-line;
     }
   }
 }
