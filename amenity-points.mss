@@ -565,6 +565,20 @@
     marker-clip: false;
   }
 
+  [feature = 'healthcare'] {
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @health-color;
+      [zoom >= 17] {
+        marker-width: 4;
+        marker-line-width: 0;
+      }
+      [zoom >= 18] {
+        marker-width: 6;
+        marker-line-width: 0;
+      }
+    }
+
   [feature = 'amenity_place_of_worship'][zoom >= 16] {
     marker-file: url('symbols/amenity/place_of_worship.svg');
     marker-fill: #000000;
@@ -2460,7 +2474,8 @@
   [feature = 'amenity_pharmacy'],
   [feature = 'amenity_doctors'],
   [feature = 'amenity_dentist'],
-  [feature = 'amenity_veterinary'] {
+  [feature = 'amenity_veterinary'],
+  [feature = 'healthcare_laboratory'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-size: @standard-font-size;
