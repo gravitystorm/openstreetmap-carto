@@ -310,6 +310,13 @@
     marker-clip: false;
   }
 
+  [feature = 'tourism_gallery'][zoom >= 17] {
+    marker-file: url('symbols/shop/art.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @amenity-brown;
+  }
+
   [feature = 'tourism_hostel'][zoom >= 17] {
     marker-file: url('symbols/tourism/hostel.svg');
     marker-placement: interior;
@@ -2270,32 +2277,6 @@
     }
   }
 
-  [feature = 'amenity_shower'][zoom >= 18] {
-    text-name: "[name]";
-    text-size: @standard-font-size;
-    text-wrap-width: @standard-wrap-width;
-    text-line-spacing: @standard-line-spacing-size;
-    text-dy: 10;
-    text-fill: @amenity-brown;
-    text-halo-radius: @standard-halo-radius;
-    text-halo-fill: @standard-halo-fill;
-    text-placement: interior;
-    text-face-name: @standard-font;
-  }
-
-  [feature = 'amenity_bbq'][zoom >= 17] {
-    text-name: "[name]";
-    text-size: @standard-font-size;
-    text-wrap-width: @standard-wrap-width;
-    text-line-spacing: @standard-line-spacing-size;
-    text-dy: 10;
-    text-fill: @amenity-brown;
-    text-halo-radius: @standard-halo-radius;
-    text-halo-fill: @standard-halo-fill;
-    text-placement: interior;
-    text-face-name: @standard-font;
-  }
-
   [feature = 'amenity_atm'][zoom >= 17] {
     text-name: "[operator]";
     text-size: @standard-font-size;
@@ -2309,19 +2290,10 @@
     text-face-name: @standard-font;
   }
 
-  [feature = 'amenity_bureau_de_change'][zoom >= 17] {
-    text-name: "[name]";
-    text-size: @standard-font-size;
-    text-wrap-width: @standard-wrap-width;
-    text-line-spacing: @standard-line-spacing-size;
-    text-dy: 10;
-    text-fill: @amenity-brown;
-    text-halo-radius: @standard-halo-radius;
-    text-halo-fill: @standard-halo-fill;
-    text-placement: interior;
-    text-face-name: @standard-font;
-  }
-
+  [feature = 'amenity_shower'][zoom >= 18],
+  [feature = 'amenity_bbq'][zoom >= 17],
+  [feature = 'amenity_bureau_de_change'][zoom >= 17],
+  [feature = 'tourism_gallery'][zoom >= 17],
   [feature = 'amenity_bicycle_repair_station'][zoom >= 19] {
     text-name: "[name]";
     text-size: @standard-font-size;
@@ -2334,6 +2306,7 @@
     text-placement: interior;
     text-face-name: @standard-font;
   }
+  
   [feature = 'tourism_alpine_hut'][zoom >= 14],
   [feature = 'amenity_shelter'][zoom >= 17],
   [feature = 'tourism_hotel'][zoom >= 17],
