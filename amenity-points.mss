@@ -565,19 +565,16 @@
     marker-clip: false;
   }
 
-  [feature = 'healthcare'] {
-      marker-placement: interior;
-      marker-clip: false;
-      marker-fill: @health-color;
-      [zoom >= 17] {
-        marker-width: 4;
-        marker-line-width: 0;
-      }
-      [zoom >= 18] {
-        marker-width: 6;
-        marker-line-width: 0;
-      }
+  [feature = 'healthcare'][zoom >= 17] {
+    marker-width: 4;
+    [zoom >= 18] {
+      marker-width: 6;
     }
+    marker-line-width: 0;
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @health-color;
+  }
 
   [feature = 'amenity_place_of_worship'][zoom >= 16] {
     marker-file: url('symbols/amenity/place_of_worship.svg');
@@ -2475,7 +2472,23 @@
   [feature = 'amenity_doctors'],
   [feature = 'amenity_dentist'],
   [feature = 'amenity_veterinary'],
-  [feature = 'healthcare_laboratory'] {
+  [feature = 'healthcare_alternative'], 
+  [feature = 'healthcare_audiologist'], 
+  [feature = 'healthcare_birthing_center'], 
+  [feature = 'healthcare_blood_bank'], 
+  [feature = 'healthcare_blood_donation'], 
+  [feature = 'healthcare_centre'], 
+  [feature = 'healthcare_chiropractor'], 
+  [feature = 'healthcare_laboratory'], 
+  [feature = 'healthcare_midwife'], 
+  [feature = 'healthcare_occupational_therapist'], 
+  [feature = 'healthcare_optometrist'], 
+  [feature = 'healthcare_physiotherapist'], 
+  [feature = 'healthcare_podiatrist'], 
+  [feature = 'healthcare_psychotherapist'],
+  [feature = 'healthcare_rehabilitation'], 
+  [feature = 'healthcare_speech_therapist'], 
+  [feature = 'healthcare_yes'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-size: @standard-font-size;
