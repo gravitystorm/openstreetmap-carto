@@ -1520,6 +1520,7 @@ Layer:
             tags->'tower:type' as "tower:type",
             tags->'castle_type' as castle_type,
             tags->'information' as information,
+            tags->'capacity' as capacity,
             CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'bed', 'bookmaker', 'books', 'butcher', 'clothes', 'computer',
                                'confectionery', 'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist',
                                'garden_centre', 'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet',
@@ -1660,6 +1661,7 @@ Layer:
             tags->'tower:type' as "tower:type",
             tags->'castle_type' as castle_type,
             tags->'information' as information,
+            tags->'capacity' as capacity,
             CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'bed', 'bookmaker', 'books', 'butcher', 'clothes', 'computer',
                                'confectionery', 'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist',
                                'garden_centre', 'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet',
@@ -2498,6 +2500,7 @@ Layer:
               'man_made_' || CASE WHEN man_made IN ('cross') THEN man_made ELSE NULL END,
               'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log') THEN barrier ELSE NULL END
             )  AS feature,
+            tags->'capacity' AS capacity,
             access,
             CASE WHEN amenity IN ('waste_basket', 'waste_disposal') THEN 2 ELSE 1 END AS prio
           FROM planet_osm_point p
@@ -2524,6 +2527,7 @@ Layer:
               'amenity_' || CASE WHEN amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking') THEN amenity ELSE NULL END,
               'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log') THEN barrier ELSE NULL END
             )  AS feature,
+            tags->'capacity' AS capacity,
             access
           FROM planet_osm_polygon p
           WHERE amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking')
