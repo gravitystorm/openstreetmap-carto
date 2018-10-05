@@ -1,27 +1,31 @@
-@building-fill: lighten(#d9d0c9, 2%);
-@building-line: darken(@building-fill, 18%);
-@building-low-zoom: darken(@building-fill, 4%);
+@building-fill: #d9d0c9;
+@building-line: darken(@building-fill, 12%);
+@building-low-zoom: darken(@building-fill, 2%);
 
-@building-major-fill: darken(@building-fill, 8%);
-@building-major-line: darken(@building-line, 4%);
+@building-major-fill: darken(@building-fill, 12%);
+@building-major-line: darken(@building-major-fill, 12%);
 
-@building-minor-fill: lighten(@building-fill, 4%);
-@building-minor-line: lighten(@building-line, 14%);
+@building-minor-fill: lighten(@building-fill, 7%);
+@building-minor-line: darken(@building-minor-fill, 12%);
 
 @entrance-permissive: darken(@building-line, 15%);
 @entrance-normal: @building-line;
 
 #buildings {
   [zoom >= 13] {
-    polygon-fill: @building-fill;
-    line-color: @building-line;
+    polygon-fill: @building-low-zoom;
     polygon-clip: false;
-    line-width: .75;
-    line-clip: false;
-    [aeroway = 'terminal'],
+    line-width: 0;
+    [zoom >= 15] {
+      polygon-fill: @building-fill;
+      line-color: @building-line;
+      line-width: .75;
+      line-clip: false;
+    }
     [amenity = 'place_of_worship'],
-    [building = 'train_station'],
+    [aeroway = 'terminal'],
     [aerialway = 'station'],
+    [building = 'train_station'],
     [public_transport = 'station'] {
       polygon-fill: @building-major-fill;
       line-color: @building-major-line;
