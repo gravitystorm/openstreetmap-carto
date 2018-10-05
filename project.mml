@@ -417,54 +417,6 @@ Layer:
         ) AS bridge
     properties:
       minzoom: 12
-  - id: buildings
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            building
-          FROM planet_osm_polygon
-          WHERE building IS NOT NULL
-            AND building != 'no'
-            AND (aeroway IS NULL OR aeroway != 'terminal')
-            AND (amenity IS NULL OR amenity != 'place_of_worship')
-            AND building != 'train_station'
-            AND (aerialway IS NULL OR aerialway != 'station')
-            AND ((tags->'public_transport') IS NULL OR tags->'public_transport' != 'station')
-            AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-          ORDER BY COALESCE(layer,0), way_area DESC
-        ) AS buildings
-    properties:
-      minzoom: 13
-  - id: buildings-major
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            building,
-            amenity,
-            aeroway,
-            aerialway,
-            tags->'public_transport' as public_transport
-          FROM planet_osm_polygon
-          WHERE building IS NOT NULL
-            AND building != 'no'
-            AND (aeroway = 'terminal'
-                 OR amenity = 'place_of_worship'
-                 OR building = 'train_station'
-                 OR aerialway = 'station'
-                 OR tags->'public_transport' = 'station')
-            AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-          ORDER BY COALESCE(layer,0), way_area DESC)
-        AS buildings_major
-    properties:
-      minzoom: 13
   - id: tunnels
     class: access
     geometry: linestring
@@ -1124,6 +1076,35 @@ Layer:
         ) AS guideways
     properties:
       minzoom: 11
+  - id: buildings
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            building,
+            amenity,
+            aeroway,
+            aerialway,
+            tags->'public_transport' as public_transport,
+            CASE
+              WHEN tags->'building:height' ~ '^\d{1,3}(\.\d+)?( ?m)?$' THEN (SUBSTRING(tags->'building:height', '^(\d{1,3}(\.\d+)?)( ?m)?$'))::NUMERIC
+              ELSE NULL
+            END AS height,
+            CASE
+              WHEN tags->'building:levels' ~ '^\d{1,2}(\.\d+)?$' THEN (tags->'building:levels')::NUMERIC
+              ELSE 1
+            END AS levels
+          FROM planet_osm_polygon
+          WHERE building IS NOT NULL
+            AND building != 'no'
+            AND way_area > 1*!pixel_width!::real*!pixel_height!::real
+          ORDER BY ST_YMax(way) DESC
+        ) AS buildings
+    properties:
+      minzoom: 15
   - id: entrances
     geometry: point
     <<: *extents
