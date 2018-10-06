@@ -643,6 +643,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_vehicle_inspection'][zoom >= 17] {
+    marker-file: url('symbols/amenity/vehicle_inspection.svg');
+    marker-fill: @public-service;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_post_box'][zoom >= 17] {
     marker-file: url('symbols/amenity/post_box.svg');
     marker-fill: @amenity-brown;
@@ -1718,6 +1725,7 @@
     text-placement: interior;
   }
 
+  [feature = 'amenity_vehicle_inspection'][zoom >= 17],
   [feature = 'amenity_car_wash'][zoom >= 17],
   [feature = 'amenity_drinking_water'][zoom >= 17],
   [feature = 'tourism_picnic_site'][zoom >= 17],
