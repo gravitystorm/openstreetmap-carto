@@ -995,6 +995,10 @@
       marker-file: url('symbols/shop/florist.svg');
     }
 
+    [shop = 'food'][zoom >= 18] {
+      marker-file: url('symbols/shop/food.svg');
+    }
+
     [shop = 'garden_centre'][zoom >= 18] {
       marker-file: url('symbols/shop/garden_centre.svg');
     }
@@ -2545,6 +2549,7 @@
   [feature = 'shop_farm'],
   [feature = 'shop_fishmonger'],
   [feature = 'shop_florist'],
+  [feature = 'shop_food'],
   [feature = 'shop_garden_centre'],
   [feature = 'shop_greengrocer'],
   [feature = 'shop_pet'],

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="14"
+   height="14"
+   viewBox="0 0 14 14">
+  <rect
+     width="14"
+     height="14"
+     x="0"
+     y="0"
+     id="canvas"
+     style="fill:none;stroke:none;visibility:hidden" />
+  <path
+     d="m 10,0 c 1,0 3,2 3,5 0,3 -2.25,4 -2.25,4 l 0.5,5 H 8.75 L 9.25,9 C 9.25,9 7,8 7,5 7,2 9,0 10,0 Z M 6,0.75 V 7 C 6,8 4.25,8 4.25,9 l 0.5,5 H 2.25 L 2.75,9 C 2.75,8 1,8 1,7 V 0.75 c 0,-1 1,-1 1,0 V 6 C 2,6.5632885 3,6.5632884 3,6 V 0.75 c 0,-1 1,-1 1,0 V 6 C 4,6.5273339 5,6.5273339 5,6 V 0.75 c 0,-1 1,-1 1,0 z"
+     id="food" />
+</svg>
