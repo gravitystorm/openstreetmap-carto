@@ -9,7 +9,7 @@
 - Adding icon for amenity=bicycle_repair_station
 - Adding icon for leisure=amusement_arcade
 - Adding icon for shop=bookmaker
-- Adding icon for shop=trade
+- Adding icon for shop=trade and shop=wholesale
 - Adding rendering for attraction=water_slide
 - Rendering most of the road links thinner (affects trunk_link, primary_link, secondary_link)
 - Moving manors to z16+
