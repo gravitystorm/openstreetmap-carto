@@ -99,8 +99,8 @@ Layer:
               OR "natural" IN ('wood', 'wetland', 'mud', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland'))
               AND way_area > 1*!pixel_width!::real*!pixel_height!::real
               AND building IS NULL
-            ORDER BY way_area DESC, osm_id
           ) AS features
+          ORDER BY way_area DESC, feature
         ) AS landcover_low_zoom
     properties:
       minzoom: 7
@@ -153,8 +153,8 @@ Layer:
               OR highway IN ('services', 'rest_area')
               OR railway = 'station')
               AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-            ORDER BY way_area DESC, osm_id
           ) AS landcover
+          ORDER BY way_area DESC, feature
         ) AS features
     properties:
       minzoom: 10
