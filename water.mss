@@ -255,7 +255,7 @@
       text-spacing: 400;
       text-size: 10;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill; 
+      text-halo-fill: @standard-halo-fill;
   }
 
   [lock != 'yes'][int_tunnel != 'yes'] {
