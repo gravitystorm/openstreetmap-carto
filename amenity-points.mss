@@ -1209,7 +1209,9 @@
     marker-fill: @office;
   }
 
-  [feature = 'leisure_water_park'][zoom >= 17] {
+  [feature = 'leisure_water_park'][zoom >= 17],
+  [feature = 'leisure_sports_centre'][sport = 'swimming'][zoom >= 17],
+  [feature = 'leisure_swimming_area'][zoom >= 17] {
     marker-file: url('symbols/leisure/water_park.svg');
     marker-placement: interior;
     marker-fill: @leisure-green;
@@ -1914,7 +1916,9 @@
     text-dy: 13;
   }
 
-  [feature = 'leisure_water_park'] {
+  [feature = 'leisure_water_park'],
+  [feature = 'leisure_sports_centre'][sport = 'swimming'],
+  [feature = 'leisure_swimming_area'] {
     [way_area >= 150000][zoom >= 14],
     [way_area >= 80000][zoom >= 15],
     [way_area >= 20000][zoom >= 16],
