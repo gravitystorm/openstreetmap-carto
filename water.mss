@@ -320,6 +320,7 @@
 .text[zoom >= 10] {
   [feature = 'natural_water'],
   [feature = 'natural_bay'],
+  [feature = 'natural_strait'],
   [feature = 'landuse_reservoir'],
   [feature = 'landuse_basin'],
   [feature = 'waterway_dock'] {
