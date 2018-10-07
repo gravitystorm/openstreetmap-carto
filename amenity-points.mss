@@ -96,6 +96,19 @@
     marker-fill: @transportation-icon;
     marker-placement: interior;
     marker-clip: false;
+    [zoom >= 18] {
+      text-name: "[capacity]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-fill: @transportation-text;
+      text-dy: -0.5;
+      text-dx: 8;
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+    }
   }
 
   [feature = 'highway_bus_stop'] {
@@ -1470,8 +1483,25 @@
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @transportation-icon;
+    [zoom >= 18] {
+      text-name: "[capacity]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-fill: @transportation-text;
+      text-dy: -0.5;
+      text-dx: 8;
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+    }
     [access != ''][access != 'permissive'][access != 'yes'] {
       marker-opacity: 0.33;
+      [zoom >= 18] {
+        text-opacity: 0.33;
+        text-halo-radius: 0;
+      }
     }
   }
 
