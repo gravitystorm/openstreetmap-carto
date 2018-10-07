@@ -109,11 +109,9 @@
 @secondary-link-width-z13:        4;
 @tertiary-width-z13:              4;
 @residential-width-z13:           2.5;
-@service-width-z13:               0.8;
 @living-street-width-z13:         2;
-@pedestrian-width-z13:            2;
 @bridleway-width-z13:             0.3;
-@footway-width-z13:               0.7;
+@footway-width-z14:               0.7;
 @cycleway-width-z13:              0.7;
 @track-width-z13:                 0.5;
 @track-grade1-width-z13:          0.5;
@@ -556,10 +554,9 @@
     }
 
     [feature = 'highway_pedestrian'] {
-      [zoom >= 13] {
+      [zoom >= 14] {
         line-color: @pedestrian-casing;
-        line-width: @pedestrian-width-z13;
-        [zoom >= 14] { line-width: @pedestrian-width-z14; }
+        line-width: @pedestrian-width-z14;
         [zoom >= 15] { line-width: @pedestrian-width-z15; }
         [zoom >= 16] { line-width: @pedestrian-width-z16; }
         [zoom >= 17] { line-width: @pedestrian-width-z17; }
@@ -573,19 +570,20 @@
           line-dasharray: 4,2;
         }
         #bridges {
-          [zoom >= 14] {
-            line-color: @bridge-casing;
-            line-join: round;
-          }
+          line-color: @bridge-casing;
+          line-join: round;
         }
       }
     }
 
     [feature = 'highway_living_street'] {
       [zoom >= 13] {
-        line-color: @living-street-casing;
+        line-color: @residential-casing;
         line-width: @living-street-width-z13;
-        [zoom >= 14] { line-width: @living-street-width-z14; }
+        [zoom >= 14] {
+          line-color: @living-street-casing;
+          line-width: @living-street-width-z14;
+        }
         [zoom >= 15] { line-width: @living-street-width-z15; }
         [zoom >= 16] { line-width: @living-street-width-z16; }
         [zoom >= 17] { line-width: @living-street-width-z17; }
@@ -655,7 +653,7 @@
       #bridges {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
-          line-width: @footway-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
+          line-width: @footway-width-z14 + 2 * (@paths-background-width + @paths-bridge-casing-width);
           [zoom >= 15] { line-width: @footway-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
           [zoom >= 16] { line-width: @footway-width-z16 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
           [zoom >= 18] { line-width: @footway-width-z18 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
@@ -667,7 +665,7 @@
       #tunnels {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
-          line-width: @footway-width-z13 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
+          line-width: @footway-width-z14 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
           [zoom >= 15] { line-width: @footway-width-z15 + 2 * (@paths-background-width + @paths-tunnel-casing-width); }
           [zoom >= 16] { line-width: @footway-width-z16 + 2 * (@paths-background-width + @paths-tunnel-casing-width); }
           [zoom >= 18] { line-width: @footway-width-z18 + 2 * (@paths-background-width + @paths-tunnel-casing-width); }
@@ -859,7 +857,7 @@
       #bridges {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
-          line-width: @footway-width-z13 + 2 * @paths-background-width;
+          line-width: @footway-width-z14 + 2 * @paths-background-width;
           [zoom >= 15] { line-width: @footway-width-z15 + 2 * @paths-background-width; }
           [zoom >= 16] { line-width: @footway-width-z16 + 2 * @paths-background-width; }
           [zoom >= 18] { line-width: @footway-width-z18 + 2 * @paths-background-width; }
@@ -869,12 +867,12 @@
         }
       }
       #tunnels {
-        [zoom >= 13][access != 'no'],
+        [zoom >= 14][access != 'no'],
         [zoom >= 15] {
           line-color: @footway-casing;
           line-cap: round;
           line-join: round;
-          line-width: @footway-width-z13 + 2 * @paths-background-width;
+          line-width: @footway-width-z14 + 2 * @paths-background-width;
           [zoom >= 15] { line-width: @footway-width-z15 + 2 * @paths-background-width; }
           [zoom >= 16] { line-width: @footway-width-z16 + 2 * @paths-background-width; }
           [zoom >= 18] { line-width: @footway-width-z18 + 2 * @paths-background-width; }
@@ -1558,10 +1556,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
 
     [feature = 'highway_service'] {
-      [zoom >= 13][service = 'INT-normal'] {
-        line-width: @service-width-z13;
-        line-color: @unimportant-road;
-      }
       [zoom >= 14][service = 'INT-normal'],
       [zoom >= 16][service = 'INT-minor'] {
         line-color: @service-fill;
@@ -1602,9 +1596,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
 
     [feature = 'highway_pedestrian'] {
-      [zoom >= 13] {
-        line-width: @living-street-width-z13 - 2 * @casing-width-z13;
-        [zoom >= 14] { line-width: @pedestrian-width-z14 - 2 * @casing-width-z14; }
+      [zoom >= 14] {
+        line-width: @pedestrian-width-z14 - 2 * @casing-width-z14;
         [zoom >= 15] { line-width: @pedestrian-width-z15 - 2 * @casing-width-z15; }
         [zoom >= 16] { line-width: @pedestrian-width-z16 - 2 * @casing-width-z16; }
         [zoom >= 17] { line-width: @pedestrian-width-z17 - 2 * @casing-width-z17; }
@@ -1612,8 +1605,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         [zoom >= 19] { line-width: @pedestrian-width-z19 - 2 * @casing-width-z19; }
         line-color: @pedestrian-fill;
         #bridges {
-          line-width: @pedestrian-width-z13 - 2 * @casing-width-z13;
-          [zoom >= 14] { line-width: @pedestrian-width-z14 - 2 * @bridge-casing-width-z14; }
+          line-width: @pedestrian-width-z14 - 2 * @bridge-casing-width-z14;
           [zoom >= 15] { line-width: @pedestrian-width-z15 - 2 * @bridge-casing-width-z15; }
           [zoom >= 16] { line-width: @pedestrian-width-z16 - 2 * @bridge-casing-width-z16; }
           [zoom >= 17] { line-width: @pedestrian-width-z17 - 2 * @bridge-casing-width-z17; }
@@ -1696,7 +1688,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
     [feature = 'highway_footway'],
     [feature = 'highway_path'][bicycle != 'designated'][horse != 'designated'] {
-      [zoom >= 13][access != 'no'],
+      [zoom >= 14][access != 'no'],
       [zoom >= 15] {
         #roads-fill[zoom >= 15] {
           background/line-color: @footway-casing;
@@ -1719,7 +1711,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         line/line-dasharray: 1,3;
         line/line-join: round;
         line/line-cap: round;
-        line/line-width: @footway-width-z13;
+        line/line-width: @footway-width-z14;
         [zoom >= 15][int_surface = 'paved'] {
           line/line-dasharray: 2,3.5;
           line/line-width: @footway-width-z15;
@@ -2016,7 +2008,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         line-color: #6E6E6E;
         line-width: 0.75;
         [zoom >= 13] {
-          line-color: #444;
+          line-color: #8E8E8E;
         }
         [zoom >= 14] {
           line-width: 1;
@@ -2400,7 +2392,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
 #highway-area-casing {
   [feature = 'highway_residential'],
-  [feature = 'highway_unclassified'] {
+  [feature = 'highway_unclassified'],
+  [feature = 'highway_service'] {
     [zoom >= 14] {
       line-color: #999;
       line-width: 1;
@@ -2408,17 +2401,16 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   }
 
   [feature = 'highway_pedestrian'],
-  [feature = 'highway_service'],
   [feature = 'highway_footway'],
   [feature = 'highway_cycleway'],
   [feature = 'highway_path'] {
-    [zoom >= 14] {
+    [zoom >= 15] {
       line-color: grey;
       line-width: 1;
     }
   }
 
-  [feature = 'highway_track'][zoom >= 14] {
+  [feature = 'highway_track'][zoom >= 15] {
     line-color: @track-fill;
     line-width: 1;
     line-dasharray: 5,4,2,4;
@@ -2454,12 +2446,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   [feature = 'highway_footway'],
   [feature = 'highway_cycleway'],
   [feature = 'highway_path'] {
-    [zoom >= 14] {
+    [zoom >= 15] {
       polygon-fill: @pedestrian-fill;
     }
   }
 
-  [feature = 'highway_track'][zoom >= 14] {
+  [feature = 'highway_track'][zoom >= 15] {
     polygon-fill: #cdbea0;
   }
 

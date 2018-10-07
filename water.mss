@@ -87,7 +87,7 @@
   [waterway = 'ditch'],
   [waterway = 'drain'] {
     [int_tunnel = 'no'] {
-      [zoom >= 13] {
+      [zoom >= 14] {
         line-width: 2.5;
         line-color: white;
         [waterway = 'stream'][zoom >= 15] {

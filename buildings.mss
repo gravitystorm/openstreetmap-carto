@@ -9,16 +9,12 @@
 @entrance-normal: @building-line;
 
 #buildings {
-  [zoom >= 13] {
-    polygon-fill: @building-low-zoom;
+  [zoom >= 15] {
+    polygon-fill: @building-fill;
     polygon-clip: false;
-    line-width: 0;
-    [zoom >= 15] {
-      polygon-fill: @building-fill;
-      line-color: @building-line;
-      line-width: .75;
-      line-clip: false;
-    }
+    line-color: @building-line;
+    line-width: .75;
+    line-clip: false;
     [amenity = 'place_of_worship'],
     [aeroway = 'terminal'],
     [aerialway = 'station'],
