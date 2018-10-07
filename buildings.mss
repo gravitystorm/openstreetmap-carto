@@ -30,14 +30,22 @@
       polygon-fill: @building-major-fill;
       line-color: @building-major-line;
     }
+    [building = 'roof'],
+    [building = 'construction'],
+    [building = 'damaged'],
+    [building = 'collapsed'],
+    [building = 'underground'],
+    [building = 'service'],
+    [building = 'slurry_tank'],
+    [building = 'shed'],
     [building = 'garage'],
     [building = 'garages'],
-    [building = 'carport'],
-    [building = 'shed'],
-    [building = 'greenhouse'],
     [building = 'farm_auxiliary'],
-    [building = 'construction'],
-    [building = 'service'],
+    [building = 'carport'],
+    [building = 'barn'],
+    [building = 'stable'],
+    [building = 'cowshed'],
+    [building = 'greenhouse'],
     [building = 'ger'],
     [building = 'ruins'] {
       polygon-fill: @building-minor-fill;
