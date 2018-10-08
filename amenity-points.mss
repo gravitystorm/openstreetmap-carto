@@ -759,7 +759,7 @@
       marker-line-width: 0;
       marker-placement: interior;
       marker-clip: false;
-      marker-fill: darken(@societal_amenities, 70%);
+      marker-fill: darken(@societal_amenities, 80%);
     }
   }
 
@@ -2231,7 +2231,7 @@
       [feature = 'amenity_school'],
       [feature = 'amenity_college'],
       [feature = 'amenity_university'] {
-        text-fill: darken(@societal_amenities, 70%);
+        text-fill: darken(@societal_amenities, 80%);
       }
       [feature = 'natural_heath'] {
         text-fill: darken(@heath, 40%);
@@ -2493,7 +2493,7 @@
       text-halo-fill: @standard-halo-fill;
       text-placement: interior;
       text-dy: 8;
-      text-fill: darken(@societal_amenities, 70%);
+      text-fill: darken(@societal_amenities, 80%);
     }
   }
 
