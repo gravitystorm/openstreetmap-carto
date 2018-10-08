@@ -410,7 +410,7 @@
       }
     }
   }
-  
+
   [feature = 'man_made_water_works'] {
     polygon-fill: @industrial;
     [zoom >= 15] {
@@ -424,7 +424,7 @@
       }
     }
   }
-  
+
   [feature = 'landuse_railway'][zoom >= 10] {
     polygon-fill: @railway;
     [zoom >= 16][name != ''] {
@@ -585,12 +585,12 @@
   [feature = 'amenity_fire_station'][zoom >= 13],
   [feature = 'amenity_police'][zoom >= 13] {
     polygon-fill: #F3E3DD;
-    line-color: @military; 
+    line-color: @military;
     line-opacity: 0.24;
-    line-width: 1.0; 
+    line-width: 1.0;
     line-offset: -0.5;
     [zoom >= 15] {
-      line-width: 2; 
+      line-width: 2;
       line-offset: -1.0;
     }
   }
