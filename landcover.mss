@@ -28,7 +28,7 @@
 // --- Transport ----
 
 @transportation-area: #e9e7e2;
-@apron: #dadae0;
+@apron: #e9d1ff;
 @garages: #dfddce;
 @parking: #eeeeee;
 @parking-outline: saturate(darken(@parking, 40%), 20%);
