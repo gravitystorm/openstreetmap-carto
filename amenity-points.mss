@@ -351,8 +351,7 @@
     [information = 'audioguide'] {
       marker-file: url('symbols/tourism/audioguide.svg');
     }    
-    [information = 'board'],
-    [information = 'tactile_model'] {
+    [information = 'board'] {
       marker-file: url('symbols/tourism/board.svg');
     }
     [information = 'guidepost'] {
@@ -363,7 +362,8 @@
       marker-fill: @amenity-brown;
     }
     [information = 'map'],
-    [information = 'tactile_map'] {
+    [information = 'tactile_map'],
+    [information = 'tactile_model'] {
       marker-file: url('symbols/tourism/map.svg');
     }
     [information = 'terminal'] {
