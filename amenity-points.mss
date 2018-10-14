@@ -2318,8 +2318,9 @@
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
     text-face-name: @standard-font;
-  }
 
+  }
+  
   [feature = 'tourism_alpine_hut'][zoom >= 14],
   [feature = 'leisure_picnic_table'][zoom >= 17],
   [feature = 'amenity_shelter'][zoom >= 17],
