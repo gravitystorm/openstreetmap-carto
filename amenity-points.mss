@@ -143,7 +143,7 @@
   }
 
   [feature = 'barrier_toll_booth'][zoom >= 16] {
-    marker-file: url('symbols/toll_booth.svg');
+    marker-file: url('symbols/barrier/toll_booth.svg');
     marker-fill: @transportation-icon;
     marker-placement: interior;
     marker-clip: false;
@@ -1499,7 +1499,7 @@
 
   [feature = 'barrier_gate']::barrier {
     [zoom >= 17] {
-      marker-file: url('symbols/gate.svg');
+      marker-file: url('symbols/barrier/gate.svg');
       marker-placement: interior;
       marker-clip: false;
     }
@@ -1507,10 +1507,52 @@
 
   [feature = 'barrier_lift_gate'][zoom >= 17]::barrier,
   [feature = 'barrier_swing_gate'][zoom >= 17]::barrier {
-    marker-file: url('symbols/liftgate.svg');
+    marker-file: url('symbols/barrier/lift_gate.svg');
     marker-fill: #3f3f3f;
     marker-placement: interior;
     marker-clip: false;
+  }
+
+  [feature = 'barrier_cycle_barrier'][zoom >= 17]::barrier {
+    marker-file: url('symbols/barrier/cycle_barrier.svg');
+    marker-fill: #3f3f3f;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'barrier_motorcycle_barrier'][zoom >= 17]::barrier {
+    marker-file: url('symbols/barrier/motorcycle_barrier.svg');
+    marker-fill: #3f3f3f;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'barrier_cattle_grid'][zoom >= 17]::barrier {
+    marker-file: url('symbols/barrier/cattle_grid.svg');
+    marker-fill: #3f3f3f;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'barrier_full-height_turnstile'][zoom >= 17]::barrier {
+    marker-file: url('symbols/barrier/full-height_turnstile.svg');
+    marker-fill: #3f3f3f;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'barrier_kissing_gate'][zoom >= 17]::barrier {
+    marker-file: url('symbols/barrier/kissing_gate.svg');
+    marker-fill: #3f3f3f;
+    marker-placement: interior;
+    marker-clip: false; 
+  }
+
+  [feature = 'barrier_stile'][zoom >= 17]::barrier {
+    marker-file: url('symbols/barrier/stile.svg');
+    marker-fill: #3f3f3f;
+    marker-placement: interior;
+    marker-clip: false; 
   }
 
   [feature = 'barrier_bollard'],
