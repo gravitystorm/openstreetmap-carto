@@ -5,11 +5,11 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   width="14"
-   height="14"
-   viewBox="0 0 3.7041666 3.7041668"
+   id="svg8"
    version="1.1"
-   id="svg8">
+   viewBox="0 0 3.7041666 3.7041668"
+   height="14"
+   width="14">
   <defs
      id="defs2" />
   <metadata
@@ -25,12 +25,12 @@
     </rdf:RDF>
   </metadata>
   <g
-     id="layer1"
-     transform="translate(0,-293.29582)">
+     transform="translate(0,-293.29582)"
+     id="layer1">
     <path
        id="rect22"
        transform="matrix(0.26458334,0,0,0.26458334,0,293.29582)"
-       d="M 4 2 L 4 12 L 5 12 L 5 11 L 8 11 L 8 12 L 9 12 L 9 2 L 8 2 L 8 6 L 5 6 L 5 2 L 4 2 z M 5 7 L 8 7 L 8 8 L 5 8 L 5 7 z M 5 9 L 8 9 L 8 10 L 5 10 L 5 9 z "
+       d="M 4.5,2 C 4.223,2 4,2.223 4,2.5 4,5.6666667 4,8.8333333 4,12 h 1 v -1 h 4 v 1 h 1 C 10,8.8333333 10,5.6666667 10,2.5 10,2.223 9.777,2 9.5,2 9.223,2 9,2.223 9,2.5 9,3.6666667 9,4.8333333 9,6 H 5 C 5,4.8333333 5,3.6666667 5,2.5 5,2.223 4.777,2 4.5,2 Z M 5,7 H 9 V 8 H 5 Z m 0,2 h 4 v 1 H 5 Z"
        style="opacity:1;fill:#000000;fill-rule:evenodd;stroke-width:1" />
   </g>
 </svg>

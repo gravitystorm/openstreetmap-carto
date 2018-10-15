@@ -1513,39 +1513,11 @@
     marker-clip: false;
   }
 
-  [feature = 'barrier_cycle_barrier'][zoom >= 17]::barrier {
-    marker-file: url('symbols/barrier/cycle_barrier.svg');
-    marker-fill: #3f3f3f;
-    marker-placement: interior;
-    marker-clip: false;
-  }
-
-  [feature = 'barrier_motorcycle_barrier'][zoom >= 17]::barrier {
-    marker-file: url('symbols/barrier/motorcycle_barrier.svg');
-    marker-fill: #3f3f3f;
-    marker-placement: interior;
-    marker-clip: false;
-  }
-
   [feature = 'barrier_cattle_grid'][zoom >= 17]::barrier {
     marker-file: url('symbols/barrier/cattle_grid.svg');
     marker-fill: #3f3f3f;
     marker-placement: interior;
     marker-clip: false;
-  }
-
-  [feature = 'barrier_full-height_turnstile'][zoom >= 17]::barrier {
-    marker-file: url('symbols/barrier/full-height_turnstile.svg');
-    marker-fill: #3f3f3f;
-    marker-placement: interior;
-    marker-clip: false;
-  }
-
-  [feature = 'barrier_kissing_gate'][zoom >= 17]::barrier {
-    marker-file: url('symbols/barrier/kissing_gate.svg');
-    marker-fill: #3f3f3f;
-    marker-placement: interior;
-    marker-clip: false; 
   }
 
   [feature = 'barrier_stile'][zoom >= 17]::barrier {
