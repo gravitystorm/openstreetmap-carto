@@ -104,7 +104,7 @@ Layer:
           ORDER BY way_area DESC, feature
         ) AS landcover_low_zoom
     properties:
-      minzoom: 7
+      minzoom: 5
       maxzoom: 9
   - id: landcover
     geometry: polygon
@@ -214,7 +214,7 @@ Layer:
       file: data/antarctica-icesheet-polygons-3857/icesheet_polygons.shp
       type: shape
     properties:
-      minzoom: 8
+      minzoom: 5
   - id: water-areas
     geometry: polygon
     <<: *extents
@@ -270,7 +270,7 @@ Layer:
           ORDER BY COALESCE(layer,0), way_area DESC
         ) AS landcover_area_symbols
     properties:
-      minzoom: 8
+      minzoom: 5
   - id: icesheet-outlines
     geometry: linestring
     <<: *extents
@@ -278,7 +278,7 @@ Layer:
       file: data/antarctica-icesheet-outlines-3857/icesheet_outlines.shp
       type: shape
     properties:
-      minzoom: 8
+      minzoom: 5
   - id: springs
     geometry: point
     <<: *extents

@@ -85,7 +85,7 @@
   ::first {
     [feature = 'wetland_mud'],
     [feature = 'wetland_tidalflat'] {
-      [zoom >= 9] {
+      [zoom >= 5] {
         polygon-fill: @mud;
         [way_pixels >= 4]  { polygon-gamma: 0.75; }
         [way_pixels >= 64] { polygon-gamma: 0.3;  }
@@ -306,7 +306,7 @@
 
   [feature = 'landuse_forest'],
   [feature = 'natural_wood'] {
-    [zoom >= 8] {
+    [zoom >= 5] {
       polygon-fill: @forest;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
@@ -328,7 +328,7 @@
 
   [feature = 'landuse_farmland'],
   [feature = 'landuse_greenhouse_horticulture'] {
-    [zoom >= 8] {
+    [zoom >= 5] {
       polygon-fill: @farmland;
       [zoom >= 16] {
         line-width: .5;
@@ -339,8 +339,8 @@
     }
   }
 
-  [feature = 'natural_grassland'][zoom >= 8],
-  [feature = 'landuse_meadow'][zoom >= 8],
+  [feature = 'natural_grassland'][zoom >= 5],
+  [feature = 'landuse_meadow'][zoom >= 5],
   [feature = 'landuse_grass'][zoom >= 10],
   [feature = 'landuse_village_green'][zoom >= 10],
   [feature = 'leisure_common'][zoom >= 10] {
@@ -482,7 +482,7 @@
     }
   }
 
-  [feature = 'natural_bare_rock'][zoom >= 8] {
+  [feature = 'natural_bare_rock'][zoom >= 5] {
     polygon-fill: @bare_ground;
     polygon-pattern-file: url('symbols/rock_overlay.png');
     [way_pixels >= 4] {
@@ -497,7 +497,7 @@
 
   [feature = 'natural_scree'],
   [feature = 'natural_shingle'] {
-    [zoom >= 9] {
+    [zoom >= 5] {
       polygon-fill: @bare_ground;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
@@ -509,25 +509,25 @@
     }
   }
 
-  [feature = 'natural_sand'][zoom >= 8] {
+  [feature = 'natural_sand'][zoom >= 5] {
     polygon-fill: @sand;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [feature = 'natural_heath'][zoom >= 8] {
+  [feature = 'natural_heath'][zoom >= 5] {
     polygon-fill: @heath;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [feature = 'natural_scrub'][zoom >= 10] {
+  [feature = 'natural_scrub'][zoom >= 5] {
     polygon-fill: @scrub;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [feature = 'wetland_swamp'][zoom >= 8] {
+  [feature = 'wetland_swamp'][zoom >= 5] {
     polygon-fill: @forest;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
@@ -700,11 +700,11 @@
 }
 
 #landcover-area-symbols {
-  [natural = 'sand'][zoom >= 8] {
+  [natural = 'sand'][zoom >= 5] {
     polygon-pattern-file: url('symbols/beach.png');
     polygon-pattern-alignment: global;
   }
-  [int_wetland != null][zoom >= 10] {
+  [int_wetland != null][zoom >= 5] {
     polygon-pattern-file: url('symbols/wetland.png');
     polygon-pattern-alignment: global;
   }
