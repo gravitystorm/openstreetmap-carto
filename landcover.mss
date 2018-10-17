@@ -18,8 +18,8 @@
 @retail-line: #d99c95;      // Lch(70,25,30)
 @commercial: #f2dad9;       // Lch(89,8.5,25)
 @commercial-line: #d1b2b0;  // Lch(75,12,25)
-@industrial: #ebdbe8;       // Lch(89,9,330) (Also used for railway)
-@industrial-line: #c6b3c3;  // Lch(75,11,330) (Also used for railway-line)
+@industrial: #ebdbe8;       // Lch(89,9,330) (Also used for railway, wastewater_plant)
+@industrial-line: #c6b3c3;  // Lch(75,11,330) (Also used for railway-line, wastewater_plant-line)
 @farmland: #eef0d5;         // Lch(94,14,112)
 @farmland-line: #c7c9ae;    // Lch(80,14,112)
 @farmyard: #f5dcba;         // Lch(89,20,80)
@@ -28,7 +28,7 @@
 // --- Transport ----
 
 @transportation-area: #e9e7e2;
-@apron: #e9d1ff;
+@apron: #dadae0;
 @garages: #dfddce;
 @parking: #eeeeee;
 @parking-outline: saturate(darken(@parking, 40%), 20%);
@@ -51,11 +51,15 @@
 @power: darken(@industrial, 5%);
 @power-line: darken(@industrial-line, 5%);
 @sand: #f5e9c6;
-@societal_amenities: #fbecd7;   // Lch(94,12,80)
+@societal_amenities: #ffffe5;   // Lch(99,13,109)
 @tourism: #734a08;
 @quarry: #c5c3c3;
 @military: #f55;
 @beach: #fff1ba;
+@wastewater_plant: @industrial;
+@wastewater_plant-line: @industrial-line;
+@water_works: @industrial;
+@water_works-line: @industrial-line;
 
 // --- Sports ---
 
@@ -393,6 +397,34 @@
     }
   }
 
+  [feature = 'man_made_wastewater_plant'] {
+    polygon-fill: @industrial;
+    [zoom >= 15] {
+      polygon-fill: @wastewater_plant;
+    }
+    [zoom >= 16] {
+      line-width: 0.5;
+      line-color: @wastewater_plant-line;
+      [name != ''] {
+        line-width: 0.7;
+      }
+    }
+  }
+
+  [feature = 'man_made_water_works'] {
+    polygon-fill: @industrial;
+    [zoom >= 15] {
+      polygon-fill: @water_works;
+    }
+    [zoom >= 16] {
+      line-width: 0.5;
+      line-color: @water_works-line;
+      [name != ''] {
+        line-width: 0.7;
+      }
+    }
+  }
+
   [feature = 'landuse_railway'][zoom >= 10] {
     polygon-fill: @railway;
     [zoom >= 16][name != ''] {
@@ -553,12 +585,12 @@
   [feature = 'amenity_fire_station'][zoom >= 13],
   [feature = 'amenity_police'][zoom >= 13] {
     polygon-fill: #F3E3DD;
-    line-color: @military; 
+    line-color: @military;
     line-opacity: 0.24;
-    line-width: 1.0; 
+    line-width: 1.0;
     line-offset: -0.5;
     [zoom >= 15] {
-      line-width: 2; 
+      line-width: 2;
       line-offset: -1.0;
     }
   }

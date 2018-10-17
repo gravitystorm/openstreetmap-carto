@@ -255,7 +255,7 @@
       text-spacing: 400;
       text-size: 10;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill; 
+      text-halo-fill: @standard-halo-fill;
   }
 
   [lock != 'yes'][int_tunnel != 'yes'] {
@@ -320,6 +320,7 @@
 .text[zoom >= 10] {
   [feature = 'natural_water'],
   [feature = 'natural_bay'],
+  [feature = 'natural_strait'],
   [feature = 'landuse_reservoir'],
   [feature = 'landuse_basin'],
   [feature = 'waterway_dock'] {
