@@ -1,4 +1,17 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.15.0...master)
+## Changes
+- Changing societal amenities color to less intensive
+- Adding rendering for natural=strait
+- Adding rendering for leisure=track on lines
+- Adding icon for amenity=vehicle_inspection
+- Adding icon for leisure=sports_centre + sport=swimming and leisure=swimming_area
+- Adding icon for tourism=gallery
+- Changing color for aeroway=apron in aerodromes
+- Moving amenity=post_box to z19+
+- Moving amenity=atm to z19+
+- Replacing icon for information=tactile_model
+- Ordering amenity_lines by layer
+- Small documentation and code fixes
 
 ## [v4.15.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.14.0...v4.15.0) - 2018-09-21
 ## Changes
