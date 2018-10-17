@@ -5,9 +5,6 @@
 @building-major-fill: darken(@building-fill, 20%);
 @building-major-line: darken(@building-major-fill, 25%);
 
-@building-minor-fill: lighten(@building-fill, 7%);
-@building-minor-line: darken(@building-minor-fill, 12%);
-
 @entrance-permissive: darken(@building-line, 15%);
 @entrance-normal: @building-line;
 
@@ -29,28 +26,6 @@
     [public_transport = 'station'] {
       polygon-fill: @building-major-fill;
       line-color: @building-major-line;
-    }
-    [building = 'roof'],
-    [building = 'construction'],
-    [building = 'damaged'],
-    [building = 'underground'],
-    [building = 'service'],
-    [building = 'slurry_tank'],
-    [building = 'shed'],
-    [building = 'garage'],
-    [building = 'garages'],
-    [building = 'farm_auxiliary'],
-    [building = 'carport'],
-    [building = 'cabin'],
-    [building = 'hut'],
-    [building = 'barn'],
-    [building = 'stable'],
-    [building = 'cowshed'],
-    [building = 'greenhouse'],
-    [building = 'ger'],
-    [building = 'ruins'] {
-      polygon-fill: @building-minor-fill;
-      line-color: @building-minor-line;
     }
   }
 }
