@@ -535,7 +535,7 @@
 
   [feature = 'wetland_bog'],
   [feature = 'wetland_string_bog'] {
-    [zoom >= 10] {
+    [zoom >= 5] {
       polygon-fill: @heath;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
@@ -545,7 +545,7 @@
   [feature = 'wetland_wet_meadow'],
   [feature = 'wetland_fen'],
   [feature = 'wetland_marsh'] {
-    [zoom >= 10] {
+    [zoom >= 5] {
       polygon-fill: @grass;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
