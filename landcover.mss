@@ -142,7 +142,7 @@
   }
 
   [feature = 'landuse_vineyard'] {
-    [zoom >= 10] {
+    [zoom >= 5] {
       polygon-fill: @orchard;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
@@ -156,7 +156,7 @@
   }
 
   [feature = 'landuse_orchard'] {
-    [zoom >= 10] {
+    [zoom >= 5] {
       polygon-fill: @orchard;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
