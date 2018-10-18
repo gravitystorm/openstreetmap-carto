@@ -98,7 +98,7 @@ Layer:
             FROM planet_osm_polygon
             WHERE (landuse IN ('forest', 'farmland', 'residential', 'commercial', 'retail', 'industrial', 'meadow')
               OR "natural" IN ('wood', 'wetland', 'mud', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland'))
-              AND way_area > 1*!pixel_width!::real*!pixel_height!::real
+              AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
               AND building IS NULL
           ) AS features
           ORDER BY way_area DESC, feature
