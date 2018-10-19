@@ -425,28 +425,6 @@ Layer:
       table: |-
         (SELECT
             way,
-            building
-          FROM planet_osm_polygon
-          WHERE building IS NOT NULL
-            AND building != 'no'
-            AND (aeroway IS NULL OR aeroway != 'terminal')
-            AND (amenity IS NULL OR amenity != 'place_of_worship')
-            AND building != 'train_station'
-            AND (aerialway IS NULL OR aerialway != 'station')
-            AND ((tags->'public_transport') IS NULL OR tags->'public_transport' != 'station')
-            AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-          ORDER BY COALESCE(layer,0), way_area DESC
-        ) AS buildings
-    properties:
-      minzoom: 13
-  - id: buildings-major
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
             building,
             amenity,
             aeroway,
@@ -455,14 +433,9 @@ Layer:
           FROM planet_osm_polygon
           WHERE building IS NOT NULL
             AND building != 'no'
-            AND (aeroway = 'terminal'
-                 OR amenity = 'place_of_worship'
-                 OR building = 'train_station'
-                 OR aerialway = 'station'
-                 OR tags->'public_transport' = 'station')
             AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-          ORDER BY COALESCE(layer,0), way_area DESC)
-        AS buildings_major
+          ORDER BY COALESCE(layer,0), way_area DESC
+        ) AS buildings
     properties:
       minzoom: 13
   - id: tunnels
