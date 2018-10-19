@@ -156,10 +156,14 @@
   }
 
   [feature = 'tourism_artwork'][zoom >= 17] {
-    marker-file: url('symbols/tourism/artwork.svg');
-    marker-fill: @memorials;
-    marker-placement: interior;
-    marker-clip: false;
+    [artwork_type != 'statue'] {
+      marker-file: url('symbols/tourism/artwork.svg');
+    }
+    [artwork_type = 'statue'] {
+      marker-file: url('symbols/historic/statue.svg');
+    }
+      marker-fill: @memorials;
+      marker-placement: interior;
   }
 
   [feature = 'tourism_camp_site'][zoom >= 16] {
