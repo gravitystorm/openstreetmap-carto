@@ -7,7 +7,7 @@
 @accommodation-icon: @transportation-icon;
 @accommodation-text: @transportation-text;
 @airtransport: #8461C4; //also ferry_terminal
-@health-color: #DA0000;
+@health-color: #CC0000;
 @amenity-brown: #734a08;
 @gastronomy-icon: #C77400;
 @gastronomy-text: darken(@gastronomy-icon, 5%);
@@ -551,8 +551,14 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_dentist'][zoom >= 17] {
-    marker-file: url('symbols/amenity/dentist.svg');
+  [feature = 'amenity_dentist'] {
+    [zoom >= 17][zoom < 18] {
+      marker-width: 4;
+      marker-line-width: 0;
+    }
+    [zoom >= 18] {
+      marker-file: url('symbols/amenity/dentist.svg');
+    }
     marker-fill: @health-color;
     marker-placement: interior;
     marker-clip: false;
