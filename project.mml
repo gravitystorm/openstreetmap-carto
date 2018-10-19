@@ -1482,9 +1482,9 @@ Layer:
                                                   'prison', 'hunting_stand', 'nightclub', 'veterinary', 'social_facility',
                                                   'charging_station', 'arts_centre', 'ferry_terminal', 'marketplace', 'waste_disposal', 'shower', 'bbq',
                                                   'nursing_home', 'childcare', 'driving_school', 'casino', 'boat_rental') THEN amenity ELSE NULL END,
-              'healthcare_' || CASE WHEN healthcare IN ('alternative', 'audiologist', 'birthing_center', 'blood_bank', 'blood_donation', 'centre', 'chiropractor', 
+              'healthcare_' || CASE WHEN tags->'healthcare' IN ('alternative', 'audiologist', 'birthing_center', 'blood_bank', 'blood_donation', 'centre', 'chiropractor', 
                                                         'laboratory', 'midwife', 'occupational_therapist', 'optometrist', 'physiotherapist', 'podiatrist', 'psychotherapist', 
-                                                        'rehabilitation', 'speech_therapist', 'yes') THEN healthcare ELSE NULL END, 
+                                                        'rehabilitation', 'speech_therapist', 'yes') THEN tags->'healthcare' ELSE NULL END, 
               'advertising_' || CASE WHEN tags->'advertising' in ('column') THEN tags->'advertising' else NULL END,
               'shop' || CASE WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE '' END,
               'office' || CASE WHEN tags->'office' IN ('no', 'vacant', 'closed', 'disused', 'empty') OR (tags->'office') IS NULL THEN NULL ELSE '' END,
@@ -1523,6 +1523,7 @@ Layer:
             tags->'tower:type' as "tower:type",
             tags->'castle_type' as castle_type,
             tags->'information' as information,
+            tags->'healthcare' as healthcare,
             CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'bed', 'bookmaker', 'books', 'butcher', 'clothes', 'computer',
                                'confectionery', 'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist',
                                'garden_centre', 'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet',
@@ -1541,7 +1542,7 @@ Layer:
             OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
                            'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site')
             OR amenity IS NOT NULL -- skip checking a huge list and use a null check
-            OR healthcare IS NOT NULL
+            OR (tags->'healthcare') IS NOT NULL
             OR tags->'advertising' IN ('column')
             OR shop IS NOT NULL
             OR (tags->'office') IS NOT NULL
@@ -1604,9 +1605,9 @@ Layer:
                                                   'prison', 'hunting_stand', 'nightclub', 'veterinary', 'social_facility',
                                                   'charging_station', 'arts_centre', 'ferry_terminal', 'marketplace', 'shower', 'bbq',
                                                   'nursing_home', 'childcare', 'driving_school', 'casino', 'boat_rental') THEN amenity ELSE NULL END,
-              'healthcare_' || CASE WHEN healthcare IN ('alternative', 'audiologist', 'birthing_center', 'blood_bank', 'blood_donation', 'centre', 'chiropractor', 
+              'healthcare_' || CASE WHEN tags->'healthcare' IN ('alternative', 'audiologist', 'birthing_center', 'blood_bank', 'blood_donation', 'centre', 'chiropractor', 
                                                         'laboratory', 'midwife', 'occupational_therapist', 'optometrist', 'physiotherapist', 'podiatrist', 'psychotherapist', 
-                                                        'rehabilitation', 'speech_therapist', 'yes') THEN healthcare ELSE NULL END, 
+                                                        'rehabilitation', 'speech_therapist', 'yes') THEN tags->'healthcare' ELSE NULL END, 
               'advertising_' || CASE WHEN tags->'advertising' in ('column') THEN tags->'advertising' else NULL END,
               'emergency_' || CASE WHEN tags->'emergency' IN ('phone') THEN tags->'emergency' ELSE NULL END,
               'shop' || CASE WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE '' END,
@@ -1665,6 +1666,7 @@ Layer:
             tags->'tower:type' as "tower:type",
             tags->'castle_type' as castle_type,
             tags->'information' as information,
+            tags->'healthcare' as healthcare,
             CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'bed', 'bookmaker', 'books', 'butcher', 'clothes', 'computer',
                                'confectionery', 'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist',
                                'garden_centre', 'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet',
@@ -1683,7 +1685,7 @@ Layer:
             OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
                            'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site')
             OR amenity IS NOT NULL -- skip checking a huge list and use a null check
-            OR healthcare IS NOT NULL
+            OR (tags->'healthcare') IS NOT NULL
             OR shop IS NOT NULL
             OR tags->'advertising' IN ('column')
             OR (tags->'office') IS NOT NULL
@@ -2071,9 +2073,9 @@ Layer:
                                                   'nightclub', 'veterinary', 'social_facility', 'charging_station', 'arts_centre',
                                                   'ferry_terminal', 'marketplace', 'shower', 'bbq', 'nursing_home', 'childcare', 'driving_school',
                                                   'casino', 'boat_rental') THEN amenity ELSE NULL END,
-              'healthcare_' || CASE WHEN healthcare IN ('alternative', 'audiologist', 'birthing_center', 'blood_bank', 'blood_donation', 'centre', 'chiropractor', 
+              'healthcare_' || CASE WHEN tags->'healthcare' IN ('alternative', 'audiologist', 'birthing_center', 'blood_bank', 'blood_donation', 'centre', 'chiropractor', 
                                                         'laboratory', 'midwife', 'occupational_therapist', 'optometrist', 'physiotherapist', 'podiatrist', 'psychotherapist', 
-                                                        'rehabilitation', 'speech_therapist', 'yes') THEN healthcare ELSE NULL END, 
+                                                        'rehabilitation', 'speech_therapist', 'yes') THEN tags->'healthcare' ELSE NULL END,  
               'advertising_' || CASE WHEN tags->'advertising' in ('column') THEN tags->'advertising' else NULL END,
               'shop_' || CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'bed', 'bookmaker', 'books', 'butcher', 'clothes', 'computer', 'confectionery',
                                             'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist', 'garden_centre',
@@ -2135,6 +2137,7 @@ Layer:
             tags->'recycling_type' as recycling_type,
             tags->'castle_type' as castle_type,
             tags->'information' as information,
+            tags->'healthcare' as healthcare,
             ref,
             way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
@@ -2144,7 +2147,7 @@ Layer:
               OR tourism IN ('artwork', 'alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 
                              'camp_site', 'caravan_site', 'theme_park', 'museum', 'viewpoint', 'attraction', 'zoo', 'information', 'picnic_site')
               OR amenity IS NOT NULL -- skip checking a huge list and use a null check
-              OR healthcare IS NOT NULL
+              OR (tags->'healthcare') IS NOT NULL
               OR tags->'advertising' IN ('column')
               OR shop IS NOT NULL
               OR (tags->'office') IS NOT NULL
@@ -2246,9 +2249,9 @@ Layer:
                                                       'drinking_water', 'hunting_stand', 'nightclub', 'veterinary', 'social_facility',
                                                       'charging_station', 'arts_centre', 'ferry_terminal', 'marketplace', 'shower', 'bbq',
                                                       'nursing_home', 'childcare', 'driving_school', 'casino', 'boat_rental') THEN amenity ELSE NULL END,
-                  'healthcare_' || CASE WHEN healthcare IN ('alternative', 'audiologist', 'birthing_center', 'blood_bank', 'blood_donation', 'centre', 'chiropractor', 
-                                                            'laboratory', 'midwife', 'occupational_therapist', 'optometrist', 'physiotherapist', 'podiatrist', 'psychotherapist', 
-                                                            'rehabilitation', 'speech_therapist', 'yes') THEN healthcare ELSE NULL END, 
+              'healthcare_' || CASE WHEN tags->'healthcare' IN ('alternative', 'audiologist', 'birthing_center', 'blood_bank', 'blood_donation', 'centre', 'chiropractor', 
+                                                        'laboratory', 'midwife', 'occupational_therapist', 'optometrist', 'physiotherapist', 'podiatrist', 'psychotherapist', 
+                                                        'rehabilitation', 'speech_therapist', 'yes') THEN tags->'healthcare' ELSE NULL END, 
                   'advertising_' || CASE WHEN tags->'advertising' in ('column') THEN tags->'advertising' else NULL END,
                   'shop_' || CASE WHEN shop IN ('supermarket', 'bag','bakery', 'beauty', 'bed', 'bookmaker', 'books', 'butcher', 'clothes', 'computer', 'confectionery', 'fashion',
                                                 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist', 'garden_centre', 'hairdresser',
@@ -2319,6 +2322,7 @@ Layer:
                 tags->'recycling_type' as recycling_type,
                 tags->'castle_type' as castle_type,
                 tags->'information' as information,
+                tags->'healthcare' as healthcare,
                 ref,
                 NULL AS way_area,
                 CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
@@ -2328,7 +2332,7 @@ Layer:
                   OR tourism IN ('artwork', 'alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'camp_site', 'caravan_site', 'theme_park',
                                  'museum', 'viewpoint', 'attraction', 'zoo', 'information', 'picnic_site')
                   OR amenity IS NOT NULL -- skip checking a huge list and use a null check
-                  OR healthcare IS NOT NULL
+                  OR (tags->'healthcare') IS NOT NULL
                   OR tags->'advertising' IN ('column')
                   OR shop IS NOT NULL
                   OR (tags->'office') IS NOT NULL
