@@ -5,11 +5,11 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   viewBox="0 0 14 14"
-   height="14"
-   width="14"
+   version="1.1"
    id="svg109"
-   version="1.1">
+   width="14"
+   height="14"
+   viewBox="0 0 14 14">
   <metadata
      id="metadata115">
     <rdf:RDF>
@@ -25,7 +25,7 @@
   <defs
      id="defs113" />
   <path
-     id="path30"
-     d="M 6.4238219,2.0889473 C 5.03729,2.057638 3.1167789,2.4360931 2.2421813,2.9717598 0.24917604,4.1924198 -0.00513079,6.5239003 -6.1979257e-6,7.9268379 0.00490431,9.2711707 1.1275607,10.912164 2.91015,11.612384 3.8824954,11.994331 6.3979791,11.9034 7.738275,11.9034 c 3.993429,0 6.278049,-2.3706442 6.261719,-4.4824215 C 13.983203,5.2501376 10.465556,2.5727031 6.9824157,2.1280098 6.810778,2.1060967 6.6218979,2.09342 6.4238219,2.0889473 Z M 3.8964782,4.0869942 H 5.1230407 V 5.3155098 H 3.8964782 Z m 2.4433594,0 H 8.7871032 V 5.3155098 H 6.3398376 Z M 1.4296813,6.5264473 H 11.236322 V 7.7530098 H 1.4296813 Z M 3.8964782,8.9991035 H 8.7968688 V 10.225666 H 3.8964782 Z"
-     style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.3679992;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
+     style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.38080966;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+     d="M 6,2 C 1.5761781,1.9981574 0,3.9915246 -6.1979257e-6,7.9389842 0,11 3,12 7.738275,11.99037 c 3.993429,0 6.278049,-2.4152505 6.261719,-4.5667636 C 14,5 9,2 6,2 Z M 4,4 H 5 V 5 H 4 Z M 6,4 H 9 V 5 H 6 Z M 2,7 h 9 V 8 H 2 Z m 2,2 h 5 v 1 H 4 Z"
+     id="path30" />
 </svg>
