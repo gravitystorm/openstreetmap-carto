@@ -162,8 +162,8 @@
     [artwork_type = 'statue'] {
       marker-file: url('symbols/historic/statue.svg');
     }
-      marker-fill: @memorials;
-      marker-placement: interior;
+    marker-fill: @memorials;
+    marker-placement: interior;
   }
 
   [feature = 'tourism_camp_site'][zoom >= 16] {
