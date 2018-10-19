@@ -76,6 +76,13 @@
     marker-placement: interior;
     marker-clip: false;
   }
+  
+  [feature = 'amenity_internet_cafe'][zoom >= 17] {
+    marker-file: url('symbols/amenity/internet_cafe.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
 
   [feature = 'amenity_bar'][zoom >= 17] {
     marker-file: url('symbols/amenity/bar.svg');
@@ -1709,6 +1716,7 @@
   [feature = 'amenity_post_office'][zoom >= 17],
   [feature = 'amenity_prison'][zoom >= 17],
   [feature = 'amenity_embassy'][zoom >= 17],
+  [feature = 'amenity_internet_cafe'][zoom >= 17],
   [feature = 'amenity_bank'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
@@ -1721,6 +1729,7 @@
     [feature = 'amenity_prison'] { text-dy: 12; }
     [feature = 'amenity_embassy'] { text-dy: 10; }
     [feature = 'amenity_bank'] { text-dy: 9; }
+    [feature = 'amenity_internet_cafe'] { text-dy: 9; }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
