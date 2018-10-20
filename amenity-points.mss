@@ -1716,7 +1716,6 @@
   [feature = 'amenity_post_office'][zoom >= 17],
   [feature = 'amenity_prison'][zoom >= 17],
   [feature = 'amenity_embassy'][zoom >= 17],
-  [feature = 'amenity_internet_cafe'][zoom >= 17],
   [feature = 'amenity_bank'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
@@ -1729,7 +1728,6 @@
     [feature = 'amenity_prison'] { text-dy: 12; }
     [feature = 'amenity_embassy'] { text-dy: 10; }
     [feature = 'amenity_bank'] { text-dy: 9; }
-    [feature = 'amenity_internet_cafe'] { text-dy: 9; }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
@@ -1739,6 +1737,7 @@
   [feature = 'amenity_vehicle_inspection'][zoom >= 17],
   [feature = 'amenity_car_wash'][zoom >= 17],
   [feature = 'amenity_drinking_water'][zoom >= 17],
+  [feature = 'amenity_internet_cafe'][zoom >= 17],
   [feature = 'tourism_picnic_site'][zoom >= 17],
   [feature = 'leisure_bowling_alley'][zoom >= 17],
   [feature = 'leisure_beach_resort'][zoom >= 17],
