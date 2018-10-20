@@ -56,8 +56,8 @@
 
 #power-portals-way {
   [zoom >= 16] {
-    width: 3;
-    color:#212121;
+    line-line-width: 3;
+    line-color:#212121;
   }
 }
 #power-portals-node {
@@ -76,8 +76,8 @@
 }
 #power-insulators-way {
   [zoom >= 16] {
-    width: 2;
-    color:#00960F;
+    line-width: 2;
+    line-color:#00960F;
   }
 }
 
