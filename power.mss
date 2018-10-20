@@ -56,7 +56,7 @@
 
 #power-portals-way {
   [zoom >= 16] {
-    line-line-width: 3;
+    line-width: 3;
     line-color:#212121;
   }
 }
