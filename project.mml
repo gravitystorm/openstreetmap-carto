@@ -2513,3 +2513,56 @@ Layer:
           ) AS amenity_low_priority_poly
     properties:
       minzoom: 14
+  - id: power-portals-way
+    geometry: way
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way
+          FROM planet_osm_lines
+          WHERE power = 'portal'
+        ) AS power_portals
+    properties:
+      minzoom: 16
+  - id: power-portals-node
+    geometry: point
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            node
+          FROM planet_osm_point
+          WHERE power = 'portal'
+        ) AS power_portals
+    properties:
+      minzoom: 16
+  - id: power-insulators-node
+    geometry: point
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            node
+          FROM planet_osm_point
+          WHERE power = 'insulator'
+        ) AS power_insulators
+    properties:
+      minzoom: 16
+  - id: power-insulators-way
+    geometry: way
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way
+          FROM planet_osm_lines
+          WHERE power = 'insulator'
+        ) AS power_insulators
+    properties:
+      minzoom: 16
+
