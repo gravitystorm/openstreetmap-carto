@@ -1,4 +1,6 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.15.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.16.0...master)
+
+## [v4.16.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.15.0...v4.16.0) - 2018-10-19
 ## Changes
 - Changing societal amenities color to less intensive
 - Adding rendering for natural=strait
