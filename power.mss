@@ -53,3 +53,31 @@
     marker-width: 3;
   }
 }
+
+#power-portals-way {
+  [zoom >= 16] {
+    width: 3;
+    color:#212121;
+  }
+}
+#power-portals-node {
+  [zoom >= 16] {
+    marker-file: url('symbols/square.svg');
+    marker-fill: #212121;
+    marker-width: 3;
+  }
+}
+#power-insulators-node {
+  [zoom >= 16] {
+    marker-file: url('symbols/square.svg');
+    marker-fill: #00960F;
+    marker-width: 3;
+  }
+}
+#power-insulators-way {
+  [zoom >= 16] {
+    width: 2;
+    color:#00960F;
+  }
+}
+
