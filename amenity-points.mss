@@ -76,6 +76,13 @@
     marker-placement: interior;
     marker-clip: false;
   }
+  
+  [feature = 'amenity_internet_cafe'][zoom >= 17] {
+    marker-file: url('symbols/amenity/internet_cafe.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
 
   [feature = 'amenity_bar'][zoom >= 17] {
     marker-file: url('symbols/amenity/bar.svg');
@@ -1744,6 +1751,7 @@
   [feature = 'amenity_vehicle_inspection'][zoom >= 17],
   [feature = 'amenity_car_wash'][zoom >= 17],
   [feature = 'amenity_drinking_water'][zoom >= 17],
+  [feature = 'amenity_internet_cafe'][zoom >= 17],
   [feature = 'tourism_picnic_site'][zoom >= 17],
   [feature = 'leisure_bowling_alley'][zoom >= 17],
   [feature = 'leisure_beach_resort'][zoom >= 17],
