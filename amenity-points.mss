@@ -776,8 +776,7 @@
       marker-file: url('symbols/historic/bust.svg');
     }
     [memorial = 'blue_plaque'][zoom >= 19],
-    [memorial = 'plaque'][zoom >= 19],
-    [memorial = 'stolperstein'][zoom >= 19] {
+    [memorial = 'plaque'][zoom >= 19] {
       marker-file: url('symbols/historic/plaque.svg');
     }
     [memorial = 'statue'][zoom >= 19] {
