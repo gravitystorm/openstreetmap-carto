@@ -567,16 +567,20 @@
   [feature = 'amenity_social_facility'],
   [feature = 'amenity_arts_centre'] {
     [zoom >= 10] {
-      polygon-fill: @residential;
-      [zoom >= 12] {
-        polygon-fill: @societal_amenities;
-        [zoom >= 13] {
-          line-width: 0.3;
-          line-color: darken(@societal_amenities, 35%);
-        }
-      }
+      polygon-fill: @built-up-lowzoom;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+    [zoom >= 11] {
+      polygon-fill: @built-up-z11;
+    }
+    [zoom >= 12] {
+      polygon-fill: @built-up-z12;
+    }
+    [zoom >= 13] {
+      polygon-fill: @societal_amenities;
+      line-width: 0.3;
+      line-color: darken(@societal_amenities, 35%);
     }
   }
 
