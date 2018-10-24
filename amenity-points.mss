@@ -782,7 +782,7 @@
     [memorial = 'statue'][zoom >= 18] {
       marker-file: url('symbols/historic/statue.svg');
     }
-    [memorial = 'stone'][zoom >= 19] {
+    [memorial = 'stone'][zoom >= 18] {
       marker-file: url('symbols/historic/stone.svg');
     }
     marker-fill: @memorials;
