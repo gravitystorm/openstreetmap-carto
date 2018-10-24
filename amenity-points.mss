@@ -543,7 +543,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_clinic'][zoom >= 16],
+  [feature = 'amenity_clinic'][zoom >= 17],
   [feature = 'amenity_doctors'][zoom >= 17] {
     marker-file: url('symbols/amenity/doctors.svg');
     marker-fill: @health-color;
