@@ -769,17 +769,17 @@
     marker-clip: false;
   }
 
-  [feature = 'historic_memorial'][zoom >= 17],
-  [feature = 'historic_memorial_stele'][zoom >= 19] {
+  [feature = 'historic_memorial'][zoom >= 18],
+  [feature = 'historic_memorial_stele'][zoom >= 18] {
     marker-file: url('symbols/historic/memorial.svg');
     [memorial = 'bust'][zoom >= 19] {
       marker-file: url('symbols/historic/bust.svg');
     }
     [memorial = 'blue_plaque'][zoom >= 19],
-    [memorial = 'plaque'][zoom >= 19] {
+    [memorial = 'plaque'][zoom >= 17] {
       marker-file: url('symbols/historic/plaque.svg');
     }
-    [memorial = 'statue'][zoom >= 19] {
+    [memorial = 'statue'][zoom >= 18] {
       marker-file: url('symbols/historic/statue.svg');
     }
     [memorial = 'stone'][zoom >= 19] {
