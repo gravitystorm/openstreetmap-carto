@@ -769,8 +769,10 @@
     marker-clip: false;
   }
 
-  [feature = 'historic_memorial'][zoom >= 17],
-  [feature = 'historic_memorial'][memorial = 'stele'][zoom >= 18] {
+  [feature = 'historic_memorial'][memorial = null][zoom >= 17],
+  [feature = 'historic_memorial'][memorial = 'plaque'][zoom >= 17],
+  [feature = 'historic_memorial'][memorial != 'bust'][memorial != 'blue_plaque'][zoom >= 18],
+  [feature = 'historic_memorial'][zoom >= 19] {
     marker-file: url('symbols/historic/memorial.svg');
     [memorial = 'bust'][zoom >= 19] {
       marker-file: url('symbols/historic/bust.svg');
