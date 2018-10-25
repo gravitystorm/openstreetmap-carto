@@ -1879,7 +1879,7 @@
   [feature = 'man_made_storage_tank'][zoom >= 18],
   [feature = 'man_made_silo'][zoom >= 18],
   [feature = 'man_made_communications_tower'][zoom >= 17],
-  [feature = 'man_made_telescope']["telescope:type" = 'radio'][zoom >= 17],
+  [feature = 'man_made_telescope']["telescope:type" = 'radio'][zoom >= 16],
   [feature = 'man_made_water_tower'][zoom >= 17],
   [feature = 'man_made_chimney'][zoom >= 17],
   [feature = 'man_made_waste_water_plant'][zoom >= 17] {
