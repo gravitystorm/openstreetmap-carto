@@ -76,6 +76,13 @@
     marker-placement: interior;
     marker-clip: false;
   }
+  
+  [feature = 'amenity_internet_cafe'][zoom >= 17] {
+    marker-file: url('symbols/amenity/internet_cafe.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
 
   [feature = 'amenity_bar'][zoom >= 17] {
     marker-file: url('symbols/amenity/bar.svg');
@@ -143,7 +150,7 @@
   }
 
   [feature = 'barrier_toll_booth'][zoom >= 16] {
-    marker-file: url('symbols/toll_booth.svg');
+    marker-file: url('symbols/barrier/toll_booth.svg');
     marker-fill: @transportation-icon;
     marker-placement: interior;
     marker-clip: false;
@@ -510,6 +517,18 @@
     [zoom >= 17][height > 30],
     [zoom >= 18] {
       marker-file: url('symbols/man_made/chimney.svg');
+      marker-fill: @man-made-icon;
+      marker-placement: interior;
+      marker-clip: false;
+    }
+  }
+
+  [feature = 'man_made_telescope']["telescope:type" = 'radio'] {
+    [zoom >= 13]["telescope:diameter" >= 60],
+    [zoom >= 14]["telescope:diameter" >= 30],
+    [zoom >= 15]["telescope:diameter" >= 15],
+    [zoom >= 16] {
+      marker-file: url('symbols/man_made/telescope_dish.svg');
       marker-fill: @man-made-icon;
       marker-placement: interior;
       marker-clip: false;
@@ -1499,7 +1518,7 @@
 
   [feature = 'barrier_gate']::barrier {
     [zoom >= 17] {
-      marker-file: url('symbols/gate.svg');
+      marker-file: url('symbols/barrier/gate.svg');
       marker-placement: interior;
       marker-clip: false;
     }
@@ -1507,10 +1526,24 @@
 
   [feature = 'barrier_lift_gate'][zoom >= 17]::barrier,
   [feature = 'barrier_swing_gate'][zoom >= 17]::barrier {
-    marker-file: url('symbols/liftgate.svg');
+    marker-file: url('symbols/barrier/lift_gate.svg');
     marker-fill: #3f3f3f;
     marker-placement: interior;
     marker-clip: false;
+  }
+
+  [feature = 'barrier_cattle_grid'][zoom >= 17]::barrier {
+    marker-file: url('symbols/barrier/cattle_grid.svg');
+    marker-fill: #3f3f3f;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'barrier_stile'][zoom >= 17]::barrier {
+    marker-file: url('symbols/barrier/stile.svg');
+    marker-fill: #3f3f3f;
+    marker-placement: interior;
+    marker-clip: false; 
   }
 
   [feature = 'barrier_bollard'],
@@ -1730,6 +1763,7 @@
   [feature = 'amenity_vehicle_inspection'][zoom >= 17],
   [feature = 'amenity_car_wash'][zoom >= 17],
   [feature = 'amenity_drinking_water'][zoom >= 17],
+  [feature = 'amenity_internet_cafe'][zoom >= 17],
   [feature = 'tourism_picnic_site'][zoom >= 17],
   [feature = 'leisure_bowling_alley'][zoom >= 17],
   [feature = 'leisure_beach_resort'][zoom >= 17],
@@ -1845,6 +1879,7 @@
   [feature = 'man_made_storage_tank'][zoom >= 18],
   [feature = 'man_made_silo'][zoom >= 18],
   [feature = 'man_made_communications_tower'][zoom >= 17],
+  [feature = 'man_made_telescope']["telescope:type" = 'radio'][zoom >= 17],
   [feature = 'man_made_water_tower'][zoom >= 17],
   [feature = 'man_made_chimney'][zoom >= 17],
   [feature = 'man_made_waste_water_plant'][zoom >= 17] {
@@ -1862,6 +1897,7 @@
     [feature = 'man_made_mast'],
     [feature = 'man_made_tower'],
     [feature = 'man_made_communications_tower'],
+    [feature = 'man_made_telescope']["telescope:type" = 'radio'],
     [feature = 'man_made_water_tower'],
     [feature = 'man_made_storage_tank'],
     [feature = 'man_made_silo'],
