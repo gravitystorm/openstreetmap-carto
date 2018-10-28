@@ -193,7 +193,7 @@
   [waterway = 'stream'],
   [waterway = 'ditch'],
   [waterway = 'drain'] {
-    [zoom >= 13] {
+    [zoom >= 14] {
       // the additional line of land color is used to provide a background for dashed casings
       [int_tunnel = 'yes'] {
         background/line-width: 2;
@@ -203,16 +203,14 @@
       water/line-color: @water-color;
 
       [bridge = 'yes'] {
-        [zoom >= 14] {
-          bridgecasing/line-color: black;
-          bridgecasing/line-join: round;
-          bridgecasing/line-width: 4;
-          [waterway = 'stream'][zoom >= 15] { bridgecasing/line-width: 4; }
-          bridgeglow/line-color: white;
-          bridgeglow/line-join: round;
-          bridgeglow/line-width: 3;
-          [waterway = 'stream'][zoom >= 15] { bridgeglow/line-width: 3; }
-        }
+        bridgecasing/line-color: black;
+        bridgecasing/line-join: round;
+        bridgecasing/line-width: 4;
+        [waterway = 'stream'][zoom >= 15] { bridgecasing/line-width: 4; }
+        bridgeglow/line-color: white;
+        bridgeglow/line-join: round;
+        bridgeglow/line-width: 3;
+        [waterway = 'stream'][zoom >= 15] { bridgeglow/line-width: 3; }
       }
 
       [int_intermittent = 'yes'] {
