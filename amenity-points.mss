@@ -770,22 +770,25 @@
   }
 
   [feature = 'historic_memorial'][memorial = null][zoom >= 17],
-  [feature = 'historic_memorial'][memorial = 'plaque'][zoom >= 17],
   [feature = 'historic_memorial'][memorial = 'statue'][zoom >= 17],
-  [feature = 'historic_memorial'][memorial != 'bust'][memorial != 'blue_plaque'][zoom >= 18],
+  [feature = 'historic_memorial'][memorial = 'bust'][zoom >= 18],
+  [feature = 'historic_memorial'][memorial = 'stele'][zoom >= 18],
+  [feature = 'historic_memorial'][memorial = 'stone'][zoom >= 18],
+  [feature = 'historic_memorial'][memorial = 'blue_plaque'][zoom >= 19],
+  [feature = 'historic_memorial'][memorial = 'plaque'][zoom >= 19],
   [feature = 'historic_memorial'][zoom >= 19] {
     marker-file: url('symbols/historic/memorial.svg');
-    [memorial = 'bust'][zoom >= 19] {
+    [memorial = 'bust']{
       marker-file: url('symbols/historic/bust.svg');
     }
-    [memorial = 'blue_plaque'][zoom >= 19],
-    [memorial = 'plaque'][zoom >= 17] {
+    [memorial = 'blue_plaque'],
+    [memorial = 'plaque'] {
       marker-file: url('symbols/historic/plaque.svg');
     }
-    [memorial = 'statue'][zoom >= 17] {
+    [memorial = 'statue'] {
       marker-file: url('symbols/historic/statue.svg');
     }
-    [memorial = 'stone'][zoom >= 18] {
+    [memorial = 'stone'] {
       marker-file: url('symbols/historic/stone.svg');
     }
     marker-fill: @memorials;
@@ -1848,12 +1851,13 @@
 
   [feature = 'tourism_artwork'][zoom >= 17],
   [feature = 'historic_memorial'][memorial = null][zoom >= 17],
-  [feature = 'historic_memorial'][memorial = 'plaque'][zoom >= 17],
   [feature = 'historic_memorial'][memorial = 'statue'][zoom >= 17],
+  [feature = 'historic_memorial'][memorial = 'bust'][zoom >= 18],
+  [feature = 'historic_memorial'][memorial = 'stele'][zoom >= 18],
   [feature = 'historic_memorial'][memorial = 'stone'][zoom >= 18],
   [feature = 'historic_memorial'][memorial = 'blue_plaque'][zoom >= 19],
-  [feature = 'historic_memorial'][memorial = 'bust'][zoom >= 19],
-  [feature = 'historic_memorial'][memorial = 'stele'][zoom >= 19],
+  [feature = 'historic_memorial'][memorial = 'plaque'][zoom >= 19],
+  [feature = 'historic_memorial'][zoom >= 19],
   [feature = 'man_made_obelisk'][zoom >= 17],
   [feature = 'historic_monument'][zoom >= 16],
   [feature = 'historic_fort'][zoom >= 16],
