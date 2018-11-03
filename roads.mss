@@ -2007,9 +2007,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 12] {
         line-color: #6E6E6E;
         line-width: 0.75;
-        [zoom >= 13] {
-          line-color: #8E8E8E;
-        }
         [zoom >= 14] {
           line-width: 1;
         }
