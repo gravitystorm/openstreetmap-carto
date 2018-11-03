@@ -130,6 +130,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_public_bookcase'][zoom >= 19] {
+    marker-file: url('symbols/amenity/public_bookcase.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_bicycle_rental'][zoom >= 17] {
     marker-file: url('symbols/amenity/rental_bicycle.svg');
     marker-fill: @transportation-icon;
@@ -2328,6 +2335,7 @@
   [feature = 'amenity_shower'][zoom >= 18],
   [feature = 'amenity_bbq'][zoom >= 17],
   [feature = 'amenity_bureau_de_change'][zoom >= 17],
+  [feature = 'amenity_public_bookcase'][zoom >= 19],
   [feature = 'tourism_gallery'][zoom >= 17],
   [feature = 'amenity_bicycle_repair_station'][zoom >= 19] {
     text-name: "[name]";
