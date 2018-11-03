@@ -1585,7 +1585,6 @@ Layer:
                                                   'fuel', 'hospital', 'ice_cream', 'embassy', 'library', 'courthouse', 'townhall', 'parking',
                                                   'bicycle_parking', 'motorcycle_parking', 'pharmacy', 'doctors', 'dentist', 'place_of_worship',
                                                   'police', 'post_box', 'post_office', 'pub', 'biergarten', 'recycling', 'restaurant', 'food_court',
-                                                  'fast_food', 'telephone', 'taxi', 'theatre', 'toilets', 'drinking_water', 'public_bookcase',
                                                   'fast_food', 'telephone', 'taxi', 'theatre', 'toilets', 'drinking_water', 'internet_cafe', 'public_bookcase',
                                                   'prison', 'hunting_stand', 'nightclub', 'veterinary', 'social_facility', 'vehicle_inspection',
                                                   'charging_station', 'arts_centre', 'ferry_terminal', 'marketplace', 'shower', 'bbq',
