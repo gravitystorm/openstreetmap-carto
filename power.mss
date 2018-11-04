@@ -62,16 +62,15 @@
 }
 #power-portals-node {
   [zoom >= 16] {
-    marker-file: url('symbols/square.svg');
-    marker-fill: #5B5B5B;
-    marker-width: 3;
+    marker-file: url('symbols/man_made/power_tower_small.svg');
+    marker-width: 5;
   }
 }
 #power-insulators-node {
   [zoom >= 16] {
     marker-file: url('symbols/square.svg');
     marker-fill: #5B5B5B;
-    marker-width: 3;
+    marker-width: 5;
   }
 }
 #power-insulators-way {
