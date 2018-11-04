@@ -286,8 +286,8 @@
 @shield-font: @book-fonts;
 @shield-clip: false;
 
-@major-highway-text-repeat-distance: 500;
-@minor-highway-text-repeat-distance: 100;
+@major-highway-text-repeat-distance: 50;
+@minor-highway-text-repeat-distance: 10;
 
 @railway-text-repeat-distance: 200;
 
