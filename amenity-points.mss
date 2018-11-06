@@ -541,7 +541,7 @@
     }
   }
 
-  [feature = 'man_made_telescope']["telescope:type" = 'radio'],["telescope:type" = 'gamma'],["telescope:type" = 'radar'] {
+  [feature = 'man_made_telescope']["telescope:type" = 'radio'] {
     [zoom >= 13]["telescope:diameter" >= 60],
     [zoom >= 14]["telescope:diameter" >= 30],
     [zoom >= 15]["telescope:diameter" >= 15],
@@ -553,7 +553,7 @@
     }
   }
 
-  [feature = 'man_made_telescope']["telescope:type" != 'radio']["telescope:type" != 'gamma']["telescope:type" != 'radar'] {
+  [feature = 'man_made_telescope']["telescope:type" = 'optical'],["telescope:type" = null] {
     [zoom >= 14]["telescope:diameter" >= 8],
     [zoom >= 15]["telescope:diameter" >= 4],
     [zoom >= 16]["telescope:diameter" >= 2],
