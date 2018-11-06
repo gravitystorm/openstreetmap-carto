@@ -2994,7 +2994,10 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-clip: false;
       text-placement: line;
       text-halo-radius: @standard-halo-radius;
-      [highway = 'living_street'] { text-halo-fill: @living-street-fill; text-repeat-distance: @major-highway-text-repeat-distance;}
+      [highway = 'living_street'] { 
+        text-halo-fill: @living-street-fill;
+        text-repeat-distance: @major-highway-text-repeat-distance;
+      }
       [highway = 'pedestrian'] { text-halo-fill: @pedestrian-fill; }
       text-face-name: @book-fonts;
       text-repeat-distance: @minor-highway-text-repeat-distance;
