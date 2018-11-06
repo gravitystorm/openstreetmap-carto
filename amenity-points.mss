@@ -770,13 +770,13 @@
   }
 
   [feature = 'historic_memorial'][memorial = null][zoom >= 17],
+  [feature = 'historic_memorial'][memorial != null][memorial != 'blue_plaque'][memorial != 'bust'][memorial != 'plaque'][memorial != 'statue'][memorial != 'stele'][memorial != 'stone'][zoom >= 17]
   [feature = 'historic_memorial'][memorial = 'statue'][zoom >= 17],
   [feature = 'historic_memorial'][memorial = 'bust'][zoom >= 18],
   [feature = 'historic_memorial'][memorial = 'stele'][zoom >= 18],
   [feature = 'historic_memorial'][memorial = 'stone'][zoom >= 18],
   [feature = 'historic_memorial'][memorial = 'blue_plaque'][zoom >= 19],
-  [feature = 'historic_memorial'][memorial = 'plaque'][zoom >= 19],
-  [feature = 'historic_memorial'][zoom >= 19] {
+  [feature = 'historic_memorial'][memorial = 'plaque'][zoom >= 19] {
     marker-file: url('symbols/historic/memorial.svg');
     [memorial = 'bust']{
       marker-file: url('symbols/historic/bust.svg');
@@ -1851,13 +1851,13 @@
 
   [feature = 'tourism_artwork'][zoom >= 17],
   [feature = 'historic_memorial'][memorial = null][zoom >= 17],
+  [feature = 'historic_memorial'][memorial != null][memorial != 'blue_plaque'][memorial != 'bust'][memorial != 'plaque'][memorial != 'statue'][memorial != 'stele'][memorial != 'stone'][zoom >= 17],
   [feature = 'historic_memorial'][memorial = 'statue'][zoom >= 17],
   [feature = 'historic_memorial'][memorial = 'bust'][zoom >= 18],
   [feature = 'historic_memorial'][memorial = 'stele'][zoom >= 18],
   [feature = 'historic_memorial'][memorial = 'stone'][zoom >= 18],
   [feature = 'historic_memorial'][memorial = 'blue_plaque'][zoom >= 19],
   [feature = 'historic_memorial'][memorial = 'plaque'][zoom >= 19],
-  [feature = 'historic_memorial'][zoom >= 19],
   [feature = 'man_made_obelisk'][zoom >= 17],
   [feature = 'historic_monument'][zoom >= 16],
   [feature = 'historic_fort'][zoom >= 16],
