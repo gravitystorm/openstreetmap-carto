@@ -553,7 +553,8 @@
     }
   }
 
-  [feature = 'man_made_telescope']["telescope:type" = 'optical'],["telescope:type" = null] {
+  [feature = 'man_made_telescope']["telescope:type" = 'optical'],
+  [feature = 'man_made_telescope']["telescope:type" = null] {
     [zoom >= 14]["telescope:diameter" >= 8],
     [zoom >= 15]["telescope:diameter" >= 4],
     [zoom >= 16]["telescope:diameter" >= 2],
@@ -1879,7 +1880,8 @@
   [feature = 'man_made_silo'][zoom >= 18],
   [feature = 'man_made_communications_tower'][zoom >= 17],
   [feature = 'man_made_telescope']["telescope:type" = 'radio'][zoom >= 16],
-  [feature = 'man_made_telescope'][zoom >= 17],
+  [feature = 'man_made_telescope']["telescope:type" = 'optical'][zoom >= 17],
+  [feature = 'man_made_telescope']["telescope:type" = null][zoom >= 17],
   [feature = 'man_made_water_tower'][zoom >= 17],
   [feature = 'man_made_chimney'][zoom >= 17],
   [feature = 'man_made_waste_water_plant'][zoom >= 17] {
