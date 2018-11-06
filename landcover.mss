@@ -28,7 +28,7 @@
 // --- Transport ----
 
 @transportation-area: #e9e7e2;
-@apron: #e9d1ff;
+@apron: #dadae0;
 @garages: #dfddce;
 @parking: #eeeeee;
 @parking-outline: saturate(darken(@parking, 40%), 20%);
@@ -51,7 +51,7 @@
 @power: darken(@industrial, 5%);
 @power-line: darken(@industrial-line, 5%);
 @sand: #f5e9c6;
-@societal_amenities: #fbecd7;   // Lch(94,12,80)
+@societal_amenities: #ffffe5;   // Lch(99,13,109)
 @tourism: #734a08;
 @quarry: #c5c3c3;
 @military: #f55;
@@ -95,8 +95,10 @@
 
   [feature = 'leisure_swimming_pool'][zoom >= 14] {
     polygon-fill: @water-color;
-    line-color: saturate(darken(@water-color, 40%), 30%);
-    line-width: 0.5;
+    [zoom >= 17] { 
+      line-width: 0.5; 
+      line-color: saturate(darken(@water-color, 20%), 20%);
+    }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
@@ -106,8 +108,10 @@
   [feature = 'leisure_playground'][zoom >= 13],
   [feature = 'leisure_fitness_station'][zoom >= 13] {
     polygon-fill: @leisure;
-    line-color: darken(@leisure, 60%);
-    line-width: 0.3;
+    [zoom >= 15] {
+      line-color: darken(@leisure, 60%);
+      line-width: 0.3;
+    }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
@@ -257,15 +261,6 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [feature = 'military_danger_area'][zoom >= 9] {
-    polygon-pattern-file: url('symbols/danger_red_hatch.png');
-    polygon-pattern-alignment: global;
-    line-color: @military;
-    line-width: 2.0;
-    line-offset: -1.0;
-    line-opacity: 0.2;
-  }
-
   [feature = 'leisure_park'] {
     [zoom >= 10] {
       polygon-fill: @park;
@@ -410,7 +405,7 @@
       }
     }
   }
-  
+
   [feature = 'man_made_water_works'] {
     polygon-fill: @industrial;
     [zoom >= 15] {
@@ -424,7 +419,7 @@
       }
     }
   }
-  
+
   [feature = 'landuse_railway'][zoom >= 10] {
     polygon-fill: @railway;
     [zoom >= 16][name != ''] {
@@ -567,16 +562,20 @@
   [feature = 'amenity_social_facility'],
   [feature = 'amenity_arts_centre'] {
     [zoom >= 10] {
-      polygon-fill: @residential;
-      [zoom >= 12] {
-        polygon-fill: @societal_amenities;
-        [zoom >= 13] {
-          line-width: 0.3;
-          line-color: darken(@societal_amenities, 35%);
-        }
-      }
+      polygon-fill: @built-up-lowzoom;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+    [zoom >= 11] {
+      polygon-fill: @built-up-z11;
+    }
+    [zoom >= 12] {
+      polygon-fill: @built-up-z12;
+    }
+    [zoom >= 13] {
+      polygon-fill: @societal_amenities;
+      line-width: 0.3;
+      line-color: darken(@societal_amenities, 35%);
     }
   }
 
@@ -585,12 +584,12 @@
   [feature = 'amenity_fire_station'][zoom >= 13],
   [feature = 'amenity_police'][zoom >= 13] {
     polygon-fill: #F3E3DD;
-    line-color: @military; 
+    line-color: @military;
     line-opacity: 0.24;
-    line-width: 1.0; 
+    line-width: 1.0;
     line-offset: -0.5;
     [zoom >= 15] {
-      line-width: 2; 
+      line-width: 2;
       line-offset: -1.0;
     }
   }
@@ -775,7 +774,8 @@
 
 #landuse-overlay {
   [landuse = 'military'][zoom >= 8][way_pixels > 900],
-  [landuse = 'military'][zoom >= 13] {
+  [landuse = 'military'][zoom >= 13],
+  [military = 'danger_area'][zoom >= 9] {
     polygon-pattern-file: url('symbols/military_red_hatch.png');
     polygon-pattern-alignment: global;
     line-color: @military;
@@ -783,6 +783,10 @@
     line-width: 1.0;
     line-offset: -0.5;
     [zoom >= 15] {
+      [military = 'danger_area'][zoom >= 9] {
+        polygon-pattern-file: url('symbols/danger_red_hatch.png');
+        line-opacity: 0.2;
+      }
       line-width: 2;
       line-offset: -1.0;
     }
