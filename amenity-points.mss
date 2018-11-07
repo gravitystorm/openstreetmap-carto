@@ -576,7 +576,8 @@
 
   [feature = 'amenity_parking'][way_pixels > 900],
   [feature = 'amenity_bicycle_parking'][way_pixels > 900],
-  [feature = 'amenity_motorcycle_parking'][way_pixels > 900] {
+  [feature = 'amenity_motorcycle_parking'][way_pixels > 900],
+  [feature = 'amenity_parking_entrance'][zoom >= 18] {
     [feature = 'amenity_parking'] {
       marker-file: url('symbols/amenity/parking.svg');
     }
@@ -585,6 +586,9 @@
     }
     [feature = 'amenity_motorcycle_parking'] {
       marker-file: url('symbols/amenity/motorcycle_parking.svg');
+    }
+    [feature = 'amenity_parking_entrance'] {
+      marker-file: url('symbols/amenity/parking_entrance.svg');
     }
     marker-placement: interior;
     marker-clip: false;
@@ -1707,7 +1711,8 @@
 
   [feature = 'amenity_parking'][zoom >= 10][way_pixels > 900],
   [feature = 'amenity_bicycle_parking'][zoom >= 10][way_pixels > 900],
-  [feature = 'amenity_motorcycle_parking'][zoom >= 10][way_pixels > 900] {
+  [feature = 'amenity_motorcycle_parking'][zoom >= 10][way_pixels > 900],
+  [feature = 'amenity_parking_entrance'][zoom >= 18] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
