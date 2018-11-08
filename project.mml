@@ -1464,7 +1464,7 @@ Layer:
                                                   'fitness_centre', 'fitness_station', 'firepit', 'sauna', 'beach_resort',
                                                   'bowling_alley', 'outdoor_seating', 'bird_hide', 'amusement_arcade', 'sports_centre', 'swimming_area')
                                                   THEN leisure ELSE NULL END,
-              'man_made_' || CASE WHEN (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'storage_tank', 'silo')
+              'man_made_' || CASE WHEN (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'crane', 'storage_tank', 'silo')
                                         AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)) THEN man_made ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('spring') THEN "natural" ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate')
@@ -1531,7 +1531,7 @@ Layer:
             OR leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'fitness_centre',
                            'fitness_station', 'firepit', 'sauna', 'beach_resort', 'bowling_alley', 'outdoor_seating', 'bird_hide',
                            'amusement_arcade', 'sports_centre', 'swimming_area')
-            OR (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'storage_tank', 'silo')
+            OR (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'crane', 'storage_tank', 'silo')
                 AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL))
             OR "natural" IN ('spring')
             OR historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate')
@@ -1597,7 +1597,7 @@ Layer:
                                                   'dog_park', 'fitness_centre', 'fitness_station', 'firepit', 'sauna', 'beach_resort',
                                                   'bowling_alley', 'outdoor_seating', 'bird_hide', 'amusement_arcade', 'sports_centre',
                                                   'swimming_area') THEN leisure ELSE NULL END,
-              'man_made_' || CASE WHEN (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'storage_tank', 'silo')
+              'man_made_' || CASE WHEN (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'crane', 'storage_tank', 'silo')
                                         AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)) THEN man_made ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance') THEN "natural" ELSE NULL END,
               'waterway_' || CASE WHEN "waterway" IN ('waterfall') THEN waterway ELSE NULL END,
@@ -1630,7 +1630,7 @@ Layer:
             tags->'denomination' as denomination,
             tags->'generator:source' as "generator:source",
             CASE
-              WHEN (man_made IN ('mast', 'tower', 'chimney') AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL))
+              WHEN (man_made IN ('mast', 'tower', 'chimney''chimney', 'crane') AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL))
                     OR waterway IN ('waterfall') THEN
                 CASE
                   WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?( m)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)( m)?$'))::NUMERIC
@@ -1685,7 +1685,7 @@ Layer:
                            'bowling_alley', 'outdoor_seating', 'bird_hide', 'amusement_arcade', 'sports_centre',
                            'swimming_area')
             OR barrier IN ('toll_booth')
-            OR (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'cross', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'storage_tank', 'silo')
+            OR (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'cross', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'crane', 'storage_tank', 'silo')
                 AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL))
             OR "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance')
             OR waterway IN ('waterfall')
@@ -2088,7 +2088,7 @@ Layer:
                                                   'greenhouse_horticulture', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill',
                                                   'construction', 'military', 'plant_nursery', 'religious') THEN landuse ELSE NULL END,
               'man_made_' || CASE WHEN (man_made IN ('lighthouse', 'windmill', 'mast', 'tower', 'water_tower', 'pier', 'breakwater', 'groyne', 'obelisk', 'works',
-              'communications_tower', 'telescope', 'chimney', 'storage_tank', 'silo', 'wastewater_plant', 'water_works')
+              'communications_tower', 'telescope', 'chimney', 'crane', 'storage_tank', 'silo', 'wastewater_plant', 'water_works')
                                         AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)) THEN man_made ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('wood', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath',
                                                     'grassland', 'scrub', 'beach', 'shoal', 'reef', 'glacier', 'strait') THEN "natural" ELSE NULL END,
@@ -2153,7 +2153,7 @@ Layer:
               OR leisure IS NOT NULL
               OR landuse IS NOT NULL
               OR (man_made IN ('lighthouse', 'windmill', 'mast', 'tower', 'water_tower', 'pier', 'breakwater', 'groyne', 'obelisk', 'works',
-                  'communications_tower', 'telescope', 'chimney', 'storage_tank', 'silo', 'wastewater_plant', 'water_works')
+                  'communications_tower', 'telescope', 'chimney', 'crane', 'storage_tank', 'silo', 'wastewater_plant', 'water_works')
                   AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL))
               OR "natural" IS NOT NULL
               OR place IN ('island', 'islet')
@@ -2272,7 +2272,7 @@ Layer:
                                                       'greenhouse_horticulture', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill',
                                                       'construction', 'military', 'plant_nursery') THEN landuse ELSE NULL END,
                   'man_made_' || CASE WHEN (man_made IN ('lighthouse', 'windmill', 'mast', 'tower', 'water_tower', 'obelisk', 'works', 'communications_tower',
-                                                         'telescope', 'chimney', 'storage_tank', 'silo', 'wastewater_plant', 'water_works')
+                                                         'telescope', 'chimney', 'crane', 'storage_tank', 'silo', 'wastewater_plant', 'water_works')
                                             AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)) THEN man_made ELSE NULL END,
                   'natural_' || CASE WHEN "natural" IN ('wood', 'peak', 'volcano', 'saddle', 'cave_entrance', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring',
                                                         'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier', 'tree', 'strait')
@@ -2340,7 +2340,7 @@ Layer:
                                  'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farmland', 'greenhouse_horticulture',
                                  'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'construction', 'military', 'plant_nursery')
                   OR (man_made IN ('lighthouse', 'windmill', 'mast', 'tower', 'water_tower', 'cross', 'obelisk', 'works', 'communications_tower',
-                                   'telescope', 'chimney', 'storage_tank', 'silo', 'wastewater_plant', 'water_works')
+                                   'telescope', 'chimney', 'crane', 'storage_tank', 'silo', 'wastewater_plant', 'water_works')
                       AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL))
                   OR "natural" IS NOT NULL
                   OR waterway IN ('waterfall')

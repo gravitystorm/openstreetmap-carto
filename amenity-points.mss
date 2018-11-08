@@ -552,6 +552,19 @@
     }
   }
 
+  [feature = 'man_made_crane'] {
+    [zoom >= 13][height >= 100],
+    [zoom >= 14][height >= 50],
+    [zoom >= 15][height >= 30],
+    [zoom >= 16][height >= 15],
+    [zoom >= 17] {
+      marker-file: url('symbols/man_made/crane.svg');
+      marker-fill: @man-made-icon;
+      marker-placement: interior;
+      marker-clip: false;
+    }
+  }
+
   [feature = 'man_made_telescope']["telescope:type" = 'radio'] {
     [zoom >= 13]["telescope:diameter" >= 60],
     [zoom >= 14]["telescope:diameter" >= 30],
@@ -1899,6 +1912,7 @@
   [feature = 'man_made_telescope']["telescope:type" = 'radio'][zoom >= 16],
   [feature = 'man_made_water_tower'][zoom >= 17],
   [feature = 'man_made_chimney'][zoom >= 17],
+  [feature = 'man_made_crane'][zoom >= 17],
   [feature = 'man_made_waste_water_plant'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
@@ -1919,6 +1933,7 @@
     [feature = 'man_made_storage_tank'],
     [feature = 'man_made_silo'],
     [feature = 'man_made_chimney'],
+    [feature = 'man_made_crane'],
     [feature = 'man_made_water_works'],
     [feature = 'man_made_wastewater_plant'] { 
       text-dy: 10;
