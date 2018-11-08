@@ -9,7 +9,7 @@
 @entrance-normal: @building-line;
 
 #buildings {
-  [zoom >= 13] {
+  [zoom >= 14] {
     polygon-fill: @building-low-zoom;
     polygon-clip: false;
     line-width: 0;

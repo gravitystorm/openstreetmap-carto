@@ -130,6 +130,13 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_public_bookcase'][zoom >= 19] {
+    marker-file: url('symbols/amenity/public_bookcase.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_bicycle_rental'][zoom >= 17] {
     marker-file: url('symbols/amenity/rental_bicycle.svg');
     marker-fill: @transportation-icon;
@@ -189,10 +196,14 @@
   }
 
   [feature = 'tourism_artwork'][zoom >= 17] {
-    marker-file: url('symbols/tourism/artwork.svg');
+    [artwork_type != 'statue'] {
+      marker-file: url('symbols/tourism/artwork.svg');
+    }
+    [artwork_type = 'statue'] {
+      marker-file: url('symbols/historic/statue.svg');
+    }
     marker-fill: @memorials;
     marker-placement: interior;
-    marker-clip: false;
   }
 
   [feature = 'tourism_camp_site'][zoom >= 16] {
@@ -803,21 +814,40 @@
     marker-clip: false;
   }
 
-  [feature = 'historic_memorial'][zoom >= 17] {
+  [feature = 'historic_memorial'][memorial = null][zoom >= 17],
+  [feature = 'historic_memorial'][memorial != null][memorial != 'blue_plaque'][memorial != 'bust'][memorial != 'plaque'][memorial != 'stele'][memorial != 'stone'][zoom >= 17],
+  [feature = 'historic_memorial'][memorial = 'statue'][zoom >= 17],
+  [feature = 'historic_memorial'][memorial = 'bust'][zoom >= 18],
+  [feature = 'historic_memorial'][memorial = 'stele'][zoom >= 18],
+  [feature = 'historic_memorial'][memorial = 'stone'][zoom >= 18],
+  [feature = 'historic_memorial'][memorial = 'blue_plaque'][zoom >= 19],
+  [feature = 'historic_memorial'][memorial = 'plaque'][zoom >= 19] {
     marker-file: url('symbols/historic/memorial.svg');
+    [memorial = 'bust']{
+      marker-file: url('symbols/historic/bust.svg');
+    }
+    [memorial = 'blue_plaque'],
+    [memorial = 'plaque'] {
+      marker-file: url('symbols/historic/plaque.svg');
+    }
+    [memorial = 'statue'] {
+      marker-file: url('symbols/historic/statue.svg');
+    }
+    [memorial = 'stone'] {
+      marker-file: url('symbols/historic/stone.svg');
+    }
     marker-fill: @memorials;
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [feature = 'historic_memorial_plaque'][zoom >= 19] {
-    marker-file: url('symbols/historic/plaque.svg');
+  [feature = 'man_made_obelisk'][zoom >= 17] {
+    marker-file: url('symbols/historic/obelisk.svg');
     marker-fill: @memorials;
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [feature = 'man_made_obelisk'][zoom >= 16],
   [feature = 'historic_monument'][zoom >= 16] {
     marker-file: url('symbols/historic/monument.svg');
     marker-fill: @memorials;
@@ -1900,9 +1930,15 @@
   }
 
   [feature = 'tourism_artwork'][zoom >= 17],
-  [feature = 'historic_memorial'][zoom >= 17],
-  [feature = 'historic_memorial_plaque'][zoom >= 19],
-  [feature = 'man_made_obelisk'][zoom >= 16],
+  [feature = 'historic_memorial'][memorial = null][zoom >= 17],
+  [feature = 'historic_memorial'][memorial != null][memorial != 'blue_plaque'][memorial != 'bust'][memorial != 'plaque'][memorial != 'stele'][memorial != 'stone'][zoom >= 17],
+  [feature = 'historic_memorial'][memorial = 'statue'][zoom >= 17],
+  [feature = 'historic_memorial'][memorial = 'bust'][zoom >= 18],
+  [feature = 'historic_memorial'][memorial = 'stele'][zoom >= 18],
+  [feature = 'historic_memorial'][memorial = 'stone'][zoom >= 18],
+  [feature = 'historic_memorial'][memorial = 'blue_plaque'][zoom >= 19],
+  [feature = 'historic_memorial'][memorial = 'plaque'][zoom >= 19],
+  [feature = 'man_made_obelisk'][zoom >= 17],
   [feature = 'historic_monument'][zoom >= 16],
   [feature = 'historic_fort'][zoom >= 16],
   [feature = 'historic_castle'][zoom >= 16],
@@ -2328,6 +2364,7 @@
   [feature = 'amenity_shower'][zoom >= 18],
   [feature = 'amenity_bbq'][zoom >= 17],
   [feature = 'amenity_bureau_de_change'][zoom >= 17],
+  [feature = 'amenity_public_bookcase'][zoom >= 19],
   [feature = 'tourism_gallery'][zoom >= 17],
   [feature = 'amenity_bicycle_repair_station'][zoom >= 19] {
     text-name: "[name]";
