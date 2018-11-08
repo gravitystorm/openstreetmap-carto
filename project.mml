@@ -2552,17 +2552,4 @@ Layer:
         ) AS power_insulators
     properties:
       minzoom: 16
-  - id: power-insulators-way
-    geometry: way
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way
-          FROM planet_osm_lines
-          WHERE power = 'insulator'
-        ) AS power_insulators
-    properties:
-      minzoom: 16
 
