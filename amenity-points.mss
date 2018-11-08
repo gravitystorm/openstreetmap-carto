@@ -1808,12 +1808,37 @@
     text-placement: interior;
   }
 
+  [feature = 'landuse_religious'] {
+    [zoom >= 10][way_pixels > 3000][is_building = 'no'],
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: @landcover-font-size;
+      text-wrap-width: @landcover-wrap-width-size;
+      text-line-spacing: @landcover-line-spacing-size;
+      [way_pixels > 12000] {
+        text-size: @landcover-font-size-big;
+        text-wrap-width: @landcover-wrap-width-size-big;
+        text-line-spacing: @landcover-line-spacing-size-big;
+      }
+      [way_pixels > 48000] {
+        text-size: @landcover-font-size-bigger;
+        text-wrap-width: @landcover-wrap-width-size-bigger;
+        text-line-spacing: @landcover-line-spacing-size-bigger;
+      }
+      text-face-name: @landcover-face-name;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+    }
+  }
+
+  [feature = 'amenity_place_of_worship'][zoom >= 16][way_pixels > 3000],
   [feature = 'amenity_place_of_worship'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: #000033;
+    text-fill: #000033; 
     text-dy: 12;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
@@ -2182,6 +2207,7 @@
   [feature = 'amenity_school'],
   [feature = 'amenity_college'],
   [feature = 'amenity_university'],
+  [feature = 'landuse_religious'],
   [feature = 'natural_heath'],
   [feature = 'natural_scrub'],
   [feature = 'natural_beach'],
@@ -2299,6 +2325,9 @@
       [feature = 'amenity_college'],
       [feature = 'amenity_university'] {
         text-fill: darken(@societal_amenities, 80%);
+      }
+      [feature = 'landuse_religious'] {
+        text-fill: darken(@place_of_worship, 50%);
       }
       [feature = 'natural_heath'] {
         text-fill: darken(@heath, 40%);
