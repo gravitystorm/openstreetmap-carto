@@ -230,6 +230,7 @@ Layer:
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
+              OR tags->'basin' IN ('detention', 'infiltration')
               THEN 'yes' ELSE 'no' END AS int_intermittent
           FROM planet_osm_polygon
           WHERE
