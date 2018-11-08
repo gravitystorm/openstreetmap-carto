@@ -73,10 +73,4 @@
     marker-width: 5;
   }
 }
-#power-insulators-way {
-  [zoom >= 16] {
-    line-width: 2;
-    line-color:#5B5B5B;
-  }
-}
 
