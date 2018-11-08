@@ -1808,6 +1808,7 @@
     text-placement: interior;
   }
 
+  [feature = 'amenity_place_of_worship'][zoom >= 16][way_pixels > 3000],
   [feature = 'amenity_place_of_worship'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
@@ -2182,6 +2183,7 @@
   [feature = 'amenity_school'],
   [feature = 'amenity_college'],
   [feature = 'amenity_university'],
+  [feature = 'landuse_religious'],
   [feature = 'natural_heath'],
   [feature = 'natural_scrub'],
   [feature = 'natural_beach'],
@@ -2299,6 +2301,9 @@
       [feature = 'amenity_college'],
       [feature = 'amenity_university'] {
         text-fill: darken(@societal_amenities, 80%);
+      }
+      [feature = 'landuse_religious'] {
+        text-fill: darken(@place_of_worship, 50%);
       }
       [feature = 'natural_heath'] {
         text-fill: darken(@heath, 40%);
