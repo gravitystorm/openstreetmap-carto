@@ -196,10 +196,14 @@
   }
 
   [feature = 'tourism_artwork'][zoom >= 17] {
-    marker-file: url('symbols/tourism/artwork.svg');
+    [artwork_type != 'statue'] {
+      marker-file: url('symbols/tourism/artwork.svg');
+    }
+    [artwork_type = 'statue'] {
+      marker-file: url('symbols/historic/statue.svg');
+    }
     marker-fill: @memorials;
     marker-placement: interior;
-    marker-clip: false;
   }
 
   [feature = 'tourism_camp_site'][zoom >= 16] {
@@ -549,15 +553,28 @@
     }
   }
 
-  [feature = 'man_made_telescope']["telescope:type" = 'radio'] {
-    [zoom >= 13]["telescope:diameter" >= 60],
-    [zoom >= 14]["telescope:diameter" >= 30],
-    [zoom >= 15]["telescope:diameter" >= 15],
-    [zoom >= 16] {
-      marker-file: url('symbols/man_made/telescope_dish.svg');
-      marker-fill: @man-made-icon;
-      marker-placement: interior;
-      marker-clip: false;
+  [feature = 'man_made_telescope']["telescope:type" != 'optical']["telescope:type" != null] {
+  [zoom >= 13]["telescope:diameter" >= 60],
+  [zoom >= 14]["telescope:diameter" >= 30],
+  [zoom >= 15]["telescope:diameter" >= 15],
+  [zoom >= 16] {
+    marker-file: url('symbols/man_made/telescope_dish.svg');
+    marker-fill: @man-made-icon;
+    marker-placement: interior;
+    marker-clip: false;
+    }
+  }
+
+[feature = 'man_made_telescope']["telescope:type" = 'optical'],
+[feature = 'man_made_telescope']["telescope:type" = null], {
+  [zoom >= 14]["telescope:diameter" >= 8],
+  [zoom >= 15]["telescope:diameter" >= 4],
+  [zoom >= 16]["telescope:diameter" >= 2],
+  [zoom >= 17] {
+    marker-file: url('symbols/man_made/telescope_dome.svg');
+    marker-fill: @man-made-icon;
+    marker-placement: interior;
+    marker-clip: false;
     }
   }
 
@@ -850,21 +867,40 @@
     marker-clip: false;
   }
 
-  [feature = 'historic_memorial'][zoom >= 17] {
+  [feature = 'historic_memorial'][memorial = null][zoom >= 17],
+  [feature = 'historic_memorial'][memorial != null][memorial != 'blue_plaque'][memorial != 'bust'][memorial != 'plaque'][memorial != 'stele'][memorial != 'stone'][zoom >= 17],
+  [feature = 'historic_memorial'][memorial = 'statue'][zoom >= 17],
+  [feature = 'historic_memorial'][memorial = 'bust'][zoom >= 18],
+  [feature = 'historic_memorial'][memorial = 'stele'][zoom >= 18],
+  [feature = 'historic_memorial'][memorial = 'stone'][zoom >= 18],
+  [feature = 'historic_memorial'][memorial = 'blue_plaque'][zoom >= 19],
+  [feature = 'historic_memorial'][memorial = 'plaque'][zoom >= 19] {
     marker-file: url('symbols/historic/memorial.svg');
+    [memorial = 'bust']{
+      marker-file: url('symbols/historic/bust.svg');
+    }
+    [memorial = 'blue_plaque'],
+    [memorial = 'plaque'] {
+      marker-file: url('symbols/historic/plaque.svg');
+    }
+    [memorial = 'statue'] {
+      marker-file: url('symbols/historic/statue.svg');
+    }
+    [memorial = 'stone'] {
+      marker-file: url('symbols/historic/stone.svg');
+    }
     marker-fill: @memorials;
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [feature = 'historic_memorial_plaque'][zoom >= 19] {
-    marker-file: url('symbols/historic/plaque.svg');
+  [feature = 'man_made_obelisk'][zoom >= 17] {
+    marker-file: url('symbols/historic/obelisk.svg');
     marker-fill: @memorials;
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [feature = 'man_made_obelisk'][zoom >= 16],
   [feature = 'historic_monument'][zoom >= 16] {
     marker-file: url('symbols/historic/monument.svg');
     marker-fill: @memorials;
@@ -1913,7 +1949,8 @@
   [feature = 'man_made_storage_tank'][zoom >= 18],
   [feature = 'man_made_silo'][zoom >= 18],
   [feature = 'man_made_communications_tower'][zoom >= 17],
-  [feature = 'man_made_telescope']["telescope:type" = 'radio'][zoom >= 16],
+  [feature = 'man_made_telescope']["telescope:type" != 'optical']["telescope:type" != null][zoom >= 16],
+  [feature = 'man_made_telescope'][zoom >= 17],
   [feature = 'man_made_water_tower'][zoom >= 17],
   [feature = 'man_made_chimney'][zoom >= 17],
   [feature = 'man_made_waste_water_plant'][zoom >= 17] {
@@ -1931,7 +1968,7 @@
     [feature = 'man_made_mast'],
     [feature = 'man_made_tower'],
     [feature = 'man_made_communications_tower'],
-    [feature = 'man_made_telescope']["telescope:type" = 'radio'],
+    [feature = 'man_made_telescope'],
     [feature = 'man_made_water_tower'],
     [feature = 'man_made_storage_tank'],
     [feature = 'man_made_silo'],
@@ -1947,9 +1984,15 @@
   }
 
   [feature = 'tourism_artwork'][zoom >= 17],
-  [feature = 'historic_memorial'][zoom >= 17],
-  [feature = 'historic_memorial_plaque'][zoom >= 19],
-  [feature = 'man_made_obelisk'][zoom >= 16],
+  [feature = 'historic_memorial'][memorial = null][zoom >= 17],
+  [feature = 'historic_memorial'][memorial != null][memorial != 'blue_plaque'][memorial != 'bust'][memorial != 'plaque'][memorial != 'stele'][memorial != 'stone'][zoom >= 17],
+  [feature = 'historic_memorial'][memorial = 'statue'][zoom >= 17],
+  [feature = 'historic_memorial'][memorial = 'bust'][zoom >= 18],
+  [feature = 'historic_memorial'][memorial = 'stele'][zoom >= 18],
+  [feature = 'historic_memorial'][memorial = 'stone'][zoom >= 18],
+  [feature = 'historic_memorial'][memorial = 'blue_plaque'][zoom >= 19],
+  [feature = 'historic_memorial'][memorial = 'plaque'][zoom >= 19],
+  [feature = 'man_made_obelisk'][zoom >= 17],
   [feature = 'historic_monument'][zoom >= 16],
   [feature = 'historic_fort'][zoom >= 16],
   [feature = 'historic_castle'][zoom >= 16],
