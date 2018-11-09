@@ -634,22 +634,22 @@
     marker-clip: false;
   }
 
-  [feature = 'healthcare_alternative'], 
-  [feature = 'healthcare_audiologist'], 
-  [feature = 'healthcare_birthing_center'], 
-  [feature = 'healthcare_blood_bank'], 
-  [feature = 'healthcare_blood_donation'], 
-  [feature = 'healthcare_centre'], 
-  [feature = 'healthcare_chiropractor'], 
-  [feature = 'healthcare_laboratory'], 
-  [feature = 'healthcare_midwife'], 
-  [feature = 'healthcare_occupational_therapist'], 
-  [feature = 'healthcare_optometrist'], 
-  [feature = 'healthcare_physiotherapist'], 
-  [feature = 'healthcare_podiatrist'], 
+  [feature = 'healthcare_alternative'],
+  [feature = 'healthcare_audiologist'],
+  [feature = 'healthcare_birthing_center'],
+  [feature = 'healthcare_blood_bank'],
+  [feature = 'healthcare_blood_donation'],
+  [feature = 'healthcare_centre'],
+  [feature = 'healthcare_chiropractor'],
+  [feature = 'healthcare_laboratory'],
+  [feature = 'healthcare_midwife'],
+  [feature = 'healthcare_occupational_therapist'],
+  [feature = 'healthcare_optometrist'],
+  [feature = 'healthcare_physiotherapist'],
+  [feature = 'healthcare_podiatrist'],
   [feature = 'healthcare_psychotherapist'],
-  [feature = 'healthcare_rehabilitation'], 
-  [feature = 'healthcare_speech_therapist'], 
+  [feature = 'healthcare_rehabilitation'],
+  [feature = 'healthcare_speech_therapist'],
   [feature = 'healthcare_yes'] {
     [zoom >= 17] {
       marker-width: 4;
