@@ -595,7 +595,8 @@
     }
   }
 
-  [feature = 'amenity_pharmacy'][zoom >= 17] {
+  [feature = 'amenity_pharmacy'][zoom >= 17],
+  [feature = 'healthcare_pharmacy'][zoom >= 17] {
     marker-file: url('symbols/amenity/pharmacy.svg');
     marker-fill: @health-color;
     marker-placement: interior;
@@ -605,7 +606,7 @@
   [feature = 'amenity_clinic'][zoom >= 17],
   [feature = 'healthcare_clinic'][zoom >= 17],
   [feature = 'amenity_doctors'][zoom >= 17],
-  [feature = 'healthcare_doctors'][zoom >= 17] {
+  [feature = 'healthcare_doctor'][zoom >= 17] {
     marker-file: url('symbols/amenity/doctors.svg');
     marker-fill: @health-color;
     marker-placement: interior;
@@ -2555,9 +2556,10 @@
   [feature = 'healthcare_chiropractor'],
   [feature = 'healthcare_clinic'],
   [feature = 'healthcare_dentist'],
-  [feature = 'healthcare_doctors'],
+  [feature = 'healthcare_doctor'],
   [feature = 'healthcare_laboratory'],
   [feature = 'healthcare_midwife'],
+  [feature = 'healthcare_pharmacy'],
   [feature = 'healthcare_occupational_therapist'],
   [feature = 'healthcare_optometrist'],
   [feature = 'healthcare_physiotherapist'],
