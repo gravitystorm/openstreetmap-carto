@@ -1,9 +1,10 @@
-@power-line-color: #888;
+@power-live-color: #888;
+@power-support-color: darken(@power-live-color, 15%);
 
 #power-line {
   [zoom >= 14] {
     line-width: 0.5;
-    line-color: @power-line-color;
+    line-color: @power-live-color;
     [zoom >= 15] {
       line-width: 0.6;
     }
@@ -22,7 +23,7 @@
 #power-minorline {
   [zoom >= 16] {
     line-width: 0.3;
-    line-color: @power-line-color;
+    line-color: @power-live-color;
     [zoom >= 17] {
       line-width: 0.4;
     }
@@ -35,21 +36,23 @@
 #power-towers {
   [zoom >= 14] {
     marker-file: url('symbols/man_made/power_tower_small.svg');
+    marker-fill: @power-support-color;
     marker-width: 3;
   }
   [zoom >= 15] {
     marker-file: url('symbols/man_made/power_tower.svg');
+    marker-fill: @power-support-color;
     marker-width: 5;
-  }
-  [zoom >= 17] {
-    marker-width: 7;
+    [zoom >= 17] {
+      marker-width: 7;
+    }
   }
 }
 
 #power-poles {
   [zoom >= 16] {
     marker-file: url('symbols/square.svg');
-    marker-fill: #928f8f;
+    marker-fill: @power-support-color;
     marker-width: 3;
   }
 }
@@ -57,19 +60,20 @@
 #power-portals-way {
   [zoom >= 16] {
     line-width: 1.5;
-    line-color:#5B5B5B;
+    line-color:@power-support-color;
   }
 }
 #power-portals-node {
   [zoom >= 16] {
     marker-file: url('symbols/man_made/power_tower_small.svg');
+    marker-fill: @power-support-color;
     marker-width: 5;
   }
 }
 #power-insulators-node {
   [zoom >= 16] {
     marker-file: url('symbols/square.svg');
-    marker-fill: #5B5B5B;
+    marker-fill: @power-support-color;
     marker-width: 5;
   }
 }
