@@ -829,7 +829,7 @@
     marker-fill: @man-made-icon;
     marker-placement: interior;
     marker-clip: false;
-    marker-transform: 'translate(0,-6)';
+    marker-transform: 'translate(0,-5)';
   }
 
   [feature = 'historic_memorial'][memorial = null][zoom >= 17],
@@ -864,7 +864,7 @@
     marker-fill: @memorials;
     marker-placement: interior;
     marker-clip: false;
-    marker-transform: 'translate(0,-6)';
+    marker-transform: 'translate(0,-5)';
   }
 
   [feature = 'historic_monument'][zoom >= 16] {
@@ -872,7 +872,7 @@
     marker-fill: @memorials;
     marker-placement: interior;
     marker-clip: false;
-    marker-transform: 'translate(0,-6)';
+    marker-transform: 'translate(0,-4)';
   }
 
   [feature = 'historic_fort'][zoom >= 16] {
@@ -1427,7 +1427,7 @@
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @man-made-icon;
-
+    marker-transform: 'translate(0,-4)';
  }
 
   [feature = 'natural_peak'][zoom >= 11] {
@@ -1930,23 +1930,27 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: black;
-    [feature = 'natural_cave_entrance'] { text-dy: 11; }
+    [feature = 'man_made_communications_tower'],
+    [feature = 'man_made_mast'],
+    [feature = 'man_made_tower'],
+    [feature = 'man_made_chimney'] {
+      text-dy: 4;
+    }
+    [feature = 'historic_wayside_cross'],
     [feature = 'man_made_cross'],
-    [feature = 'historic_wayside_cross'] {
+    [feature = 'man_made_water_tower'] {
       text-dy: 6;
     }
     [feature = 'historic_city_gate'],
-    [feature = 'man_made_mast'],
-    [feature = 'man_made_tower'],
-    [feature = 'man_made_communications_tower'],
     [feature = 'man_made_telescope'],
-    [feature = 'man_made_water_tower'],
     [feature = 'man_made_storage_tank'],
     [feature = 'man_made_silo'],
-    [feature = 'man_made_chimney'],
     [feature = 'man_made_water_works'],
     [feature = 'man_made_wastewater_plant'] { 
       text-dy: 10;
+    }
+    [feature = 'natural_cave_entrance'] {
+      text-dy: 11;
     }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
@@ -1974,6 +1978,10 @@
     text-line-spacing: @standard-line-spacing-size;
     text-fill: @memorials;
     text-dy: 11;
+    [feature = 'man_made_obelisk'][zoom >= 17],
+    [feature = 'historic_monument'][zoom >= 16], {
+      text-dy: 6;
+    }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
@@ -2523,8 +2531,7 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: @man-made-icon;
-    text-dy: 16;
-    [feature = 'man_made_windmill'] { text-dy: 12; }
+    text-dy: 6;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
