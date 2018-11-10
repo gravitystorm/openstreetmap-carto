@@ -469,6 +469,7 @@
       marker-fill: @man-made-icon;
       marker-placement: interior;
       marker-clip: false;
+      marker-transform: 'translate(0,-6)';
       ["tower:type" = 'lighting'] {
         marker-file: url('symbols/man_made/mast_lighting.svg');
       }      
@@ -491,6 +492,7 @@
       marker-fill: @man-made-icon;
       marker-placement: interior;
       marker-clip: false;
+      marker-transform: 'translate(0,-6)';
       ["tower:type" = 'defensive'] {
         marker-file: url('symbols/man_made/tower_defensive.svg');
       }
@@ -539,6 +541,7 @@
     marker-fill: @man-made-icon;
     marker-placement: interior;
     marker-clip: false;
+    marker-transform: 'translate(0,-6)';
   }
   
   [feature = 'man_made_chimney'] {
@@ -549,6 +552,7 @@
       marker-fill: @man-made-icon;
       marker-placement: interior;
       marker-clip: false;
+      marker-transform: 'translate(0,-6)';
     }
   }
 
@@ -825,6 +829,7 @@
     marker-fill: @man-made-icon;
     marker-placement: interior;
     marker-clip: false;
+    marker-transform: 'translate(0,-6)';
   }
 
   [feature = 'historic_memorial'][memorial = null][zoom >= 17],
@@ -859,6 +864,7 @@
     marker-fill: @memorials;
     marker-placement: interior;
     marker-clip: false;
+    marker-transform: 'translate(0,-6)';
   }
 
   [feature = 'historic_monument'][zoom >= 16] {
@@ -866,6 +872,7 @@
     marker-fill: @memorials;
     marker-placement: interior;
     marker-clip: false;
+    marker-transform: 'translate(0,-6)';
   }
 
   [feature = 'historic_fort'][zoom >= 16] {
@@ -1420,7 +1427,8 @@
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @man-made-icon;
-  }
+
+ }
 
   [feature = 'natural_peak'][zoom >= 11] {
     marker-file: url('symbols/natural/peak.svg');
@@ -1475,6 +1483,7 @@
       marker-placement: interior;
       marker-fill: black;
       marker-clip: false;
+      marker-transform: 'translate(0,-6)';
     }
   }
 
@@ -1483,6 +1492,7 @@
     marker-placement: interior;
     marker-fill: @man-made-icon;
     marker-clip: false;
+    marker-transform: 'translate(0,-6)';
   }
 
   [feature = 'amenity_hunting_stand'][zoom >= 16] {
