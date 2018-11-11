@@ -553,10 +553,9 @@
   }
 
   [feature = 'man_made_crane'] {
-    [zoom >= 13][height >= 100],
-    [zoom >= 14][height >= 50],
-    [zoom >= 15][height >= 30],
-    [zoom >= 16][height >= 15],
+    [zoom >= 14][height >= 100],
+    [zoom >= 15][height >= 50],
+    [zoom >= 16][height >= 30],
     [zoom >= 17] {
       marker-file: url('symbols/man_made/crane.svg');
       marker-fill: @man-made-icon;
@@ -1937,7 +1936,8 @@
     text-fill: black;
     [feature = 'natural_cave_entrance'] { text-dy: 11; }
     [feature = 'man_made_cross'],
-    [feature = 'historic_wayside_cross'] {
+    [feature = 'historic_wayside_cross'],
+    [feature = 'man_made_crane'] {
       text-dy: 6;
     }
     [feature = 'historic_city_gate'],
@@ -1949,7 +1949,6 @@
     [feature = 'man_made_storage_tank'],
     [feature = 'man_made_silo'],
     [feature = 'man_made_chimney'],
-    [feature = 'man_made_crane'],
     [feature = 'man_made_water_works'],
     [feature = 'man_made_wastewater_plant'] { 
       text-dy: 10;
