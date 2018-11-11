@@ -1936,9 +1936,11 @@
     text-fill: black;
     [feature = 'natural_cave_entrance'] { text-dy: 11; }
     [feature = 'man_made_cross'],
-    [feature = 'historic_wayside_cross'],
-    [feature = 'man_made_crane'] {
+    [feature = 'historic_wayside_cross'] {
       text-dy: 6;
+    }
+    [feature = 'man_made_crane'] {
+      text-dy: 4;
     }
     [feature = 'historic_city_gate'],
     [feature = 'man_made_mast'],
