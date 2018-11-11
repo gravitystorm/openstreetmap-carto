@@ -562,6 +562,7 @@
       marker-fill: @man-made-icon;
       marker-placement: interior;
       marker-clip: false;
+      marker-transform: 'translate(0,-6)';
     }
   }
 
