@@ -565,12 +565,25 @@
     }
   }
 
-  [feature = 'man_made_telescope']["telescope:type" = 'radio'] {
-    [zoom >= 13]["telescope:diameter" >= 60],
-    [zoom >= 14]["telescope:diameter" >= 30],
-    [zoom >= 15]["telescope:diameter" >= 15],
-    [zoom >= 16] {
-      marker-file: url('symbols/man_made/telescope_dish.svg');
+  [feature = 'man_made_telescope']["telescope:type" != 'optical']["telescope:type" != null] {
+  [zoom >= 13]["telescope:diameter" >= 60],
+  [zoom >= 14]["telescope:diameter" >= 30],
+  [zoom >= 15]["telescope:diameter" >= 15],
+  [zoom >= 16] {
+    marker-file: url('symbols/man_made/telescope_dish.svg');
+    marker-fill: @man-made-icon;
+    marker-placement: interior;
+    marker-clip: false;
+    }
+  }
+
+  [feature = 'man_made_telescope']["telescope:type" = 'optical'],
+  [feature = 'man_made_telescope']["telescope:type" = null], {
+    [zoom >= 14]["telescope:diameter" >= 8],
+    [zoom >= 15]["telescope:diameter" >= 4],
+    [zoom >= 16]["telescope:diameter" >= 2],
+    [zoom >= 17] {
+      marker-file: url('symbols/man_made/telescope_dome.svg');
       marker-fill: @man-made-icon;
       marker-placement: interior;
       marker-clip: false;
@@ -1821,6 +1834,7 @@
     text-placement: interior;
   }
 
+  [feature = 'amenity_place_of_worship'][zoom >= 16][way_pixels > 3000],
   [feature = 'amenity_place_of_worship'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
@@ -1909,7 +1923,8 @@
   [feature = 'man_made_storage_tank'][zoom >= 18],
   [feature = 'man_made_silo'][zoom >= 18],
   [feature = 'man_made_communications_tower'][zoom >= 17],
-  [feature = 'man_made_telescope']["telescope:type" = 'radio'][zoom >= 16],
+  [feature = 'man_made_telescope']["telescope:type" != 'optical']["telescope:type" != null][zoom >= 16],
+  [feature = 'man_made_telescope'][zoom >= 17],
   [feature = 'man_made_water_tower'][zoom >= 17],
   [feature = 'man_made_chimney'][zoom >= 17],
   [feature = 'man_made_crane'][zoom >= 17],
@@ -1928,7 +1943,7 @@
     [feature = 'man_made_mast'],
     [feature = 'man_made_tower'],
     [feature = 'man_made_communications_tower'],
-    [feature = 'man_made_telescope']["telescope:type" = 'radio'],
+    [feature = 'man_made_telescope'],
     [feature = 'man_made_water_tower'],
     [feature = 'man_made_storage_tank'],
     [feature = 'man_made_silo'],
@@ -2197,6 +2212,7 @@
   [feature = 'amenity_school'],
   [feature = 'amenity_college'],
   [feature = 'amenity_university'],
+  [feature = 'landuse_religious'],
   [feature = 'natural_heath'],
   [feature = 'natural_scrub'],
   [feature = 'natural_beach'],
@@ -2314,6 +2330,9 @@
       [feature = 'amenity_college'],
       [feature = 'amenity_university'] {
         text-fill: darken(@societal_amenities, 80%);
+      }
+      [feature = 'landuse_religious'] {
+        text-fill: darken(@place_of_worship, 50%);
       }
       [feature = 'natural_heath'] {
         text-fill: darken(@heath, 40%);
