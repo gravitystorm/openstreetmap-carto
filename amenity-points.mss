@@ -2076,7 +2076,8 @@
   [feature = 'natural_wood'],
   [feature = 'landuse_forest'],
   [feature = 'boundary_national_park'],
-  [feature = 'leisure_nature_reserve'] {
+  [feature = 'leisure_nature_reserve'],
+  [feature = 'boundary_protected_area'] {
     [zoom >= 8][way_pixels > 3000][is_building = 'no'],
     [zoom >= 17] {
       text-name: "[name]";
@@ -2105,7 +2106,8 @@
         text-fill: @forest-text;
       }
       [feature = 'boundary_national_park'],
-      [feature = 'leisure_nature_reserve'] {
+      [feature = 'leisure_nature_reserve'],
+      [feature = 'boundary_protected_area'] {
         text-fill: darken(@park, 70%);
       }
     }
