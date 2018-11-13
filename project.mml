@@ -2124,6 +2124,8 @@ Layer:
             tags->'iata' as iata,
             tags->'office' as office,
             tags->'recycling_type' as recycling_type,
+            tags->'tower:construction' as "tower:construction",
+            tags->'tower:type' as "tower:type",
             tags->'telescope:type' as "telescope:type",
             CASE
               WHEN man_made IN ('telescope') THEN
@@ -2225,6 +2227,8 @@ Layer:
             iata,
             office,
             recycling_type,
+            "tower:construction",
+            "tower:type",
             "telescope:type",
             castle_type,
             sport,
@@ -2317,6 +2321,8 @@ Layer:
                 tags->'iata' as iata,
                 tags->'office' as office,
                 tags->'recycling_type' as recycling_type,
+                tags->'tower:construction' as "tower:construction",
+                tags->'tower:type' as "tower:type",
                 tags->'telescope:type' as "telescope:type",
                 tags->'castle_type' as castle_type,
                 tags->'sport' as sport,
