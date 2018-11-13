@@ -561,7 +561,6 @@
       marker-fill: @man-made-icon;
       marker-placement: interior;
       marker-clip: false;
-      marker-transform: 'translate(0,-6)';
     }
   }
 
@@ -577,16 +576,16 @@
     }
   }
 
-  [feature = 'man_made_telescope']["telescope:type" = 'optical'],
-  [feature = 'man_made_telescope']["telescope:type" = null], {
-    [zoom >= 14]["telescope:diameter" >= 8],
-    [zoom >= 15]["telescope:diameter" >= 4],
-    [zoom >= 16]["telescope:diameter" >= 2],
-    [zoom >= 17] {
-      marker-file: url('symbols/man_made/telescope_dome.svg');
-      marker-fill: @man-made-icon;
-      marker-placement: interior;
-      marker-clip: false;
+[feature = 'man_made_telescope']["telescope:type" = 'optical'],
+[feature = 'man_made_telescope']["telescope:type" = null], {
+  [zoom >= 14]["telescope:diameter" >= 8],
+  [zoom >= 15]["telescope:diameter" >= 4],
+  [zoom >= 16]["telescope:diameter" >= 2],
+  [zoom >= 17] {
+    marker-file: url('symbols/man_made/telescope_dome.svg');
+    marker-fill: @man-made-icon;
+    marker-placement: interior;
+    marker-clip: false;
     }
   }
 
@@ -1939,9 +1938,6 @@
     [feature = 'historic_wayside_cross'] {
       text-dy: 6;
     }
-    [feature = 'man_made_crane'] {
-      text-dy: 4;
-    }
     [feature = 'historic_city_gate'],
     [feature = 'man_made_mast'],
     [feature = 'man_made_tower'],
@@ -1951,6 +1947,7 @@
     [feature = 'man_made_storage_tank'],
     [feature = 'man_made_silo'],
     [feature = 'man_made_chimney'],
+    [feature = 'man_made_crane'],
     [feature = 'man_made_water_works'],
     [feature = 'man_made_wastewater_plant'] { 
       text-dy: 10;
