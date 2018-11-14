@@ -1924,7 +1924,7 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: black;
+    text-fill: darken(@man-made-icon, 15%);
     [feature = 'natural_cave_entrance'] { text-dy: 11; }
     [feature = 'man_made_cross'],
     [feature = 'historic_wayside_cross'] {
@@ -1981,7 +1981,7 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: @man-made-icon;
+    text-fill: darken(@man-made-icon, 15%);
     text-dy: 11;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
@@ -2517,7 +2517,7 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: @man-made-icon;
+    text-fill: darken(@man-made-icon, 15%);
     text-dy: 16;
     [feature = 'man_made_windmill'] { text-dy: 12; }
     text-face-name: @standard-font;
@@ -2995,7 +2995,7 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-dy: 11;
-    text-fill: @man-made-icon;
+    text-fill: darken(@man-made-icon, 15%);
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
