@@ -1472,8 +1472,7 @@
     marker-clip: false;
   }
 
-  [feature = 'power_generator']['generator:source' = 'wind'],
-  [feature = 'power_generator']['generator:method' = 'wind_turbine'] {
+  [feature = 'power_generator']['generator:source' = 'wind'] {
     [zoom >= 15][location != 'rooftop'][location != 'roof'],
     [zoom >= 15][location = null],
     [zoom >= 19] {
@@ -1908,6 +1907,9 @@
   }
 
   [feature = 'man_made_cross'][zoom >= 17],
+  [feature = 'power_generator'][location != 'rooftop'][location != 'roof'][zoom >= 17],
+  [feature = 'power_generator'][location = null][zoom >= 17],
+  [feature = 'power_generator'][zoom >= 19],
   [feature = 'historic_wayside_cross'][zoom >= 17],
   [feature = 'historic_wayside_shrine'][zoom >= 17],
   [feature = 'historic_city_gate'][zoom >= 17],
@@ -1932,6 +1934,7 @@
     [feature = 'historic_wayside_cross'] {
       text-dy: 6;
     }
+    [feature = 'power_generator'],
     [feature = 'historic_city_gate'],
     [feature = 'man_made_mast'],
     [feature = 'man_made_tower'],
@@ -2824,7 +2827,7 @@
 
   [feature = 'power_plant'][is_building = 'no'][zoom >= 10],
   [feature = 'power_station'][is_building = 'no'][zoom >= 10],
-  [feature = 'power_generator'][is_building = 'no'][zoom >= 10],
+  [feature = 'power_generator'][is_building = 'no']["generator:source" != 'wind'][zoom >= 10],
   [feature = 'power_sub_station'][is_building = 'no'][zoom >= 13],
   [feature = 'power_substation'][is_building = 'no'][zoom >= 13]{
     [way_pixels > 3000],
