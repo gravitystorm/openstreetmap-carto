@@ -1938,9 +1938,7 @@
     [feature = 'man_made_water_tower'],
     [feature = 'man_made_storage_tank'],
     [feature = 'man_made_silo'],
-    [feature = 'man_made_chimney'],
-    [feature = 'man_made_water_works'],
-    [feature = 'man_made_wastewater_plant'] { 
+    [feature = 'man_made_chimney'] {
       text-dy: 10;
     }
     text-face-name: @standard-font;
