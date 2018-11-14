@@ -1925,7 +1925,6 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: darken(@man-made-icon, 15%);
-    [feature = 'natural_cave_entrance'] { text-dy: 11; }
     [feature = 'man_made_cross'],
     [feature = 'historic_wayside_cross'] {
       text-dy: 6;
@@ -1940,6 +1939,9 @@
     [feature = 'man_made_silo'],
     [feature = 'man_made_chimney'] {
       text-dy: 10;
+    }
+    [feature = 'natural_cave_entrance'] {
+      text-dy: 11;
     }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
