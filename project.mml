@@ -1479,6 +1479,7 @@ Layer:
             religion,
             tags->'denomination' as denomination,
             tags->'generator:source' as "generator:source",
+            tags->'generator:method' as "generator:method",
             CASE
               WHEN (man_made IN ('mast', 'tower', 'chimney') AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)) THEN
                 CASE
@@ -1487,7 +1488,7 @@ Layer:
                 END
               ELSE NULL
             END AS height,
-            tags->'power_source' as power_source,
+            tags->'location' as location,
             tags->'icao' as icao,
             tags->'iata' as iata,
             tags->'office' as office,
@@ -1538,7 +1539,7 @@ Layer:
             OR historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate')
             OR military IN ('bunker')
             OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
-            OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> 'power_source=>wind'))
+            OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> '"generator:method"=>wind_turbine'))
           ORDER BY way_area desc
         ) AS amenity_points_poly
     properties:
@@ -1631,6 +1632,7 @@ Layer:
             religion,
             tags->'denomination' as denomination,
             tags->'generator:source' as "generator:source",
+            tags->'generator:method' as "generator:method",
             CASE
               WHEN (man_made IN ('mast', 'tower', 'chimney') AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL))
                     OR waterway IN ('waterfall') THEN
@@ -1640,7 +1642,7 @@ Layer:
                 END
               ELSE NULL
             END AS height,
-            tags->'power_source' as power_source,
+            tags->'location' as location,
             tags->'icao' as icao,
             tags->'iata' as iata,
             tags->'office' as office,
@@ -1696,7 +1698,7 @@ Layer:
             OR tags @> 'emergency=>phone'
             OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
             OR tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones'
-            OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> 'power_source=>wind'))
+            OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> '"generator:method"=>wind_turbine'))
           ORDER BY score DESC NULLS LAST
           ) AS amenity_points
     properties:

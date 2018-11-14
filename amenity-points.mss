@@ -1473,8 +1473,10 @@
   }
 
   [feature = 'power_generator']['generator:source' = 'wind'],
-  [feature = 'power_generator'][power_source = 'wind'] {
-    [zoom >= 15] {
+  [feature = 'power_generator']['generator:method' = 'wind_turbine'] {
+    [zoom >= 15][location != 'rooftop'][location != 'roof'],
+    [zoom >= 15][location = null],
+    [zoom >= 19] {
       marker-file: url('symbols/power_wind.svg');
       marker-placement: interior;
       marker-fill: black;
