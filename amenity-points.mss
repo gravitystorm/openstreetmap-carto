@@ -594,7 +594,8 @@
 
   [feature = 'amenity_parking'][way_pixels > 900],
   [feature = 'amenity_bicycle_parking'][way_pixels > 900],
-  [feature = 'amenity_motorcycle_parking'][way_pixels > 900] {
+  [feature = 'amenity_motorcycle_parking'][way_pixels > 900],
+  [feature = 'amenity_parking_entrance'][zoom >= 18] {
     [feature = 'amenity_parking'] {
       marker-file: url('symbols/amenity/parking.svg');
     }
@@ -603,6 +604,9 @@
     }
     [feature = 'amenity_motorcycle_parking'] {
       marker-file: url('symbols/amenity/motorcycle_parking.svg');
+    }
+    [feature = 'amenity_parking_entrance'] {
+      marker-file: url('symbols/amenity/parking_entrance.svg');
     }
     marker-placement: interior;
     marker-clip: false;
@@ -1783,7 +1787,8 @@
 
   [feature = 'amenity_parking'][zoom >= 10][way_pixels > 900],
   [feature = 'amenity_bicycle_parking'][zoom >= 10][way_pixels > 900],
-  [feature = 'amenity_motorcycle_parking'][zoom >= 10][way_pixels > 900] {
+  [feature = 'amenity_motorcycle_parking'][zoom >= 10][way_pixels > 900],
+  [feature = 'amenity_parking_entrance'][zoom >= 18] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
@@ -1861,6 +1866,7 @@
     text-placement: interior;
   }
 
+  [feature = 'amenity_place_of_worship'][zoom >= 16][way_pixels > 3000],
   [feature = 'amenity_place_of_worship'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
@@ -2236,6 +2242,7 @@
   [feature = 'amenity_school'],
   [feature = 'amenity_college'],
   [feature = 'amenity_university'],
+  [feature = 'landuse_religious'],
   [feature = 'natural_heath'],
   [feature = 'natural_scrub'],
   [feature = 'natural_beach'],
@@ -2353,6 +2360,9 @@
       [feature = 'amenity_college'],
       [feature = 'amenity_university'] {
         text-fill: darken(@societal_amenities, 80%);
+      }
+      [feature = 'landuse_religious'] {
+        text-fill: darken(@place_of_worship, 50%);
       }
       [feature = 'natural_heath'] {
         text-fill: darken(@heath, 40%);
