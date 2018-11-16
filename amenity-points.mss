@@ -555,6 +555,7 @@
       marker-fill: @man-made-icon;
       marker-placement: interior;
       marker-clip: false;
+      marker-transform: 'translate(4,-4)';
     }
   }
 
@@ -1931,20 +1932,19 @@
     [feature = 'man_made_mast']["tower:type" = 'communication'],
     [feature = 'man_made_tower']["tower:type" = 'communication']["tower:construction" != 'dish']["tower:construction" != 'dome'],
     [feature = 'man_made_communications_tower'],
+    [feature = 'man_made_chimney'],
     [feature = 'historic_wayside_cross'] {
       text-dy: 6;
     }
     [feature = 'historic_city_gate'],
     [feature = 'man_made_mast']["tower:type" != 'communication'],
     [feature = 'man_made_tower']["tower:type" != 'communication'],
-    [feature = 'man_made_chimney'],
     [feature = 'man_made_telescope'],
     [feature = 'man_made_water_tower'],
     [feature = 'man_made_storage_tank'],
     [feature = 'man_made_silo'],
-    [feature = 'man_made_chimney'],
     [feature = 'man_made_water_works'],
-    [feature = 'man_made_wastewater_plant'] { 
+    [feature = 'man_made_wastewater_plant'] {
       text-dy: 10;
     }
     text-face-name: @standard-font;
