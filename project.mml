@@ -548,7 +548,7 @@ Layer:
             AND building IS NULL
         ) AS landuse_overlay
     properties:
-      minzoom: 7
+      minzoom: 8
   - id: tourism-boundary
     geometry: polygon
     <<: *extents
