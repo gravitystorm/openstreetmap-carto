@@ -762,7 +762,7 @@
   }
 
   [feature = 'amenity_arts_centre'][zoom >= 17] {
-    marker-file: url('symbols/shop/art.svg');
+    marker-file: url('symbols/amenity/arts_centre.svg');
     marker-fill: @culture;
     marker-placement: interior;
     marker-clip: false;
