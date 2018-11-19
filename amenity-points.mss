@@ -1476,7 +1476,7 @@
     [zoom >= 15][location != 'rooftop'][location != 'roof'],
     [zoom >= 15][location = null],
     [zoom >= 19] {
-      marker-file: url('symbols/power_wind.svg');
+      marker-file: url('symbols/generator_wind.svg');
       marker-placement: interior;
       marker-fill: @man-made-icon;
       marker-clip: false;
