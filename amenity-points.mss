@@ -1381,7 +1381,7 @@
      marker-placement: interior;
      marker-clip: false;
    }
- 
+
   [feature = 'leisure_fishing'][zoom >= 17] {
      marker-file: url('symbols/leisure/fishing.svg');
      marker-fill: @leisure-green;
