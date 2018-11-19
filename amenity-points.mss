@@ -195,6 +195,34 @@
     marker-clip: false;
   }
 
+  [feature = 'leisure_pitch'][sport = 'baseball'][zoom >= 17] {
+    marker-file: url('symbols/sport/baseball.svg');
+    marker-fill: @leisure-green;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'leisure_pitch'][sport = 'basketball'][zoom >= 17] {
+    marker-file: url('symbols/sport/basketball.svg');
+    marker-fill: @leisure-green;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'leisure_pitch'][sport = 'soccer'][zoom >= 17] {
+    marker-file: url('symbols/sport/soccer.svg');
+    marker-fill: @leisure-green;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'leisure_pitch'][sport = 'tennis'][zoom >= 17] {
+    marker-file: url('symbols/sport/tennis.svg');
+    marker-fill: @leisure-green;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+    
   [feature = 'tourism_artwork'][zoom >= 17] {
     [artwork_type != 'statue'] {
       marker-file: url('symbols/tourism/artwork.svg');
@@ -2540,6 +2568,11 @@
     text-placement: interior;
   }
 
+  
+  
+  
+  
+  
   [feature = 'amenity_hospital'][zoom >= 16] {
     text-name: "[name]";
     text-fill: @health-color;

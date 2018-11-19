@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="14"
+   height="14"
+   id="svg3800"
+   version="1.1"
+   viewBox="0 0 14 14">
+  <defs
+     id="defs3802" />
+  <metadata
+     id="metadata3805">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(1.5520395,2.8104498)"
+     id="g97">
+    <g
+       id="g105">
+      <g
+         style="fill:#000000"
+         id="layer1"
+         transform="translate(7.9185505,-1041.6432)">
+        <g
+           style="display:inline;fill:#000000"
+           id="baseball-24"
+           transform="translate(-474,-142)">
+          <g
+             style="fill:#000000"
+             id="g21377">
+            <path
+               style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.64705873;marker:none;enable-background:accumulate"
+               id="path20806"
+               d="m 466.17647,1180.8328 c -1.03135,0 -1.64706,0.6204 -1.64706,1.6471 0,0.8235 1.64706,2.0588 2.47059,2.8823 1.64702,1.6471 4.36624,3.131 7,5.7647 l 2.47059,2.4706 -0.41177,0.4118 c 0,0.4117 0.41177,0.8235 0.82353,0.8235 l 0.82353,-0.8235 0.82353,-0.8236 c 0,-0.4117 -0.41176,-0.8235 -0.82353,-0.8235 l -0.41176,0.4118 -2.47059,-2.4706 c -2.35806,-2.358 -4.11769,-5.353 -5.76471,-7 -0.82353,-0.8235 -2.05882,-2.4706 -2.88235,-2.4706 z" />
+          </g>
+        </g>
+      </g>
+      <path
+         style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.99999452;marker:none;enable-background:accumulate"
+         id="path20806-4"
+         d="m -0.05204557,8.18955 c -0.82842155,0 -1.49999393,0.6716183 -1.49999393,1.5 0,0.828382 0.67157238,1.5 1.49999393,1.5 0.82843369,0 1.50000607,-0.671618 1.50000607,-1.5 0,-0.8283817 -0.67157238,-1.5 -1.50000607,-1.5 z" />
+    </g>
+  </g>
+</svg>

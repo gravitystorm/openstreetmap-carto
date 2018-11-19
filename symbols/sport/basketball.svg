@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="14"
+   height="14"
+   id="svg3800"
+   version="1.1"
+   viewBox="0 0 14 14">
+  <defs
+     id="defs3802" />
+  <metadata
+     id="metadata3805">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(1.5520395,2.8104498)"
+     id="g97">
+    <g
+       id="g105">
+      <path
+         id="path818"
+         transform="translate(-1.5520395,-2.8104498)"
+         d="M 7 0 A 7 7 0 0 0 0 7 A 7 7 0 0 0 7 14 A 7 7 0 0 0 14 7 A 7 7 0 0 0 7 0 z M 6.5 1.0253906 L 6.5 6.5 L 4.9746094 6.5 C 4.8633219 4.9582925 4.2462986 3.4986819 3.21875 2.3457031 A 6 6 0 0 1 6.5 1.0253906 z M 7.5 1.0253906 A 6 6 0 0 1 10.783203 2.3476562 C 9.7551202 3.4992914 9.1381936 4.9591038 9.0253906 6.5 L 7.5 6.5 L 7.5 1.0253906 z M 11.496094 3.0390625 A 6 6 0 0 1 12.974609 6.5 L 10.025391 6.5 C 10.133273 5.2183125 10.647179 4.0045159 11.496094 3.0390625 z M 2.4980469 3.0410156 C 3.3482732 4.0053877 3.8650574 5.2184729 3.9746094 6.5 L 1.0253906 6.5 A 6 6 0 0 1 2.4980469 3.0410156 z M 1.0253906 7.5 L 3.9746094 7.5 C 3.8667268 8.7816875 3.3528214 9.9954845 2.5039062 10.960938 A 6 6 0 0 1 1.0253906 7.5 z M 4.9746094 7.5 L 6.5 7.5 L 6.5 12.974609 A 6 6 0 0 1 3.2167969 11.652344 C 4.2448794 10.500709 4.8618064 9.0408961 4.9746094 7.5 z M 7.5 7.5 L 9.0253906 7.5 C 9.1366782 9.0417075 9.753701 10.501318 10.78125 11.654297 A 6 6 0 0 1 7.5 12.974609 L 7.5 7.5 z M 10.025391 7.5 L 12.974609 7.5 A 6 6 0 0 1 11.501953 10.958984 C 10.651727 9.9946125 10.134943 8.7815271 10.025391 7.5 z "
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.11111093;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
+    </g>
+  </g>
+</svg>
