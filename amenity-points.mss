@@ -613,8 +613,8 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_dentist'],
-  [feature = 'healthcare_dentist'] {
+  [feature = 'amenity_dentist'][zoom >= 17],
+  [feature = 'healthcare_dentist'][zoom >= 17] {
     [zoom >= 17][zoom < 18] {
       marker-width: 4;
       marker-line-width: 0;
