@@ -553,7 +553,6 @@
   }
 
   [feature = 'man_made_crane'] {
-    [zoom >= 15][height > 100],
     [zoom >= 16][height > 50],
     [zoom >= 17] {
       marker-file: url('symbols/man_made/crane.svg');
