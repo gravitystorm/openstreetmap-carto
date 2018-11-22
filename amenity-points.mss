@@ -339,14 +339,6 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_hospital'][zoom >= 15],
-  [feature = 'healthcare_hospital'][zoom >= 15] {
-    marker-file: url('symbols/amenity/hospital.svg');
-    marker-fill: @health-color;
-    marker-placement: interior;
-    marker-clip: false;
-  }
-
   [feature = 'amenity_casino'][zoom >= 17] {
     marker-file: url('symbols/amenity/casino.svg');
     marker-fill: @amenity-brown;
@@ -648,6 +640,14 @@
     [zoom >= 18] {
       marker-file: url('symbols/amenity/dentist.svg');
     }
+    marker-fill: @health-color;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'amenity_hospital'][zoom >= 15],
+  [feature = 'healthcare_hospital'][zoom >= 15] {
+    marker-file: url('symbols/amenity/hospital.svg');
     marker-fill: @health-color;
     marker-placement: interior;
     marker-clip: false;
