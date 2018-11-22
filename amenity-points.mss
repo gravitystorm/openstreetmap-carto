@@ -616,8 +616,7 @@
     }
   }
 
-  [feature = 'amenity_pharmacy'][zoom >= 17],
-  [feature = 'healthcare_pharmacy'][zoom >= 17] {
+  [feature = 'amenity_pharmacy'][zoom >= 17] {
     marker-file: url('symbols/amenity/pharmacy.svg');
     marker-fill: @health-color;
     marker-placement: interior;
@@ -2626,7 +2625,6 @@
   [feature = 'healthcare_hospice'],
   [feature = 'healthcare_laboratory'],
   [feature = 'healthcare_midwife'],
-  [feature = 'healthcare_pharmacy'],
   [feature = 'healthcare_occupational_therapist'],
   [feature = 'healthcare_optometrist'],
   [feature = 'healthcare_physiotherapist'],
