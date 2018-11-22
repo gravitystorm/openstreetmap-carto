@@ -1206,7 +1206,7 @@
     [shop = 'second_hand'][zoom >= 18] {
       marker-file: url('symbols/shop/second_hand.svg');
     }
-
+   
     [shop = 'sports'][zoom >= 18] {
       marker-file: url('symbols/shop/sports.svg');
     }
