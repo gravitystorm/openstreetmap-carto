@@ -627,6 +627,7 @@
   [feature = 'amenity_clinic'][zoom >= 17],
   [feature = 'healthcare_clinic'][zoom >= 17],
   [feature = 'amenity_doctors'][zoom >= 17],
+  [feature = 'healthcare_centre'],
   [feature = 'healthcare_doctor'][zoom >= 17] {
     marker-file: url('symbols/amenity/doctors.svg');
     marker-fill: @health-color;
@@ -660,7 +661,6 @@
   [feature = 'healthcare_birthing_center'],
   [feature = 'healthcare_blood_bank'],
   [feature = 'healthcare_blood_donation'],
-  [feature = 'healthcare_centre'],
   [feature = 'healthcare_chiropractor'],
   [feature = 'healthcare_hospice'],
   [feature = 'healthcare_laboratory'],
