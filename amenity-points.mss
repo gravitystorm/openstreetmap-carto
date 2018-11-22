@@ -627,9 +627,21 @@
   [feature = 'amenity_clinic'][zoom >= 17],
   [feature = 'healthcare_clinic'][zoom >= 17],
   [feature = 'amenity_doctors'][zoom >= 17],
-  [feature = 'healthcare_centre'],
-  [feature = 'healthcare_doctor'][zoom >= 17] {
+  [feature = 'healthcare_centre'][zoom >= 17] {
     marker-file: url('symbols/amenity/doctors.svg');
+    marker-fill: @health-color;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'healthcare_doctor'][zoom >= 17] {
+    [zoom >= 17][zoom < 18] {
+      marker-width: 4;
+      marker-line-width: 0;
+    }
+    [zoom >= 18] {
+      marker-file: url('symbols/amenity/doctors.svg');
+    }
     marker-fill: @health-color;
     marker-placement: interior;
     marker-clip: false;
