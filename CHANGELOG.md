@@ -16,6 +16,7 @@
 - Adding icons for memorial subtags
 - Rendering man_made=telescope
 - Rendering amenity=internet_cafe
+- Adding icon for amenity=public_bookcase
 - Adding icons for barrier=cattle_grid and barrier=stile
 - Adding icon for leisure=fishing
 - Rendering entrance for underground parking
