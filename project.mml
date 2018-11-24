@@ -1488,7 +1488,7 @@ Layer:
                 END
               ELSE NULL
             END AS height,
-            tags->'power_source' as power_source,
+            tags->'location' as location,
             tags->'icao' as icao,
             tags->'iata' as iata,
             tags->'office' as office,
@@ -1539,7 +1539,7 @@ Layer:
             OR historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate')
             OR military IN ('bunker')
             OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
-            OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> 'power_source=>wind'))
+            OR (power = 'generator' AND tags @> '"generator:source"=>wind')
           ORDER BY way_area desc
         ) AS amenity_points_poly
     properties:
@@ -1641,7 +1641,7 @@ Layer:
                 END
               ELSE NULL
             END AS height,
-            tags->'power_source' as power_source,
+            tags->'location' as location,
             tags->'icao' as icao,
             tags->'iata' as iata,
             tags->'office' as office,
@@ -1697,7 +1697,7 @@ Layer:
             OR tags @> 'emergency=>phone'
             OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
             OR tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones'
-            OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> 'power_source=>wind'))
+            OR (power = 'generator' AND tags @> '"generator:source"=>wind')
           ORDER BY score DESC NULLS LAST
           ) AS amenity_points
     properties:
@@ -2123,6 +2123,8 @@ Layer:
               ELSE NULL
             END AS height,
             tags->'operator' as operator,
+            tags->'generator:source' as "generator:source",
+            tags->'location' as location,
             tags->'icao' as icao,
             tags->'iata' as iata,
             tags->'office' as office,
@@ -2229,6 +2231,8 @@ Layer:
             office,
             recycling_type,
             "telescope:type",
+            "generator:source",
+            location,
             castle_type,
             sport,
             information,
@@ -2317,6 +2321,8 @@ Layer:
                 "natural",
                 waterway,
                 tags->'operator' as operator,
+                tags->'location' as location,
+                tags->'generator:source' as "generator:source",
                 tags->'icao' as icao,
                 tags->'iata' as iata,
                 tags->'office' as office,
