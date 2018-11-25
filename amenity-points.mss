@@ -54,6 +54,9 @@
     marker-fill: @accommodation-icon;
     marker-placement: interior;
     marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'amenity_atm'][zoom >= 19] {
@@ -128,6 +131,9 @@
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'amenity_public_bookcase'][zoom >= 19] {
@@ -309,6 +315,9 @@
     marker-fill: @transportation-icon;
     marker-placement: interior;
     marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'amenity_fuel'][zoom >= 17] {
@@ -337,6 +346,9 @@
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'amenity_casino'][zoom >= 17] {
@@ -436,6 +448,9 @@
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'amenity_social_facility'][zoom >= 17] {
@@ -826,6 +841,9 @@
       marker-fill: @amenity-brown;
       marker-placement: interior;
       marker-clip: false;
+      [access != ''][access != 'permissive'][access != 'yes'] {
+        marker-opacity: 0.33;
+      }
     }
   }
 
@@ -834,6 +852,9 @@
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'amenity_prison'][zoom >= 17] {
@@ -1337,6 +1358,9 @@
     marker-placement: interior;
     marker-fill: @leisure-green;
     marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'leisure_dog_park'][zoom >= 17] {
@@ -1375,6 +1399,9 @@
     marker-fill: @leisure-green;
     marker-placement: interior;
     marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'leisure_picnic_table'][zoom >= 17] {
@@ -1382,6 +1409,9 @@
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'leisure_firepit'][zoom >= 17] {
@@ -1389,6 +1419,9 @@
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'leisure_sauna'][zoom >= 17] {
@@ -1557,12 +1590,11 @@
 
   // waste_disposal tagging on ways - tagging on nodes is defined later
   [feature = 'amenity_waste_disposal'][zoom >= 19] {
-    [access = null],
-    [access = 'permissive'],
-    [access = 'yes'] {
-      marker-file: url('symbols/amenity/waste_disposal.svg');
-      marker-fill: @amenity-brown;
-      marker-placement: interior;
+    marker-file: url('symbols/amenity/waste_disposal.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
     }
   }
 }
@@ -1660,22 +1692,27 @@
     marker-file: url('symbols/amenity/bench.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'amenity_waste_basket'][zoom >= 19]::amenity {
     marker-file: url('symbols/amenity/waste_basket.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   // waste_disposal tagging on nodes - tagging on ways is defined earlier
   [feature = 'amenity_waste_disposal'][zoom >= 19]::amenity {
-    [access = null],
-    [access = 'permissive'],
-    [access = 'yes'] {
-      marker-file: url('symbols/amenity/waste_disposal.svg');
-      marker-fill: @amenity-brown;
-      marker-placement: interior;
+    marker-file: url('symbols/amenity/waste_disposal.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
     }
   }
 }
@@ -1894,7 +1931,7 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: @amenity-brown;
-    [feature = 'tourism_picnic_site'],
+    [feature = 'tourism_picnic_site'] {
       text-fill: @leisure-green;
     }
     text-dy: 10;
@@ -1902,6 +1939,10 @@
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      text-opacity: 0.33;
+      text-halo-radius: 0;
+    }
   }
 
   [feature = 'amenity_place_of_worship'][zoom >= 16][way_pixels > 3000],
@@ -2423,6 +2464,10 @@
       [feature = 'leisure_fitness_centre'],
       [feature = 'leisure_fitness_station'] {
         text-fill: @leisure-green;
+        [access != ''][access != 'permissive'][access != 'yes'] {
+          text-opacity: 0.33;
+          text-halo-radius: 0;
+        }
       }
       [feature = 'leisure_dog_park'] {
         text-fill: @leisure-green;
@@ -2513,6 +2558,10 @@
     [feature = 'amenity_shelter'] {
       text-fill: @amenity-brown;
     }
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      text-opacity: 0.33;
+      text-halo-radius: 0;
+    }
   }
 
   [feature = 'amenity_taxi'][zoom >= 17] {
@@ -2545,6 +2594,10 @@
       text-placement: interior;
       [feature = 'highway_bus_stop'] {
         text-dy: 9;
+      }
+      [access != ''][access != 'permissive'][access != 'yes'] {
+        text-opacity: 0.33;
+        text-halo-radius: 0;
       }
     }
   }
