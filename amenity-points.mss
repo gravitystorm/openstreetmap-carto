@@ -1856,15 +1856,38 @@
 
   [feature = 'amenity_vehicle_inspection'][zoom >= 17],
   [feature = 'amenity_car_wash'][zoom >= 17],
-  [feature = 'amenity_drinking_water'][zoom >= 17],
   [feature = 'amenity_internet_cafe'][zoom >= 17],
-  [feature = 'tourism_picnic_site'][zoom >= 17],
   [feature = 'leisure_bowling_alley'][zoom >= 17],
   [feature = 'leisure_beach_resort'][zoom >= 17],
   [feature = 'leisure_bird_hide'][zoom >= 17],
   [feature = 'leisure_amusement_arcade'][zoom >= 17],
   [feature = 'leisure_outdoor_seating'][zoom >= 19],
-  [feature = 'leisure_fishing'][zoom >= 17],
+  [feature = 'leisure_fishing'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: @amenity-brown;
+    [feature = 'leisure_outdoor_seating'],
+    [feature = 'leisure_fishing'],
+    [feature = 'leisure_bowling_alley'],
+    [feature = 'leisure_bird_hide'],
+    [feature = 'leisure_amusement_arcade'],
+    [feature = 'leisure_beach_resort'] {
+      text-fill: @leisure-green;
+    }
+    text-dy: 10;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+  }
+
+  [feature = 'amenity_bbq'][zoom >= 17],
+  [feature = 'amenity_bicycle_repair_station'][zoom >= 19],
+  [feature = 'amenity_drinking_water'][zoom >= 17],
+  [feature = 'amenity_shower'][zoom >= 18],
+  [feature = 'tourism_picnic_site'][zoom >= 17],
   [feature = 'leisure_picnic_table'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
@@ -1872,12 +1895,6 @@
     text-line-spacing: @standard-line-spacing-size;
     text-fill: @amenity-brown;
     [feature = 'tourism_picnic_site'],
-    [feature = 'leisure_outdoor_seating'],
-    [feature = 'leisure_fishing'],
-    [feature = 'leisure_bowling_alley'],
-    [feature = 'leisure_bird_hide'],
-    [feature = 'leisure_amusement_arcade'],
-    [feature = 'leisure_beach_resort'] {
       text-fill: @leisure-green;
     }
     text-dy: 10;
@@ -2450,12 +2467,9 @@
     text-face-name: @standard-font;
   }
 
-  [feature = 'amenity_shower'][zoom >= 18],
-  [feature = 'amenity_bbq'][zoom >= 17],
   [feature = 'amenity_bureau_de_change'][zoom >= 17],
   [feature = 'amenity_public_bookcase'][zoom >= 19],
-  [feature = 'tourism_gallery'][zoom >= 17],
-  [feature = 'amenity_bicycle_repair_station'][zoom >= 19] {
+  [feature = 'tourism_gallery'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
