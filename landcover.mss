@@ -358,7 +358,7 @@
 
   [feature = 'natural_grassland'][zoom >= 5],
   [feature = 'landuse_meadow'][zoom >= 5],
-  [feature = 'landuse_grass'][zoom >= 10],
+  [feature = 'landuse_grass'][zoom >= 5],
   [feature = 'landuse_village_green'][zoom >= 10] {
     polygon-fill: @grass;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
