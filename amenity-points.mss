@@ -15,7 +15,7 @@
 @culture: @amenity-brown;
 @public-service: @amenity-brown;
 @office: #4863A0;
-@man-made-icon: #555;
+@man-made-icon: #666666;
 @advertising-grey: @man-made-icon;
 @landform-color: #d08f55;
 @leisure-green: darken(@park, 60%);
@@ -2005,8 +2005,7 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: black;
-    [feature = 'natural_cave_entrance'] { text-dy: 11; }
+    text-fill: darken(@man-made-icon, 20%);
     [feature = 'man_made_cross'],
     [feature = 'historic_wayside_cross'] {
       text-dy: 6;
@@ -2020,10 +2019,11 @@
     [feature = 'man_made_water_tower'],
     [feature = 'man_made_storage_tank'],
     [feature = 'man_made_silo'],
-    [feature = 'man_made_chimney'],
-    [feature = 'man_made_water_works'],
-    [feature = 'man_made_wastewater_plant'] { 
+    [feature = 'man_made_chimney'] {
       text-dy: 10;
+    }
+    [feature = 'natural_cave_entrance'] {
+      text-dy: 11;
     }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
@@ -2063,8 +2063,8 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: @man-made-icon;
-    text-dy: 11;
+    text-fill: darken(@man-made-icon, 20%);
+    text-dy: 10;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
@@ -2599,9 +2599,8 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: @man-made-icon;
-    text-dy: 16;
-    [feature = 'man_made_windmill'] { text-dy: 12; }
+    text-fill: darken(@man-made-icon, 20%);
+    text-dy: 10;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
@@ -3097,8 +3096,8 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-dy: 11;
-    text-fill: @man-made-icon;
+    text-dy: 10;
+    text-fill: darken(@man-made-icon, 20%);
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
