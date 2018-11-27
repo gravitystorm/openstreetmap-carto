@@ -6,7 +6,7 @@
 - Cleaning up medium zoom rendering, including:
   - Making societal amenities look like residential on z10-z12
   - Rendering motorway junction names from z13 instead of z12
-  - Dropping buildings up to z13 instead of z13
+  - Dropping buildings up to z13 instead of z12
   - Correctly dropping minor waterways from z13
   - Rendering intermittent streams/ditches/drains from z15
   - Reducing lightening of tramways
