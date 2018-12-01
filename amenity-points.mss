@@ -813,7 +813,7 @@
   }
 
   [feature = 'amenity_arts_centre'][zoom >= 17] {
-    marker-file: url('symbols/shop/art.svg');
+    marker-file: url('symbols/amenity/arts_centre.svg');
     marker-fill: @culture;
     marker-placement: interior;
     marker-clip: false;
@@ -1427,7 +1427,7 @@
    }
 
   [feature = 'leisure_amusement_arcade'][zoom >= 17] {
-     marker-file: url('symbols/amusement_arcade.svg');
+     marker-file: url('symbols/leisure/amusement_arcade.svg');
      marker-fill: @leisure-green;
      marker-placement: interior;
      marker-clip: false;
