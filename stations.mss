@@ -101,7 +101,7 @@
   }
 
   [railway = 'tram_stop'] {
-    [zoom >= 13] {
+    [zoom >= 14] {
       marker-file: url('symbols/square.svg');
       marker-placement: interior;
       marker-fill: @station-color;
