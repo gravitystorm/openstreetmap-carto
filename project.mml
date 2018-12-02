@@ -86,10 +86,10 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, name, way_pixels, religion,
+            way, way_pixels,
             COALESCE(wetland, landuse, "natural") AS feature
           FROM (SELECT
-              way, COALESCE(name, '') AS name, religion,
+              way,
               ('landuse_' || (CASE WHEN landuse IN ('forest', 'farmland', 'residential', 'commercial', 'retail', 'industrial', 
                                                     'meadow', 'vineyard', 'orchard') THEN landuse ELSE NULL END)) AS landuse,
               ('natural_' || (CASE WHEN "natural" IN ('wood', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland', 'scrub') THEN "natural" ELSE NULL END)) AS "natural",
@@ -100,7 +100,6 @@ Layer:
             WHERE (landuse IN ('forest', 'farmland', 'residential', 'commercial', 'retail', 'industrial', 'meadow', 'vineyard', 'orchard')
               OR "natural" IN ('wood', 'wetland', 'mud', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland', 'scrub'))
               AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
-              AND building IS NULL
           ) AS features
           ORDER BY way_area DESC, feature
         ) AS landcover_low_zoom
