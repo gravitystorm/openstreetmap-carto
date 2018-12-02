@@ -5,13 +5,13 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   width="20"
-   height="20"
-   viewBox="0 0 20 20"
-   id="svg2"
+   viewBox="0 0 14 14"
+   height="14"
+   width="14"
+   id="svg109"
    version="1.1">
   <metadata
-     id="metadata13">
+     id="metadata115">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -23,9 +23,9 @@
     </rdf:RDF>
   </metadata>
   <defs
-     id="defs11" />
+     id="defs113" />
   <path
-     style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#ff0000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     d="M 10.388672 3.859375 L 8.6875 5.5625 L 4 4 C 4.1183036 5.6652 3.8786857 7.2929 6 8 L 18 12 L 19 9 L 9.7480469 5.9160156 L 11.095703 4.5664062 L 10.388672 3.859375 z M 1.1582031 7.359375 L 0.84179688 8.3085938 L 10.205078 11.429688 A 1.7499957 1.7499954 0 0 0 10 12.25 A 1.7499957 1.7499954 0 0 0 11.75 14 A 1.7499957 1.7499954 0 0 0 13.476562 12.519531 L 17.841797 13.974609 L 18.158203 13.025391 L 13.277344 11.398438 A 1.7499957 1.7499954 0 0 0 11.75 10.5 A 1.7499957 1.7499954 0 0 0 11.039062 10.652344 L 1.1582031 7.359375 z M 1 11 L 1 17 L 18 17 L 18 16 L 1 11 z "
-     id="path4149" />
+     id="rect843"
+     d="M 6.546875,1.9990235 5.859375,4.4091797 1,3.022461 1.6875,5.7705078 11.966797,8.7041016 14,6.7314454 9.140625,5.3466797 9.828125,2.9345704 Z M 0,7.0009766 v 5.0000004 h 14 v -1 z"
+     style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers" />
 </svg>

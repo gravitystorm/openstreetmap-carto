@@ -6,7 +6,7 @@
 
 #water-areas {
   [natural = 'glacier']::natural {
-    [zoom >= 8] {
+    [zoom >= 5] {
       line-width: 1.0;
       line-color: @glacier-line;
       polygon-fill: @glacier;
