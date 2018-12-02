@@ -1,4 +1,29 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.16.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.17.0...master)
+
+## [v4.17.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.16.0...v4.17.0) - 2018-11-23
+## Changes
+- Showing natural areas from z5
+- Cleaning up medium zoom rendering, including:
+  - Making societal amenities look like residential on z10-z12
+  - Rendering motorway junction names from z13 instead of z12
+  - Dropping buildings up to z13 instead of z12
+  - Correctly dropping minor waterways from z13
+  - Rendering intermittent streams/ditches/drains from z15
+  - Reducing lightening of tramways
+- Rendering religious landuse and place of worship lighter
+- Adding text-repeat-distance for highway names
+- Rendering dots for gastronomy objects on z17
+- Adding icons for memorial subtags
+- Rendering man_made=telescope
+- Rendering amenity=internet_cafe
+- Adding icon for amenity=public_bookcase
+- Adding icons for barrier=cattle_grid and barrier=stile
+- Adding icon for leisure=fishing
+- Rendering entrance for underground parking
+- Rendering basin=detention/infiltration as intermittent water
+- Tweaking outline of swimming pools and rendering it from z17
+- Moving danger_area into landuse-overlay
+- Buildings code rewrite
 
 ## [v4.16.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.15.0...v4.16.0) - 2018-10-19
 ## Changes
