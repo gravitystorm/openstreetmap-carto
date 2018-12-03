@@ -1,6 +1,6 @@
 // --- Parks, woods, other green things ---
 
-@grass: #cdebb0; // also grassland, meadow, common, village_green, garden
+@grass: #cdebb0;        // Lch(90,32,128) also grassland, meadow, common, village_green, garden, allotments
 @scrub: #c8d7ab;        // Lch(84,24,122)
 @forest: #add19e;       // Lch(80,30,135)
 @forest-text: #46673b;  // Lch(40,30,135)
@@ -38,7 +38,6 @@
 
 // --- Other ----
 
-@allotments: #eecfb3;       // Lch(85,19,70)
 @bare_ground: #eee5dc;
 @campsite: #def6c0; // also caravan_site, picnic_site
 @cemetery: #aacbaf; // also grave_yard
@@ -292,7 +291,7 @@
 
   [feature = 'landuse_allotments'] {
     [zoom >= 10] {
-      polygon-fill: @allotments;
+      polygon-fill: @grass;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
