@@ -86,10 +86,10 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, name, way_pixels, religion,
+            way, way_pixels,
             COALESCE(wetland, landuse, "natural") AS feature
           FROM (SELECT
-              way, COALESCE(name, '') AS name, religion,
+              way,
               ('landuse_' || (CASE WHEN landuse IN ('forest', 'farmland', 'residential', 'commercial', 'retail', 'industrial', 
                                                     'meadow', 'vineyard', 'orchard') THEN landuse ELSE NULL END)) AS landuse,
               ('natural_' || (CASE WHEN "natural" IN ('wood', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland', 'scrub') THEN "natural" ELSE NULL END)) AS "natural",
@@ -100,7 +100,6 @@ Layer:
             WHERE (landuse IN ('forest', 'farmland', 'residential', 'commercial', 'retail', 'industrial', 'meadow', 'vineyard', 'orchard')
               OR "natural" IN ('wood', 'wetland', 'mud', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland', 'scrub'))
               AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
-              AND building IS NULL
           ) AS features
           ORDER BY way_area DESC, feature
         ) AS landcover_low_zoom
@@ -1524,7 +1523,7 @@ Layer:
                                'laundry', 'dry_cleaning', 'beverages', 'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor',
                                'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea', 'coffee', 'tyres', 'pastry', 'chocolate',
                                'music', 'medical_supply', 'dairy', 'video_games', 'houseware', 'ticket', 'charity', 'second_hand',
-                               'interior_decoration', 'video', 'paint', 'massage', 'trade', 'wholesale') THEN shop
+                               'interior_decoration', 'video', 'paint', 'massage', 'trade', 'wholesale', 'sewing') THEN shop
                                ELSE 'other' END AS shop,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
@@ -1682,7 +1681,7 @@ Layer:
                                'laundry', 'dry_cleaning', 'beverages', 'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor',
                                'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea', 'coffee', 'tyres', 'pastry', 'chocolate',
                                'music', 'medical_supply', 'dairy', 'video_games', 'houseware', 'ticket', 'charity', 'second_hand',
-                               'interior_decoration', 'video', 'paint', 'massage', 'trade', 'wholesale') THEN shop
+                               'interior_decoration', 'video', 'paint', 'massage', 'trade', 'wholesale', 'sewing') THEN shop
                                ELSE 'other' END AS shop,
             NULL AS way_pixels
           FROM planet_osm_point
@@ -2093,7 +2092,7 @@ Layer:
                                             'travel_agency', 'car_parts', 'greengrocer', 'farm', 'stationery', 'laundry', 'dry_cleaning', 'beverages',
                                             'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor', 'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea',
                                             'coffee', 'tyres', 'pastry', 'chocolate', 'music', 'medical_supply', 'dairy', 'video_games', 'houseware', 'ticket',
-                                            'charity', 'second_hand', 'interior_decoration', 'video', 'paint', 'massage', 'trade', 'wholesale') THEN shop
+                                            'charity', 'second_hand', 'interior_decoration', 'video', 'paint', 'massage', 'trade', 'wholesale', 'sewing') THEN shop
                               WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE 'other' END,
               'office' || CASE WHEN tags->'office' IN ('no', 'vacant', 'closed', 'disused', 'empty') OR (tags->'office') IS NULL THEN NULL ELSE '' END,
               'leisure_' || CASE WHEN leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'fitness_centre', 'sports_centre', 'stadium', 'track',
@@ -2287,7 +2286,7 @@ Layer:
                                                 'greengrocer', 'farm', 'stationery', 'laundry', 'dry_cleaning', 'beverages', 'perfumery', 'cosmetics',
                                                 'variety_store', 'wine', 'outdoor', 'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea', 'coffee', 'tyres',
                                                 'pastry', 'chocolate', 'music', 'medical_supply','dairy', 'video_games', 'houseware', 'ticket', 'charity', 'second_hand',
-                                                'interior_decoration', 'video', 'paint', 'massage', 'trade', 'wholesale') THEN shop
+                                                'interior_decoration', 'video', 'paint', 'massage', 'trade', 'wholesale', 'sewing') THEN shop
                                   WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE 'other' END,
                   'office' || CASE WHEN tags->'office' IN ('no', 'vacant', 'closed', 'disused', 'empty') OR (tags->'office') IS NULL THEN NULL ELSE '' END,
                   'leisure_' || CASE WHEN leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'fitness_centre', 'sports_centre', 'stadium', 'track',

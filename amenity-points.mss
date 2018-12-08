@@ -1180,6 +1180,10 @@
       marker-file: url('symbols/shop/paint.svg');
     }
 
+   [shop = 'sewing'][zoom >= 18] {
+      marker-file: url('symbols/shop/sewing.svg');
+    }
+
     [shop = 'shoes'][zoom >= 18] {
       marker-file: url('symbols/shop/shoes.svg');
     }
@@ -2784,6 +2788,7 @@
   [feature = 'shop_travel_agency'],
   [feature = 'shop_seafood'],
   [feature = 'shop_second_hand'],
+  [feature = 'shop_sewing'], 
   [feature = 'shop_sports'],
   [feature = 'shop_stationery'],
   [feature = 'shop_tobacco'],
@@ -3161,7 +3166,6 @@
       [zoom >= 17] {
         bridgecasing/line-color: saturate(darken(@pitch, 30%), 20%);
         bridgecasing/line-join: round;
-        bridgecasing/line-smooth: 1;
         bridgecasing/line-width: 1.25;
         [zoom >= 18] { bridgecasing/line-width: 2.5; }
         [zoom >= 19] { bridgecasing/line-width: 5; }
@@ -3169,7 +3173,6 @@
       line-color: @pitch;
       line-join: round;
       line-cap: round;
-      line-smooth: 1;
       line-width: 1;
       [zoom >= 18] { line-width: 2; }
       [zoom >= 19] { line-width: 4; }
@@ -3194,7 +3197,6 @@
       [zoom >= 17] {
         bridgecasing/line-color: black;
         bridgecasing/line-join: round;
-        bridgecasing/line-smooth: 1;
         bridgecasing/line-width: 1.25;
         [zoom >= 18] { bridgecasing/line-width: 2.5; }
         [zoom >= 19] { bridgecasing/line-width: 5; }
@@ -3202,7 +3204,6 @@
       line-color: @pitch;
       line-join: round;
       line-cap: round;
-      line-smooth: 1;
       line-width: 1;
       [zoom >= 18] { line-width: 2; }
       [zoom >= 19] { line-width: 4; }
