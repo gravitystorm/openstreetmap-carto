@@ -33,21 +33,20 @@
 }
 
 #power-towers {
-  [zoom >= 14] {
-    marker-file: url('symbols/man_made/power_tower_small.svg');
-    marker-width: 3;
+  [power = 'tower'] {
+    [zoom >= 14] {
+      marker-file: url('symbols/man_made/power_tower_small.svg');
+      marker-width: 3;
+    }
+    [zoom >= 15] {
+      marker-file: url('symbols/man_made/power_tower.svg');
+      marker-width: 5;
+    }
+    [zoom >= 17] {
+      marker-width: 7;
+    }
   }
-  [zoom >= 15] {
-    marker-file: url('symbols/man_made/power_tower.svg');
-    marker-width: 5;
-  }
-  [zoom >= 17] {
-    marker-width: 7;
-  }
-}
-
-#power-poles {
-  [zoom >= 16] {
+  [power = 'pole'][zoom >= 16] {
     marker-file: url('symbols/square.svg');
     marker-fill: #928f8f;
     marker-width: 3;
