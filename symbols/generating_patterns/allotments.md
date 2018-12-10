@@ -16,5 +16,5 @@ SVG file is generated using JSDotPattern generator (http://www.imagico.de/map/js
 
 This generates file allotments.svg
 
-However, since SVG files are not properly handled by Mapnik, the file was converted to with alpha channel: symbols/allotments.png
+However, since SVG files are not properly handled by Mapnik, the file was converted to png with alpha channel: symbols/allotments.png
 
