@@ -1593,9 +1593,6 @@
     marker-file: url('symbols/amenity/waste_disposal.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
-    [access != ''][access != 'permissive'][access != 'yes'] {
-      marker-opacity: 0.33;
-    }
   }
 }
 
@@ -1711,9 +1708,6 @@
     marker-file: url('symbols/amenity/waste_disposal.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
-    [access != ''][access != 'permissive'][access != 'yes'] {
-      marker-opacity: 0.33;
-    }
   }
 }
 
