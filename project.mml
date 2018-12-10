@@ -1405,6 +1405,7 @@ Layer:
             ref,
             railway,
             aerialway,
+            tags->'station' as "station",
             CASE railway
               WHEN 'station' THEN 1
               WHEN 'subway_entrance' THEN 3
@@ -1430,7 +1431,8 @@ Layer:
             name,
             ref,
             railway,
-            aerialway
+            aerialway,
+            tags->'station' as "station"
         FROM planet_osm_polygon
         WHERE railway IN ('station', 'halt', 'tram_stop')
           OR aerialway = 'station'
