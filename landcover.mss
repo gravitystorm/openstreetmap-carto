@@ -6,7 +6,7 @@
 @forest-text: #46673b;  // Lch(40,30,135)
 @park: #c8facc;         // Lch(94,30,145)
 @orchard: #aedfa3; // also vineyard, plant_nursery
-@allotments: #ddeec3;   // Lch(92,23,124)
+@allotments: #d7f3c9;   // Lch(93,24,134)
 
 // --- "Base" landuses ---
 
@@ -297,8 +297,9 @@
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
     [zoom >= 14] {
-      polygon-pattern-file: url('symbols/f6fbef-2px-by-4px-on-ddeec3.png');
+      polygon-pattern-file: url('symbols/white-small-squares-close.png');
       polygon-pattern-alignment: global;
+      polygon-pattern-opacity: 0.75;
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
