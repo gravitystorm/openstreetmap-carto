@@ -1,9 +1,9 @@
-For the pattern for scrub type visit [jsdotpattern (command sequence is recorded)](http://www.imagico.de/map/jsdotpattern.php#x,512,jdp97762;g5,45,64,64;rx,250,2,64,64;rx,250,2,64,64;rx,250,2,64,64;rd,1,0,0,scrub2,1,5,12,0,jdp3379,8ece8f,b5e3b5;)
+For the pattern for scrub type visit [jsdotpattern (command sequence is recorded)](http://www.imagico.de/map/jsdotpattern.php#x,512,jdp60679;g,24,64,64;rx,25,2,64,64;rx,25,2,64,64;rx,25,2,64,64;rx,25,2,64,64;rd,1,1,0,scrub2,1,5,5,0,jdp97432,b0be93,c8d7ab;)
 
-The result is this following [pattern](http://www.imagico.de/map/jsdotpattern.php#x,256,jdp34863;g5,43,64,64;rd,1,0,0,scrub2,1,0,0,0,jdp48772,8ece8f,b5e3b5;).
+The result is this following [pattern](http://www.imagico.de/map/jsdotpattern.php#x,512,jdp60679;g,24,64,64;rx,25,2,64,64;rx,25,2,64,64;rx,25,2,64,64;rx,25,2,64,64;rd,1,1,0,scrub2,1,5,5,0,jdp97432,b0be93,c8d7ab;).
 
 Generated SVG image is sanitized for use with Mapnik by the script svg_pattern.sh from the jsdotpattern repository at http://github.com/imagico/jsdotpattern.
 
 The final file is scrub.svg
 
-Because of a [problem in the rendering stack](https://github.com/gravitystorm/openstreetmap-carto/issues/2750) we don’t use the SVG directly, but convert it to PNG.
+Because of a [problem in the rendering stack](https://github.com/gravitystorm/openstreetmap-carto/issues/2750) we don’t use the SVG directly, but convert it to PNG: see symbols/scrub.png

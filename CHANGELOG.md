@@ -1,4 +1,75 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.13.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.17.0...master)
+
+## [v4.17.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.16.0...v4.17.0) - 2018-11-23
+## Changes
+- Showing natural areas from z5
+- Cleaning up medium zoom rendering, including:
+  - Making societal amenities look like residential on z10-z12
+  - Rendering motorway junction names from z13 instead of z12
+  - Dropping buildings up to z13 instead of z12
+  - Correctly dropping minor waterways from z13
+  - Rendering intermittent streams/ditches/drains from z15
+  - Reducing lightening of tramways
+- Rendering religious landuse and place of worship lighter
+- Adding text-repeat-distance for highway names
+- Rendering dots for gastronomy objects on z17
+- Adding icons for memorial subtags
+- Rendering man_made=telescope
+- Rendering amenity=internet_cafe
+- Adding icon for amenity=public_bookcase
+- Adding icons for barrier=cattle_grid and barrier=stile
+- Adding icon for leisure=fishing
+- Rendering entrance for underground parking
+- Rendering basin=detention/infiltration as intermittent water
+- Tweaking outline of swimming pools and rendering it from z17
+- Moving danger_area into landuse-overlay
+- Buildings code rewrite
+
+## [v4.16.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.15.0...v4.16.0) - 2018-10-19
+## Changes
+- Changing societal amenities color to less intensive
+- Adding rendering for natural=strait
+- Adding rendering for leisure=track on lines
+- Adding icon for amenity=vehicle_inspection
+- Adding icon for leisure=sports_centre + sport=swimming and leisure=swimming_area
+- Adding icon for tourism=gallery
+- Changing color for aeroway=apron in aerodromes
+- Moving amenity=post_box to z19+
+- Moving amenity=atm to z19+
+- Replacing icon for information=tactile_model
+- Ordering amenity_lines by layer
+- Small documentation and code fixes
+
+## [v4.15.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.14.0...v4.15.0) - 2018-09-21
+## Changes
+- Changing gastronomy objects color to orange (affects restaurant, fast_food, ice_cream, food_court, bar, cafe, nightclub, pub and biergarten)
+- Changing farmland and societal amenities (like school, hospital etc.) colors to fit better into the overall color systematic
+- Adding rendering for man_made=wastewater_plant and man_made=water_works
+- Adding icon for man_made=storage_tank and man_made=silo
+- Adding icon for amenity=bicycle_repair_station
+- Adding icon for leisure=amusement_arcade
+- Adding icon for shop=bookmaker
+- Adding icon for shop=trade and shop=wholesale
+- Adding rendering for attraction=water_slide
+- Rendering most of the road links thinner (affects trunk_link, primary_link, secondary_link)
+- Moving manors to z16+
+- Fixing missing country labels on z4 (affects Canada, Russia and Greenland)
+- Small code and icon fixes
+
+## [v4.14.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.13.0...v4.14.0) - 2018-08-17
+## Changes
+- Added text-repeat-distance for waterways
+- Added text-repeat-distance for railways
+- Added icon for leisure=bowling_alley
+- Added icon for leisure=outdoor_seating
+- Added icon for leisure=bird_hide
+- Added icon for shop=video
+- Added icon for shop=paint
+- Added icon for shop=massage
+- Increased casing width of tertiary road on z12
+- Standard text halo for fitness_centre and fitness_station
+- Updated Docker images definitions
+- Small documentation updates
 
 ## [v4.13.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.12.0...v4.13.0) - 2018-07-23
 ## Changes

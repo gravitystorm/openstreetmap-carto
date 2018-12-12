@@ -86,24 +86,25 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, name, way_pixels, religion,
+            way, way_pixels,
             COALESCE(wetland, landuse, "natural") AS feature
           FROM (SELECT
-              way, COALESCE(name, '') AS name, religion,
-              ('landuse_' || (CASE WHEN landuse IN ('forest', 'military', 'farmland', 'residential', 'commercial', 'retail', 'industrial', 'meadow') THEN landuse ELSE NULL END)) AS landuse,
-              ('natural_' || (CASE WHEN "natural" IN ('wood', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland') THEN "natural" ELSE NULL END)) AS "natural",
+              way,
+              ('landuse_' || (CASE WHEN landuse IN ('forest', 'farmland', 'residential', 'commercial', 'retail', 'industrial', 
+                                                    'meadow', 'vineyard', 'orchard') THEN landuse ELSE NULL END)) AS landuse,
+              ('natural_' || (CASE WHEN "natural" IN ('wood', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland', 'scrub') THEN "natural" ELSE NULL END)) AS "natural",
               ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'mud') THEN (CASE WHEN "natural" IN ('mud') THEN "natural" ELSE tags->'wetland' END) ELSE NULL END)) AS wetland,
-              way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+              way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+              way_area
             FROM planet_osm_polygon
-            WHERE (landuse IN ('forest', 'military', 'farmland', 'residential', 'commercial', 'retail', 'industrial', 'meadow')
-              OR "natural" IN ('wood', 'wetland', 'mud', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland'))
-              AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-              AND building IS NULL
-            ORDER BY way_area DESC
+            WHERE (landuse IN ('forest', 'farmland', 'residential', 'commercial', 'retail', 'industrial', 'meadow', 'vineyard', 'orchard')
+              OR "natural" IN ('wood', 'wetland', 'mud', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland', 'scrub'))
+              AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
           ) AS features
+          ORDER BY way_area DESC, feature
         ) AS landcover_low_zoom
     properties:
-      minzoom: 7
+      minzoom: 5
       maxzoom: 9
   - id: landcover
     geometry: polygon
@@ -113,14 +114,15 @@ Layer:
       table: |-
         (SELECT
             way, name, religion, way_pixels, is_building,
-            COALESCE(aeroway, amenity, wetland, power, landuse, leisure, man_made, military, "natural", tourism, highway, railway) AS feature
+            COALESCE(aeroway, amenity, wetland, power, landuse, leisure, man_made, "natural", tourism, highway, railway) AS feature
           FROM (SELECT
               way, COALESCE(name, '') AS name,
               ('aeroway_' || (CASE WHEN aeroway IN ('apron', 'aerodrome') THEN aeroway ELSE NULL END)) AS aeroway,
               ('amenity_' || (CASE WHEN amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'university', 'college', 'school', 'taxi',
                                                     'hospital', 'kindergarten', 'grave_yard', 'prison', 'place_of_worship', 'clinic', 'ferry_terminal',
-                                                    'marketplace', 'community_centre', 'social_facility', 'arts_centre', 'parking_space', 'bus_station', 
+                                                    'marketplace', 'community_centre', 'social_facility', 'arts_centre', 'parking_space', 'bus_station',
                                                     'fire_station', 'police') THEN amenity ELSE NULL END)) AS amenity,
+              ('healthcare_' || (CASE WHEN tags->'healthcare' IN ('clinic' ,'hospital') THEN tags->'healthcare' ELSE NULL END)) AS healthcare,
               ('landuse_' || (CASE WHEN landuse IN ('quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'meadow', 'grass',
                                                     'allotments', 'forest', 'farmyard', 'farmland', 'greenhouse_horticulture',
                                                     'recreation_ground', 'village_green', 'retail', 'industrial', 'railway', 'commercial',
@@ -128,8 +130,7 @@ Layer:
               ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'recreation_ground', 'common', 'garden',
                                                     'golf_course', 'miniature_golf', 'sports_centre', 'stadium', 'pitch', 'ice_rink',
                                                     'track', 'dog_park', 'fitness_station') THEN leisure ELSE NULL END)) AS leisure,
-              ('man_made_' || (CASE WHEN man_made IN ('works') THEN man_made ELSE NULL END)) AS man_made,
-              ('military_' || (CASE WHEN military IN ('danger_area') THEN military ELSE NULL END)) AS military,
+              ('man_made_' || (CASE WHEN man_made IN ('works', 'wastewater_plant', 'water_works') THEN man_made ELSE NULL END)) AS man_made,
               ('natural_' || (CASE WHEN "natural" IN ('beach', 'shoal', 'heath', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub') THEN "natural" ELSE NULL END)) AS "natural",
               ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'marsh', 'mud') THEN (CASE WHEN "natural" IN ('marsh', 'mud') THEN "natural" ELSE tags->'wetland' END) ELSE NULL END)) AS wetland,
               ('power_' || (CASE WHEN power IN ('station', 'sub_station', 'substation', 'generator') THEN power ELSE NULL END)) AS power,
@@ -139,6 +140,7 @@ Layer:
               CASE WHEN religion IN ('christian', 'jewish', 'muslim') THEN religion ELSE 'INT-generic'::text END AS religion,
               way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
               CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building -- always no with the where conditions
+              way_area
             FROM planet_osm_polygon
             WHERE (landuse IS NOT NULL
               OR leisure IS NOT NULL
@@ -146,16 +148,16 @@ Layer:
               OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'taxi', 'university', 'college', 'school', 'hospital', 'kindergarten',
                              'grave_yard', 'place_of_worship', 'prison', 'clinic', 'ferry_terminal', 'marketplace', 'community_centre', 'social_facility',
                              'arts_centre', 'parking_space', 'bus_station', 'fire_station', 'police')
-              OR man_made IN ('works')
-              OR military IN ('danger_area')
+              OR tags->'healthcare' IN ('clinic', 'hospital')
+              OR man_made IN ('works', 'wastewater_plant','water_works')
               OR "natural" IN ('beach', 'shoal', 'heath', 'mud', 'marsh', 'wetland', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub')
               OR power IN ('station', 'sub_station', 'substation', 'generator')
               OR tourism IN ('camp_site', 'caravan_site', 'picnic_site')
               OR highway IN ('services', 'rest_area')
               OR railway = 'station')
               AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-            ORDER BY way_area DESC
           ) AS landcover
+          ORDER BY way_area DESC, feature
         ) AS features
     properties:
       minzoom: 10
@@ -215,7 +217,7 @@ Layer:
       file: data/antarctica-icesheet-polygons-3857/icesheet_polygons.shp
       type: shape
     properties:
-      minzoom: 8
+      minzoom: 5
   - id: water-areas
     geometry: polygon
     <<: *extents
@@ -231,6 +233,7 @@ Layer:
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
+              OR tags->'basin' IN ('detention', 'infiltration')
               THEN 'yes' ELSE 'no' END AS int_intermittent
           FROM planet_osm_polygon
           WHERE
@@ -270,7 +273,7 @@ Layer:
           ORDER BY COALESCE(layer,0), way_area DESC
         ) AS landcover_area_symbols
     properties:
-      minzoom: 8
+      minzoom: 5
   - id: icesheet-outlines
     geometry: linestring
     <<: *extents
@@ -278,7 +281,7 @@ Layer:
       file: data/antarctica-icesheet-outlines-3857/icesheet_outlines.shp
       type: shape
     properties:
-      minzoom: 8
+      minzoom: 5
   - id: springs
     geometry: point
     <<: *extents
@@ -426,28 +429,6 @@ Layer:
       table: |-
         (SELECT
             way,
-            building
-          FROM planet_osm_polygon
-          WHERE building IS NOT NULL
-            AND building != 'no'
-            AND (aeroway IS NULL OR aeroway != 'terminal')
-            AND (amenity IS NULL OR amenity != 'place_of_worship')
-            AND building != 'train_station'
-            AND (aerialway IS NULL OR aerialway != 'station')
-            AND ((tags->'public_transport') IS NULL OR tags->'public_transport' != 'station')
-            AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-          ORDER BY COALESCE(layer,0), way_area DESC
-        ) AS buildings
-    properties:
-      minzoom: 13
-  - id: buildings-major
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
             building,
             amenity,
             aeroway,
@@ -456,16 +437,11 @@ Layer:
           FROM planet_osm_polygon
           WHERE building IS NOT NULL
             AND building != 'no'
-            AND (aeroway = 'terminal'
-                 OR amenity = 'place_of_worship'
-                 OR building = 'train_station'
-                 OR aerialway = 'station'
-                 OR tags->'public_transport' = 'station')
             AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-          ORDER BY COALESCE(layer,0), way_area DESC)
-        AS buildings_major
+          ORDER BY COALESCE(layer,0), way_area DESC
+        ) AS buildings
     properties:
-      minzoom: 13
+      minzoom: 14
   - id: tunnels
     class: access
     geometry: linestring
@@ -566,13 +542,15 @@ Layer:
         (SELECT
             way,
             landuse,
+            military,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
           WHERE landuse = 'military'
+            OR military = 'danger_area'
             AND building IS NULL
         ) AS landuse_overlay
     properties:
-      minzoom: 7
+      minzoom: 8
   - id: tourism-boundary
     geometry: polygon
     <<: *extents
@@ -693,7 +671,7 @@ Layer:
             way,
             COALESCE((
               'highway_' || (CASE WHEN highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'track', 'path', 'platform') THEN highway ELSE NULL END)),
-              ('railway_' || (CASE WHEN (railway IN ('platform') 
+              ('railway_' || (CASE WHEN (railway IN ('platform')
                               AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
                               AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
                               AND (covered NOT IN ('yes') OR covered IS NULL))
@@ -701,7 +679,7 @@ Layer:
             ) AS feature
           FROM planet_osm_polygon
           WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'track', 'path', 'platform')
-            OR (railway IN ('platform') 
+            OR (railway IN ('platform')
                 AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
                 AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
                 AND (covered NOT IN ('yes') OR covered IS NULL))
@@ -811,7 +789,7 @@ Layer:
             COALESCE(
               ('highway_' || (CASE WHEN highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street',
                                                     'track', 'path', 'platform', 'services') THEN highway ELSE NULL END)),
-              ('railway_' || (CASE WHEN (railway IN ('platform') 
+              ('railway_' || (CASE WHEN (railway IN ('platform')
                               AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
                               AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
                               AND (covered NOT IN ('yes') OR covered IS NULL))
@@ -820,7 +798,7 @@ Layer:
             ) AS feature
           FROM planet_osm_polygon
           WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'living_street', 'track', 'path', 'platform', 'services')
-            OR (railway IN ('platform') 
+            OR (railway IN ('platform')
                 AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
                 AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
                 AND (covered NOT IN ('yes') OR covered IS NULL))
@@ -1473,27 +1451,31 @@ Layer:
             COALESCE(
               'aeroway_' || CASE WHEN aeroway IN ('helipad', 'aerodrome') THEN aeroway ELSE NULL END,
               'tourism_' || CASE WHEN tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment',
-                                                  'hostel', 'hotel', 'motel', 'information', 'museum', 'picnic_site') THEN tourism ELSE NULL END,
+                                                  'hostel', 'hotel', 'motel', 'information', 'museum', 'picnic_site', 'gallery') THEN tourism ELSE NULL END,
               'amenity_' || CASE WHEN amenity IN ('shelter', 'atm', 'bank', 'bar', 'bbq', 'bicycle_rental', 'bureau_de_change', 'bus_station', 'cafe', 'public_bath',
                                                   'car_rental', 'car_wash', 'cinema', 'clinic', 'community_centre', 'fire_station', 'fountain',
                                                   'fuel', 'hospital', 'ice_cream', 'embassy', 'library', 'courthouse', 'townhall', 'parking',
                                                   'bicycle_parking', 'motorcycle_parking', 'pharmacy', 'doctors', 'dentist', 'place_of_worship',
                                                   'police', 'post_box', 'post_office', 'pub', 'biergarten', 'recycling', 'restaurant', 'food_court',
-                                                  'fast_food', 'telephone', 'taxi', 'theatre', 'toilets', 'drinking_water',
-                                                  'prison', 'hunting_stand', 'nightclub', 'veterinary', 'social_facility',
+                                                  'fast_food', 'telephone', 'taxi', 'theatre', 'toilets', 'drinking_water', 'internet_cafe', 'public_bookcase',
+                                                  'prison', 'hunting_stand', 'nightclub', 'veterinary', 'social_facility', 'vehicle_inspection',
                                                   'charging_station', 'arts_centre', 'ferry_terminal', 'marketplace', 'waste_disposal', 'shower', 'bbq',
-                                                  'nursing_home', 'childcare', 'driving_school', 'casino', 'boat_rental') THEN amenity ELSE NULL END,
+                                                  'nursing_home', 'childcare', 'driving_school', 'casino', 'boat_rental', 'bicycle_repair_station') THEN amenity ELSE NULL END,
+              'healthcare_' || CASE WHEN tags->'healthcare' IN ('alternative', 'audiologist', 'birthing_center', 'blood_bank', 'blood_donation', 'centre', 'clinic', 
+                                               'dentist', 'dialysis', 'doctor', 'hospital', 'laboratory', 'midwife', 'occupational_therapist', 'optometrist', 
+                                               'physiotherapist', 'podiatrist', 'psychotherapist', 'rehabilitation', 'speech_therapist', 'yes') THEN tags->'healthcare' ELSE NULL END,
               'advertising_' || CASE WHEN tags->'advertising' in ('column') THEN tags->'advertising' else NULL END,
               'shop' || CASE WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE '' END,
               'office' || CASE WHEN tags->'office' IN ('no', 'vacant', 'closed', 'disused', 'empty') OR (tags->'office') IS NULL THEN NULL ELSE '' END,
               'leisure_' || CASE WHEN leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table',
-                                                  'fitness_centre', 'fitness_station', 'firepit', 'sauna', 'beach_resort', 'bowling_alley') THEN leisure ELSE NULL END,
-              'man_made_' || CASE WHEN (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk', 'communications_tower', 'chimney') 
+                                                  'fitness_centre', 'fitness_station', 'firepit', 'sauna', 'beach_resort',
+                                                  'bowling_alley', 'outdoor_seating', 'bird_hide', 'amusement_arcade', 'sports_centre', 'swimming_area', 'fishing')
+                                                  THEN leisure ELSE NULL END,
+              'man_made_' || CASE WHEN (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'storage_tank', 'silo')
                                         AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)) THEN man_made ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('spring') THEN "natural" ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate')
-                             THEN concat_ws('_', historic, CASE WHEN tags->'memorial' IN ('plaque') THEN tags->'memorial' ELSE NULL END)
-                             ELSE NULL END,
+                             THEN historic ELSE NULL END,
               'military_'|| CASE WHEN military IN ('bunker') THEN military ELSE NULL END,
               'highway_'|| CASE WHEN highway IN ('bus_stop', 'elevator', 'traffic_signals') THEN highway ELSE NULL END,
               'power_' || CASE WHEN power IN ('generator') THEN power ELSE NULL END,
@@ -1511,16 +1493,29 @@ Layer:
                 END
               ELSE NULL
             END AS height,
-            tags->'power_source' as power_source,
+            tags->'location' as location,
             tags->'icao' as icao,
             tags->'iata' as iata,
             tags->'office' as office,
             tags->'recycling_type' as recycling_type,
             tags->'tower:construction' as "tower:construction",
             tags->'tower:type' as "tower:type",
+            tags->'telescope:type' as "telescope:type",
+            CASE
+              WHEN man_made IN ('telescope') THEN
+                CASE
+                  WHEN tags->'telescope:diameter' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'telescope:diameter')::NUMERIC
+                  ELSE NULL
+                END
+              ELSE NULL
+            END AS "telescope:diameter",
             tags->'castle_type' as castle_type,
+            tags->'sport' as sport,
             tags->'information' as information,
-            CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'bed', 'books', 'butcher', 'clothes', 'computer',
+            tags->'healthcare' as healthcare,
+            tags->'memorial' as memorial,
+            tags->'artwork_type' as artwork_type,
+            CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'bed', 'bookmaker', 'books', 'butcher', 'clothes', 'computer',
                                'confectionery', 'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist',
                                'garden_centre', 'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet',
                                'photo', 'photo_studio', 'photography', 'seafood', 'shoes', 'alcohol', 'gift', 'furniture', 'kiosk',
@@ -1528,28 +1523,30 @@ Layer:
                                'electronics', 'chemist', 'toys', 'travel_agency', 'car_parts', 'greengrocer', 'farm', 'stationery',
                                'laundry', 'dry_cleaning', 'beverages', 'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor',
                                'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea', 'coffee', 'tyres', 'pastry', 'chocolate',
-                               'music', 'medical_supply', 'dairy', 'video_games', 'houseware', 'ticket', 'charity', 'second_hand', 'interior_decoration', 'video', 'paint') THEN shop
+                               'music', 'medical_supply', 'dairy', 'video_games', 'houseware', 'ticket', 'charity', 'second_hand',
+                               'interior_decoration', 'video', 'paint', 'massage', 'trade', 'wholesale') THEN shop
                                ELSE 'other' END AS shop,
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
           WHERE aeroway IN ('helipad', 'aerodrome')
             OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
-                           'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site')
+                           'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site', 'gallery')
             OR amenity IS NOT NULL -- skip checking a huge list and use a null check
+            OR (tags->'healthcare') IS NOT NULL
             OR tags->'advertising' IN ('column')
             OR shop IS NOT NULL
             OR (tags->'office') IS NOT NULL
             OR leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'fitness_centre',
-                           'fitness_station', 'firepit', 'sauna', 'beach_resort', 'bowling_alley')
-            OR (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk', 'communications_tower', 'chimney') 
+                           'fitness_station', 'firepit', 'sauna', 'beach_resort', 'bowling_alley', 'outdoor_seating', 'bird_hide',
+                           'amusement_arcade', 'sports_centre', 'swimming_area', 'fishing')
+            OR (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'storage_tank', 'silo')
                 AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL))
             OR "natural" IN ('spring')
             OR historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate')
-            OR tags->'memorial' IN ('plaque')
             OR military IN ('bunker')
             OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
-            OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> 'power_source=>wind'))
+            OR (power = 'generator' AND tags @> '"generator:source"=>wind')
           ORDER BY way_area desc
         ) AS amenity_points_poly
     properties:
@@ -1562,14 +1559,19 @@ Layer:
       table: |-
         (SELECT
           way,
+          name,
+          layer,
           COALESCE(
            'highway_' || CASE WHEN tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones' THEN 'ford' ELSE NULL END,
-           'leisure_' || CASE WHEN leisure IN ('slipway') THEN leisure ELSE NULL END
+           'leisure_' || CASE WHEN leisure IN ('slipway', 'track') THEN leisure ELSE NULL END,
+           'attraction_' || CASE WHEN tags @> 'attraction=>water_slide' THEN 'water_slide' ELSE NULL END
             ) AS feature
           FROM planet_osm_line
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
           WHERE tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones'
-            OR leisure IN ('slipway')
+            OR leisure IN ('slipway', 'track')
+            OR tags @> 'attraction=>water_slide'
+          ORDER BY COALESCE(layer,0)
         ) AS amenity_line
     properties:
       minzoom: 16
@@ -1586,29 +1588,34 @@ Layer:
             COALESCE(
               'aeroway_' || CASE WHEN aeroway IN ('helipad', 'aerodrome') THEN aeroway ELSE NULL END,
               'tourism_' || CASE WHEN tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
-                                                  'hotel', 'motel', 'information', 'museum', 'picnic_site') THEN tourism ELSE NULL END,
+                                                  'hotel', 'motel', 'information', 'museum', 'picnic_site', 'gallery') THEN tourism ELSE NULL END,
               'amenity_' || CASE WHEN amenity IN ('shelter', 'atm', 'bank', 'bar', 'bbq', 'bicycle_rental', 'bureau_de_change', 'bus_station', 'cafe', 'public_bath',
                                                   'car_rental', 'car_wash', 'cinema', 'clinic', 'community_centre', 'fire_station', 'fountain',
                                                   'fuel', 'hospital', 'ice_cream', 'embassy', 'library', 'courthouse', 'townhall', 'parking',
                                                   'bicycle_parking', 'motorcycle_parking', 'pharmacy', 'doctors', 'dentist', 'place_of_worship',
                                                   'police', 'post_box', 'post_office', 'pub', 'biergarten', 'recycling', 'restaurant', 'food_court',
-                                                  'fast_food', 'telephone', 'taxi', 'theatre', 'toilets', 'drinking_water',
-                                                  'prison', 'hunting_stand', 'nightclub', 'veterinary', 'social_facility',
+                                                  'fast_food', 'telephone', 'taxi', 'theatre', 'toilets', 'drinking_water', 'internet_cafe', 'public_bookcase',
+                                                  'prison', 'hunting_stand', 'nightclub', 'veterinary', 'social_facility', 'vehicle_inspection',
                                                   'charging_station', 'arts_centre', 'ferry_terminal', 'marketplace', 'shower', 'bbq',
-                                                  'nursing_home', 'childcare', 'driving_school', 'casino', 'boat_rental') THEN amenity ELSE NULL END,
+                                                  'nursing_home', 'childcare', 'driving_school', 'casino', 'boat_rental', 'bicycle_repair_station') THEN amenity ELSE NULL END,
+              'amenity_' || CASE WHEN amenity IN ('parking_entrance') AND tags->'parking' IN ('underground') AND (access IS NULL OR access NOT IN ('private', 'no')) THEN amenity ELSE NULL END,
+              'healthcare_' || CASE WHEN tags->'healthcare' IN ('alternative', 'audiologist', 'birthing_center', 'blood_bank', 'blood_donation', 'centre', 'clinic', 
+                                               'dentist', 'dialysis', 'doctor', 'hospital', 'laboratory', 'midwife', 'occupational_therapist', 'optometrist', 
+                                               'physiotherapist', 'podiatrist', 'psychotherapist', 'rehabilitation', 'speech_therapist', 'yes') THEN tags->'healthcare' ELSE NULL END,
               'advertising_' || CASE WHEN tags->'advertising' in ('column') THEN tags->'advertising' else NULL END,
               'emergency_' || CASE WHEN tags->'emergency' IN ('phone') THEN tags->'emergency' ELSE NULL END,
               'shop' || CASE WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE '' END,
               'office' || CASE WHEN tags->'office' IN ('no', 'vacant', 'closed', 'disused', 'empty') OR (tags->'office') IS NULL THEN NULL ELSE '' END,
               'leisure_' || CASE WHEN leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'slipway',
-                                                  'dog_park', 'fitness_centre', 'fitness_station', 'firepit', 'sauna', 'beach_resort', 'bowling_alley') THEN leisure ELSE NULL END,
-              'man_made_' || CASE WHEN (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk', 'communications_tower', 'chimney')
+                                                  'dog_park', 'fitness_centre', 'fitness_station', 'firepit', 'sauna', 'beach_resort',
+                                                  'bowling_alley', 'outdoor_seating', 'bird_hide', 'amusement_arcade', 'sports_centre',
+                                                  'swimming_area', 'fishing') THEN leisure ELSE NULL END,
+              'man_made_' || CASE WHEN (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'storage_tank', 'silo')
                                         AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)) THEN man_made ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance') THEN "natural" ELSE NULL END,
               'waterway_' || CASE WHEN "waterway" IN ('waterfall') THEN waterway ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate')
-                             THEN concat_ws('_', historic, CASE WHEN tags->'memorial' IN ('plaque') THEN tags->'memorial' ELSE NULL END)
-                             ELSE NULL END,
+                             THEN historic ELSE NULL END,
               'military_'|| CASE WHEN military IN ('bunker') THEN military ELSE NULL END,
               'highway_'|| CASE WHEN highway IN ('bus_stop', 'elevator', 'traffic_signals') THEN highway
                                 WHEN tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones' THEN 'ford' ELSE NULL END,
@@ -1636,7 +1643,7 @@ Layer:
             tags->'denomination' as denomination,
             tags->'generator:source' as "generator:source",
             CASE
-              WHEN (man_made IN ('mast', 'tower', 'chimney') AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)) 
+              WHEN (man_made IN ('mast', 'tower', 'chimney') AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL))
                     OR waterway IN ('waterfall') THEN
                 CASE
                   WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?( m)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)( m)?$'))::NUMERIC
@@ -1644,16 +1651,29 @@ Layer:
                 END
               ELSE NULL
             END AS height,
-            tags->'power_source' as power_source,
+            tags->'location' as location,
             tags->'icao' as icao,
             tags->'iata' as iata,
             tags->'office' as office,
             tags->'recycling_type' as recycling_type,
             tags->'tower:construction' as "tower:construction",
             tags->'tower:type' as "tower:type",
+            tags->'telescope:type' as "telescope:type",
+            CASE
+              WHEN man_made IN ('telescope') THEN
+                CASE
+                  WHEN tags->'telescope:diameter' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'telescope:diameter')::NUMERIC
+                  ELSE NULL
+                END
+              ELSE NULL
+            END AS "telescope:diameter",
             tags->'castle_type' as castle_type,
+            tags->'sport' as sport,
             tags->'information' as information,
-            CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'bed', 'books', 'butcher', 'clothes', 'computer',
+            tags->'healthcare' as healthcare,
+            tags->'memorial' as memorial,
+            tags->'artwork_type' as artwork_type,
+            CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'bed', 'bookmaker', 'books', 'butcher', 'clothes', 'computer',
                                'confectionery', 'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist',
                                'garden_centre', 'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet',
                                'photo', 'photo_studio', 'photography', 'seafood', 'shoes', 'alcohol', 'gift', 'furniture', 'kiosk',
@@ -1661,32 +1681,35 @@ Layer:
                                'electronics', 'chemist', 'toys', 'travel_agency', 'car_parts', 'greengrocer', 'farm', 'stationery',
                                'laundry', 'dry_cleaning', 'beverages', 'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor',
                                'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea', 'coffee', 'tyres', 'pastry', 'chocolate',
-                               'music', 'medical_supply', 'dairy', 'video_games', 'houseware', 'ticket', 'charity', 'second_hand', 'interior_decoration', 'video', 'paint') THEN shop
+                               'music', 'medical_supply', 'dairy', 'video_games', 'houseware', 'ticket', 'charity', 'second_hand',
+                               'interior_decoration', 'video', 'paint', 'massage', 'trade', 'wholesale') THEN shop
                                ELSE 'other' END AS shop,
             NULL AS way_pixels
           FROM planet_osm_point
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
           WHERE aeroway IN ('helipad', 'aerodrome')
             OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
-                           'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site')
+                           'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site', 'gallery')
             OR amenity IS NOT NULL -- skip checking a huge list and use a null check
+            OR (tags->'healthcare') IS NOT NULL
             OR shop IS NOT NULL
             OR tags->'advertising' IN ('column')
             OR (tags->'office') IS NOT NULL
             OR leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'slipway',
-                           'dog_park', 'fitness_centre', 'fitness_station', 'firepit', 'sauna', 'beach_resort', 'bowling_alley')
+                           'dog_park', 'fitness_centre', 'fitness_station', 'firepit', 'sauna', 'beach_resort',
+                           'bowling_alley', 'outdoor_seating', 'bird_hide', 'amusement_arcade', 'sports_centre',
+                           'swimming_area', 'fishing')
             OR barrier IN ('toll_booth')
-            OR (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'cross', 'obelisk', 'communications_tower', 'chimney') 
+            OR (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'cross', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'storage_tank', 'silo')
                 AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL))
             OR "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance')
             OR waterway IN ('waterfall')
             OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor', 'city_gate')
-            OR tags->'memorial' IN ('plaque')
             OR military IN ('bunker')
             OR tags @> 'emergency=>phone'
             OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
             OR tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones'
-            OR (power = 'generator' AND (tags @> '"generator:source"=>wind' OR tags @> 'power_source=>wind'))
+            OR (power = 'generator' AND tags @> '"generator:source"=>wind')
           ORDER BY score DESC NULLS LAST
           ) AS amenity_points
     properties:
@@ -1884,7 +1907,7 @@ Layer:
             name
           FROM planet_osm_polygon
           WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street', 'track', 'path', 'platform')
-            OR (railway IN ('platform') 
+            OR (railway IN ('platform')
                 AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
                 AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
                 AND (covered NOT IN ('yes') OR covered IS NULL))
@@ -2009,8 +2032,9 @@ Layer:
             way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
             COALESCE(
               'landuse_' || CASE WHEN landuse IN ('forest', 'military', 'farmland') THEN landuse ELSE NULL END,
+              'military_' || CASE WHEN military IN ('danger_area') THEN military ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock',
-                                                    'water', 'bay') THEN "natural" ELSE NULL END,
+                                                    'water', 'bay', 'strait', 'cape') THEN "natural" ELSE NULL END,
               'place_' || CASE WHEN place IN ('island') THEN place ELSE NULL END,
               'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
               'leisure_' || CASE WHEN leisure IN ('nature_reserve') THEN leisure ELSE NULL END
@@ -2019,7 +2043,8 @@ Layer:
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building -- always no with the where conditions
           FROM planet_osm_polygon
           WHERE (landuse IN ('forest', 'military', 'farmland')
-              OR "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock', 'water', 'bay')
+              OR military IN ('danger_area')
+              OR "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock', 'water', 'bay', 'strait', 'cape')
               OR "place" IN ('island')
               OR boundary IN ('national_park')
               OR leisure IN ('nature_reserve'))
@@ -2045,45 +2070,50 @@ Layer:
             COALESCE(
               'aeroway_' || CASE WHEN aeroway IN ('gate', 'apron', 'helipad', 'aerodrome') THEN aeroway ELSE NULL END,
               'tourism_' || CASE WHEN tourism IN ('artwork', 'alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'camp_site', 'caravan_site',
-                                                  'theme_park', 'museum', 'zoo', 'information', 'picnic_site') THEN tourism ELSE NULL END,
+                                                  'theme_park', 'museum', 'zoo', 'information', 'picnic_site', 'gallery') THEN tourism ELSE NULL END,
               'amenity_' || CASE WHEN amenity IN ('pub', 'restaurant', 'food_court', 'cafe', 'fast_food', 'biergarten', 'bar', 'library', 'public_bath',
                                                   'theatre', 'courthouse', 'townhall', 'cinema', 'clinic', 'community_centre', 'parking',
                                                   'bicycle_parking', 'motorcycle_parking', 'police', 'fire_station', 'fountain', 'place_of_worship',
                                                   'grave_yard', 'shelter', 'bank', 'embassy', 'fuel', 'bus_station', 'prison', 'university',
                                                   'school', 'college', 'kindergarten', 'hospital', 'ice_cream', 'pharmacy', 'doctors', 'dentist',
                                                   'atm', 'bicycle_rental', 'bureau_de_change', 'car_rental', 'car_wash', 'post_box', 'post_office',
-                                                  'recycling', 'telephone', 'toilets', 'taxi', 'drinking_water', 'hunting_stand',
-                                                  'nightclub', 'veterinary', 'social_facility', 'charging_station', 'arts_centre',
+                                                  'recycling', 'telephone', 'toilets', 'taxi', 'drinking_water', 'hunting_stand', 'internet_cafe', 'public_bookcase',
+                                                  'nightclub', 'veterinary', 'social_facility', 'vehicle_inspection', 'charging_station', 'arts_centre',
                                                   'ferry_terminal', 'marketplace', 'shower', 'bbq', 'nursing_home', 'childcare', 'driving_school',
-                                                  'casino', 'boat_rental') THEN amenity ELSE NULL END,
+                                                  'casino', 'boat_rental', 'bicycle_repair_station') THEN amenity ELSE NULL END,
+              'healthcare_' || CASE WHEN tags->'healthcare' IN ('alternative', 'audiologist', 'birthing_center', 'blood_bank', 'blood_donation', 'centre', 'clinic', 
+                                               'dentist', 'dialysis', 'doctor', 'hospital', 'laboratory', 'midwife', 'occupational_therapist', 'optometrist', 
+                                               'physiotherapist', 'podiatrist', 'psychotherapist', 'rehabilitation', 'speech_therapist', 'yes') THEN tags->'healthcare' ELSE NULL END,
               'advertising_' || CASE WHEN tags->'advertising' in ('column') THEN tags->'advertising' else NULL END,
-              'shop_' || CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'bed', 'books', 'butcher', 'clothes', 'computer', 'confectionery',
+              'shop_' || CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'bed', 'bookmaker', 'books', 'butcher', 'clothes', 'computer', 'confectionery',
                                             'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist', 'garden_centre',
                                             'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet', 'photo', 'photo_studio',
                                             'photography', 'seafood', 'shoes', 'alcohol', 'gift', 'furniture', 'kiosk', 'mobile_phone', 'motorcycle',
                                             'musical_instrument', 'newsagent', 'optician', 'jewelry', 'jewellery', 'electronics', 'chemist', 'toys',
                                             'travel_agency', 'car_parts', 'greengrocer', 'farm', 'stationery', 'laundry', 'dry_cleaning', 'beverages',
                                             'perfumery', 'cosmetics', 'variety_store', 'wine', 'outdoor', 'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea',
-                                            'coffee', 'tyres', 'pastry', 'chocolate', 'music', 'medical_supply', 'dairy', 'video_games', 'houseware', 'ticket', 'charity', 'second_hand', 'interior_decoration', 'video', 'paint') THEN shop
+                                            'coffee', 'tyres', 'pastry', 'chocolate', 'music', 'medical_supply', 'dairy', 'video_games', 'houseware', 'ticket',
+                                            'charity', 'second_hand', 'interior_decoration', 'video', 'paint', 'massage', 'trade', 'wholesale') THEN shop
                               WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE 'other' END,
               'office' || CASE WHEN tags->'office' IN ('no', 'vacant', 'closed', 'disused', 'empty') OR (tags->'office') IS NULL THEN NULL ELSE '' END,
               'leisure_' || CASE WHEN leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'fitness_centre', 'sports_centre', 'stadium', 'track',
                                                   'pitch', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina',
-                                                  'picnic_table', 'dog_park', 'fitness_station', 'firepit', 'sauna', 'beach_resort', 'bowling_alley', 'ice_rink') THEN leisure ELSE NULL END,
+                                                  'picnic_table', 'dog_park', 'fitness_station', 'firepit', 'sauna', 'beach_resort', 'bowling_alley',
+                                                  'outdoor_seating', 'bird_hide', 'amusement_arcade', 'swimming_area', 'fishing', 'ice_rink') THEN leisure ELSE NULL END,
               'power_' || CASE WHEN power IN ('plant', 'station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,
               'landuse_' || CASE WHEN landuse IN ('reservoir', 'basin', 'recreation_ground', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery',
                                                   'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farmland',
                                                   'greenhouse_horticulture', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill',
                                                   'construction', 'military', 'plant_nursery', 'religious') THEN landuse ELSE NULL END,
-              'man_made_' || CASE WHEN (man_made IN ('lighthouse', 'windmill', 'mast', 'tower', 'water_tower', 'pier', 'breakwater', 'groyne', 'obelisk', 'works', 'communications_tower', 'chimney') 
+              'man_made_' || CASE WHEN (man_made IN ('lighthouse', 'windmill', 'mast', 'tower', 'water_tower', 'pier', 'breakwater', 'groyne', 'obelisk', 'works',
+              'communications_tower', 'telescope', 'chimney', 'storage_tank', 'silo', 'wastewater_plant', 'water_works')
                                         AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)) THEN man_made ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('wood', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath',
-                                                    'grassland', 'scrub', 'beach', 'shoal', 'reef', 'glacier') THEN "natural" ELSE NULL END,
+                                                    'grassland', 'scrub', 'beach', 'shoal', 'reef', 'glacier', 'strait', 'cape') THEN "natural" ELSE NULL END,
               'place_' || CASE WHEN place IN ('island', 'islet') THEN place ELSE NULL END,
               'military_' || CASE WHEN military IN ('danger_area', 'bunker') THEN military ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate')
-                             THEN concat_ws('_', historic, CASE WHEN tags->'memorial' IN ('plaque') THEN tags->'memorial' ELSE NULL END)
-                             ELSE NULL END,
+                             THEN historic ELSE NULL END,
               'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator') THEN highway ELSE NULL END,
               'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
               'waterway_' || CASE WHEN waterway IN ('dam', 'dock') THEN waterway ELSE NULL END,
@@ -2108,33 +2138,49 @@ Layer:
               ELSE NULL
             END AS height,
             tags->'operator' as operator,
+            tags->'generator:source' as "generator:source",
+            tags->'location' as location,
             tags->'icao' as icao,
             tags->'iata' as iata,
             tags->'office' as office,
             tags->'recycling_type' as recycling_type,
+            tags->'telescope:type' as "telescope:type",
+            CASE
+              WHEN man_made IN ('telescope') THEN
+                CASE
+                  WHEN tags->'telescope:diameter' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'telescope:diameter')::NUMERIC
+                  ELSE NULL
+                END
+              ELSE NULL
+            END AS "telescope:diameter",
             tags->'castle_type' as castle_type,
+            tags->'sport' as sport,
             tags->'information' as information,
+            tags->'healthcare' as healthcare,
+            tags->'memorial' as memorial,
+            tags->'artwork_type' as artwork_type,
             ref,
             way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
           FROM planet_osm_polygon
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
           WHERE (aeroway IN ('gate', 'apron', 'helipad', 'aerodrome')
-              OR tourism IN ('artwork', 'alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'camp_site', 'caravan_site', 'theme_park',
-                             'museum', 'viewpoint', 'attraction', 'zoo', 'information', 'picnic_site')
+              OR tourism IN ('artwork', 'alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'wilderness_hut', 'guest_house', 'apartment',
+                             'camp_site', 'caravan_site', 'theme_park', 'museum', 'viewpoint', 'attraction', 'zoo', 'information', 'picnic_site', 'gallery')
               OR amenity IS NOT NULL -- skip checking a huge list and use a null check
+              OR (tags->'healthcare') IS NOT NULL
               OR tags->'advertising' IN ('column')
               OR shop IS NOT NULL
               OR (tags->'office') IS NOT NULL
               OR leisure IS NOT NULL
               OR landuse IS NOT NULL
-              OR (man_made IN ('lighthouse', 'windmill', 'mast', 'tower', 'water_tower', 'pier', 'breakwater', 'groyne', 'obelisk', 'works', 'communications_tower', 'chimney')
+              OR (man_made IN ('lighthouse', 'windmill', 'mast', 'tower', 'water_tower', 'pier', 'breakwater', 'groyne', 'obelisk', 'works',
+                  'communications_tower', 'telescope', 'chimney', 'storage_tank', 'silo', 'wastewater_plant', 'water_works')
                   AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL))
               OR "natural" IS NOT NULL
               OR place IN ('island', 'islet')
               OR military IN ('danger_area', 'bunker')
               OR historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate')
-              OR tags->'memorial' IN ('plaque')
               OR highway IN ('services', 'rest_area', 'bus_stop', 'elevator')
               OR power IN ('plant', 'station', 'generator', 'sub_station', 'substation')
               OR boundary IN ('national_park')
@@ -2201,8 +2247,13 @@ Layer:
             iata,
             office,
             recycling_type,
+            "telescope:type",
+            "generator:source",
+            location,
             castle_type,
+            sport,
             information,
+            memorial,
             ref,
             way_area,
             is_building
@@ -2213,47 +2264,53 @@ Layer:
                 COALESCE(
                   'aeroway_' || CASE WHEN aeroway IN ('gate', 'apron', 'helipad', 'aerodrome') THEN aeroway ELSE NULL END,
                   'tourism_' || CASE WHEN tourism IN ('artwork', 'alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'camp_site', 'caravan_site',
-                                                      'theme_park', 'museum', 'zoo', 'information', 'picnic_site') THEN tourism ELSE NULL END,
+                                                      'theme_park', 'museum', 'zoo', 'information', 'picnic_site', 'gallery') THEN tourism ELSE NULL END,
                   'amenity_' || CASE WHEN amenity IN ('pub', 'restaurant', 'food_court', 'cafe', 'fast_food', 'biergarten', 'bar', 'library', 'theatre',
                                                       'courthouse', 'townhall', 'cinema', 'clinic', 'community_centre', 'parking', 'bicycle_parking', 'public_bath',
                                                       'motorcycle_parking', 'police', 'fire_station', 'fountain', 'place_of_worship', 'grave_yard', 'shelter', 'bank',
                                                       'embassy', 'fuel', 'bus_station', 'prison', 'university', 'school', 'college', 'kindergarten', 'hospital',
                                                       'ice_cream', 'pharmacy', 'doctors', 'dentist', 'atm', 'bicycle_rental', 'bureau_de_change','car_rental',
-                                                      'car_wash', 'post_box', 'post_office', 'recycling', 'telephone', 'toilets', 'taxi',
-                                                      'drinking_water', 'hunting_stand', 'nightclub', 'veterinary', 'social_facility',
+                                                      'car_wash', 'post_box', 'post_office', 'recycling', 'telephone', 'toilets', 'taxi', 'internet_cafe', 'public_bookcase',
+                                                      'drinking_water', 'hunting_stand', 'nightclub', 'veterinary', 'social_facility', 'vehicle_inspection',
                                                       'charging_station', 'arts_centre', 'ferry_terminal', 'marketplace', 'shower', 'bbq',
-                                                      'nursing_home', 'childcare', 'driving_school', 'casino', 'boat_rental') THEN amenity ELSE NULL END,
+                                                      'nursing_home', 'childcare', 'driving_school', 'casino', 'boat_rental', 'bicycle_repair_station') THEN amenity ELSE NULL END,
+                  'amenity_' || CASE WHEN amenity IN ('parking_entrance') AND tags->'parking' IN ('underground') AND (access IS NULL OR access NOT IN ('private', 'no')) THEN amenity ELSE NULL END,
+              'healthcare_' || CASE WHEN tags->'healthcare' IN ('alternative', 'audiologist', 'birthing_center', 'blood_bank', 'blood_donation', 'centre', 'clinic', 
+                                               'dentist', 'dialysis', 'doctor', 'hospital', 'laboratory', 'midwife', 'occupational_therapist', 'optometrist', 
+                                               'physiotherapist', 'podiatrist', 'psychotherapist', 'rehabilitation', 'speech_therapist', 'yes') THEN tags->'healthcare' ELSE NULL END,
                   'advertising_' || CASE WHEN tags->'advertising' in ('column') THEN tags->'advertising' else NULL END,
-                  'shop_' || CASE WHEN shop IN ('supermarket', 'bag','bakery', 'beauty', 'bed', 'books', 'butcher', 'clothes', 'computer', 'confectionery', 'fashion',
+                  'shop_' || CASE WHEN shop IN ('supermarket', 'bag','bakery', 'beauty', 'bed', 'bookmaker', 'books', 'butcher', 'clothes', 'computer', 'confectionery', 'fashion',
                                                 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist', 'garden_centre', 'hairdresser',
                                                 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet', 'photo', 'photo_studio', 'photography',
                                                 'seafood', 'shoes', 'alcohol', 'gift', 'furniture', 'kiosk', 'mobile_phone', 'motorcycle', 'musical_instrument',
                                                 'newsagent', 'optician', 'jewelry', 'jewellery', 'electronics', 'chemist', 'toys', 'travel_agency', 'car_parts',
                                                 'greengrocer', 'farm', 'stationery', 'laundry', 'dry_cleaning', 'beverages', 'perfumery', 'cosmetics',
                                                 'variety_store', 'wine', 'outdoor', 'copyshop', 'sports', 'deli', 'tobacco', 'art', 'tea', 'coffee', 'tyres',
-                                                'pastry', 'chocolate', 'music', 'medical_supply','dairy', 'video_games', 'houseware', 'ticket', 'charity', 'second_hand', 'interior_decoration', 'video', 'paint') THEN shop
+                                                'pastry', 'chocolate', 'music', 'medical_supply','dairy', 'video_games', 'houseware', 'ticket', 'charity', 'second_hand',
+                                                'interior_decoration', 'video', 'paint', 'massage', 'trade', 'wholesale') THEN shop
                                   WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE 'other' END,
                   'office' || CASE WHEN tags->'office' IN ('no', 'vacant', 'closed', 'disused', 'empty') OR (tags->'office') IS NULL THEN NULL ELSE '' END,
                   'leisure_' || CASE WHEN leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'fitness_centre', 'sports_centre', 'stadium', 'track',
                                                       'pitch','playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina',
-                                                      'slipway', 'picnic_table', 'dog_park', 'fitness_station', 'firepit', 'sauna', 'beach_resort', 'bowling_alley', 'ice_rink') THEN leisure ELSE NULL END,
+                                                      'slipway', 'picnic_table', 'dog_park', 'fitness_station', 'firepit', 'sauna', 'beach_resort', 'bowling_alley',
+                                                      'outdoor_seating', 'bird_hide', 'amusement_arcade', 'swimming_area', 'fishing', 'ice_rink') THEN leisure ELSE NULL END,
                   'power_' || CASE WHEN power IN ('plant', 'station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,
                   'landuse_' || CASE WHEN landuse IN ('reservoir', 'basin', 'recreation_ground', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery',
                                                       'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farmland',
                                                       'greenhouse_horticulture', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill',
                                                       'construction', 'military', 'plant_nursery') THEN landuse ELSE NULL END,
-                  'man_made_' || CASE WHEN (man_made IN ('lighthouse', 'windmill', 'mast', 'tower', 'water_tower', 'obelisk', 'works', 'communications_tower', 'chimney')
+                  'man_made_' || CASE WHEN (man_made IN ('lighthouse', 'windmill', 'mast', 'tower', 'water_tower', 'obelisk', 'works', 'communications_tower',
+                                                         'telescope', 'chimney', 'storage_tank', 'silo', 'wastewater_plant', 'water_works')
                                             AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)) THEN man_made ELSE NULL END,
                   'natural_' || CASE WHEN "natural" IN ('wood', 'peak', 'volcano', 'saddle', 'cave_entrance', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring',
-                                                        'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier', 'tree')
+                                                        'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier', 'tree', 'strait', 'cape')
                                                         THEN "natural" ELSE NULL END,
                   'waterway_' || CASE WHEN waterway IN ('waterfall') THEN waterway ELSE NULL END,
                   'place_' || CASE WHEN place IN ('island', 'islet') THEN place ELSE NULL END,
                   'barrier_' || CASE WHEN barrier IN ('toll_booth') THEN barrier ELSE NULL END,
                   'military_' || CASE WHEN military IN ('danger_area', 'bunker') THEN military ELSE NULL END,
                   'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate')
-                                 THEN concat_ws('_', historic, CASE WHEN tags->'memorial' IN ('plaque') THEN tags->'memorial' ELSE NULL END)
-                                 ELSE NULL END,
+                                 THEN historic ELSE NULL END,
                   'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator') THEN highway ELSE NULL END,
                   'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
                   'waterway_' || CASE WHEN waterway IN ('dam', 'weir', 'dock') THEN waterway ELSE NULL END,
@@ -2284,12 +2341,19 @@ Layer:
                 "natural",
                 waterway,
                 tags->'operator' as operator,
+                tags->'location' as location,
+                tags->'generator:source' as "generator:source",
                 tags->'icao' as icao,
                 tags->'iata' as iata,
                 tags->'office' as office,
                 tags->'recycling_type' as recycling_type,
+                tags->'telescope:type' as "telescope:type",
                 tags->'castle_type' as castle_type,
+                tags->'sport' as sport,
                 tags->'information' as information,
+                tags->'healthcare' as healthcare,
+                tags->'memorial' as memorial,
+                tags->'artwork_type' as artwork_type,
                 ref,
                 NULL AS way_area,
                 CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
@@ -2297,8 +2361,9 @@ Layer:
               -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
               WHERE (aeroway IN ('gate', 'apron', 'helipad', 'aerodrome')
                   OR tourism IN ('artwork', 'alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'camp_site', 'caravan_site', 'theme_park',
-                                 'museum', 'viewpoint', 'attraction', 'zoo', 'information', 'picnic_site')
+                                 'museum', 'viewpoint', 'attraction', 'zoo', 'information', 'picnic_site', 'gallery')
                   OR amenity IS NOT NULL -- skip checking a huge list and use a null check
+                  OR (tags->'healthcare') IS NOT NULL
                   OR tags->'advertising' IN ('column')
                   OR shop IS NOT NULL
                   OR (tags->'office') IS NOT NULL
@@ -2306,7 +2371,8 @@ Layer:
                   OR landuse IN ('reservoir', 'basin', 'recreation_ground', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery', 'residential',
                                  'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farmland', 'greenhouse_horticulture',
                                  'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'construction', 'military', 'plant_nursery')
-                  OR (man_made IN ('lighthouse', 'windmill', 'mast', 'tower', 'water_tower', 'cross', 'obelisk', 'works', 'communications_tower', 'chimney')
+                  OR (man_made IN ('lighthouse', 'windmill', 'mast', 'tower', 'water_tower', 'cross', 'obelisk', 'works', 'communications_tower',
+                                   'telescope', 'chimney', 'storage_tank', 'silo', 'wastewater_plant', 'water_works')
                       AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL))
                   OR "natural" IS NOT NULL
                   OR waterway IN ('waterfall')
@@ -2314,7 +2380,6 @@ Layer:
                   OR barrier IN ('toll_booth')
                   OR military IN ('danger_area', 'bunker')
                   OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor', 'city_gate')
-                  OR tags->'memorial' IN ('plaque')
                   OR highway IN ('bus_stop', 'services', 'rest_area', 'elevator')
                   OR power IN ('plant', 'station', 'generator', 'sub_station', 'substation')
                   OR boundary IN ('national_park')
@@ -2479,7 +2544,7 @@ Layer:
                             'waste_basket', 'waste_disposal') THEN amenity ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') THEN historic ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('cross') THEN man_made ELSE NULL END,
-              'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log') THEN barrier ELSE NULL END
+              'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile') THEN barrier ELSE NULL END
             )  AS feature,
             access,
             CASE WHEN amenity IN ('waste_basket', 'waste_disposal') THEN 2 ELSE 1 END AS prio
@@ -2489,7 +2554,7 @@ Layer:
              OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'bench', 'waste_basket', 'waste_disposal')
              OR historic IN ('wayside_cross', 'wayside_shrine')
              OR man_made IN ('cross')
-             OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log')
+             OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile')
           ORDER BY prio
           ) AS amenity_low_priority
     properties:
@@ -2505,12 +2570,12 @@ Layer:
             way,
             COALESCE(
               'amenity_' || CASE WHEN amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking') THEN amenity ELSE NULL END,
-              'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log') THEN barrier ELSE NULL END
+              'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile') THEN barrier ELSE NULL END
             )  AS feature,
             access
           FROM planet_osm_polygon p
           WHERE amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking')
-             OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log')
+             OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile')
           ) AS amenity_low_priority_poly
     properties:
       minzoom: 14

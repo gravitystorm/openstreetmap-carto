@@ -9,32 +9,23 @@
 @entrance-normal: @building-line;
 
 #buildings {
-  [zoom >= 13] {
+  [zoom >= 14] {
     polygon-fill: @building-low-zoom;
     polygon-clip: false;
+    line-width: 0;
     [zoom >= 15] {
-      line-color: @building-line;
       polygon-fill: @building-fill;
+      line-color: @building-line;
       line-width: .75;
       line-clip: false;
     }
-  }
-}
-
-#buildings-major {
-  [zoom >= 13] {
-    [aeroway = 'terminal'],
     [amenity = 'place_of_worship'],
-    [building = 'train_station'],
+    [aeroway = 'terminal'],
     [aerialway = 'station'],
+    [building = 'train_station'],
     [public_transport = 'station'] {
       polygon-fill: @building-major-fill;
-      polygon-clip: false;
-      [zoom >= 15] {
-        line-width: .75;
-        line-clip: false;
-        line-color: @building-major-line;
-      }
+      line-color: @building-major-line;
     }
   }
 }
