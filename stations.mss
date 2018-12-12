@@ -20,12 +20,12 @@
     }
   }
 
-  [railway = 'station'] {
+  [railway = 'station'][zoom >= 12] {
     marker-file: url('symbols/square.svg');
     marker-placement: interior;
     marker-fill: @station-color;
     marker-clip: false;
-    [zoom >= 12][station != 'subway'] {
+    [station != 'subway'] {
       marker-width: 4;
     }
     [zoom >= 13][station != 'subway'],
