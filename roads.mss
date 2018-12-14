@@ -772,7 +772,8 @@
       }
     }
 
-    [feature = 'railway_subway'] {
+    [feature = 'railway_subway'],
+    [feature = 'railway_construction']['construction' = 'subway'] {
       #bridges {
         [zoom >= 14] {
           line-width: 5.5;
@@ -817,7 +818,7 @@
     }
 
     [feature = 'railway_disused'][zoom >= 15],
-    [feature = 'railway_construction'],
+    [feature = 'railway_construction']['construction' != 'subway'],
     [feature = 'railway_miniature'][zoom >= 15],
     [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
       #bridges {
@@ -1010,7 +1011,7 @@
     }
 
     [feature = 'railway_disused'][zoom >= 15],
-    [feature = 'railway_construction'],
+    [feature = 'railway_construction']['construction' != 'subway'],
     [feature = 'railway_miniature'][zoom >= 15],
     [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
       #bridges {
@@ -1035,7 +1036,8 @@
       }
     }
 
-    [feature = 'railway_subway'] {
+    [feature = 'railway_subway'],
+    [feature = 'railway_construction']['construction' = 'subway'] {
       #bridges {
         [zoom >= 14] {
           line-width: 4;
