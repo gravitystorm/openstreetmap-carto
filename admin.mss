@@ -221,34 +221,37 @@ overlapping borders correctly.
 }
 
 #nature-reserve-boundaries {
-  [way_pixels > 3000][zoom >= 8] {
-    [zoom < 10] {
+  [way_pixels > 3000] {
+    [zoom >= 8][zoom < 10] {
       ::fill {
         opacity: 0.05;
         polygon-fill: green;
       }
+      opacity: 0.2;
+      line-width: 1.2;
+      line-color: green;
+      [zoom >= 9] {
+        line-width: 1.5;
+      }
     }
-    a/line-width: 1;
-    a/line-offset: -0.5;
-    a/line-color: green;
-    a/line-opacity: 0.15;
-    a/line-join: round;
-    a/line-cap: round;
-    b/line-width: 2;
-    b/line-offset: -1;
-    b/line-color: green;
-    b/line-opacity: 0.15;
-    b/line-join: round;
-    b/line-cap: round;
     [zoom >= 10] {
-      a/line-width: 2;
-      a/line-offset: -1;
-      b/line-width: 4;
-      b/line-offset: -2;
-    }
-    [zoom >= 14] {
-      b/line-width: 6;
-      b/line-offset: -3;
+      ::wideline {
+        opacity: 0.15;
+        line-width: 4;
+        line-offset: -1;
+        line-color: green;
+        line-join: round;
+        line-cap: round;
+        [zoom >= 14] {
+          line-width: 6;
+          line-offset: -2;
+        }
+      }
+      opacity: 0.15;
+      line-width: 2;
+      line-color: green;
+      line-join: round;
+      line-cap: round;
     }
   }
 }
