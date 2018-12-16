@@ -545,6 +545,16 @@
     }
   }
 
+  [feature = 'man_made_crane'] {
+    [zoom >= 16][height > 50],
+    [zoom >= 17] {
+      marker-file: url('symbols/man_made/crane.svg');
+      marker-fill: @man-made-icon;
+      marker-placement: interior;
+      marker-clip: false;
+    }
+  }
+
   [feature = 'man_made_telescope']["telescope:type" != 'optical']["telescope:type" != null] {
   [zoom >= 13]["telescope:diameter" >= 60],
   [zoom >= 14]["telescope:diameter" >= 30],
@@ -1178,10 +1188,6 @@
 
     [shop = 'paint'][zoom >= 18] {
       marker-file: url('symbols/shop/paint.svg');
-    }
-
-   [shop = 'sewing'][zoom >= 18] {
-      marker-file: url('symbols/shop/sewing.svg');
     }
 
     [shop = 'shoes'][zoom >= 18] {
@@ -2012,6 +2018,7 @@
   [feature = 'man_made_telescope'][zoom >= 17],
   [feature = 'man_made_water_tower'][zoom >= 17],
   [feature = 'man_made_chimney'][zoom >= 17],
+  [feature = 'man_made_crane'][zoom >= 17],
   [feature = 'man_made_waste_water_plant'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
@@ -2031,7 +2038,8 @@
     [feature = 'man_made_water_tower'],
     [feature = 'man_made_storage_tank'],
     [feature = 'man_made_silo'],
-    [feature = 'man_made_chimney'] {
+    [feature = 'man_made_chimney'],
+    [feature = 'man_made_crane'] {
       text-dy: 10;
     }
     [feature = 'natural_cave_entrance'] {
@@ -2788,7 +2796,6 @@
   [feature = 'shop_travel_agency'],
   [feature = 'shop_seafood'],
   [feature = 'shop_second_hand'],
-  [feature = 'shop_sewing'], 
   [feature = 'shop_sports'],
   [feature = 'shop_stationery'],
   [feature = 'shop_tobacco'],
