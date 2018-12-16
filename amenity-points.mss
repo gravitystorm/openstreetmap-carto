@@ -546,6 +546,16 @@
     }
   }
 
+  [feature = 'man_made_crane'] {
+    [zoom >= 16][height > 50],
+    [zoom >= 17] {
+      marker-file: url('symbols/man_made/crane.svg');
+      marker-fill: @man-made-icon;
+      marker-placement: interior;
+      marker-clip: false;
+    }
+  }
+
   [feature = 'man_made_telescope']["telescope:type" != 'optical']["telescope:type" != null] {
     [zoom >= 14]["telescope:diameter" >= 60],
     [zoom >= 15]["telescope:diameter" >= 30],
@@ -813,7 +823,7 @@
   }
 
   [feature = 'amenity_arts_centre'][zoom >= 17] {
-    marker-file: url('symbols/shop/art.svg');
+    marker-file: url('symbols/amenity/arts_centre.svg');
     marker-fill: @culture;
     marker-placement: interior;
     marker-clip: false;
@@ -1038,6 +1048,10 @@
       marker-file: url('symbols/shop/butcher.svg');
     }
 
+    [shop = 'carpet'][zoom >= 18] {
+      marker-file: url('symbols/shop/carpet.svg');
+    }
+
     [shop = 'charity'][zoom >= 18] {
       marker-file: url('symbols/shop/charity.svg');
     }
@@ -1104,6 +1118,10 @@
       [zoom >= 18] {
         marker-file: url('symbols/shop/laundry.svg');
       }
+    }
+
+    [shop = 'fabric'][zoom >= 18] {
+      marker-file: url('symbols/shop/fabric.svg');
     }
 
     [shop = 'fishmonger'],
@@ -1436,7 +1454,7 @@
    }
 
   [feature = 'leisure_amusement_arcade'][zoom >= 17] {
-     marker-file: url('symbols/amusement_arcade.svg');
+     marker-file: url('symbols/leisure/amusement_arcade.svg');
      marker-fill: @leisure-green;
      marker-placement: interior;
      marker-clip: false;
@@ -2009,6 +2027,7 @@
   [feature = 'man_made_telescope'][zoom >= 17],
   [feature = 'man_made_water_tower'][zoom >= 17],
   [feature = 'man_made_chimney'][zoom >= 17],
+  [feature = 'man_made_crane'][zoom >= 17],
   [feature = 'man_made_waste_water_plant'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
@@ -2028,7 +2047,8 @@
     [feature = 'man_made_water_tower'],
     [feature = 'man_made_storage_tank'],
     [feature = 'man_made_silo'],
-    [feature = 'man_made_chimney'] {
+    [feature = 'man_made_chimney'],
+    [feature = 'man_made_crane'] {
       text-dy: 10;
     }
     [feature = 'natural_cave_entrance'] {
@@ -2723,6 +2743,7 @@
   [feature = 'shop_beverages'],
   [feature = 'shop_bookmaker'],
   [feature = 'shop_books'],
+  [feature = 'shop_carpet'], 
   [feature = 'shop_charity'],
   [feature = 'shop_clothes'],
   [feature = 'shop_coffee'],
@@ -2749,6 +2770,7 @@
   [feature = 'shop_cosmetics'],
   [feature = 'shop_dairy'],
   [feature = 'shop_bicycle'],
+  [feature = 'shop_fabric'],
   [feature = 'shop_farm'],
   [feature = 'shop_fishmonger'],
   [feature = 'shop_florist'],
@@ -3160,7 +3182,6 @@
       [zoom >= 17] {
         bridgecasing/line-color: saturate(darken(@pitch, 30%), 20%);
         bridgecasing/line-join: round;
-        bridgecasing/line-smooth: 1;
         bridgecasing/line-width: 1.25;
         [zoom >= 18] { bridgecasing/line-width: 2.5; }
         [zoom >= 19] { bridgecasing/line-width: 5; }
@@ -3168,7 +3189,6 @@
       line-color: @pitch;
       line-join: round;
       line-cap: round;
-      line-smooth: 1;
       line-width: 1;
       [zoom >= 18] { line-width: 2; }
       [zoom >= 19] { line-width: 4; }
@@ -3193,7 +3213,6 @@
       [zoom >= 17] {
         bridgecasing/line-color: black;
         bridgecasing/line-join: round;
-        bridgecasing/line-smooth: 1;
         bridgecasing/line-width: 1.25;
         [zoom >= 18] { bridgecasing/line-width: 2.5; }
         [zoom >= 19] { bridgecasing/line-width: 5; }
@@ -3201,7 +3220,6 @@
       line-color: @pitch;
       line-join: round;
       line-cap: round;
-      line-smooth: 1;
       line-width: 1;
       [zoom >= 18] { line-width: 2; }
       [zoom >= 19] { line-width: 4; }
