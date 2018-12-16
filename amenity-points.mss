@@ -1039,6 +1039,10 @@
       marker-file: url('symbols/shop/butcher.svg');
     }
 
+    [shop = 'carpet'][zoom >= 18] {
+      marker-file: url('symbols/shop/carpet.svg');
+    }
+
     [shop = 'charity'][zoom >= 18] {
       marker-file: url('symbols/shop/charity.svg');
     }
@@ -1105,6 +1109,10 @@
       [zoom >= 18] {
         marker-file: url('symbols/shop/laundry.svg');
       }
+    }
+
+    [shop = 'fabric'][zoom >= 18] {
+      marker-file: url('symbols/shop/fabric.svg');
     }
 
     [shop = 'fishmonger'],
@@ -2726,6 +2734,7 @@
   [feature = 'shop_beverages'],
   [feature = 'shop_bookmaker'],
   [feature = 'shop_books'],
+  [feature = 'shop_carpet'], 
   [feature = 'shop_charity'],
   [feature = 'shop_clothes'],
   [feature = 'shop_coffee'],
@@ -2752,6 +2761,7 @@
   [feature = 'shop_cosmetics'],
   [feature = 'shop_dairy'],
   [feature = 'shop_bicycle'],
+  [feature = 'shop_fabric'],
   [feature = 'shop_farm'],
   [feature = 'shop_fishmonger'],
   [feature = 'shop_florist'],
