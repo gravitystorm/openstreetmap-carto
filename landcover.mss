@@ -6,7 +6,7 @@
 @forest-text: #46673b;  // Lch(40,30,135)
 @park: #c8facc;         // Lch(94,30,145)
 @orchard: #aedfa3; // also vineyard, plant_nursery
-@allotments: #d7f3c9;   // Lch(93,24,134)
+@allotments: #b5e3b5;   // Lch(84,29,143)
 
 // --- "Base" landuses ---
 
