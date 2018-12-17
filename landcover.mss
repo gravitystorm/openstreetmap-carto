@@ -269,6 +269,16 @@
     }
   }
 
+  [feature = 'leisure_ice_rink'][is_building = 'no'] {
+    [zoom >= 10][way_pixels > 3000] {
+      polygon-fill: @glacier;
+      line-width: 0.5;
+      line-color: saturate(darken(@pitch, 30%), 20%);
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+  }
+
   [feature = 'leisure_dog_park'] {
     [zoom >= 10] {
       polygon-fill: @leisure;
