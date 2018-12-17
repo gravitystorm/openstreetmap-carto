@@ -6,6 +6,7 @@
 - Rendering leisure=ice_rink
 - Addind rendering for man_made=crane 
 - Adding icons for shop=fabric and shop=carpet
+- Updating icons for amenity=arts_centre, leisure=slipway, amenity=restaurant/amenity=food_court and man_made=storage_tank/man_made=silo
 - Rendering railway pattern on z12
 - Showing labels of big states (like Alaska)
 - Moving railway=tram_stop and station=subway later
