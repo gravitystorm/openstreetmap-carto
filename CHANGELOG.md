@@ -1,4 +1,19 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.17.0...master)
+## Changes
+- Adding rendering for healthcare tag scheme
+- Changing natural=scrub color
+- Adding rendering for natural=cape
+- Rendering leisure=ice_rink
+- Addind rendering for man_made=crane 
+- Adding icons for shop=fabric and shop=carpet
+- Rendering railway pattern on z12
+- Showing labels of big states (like Alaska)
+- Moving railway=tram_stop and station=subway later
+- Removing smoothing in leisure=track and attraction=water_slide
+- Using subway bridge style for subway construction bridges
+- Rendering wind turbines names and other tweaks
+- Changing man_made gray and text color, making text-dy uniform
+- Small documentation and code fixes
 
 ## [v4.17.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.16.0...v4.17.0) - 2018-11-23
 ## Changes
