@@ -29,6 +29,7 @@
 - Rendering religious landuse and place of worship lighter
 - Adding text-repeat-distance for highway names
 - Rendering dots for gastronomy objects on z17
+- Changing icon for tourism=artwork
 - Adding icons for memorial subtags
 - Rendering man_made=telescope
 - Rendering amenity=internet_cafe
