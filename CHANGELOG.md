@@ -1,6 +1,8 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.17.0...master)
 ## Changes
 - Adding rendering for healthcare tag scheme
+  - Changing hospital icon
+  - Changing healthcare color to red
 - Changing natural=scrub color
 - Adding rendering for natural=cape
 - Rendering leisure=ice_rink
