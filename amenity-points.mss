@@ -2372,11 +2372,9 @@
       }
       [feature = 'landuse_meadow'],
       [feature = 'natural_grassland'],
-      [feature = 'landuse_grass'] {
-        text-fill: darken(@grass, 50%);
-      }
+      [feature = 'landuse_grass'],
       [feature = 'landuse_allotments'] {
-        text-fill: darken(@allotments, 50%);
+        text-fill: darken(@grass, 50%);
       }
       [feature = 'landuse_farmyard'] {
         text-fill: darken(@farmyard, 50%);
