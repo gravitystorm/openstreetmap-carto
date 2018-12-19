@@ -2317,9 +2317,9 @@ Layer:
                   'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator') THEN highway ELSE NULL END,
                   'boundary_' || CASE WHEN boundary IN ('national_park') THEN boundary ELSE NULL END,
                   'waterway_' || CASE WHEN waterway IN ('dam', 'weir', 'dock') THEN waterway ELSE NULL END,
-                  'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism ELSE NULL END,
                   'man_made_' || CASE WHEN man_made IN ('cross') THEN man_made ELSE NULL END,
-                  'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') THEN historic ELSE NULL END
+                  'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') THEN historic ELSE NULL END,
+                  'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism ELSE NULL END
                 ) AS feature,
                 access,
                 name,
@@ -2547,10 +2547,11 @@ Layer:
                             'waste_basket', 'waste_disposal') THEN amenity ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') THEN historic ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('cross') THEN man_made ELSE NULL END,
-              'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile') THEN barrier ELSE NULL END
+              'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile') THEN barrier ELSE NULL END,
+              'tourism_' || CASE WHEN tourism IN ('attraction') THEN tourism ELSE NULL END
             )  AS feature,
             access,
-            CASE WHEN amenity IN ('waste_basket', 'waste_disposal') THEN 2 ELSE 1 END AS prio
+            CASE WHEN amenity IN ('waste_basket', 'waste_disposal') OR tourism IN ('attraction') THEN 2 ELSE 1 END AS prio
           FROM planet_osm_point p
           WHERE highway IN ('mini_roundabout')
              OR railway IN ('level_crossing', 'crossing')
@@ -2558,6 +2559,7 @@ Layer:
              OR historic IN ('wayside_cross', 'wayside_shrine')
              OR man_made IN ('cross')
              OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile')
+             OR tourism IN ('attraction')
           ORDER BY prio
           ) AS amenity_low_priority
     properties:
@@ -2573,12 +2575,14 @@ Layer:
             way,
             COALESCE(
               'amenity_' || CASE WHEN amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking') THEN amenity ELSE NULL END,
-              'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile') THEN barrier ELSE NULL END
+              'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile') THEN barrier ELSE NULL END,
+              'tourism_' || CASE WHEN tourism IN ('attraction') THEN tourism ELSE NULL END
             )  AS feature,
             access
           FROM planet_osm_polygon p
           WHERE amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking')
              OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile')
+             OR tourism IN ('attraction')
           ) AS amenity_low_priority_poly
     properties:
       minzoom: 14
