@@ -4,7 +4,7 @@
   - Changing hospital icon
   - Changing healthcare color to red
 - Changing natural=scrub color
-- Changing allotments color and pattern
+- Changing landuse=allotments color and pattern
 - Adding rendering for natural=cape
 - Rendering leisure=ice_rink
 - Addind rendering for man_made=crane 
