@@ -293,6 +293,9 @@
     [artwork_type = 'statue'] {
       marker-file: url('symbols/historic/statue.svg');
     }
+    [artwork_type = 'bust'] {
+      marker-file: url('symbols/historic/bust.svg');
+    }
     marker-fill: @memorials;
     marker-placement: interior;
   }
