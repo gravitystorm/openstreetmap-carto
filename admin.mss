@@ -227,11 +227,13 @@ overlapping borders correctly.
         opacity: 0.05;
         polygon-fill: green;
       }
-      opacity: 0.2;
-      line-width: 1.2;
-      line-color: green;
-      [zoom >= 9] {
-        line-width: 1.5;
+      ::outline {
+        opacity: 0.2;
+        line-width: 1.2;
+        line-color: green;
+        [zoom >= 9] {
+          line-width: 1.5;
+        }
       }
     }
     [zoom >= 10] {
@@ -247,11 +249,13 @@ overlapping borders correctly.
           line-offset: -2;
         }
       }
-      opacity: 0.15;
-      line-width: 2;
-      line-color: green;
-      line-join: round;
-      line-cap: round;
+      ::narrowline {
+        opacity: 0.15;
+        line-width: 2;
+        line-color: green;
+        line-join: round;
+        line-cap: round;
+      }
     }
   }
 }
