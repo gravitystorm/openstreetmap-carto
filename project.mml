@@ -1723,7 +1723,7 @@ Layer:
             way,
             power
           FROM planet_osm_point
-          WHERE power = 'tower' OR power = 'pole'
+          WHERE power = 'pole' OR power = 'tower'
         ) AS power_towers
     properties:
       minzoom: 14
