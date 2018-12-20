@@ -1590,9 +1590,13 @@
 
   // waste_disposal tagging on ways - tagging on nodes is defined later
   [feature = 'amenity_waste_disposal'][zoom >= 19] {
-    marker-file: url('symbols/amenity/waste_disposal.svg');
-    marker-fill: @amenity-brown;
-    marker-placement: interior;
+    [access = null],
+    [access = 'permissive'],
+    [access = 'yes'] {
+      marker-file: url('symbols/amenity/waste_disposal.svg');
+      marker-fill: @amenity-brown;
+      marker-placement: interior;
+    }
   }
 }
 
@@ -1705,9 +1709,13 @@
 
   // waste_disposal tagging on nodes - tagging on ways is defined earlier
   [feature = 'amenity_waste_disposal'][zoom >= 19]::amenity {
-    marker-file: url('symbols/amenity/waste_disposal.svg');
-    marker-fill: @amenity-brown;
-    marker-placement: interior;
+    [access = null],
+    [access = 'permissive'],
+    [access = 'yes'] {
+      marker-file: url('symbols/amenity/waste_disposal.svg');
+      marker-fill: @amenity-brown;
+      marker-placement: interior;
+    }
   }
 }
 
