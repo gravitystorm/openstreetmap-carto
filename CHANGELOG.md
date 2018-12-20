@@ -10,9 +10,11 @@
 - Addind rendering for man_made=crane 
 - Adding icons for shop=fabric and shop=carpet
 - Updating icons for amenity=arts_centre, leisure=slipway, amenity=restaurant/amenity=food_court and man_made=storage_tank/man_made=silo
+- Using dedicated icon for artwork_type=bust
 - Rendering railway pattern on z12
 - Showing labels of big states (like Alaska)
 - Moving railway=tram_stop and station=subway later
+- Adding rendering for more private POIs
 - Removing smoothing in leisure=track and attraction=water_slide
 - Using subway bridge style for subway construction bridges
 - Rendering wind turbines names and other tweaks
