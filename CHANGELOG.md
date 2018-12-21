@@ -1,4 +1,6 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.17.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.18.0...master)
+
+## [v4.18.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.17.0...v4.18.0) - 2018-12-21
 ## Changes
 - Adding rendering for healthcare tag scheme
   - Changing hospital icon
