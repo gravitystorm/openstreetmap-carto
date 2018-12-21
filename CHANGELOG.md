@@ -9,7 +9,7 @@
 - Changing landuse=allotments color and pattern
 - Adding rendering for natural=cape
 - Rendering leisure=ice_rink
-- Addind rendering for man_made=crane 
+- Adding rendering for man_made=crane 
 - Adding icons for shop=fabric and shop=carpet
 - Updating icons for amenity=arts_centre, leisure=slipway, amenity=restaurant/amenity=food_court and man_made=storage_tank/man_made=silo
 - Using dedicated icon for artwork_type=bust
