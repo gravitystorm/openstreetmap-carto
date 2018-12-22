@@ -1201,6 +1201,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         }
       }
 
+      [construction = null][zoom >= 14],
       [construction = 'residential'][zoom >= 14],
       [construction = 'unclassified'][zoom >= 14] {
         line-color: @minor-construction;
@@ -1302,7 +1303,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         }
       }
 
-      [construction = null][zoom >= 15],
       [construction = 'road'][zoom >= 15],
       [construction = 'raceway'][zoom >= 15] {
         line-color: @minor-construction;
