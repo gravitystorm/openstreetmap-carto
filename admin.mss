@@ -228,7 +228,7 @@ overlapping borders correctly.
         polygon-fill: green;
       }
       ::outline {
-        opacity: 0.2;
+        opacity: 0.25;
         line-width: 1.2;
         line-color: green;
         [zoom >= 9] {
@@ -239,11 +239,15 @@ overlapping borders correctly.
     [zoom >= 10] {
       ::wideline {
         opacity: 0.15;
-        line-width: 4;
-        line-offset: -1;
+        line-width: 3.6;
+        line-offset: -0.9;
         line-color: green;
         line-join: round;
         line-cap: round;
+        [zoom >= 11] {
+          line-width: 4;
+          line-offset: -1;
+        }
         [zoom >= 14] {
           line-width: 6;
           line-offset: -2;
@@ -251,10 +255,13 @@ overlapping borders correctly.
       }
       ::narrowline {
         opacity: 0.15;
-        line-width: 2;
+        line-width: 1.8;
         line-color: green;
         line-join: round;
         line-cap: round;
+        [zoom >= 11] {
+            line-width: 2;
+        }
       }
     }
   }
