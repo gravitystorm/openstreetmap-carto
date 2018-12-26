@@ -244,7 +244,7 @@ overlapping borders correctly.
         line-color: green;
         line-join: round;
         line-cap: round;
-        [zoom >= 11] {
+        [zoom >= 12] {
           line-width: 4;
           line-offset: -1;
         }
@@ -259,7 +259,7 @@ overlapping borders correctly.
         line-color: green;
         line-join: round;
         line-cap: round;
-        [zoom >= 11] {
+        [zoom >= 12] {
             line-width: 2;
         }
       }
