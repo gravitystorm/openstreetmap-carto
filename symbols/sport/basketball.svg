@@ -5,15 +5,13 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
    width="14"
    height="14"
-   id="svg3800"
-   version="1.1"
-   viewBox="0 0 14 14">
-  <defs
-     id="defs3802" />
+   viewBox="0 0 14 14"
+   id="svg8093">
   <metadata
-     id="metadata3805">
+     id="metadata8101">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -24,30 +22,17 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <g
-     transform="translate(1.5520395,2.8104498)"
-     id="g97">
-    <g
-       id="g105">
-      <g
-         style="fill:#000000"
-         id="layer1"
-         transform="matrix(0.82352941,0,0,0.82352941,-24.559392,-852.99108)">
-        <g
-           style="display:inline;fill:#000000"
-           id="basketball-24"
-           transform="translate(-474,-118)">
-          <g
-             style="fill:#000000"
-             id="g21373"
-             transform="translate(-2)">
-            <path
-               style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;enable-background:accumulate"
-               id="rect5769-7"
-               d="m 508.4375,1150.3622 -4.5,4 v 8 c 0,0.5 0.5,1 1,1 H 508.5 l 1.9375,3.5 c 0.27778,0.5 0.5,0.5 1,0.5 h 2 c 0.5,0 0.72222,0 1,-0.5 l 1.9375,-3.5 h 3.5625 c 0.5,0 1,-0.5 1,-1 v -8 l -4.5,-4 z m -0.5,4 h 9 v 6 h -9 z m 1,1 v 4 h 7 v -4 z m 0.5625,8 h 1.4375 v 1 h 1 v -1 h 1 v 1 h 1 v -1 h 1.4375 l -0.5625,1 h -0.875 v 1 h 0.34375 l -0.34375,0.625 v -0.625 h -1 v 1 h -1 v -1 h -1 v 0.625 l -0.34375,-0.625 h 0.34375 v -1 h -0.875 z m 2.4375,2 h 1 v -1 h -1 z" />
-          </g>
-        </g>
-      </g>
-    </g>
-  </g>
+  <defs
+     id="defs8099" />
+  <rect
+     width="14"
+     height="14"
+     x="0"
+     y="0"
+     id="canvas"
+     style="fill:none;stroke:none;visibility:hidden" />
+  <path
+     id="basketball"
+     d="M 3.7050781,4e-7 0,3.2949223 0,9.8828129 c 0,0.4117661 0.41245409,0.8222651 0.82421875,0.8222651 l 2.93359375,0 1.5957031,2.882813 C 5.5822756,13.999658 5.7640166,14 6.1757812,14 l 1.6484376,0 c 0.4117646,0 0.5935056,-3.42e-4 0.8222656,-0.412109 l 1.5957036,-2.882813 2.933593,0 C 13.587545,10.705078 14,10.294579 14,9.8828129 L 14,3.2949223 10.294922,4e-7 l -6.5898439,0 z m -0.7050781,3 8,0 0,6 -8,0 0,-6 z m 2,2 0,2 4,0 0,-2 -4,0 z m -0.4199219,5.7050776 1.1855469,0 0,0.824219 0.8222656,0 0,-0.824219 0.8242188,0 0,0.824219 0.8222656,0 0,-0.824219 1.1855469,0 -0.4648438,0.824219 -0.7207031,0 0,0.824219 0.2832031,0 -0.2832031,0.513672 0,-0.513672 -0.8222656,0 0,0.822265 -0.8242188,0 0,-0.822265 -0.8222656,0 0,0.513672 -0.2832031,-0.513672 0.2832031,0 0,-0.824219 -0.7207031,0 -0.4648438,-0.824219 z m 2.0078125,1.648438 0.8242188,0 0,-0.824219 -0.8242188,0 0,0.824219 z"
+     style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#090909;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;enable-background:accumulate" />
 </svg>

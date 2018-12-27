@@ -2567,7 +2567,7 @@
         text-face-name: @bold-fonts; /*rendered bold to improve visibility since theme parks tend to have crowded backgrounds*/
       }
       [feature = 'tourism_attraction'] {
-        text-fill: #660033;
+        text-fill: @tourism;
         text-face-name: @standard-font;
       }
       [feature = 'amenity_kindergarten'],
