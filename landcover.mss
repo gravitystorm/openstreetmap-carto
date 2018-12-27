@@ -269,7 +269,7 @@
   }
 
   [feature = 'leisure_ice_rink'][is_building = 'no'] {
-    [zoom >= 10][way_pixels > 3000] {
+    [zoom >= 10] {
       polygon-fill: @glacier;
       line-width: 0.5;
       line-color: saturate(darken(@pitch, 30%), 20%);
