@@ -1189,10 +1189,13 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           line-width: 8;
           b/line-width: 7;
           b/line-dasharray: 8,6;
-          [construction = 'secondary_link'],
-          [construction = 'tertiary_link'] {
+          [construction = 'secondary_link'] {
             line-width: @secondary-link-width-z15;
             b/line-width: @secondary-link-width-z15 - 2 * @casing-width-z15;
+          }
+          [construction = 'tertiary_link'] {
+            line-width: @tertiary-link-width-z15;
+            b/line-width: @tertiary-link-width-z15 - 2 * @casing-width-z15;
           }
         }
         [zoom >= 17] {
