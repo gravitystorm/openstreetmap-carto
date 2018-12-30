@@ -1728,13 +1728,6 @@
     }
   }
 
-  [feature = 'tourism_attraction'][zoom >= 17] {
-    marker-width: 4;
-    marker-line-width: 0;
-    marker-fill: @tourism;
-    marker-placement: interior;
-  }
-
   // waste_disposal tagging on nodes - tagging on ways is defined earlier
   [feature = 'amenity_waste_disposal'][zoom >= 19]::amenity {
     [access = null],
@@ -3234,7 +3227,6 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-dy: 6;
     text-fill: @tourism;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
