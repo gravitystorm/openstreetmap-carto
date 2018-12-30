@@ -612,9 +612,9 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_parking'][way_pixels > 900],
-  [feature = 'amenity_bicycle_parking'][way_pixels > 900],
-  [feature = 'amenity_motorcycle_parking'][way_pixels > 900],
+  [feature = 'amenity_parking'][way_pixels > 900][zoom >= 14],
+  [feature = 'amenity_bicycle_parking'][way_pixels > 900][zoom >= 14],
+  [feature = 'amenity_motorcycle_parking'][way_pixels > 900][zoom >= 14],
   [feature = 'amenity_parking_entrance'][zoom >= 18] {
     [feature = 'amenity_parking'] {
       marker-file: url('symbols/amenity/parking.svg');
