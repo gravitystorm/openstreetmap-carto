@@ -1722,8 +1722,15 @@ Layer:
         (SELECT
             way,
             power
-          FROM planet_osm_point
-          WHERE power = 'pole' OR power = 'tower'
+            CASE power
+              WHEN 'tower' THEN 1
+              WHEN 'pole' THEN 2
+              ELSE 3
+            END
+              AS prio
+        FROM planet_osm_point
+        WHERE power = 'tower' OR power = 'pole'
+        ORDER BY prio
         ) AS power_towers
     properties:
       minzoom: 14
