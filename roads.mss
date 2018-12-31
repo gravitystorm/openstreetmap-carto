@@ -292,7 +292,7 @@
 @steps-oneway-arrow-color:        darken(@steps-fill, 35%);
 @cycleway-oneway-arrow-color:     darken(@cycleway-fill, 25%);
 @track-oneway-arrow-color:        darken(@track-fill, 15%);
-@bridleway-oneway-arrow-color:    darken(@track-fill, 10%);
+@bridleway-oneway-arrow-color:    darken(@bridleway-fill, 15%);
 
 // Shield’s line wrap is based on OpenStreetMap data and not on line-wrap-width,
 // but lines are typically rather short, so we use narrow line spacing.
@@ -3379,7 +3379,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         [highway = 'raceway'] {
           marker-fill: @raceway-oneway-arrow-color;
         }
-        [highway = 'footway'],
+        [highway = 'footway'] {
+          marker-fill: @footway-oneway-arrow-color;
+        }
         [highway = 'path'] {
           marker-fill: @footway-oneway-arrow-color;
           [horse = 'designated'] {
