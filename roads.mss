@@ -289,10 +289,10 @@
 @pedestrian-oneway-arrow-color:   darken(@pedestrian-casing, 25%);
 @raceway-oneway-arrow-color:      darken(@raceway-fill, 50%);
 @footway-oneway-arrow-color:      darken(@footway-fill, 35%);
-@steps-oneway-arrow-color:        darken(@steps-fill, 35%);
+@steps-oneway-arrow-color:        darken(@steps-fill, 50%);
 @cycleway-oneway-arrow-color:     darken(@cycleway-fill, 25%);
 @track-oneway-arrow-color:        darken(@track-fill, 15%);
-@bridleway-oneway-arrow-color:    darken(@bridleway-fill, 15%);
+@bridleway-oneway-arrow-color:    darken(@bridleway-fill, 25%);
 
 // Shield’s line wrap is based on OpenStreetMap data and not on line-wrap-width,
 // but lines are typically rather short, so we use narrow line spacing.
