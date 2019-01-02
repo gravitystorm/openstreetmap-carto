@@ -37,6 +37,14 @@ overlapping borders correctly.
       background/line-width: 2;
       line-width: 2;
     }
+    [zoom >= 8] {
+      background/line-width: 3;
+      line-width: 3;
+    }
+    [zoom >= 9] {
+      background/line-width: 3.2;
+      line-width: 3.2;
+    }
     [zoom >= 10] {
       background/line-width: 6;
       line-width: 6;
