@@ -2627,9 +2627,13 @@
     [feature = 'amenity_shelter'] {
       text-fill: @man-made-icon;
     }
-    [access != ''][access != 'permissive'][access != 'yes'] {
-      text-opacity: 0.33;
-      text-halo-radius: 0;
+    [feature = 'tourism_alpine_hut'],
+    [feature = 'tourism_wilderness_hut'],
+    [feature = 'amenity_shelter'] {
+      [access != ''][access != 'permissive'][access != 'yes'] {
+        text-opacity: 0.33;
+        text-halo-radius: 0;
+      }
     }
   }
 
