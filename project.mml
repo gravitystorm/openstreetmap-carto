@@ -1990,9 +1990,10 @@ Layer:
         (SELECT
             way,
             highway,
+            construction,
             name
           FROM planet_osm_line
-          WHERE highway IN ('bridleway', 'footway', 'cycleway', 'path', 'track', 'steps')
+          WHERE highway IN ('bridleway', 'footway', 'cycleway', 'path', 'track', 'steps', 'construction')
             AND name IS NOT NULL
         ) AS paths_text_name
     properties:
