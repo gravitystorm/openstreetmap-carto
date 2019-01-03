@@ -2363,7 +2363,6 @@
   [feature = 'landuse_construction'],
   [feature = 'tourism_theme_park'],
   [feature = 'tourism_zoo'],
-  [feature = 'tourism_attraction'],
   [feature = 'amenity_kindergarten'],
   [feature = 'amenity_school'],
   [feature = 'amenity_college'],
@@ -2475,10 +2474,6 @@
       [feature = 'tourism_zoo'] {
         text-fill: @tourism;
         text-face-name: @bold-fonts; /*rendered bold to improve visibility since theme parks tend to have crowded backgrounds*/
-      }
-      [feature = 'tourism_attraction'] {
-        text-fill: @tourism;
-        text-face-name: @standard-font;
       }
       [feature = 'amenity_kindergarten'],
       [feature = 'amenity_school'],
@@ -3228,6 +3223,18 @@
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
+  }
+
+  [feature = 'tourism_attraction'][zoom >= 17][is_building = 'no'] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: @tourism;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+    text-face-name: @standard-font;
   }
 }
 
