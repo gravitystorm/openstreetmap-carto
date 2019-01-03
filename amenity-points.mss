@@ -2385,7 +2385,6 @@
   [feature = 'leisure_recreation_ground'],
   [feature = 'landuse_recreation_ground'],
   [feature = 'landuse_village_green'],
-  [feature = 'leisure_common'],
   [feature = 'leisure_garden'],
   [feature = 'landuse_quarry'],
   [feature = 'landuse_vineyard'],
@@ -2464,7 +2463,6 @@
       [feature = 'leisure_recreation_ground'],
       [feature = 'landuse_recreation_ground'],
       [feature = 'landuse_village_green'],
-      [feature = 'leisure_common'],
       [feature = 'leisure_garden'] {
         text-fill: @leisure-green;
       }

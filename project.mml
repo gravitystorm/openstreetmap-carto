@@ -129,7 +129,7 @@ Layer:
                                                     'allotments', 'forest', 'farmyard', 'farmland', 'greenhouse_horticulture',
                                                     'recreation_ground', 'village_green', 'retail', 'industrial', 'railway', 'commercial',
                                                     'brownfield', 'landfill', 'construction', 'plant_nursery', 'religious') THEN landuse ELSE NULL END)) AS landuse,
-              ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'recreation_ground', 'common', 'garden',
+              ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'recreation_ground', 'garden',
                                                     'golf_course', 'miniature_golf', 'sports_centre', 'stadium', 'pitch', 'ice_rink',
                                                     'track', 'dog_park', 'fitness_station') THEN leisure ELSE NULL END)) AS leisure,
               ('man_made_' || (CASE WHEN man_made IN ('works', 'wastewater_plant', 'water_works') THEN man_made ELSE NULL END)) AS man_made,
@@ -1394,7 +1394,7 @@ Layer:
              AND NOT tags @> 'capital=>yes'
              OR (place IN ('suburb', 'quarter', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')
                  OR (place IN ('square')
-                     AND (leisure is NULL OR NOT leisure IN ('park', 'common', 'recreation_ground', 'garden')))
+                     AND (leisure is NULL OR NOT leisure IN ('park', 'recreation_ground', 'garden')))
              ) AND name IS NOT NULL
           ORDER BY CASE
               WHEN place = 'suburb' THEN 3
@@ -1934,7 +1934,7 @@ Layer:
                 AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
                 AND (covered NOT IN ('yes') OR covered IS NULL))
             OR (place IN ('square')
-                AND (leisure IS NULL OR NOT leisure IN ('park', 'common', 'recreation_ground', 'garden')))
+                AND (leisure IS NULL OR NOT leisure IN ('park', 'recreation_ground', 'garden')))
             AND name IS NOT NULL
           ORDER BY way_area DESC
         ) AS roads_area_text_name
@@ -2126,7 +2126,7 @@ Layer:
                               WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE 'other' END,
               'office' || CASE WHEN tags->'office' IN ('no', 'vacant', 'closed', 'disused', 'empty') OR (tags->'office') IS NULL THEN NULL ELSE '' END,
               'leisure_' || CASE WHEN leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'fitness_centre', 'sports_centre', 'stadium', 'track',
-                                                  'pitch', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina',
+                                                  'pitch', 'playground', 'park', 'recreation_ground', 'garden', 'nature_reserve', 'marina',
                                                   'picnic_table', 'dog_park', 'fitness_station', 'firepit', 'sauna', 'beach_resort', 'bowling_alley',
                                                   'outdoor_seating', 'bird_hide', 'amusement_arcade', 'swimming_area', 'fishing', 'ice_rink') THEN leisure ELSE NULL END,
               'power_' || CASE WHEN power IN ('plant', 'station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,
@@ -2328,7 +2328,7 @@ Layer:
                                   WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE 'other' END,
                   'office' || CASE WHEN tags->'office' IN ('no', 'vacant', 'closed', 'disused', 'empty') OR (tags->'office') IS NULL THEN NULL ELSE '' END,
                   'leisure_' || CASE WHEN leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'fitness_centre', 'sports_centre', 'stadium', 'track',
-                                                      'pitch','playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina',
+                                                      'pitch','playground', 'park', 'recreation_ground', 'garden', 'nature_reserve', 'marina',
                                                       'slipway', 'picnic_table', 'dog_park', 'fitness_station', 'firepit', 'sauna', 'beach_resort', 'bowling_alley',
                                                       'outdoor_seating', 'bird_hide', 'amusement_arcade', 'swimming_area', 'fishing', 'ice_rink') THEN leisure ELSE NULL END,
                   'power_' || CASE WHEN power IN ('plant', 'station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,
