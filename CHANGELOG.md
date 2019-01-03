@@ -1,4 +1,27 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.17.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.18.0...master)
+
+## [v4.18.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.17.0...v4.18.0) - 2018-12-21
+## Changes
+- Adding rendering for healthcare tag scheme
+  - Changing hospital icon
+  - Changing healthcare color to red
+- Changing natural=scrub color
+- Changing landuse=allotments color and pattern
+- Adding rendering for natural=cape
+- Rendering leisure=ice_rink
+- Adding rendering for man_made=crane 
+- Adding icons for shop=fabric and shop=carpet
+- Updating icons for amenity=arts_centre, leisure=slipway, amenity=restaurant/amenity=food_court and man_made=storage_tank/man_made=silo
+- Using dedicated icon for artwork_type=bust
+- Rendering railway pattern on z12
+- Showing labels of big states (like Alaska)
+- Moving railway=tram_stop and station=subway later
+- Adding rendering for more private POIs
+- Removing smoothing in leisure=track and attraction=water_slide
+- Using subway bridge style for subway construction bridges
+- Rendering wind turbines names and other tweaks
+- Changing man_made gray and text color, making text-dy uniform
+- Small documentation and code fixes
 
 ## [v4.17.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.16.0...v4.17.0) - 2018-11-23
 ## Changes
@@ -13,6 +36,7 @@
 - Rendering religious landuse and place of worship lighter
 - Adding text-repeat-distance for highway names
 - Rendering dots for gastronomy objects on z17
+- Changing icon for tourism=artwork
 - Adding icons for memorial subtags
 - Rendering man_made=telescope
 - Rendering amenity=internet_cafe

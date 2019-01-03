@@ -1,6 +1,6 @@
 // --- Parks, woods, other green things ---
 
-@grass: #cdebb0; // also grassland, meadow, common, village_green, garden
+@grass: #cdebb0;        // Lch(90,32,128) also grassland, meadow, common, village_green, garden, allotments
 @scrub: #c8d7ab;        // Lch(84,24,122)
 @forest: #add19e;       // Lch(80,30,135)
 @forest-text: #46673b;  // Lch(40,30,135)
@@ -38,7 +38,6 @@
 
 // --- Other ----
 
-@allotments: #eecfb3;       // Lch(85,19,70)
 @bare_ground: #eee5dc;
 @campsite: #def6c0; // also caravan_site, picnic_site
 @cemetery: #aacbaf; // also grave_yard
@@ -52,7 +51,7 @@
 @power-line: darken(@industrial-line, 5%);
 @sand: #f5e9c6;
 @societal_amenities: #ffffe5;   // Lch(99,13,109)
-@tourism: #734a08;
+@tourism: #660033;
 @quarry: #c5c3c3;
 @military: #f55;
 @beach: #fff1ba;
@@ -147,7 +146,7 @@
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-    [zoom >= 14] {
+    [zoom >= 13] {
       polygon-pattern-file: url('symbols/vineyard.png');
       polygon-pattern-alignment: global;
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
@@ -161,7 +160,7 @@
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-    [zoom >= 14] {
+    [zoom >= 13] {
       polygon-pattern-file: url('symbols/orchard.png');
       polygon-pattern-alignment: global;
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
@@ -175,7 +174,7 @@
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-    [zoom >= 14] {
+    [zoom >= 13] {
       polygon-pattern-file: url('symbols/plant_nursery.png');
       polygon-pattern-opacity: 0.6;
       polygon-pattern-alignment: global;
@@ -190,7 +189,7 @@
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-    [zoom >= 14] {
+    [zoom >= 13] {
       polygon-pattern-file: url('symbols/plant_nursery.png');
       polygon-pattern-alignment: global;
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
@@ -205,7 +204,7 @@
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-    [zoom >= 14] {
+    [zoom >= 13] {
       [religion = 'jewish'] { polygon-pattern-file: url('symbols/grave_yard_jewish.svg'); }
       [religion = 'christian'] { polygon-pattern-file: url('symbols/grave_yard_christian.svg'); }
       [religion = 'muslim'] { polygon-pattern-file: url('symbols/grave_yard_muslim.svg'); }
@@ -269,6 +268,16 @@
     }
   }
 
+  [feature = 'leisure_ice_rink'][is_building = 'no'] {
+    [zoom >= 10] {
+      polygon-fill: @glacier;
+      line-width: 0.5;
+      line-color: saturate(darken(@pitch, 30%), 20%);
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+  }
+
   [feature = 'leisure_dog_park'] {
     [zoom >= 10] {
       polygon-fill: @leisure;
@@ -292,11 +301,11 @@
 
   [feature = 'landuse_allotments'] {
     [zoom >= 10] {
-      polygon-fill: @allotments;
+      polygon-fill: @grass;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-    [zoom >= 14] {
+    [zoom >= 13] {
       polygon-pattern-file: url('symbols/allotments.png');
       polygon-pattern-alignment: global;
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
@@ -594,17 +603,19 @@
     }
   }
 
-  [feature = 'amenity_parking'][zoom >= 10],
-  [feature = 'amenity_bicycle_parking'][zoom >= 10],
-  [feature = 'amenity_motorcycle_parking'][zoom >= 10],
-  [feature = 'amenity_taxi'][zoom >= 10] {
-    polygon-fill: @parking;
-    [zoom >= 15] {
-      line-width: 0.3;
-      line-color: @parking-outline;
+  [feature = 'amenity_parking'],
+  [feature = 'amenity_bicycle_parking'],
+  [feature = 'amenity_motorcycle_parking'],
+  [feature = 'amenity_taxi'] {
+    [zoom >= 14] {
+      polygon-fill: @parking;
+      [zoom >= 15] {
+        line-width: 0.3;
+        line-color: @parking-outline;
+      }
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
   [feature = 'amenity_parking_space'][zoom >= 18] {
@@ -712,7 +723,7 @@
     polygon-pattern-file: url('symbols/reef.png');
     polygon-pattern-alignment: global;
   }
-  [zoom >= 14] {
+  [zoom >= 13] {
     [int_wetland = 'marsh'],
     [int_wetland = 'saltmarsh'],
     [int_wetland = 'wet_meadow'] {

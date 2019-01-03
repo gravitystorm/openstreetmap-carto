@@ -54,6 +54,9 @@
     marker-fill: @accommodation-icon;
     marker-placement: interior;
     marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'amenity_atm'][zoom >= 19] {
@@ -128,6 +131,9 @@
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'amenity_public_bookcase'][zoom >= 19] {
@@ -201,6 +207,9 @@
     }
     [artwork_type = 'statue'] {
       marker-file: url('symbols/historic/statue.svg');
+    }
+    [artwork_type = 'bust'] {
+      marker-file: url('symbols/historic/bust.svg');
     }
     marker-fill: @memorials;
     marker-placement: interior;
@@ -309,6 +318,9 @@
     marker-fill: @transportation-icon;
     marker-placement: interior;
     marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'amenity_fuel'][zoom >= 17] {
@@ -337,6 +349,9 @@
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'amenity_casino'][zoom >= 17] {
@@ -436,6 +451,9 @@
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'amenity_social_facility'][zoom >= 17] {
@@ -594,9 +612,9 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_parking'][way_pixels > 900],
-  [feature = 'amenity_bicycle_parking'][way_pixels > 900],
-  [feature = 'amenity_motorcycle_parking'][way_pixels > 900],
+  [feature = 'amenity_parking'][way_pixels > 900][zoom >= 14],
+  [feature = 'amenity_bicycle_parking'][way_pixels > 900][zoom >= 14],
+  [feature = 'amenity_motorcycle_parking'][way_pixels > 900][zoom >= 14],
   [feature = 'amenity_parking_entrance'][zoom >= 18] {
     [feature = 'amenity_parking'] {
       marker-file: url('symbols/amenity/parking.svg');
@@ -836,6 +854,9 @@
       marker-fill: @amenity-brown;
       marker-placement: interior;
       marker-clip: false;
+      [access != ''][access != 'permissive'][access != 'yes'] {
+        marker-opacity: 0.33;
+      }
     }
   }
 
@@ -844,6 +865,9 @@
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'amenity_prison'][zoom >= 17] {
@@ -1364,6 +1388,9 @@
     marker-placement: interior;
     marker-fill: @leisure-green;
     marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'leisure_dog_park'][zoom >= 17] {
@@ -1402,6 +1429,9 @@
     marker-fill: @leisure-green;
     marker-placement: interior;
     marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'leisure_picnic_table'][zoom >= 17] {
@@ -1409,6 +1439,9 @@
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'leisure_firepit'][zoom >= 17] {
@@ -1416,6 +1449,9 @@
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'leisure_sauna'][zoom >= 17] {
@@ -1687,12 +1723,18 @@
     marker-file: url('symbols/amenity/bench.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'amenity_waste_basket'][zoom >= 19]::amenity {
     marker-file: url('symbols/amenity/waste_basket.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   // waste_disposal tagging on nodes - tagging on ways is defined earlier
@@ -1885,22 +1927,18 @@
 
   [feature = 'amenity_vehicle_inspection'][zoom >= 17],
   [feature = 'amenity_car_wash'][zoom >= 17],
-  [feature = 'amenity_drinking_water'][zoom >= 17],
   [feature = 'amenity_internet_cafe'][zoom >= 17],
-  [feature = 'tourism_picnic_site'][zoom >= 17],
   [feature = 'leisure_bowling_alley'][zoom >= 17],
   [feature = 'leisure_beach_resort'][zoom >= 17],
   [feature = 'leisure_bird_hide'][zoom >= 17],
   [feature = 'leisure_amusement_arcade'][zoom >= 17],
   [feature = 'leisure_outdoor_seating'][zoom >= 19],
-  [feature = 'leisure_fishing'][zoom >= 17],
-  [feature = 'leisure_picnic_table'][zoom >= 17] {
+  [feature = 'leisure_fishing'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: @amenity-brown;
-    [feature = 'tourism_picnic_site'],
     [feature = 'leisure_outdoor_seating'],
     [feature = 'leisure_fishing'],
     [feature = 'leisure_bowling_alley'],
@@ -1914,6 +1952,31 @@
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
+  }
+
+  [feature = 'amenity_bbq'][zoom >= 17],
+  [feature = 'amenity_bicycle_repair_station'][zoom >= 19],
+  [feature = 'amenity_drinking_water'][zoom >= 17],
+  [feature = 'amenity_shower'][zoom >= 18],
+  [feature = 'tourism_picnic_site'][zoom >= 17],
+  [feature = 'leisure_picnic_table'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: @amenity-brown;
+    [feature = 'tourism_picnic_site'] {
+      text-fill: @leisure-green;
+    }
+    text-dy: 10;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      text-opacity: 0.33;
+      text-halo-radius: 0;
+    }
   }
 
   [feature = 'amenity_place_of_worship'][zoom >= 16][way_pixels > 3000],
@@ -2187,7 +2250,8 @@
   [feature = 'natural_wood'],
   [feature = 'landuse_forest'],
   [feature = 'boundary_national_park'],
-  [feature = 'leisure_nature_reserve'] {
+  [feature = 'leisure_nature_reserve'],
+  [feature = 'boundary_protected_area'] {
     [zoom >= 8][way_pixels > 3000][is_building = 'no'],
     [zoom >= 17] {
       text-name: "[name]";
@@ -2216,7 +2280,8 @@
         text-fill: @forest-text;
       }
       [feature = 'boundary_national_park'],
-      [feature = 'leisure_nature_reserve'] {
+      [feature = 'leisure_nature_reserve'],
+      [feature = 'boundary_protected_area'] {
         text-fill: darken(@park, 70%);
       }
     }
@@ -2325,6 +2390,7 @@
   [feature = 'leisure_stadium'],
   [feature = 'leisure_track'],
   [feature = 'leisure_dog_park'],
+  [feature = 'leisure_ice_rink'],
   [feature = 'leisure_pitch'] {
     [zoom >= 10][way_pixels > 3000][is_building = 'no'],
     [zoom >= 17][is_building = 'no'],
@@ -2380,11 +2446,9 @@
       }
       [feature = 'landuse_meadow'],
       [feature = 'natural_grassland'],
-      [feature = 'landuse_grass'] {
-        text-fill: darken(@grass, 50%);
-      }
+      [feature = 'landuse_grass'],
       [feature = 'landuse_allotments'] {
-        text-fill: darken(@allotments, 50%);
+        text-fill: darken(@grass, 50%);
       }
       [feature = 'landuse_farmyard'] {
         text-fill: darken(@farmyard, 50%);
@@ -2423,7 +2487,7 @@
         text-face-name: @bold-fonts; /*rendered bold to improve visibility since theme parks tend to have crowded backgrounds*/
       }
       [feature = 'tourism_attraction'] {
-        text-fill: #660033;
+        text-fill: @tourism;
         text-face-name: @standard-font;
       }
       [feature = 'amenity_kindergarten'],
@@ -2452,6 +2516,10 @@
       [feature = 'leisure_fitness_centre'],
       [feature = 'leisure_fitness_station'] {
         text-fill: @leisure-green;
+        [access != ''][access != 'permissive'][access != 'yes'] {
+          text-opacity: 0.33;
+          text-halo-radius: 0;
+        }
       }
       [feature = 'leisure_dog_park'] {
         text-fill: @leisure-green;
@@ -2461,6 +2529,7 @@
       [feature = 'leisure_track'] {
         text-fill: darken(@track, 40%);
       }
+      [feature = 'leisure_ice_rink'],
       [feature = 'leisure_pitch'] {
         text-fill: darken(@pitch, 40%);
       }
@@ -2496,12 +2565,9 @@
     text-face-name: @standard-font;
   }
 
-  [feature = 'amenity_shower'][zoom >= 18],
-  [feature = 'amenity_bbq'][zoom >= 17],
   [feature = 'amenity_bureau_de_change'][zoom >= 17],
   [feature = 'amenity_public_bookcase'][zoom >= 19],
-  [feature = 'tourism_gallery'][zoom >= 17],
-  [feature = 'amenity_bicycle_repair_station'][zoom >= 19] {
+  [feature = 'tourism_gallery'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
@@ -2545,6 +2611,10 @@
     [feature = 'amenity_shelter'] {
       text-fill: @amenity-brown;
     }
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      text-opacity: 0.33;
+      text-halo-radius: 0;
+    }
   }
 
   [feature = 'amenity_taxi'][zoom >= 17] {
@@ -2577,6 +2647,10 @@
       text-placement: interior;
       [feature = 'highway_bus_stop'] {
         text-dy: 9;
+      }
+      [access != ''][access != 'permissive'][access != 'yes'] {
+        text-opacity: 0.33;
+        text-halo-radius: 0;
       }
     }
   }
