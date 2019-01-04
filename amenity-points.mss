@@ -187,6 +187,21 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_vending_machine'] {
+    [vending = 'excrement_bags'] {
+      marker-file: url('symbols/amenity/excrement_bags.svg');
+    }
+    [vending = 'parking_tickets'] {
+      marker-file: url('symbols/amenity/parking_tickets.svg');
+    }
+    [vending = 'public_transport_tickets'] {
+      marker-file: url('symbols/amenity/public_transport_tickets.svg');
+    }
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'highway_traffic_signals'][zoom >= 17] {
     marker-file: url('symbols/highway/traffic_light.13.svg');
     marker-fill: #545454;
@@ -2566,7 +2581,8 @@
     }
   }
 
-  [feature = 'amenity_atm'][zoom >= 19] {
+  [feature = 'amenity_atm'][zoom >= 19],
+  [feature = 'amenity_vending_machine'][zoom >= 19] {
     text-name: "[operator]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
