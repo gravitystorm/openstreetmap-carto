@@ -452,7 +452,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            (CASE WHEN substr(feature, length(feature)-4, 5) = '_link' AND feature IN ('highway_motorway_link', 'highway_trunk_link', 'highway_primary_link', 'highway_secondary_link', 'highway_tertiary_link') THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
+            (CASE WHEN feature IN ('highway_motorway_link', 'highway_trunk_link', 'highway_primary_link', 'highway_secondary_link', 'highway_tertiary_link') THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
             horse,
             foot,
             bicycle,
@@ -694,7 +694,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            (CASE WHEN substr(feature, length(feature)-4, 5) = '_link' AND feature IN ('highway_motorway_link', 'highway_trunk_link', 'highway_primary_link', 'highway_secondary_link', 'highway_tertiary_link') THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
+            (CASE WHEN feature IN ('highway_motorway_link', 'highway_trunk_link', 'highway_primary_link', 'highway_secondary_link', 'highway_tertiary_link') THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
             horse,
             foot,
             bicycle,
@@ -819,7 +819,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            (CASE WHEN substr(feature, length(feature)-4, 5) = '_link' AND feature IN ('highway_motorway_link', 'highway_trunk_link', 'highway_primary_link', 'highway_secondary_link', 'highway_tertiary_link') THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
+            (CASE WHEN feature IN ('highway_motorway_link', 'highway_trunk_link', 'highway_primary_link', 'highway_secondary_link', 'highway_tertiary_link') THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
             horse,
             foot,
             bicycle,
@@ -1009,7 +1009,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            (CASE WHEN substr(feature, length(feature)-4, 5) = '_link' AND feature IN ('highway_motorway_link', 'highway_trunk_link', 'highway_primary_link', 'highway_secondary_link', 'highway_tertiary_link') THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
+            (CASE WHEN feature IN ('highway_motorway_link', 'highway_trunk_link', 'highway_primary_link', 'highway_secondary_link', 'highway_tertiary_link') THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
             horse,
             foot,
             bicycle,
