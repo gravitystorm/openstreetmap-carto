@@ -20,7 +20,7 @@ overlapping borders correctly.
       background/line-simplify: @admin-simplify;
       background/line-simplify-algorithm: @admin-simplify-algorithm;
       line-join: bevel;
-      line-color: @admin-boundaries;
+      line-color: @admin-boundaries-level2;
       line-width: 1.2;
       line-simplify: @admin-simplify;
       line-simplify-algorithm: @admin-simplify-algorithm;
