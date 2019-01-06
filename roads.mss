@@ -3262,24 +3262,24 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-placement: line;
       text-face-name: @book-fonts;
       text-vertical-alignment: middle;
-      text-dy: 5;
+      text-dy: -5;
       [oneway = '-1'] {
-        text-dy: -5;
+        text-dy: 5;
       }
       text-repeat-distance: @major-highway-text-repeat-distance;
     }
     [zoom >= 16] {
       text-size: 9;
-      text-dy: 7;
+      text-dy: -7;
       [oneway = '-1'] {
-        text-dy: -7;
+        text-dy: 7;
       }
     }
     [zoom >= 17] {
       text-size: 11;
-      text-dy: 9;
+      text-dy: -9;
       [oneway = '-1'] {
-        text-dy: -9;
+        text-dy: 9;
       }
     }
   }
@@ -3305,18 +3305,18 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-placement: line;
       text-face-name: @book-fonts;
       text-vertical-alignment: middle;
-      text-dy: 7;
+      text-dy: -7;
       [oneway = '-1'] {
-        text-dy: -7;
+        text-dy: 7;
       }
       text-repeat-distance: @major-highway-text-repeat-distance;
       [highway = 'steps'] { text-repeat-distance: @minor-highway-text-repeat-distance; }
     }
     [zoom >= 17] {
       text-size: 11;
-      text-dy: 9;
+      text-dy: -9;
       [oneway = '-1'] {
-        text-dy: -9;
+        text-dy: 9;
       }
     }
   }
@@ -3341,13 +3341,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [highway = 'road'],
     [highway = 'service'],
     [highway = 'pedestrian'],
-    [highway = 'raceway'],
-    [highway = 'cycleway'],
-    [highway = 'footway'],
-    [highway = 'path'],
-    [highway = 'steps'],
-    [highway = 'track'],
-    [highway = 'bridleway'] {
+    [highway = 'raceway'] {
       [oneway = 'yes'],
       [oneway = '-1'] {
         marker-placement: line;
@@ -3393,45 +3387,56 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         [highway = 'raceway'] {
           marker-fill: @raceway-oneway-arrow-color;
         }
+      }
+    }
 
-        [highway = 'steps'] {
-          marker-fill: @steps-oneway-arrow-color;
-          marker-transform: 'translate(0,5)';
-          [oneway = '-1'] {
-            marker-transform: 'translate(0,-5)';
+    [highway = 'steps'],
+    [highway = 'cycleway'],
+    [highway = 'footway'],
+    [highway = 'path'],
+    [highway = 'track'],
+    [highway = 'bridleway'] {
+      [oneway = 'yes'],
+      [oneway = '-1'] {
+        text-name: "'⭢'";
+        text-size: 18;
+        text-clip: false;
+        text-spacing: 180;
+        text-placement: line;
+        text-halo-fill: @standard-halo-fill;
+        text-halo-radius: 1.5;
+        text-margin: 2;
+        text-dy: 4;
+        text-upright: right;
+        text-vertical-alignment: middle;
+        text-face-name: @book-fonts;
+        [oneway = '-1'] {
+          text-upright: left;
+          text-dy: -4;
+        }
+        [highway = 'footway'] {
+          text-fill: @footway-oneway-arrow-color;
+        }
+        [highway = 'path'] {
+          text-fill: @footway-oneway-arrow-color;
+          [horse = 'designated'] {
+            text-fill: @bridleway-oneway-arrow-color;
+          }
+          [bicycle = 'designated'] {
+            text-fill: @cycleway-oneway-arrow-color;
           }
         }
-
-        [highway = 'footway'],
-        [highway = 'path'],
-        [highway = 'cycleway'],
-        [highway = 'track'],
+        [highway = 'steps'] {
+          text-fill: @steps-oneway-arrow-color;
+        }
+        [highway = 'cycleway'] {
+          text-fill: @cycleway-oneway-arrow-color;
+        }
+        [highway = 'track'] {
+          text-fill: @track-oneway-arrow-color;
+        }
         [highway = 'bridleway'] {
-          marker-transform: 'translate(0,4)';
-          [oneway = '-1'] {
-            marker-transform: 'translate(0,-4)';
-          }
-          [highway = 'footway'] {
-            marker-fill: @footway-oneway-arrow-color;
-          }
-          [highway = 'path'] {
-            marker-fill: @footway-oneway-arrow-color;
-            [horse = 'designated'] {
-              marker-fill: @bridleway-oneway-arrow-color;
-            }
-            [bicycle = 'designated'] {
-              marker-fill: @cycleway-oneway-arrow-color;
-            }
-          }
-          [highway = 'cycleway'] {
-            marker-fill: @cycleway-oneway-arrow-color;
-          }
-          [highway = 'track'] {
-            marker-fill: @track-oneway-arrow-color;
-          }
-          [highway = 'bridleway'] {
-            marker-fill: @bridleway-oneway-arrow-color;
-          }
+          text-fill: @bridleway-oneway-arrow-color;
         }
       }
     }
