@@ -3398,21 +3398,21 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [highway = 'bridleway'] {
       [oneway = 'yes'],
       [oneway = '-1'] {
-        text-name: "'⭢'";
-        text-size: 18;
+        text-name: "'🠖'";
+        text-size: 15;
         text-clip: false;
         text-spacing: 180;
         text-placement: line;
         text-halo-fill: @standard-halo-fill;
         text-halo-radius: 1.5;
         text-margin: 2;
-        text-dy: 4;
+        text-dy: 3;
         text-upright: right;
         text-vertical-alignment: middle;
         text-face-name: @book-fonts;
         [oneway = '-1'] {
           text-upright: left;
-          text-dy: -4;
+          text-dy: -3;
         }
         [highway = 'footway'] {
           text-fill: @footway-oneway-arrow-color;
