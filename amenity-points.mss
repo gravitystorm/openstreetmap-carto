@@ -187,7 +187,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_vending_machine'] {
+  [feature = 'amenity_vending_machine'][zoom >= 19] {
     [vending = 'excrement_bags'] {
       marker-file: url('symbols/amenity/excrement_bags.svg');
     }
