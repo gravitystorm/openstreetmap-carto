@@ -314,8 +314,8 @@
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
     [zoom >= 16] {
-        line-width: .7;
-        line-color: darken(@allotments, 20%);
+        line-width: .5;
+        line-color: darken(@allotments, 15%);
     }
   }
 
