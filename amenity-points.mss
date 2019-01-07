@@ -487,9 +487,10 @@
 
   [feature = 'man_made_mast']["tower:type" != 'lighting'],
   [feature = 'man_made_mast']["tower:type" = 'lighting'][zoom >= 18]   {
-    [zoom >= 15][height > 80],
-    [zoom >= 16][height > 40],
-    [zoom >= 17][height > 20],
+    [zoom >= 14][height >= 160],
+    [zoom >= 15][height >= 80],
+    [zoom >= 16][height >= 40],
+    [zoom >= 17][height >= 20],
     [zoom >= 18] {
       marker-file: url('symbols/man_made/mast.svg');
       marker-fill: @man-made-icon;
@@ -509,9 +510,9 @@
   [feature = 'man_made_tower']["tower:type" = 'bell_tower'][zoom >= 18],
   [feature = 'man_made_tower']["tower:type" = 'watchtower'][zoom >= 18],
   [feature = 'man_made_tower']["tower:type" != 'cooling']["tower:type" != 'lighting']["tower:type" != 'bell_tower']["tower:type" != 'watchtower'] {
-    [zoom >= 13][height > 100],
-    [zoom >= 14][height > 50],
-    [zoom >= 15][height > 30],
+    [zoom >= 14][height >= 160],
+    [zoom >= 15][height >= 80],
+    [zoom >= 16][height >= 40],
     [zoom >= 17] {
       marker-file: url('symbols/man_made/tower_generic.svg');
       marker-fill: @man-made-icon;
@@ -560,7 +561,7 @@
     }
   }
 
-  [feature = 'man_made_communications_tower'][zoom >= 13] {
+  [feature = 'man_made_communications_tower'][zoom >= 14] {
     marker-file: url('symbols/man_made/communications_tower.svg');
     marker-fill: @man-made-icon;
     marker-placement: interior;
@@ -589,27 +590,26 @@
   }
 
   [feature = 'man_made_telescope']["telescope:type" != 'optical']["telescope:type" != null] {
-  [zoom >= 13]["telescope:diameter" >= 60],
-  [zoom >= 14]["telescope:diameter" >= 30],
-  [zoom >= 15]["telescope:diameter" >= 15],
-  [zoom >= 16] {
-    marker-file: url('symbols/man_made/telescope_dish.svg');
-    marker-fill: @man-made-icon;
-    marker-placement: interior;
-    marker-clip: false;
+    [zoom >= 14]["telescope:diameter" >= 60],
+    [zoom >= 15]["telescope:diameter" >= 30],
+    [zoom >= 16] {
+      marker-file: url('symbols/man_made/telescope_dish.svg');
+      marker-fill: @man-made-icon;
+      marker-placement: interior;
+      marker-clip: false;
     }
   }
 
-[feature = 'man_made_telescope']["telescope:type" = 'optical'],
-[feature = 'man_made_telescope']["telescope:type" = null], {
-  [zoom >= 14]["telescope:diameter" >= 8],
-  [zoom >= 15]["telescope:diameter" >= 4],
-  [zoom >= 16]["telescope:diameter" >= 2],
-  [zoom >= 17] {
-    marker-file: url('symbols/man_made/telescope_dome.svg');
-    marker-fill: @man-made-icon;
-    marker-placement: interior;
-    marker-clip: false;
+  [feature = 'man_made_telescope']["telescope:type" = 'optical'],
+  [feature = 'man_made_telescope']["telescope:type" = null], {
+    [zoom >= 14]["telescope:diameter" >= 8],
+    [zoom >= 15]["telescope:diameter" >= 4],
+    [zoom >= 16]["telescope:diameter" >= 2],
+    [zoom >= 17] {
+      marker-file: url('symbols/man_made/telescope_dome.svg');
+      marker-fill: @man-made-icon;
+      marker-placement: interior;
+      marker-clip: false;
     }
   }
 
