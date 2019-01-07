@@ -943,27 +943,18 @@
     marker-clip: false;
   }
 
-  [feature = 'man_made_obelisk'] {
-    [zoom >= 14][height > 80],
-    [zoom >= 15][height > 40],
-    [zoom >= 16][height > 20],
-    [zoom >= 17] {
-      marker-file: url('symbols/historic/obelisk.svg');
-      marker-fill: @memorials;
-      marker-placement: interior;
-      marker-clip: false;
-    }
+  [feature = 'man_made_obelisk'][zoom >= 17] {
+    marker-file: url('symbols/historic/obelisk.svg');
+    marker-fill: @memorials;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
-  [feature = 'historic_monument'] {
-    [zoom >= 14][height > 80],
-    [zoom >= 15][height > 40],
-    [zoom >= 16] {
-      marker-file: url('symbols/historic/monument.svg');
-      marker-fill: @memorials;
-      marker-placement: interior;
-      marker-clip: false;
-    }
+  [feature = 'historic_monument'][zoom >= 16] {
+    marker-file: url('symbols/historic/monument.svg');
+    marker-fill: @memorials;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'historic_fort'][zoom >= 16] {

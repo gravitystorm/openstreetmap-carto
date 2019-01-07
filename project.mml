@@ -1490,8 +1490,7 @@ Layer:
             tags->'denomination' as denomination,
             tags->'generator:source' as "generator:source",
             CASE
-              WHEN (man_made IN ('mast', 'tower', 'chimney', 'obelisk') AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL))
-                   OR historic IN ('monument') THEN
+              WHEN (man_made IN ('mast', 'tower', 'chimney') AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)) THEN
                 CASE
                   WHEN tags->'height' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'height')::NUMERIC
                   ELSE NULL
@@ -1650,8 +1649,7 @@ Layer:
             tags->'generator:source' as "generator:source",
             CASE
               WHEN (man_made IN ('mast', 'tower', 'chimney', 'crane') AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL))
-                    OR waterway IN ('waterfall') 
-                    OR historic IN ('monument') THEN
+                    OR waterway IN ('waterfall') THEN
                 CASE
                   WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?( m)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)( m)?$'))::NUMERIC
                   ELSE NULL
