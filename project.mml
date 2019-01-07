@@ -487,7 +487,7 @@ Layer:
                   ELSE 'INT-normal'::text
                 END AS service,
                 CASE
-                  WHEN substr(highway, length(highway)-4, 5) = '_link' THEN 'yes'
+                  WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link') THEN 'yes'
                   ELSE 'no'
                 END AS link,
                 COALESCE(layer,0) AS layernotnull,
@@ -729,7 +729,7 @@ Layer:
                   ELSE 'INT-normal'::text
                 END AS service,
                 CASE
-                  WHEN substr(highway, length(highway)-4, 5) = '_link' THEN 'yes'
+                  WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link') THEN 'yes'
                   ELSE 'no'
                 END AS link,
                 COALESCE(layer,0) AS layernotnull,
@@ -854,7 +854,7 @@ Layer:
                   ELSE 'INT-normal'::text
                 END AS service,
                 CASE
-                  WHEN substr(highway, length(highway)-4, 5) = '_link' THEN 'yes'
+                  WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link') THEN 'yes'
                   ELSE 'no'
                 END AS link,
                 COALESCE(layer,0) AS layernotnull,
@@ -960,7 +960,7 @@ Layer:
                                    WHEN railway IN ('rail', 'tram', 'light_rail', 'funicular', 'narrow_gauge') THEN railway ELSE NULL END))
             ) AS feature,
             CASE WHEN tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes' THEN 'yes' ELSE 'no' END AS int_tunnel,
-            CASE WHEN substr(highway, length(highway)-4, 5) = '_link' THEN 'yes' ELSE 'no' END AS link,
+            CASE WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link') THEN 'yes' ELSE 'no' END AS link,
             CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
                                   'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow') THEN 'unpaved'
               WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
@@ -1044,7 +1044,7 @@ Layer:
                   ELSE 'INT-normal'::text
                 END AS service,
                 CASE
-                  WHEN substr(highway, length(highway)-4, 5) = '_link' THEN 'yes'
+                  WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link') THEN 'yes'
                   ELSE 'no'
                 END AS link,
                 COALESCE(layer,0) AS layernotnull,
