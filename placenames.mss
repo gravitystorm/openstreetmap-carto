@@ -401,9 +401,6 @@
       }
     }
   }
-}
-
-#placenames-small::hamlet { 
   [place = 'hamlet'] {
     [zoom >= 14][zoom < 18] {
       text-name: "[name]";
