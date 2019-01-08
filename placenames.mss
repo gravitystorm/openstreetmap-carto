@@ -372,8 +372,9 @@
 }
 
 #placenames-small::quarter {
+  [place = 'hamlet'],
   [place = 'quarter'] {
-    [zoom >= 14][zoom < 17] {
+    [zoom >= 14][zoom < 18] {
       text-name: "[name]";
       text-fill: @placenames;
       text-face-name: @book-fonts;
@@ -403,8 +404,7 @@
   }
 }
 
-#placenames-small::hamlet {
-  [place = 'hamlet'],
+#placenames-small::neighborhood {
   [place = 'locality'],
   [place = 'neighbourhood'],
   [place = 'isolated_dwelling'],
