@@ -307,9 +307,9 @@
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
     [zoom >= 13] {
-      polygon-pattern-file: url('symbols/allotments1.png');
+      polygon-pattern-file: url('symbols/allotments3.png');
       polygon-pattern-alignment: global;
-      polygon-pattern-opacity: 1;
+      polygon-pattern-opacity: 0.4;
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
