@@ -315,6 +315,7 @@
     }
     [zoom >= 16] {
         line-width: .5;
+        line-offset: -0.5;
         line-color: darken(@allotments, 15%);
     }
   }
