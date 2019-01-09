@@ -313,9 +313,11 @@
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
     [zoom >= 16] {
-        line-width: .5;
-        line-offset: -0.25;
-        line-color: darken(@allotments, 15%);
+      line-width: 0.5;
+      line-color: desaturate(darken(@allotments, 10%), 10%);
+      [name != null] {
+        line-width: 0.7;
+      }
     }
   }
 
