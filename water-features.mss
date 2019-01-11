@@ -169,7 +169,6 @@
 #springs {
   [natural = 'spring'][zoom >= 14] {
     marker-file: url('symbols/spring.svg');
-    marker-placement: interior;
     marker-clip: false;
   }
 }
