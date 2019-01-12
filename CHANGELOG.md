@@ -9,7 +9,7 @@
 - Changing landuse=allotments color and pattern
 - Adding rendering for natural=cape
 - Rendering leisure=ice_rink
-- Adding rendering for man_made=crane 
+- Adding rendering for man_made=crane
 - Adding icons for shop=fabric and shop=carpet
 - Updating icons for amenity=arts_centre, leisure=slipway, amenity=restaurant/amenity=food_court and man_made=storage_tank/man_made=silo
 - Using dedicated icon for artwork_type=bust
@@ -100,13 +100,13 @@
 - Increased shield distances on roads
 - Added icon for shop=ticket
 - Added icon for shop=houseware
-- Added icon for shop=charity 
+- Added icon for shop=charity
 - Added icon for shop=second_hand
 - Added icon for shop=interior_decoration
 - Added icon for amenity=bureau_de_change
 - Added icon for amenity=casino
 - Added icon for amenity=boat_rental
-- Updated shop=department_store icon 
+- Updated shop=department_store icon
 - Small documentation and code fixes
 
 ## [v4.12.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.12.0...v4.12.1) - 2018-06-29
@@ -119,7 +119,7 @@
 
 ### Changes
 - Added rendering “surface” tag on roads with a pattern
-- More vertical objects rendering and tuning (man_made=tower types, man_made=chimney, man_made=communications_tower) 
+- More vertical objects rendering and tuning (man_made=tower types, man_made=chimney, man_made=communications_tower)
 - tourism=information types rendering and tuning (information=audioguide, board, guidepost, map, office, tactile_map, tactile_model and terminal)
 - Added rendering for place=quarter
 - Added rendering of historic=city_gate
@@ -225,7 +225,7 @@
 ### Changes
 - Change sports_centre and stadium color to light green
 - Change shades of green for landuse/leisure=recreation_ground and garden
-- Do not render glaciers and icesheets on z6 and z7 
+- Do not render glaciers and icesheets on z6 and z7
 - Do not render very small water areas on low zoom
 - Do not render small national parks and nature reserves
 - Do not render ferries on z7
@@ -243,9 +243,9 @@
 - Changing parking color from yellow to gray
 
 ### Changes
-- Unified rendering of leisure=fitness_station and leisure=fitness_centre 
+- Unified rendering of leisure=fitness_station and leisure=fitness_centre
 - Rendering of military=bunker
-- Rendering all station buildings as major buildings 
+- Rendering all station buildings as major buildings
 - Text wrapping for station labels
 - Changing windmill color from amenity brown to man_made gray
 - Some other documentation and code changes
@@ -257,12 +257,12 @@
 
 ### Changes
 - Rendering of amenity=marketplace
-- Rendering of landuse=religious 
+- Rendering of landuse=religious
 - Rendering shop=pastry like shop=confectionery
 - Rendering of addr:unit
 - Rendering natural=bare_rock earlier
 - Rendering elevation also on polygon alpine_hut and shelter
-- Introducing Noto Sans Arabic 
+- Introducing Noto Sans Arabic
 - Rendering icon for slipway ways
 - Better minimal distance between housenumbers
 - Moving aeroways to their own layer
@@ -298,7 +298,7 @@
 - Plaque rendering is now different and moved to z19
 - Rendering railway labels
 - Smaller line spaces in labels
-- Junction names on areas 
+- Junction names on areas
 - Area color for railway=station is the same as for railways
 - Database perfomance tuning available for Docker
 - Different patterns and all remaining icons moved to SVG

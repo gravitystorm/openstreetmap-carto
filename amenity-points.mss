@@ -409,7 +409,7 @@
     marker-file: url('symbols/tourism/information.svg');
     [information = 'audioguide'] {
       marker-file: url('symbols/tourism/audioguide.svg');
-    }    
+    }
     [information = 'board'] {
       marker-file: url('symbols/tourism/board.svg');
     }
@@ -498,7 +498,7 @@
       marker-clip: false;
       ["tower:type" = 'lighting'] {
         marker-file: url('symbols/man_made/mast_lighting.svg');
-      }      
+      }
       ["tower:type" = 'communication'] {
         marker-file: url('symbols/man_made/mast_communications.svg');
       }
@@ -523,7 +523,7 @@
       }
       ["tower:type" = 'observation'],
       ["tower:type" = 'watchtower'] {
-        marker-file: url('symbols/man_made/tower_observation.svg');  
+        marker-file: url('symbols/man_made/tower_observation.svg');
       }
       ["tower:type" = 'bell_tower'] {
         marker-file: url('symbols/man_made/bell_tower.svg');
@@ -557,7 +557,7 @@
         ["tower:construction" = 'lattice'] {
           marker-file: url('symbols/man_made/tower_lattice_lighting.svg');
         }
-      }   
+      }
     }
   }
 
@@ -567,7 +567,7 @@
     marker-placement: interior;
     marker-clip: false;
   }
-  
+
   [feature = 'man_made_chimney'] {
     [zoom >= 16][height > 50],
     [zoom >= 17][height > 30],
@@ -787,7 +787,7 @@
     marker-placement: interior;
     marker-clip: false;
   }
-  
+
   [feature = 'historic_wayside_shrine'][zoom >= 17] {
     marker-file: url('symbols/historic/shrine.svg');
     marker-fill: @man-made-icon;
@@ -1069,7 +1069,7 @@
     [shop = 'bookmaker'][zoom >= 18] {
       marker-file: url('symbols/shop/bookmaker.svg');
     }
-    
+
     [shop = 'books'][zoom >= 18] {
       marker-file: url('symbols/amenity/library.svg');
     }
@@ -1183,7 +1183,7 @@
     [shop = 'hifi'][zoom >= 18] {
       marker-file: url('symbols/shop/hifi.svg');
     }
-    
+
     [shop = 'houseware'][zoom >= 18] {
       marker-file: url('symbols/shop/houseware.svg');
     }
@@ -1268,7 +1268,7 @@
       marker-file: url('symbols/shop/massage.svg');
       marker-fill: @leisure-green;
     }
-    
+
     [shop = 'medical_supply'][zoom >= 18]{
       marker-file: url('symbols/shop/medical_supply.svg');
     }
@@ -1334,15 +1334,15 @@
     [shop = 'ticket'][zoom >= 18] {
       marker-file: url('symbols/shop/ticket.svg');
     }
-   
+
     [shop = 'trade'][zoom >= 18] {
       marker-file: url('symbols/shop/trade.svg');
-    } 
-      
+    }
+
     [shop = 'wholesale'][zoom >= 18] {
       marker-file: url('symbols/shop/trade.svg');
-    } 
-    
+    }
+
     [shop = 'tyres'][zoom >= 18] {
       marker-file: url('symbols/shop/tyres.svg');
     }
@@ -1707,7 +1707,7 @@
     marker-file: url('symbols/barrier/stile.svg');
     marker-fill: #3f3f3f;
     marker-placement: interior;
-    marker-clip: false; 
+    marker-clip: false;
   }
 
   [feature = 'barrier_motorcycle_barrier'][zoom >= 17]::barrier {
@@ -2611,7 +2611,7 @@
     text-placement: interior;
     text-face-name: @standard-font;
   }
-  
+
   [feature = 'tourism_alpine_hut'][zoom >= 14],
   [feature = 'amenity_shelter'][zoom >= 17],
   [feature = 'leisure_picnic_table'][zoom >= 17],
@@ -2855,7 +2855,7 @@
   [feature = 'shop_beverages'],
   [feature = 'shop_bookmaker'],
   [feature = 'shop_books'],
-  [feature = 'shop_carpet'], 
+  [feature = 'shop_carpet'],
   [feature = 'shop_charity'],
   [feature = 'shop_clothes'],
   [feature = 'shop_coffee'],
@@ -3329,7 +3329,7 @@
         text-repeat-distance: @waterway-text-repeat-distance;
         text-dy: 8;
       }
-    } 
+    }
   }
 
   [feature = 'attraction_water_slide'] {
