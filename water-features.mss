@@ -129,9 +129,6 @@
       text-fill: #222;
       text-size: 10;
       text-face-name: @book-fonts;
-      #text-poly {
-        text-placement: interior;
-      }
       #text-line {
         text-placement: line;
         text-dy: 8;
@@ -155,9 +152,6 @@
       text-fill: #222;
       text-size: 10;
       text-face-name: @book-fonts;
-      #text-poly {
-        text-placement: interior;
-      }
       #text-line {
         text-placement: line;
         text-spacing: 400;

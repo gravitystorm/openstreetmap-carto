@@ -2683,7 +2683,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-halo-fill: @standard-halo-fill;
       text-margin: 3; // 0.3 em
       text-wrap-width: 30;
-      text-placement: interior;
       [way_pixels > 250] {
         text-size: 11;
         text-margin: 3.3; // 0.3 em
@@ -3216,7 +3215,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-clip: false;
       text-placement: line;
       text-halo-radius: @standard-halo-radius;
-      [highway = 'living_street'] { 
+      [highway = 'living_street'] {
         text-halo-fill: @living-street-fill;
         text-repeat-distance: @major-highway-text-repeat-distance;
       }
@@ -3242,7 +3241,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     text-name: "[name]";
     text-size: 11;
     text-face-name: @book-fonts;
-    text-placement: interior;
     text-wrap-width: 30; // 2.7 em
     text-line-spacing: -1.7; // -0.15 em
   }
