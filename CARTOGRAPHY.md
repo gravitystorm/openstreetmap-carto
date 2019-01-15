@@ -1,14 +1,14 @@
 
 # Design goals and guidelines for this style
 
-This is an attempt to outline the goals of this style and the principles under 
-which the maintainers make decisions.  These rules are not set in stone, they 
-can change and they may not be followed in all cases but contributors should 
+This is an attempt to outline the goals of this style and the principles under
+which the maintainers make decisions.  These rules are not set in stone, they
+can change and they may not be followed in all cases but contributors should
 be able to expect that they are generally the guiding principles design wise.
 
-It does not make much sense to try following these principles blindly as a 
-contributor without understanding them, they are meant to guide you to develop 
-an intuition and understanding how to make design decisions to fit into the 
+It does not make much sense to try following these principles blindly as a
+contributor without understanding them, they are meant to guide you to develop
+an intuition and understanding how to make design decisions to fit into the
 overall concept of this style.
 
 ## General purpose
@@ -20,15 +20,15 @@ This style has multiple purposes:
 * It's used in many map applications as a general purpose map.
 * It's an exemplar stylesheet for rendering OSM data.
 
-There is no ranking of these purposes.  To allow serving all of them and to 
-avoid satisfying only some at the cost of the others the following main goals 
+There is no ranking of these purposes.  To allow serving all of them and to
+avoid satisfying only some at the cost of the others the following main goals
 have been identified.
 
 ## Main goals
 
-The following goals need to be balanced against each other to serve the purposes 
-above.  There is no fixed order of priorities.  Apart from these goals there are 
-of course also technical constraints and requirements that need to be taken into 
+The following goals need to be balanced against each other to serve the purposes
+above.  There is no fixed order of priorities.  Apart from these goals there are
+of course also technical constraints and requirements that need to be taken into
 account.
 
 * **Legibility and clarity** - The map should be intuitively readable by users with some general experience using maps without a map key, preferrably with relatively little effort.  A map key or more extensive experience using this map style can be required for clearly identifying minor differences or the exact meaning of certain features but in broad strokes orientation and identification of map elements should be possible on an intuitive level.  We also aim for the map appearance to be esthetically pleasing.
