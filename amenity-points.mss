@@ -17,6 +17,7 @@
 @office: #4863A0;
 @man-made-icon: #666666;
 @advertising-grey: @man-made-icon;
+@barrier-icon: #3f3f3f;
 @landform-color: #d08f55;
 @leisure-green: darken(@park, 60%);
 
@@ -1691,49 +1692,49 @@
   [feature = 'barrier_lift_gate'][zoom >= 17]::barrier,
   [feature = 'barrier_swing_gate'][zoom >= 17]::barrier {
     marker-file: url('symbols/barrier/lift_gate.svg');
-    marker-fill: #3f3f3f;
+    marker-fill: @barrier-icon;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'barrier_cattle_grid'][zoom >= 17]::barrier {
     marker-file: url('symbols/barrier/cattle_grid.svg');
-    marker-fill: #3f3f3f;
+    marker-fill: @barrier-icon;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'barrier_stile'][zoom >= 17]::barrier {
     marker-file: url('symbols/barrier/stile.svg');
-    marker-fill: #3f3f3f;
+    marker-fill: @barrier-icon;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'barrier_motorcycle_barrier'][zoom >= 17]::barrier {
     marker-file: url('symbols/barrier/motorcycle_barrier.svg');
-    marker-fill: #3f3f3f;
+    marker-fill: @barrier-icon;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'barrier_cycle_barrier'][zoom >= 17]::barrier {
     marker-file: url('symbols/barrier/cycle_barrier.svg');
-    marker-fill: #3f3f3f;
+    marker-fill: @barrier-icon;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'barrier_full-height_turnstile'][zoom >= 17]::barrier {
     marker-file: url('symbols/barrier/full-height_turnstile.svg');
-    marker-fill: #3f3f3f;
+    marker-fill: @barrier-icon;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'barrier_kissing_gate'][zoom >= 17]::barrier {
     marker-file: url('symbols/barrier/kissing_gate.svg');
-    marker-fill: #3f3f3f;
+    marker-fill: @barrier-icon;
     marker-placement: interior;
     marker-clip: false;
   }
