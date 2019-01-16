@@ -20,6 +20,7 @@
 @barrier-icon: #3f3f3f;
 @landform-color: #d08f55;
 @leisure-green: darken(@park, 60%);
+@religious-icon: #000000;
 
 @landcover-font-size: 10;
 @landcover-wrap-width-size: 30; // 3 em
@@ -741,7 +742,7 @@
 
   [feature = 'amenity_place_of_worship'][zoom >= 16] {
     marker-file: url('symbols/amenity/place_of_worship.svg');
-    marker-fill: #000000;
+    marker-fill: @religious-icon;
     marker-placement: interior;
     marker-clip: false;
     [religion = 'christian'] {
@@ -776,7 +777,7 @@
   [feature = 'man_made_cross'][zoom >= 17],
   [feature = 'historic_wayside_cross'][zoom >= 17] {
     marker-file: url('symbols/man_made/cross.svg');
-    marker-fill: #000000;
+    marker-fill: @religious-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1641,7 +1642,7 @@
   [feature = 'man_made_cross'][zoom >= 16],
   [feature = 'historic_wayside_cross'][zoom >= 16] {
     marker-file: url('symbols/man_made/cross.svg');
-    marker-fill: #000000;
+    marker-fill: @religious-icon;
     marker-placement: interior;
     marker-clip: false;
   }
