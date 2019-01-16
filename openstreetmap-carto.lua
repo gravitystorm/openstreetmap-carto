@@ -204,7 +204,7 @@ local roads_info = {
         cycleway        = {z = 100, roads = false},
         steps           = {z = 90,  roads = false},
         platform        = {z = 90,  roads = false},
-        construction    = {z = 33,  roads = false}
+        construction    = {z = 31,  roads = false}
     },
     construction = {
         motorway        = {z = 38, roads = false},
@@ -212,12 +212,12 @@ local roads_info = {
         primary         = {z = 36, roads = false},
         secondary       = {z = 35, roads = false},
         tertiary        = {z = 34, roads = false},
-        residential     = {z = 33, roads = false},
         unclassified    = {z = 33, roads = false},
-        road            = {z = 33, roads = false},
-        living_street   = {z = 32, roads = false},
-        pedestrian      = {z = 31, roads = false},
-        raceway         = {z = 30, roads = false},
+        residential     = {z = 32, roads = false},
+        road            = {z = 31, roads = false},
+        living_street   = {z = 30, roads = false},
+        pedestrian      = {z = 29, roads = false},
+        raceway         = {z = 28, roads = false},
         motorway_link   = {z = 24, roads = false},
         trunk_link      = {z = 23, roads = false},
         primary_link    = {z = 22, roads = false},
