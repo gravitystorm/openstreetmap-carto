@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.18.0...master)
 <<<<<<< HEAD
 =======
+=======
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.19.0...master)
+
+## [v4.19.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.18.0...v4.19.0) - 2019-01-18
+>>>>>>> upstream/master
 ## Changes
 - Adding rendering for boundary=protected_area (#3509)
 - Nature reserve boundaries revision (#3574) 
@@ -18,8 +24,8 @@
 - Hiding underground parking (#3600)
 - Rendering ref of minor roads more than once (#3627)
 - Adjusting width of highway=construction (#3580)
-- Selecting only motorway_link to tertiary_link as link in SQL (#3567)
-- Adding tertiary-link width, same as other links (#3570)
+- Selecting only motorway_link to tertiary_link as link (#3567)
+- Reducing tertiary-link width (#3570)
 - Changing certain amenity icons to grey (#3586)
 - Converting springs to use ST_PointOnSurface and reformatting SQL (#3233)
 - Adding "religious-icon" as color variable for #000000 (#3642)
