@@ -1,10 +1,15 @@
 // --- Parks, woods, other green things ---
 
+<<<<<<< HEAD
 @grass: #cdebb0;        // Lch(90,32,128) also grassland, meadow, common, village_green, garden, allotments
+=======
+@grass: #cdebb0;        // Lch(90,32,128) also grassland, meadow, common, village_green, garden
+>>>>>>> upstream/master
 @scrub: #c8d7ab;        // Lch(84,24,122)
 @forest: #add19e;       // Lch(80,30,135)
 @forest-text: #46673b;  // Lch(40,30,135)
 @park: #c8facc;         // Lch(94,30,145)
+@allotments: #c9e1bf;   // Lch(87,20,135)
 @orchard: #aedfa3; // also vineyard, plant_nursery
 
 // --- "Base" landuses ---
@@ -94,8 +99,8 @@
 
   [feature = 'leisure_swimming_pool'][zoom >= 14] {
     polygon-fill: @water-color;
-    [zoom >= 17] { 
-      line-width: 0.5; 
+    [zoom >= 17] {
+      line-width: 0.5;
       line-color: saturate(darken(@water-color, 20%), 20%);
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -146,7 +151,7 @@
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-    [zoom >= 14] {
+    [zoom >= 13] {
       polygon-pattern-file: url('symbols/vineyard.png');
       polygon-pattern-alignment: global;
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
@@ -160,7 +165,7 @@
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-    [zoom >= 14] {
+    [zoom >= 13] {
       polygon-pattern-file: url('symbols/orchard.png');
       polygon-pattern-alignment: global;
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
@@ -174,7 +179,7 @@
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-    [zoom >= 14] {
+    [zoom >= 13] {
       polygon-pattern-file: url('symbols/plant_nursery.png');
       polygon-pattern-opacity: 0.6;
       polygon-pattern-alignment: global;
@@ -189,7 +194,7 @@
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-    [zoom >= 14] {
+    [zoom >= 13] {
       polygon-pattern-file: url('symbols/plant_nursery.png');
       polygon-pattern-alignment: global;
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
@@ -204,7 +209,7 @@
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-    [zoom >= 14] {
+    [zoom >= 13] {
       [religion = 'jewish'] { polygon-pattern-file: url('symbols/grave_yard_jewish.svg'); }
       [religion = 'christian'] { polygon-pattern-file: url('symbols/grave_yard_christian.svg'); }
       [religion = 'muslim'] { polygon-pattern-file: url('symbols/grave_yard_muslim.svg'); }
@@ -310,6 +315,13 @@
       polygon-pattern-alignment: global;
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+    }
+    [zoom >= 16] {
+      line-width: 0.5;
+      line-color: desaturate(darken(@allotments, 10%), 10%);
+      [name != null] {
+        line-width: 0.7;
+      }
     }
   }
 
@@ -603,17 +615,19 @@
     }
   }
 
-  [feature = 'amenity_parking'][zoom >= 10],
-  [feature = 'amenity_bicycle_parking'][zoom >= 10],
-  [feature = 'amenity_motorcycle_parking'][zoom >= 10],
-  [feature = 'amenity_taxi'][zoom >= 10] {
-    polygon-fill: @parking;
-    [zoom >= 15] {
-      line-width: 0.3;
-      line-color: @parking-outline;
+  [feature = 'amenity_parking'],
+  [feature = 'amenity_bicycle_parking'],
+  [feature = 'amenity_motorcycle_parking'],
+  [feature = 'amenity_taxi'] {
+    [zoom >= 14] {
+      polygon-fill: @parking;
+      [zoom >= 15] {
+        line-width: 0.3;
+        line-color: @parking-outline;
+      }
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
   [feature = 'amenity_parking_space'][zoom >= 18] {
@@ -721,7 +735,7 @@
     polygon-pattern-file: url('symbols/reef.png');
     polygon-pattern-alignment: global;
   }
-  [zoom >= 14] {
+  [zoom >= 13] {
     [int_wetland = 'marsh'],
     [int_wetland = 'saltmarsh'],
     [int_wetland = 'wet_meadow'] {

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Pattern file for allotments was generated in two steps.
 
 SVG file is generated using JSDotPattern generator (http://www.imagico.de/map/jsdotpattern.php) using these options:
@@ -18,3 +19,8 @@ This generates file allotments.svg
 
 However, since SVG files are not properly handled by Mapnik, the file was converted to png with alpha channel: symbols/allotments.png
 
+=======
+The allotments pattern is based on allotments.svg
+
+However, since SVG patterns is not properly handled by Mapnik at this time, the SVG file was converted to a PNG file with alpha channel, allotments.png
+>>>>>>> upstream/master

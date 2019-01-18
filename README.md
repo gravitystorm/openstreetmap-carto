@@ -13,7 +13,7 @@ are updated from each point release. They supersede the previous [XML-based styl
 
 # Installation
 
-You need a PostGIS database populated with OpenStreetMap data along with auxillary shapefiles. 
+You need a PostGIS database populated with OpenStreetMap data along with auxillary shapefiles.
 See [INSTALL.md](INSTALL.md).
 
 # Contributing
@@ -66,7 +66,7 @@ these often make it easier to customise, experience has shown that over-cleverne
 ## Database schema change (v4.x)
 
 The v4.x series includes [osm2pgsql lua transforms](https://github.com/openstreetmap/osm2pgsql/blob/master/docs/lua.md)
-and a hstore column with all other tags, allowing use of more OpenStreetMap data. Users need 
+and a hstore column with all other tags, allowing use of more OpenStreetMap data. Users need
 to reload their databases, v3.x compatibility is not maintained.
 
 There are over [300 open requests][issues], some that have been open for years.
