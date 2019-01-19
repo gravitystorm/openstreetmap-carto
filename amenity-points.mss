@@ -21,6 +21,7 @@
 @landform-color: #d08f55;
 @leisure-green: darken(@park, 60%);
 @religious-icon: #000000;
+@sport-icon: #46a083;
 
 @landcover-font-size: 10;
 @landcover-wrap-width-size: 30; // 3 em
@@ -214,6 +215,34 @@
   [feature = 'barrier_toll_booth'][zoom >= 16] {
     marker-file: url('symbols/barrier/toll_booth.svg');
     marker-fill: @transportation-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'leisure_pitch'][sport = 'baseball'][zoom >= 18] {
+    marker-file: url('symbols/sport/baseball.svg');
+    marker-fill: @sport-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'leisure_pitch'][sport = 'basketball'][zoom >= 19] {
+    marker-file: url('symbols/sport/basketball.svg');
+    marker-fill: @sport-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'leisure_pitch'][sport = 'soccer'][zoom >= 18] {
+    marker-file: url('symbols/sport/soccer.svg');
+    marker-fill: @sport-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'leisure_pitch'][sport = 'tennis'][zoom >= 19] {
+    marker-file: url('symbols/sport/tennis.svg');
+    marker-fill: @sport-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -2565,10 +2594,17 @@
       [feature = 'leisure_ice_rink'],
       [feature = 'leisure_pitch'] {
         text-fill: darken(@pitch, 40%);
+        [sport = 'baseball'],
+        [sport = 'basketball'],
+        [sport = 'baseball'],
+        [sport = 'soccer'],
+        [sport = 'tennis'] {
+		  text-dy: 10;
+        }
       }
     }
   }
-
+  
   [feature = 'natural_bay'][zoom >= 14],
   [feature = 'natural_spring'][zoom >= 16] {
     text-name: "[name]";
