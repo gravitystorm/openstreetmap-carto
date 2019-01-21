@@ -44,7 +44,8 @@ local linestring_values = {
 -- Objects with any of the following key/value combinations will be treated as polygon
 local polygon_values = {
     highway = {services = true, rest_area = true},
-    junction = {yes = true}
+    junction = {yes = true},
+    boundary = {national_park = true, protected_area= true}
 }
 
 -- The following keys will be deleted
