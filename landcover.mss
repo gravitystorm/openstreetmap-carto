@@ -63,7 +63,7 @@
 
 // --- Sports ---
 
-@pitch: #aae0cb; // also track
+@pitch: #aae0cb;           // Lch(85,22,168) also track
 @track: @pitch;
 @stadium: @leisure; // also sports_centre
 @golf_course: #b5e3b5;
@@ -684,7 +684,7 @@
     polygon-fill: @track;
     [zoom >= 15] {
       line-width: 0.5;
-      line-color: saturate(darken(@track, 30%), 20%);
+      line-color: desaturate(darken(@track, 20%), 10%);
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
@@ -694,7 +694,7 @@
     polygon-fill: @pitch;
     [zoom >= 15] {
       line-width: 0.5;
-      line-color: saturate(darken(@pitch, 30%), 20%);
+      line-color: desaturate(darken(@pitch, 20%), 10%);
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
