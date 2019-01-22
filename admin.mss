@@ -215,7 +215,7 @@ overlapping borders correctly.
   text-spacing: 750;
   text-repeat-distance: 250;
   text-margin: 10;
-  text-clip: true;
+  text-clip: false;
   text-vertical-alignment: middle;
   text-dy: -10;
 }
@@ -231,7 +231,7 @@ overlapping borders correctly.
   text-spacing: 750;
   text-repeat-distance: 250;
   text-margin: 10;
-  text-clip: true;
+  text-clip: false;
   text-vertical-alignment: middle;
   text-dy: -10;
 }
