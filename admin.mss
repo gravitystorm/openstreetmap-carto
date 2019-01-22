@@ -213,7 +213,7 @@ overlapping borders correctly.
   text-largest-bbox-only: false;
   text-placement: line;
   text-spacing: 750;
-  text-repeat-distance: 250;
+  text-repeat-distance: 100;
   text-margin: 10;
   text-clip: false;
   text-vertical-alignment: middle;
@@ -229,7 +229,7 @@ overlapping borders correctly.
   text-largest-bbox-only: false;
   text-placement: line;
   text-spacing: 750;
-  text-repeat-distance: 250;
+  text-repeat-distance: 100;
   text-margin: 10;
   text-clip: false;
   text-vertical-alignment: middle;
