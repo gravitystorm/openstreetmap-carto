@@ -25,6 +25,7 @@
   <defs
      id="defs113" />
   <path
-     id="restaurant"
-     d="M 1.5 0 C 1.25 0 1 0.25 1 0.75 L 1 7 C 1 8 2.75 8 2.75 9 L 2.25 14 L 4.75 14 L 4.25 9 C 4.25 8 6 8 6 7 L 6 0.75 C 6 -0.25 5 -0.25 5 0.75 L 5 6 C 5 6.5632885 4 6.5632884 4 6 L 4 0.75 C 4 -0.25 3 -0.25 3 0.75 L 3 6 C 3 6.5273339 2 6.5273339 2 6 L 2 0.75 C 2 0.25 1.75 0 1.5 0 z M 10 0 C 9 0 7 2 7 5 C 7 8 9.25 9 9.25 9 L 8.75 14 L 11.25 14 L 10.75 9 C 10.75 9 13 8 13 5 C 13 2 11 0 10 0 z " />
+     id="rect128-3"
+     d="M 5 0 L 5 4 L 3 10 L 3 14 L 4 14 L 4 10 L 6 4 L 6 0 L 5 0 z M 8 0 L 8 4 L 10 10 L 10 14 L 11 14 L 11 10 L 9 4 L 9 0 L 8 0 z "
+     style="opacity:1;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.54334497;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
 </svg>
