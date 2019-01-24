@@ -3028,6 +3028,34 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
 
+  [highway = 'track'] {
+    [zoom >= 15] {
+      text-name: "[refs]";
+      text-size: 8;
+      text-dy: 5;
+
+      [zoom >= 16] {
+        text-size: 9;
+        text-dy: 7;
+      }
+      [zoom >= 17] {
+        text-size: 11;
+        text-dy: 9;
+      }
+
+      text-clip: false;
+      text-fill: #222;
+      text-face-name: @book-fonts;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-margin: 10;
+      text-placement: line;
+      text-spacing: 760;
+      text-repeat-distance: @major-highway-text-repeat-distance;
+      text-vertical-alignment: middle;
+    }
+  }
+
   [highway = 'runway'],
   [highway = 'taxiway'] {
     [zoom >= 15] {
