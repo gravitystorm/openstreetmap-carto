@@ -2560,7 +2560,7 @@ Layer:
         (SELECT
             way,
             name,
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+            way_area/NULLIF(.0000000784*POW(!scale_denominator!, 2) ,0) AS way_pixels
           FROM planet_osm_polygon
           WHERE (boundary = 'national_park'
                  OR leisure = 'nature_reserve'
