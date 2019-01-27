@@ -213,9 +213,9 @@ overlapping borders correctly.
   text-largest-bbox-only: false;
   text-placement: line;
   text-spacing: 750;
-  text-repeat-distance: 100;
+  text-repeat-distance: 250;
   text-margin: 10;
-  text-clip: false;
+  text-clip: true;
   text-vertical-alignment: middle;
   text-dy: -10;
 }
@@ -229,9 +229,9 @@ overlapping borders correctly.
   text-largest-bbox-only: false;
   text-placement: line;
   text-spacing: 750;
-  text-repeat-distance: 100;
+  text-repeat-distance: 250;
   text-margin: 10;
-  text-clip: false;
+  text-clip: true;
   text-vertical-alignment: middle;
   text-dy: -10;
 }
