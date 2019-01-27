@@ -260,6 +260,14 @@
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
+  
+  [feature = 'leisure_horse_riding'] {
+    [zoom >= 10] {
+      polygon-fill: @leisure;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+  }
 
   [feature = 'leisure_park'] {
     [zoom >= 10] {

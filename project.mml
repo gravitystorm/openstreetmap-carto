@@ -131,7 +131,7 @@ Layer:
                                                     'brownfield', 'landfill', 'construction', 'plant_nursery', 'religious') THEN landuse ELSE NULL END)) AS landuse,
               ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'recreation_ground', 'common', 'garden',
                                                     'golf_course', 'miniature_golf', 'sports_centre', 'stadium', 'pitch', 'ice_rink',
-                                                    'track', 'dog_park', 'fitness_station') THEN leisure ELSE NULL END)) AS leisure,
+                                                    'track', 'dog_park', 'fitness_station', 'horse_riding') THEN leisure ELSE NULL END)) AS leisure,
               ('man_made_' || (CASE WHEN man_made IN ('works', 'wastewater_plant', 'water_works') THEN man_made ELSE NULL END)) AS man_made,
               ('natural_' || (CASE WHEN "natural" IN ('beach', 'shoal', 'heath', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub') THEN "natural" ELSE NULL END)) AS "natural",
               ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'marsh', 'mud') THEN (CASE WHEN "natural" IN ('marsh', 'mud') THEN "natural" ELSE tags->'wetland' END) ELSE NULL END)) AS wetland,
@@ -1489,7 +1489,7 @@ Layer:
               'office' || CASE WHEN tags->'office' IN ('no', 'vacant', 'closed', 'disused', 'empty') OR (tags->'office') IS NULL THEN NULL ELSE '' END,
               'leisure_' || CASE WHEN leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table',
                                                   'fitness_centre', 'fitness_station', 'firepit', 'sauna', 'beach_resort',
-                                                  'bowling_alley', 'outdoor_seating', 'bird_hide', 'amusement_arcade', 'sports_centre', 'swimming_area', 'fishing')
+                                                  'bowling_alley', 'outdoor_seating', 'bird_hide', 'amusement_arcade', 'sports_centre', 'swimming_area', 'fishing', 'horse_riding')
                                                   THEN leisure ELSE NULL END,
               'man_made_' || CASE WHEN (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'crane', 'storage_tank', 'silo')
                                         AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)) THEN man_made ELSE NULL END,
@@ -1560,7 +1560,7 @@ Layer:
             OR (tags->'office') IS NOT NULL
             OR leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'fitness_centre',
                            'fitness_station', 'firepit', 'sauna', 'beach_resort', 'bowling_alley', 'outdoor_seating', 'bird_hide',
-                           'amusement_arcade', 'sports_centre', 'swimming_area', 'fishing')
+                           'amusement_arcade', 'sports_centre', 'swimming_area', 'fishing', 'horse_riding')
             OR (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'crane', 'storage_tank', 'silo')
                 AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL))
             OR "natural" IN ('spring')
@@ -1632,7 +1632,7 @@ Layer:
               'leisure_' || CASE WHEN leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'slipway',
                                                   'dog_park', 'fitness_centre', 'fitness_station', 'firepit', 'sauna', 'beach_resort',
                                                   'bowling_alley', 'outdoor_seating', 'bird_hide', 'amusement_arcade', 'sports_centre',
-                                                  'swimming_area', 'fishing') THEN leisure ELSE NULL END,
+                                                  'swimming_area', 'fishing', 'horse_riding') THEN leisure ELSE NULL END,
               'man_made_' || CASE WHEN (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'obelisk', 'communications_tower', 'telescope',
                                                      'chimney', 'crane', 'storage_tank', 'silo')
                                         AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)) THEN man_made ELSE NULL END,
@@ -1723,7 +1723,7 @@ Layer:
             OR leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'slipway',
                            'dog_park', 'fitness_centre', 'fitness_station', 'firepit', 'sauna', 'beach_resort',
                            'bowling_alley', 'outdoor_seating', 'bird_hide', 'amusement_arcade', 'sports_centre',
-                           'swimming_area', 'fishing')
+                           'swimming_area', 'fishing', 'horse_riding')
             OR barrier IN ('toll_booth')
             OR (man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'cross', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'crane', 'storage_tank', 'silo')
                 AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL))
@@ -1938,7 +1938,7 @@ Layer:
                 AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
                 AND (covered NOT IN ('yes') OR covered IS NULL))
             OR (place IN ('square')
-                AND (leisure IS NULL OR NOT leisure IN ('park', 'common', 'recreation_ground', 'garden')))
+                AND (leisure IS NULL OR NOT leisure IN ('park', 'common', 'recreation_ground', 'garden', 'horse_riding')))
             AND name IS NOT NULL
           ORDER BY way_area DESC
         ) AS roads_area_text_name
@@ -2131,7 +2131,7 @@ Layer:
               'leisure_' || CASE WHEN leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'fitness_centre', 'sports_centre', 'stadium', 'track',
                                                   'pitch', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina',
                                                   'picnic_table', 'dog_park', 'fitness_station', 'firepit', 'sauna', 'beach_resort', 'bowling_alley',
-                                                  'outdoor_seating', 'bird_hide', 'amusement_arcade', 'swimming_area', 'fishing', 'ice_rink') THEN leisure ELSE NULL END,
+                                                  'outdoor_seating', 'bird_hide', 'amusement_arcade', 'swimming_area', 'fishing', 'ice_rink', 'horse_riding') THEN leisure ELSE NULL END,
               'power_' || CASE WHEN power IN ('plant', 'station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,
               'landuse_' || CASE WHEN landuse IN ('reservoir', 'basin', 'recreation_ground', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery',
                                                   'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farmland',
@@ -2332,7 +2332,7 @@ Layer:
                   'leisure_' || CASE WHEN leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'fitness_centre', 'sports_centre', 'stadium', 'track',
                                                       'pitch','playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina',
                                                       'slipway', 'picnic_table', 'dog_park', 'fitness_station', 'firepit', 'sauna', 'beach_resort', 'bowling_alley',
-                                                      'outdoor_seating', 'bird_hide', 'amusement_arcade', 'swimming_area', 'fishing', 'ice_rink') THEN leisure ELSE NULL END,
+                                                      'outdoor_seating', 'bird_hide', 'amusement_arcade', 'swimming_area', 'fishing', 'ice_rink', 'horse_riding') THEN leisure ELSE NULL END,
                   'power_' || CASE WHEN power IN ('plant', 'station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,
                   'landuse_' || CASE WHEN landuse IN ('reservoir', 'basin', 'recreation_ground', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery',
                                                       'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farmland',

@@ -1408,6 +1408,14 @@
     marker-clip: false;
   }
 
+  [feature = 'leisure_horse_riding'][zoom >= 17] {
+    marker-file: url('symbols/leisure/horse_riding.svg');
+    marker-placement: interior;
+    marker-fill: @leisure-green;
+    marker-clip: false;
+  } 
+  
+
   [feature = 'leisure_playground'][zoom >= 17] {
     marker-file: url('symbols/leisure/playground.svg');
     marker-fill: @leisure-green;
@@ -2258,6 +2266,7 @@
     }
   }
 
+  [feature = 'leisure_horse_riding'],
   [feature = 'leisure_playground'],
   [feature = 'leisure_dog_park'],
   [feature = 'leisure_fitness_centre'],
@@ -2377,6 +2386,7 @@
   [feature = 'natural_marsh'],
   [feature = 'natural_mud'],
   [feature = 'leisure_park'],
+  [feature = 'leisure_horse_riding'],
   [feature = 'leisure_recreation_ground'],
   [feature = 'landuse_recreation_ground'],
   [feature = 'landuse_village_green'],
@@ -2455,6 +2465,7 @@
       [feature = 'natural_mud'] {
         text-fill: @wetland-text;
       }
+      [feature = 'leisure_horse_riding'],
       [feature = 'leisure_park'],
       [feature = 'leisure_recreation_ground'],
       [feature = 'landuse_recreation_ground'],
