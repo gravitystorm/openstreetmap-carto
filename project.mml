@@ -94,7 +94,7 @@ Layer:
                                                     'meadow', 'vineyard', 'orchard') THEN landuse ELSE NULL END)) AS landuse,
               ('natural_' || (CASE WHEN "natural" IN ('wood', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland', 'scrub') THEN "natural" ELSE NULL END)) AS "natural",
               ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'mud') THEN (CASE WHEN "natural" IN ('mud') THEN "natural" ELSE tags->'wetland' END) ELSE NULL END)) AS wetland,
-              way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+              way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
               way_area
             FROM planet_osm_polygon
             WHERE (landuse IN ('forest', 'farmland', 'residential', 'commercial', 'retail', 'industrial', 'meadow', 'vineyard', 'orchard')
@@ -140,7 +140,7 @@ Layer:
               ('highway_' || (CASE WHEN highway IN ('services', 'rest_area') THEN highway ELSE NULL END)) AS highway,
               ('railway_' || (CASE WHEN railway = 'station' THEN railway ELSE NULL END)) AS railway,
               CASE WHEN religion IN ('christian', 'jewish', 'muslim') THEN religion ELSE 'INT-generic'::text END AS religion,
-              way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+              way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
               CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building,
               way_area
             FROM planet_osm_polygon
@@ -232,7 +232,7 @@ Layer:
             waterway,
             landuse,
             name,
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
               OR tags->'basin' IN ('detention', 'infiltration')
@@ -423,7 +423,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             man_made,
             name
           FROM planet_osm_polygon
@@ -553,7 +553,7 @@ Layer:
             way,
             landuse,
             military,
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
           WHERE landuse = 'military'
             OR military = 'danger_area'
@@ -569,7 +569,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             name,
             tourism
           FROM planet_osm_polygon
@@ -1241,7 +1241,7 @@ Layer:
             way,
             name,
             boundary,
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
           WHERE (boundary = 'national_park'
                  OR leisure = 'nature_reserve'
@@ -1278,7 +1278,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             name
           FROM planet_osm_polygon
           WHERE boundary = 'administrative'
@@ -1320,7 +1320,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             name,
             ref
           FROM planet_osm_polygon
@@ -1547,7 +1547,7 @@ Layer:
                                'music', 'medical_supply', 'dairy', 'video_games', 'houseware', 'ticket', 'charity', 'second_hand',
                                'interior_decoration', 'video', 'paint', 'massage', 'trade', 'wholesale') THEN shop
                                ELSE 'other' END AS shop,
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
           WHERE aeroway IN ('helipad', 'aerodrome')
@@ -1839,7 +1839,7 @@ Layer:
             junction,
             ref,
             name,
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
           WHERE junction = 'yes'
           ORDER BY way_pixels DESC NULLS LAST
@@ -1854,7 +1854,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             man_made,
             name
           FROM planet_osm_polygon
@@ -1926,7 +1926,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             highway,
             place,
             leisure,
@@ -2056,7 +2056,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             COALESCE(
               'landuse_' || CASE WHEN landuse IN ('forest', 'military', 'farmland') THEN landuse ELSE NULL END,
               'military_' || CASE WHEN military IN ('danger_area') THEN military ELSE NULL END,
@@ -2096,7 +2096,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             COALESCE(
               'aeroway_' || CASE WHEN aeroway IN ('gate', 'apron', 'helipad', 'aerodrome') THEN aeroway ELSE NULL END,
               'tourism_' || CASE WHEN tourism IN ('artwork', 'alpine_hut', 'hotel', 'motel', 'hostel', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'camp_site', 'caravan_site',
@@ -2448,7 +2448,7 @@ Layer:
         (SELECT
             name,
             way,
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
           WHERE building IS NOT NULL
             AND building NOT IN ('no')
@@ -2481,7 +2481,7 @@ Layer:
             "addr:housenumber" AS addr_housenumber,
             "addr:housename" AS addr_housename,
             tags->'addr:unit' AS addr_unit,
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
           WHERE (("addr:housenumber" IS NOT NULL) OR ("addr:housename" IS NOT NULL) OR ((tags->'addr:unit') IS NOT NULL))
             AND building IS NOT NULL
@@ -2564,7 +2564,7 @@ Layer:
         (SELECT
             way,
             name,
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
           WHERE (boundary = 'national_park'
                  OR leisure = 'nature_reserve'
