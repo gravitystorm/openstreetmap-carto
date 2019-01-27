@@ -2594,17 +2594,13 @@
       [feature = 'leisure_ice_rink'],
       [feature = 'leisure_pitch'] {
         text-fill: darken(@pitch, 40%);
-        [sport = 'baseball'],
-        [sport = 'basketball'],
-        [sport = 'baseball'],
-        [sport = 'soccer'],
-        [sport = 'tennis'] {
+        [sport != null] {
 		  text-dy: 10;
         }
       }
     }
   }
-  
+
   [feature = 'natural_bay'][zoom >= 14],
   [feature = 'natural_spring'][zoom >= 16] {
     text-name: "[name]";
