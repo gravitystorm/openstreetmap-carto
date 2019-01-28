@@ -210,7 +210,11 @@ overlapping borders correctly.
   text-fill: @admin-boundaries;
   text-halo-radius: @standard-halo-radius;
   text-halo-fill: @standard-halo-fill;
+  text-largest-bbox-only: false;
   text-placement: line;
+  text-spacing: 750;
+  text-repeat-distance: 250;
+  text-margin: 10;
   text-clip: true;
   text-vertical-alignment: middle;
   text-dy: -10;
@@ -222,7 +226,11 @@ overlapping borders correctly.
   text-fill: green;
   text-halo-radius: @standard-halo-radius;
   text-halo-fill: @standard-halo-fill;
+  text-largest-bbox-only: false;
   text-placement: line;
+  text-spacing: 750;
+  text-repeat-distance: 250;
+  text-margin: 10;
   text-clip: true;
   text-vertical-alignment: middle;
   text-dy: -10;
