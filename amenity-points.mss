@@ -23,7 +23,6 @@
 @aboriginal: #82643a;
 @religious-icon: #000000;
 
-
 @landcover-font-size: 10;
 @landcover-wrap-width-size: 30; // 3 em
 @landcover-line-spacing-size: -1.5; // -0.15 em
@@ -2314,8 +2313,7 @@
       [feature = 'landuse_military'] {
         text-fill: darken(@military, 40%);
       }
-      [feature = 'boundary_aboriginal_lands'],
-      [feature = 'boundary_protected_area'] {
+      [feature = 'boundary_aboriginal_lands'] {
         text-fill: @aboriginal;
       }
       [feature = 'natural_wood'],

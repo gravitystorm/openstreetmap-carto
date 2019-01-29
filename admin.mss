@@ -225,7 +225,7 @@ overlapping borders correctly.
   text-face-name: @book-fonts;
   text-fill: green;
   [boundary='aboriginal_lands'],
-  [class='24'] {
+  [boundary='protected_area'][protect_class='24'] {
     text-fill: @aboriginal;
   }
   text-halo-radius: @standard-halo-radius;
@@ -247,7 +247,7 @@ overlapping borders correctly.
         opacity: 0.05;
         polygon-fill: green;
         [boundary='aboriginal_lands'],
-        [class='24'] {
+        [boundary='protected_area'][protect_class='24'] {
           polygon-fill: @aboriginal;
         }
       }
@@ -256,7 +256,7 @@ overlapping borders correctly.
         line-width: 1.2;
         line-color: green;
         [boundary='aboriginal_lands'],
-        [class='24'] {
+        [boundary='protected_area'][protect_class='24'] {
           line-color: @aboriginal;
         }
         [zoom >= 9] {
@@ -271,7 +271,7 @@ overlapping borders correctly.
         line-offset: -0.9;
         line-color: green;
         [boundary='aboriginal_lands'],
-        [class='24'] {
+        [boundary='protected_area'][protect_class='24'] {
           line-color: @aboriginal;
         }
         line-join: round;
@@ -290,7 +290,7 @@ overlapping borders correctly.
         line-width: 1.8;
         line-color: green;
         [boundary='aboriginal_lands'],
-        [class='24'] {
+        [boundary='protected_area'][protect_class='24'] {
           line-color: @aboriginal;
         }
         line-join: round;
