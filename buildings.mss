@@ -4,6 +4,7 @@
 
 @building-major-fill: darken(@building-fill, 10%);  // Lch(75, 8, 67)
 @building-major-line: darken(@building-major-fill, 15%);  // Lch(61, 13, 65)
+@building-major-low-zoom: darken(@building-major-fill, 5%);  // Lch(70, 9, 66)
 
 @entrance-permissive: darken(@building-line, 15%);
 @entrance-normal: @building-line;
@@ -12,7 +13,6 @@
   [zoom >= 14] {
     polygon-fill: @building-low-zoom;
     polygon-clip: false;
-    line-width: 0;
     [zoom >= 15] {
       polygon-fill: @building-fill;
       line-color: @building-line;
@@ -24,8 +24,11 @@
     [aerialway = 'station'],
     [building = 'train_station'],
     [public_transport = 'station'] {
-      polygon-fill: @building-major-fill;
-      line-color: @building-major-line;
+      polygon-fill: @building-major-low-zoom;
+      [zoom >= 15] {
+        polygon-fill: @building-major-fill;
+        line-color: @building-major-line;
+      }
     }
   }
 }
