@@ -7,6 +7,10 @@
 @building-major-z15: darken(@building-major-fill, 5%);  // Lch(70, 9, 66)
 @building-major-z14: darken(@building-major-fill, 10%);  // Lch(66, 11, 65)
 
+@building-minor-fill: lighten(@building-fill, 2%);
+@building-minor-line: lighten(@building-line, 10%);
+@building-minor-low-zoom: @building-fill;
+
 @entrance-permissive: darken(@building-line, 15%);
 @entrance-normal: @building-line;
 
@@ -32,6 +36,27 @@
         [zoom >= 16] {
           polygon-fill: @building-major-fill;
         }
+      }
+    }
+    [building = 'barn'],
+    [building = 'carport'],
+    [building = 'cowshed'],
+    [building = 'construction'],
+    [building = 'farm_auxiliary'],
+    [building = 'garage'],
+    [building = 'garages'],
+    [building = 'ger'],
+    [building = 'greenhouse'],
+    [building = 'hut'],
+    [building = 'roof'],
+    [building = 'service'],
+    [building = 'shed'],
+    [building = 'slurry_tank'],
+    [building = 'stable'] {
+      polygon-fill: @building-minor-low-zoom;
+      [zoom >= 15] {
+        polygon-fill: @building-minor-fill;
+        line-color: @building-minor-line;
       }
     }
   }
