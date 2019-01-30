@@ -3003,7 +3003,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
   }
+}
 
+#roads-text-ref-minor {
   [highway = 'unclassified'],
   [highway = 'residential'] {
     [zoom >= 15] {
