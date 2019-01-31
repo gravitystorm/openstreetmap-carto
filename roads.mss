@@ -3023,7 +3023,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-face-name: @book-fonts;
       text-placement: line;
       text-repeat-distance: @major-highway-text-repeat-distance;
-      text-halo-radius: 2;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-spacing: 760;
       text-clip: false;
