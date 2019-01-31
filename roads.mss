@@ -3015,8 +3015,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 16] {
         text-size: 9;
       }
-      [zoom >= 18] {
-        text-size: 10;
+      [zoom >= 17] {
+        text-size: 11;
       }
 
       text-fill: #000;
