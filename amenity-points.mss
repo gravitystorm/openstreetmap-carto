@@ -17,8 +17,11 @@
 @office: #4863A0;
 @man-made-icon: #666666;
 @advertising-grey: @man-made-icon;
+@barrier-icon: #3f3f3f;
 @landform-color: #d08f55;
 @leisure-green: darken(@park, 60%);
+@aboriginal: #82643a;
+@religious-icon: #000000;
 
 @landcover-font-size: 10;
 @landcover-wrap-width-size: 30; // 3 em
@@ -187,7 +190,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_vending_machine'] {
+  [feature = 'amenity_vending_machine'][zoom >= 19] {
     [vending = 'excrement_bags'] {
       marker-file: url('symbols/amenity/excrement_bags.svg');
     }
@@ -409,7 +412,7 @@
     marker-file: url('symbols/tourism/information.svg');
     [information = 'audioguide'] {
       marker-file: url('symbols/tourism/audioguide.svg');
-    }    
+    }
     [information = 'board'] {
       marker-file: url('symbols/tourism/board.svg');
     }
@@ -487,9 +490,10 @@
 
   [feature = 'man_made_mast']["tower:type" != 'lighting'],
   [feature = 'man_made_mast']["tower:type" = 'lighting'][zoom >= 18]   {
-    [zoom >= 15][height > 80],
-    [zoom >= 16][height > 40],
-    [zoom >= 17][height > 20],
+    [zoom >= 14][height >= 160],
+    [zoom >= 15][height >= 80],
+    [zoom >= 16][height >= 40],
+    [zoom >= 17][height >= 20],
     [zoom >= 18] {
       marker-file: url('symbols/man_made/mast.svg');
       marker-fill: @man-made-icon;
@@ -497,7 +501,7 @@
       marker-clip: false;
       ["tower:type" = 'lighting'] {
         marker-file: url('symbols/man_made/mast_lighting.svg');
-      }      
+      }
       ["tower:type" = 'communication'] {
         marker-file: url('symbols/man_made/mast_communications.svg');
       }
@@ -509,9 +513,9 @@
   [feature = 'man_made_tower']["tower:type" = 'bell_tower'][zoom >= 18],
   [feature = 'man_made_tower']["tower:type" = 'watchtower'][zoom >= 18],
   [feature = 'man_made_tower']["tower:type" != 'cooling']["tower:type" != 'lighting']["tower:type" != 'bell_tower']["tower:type" != 'watchtower'] {
-    [zoom >= 13][height > 100],
-    [zoom >= 14][height > 50],
-    [zoom >= 15][height > 30],
+    [zoom >= 14][height >= 160],
+    [zoom >= 15][height >= 80],
+    [zoom >= 16][height >= 40],
     [zoom >= 17] {
       marker-file: url('symbols/man_made/tower_generic.svg');
       marker-fill: @man-made-icon;
@@ -522,7 +526,7 @@
       }
       ["tower:type" = 'observation'],
       ["tower:type" = 'watchtower'] {
-        marker-file: url('symbols/man_made/tower_observation.svg');  
+        marker-file: url('symbols/man_made/tower_observation.svg');
       }
       ["tower:type" = 'bell_tower'] {
         marker-file: url('symbols/man_made/bell_tower.svg');
@@ -556,17 +560,17 @@
         ["tower:construction" = 'lattice'] {
           marker-file: url('symbols/man_made/tower_lattice_lighting.svg');
         }
-      }   
+      }
     }
   }
 
-  [feature = 'man_made_communications_tower'][zoom >= 13] {
+  [feature = 'man_made_communications_tower'][zoom >= 14] {
     marker-file: url('symbols/man_made/communications_tower.svg');
     marker-fill: @man-made-icon;
     marker-placement: interior;
     marker-clip: false;
   }
-  
+
   [feature = 'man_made_chimney'] {
     [zoom >= 16][height > 50],
     [zoom >= 17][height > 30],
@@ -589,27 +593,26 @@
   }
 
   [feature = 'man_made_telescope']["telescope:type" != 'optical']["telescope:type" != null] {
-  [zoom >= 13]["telescope:diameter" >= 60],
-  [zoom >= 14]["telescope:diameter" >= 30],
-  [zoom >= 15]["telescope:diameter" >= 15],
-  [zoom >= 16] {
-    marker-file: url('symbols/man_made/telescope_dish.svg');
-    marker-fill: @man-made-icon;
-    marker-placement: interior;
-    marker-clip: false;
+    [zoom >= 14]["telescope:diameter" >= 60],
+    [zoom >= 15]["telescope:diameter" >= 30],
+    [zoom >= 16] {
+      marker-file: url('symbols/man_made/telescope_dish.svg');
+      marker-fill: @man-made-icon;
+      marker-placement: interior;
+      marker-clip: false;
     }
   }
 
-[feature = 'man_made_telescope']["telescope:type" = 'optical'],
-[feature = 'man_made_telescope']["telescope:type" = null], {
-  [zoom >= 14]["telescope:diameter" >= 8],
-  [zoom >= 15]["telescope:diameter" >= 4],
-  [zoom >= 16]["telescope:diameter" >= 2],
-  [zoom >= 17] {
-    marker-file: url('symbols/man_made/telescope_dome.svg');
-    marker-fill: @man-made-icon;
-    marker-placement: interior;
-    marker-clip: false;
+  [feature = 'man_made_telescope']["telescope:type" = 'optical'],
+  [feature = 'man_made_telescope']["telescope:type" = null], {
+    [zoom >= 14]["telescope:diameter" >= 8],
+    [zoom >= 15]["telescope:diameter" >= 4],
+    [zoom >= 16]["telescope:diameter" >= 2],
+    [zoom >= 17] {
+      marker-file: url('symbols/man_made/telescope_dome.svg');
+      marker-fill: @man-made-icon;
+      marker-placement: interior;
+      marker-clip: false;
     }
   }
 
@@ -740,7 +743,7 @@
 
   [feature = 'amenity_place_of_worship'][zoom >= 16] {
     marker-file: url('symbols/amenity/place_of_worship.svg');
-    marker-fill: #000000;
+    marker-fill: @religious-icon;
     marker-placement: interior;
     marker-clip: false;
     [religion = 'christian'] {
@@ -775,7 +778,7 @@
   [feature = 'man_made_cross'][zoom >= 17],
   [feature = 'historic_wayside_cross'][zoom >= 17] {
     marker-file: url('symbols/man_made/cross.svg');
-    marker-fill: #000000;
+    marker-fill: @religious-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -787,7 +790,7 @@
     marker-placement: interior;
     marker-clip: false;
   }
-  
+
   [feature = 'historic_wayside_shrine'][zoom >= 17] {
     marker-file: url('symbols/historic/shrine.svg');
     marker-fill: @man-made-icon;
@@ -1069,7 +1072,7 @@
     [shop = 'bookmaker'][zoom >= 18] {
       marker-file: url('symbols/shop/bookmaker.svg');
     }
-    
+
     [shop = 'books'][zoom >= 18] {
       marker-file: url('symbols/amenity/library.svg');
     }
@@ -1183,7 +1186,7 @@
     [shop = 'hifi'][zoom >= 18] {
       marker-file: url('symbols/shop/hifi.svg');
     }
-    
+
     [shop = 'houseware'][zoom >= 18] {
       marker-file: url('symbols/shop/houseware.svg');
     }
@@ -1268,7 +1271,7 @@
       marker-file: url('symbols/shop/massage.svg');
       marker-fill: @leisure-green;
     }
-    
+
     [shop = 'medical_supply'][zoom >= 18]{
       marker-file: url('symbols/shop/medical_supply.svg');
     }
@@ -1334,15 +1337,15 @@
     [shop = 'ticket'][zoom >= 18] {
       marker-file: url('symbols/shop/ticket.svg');
     }
-   
+
     [shop = 'trade'][zoom >= 18] {
       marker-file: url('symbols/shop/trade.svg');
-    } 
-      
+    }
+
     [shop = 'wholesale'][zoom >= 18] {
       marker-file: url('symbols/shop/trade.svg');
-    } 
-    
+    }
+
     [shop = 'tyres'][zoom >= 18] {
       marker-file: url('symbols/shop/tyres.svg');
     }
@@ -1640,7 +1643,7 @@
   [feature = 'man_made_cross'][zoom >= 16],
   [feature = 'historic_wayside_cross'][zoom >= 16] {
     marker-file: url('symbols/man_made/cross.svg');
-    marker-fill: #000000;
+    marker-fill: @religious-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1691,49 +1694,49 @@
   [feature = 'barrier_lift_gate'][zoom >= 17]::barrier,
   [feature = 'barrier_swing_gate'][zoom >= 17]::barrier {
     marker-file: url('symbols/barrier/lift_gate.svg');
-    marker-fill: #3f3f3f;
+    marker-fill: @barrier-icon;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'barrier_cattle_grid'][zoom >= 17]::barrier {
     marker-file: url('symbols/barrier/cattle_grid.svg');
-    marker-fill: #3f3f3f;
+    marker-fill: @barrier-icon;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'barrier_stile'][zoom >= 17]::barrier {
     marker-file: url('symbols/barrier/stile.svg');
-    marker-fill: #3f3f3f;
+    marker-fill: @barrier-icon;
     marker-placement: interior;
-    marker-clip: false; 
+    marker-clip: false;
   }
 
   [feature = 'barrier_motorcycle_barrier'][zoom >= 17]::barrier {
     marker-file: url('symbols/barrier/motorcycle_barrier.svg');
-    marker-fill: #3f3f3f;
+    marker-fill: @barrier-icon;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'barrier_cycle_barrier'][zoom >= 17]::barrier {
     marker-file: url('symbols/barrier/cycle_barrier.svg');
-    marker-fill: #3f3f3f;
+    marker-fill: @barrier-icon;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'barrier_full-height_turnstile'][zoom >= 17]::barrier {
     marker-file: url('symbols/barrier/full-height_turnstile.svg');
-    marker-fill: #3f3f3f;
+    marker-fill: @barrier-icon;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'barrier_kissing_gate'][zoom >= 17]::barrier {
     marker-file: url('symbols/barrier/kissing_gate.svg');
-    marker-fill: #3f3f3f;
+    marker-fill: @barrier-icon;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -2285,6 +2288,7 @@
   [feature = 'landuse_forest'],
   [feature = 'boundary_national_park'],
   [feature = 'leisure_nature_reserve'],
+  [feature = 'boundary_aboriginal_lands'],
   [feature = 'boundary_protected_area'] {
     [zoom >= 8][way_pixels > 3000][is_building = 'no'],
     [zoom >= 17] {
@@ -2308,6 +2312,9 @@
       text-placement: interior;
       [feature = 'landuse_military'] {
         text-fill: darken(@military, 40%);
+      }
+      [feature = 'boundary_aboriginal_lands'] {
+        text-fill: @aboriginal;
       }
       [feature = 'natural_wood'],
       [feature = 'landuse_forest'] {
@@ -2479,9 +2486,11 @@
       }
       [feature = 'landuse_meadow'],
       [feature = 'natural_grassland'],
-      [feature = 'landuse_grass'],
-      [feature = 'landuse_allotments'] {
+      [feature = 'landuse_grass'] {
         text-fill: darken(@grass, 50%);
+      }
+      [feature = 'landuse_allotments'] {
+        text-fill: darken(@allotments, 50%);
       }
       [feature = 'landuse_farmyard'] {
         text-fill: darken(@farmyard, 50%);
@@ -2609,7 +2618,7 @@
     text-placement: interior;
     text-face-name: @standard-font;
   }
-  
+
   [feature = 'tourism_alpine_hut'][zoom >= 14],
   [feature = 'amenity_shelter'][zoom >= 17],
   [feature = 'leisure_picnic_table'][zoom >= 17],
@@ -2853,7 +2862,7 @@
   [feature = 'shop_beverages'],
   [feature = 'shop_bookmaker'],
   [feature = 'shop_books'],
-  [feature = 'shop_carpet'], 
+  [feature = 'shop_carpet'],
   [feature = 'shop_charity'],
   [feature = 'shop_clothes'],
   [feature = 'shop_coffee'],
@@ -3056,7 +3065,7 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: #aa66cc;
+    text-fill: black;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
@@ -3327,7 +3336,7 @@
         text-repeat-distance: @waterway-text-repeat-distance;
         text-dy: 8;
       }
-    } 
+    }
   }
 
   [feature = 'attraction_water_slide'] {

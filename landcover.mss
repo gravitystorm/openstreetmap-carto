@@ -1,10 +1,11 @@
 // --- Parks, woods, other green things ---
 
-@grass: #cdebb0;        // Lch(90,32,128) also grassland, meadow, common, village_green, garden, allotments
+@grass: #cdebb0;        // Lch(90,32,128) also grassland, meadow, common, village_green, garden
 @scrub: #c8d7ab;        // Lch(84,24,122)
 @forest: #add19e;       // Lch(80,30,135)
 @forest-text: #46673b;  // Lch(40,30,135)
 @park: #c8facc;         // Lch(94,30,145)
+@allotments: #c9e1bf;   // Lch(87,20,135)
 @orchard: #aedfa3; // also vineyard, plant_nursery
 
 // --- "Base" landuses ---
@@ -94,8 +95,8 @@
 
   [feature = 'leisure_swimming_pool'][zoom >= 14] {
     polygon-fill: @water-color;
-    [zoom >= 17] { 
-      line-width: 0.5; 
+    [zoom >= 17] {
+      line-width: 0.5;
       line-color: saturate(darken(@water-color, 20%), 20%);
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -301,7 +302,7 @@
 
   [feature = 'landuse_allotments'] {
     [zoom >= 10] {
-      polygon-fill: @grass;
+      polygon-fill: @allotments;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
@@ -310,6 +311,13 @@
       polygon-pattern-alignment: global;
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+    }
+    [zoom >= 16] {
+      line-width: 0.5;
+      line-color: desaturate(darken(@allotments, 10%), 10%);
+      [name != null] {
+        line-width: 0.7;
+      }
     }
   }
 
