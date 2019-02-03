@@ -1,6 +1,6 @@
 @placenames: #222;
 @placenames-light: #777777;
-@country-labels: darken(@admin-boundaries, 15%);
+@country-labels: darken(@admin-boundaries-level2, 15%);
 @state-labels: desaturate(darken(@admin-boundaries-level4, 5%), 20%);
 
 .country {

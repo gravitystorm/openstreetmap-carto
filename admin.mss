@@ -1,4 +1,4 @@
-@admin-boundaries: #6b516b;
+@admin-boundaries-level2: #6b516b;
 @admin-boundaries-level3: #764f76;
 @admin-boundaries-level4: #814d81;
 @admin-boundaries-level5: #8c4c8c;
@@ -26,7 +26,7 @@ overlapping borders correctly.
       background/line-simplify: @admin-simplify;
       background/line-simplify-algorithm: @admin-simplify-algorithm;
       line-join: bevel;
-      line-color: @admin-boundaries;
+      line-color: @admin-boundaries-level2;
       line-width: 1.2;
       line-simplify: @admin-simplify;
       line-simplify-algorithm: @admin-simplify-algorithm;
