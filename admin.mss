@@ -1,4 +1,4 @@
-@admin-boundaries: #6b516b;
+@admin-boundaries-level2: #6b516b;
 @admin-boundaries-level3: #764f76;
 @admin-boundaries-level4: #814d81;
 @admin-boundaries-level5: #8c4c8c;
@@ -213,7 +213,7 @@ overlapping borders correctly.
 #admin-text[zoom >= 16] {
   text-name: "[name]";
   text-face-name: @book-fonts;
-  text-fill: @admin-boundaries;
+  text-fill: @admin-boundaries-level5;
   text-halo-radius: @standard-halo-radius;
   text-halo-fill: @standard-halo-fill;
   text-largest-bbox-only: false;
