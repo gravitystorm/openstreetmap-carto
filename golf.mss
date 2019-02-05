@@ -3,6 +3,8 @@
 Coloring specific to golf and golf courses.
 derived from https://raw.githubusercontent.com/imagico/osm-carto-alternative-colors/master/golf.mss
 
+Inspired by the French rendering style and @cquest
+
 */
 
 /* Pinning most grass/plant features relative to grass (natural) and pitch (sporting) */
