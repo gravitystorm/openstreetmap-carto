@@ -241,7 +241,7 @@ overlapping borders correctly.
 }
 
 #protected-areas {
-  [way_pixels > 3000] {
+  [way_pixels > 750] {
     [zoom >= 8][zoom < 10] {
       ::fill {
         opacity: 0.05;
