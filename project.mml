@@ -229,6 +229,7 @@ Layer:
             way,
             "natural",
             waterway,
+            water,
             landuse,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             CASE WHEN tags->'intermittent' IN ('yes')
