@@ -53,6 +53,7 @@ Stylesheet:
   - aerialways.mss
   - admin.mss
   - addressing.mss
+  - golf.mss
 Layer:
   - id: world
     geometry: polygon
@@ -70,6 +71,32 @@ Layer:
       type: shape
     properties:
       minzoom: 10
+  - id: golf-lines
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way, geo, golf, ref, name
+          FROM
+            (SELECT
+                way, tags->'golf' AS golf, name, ref, 0 AS prio, 'polygon' AS geo
+              FROM planet_osm_polygon
+              WHERE (tags->'golf') IS NOT NULL AND way && !bbox!
+            UNION ALL
+            SELECT
+                p.way, p.tags->'golf' AS golf, p.name, coalesce(p.ref,l.ref) AS ref, 0 AS prio, 'point' AS geo
+              FROM planet_osm_point p LEFT JOIN planet_osm_line l ON (ST_Intersects(p.way, l.way) AND (l.tags->'golf') IS NOT NULL)
+              WHERE p.tags ? 'golf' AND p.way && !bbox!
+            UNION ALL
+            SELECT
+                way, tags->'golf' AS golf, name, ref, 1 AS prio, 'line' AS geo
+              FROM planet_osm_line WHERE (tags->'golf') IS NOT NULL AND way && !bbox!
+            ) AS golf
+          ORDER BY prio
+        ) AS golf_lines
+    properties:
+      minzoom: 16
   - id: necountries
     geometry: linestring
     <<: *extents84
@@ -114,11 +141,19 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, name, religion, way_pixels, is_building,
-            COALESCE(aeroway, amenity, wetland, power, landuse, leisure, man_made, "natural", tourism, highway, railway) AS feature
+            way,
+            name,
+            religion,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+            is_building,
+            feature
           FROM (SELECT
+              way, name, religion, way_area, is_building, layer, prio,
+              COALESCE(aeroway, golf, amenity, wetland, power, landuse, leisure, man_made, "natural", tourism, highway, railway) AS feature
+            FROM (SELECT
               way, COALESCE(name, '') AS name,
               ('aeroway_' || (CASE WHEN aeroway IN ('apron', 'aerodrome') THEN aeroway ELSE NULL END)) AS aeroway,
+              ('golf_' || (CASE WHEN (tags->'golf') IN ('rough', 'fairway', 'driving_range', 'water_hazard', 'lateral_water_hazard', 'green', 'bunker', 'tee') THEN tags->'golf' ELSE NULL END)) AS golf,
               ('amenity_' || (CASE WHEN amenity IN ('bicycle_parking', 'motorcycle_parking', 'university', 'college', 'school', 'taxi',
                                                     'hospital', 'kindergarten', 'grave_yard', 'prison', 'place_of_worship', 'clinic', 'ferry_terminal',
                                                     'marketplace', 'community_centre', 'social_facility', 'arts_centre', 'parking_space', 'bus_station',
@@ -142,10 +177,11 @@ Layer:
               CASE WHEN religion IN ('christian', 'jewish', 'muslim') THEN religion ELSE 'INT-generic'::text END AS religion,
               way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
               CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building,
-              way_area
+              way_area, layer, 0 AS prio
             FROM planet_osm_polygon
             WHERE (landuse IS NOT NULL
               OR leisure IS NOT NULL
+              OR (tags->'golf') IS NOT NULL
               OR aeroway IN ('apron', 'aerodrome')
               OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'taxi', 'university', 'college', 'school', 'hospital', 'kindergarten',
                              'grave_yard', 'place_of_worship', 'prison', 'clinic', 'ferry_terminal', 'marketplace', 'community_centre', 'social_facility',
@@ -159,7 +195,16 @@ Layer:
               OR railway = 'station')
               AND way_area > 1*!pixel_width!::real*!pixel_height!::real
           ) AS landcover
-          ORDER BY way_area DESC, feature
+          UNION ALL -- this is only needed because closed ways with a golf0* tag are by default not treated as polygons
+          SELECT
+              way, COALESCE(name, '') AS name,
+              'INT-generic'::text AS religion, 0 AS way_area, 'no' AS is_building, layer,
+              (CASE WHEN (tags->'golf') = 'rough' THEN 1 WHEN (tags->'golf') = 'fairway' THEN 10 WHEN (tags->'golf') = 'driving_range' THEN 10 WHEN (tags->'golf') = 'green' THEN 20 WHEN (tags->'golf') = 'bunker' THEN 30 ELSE 40 END) AS prio,
+              ('golf_' || (CASE WHEN (tags->'golf') IN ('rough', 'fairway', 'driving_range', 'water_hazard', 'lateral_water_hazard', 'green', 'bunker', 'tee') THEN tags->'golf' ELSE NULL END)) AS feature
+            FROM planet_osm_line
+            WHERE (tags->'golf') IS NOT NULL
+        ) AS landcover_all
+        ORDER BY COALESCE(layer,0), prio, way_area DESC
         ) AS features
     properties:
       minzoom: 10
