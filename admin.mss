@@ -1,4 +1,9 @@
+@admin-boundaries-low-zoom: #6b516b;
+@admin-boundaries-z6: #814d81;
+@admin-boundaries-z7: #964a96;
 @admin-boundaries: #ac46ac;
+
+@admin-boundaries-text: #a148a1;
 
 @admin-simplify: 4;
 @admin-simplify-algorithm: visvalingam-whyatt;
@@ -20,10 +25,10 @@ overlapping borders correctly.
       background/line-simplify: @admin-simplify;
       background/line-simplify-algorithm: @admin-simplify-algorithm;
       line-join: bevel;
-      line-color: @admin-boundaries-level2;
-      line-width: 1.2;
+      line-color: @admin-boundaries-low-zoom;
       line-simplify: @admin-simplify;
       line-simplify-algorithm: @admin-simplify-algorithm;
+      line-width: 1.2;
     }
     [zoom >= 5] {
       background/line-width: 1.5;
@@ -31,19 +36,22 @@ overlapping borders correctly.
     }
     [zoom >= 6] {
       background/line-width: 1.8;
+      line-color: @admin-boundaries-z6;
       line-width: 1.8;
     }
     [zoom >= 7] {
       background/line-width: 2;
+      line-color: @admin-boundaries-z7;
       line-width: 2;
     }
     [zoom >= 8] {
-      background/line-width: 3;
-      line-width: 3;
+      background/line-width: 2.6;
+      line-color: @admin-boundaries;
+      line-width: 2.6;
     }
     [zoom >= 9] {
-      background/line-width: 3.2;
-      line-width: 3.2;
+      background/line-width: 4;
+      line-width: 4;
     }
     [zoom >= 10] {
       background/line-width: 6;
@@ -59,14 +67,33 @@ overlapping borders correctly.
       background/line-simplify: @admin-simplify;
       background/line-simplify-algorithm: @admin-simplify-algorithm;
       line-join: bevel;
-      line-color: @admin-boundaries;
-      line-width: 0.6;
+      line-color: @admin-boundaries-low-zoom;
       line-simplify: @admin-simplify;
       line-simplify-algorithm: @admin-simplify-algorithm;
+      line-width: 0.6;
+    }
+    [zoom >= 5] {
+      background/line-width: 0.8;
+      line-width: 0.8;
+    }
+    [zoom >= 6] {
+      background/line-width: 1.0;
+      line-color: @admin-boundaries-z6;
+      line-width: 1.0;
     }
     [zoom >= 7] {
       background/line-width: 1.2;
+      line-color: @admin-boundaries-z7;
       line-width: 1.2;
+    }
+    [zoom >= 8] {
+      background/line-width: 1.5;
+      line-color: @admin-boundaries;
+      line-width: 1.5;
+    }
+    [zoom >= 9] {
+      background/line-width: 2.5;
+      line-width: 2.5;
     }
     [zoom >= 10] {
       background/line-width: 4;
@@ -83,25 +110,32 @@ overlapping borders correctly.
       background/line-width: 0.4;
       background/line-simplify: @admin-simplify;
       background/line-simplify-algorithm: @admin-simplify-algorithm;
-      line-color: @admin-boundaries;
+      line-color: @admin-boundaries-low-zoom;
       line-join: bevel;
       line-width: 0.4;
       line-simplify: @admin-simplify;
       line-simplify-algorithm: @admin-simplify-algorithm;
+      line-dasharray: 4,3;
       line-clip: false;
     }
     [zoom >= 5] {
-      background/line-width: 0.5;
-      line-width: 0.5;
-    }
-    [zoom >= 6] {
       background/line-width: 0.6;
       line-width: 0.6;
     }
+    [zoom >= 6] {
+      background/line-width: 0.8;
+      line-color: @admin-boundaries-z6;
+      line-width: 0.8;
+    }
     [zoom >= 7] {
       background/line-width: 1;
-      line-dasharray: 4,3;
+      line-color: @admin-boundaries-z7;
       line-width: 1;
+    }
+    [zoom >= 8] {
+      background/line-width: 1.4;
+      line-color: @admin-boundaries;
+      line-width: 1.4;
     }
     [zoom >= 9] {
       background/line-width: 1.8;
@@ -110,6 +144,10 @@ overlapping borders correctly.
     [zoom >= 10] {
       background/line-width: 2.5;
       line-width: 2.5;
+    }
+    [zoom >= 11] {
+      background/line-width: 2.75;
+      line-width: 2.75;
     }
     [zoom >= 12] {
       background/line-width: 3;

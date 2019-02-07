@@ -7,7 +7,7 @@
     [zoom >= 3] {
       line-width: 0.4;
     }
-    line-color: @admin-boundaries-level2;
+    line-color: @admin-boundaries-low-zoom;
   }
 }
 
