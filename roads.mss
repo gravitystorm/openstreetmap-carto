@@ -291,8 +291,8 @@
 @footway-oneway-arrow-color:      darken(@footway-fill, 35%);
 @steps-oneway-arrow-color:        darken(@steps-fill, 35%);
 @cycleway-oneway-arrow-color:     darken(@cycleway-fill, 25%);
-@track-oneway-arrow-color:        darken(@track-fill, 15%);
-@bridleway-oneway-arrow-color:    darken(@track-fill, 10%);
+@track-oneway-arrow-color:        darken(@track-fill, 10%);
+@bridleway-oneway-arrow-color:    darken(@bridleway-fill, 15%);
 
 // Shield’s line wrap is based on OpenStreetMap data and not on line-wrap-width,
 // but lines are typically rather short, so we use narrow line spacing.
@@ -3355,19 +3355,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [highway = 'road'],
     [highway = 'service'],
     [highway = 'pedestrian'],
-    [highway = 'raceway'],
-    [highway = 'cycleway'],
-    [highway = 'footway'],
-    [highway = 'path'],
-    [highway = 'steps'],
-    [highway = 'track'],
-    [highway = 'bridleway'] {
+    [highway = 'raceway'] {
       [oneway = 'yes'],
       [oneway = '-1'] {
         marker-placement: line;
         marker-spacing: 180;
         marker-max-error: 0.5;
-
         marker-file: url('symbols/oneway.svg');
         [oneway = '-1'] {
           marker-file: url('symbols/oneway-reverse.svg');
@@ -3408,32 +3401,62 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         [highway = 'raceway'] {
           marker-fill: @raceway-oneway-arrow-color;
         }
-        [highway = 'footway'],
+      }
+    }
+
+    [highway = 'steps'],
+    [highway = 'cycleway'],
+    [highway = 'footway'],
+    [highway = 'path'],
+    [highway = 'track'],
+    [highway = 'bridleway'] {
+      [oneway = 'yes'],
+      [oneway = '-1'] {
+        text-name: "'🠖'";
+        text-size: 15;
+        text-clip: false;
+        text-spacing: 180;
+        text-placement: line;
+        text-halo-fill: @standard-halo-fill;
+        text-halo-radius: 1.5;
+        text-margin: 2;
+        text-dy: 3;
+        text-upright: right;
+        text-vertical-alignment: middle;
+        text-face-name: @book-fonts;
+        [oneway = '-1'] {
+          text-upright: left;
+          text-dy: -3;
+        }
+        [highway = 'footway'] {
+          text-fill: @footway-oneway-arrow-color;
+        }
         [highway = 'path'] {
-          marker-fill: @footway-oneway-arrow-color;
+          text-fill: @footway-oneway-arrow-color;
           [horse = 'designated'] {
-            marker-fill: @bridleway-oneway-arrow-color;
+            text-fill: @bridleway-oneway-arrow-color;
           }
           [bicycle = 'designated'] {
-            marker-fill: @cycleway-oneway-arrow-color;
+            text-fill: @cycleway-oneway-arrow-color;
           }
         }
         [highway = 'steps'] {
-          marker-fill: @steps-oneway-arrow-color;
+          text-fill: @steps-oneway-arrow-color;
         }
         [highway = 'cycleway'] {
-          marker-fill: @cycleway-oneway-arrow-color;
+          text-fill: @cycleway-oneway-arrow-color;
         }
         [highway = 'track'] {
-          marker-fill: @track-oneway-arrow-color;
+          text-fill: @track-oneway-arrow-color;
         }
         [highway = 'bridleway'] {
-          marker-fill: @bridleway-oneway-arrow-color;
+          text-fill: @bridleway-oneway-arrow-color;
         }
       }
     }
   }
 }
+
 #railways-text-name {
   /* Mostly started from z17. */
   [railway = 'rail'],
