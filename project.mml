@@ -1803,11 +1803,6 @@ Layer:
               WHEN highway = 'trunk' THEN 37
               WHEN highway = 'primary' THEN 36
               WHEN highway = 'secondary' THEN 35
-              WHEN highway = 'tertiary' THEN 34
-              WHEN highway = 'unclassified' THEN 33
-              WHEN highway = 'residential' THEN 32
-              WHEN highway = 'runway' THEN 6
-              WHEN highway = 'taxiway' THEN 5
               ELSE NULL
             END DESC NULLS LAST,
             height DESC,
