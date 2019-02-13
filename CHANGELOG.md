@@ -1,6 +1,6 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.19.0...master)
 ## Changes
-- Lightening major buildings fill and outline (#3659)
+- Progressive lightening major buildings fill and outline (#3659)
 - Adding rendering for aboriginal areas (#3521)
 - Dropping rendering of leisure=common (#3619)
 - Adding missing oneway arrows for tracks and paths (#3614)
@@ -8,7 +8,7 @@
 - Adding rendering for ref of track roads (#3654)
 - Improving rendering of text labels on admin and nature-reserve borders (#3652)
 - Changing way_pixels calculation to use scale_denominator (#3657)
-- Fixing layering order for "construction=*" highway categories (#3646)
+- Fixing layering order for construction=* highway categories (#3646)
 - Reducing saturation of pitch outline color (#3658)
 - roads-text-ref-low-zoom: remove unused SQL CASE conditions in ORDER BY (#3680)
 
