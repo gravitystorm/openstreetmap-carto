@@ -1,4 +1,6 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.19.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.20.0...master)
+
+## [v4.20.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.19.0...v4.20.0) - 2019-02-15
 ## Changes
 - Progressive lightening major buildings fill and outline (#3659)
 - Adding rendering for aboriginal areas (#3521)
