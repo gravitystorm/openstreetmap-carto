@@ -36,7 +36,7 @@ CREATE INDEX planet_osm_polygon_way_area_z10
   WHERE way_area > 23300;
 CREATE INDEX planet_osm_polygon_military
   ON planet_osm_polygon USING GIST (way)
-  WHERE landuse = 'military' OR military = 'danger_area' AND building IS NULL;
+  WHERE (landuse = 'military' OR military = 'danger_area') AND building IS NULL;
 CREATE INDEX planet_osm_polygon_way_area_z6
   ON planet_osm_polygon USING GIST (way)
   WHERE way_area > 5980000;
