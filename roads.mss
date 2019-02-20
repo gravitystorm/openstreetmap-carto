@@ -831,7 +831,7 @@
       }
     }
 
-    [feature = 'railway_disused'][zoom >= 15],
+    [feature = 'railway_disused'][zoom >= 14],
     [feature = 'railway_construction']['construction' != 'subway'],
     [feature = 'railway_miniature'][zoom >= 15],
     [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
@@ -1024,7 +1024,7 @@
       }
     }
 
-    [feature = 'railway_disused'][zoom >= 15],
+    [feature = 'railway_disused'][zoom >= 14],
     [feature = 'railway_construction']['construction' != 'subway'],
     [feature = 'railway_miniature'][zoom >= 15],
     [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
@@ -2263,7 +2263,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
 
     [feature = 'railway_disused'] {
-      [zoom >= 15] {
+      [zoom >= 14 {
         line-color: #aaa;
         line-width: 2;
         line-dasharray: 2,4;
