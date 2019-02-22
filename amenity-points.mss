@@ -851,15 +851,11 @@
     marker-clip: false;
   }
 
-  [feature = 'emergency_lifeguard_tower'],
-  [feature = 'emergency_lifeguard_base'],
   [feature = 'emergency_life_ring'][zoom >= 19] {
-    [zoom >= 16] {
-    	marker-file: url('symbols/amenity/life_ring.svg');
-    	marker-fill: @health-color;
-    	marker-placement: interior;
-    	marker-clip: false;
-    }
+    marker-file: url('symbols/amenity/life_ring.svg');
+    marker-fill: @health-color;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_theatre'][zoom >= 16] {
@@ -2832,23 +2828,6 @@
     }
   }
 
-  [feature = 'emergency_lifeguard_tower'],
-  [feature = 'emergency_lifeguard_base'] {
-    [zoom >= 17] {
-      text-name: "[name]";
-      text-size: @standard-font-size;
-      text-wrap-width: @standard-wrap-width;
-      text-line-spacing: @standard-line-spacing-size;
-      text-dy: 12;
-      text-fill: @health-color;
-      text-face-name: @standard-font;
-      text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill;
-      text-placement: interior;
-    }
-  }
-
-  [feature = 'amenity_nursing_home'],
   [feature = 'amenity_childcare'] {
     [zoom >= 18] {
       text-name: "[name]";

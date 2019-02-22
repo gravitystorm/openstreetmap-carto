@@ -1500,8 +1500,7 @@ Layer:
               'military_'|| CASE WHEN military IN ('bunker') THEN military ELSE NULL END,
               'highway_'|| CASE WHEN highway IN ('bus_stop', 'elevator', 'traffic_signals') THEN highway ELSE NULL END,
               'power_' || CASE WHEN power IN ('generator') THEN power ELSE NULL END,
-              'tourism_' || CASE WHEN tourism IN ('viewpoint') THEN tourism ELSE NULL END,
-              'emergency_' || CASE WHEN tags->'emergency' IN ('lifeguard_tower','lifeguard_base') THEN tags->'emergency' ELSE NULL END
+              'tourism_' || CASE WHEN tourism IN ('viewpoint') THEN tourism ELSE NULL END
             ) AS feature,
             access,
             religion,
@@ -1570,7 +1569,6 @@ Layer:
             OR military IN ('bunker')
             OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
             OR (power = 'generator' AND tags @> '"generator:source"=>wind')
-            OR tags ->'emergency' IN ('lifeguard_tower', 'lifeguard_base')
           ORDER BY way_area desc
         ) AS amenity_points_poly
     properties:
