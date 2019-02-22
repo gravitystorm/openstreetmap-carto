@@ -32,5 +32,5 @@ convert wetland_512.png \( pattern_casing.png -negate \) -compose Lighten -compo
 
 convert -depth 8 -size 512x512 xc:"#93b685" \( swamp.png -negate \) -set colorspace RGB -alpha Off -compose CopyOpacity -composite pattern_col.png
 
-convert -depth 8 -size 512x512 xc:"#4aa5fa" \( wetland_pattern_bkg.png -negate \) -set colorspace RGB -alpha Off -compose CopyOpacity -composite +compose pattern_col.png -compose Over -composite wetland_pattern.png
+convert -depth 8 -size 512x512 xc:"#4aa5fa" \( wetland_pattern_bkg.png -negate \) -set colorspace RGB -alpha Off -compose CopyOpacity -composite +compose pattern_col.png -compose Over -composite  +gamma - -strip wetland_pattern.png
 ```
