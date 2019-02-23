@@ -2828,6 +2828,7 @@
     }
   }
 
+  [feature = 'amenity_nursing_home'],
   [feature = 'amenity_childcare'] {
     [zoom >= 18] {
       text-name: "[name]";

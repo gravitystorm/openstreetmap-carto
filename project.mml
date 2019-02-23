@@ -1627,7 +1627,7 @@ Layer:
                                                'dentist', 'dialysis', 'doctor', 'hospital', 'laboratory', 'midwife', 'occupational_therapist', 'optometrist',
                                                'physiotherapist', 'podiatrist', 'psychotherapist', 'rehabilitation', 'speech_therapist', 'yes') THEN tags->'healthcare' ELSE NULL END,
               'advertising_' || CASE WHEN tags->'advertising' in ('column') THEN tags->'advertising' else NULL END,
-              'emergency_' || CASE WHEN tags->'emergency' IN ('phone','life_ring') THEN tags->'emergency' ELSE NULL END,
+              'emergency_' || CASE WHEN tags->'emergency' IN ('phone', 'life_ring') THEN tags->'emergency' ELSE NULL END,
               'shop' || CASE WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE '' END,
               'office' || CASE WHEN tags->'office' IN ('no', 'vacant', 'closed', 'disused', 'empty') OR (tags->'office') IS NULL THEN NULL ELSE '' END,
               'leisure_' || CASE WHEN leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'slipway',
@@ -2566,7 +2566,7 @@ Layer:
       minzoom: 11
   - id: protected-areas-text
     geometry: linestring
-    <<: *extents
+    <: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
