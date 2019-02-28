@@ -1439,7 +1439,7 @@ Layer:
                 'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate')
                               THEN historic ELSE NULL END,
                 'military_'|| CASE WHEN military IN ('danger_area', 'bunker') THEN military ELSE NULL END,
-                'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator', 'traffic_signals') THEN highway ELSE NULL END,
+                'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator', 'traffic_signals', 'toll_gantry') THEN highway ELSE NULL END,
                 'highway_'|| CASE WHEN tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones' AND way_area IS NULL THEN 'ford' ELSE NULL END,
                 'boundary_' || CASE WHEN boundary IN ('aboriginal_lands', 'national_park')
                                           OR (boundary = 'protected_area' AND tags->'protect_class' IN ('1','1a','1b','2','3','4','5','6','7','24','97','98','99'))

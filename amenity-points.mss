@@ -211,6 +211,13 @@
     marker-clip: false;
   }
 
+  [feature = 'highway_toll_gantry'][zoom >= 16] {
+    marker-file: url('symbols/barrier/toll_gantry.svg');
+    marker-fill: @transportation-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'barrier_toll_booth'][zoom >= 16] {
     marker-file: url('symbols/barrier/toll_booth.svg');
     marker-fill: @transportation-icon;
@@ -1868,6 +1875,7 @@
   [feature = 'amenity_bicycle_rental'][zoom >= 17],
   [feature = 'amenity_boat_rental'][zoom >= 17],
   [feature = 'barrier_toll_booth'][zoom >= 17],
+  [feature = 'highway_toll_gantry'][zoom >= 17],
   [feature = 'leisure_slipway'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
@@ -1878,6 +1886,7 @@
     [feature = 'amenity_bicycle_rental'] { text-dy: 10; }
     [feature = 'amenity_boat_rental']    { text-dy: 13; }
     [feature = 'barrier_toll_booth']     { text-dy: 13; }
+    [feature = 'highway_toll_gantry']    { text-dy: 13; }
     [feature = 'leisure_slipway']        { text-dy: 13; }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
