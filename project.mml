@@ -1432,6 +1432,7 @@ Layer:
               aerialway,
               tags->'station' AS station
             FROM planet_osm_polygon
+            WHERE way && !bbox!
           UNION ALL
           SELECT
               way,
