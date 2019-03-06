@@ -1430,7 +1430,8 @@ Layer:
               ref,
               railway,
               aerialway,
-              tags->'station' AS station
+              tags->'station' AS station,
+              way_area
             FROM planet_osm_polygon
             WHERE way && !bbox!
           UNION ALL
@@ -1440,18 +1441,21 @@ Layer:
               ref,
               railway,
               aerialway,
-              tags->'station' AS station
+              tags->'station' AS station,
+              NULL as way_area
             FROM planet_osm_point
             WHERE way && !bbox!
             ) _
-          WHERE railway IN ('station', 'halt', 'tram_stop', 'subway_entrance')
+          WHERE railway IN ('station', 'halt', 'tram_stop')
+            OR railway = 'subway_entrance' AND way_area IS NULL
             OR aerialway = 'station'
           ORDER BY
             CASE railway
               WHEN 'station' THEN 1
               WHEN 'subway_entrance' THEN 3
               ELSE 2
-            END
+            END,
+            way_area DESC NULLS LAST
         ) AS stations
     properties:
       minzoom: 12
