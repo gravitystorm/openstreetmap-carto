@@ -2070,12 +2070,12 @@ Layer:
                     osm_id,
                     way,
                     COALESCE(
-                      CASE WHEN highway IN ('unclassified', 'residential', 'track', 'bridleway', 'cycleway', 'path', 'steps') THEN highway ELSE NULL END,
+                      CASE WHEN highway IN ('unclassified', 'residential', 'track') THEN highway ELSE NULL END,
                       CASE WHEN aeroway IN ('runway', 'taxiway') THEN aeroway ELSE NULL END
                     ) AS highway,
                     string_to_array(ref, ';') AS refs
                   FROM planet_osm_line
-                  WHERE (highway IN ('unclassified', 'residential', 'track', 'bridleway', 'cycleway', 'path', 'steps') OR aeroway IN ('runway', 'taxiway'))
+                  WHERE (highway IN ('unclassified', 'residential', 'track') OR aeroway IN ('runway', 'taxiway'))
                     AND ref IS NOT NULL
               ) AS p) AS q
           WHERE height <= 4 AND width <= 11
@@ -2084,11 +2084,6 @@ Layer:
               WHEN highway = 'unclassified' THEN 33
               WHEN highway = 'residential' THEN 32
               WHEN highway = 'track' THEN 30
-              WHEN highway = 'bridleway' THEN 10
-              WHEN highway = 'cycleway' THEN 10
-              WHEN highway = 'footway' THEN 10
-              WHEN highway = 'path' THEN 10
-              WHEN highway = 'steps' THEN 10
               WHEN highway = 'runway' THEN 6
               WHEN highway = 'taxiway' THEN 5
               ELSE NULL
