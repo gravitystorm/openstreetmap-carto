@@ -1,12 +1,19 @@
 @placenames: #222;
 @placenames-light: #777777;
-@country-labels: darken(@admin-boundaries-low-zoom, 15%);
-@state-labels: desaturate(darken(@admin-boundaries-low-zoom, 5%), 5%);
+@country-labels-low-zoom: darken(@admin-boundaries-low-zoom, 15%);
+@state-labels-low-zoom: darken(@admin-boundaries-low-zoom, 5%);
+@country-labels-z6: darken(@admin-boundaries-z6, 15%);
+@state-labels-z6: desaturate(darken(@admin-boundaries-z6, 5%), 5%);
+@country-labels-z7: darken(@admin-boundaries-z7, 15%);
+@state-labels-z7: desaturate(darken(@admin-boundaries-z7, 5%), 10%);
+@country-labels: darken(@admin-boundaries, 15%);
+@state-labels: desaturate(darken(@admin-boundaries, 5%), 20%);
 
 .country {
   [zoom >= 3][zoom < 5][way_pixels > 1000],
   [zoom >= 5][way_pixels < 360000] {
     text-name: "[name]";
+    text-fill: @country-labels-low-zoom;
     text-size: 10;
     text-wrap-width: 35; // 3.5 em
     text-line-spacing: -1.5; // -0.15 em
@@ -23,18 +30,24 @@
       text-line-spacing: -1.2; // -0.10 em
       text-margin: 8.4; // 0.7 em
     }
+    [zoom >= 6] {
+      text-fill: @country-labels-z6;
+    }
     [zoom >= 7] {
+      text-fill: @country-labels-z7;
       text-size: 13;
       text-wrap-width: 50; // 3.8 em
       text-line-spacing: -1.0; // -0.08 em
       text-margin: 9.1; // 0.7 em
+    }
+    [zoom >= 8] {
+      text-fill: @country-labels;
     }
     [zoom >= 10] {
       text-size: 14;
       text-wrap-width: 55; // 3.9 em
       text-line-spacing: -0.7; // -0.05 em
     }
-    text-fill: @country-labels;
     text-face-name: @bold-fonts;
     text-halo-fill: @standard-halo-fill;
     text-halo-radius: @standard-halo-radius * 1.5;
@@ -50,16 +63,23 @@
     text-wrap-width: 30; // 3.0 em
     text-line-spacing: -1.5; // -0.15 em
     text-margin: 7.0; // 0.7 em
-    text-fill: @state-labels;
+    text-fill: @state-labels-low-zoom;
     text-face-name: @oblique-fonts;
     text-halo-fill: @standard-halo-fill;
     text-halo-radius: @standard-halo-radius * 1.5;
     text-placement: interior;
+    [zoom >= 6] {
+      text-fill: @state-labels-z6;
+    }
     [zoom >= 7] {
+      text-fill: @state-labels-z7;
       text-size: 11;
       text-wrap-width: 50; // 4.5 em
       text-line-spacing: -0.6; // -0.05 em
       text-margin: 7.7; // 0.7 em
+    }
+    [zoom >= 8] {
+      text-fill: @state-labels;
     }
   }
 }
