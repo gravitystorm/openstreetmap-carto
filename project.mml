@@ -1411,7 +1411,6 @@ Layer:
     properties:
       minzoom: 12
   - id: stations
-    class: stations
     geometry: point
     <<: *extents
     Datasource:
@@ -1423,38 +1422,41 @@ Layer:
             ref,
             railway,
             aerialway,
-            tags->'station' as "station",
+            station
+          FROM
+          (SELECT
+              ST_PointOnSurface(way) AS way,
+              name,
+              ref,
+              railway,
+              aerialway,
+              tags->'station' AS station,
+              way_area
+            FROM planet_osm_polygon
+            WHERE way && !bbox!
+          UNION ALL
+          SELECT
+              way,
+              name,
+              ref,
+              railway,
+              aerialway,
+              tags->'station' AS station,
+              NULL as way_area
+            FROM planet_osm_point
+            WHERE way && !bbox!
+            ) _
+          WHERE railway IN ('station', 'halt', 'tram_stop')
+            OR railway = 'subway_entrance' AND way_area IS NULL
+            OR aerialway = 'station'
+          ORDER BY
             CASE railway
               WHEN 'station' THEN 1
               WHEN 'subway_entrance' THEN 3
               ELSE 2
-            END
-              AS prio
-          FROM planet_osm_point
-          WHERE railway IN ('station', 'halt', 'tram_stop', 'subway_entrance')
-            OR aerialway = 'station'
-          ORDER BY prio
+            END,
+            way_area DESC NULLS LAST
         ) AS stations
-    properties:
-      minzoom: 12
-  - id: stations-poly
-    class: stations
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            name,
-            ref,
-            railway,
-            aerialway,
-            tags->'station' as "station"
-        FROM planet_osm_polygon
-        WHERE railway IN ('station', 'halt', 'tram_stop')
-          OR aerialway = 'station'
-        ) AS stations_poly
     properties:
       minzoom: 12
   - id: amenity-points-poly
