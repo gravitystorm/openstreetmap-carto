@@ -39,7 +39,7 @@
 @standard-line-spacing-size: -1.5; // -0.15 em
 @standard-font: @book-fonts;
 
-.points {
+#amenity-points {
   [feature = 'tourism_alpine_hut'][zoom >= 13],
   [feature = 'tourism_wilderness_hut'][zoom >= 13],
   [feature = 'amenity_shelter'][zoom >= 16] {
