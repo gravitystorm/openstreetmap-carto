@@ -1786,9 +1786,9 @@
   }
 }
 
-/* Note that .text is also used in water.mss */
+/* Note that these layers are also used in water.mss */
 .text-low-zoom[zoom < 10],
-.text[zoom >= 10] {
+#text-point[zoom >= 10] {
   [feature = 'natural_cape'][zoom >= 4][way_pixels > 3000][way_pixels < 800000],
   [feature = 'natural_cape'][zoom >= 16][way_pixels < 800000],
   [feature = 'place_island'][zoom >= 4][way_pixels > 3000][way_pixels < 800000],

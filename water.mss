@@ -317,7 +317,7 @@
 }
 
 .text-low-zoom[zoom < 10],
-.text[zoom >= 10] {
+#text-point[zoom >= 10] {
   [feature = 'natural_water'],
   [feature = 'natural_bay'],
   [feature = 'natural_strait'],
