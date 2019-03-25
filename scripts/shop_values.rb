@@ -31,6 +31,8 @@ EXCEPTIONS = [
    "pharmacy", #see https://github.com/gravitystorm/openstreetmap-carto/pull/1900
    "street_vendor", #see https://github.com/gravitystorm/openstreetmap-carto/issues/2090
    "storage_rental", #see https://github.com/gravitystorm/openstreetmap-carto/issues/2090
+   "retail", # nonspecific
+   "yes", # nonspecific
 ]
 
 
