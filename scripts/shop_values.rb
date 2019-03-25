@@ -34,6 +34,7 @@ EXCEPTIONS = [
    "retail", # nonspecific
    "yes", # nonspecific
    "organic", # https://wiki.openstreetmap.org/wiki/Tag:shop%3Dorganic
+   "watch", # duplicate of shop=watches
 ]
 
 
