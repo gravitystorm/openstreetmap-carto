@@ -36,6 +36,8 @@ EXCEPTIONS = [
    "organic", # https://wiki.openstreetmap.org/wiki/Tag:shop%3Dorganic
    "watch", # duplicate of shop=watches
    "shopping_centre", # duplicate of mall
+   "marketplace", # duplicate of amenity=marketplace
+   "market", # duplicate of amenity=marketplace
 ]
 
 
