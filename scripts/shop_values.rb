@@ -55,11 +55,13 @@ counted = data.select { |h| h["count"] > MIN_COUNT }.map { |h| h["value"] }
 single_values = counted.reject { |h| h.include?(";") }
 # Filter out empty strings
 no_empty = single_values.reject { |h| h.strip.empty? }
-# Filter out exceptions in EXCEPTIONS
-filtered = no_empty - EXCEPTIONS
 
 on_wiki = data.select { |h| h["in_wiki"] && h["description"] != nil }.map { |h| h["value"] }
-filtered += on_wiki
+candidates = no_empty + on_wiki
+
+# Filter out exceptions in EXCEPTIONS
+filtered = candidates - EXCEPTIONS
+
 
 # Output in SQL style
 puts "(" + filtered.map{ |val| "'#{val}'" }.sort.join(", ") + ")"
