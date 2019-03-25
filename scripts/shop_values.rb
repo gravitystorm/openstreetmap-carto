@@ -39,6 +39,9 @@ EXCEPTIONS = [
    "marketplace", # duplicate of amenity=marketplace
    "market", # duplicate of amenity=marketplace
    "baby_care", # duplicate of shop=baby_goods
+   "board", # very poor name, rare use
+   "robot", # duplicate of shop=electronics
+   "business_machines", # duplicate of shop=electronics
 ]
 
 
