@@ -3,7 +3,7 @@
 #this script generates list of popular shop values - more than MIN_COUNT occurences in OpenStreetMap database according to taginfo
 #it is useful during creating/updating list of shops displayed with generic dot icon
 
-require 'net/http'
+require "open-uri"
 require 'json'
 require 'pp'
 
@@ -34,14 +34,8 @@ EXCEPTIONS = [
 ]
 
 
-url = URI.parse('http://taginfo.openstreetmap.org/api/4/key/values?key=shop&sortname=count&sortorder=desc')
-req = Net::HTTP::Get.new(url.to_s)
-res = Net::HTTP.start(url.host, url.port) {|http|
-   http.request(req)
-}
-
-data = JSON.parse(res.body)["data"]
-
+data = URI.parse('https://taginfo.openstreetmap.org/api/4/key/values?key=shop&sortname=count&sortorder=desc').read
+data = JSON.parse(data)["data"]
 
 
 # Get an array of values that only includes values with more than MIN_COUNT occurrences
