@@ -59,7 +59,7 @@ Layer:
     class: ocean
     <<: *extents
     Datasource:
-      file: data/simplified-water-polygons-complete-3857/simplified_water_polygons.shp
+      file: data/simplified-water-polygons-split-3857/simplified_water_polygons.shp
       type: shape
     properties:
       maxzoom: 9
