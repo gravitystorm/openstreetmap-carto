@@ -86,6 +86,7 @@ KNOWN_GOOD_VALUES = ["convenience", "supermarket", "clothes", "hairdresser",
   "hvac", "equestrian", "military_surplus", "brewing_supplies", "trailer",
   "atv", "power_tools",  "hookah", "electrotools", "maps", "snowmobile",
   "açaí", "jetski", "vehicles", "mobile_home", "free_flying", "junk_yard",
+  "general", "general_store",
 ]
 
 data = URI.parse('https://taginfo.openstreetmap.org/api/4/key/values?key=shop&sortname=count&sortorder=desc').read
