@@ -33,6 +33,7 @@ EXCEPTIONS = [
    "storage_rental", #see https://github.com/gravitystorm/openstreetmap-carto/issues/2090
    "retail", # nonspecific
    "yes", # nonspecific
+   "organic", # https://wiki.openstreetmap.org/wiki/Tag:shop%3Dorganic
 ]
 
 
