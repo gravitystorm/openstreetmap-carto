@@ -42,6 +42,7 @@ EXCEPTIONS = [
    "board", # very poor name, rare use
    "robot", # duplicate of shop=electronics
    "business_machines", # duplicate of shop=electronics
+   "tyres", # duplicate of shop=tires
 ]
 
 KNOWN_GOOD_VALUES = ["convenience", "supermarket", "clothes", "hairdresser",
