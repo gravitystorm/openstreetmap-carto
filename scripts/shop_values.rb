@@ -54,5 +54,8 @@ no_empty = single_values.reject { |h| h.strip.empty? }
 # Filter out exceptions in EXCEPTIONS
 filtered = no_empty - EXCEPTIONS
 
+on_wiki = data.select { |h| h["in_wiki"] && h["description"] != nil }.map { |h| h["value"] }
+filtered += on_wiki
+
 # Output in SQL style
 puts "(" + filtered.map{ |val| "'#{val}'" }.sort.join(", ") + ")"
