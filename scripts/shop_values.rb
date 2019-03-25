@@ -100,7 +100,7 @@ single_values = counted.reject { |h| h.include?(";") }
 no_empty = single_values.reject { |h| h.strip.empty? }
 
 on_wiki = data.select { |h| h["in_wiki"] && h["description"] != nil }.map { |h| h["value"] }
-candidates = no_empty + on_wiki
+candidates = (no_empty + on_wiki).uniq
 
 # Filter out exceptions in EXCEPTIONS
 filtered = candidates - EXCEPTIONS
