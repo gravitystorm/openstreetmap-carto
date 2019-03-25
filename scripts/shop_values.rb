@@ -38,6 +38,7 @@ EXCEPTIONS = [
    "shopping_centre", # duplicate of mall
    "marketplace", # duplicate of amenity=marketplace
    "market", # duplicate of amenity=marketplace
+   "baby_care", # duplicate of shop=baby_goods
 ]
 
 
