@@ -655,30 +655,14 @@
   }
 
   [feature = 'amenity_clinic'][zoom >= 17],
-  [feature = 'healthcare_clinic'][zoom >= 17],
-  [feature = 'amenity_doctors'][zoom >= 17],
-  [feature = 'healthcare_centre'][zoom >= 17] {
+  [feature = 'amenity_doctors'][zoom >= 17] {
     marker-file: url('symbols/amenity/doctors.svg');
     marker-fill: @health-color;
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [feature = 'healthcare_doctor'][zoom >= 17] {
-    [zoom >= 17][zoom < 18] {
-      marker-width: 4;
-      marker-line-width: 0;
-    }
-    [zoom >= 18] {
-      marker-file: url('symbols/amenity/doctors.svg');
-    }
-    marker-fill: @health-color;
-    marker-placement: interior;
-    marker-clip: false;
-  }
-
-  [feature = 'amenity_dentist'][zoom >= 17],
-  [feature = 'healthcare_dentist'][zoom >= 17] {
+  [feature = 'amenity_dentist'][zoom >= 17] {
     [zoom >= 17][zoom < 18] {
       marker-width: 4;
       marker-line-width: 0;
@@ -691,8 +675,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_hospital'][zoom >= 15],
-  [feature = 'healthcare_hospital'][zoom >= 15] {
+  [feature = 'amenity_hospital'][zoom >= 15] {
     marker-file: url('symbols/amenity/hospital.svg');
     marker-fill: @health-color;
     marker-placement: interior;
@@ -711,34 +694,6 @@
     marker-fill: @health-color;
     marker-placement: interior;
     marker-clip: false;
-  }
-
-  [feature = 'healthcare_alternative'],
-  [feature = 'healthcare_audiologist'],
-  [feature = 'healthcare_birthing_center'],
-  [feature = 'healthcare_blood_bank'],
-  [feature = 'healthcare_blood_donation'],
-  [feature = 'healthcare_dialysis'],
-  [feature = 'healthcare_laboratory'],
-  [feature = 'healthcare_midwife'],
-  [feature = 'healthcare_occupational_therapist'],
-  [feature = 'healthcare_optometrist'],
-  [feature = 'healthcare_physiotherapist'],
-  [feature = 'healthcare_podiatrist'],
-  [feature = 'healthcare_psychotherapist'],
-  [feature = 'healthcare_rehabilitation'],
-  [feature = 'healthcare_speech_therapist'],
-  [feature = 'healthcare_yes'] {
-    [zoom >= 17] {
-      marker-width: 4;
-      [zoom >= 18] {
-        marker-width: 6;
-      }
-      marker-line-width: 0;
-      marker-placement: interior;
-      marker-clip: false;
-      marker-fill: @health-color;
-    }
   }
 
   [feature = 'amenity_place_of_worship'][zoom >= 16] {
