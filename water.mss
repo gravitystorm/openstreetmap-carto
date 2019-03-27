@@ -316,6 +316,23 @@
   }
 }
 
+.water-lines-text {
+    [natural = 'strait'][zoom >= 5] {
+      text-name: "[name]";
+      text-size: 12;
+      text-face-name: @oblique-fonts;
+      text-fill: @water-text;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-spacing: 800;
+      text-placement: line;
+      text-repeat-distance: 400;
+      text-min-path-length: 100;
+      text-margin: 5;
+      [zoom >= 14] { text-size: 15; }
+    }
+  }
+
 .text-low-zoom[zoom < 10],
 .text[zoom >= 10] {
   [feature = 'natural_water'],
