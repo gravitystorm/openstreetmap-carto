@@ -2071,7 +2071,7 @@ Layer:
               'landuse_' || CASE WHEN landuse IN ('forest', 'military', 'farmland') THEN landuse ELSE NULL END,
               'military_' || CASE WHEN military IN ('danger_area') THEN military ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock',
-                                                    'water', 'bay', 'strait', 'cape') THEN "natural" ELSE NULL END,
+                                                    'water', 'bay', 'strait') THEN "natural" ELSE NULL END,
               'place_' || CASE WHEN place IN ('island') THEN place ELSE NULL END,
               'boundary_' || CASE WHEN (boundary = 'protected_area' AND tags->'protect_class' = '24') THEN 'aboriginal_lands'
                                   WHEN boundary IN ('aboriginal_lands', 'national_park')
@@ -2084,7 +2084,7 @@ Layer:
           FROM planet_osm_polygon
           WHERE (landuse IN ('forest', 'military', 'farmland')
               OR military IN ('danger_area')
-              OR "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock', 'water', 'bay', 'strait', 'cape')
+              OR "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock', 'water', 'bay', 'strait')
               OR "place" IN ('island')
               OR boundary IN ('aboriginal_lands', 'national_park')
               OR (boundary = 'protected_area' AND tags->'protect_class' IN ('1','1a','1b','2','3','4','5','6','7','24','97','98','99'))
@@ -2152,7 +2152,7 @@ Layer:
               'communications_tower', 'telescope', 'chimney', 'crane', 'storage_tank', 'silo', 'wastewater_plant', 'water_works')
                                         AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)) THEN man_made ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('wood', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath',
-                                                    'grassland', 'scrub', 'beach', 'shoal', 'reef', 'glacier', 'strait', 'cape') THEN "natural" ELSE NULL END,
+                                                    'grassland', 'scrub', 'beach', 'shoal', 'reef', 'glacier', 'strait') THEN "natural" ELSE NULL END,
               'place_' || CASE WHEN place IN ('island', 'islet') THEN place ELSE NULL END,
               'military_' || CASE WHEN military IN ('danger_area', 'bunker') THEN military ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate')
