@@ -2510,27 +2510,8 @@ Layer:
         ) AS addresses
     properties:
       minzoom: 17
-  - id: water-lines-text-lowzoom
-    geometry: linestring
-    class: water-lines-text
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            name,
-            "natural"
-          FROM planet_osm_line
-          WHERE "natural" = 'strait'
-            AND name IS NOT NULL
-        ) AS water_lines_text_lowzoom
-    properties:
-      minzoom: 5
-      maxzoom: 12
   - id: water-lines-text
     geometry: linestring
-    class: water-lines-text
     <<: *extents
     Datasource:
       <<: *osm2pgsql
