@@ -66,7 +66,11 @@ DejaVu Sans is used as an optional fallback font for systems without Noto Sans. 
 
 Hanazono is used a fallback for seldom used CJK characters that are not covered by Noto.
 
-Unifont is used as a last resort fallback, with it's excellent coverage, common presence on machines, and ugly look.
+Unifont is used as a last resort fallback, with it's excellent coverage, common presence on machines, and ugly look. For compatibility reasons, we support two Linux-distributions-specific versions of Unifont, therefor it's expected that you *always* get a warning about a missing Unifont version.
+
+If you do not install all the fonts, the rendering itself will not break, but missing glyphs will be ugly.
+
+For more details, see the documentation at fonts.mss.
 
 ### Installation on Ubuntu/Debian
 
@@ -76,7 +80,7 @@ On Ubuntu 16.04 or Debian Testing you can download and install most of the requi
 sudo apt-get install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted fonts-hanazono ttf-unifont
 ```
 
-Noto Emoji Regular can be downloaded [from the Noto Emoji repository](https://github.com/googlei18n/noto-emoji).
+Noto Emoji Regular (*not* Noto Color Emoji) can be downloaded [from the Noto Emoji repository](https://github.com/googlei18n/noto-emoji).
 
 It might be useful to have a more recent version of the fonts for [rare non-latin scripts](#non-latin-scripts). The current upstream font release has also some more scripts and style variants than in the Ubuntu package. It can be installed [from source](https://github.com/googlei18n/noto-fonts/blob/master/FAQ.md#where-are-the-fonts).
 
