@@ -1744,8 +1744,6 @@
 /* Note that these layers are also used in water.mss */
 .text-low-zoom[zoom < 10],
 #text-point[zoom >= 10] {
-  [feature = 'natural_cape'][zoom >= 4][way_pixels > 3000][way_pixels < 800000],
-  [feature = 'natural_cape'][zoom >= 16][way_pixels < 800000],
   [feature = 'place_island'][zoom >= 4][way_pixels > 3000][way_pixels < 800000],
   [feature = 'place_island'][zoom >= 16][way_pixels < 800000],
   [feature = 'place_islet'][zoom >= 11][way_pixels > 3000][way_pixels < 800000],
@@ -2019,13 +2017,10 @@
   [feature = 'natural_cape'][zoom >= 14] {
     text-name: "[name]";
     text-fill: #000;
-    text-size: @landcover-font-size;
-    text-wrap-width: @landcover-wrap-width-size;
-    text-line-spacing: @landcover-line-spacing-size;
-    text-size: @landcover-font-size-big;
-    text-wrap-width: @landcover-wrap-width-size-big;
-    text-line-spacing: @landcover-line-spacing-size-big;
-    text-face-name: @oblique-fonts;
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
