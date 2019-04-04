@@ -39,8 +39,7 @@
 @standard-line-spacing-size: -1.5; // -0.15 em
 @standard-font: @book-fonts;
 
-/* Note that .points is also used in water-features.mss */
-.points {
+#amenity-points {
   [feature = 'tourism_alpine_hut'][zoom >= 13],
   [feature = 'tourism_wilderness_hut'][zoom >= 13],
   [feature = 'amenity_shelter'][zoom >= 16] {
@@ -655,30 +654,14 @@
   }
 
   [feature = 'amenity_clinic'][zoom >= 17],
-  [feature = 'healthcare_clinic'][zoom >= 17],
-  [feature = 'amenity_doctors'][zoom >= 17],
-  [feature = 'healthcare_centre'][zoom >= 17] {
+  [feature = 'amenity_doctors'][zoom >= 17] {
     marker-file: url('symbols/amenity/doctors.svg');
     marker-fill: @health-color;
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [feature = 'healthcare_doctor'][zoom >= 17] {
-    [zoom >= 17][zoom < 18] {
-      marker-width: 4;
-      marker-line-width: 0;
-    }
-    [zoom >= 18] {
-      marker-file: url('symbols/amenity/doctors.svg');
-    }
-    marker-fill: @health-color;
-    marker-placement: interior;
-    marker-clip: false;
-  }
-
-  [feature = 'amenity_dentist'][zoom >= 17],
-  [feature = 'healthcare_dentist'][zoom >= 17] {
+  [feature = 'amenity_dentist'][zoom >= 17] {
     [zoom >= 17][zoom < 18] {
       marker-width: 4;
       marker-line-width: 0;
@@ -691,8 +674,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_hospital'][zoom >= 15],
-  [feature = 'healthcare_hospital'][zoom >= 15] {
+  [feature = 'amenity_hospital'][zoom >= 15] {
     marker-file: url('symbols/amenity/hospital.svg');
     marker-fill: @health-color;
     marker-placement: interior;
@@ -711,34 +693,6 @@
     marker-fill: @health-color;
     marker-placement: interior;
     marker-clip: false;
-  }
-
-  [feature = 'healthcare_alternative'],
-  [feature = 'healthcare_audiologist'],
-  [feature = 'healthcare_birthing_center'],
-  [feature = 'healthcare_blood_bank'],
-  [feature = 'healthcare_blood_donation'],
-  [feature = 'healthcare_dialysis'],
-  [feature = 'healthcare_laboratory'],
-  [feature = 'healthcare_midwife'],
-  [feature = 'healthcare_occupational_therapist'],
-  [feature = 'healthcare_optometrist'],
-  [feature = 'healthcare_physiotherapist'],
-  [feature = 'healthcare_podiatrist'],
-  [feature = 'healthcare_psychotherapist'],
-  [feature = 'healthcare_rehabilitation'],
-  [feature = 'healthcare_speech_therapist'],
-  [feature = 'healthcare_yes'] {
-    [zoom >= 17] {
-      marker-width: 4;
-      [zoom >= 18] {
-        marker-width: 6;
-      }
-      marker-line-width: 0;
-      marker-placement: interior;
-      marker-clip: false;
-      marker-fill: @health-color;
-    }
   }
 
   [feature = 'amenity_place_of_worship'][zoom >= 16] {
@@ -1787,11 +1741,9 @@
   }
 }
 
-/* Note that .text is also used in water.mss */
+/* Note that these layers are also used in water.mss */
 .text-low-zoom[zoom < 10],
-.text[zoom >= 10] {
-  [feature = 'natural_cape'][zoom >= 4][way_pixels > 3000][way_pixels < 800000],
-  [feature = 'natural_cape'][zoom >= 16][way_pixels < 800000],
+#text-point[zoom >= 10] {
   [feature = 'place_island'][zoom >= 4][way_pixels > 3000][way_pixels < 800000],
   [feature = 'place_island'][zoom >= 16][way_pixels < 800000],
   [feature = 'place_islet'][zoom >= 11][way_pixels > 3000][way_pixels < 800000],
@@ -2065,13 +2017,10 @@
   [feature = 'natural_cape'][zoom >= 14] {
     text-name: "[name]";
     text-fill: #000;
-    text-size: @landcover-font-size;
-    text-wrap-width: @landcover-wrap-width-size;
-    text-line-spacing: @landcover-line-spacing-size;
-    text-size: @landcover-font-size-big;
-    text-wrap-width: @landcover-wrap-width-size-big;
-    text-line-spacing: @landcover-line-spacing-size-big;
-    text-face-name: @oblique-fonts;
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;

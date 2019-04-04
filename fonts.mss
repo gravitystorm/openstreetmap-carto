@@ -55,7 +55,14 @@ without Noto Sans Arabic UI.
 6. Fallback fonts. Hanazono covers almost all CJK characters, even in Unicode
 Plane 2. Unifont is a fallback of last resort with full coverage in Plane 0
 (Unifont Medium), some coverage in Plane 1 (Unifont Upper Medium) and no
-coverage in Plane 2. Unifont Medium Sample would cover the BMP PUA with
+coverage in Plane 2. Unifont has different font names on different Linux
+distributions (and sometimes even in different versions of the same Linux
+distribution), see #429 and #2924 for details. We have therefore both,
+“Unifont Medium” and “unifont Medium” in our list, so on almost all
+distributions we catch the font if installed – and you will always get an error
+message for the other missing font name. We prefer having an error message than
+requiring our users to customize the font list depending on their Linux
+distribution. Unifont Medium Sample would cover the BMP PUA with
 replacement characters, but cannot be used because Mapnik does not
 support SBIT TTF.
 */

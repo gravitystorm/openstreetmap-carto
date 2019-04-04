@@ -47,11 +47,11 @@ settings = {
     },
 
     2: {
-        'directory': 'simplified-land-polygons-complete-3857',
-        'url': 'http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip',  # noqa
+        'directory': 'simplified-water-polygons-split-3857',
+        'url': 'https://osmdata.openstreetmap.de/download/simplified-water-polygons-split-3857.zip',  # noqa
         'type': 'zip',
-        'shp_basename': ['simplified_land_polygons'],
-        'long_opt': '--simplified-land'
+        'shp_basename': ['simplified_water_polygons'],
+        'long_opt': '--simplified-water'
     },
 
     3: {
@@ -63,16 +63,16 @@ settings = {
     },
 
     4: {
-        'directory': 'land-polygons-split-3857',
-        'url': 'http://data.openstreetmapdata.com/land-polygons-split-3857.zip',  # noqa
+        'directory': 'water-polygons-split-3857',
+        'url': 'https://osmdata.openstreetmap.de/download/water-polygons-split-3857.zip',  # noqa
         'type': 'zip',
-        'shp_basename': ['land_polygons'],
-        'long_opt': '--land-polygons'
+        'shp_basename': ['water_polygons'],
+        'long_opt': '--water-polygons'
     },
 
     5: {
         'directory': 'antarctica-icesheet-polygons-3857',
-        'url': 'http://data.openstreetmapdata.com/antarctica-icesheet-polygons-3857.zip',  # noqa
+        'url': 'https://osmdata.openstreetmap.de/download/antarctica-icesheet-polygons-3857.zip',  # noqa
         'type': 'zip',
         'shp_basename': ['icesheet_polygons'],
         'long_opt': '--icesheet-polygons'
@@ -80,7 +80,7 @@ settings = {
 
     6: {
         'directory': 'antarctica-icesheet-outlines-3857',
-        'url': 'http://data.openstreetmapdata.com/antarctica-icesheet-outlines-3857.zip',  # noqa
+        'url': 'https://osmdata.openstreetmap.de/download/antarctica-icesheet-outlines-3857.zip',  # noqa
         'type': 'zip',
         'shp_basename': ['icesheet_outlines'],
         'long_opt': '--icesheet-outlines'
