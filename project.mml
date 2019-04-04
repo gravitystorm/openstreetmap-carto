@@ -126,7 +126,6 @@ Layer:
                                                     'marketplace', 'community_centre', 'social_facility', 'arts_centre', 'parking_space', 'bus_station',
                                                     'fire_station', 'police')
                               OR amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL) THEN amenity ELSE NULL END)) AS amenity,
-              ('healthcare_' || (CASE WHEN tags->'healthcare' IN ('clinic' ,'hospital') THEN tags->'healthcare' ELSE NULL END)) AS healthcare,
               ('landuse_' || (CASE WHEN landuse IN ('quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'meadow', 'grass',
                                                     'allotments', 'forest', 'farmyard', 'farmland', 'greenhouse_horticulture',
                                                     'recreation_ground', 'village_green', 'retail', 'industrial', 'railway', 'commercial',
@@ -152,7 +151,6 @@ Layer:
               OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'taxi', 'university', 'college', 'school', 'hospital', 'kindergarten',
                              'grave_yard', 'place_of_worship', 'prison', 'clinic', 'ferry_terminal', 'marketplace', 'community_centre', 'social_facility',
                              'arts_centre', 'parking_space', 'bus_station', 'fire_station', 'police')
-              OR tags->'healthcare' IN ('clinic', 'hospital')
               OR man_made IN ('works', 'wastewater_plant','water_works')
               OR "natural" IN ('beach', 'shoal', 'heath', 'mud', 'marsh', 'wetland', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub')
               OR power IN ('station', 'sub_station', 'substation', 'generator')
@@ -1497,9 +1495,6 @@ Layer:
                                   THEN amenity ELSE NULL END,
                 'amenity_' || CASE WHEN amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL) THEN amenity ELSE NULL END,
                 'amenity_' || CASE WHEN amenity IN ('vending_machine') AND tags->'vending' IN ('excrement_bags', 'parking_tickets', 'public_transport_tickets') THEN amenity ELSE NULL END,
-                'healthcare_' || CASE WHEN tags->'healthcare' IN ('alternative', 'audiologist', 'birthing_center', 'blood_bank', 'blood_donation', 'centre', 'clinic',
-                                                'dentist', 'dialysis', 'doctor', 'hospital', 'laboratory', 'midwife', 'occupational_therapist', 'optometrist',
-                                                'physiotherapist', 'podiatrist', 'psychotherapist', 'rehabilitation', 'speech_therapist', 'yes') THEN tags->'healthcare' ELSE NULL END,
                 'advertising_' || CASE WHEN tags->'advertising' in ('column') THEN tags->'advertising' else NULL END,
                 'emergency_' || CASE WHEN tags->'emergency' IN ('phone') AND way_area IS NULL THEN tags->'emergency' ELSE NULL END,
                 'shop' || CASE WHEN shop IN ('no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE '' END,
@@ -1582,7 +1577,6 @@ Layer:
               tags->'castle_type' as castle_type,
               tags->'sport' as sport,
               tags->'information' as information,
-              tags->'healthcare' as healthcare,
               tags->'memorial' as memorial,
               tags->'artwork_type' as artwork_type,
               tags->'vending' as vending,
