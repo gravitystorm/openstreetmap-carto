@@ -281,7 +281,8 @@ Layer:
                     END
                 END
               END AS int_wetland,
-            tags->'leaf_type' AS leaf_type
+            tags->'leaf_type' AS leaf_type,
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
           WHERE ("natural" IN ('marsh', 'mud', 'wetland', 'wood', 'beach', 'shoal', 'reef', 'scrub', 'sand') OR landuse = 'forest')
             AND building IS NULL

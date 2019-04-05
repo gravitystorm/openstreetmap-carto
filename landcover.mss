@@ -82,17 +82,6 @@
   ::upper-mid-zoom[zoom >= 12][zoom < 13],
   ::high-zoom[zoom >= 13] {
 
-  ::first {
-    [feature = 'wetland_mud'],
-    [feature = 'wetland_tidalflat'] {
-      [zoom >= 5] {
-        polygon-fill: @mud;
-        [way_pixels >= 4]  { polygon-gamma: 0.75; }
-        [way_pixels >= 64] { polygon-gamma: 0.3;  }
-      }
-    }
-  }
-
   [feature = 'leisure_swimming_pool'][zoom >= 14] {
     polygon-fill: @water-color;
     [zoom >= 17] {
@@ -718,6 +707,18 @@
 }
 
 #landcover-area-symbols {
+
+  ::first {
+    [natural = 'mud'],
+    [int_wetland = 'tidalflat'] {
+      [zoom >= 9] {
+        polygon-fill: @mud;
+        [way_pixels >= 4]  { polygon-gamma: 0.75; }
+        [way_pixels >= 64] { polygon-gamma: 0.3;  }
+      }
+    }
+  }
+
   [natural = 'sand'][zoom >= 5] {
     polygon-pattern-file: url('symbols/beach.png');
     polygon-pattern-alignment: global;
