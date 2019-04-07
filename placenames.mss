@@ -435,21 +435,19 @@
 }
 
 #placenames-small::neighborhood {
-  [place = 'locality'],
-  [place = 'neighbourhood'],
-  [place = 'isolated_dwelling'],
-  [place = 'farm'] {
-    [zoom >= 15] {
-      text-name: "[name]";
-      text-size: 10;
-      text-fill: @placenames;
-      text-face-name: @book-fonts;
-      text-halo-fill: @standard-halo-fill;
-      text-halo-radius: @standard-halo-radius * 1.5;
-      text-wrap-width: 45; // 4.5 em
-      text-line-spacing: -0.8; // -0.08 em
-      text-margin: 7.0; // 0.7 em
-    }
+  [place = 'neighbourhood'][zoom >= 15][zoom < 20],
+  [place = 'locality'][zoom >= 15],
+  [place = 'isolated_dwelling'][zoom >= 15],
+  [place = 'farm'][zoom >= 15] {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: @placenames;
+    text-face-name: @book-fonts;
+    text-halo-fill: @standard-halo-fill;
+    text-halo-radius: @standard-halo-radius * 1.5;
+    text-wrap-width: 45; // 4.5 em
+    text-line-spacing: -0.8; // -0.08 em
+    text-margin: 7.0; // 0.7 em
     [zoom >= 16] {
       text-size: 12;
       text-wrap-width: 60; // 5.0 em
