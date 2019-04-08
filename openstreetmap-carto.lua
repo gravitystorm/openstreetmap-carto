@@ -39,7 +39,7 @@ local linestring_values = {
     leisure = {track = true, slipway = true},
     man_made = {embankment = true, breakwater = true, groyne = true},
     natural = {cliff = true, tree_row = true, ridge = true, arete = true},
-    power = {line = true, minor_line = true},
+    power = {cable = true, line = true, minor_line = true},
     tourism = {yes = true},
     waterway = {canal = true, derelict_canal = true, ditch = true, drain = true, river = true, stream = true, wadi = true, weir = true}
 }
