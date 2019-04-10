@@ -37,7 +37,7 @@ local polygon_keys = {
 local linestring_values = {
     historic = {citywalls = true},
     leisure = {track = true, slipway = true},
-    man_made = {breakwater = true, cutline = true, embankment = true, groyne = true},
+    man_made = {breakwater = true, cutline = true, embankment = true, groyne = true, pipeline = true},
     natural = {cliff = true, tree_row = true, ridge = true, arete = true},
     power = {cable = true, line = true, minor_line = true},
     tourism = {yes = true},
