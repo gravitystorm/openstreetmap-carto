@@ -825,11 +825,16 @@
 }
 
 #area-barriers {
-  [zoom >= 16] {
-    line-color: #444;
-    line-width: 0.4;
-    [feature = 'barrier_hedge'] {
+    [feature = 'barrier_hedge'][area = 'yes'] {
       polygon-fill: #aed1a0;
+      [zoom >= 17] {
+        line-width: 2;
+      }
+      [zoom >= 18] {
+        line-width: 1;
+      }
+      [zoom >= 19] {
+        line-width: 0.5;
     }
   }
 }

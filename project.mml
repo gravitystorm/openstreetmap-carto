@@ -613,8 +613,8 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, COALESCE(historic, barrier) AS feature
-          FROM (SELECT way,
+            way, area, COALESCE(historic, barrier) AS feature
+          FROM (SELECT way, tags->'area' AS area,
             ('barrier_' || (CASE WHEN barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
                   'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall') THEN barrier ELSE NULL END)) AS barrier,
             ('historic_' || (CASE WHEN historic = 'citywalls' THEN historic ELSE NULL END)) AS historic
