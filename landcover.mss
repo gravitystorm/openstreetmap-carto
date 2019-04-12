@@ -861,10 +861,6 @@
     line-width: 0.4;
     line-color: #444;
   }
-  [feature = 'barrier_embankment'][zoom >= 14] {
-    line-width: 0.4;
-    line-color: #444;
-  }
   [feature = 'barrier_hedge'][zoom >= 16] {
     line-width: 1.5;
     line-color: @hedge;
