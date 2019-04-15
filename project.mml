@@ -2142,13 +2142,15 @@ Layer:
             waterway,
             lock,
             name,
+            "natural",
             tags-> 'lock_name' AS lock_name,
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
               THEN 'yes' ELSE 'no' END AS int_intermittent,
             CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel
           FROM planet_osm_line
-          WHERE waterway IN ('river', 'canal', 'stream', 'drain', 'ditch', 'wadi')
+          WHERE (waterway IN ('river', 'canal', 'stream', 'drain', 'ditch', 'wadi')
+                 OR "natural" = 'strait')
             AND (tunnel IS NULL or tunnel != 'culvert')
             AND name IS NOT NULL
           ORDER BY COALESCE(layer,0)
