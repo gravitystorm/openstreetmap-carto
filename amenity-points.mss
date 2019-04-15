@@ -1338,7 +1338,7 @@
 
   [feature = 'leisure_sports_centre'][sport = 'swimming'][zoom >= 17],
   [feature = 'leisure_swimming_area'][zoom >= 17] {
-    marker-file: url('symbols/leisure/water_park.svg');
+    marker-file: url('symbols/leisure/swimming_area.svg');
     marker-placement: interior;
     marker-fill: @leisure-green;
     marker-clip: false;
