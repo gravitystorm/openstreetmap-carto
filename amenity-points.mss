@@ -1336,7 +1336,6 @@
     marker-fill: @office;
   }
 
-  [feature = 'leisure_water_park'][zoom >= 17],
   [feature = 'leisure_sports_centre'][sport = 'swimming'][zoom >= 17],
   [feature = 'leisure_swimming_area'][zoom >= 17] {
     marker-file: url('symbols/leisure/water_park.svg');
@@ -2163,7 +2162,6 @@
     text-dy: 13;
   }
 
-  [feature = 'leisure_water_park'],
   [feature = 'leisure_sports_centre'][sport = 'swimming'],
   [feature = 'leisure_swimming_area'] {
     [way_area >= 150000][zoom >= 14],
@@ -2362,6 +2360,7 @@
   [feature = 'landuse_construction'],
   [feature = 'tourism_theme_park'],
   [feature = 'tourism_zoo'],
+  [feature = 'leisure_water_park'],
   [feature = 'amenity_kindergarten'],
   [feature = 'amenity_school'],
   [feature = 'amenity_college'],
@@ -2471,6 +2470,7 @@
         text-dy: 15;
       }
       [feature = 'tourism_theme_park'],
+      [feature = 'leisure_water_park'],
       [feature = 'tourism_zoo'] {
         text-fill: @tourism;
         text-face-name: @bold-fonts; /*rendered bold to improve visibility since theme parks tend to have crowded backgrounds*/
