@@ -334,12 +334,10 @@
 .text-low-zoom[zoom < 10],
 #text-point[zoom >= 10] {
   [feature = 'natural_water'],
-  [feature = 'natural_bay'],
-  [feature = 'natural_strait'],
   [feature = 'landuse_reservoir'],
   [feature = 'landuse_basin'],
   [feature = 'waterway_dock'] {
-    [zoom >= 0][way_pixels > 3000],
+    [zoom >= 5][way_pixels > 3000],
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 10;
@@ -370,6 +368,7 @@
 }
 
 #text-point[zoom >= 14] {
+  [feature = 'natural_bay'],
   [feature = 'natural_strait'] {
     text-name: "[name]";
     text-size: 10;

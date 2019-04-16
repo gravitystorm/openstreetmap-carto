@@ -2521,7 +2521,6 @@
     }
   }
 
-  [feature = 'natural_bay'][zoom >= 14],
   [feature = 'natural_spring'][zoom >= 16] {
     text-name: "[name]";
     text-size: 10;
@@ -2532,9 +2531,7 @@
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
-    [feature = 'natural_spring'] {
-      text-dy: 6;
-    }
+    text-dy: 6;
   }
 
   [feature = 'amenity_atm'][zoom >= 19],
