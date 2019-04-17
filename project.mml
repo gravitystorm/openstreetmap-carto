@@ -1394,7 +1394,7 @@ Layer:
           WHERE place IN ('village', 'hamlet')
              AND name IS NOT NULL
              AND NOT tags @> 'capital=>yes'
-             OR (place IN ('suburb', 'quarter', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')
+             OR (place IN ('suburb', 'quarter', 'neighbourhood', 'isolated_dwelling', 'farm')
                  OR (place IN ('square')
                      AND (leisure is NULL OR NOT leisure IN ('park', 'recreation_ground', 'garden')))
              ) AND name IS NOT NULL
@@ -1404,10 +1404,9 @@ Layer:
               WHEN place = 'hamlet' THEN 5
               WHEN place = 'quarter' THEN 6
               WHEN place = 'neighbourhood' THEN 7
-              WHEN place = 'locality' THEN 8
-              WHEN place = 'isolated_dwelling' THEN 9
-              WHEN place = 'farm' THEN 10
-              WHEN place = 'square' THEN 11
+              WHEN place = 'isolated_dwelling' THEN 8
+              WHEN place = 'farm' THEN 9
+              WHEN place = 'square' THEN 10
             END ASC, length(name) DESC, name
         ) AS placenames_small
     properties:
@@ -1517,7 +1516,7 @@ Layer:
                                                       'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier', 'tree', 'strait', 'cape')
                                                       THEN "natural" ELSE NULL END,
                 'waterway_' || CASE WHEN "waterway" IN ('waterfall') AND way_area IS NULL THEN waterway ELSE NULL END,
-                'place_' || CASE WHEN place IN ('island', 'islet') THEN place ELSE NULL END,
+                'place_' || CASE WHEN place IN ('island', 'islet', 'locality') THEN place ELSE NULL END,
                 'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate')
                               THEN historic ELSE NULL END,
                 'military_'|| CASE WHEN military IN ('danger_area', 'bunker') THEN military ELSE NULL END,

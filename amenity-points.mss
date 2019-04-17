@@ -1769,6 +1769,26 @@
     text-placement: interior;
   }
 
+  [feature = 'place_locality'][zoom >= 16] {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: @placenames;
+    text-face-name: @book-fonts;
+    text-halo-fill: @standard-halo-fill;
+    text-halo-radius: @standard-halo-radius * 1.5;
+    text-wrap-width: 45; // 4.5 em
+    text-line-spacing: -0.8; // -0.08 em
+    text-margin: 7.0; // 0.7 em
+    [zoom >= 17] {
+      text-size: 12;
+      text-wrap-width: 60; // 5.0 em
+      text-line-spacing: -0.60; // -0.05 em
+      text-margin: 8.4; // 0.7 em
+      text-fill: @placenames-light;
+      text-halo-fill: white;
+    }
+  }
+
   [feature = 'amenity_pub'][zoom >= 18],
   [feature = 'amenity_restaurant'][zoom >= 18],
   [feature = 'amenity_food_court'][zoom >= 17],
