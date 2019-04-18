@@ -243,7 +243,7 @@ Layer:
           ORDER BY COALESCE(layer,0), way_area DESC
         ) AS water_areas
     properties:
-      minzoom: 0
+      minzoom: 5
   - id: ocean-lz
     geometry: polygon
     class: ocean
