@@ -48,7 +48,6 @@ This script downloads necessary files, generates and populates the *data* direct
 
 You can also download them manually at the following paths:
 
-* [`world_bnd_m.shp`, `places.shp`, `world_boundaries_m.shp`](https://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz)
 * [`simplified_water_polygons.shp`](https://osmdata.openstreetmap.de/download/simplified-water-polygons-split-3857.zip) (updated daily)
 * [`ne_110m_admin_0_boundary_lines_land.shp`](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip)
 * [`water_polygons.shp`](https://osmdata.openstreetmap.de/download/water-polygons-split-3857.zip) (updated daily)
