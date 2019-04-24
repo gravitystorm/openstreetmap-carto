@@ -616,6 +616,18 @@ Layer:
             way, "natural", man_made
           FROM planet_osm_line
           WHERE "natural" = 'cliff' OR man_made = 'embankment'
+         UNION ALL
+         SELECT
+            ST_Difference(
+              way,
+              (SELECT ST_Union(ST_Buffer(way, 6*sqrt(!pixel_width!::real*!pixel_height!::real)))
+                 FROM planet_osm_point p
+                 WHERE "natural" IN ('peak', 'volcano', 'saddle')
+                   AND ST_DWithin(l.way, p.way, 6*sqrt(!pixel_width!::real*!pixel_height!::real))
+              )
+            ), "natural", man_made
+          FROM planet_osm_line l
+          WHERE "natural" IN ('ridge', 'arete')
         ) AS cliffs
     properties:
       cache-features: true
@@ -2024,7 +2036,7 @@ Layer:
           FROM planet_osm_line
           WHERE (man_made IN ('pier', 'breakwater', 'groyne', 'embankment')
               OR waterway IN ('dam', 'weir')
-              OR "natural" IN ('cliff'))
+              OR "natural" IN ('arete', 'cliff', 'ridge'))
             AND name IS NOT NULL
         ) AS text_line
     properties:

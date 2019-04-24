@@ -822,6 +822,15 @@
       line-pattern-file: url('symbols/cliff2.svg');
     }
   }
+  [natural = 'ridge'][zoom >= 13] {
+    line-pattern-file: url('symbols/ridge.svg');
+  }
+  [natural = 'arete'][zoom >= 13] {
+    line-pattern-file: url('symbols/arete.svg');
+    [zoom >= 15] {
+      line-pattern-file: url('symbols/arete2.svg');
+    }
+  }
   [man_made = 'embankment'][zoom >= 15]::man_made {
     line-pattern-file: url('symbols/embankment.svg');
   }
@@ -904,7 +913,9 @@
 }
 
 #text-line {
+  [feature = 'natural_arete'][zoom >= 15],
   [feature = 'natural_cliff'][zoom >= 15],
+  [feature = 'natural_ridge'][zoom >= 15],
   [feature = 'man_made_embankment'][zoom >= 15] {
     text-name: "[name]";
     text-halo-radius: @standard-halo-radius;
