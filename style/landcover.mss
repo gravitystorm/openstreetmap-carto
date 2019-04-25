@@ -823,12 +823,21 @@
     }
   }
   [natural = 'ridge'][zoom >= 13] {
-    line-pattern-file: url('symbols/ridge.svg');
+    line-pattern-file: url('symbols/ridge-lz.svg');
+    [zoom >= 14] {
+      line-pattern-file: url('symbols/ridge-mz.svg');
+    }
+    [zoom >= 15] {
+      line-pattern-file: url('symbols/ridge.svg');
+    }
   }
   [natural = 'arete'][zoom >= 13] {
-    line-pattern-file: url('symbols/arete.svg');
+    line-pattern-file: url('symbols/arete-lz.svg');
+    [zoom >= 14] {
+      line-pattern-file: url('symbols/arete-mz.svg');
+    }
     [zoom >= 15] {
-      line-pattern-file: url('symbols/arete2.svg');
+      line-pattern-file: url('symbols/arete-hz.svg');
     }
   }
   [man_made = 'embankment'][zoom >= 15]::man_made {
