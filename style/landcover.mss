@@ -829,9 +829,9 @@
     }
   }
   [natural = 'arete'][zoom >= 13] {
-    line-pattern-file: url('symbols/arete-mz.svg');
+    line-pattern-file: url('symbols/arete1b.svg');
     [zoom >= 15] {
-      line-pattern-file: url('symbols/arete-hz.svg');
+      line-pattern-file: url('symbols/arete2b.svg');
     }
   }
   [man_made = 'embankment'][zoom >= 15]::man_made {
