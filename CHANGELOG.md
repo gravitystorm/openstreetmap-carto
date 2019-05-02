@@ -1,4 +1,6 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.20.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.21.0...master)
+
+## [v4.21.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.20.0...v4.21.0)
 ## Major changes
 - Removed unused `world_boundaries-spherical.tgz` file from scripts
 
