@@ -2349,7 +2349,7 @@
   [feature = 'landuse_farmyard'],
   [feature = 'landuse_farmland'],
   [feature = 'landuse_greenhouse_horticulture'],
-  [feature = 'shop_mall'],
+  [feature = 'shop'][shop = 'mall'],
   [feature = 'landuse_retail'],
   [feature = 'landuse_industrial'],
   [feature = 'landuse_railway'],
@@ -2382,8 +2382,8 @@
   [feature = 'leisure_pitch'] {
     [zoom >= 10][way_pixels > 3000][way_pixels <= 768000][is_building = 'no'],
     [zoom >= 17][way_pixels <= 768000][is_building = 'no'],
-    [zoom >= 10][way_pixels > 3000][way_pixels <= 768000][feature = 'shop_mall'],
-    [zoom >= 17][way_pixels <= 768000][feature = 'shop_mall'] {
+    [zoom >= 10][way_pixels > 3000][way_pixels <= 768000][shop = 'mall'],
+    [zoom >= 17][way_pixels <= 768000][shop = 'mall'] {
       text-name: "[name]";
       text-size: @landcover-font-size;
       text-wrap-width: @landcover-wrap-width-size;
@@ -2447,7 +2447,7 @@
       [feature = 'landuse_greenhouse_horticulture'] {
         text-fill: darken(@farmland, 50%);
       }
-      [feature = 'shop_mall'],
+      [feature = 'shop'][shop = 'mall'],
       [feature = 'landuse_retail'] {
         text-fill: darken(@retail, 50%);
       }
@@ -2801,89 +2801,7 @@
     }
   }
 
-  [feature = 'shop_art'],
-  [feature = 'shop_bag'],
-  [feature = 'shop_bakery'],
-  [feature = 'shop_beauty'],
-  [feature = 'shop_bed'],
-  [feature = 'shop_beverages'],
-  [feature = 'shop_bookmaker'],
-  [feature = 'shop_books'],
-  [feature = 'shop_carpet'],
-  [feature = 'shop_charity'],
-  [feature = 'shop_clothes'],
-  [feature = 'shop_coffee'],
-  [feature = 'shop_computer'],
-  [feature = 'shop_fashion'],
-  [feature = 'shop_convenience'],
-  [feature = 'shop_confectionery'],
-  [feature = 'shop_pastry'],
-  [feature = 'shop_chocolate'],
-  [feature = 'shop_copyshop'],
-  [feature = 'shop_deli'],
-  [feature = 'shop_doityourself'],
-  [feature = 'shop_dry_cleaning'],
-  [feature = 'shop_hardware'],
-  [feature = 'shop_hairdresser'],
-  [feature = 'shop_hifi'],
-  [feature = 'shop_houseware'],
-  [feature = 'shop_ice_cream'],
-  [feature = 'shop_interior_decoration'],
-  [feature = 'shop_butcher'],
-  [feature = 'shop_car'],
-  [feature = 'shop_car_repair'],
-  [feature = 'shop_car_parts'],
-  [feature = 'shop_cosmetics'],
-  [feature = 'shop_dairy'],
-  [feature = 'shop_bicycle'],
-  [feature = 'shop_fabric'],
-  [feature = 'shop_farm'],
-  [feature = 'shop_fishmonger'],
-  [feature = 'shop_florist'],
-  [feature = 'shop_garden_centre'],
-  [feature = 'shop_greengrocer'],
-  [feature = 'shop_pet'],
-  [feature = 'shop_photo'],
-  [feature = 'shop_photo_studio'],
-  [feature = 'shop_photography'],
-  [feature = 'shop_shoes'],
-  [feature = 'shop_gift'],
-  [feature = 'shop_electronics'],
-  [feature = 'shop_alcohol'],
-  [feature = 'shop_optician'],
-  [feature = 'shop_outdoor'],
-  [feature = 'shop_perfumery'],
-  [feature = 'shop_furniture'],
-  [feature = 'shop_kiosk'],
-  [feature = 'shop_massage'],
-  [feature = 'shop_medical_supply'],
-  [feature = 'shop_mobile_phone'],
-  [feature = 'shop_motorcycle'],
-  [feature = 'shop_music'],
-  [feature = 'shop_musical_instrument'],
-  [feature = 'shop_newsagent'],
-  [feature = 'shop_jewelry'],
-  [feature = 'shop_jewellery'],
-  [feature = 'shop_laundry'],
-  [feature = 'shop_chemist'],
-  [feature = 'shop_paint'],
-  [feature = 'shop_toys'],
-  [feature = 'shop_travel_agency'],
-  [feature = 'shop_seafood'],
-  [feature = 'shop_second_hand'],
-  [feature = 'shop_sports'],
-  [feature = 'shop_stationery'],
-  [feature = 'shop_tobacco'],
-  [feature = 'shop_tea'],
-  [feature = 'shop_ticket'],
-  [feature = 'shop_trade'],
-  [feature = 'shop_tyres'],
-  [feature = 'shop_variety_store'],
-  [feature = 'shop_video'],
-  [feature = 'shop_video_games'],
-  [feature = 'shop_wholesale'],
-  [feature = 'shop_wine'],
-  [feature = 'shop_other'] {
+  [feature = 'shop'][shop != 'mall'] {
     [way_pixels > 3000][zoom >= 17],
     [zoom >= 18] {
       text-name: "[name]";
@@ -2896,10 +2814,10 @@
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255, 255, 255, 0.6);
       text-placement: interior;
-      [feature = 'shop_car_repair'] {
+      [shop = 'car_repair'] {
         text-fill: @amenity-brown;
       }
-      [feature = 'shop_massage'] {
+      [shop = 'massage'] {
         text-fill: @leisure-green;
       }
     }
