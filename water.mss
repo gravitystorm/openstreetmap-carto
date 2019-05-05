@@ -337,7 +337,7 @@
   [feature = 'landuse_reservoir'],
   [feature = 'landuse_basin'],
   [feature = 'waterway_dock'] {
-    [zoom >= 5][way_pixels > 3000],
+    [zoom >= 5][way_pixels > 3000][way_pixels <= 768000],
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 10;

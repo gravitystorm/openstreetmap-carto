@@ -1,4 +1,43 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.20.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.21.0...master)
+
+## [v4.21.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.20.0...v4.21.0) - 2019-05-01
+## Major changes
+- Removed unused `world_boundaries-spherical.tgz` file from scripts
+
+  This file can be safely removed and has not been used for some time.
+
+- Switch to osmdata.openstreetmap.de for water & icesheet shapefiles
+
+  The script will handle the change automatically, but if manually downloading
+  or using a different method, you will need to adjust paths.
+
+- Started using ST_PointOnSurface for some label placements
+
+  These changes are part of an effort to make it easier for forks using a
+  vector tile architecture as well as reducing the duplication among POI
+  layers. Some load has been shifted from Mapnik to the database.
+
+- Adjusted index for military areas
+
+  The query was adjusted last version but the index was missed. The old
+  `planet_osm_polygon_military` can be removed, and for servers in use, the new
+  one can be taken from the `scripts/indexes.py --concurrent` output.
+
+## Changes
+- Adjusted starting zooms for labeling of administrative areas.
+
+  The new zooms are based on `admin_level` and size.
+
+- Revert rendering of healthcare key
+
+  The original PR which implemented this had technical issues that prevented it
+  from working properly.
+
+- Stop place some place labels when the objects become too big or at high
+  zooms.
+- Only render capes as points and render them like other points.
+- Only render ferry lines from ways, not relations
+- Improved developer internal documentation
 
 ## [v4.20.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.19.0...v4.20.0) - 2019-02-15
 ## Changes
