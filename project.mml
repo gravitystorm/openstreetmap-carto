@@ -2094,10 +2094,11 @@ Layer:
       table: |-
         (SELECT
             name,
-            way,
+            ST_PointOnSurface(way) AS way,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
-          WHERE building IS NOT NULL
+          WHERE way && !bbox!
+            AND building IS NOT NULL
             AND building NOT IN ('no')
             AND name IS NOT NULL
           ORDER BY way_area DESC
