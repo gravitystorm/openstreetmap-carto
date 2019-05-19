@@ -45,7 +45,7 @@ local linestring_values = {
 local polygon_values = {
     highway = {services = true, rest_area = true},
     junction = {yes = true},
-    boundary = {national_park = true, protected_area= true}
+    boundary = {aboriginal_lands = true, national_park = true, protected_area= true}
 }
 
 -- The following keys will be deleted
