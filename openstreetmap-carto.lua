@@ -9,6 +9,7 @@ local polygon_keys = {
     'abandoned:landuse',
     'abandoned:power',
     'aeroway',
+    'allotments',
     'amenity',
     'area:highway',
     'building',
