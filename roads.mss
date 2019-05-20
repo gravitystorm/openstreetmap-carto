@@ -3012,7 +3012,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-spacing: 750;
       text-clip: false;
       text-placement: line;
-      text-face-name: @book-fonts;
+      text-face-name: @oblique-fonts;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-repeat-distance: @minor-highway-text-repeat-distance;
@@ -3035,7 +3035,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
 
       text-fill: #000;
-      text-face-name: @book-fonts;
+      text-face-name: @oblique-fonts;
       text-placement: line;
       text-repeat-distance: @major-highway-text-repeat-distance;
       text-halo-radius: @standard-halo-radius;
@@ -3062,7 +3062,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
       text-clip: false;
       text-fill: #222;
-      text-face-name: @book-fonts;
+      text-face-name: @oblique-fonts;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-margin: 10;
