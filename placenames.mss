@@ -436,7 +436,6 @@
 
 #placenames-small::neighborhood {
   [place = 'neighbourhood'][zoom >= 15][zoom < 20],
-  [place = 'locality'][zoom >= 15],
   [place = 'isolated_dwelling'][zoom >= 15],
   [place = 'farm'][zoom >= 15] {
     text-name: "[name]";
