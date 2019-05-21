@@ -1707,25 +1707,19 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way
-          FROM planet_osm_point
-          WHERE power = 'tower'
+            way,
+            power
+        FROM planet_osm_point
+        WHERE power IN ('tower', 'pole')
+        ORDER BY
+          CASE
+            WHEN power = 'tower' THEN 1
+            WHEN power = 'pole' THEN 2
+            ELSE NULL
+          END
         ) AS power_towers
     properties:
       minzoom: 14
-  - id: power-poles
-    geometry: point
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way
-          FROM planet_osm_point
-          WHERE power = 'pole'
-        ) AS power_poles
-    properties:
-      minzoom: 16
   - id: roads-text-ref-low-zoom
     geometry: linestring
     <<: *extents
