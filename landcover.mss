@@ -538,6 +538,18 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
+  [feature = 'wetland_mangrove'][zoom >= 5] {
+    polygon-fill: @orchard;
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
+  [feature = 'wetland_reedbed'][zoom >= 5] {
+    polygon-fill: @scrub;
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
   [feature = 'wetland_bog'],
   [feature = 'wetland_string_bog'] {
     [zoom >= 5] {
@@ -549,6 +561,7 @@
 
   [feature = 'wetland_wet_meadow'],
   [feature = 'wetland_fen'],
+  [feature = 'wetland_saltmarsh'],
   [feature = 'wetland_marsh'] {
     [zoom >= 5] {
       polygon-fill: @grass;
