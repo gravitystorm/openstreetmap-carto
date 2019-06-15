@@ -539,7 +539,7 @@
   }
 
   [feature = 'wetland_mangrove'][zoom >= 5] {
-    polygon-fill: @orchard;
+    polygon-fill: @scrub;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
