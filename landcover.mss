@@ -545,7 +545,7 @@
   }
 
   [feature = 'wetland_reedbed'][zoom >= 5] {
-    polygon-fill: @scrub;
+    polygon-fill: @grass;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
