@@ -2853,6 +2853,7 @@
       [office = 'charity'],
       [office = 'company'],
       [office = 'educational_institution'],
+      [office = 'diplomatic'],
       [office = 'employment_agency'],
       [office = 'energy_supplier'],
       [office = 'estate_agent'],
