@@ -2989,6 +2989,7 @@
   [feature = 'natural_scree'][zoom >= 9],
   [feature = 'natural_shingle'][zoom >= 9],
   [feature = 'natural_bare_rock'],
+  [feature = 'natural_rock'],
   [feature = 'natural_sand'] {
     [zoom >= 8][way_pixels > 3000][way_pixels <= 768000][is_building = 'no'],
     [zoom >= 17][way_pixels <= 768000][is_building = 'no'] {
@@ -3012,7 +3013,8 @@
       text-placement: interior;
       [feature = 'natural_scree'],
       [feature = 'natural_shingle'],
-      [feature = 'natural_bare_rock'] {
+      [feature = 'natural_bare_rock'],
+      [feature = 'natural_rock'] {
         text-fill: darken(@bare_ground, 50%);
       }
       [feature = 'natural_sand'] {
