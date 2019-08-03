@@ -845,20 +845,37 @@
     line-color: #444;
   }
   [feature = 'barrier_hedge'][zoom >= 16] {
-    line-width: 3;
+    line-width: 1.5;
     line-color: #aed1a0;
+    [zoom >= 17] {
+      line-width: 2;
+    }
+    [zoom >= 18] {
+      line-width: 3;
+    }
+    [zoom >= 19] {
+      line-width: 4;
+    }
   }
   [feature = 'historic_citywalls'],
   [feature = 'barrier_city_wall'] {
     [zoom >= 15] {
-      line-width: 1.5;
+      line-width: 1;
       line-color: lighten(#444, 30%);
     }
-
+    [zoom >= 16] {
+      line-width: 1.5;
+    }
     [zoom >= 17] {
-      line-width: 3;
+      line-width: 2;
       barrier/line-width: 0.4;
       barrier/line-color: #444;
+    }
+    [zoom >= 18] {
+      line-width: 3;
+    }
+    [zoom >= 19] {
+      line-width: 4;
     }
   }
 }
