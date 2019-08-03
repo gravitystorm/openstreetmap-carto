@@ -846,7 +846,7 @@
   }
   [feature = 'barrier_hedge'][zoom >= 16] {
     line-width: 1.5;
-    line-color: #aed1a0;
+    line-color: @forest;
     [zoom >= 17] {
       line-width: 2;
     }
