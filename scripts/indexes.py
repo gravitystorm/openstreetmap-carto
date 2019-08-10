@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # This script takes a YAML file defining indexes and creates SQL statements
 # There are a number of options for concurrent index creation, recreating the

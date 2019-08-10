@@ -33,7 +33,7 @@ class Color:
 def load_settings():
     """Read the settings from YAML."""
     with open('road-colors.yaml', 'r') as fd:
-        y=yaml.load(fd, Loader=yaml.SafeLoader)
+        y = yaml.load(fd, Loader = yaml.SafeLoader)
 
     return y
 
