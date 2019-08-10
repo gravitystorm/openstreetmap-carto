@@ -80,6 +80,7 @@ Layer:
           ORDER BY way_area DESC, feature
         ) AS landcover_low_zoom
     properties:
+      cache-features: true
       minzoom: 5
       maxzoom: 9
   - id: landcover
@@ -135,6 +136,7 @@ Layer:
           ORDER BY way_area DESC, feature
         ) AS features
     properties:
+      cache-features: true
       minzoom: 10
   - id: landcover-line
     geometry: linestring
@@ -243,6 +245,7 @@ Layer:
           ORDER BY COALESCE(layer,0), way_area DESC
         ) AS water_areas
     properties:
+      cache-features: true
       minzoom: 0
   - id: ocean-lz
     geometry: polygon
@@ -290,6 +293,7 @@ Layer:
           ORDER BY COALESCE(layer,0), way_area DESC
         ) AS landcover_area_symbols
     properties:
+      cache-features: true
       minzoom: 5
   - id: icesheet-outlines
     geometry: linestring
@@ -533,6 +537,7 @@ Layer:
             CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
         ) AS tunnels
     properties:
+      cache-features: true
       group-by: layernotnull
       minzoom: 10
   - id: landuse-overlay
@@ -604,6 +609,7 @@ Layer:
           WHERE "natural" = 'cliff' OR man_made = 'embankment'
         ) AS cliffs
     properties:
+      cache-features: true
       minzoom: 13
   - id: area-barriers
     class: barriers
@@ -794,6 +800,7 @@ Layer:
             osm_id
         ) AS roads_sql
     properties:
+      cache-features: true
       minzoom: 10
   - id: highway-area-fill
     # FIXME: No geometry?
@@ -832,6 +839,7 @@ Layer:
       <<: *osm2pgsql
       table: *roads_sql
     properties:
+      cache-features: true
       minzoom: 10
   - id: turning-circle-fill
     geometry: point
@@ -886,6 +894,7 @@ Layer:
             z_order
         ) AS roads_low_zoom
     properties:
+      cache-features: true
       minzoom: 6
       maxzoom: 9
   - id: waterway-bridges
@@ -998,6 +1007,7 @@ Layer:
             CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
         ) AS bridges
     properties:
+      cache-features: true
       group-by: layernotnull
       minzoom: 10
   - id: guideways
@@ -1046,6 +1056,7 @@ Layer:
             CASE WHEN aeroway = 'runway' THEN 10 ELSE 0 END
         ) AS aeroways
     properties:
+      cache-features: true
       minzoom: 11
   - id: necountries
     geometry: linestring
@@ -1156,6 +1167,7 @@ Layer:
             AND way_area > 1*!pixel_width!::real*!pixel_height!::real
         ) AS protected_areas
     properties:
+      cache-features: true
       minzoom: 8
   - id: trees
     geometry: polygon
@@ -1174,6 +1186,7 @@ Layer:
           WHERE "natural" = 'tree_row'
         ) AS trees
     properties:
+      cache-features: true
       minzoom: 16
   - id: country-names
     class: country
@@ -1282,6 +1295,7 @@ Layer:
           ORDER BY score DESC, length(name) DESC, name
         ) AS placenames_medium
     properties:
+      cache-features: true
       minzoom: 4
       maxzoom: 15
   - id: placenames-small
@@ -1315,6 +1329,7 @@ Layer:
             END ASC, length(name) DESC, name
         ) AS placenames_small
     properties:
+      cache-features: true
       minzoom: 12
   - id: stations
     geometry: point
@@ -1364,6 +1379,7 @@ Layer:
             way_area DESC NULLS LAST
         ) AS stations
     properties:
+      cache-features: true
       minzoom: 12
   - id: amenity-points
     class: points
@@ -1580,6 +1596,7 @@ Layer:
             way_pixels DESC NULLS LAST
           ) AS amenity_points
     properties:
+      cache-features: true
       minzoom: 10
   - id: amenity-line
     geometry: linestring
@@ -1853,6 +1870,7 @@ Layer:
             l.osm_id DESC -- Force an ordering for streets of the same name, e.g. dualized roads
         ) AS roads_text_name
     properties:
+      cache-features: true
       minzoom: 13
   - id: paths-text-name
     class: directions
@@ -1880,6 +1898,7 @@ Layer:
               OR junction IN ('roundabout'))
         ) AS paths_text_name
     properties:
+      cache-features: true
       minzoom: 15
   - id: railways-text-name
     geometry: linestring
@@ -2158,6 +2177,7 @@ Layer:
           ORDER BY prio
           ) AS amenity_low_priority
     properties:
+      cache-features: true
       minzoom: 14
   - id: amenity-low-priority-poly
     class: amenity-low-priority
@@ -2179,4 +2199,5 @@ Layer:
              OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile', 'motorcycle_barrier', 'cycle_barrier', 'full-height_turnstile', 'turnstile', 'kissing_gate')
           ) AS amenity_low_priority_poly
     properties:
+      cache-features: true
       minzoom: 14
