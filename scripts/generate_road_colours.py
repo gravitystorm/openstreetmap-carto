@@ -112,8 +112,8 @@ def main():
     print ("/*   ./scripts/generate_road_colours.py > road-colors-generated.mss  */")
     print ("/*                                                                   */")
 
-    for line_name, line_colours in colours.items():
-        for name, colour in line_colours.items():
+    for line_name, line_colours in sorted(colours.items()):
+        for name, colour in sorted(line_colours.items()):
             if args.verbose:
                 line = "@{name}-{line_name}: {rgb}; // {lch}, error {delta:.1f}"
             else:
