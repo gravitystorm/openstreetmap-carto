@@ -573,7 +573,7 @@ Layer:
         ) AS tourism_boundary
     properties:
       minzoom: 10
-  - id: line-barriers
+  - id: barriers
     geometry: linestring
     <<: *extents
     Datasource:
@@ -590,6 +590,16 @@ Layer:
                   'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall')
               OR historic = 'citywalls'
               AND (waterway IS NULL OR waterway NOT IN ('river', 'canal', 'stream', 'drain', 'ditch'))
+          UNION ALL
+          SELECT way,
+            ('barrier_' || (CASE WHEN barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
+                  'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall') THEN barrier ELSE NULL END)) AS barrier,
+            ('historic_' || (CASE WHEN historic = 'citywalls' THEN historic ELSE NULL END)) AS historic
+            FROM planet_osm_polygon
+            WHERE (barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
+                  'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall')
+              OR historic = 'citywalls')
+              AND building IS NULL
           ) AS features
         ) AS line_barriers
     properties:
@@ -608,27 +618,6 @@ Layer:
     properties:
       cache-features: true
       minzoom: 13
-  - id: area-barriers
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way, COALESCE(historic, barrier) AS feature
-          FROM (SELECT way,
-            ('barrier_' || (CASE WHEN barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
-                  'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall') THEN barrier ELSE NULL END)) AS barrier,
-            ('historic_' || (CASE WHEN historic = 'citywalls' THEN historic ELSE NULL END)) AS historic
-            FROM planet_osm_polygon
-            WHERE (barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
-                  'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall')
-              OR historic = 'citywalls')
-              AND building IS NULL
-          ) AS features
-        ) AS area_barriers
-    properties:
-      minzoom: 16
   - id: ferry-routes
     geometry: linestring
     <<: *extents
