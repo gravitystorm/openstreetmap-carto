@@ -107,7 +107,7 @@ Layer:
               ('shop_' || (CASE WHEN shop IN ('mall') AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL) THEN shop END)) AS shop,
               ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'recreation_ground', 'garden',
                                                     'golf_course', 'miniature_golf', 'sports_centre', 'stadium', 'pitch', 'ice_rink',
-                                                    'track', 'dog_park', 'fitness_station') THEN leisure END)) AS leisure,
+                                                    'track', 'dog_park', 'fitness_station', 'water_park') THEN leisure END)) AS leisure,
               ('man_made_' || (CASE WHEN man_made IN ('works', 'wastewater_plant', 'water_works') THEN man_made END)) AS man_made,
               ('natural_' || (CASE WHEN "natural" IN ('beach', 'shoal', 'heath', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub') THEN "natural" END)) AS "natural",
               ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'mud') THEN (CASE WHEN "natural" = 'mud' THEN "natural" ELSE tags->'wetland' END) END)) AS wetland,
