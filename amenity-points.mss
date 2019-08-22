@@ -2369,7 +2369,7 @@
   [feature = 'landuse_farmyard'],
   [feature = 'landuse_farmland'],
   [feature = 'landuse_greenhouse_horticulture'],
-  [feature = 'shop'][shop = 'mall'],
+  [feature = 'shop'][shop = 'mall'][location != 'underground'],
   [feature = 'landuse_retail'],
   [feature = 'landuse_industrial'],
   [feature = 'landuse_railway'],
