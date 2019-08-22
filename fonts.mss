@@ -19,13 +19,13 @@ but there are some exceptions.
   - Noto Sans is before all other fonts
   - The CJK fonts are manually ordered. The used CJK font covers all CJK
     languages, but defaults to the japanese glyph style if various glyph
-    styles are available. (We have to default to one of JP, KR, SC, TC because
+    styles are available. We have to default to one of JP, KR, SC, TC because
     this carto style has no knowledge about what language the “names” tag
     contains. As in Korea Han characters are not so widely used, it seems
     better to default to either Chinese or Japanese. As Chinese exists in the
     two variants SC/TC, it won’t be a uniform rendering anyway. So we default
     to Japanese. However, this choice stays somewhat arbitrary and subjective.
-    See also https://github.com/gravitystorm/openstreetmap-carto/issues/2208)
+    See also https://github.com/gravitystorm/openstreetmap-carto/issues/2208
   - For the Syriac script, there exist Noto Sans Syriac Eastern,
     Noto Sans Syriac Western Regular and Noto Sans Syriac Estrangela Regular.
     As for CJK fonts, we have no knowledge about what language the “names” tag
@@ -41,14 +41,19 @@ variant. This style uses Noto Sans Arabic UI because it’s consistent with the
 other Sans fonts and legible. The Arabic fonts are placed behind Sans fonts
 because they might re-define some commonly used signs like parenthesis or
 quotation marks, and the arabic design should not overwrite the standard design.
+The list still includes Noto Naskh Arabic UI for compatibility on systems
+without Noto Sans Arabic UI.
 
-3. Noto provides two variants of Emoji: Noto Color Emoji and Noto Emoji. The
+3. Noto Serif is used for scripts that are not supported by Noto Sans. Currently
+this is only Tibetan: The old Noto Sans Tibetan has been renamed to Noto Serif
+Tibetan in 2015, since then only Noto Serif Tibetan gets updated. We still
+include the old one for compatibility on systems without Noto Serif Tibetan.
+See also https://github.com/googlefonts/noto-fonts/issues/1540
+
+4. Noto provides two variants of Emoji: Noto Color Emoji and Noto Emoji. The
 colour variant is a SVG flavoured OpenType font that contains coloured emojis.
 This is not useful in cartography, so we use the “normal” monochromatic
 Noto Emoji.
-
-4. The list still includes Noto Naskh Arabic UI for compatibility on systems
-without Noto Sans Arabic UI.
 
 5. The list still includes DejaVu for compatibility on systems without Noto.
 
@@ -113,8 +118,7 @@ A regular style.
                 "Noto Sans Samaritan Regular",
                 "Noto Sans Saurashtra Regular",
                 "Noto Sans Shavian Regular",
-                "Noto Sans Sinhala UI Regular",
-                "Noto Sans Sinhala Regular",
+                "Noto Sans Sinhala UI Regular", "Noto Sans Sinhala Regular",
                 "Noto Sans Sundanese Regular",
                 "Noto Sans Symbols Regular",
                 "Noto Sans Symbols2 Regular",
@@ -128,16 +132,15 @@ A regular style.
                 "Noto Sans Telugu UI Regular",
                 "Noto Sans Thaana Regular",
                 "Noto Sans Thai UI Regular",
-                "Noto Sans Tibetan Regular",
                 "Noto Sans Tifinagh Regular",
                 "Noto Sans Vai Regular",
                 "Noto Sans Yi Regular",
 
-                "Noto Sans Arabic UI Regular",
+                "Noto Sans Arabic UI Regular", "Noto Naskh Arabic UI Regular",
+                
+                "Noto Serif Tibetan Regular", "Noto Sans Tibetan Regular",
 
                 "Noto Emoji Regular",
-
-                "Noto Naskh Arabic UI Regular",
 
                 "DejaVu Sans Book",
 
@@ -166,18 +169,16 @@ regular text and can be used for emphasis. Fallback is a regular style.
                 "Noto Sans Malayalam UI Bold",
                 "Noto Sans Myanmar UI Bold",
                 "Noto Sans Oriya UI Bold",
-                "Noto Sans Sinhala UI Bold",
-                "Noto Sans Sinhala Bold",
+                "Noto Sans Sinhala UI Bold", "Noto Sans Sinhala Bold",
                 "Noto Sans Symbols Bold",
                 "Noto Sans Tamil UI Bold",
                 "Noto Sans Telugu UI Bold",
                 "Noto Sans Thaana Bold",
                 "Noto Sans Thai UI Bold",
-                "Noto Sans Tibetan Bold",
 
-                "Noto Sans Arabic UI Bold",
+                "Noto Sans Arabic UI Bold", "Noto Naskh Arabic UI Bold",
 
-                "Noto Naskh Arabic UI Bold",
+                "Noto Serif Tibetan Bold", "Noto Sans Tibetan Bold",
 
                 "DejaVu Sans Bold",
 
