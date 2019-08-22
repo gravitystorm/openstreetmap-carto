@@ -856,6 +856,9 @@
     [zoom >= 19] {
       line-width: 4;
     }
+    [zoom >= 20] {
+      line-width: 5;
+    }
   }
   [feature = 'historic_citywalls'],
   [feature = 'barrier_city_wall'] {
@@ -876,6 +879,9 @@
     }
     [zoom >= 19] {
       line-width: 4;
+    }
+    [zoom >= 20] {
+      line-width: 5;
     }
   }
 }
