@@ -92,3 +92,4 @@ maps using Mapnik, many based on this project. Some alternatives are:
 * Daniel Koć [@kocio-pl](https://github.com/kocio-pl)
 * Christoph Hormann [@imagico](https://github.com/imagico)
 * Lukas Sommer [@sommerluk](https://github.com/sommerluk)
+* Joseph Eisenberg [@jeisenbe](https://github.com/jeisenbe)
