@@ -7,6 +7,7 @@
 @park: #c8facc;         // Lch(94,30,145)
 @allotments: #c9e1bf;   // Lch(87,20,135)
 @orchard: #aedfa3; // also vineyard, plant_nursery
+@hedge: @forest;       // Lch(80,30,135)
 
 // --- "Base" landuses ---
 
@@ -846,7 +847,7 @@
   }
   [feature = 'barrier_hedge'][zoom >= 16] {
     line-width: 1.5;
-    line-color: @forest;
+    line-color: @hedge;
     [zoom >= 17] {
       line-width: 2;
     }
