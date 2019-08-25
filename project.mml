@@ -581,28 +581,29 @@ Layer:
       table: |-
         (SELECT
             way, COALESCE(historic, barrier) AS feature
-          FROM (SELECT way,
-            ('barrier_' || (CASE WHEN barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
-                  'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall') THEN barrier ELSE NULL END)) AS barrier,
-            ('historic_' || (CASE WHEN historic = 'citywalls' THEN historic ELSE NULL END)) AS historic
-            FROM
-              (SELECT
-                  way,
-                  historic,
-                  barrier,
-                  waterway
-                FROM planet_osm_polygon
-                WHERE way && !bbox!
-              UNION ALL
-              SELECT
-                  way,
-                  historic,
-                  barrier,
-                  waterway
-                FROM planet_osm_line
-                WHERE way && !bbox!
-              ) _
-            WHERE barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
+          FROM
+            (SELECT way,
+              ('barrier_' || (CASE WHEN barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
+                    'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall') THEN barrier ELSE NULL END)) AS barrier,
+              ('historic_' || (CASE WHEN historic = 'citywalls' THEN historic ELSE NULL END)) AS historic
+              FROM
+                (SELECT
+                    way,
+                    historic,
+                    barrier,
+                    waterway
+                  FROM planet_osm_polygon
+                  WHERE way && !bbox!
+                UNION ALL
+                SELECT
+                    way,
+                    historic,
+                    barrier,
+                    waterway
+                  FROM planet_osm_line
+                  WHERE way && !bbox!
+                ) _
+              WHERE barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
                   'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall')
               OR historic = 'citywalls'
               AND (waterway IS NULL OR waterway NOT IN ('river', 'canal', 'stream', 'drain', 'ditch'))
