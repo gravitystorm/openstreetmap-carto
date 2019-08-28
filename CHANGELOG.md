@@ -1,5 +1,7 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.21.0...master)
-## Changes
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.22.0...master)
+
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.21.0...v4.22.0)
+### Changes
 
 - Shop label fixes and use ST_PointOnSurface for building label placement
 
