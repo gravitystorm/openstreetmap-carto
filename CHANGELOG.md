@@ -1,4 +1,42 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.21.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.22.0...master)
+
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.21.0...v4.22.0)
+### Changes
+
+- Shop label fixes and use ST_PointOnSurface for building label placement
+
+  This fixes some bugs and makes building label placement consistent with shop
+  label placement.
+
+- Use `cache-feature: true` to improve performance of layers with attachments
+
+- Use retail colour fill on malls
+
+- Drop `highway=steps` from zoom 13
+
+  This makes step rendering consistent with footways
+
+- Render `place=locality` from zoom 16
+
+  This fits current usage of the tag and what it is normally tagged on.
+
+- Render `natural=bay` from linear ways
+
+- Render administrative boundary labels from relations only
+
+- Stop rendering natural=marsh
+
+  It is recommended marshes are tagged with `natural=wetland` + `wetland=marsh`
+
+- Use a whitelist for barrier rendering, and render `historic=citywalls` like
+  `barrier=city_wall`.
+
+- Support new Tibetan font name
+
+  Noto has renamed Noto Sans Tibetan to Noto Serif Tibetan. The old name is
+  still supported.
+
+- Code cleanups to increase reuse and improve consistency
 
 ## [v4.21.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.20.0...v4.21.0) - 2019-05-01
 ## Major changes
