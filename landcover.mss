@@ -726,6 +726,10 @@
       polygon-pattern-gamma: 0.3;
     }
   }
+  [natural = 'sand'][zoom >= 5] {
+    polygon-pattern-file: url('symbols/beach.png');
+    polygon-pattern-alignment: global;
+  }
   [int_wetland != null][zoom >= 5] {
     polygon-pattern-file: url('symbols/wetland.png');
     polygon-pattern-alignment: global;
