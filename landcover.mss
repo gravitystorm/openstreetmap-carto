@@ -718,7 +718,7 @@
   }
 
   [natural = 'bare_rock'][zoom >= 5] {
-    polygon-pattern-file: url('symbols/bare_rock1.png');
+    polygon-pattern-file: url('symbols/bare_rock2.png');
     [way_pixels >= 4] {
       polygon-pattern-gamma: 0.75;
     }
