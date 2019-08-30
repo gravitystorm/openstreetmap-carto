@@ -1762,12 +1762,12 @@ Layer:
                     osm_id,
                     way,
                     COALESCE(
-                      CASE WHEN highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential', 'track') THEN highway ELSE NULL END,
+                      CASE WHEN highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary') THEN highway ELSE NULL END,
                       CASE WHEN aeroway IN ('runway', 'taxiway') THEN aeroway ELSE NULL END
                     ) AS highway,
                     string_to_array(ref, ';') AS refs
                   FROM planet_osm_line
-                  WHERE (highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential', 'track') OR aeroway IN ('runway', 'taxiway'))
+                  WHERE (highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary') OR aeroway IN ('runway', 'taxiway'))
                     AND ref IS NOT NULL
               ) AS p) AS q
           WHERE height <= 4 AND width <= 11
@@ -1778,9 +1778,6 @@ Layer:
               WHEN highway = 'primary' THEN 36
               WHEN highway = 'secondary' THEN 35
               WHEN highway = 'tertiary' THEN 34
-              WHEN highway = 'unclassified' THEN 33
-              WHEN highway = 'residential' THEN 32
-              WHEN highway = 'track' THEN 30
               WHEN highway = 'runway' THEN 6
               WHEN highway = 'taxiway' THEN 5
               ELSE NULL
@@ -1933,6 +1930,51 @@ Layer:
         ) AS railways_text_name
     properties:
       minzoom: 11
+  - id: roads-text-ref-minor
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            highway,
+            height,
+            width,
+            refs
+          FROM (
+            SELECT
+                osm_id,
+                way,
+                highway,
+                array_length(refs,1) AS height,
+                (SELECT MAX(char_length(ref)) FROM unnest(refs) AS u(ref)) AS width,
+                array_to_string(refs, E'\n') AS refs
+              FROM (
+                SELECT
+                    osm_id,
+                    way,
+                    CASE WHEN highway IN ('unclassified', 'residential', 'track') THEN highway ELSE NULL END AS highway,
+                    string_to_array(ref, ';') AS refs
+                  FROM planet_osm_line
+                  WHERE highway IN ('unclassified', 'residential', 'track')
+                    AND ref IS NOT NULL
+              ) AS p) AS q
+          WHERE height <= 4 AND width <= 11
+          ORDER BY
+            CASE
+              WHEN highway = 'unclassified' THEN 33
+              WHEN highway = 'residential' THEN 32
+              WHEN highway = 'track' THEN 30
+              ELSE NULL
+            END DESC NULLS LAST,
+            height DESC,
+            width DESC,
+            refs,
+            osm_id
+        ) AS roads_text_ref_minor
+    properties:
+      minzoom: 15
   - id: text-poly-low-zoom
     class: text-low-zoom
     geometry: polygon
