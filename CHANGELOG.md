@@ -63,6 +63,8 @@
   The script will handle the change automatically, but if manually downloading
   or using a different method, you will need to adjust paths.
 
+- Change from land to ocean polygons and render water areas above landcover 
+
 - Started using ST_PointOnSurface for some label placements
 
   These changes are part of an effort to make it easier for forks using a
