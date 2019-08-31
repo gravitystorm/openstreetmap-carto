@@ -3,40 +3,54 @@
 ## [v4.22.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.21.0...v4.22.0)
 ### Changes
 
-- Shop label fixes and use ST_PointOnSurface for building label placement
+- Shop label fixes and use ST_PointOnSurface for building label placement (#3781)
 
   This fixes some bugs and makes building label placement consistent with shop
   label placement.
 
-- Use `cache-feature: true` to improve performance of layers with attachments
+- Use `cache-feature: true` to improve performance of layers with attachments (#3838)
 
-- Use retail colour fill on malls
+- Use retail colour fill on malls (#3790)
 
-- Drop `highway=steps` from zoom 13
+- Drop `highway=steps` from zoom 13 (#3825)
 
   This makes step rendering consistent with footways
 
-- Render `place=locality` from zoom 16
+- Render `place=locality` from zoom 16 (#3749)
 
   This fits current usage of the tag and what it is normally tagged on.
 
-- Render `natural=bay` from linear ways
+- Render `natural=bay` from linear ways (#3754)
 
-- Render administrative boundary labels from relations only
+- Render administrative boundary labels from relations only (#3762)
 
-- Stop rendering natural=marsh
+- Stop rendering natural=marsh (#3829)
 
   It is recommended marshes are tagged with `natural=wetland` + `wetland=marsh`
 
 - Use a whitelist for barrier rendering, and render `historic=citywalls` like
-  `barrier=city_wall`.
+  `barrier=city_wall`. (#3745)
+  
+- Create new layer for `ref` of  `highway=residential/unclassified/track`, change residential/unclassified `ref`
+  rendering to use standard halo-radius, oblique (italic) font, and same text size as `name=` at >z17 (#3709)
+  
+  This makes the ref lables consistent between track roads, paths, residential and unclassified highways, 
+  and renderes the `ref` text with lower priority than the `name=` text.
+  
+- Add fill color for `wetland=mangrove`, `wetland=saltmarsh` and `wetland=reedbed`, 
+  add salt dots pattern to `wetland=saltmarsh` (#3807)
 
-- Support new Tibetan font name
+  Mangroves are now rendered in scrub fill color, reedbed and saltmarsh with grass color. 
+  A salt dot pattern is added to distinguish `wetland=saltmarsh` from `wetland=marsh`
+
+- Support new Tibetan font name (#3842)
 
   Noto has renamed Noto Sans Tibetan to Noto Serif Tibetan. The old name is
   still supported.
+  
+- Add adjustments for `highway=motorway` and `highway=service` width at z20 (#3763)
 
-- Code cleanups to increase reuse and improve consistency
+- Code cleanups to increase reuse and improve consistency (#3735, #3760, #3771, #3773, #3774)
 
 ## [v4.21.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.20.0...v4.21.0) - 2019-05-01
 ## Major changes
