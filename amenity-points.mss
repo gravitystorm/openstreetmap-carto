@@ -1488,11 +1488,11 @@
     marker-fill: @airtransport;
   }
 
-  [feature = 'aeroway_aerodrome']['access' != 'private']['icao' != null]['iata' != null][zoom >= 10][zoom < 17],
-  [feature = 'aeroway_aerodrome']['access' = 'private'][zoom >= 12][zoom < 18],
-  [feature = 'aeroway_aerodrome']['icao' = null][zoom >= 12][zoom < 18],
-  [feature = 'aeroway_aerodrome']['iata' = null][zoom >= 12][zoom < 18] {
-    [way_pixels <= 768000],
+  [feature = 'aeroway_aerodrome']['access' != 'private']['icao' != null]['iata' != null][zoom >= 10][zoom < 16],
+  [feature = 'aeroway_aerodrome']['access' = 'private'][zoom >= 12][zoom < 17],
+  [feature = 'aeroway_aerodrome']['icao' = null][zoom >= 12][zoom < 17],
+  [feature = 'aeroway_aerodrome']['iata' = null][zoom >= 12][zoom < 17] {
+    [way_pixels <= 192000],
     [way_pixels = null] {
       marker-file: url('symbols/aerodrome.12.svg');
       marker-placement: interior;
@@ -3116,11 +3116,11 @@
     text-placement: interior;
   }
 
-  [feature = 'aeroway_aerodrome']['access' != 'private']['icao' != null]['iata' != null][zoom >= 11][zoom < 17],
-  [feature = 'aeroway_aerodrome'][zoom >= 13][zoom < 18]['access' = 'private'],
-  [feature = 'aeroway_aerodrome'][zoom >= 13][zoom < 18]['icao' = null],
-  [feature = 'aeroway_aerodrome'][zoom >= 13][zoom < 18]['iata' = null] {
-    [way_pixels <= 768000],
+  [feature = 'aeroway_aerodrome']['access' != 'private']['icao' != null]['iata' != null][zoom >= 11][zoom < 16],
+  [feature = 'aeroway_aerodrome'][zoom >= 13][zoom < 17]['access' = 'private'],
+  [feature = 'aeroway_aerodrome'][zoom >= 13][zoom < 17]['icao' = null],
+  [feature = 'aeroway_aerodrome'][zoom >= 13][zoom < 17]['iata' = null] {
+    [way_pixels <= 192000],
     [way_pixels = null] {
       text-name: "[name]";
       text-size: @standard-font-size;
