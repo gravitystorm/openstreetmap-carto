@@ -1498,6 +1498,14 @@ Layer:
                 ELSE NULL
               END AS height,
               tags->'location' as location,
+              CASE 
+                WHEN aeroway = 'aerodrome' THEN
+                  CASE
+                    WHEN tags->'icao' = NULL OR tags->'iata' = NULL OR access = 'private' THEN 'no' 
+                    ELSE 'yes'
+                  END
+                ELSE NULL 
+              END AS is_airport,
               tags->'icao' as icao,
               tags->'iata' as iata,
               tags->'office' as office,
