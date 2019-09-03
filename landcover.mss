@@ -51,7 +51,6 @@
 @leisure: lighten(@park, 5%);
 @power: darken(@industrial, 5%);
 @power-line: darken(@industrial-line, 5%);
-@sand: #f5e9c6;
 @societal_amenities: #ffffe5;   // Lch(99,13,109)
 @tourism: #660033;
 @quarry: #c5c3c3;
@@ -517,7 +516,7 @@
   }
 
   [feature = 'natural_sand'][zoom >= 5] {
-    polygon-fill: @sand;
+    polygon-fill: @bare_ground;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
@@ -741,7 +740,7 @@
   }
 
   [natural = 'sand'][zoom >= 5] {
-    polygon-pattern-file: url('symbols/beach.png');
+    polygon-pattern-file: url('symbols/sand.png');
     polygon-pattern-alignment: global;
   }
   [int_wetland != null][zoom >= 5] {
@@ -780,7 +779,7 @@
     [natural = 'beach'],
     [natural = 'shoal'] {
       [surface = 'sand'] {
-        polygon-pattern-file: url('symbols/beach.png');
+        polygon-pattern-file: url('symbols/sand.png');
         polygon-pattern-alignment: global;
       }
       [surface = 'gravel'],
