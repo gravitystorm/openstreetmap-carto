@@ -1424,6 +1424,13 @@
      marker-clip: false;
    }
 
+  [feature = 'leisure_hackerspace'][zoom >= 17]  {
+     marker-file: url('symbols/leisure/hackerspace.svg');
+     marker-fill: @shop-icon;
+     marker-placement: interior;
+     marker-clip: false;
+   }
+
   [feature = 'leisure_beach_resort'][zoom >= 16] {
      marker-file: url('symbols/leisure/beach_resort.svg');
      marker-fill: @leisure-green;
@@ -1857,6 +1864,19 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: @leisure-green;
+    text-dy: 11;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+  }
+
+  [feature = 'leisure_hackerspace'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: @shop-text;
     text-dy: 11;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
