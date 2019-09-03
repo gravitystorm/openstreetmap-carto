@@ -2742,13 +2742,11 @@
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-placement: interior;
+      [feature = 'natural_sand'],
       [feature = 'natural_scree'],
       [feature = 'natural_shingle'],
       [feature = 'natural_bare_rock'] {
         text-fill: darken(@bare_ground, 50%);
-      }
-      [feature = 'natural_sand'] {
-        text-fill: darken(@sand, 50%);
       }
     }
   }
