@@ -3203,7 +3203,7 @@
         text-wrap-width: @landcover-wrap-width-size-big; 
         text-line-spacing: @landcover-line-spacing-size-big;
         text-dy: 11;
-        [zoom >= 15][is_airport = 'yes'] {
+        [zoom >= 15] {
           text-size: @landcover-font-size-bigger;
           text-wrap-width: @landcover-wrap-width-size-bigger;
           text-line-spacing: @landcover-line-spacing-size-bigger;
