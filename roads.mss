@@ -5,6 +5,7 @@
 @service-fill: @residential-fill;
 @living-street-fill: #ededed;
 @pedestrian-fill: #dddde8;
+@pedestrian-area-fill: #ebebf7;
 @raceway-fill: pink;
 @road-fill: #ddd;
 @footway-fill: salmon;
@@ -2626,7 +2627,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   [feature = 'highway_cycleway'],
   [feature = 'highway_path'] {
     [zoom >= 15] {
-      polygon-fill: @pedestrian-fill;
+      polygon-fill: @pedestrian-area-fill;
     }
   }
 
