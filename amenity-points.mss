@@ -1488,10 +1488,10 @@
     marker-fill: @airtransport;
   }
 
-  [feature = 'aeroway_aerodrome']['access' = 'private'][zoom >= 12][zoom < 17],
-  [feature = 'aeroway_aerodrome']['icao' = null][zoom >= 12][zoom < 17],
-  [feature = 'aeroway_aerodrome']['iata' = null][zoom >= 12][zoom < 17] {
-    [way_pixels = null] {
+  [feature = 'aeroway_aerodrome']['access' = 'private'],
+  [feature = 'aeroway_aerodrome']['icao' = null],
+  [feature = 'aeroway_aerodrome']['iata' = null] {
+    [zoom >= 12][zoom < 17][way_pixels = null] {
       marker-file: url('symbols/aerodrome.12.svg');
       marker-placement: interior;
       marker-clip: false;
@@ -1499,25 +1499,18 @@
       [zoom >= 15] { marker-file: url('symbols/aerodrome.15.svg'); }
       [zoom >= 16] { marker-file: url('symbols/aerodrome.18.svg'); }
     }
-  }
-
-  [feature = 'aeroway_aerodrome']['access' = 'private'][zoom >= 12][zoom < 17],
-  [feature = 'aeroway_aerodrome']['icao' = null][zoom >= 12][zoom < 17],
-  [feature = 'aeroway_aerodrome']['iata' = null][zoom >= 12][zoom < 17] {
-    [way_pixels <= 768000] {
+    [zoom >= 12][zoom < 18][way_pixels <= 768000] {
       marker-file: url('symbols/aerodrome.12.svg');
       marker-placement: interior;
       marker-clip: false;
       marker-fill: @airtransport;
-      [zoom >= 15] { marker-file: url('symbols/aerodrome.15.svg'); }
-      [zoom >= 16] { marker-file: url('symbols/aerodrome.18.svg'); }
-      [way_pixels > 12000] { marker-file: url('symbols/aerodrome.15.svg'); }
-      [way_pixels > 48000] { marker-file: url('symbols/aerodrome.18.svg'); }
+      [way_pixels > 48000] { marker-file: url('symbols/aerodrome.15.svg'); }
+      [way_pixels > 19200] { marker-file: url('symbols/aerodrome.18.svg'); }
     }
   }
 
-  [feature = 'aeroway_aerodrome']['access' != 'private']['icao' != null]['iata' != null][zoom >= 10][zoom < 16] {
-    [way_pixels = null] {
+  [feature = 'aeroway_aerodrome']['access' != 'private']['icao' != null]['iata' != null] {
+    [zoom >= 10][zoom < 16][way_pixels = null] {
       marker-file: url('symbols/aerodrome.8.svg');
       marker-placement: interior;
       marker-clip: false;
@@ -1526,19 +1519,14 @@
       [zoom >= 14] { marker-file: url('symbols/aerodrome.15.svg'); }
       [zoom >= 15] { marker-file: url('symbols/aerodrome.18.svg'); }
     }
-  }
-
-  [feature = 'aeroway_aerodrome']['access' != 'private']['icao' != null]['iata' != null][zoom >= 10][zoom < 16] {
-    [way_pixels <= 768000] {
+    [zoom >= 10][zoom < 18][way_pixels <= 768000] {
       marker-file: url('symbols/aerodrome.8.svg');
       marker-placement: interior;
       marker-clip: false;
       marker-fill: @airtransport;
       [zoom >= 11] { marker-file: url('symbols/aerodrome.12.svg'); }
-      [zoom >= 14] { marker-file: url('symbols/aerodrome.15.svg'); }
-      [zoom >= 15] { marker-file: url('symbols/aerodrome.18.svg'); }
-      [way_pixels > 12000] { marker-file: url('symbols/aerodrome.15.svg'); }
-      [way_pixels > 48000] { marker-file: url('symbols/aerodrome.18.svg'); }
+      [way_pixels > 48000] { marker-file: url('symbols/aerodrome.15.svg'); }
+      [way_pixels > 19200] { marker-file: url('symbols/aerodrome.18.svg'); }
     }
   }
 
@@ -3157,10 +3145,10 @@
     text-placement: interior;
   }
 
-  [feature = 'aeroway_aerodrome']['access' = 'private'][zoom >= 13][zoom < 17],
-  [feature = 'aeroway_aerodrome']['icao' = null][zoom >= 13][zoom < 17],
-  [feature = 'aeroway_aerodrome']['iata' = null][zoom >= 13][zoom < 17] {
-    [way_pixels = null] {
+  [feature = 'aeroway_aerodrome']['access' = 'private'],
+  [feature = 'aeroway_aerodrome']['icao' = null],
+  [feature = 'aeroway_aerodrome']['iata' = null] {
+    [zoom >= 13][zoom < 17][way_pixels = null] {
       text-name: "[name]";
       text-size: @landcover-font-size;
       text-wrap-width: @landcover-wrap-width-size;
@@ -3172,12 +3160,36 @@
         text-wrap-width: @landcover-wrap-width-size-big;
         text-line-spacing: @landcover-line-spacing-size-big;
         text-dy: 11;
-        [zoom >= 16] {
-          text-size: @landcover-font-size-bigger;
-          text-wrap-width: @landcover-wrap-width-size-bigger;
-          text-line-spacing: @landcover-line-spacing-size-bigger;
-          text-dy: 13;
         }
+      [zoom >= 16] {
+        text-size: @landcover-font-size-bigger;
+        text-wrap-width: @landcover-wrap-width-size-bigger;
+        text-line-spacing: @landcover-line-spacing-size-bigger;
+        text-dy: 13;
+      }
+      text-face-name: @oblique-fonts;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+    }
+    [zoom >= 13][zoom < 18][way_pixels <= 768000] {
+      text-name: "[name]";
+      text-size: @landcover-font-size;
+      text-wrap-width: @landcover-wrap-width-size;
+      text-line-spacing: @landcover-line-spacing-size;
+      text-fill: darken(@airtransport, 15%);
+      text-dy: 9;
+      [way_pixels > 48000] {
+        text-size: @landcover-font-size-big;
+        text-wrap-width: @landcover-wrap-width-size-big;
+        text-line-spacing: @landcover-line-spacing-size-big;
+        text-dy: 11;
+      }
+      [way_pixels > 192000] {
+        text-size: @landcover-font-size-bigger;
+        text-wrap-width: @landcover-wrap-width-size-bigger;
+        text-line-spacing: @landcover-line-spacing-size-bigger;
+        text-dy: 13;
       }
       text-face-name: @oblique-fonts;
       text-halo-radius: @standard-halo-radius;
@@ -3186,105 +3198,49 @@
     }
   }
 
-  [feature = 'aeroway_aerodrome']['access' = 'private'][zoom >= 13][zoom < 17],
-  [feature = 'aeroway_aerodrome']['icao' = null][zoom >= 13][zoom < 17],
-  [feature = 'aeroway_aerodrome']['iata' = null][zoom >= 13][zoom < 17] {
-    [way_pixels <= 768000] {
+  [feature = 'aeroway_aerodrome']['access' != 'private']['icao' != null]['iata' != null] {
+    [zoom >= 11][zoom < 16][way_pixels = null] {
       text-name: "[name]";
       text-size: @landcover-font-size;
       text-wrap-width: @landcover-wrap-width-size;
       text-line-spacing: @landcover-line-spacing-size;
       text-fill: darken(@airtransport, 15%);
       text-dy: 9;
-      [way_pixels > 12000] {
+      [zoom >= 14] {
         text-size: @landcover-font-size-big;
         text-wrap-width: @landcover-wrap-width-size-big;
         text-line-spacing: @landcover-line-spacing-size-big;
         text-dy: 11;
-        [way_pixels > 48000] {
-          text-size: @landcover-font-size-bigger;
-          text-wrap-width: @landcover-wrap-width-size-bigger;
-          text-line-spacing: @landcover-line-spacing-size-bigger;
-          text-dy: 13;
-        }
       }
       [zoom >= 15] {
-        text-size: @landcover-font-size-big;
-        text-wrap-width: @landcover-wrap-width-size-big;
-        text-line-spacing: @landcover-line-spacing-size-big;
-        text-dy: 11;
-        [zoom >= 16] {
-          text-size: @landcover-font-size-bigger;
-          text-wrap-width: @landcover-wrap-width-size-bigger;
-          text-line-spacing: @landcover-line-spacing-size-bigger;
-          text-dy: 13;
-        }
+        text-size: @landcover-font-size-bigger;
+        text-wrap-width: @landcover-wrap-width-size-bigger;
+        text-line-spacing: @landcover-line-spacing-size-bigger;
+        text-dy: 13;
       }
       text-face-name: @oblique-fonts;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-placement: interior;
     }
-  }
-
-  [feature = 'aeroway_aerodrome']['access' != 'private']['icao' != null]['iata' != null][zoom >= 11][zoom < 16] {
-    [way_pixels = null] {
+    [way_pixels <= 768000][zoom >= 11][zoom < 18] {
       text-name: "[name]";
       text-size: @landcover-font-size;
       text-wrap-width: @landcover-wrap-width-size;
       text-line-spacing: @landcover-line-spacing-size;
       text-fill: darken(@airtransport, 15%);
       text-dy: 9;
-      [zoom >= 14] {
+      [way_pixels > 48000] {
         text-size: @landcover-font-size-big;
         text-wrap-width: @landcover-wrap-width-size-big;
         text-line-spacing: @landcover-line-spacing-size-big;
         text-dy: 11;
-        [zoom >= 15] {
-          text-size: @landcover-font-size-bigger;
-          text-wrap-width: @landcover-wrap-width-size-bigger;
-          text-line-spacing: @landcover-line-spacing-size-bigger;
-          text-dy: 13;
-        }
       }
-      text-face-name: @oblique-fonts;
-      text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill;
-      text-placement: interior;
-    }
-  }
-
-  [feature = 'aeroway_aerodrome']['access' != 'private']['icao' != null]['iata' != null][zoom >= 11][zoom < 16] {
-    [way_pixels <= 768000] {
-      text-name: "[name]";
-      text-size: @landcover-font-size;
-      text-wrap-width: @landcover-wrap-width-size;
-      text-line-spacing: @landcover-line-spacing-size;
-      text-fill: darken(@airtransport, 15%);
-      text-dy: 9;
-      [way_pixels > 12000] {
-        text-size: @landcover-font-size-big;
-        text-wrap-width: @landcover-wrap-width-size-big;
-        text-line-spacing: @landcover-line-spacing-size-big;
-        text-dy: 11;
-        [way_pixels > 48000] {
-          text-size: @landcover-font-size-bigger;
-          text-wrap-width: @landcover-wrap-width-size-bigger;
-          text-line-spacing: @landcover-line-spacing-size-bigger;
-          text-dy: 13;
-        }
-      }
-      [zoom >= 14] {
-        text-size: @landcover-font-size-big;
-        text-wrap-width: @landcover-wrap-width-size-big; 
-        text-line-spacing: @landcover-line-spacing-size-big;
-        text-dy: 11;
-        [zoom >= 15] {
-          text-size: @landcover-font-size-bigger;
-          text-wrap-width: @landcover-wrap-width-size-bigger;
-          text-line-spacing: @landcover-line-spacing-size-bigger;
-          text-dy: 13;
-        }
+      [way_pixels > 19200] {
+        text-size: @landcover-font-size-bigger;
+        text-wrap-width: @landcover-wrap-width-size-bigger;
+        text-line-spacing: @landcover-line-spacing-size-bigger;
+        text-dy: 13;
       }
       text-face-name: @oblique-fonts;
       text-halo-radius: @standard-halo-radius;
