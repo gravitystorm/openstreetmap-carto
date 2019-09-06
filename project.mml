@@ -450,6 +450,61 @@ Layer:
         ) AS buildings
     properties:
       minzoom: 14
+  - id: highway-area-casing
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            COALESCE((
+              'highway_' || (CASE WHEN highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'track', 'path', 'platform') THEN highway ELSE NULL END)),
+              ('railway_' || (CASE WHEN (railway IN ('platform')
+                              AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
+                              AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
+                              AND (covered NOT IN ('yes') OR covered IS NULL))
+                              THEN railway ELSE NULL END))
+            ) AS feature
+          FROM planet_osm_polygon
+          WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'track', 'path', 'platform')
+            OR (railway IN ('platform')
+                AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
+                AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
+                AND (covered NOT IN ('yes') OR covered IS NULL))
+          ORDER BY COALESCE(layer,0), way_area DESC
+        ) AS highway_area_casing
+    properties:
+      minzoom: 14
+  - id: highway-area-fill
+    # FIXME: No geometry?
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            COALESCE(
+              ('highway_' || (CASE WHEN highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street',
+                                                    'track', 'path', 'platform', 'services') THEN highway ELSE NULL END)),
+              ('railway_' || (CASE WHEN (railway IN ('platform')
+                              AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
+                              AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
+                              AND (covered NOT IN ('yes') OR covered IS NULL))
+                              THEN railway ELSE NULL END)),
+              (('aeroway_' || CASE WHEN aeroway IN ('runway', 'taxiway', 'helipad') THEN aeroway ELSE NULL END))
+            ) AS feature
+          FROM planet_osm_polygon
+          WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'living_street', 'track', 'path', 'platform', 'services')
+            OR (railway IN ('platform')
+                AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
+                AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
+                AND (covered NOT IN ('yes') OR covered IS NULL))
+            OR aeroway IN ('runway', 'taxiway', 'helipad')
+          ORDER BY COALESCE(layer,0), way_area desc
+        ) AS highway_area_fill
+    properties:
+      minzoom: 14
   - id: tunnels
     class: access
     geometry: linestring
@@ -679,32 +734,6 @@ Layer:
         ) AS turning_circle_sql
     properties:
       minzoom: 15
-  - id: highway-area-casing
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            COALESCE((
-              'highway_' || (CASE WHEN highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'track', 'path', 'platform') THEN highway ELSE NULL END)),
-              ('railway_' || (CASE WHEN (railway IN ('platform')
-                              AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
-                              AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
-                              AND (covered NOT IN ('yes') OR covered IS NULL))
-                              THEN railway ELSE NULL END))
-            ) AS feature
-          FROM planet_osm_polygon
-          WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'track', 'path', 'platform')
-            OR (railway IN ('platform')
-                AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
-                AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
-                AND (covered NOT IN ('yes') OR covered IS NULL))
-          ORDER BY COALESCE(layer,0), way_area DESC
-        ) AS highway_area_casing
-    properties:
-      minzoom: 14
   - id: roads-casing
     geometry: linestring
     <<: *extents
@@ -804,35 +833,6 @@ Layer:
     properties:
       cache-features: true
       minzoom: 10
-  - id: highway-area-fill
-    # FIXME: No geometry?
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            COALESCE(
-              ('highway_' || (CASE WHEN highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street',
-                                                    'track', 'path', 'platform', 'services') THEN highway ELSE NULL END)),
-              ('railway_' || (CASE WHEN (railway IN ('platform')
-                              AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
-                              AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
-                              AND (covered NOT IN ('yes') OR covered IS NULL))
-                              THEN railway ELSE NULL END)),
-              (('aeroway_' || CASE WHEN aeroway IN ('runway', 'taxiway', 'helipad') THEN aeroway ELSE NULL END))
-            ) AS feature
-          FROM planet_osm_polygon
-          WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'living_street', 'track', 'path', 'platform', 'services')
-            OR (railway IN ('platform')
-                AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
-                AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
-                AND (covered NOT IN ('yes') OR covered IS NULL))
-            OR aeroway IN ('runway', 'taxiway', 'helipad')
-          ORDER BY COALESCE(layer,0), way_area desc
-        ) AS highway_area_fill
-    properties:
-      minzoom: 14
   - id: roads-fill
     class: access
     geometry: linestring
