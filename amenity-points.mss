@@ -1504,8 +1504,8 @@
       marker-placement: interior;
       marker-clip: false;
       marker-fill: @airtransport;
-      [way_pixels > 48000] { marker-file: url('symbols/aerodrome.15.svg'); }
-      [way_pixels > 192000] { marker-file: url('symbols/aerodrome.18.svg'); }
+      [way_pixels > 12000] { marker-file: url('symbols/aerodrome.15.svg'); }
+      [way_pixels > 48000] { marker-file: url('symbols/aerodrome.18.svg'); }
     }
   }
 
@@ -1525,8 +1525,8 @@
       marker-clip: false;
       marker-fill: @airtransport;
       [zoom >= 11] { marker-file: url('symbols/aerodrome.12.svg'); }
-      [way_pixels > 48000] { marker-file: url('symbols/aerodrome.15.svg'); }
-      [way_pixels > 192000] { marker-file: url('symbols/aerodrome.18.svg'); }
+      [way_pixels > 12000] { marker-file: url('symbols/aerodrome.15.svg'); }
+      [way_pixels > 48000] { marker-file: url('symbols/aerodrome.18.svg'); }
     }
   }
 
@@ -3179,13 +3179,13 @@
       text-line-spacing: @landcover-line-spacing-size;
       text-fill: darken(@airtransport, 15%);
       text-dy: 9;
-      [way_pixels > 48000] {
+      [way_pixels > 12000] {
         text-size: @landcover-font-size-big;
         text-wrap-width: @landcover-wrap-width-size-big;
         text-line-spacing: @landcover-line-spacing-size-big;
         text-dy: 11;
       }
-      [way_pixels > 192000] {
+      [way_pixels > 48000] {
         text-size: @landcover-font-size-bigger;
         text-wrap-width: @landcover-wrap-width-size-bigger;
         text-line-spacing: @landcover-line-spacing-size-bigger;
@@ -3230,13 +3230,13 @@
       text-line-spacing: @landcover-line-spacing-size;
       text-fill: darken(@airtransport, 15%);
       text-dy: 9;
-      [way_pixels > 48000] {
+      [way_pixels > 12000] {
         text-size: @landcover-font-size-big;
         text-wrap-width: @landcover-wrap-width-size-big;
         text-line-spacing: @landcover-line-spacing-size-big;
         text-dy: 11;
       }
-      [way_pixels > 192000] {
+      [way_pixels > 48000] {
         text-size: @landcover-font-size-bigger;
         text-wrap-width: @landcover-wrap-width-size-bigger;
         text-line-spacing: @landcover-line-spacing-size-bigger;
