@@ -2190,58 +2190,69 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |-
+      table: &amenity_low_priority_sql |-
         (SELECT
             way,
-            NULL AS way_pixels,
+            name,
             COALESCE(
-              'highway_' || CASE WHEN highway IN ('mini_roundabout') THEN highway ELSE NULL END,
-              'railway_' || CASE WHEN railway IN ('level_crossing', 'crossing') THEN railway ELSE NULL END,
-              'amenity_' || CASE WHEN amenity IN ('bicycle_parking', 'motorcycle_parking', 'bench',
-                            'waste_basket', 'waste_disposal') THEN amenity ELSE NULL END,
+              'highway_' || CASE WHEN highway IN ('mini_roundabout') AND way_area IS NULL THEN highway ELSE NULL END,
+              'railway_' || CASE WHEN railway IN ('level_crossing', 'crossing') AND way_area IS NULL THEN railway ELSE NULL END,
+              'amenity_' || CASE WHEN amenity IN ('bicycle_parking', 'motorcycle_parking') THEN amenity ELSE NULL END,
               'amenity_' || CASE WHEN amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL) THEN amenity ELSE NULL END,
               'amenity_' || CASE WHEN amenity IN ('parking_entrance')
                                       AND tags->'parking' IN ('underground')
                                       AND (access IS NULL OR access NOT IN ('private', 'no'))
+                                      AND way_area IS NULL
                                  THEN amenity ELSE NULL END,
-              'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') THEN historic ELSE NULL END,
-              'man_made_' || CASE WHEN man_made IN ('cross') THEN man_made ELSE NULL END,
+              'amenity_' || CASE WHEN amenity IN ('bench', 'waste_basket', 'waste_disposal') AND way_area IS NULL THEN amenity ELSE NULL END,
+              'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') AND way_area IS NULL THEN historic ELSE NULL END,
+              'man_made_' || CASE WHEN man_made IN ('cross') AND way_area IS NULL THEN man_made ELSE NULL END,
               'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile', 'motorcycle_barrier', 'cycle_barrier', 'full-height_turnstile', 'turnstile', 'kissing_gate') THEN barrier ELSE NULL END
             )  AS feature,
             access,
-            CASE WHEN amenity IN ('waste_basket', 'waste_disposal') THEN 2 ELSE 1 END AS prio
-          FROM planet_osm_point p
-          WHERE highway IN ('mini_roundabout')
-             OR railway IN ('level_crossing', 'crossing')
-             OR amenity IN ('parking', 'parking_entrance', 'bicycle_parking', 'motorcycle_parking', 'bench', 'waste_basket', 'waste_disposal')
-             OR historic IN ('wayside_cross', 'wayside_shrine')
-             OR man_made IN ('cross')
-             OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile', 'motorcycle_barrier', 'cycle_barrier', 'full-height_turnstile', 'turnstile', 'kissing_gate')
-          ORDER BY prio
-          ) AS amenity_low_priority
-    properties:
-      cache-features: true
-      minzoom: 14
-  - id: amenity-low-priority-poly
-    class: amenity-low-priority
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
+            way_area,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
-            COALESCE(
-              'amenity_' || CASE WHEN amenity IN ('bicycle_parking', 'motorcycle_parking') THEN amenity ELSE NULL END,
-              'amenity_' || CASE WHEN amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL) THEN amenity ELSE NULL END,
-              'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile', 'motorcycle_barrier', 'cycle_barrier', 'full-height_turnstile', 'turnstile', 'kissing_gate') THEN barrier ELSE NULL END
-            )  AS feature,
-            access
-          FROM planet_osm_polygon p
-          WHERE amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking')
-             OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile', 'motorcycle_barrier', 'cycle_barrier', 'full-height_turnstile', 'turnstile', 'kissing_gate')
-          ) AS amenity_low_priority_poly
+            CASE WHEN amenity IN ('waste_basket', 'waste_disposal') THEN 2 ELSE 1 END AS prio
+            FROM
+              (SELECT
+                  ST_PointOnSurface(way) AS way,
+                  name,
+                  access,
+                  amenity,
+                  barrier,
+                  highway,
+                  historic,
+                  man_made,
+                  railway,
+                  tags,
+                  way_area
+                FROM planet_osm_polygon
+                WHERE way && !bbox!
+              UNION ALL
+              SELECT
+                  way,
+                  name,
+                  access,
+                  amenity,
+                  barrier,
+                  highway,
+                  historic,
+                  man_made,
+                  railway,
+                  tags,
+                  NULL AS way_area
+                FROM planet_osm_point
+                WHERE way && !bbox!
+              ) _
+            WHERE highway IN ('mini_roundabout')
+               OR railway IN ('level_crossing', 'crossing')
+               OR amenity IN ('parking', 'parking_entrance', 'bicycle_parking', 'motorcycle_parking', 'bench', 'waste_basket', 'waste_disposal')
+               OR historic IN ('wayside_cross', 'wayside_shrine')
+               OR man_made IN ('cross')
+               OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile', 'motorcycle_barrier', 'cycle_barrier', 'full-height_turnstile', 'turnstile', 'kissing_gate')
+            ORDER BY prio DESC NULLS LAST,
+              way_pixels DESC NULLS LAST
+          ) AS amenity_low_priority
     properties:
       cache-features: true
       minzoom: 14
@@ -2251,53 +2262,8 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            NULL AS way_pixels,
-            name,
-            COALESCE(
-              'amenity_' || CASE WHEN amenity IN ('bicycle_parking', 'motorcycle_parking') THEN amenity ELSE NULL END,
-              'amenity_' || CASE WHEN amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL) THEN amenity ELSE NULL END,
-              'amenity_' || CASE WHEN amenity IN ('parking_entrance')
-                                      AND tags->'parking' IN ('underground')
-                                      AND (access IS NULL OR access NOT IN ('private', 'no'))
-                                 THEN amenity ELSE NULL END,
-              'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') THEN historic ELSE NULL END,
-              'man_made_' || CASE WHEN man_made IN ('cross') THEN man_made ELSE NULL END
-            )  AS feature,
-            access,
-            CASE WHEN amenity IN ('waste_basket', 'waste_disposal') THEN 2 ELSE 1 END AS prio
-          FROM planet_osm_point p
-          WHERE amenity IN ('parking', 'parking_entrance', 'bicycle_parking', 'motorcycle_parking', 'bench', 'waste_basket', 'waste_disposal')
-             OR historic IN ('wayside_cross', 'wayside_shrine')
-             OR man_made IN ('cross')
-             AND name IS NOT NULL
-          ORDER BY prio
-          ) AS amenity_low_priority
+      # Include values that are rendered as icon without label to prevent mismatch between icons and labels,
+      # see https://github.com/gravitystorm/openstreetmap-carto/pull/1349#issuecomment-77805678
+      table: *amenity_low_priority_sql
     properties:
-      cache-features: true
-      minzoom: 17
-  - id: text-low-priority-poly
-    class: text-low-priority
-    geometry: point
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            name,
-            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
-            COALESCE(
-              'amenity_' || CASE WHEN amenity IN ('bicycle_parking', 'motorcycle_parking') THEN amenity ELSE NULL END,
-              'amenity_' || CASE WHEN amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL) THEN amenity ELSE NULL END
-            )  AS feature,
-            access
-          FROM planet_osm_polygon p
-          WHERE amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking')
-             AND name IS NOT NULL
-          ) AS amenity_low_priority_poly
-    properties:
-      cache-features: true
       minzoom: 10
