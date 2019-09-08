@@ -713,13 +713,6 @@
     marker-clip: false;
   }
 
-  [feature = 'historic_wayside_shrine'][zoom >= 17] {
-    marker-file: url('symbols/historic/shrine.svg');
-    marker-fill: @man-made-icon;
-    marker-placement: interior;
-    marker-clip: false;
-  }
-
   [feature = 'amenity_police'][zoom >= 16] {
     marker-file: url('symbols/amenity/police.svg');
     marker-fill: @public-service;
@@ -1570,6 +1563,13 @@
     marker-clip: false;
   }
 
+  [feature = 'historic_wayside_shrine'][zoom >= 17] {
+    marker-file: url('symbols/historic/shrine.svg');
+    marker-fill: @man-made-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_parking'],
   [feature = 'amenity_bicycle_parking'],
   [feature = 'amenity_motorcycle_parking'],
@@ -2090,8 +2090,7 @@
     text-placement: interior;
   }
 
-  [feature = 'military_bunker'][zoom >= 17],
-  [feature = 'historic_wayside_shrine'][zoom >= 17] {
+  [feature = 'military_bunker'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
@@ -3151,10 +3150,8 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: darken(@man-made-icon, 20%);
-    [feature = 'man_made_cross'],
-    [feature = 'historic_wayside_cross'] {
-      text-dy: 6;
-    }
+    text-dy: 6;
+      [feature = 'historic_wayside_shrine'] { text-dy: 10; }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
