@@ -1575,7 +1575,8 @@
   [feature = 'amenity_motorcycle_parking'],
   [feature = 'amenity_parking_entrance'] {
     [zoom >= 14][way_pixels > 900],
-    [zoom >= 18][way_pixels = null] {
+    [zoom >= 17][feature = 'amenity_parking'],
+    [zoom >= 18] {
       [feature = 'amenity_parking'] { marker-file: url('symbols/amenity/parking.svg'); }
       [feature = 'amenity_bicycle_parking'] { marker-file: url('symbols/amenity/bicycle_parking.svg'); }
       [feature = 'amenity_motorcycle_parking'] { marker-file: url('symbols/amenity/motorcycle_parking.svg'); }
@@ -3122,7 +3123,7 @@
   [feature = 'amenity_motorcycle_parking'],
   [feature = 'amenity_parking_entrance'] {
     [zoom >= 10][way_pixels > 900],
-    [zoom >= 18][way_pixels = null] {
+    [zoom >= 18] {
       text-name: "[name]";
       text-size: @standard-font-size;
       text-wrap-width: @standard-wrap-width;
