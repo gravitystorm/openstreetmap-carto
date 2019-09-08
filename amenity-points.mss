@@ -1554,7 +1554,7 @@
   }
 }
 
-.amenity-low-priority {
+#amenity-low-priority {
   [feature = 'man_made_cross'][zoom >= 16],
   [feature = 'historic_wayside_cross'][zoom >= 16] {
     marker-file: url('symbols/man_made/cross.svg');
@@ -3115,8 +3115,7 @@
   }
 }
 
-.text-low-priority {
-
+#text-low-priority {
   [feature = 'amenity_parking'],
   [feature = 'amenity_bicycle_parking'],
   [feature = 'amenity_motorcycle_parking'],

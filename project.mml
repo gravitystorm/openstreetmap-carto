@@ -2183,7 +2183,6 @@ Layer:
     properties:
       minzoom: 13
   - id: amenity-low-priority
-    class: amenity-low-priority
     geometry: point
     <<: *extents
     Datasource:
@@ -2255,7 +2254,6 @@ Layer:
       cache-features: true
       minzoom: 14
   - id: text-low-priority
-    class: text-low-priority
     geometry: point
     <<: *extents
     Datasource:
