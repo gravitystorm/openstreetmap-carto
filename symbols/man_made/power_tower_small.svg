@@ -1,3 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="-4.440892098500626e-16 -4.440892098500626e-16 3.0000000000000004 3.0000000000000004" width="3" height="3"><defs><path d="M3 0C3 0 3 0 3 0C3 1.8 3 2.8 3 3C3 3 3 3 3 3C1.2 3 0.2 3 0 3C0 3 0 3 0 3C0 1.2 0 0.2 0 0C0 0 0 0 0 0C1.8 0 2.8 0 3 0Z" id="gZccY9u9M"/><path d="M1.5 1C1.22 1 1 1.22 1 1.5C1 1.78 1.22 2 1.5 2C1.78 2 2 1.78 2 1.5C2 1.22 1.78 1 1.5 1Z" id="f1yJMWaNQJ"/></defs><g><g><use xlink:href="#gZccY9u9M" opacity="1" fill="#000000" fill-opacity="1"/><g><use xlink:href="#gZccY9u9M" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-opacity="0"/></g></g><g><use xlink:href="#f1yJMWaNQJ" opacity="1" fill="#ffffff" fill-opacity="1"/><g><use xlink:href="#f1yJMWaNQJ" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="1" stroke-opacity="0"/></g></g></g></svg>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="-4.440892098500626e-16 -4.440892098500626e-16 3.0000000000000004 3.0000000000000004" width="3" height="3">
+  <defs>
+    <path d="M3 0C3 0 3 0 3 0C3 1.8 3 2.8 3 3C3 3 3 3 3 3C1.2 3 0.2 3 0 3C0 3 0 3 0 3C0 1.2 0 0.2 0 0C0 0 0 0 0 0C1.8 0 2.8 0 3 0Z" id="gZccY9u9M"/>
+    <path d="M1.5 1C1.22 1 1 1.22 1 1.5C1 1.78 1.22 2 1.5 2C1.78 2 2 1.78 2 1.5C2 1.22 1.78 1 1.5 1Z" id="f1yJMWaNQJ"/>
+  </defs>
+  <g>
+    <g>
+      <use xlink:href="#gZccY9u9M" opacity="1" fill-opacity="1"/>
+      <g>
+        <use xlink:href="#gZccY9u9M" opacity="1" fill-opacity="0" stroke-width="1" stroke-opacity="0"/>
+      </g>
+    </g>
+    <g>
+      <use xlink:href="#f1yJMWaNQJ" opacity="1" fill="#ffffff" fill-opacity="1"/>
+      <g>
+        <use xlink:href="#f1yJMWaNQJ" opacity="1" fill-opacity="0" stroke-width="1" stroke-opacity="0"/>
+      </g>
+    </g>
+  </g>
+</svg>
