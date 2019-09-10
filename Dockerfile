@@ -10,12 +10,12 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 # npm prefix to /usr/local, which breaks the install
 RUN npm set prefix /usr && npm install -g kosmtik
 
-WORKDIR /usr/lib/node_modules/kosmtik/ 
+WORKDIR /usr/lib/node_modules/kosmtik/
 RUN kosmtik plugins --install kosmtik-overpass-layer \
                     --install kosmtik-fetch-remote \
                     --install kosmtik-overlay \
                     --install kosmtik-open-in-josm \
-                    --install kosmtik-map-compare \ 
+                    --install kosmtik-map-compare \
                     --install kosmtik-osm-data-overlay \
                     --install kosmtik-mapnik-reference \
                     --install kosmtik-geojson-overlay \

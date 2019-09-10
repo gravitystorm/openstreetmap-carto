@@ -47,10 +47,7 @@
       marker-width: 7;
     }
   }
-}
-
-#power-poles {
-  [zoom >= 16] {
+  [power = 'pole'][zoom >= 16] {
     marker-file: url('symbols/square.svg');
     marker-fill: @power-support-color;
     marker-width: 3;

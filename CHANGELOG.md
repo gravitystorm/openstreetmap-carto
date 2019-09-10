@@ -1,4 +1,189 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.16.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.22.0...master)
+
+## [v4.22.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.21.0...v4.22.0)
+### Changes
+
+- Shop label fixes and use ST_PointOnSurface for building label placement (#3781)
+
+  This fixes some bugs and makes building label placement consistent with shop
+  label placement.
+
+- Use `cache-feature: true` to improve performance of layers with attachments (#3838)
+
+- Use retail colour fill on malls (#3790)
+
+- Drop `highway=steps` from zoom 13 (#3825)
+
+  This makes step rendering consistent with footways
+
+- Render `place=locality` from zoom 16 (#3749)
+
+  This fits current usage of the tag and what it is normally tagged on.
+
+- Render `natural=bay` from linear ways (#3754)
+
+- Render administrative boundary labels from relations only (#3762)
+
+- Stop rendering natural=marsh (#3829)
+
+  It is recommended marshes are tagged with `natural=wetland` + `wetland=marsh`
+
+- Use a whitelist for barrier rendering, and render `historic=citywalls` like
+  `barrier=city_wall`. (#3745)
+  
+- Create new layer for `ref` of  `highway=residential/unclassified/track`, change residential/unclassified `ref`
+  rendering to use standard halo-radius, oblique (italic) font, and same text size as `name=` at >z17 (#3709)
+  
+  This makes the ref lables consistent between track roads, paths, residential and unclassified highways, 
+  and renderes the `ref` text with lower priority than the `name=` text.
+  
+- Add fill color for `wetland=mangrove`, `wetland=saltmarsh` and `wetland=reedbed`, 
+  add salt dots pattern to `wetland=saltmarsh` (#3807)
+
+  Mangroves are now rendered in scrub fill color, reedbed and saltmarsh with grass color. 
+  A salt dot pattern is added to distinguish `wetland=saltmarsh` from `wetland=marsh`
+
+- Support new Tibetan font name (#3842)
+
+  Noto has renamed Noto Sans Tibetan to Noto Serif Tibetan. The old name is
+  still supported.
+  
+- Add adjustments for `highway=motorway` and `highway=service` width at z20 (#3763)
+
+- Code cleanups to increase reuse and improve consistency (#3735, #3760, #3771, #3773, #3774)
+
+## [v4.21.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.20.0...v4.21.0) - 2019-05-01
+## Major changes
+- Removed unused `world_boundaries-spherical.tgz` file from scripts
+
+  This file can be safely removed and has not been used for some time.
+
+- Switch to osmdata.openstreetmap.de for water & icesheet shapefiles
+
+  The script will handle the change automatically, but if manually downloading
+  or using a different method, you will need to adjust paths.
+
+- Change from land to ocean polygons and render water areas above landcover 
+
+- Started using ST_PointOnSurface for some label placements
+
+  These changes are part of an effort to make it easier for forks using a
+  vector tile architecture as well as reducing the duplication among POI
+  layers. Some load has been shifted from Mapnik to the database.
+
+- Adjusted index for military areas
+
+  The query was adjusted last version but the index was missed. The old
+  `planet_osm_polygon_military` can be removed, and for servers in use, the new
+  one can be taken from the `scripts/indexes.py --concurrent` output.
+
+## Changes
+- Adjusted starting zooms for labeling of administrative areas.
+
+  The new zooms are based on `admin_level` and size.
+
+- Revert rendering of healthcare key
+
+  The original PR which implemented this had technical issues that prevented it
+  from working properly.
+
+- Stop place some place labels when the objects become too big or at high
+  zooms.
+- Only render capes as points and render them like other points.
+- Only render ferry lines from ways, not relations
+- Improved developer internal documentation
+
+## [v4.20.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.19.0...v4.20.0) - 2019-02-15
+## Changes
+- Progressive lightening major buildings fill and outline (#3659)
+- Adding rendering for aboriginal areas (#3521)
+- Dropping rendering of leisure=common (#3619)
+- Adding missing oneway arrows for tracks and paths (#3614)
+- Changing way_pixels limit to 750 for protected_area boundaries (#3661)
+- Adding rendering for ref of track roads (#3654)
+- Improving rendering of text labels on admin and nature-reserve borders (#3652)
+- Changing way_pixels calculation to use scale_denominator (#3657)
+- Fixing layering order for construction=* highway categories (#3646)
+- Reducing saturation of pitch outline color (#3658)
+- roads-text-ref-low-zoom: remove unused SQL CASE conditions in ORDER BY (#3680)
+
+## [v4.19.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.18.0...v4.19.0) - 2019-01-18
+## Changes
+- Adding rendering for boundary=protected_area (#3509)
+- Nature reserve boundaries revision (#3574) 
+- Adding support of amenity=vending_machine (#3601)
+- Adding more barrier icons (#3602)
+- Changing allotments color and adding outline (#3625)
+- Reducing priority of tourism=attraction and rendering from z17 (#3603)
+- Changing tourism outline color (#3582)
+- Making country borders thicker at z8 and z9 (#3563)
+- Rendering parking from z14 (#3612)
+- Starting to render most patterns at z13 instead of z14 (#3610) 
+- Changing zoom level and text size for place=hamlet (#3626)
+- Rendering airport gate refs black instead of purple (#3620)
+- Updating zoom levels by height for masts, towers and telescopes (#3536)
+- Hiding underground parking (#3600)
+- Rendering ref of minor roads more than once (#3627)
+- Adjusting width of highway=construction (#3580)
+- Selecting only motorway_link to tertiary_link as link (#3567)
+- Reducing tertiary-link width (#3570)
+- Changing certain amenity icons to grey (#3586)
+- Converting springs to use ST_PointOnSurface and reformatting SQL (#3233)
+- Adding "religious-icon" as color variable for #000000 (#3642)
+- Adding "barrier-icon" color variable in #3f3f3f for barriers (#3643)
+- Fixing inconsistency of leisure=ice_rink (#3598)
+- Fixing label opacity for tourism features (#3616)
+- Reverting lowzoom nobuilding test change (#3622)
+- Removing trailing whitespace (#3637)
+
+## [v4.18.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.17.0...v4.18.0) - 2018-12-21
+## Changes
+- Adding rendering for healthcare tag scheme
+  - Changing hospital icon
+  - Changing healthcare color to red
+- Changing natural=scrub color
+- Changing landuse=allotments color and pattern
+- Adding rendering for natural=cape
+- Rendering leisure=ice_rink
+- Adding rendering for man_made=crane
+- Adding icons for shop=fabric and shop=carpet
+- Updating icons for amenity=arts_centre, leisure=slipway, amenity=restaurant/amenity=food_court and man_made=storage_tank/man_made=silo
+- Using dedicated icon for artwork_type=bust
+- Rendering railway pattern on z12
+- Showing labels of big states (like Alaska)
+- Moving railway=tram_stop and station=subway later
+- Adding rendering for more private POIs
+- Removing smoothing in leisure=track and attraction=water_slide
+- Using subway bridge style for subway construction bridges
+- Rendering wind turbines names and other tweaks
+- Changing man_made gray and text color, making text-dy uniform
+- Small documentation and code fixes
+
+## [v4.17.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.16.0...v4.17.0) - 2018-11-23
+## Changes
+- Showing natural areas from z5
+- Cleaning up medium zoom rendering, including:
+  - Making societal amenities look like residential on z10-z12
+  - Rendering motorway junction names from z13 instead of z12
+  - Dropping buildings up to z13 instead of z12
+  - Correctly dropping minor waterways from z13
+  - Rendering intermittent streams/ditches/drains from z15
+  - Reducing lightening of tramways
+- Rendering religious landuse and place of worship lighter
+- Adding text-repeat-distance for highway names
+- Rendering dots for gastronomy objects on z17
+- Changing icon for tourism=artwork
+- Adding icons for memorial subtags
+- Rendering man_made=telescope
+- Rendering amenity=internet_cafe
+- Adding icon for amenity=public_bookcase
+- Adding icons for barrier=cattle_grid and barrier=stile
+- Adding icon for leisure=fishing
+- Rendering entrance for underground parking
+- Rendering basin=detention/infiltration as intermittent water
+- Tweaking outline of swimming pools and rendering it from z17
+- Moving danger_area into landuse-overlay
+- Buildings code rewrite
 
 ## [v4.16.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.15.0...v4.16.0) - 2018-10-19
 ## Changes
@@ -51,13 +236,13 @@
 - Increased shield distances on roads
 - Added icon for shop=ticket
 - Added icon for shop=houseware
-- Added icon for shop=charity 
+- Added icon for shop=charity
 - Added icon for shop=second_hand
 - Added icon for shop=interior_decoration
 - Added icon for amenity=bureau_de_change
 - Added icon for amenity=casino
 - Added icon for amenity=boat_rental
-- Updated shop=department_store icon 
+- Updated shop=department_store icon
 - Small documentation and code fixes
 
 ## [v4.12.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.12.0...v4.12.1) - 2018-06-29
@@ -70,7 +255,7 @@
 
 ### Changes
 - Added rendering “surface” tag on roads with a pattern
-- More vertical objects rendering and tuning (man_made=tower types, man_made=chimney, man_made=communications_tower) 
+- More vertical objects rendering and tuning (man_made=tower types, man_made=chimney, man_made=communications_tower)
 - tourism=information types rendering and tuning (information=audioguide, board, guidepost, map, office, tactile_map, tactile_model and terminal)
 - Added rendering for place=quarter
 - Added rendering of historic=city_gate
@@ -176,7 +361,7 @@
 ### Changes
 - Change sports_centre and stadium color to light green
 - Change shades of green for landuse/leisure=recreation_ground and garden
-- Do not render glaciers and icesheets on z6 and z7 
+- Do not render glaciers and icesheets on z6 and z7
 - Do not render very small water areas on low zoom
 - Do not render small national parks and nature reserves
 - Do not render ferries on z7
@@ -194,9 +379,9 @@
 - Changing parking color from yellow to gray
 
 ### Changes
-- Unified rendering of leisure=fitness_station and leisure=fitness_centre 
+- Unified rendering of leisure=fitness_station and leisure=fitness_centre
 - Rendering of military=bunker
-- Rendering all station buildings as major buildings 
+- Rendering all station buildings as major buildings
 - Text wrapping for station labels
 - Changing windmill color from amenity brown to man_made gray
 - Some other documentation and code changes
@@ -208,12 +393,12 @@
 
 ### Changes
 - Rendering of amenity=marketplace
-- Rendering of landuse=religious 
+- Rendering of landuse=religious
 - Rendering shop=pastry like shop=confectionery
 - Rendering of addr:unit
 - Rendering natural=bare_rock earlier
 - Rendering elevation also on polygon alpine_hut and shelter
-- Introducing Noto Sans Arabic 
+- Introducing Noto Sans Arabic
 - Rendering icon for slipway ways
 - Better minimal distance between housenumbers
 - Moving aeroways to their own layer
@@ -249,7 +434,7 @@
 - Plaque rendering is now different and moved to z19
 - Rendering railway labels
 - Smaller line spaces in labels
-- Junction names on areas 
+- Junction names on areas
 - Area color for railway=station is the same as for railways
 - Database perfomance tuning available for Docker
 - Different patterns and all remaining icons moved to SVG

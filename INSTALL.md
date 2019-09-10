@@ -48,12 +48,11 @@ This script downloads necessary files, generates and populates the *data* direct
 
 You can also download them manually at the following paths:
 
-* [`world_bnd_m.shp`, `places.shp`, `world_boundaries_m.shp`](https://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz)
-* [`simplified_land_polygons.shp`](http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip) (updated daily)
+* [`simplified_water_polygons.shp`](https://osmdata.openstreetmap.de/download/simplified-water-polygons-split-3857.zip) (updated daily)
 * [`ne_110m_admin_0_boundary_lines_land.shp`](http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip)
-* [`land_polygons.shp`](http://data.openstreetmapdata.com/land-polygons-split-3857.zip) (updated daily)
-* [`icesheet_polygons.shp`](http://data.openstreetmapdata.com/antarctica-icesheet-polygons-3857.zip)
-* [`icesheet_outlines.shp`](http://data.openstreetmapdata.com/antarctica-icesheet-outlines-3857.zip)
+* [`water_polygons.shp`](https://osmdata.openstreetmap.de/download/water-polygons-split-3857.zip) (updated daily)
+* [`icesheet_polygons.shp`](https://osmdata.openstreetmap.de/download/antarctica-icesheet-polygons-3857.zip)
+* [`icesheet_outlines.shp`](https://osmdata.openstreetmap.de/download/antarctica-icesheet-outlines-3857.zip)
 
 The repeated www.naturalearthdata.com in the Natural Earth shapefiles is correct.
 
@@ -66,7 +65,11 @@ DejaVu Sans is used as an optional fallback font for systems without Noto Sans. 
 
 Hanazono is used a fallback for seldom used CJK characters that are not covered by Noto.
 
-Unifont is used as a last resort fallback, with it's excellent coverage, common presence on machines, and ugly look.
+Unifont is used as a last resort fallback, with it's excellent coverage, common presence on machines, and ugly look. For compatibility reasons, we support two Linux-distributions-specific versions of Unifont, therefor it's expected that you *always* get a warning about a missing Unifont version.
+
+If you do not install all the fonts, the rendering itself will not break, but missing glyphs will be ugly.
+
+For more details, see the documentation at fonts.mss.
 
 ### Installation on Ubuntu/Debian
 
@@ -76,7 +79,7 @@ On Ubuntu 16.04 or Debian Testing you can download and install most of the requi
 sudo apt-get install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted fonts-hanazono ttf-unifont
 ```
 
-Noto Emoji Regular can be downloaded [from the Noto Emoji repository](https://github.com/googlei18n/noto-emoji).
+Noto Emoji Regular (*not* Noto Color Emoji) can be downloaded [from the Noto Emoji repository](https://github.com/googlei18n/noto-emoji).
 
 It might be useful to have a more recent version of the fonts for [rare non-latin scripts](#non-latin-scripts). The current upstream font release has also some more scripts and style variants than in the Ubuntu package. It can be installed [from source](https://github.com/googlei18n/noto-fonts/blob/master/FAQ.md#where-are-the-fonts).
 

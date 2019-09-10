@@ -20,7 +20,7 @@ polygon:
   nobuilding:
     where: building IS NULL
   military:
-    where: landuse = 'military'
+    where: (landuse = 'military' OR military = 'danger_area') AND building IS NULL
   water:
     # The indentation here makes sense in the SQL output
     where: |-
