@@ -34,15 +34,15 @@
 }
 
 #power-towers {
-  [zoom >= 14] {
+  [power = 'pole'][zoom >= 14] {
     marker-file: url('symbols/man_made/power_tower_small.svg');
     marker-fill: @power-support-color;
     marker-width: 3;
-  }
-  [zoom >= 15] {
-    marker-file: url('symbols/man_made/power_tower.svg');
-    marker-fill: @power-support-color;
-    marker-width: 5;
+    [zoom >= 15] {
+      marker-file: url('symbols/man_made/power_tower.svg');
+      marker-fill: @power-support-color;
+      marker-width: 5;
+    }
     [zoom >= 17] {
       marker-width: 7;
     }
