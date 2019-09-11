@@ -1665,7 +1665,7 @@ Layer:
       table: |-
         (SELECT
             way
-          FROM planet_osm_lines
+          FROM planet_osm_line
           WHERE power = 'portal'
         ) AS power_portals
     properties:
@@ -1677,7 +1677,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            node
+            way
           FROM planet_osm_point
           WHERE power = 'portal'
         ) AS power_portals
@@ -1690,7 +1690,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            node
+            way
           FROM planet_osm_point
           WHERE power = 'insulator'
         ) AS power_insulators
