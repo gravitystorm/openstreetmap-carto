@@ -810,9 +810,18 @@ Layer:
         (SELECT
             way,
             aerialway,
+            man_made,
             name
           FROM planet_osm_line
           WHERE aerialway IS NOT NULL
+            OR (man_made = 'pipeline'
+                AND tags-> 'location' IN ('overground', 'overhead', 'surface', 'outdoor', 'platform')
+                OR bridge IN ('yes', 'aqueduct', 'boardwalk', 'cantilever', 'covered', 'trestle', 'viaduct'))
+          ORDER BY
+            CASE
+              WHEN man_made = 'pipeline' THEN 1
+              WHEN aerialway IS NOT NULL THEN 2
+            END
         ) AS aerialways
     properties:
       minzoom: 12
