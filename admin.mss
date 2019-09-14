@@ -233,7 +233,7 @@ overlapping borders correctly.
 #protected-areas-text[zoom >= 13][way_pixels > 192000] {
   text-name: "[name]";
   text-face-name: @book-fonts;
-  text-fill: green;
+  text-fill: @protected-areas;
   [boundary='aboriginal_lands'],
   [boundary='protected_area'][protect_class='24'] {
     text-fill: @aboriginal;
@@ -252,62 +252,41 @@ overlapping borders correctly.
 
 #protected-areas {
   [way_pixels > 750] {
-    [zoom >= 8][zoom < 10] {
-      ::fill {
+    [zoom >= 8] {
+      ::outerstroke,
+      ::innerstrokefade1, ::innerstrokefade2,
+      ::innerstrokefade3, ::innerstrokefade4 {
+        line-color: @protected-areas;
+        [boundary='aboriginal_lands'],
+        [boundary='protected_area'][protect_class='24'] {
+          line-color: @aboriginal;
+        }
+        line-join: round;
+        line-cap: round;
+      }
+      ::outerstroke {
+        opacity: 0.15;
+        line-width: 1;
+      }
+      ::innerstrokefade1 {
+        opacity: 0.12;
+        line-width: 2;
+        line-offset: -1;
+      }
+      ::innerstrokefade2 {
+        opacity: 0.08;
+        line-width: 2;
+        line-offset: -3;
+      }
+      ::innerstrokefade3 {
         opacity: 0.05;
-        polygon-fill: green;
-        [boundary='aboriginal_lands'],
-        [boundary='protected_area'][protect_class='24'] {
-          polygon-fill: @aboriginal;
-        }
+        line-width: 2;
+        line-offset: -5;
       }
-      ::outline {
-        opacity: 0.25;
-        line-width: 1.2;
-        line-color: green;
-        [boundary='aboriginal_lands'],
-        [boundary='protected_area'][protect_class='24'] {
-          line-color: @aboriginal;
-        }
-        [zoom >= 9] {
-          line-width: 1.5;
-        }
-      }
-    }
-    [zoom >= 10] {
-      ::wideline {
-        opacity: 0.15;
-        line-width: 3.6;
-        line-offset: -0.9;
-        line-color: green;
-        [boundary='aboriginal_lands'],
-        [boundary='protected_area'][protect_class='24'] {
-          line-color: @aboriginal;
-        }
-        line-join: round;
-        line-cap: round;
-        [zoom >= 12] {
-          line-width: 4;
-          line-offset: -1;
-        }
-        [zoom >= 14] {
-          line-width: 6;
-          line-offset: -2;
-        }
-      }
-      ::narrowline {
-        opacity: 0.15;
-        line-width: 1.8;
-        line-color: green;
-        [boundary='aboriginal_lands'],
-        [boundary='protected_area'][protect_class='24'] {
-          line-color: @aboriginal;
-        }
-        line-join: round;
-        line-cap: round;
-        [zoom >= 12] {
-            line-width: 2;
-        }
+      ::innerstrokefade4 {
+        opacity: 0.02;
+        line-width: 2;
+        line-offset: -7;
       }
     }
   }
