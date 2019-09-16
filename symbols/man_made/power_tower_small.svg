@@ -4,5 +4,6 @@
    version="1.1"
    width="3"
    height="3">
-     <path d="M0 0 h3 v3 h-3z M1,1.5a0.5,0.5 0 1,0 1,0a0.5,0.5 0 1,0 -1,0" fill-rule="evenodd"/>
+	<rect width="3" height="3" fill="#868686" />
+	<circle cx="1.5" cy="1.5" r="0.5" fill="white" />
 </svg>
