@@ -55,13 +55,17 @@
 
 #power-portals-way {
   [zoom >= 16] {
-    line-width: 1.5;
-    line-color:#B4B4B4;
+    line-width: 2;
+    line-color: #a4a4a4;
+    line-cap: round;
+    b/line-width: 1.0;
+    b/line-cap: square;
+    b/line-color: white;
   }
 }
 #power-portals-node {
   [zoom >= 16] {
-    marker-file: url('symbols/man_made/power_tower_small.svg');
-    marker-width: 5;
+    marker-file: url('symbols/man_made/power_portal_node.svg');
+    marker-width: 3;
   }
 }
