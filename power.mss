@@ -1,7 +1,7 @@
 @power-line-color: #888;
 
-#power-line {
-  [zoom >= 14] {
+#power-way {
+  [power = 'line'][zoom >= 14],[power = 'cable'][zoom >= 14] {
     line-width: 0.5;
     line-color: @power-line-color;
     [zoom >= 15] {
@@ -17,10 +17,7 @@
       line-width: 1.2;
     }
   }
-}
-
-#power-minorline {
-  [zoom >= 16] {
+  [power = 'minor_line'][zoom >= 16] {
     line-width: 0.3;
     line-color: @power-line-color;
     [zoom >= 17] {
@@ -30,9 +27,18 @@
       line-width: 0.5;
     }
   }
+  [power = 'portal'][zoom >= 16] {
+    [zoom >= 16] {
+    line-width: 2;
+    line-color: #a4a4a4;
+    line-cap: round;
+    b/line-width: 1.0;
+    b/line-cap: square;
+    b/line-color: white;
+  }
 }
 
-#power-towers {
+#power-points {
   [power = 'tower'] {
     [zoom >= 14] {
       marker-file: url('symbols/man_made/power_tower_small.svg');
@@ -51,20 +57,7 @@
     marker-fill: #928f8f;
     marker-width: 3;
   }
-}
-
-#power-portals-way {
-  [zoom >= 16] {
-    line-width: 2;
-    line-color: #a4a4a4;
-    line-cap: round;
-    b/line-width: 1.0;
-    b/line-cap: square;
-    b/line-color: white;
-  }
-}
-#power-portals-node {
-  [zoom >= 16] {
+  [power = 'portal'][zoom >= 16] {
     marker-file: url('symbols/man_made/power_portal_node.svg');
     marker-width: 3;
   }
