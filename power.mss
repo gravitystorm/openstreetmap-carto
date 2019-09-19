@@ -28,7 +28,6 @@
     }
   }
   [power = 'portal'][zoom >= 16] {
-    [zoom >= 16] {
     line-width: 2;
     line-color: #a4a4a4;
     line-cap: round;
