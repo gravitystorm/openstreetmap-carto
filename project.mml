@@ -1122,30 +1122,25 @@ Layer:
         ) AS admin_high_zoom
     properties:
       minzoom: 13
-  - id: power-minorline
+  - id: power-way
     geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way
+            way,
+            power
           FROM planet_osm_line
-          WHERE power = 'minor_line'
-        ) AS power_minorline
-    properties:
-      minzoom: 16
-  - id: power-line
-    geometry: linestring
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way
-          FROM planet_osm_line
-          WHERE power = 'line'
+          WHERE power IN ('minor_line', 'line', 'portal')
             OR (power = 'cable' AND tags->'location' IN ('overground', 'overhead', 'surface', 'outdoor', 'platform'))
+          ORDER BY
+            CASE
+              WHEN power = 'minor_line' THEN 3
+              WHEN power = 'line' THEN 2
+              WHEN power = 'portal' THEN 1
+              ELSE NULL
+            END
         ) AS power_line
     properties:
       minzoom: 14
@@ -1624,7 +1619,7 @@ Layer:
         ) AS amenity_line
     properties:
       minzoom: 16
-  - id: power-towers
+  - id: power-points
     geometry: point
     <<: *extents
     Datasource:
@@ -1634,55 +1629,18 @@ Layer:
             way,
             power
         FROM planet_osm_point
-        WHERE power IN ('tower', 'pole')
+        WHERE power IN ('tower', 'pole', 'portal', 'insulator')
         ORDER BY
           CASE
             WHEN power = 'tower' THEN 1
             WHEN power = 'pole' THEN 2
+            WHEN power = 'portal' THEN 3
+            WHEN power = 'insulator' THEN 3
             ELSE NULL
           END
-        ) AS power_towers
+        ) AS power_points
     properties:
       minzoom: 14
-  - id: power-poles
-    geometry: point
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way
-          FROM planet_osm_point
-          WHERE power = 'pole'
-        ) AS power_poles
-    properties:
-      minzoom: 16
-  - id: power-portals-way
-    geometry: way
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way
-          FROM planet_osm_line
-          WHERE power = 'portal'
-        ) AS power_portals
-    properties:
-      minzoom: 16
-  - id: power-portals-node
-    geometry: point
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way
-          FROM planet_osm_point
-          WHERE power = 'portal'
-        ) AS power_portals
-    properties:
-      minzoom: 16
   - id: roads-text-ref-low-zoom
     geometry: linestring
     <<: *extents
