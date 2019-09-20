@@ -1488,12 +1488,17 @@
     marker-fill: @airtransport;
   }
 
-  [feature = 'aeroway_aerodrome']['access' != 'private']['icao' != null]['iata' != null][zoom >= 10][zoom < 14],
-  [feature = 'aeroway_aerodrome'][zoom >= 11][zoom < 14] {
-    marker-file: url('symbols/aerodrome.12.svg');
-    marker-placement: interior;
-    marker-clip: false;
-    marker-fill: @airtransport;
+  [feature = 'aeroway_aerodrome']['access' != 'private']['icao' != null]['iata' != null][zoom >= 10][zoom < 17],
+  [feature = 'aeroway_aerodrome']['access' = 'private'][zoom >= 12][zoom < 18],
+  [feature = 'aeroway_aerodrome']['icao' = null][zoom >= 12][zoom < 18],
+  [feature = 'aeroway_aerodrome']['iata' = null][zoom >= 12][zoom < 18] {
+    [way_pixels <= 192000],
+    [way_pixels = null] {
+      marker-file: url('symbols/aerodrome.12.svg');
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @airtransport;
+    }
   }
 
   [feature = 'amenity_ferry_terminal'][zoom >= 15] {
@@ -3111,8 +3116,25 @@
     text-placement: interior;
   }
 
-  [feature = 'aeroway_aerodrome']['access' != 'private']['icao' != null]['iata' != null][zoom >= 10][zoom < 14],
-  [feature = 'aeroway_aerodrome'][zoom >= 11][zoom < 14],
+  [feature = 'aeroway_aerodrome']['access' != 'private']['icao' != null]['iata' != null][zoom >= 11][zoom < 17],
+  [feature = 'aeroway_aerodrome']['access' = 'private'][zoom >= 13][zoom < 18],
+  [feature = 'aeroway_aerodrome']['icao' = null][zoom >= 13][zoom < 18],
+  [feature = 'aeroway_aerodrome']['iata' = null][zoom >= 13][zoom < 18] {
+    [way_pixels <= 192000],
+    [way_pixels = null] {
+      text-name: "[name]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-fill: darken(@airtransport, 15%);
+      text-dy: 10;
+      text-face-name: @oblique-fonts;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+    }
+  }
+
   [feature = 'amenity_ferry_terminal'][zoom >= 15] {
     text-name: "[name]";
     text-size: @standard-font-size;
