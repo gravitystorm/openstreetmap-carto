@@ -39,6 +39,8 @@
 
 - Adjust width of hedge & citywall, add z20, change hedge to @forest (#3847)
 
+- Increase "office=" initial zoom to z18 and move some deprecated values to z19 (#3796)
+
 - Create new layer for `ref` of  `highway=residential/unclassified/track`, change residential/unclassified `ref`
   rendering to use standard halo-radius, oblique (italic) font, and same text size as `name=` at >z17 (#3709)
   
