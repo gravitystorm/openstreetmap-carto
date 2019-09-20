@@ -8,6 +8,10 @@
   This fixes some bugs and makes building label placement consistent with shop
   label placement.
 
+- Combine low priority layers with ST_PointOnSurface (#3874)
+
+  This fixes a bug that rendered parking lots twice
+
 - Use `cache-feature: true` to improve performance of layers with attachments (#3838)
 
 - Use retail colour fill on malls (#3790)
@@ -28,9 +32,13 @@
 
   It is recommended marshes are tagged with `natural=wetland` + `wetland=marsh`
 
+- Adjust aerodrome initial & final zoom levels (#3879)
+
 - Use a whitelist for barrier rendering, and render `historic=citywalls` like
   `barrier=city_wall`. (#3745)
-  
+
+- Adjust width of hedge & citywall, add z20, change hedge to @forest (#3847)
+
 - Create new layer for `ref` of  `highway=residential/unclassified/track`, change residential/unclassified `ref`
   rendering to use standard halo-radius, oblique (italic) font, and same text size as `name=` at >z17 (#3709)
   
