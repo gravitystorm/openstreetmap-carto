@@ -1526,7 +1526,7 @@ Layer:
               tags -> 'operator' AS operator,
               ref,
               way_area,
-              way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
+              COALESCE(way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0), 0) AS way_pixels
             FROM
               (SELECT
                   ST_PointOnSurface(way) AS way,
