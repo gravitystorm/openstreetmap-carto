@@ -1,18 +1,26 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.22.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.23.0...master)
 
-## [v4.22.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.21.0...v4.22.0)
+## [v4.23.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.22.0...v4.23.0) - 2019-9-20
+### Changes
+
+- Combine low priority layers using ST_PointOnSurface (#3874)
+    Fixes a bug which rendered `parking` icons twice
+- Restore rendering of landcover text labels on points (#3878)
+- Adjust `aerodrome` initial & final zoom levels (#3879)
+- Adjust width of `hedge` & `citywall` up to z20, adjust hedge color (#3847)
+- Increase `office=` initial zoom to z18 and move some values to z19 (#3796)
+- Create new layer for `ref` of `highway=residential/unclassified/track` (#3709)
+    Changes `ref` to standard halo-radius, oblique font, and same size as `name` at >z17
+- Add fill colors for `wetland=mangrove/saltmarsh/reedbed` (#3807)
+    Also adds salt dots pattern for `wetland=saltmarsh`
+
+## [v4.22.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.21.0...v4.22.0) - 2019-08-27
 ### Changes
 
 - Shop label fixes and use ST_PointOnSurface for building label placement (#3781)
 
   This fixes some bugs and makes building label placement consistent with shop
   label placement.
-
-- Combine low priority layers with ST_PointOnSurface (#3874)
-
-  This fixes a bug that rendered parking lots twice
-
-- Restore rendering of landcover text labels on points (#3878)
 
 - Use `cache-feature: true` to improve performance of layers with attachments (#3838)
 
@@ -34,26 +42,8 @@
 
   It is recommended marshes are tagged with `natural=wetland` + `wetland=marsh`
 
-- Adjust aerodrome initial & final zoom levels (#3879)
-
 - Use a whitelist for barrier rendering, and render `historic=citywalls` like
   `barrier=city_wall`. (#3745)
-
-- Adjust width of hedge & citywall, add z20, change hedge to @forest (#3847)
-
-- Increase "office=" initial zoom to z18 and move some deprecated values to z19 (#3796)
-
-- Create new layer for `ref` of  `highway=residential/unclassified/track`, change residential/unclassified `ref`
-  rendering to use standard halo-radius, oblique (italic) font, and same text size as `name=` at >z17 (#3709)
-  
-  This makes the ref lables consistent between track roads, paths, residential and unclassified highways, 
-  and renderes the `ref` text with lower priority than the `name=` text.
-  
-- Add fill color for `wetland=mangrove`, `wetland=saltmarsh` and `wetland=reedbed`, 
-  add salt dots pattern to `wetland=saltmarsh` (#3807)
-
-  Mangroves are now rendered in scrub fill color, reedbed and saltmarsh with grass color. 
-  A salt dot pattern is added to distinguish `wetland=saltmarsh` from `wetland=marsh`
 
 - Support new Tibetan font name (#3842)
 
