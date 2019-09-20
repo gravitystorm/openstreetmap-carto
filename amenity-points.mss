@@ -629,30 +629,6 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_parking'][way_pixels > 900][zoom >= 14],
-  [feature = 'amenity_bicycle_parking'][way_pixels > 900][zoom >= 14],
-  [feature = 'amenity_motorcycle_parking'][way_pixels > 900][zoom >= 14],
-  [feature = 'amenity_parking_entrance'][zoom >= 18] {
-    [feature = 'amenity_parking'] {
-      marker-file: url('symbols/amenity/parking.svg');
-    }
-    [feature = 'amenity_bicycle_parking'] {
-      marker-file: url('symbols/amenity/bicycle_parking.svg');
-    }
-    [feature = 'amenity_motorcycle_parking'] {
-      marker-file: url('symbols/amenity/motorcycle_parking.svg');
-    }
-    [feature = 'amenity_parking_entrance'] {
-      marker-file: url('symbols/amenity/parking_entrance.svg');
-    }
-    marker-placement: interior;
-    marker-clip: false;
-    marker-fill: @transportation-icon;
-    [access != ''][access != 'permissive'][access != 'yes'] {
-      marker-opacity: 0.33;
-    }
-  }
-
   [feature = 'amenity_clinic'][zoom >= 17],
   [feature = 'amenity_doctors'][zoom >= 17] {
     marker-file: url('symbols/amenity/doctors.svg');
@@ -729,24 +705,9 @@
     }
   }
 
-  [feature = 'man_made_cross'][zoom >= 17],
-  [feature = 'historic_wayside_cross'][zoom >= 17] {
-    marker-file: url('symbols/man_made/cross.svg');
-    marker-fill: @religious-icon;
-    marker-placement: interior;
-    marker-clip: false;
-  }
-
   [feature = 'man_made_storage_tank'][zoom >= 18],
   [feature = 'man_made_silo'][zoom >= 18] {
     marker-file: url('symbols/man_made/storage_tank.svg');
-    marker-fill: @man-made-icon;
-    marker-placement: interior;
-    marker-clip: false;
-  }
-
-  [feature = 'historic_wayside_shrine'][zoom >= 17] {
-    marker-file: url('symbols/historic/shrine.svg');
     marker-fill: @man-made-icon;
     marker-placement: interior;
     marker-clip: false;
@@ -1598,7 +1559,7 @@
   }
 }
 
-.amenity-low-priority {
+#amenity-low-priority {
   [feature = 'man_made_cross'][zoom >= 16],
   [feature = 'historic_wayside_cross'][zoom >= 16] {
     marker-file: url('symbols/man_made/cross.svg');
@@ -1607,23 +1568,28 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_parking'][zoom >= 17],
-  [feature = 'amenity_bicycle_parking'][zoom >= 18],
-  [feature = 'amenity_motorcycle_parking'][zoom >= 18] {
-    [feature = 'amenity_parking'] {
-      marker-file: url('symbols/amenity/parking.svg');
-    }
-    [feature = 'amenity_bicycle_parking'] {
-      marker-file: url('symbols/amenity/bicycle_parking.svg');
-    }
-    [feature = 'amenity_motorcycle_parking'] {
-      marker-file: url('symbols/amenity/motorcycle_parking.svg');
-    }
+  [feature = 'historic_wayside_shrine'][zoom >= 17] {
+    marker-file: url('symbols/historic/shrine.svg');
+    marker-fill: @man-made-icon;
     marker-placement: interior;
     marker-clip: false;
-    marker-fill: @transportation-icon;
-    [access != ''][access != 'permissive'][access != 'yes'] {
-      marker-opacity: 0.33;
+  }
+
+  [feature = 'amenity_parking'],
+  [feature = 'amenity_bicycle_parking'],
+  [feature = 'amenity_motorcycle_parking'],
+  [feature = 'amenity_parking_entrance'] {
+    [zoom >= 14][way_pixels > 900],
+    [zoom >= 17][feature = 'amenity_parking'],
+    [zoom >= 18] {
+      [feature = 'amenity_parking'] { marker-file: url('symbols/amenity/parking.svg'); }
+      [feature = 'amenity_bicycle_parking'] { marker-file: url('symbols/amenity/bicycle_parking.svg'); }
+      [feature = 'amenity_motorcycle_parking'] { marker-file: url('symbols/amenity/motorcycle_parking.svg'); }
+      [feature = 'amenity_parking_entrance'] { marker-file: url('symbols/amenity/parking_entrance.svg'); }
+      marker-placement: interior;
+      marker-clip: false;
+      marker-fill: @transportation-icon;
+      [access != ''][access != 'permissive'][access != 'yes'] { marker-opacity: 0.33; }
     }
   }
 
@@ -1890,30 +1856,6 @@
     text-placement: interior;
   }
 
-  [feature = 'amenity_parking'][zoom >= 10][way_pixels > 900],
-  [feature = 'amenity_bicycle_parking'][zoom >= 10][way_pixels > 900],
-  [feature = 'amenity_motorcycle_parking'][zoom >= 10][way_pixels > 900],
-  [feature = 'amenity_parking_entrance'][zoom >= 18] {
-    text-name: "[name]";
-    text-size: @standard-font-size;
-    text-wrap-width: @standard-wrap-width;
-    text-line-spacing: @standard-line-spacing-size;
-    text-fill: @transportation-text;
-    text-dy: 9;
-    text-face-name: @standard-font;
-    text-halo-radius: @standard-halo-radius;
-    text-halo-fill: @standard-halo-fill;
-    text-placement: interior;
-    [access != ''][access != 'permissive'][access != 'yes'] {
-      text-opacity: 0.33;
-      text-halo-radius: 0;
-    }
-    [feature = 'amenity_bicycle_parking'],
-    [feature = 'amenity_motorcycle_parking'] {
-      text-dy: 12;
-    }
-  }
-
   [feature = 'amenity_courthouse'][zoom >= 17],
   [feature = 'amenity_townhall'][zoom >= 17],
   [feature = 'amenity_police'][zoom >= 17],
@@ -2084,12 +2026,9 @@
     }
   }
 
-  [feature = 'man_made_cross'][zoom >= 17],
   [feature = 'power_generator'][location != 'rooftop'][location != 'roof'][zoom >= 17],
   [feature = 'power_generator'][location = null][zoom >= 17],
   [feature = 'power_generator'][zoom >= 19],
-  [feature = 'historic_wayside_cross'][zoom >= 17],
-  [feature = 'historic_wayside_shrine'][zoom >= 17],
   [feature = 'historic_city_gate'][zoom >= 17],
   [feature = 'natural_cave_entrance'][zoom >= 15],
   [feature = 'man_made_mast'][zoom >= 18],
@@ -2108,10 +2047,6 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: darken(@man-made-icon, 20%);
-    [feature = 'man_made_cross'],
-    [feature = 'historic_wayside_cross'] {
-      text-dy: 6;
-    }
     [feature = 'power_generator'],
     [feature = 'historic_city_gate'],
     [feature = 'man_made_mast'],
@@ -2160,8 +2095,7 @@
     text-placement: interior;
   }
 
-  [feature = 'military_bunker'][zoom >= 17],
-  [feature = 'historic_wayside_shrine'][zoom >= 17] {
+  [feature = 'military_bunker'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
@@ -3200,6 +3134,49 @@
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
     text-face-name: @standard-font;
+  }
+}
+
+#text-low-priority {
+  [feature = 'amenity_parking'],
+  [feature = 'amenity_bicycle_parking'],
+  [feature = 'amenity_motorcycle_parking'],
+  [feature = 'amenity_parking_entrance'] {
+    [zoom >= 10][way_pixels > 900],
+    [zoom >= 18] {
+      text-name: "[name]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-fill: @transportation-text;
+      text-dy: 9;
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+      [access != ''][access != 'permissive'][access != 'yes'] {
+        text-opacity: 0.33;
+        text-halo-radius: 0;
+      }
+      [feature = 'amenity_bicycle_parking'],
+      [feature = 'amenity_motorcycle_parking'] { text-dy: 12; }
+    }
+  }
+
+  [feature = 'man_made_cross'][zoom >= 17],
+  [feature = 'historic_wayside_cross'][zoom >= 17],
+  [feature = 'historic_wayside_shrine'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: darken(@man-made-icon, 20%);
+    text-dy: 6;
+      [feature = 'historic_wayside_shrine'] { text-dy: 10; }
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
   }
 }
 
