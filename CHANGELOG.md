@@ -12,6 +12,8 @@
 
   This fixes a bug that rendered parking lots twice
 
+- Restore rendering of landcover text labels on points (#3878)
+
 - Use `cache-feature: true` to improve performance of layers with attachments (#3838)
 
 - Use retail colour fill on malls (#3790)
