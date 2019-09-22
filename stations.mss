@@ -16,7 +16,6 @@
       text-halo-radius: @standard-halo-radius * 1.5;
       text-halo-fill: @standard-halo-fill;
       text-wrap-width: 0;
-      text-placement: interior;
     }
   }
 
@@ -42,7 +41,6 @@
       text-halo-fill: @standard-halo-fill;
       text-wrap-width: 30; // 3 em
       text-line-spacing: -1.5; // -0.15 em
-      text-placement: interior;
     }
     [zoom >= 15] {
       marker-width: 9;
@@ -74,7 +72,6 @@
       text-halo-fill: @standard-halo-fill;
       text-wrap-width: @standard-wrap-width;
       text-line-spacing: @standard-line-spacing-size;
-      text-placement: interior;
     }
   }
 
@@ -99,7 +96,6 @@
       text-halo-fill: @standard-halo-fill;
       text-wrap-width: @standard-wrap-width;
       text-line-spacing: @standard-line-spacing-size;
-      text-placement: interior;
     }
   }
 
@@ -124,7 +120,6 @@
       text-halo-fill: @standard-halo-fill;
       text-wrap-width: @standard-wrap-width;
       text-line-spacing: @standard-line-spacing-size;
-      text-placement: interior;
     }
   }
 }
