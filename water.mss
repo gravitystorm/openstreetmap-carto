@@ -380,7 +380,6 @@
     text-face-name: @oblique-fonts;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
-    text-placement: point;
     [zoom >= 15] {
       text-size: 12;
       text-wrap-width: 37; // 3.1 em
