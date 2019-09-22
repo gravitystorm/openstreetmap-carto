@@ -2079,7 +2079,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way,
+            ST_PointOnSurface(way) AS way,
             "addr:housenumber" AS addr_housenumber,
             "addr:housename" AS addr_housename,
             tags->'addr:unit' AS addr_unit,
