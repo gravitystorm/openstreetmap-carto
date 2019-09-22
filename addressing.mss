@@ -25,7 +25,6 @@
         }
       }
     }
-    text-placement: interior;
     text-face-name: @book-fonts;
     text-fill: @address-color;
     text-halo-radius: @standard-halo-radius;
