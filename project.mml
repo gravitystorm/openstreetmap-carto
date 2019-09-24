@@ -236,7 +236,8 @@ Layer:
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
               OR tags->'basin' IN ('detention', 'infiltration')
-              THEN 'yes' ELSE 'no' END AS int_intermittent
+              THEN 'yes' ELSE 'no' END AS int_intermittent,
+            CASE WHEN tags->'salt' IN ('yes') THEN 'yes' ELSE 'no' END AS int_salt
           FROM planet_osm_polygon
           WHERE
             (waterway IN ('dock', 'riverbank')
@@ -1524,6 +1525,7 @@ Layer:
                                 ELSE 'other' END AS shop,
               CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building,
               tags -> 'operator' AS operator,
+              CASE WHEN tags->'salt' IN ('yes') THEN 'yes' ELSE 'no' END AS int_salt,
               ref,
               way_area,
               COALESCE(way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0), 0) AS way_pixels
