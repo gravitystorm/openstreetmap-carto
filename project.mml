@@ -1719,12 +1719,13 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way,
+            ST_PointOnSurface(way) AS way,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             man_made,
             name
           FROM planet_osm_polygon
-          WHERE man_made = 'bridge'
+          WHERE way && !bbox!
+            AND man_made = 'bridge'
           ORDER BY way_area DESC
         ) AS bridge_text
     properties:
