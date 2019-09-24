@@ -4,7 +4,7 @@
 @state-labels: desaturate(darken(@admin-boundaries, 5%), 20%);
 
 .country {
-  [zoom >= 3][zoom < 5][way_pixels > 1000], 
+  [zoom >= 3][zoom < 5][way_pixels > 1000],
   [zoom >= 5][way_pixels < 360000] {
     text-name: "[name]";
     text-size: 10;
@@ -44,7 +44,8 @@
 }
 
 .state {
-  [zoom >= 5][way_pixels > 3000][way_pixels < 196000] {
+  [zoom >= 5][zoom < 7][way_pixels > 3000],
+  [zoom >= 7][way_pixels > 3000][way_pixels < 196000] {
     text-name: "[name]";
     text-size: 10;
     text-wrap-width: 30; // 3.0 em
@@ -400,25 +401,52 @@
       }
     }
   }
-}
-
-#placenames-small::hamlet {
-  [place = 'hamlet'],
-  [place = 'locality'],
-  [place = 'neighbourhood'],
-  [place = 'isolated_dwelling'],
-  [place = 'farm'] {
-    [zoom >= 15] {
+  [place = 'hamlet'] {
+    [zoom >= 14][zoom < 18] {
       text-name: "[name]";
-      text-size: 10;
       text-fill: @placenames;
       text-face-name: @book-fonts;
-      text-halo-fill: @standard-halo-fill;
+      text-halo-fill: white;
       text-halo-radius: @standard-halo-radius * 1.5;
-      text-wrap-width: 45; // 4.5 em
-      text-line-spacing: -0.8; // -0.08 em
-      text-margin: 7.0; // 0.7 em
+      [zoom >= 14] {
+        text-size: 10;
+        text-wrap-width: 55; // 5.0 em
+        text-line-spacing: -0.55; // -0.05 em
+        text-margin: 7.7; // 0.7 em
+      }
+      [zoom >= 15] {
+        text-size: 11;
+        text-fill: @placenames-light;
+        text-halo-fill: @standard-halo-fill;
+        text-wrap-width: 45; // 4.5 em
+        text-line-spacing: -0.8; // -0.08 em
+        text-margin: 7.0; // 0.7 em
+      }
+      [zoom >= 16] {
+        text-size: 12;
+        text-wrap-width: 60; // 5.0 em
+        text-line-spacing: -0.60; // -0.05 em
+        text-margin: 8.4; // 0.7 em
+        text-fill: @placenames-light;
+        text-halo-fill: white;
+      }
     }
+  }
+}
+
+#placenames-small::neighborhood {
+  [place = 'neighbourhood'][zoom >= 15][zoom < 20],
+  [place = 'isolated_dwelling'][zoom >= 15],
+  [place = 'farm'][zoom >= 15] {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: @placenames;
+    text-face-name: @book-fonts;
+    text-halo-fill: @standard-halo-fill;
+    text-halo-radius: @standard-halo-radius * 1.5;
+    text-wrap-width: 45; // 4.5 em
+    text-line-spacing: -0.8; // -0.08 em
+    text-margin: 7.0; // 0.7 em
     [zoom >= 16] {
       text-size: 12;
       text-wrap-width: 60; // 5.0 em
