@@ -1,4 +1,5 @@
 @water-text: #4d80b3;
+@water-salt: #f1dddf;
 @glacier: #ddecec;
 @glacier-line: #9cf;
 
@@ -78,6 +79,14 @@
           polygon-pattern-gamma: 0.6;
         }
       }
+    }
+  }
+
+  [landuse = 'salt_pond'] {
+    [zoom >= 13] {
+      polygon-fill: @water-salt;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
   }
 }

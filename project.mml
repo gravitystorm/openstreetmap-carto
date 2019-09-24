@@ -240,7 +240,7 @@ Layer:
           FROM planet_osm_polygon
           WHERE
             (waterway IN ('dock', 'riverbank')
-              OR landuse IN ('reservoir', 'basin')
+              OR landuse IN ('reservoir', 'basin', 'salt_pond')
               OR "natural" IN ('water', 'glacier'))
             AND building IS NULL
             AND way_area > 1*!pixel_width!::real*!pixel_height!::real
