@@ -1526,7 +1526,7 @@ Layer:
               tags -> 'operator' AS operator,
               ref,
               way_area,
-              COALESCE(way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0), 0) AS way_pixels
+              way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
             FROM
               (SELECT
                   ST_PointOnSurface(way) AS way,
@@ -1580,7 +1580,7 @@ Layer:
                   tourism,
                   waterway,
                   tags,
-                  NULL AS way_area
+                  0 AS way_area
                 FROM planet_osm_point
                 WHERE way && !bbox!
               ) _
