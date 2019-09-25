@@ -1,5 +1,4 @@
 @water-text: #4d80b3;
-@water-salt: #f1dddf;
 @glacier: #ddecec;
 @glacier-line: #9cf;
 
@@ -64,7 +63,10 @@
       [int_intermittent = 'no'] {
         polygon-fill: @water-color;
         [natural = 'water'][int_salt = 'yes'] {
-          polygon-fill: @water-salt;
+          polygon-pattern-file: url('symbols/salt-dots-2.png');
+          polygon-pattern-alignment: global;
+          [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+          [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
         }
         [way_pixels >= 4] {
           polygon-gamma: 0.75;
@@ -369,7 +371,6 @@
       text-face-name: @oblique-fonts;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
-      [int_salt = 'yes'] { text-halo-fill: @water-salt; }
       text-placement: interior;
     }
   }
