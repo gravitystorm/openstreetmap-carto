@@ -4,7 +4,7 @@
 
 CREATE INDEX planet_osm_line_ferry
   ON planet_osm_line USING GIST (way)
-  WHERE route = 'ferry';
+  WHERE route = 'ferry' AND osm_id > 0;
 CREATE INDEX planet_osm_line_name
   ON planet_osm_line USING GIST (way)
   WHERE name IS NOT NULL;
