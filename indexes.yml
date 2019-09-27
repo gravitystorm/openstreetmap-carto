@@ -10,7 +10,7 @@ line:
   name:
     where: name IS NOT NULL
   ferry:
-    where: route = 'ferry'
+    where: route = 'ferry' AND osm_id > 0
   river:
     where: waterway = 'river'
 polygon:
