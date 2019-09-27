@@ -254,8 +254,7 @@ overlapping borders correctly.
   [way_pixels > 750] {
     [zoom >= 8] {
       ::outerstroke,
-      ::innerstrokefade1, ::innerstrokefade2,
-      ::innerstrokefade3, ::innerstrokefade4 {
+      ::innerstroke {
         line-color: @protected-areas;
         [boundary='aboriginal_lands'],
         [boundary='protected_area'][protect_class='24'] {
@@ -265,28 +264,14 @@ overlapping borders correctly.
         line-cap: round;
       }
       ::outerstroke {
-        opacity: 0.15;
-        line-width: 1;
+        opacity: 0.22;
+        line-width: 1.2;
+        line-dasharray: 6,4,2,4;
       }
-      ::innerstrokefade1 {
-        opacity: 0.12;
-        line-width: 2;
-        line-offset: -1;
-      }
-      ::innerstrokefade2 {
-        opacity: 0.08;
-        line-width: 2;
-        line-offset: -3;
-      }
-      ::innerstrokefade3 {
-        opacity: 0.05;
-        line-width: 2;
-        line-offset: -5;
-      }
-      ::innerstrokefade4 {
-        opacity: 0.02;
-        line-width: 2;
-        line-offset: -7;
+      ::innerstroke {
+        opacity: 0.06;
+        line-width: 4;
+        line-offset: -2;
       }
     }
   }
