@@ -198,7 +198,6 @@ Layer:
       minzoom: 8
       maxzoom: 11
   - id: water-lines
-    class: water-lines
     geometry: linestring
     <<: *extents
     Datasource:
@@ -251,7 +250,6 @@ Layer:
       minzoom: 0
   - id: ocean-lz
     geometry: polygon
-    class: ocean
     <<: *extents
     Datasource:
       file: data/simplified-water-polygons-split-3857/simplified_water_polygons.shp
@@ -260,7 +258,6 @@ Layer:
       maxzoom: 9
   - id: ocean
     geometry: polygon
-    class: ocean
     <<: *extents
     Datasource:
       file: data/water-polygons-split-3857/water_polygons.shp
@@ -451,7 +448,6 @@ Layer:
     properties:
       minzoom: 14
   - id: tunnels
-    class: access
     geometry: linestring
     <<: *extents
     Datasource:
@@ -578,7 +574,6 @@ Layer:
     properties:
       minzoom: 10
   - id: line-barriers
-    class: barriers
     geometry: linestring
     <<: *extents
     Datasource:
@@ -614,7 +609,6 @@ Layer:
       cache-features: true
       minzoom: 13
   - id: area-barriers
-    class: barriers
     geometry: polygon
     <<: *extents
     Datasource:
@@ -834,7 +828,6 @@ Layer:
     properties:
       minzoom: 14
   - id: roads-fill
-    class: access
     geometry: linestring
     <<: *extents
     Datasource:
@@ -900,7 +893,6 @@ Layer:
       minzoom: 6
       maxzoom: 9
   - id: waterway-bridges
-    class: water-lines
     geometry: linestring
     <<: *extents
     Datasource:
@@ -923,7 +915,6 @@ Layer:
     properties:
       minzoom: 12
   - id: bridges
-    class: access
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1191,7 +1182,6 @@ Layer:
       cache-features: true
       minzoom: 16
   - id: country-names
-    class: country
     geometry: point
     <<: *extents
     Datasource:
@@ -1234,7 +1224,6 @@ Layer:
       minzoom: 3
       maxzoom: 15
   - id: state-names
-    class: state
     geometry: point
     <<: *extents
     Datasource:
@@ -1384,7 +1373,6 @@ Layer:
       cache-features: true
       minzoom: 12
   - id: amenity-points
-    class: points
     geometry: point
     <<: *extents
     Datasource:
@@ -1808,7 +1796,6 @@ Layer:
     properties:
       minzoom: 15
   - id: roads-text-name
-    class: directions
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1864,7 +1851,6 @@ Layer:
       cache-features: true
       minzoom: 13
   - id: paths-text-name
-    class: directions
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1968,7 +1954,6 @@ Layer:
     properties:
       minzoom: 15
   - id: text-poly-low-zoom
-    class: text-low-zoom
     geometry: polygon
     <<: *extents
     Datasource:
