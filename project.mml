@@ -1383,6 +1383,52 @@ Layer:
     properties:
       cache-features: true
       minzoom: 12
+  - id: junctions
+    geometry: point
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            highway,
+            junction,
+            ref,
+            name,
+            NULL AS way_pixels
+          FROM planet_osm_point
+          WHERE highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes'
+        UNION ALL
+          SELECT
+            way,
+            highway,
+            junction,
+            ref,
+            name,
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
+          FROM planet_osm_polygon
+          WHERE junction = 'yes'
+          ORDER BY way_pixels DESC NULLS LAST
+        ) AS junctions
+    properties:
+      minzoom: 11
+  - id: bridge-text
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
+            man_made,
+            name
+          FROM planet_osm_polygon
+          WHERE man_made = 'bridge'
+          ORDER BY way_area DESC
+        ) AS bridge_text
+    properties:
+      minzoom: 11
   - id: amenity-points
     class: points
     geometry: point
@@ -1683,52 +1729,6 @@ Layer:
     properties:
       minzoom: 10
       maxzoom: 12
-  - id: junctions
-    geometry: point
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            highway,
-            junction,
-            ref,
-            name,
-            NULL AS way_pixels
-          FROM planet_osm_point
-          WHERE highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes'
-        UNION ALL
-          SELECT
-            way,
-            highway,
-            junction,
-            ref,
-            name,
-            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
-          FROM planet_osm_polygon
-          WHERE junction = 'yes'
-          ORDER BY way_pixels DESC NULLS LAST
-        ) AS junctions
-    properties:
-      minzoom: 11
-  - id: bridge-text
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
-            man_made,
-            name
-          FROM planet_osm_polygon
-          WHERE man_made = 'bridge'
-          ORDER BY way_area DESC
-        ) AS bridge_text
-    properties:
-      minzoom: 11
   - id: roads-text-ref
     geometry: linestring
     <<: *extents
