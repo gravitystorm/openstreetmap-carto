@@ -1,5 +1,5 @@
 @marina-text: #576ddf; // also swimming_pool
-@wetland-text: darken(#4aa5fa, 25%); /* Also for marsh and mud */
+@wetland-text: darken(#4aa5fa, 25%); /* Also for mud */
 @shop-icon: #ac39ac;
 @shop-text: #939;
 @transportation-icon: #0092da;
@@ -2125,7 +2125,6 @@
   }
 
   [feature = 'natural_wetland'],
-  [feature = 'natural_marsh'],
   [feature = 'natural_mud'],
   [feature = 'leisure_park'],
   [feature = 'leisure_recreation_ground'],
@@ -2200,7 +2199,6 @@
       text-halo-fill: @standard-halo-fill;
       [feature = 'natural_reef'],
       [feature = 'natural_wetland'],
-      [feature = 'natural_marsh'],
       [feature = 'natural_mud'] {
         text-fill: @wetland-text;
       }
