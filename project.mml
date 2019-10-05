@@ -1460,6 +1460,13 @@ Layer:
                 'office' || CASE WHEN tags->'office' IN ('no', 'vacant', 'closed', 'disused', 'empty') OR (tags->'office') IS NULL THEN NULL ELSE '' END,
                 'barrier_' || CASE WHEN barrier IN ('toll_booth') AND way_area IS NULL THEN barrier ELSE NULL END,
                 'waterway_' || CASE WHEN waterway IN ('dam', 'weir', 'dock') THEN waterway ELSE NULL END,
+                'amenity_' || CASE WHEN amenity IN ('bicycle_parking', 'motorcycle_parking') THEN amenity ELSE NULL END,
+                'amenity_' || CASE WHEN amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL) THEN amenity ELSE NULL END,
+                'amenity_' || CASE WHEN amenity IN ('parking_entrance')
+                                        AND tags->'parking' IN ('underground')
+                                        AND (access IS NULL OR access NOT IN ('private', 'no'))
+                                        AND way_area IS NULL
+                                   THEN amenity ELSE NULL END,
                 'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism ELSE NULL END,
                 'place_' || CASE WHEN place IN ('locality') AND way_area IS NULL THEN place ELSE NULL END
               ) AS feature,
@@ -2194,13 +2201,6 @@ Layer:
             COALESCE(
               'highway_' || CASE WHEN highway IN ('mini_roundabout') AND way_area IS NULL THEN highway ELSE NULL END,
               'railway_' || CASE WHEN railway IN ('level_crossing', 'crossing') AND way_area IS NULL THEN railway ELSE NULL END,
-              'amenity_' || CASE WHEN amenity IN ('bicycle_parking', 'motorcycle_parking') THEN amenity ELSE NULL END,
-              'amenity_' || CASE WHEN amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL) THEN amenity ELSE NULL END,
-              'amenity_' || CASE WHEN amenity IN ('parking_entrance')
-                                      AND tags->'parking' IN ('underground')
-                                      AND (access IS NULL OR access NOT IN ('private', 'no'))
-                                      AND way_area IS NULL
-                                 THEN amenity ELSE NULL END,
               'amenity_' || CASE WHEN amenity IN ('bench', 'waste_basket', 'waste_disposal') AND way_area IS NULL THEN amenity ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') AND way_area IS NULL THEN historic ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('cross') AND way_area IS NULL THEN man_made ELSE NULL END,
@@ -2243,7 +2243,7 @@ Layer:
               ) _
             WHERE highway IN ('mini_roundabout')
                OR railway IN ('level_crossing', 'crossing')
-               OR amenity IN ('parking', 'parking_entrance', 'bicycle_parking', 'motorcycle_parking', 'bench', 'waste_basket', 'waste_disposal')
+               OR amenity IN ('bench', 'waste_basket', 'waste_disposal')
                OR historic IN ('wayside_cross', 'wayside_shrine')
                OR man_made IN ('cross')
                OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile', 'motorcycle_barrier', 'cycle_barrier', 'full-height_turnstile', 'turnstile', 'kissing_gate')
@@ -2262,4 +2262,4 @@ Layer:
       # see https://github.com/gravitystorm/openstreetmap-carto/pull/1349#issuecomment-77805678
       table: *amenity_low_priority_sql
     properties:
-      minzoom: 10
+      minzoom: 17

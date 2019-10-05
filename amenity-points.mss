@@ -1434,21 +1434,6 @@
       marker-fill: @man-made-icon;
     }
   }
-}
-
-#amenity-low-priority {
-  [feature = 'man_made_cross'][zoom >= 16],
-  [feature = 'historic_wayside_cross'][zoom >= 16] {
-    marker-file: url('symbols/man_made/cross.svg');
-    marker-fill: @religious-icon;
-    marker-clip: false;
-  }
-
-  [feature = 'historic_wayside_shrine'][zoom >= 17] {
-    marker-file: url('symbols/historic/shrine.svg');
-    marker-fill: @man-made-icon;
-    marker-clip: false;
-  }
 
   [feature = 'amenity_parking'],
   [feature = 'amenity_bicycle_parking'],
@@ -1465,6 +1450,21 @@
       marker-fill: @transportation-icon;
       [access != ''][access != 'permissive'][access != 'yes'] { marker-opacity: 0.33; }
     }
+  }
+}
+
+#amenity-low-priority {
+  [feature = 'man_made_cross'][zoom >= 16],
+  [feature = 'historic_wayside_cross'][zoom >= 16] {
+    marker-file: url('symbols/man_made/cross.svg');
+    marker-fill: @religious-icon;
+    marker-clip: false;
+  }
+
+  [feature = 'historic_wayside_shrine'][zoom >= 17] {
+    marker-file: url('symbols/historic/shrine.svg');
+    marker-fill: @man-made-icon;
+    marker-clip: false;
   }
 
   [feature = 'railway_level_crossing'][zoom >= 14]::railway,
@@ -2924,9 +2924,7 @@
     text-halo-fill: @standard-halo-fill;
     text-face-name: @standard-font;
   }
-}
 
-#text-low-priority {
   [feature = 'amenity_parking'],
   [feature = 'amenity_bicycle_parking'],
   [feature = 'amenity_motorcycle_parking'],
@@ -2950,7 +2948,9 @@
       [feature = 'amenity_motorcycle_parking'] { text-dy: 12; }
     }
   }
+}
 
+#text-low-priority {
   [feature = 'man_made_cross'][zoom >= 17],
   [feature = 'historic_wayside_cross'][zoom >= 17],
   [feature = 'historic_wayside_shrine'][zoom >= 17] {
