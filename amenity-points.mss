@@ -2929,7 +2929,7 @@
   [feature = 'amenity_bicycle_parking'],
   [feature = 'amenity_motorcycle_parking'],
   [feature = 'amenity_parking_entrance'] {
-    [zoom >= 10][way_pixels > 900],
+    [zoom >= 14][way_pixels > 900],
     [zoom >= 18] {
       text-name: "[name]";
       text-size: @standard-font-size;
