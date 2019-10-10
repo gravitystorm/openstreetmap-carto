@@ -646,7 +646,7 @@
 
   [feature = 'man_made_storage_tank'][zoom >= 18],
   [feature = 'man_made_silo'][zoom >= 18] {
-    marker-file: url('symbols/man_made/storage_tank.svg');
+    marker-file: url('symbols/man_made/storage_tank2.svg');
     marker-fill: @man-made-icon;
     marker-clip: false;
   }
