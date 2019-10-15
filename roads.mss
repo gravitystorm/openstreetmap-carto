@@ -3309,7 +3309,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     text-name: "[name]";
     text-size: 11;
     text-face-name: @book-fonts;
-    text-placement: interior;
     text-wrap-width: 30; // 2.7 em
     text-line-spacing: -1.7; // -0.15 em
   }
