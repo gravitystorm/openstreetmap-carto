@@ -56,8 +56,14 @@
     marker-fill: #928f8f;
     marker-width: 3;
   }
-  [power = 'portal'][zoom >= 16] {
-    marker-file: url('symbols/man_made/power_portal_node.svg');
-    marker-width: 3;
+  [power = 'portal'] {
+    [zoom >= 15] {
+      marker-file: url('symbols/man_made/power_portal_node.svg');
+      marker-width: 3;
+    }
+    [zoom >= 17] {
+      marker-file: url('symbols/man_made/power_portal_node.svg');
+      marker-width: 5;
+    }
   }
 }
