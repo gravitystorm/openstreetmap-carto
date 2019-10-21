@@ -2097,7 +2097,7 @@ Layer:
             tags->'addr:unit' AS addr_unit,
             NULL AS way_pixels
           FROM planet_osm_point
-          WHERE way && !bbox! AND ("addr:housenumber" IS NOT NULL) OR ("addr:housename" IS NOT NULL) OR ((tags->'addr:unit') IS NOT NULL)
+          WHERE way && !bbox! AND (("addr:housenumber" IS NOT NULL) OR ("addr:housename" IS NOT NULL) OR ((tags->'addr:unit') IS NOT NULL))
           ORDER BY way_pixels DESC NULLS LAST
         ) AS addresses
     properties:
