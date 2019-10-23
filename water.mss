@@ -122,8 +122,7 @@
 
 .water-lines {
   [waterway = 'canal'][zoom >= 12],
-  [waterway = 'river'][zoom >= 12],
-  [waterway = 'wadi'][zoom >= 13] {
+  [waterway = 'river'][zoom >= 12] {
     // the additional line of land color is used to provide a background for dashed casings
     [int_tunnel = 'yes'] {
       background/line-color: @land-color;
@@ -148,8 +147,7 @@
     water/line-cap: round;
     water/line-join: round;
 
-    [int_intermittent = 'yes'],
-    [waterway = 'wadi'] {
+    [int_intermittent = 'yes'] {
       [bridge = 'yes'][zoom >= 14] {
         bridgefill/line-color: white;
         bridgefill/line-join: round;
