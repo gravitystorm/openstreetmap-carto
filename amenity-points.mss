@@ -1573,7 +1573,7 @@
 }
 
 /* Note that these layers are also used in water.mss */
-.text-low-zoom[zoom < 10],
+#text-poly-low-zoom[zoom < 10],
 #text-point[zoom >= 10] {
   [feature = 'place_island'][zoom >= 4][way_pixels > 3000][way_pixels <= 768000],
   [feature = 'place_island'][zoom >= 16][way_pixels <= 768000],

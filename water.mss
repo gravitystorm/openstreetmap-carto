@@ -120,7 +120,8 @@
   }
 }
 
-.water-lines {
+#water-lines,
+#waterway-bridges {
   [waterway = 'canal'][zoom >= 12],
   [waterway = 'river'][zoom >= 12] {
     // the additional line of land color is used to provide a background for dashed casings
@@ -330,7 +331,7 @@
 }
 
 
-.text-low-zoom[zoom < 10],
+#text-poly-low-zoom[zoom < 10],
 #text-point[zoom >= 10] {
   [feature = 'natural_water'],
   [feature = 'natural_bay'],
