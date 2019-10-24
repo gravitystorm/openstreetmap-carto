@@ -418,7 +418,6 @@ Layer:
       table: |-
         (SELECT
             way,
-            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             man_made,
             name
           FROM planet_osm_polygon
