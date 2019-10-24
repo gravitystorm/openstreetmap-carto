@@ -230,7 +230,6 @@ Layer:
             "natural",
             waterway,
             landuse,
-            name,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
@@ -323,8 +322,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            waterway,
-            name
+            waterway
           FROM planet_osm_line
           WHERE waterway IN ('dam', 'weir', 'lock_gate')
         ) AS water_barriers_line
@@ -338,8 +336,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            waterway,
-            name
+            waterway
           FROM planet_osm_polygon
           WHERE waterway IN ('dam', 'weir', 'lock_gate')
         ) AS water_barriers_poly
@@ -419,8 +416,7 @@ Layer:
         (SELECT
             way,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
-            man_made,
-            name
+            man_made
           FROM planet_osm_polygon
           WHERE man_made = 'bridge'
         ) AS bridge
@@ -565,7 +561,6 @@ Layer:
         (SELECT
             way,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
-            name,
             tourism
           FROM planet_osm_polygon
           WHERE tourism = 'theme_park'
@@ -901,7 +896,6 @@ Layer:
         (SELECT
             way,
             waterway,
-            name,
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
               THEN 'yes' ELSE 'no' END AS int_intermittent,
@@ -1148,7 +1142,6 @@ Layer:
       table: |-
         (SELECT
             way,
-            name,
             boundary,
             tags->'protect_class' AS protect_class,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
