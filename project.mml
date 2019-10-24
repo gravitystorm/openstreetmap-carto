@@ -2136,12 +2136,13 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way,
+            ST_Boundary(way) as way,
             name,
             admin_level,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
-          WHERE boundary = 'administrative'
+          WHERE way && !bbox!
+            AND boundary = 'administrative'
             AND admin_level IN ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
             AND name IS NOT NULL
             AND osm_id < 0
@@ -2156,13 +2157,14 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way,
+            ST_Boundary(way) as way,
             name,
             boundary,
             tags->'protect_class' AS protect_class,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
-          WHERE (boundary IN ('aboriginal_lands', 'national_park')
+          WHERE way && !bbox!
+            AND (boundary IN ('aboriginal_lands', 'national_park')
                  OR leisure = 'nature_reserve'
                  OR (boundary = 'protected_area' AND tags->'protect_class' IN ('1','1a','1b','2','3','4','5','6','7','24','97','98','99')))
             AND name IS NOT NULL
