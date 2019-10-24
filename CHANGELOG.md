@@ -1,4 +1,26 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.23.0...master)
+### Changes
+- Fix rendering of water body labels (#3919)
+    Restores rendering of water body labels on points (node features)
+    Fixes rendering of natural=bay to use italic font at all z levels
+    Cleans up duplicate natural=strait code in water.mss
+- Precedence of junctions over POIs (#3915)
+    Junction=yes, =motorway and man_made=bridge labels now render before amenity-points
+    This prevents icons from blocking the display of these text labels
+- Remove rendering of waterway=wadi (#3931)
+    The tag waterway=wadi is deprecated, suggested replacement: 
+    waterway=river/stream + intermittent=yes OR natural=valley
+- Don't use classes anymore (#3912)
+- Convert state & country layers to ST_PointOnSurface (#3920)
+- Convert addresses to use ST_PointOnSurface (#3898)
+- Apply bbox to part of "addresses" query (#3942)
+    The 4 changes above are needed to allow use of vector tiles
+    ST_PointOnSurface is used to generate a point for labeling
+    Classes are removed, replaced with the layer id
+- Documentation updates (#3911) & (#3910) 
+    Document inner line rendering, update docker documentation
+- Code clean-up (#3899) & (#3922)
+    Clean-up text-placement / marker-placement, remove natural=marsh
 
 ## [v4.23.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.22.0...v4.23.0) - 2019-9-20
 ### Changes
