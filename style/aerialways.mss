@@ -108,33 +108,37 @@
   }
 
   [man_made = 'pipeline'] {
-    [zoom >= 12] {
-      line/line-width: 0.5;
+    [zoom >= 14] {
+      line/line-width: 1;
       line/line-join: round;
       line/line-color: #707070;
       line/line-dasharray: 0,1,16,1;
-      line/line-clip: false;
-      dash/line-width: 1.5;
+      line/line-cap: square
+      dash/line-width: 3;
       dash/line-join: round;
       dash/line-color: #707070;
-      dash/line-dasharray: 0,1,0.5,15,0.5,1;
-      [zoom >= 14] {
-        line/line-width: 0.7;
+      dash/line-dasharray: 0,1,1,14,1,1;
+      [zoom >= 16] {
+        line/line-width: 1.5;
         line/line-dasharray: 0,1,20,1;
-        dash/line-width: 2;
-        dash/line-dasharray: 0,1,0.7,18.6,0.7,1;
-      }
-      [zoom >= 15] {
-        line/line-width: 1;
-        line/line-dasharray: 0,1,20,1;
-        dash/line-width: 3;
+        dash/line-width: 3.5;
         dash/line-dasharray: 0,1,1,18,1,1;
+        center/line-color: @land-color;
+        center/line-width: 0.5;
+        center/line-dasharray: 0,2,18,2;
+        center/line-join: round;
+        center/line-cap: square
+        [substance = 'water'], [type = 'water'] { center/line-color: @river-color; }
+        [substance = 'gas'], [type = 'gas'] { center/line-color: white; }
+        [substance = 'oil'], [type = 'oil'] { center/line-color: #888; }
       }
       [zoom >= 17] {
-        line/line-width: 1.5;
+        line/line-width: 2;
         line/line-dasharray: 0,1,24,1;
         dash/line-width: 4;
         dash/line-dasharray: 0,1,1,22,1,1;
+        center/line-width: 1;
+        center/line-dasharray: 0,2,22,2;
         text-name: "[name]";
         text-fill: #666666;
         text-size: 10;
@@ -151,22 +155,19 @@
       [zoom >= 18] {
         line/line-width: 3;
         line/line-dasharray: 0,1,30,1;
-        line/line-join: round;
-        line/line-color: #707070;
-        dash/line-join: round;
-        dash/line-color: #707070;
-        dash/line-width: 6;
+        dash/line-width: 5;
         dash/line-dasharray: 0,1,1,28,1,1;
-        center/line-color: @land-color;
-        center/line-width: 1;
+        center/line-width: 1.5;
         center/line-dasharray: 0,2,28,2;
-        center/line-join: round;
+        [substance = 'water'] { center/line-color: @water-color; }
+        [substance = 'gas'] { center/line-color: white; }
+        [substance = 'oil'] { center/line-color: #888; }
       }
       [zoom >= 19] {
         text-size: 11;
         text-dy: 5;
         line/line-width: 4;
-        dash/line-width: 8;
+        dash/line-width: 6;
         center/line-width: 2;
       }
     }

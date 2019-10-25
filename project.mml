@@ -845,6 +845,8 @@ Layer:
             way,
             aerialway,
             man_made,
+            tags->'substance' AS substance,
+            tags->'type' AS type,
             name
           FROM planet_osm_line
           WHERE aerialway IS NOT NULL
@@ -854,7 +856,8 @@ Layer:
           ORDER BY
             CASE
               WHEN man_made = 'pipeline' THEN 1
-              WHEN aerialway IS NOT NULL THEN 2
+              WHEN bridge IS NOT NULL THEN 2
+              WHEN aerialway IS NOT NULL THEN 3
             END
         ) AS aerialways
     properties:
