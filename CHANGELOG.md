@@ -39,11 +39,9 @@
     Classes are removed, replaced with the layer id
     
 - Documentation updates (#3911) & (#3910) 
-
-    Document inner line rendering, update docker documentation
-    
 - Code clean-up (#3899) & (#3922)
 
+    Document inner line rendering, update docker documentation
     Clean-up text-placement / marker-placement, remove natural=marsh
 
 ## [v4.23.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.22.0...v4.23.0) - 2019-9-20
