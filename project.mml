@@ -228,7 +228,6 @@ Layer:
         (SELECT
             way,
             "natural",
-            water,
             waterway,
             landuse,
             name,
