@@ -490,16 +490,14 @@
 
   [feature = 'natural_bare_rock'][zoom >= 5] {
     polygon-fill: @bare_ground;
+    polygon-pattern-file: url('symbols/rock_overlay.png');
     [way_pixels >= 4] {
       polygon-gamma: 0.75;
+      polygon-pattern-gamma: 0.75;
     }
     [way_pixels >= 64] {
       polygon-gamma: 0.3;
-    }
-    [zoom >= 13] {
-      polygon-pattern-file: url('symbols/rock_overlay.png');
-      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+      polygon-pattern-gamma: 0.3;
     }
   }
 
