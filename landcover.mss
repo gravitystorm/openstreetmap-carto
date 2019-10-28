@@ -55,7 +55,7 @@
 @tourism: #660033;
 @quarry: #c5c3c3;
 @military: #f55;
-@beach: #fff1ba;
+@beach: #f5e9c6;
 @wastewater_plant: @industrial;
 @wastewater_plant-line: @industrial-line;
 @water_works: @industrial;
