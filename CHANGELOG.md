@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.24.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.24.1...master)
+
+## [v4.24.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.24.0...v4.24.1) - 2019-10-28
+### Changes
+- Revert PR #3930 which added river-color (#3955)
 
 ## [v4.24.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.23.0...v4.24.0) - 2019-10-25
 ### Changes
