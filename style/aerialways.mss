@@ -113,7 +113,6 @@
       line/line-join: round;
       line/line-color: #707070;
       line/line-dasharray: 0,1,16,1;
-      line/line-cap: square
       dash/line-width: 3;
       dash/line-join: round;
       dash/line-color: #707070;
@@ -127,10 +126,9 @@
         center/line-width: 0.5;
         center/line-dasharray: 0,2,18,2;
         center/line-join: round;
-        center/line-cap: square
-        [substance = 'water'], [type = 'water'] { center/line-color: @river-color; }
-        [substance = 'gas'], [type = 'gas'] { center/line-color: white; }
-        [substance = 'oil'], [type = 'oil'] { center/line-color: #888; }
+        [substance = 'water'] { center/line-color: @water-color; }
+        [substance = 'gas'] { center/line-color: #d0d0d0; }
+        [substance = 'oil'] { center/line-color: #999; }
       }
       [zoom >= 17] {
         line/line-width: 2;
@@ -142,7 +140,7 @@
         text-name: "[name]";
         text-fill: #666666;
         text-size: 10;
-        text-dy: 4;
+        text-dy: 6;
         text-spacing: 900;
         text-clip: false;
         text-placement: line;
@@ -153,19 +151,17 @@
         text-halo-fill: @standard-halo-fill;
       }
       [zoom >= 18] {
+        text-dy: 7;
         line/line-width: 3;
         line/line-dasharray: 0,1,30,1;
         dash/line-width: 5;
         dash/line-dasharray: 0,1,1,28,1,1;
         center/line-width: 1.5;
         center/line-dasharray: 0,2,28,2;
-        [substance = 'water'] { center/line-color: @water-color; }
-        [substance = 'gas'] { center/line-color: white; }
-        [substance = 'oil'] { center/line-color: #888; }
       }
       [zoom >= 19] {
         text-size: 11;
-        text-dy: 5;
+        text-dy: 8;
         line/line-width: 4;
         dash/line-width: 6;
         center/line-width: 2;
