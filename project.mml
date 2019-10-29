@@ -571,7 +571,7 @@ Layer:
           FROM planet_osm_polygon
           WHERE tourism = 'theme_park'
             OR tourism = 'zoo'
-            OR historic = 'archaeological_site'
+            OR (historic = 'archaeological_site' and tourism='attraction')
         ) AS tourism_boundary
     properties:
       minzoom: 10
