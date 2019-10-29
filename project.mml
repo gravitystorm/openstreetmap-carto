@@ -566,10 +566,12 @@ Layer:
             way,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             name,
-            tourism
+            tourism,
+            historic
           FROM planet_osm_polygon
           WHERE tourism = 'theme_park'
             OR tourism = 'zoo'
+            OR historic = 'archaeological_site'
         ) AS tourism_boundary
     properties:
       minzoom: 10
