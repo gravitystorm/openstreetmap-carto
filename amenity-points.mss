@@ -1648,7 +1648,6 @@
   [feature = 'amenity_cinema'],
   [feature = 'amenity_arts_centre'],
   [feature = 'amenity_community_centre'],
-  [feature = 'historic_archaeological_site'],
   [feature = 'amenity_nightclub'] {
     [zoom >= 17] {
       text-name: "[name]";
@@ -1665,6 +1664,22 @@
         text-dy: 12;
       }
     }
+  }
+
+  // this has to be kept in sync with the @culture block up there
+  // and the filters for #tourism-boundary in landcover.mss
+  // note that landcover already filters achaelogical sites that are touristic attractions
+  [feature = 'historic_archaeological_site'][way_pixels >= 750][zoom >= 10],
+  [feature = 'historic_archaeological_site'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: @culture;
+    text-dy: 11;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
   }
 
   [feature = 'amenity_public_bath'][zoom >= 17] {
