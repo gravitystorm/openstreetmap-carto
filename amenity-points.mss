@@ -1676,7 +1676,10 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: @culture;
-    text-dy: 11;
+    [zoom >= 17] {
+      // allow space for the symbol
+      text-dy: 11;
+    }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
