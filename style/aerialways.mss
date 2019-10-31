@@ -127,8 +127,8 @@
         center/line-dasharray: 0,2,18,2;
         center/line-join: round;
         [substance = 'water'] { center/line-color: @water-color; }
-        [substance = 'gas'] { center/line-color: #d0d0d0; }
-        [substance = 'oil'] { center/line-color: #999; }
+        [substance = 'gas'] { center/line-color: #c1c1c1; }
+        [substance = 'oil'] { center/line-color: #d7bd93; }
       }
       [zoom >= 17] {
         line/line-width: 2;
