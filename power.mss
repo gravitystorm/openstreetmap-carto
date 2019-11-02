@@ -28,12 +28,12 @@
     }
   }
   [power = 'portal'][zoom >= 16] {
-    line-width: 2;
-    line-color: #a4a4a4;
+    line-width: 3;
+    line-color: #868686;
     line-cap: round;
-    b/line-width: 1.0;
+    b/line-width: 2.0;
     b/line-cap: square;
-    b/line-color: white;
+    b/line-color: #EDEDED;
   }
 }
 
@@ -57,7 +57,7 @@
     marker-width: 3;
   }
   [power = 'portal'] {
-    [zoom >= 15] {
+    [zoom >= 16] {
       marker-file: url('symbols/man_made/power_portal_node.svg');
       marker-width: 3;
     }
