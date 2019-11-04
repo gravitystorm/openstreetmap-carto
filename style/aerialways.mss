@@ -22,8 +22,7 @@
         text-spacing: 900;
         text-clip: false;
         text-placement: line;
-        text-repeat-distance: 100;
-        text-margin: 18;
+        text-min-distance: 18;
         text-face-name: @book-fonts;
         text-halo-radius: @standard-halo-radius;
         text-halo-fill: @standard-halo-fill;
@@ -55,8 +54,7 @@
         text-spacing: 900;
         text-clip: false;
         text-placement: line;
-        text-repeat-distance: 100;
-        text-margin: 18;
+        text-min-distance: 18;
         text-face-name: @book-fonts;
         text-halo-radius: @standard-halo-radius;
         text-halo-fill: @standard-halo-fill;
@@ -94,8 +92,7 @@
         text-spacing: 900;
         text-clip: false;
         text-placement: line;
-        text-repeat-distance: 100;
-        text-margin: 18;
+        text-min-distance: 18;
         text-face-name: @book-fonts;
         text-halo-radius: @standard-halo-radius;
         text-halo-fill: @standard-halo-fill;
@@ -127,8 +124,8 @@
         center/line-dasharray: 0,2,18,2;
         center/line-join: round;
         [substance = 'water'] { center/line-color: @water-color; }
-        [substance = 'gas'] { center/line-color: #c1c1c1; }
-        [substance = 'oil'] { center/line-color: #d7bd93; }
+        [substance = 'gas'] { center/line-color: #c1c1c1; } // Lch(78,0,0)
+        [substance = 'oil'] { center/line-color: #cfbfa5; } // Lch(78,15,83)
       }
       [zoom >= 17] {
         line/line-width: 2;
