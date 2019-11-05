@@ -2327,8 +2327,7 @@
     text-dy: 6;
   }
 
-  [feature = 'amenity_atm'][zoom >= 19],
-  [feature = 'amenity_vending_machine'][zoom >= 19] {
+  [feature = 'amenity_atm'][zoom >= 19] {
     text-name: "[operator]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
