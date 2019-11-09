@@ -24,8 +24,8 @@ def parse(cb):
     with open(os.path.join(os.path.dirname(__file__), '../indexes.yml')) as yaml_file:
         indexes = yaml.safe_load(yaml_file)
 
-    for table, data in indexes.iteritems():
-        for name, definition in data.iteritems():
+    for table, data in sorted(indexes.iteritems()):
+        for name, definition in sorted(data.iteritems()):
             cb(table, name, definition["where"])
 
 # The same as parse, but for osm2pgsql-built indexes
