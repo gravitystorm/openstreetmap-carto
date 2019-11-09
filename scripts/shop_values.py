@@ -1,14 +1,38 @@
-#!/usr/bin/ruby
-
-#this script generates list of popular shop values - more than MIN_COUNT occurences in OpenStreetMap database according to taginfo
+#this script generates list of popular shop values - more than min_count() occurences in OpenStreetMap database according to taginfo
 #it is useful during creating/updating list of shops displayed with generic dot icon
 
-require "open-uri"
-require 'json'
-require 'pp'
+import urllib.request, json 
 
-MIN_COUNT = 100
-EXCEPTIONS = [
+def main():
+    with urllib.request.urlopen('https://taginfo.openstreetmap.org/api/4/key/values?key=shop&sortname=count&sortorder=desc') as url:
+        data = json.loads(url.read().decode())
+        data = data["data"]
+        # Get an array of values that only includes values with more than min_count() occurrences
+        counted = [x["value"] for x in data if x["count"] > min_count()]
+        # Discard values with ;
+        single_values = [x for x in counted if x.find(";") == -1]
+        # Filter out empty strings
+        no_empty = [x for x in single_values if len(x.strip()) > 0]
+
+        on_wiki = [x["value"] for x in data if x["in_wiki"] and x["description"] != None]
+        candidates = list(set(no_empty) | set(on_wiki))
+
+        # Filter out exceptions in exceptions()
+        filtered = list(set(candidates) - set(exceptions()))
+
+        unknown_status = list(set(filtered) - set(known_good_values()))
+
+        # Output in SQL style
+        print("(", ", ".join(sorted([("'" + x + "'") for x in filtered])), ")")
+
+        if unknown_status != []:
+            print("unexpected, possible wanted values:", unknown_status)
+
+def min_count():
+    return 100
+
+def exceptions():
+    return [
    "no",
    "vacant",
    "empty",
@@ -45,7 +69,8 @@ EXCEPTIONS = [
    "tyres", # duplicate of shop=tires
 ]
 
-KNOWN_GOOD_VALUES = ["convenience", "supermarket", "clothes", "hairdresser",
+def known_good_values():
+    return ["convenience", "supermarket", "clothes", "hairdresser",
   "bakery", "car_repair", "car", "kiosk", "beauty", "butcher",
   "hardware", "furniture", "florist", "mobile_phone", "electronics", "mall",
   "shoes", "alcohol", "doityourself", "car_parts", "jewelry", "optician",
@@ -88,29 +113,6 @@ KNOWN_GOOD_VALUES = ["convenience", "supermarket", "clothes", "hairdresser",
   "atv", "power_tools",  "hookah", "electrotools", "maps", "snowmobile",
   "açaí", "jetski", "vehicles", "mobile_home", "free_flying", "junk_yard",
   "general", "general_store",
-]
+  ]
 
-data = URI.parse('https://taginfo.openstreetmap.org/api/4/key/values?key=shop&sortname=count&sortorder=desc').read
-data = JSON.parse(data)["data"]
-
-
-# Get an array of values that only includes values with more than MIN_COUNT occurrences
-counted = data.select { |h| h["count"] > MIN_COUNT }.map { |h| h["value"] }
-# Discard values with ;
-single_values = counted.reject { |h| h.include?(";") }
-# Filter out empty strings
-no_empty = single_values.reject { |h| h.strip.empty? }
-
-on_wiki = data.select { |h| h["in_wiki"] && h["description"] != nil }.map { |h| h["value"] }
-candidates = (no_empty + on_wiki).uniq
-
-# Filter out exceptions in EXCEPTIONS
-filtered = candidates - EXCEPTIONS
-
-unknown_status = filtered - KNOWN_GOOD_VALUES
-if unknown_status != []
-  puts "unexpected, possible wanted values: #{unknown_status}"
-end
-
-# Output in SQL style
-puts "(" + filtered.map{ |val| "'#{val}'" }.sort.join(", ") + ")"
+main()
