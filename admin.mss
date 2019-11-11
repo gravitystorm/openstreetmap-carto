@@ -271,6 +271,12 @@ overlapping borders correctly.
       ::innerstroke {
         opacity: 0.06;
         line-width: 4;
+        // Unlike planet_osm_line, planet_osm_polygon does not preserves the
+        // original direction of the OSM way: Following OGS at
+        // https://www.opengeospatial.org/standards/sfa always at the left
+        // is the interior and at the right the exterior of the polygon.(This
+        // also applies to inner rings of multipolygons.) So a negative
+        // line-offset is always an offset to the inner side of the polygon.
         line-offset: -2;
       }
     }

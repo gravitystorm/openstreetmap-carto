@@ -1,6 +1,68 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.22.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.24.1...master)
 
-## [v4.22.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.21.0...v4.22.0)
+## [v4.24.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.24.0...v4.24.1) - 2019-10-28
+### Changes
+- Revert PR #3930 which added river-color (#3955)
+
+## [v4.24.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.23.0...v4.24.0) - 2019-10-25
+### Changes
+- Create darker river-color for river & canal areas and waterway lines (#3930)
+
+    The color of river, canal, ditch and drain waterway lines 
+    and river and canal areas is changed to `#8fcadd` (Lch78,21,227) 
+    
+- Fix rendering of water body labels (#3919)
+
+    Restores rendering of water body labels on points (node features)
+    Fixes rendering of natural=bay to use italic font at all z levels
+    Cleans up duplicate natural=strait code in water.mss
+    
+- Precedence of junctions over POIs (#3915)
+
+    Junction=yes, =motorway and man_made=bridge labels now render before amenity-points
+    This prevents icons from blocking the display of these text labels
+
+- Remove rendering of waterway=wadi (#3931)
+
+    The tag waterway=wadi is deprecated, suggested replacement: 
+    waterway=river/stream + intermittent=yes OR natural=valley
+    
+- Move parking to amenity-points layers, change way_pixels limit and initial zoom level (#3923)
+
+    Moved parking features back to amenity-points layers
+    Changed parking text intial zoom to z14, as planned in PR #3612
+    Change way_pixels limit for parking icon (750) and text (3000)
+    
+- Don't use classes anymore (#3912)
+- Convert state & country layers to ST_PointOnSurface (#3920)
+- Convert addresses to use ST_PointOnSurface (#3898)
+- Apply bbox to part of "addresses" query (#3942)
+
+    The 4 changes above are needed to allow use of vector tiles
+    ST_PointOnSurface is used to generate a point for labeling
+    Classes are removed, replaced with the layer id
+    
+- Documentation updates (#3911) & (#3910) 
+- Code clean-up (#3899) & (#3922)
+
+    Document inner line rendering, update docker documentation
+    Clean-up text-placement / marker-placement, remove natural=marsh
+
+## [v4.23.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.22.0...v4.23.0) - 2019-9-20
+### Changes
+
+- Combine low priority layers using ST_PointOnSurface (#3874)
+    Fixes a bug which rendered `parking` icons twice
+- Restore rendering of landcover text labels on points (#3878)
+- Adjust `aerodrome` initial & final zoom levels (#3879)
+- Adjust width of `hedge` & `citywall` up to z20, adjust hedge color (#3847)
+- Increase `office=` initial zoom to z18 and move some values to z19 (#3796)
+- Create new layer for `ref` of `highway=residential/unclassified/track` (#3709)
+    Changes `ref` to standard halo-radius, oblique font, and same size as `name` at >z17
+- Add fill colors for `wetland=mangrove/saltmarsh/reedbed` (#3807)
+    Also adds salt dots pattern for `wetland=saltmarsh`
+
+## [v4.22.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.21.0...v4.22.0) - 2019-08-27
 ### Changes
 
 - Shop label fixes and use ST_PointOnSurface for building label placement (#3781)
@@ -30,18 +92,6 @@
 
 - Use a whitelist for barrier rendering, and render `historic=citywalls` like
   `barrier=city_wall`. (#3745)
-  
-- Create new layer for `ref` of  `highway=residential/unclassified/track`, change residential/unclassified `ref`
-  rendering to use standard halo-radius, oblique (italic) font, and same text size as `name=` at >z17 (#3709)
-  
-  This makes the ref lables consistent between track roads, paths, residential and unclassified highways, 
-  and renderes the `ref` text with lower priority than the `name=` text.
-  
-- Add fill color for `wetland=mangrove`, `wetland=saltmarsh` and `wetland=reedbed`, 
-  add salt dots pattern to `wetland=saltmarsh` (#3807)
-
-  Mangroves are now rendered in scrub fill color, reedbed and saltmarsh with grass color. 
-  A salt dot pattern is added to distinguish `wetland=saltmarsh` from `wetland=marsh`
 
 - Support new Tibetan font name (#3842)
 
