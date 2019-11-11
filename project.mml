@@ -1446,6 +1446,7 @@ Layer:
                     THEN CONCAT(ROUND((tags->'height')::NUMERIC)::TEXT, U&'\00A0', 'm') ELSE NULL END
                   )
                 ) AS name,
+                tags->'parking' as "parking",
               COALESCE(
                 'aeroway_' || CASE WHEN aeroway IN ('gate', 'apron', 'helipad', 'aerodrome') THEN aeroway ELSE NULL END,
                 'tourism_' || CASE WHEN tourism IN ('alpine_hut', 'apartment', 'artwork', 'camp_site', 'caravan_site', 'chalet', 'gallery', 'guest_house',
@@ -1499,7 +1500,7 @@ Layer:
                 'amenity_' || CASE WHEN amenity IN ('bicycle_parking', 'motorcycle_parking') THEN amenity ELSE NULL END,
                 'amenity_' || CASE WHEN amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL) THEN amenity ELSE NULL END,
                 'amenity_' || CASE WHEN amenity IN ('parking_entrance')
-                                        AND tags->'parking' IN ('underground')
+                                        AND tags->'parking' IN ('multi-storey', 'underground')
                                         AND (access IS NULL OR access NOT IN ('private', 'no'))
                                         AND way_area IS NULL
                                    THEN amenity ELSE NULL END,
