@@ -7,6 +7,7 @@
 @park: #c8facc;         // Lch(94,30,145)
 @allotments: #c9e1bf;   // Lch(87,20,135)
 @orchard: #aedfa3; // also vineyard, plant_nursery
+@hedge: @forest;       // Lch(80,30,135)
 
 // --- "Base" landuses ---
 
@@ -539,6 +540,18 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
+  [feature = 'wetland_mangrove'][zoom >= 5] {
+    polygon-fill: @scrub;
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
+  [feature = 'wetland_reedbed'][zoom >= 5] {
+    polygon-fill: @grass;
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
   [feature = 'wetland_bog'],
   [feature = 'wetland_string_bog'] {
     [zoom >= 5] {
@@ -550,9 +563,16 @@
 
   [feature = 'wetland_wet_meadow'],
   [feature = 'wetland_fen'],
+  [feature = 'wetland_saltmarsh'],
   [feature = 'wetland_marsh'] {
     [zoom >= 5] {
       polygon-fill: @grass;
+      [feature = 'wetland_saltmarsh'][zoom >= 13] {
+        polygon-pattern-file: url('symbols/salt-dots-2.png');
+        polygon-pattern-alignment: global;
+        [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+        [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+      }
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
@@ -835,7 +855,8 @@
   }
 }
 
-.barriers {
+#line-barriers,
+#area-barriers {
   [zoom >= 16] {
     line-width: 0.4;
     line-color: #444;
@@ -845,20 +866,43 @@
     line-color: #444;
   }
   [feature = 'barrier_hedge'][zoom >= 16] {
-    line-width: 3;
-    line-color: #aed1a0;
+    line-width: 1.5;
+    line-color: @hedge;
+    [zoom >= 17] {
+      line-width: 2;
+    }
+    [zoom >= 18] {
+      line-width: 3;
+    }
+    [zoom >= 19] {
+      line-width: 4;
+    }
+    [zoom >= 20] {
+      line-width: 5;
+    }
   }
   [feature = 'historic_citywalls'],
   [feature = 'barrier_city_wall'] {
     [zoom >= 15] {
-      line-width: 1.5;
+      line-width: 1;
       line-color: lighten(#444, 30%);
     }
-
+    [zoom >= 16] {
+      line-width: 1.5;
+    }
     [zoom >= 17] {
-      line-width: 3;
+      line-width: 2;
       barrier/line-width: 0.4;
       barrier/line-color: #444;
+    }
+    [zoom >= 18] {
+      line-width: 3;
+    }
+    [zoom >= 19] {
+      line-width: 4;
+    }
+    [zoom >= 20] {
+      line-width: 5;
     }
   }
 }

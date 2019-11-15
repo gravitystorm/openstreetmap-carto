@@ -120,10 +120,10 @@
   }
 }
 
-.water-lines {
+#water-lines,
+#waterway-bridges {
   [waterway = 'canal'][zoom >= 12],
-  [waterway = 'river'][zoom >= 12],
-  [waterway = 'wadi'][zoom >= 13] {
+  [waterway = 'river'][zoom >= 12] {
     // the additional line of land color is used to provide a background for dashed casings
     [int_tunnel = 'yes'] {
       background/line-color: @land-color;
@@ -148,8 +148,7 @@
     water/line-cap: round;
     water/line-join: round;
 
-    [int_intermittent = 'yes'],
-    [waterway = 'wadi'] {
+    [int_intermittent = 'yes'] {
       [bridge = 'yes'][zoom >= 14] {
         bridgefill/line-color: white;
         bridgefill/line-join: round;
@@ -332,7 +331,7 @@
 }
 
 
-.text-low-zoom[zoom < 10],
+#text-poly-low-zoom[zoom < 10],
 #text-point[zoom >= 10] {
   [feature = 'natural_water'],
   [feature = 'natural_bay'],
@@ -341,12 +340,15 @@
   [feature = 'landuse_basin'],
   [feature = 'waterway_dock'] {
     [zoom >= 0][way_pixels > 3000][way_pixels <= 768000],
-    [zoom >= 17] {
+    [zoom >= 14][way_pixels <= 768000][feature = 'natural_bay'],
+    [zoom >= 14][way_pixels <= 768000][feature = 'natural_strait'],
+    [zoom >= 17][way_pixels <= 768000] {
       text-name: "[name]";
       text-size: 10;
       text-wrap-width: 25; // 2.5 em
       text-line-spacing: -1.5; // -0.15 em
-      [way_pixels > 12000] {
+      [way_pixels > 12000],
+      [zoom >= 15][feature = 'natural_strait'] {
         text-size: 12;
         text-wrap-width: 37; // 3.1 em
         text-line-spacing: -1.6; // -0.13 em
@@ -366,25 +368,6 @@
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-placement: interior;
-    }
-  }
-}
-
-#text-point[zoom >= 14] {
-  [feature = 'natural_strait'] {
-    text-name: "[name]";
-    text-size: 10;
-    text-wrap-width: 25; // 2.5 em
-    text-line-spacing: -1.5; // -0.15 em
-    text-fill: @water-text;
-    text-face-name: @oblique-fonts;
-    text-halo-radius: @standard-halo-radius;
-    text-halo-fill: @standard-halo-fill;
-    text-placement: point;
-    [zoom >= 15] {
-      text-size: 12;
-      text-wrap-width: 37; // 3.1 em
-      text-line-spacing: -1.6; // -0.13 em
     }
   }
 }
