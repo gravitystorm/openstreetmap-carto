@@ -233,7 +233,7 @@ overlapping borders correctly.
 #protected-areas-text[zoom >= 13][way_pixels > 192000] {
   text-name: "[name]";
   text-face-name: @book-fonts;
-  text-fill: @protected-areas;
+  text-fill: @protected-area;
   [boundary='aboriginal_lands'],
   [boundary='protected_area'][protect_class='24'] {
     text-fill: @aboriginal;
@@ -252,32 +252,60 @@ overlapping borders correctly.
 
 #protected-areas {
   [way_pixels > 750] {
-    [zoom >= 8] {
-      ::outerstroke,
-      ::innerstroke {
-        line-color: @protected-areas;
-        [boundary='aboriginal_lands'],
-        [boundary='protected_area'][protect_class='24'] {
-          line-color: @aboriginal;
-        }
-        line-join: round;
-        line-cap: round;
+    [zoom >= 8][zoom < 10] {
+      opacity: 0.25;
+      line-width: 1.2;
+      line-color: @protected-area;
+      [boundary='aboriginal_lands'],
+      [boundary='protected_area'][protect_class='24'] {
+        line-color: @aboriginal;
       }
-      ::outerstroke {
-        opacity: 0.22;
-        line-width: 1.2;
-        line-dasharray: 6,4,2,4;
+      [zoom >= 9] {
+        line-width: 1.5;
       }
-      ::innerstroke {
-        opacity: 0.06;
-        line-width: 4;
+    }
+    [zoom >= 10] {
+      // inner line
+      ::wideline {
+        opacity: 0.15;
+        line-width: 3.6;
         // Unlike planet_osm_line, planet_osm_polygon does not preserves the
         // original direction of the OSM way: Following OGS at
         // https://www.opengeospatial.org/standards/sfa always at the left
         // is the interior and at the right the exterior of the polygon.(This
         // also applies to inner rings of multipolygons.) So a negative
         // line-offset is always an offset to the inner side of the polygon.
-        line-offset: -2;
+        line-offset: -0.9;
+        line-color: @protected-area;
+        [boundary='aboriginal_lands'],
+        [boundary='protected-areas'][protect_class='24'] {
+          line-color: @aboriginal;
+        }
+        line-join: round;
+        line-cap: round;
+        [zoom >= 12] {
+          line-width: 4;
+          line-offset: -1;
+        }
+        [zoom >= 14] {
+          line-width: 6;
+          line-offset: -2;
+        }
+      }
+      // outer line
+      ::narrowline {
+        opacity: 0.10;
+        line-width: 1.8;
+        line-color: @protected-area;
+        [boundary='aboriginal_lands'],
+        [boundary='protected_area'][protect_class='24'] {
+          line-color: @aboriginal;
+        }
+        line-join: round;
+        line-cap: round;
+        [zoom >= 12] {
+            line-width: 2;
+        }
       }
     }
   }

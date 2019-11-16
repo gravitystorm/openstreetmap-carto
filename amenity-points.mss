@@ -20,7 +20,7 @@
 @barrier-icon: #3f3f3f;
 @landform-color: #d08f55;
 @leisure-green: darken(@park, 60%);
-@protected-areas: #4d7d20;
+@protected-area: #008000;
 @aboriginal: #82643a;
 @religious-icon: #000000;
 
@@ -2071,7 +2071,7 @@
       [feature = 'boundary_national_park'],
       [feature = 'leisure_nature_reserve'],
       [feature = 'boundary_protected_area'] {
-        text-fill: @protected-areas;
+        text-fill: @protected-area;
       }
     }
   }
