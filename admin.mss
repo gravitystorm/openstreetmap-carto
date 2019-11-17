@@ -278,7 +278,7 @@ overlapping borders correctly.
         line-offset: -0.9;
         line-color: @protected-area;
         [boundary='aboriginal_lands'],
-        [boundary='protected-areas'][protect_class='24'] {
+        [boundary='protected_area'][protect_class='24'] {
           line-color: @aboriginal;
         }
         line-join: round;
@@ -294,7 +294,7 @@ overlapping borders correctly.
       }
       // outer line
       ::narrowline {
-        opacity: 0.10;
+        opacity: 0.15;
         line-width: 1.8;
         line-color: @protected-area;
         [boundary='aboriginal_lands'],
