@@ -77,7 +77,8 @@ A regular style.
 */
 @book-fonts:    "Noto Sans Regular",
                 "Noto Sans CJK JP Regular",
-                "Noto Sans Adlam Regular", "Noto Sans Adlam Unjoined Regular"
+                "Noto Sans Adlam Regular",
+                "Noto Sans Adlam Unjoined Regular",
                 "Noto Sans Armenian Regular",
                 "Noto Sans Balinese Regular",
                 "Noto Sans Bamum Regular",
