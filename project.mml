@@ -1786,20 +1786,21 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way,
+            ST_PointOnSurface(way) AS way,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             highway,
             place,
             leisure,
             name
           FROM planet_osm_polygon
-          WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street', 'track', 'path', 'platform')
-            OR (railway IN ('platform')
-                AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
-                AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
-                AND (covered NOT IN ('yes') OR covered IS NULL))
-            OR (place IN ('square')
-                AND (leisure IS NULL OR NOT leisure IN ('park', 'recreation_ground', 'garden')))
+          WHERE way && !bbox!
+            AND (highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street', 'track', 'path', 'platform')
+              OR (railway IN ('platform')
+                  AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
+                  AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
+                  AND (covered NOT IN ('yes') OR covered IS NULL))
+              OR (place IN ('square')
+                  AND (leisure IS NULL OR NOT leisure IN ('park', 'recreation_ground', 'garden'))))
             AND name IS NOT NULL
           ORDER BY way_area DESC
         ) AS roads_area_text_name
