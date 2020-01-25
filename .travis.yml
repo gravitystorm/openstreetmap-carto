@@ -45,3 +45,5 @@ script:
   - psql -1Xq -v ON_ERROR_STOP=1 -d gis -f indexes.sql
   # Test for hstore operation not supported in PostgreSQL 9.3
   - '! grep "tags->''[^'']\+'' IS" project.mml > /dev/null'
+  # Test for classes in project.mml (not supported in vector tiles)
+  - '! grep "class:" project.mml > /dev/null'

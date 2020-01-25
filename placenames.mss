@@ -3,7 +3,7 @@
 @country-labels: darken(@admin-boundaries, 15%);
 @state-labels: desaturate(darken(@admin-boundaries, 5%), 20%);
 
-.country {
+#country-names {
   [zoom >= 3][zoom < 5][way_pixels > 1000],
   [zoom >= 5][way_pixels < 360000] {
     text-name: "[name]";
@@ -38,12 +38,11 @@
     text-face-name: @book-fonts;
     text-halo-fill: @standard-halo-fill;
     text-halo-radius: @standard-halo-radius * 1.5;
-    text-placement: interior;
     text-character-spacing: 0.5;
   }
 }
 
-.state {
+#state-names {
   [zoom >= 5][zoom < 7][way_pixels > 3000],
   [zoom >= 7][way_pixels > 3000][way_pixels < 196000] {
     text-name: "[name]";
@@ -55,7 +54,6 @@
     text-face-name: @oblique-fonts;
     text-halo-fill: @standard-halo-fill;
     text-halo-radius: @standard-halo-radius * 1.5;
-    text-placement: interior;
     [zoom >= 7] {
       text-size: 11;
       text-wrap-width: 50; // 4.5 em

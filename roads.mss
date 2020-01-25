@@ -2752,7 +2752,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   }
 }
 
-.access::fill {
+#tunnels::fill,
+#roads-fill::fill,
+#bridges::fill {
   [access = 'destination'] {
     [feature = 'highway_secondary'],
     [feature = 'highway_tertiary'],
@@ -3308,7 +3310,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     text-name: "[name]";
     text-size: 11;
     text-face-name: @book-fonts;
-    text-placement: interior;
     text-wrap-width: 30; // 2.7 em
     text-line-spacing: -1.7; // -0.15 em
   }
@@ -3373,7 +3374,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   }
 }
 
-.directions::directions {
+#roads-text-name::directions,
+#paths-text-name::directions {
   [zoom >= 16] {
     // intentionally omitting highway_platform, highway_construction
     [highway = 'motorway'],

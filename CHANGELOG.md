@@ -1,4 +1,52 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.23.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.24.1...master)
+
+## [v4.24.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.24.0...v4.24.1) - 2019-10-28
+### Changes
+- Revert PR #3930 which added river-color (#3955)
+
+## [v4.24.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.23.0...v4.24.0) - 2019-10-25
+### Changes
+- Create darker river-color for river & canal areas and waterway lines (#3930)
+
+    The color of river, canal, ditch and drain waterway lines 
+    and river and canal areas is changed to `#8fcadd` (Lch78,21,227) 
+    
+- Fix rendering of water body labels (#3919)
+
+    Restores rendering of water body labels on points (node features)
+    Fixes rendering of natural=bay to use italic font at all z levels
+    Cleans up duplicate natural=strait code in water.mss
+    
+- Precedence of junctions over POIs (#3915)
+
+    Junction=yes, =motorway and man_made=bridge labels now render before amenity-points
+    This prevents icons from blocking the display of these text labels
+
+- Remove rendering of waterway=wadi (#3931)
+
+    The tag waterway=wadi is deprecated, suggested replacement: 
+    waterway=river/stream + intermittent=yes OR natural=valley
+    
+- Move parking to amenity-points layers, change way_pixels limit and initial zoom level (#3923)
+
+    Moved parking features back to amenity-points layers
+    Changed parking text intial zoom to z14, as planned in PR #3612
+    Change way_pixels limit for parking icon (750) and text (3000)
+    
+- Don't use classes anymore (#3912)
+- Convert state & country layers to ST_PointOnSurface (#3920)
+- Convert addresses to use ST_PointOnSurface (#3898)
+- Apply bbox to part of "addresses" query (#3942)
+
+    The 4 changes above are needed to allow use of vector tiles
+    ST_PointOnSurface is used to generate a point for labeling
+    Classes are removed, replaced with the layer id
+    
+- Documentation updates (#3911) & (#3910) 
+- Code clean-up (#3899) & (#3922)
+
+    Document inner line rendering, update docker documentation
+    Clean-up text-placement / marker-placement, remove natural=marsh
 
 ## [v4.23.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.22.0...v4.23.0) - 2019-9-20
 ### Changes
