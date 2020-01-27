@@ -1388,7 +1388,8 @@ Layer:
             name,
             NULL AS way_pixels
           FROM planet_osm_point
-          WHERE highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes'
+          WHERE way && !bbox!
+            AND (highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes')
         UNION ALL
           SELECT
             ST_PointOnSurface(way) AS way,
