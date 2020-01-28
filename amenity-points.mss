@@ -1874,9 +1874,9 @@
     }
   }
 
-  [feature = 'power_generator'][location != 'rooftop'][location != 'roof'][zoom >= 17],
-  [feature = 'power_generator'][location = null][zoom >= 17],
-  [feature = 'power_generator'][zoom >= 19],
+  [feature = 'power_generator']['generator:source' = 'wind'][location != 'rooftop'][location != 'roof'][zoom >= 17],
+  [feature = 'power_generator']['generator:source' = 'wind'][location = null][zoom >= 17],
+  [feature = 'power_generator']['generator:source' = 'wind'][zoom >= 19],
   [feature = 'historic_city_gate'][zoom >= 17],
   [feature = 'natural_cave_entrance'][zoom >= 15],
   [feature = 'man_made_mast'][zoom >= 18],
@@ -1895,7 +1895,7 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: darken(@man-made-icon, 20%);
-    [feature = 'power_generator'],
+    [feature = 'power_generator']['generator:source' = 'wind'],
     [feature = 'historic_city_gate'],
     [feature = 'man_made_mast'],
     [feature = 'man_made_tower'],
