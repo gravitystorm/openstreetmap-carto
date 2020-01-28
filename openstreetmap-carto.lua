@@ -36,7 +36,7 @@ local linestring_values = {
     historic = {citywalls = true},
     leisure = {track = true, slipway = true},
     man_made = {embankment = true, breakwater = true, groyne = true},
-    natural = {cliff = true, tree_row = true, ridge = true, arete = true},
+    natural = {arete = true, cliff = true, earth_bank = true, ridge = true, tree_row = true},
     power = {line = true, minor_line = true},
     waterway = {canal = true, derelict_canal = true, ditch = true, drain = true, river = true, stream = true, wadi = true, weir = true}
 }
