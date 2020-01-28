@@ -1,4 +1,106 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.21.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.24.1...master)
+
+## [v4.24.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.24.0...v4.24.1) - 2019-10-28
+### Changes
+- Revert PR #3930 which added river-color (#3955)
+
+## [v4.24.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.23.0...v4.24.0) - 2019-10-25
+### Changes
+- Create darker river-color for river & canal areas and waterway lines (#3930)
+
+    The color of river, canal, ditch and drain waterway lines 
+    and river and canal areas is changed to `#8fcadd` (Lch78,21,227) 
+    
+- Fix rendering of water body labels (#3919)
+
+    Restores rendering of water body labels on points (node features)
+    Fixes rendering of natural=bay to use italic font at all z levels
+    Cleans up duplicate natural=strait code in water.mss
+    
+- Precedence of junctions over POIs (#3915)
+
+    Junction=yes, =motorway and man_made=bridge labels now render before amenity-points
+    This prevents icons from blocking the display of these text labels
+
+- Remove rendering of waterway=wadi (#3931)
+
+    The tag waterway=wadi is deprecated, suggested replacement: 
+    waterway=river/stream + intermittent=yes OR natural=valley
+    
+- Move parking to amenity-points layers, change way_pixels limit and initial zoom level (#3923)
+
+    Moved parking features back to amenity-points layers
+    Changed parking text intial zoom to z14, as planned in PR #3612
+    Change way_pixels limit for parking icon (750) and text (3000)
+    
+- Don't use classes anymore (#3912)
+- Convert state & country layers to ST_PointOnSurface (#3920)
+- Convert addresses to use ST_PointOnSurface (#3898)
+- Apply bbox to part of "addresses" query (#3942)
+
+    The 4 changes above are needed to allow use of vector tiles
+    ST_PointOnSurface is used to generate a point for labeling
+    Classes are removed, replaced with the layer id
+    
+- Documentation updates (#3911) & (#3910) 
+- Code clean-up (#3899) & (#3922)
+
+    Document inner line rendering, update docker documentation
+    Clean-up text-placement / marker-placement, remove natural=marsh
+
+## [v4.23.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.22.0...v4.23.0) - 2019-9-20
+### Changes
+
+- Combine low priority layers using ST_PointOnSurface (#3874)
+    Fixes a bug which rendered `parking` icons twice
+- Restore rendering of landcover text labels on points (#3878)
+- Adjust `aerodrome` initial & final zoom levels (#3879)
+- Adjust width of `hedge` & `citywall` up to z20, adjust hedge color (#3847)
+- Increase `office=` initial zoom to z18 and move some values to z19 (#3796)
+- Create new layer for `ref` of `highway=residential/unclassified/track` (#3709)
+    Changes `ref` to standard halo-radius, oblique font, and same size as `name` at >z17
+- Add fill colors for `wetland=mangrove/saltmarsh/reedbed` (#3807)
+    Also adds salt dots pattern for `wetland=saltmarsh`
+
+## [v4.22.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.21.0...v4.22.0) - 2019-08-27
+### Changes
+
+- Shop label fixes and use ST_PointOnSurface for building label placement (#3781)
+
+  This fixes some bugs and makes building label placement consistent with shop
+  label placement.
+
+- Use `cache-feature: true` to improve performance of layers with attachments (#3838)
+
+- Use retail colour fill on malls (#3790)
+
+- Drop `highway=steps` from zoom 13 (#3825)
+
+  This makes step rendering consistent with footways
+
+- Render `place=locality` from zoom 16 (#3749)
+
+  This fits current usage of the tag and what it is normally tagged on.
+
+- Render `natural=bay` from linear ways (#3754)
+
+- Render administrative boundary labels from relations only (#3762)
+
+- Stop rendering natural=marsh (#3829)
+
+  It is recommended marshes are tagged with `natural=wetland` + `wetland=marsh`
+
+- Use a whitelist for barrier rendering, and render `historic=citywalls` like
+  `barrier=city_wall`. (#3745)
+
+- Support new Tibetan font name (#3842)
+
+  Noto has renamed Noto Sans Tibetan to Noto Serif Tibetan. The old name is
+  still supported.
+  
+- Add adjustments for `highway=motorway` and `highway=service` width at z20 (#3763)
+
+- Code cleanups to increase reuse and improve consistency (#3735, #3760, #3771, #3773, #3774)
 
 ## [v4.21.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.20.0...v4.21.0) - 2019-05-01
 ## Major changes
@@ -10,6 +112,8 @@
 
   The script will handle the change automatically, but if manually downloading
   or using a different method, you will need to adjust paths.
+
+- Change from land to ocean polygons and render water areas above landcover 
 
 - Started using ST_PointOnSurface for some label placements
 

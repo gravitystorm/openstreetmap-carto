@@ -1,5 +1,12 @@
 # OpenStreetMap Carto contribution guidelines
 
+## Reporting issues
+
+As OpenStreetMap data is always changing, rendering bug reports should **always**
+contain a cropped screenshot of the problem, and a link to the area. Don't assume
+that we will see exactly what you see. If a particular OSM object is an issue,
+the issue should contain the tagging of the object.
+
 ## Workflow
 
 We operate the "Fork & Pull" model explained at
@@ -10,12 +17,20 @@ You should fork the project into your own repo, create a topic branch
 there and then make one or more pull requests back to the gravitystorm repository.
 Your pull requests will then be reviewed and discussed.
 
-## Reporting issues
+Pull requests that change the cartography should contain a few images selected
+to show the changes. The easiest way to make these is by taking screenshots and
+cropping them, then pasting them into the issue. Avoid adding an overwhelming
+number of screenshots.
 
-As OpenStreetMap data is always changing, rendering bug reports should **always**
-contain a cropped screenshot of the problem, and a link to the area. Don't assume
-that we will see exactly what you see. If a particular OSM object is an issue,
-the issue should contain the tagging of the object.
+The images are not intended to replace reviewing changes in Kosmtik or TileMill,
+but to provide an overview.
+
+### Previews
+
+Some changes benefit from a review over a wider area and many zooms, where static
+images might not be sufficient and a demo layer is necessary. pnorman has a server
+ which can host layers and has some data from parts of the world loaded. Before
+ requesting this in a pull request, make sure that it is in a stable condition.
 
 ## Easy pickings
 
@@ -178,20 +193,3 @@ to be rendered without collisions. But the line spacing is too large for
 cartographic usage; therefore we reduce the line spacing. Currently, the
 line spacing ranges from -0.15 em to -0.05 em. (Even at -0.15 em, collisions
 are seldom and even then the text stays legible).
-
-## Pull requests
-
-Pull requests that change the cartography should contain a few images selected
-to show the changes. The easiest way to make these is by taking screenshots and
-cropping them, then pasting them into the issue. Avoid adding an overwhelming
-number of screenshots.
-
-The images are not intended to replace reviewing changes in Kosmtik or TileMill,
-but to provide an overview.
-
-### Previews
-
-Some changes benefit from a review over a wider area and many zooms, where static
-images might not be sufficient and a demo layer is necessary. pnorman has a server
- which can host layers and has some data from parts of the world loaded. Before
- requesting this in a pull request, make sure that it is in a stable condition.

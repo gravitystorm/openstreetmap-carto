@@ -275,9 +275,16 @@ overlapping borders correctly.
       }
     }
     [zoom >= 10] {
+      // inner line
       ::wideline {
         opacity: 0.15;
         line-width: 3.6;
+        // Unlike planet_osm_line, planet_osm_polygon does not preserves the
+        // original direction of the OSM way: Following OGS at
+        // https://www.opengeospatial.org/standards/sfa always at the left
+        // is the interior and at the right the exterior of the polygon.(This
+        // also applies to inner rings of multipolygons.) So a negative
+        // line-offset is always an offset to the inner side of the polygon.
         line-offset: -0.9;
         line-color: green;
         [boundary='aboriginal_lands'],
@@ -295,6 +302,7 @@ overlapping borders correctly.
           line-offset: -2;
         }
       }
+      // outer line
       ::narrowline {
         opacity: 0.15;
         line-width: 1.8;
