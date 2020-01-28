@@ -1960,7 +1960,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way,
+            ST_PointOnSurface(way) AS way,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             COALESCE(
               'landuse_' || CASE WHEN landuse IN ('forest', 'military', 'farmland') THEN landuse ELSE NULL END,
@@ -1977,7 +1977,8 @@ Layer:
             name,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building -- always no with the where conditions
           FROM planet_osm_polygon
-          WHERE (landuse IN ('forest', 'military', 'farmland')
+          WHERE way && !bbox!
+            AND (landuse IN ('forest', 'military', 'farmland')
               OR military IN ('danger_area')
               OR "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock', 'water', 'bay', 'strait')
               OR "place" IN ('island')

@@ -1599,7 +1599,6 @@
     text-face-name: @oblique-fonts;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
-    text-placement: interior;
   }
 
   [feature = 'place_locality'][zoom >= 16] {
@@ -2058,7 +2057,6 @@
       text-face-name: @landcover-face-name;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
-      text-placement: interior;
       [feature = 'landuse_military'] {
         text-fill: darken(@military, 40%);
       }
@@ -2098,7 +2096,6 @@
       text-face-name: @landcover-face-name;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
-      text-placement: interior;
     }
   }
 
@@ -2743,7 +2740,6 @@
       text-face-name: @landcover-face-name;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
-      text-placement: interior;
       [feature = 'natural_scree'],
       [feature = 'natural_shingle'],
       [feature = 'natural_bare_rock'] {
@@ -2826,7 +2822,6 @@
       text-face-name: @landcover-face-name;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
-      text-placement: interior;
     }
   }
 
