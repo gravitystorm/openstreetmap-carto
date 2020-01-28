@@ -37,15 +37,16 @@ local polygon_keys = {
 local linestring_values = {
     historic = {citywalls = true},
     leisure = {track = true, slipway = true},
-    man_made = {embankment = true, breakwater = true, groyne = true},
+    man_made = {breakwater = true, cutline = true, embankment = true, groyne = true, pipeline = true},
     natural = {cliff = true, tree_row = true, ridge = true, arete = true},
-    power = {line = true, minor_line = true},
+    power = {cable = true, line = true, minor_line = true},
     tourism = {yes = true},
     waterway = {canal = true, derelict_canal = true, ditch = true, drain = true, river = true, stream = true, wadi = true, weir = true}
 }
 
 -- Objects with any of the following key/value combinations will be treated as polygon
 local polygon_values = {
+    aerialway = {station = true},
     barrier = {toll_booth = true},
     highway = {services = true, rest_area = true},
     junction = {yes = true},
