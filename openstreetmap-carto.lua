@@ -14,6 +14,7 @@ local polygon_keys = {
     'area:highway',
     'building',
     'building:part',
+    'golf',
     'harbour',
     'healthcare',
     'historic',
@@ -35,6 +36,7 @@ local polygon_keys = {
 
 -- Objects with any of the following key/value combinations will be treated as linestring
 local linestring_values = {
+    golf = {cartpath = true, hole = true, path = true}, 
     historic = {citywalls = true},
     leisure = {track = true, slipway = true},
     man_made = {breakwater = true, cutline = true, embankment = true, groyne = true, pipeline = true},
