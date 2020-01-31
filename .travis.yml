@@ -1,5 +1,5 @@
 language: node_js
-dist: trusty
+dist: xenial
 sudo: false
 node_js:
   - "6"
@@ -12,7 +12,7 @@ addons:
     - lua5.1
     - libxml2-utils
     - python-yaml
-    - postgresql-9.4-postgis-2.3
+    - postgresql-9.4-postgis-2.4
     - osm2pgsql
 env:
   - CARTO=0.18.0 MAPNIK='3.0.0 3.0.12'
