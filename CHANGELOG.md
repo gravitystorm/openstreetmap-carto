@@ -16,6 +16,10 @@
 
     This makes the rendering consistent between walls and hedges as areas
 
+- Remove operator text label rendering for amenity=vending_machine (#3965)
+
+    Operator= label is still rendered for vending=public_transport_tickets
+
 - Add svg icon for parking=multi-storey + amenity=parking_entrance (#3599)
 - Fix syntax of font list and enable Armenian font (#3989)
 - Use ST_PointOnSurface for bridge names (#3902)
@@ -23,7 +27,7 @@
 - Use ST_PointOnSurface for roads-area-text-name (#3932)
 - Use ST_PointOnSurface for junctions (#3933)
 - Use text-dy for wind generators only, not for other power=generator features (#3964)
-- 
+
 ### Minor code clean-ups:
 - Remove way_pixels selection from bridge layer (#3950)
 - Remove name from SQL select when unused (#3947)
