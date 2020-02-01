@@ -1,4 +1,6 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.24.1...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.25.0...master)
+
+## [v4.25.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.24.1... v4.25.0)
 ### Changes
 - Remove rendering of barrier=embankment (#4010)
 
@@ -16,7 +18,7 @@
 
     This makes the rendering consistent between walls and hedges as areas
 
-- Remove operator text label rendering for amenity=vending_machine (#3965)
+- Remove operator text label for most amenity=vending_machine (#3965)
 
     Operator= label is still rendered for vending=public_transport_tickets
 
