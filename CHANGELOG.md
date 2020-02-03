@@ -1,6 +1,6 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.25.0...master)
 
-## [v4.25.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.24.1... v4.25.0)
+## [v4.25.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.24.1...v4.25.0) - 2020-02-01
 ### Changes
 - Remove rendering of barrier=embankment (#4010)
 
