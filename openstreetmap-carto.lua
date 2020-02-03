@@ -14,6 +14,7 @@ local polygon_keys = {
     'area:highway',
     'building',
     'building:part',
+    'club',
     'harbour',
     'healthcare',
     'historic',
