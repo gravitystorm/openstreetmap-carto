@@ -1771,7 +1771,7 @@ Layer:
     properties:
       minzoom: 13
   - id: roads-area-text-name
-    geometry: polygon
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1956,7 +1956,7 @@ Layer:
     properties:
       minzoom: 15
   - id: text-poly-low-zoom
-    geometry: polygon
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -2029,7 +2029,7 @@ Layer:
     properties:
       minzoom: 10
   - id: building-text
-    geometry: polygon
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
