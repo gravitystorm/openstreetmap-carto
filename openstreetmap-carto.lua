@@ -15,6 +15,7 @@ local polygon_keys = {
     'craft',
     'building',
     'building:part',
+    'club',
     'harbour',
     'healthcare',
     'historic',
