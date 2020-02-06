@@ -12,8 +12,10 @@ local polygon_keys = {
     'allotments',
     'amenity',
     'area:highway',
+    'craft',
     'building',
     'building:part',
+    'club',
     'golf',
     'harbour',
     'healthcare',
@@ -40,10 +42,10 @@ local linestring_values = {
     historic = {citywalls = true},
     leisure = {track = true, slipway = true},
     man_made = {breakwater = true, cutline = true, embankment = true, groyne = true, pipeline = true},
-    natural = {cliff = true, tree_row = true, ridge = true, arete = true},
+    natural = {cliff = true, earth_bank = true, tree_row = true, ridge = true, arete = true},
     power = {cable = true, line = true, minor_line = true},
     tourism = {yes = true},
-    waterway = {canal = true, derelict_canal = true, ditch = true, drain = true, river = true, stream = true, wadi = true, weir = true}
+    waterway = {canal = true, derelict_canal = true, ditch = true, drain = true, river = true, stream = true, tidal_channel = true, wadi = true, weir = true}
 }
 
 -- Objects with any of the following key/value combinations will be treated as polygon
