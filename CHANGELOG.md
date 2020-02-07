@@ -1,4 +1,39 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.24.1...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.25.0...master)
+
+## [v4.25.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.24.1...v4.25.0) - 2020-02-01
+### Changes
+- Remove rendering of barrier=embankment (#4010)
+
+    Embankments are now commonly tagged with man_made=embankment or man_made=dyke
+
+- Remove rendering of barrier=kerb (#3969)
+
+    This feature is not similar to common barriers (fences and walls)
+
+- Remove boundary=protected_area fill color at low zoom levels (#3887)
+
+    Also changes protected area line and text to new `@protected-area`
+
+- Remove polygon fill rendering for barrier=hedge areas (#3844)
+
+    This makes the rendering consistent between walls and hedges as areas
+
+- Remove operator text label for most amenity=vending_machine (#3965)
+
+    Operator= label is still rendered for vending=public_transport_tickets
+
+- Add svg icon for parking=multi-storey + amenity=parking_entrance (#3599)
+- Fix syntax of font list and enable Armenian font (#3989)
+- Use ST_PointOnSurface for bridge names (#3902)
+- Use ST_PointOnSurface for text-poly-low-zoom (#3921)
+- Use ST_PointOnSurface for roads-area-text-name (#3932)
+- Use ST_PointOnSurface for junctions (#3933)
+- Use text-dy for wind generators only, not for other power=generator features (#3964)
+
+### Minor code clean-ups:
+- Remove way_pixels selection from bridge layer (#3950)
+- Remove name from SQL select when unused (#3947)
+- Combine line-barriers and area-barriers layers into one
 
 ## [v4.24.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.24.0...v4.24.1) - 2019-10-28
 ### Changes

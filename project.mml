@@ -230,7 +230,6 @@ Layer:
             "natural",
             waterway,
             landuse,
-            name,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
@@ -323,8 +322,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            waterway,
-            name
+            waterway
           FROM planet_osm_line
           WHERE waterway IN ('dam', 'weir', 'lock_gate')
         ) AS water_barriers_line
@@ -338,8 +336,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            waterway,
-            name
+            waterway
           FROM planet_osm_polygon
           WHERE waterway IN ('dam', 'weir', 'lock_gate')
         ) AS water_barriers_poly
@@ -418,9 +415,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
-            man_made,
-            name
+            man_made
           FROM planet_osm_polygon
           WHERE man_made = 'bridge'
         ) AS bridge
@@ -565,7 +560,6 @@ Layer:
         (SELECT
             way,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
-            name,
             tourism
           FROM planet_osm_polygon
           WHERE tourism = 'theme_park'
@@ -573,7 +567,7 @@ Layer:
         ) AS tourism_boundary
     properties:
       minzoom: 10
-  - id: line-barriers
+  - id: barriers
     geometry: linestring
     <<: *extents
     Datasource:
@@ -581,19 +575,36 @@ Layer:
       table: |-
         (SELECT
             way, COALESCE(historic, barrier) AS feature
-          FROM (SELECT way,
-            ('barrier_' || (CASE WHEN barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
-                  'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall') THEN barrier ELSE NULL END)) AS barrier,
-            ('historic_' || (CASE WHEN historic = 'citywalls' THEN historic ELSE NULL END)) AS historic
-            FROM planet_osm_line
-            WHERE barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
-                  'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall')
+          FROM
+            (SELECT way,
+              ('barrier_' || (CASE WHEN barrier IN ('chain', 'city_wall', 'ditch', 'fence', 'guard_rail',
+                    'handrail', 'hedge', 'retaining_wall', 'wall') THEN barrier ELSE NULL END)) AS barrier,
+              ('historic_' || (CASE WHEN historic = 'citywalls' THEN historic ELSE NULL END)) AS historic
+              FROM
+                (SELECT
+                    way,
+                    historic,
+                    barrier,
+                    waterway
+                  FROM planet_osm_polygon
+                  WHERE way && !bbox!
+                UNION ALL
+                SELECT
+                    way,
+                    historic,
+                    barrier,
+                    waterway
+                  FROM planet_osm_line
+                  WHERE way && !bbox!
+                ) _
+              WHERE barrier IN ('chain', 'city_wall', 'ditch', 'fence', 'guard_rail',
+                  'handrail', 'hedge', 'retaining_wall', 'wall')
               OR historic = 'citywalls'
               AND (waterway IS NULL OR waterway NOT IN ('river', 'canal', 'stream', 'drain', 'ditch'))
           ) AS features
         ) AS line_barriers
     properties:
-      minzoom: 14
+      minzoom: 15
   - id: cliffs
     geometry: linestring
     <<: *extents
@@ -608,27 +619,6 @@ Layer:
     properties:
       cache-features: true
       minzoom: 13
-  - id: area-barriers
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way, COALESCE(historic, barrier) AS feature
-          FROM (SELECT way,
-            ('barrier_' || (CASE WHEN barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
-                  'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall') THEN barrier ELSE NULL END)) AS barrier,
-            ('historic_' || (CASE WHEN historic = 'citywalls' THEN historic ELSE NULL END)) AS historic
-            FROM planet_osm_polygon
-            WHERE (barrier IN ('chain', 'city_wall', 'embankment', 'ditch', 'fence', 'guard_rail',
-                  'handrail', 'hedge', 'kerb', 'retaining_wall', 'wall')
-              OR historic = 'citywalls')
-              AND building IS NULL
-          ) AS features
-        ) AS area_barriers
-    properties:
-      minzoom: 16
   - id: ferry-routes
     geometry: linestring
     <<: *extents
@@ -901,7 +891,6 @@ Layer:
         (SELECT
             way,
             waterway,
-            name,
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
               THEN 'yes' ELSE 'no' END AS int_intermittent,
@@ -1148,7 +1137,6 @@ Layer:
       table: |-
         (SELECT
             way,
-            name,
             boundary,
             tags->'protect_class' AS protect_class,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
@@ -1388,34 +1376,37 @@ Layer:
             name,
             NULL AS way_pixels
           FROM planet_osm_point
-          WHERE highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes'
+          WHERE way && !bbox!
+            AND (highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes')
         UNION ALL
           SELECT
-            way,
+            ST_PointOnSurface(way) AS way,
             highway,
             junction,
             ref,
             name,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
-          WHERE junction = 'yes'
+          WHERE way && !bbox!
+            AND junction = 'yes'
           ORDER BY way_pixels DESC NULLS LAST
         ) AS junctions
     properties:
       minzoom: 11
   - id: bridge-text
-    geometry: polygon
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way,
+            ST_PointOnSurface(way) AS way,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             man_made,
             name
           FROM planet_osm_polygon
-          WHERE man_made = 'bridge'
+          WHERE way && !bbox!
+            AND man_made = 'bridge'
           ORDER BY way_area DESC
         ) AS bridge_text
     properties:
@@ -1446,6 +1437,7 @@ Layer:
                     THEN CONCAT(ROUND((tags->'height')::NUMERIC)::TEXT, U&'\00A0', 'm') ELSE NULL END
                   )
                 ) AS name,
+                tags->'parking' as "parking",
               COALESCE(
                 'aeroway_' || CASE WHEN aeroway IN ('gate', 'apron', 'helipad', 'aerodrome') THEN aeroway ELSE NULL END,
                 'tourism_' || CASE WHEN tourism IN ('alpine_hut', 'apartment', 'artwork', 'camp_site', 'caravan_site', 'chalet', 'gallery', 'guest_house',
@@ -1499,7 +1491,7 @@ Layer:
                 'amenity_' || CASE WHEN amenity IN ('bicycle_parking', 'motorcycle_parking') THEN amenity ELSE NULL END,
                 'amenity_' || CASE WHEN amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL) THEN amenity ELSE NULL END,
                 'amenity_' || CASE WHEN amenity IN ('parking_entrance')
-                                        AND tags->'parking' IN ('underground')
+                                        AND tags->'parking' IN ('multi-storey', 'underground')
                                         AND (access IS NULL OR access NOT IN ('private', 'no'))
                                         AND way_area IS NULL
                                    THEN amenity ELSE NULL END,
@@ -1779,26 +1771,27 @@ Layer:
     properties:
       minzoom: 13
   - id: roads-area-text-name
-    geometry: polygon
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way,
+            ST_PointOnSurface(way) AS way,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             highway,
             place,
             leisure,
             name
           FROM planet_osm_polygon
-          WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street', 'track', 'path', 'platform')
-            OR (railway IN ('platform')
-                AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
-                AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
-                AND (covered NOT IN ('yes') OR covered IS NULL))
-            OR (place IN ('square')
-                AND (leisure IS NULL OR NOT leisure IN ('park', 'recreation_ground', 'garden')))
+          WHERE way && !bbox!
+            AND (highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street', 'track', 'path', 'platform')
+              OR (railway IN ('platform')
+                  AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
+                  AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
+                  AND (covered NOT IN ('yes') OR covered IS NULL))
+              OR (place IN ('square')
+                  AND (leisure IS NULL OR NOT leisure IN ('park', 'recreation_ground', 'garden'))))
             AND name IS NOT NULL
           ORDER BY way_area DESC
         ) AS roads_area_text_name
@@ -1963,13 +1956,13 @@ Layer:
     properties:
       minzoom: 15
   - id: text-poly-low-zoom
-    geometry: polygon
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way,
+            ST_PointOnSurface(way) AS way,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             COALESCE(
               'landuse_' || CASE WHEN landuse IN ('forest', 'military', 'farmland') THEN landuse ELSE NULL END,
@@ -1986,7 +1979,8 @@ Layer:
             name,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building -- always no with the where conditions
           FROM planet_osm_polygon
-          WHERE (landuse IN ('forest', 'military', 'farmland')
+          WHERE way && !bbox!
+            AND (landuse IN ('forest', 'military', 'farmland')
               OR military IN ('danger_area')
               OR "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock', 'water', 'bay', 'strait')
               OR "place" IN ('island')
@@ -2035,7 +2029,7 @@ Layer:
     properties:
       minzoom: 10
   - id: building-text
-    geometry: polygon
+    geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql

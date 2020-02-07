@@ -20,6 +20,7 @@
 @barrier-icon: #3f3f3f;
 @landform-color: #d08f55;
 @leisure-green: darken(@park, 60%);
+@protected-area: #008000;
 @aboriginal: #82643a;
 @religious-icon: #000000;
 
@@ -1445,7 +1446,8 @@
       [feature = 'amenity_parking'] { marker-file: url('symbols/amenity/parking.svg'); }
       [feature = 'amenity_bicycle_parking'] { marker-file: url('symbols/amenity/bicycle_parking.svg'); }
       [feature = 'amenity_motorcycle_parking'] { marker-file: url('symbols/amenity/motorcycle_parking.svg'); }
-      [feature = 'amenity_parking_entrance'] { marker-file: url('symbols/amenity/parking_entrance.svg'); }
+      [feature = 'amenity_parking_entrance']["parking"='underground'] { marker-file: url('symbols/amenity/parking_entrance_underground.svg'); }
+      [feature = 'amenity_parking_entrance']["parking"='multi-storey'] { marker-file: url('symbols/amenity/parking_entrance_multistorey.svg'); }
       marker-clip: false;
       marker-fill: @transportation-icon;
       [access != ''][access != 'permissive'][access != 'yes'] { marker-opacity: 0.33; }
@@ -1597,7 +1599,6 @@
     text-face-name: @oblique-fonts;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
-    text-placement: interior;
   }
 
   [feature = 'place_locality'][zoom >= 16] {
@@ -1872,9 +1873,9 @@
     }
   }
 
-  [feature = 'power_generator'][location != 'rooftop'][location != 'roof'][zoom >= 17],
-  [feature = 'power_generator'][location = null][zoom >= 17],
-  [feature = 'power_generator'][zoom >= 19],
+  [feature = 'power_generator']['generator:source' = 'wind'][location != 'rooftop'][location != 'roof'][zoom >= 17],
+  [feature = 'power_generator']['generator:source' = 'wind'][location = null][zoom >= 17],
+  [feature = 'power_generator']['generator:source' = 'wind'][zoom >= 19],
   [feature = 'historic_city_gate'][zoom >= 17],
   [feature = 'natural_cave_entrance'][zoom >= 15],
   [feature = 'man_made_mast'][zoom >= 18],
@@ -1893,7 +1894,7 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: darken(@man-made-icon, 20%);
-    [feature = 'power_generator'],
+    [feature = 'power_generator']['generator:source' = 'wind'],
     [feature = 'historic_city_gate'],
     [feature = 'man_made_mast'],
     [feature = 'man_made_tower'],
@@ -2056,7 +2057,6 @@
       text-face-name: @landcover-face-name;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
-      text-placement: interior;
       [feature = 'landuse_military'] {
         text-fill: darken(@military, 40%);
       }
@@ -2070,7 +2070,7 @@
       [feature = 'boundary_national_park'],
       [feature = 'leisure_nature_reserve'],
       [feature = 'boundary_protected_area'] {
-        text-fill: darken(@park, 70%);
+        text-fill: @protected-area;
       }
     }
   }
@@ -2096,7 +2096,6 @@
       text-face-name: @landcover-face-name;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
-      text-placement: interior;
     }
   }
 
@@ -2328,7 +2327,7 @@
   }
 
   [feature = 'amenity_atm'][zoom >= 19],
-  [feature = 'amenity_vending_machine'][zoom >= 19] {
+  [feature = 'amenity_vending_machine'][vending = 'public_transport_tickets'][zoom >= 19] {
     text-name: "[operator]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
@@ -2741,7 +2740,6 @@
       text-face-name: @landcover-face-name;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
-      text-placement: interior;
       [feature = 'natural_sand'],
       [feature = 'natural_scree'],
       [feature = 'natural_shingle'],
@@ -2822,7 +2820,6 @@
       text-face-name: @landcover-face-name;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
-      text-placement: interior;
     }
   }
 
@@ -2921,7 +2918,7 @@
   [feature = 'amenity_parking'],
   [feature = 'amenity_bicycle_parking'],
   [feature = 'amenity_motorcycle_parking'],
-  [feature = 'amenity_parking_entrance'] {
+  [feature = 'amenity_parking_entrance']["parking"='underground'] {
     [zoom >= 14][way_pixels > 3000],
     [zoom >= 18] {
       text-name: "[name]";
