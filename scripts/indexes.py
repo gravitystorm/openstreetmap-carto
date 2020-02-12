@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # This script takes a YAML file defining indexes and creates SQL statements
 # There are a number of options for concurrent index creation, recreating the
@@ -6,7 +6,6 @@
 # of the resulting statements
 # indexes.sql is created by this script, with the default options
 
-from __future__ import print_function
 import argparse, sys, os, yaml
 
 def index_statement(table, name, conditions=None, concurrent=False,notexist=False, fillfactor=None):
@@ -24,8 +23,8 @@ def parse(cb):
     with open(os.path.join(os.path.dirname(__file__), '../indexes.yml')) as yaml_file:
         indexes = yaml.safe_load(yaml_file)
 
-    for table, data in sorted(indexes.iteritems()):
-        for name, definition in sorted(data.iteritems()):
+    for table, data in sorted(indexes.items()):
+        for name, definition in sorted(data.items()):
             cb(table, name, definition["where"])
 
 # The same as parse, but for osm2pgsql-built indexes
