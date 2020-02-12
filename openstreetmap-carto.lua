@@ -51,6 +51,7 @@ local linestring_values = {
 -- Objects with any of the following key/value combinations will be treated as polygon
 local polygon_values = {
     aerialway = {station = true},
+    boundary = {aboriginal_lands = true, national_park = true, protected_area= true},
     highway = {services = true, rest_area = true},
     junction = {yes = true},
     railway = {station = true}
