@@ -1621,6 +1621,7 @@ Layer:
               ) _
             ) AS features
           WHERE feature IS NOT NULL
+            AND (way_pixels < 768000 OR way_pixels IS NULL)
           ORDER BY score DESC NULLS LAST,
             way_pixels DESC NULLS LAST
           ) AS amenity_points
