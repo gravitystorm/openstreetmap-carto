@@ -1968,9 +1968,7 @@
   [feature = 'leisure_water_park'],
   [feature = 'leisure_sports_centre'][sport = 'swimming'],
   [feature = 'leisure_swimming_area'] {
-    [way_area >= 150000][zoom >= 14],
-    [way_area >= 80000][zoom >= 15],
-    [way_area >= 20000][zoom >= 16],
+    [zoom >= 14][way_pixels > 3000],
     [zoom >= 17] {
       text-name: "[name]";
       text-size: @standard-font-size;
@@ -2012,9 +2010,7 @@
   [feature = 'leisure_dog_park'],
   [feature = 'leisure_fitness_centre'],
   [feature = 'leisure_fitness_station'] {
-    [way_area >= 150000][zoom >= 14],
-    [way_area >= 80000][zoom >= 15],
-    [way_area >= 20000][zoom >= 16],
+    [zoom >= 14][way_pixels > 3000],
     [zoom >= 17] {
       text-name: "[name]";
       text-size: @standard-font-size;
