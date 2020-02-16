@@ -85,7 +85,7 @@ It might be useful to have a more recent version of the fonts for [rare non-lati
 
 DejaVu is packaged as `fonts-dejavu-core`.
 
-### Installation on other operation systems
+### Installation on other operating systems
 
 The fonts can be downloaded here:
 
@@ -94,7 +94,7 @@ The fonts can be downloaded here:
 * [Hanazono homepage](http://fonts.jp/hanazono/)
 * [Unifont homepage](http://unifoundry.com/)
 
-After the download, you have to install the font files in the usual way of your operation system.
+After the download, you have to install the font files in the usual way of your operating system.
 
 ### Non-latin scripts
 
