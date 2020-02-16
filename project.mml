@@ -1590,6 +1590,7 @@ Layer:
                   way_area
                 FROM planet_osm_polygon
                 WHERE way && !bbox!
+                  AND ST_PointOnSurface(way) && !bbox!
               UNION ALL
               SELECT
                   way,

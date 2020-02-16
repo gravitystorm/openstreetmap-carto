@@ -23,6 +23,8 @@ CREATE INDEX planet_osm_polygon_name
 CREATE INDEX planet_osm_polygon_nobuilding
   ON planet_osm_polygon USING GIST (way)
   WHERE building IS NULL;
+CREATE INDEX planet_osm_polygon_stpointonsurface
+  ON planet_osm_polygon USING GIST (St_PointOnSurface(way));
 CREATE INDEX planet_osm_polygon_water
   ON planet_osm_polygon USING GIST (way)
   WHERE waterway IN ('dock', 'riverbank', 'canal')
