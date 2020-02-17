@@ -8,17 +8,16 @@
 
 import argparse, sys, os, yaml
 
-def index_statement(table, name, conditions=None, funct=None, concurrent=False,notexist=False, fillfactor=None):
+def index_statement(table, name, conditions=None, concurrent=False,notexist=False, fillfactor=None):
     options = ' CONCURRENTLY' if concurrent else ''
     options += ' IF NOT EXISTS' if notexist else ''
     storage = '' if fillfactor is None else '\n  WITH (fillfactor={})'.format(fillfactor)
     where = '' if conditions is None else '\n  WHERE {}'.format(conditions)
-    fn = 'way' if funct is None else funct
     return ('CREATE INDEX{options} {table}_{name}\n' +
-            '  ON {table} USING GIST ({fn})' +
+            '  ON {table} USING GIST (way)' +
             '{storage}' +
             '{where};\n').format(table="planet_osm_"+table, name=name,
-                storage=storage, options=options, where=where, fn=fn)
+                storage=storage, options=options, where=where)
 
 def parse(cb):
     with open(os.path.join(os.path.dirname(__file__), '../indexes.yml')) as yaml_file:
@@ -26,14 +25,14 @@ def parse(cb):
 
     for table, data in sorted(indexes.items()):
         for name, definition in sorted(data.items()):
-            cb(table, name, definition.get("where", None), definition.get("funct", None))
+            cb(table, name, definition["where"])
 
 # The same as parse, but for osm2pgsql-built indexes
 def osm2pgsql_parse(cb):
-    cb('point', 'index', None, None)
-    cb('line', 'index', None, None)
-    cb('polygon', 'index', None, None)
-    cb('roads', 'index', None, None)
+    cb('point', 'index', None)
+    cb('line', 'index', None)
+    cb('polygon', 'index', None)
+    cb('roads', 'index', None)
 
 parser = argparse.ArgumentParser(description='Generates custom index statements')
 parser.add_argument('--concurrent', dest='concurrent', help='Generate indexes CONCURRENTLY', action='store_true', default=False)
@@ -43,16 +42,16 @@ parser.add_argument('--osm2pgsql', help='Include indexes normally built by osm2p
 parser.add_argument('--reindex', help='Rebuild existing indexes', action='store_true', default=False)
 args = parser.parse_args()
 
-def cb (table, name, where, funct):
-    print(index_statement(table, name, where, funct, args.concurrent, args.notexist, args.fillfactor), end='')
+def cb (table, name, where):
+    print(index_statement(table, name, where, args.concurrent, args.notexist, args.fillfactor), end='')
 
-def reindex_cb(table, name, where, funct):
+def reindex_cb(table, name, where):
     if not args.concurrent:
         print('REINDEX planet_osm_{table}_{name};'.format(table=table, name=name))
     else:
         # Rebuilding indexes concurently requires making a new index, dropping the old one, and renaming.
         print('ALTER INDEX planet_osm_{table}_{name} RENAME TO planet_osm_{table}_{name}_old;'.format(table=table, name=name))
-        cb(table, name, where, funct)
+        cb(table, name, where)
         print('DROP INDEX planet_osm_{table}_{name}_old;\n'.format(table=table, name=name))
 
 print(('-- These are optional but suggested indexes for rendering OpenStreetMap Carto\n'+

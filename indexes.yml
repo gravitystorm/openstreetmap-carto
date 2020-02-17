@@ -31,8 +31,6 @@ polygon:
     where: way_area > 5980000
   way_area_z10:
     where: way_area > 23300
-  stpointonsurface:
-    funct: St_PointOnSurface(way)
 roads:
   # The roads table only has a subset of data, so it's just got some low-zoom
   # indexes and some fairly selective ones for high zoom
