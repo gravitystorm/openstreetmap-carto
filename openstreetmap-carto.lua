@@ -9,11 +9,17 @@ local polygon_keys = {
     'abandoned:landuse',
     'abandoned:power',
     'aeroway',
+    'allotments',
     'amenity',
     'area:highway',
+    'craft',
     'building',
     'building:part',
+    'club',
+    'golf',
+    'emergency',
     'harbour',
+    'healthcare',
     'historic',
     'landuse',
     'leisure',
@@ -33,18 +39,24 @@ local polygon_keys = {
 
 -- Objects with any of the following key/value combinations will be treated as linestring
 local linestring_values = {
+    golf = {cartpath = true, hole = true, path = true}, 
+    emergency = {designated = true, destination = true, no = true, official = true, yes = true},
     historic = {citywalls = true},
     leisure = {track = true, slipway = true},
-    man_made = {embankment = true, breakwater = true, groyne = true},
-    natural = {cliff = true, tree_row = true, ridge = true, arete = true},
-    power = {line = true, minor_line = true},
-    waterway = {canal = true, derelict_canal = true, ditch = true, drain = true, river = true, stream = true, wadi = true, weir = true}
+    man_made = {breakwater = true, cutline = true, embankment = true, groyne = true, pipeline = true},
+    natural = {cliff = true, earth_bank = true, tree_row = true, ridge = true, arete = true},
+    power = {cable = true, line = true, minor_line = true},
+    tourism = {yes = true},
+    waterway = {canal = true, derelict_canal = true, ditch = true, drain = true, river = true, stream = true, tidal_channel = true, wadi = true, weir = true}
 }
 
 -- Objects with any of the following key/value combinations will be treated as polygon
 local polygon_values = {
+    aerialway = {station = true},
+    boundary = {aboriginal_lands = true, national_park = true, protected_area= true},
     highway = {services = true, rest_area = true},
-    junction = {yes = true}
+    junction = {yes = true},
+    railway = {station = true}
 }
 
 -- The following keys will be deleted
@@ -392,7 +404,7 @@ function isarea (tags)
     for k, v in pairs(tags) do
         -- Check if it has a polygon key and not a linestring override, or a polygon k=v
         for _, ptag in ipairs(polygon_keys) do
-            if k == ptag and not (linestring_values[k] and linestring_values[k][v]) then
+            if k == ptag and v ~= "no" and not (linestring_values[k] and linestring_values[k][v]) then
                 return 1
             end
         end
