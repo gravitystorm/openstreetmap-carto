@@ -1590,6 +1590,7 @@ Layer:
                   way_area
                 FROM planet_osm_polygon
                 WHERE way && !bbox!
+                  AND way_area < 768000*POW(!scale_denominator!*0.001*0.28,2)
               UNION ALL
               SELECT
                   way,
@@ -1989,6 +1990,7 @@ Layer:
               OR leisure IN ('nature_reserve'))
             AND building IS NULL
             AND name IS NOT NULL
+            AND way_area < 768000*POW(!scale_denominator!*0.001*0.28,2)
           ORDER BY way_area DESC
         ) AS text_poly_low_zoom
     properties:
