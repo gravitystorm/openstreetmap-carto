@@ -1184,7 +1184,7 @@ Layer:
             AND boundary = 'administrative'
             AND admin_level = '2'
             AND name IS NOT NULL
-            AND way_area > 100*!pixel_width!::real*!pixel_height!::real
+            AND way_area > 100*POW(!scale_denominator!*0.001*0.28,2)
             AND osm_id < 0
           ORDER BY way_area DESC
         ) AS country_names
@@ -1228,7 +1228,7 @@ Layer:
             AND boundary = 'administrative'
             AND admin_level = '4'
             AND name IS NOT NULL
-            AND way_area > 100*!pixel_width!::real*!pixel_height!::real
+            AND way_area > 100*POW(!scale_denominator!*0.001*0.28,2)
             AND osm_id < 0
           ORDER BY way_area DESC
         ) AS state_names
