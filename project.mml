@@ -357,6 +357,7 @@ Layer:
               "natural"
             FROM planet_osm_polygon
             WHERE way && !bbox!
+            AND way_area < 768000*POW(!scale_denominator!*0.001*0.28,2)
           UNION ALL
           SELECT
               way,
@@ -1185,6 +1186,7 @@ Layer:
             AND admin_level = '2'
             AND name IS NOT NULL
             AND way_area > 100*POW(!scale_denominator!*0.001*0.28,2)
+            AND way_area < 4000000*POW(!scale_denominator!*0.001*0.28,2)
             AND osm_id < 0
           ORDER BY way_area DESC
         ) AS country_names
@@ -1228,7 +1230,8 @@ Layer:
             AND boundary = 'administrative'
             AND admin_level = '4'
             AND name IS NOT NULL
-            AND way_area > 100*POW(!scale_denominator!*0.001*0.28,2)
+            AND way_area > 3000*POW(!scale_denominator!*0.001*0.28,2)
+            AND way_area < 4000000*POW(!scale_denominator!*0.001*0.28,2)
             AND osm_id < 0
           ORDER BY way_area DESC
         ) AS state_names
@@ -1336,6 +1339,7 @@ Layer:
               way_area
             FROM planet_osm_polygon
             WHERE way && !bbox!
+              AND way_area < 768000*POW(!scale_denominator!*0.001*0.28,2)
           UNION ALL
           SELECT
               way,
@@ -1389,6 +1393,7 @@ Layer:
           FROM planet_osm_polygon
           WHERE way && !bbox!
             AND junction = 'yes'
+            AND way_area < 768000*POW(!scale_denominator!*0.001*0.28,2)
           ORDER BY way_pixels DESC NULLS LAST
         ) AS junctions
     properties:
@@ -1407,6 +1412,8 @@ Layer:
           FROM planet_osm_polygon
           WHERE way && !bbox!
             AND man_made = 'bridge'
+            AND way_area > 62.5*POW(!scale_denominator!*0.001*0.28,2)
+            AND way_area < 64000*POW(!scale_denominator!*0.001*0.28,2)
           ORDER BY way_area DESC
         ) AS bridge_text
     properties:
@@ -1794,6 +1801,8 @@ Layer:
               OR (place IN ('square')
                   AND (leisure IS NULL OR NOT leisure IN ('park', 'recreation_ground', 'garden'))))
             AND name IS NOT NULL
+            AND way_area > 3000*POW(!scale_denominator!*0.001*0.28,2)
+            AND way_area < 768000*POW(!scale_denominator!*0.001*0.28,2)
           ORDER BY way_area DESC
         ) AS roads_area_text_name
     properties:
@@ -1990,6 +1999,7 @@ Layer:
               OR leisure IN ('nature_reserve'))
             AND building IS NULL
             AND name IS NOT NULL
+            AND way_area > 100*POW(!scale_denominator!*0.001*0.28,2)
             AND way_area < 768000*POW(!scale_denominator!*0.001*0.28,2)
           ORDER BY way_area DESC
         ) AS text_poly_low_zoom
@@ -2045,6 +2055,7 @@ Layer:
             AND building IS NOT NULL
             AND building NOT IN ('no')
             AND name IS NOT NULL
+            AND way_area < 4000000*POW(!scale_denominator!*0.001*0.28,2)
           ORDER BY way_area DESC
         ) AS building_text
     properties:
@@ -2077,6 +2088,7 @@ Layer:
           FROM planet_osm_polygon
           WHERE way && !bbox! AND (("addr:housenumber" IS NOT NULL) OR ("addr:housename" IS NOT NULL) OR ((tags->'addr:unit') IS NOT NULL))
             AND building IS NOT NULL
+            AND way_area < 4000000*POW(!scale_denominator!*0.001*0.28,2)
         UNION ALL
         SELECT
             way,
@@ -2208,6 +2220,7 @@ Layer:
                   way_area
                 FROM planet_osm_polygon
                 WHERE way && !bbox!
+                  AND way_area < 768000*POW(!scale_denominator!*0.001*0.28,2)
               UNION ALL
               SELECT
                   way,
