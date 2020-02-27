@@ -61,7 +61,7 @@
     }
   }
 
-  [feature = 'amenity_atm'][zoom >= 19] {
+  [feature = 'amenity_atm'][zoom >= 18] {
     marker-file: url('symbols/amenity/atm.svg');
     marker-fill: @amenity-brown;
     marker-clip: false;
@@ -664,7 +664,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_post_box'][zoom >= 19] {
+  [feature = 'amenity_post_box'][zoom >= 18] {
     marker-file: url('symbols/amenity/post_box.svg');
     marker-fill: @amenity-brown;
     marker-clip: false;
@@ -692,7 +692,7 @@
     marker-clip: false;
   }
 
-  [feature = 'emergency_phone'][zoom >= 19] {
+  [feature = 'emergency_phone'][zoom >= 18] {
     marker-file: url('symbols/amenity/emergency_phone.svg');
     marker-fill: @amenity-brown;
     marker-clip: false;
