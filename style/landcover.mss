@@ -822,13 +822,13 @@
       line-pattern-file: url('symbols/cliff2.svg');
     }
   }
-  [natural = 'ridge'][zoom >= 13] {
+  [natural = 'ridge'][zoom >= 14] {
     line-pattern-file: url('symbols/ridge-mz.svg');
     [zoom >= 15] {
       line-pattern-file: url('symbols/ridge.svg');
     }
   }
-  [natural = 'arete'][zoom >= 13] {
+  [natural = 'arete'][zoom >= 14] {
     line-pattern-file: url('symbols/arete-mid.svg');
     [zoom >= 15] {
       line-pattern-file: url('symbols/arete-wide.svg');
