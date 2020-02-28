@@ -118,7 +118,7 @@
     polygon-pattern-file: url('symbols/quarry.svg');
     [zoom >= 13] {
       line-width: 0.5;
-      line-color: grey;
+      line-color: darken(@quarry, 10%);
     }
     [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
     [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
