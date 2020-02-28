@@ -1558,7 +1558,7 @@ Layer:
                                 'interior_decoration', 'video', 'paint', 'massage', 'trade', 'wholesale') THEN shop
                                 ELSE 'other' END AS shop,
               CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building,
-              tags -> 'operator' AS operator,
+              tags->'operator' AS operator,
               ref,
               way_area,
               COALESCE(way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0), 0) AS way_pixels
@@ -2102,7 +2102,7 @@ Layer:
             lock,
             name,
             "natural",
-            tags-> 'lock_name' AS lock_name,
+            tags->'lock_name' AS lock_name,
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
               THEN 'yes' ELSE 'no' END AS int_intermittent,
