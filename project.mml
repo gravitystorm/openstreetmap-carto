@@ -1125,7 +1125,6 @@ Layer:
             way
           FROM planet_osm_line
           WHERE power = 'line'
-            OR (power = 'cable' AND tags->'location' IN ('overground', 'overhead', 'surface', 'outdoor', 'platform'))
         ) AS power_line
     properties:
       minzoom: 14
