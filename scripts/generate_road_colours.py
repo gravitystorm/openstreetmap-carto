@@ -102,12 +102,12 @@ def main():
     colours = generate_colours(settings, 'mss')
 
     # Print a warning about the nature of these definitions.
-    print "/* This is generated code, do not change this file manually.         */"
-    print "/*                                                                   */"
-    print "/* To change these definitions, alter road-colors.yaml and run:      */"
-    print "/*                                                                   */"
-    print "/*   ./scripts/generate_road_colours.py > road-colors-generated.mss  */"
-    print "/*                                                                   */"
+    print "/* This is generated code, do not change this file manually.          */"
+    print "/*                                                                    */"
+    print "/* To change these definitions, alter road-colors.yaml and run:       */"
+    print "/*                                                                    */"
+    print "/* scripts/generate_road_colours.py > style/road-colors-generated.mss */"
+    print "/*                                                                    */"
 
     for line_name, line_colours in colours.iteritems():
         for name, colour in line_colours.iteritems():

@@ -69,7 +69,7 @@ Unifont is used as a last resort fallback, with it's excellent coverage, common 
 
 If you do not install all the fonts, the rendering itself will not break, but missing glyphs will be ugly.
 
-For more details, see the documentation at fonts.mss.
+For more details, see the documentation at [fonts.mss](style/fonts.mss).
 
 ### Installation on Ubuntu/Debian
 

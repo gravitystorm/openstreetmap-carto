@@ -36,7 +36,7 @@ script:
   - lua scripts/lua/test.lua
   # Check the indexes and road colours files are up to date
   - diff -qu <(scripts/indexes.py) indexes.sql
-  - diff -qu <(scripts/generate_road_colours.py) road-colors-generated.mss
+  - diff -qu <(scripts/generate_road_colours.py) style/road-colors-generated.mss
   # Create the PostgreSQL tables
   # Because we're not processing any data, we don't need to use the tag transform script,
   # which the ancient verson of osm2pgsql on Travis' Ubuntu doesn't support
