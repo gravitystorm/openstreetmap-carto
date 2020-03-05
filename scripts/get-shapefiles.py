@@ -1,8 +1,13 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 # This script generates and populates the 'data' directory with all needed
 # shapefiles.
 
+from __future__ import (
+    division,
+    absolute_import,
+    print_function,
+    unicode_literals)
 import os
 import errno
 import tarfile
@@ -18,8 +23,12 @@ import email.utils
 import atexit
 import time
 
-import urllib.request as urllib2
-import urllib.parse as urlparse
+if sys.version_info >= (3,):
+    import urllib.request as urllib2
+    import urllib.parse as urlparse
+else:
+    import urllib2
+    import urlparse
 
 start = time.time()
 data_dir = 'data'
@@ -27,14 +36,25 @@ settings = {
     # Keys 1, 2, 3, ... set the arg short-options and the related process
     # ordering. Use > 0 to allow processing.
     1: {
-        'directory': 'simplified-water-polygons-split-3857',
-        'url': 'https://osmdata.openstreetmap.de/download/simplified-water-polygons-split-3857.zip',  # noqa
-        'type': 'zip',
-        'shp_basename': ['simplified_water_polygons'],
-        'long_opt': '--simplified-water'
+        'directory': 'world_boundaries',
+        'url': 'https://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz',  # noqa
+        'type': 'tgz',
+        'shp_basename': [
+            'world_bnd_m',
+            'places',
+            'world_boundaries_m'],
+        'long_opt': '--world-boundaries'
     },
 
     2: {
+        'directory': 'simplified-land-polygons-complete-3857',
+        'url': 'https://osmdata.openstreetmap.de/download/simplified-land-polygons-complete-3857.zip',  # noqa
+        'type': 'zip',
+        'shp_basename': ['simplified_land_polygons'],
+        'long_opt': '--simplified-land'
+    },
+
+    3: {
         'directory': 'ne_110m_admin_0_boundary_lines_land',
         'url': 'http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip',  # noqa
         'type': 'zip_dir',
@@ -42,15 +62,15 @@ settings = {
         'long_opt': '--ne-admin'
     },
 
-    3: {
-        'directory': 'water-polygons-split-3857',
-        'url': 'https://osmdata.openstreetmap.de/download/water-polygons-split-3857.zip',  # noqa
+    4: {
+        'directory': 'land-polygons-split-3857',
+        'url': 'https://osmdata.openstreetmap.de/download/land-polygons-split-3857.zip',  # noqa
         'type': 'zip',
-        'shp_basename': ['water_polygons'],
-        'long_opt': '--water-polygons'
+        'shp_basename': ['land_polygons'],
+        'long_opt': '--land-polygons'
     },
 
-    4: {
+    5: {
         'directory': 'antarctica-icesheet-polygons-3857',
         'url': 'https://osmdata.openstreetmap.de/download/antarctica-icesheet-polygons-3857.zip',  # noqa
         'type': 'zip',
@@ -58,7 +78,7 @@ settings = {
         'long_opt': '--icesheet-polygons'
     },
 
-    5: {
+    6: {
         'directory': 'antarctica-icesheet-outlines-3857',
         'url': 'https://osmdata.openstreetmap.de/download/antarctica-icesheet-outlines-3857.zip',  # noqa
         'type': 'zip',
