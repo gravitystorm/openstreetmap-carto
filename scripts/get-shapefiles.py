@@ -1,13 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # This script generates and populates the 'data' directory with all needed
 # shapefiles.
 
-from __future__ import (
-    division,
-    absolute_import,
-    print_function,
-    unicode_literals)
 import os
 import errno
 import tarfile
@@ -23,12 +18,8 @@ import email.utils
 import atexit
 import time
 
-if sys.version_info >= (3,):
-    import urllib.request as urllib2
-    import urllib.parse as urlparse
-else:
-    import urllib2
-    import urlparse
+import urllib.request as urllib2
+import urllib.parse as urlparse
 
 start = time.time()
 data_dir = 'data'
