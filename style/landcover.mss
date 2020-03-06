@@ -498,7 +498,7 @@
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
       [zoom >= 13] {
-        polygon-pattern-file: url('symbols/scree_overlay.png');
+        polygon-pattern-file: url('symbols/beach_coarse.png');
         [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
         [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
       }
