@@ -36,23 +36,23 @@ _parts:
     extent: "-20037508,-20037508,20037508,20037508"
 
 Stylesheet:
-  - style.mss
-  - fonts.mss
-  - shapefiles.mss
-  - landcover.mss
-  - water.mss
-  - water-features.mss
-  - road-colors-generated.mss
-  - roads.mss
-  - power.mss
-  - placenames.mss
-  - buildings.mss
-  - stations.mss
-  - amenity-points.mss
-  - ferry-routes.mss
-  - aerialways.mss
-  - admin.mss
-  - addressing.mss
+  - style/style.mss
+  - style/fonts.mss
+  - style/shapefiles.mss
+  - style/landcover.mss
+  - style/water.mss
+  - style/water-features.mss
+  - style/road-colors-generated.mss
+  - style/roads.mss
+  - style/power.mss
+  - style/placenames.mss
+  - style/buildings.mss
+  - style/stations.mss
+  - style/amenity-points.mss
+  - style/ferry-routes.mss
+  - style/aerialways.mss
+  - style/admin.mss
+  - style/addressing.mss
 Layer:
   - id: landcover-low-zoom
     geometry: polygon

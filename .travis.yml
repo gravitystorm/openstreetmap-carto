@@ -36,7 +36,7 @@ script:
   - lua scripts/lua/test.lua
   # Check the indexes and road colours files are up to date
   - diff -qu <(scripts/indexes.py) indexes.sql
-  - diff -qu <(scripts/generate_road_colours.py) road-colors-generated.mss
+  - diff -qu <(scripts/generate_road_colours.py) style/road-colors-generated.mss
   # Create the PostgreSQL tables
   - osm2pgsql -G --hstore --style openstreetmap-carto.style --tag-transform-script openstreetmap-carto.lua -U postgres -d gis -r xml <(echo '<osm version="0.6"/>')
   # Apply the custom indexes
