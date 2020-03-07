@@ -26,6 +26,7 @@ assert(z_order({}) == nil, "test failed: no tags")
 assert(z_order({foo="bar"}) == nil, "test failed: other tags")
 assert(z_order({highway="motorway"}) == 380 , "test failed: motorway")
 assert(z_order({highway="motorway", railway="rail"}) == 440 , "test failed: motorway + rail")
+assert(z_order({highway="construction", construction="service"}) == 15 , "test failed: highway=construction + construction=service")
 
 print("TESTING: roads")
 assert(roads({}) == 0, "test failed: no tags")
