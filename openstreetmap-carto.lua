@@ -70,7 +70,6 @@ local delete_tags = {
     -- Tags generally dropped by editors, not otherwise covered
     'created_by',
     'odbl',
-    'odbl:note',
     -- Lots of import tags
     -- EUROSHA (Various countries)
     'project:eurosha_2012',
@@ -80,7 +79,6 @@ local delete_tags = {
 
     -- NHN (CA)
     'accuracy:meters',
-    'sub_sea:type',
     'waterway:type',
     -- StatsCan (CA)
     'statscan:rbuid',
@@ -96,16 +94,13 @@ local delete_tags = {
 
     -- GST (DK)
     'gst:feat_id',
+    -- osak (DK)
+    'osak:identifier',
 
     -- Maa-amet (EE)
     'maaamet:ETAK',
     -- FANTOIR (FR)
     'ref:FR:FANTOIR',
-
-    -- 3dshapes (NL)
-    '3dshapes:ggmodelk',
-    -- AND (NL)
-    'AND_nosr_r',
 
     -- OPPDATERIN (NO)
     'OPPDATERIN',
@@ -119,6 +114,9 @@ local delete_tags = {
 
     -- RABA (SK)
     'raba:id',
+
+    -- LINZ (NZ)
+    'linz2osm:objectid',
     -- DCGIS (Washington DC, US)
     'dcgis:gis_id',
     -- Building Identification Number (New York, US)
@@ -149,8 +147,6 @@ delete_prefixes = {
     -- Geobase (CA)
     'geobase:',
 
-    -- osak (DK)
-    'osak:',
     -- kms (DK)
     'kms:',
 
@@ -169,7 +165,6 @@ delete_prefixes = {
 
     -- LINZ (NZ)
     'LINZ2OSM:',
-    'linz2osm:',
     'LINZ:',
 
     -- WroclawGIS (PL)
