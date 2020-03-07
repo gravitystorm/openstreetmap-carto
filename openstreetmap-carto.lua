@@ -218,32 +218,6 @@ local roads_info = {
         platform        = {z = 90,  roads = false},
         construction    = {z = 33,  roads = false}
     },
-    construction = {
-         motorway        = {z = 38, roads = false},
-         trunk           = {z = 37, roads = false},
-         primary         = {z = 36, roads = false},
-         secondary       = {z = 35, roads = false},
-         tertiary        = {z = 34, roads = false},
-         residential     = {z = 33, roads = false},
-         unclassified    = {z = 33, roads = false},
-         road            = {z = 33, roads = false},
-         living_street   = {z = 32, roads = false},
-         pedestrian      = {z = 31, roads = false},
-         raceway         = {z = 30, roads = false},
-         motorway_link   = {z = 24, roads = false},
-         trunk_link      = {z = 23, roads = false},
-         primary_link    = {z = 22, roads = false},
-         secondary_link  = {z = 21, roads = false},
-         tertiary_link   = {z = 20, roads = false},
-         service         = {z = 15, roads = false},
-         track           = {z = 11, roads = false},
-         path            = {z = 10, roads = false},
-         footway         = {z = 10, roads = false},
-         bridleway       = {z = 10, roads = false},
-         cycleway        = {z = 10, roads = false},
-         steps           = {z = 9,  roads = false},
-         platform        = {z = 9,  roads = false},
-    },
     railway = {
         rail            = {z = 440, roads = true},
         subway          = {z = 420, roads = true},
@@ -284,6 +258,9 @@ function z_order(tags)
         end
     end
     return z ~= 0 and z or nil
+    if tags["highway"] == "construction" then
+        z = math.max(z, roads_info["highway"][tags["construction"]]/10 or 33)
+    end
 end
 
 --- Gets the roads table status for a set of tags
