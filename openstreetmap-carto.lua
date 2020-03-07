@@ -259,9 +259,9 @@ function z_order(tags)
         if roads_info[k] and roads_info[k][v] then
             z = math.max(z, roads_info[k][v].z)
         end
-        if tags["highway"] == "construction" then
-           z = math.max(z, roads_info["highway"][tags["construction"]]/10 or 33)
-        end
+    end
+    if tags["highway"] == "construction" then
+       z = math.max(z, roads_info["highway"][tags["construction"]]/10 or 33)
     end
     return z ~= 0 and z or nil
 end
