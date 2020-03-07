@@ -2151,6 +2151,7 @@
   [feature = 'landuse_brownfield'],
   [feature = 'landuse_landfill'],
   [feature = 'landuse_construction'],
+  [feature = 'landuse_salt_pond'],
   [feature = 'tourism_theme_park'],
   [feature = 'tourism_zoo'],
   [feature = 'amenity_kindergarten'],
@@ -2194,7 +2195,8 @@
       text-halo-fill: @standard-halo-fill;
       [feature = 'natural_reef'],
       [feature = 'natural_wetland'],
-      [feature = 'natural_mud'] {
+      [feature = 'natural_mud'],
+      [feature = 'landuse_salt_pond'] {
         text-fill: @wetland-text;
       }
       [feature = 'leisure_park'],
