@@ -27,6 +27,17 @@ assert(z_order({foo="bar"}) == nil, "test failed: other tags")
 assert(z_order({highway="motorway"}) == 380 , "test failed: motorway")
 assert(z_order({highway="motorway", railway="rail"}) == 440 , "test failed: motorway + rail")
 
+assert(z_order({highway="motorway"}) > z_order({highway="motorway_link"}) , "test failed: motorway_link")
+assert(z_order({highway="trunk"}) > z_order({highway="trunk_link"}) , "test failed: trunk_link")
+assert(z_order({highway="primary"}) > z_order({highway="primary_link"}) , "test failed: primary_link")
+assert(z_order({highway="secondary"}) > z_order({highway="secondary_link"}) , "test failed: secondary_link")
+assert(z_order({highway="tertiary"}) > z_order({highway="tertiary_link"}) , "test failed: tertiary_link")
+
+assert(z_order({highway="motorway"}) > z_order({highway="trunk"}) , "test failed: motorway > trunk")
+assert(z_order({highway="trunk"}) > z_order({highway="primary"}) , "test failed: trunk > primary")
+assert(z_order({highway="primary"}) > z_order({highway="secondary"}) , "test failed: primary > secondary")
+assert(z_order({highway="secondary"}) > z_order({highway="tertiary"}) , "test failed: secondary > tertiary")
+
 print("TESTING: roads")
 assert(roads({}) == 0, "test failed: no tags")
 assert(roads({foo="bar"}) == 0, "test failed: other tags")
