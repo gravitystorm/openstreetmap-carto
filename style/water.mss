@@ -17,67 +17,20 @@
     }
   }
 
-  [waterway = 'dock'] {
-    [zoom >= 9]::waterway {
+  [waterway = 'dock'],
+  [landuse = 'basin'],
+  [natural = 'water'],
+  [landuse = 'reservoir'],
+  [waterway = 'riverbank'] {
+    [int_intermittent = 'no'] {
       polygon-fill: @water-color;
-      [way_pixels >= 4] {
-        polygon-gamma: 0.75;
-      }
-      [way_pixels >= 64] {
-        polygon-gamma: 0.6;
-      }
+      [way_pixels >= 4] { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.6; }
     }
-  }
-
-  [landuse = 'basin']::landuse {
-    [zoom >= 7][way_pixels >= 32],
-    [zoom >= 8] {
-      [int_intermittent = 'no'] {
-        polygon-fill: @water-color;
-        [way_pixels >= 4] {
-          polygon-gamma: 0.75;
-        }
-        [way_pixels >= 64] {
-          polygon-gamma: 0.6;
-        }
-      }
-      [int_intermittent = 'yes'] {
-        polygon-pattern-file: url('symbols/intermittent_water.png');
-        [way_pixels >= 4] {
-          polygon-pattern-gamma: 0.75;
-        }
-        [way_pixels >= 64] {
-          polygon-pattern-gamma: 0.6;
-        }
-      }
-    }
-  }
-
-  [natural = 'water']::natural,
-  [landuse = 'reservoir']::landuse,
-  [waterway = 'riverbank']::waterway {
-    [zoom >= 0][zoom < 1][way_pixels >= 4],
-    [zoom >= 1][zoom < 2][way_pixels >= 16],
-    [zoom >= 2][zoom < 8][way_pixels >= 32],
-    [zoom >= 8] {
-      [int_intermittent = 'no'] {
-        polygon-fill: @water-color;
-        [way_pixels >= 4] {
-          polygon-gamma: 0.75;
-        }
-        [way_pixels >= 64] {
-          polygon-gamma: 0.6;
-        }
-      }
-      [int_intermittent = 'yes'] {
-        polygon-pattern-file: url('symbols/intermittent_water.png');
-        [way_pixels >= 4] {
-          polygon-pattern-gamma: 0.75;
-        }
-        [way_pixels >= 64] {
-          polygon-pattern-gamma: 0.6;
-        }
-      }
+    [int_intermittent = 'yes'] {
+      polygon-pattern-file: url('symbols/intermittent_water.png');
+      [way_pixels >= 4] { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.6; }
     }
   }
 }
