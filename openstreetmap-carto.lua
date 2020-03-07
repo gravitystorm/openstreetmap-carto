@@ -190,6 +190,8 @@ delete_prefixes = {
 
 -- Big table for z_order and roads status for certain tags. z=0 is turned into
 -- nil by the z_order function
+-- highway=construction + construction=* values are created by dividing the
+-- main highway=* value by 10: e.g, construction=motorway is z_order=38
 local roads_info = {
     highway = {
         motorway        = {z = 380, roads = true},
@@ -250,6 +252,7 @@ local excluded_railway_service = {
 --- Gets the z_order for a set of tags
 -- @param tags OSM tags
 -- @return z_order if an object with z_order, otherwise nil
+-- highway=construction + construction=* z_order is divided by 10
 function z_order(tags)
     local z = 0
     for k, v in pairs(tags) do
