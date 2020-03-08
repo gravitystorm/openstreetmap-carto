@@ -190,8 +190,6 @@ delete_prefixes = {
 
 -- Big table for z_order and roads status for certain tags. z=0 is turned into
 -- nil by the z_order function
--- highway=construction + construction=* values are created by dividing the
--- main highway=* value by 10: e.g, construction=motorway is z_order=38
 local roads_info = {
     highway = {
         motorway        = {z = 380, roads = true},
@@ -218,7 +216,6 @@ local roads_info = {
         cycleway        = {z = 100, roads = false},
         steps           = {z = 90,  roads = false},
         platform        = {z = 90,  roads = false},
-        construction    = {z = 33,  roads = false}
     },
     railway = {
         rail            = {z = 440, roads = true},
@@ -239,6 +236,33 @@ local roads_info = {
         runway          = {z = 60,  roads = false},
         taxiway         = {z = 50,  roads = false},
     },
+    construction = {
+        motorway        = {z = 38, roads = true},
+        trunk           = {z = 37, roads = true},
+        primary         = {z = 36, roads = true},
+        secondary       = {z = 35, roads = true},
+        tertiary        = {z = 34, roads = false},
+        residential     = {z = 33, roads = false},
+        unclassified    = {z = 33, roads = false},
+        road            = {z = 33, roads = false},
+        living_street   = {z = 32, roads = false},
+        null            = {z = 33, roads = false},
+        pedestrian      = {z = 31, roads = false},
+        raceway         = {z = 30, roads = false},
+        motorway_link   = {z = 24, roads = true},
+        trunk_link      = {z = 23, roads = true},
+        primary_link    = {z = 22, roads = true},
+        secondary_link  = {z = 21, roads = true},
+        tertiary_link   = {z = 20, roads = false},
+        service         = {z = 15, roads = false},
+        track           = {z = 11, roads = false},
+        path            = {z = 10, roads = false},
+        footway         = {z = 10, roads = false},
+        bridleway       = {z = 10, roads = false},
+        cycleway        = {z = 10, roads = false},
+        steps           = {z = 9,  roads = false},
+        platform        = {z = 9,  roads = false},
+    },
     boundary = {
         administrative  = {z = 0,  roads = true}
     },
@@ -252,16 +276,12 @@ local excluded_railway_service = {
 --- Gets the z_order for a set of tags
 -- @param tags OSM tags
 -- @return z_order if an object with z_order, otherwise nil
--- highway=construction + construction=* z_order is divided by 10
 function z_order(tags)
     local z = 0
     for k, v in pairs(tags) do
         if roads_info[k] and roads_info[k][v] then
             z = math.max(z, roads_info[k][v].z)
         end
-    end
-    if tags["highway"] == "construction" then
-       z = math.max(z, roads_info["highway"][tags["construction"]]/10 or 33)
     end
     return z ~= 0 and z or nil
 end
