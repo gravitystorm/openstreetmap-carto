@@ -1,5 +1,17 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.25.0...master)
 
+### Major changes
+- Update Lua tag transforms.
+    Linestring and polygon decisions have changed and a database reload is required for this update.
+
+### Changes
+- Added upper way_area limits to most features using ST_PointOnSurface to avoid performance problems from large polygons
+- Moved MSS files into their own directory
+- Removed rendering of power=cable features
+- Removed overlay pattern for natural=sand
+- Reduced landcover fading at mid-low zoom levels
+- Removed rendering of barrier=kerb
+
 ## [v4.25.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.24.1...v4.25.0) - 2020-02-01
 ### Changes
 - Remove rendering of barrier=embankment (#4010)
