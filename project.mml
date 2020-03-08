@@ -524,7 +524,6 @@ Layer:
             ) AS features
           ORDER BY
             layernotnull,
-            CASE WHEN feature IN ('highway_construction') THEN 0 ELSE 1 END,
             z_order,
             CASE WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
             CASE WHEN feature IN ('railway_INT-preserved-ssy', 'railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
@@ -780,7 +779,6 @@ Layer:
             ) AS features
           ORDER BY
             layernotnull,
-            CASE WHEN feature IN ('highway_construction') THEN 0 ELSE 1 END,
             z_order,
             CASE WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
             CASE WHEN feature IN ('railway_INT-preserved-ssy', 'railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
@@ -985,7 +983,6 @@ Layer:
             ) AS features
           ORDER BY
             layernotnull,
-            CASE WHEN feature IN ('highway_construction') THEN 0 ELSE 1 END,
             z_order,
             CASE WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
             CASE WHEN feature IN ('railway_INT-preserved-ssy', 'railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
