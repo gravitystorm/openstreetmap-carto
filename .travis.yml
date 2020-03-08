@@ -11,6 +11,8 @@ addons:
     packages:
     - lua5.1
     - libxml2-utils
+    - python3-pip
+    - python3-setuptools
     - python-yaml
     - postgresql-9.5-postgis-2.4
     - osm2pgsql
@@ -18,7 +20,7 @@ env:
   - CARTO=1.2.0 MAPNIK='3.0.0 3.0.12'
 install:
   - npm install carto@$CARTO
-  - pip install --user colormath
+  - pip3 install --user colormath
   - mkdir -p data/simplified-water-polygons-split-3857 data/ne_110m_admin_0_boundary_lines_land data/water-polygons-split-3857
   - touch data/simplified-water-polygons-split-3857/simplified_water_polygons.shp data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp data/water-polygons-split-3857/water_polygons.shp
   - createdb -w -E utf8 -U postgres gis && psql -Xq -d gis -U postgres -w -c "CREATE EXTENSION postgis; CREATE EXTENSION hstore;"
