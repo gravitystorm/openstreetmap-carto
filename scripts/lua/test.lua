@@ -29,7 +29,7 @@ assert(z_order({highway="motorway", railway="rail"}) == 440 , "test failed: moto
 assert(z_order({highway="motorway", construction="motorway"}) == 380 , "test failed: highway=construction + construction=service")
 assert(z_order({highway="construction", construction=motorway}) == 38 , "test failed: highway=construction")
 assert(z_order({highway="construction", construction="service"}) == 15 , "test failed: highway=construction + construction=service")
-assert(z_order({highway="construction", construction=null}) == 33 , "test failed: highway=construction")
+assert(z_order({highway="construction", construction=null}) == 33 , "test failed: highway=construction with null construction=*")
 
 assert(z_order({highway="motorway"}) > z_order({highway="motorway_link"}) , "test failed: motorway_link")
 assert(z_order({highway="trunk"}) > z_order({highway="trunk_link"}) , "test failed: trunk_link")
