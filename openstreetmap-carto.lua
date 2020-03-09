@@ -246,7 +246,6 @@ local roads_info = {
         unclassified    = {z = 33, roads = false},
         road            = {z = 33, roads = false},
         living_street   = {z = 32, roads = false},
-        null            = {z = 33, roads = false},
         pedestrian      = {z = 31, roads = false},
         raceway         = {z = 30, roads = false},
         motorway_link   = {z = 24, roads = true},
@@ -281,6 +280,9 @@ function z_order(tags)
     for k, v in pairs(tags) do
         if roads_info[k] and roads_info[k][v] then
             z = math.max(z, roads_info[k][v].z)
+        end
+        if not tags["construction"] then 
+            z = 33
         end
     end
     return z ~= 0 and z or nil
