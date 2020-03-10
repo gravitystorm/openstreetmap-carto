@@ -22,7 +22,8 @@
         text-spacing: 900;
         text-clip: false;
         text-placement: line;
-        text-min-distance: 18;
+        text-repeat-distance: 200;
+        text-margin: 18;
         text-face-name: @book-fonts;
         text-halo-radius: @standard-halo-radius;
         text-halo-fill: @standard-halo-fill;
@@ -54,7 +55,8 @@
         text-spacing: 900;
         text-clip: false;
         text-placement: line;
-        text-min-distance: 18;
+        text-repeat-distance: 200;
+        text-margin: 18;
         text-face-name: @book-fonts;
         text-halo-radius: @standard-halo-radius;
         text-halo-fill: @standard-halo-fill;
@@ -92,7 +94,8 @@
         text-spacing: 900;
         text-clip: false;
         text-placement: line;
-        text-min-distance: 18;
+        text-repeat-distance: 200;
+        text-margin: 18;
         text-face-name: @book-fonts;
         text-halo-radius: @standard-halo-radius;
         text-halo-fill: @standard-halo-fill;
