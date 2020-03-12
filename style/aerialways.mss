@@ -112,29 +112,29 @@
       line/line-width: .67;
       line/line-join: round;
       line/line-color: #707070;
-      line/line-dasharray: 0,1,14,1;
+      line/line-dasharray: 0,0.5,14,0.5;
       dash/line-width: 1.5;
       dash/line-join: round;
       dash/line-color: #707070;
-      dash/line-dasharray: 0,1,1,12,1,1;
+      dash/line-dasharray: 0,0.5,0.5,12,0.5,0.5;
       [zoom >= 15] {
         line/line-width: 1;
         line/line-join: round;
         line/line-color: #707070;
-        line/line-dasharray: 0,1,16,1;
+        line/line-dasharray: 0,0.5,16,0.5;
         dash/line-width: 2.5;
         dash/line-join: round;
         dash/line-color: #707070;
-        dash/line-dasharray: 0,1,1,14,1,1;
+        dash/line-dasharray: 0,0.5,0.5,14,0.5,0.5;
       }
       [zoom >= 16] {
         line/line-width: 1.5;
-        line/line-dasharray: 0,1,20,1;
+        line/line-dasharray: 0,0.5,20,0.5;
         dash/line-width: 3.5;
-        dash/line-dasharray: 0,1,1,18,1,1;
+        dash/line-dasharray: 0,0.5,0.5,18,0.5,0.5;
         center/line-color: @land-color;
-        center/line-width: 0.5;
-        center/line-dasharray: 0,2,18,2;
+        center/line-width: 1;
+        center/line-dasharray: 0,1,18,1;
         center/line-join: round;
         [substance = 'water'] { center/line-color: @water-color; }
         [substance = 'gas'] { center/line-color: #c1c1c1; } // Lch(78,0,0)
@@ -142,11 +142,11 @@
       }
       [zoom >= 17] {
         line/line-width: 2;
-        line/line-dasharray: 0,1,24,1;
+        line/line-dasharray: 0,0.5,24,0.5;
         dash/line-width: 4;
-        dash/line-dasharray: 0,1,1,22,1,1;
+        dash/line-dasharray: 0,0.5,0.5,22,0.5,0.5;
         center/line-width: 1;
-        center/line-dasharray: 0,2,22,2;
+        center/line-dasharray: 0,1,22,1;
         text-name: "[name]";
         text-fill: #666666;
         text-size: 10;
@@ -163,11 +163,11 @@
       [zoom >= 18] {
         text-dy: 7;
         line/line-width: 3;
-        line/line-dasharray: 0,1,30,1;
+        line/line-dasharray: 0,0.5,30,0.5;
         dash/line-width: 5;
-        dash/line-dasharray: 0,1,1,28,1,1;
+        dash/line-dasharray: 0,0.5,0.5,28,0.5,0.5;
         center/line-width: 2;
-        center/line-dasharray: 0,2,28,2;
+        center/line-dasharray: 0,1,28,1;
       }
       [zoom >= 19] {
         text-size: 11;
