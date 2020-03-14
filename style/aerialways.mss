@@ -109,26 +109,25 @@
 
   [man_made = 'pipeline'] {
     [zoom >= 14] {
-      line/line-width: .67;
+      line/line-width: .7;
       line/line-join: round;
       line/line-color: #909090;
-      line/line-dasharray: 0,.67,14,.67;
+      line/line-dasharray: 0,.7,14,.7;
       dash/line-width: 2;
       dash/line-join: round;
       dash/line-color: #909090;
-      dash/line-dasharray: 0,.67,.5,13,.5,.67;
+      dash/line-dasharray: 0,.7,.7,12.6,.7,.7;
       [zoom >= 15] {
-        line/line-width: .67;
-        line/line-dasharray: 0,.67,16,.67;
-        dash/line-width: 2;
-        dash/line-dasharray: 0,.67,.5,15,.5,.67;
+        line/line-width: 1;
+        line/line-dasharray: 0,.7,16,.7;
+        dash/line-width: 2.5;
+        dash/line-dasharray: 0,.7,.7,14.6,.7,.7;
       }
       [zoom >= 16] {
-        line/line-width: 1;
+        line/line-width: 1.5;
         line/line-dasharray: 0,1,20,1;
-        dash/line-width: 2.5;
+        dash/line-width: 3;
         dash/line-dasharray: 0,1,1,18,1,1;
-
       }
       [zoom >= 17] {
         line/line-width: 2;
