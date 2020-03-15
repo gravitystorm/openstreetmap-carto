@@ -38,6 +38,14 @@ assert(z_order({highway="trunk"}) > z_order({highway="primary"}) , "test failed:
 assert(z_order({highway="primary"}) > z_order({highway="secondary"}) , "test failed: primary > secondary")
 assert(z_order({highway="secondary"}) > z_order({highway="tertiary"}) , "test failed: secondary > tertiary")
 
+assert(z_order({highway="construction"}) == 33 , "test failed: highway=construction")
+assert(z_order({highway="construction", construction="motorway"}) == 38 , "test failed: highway=construction construction=motorway")
+assert(z_order({highway="construction", construction="motorway", railway="rail"}) == 440, "test failed: construction motorway + rail")
+assert(z_order({highway="construction", construction="service"}) == 15 , "test failed: highway=construction construction=service")
+
+assert(z_order({highway="construction", construction="foo"}) == 33 , "test failed: highway=construction construction=foo")
+assert(z_order({highway="motorway", construction="service"}) == 380 , "test failed: highway=construction + construction=service")
+
 print("TESTING: roads")
 assert(roads({}) == 0, "test failed: no tags")
 assert(roads({foo="bar"}) == 0, "test failed: other tags")

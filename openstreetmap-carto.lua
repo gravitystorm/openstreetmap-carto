@@ -210,8 +210,7 @@ local roads_info = {
         bridleway       = {z = 100, roads = false},
         cycleway        = {z = 100, roads = false},
         steps           = {z = 90,  roads = false},
-        platform        = {z = 90,  roads = false},
-        construction    = {z = 10,  roads = false}
+        platform        = {z = 90,  roads = false}
     },
     railway = {
         rail            = {z = 440, roads = true},
@@ -252,6 +251,15 @@ function z_order(tags)
             z = math.max(z, roads_info[k][v].z)
         end
     end
+
+    if tags["highway"] == "construction" then
+        if tags["construction"] and roads_info["highway"][tags["construction"]] then
+            z = math.max(z, roads_info["highway"][tags["construction"]].z/10)
+        else
+            z = math.max(z, 33)
+        end
+    end
+
     return z ~= 0 and z or nil
 end
 
