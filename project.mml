@@ -1825,27 +1825,6 @@ Layer:
             END AS oneway,
             horse, bicycle
           FROM planet_osm_line l
-          JOIN (VALUES -- this join is also putting a condition on what is selected. features not matching it do not make it into the results.
-              ('motorway', 380),
-              ('trunk', 370),
-              ('primary', 360),
-              ('secondary', 350),
-              ('tertiary', 340),
-              ('residential', 330),
-              ('unclassified', 330),
-              ('road', 330),
-              ('living_street', 320),
-              ('pedestrian', 310),
-              ('raceway', 300),
-              ('motorway_link', 240),
-              ('trunk_link', 230),
-              ('primary_link', 220),
-              ('secondary_link', 210),
-              ('tertiary_link', 200),
-              ('service', 150),
-              ('construction', 10)
-            ) AS ordertable (highway, prio)
-            USING (highway)
           WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary',
                             'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction')
             AND (name IS NOT NULL
