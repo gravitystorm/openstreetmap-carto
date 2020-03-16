@@ -52,6 +52,7 @@
         ["addr_flats" != null] {
           text-name: [addr_unit] + "\n" + [addr_flats];
         }
+      }
       ["addr_flats" != null]["addr_housenumber" = null]["addr_unit" = null] {
         text-name: [addr_flats];
       }
