@@ -1,4 +1,6 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.25.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.0.0...master)
+
+## [v5.0.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.25.0...v5.0.0) - 2020-03-18
 
 ### Major changes
 - Update Lua tag transforms.
