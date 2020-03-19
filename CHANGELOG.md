@@ -3,16 +3,17 @@
 ## [v5.0.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.25.0...v5.0.0) - 2020-03-18
 
 ### Major changes
-- Update Lua tag transforms.
+- Update Lua tag transforms. (#4032)
     Linestring and polygon decisions have changed and a database reload is required for this update.
 
 ### Changes
-- Added upper way_area limits to most features using ST_PointOnSurface to avoid performance problems from large polygons
-- Moved MSS files into their own directory
-- Removed rendering of power=cable features
-- Removed overlay pattern for natural=sand
-- Reduced landcover fading at mid-low zoom levels
-- Removed rendering of barrier=kerb
+- Added upper way_area limits to most features using ST_PointOnSurface to avoid performance problems from large polygons (#4042)
+- Moved MSS files into their own directory (#4047)
+- Update index for route=ferry (#3909)
+- Removed rendering of power=cable features (#4045)
+- Removed overlay pattern for natural=sand (#3855)
+- Reduced landcover fading at mid-low zoom levels (#3952)
+- Update scripts to use Python3 (#4062, #4029, #4033)
 
 ## [v4.25.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.24.1...v4.25.0) - 2020-02-01
 ### Changes
