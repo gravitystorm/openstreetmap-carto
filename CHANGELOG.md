@@ -1,5 +1,9 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.0.0...master)
 
+### Changes
+- Remove way_area filtering for low zoom water (#4060)
+- Move small amenities to z18 (#4044)
+
 ## [v5.0.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.25.0...v5.0.0) - 2020-03-18
 
 ### Major changes
