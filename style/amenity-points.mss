@@ -386,8 +386,7 @@
       marker-fill: @amenity-brown;
     }
     [information = 'map'],
-    [information = 'tactile_map'],
-    [information = 'tactile_model'] {
+    [information = 'tactile_map'] {
       marker-file: url('symbols/tourism/map.svg');
     }
     [information = 'terminal'] {
