@@ -2122,7 +2122,7 @@ Layer:
           FROM planet_osm_line
           WHERE (waterway IN ('river', 'canal', 'stream', 'drain', 'ditch')
                  OR "natural" IN ('bay', 'strait'))
-            AND (tunnel IS NULL or tunnel NOT IN ('culvert', 'flooded'))
+            AND (tunnel IS NULL OR tunnel NOT IN ('culvert', 'flooded'))
             AND name IS NOT NULL
           ORDER BY COALESCE(layer,0)
         ) AS water_lines_text
