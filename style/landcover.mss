@@ -825,13 +825,13 @@
   [natural = 'ridge'][zoom >= 14] {
     line-pattern-file: url('symbols/ridge-mid.svg');
     [zoom >= 15] {
-      line-pattern-file: url('symbols/ridge.svg');
+      line-pattern-file: url('symbols/ridge2.svg');
     }
   }
   [natural = 'arete'][zoom >= 14] {
     line-pattern-file: url('symbols/arete-mid.svg');
     [zoom >= 15] {
-      line-pattern-file: url('symbols/arete.svg');
+      line-pattern-file: url('symbols/arete2.svg');
     }
   }
   [man_made = 'embankment'][zoom >= 15]::man_made {
