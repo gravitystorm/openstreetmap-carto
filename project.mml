@@ -1647,13 +1647,15 @@ Layer:
           COALESCE(
            'highway_' || CASE WHEN tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones' THEN 'ford' ELSE NULL END,
            'leisure_' || CASE WHEN leisure IN ('slipway', 'track') THEN leisure ELSE NULL END,
-           'attraction_' || CASE WHEN tags @> 'attraction=>water_slide' THEN 'water_slide' ELSE NULL END
+           'attraction_' || CASE WHEN tags @> 'attraction=>water_slide' THEN 'water_slide' ELSE NULL END,
+           'man_made_' || CASE WHEN man_made IN ('goods_conveyor') THEN man_made ELSE NULL END
             ) AS feature
           FROM planet_osm_line
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
           WHERE tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones'
             OR leisure IN ('slipway', 'track')
             OR tags @> 'attraction=>water_slide'
+            OR man_made IN ('goods_conveyor')
           ORDER BY COALESCE(layer,0)
         ) AS amenity_line
     properties:
@@ -2022,7 +2024,7 @@ Layer:
             NULL AS way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
           FROM planet_osm_line
-          WHERE (man_made IN ('pier', 'breakwater', 'groyne', 'embankment')
+          WHERE (man_made IN ('pier', 'breakwater', 'groyne', 'embankment', 'goods_conveyor')
               OR waterway IN ('dam', 'weir')
               OR "natural" IN ('cliff'))
             AND name IS NOT NULL

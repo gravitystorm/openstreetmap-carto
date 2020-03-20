@@ -3028,6 +3028,38 @@
       }
     }
   }
+
+  [feature = 'man_made_goods_conveyor'] {
+    [zoom >= 12] {
+      line/line-width: 1;
+      line/line-join: round;
+      line/line-cap: round;
+      line/line-color: #808080;
+
+      dash/line-width: 3.5;
+      dash/line-join: round;
+      dash/line-color: #707070;
+      dash/line-dasharray: 6,6;
+      dash/line-clip: false;
+      [zoom >= 17] {
+        text-name: "[name]";
+        text-fill: #666666;
+        text-size: 10;
+        text-dy: 4;
+        text-spacing: 900;
+        text-clip: false;
+        text-placement: line;
+        text-min-distance: 18;
+        text-face-name: @book-fonts;
+        text-halo-radius: @standard-halo-radius;
+        text-halo-fill: @standard-halo-fill;
+      }
+      [zoom >= 19] {
+        text-size: 11;
+        text-dy: 5;
+      }
+    }
+  }
 }
 
 #trees [zoom >= 16] {
