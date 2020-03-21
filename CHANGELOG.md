@@ -3,6 +3,8 @@
 ### Changes
 - Remove way_area filtering for low zoom water (#4060)
 - Move small amenities to z18 (#4044)
+- Remove duplicate selection of natural = cave_entrance, peak, volcano, saddle (#4068)
+- Change quarry outline to 10% darkened quarry color (#4063)
 
 ## [v5.0.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.25.0...v5.0.0) - 2020-03-18
 
