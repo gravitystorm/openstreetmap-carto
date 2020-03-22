@@ -5,7 +5,7 @@
 @waterway-text-repeat-distance: 200;
 
 #water-areas {
-  [natural = 'glacier']::natural {
+  [natural = 'glacier'] {
     [zoom >= 5] {
       line-width: 1.0;
       line-color: @glacier-line;
@@ -17,10 +17,10 @@
     }
   }
 
-  [natural = 'water'][water != 'river'][water != 'canal'][waterway != 'riverbank']::natural,
+  [natural = 'water'][water != 'river'][water != 'canal'][waterway != 'riverbank'],
   [waterway = 'dock'][zoom >= 9],
   [landuse = 'basin'][zoom >= 7],
-  [landuse = 'reservoir']::landuse {
+  [landuse = 'reservoir'] {
     [int_intermittent = 'no'] {
       polygon-fill: @water-color;
     }
@@ -41,8 +41,8 @@
     }
   }
 
-  [natural = 'water'][water = 'river']::natural,
-  [natural = 'water'][water = 'canal']::natural,
+  [natural = 'water'][water = 'river'],
+  [natural = 'water'][water = 'canal'],
   [waterway = 'riverbank']::waterway {
     [int_intermittent = 'no'] {
       polygon-fill: @river-color;
@@ -54,7 +54,7 @@
       }
     }
     [int_intermittent = 'yes'] {
-      polygon-pattern-file: url('symbols/intermittent_water.png');
+      polygon-pattern-file: url('symbols/intermittent_river.png');
       [way_pixels >= 4] {
         polygon-pattern-gamma: 0.75;
       }
