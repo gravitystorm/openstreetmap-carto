@@ -1025,7 +1025,7 @@ Layer:
           FROM planet_osm_line
           WHERE aeroway IN ('runway', 'taxiway')
           ORDER BY bridge NULLS FIRST,
-            CASE WHEN aeroway = 'runway' THEN 10 ELSE 0 END
+            CASE WHEN aeroway = 'runway' THEN 1 ELSE 0 END
         ) AS aeroways
     properties:
       cache-features: true
@@ -1290,15 +1290,17 @@ Layer:
                      AND (leisure is NULL OR NOT leisure IN ('park', 'recreation_ground', 'garden')))
              ) AND name IS NOT NULL
           ORDER BY CASE
-              WHEN place = 'suburb' THEN 3
-              WHEN place = 'village' THEN 4
-              WHEN place = 'hamlet' THEN 5
-              WHEN place = 'quarter' THEN 6
-              WHEN place = 'neighbourhood' THEN 7
-              WHEN place = 'isolated_dwelling' THEN 8
-              WHEN place = 'farm' THEN 9
-              WHEN place = 'square' THEN 10
-            END ASC, length(name) DESC, name
+              WHEN place = 'suburb' THEN 8
+              WHEN place = 'village' THEN 7
+              WHEN place = 'hamlet' THEN 6
+              WHEN place = 'quarter' THEN 5
+              WHEN place = 'neighbourhood' THEN 4
+              WHEN place = 'isolated_dwelling' THEN 3
+              WHEN place = 'farm' THEN 2
+              WHEN place = 'square' THEN 1
+            END DESC,
+            length(name) DESC,
+            name
         ) AS placenames_small
     properties:
       cache-features: true
@@ -1652,10 +1654,10 @@ Layer:
         FROM planet_osm_point
         WHERE power IN ('tower', 'pole')
         ORDER BY
-          CASE
-            WHEN power = 'tower' THEN 1
-            WHEN power = 'pole' THEN 2
-          END
+          CASE power
+            WHEN 'tower' THEN 2
+            WHEN 'pole' THEN 1
+          END DESC
         ) AS power_towers
     properties:
       minzoom: 14
@@ -2157,8 +2159,7 @@ Layer:
             )  AS feature,
             access,
             way_area,
-            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
-            CASE WHEN amenity IN ('waste_basket', 'waste_disposal') THEN 2 ELSE 1 END AS prio
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
             FROM
               (SELECT
                   ST_PointOnSurface(way) AS way,
@@ -2197,7 +2198,13 @@ Layer:
                OR historic IN ('wayside_cross', 'wayside_shrine')
                OR man_made IN ('cross')
                OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile', 'motorcycle_barrier', 'cycle_barrier', 'full-height_turnstile', 'turnstile', 'kissing_gate')
-            ORDER BY prio DESC NULLS LAST,
+            ORDER BY
+              CASE amenity
+                WHEN 'waste_basket' THEN 1
+                WHEN 'waste_disposal' THEN 1
+                WHEN 'bench' THEN 2
+                WHEN NULL THEN 3
+              END DESC,
               way_pixels DESC NULLS LAST
           ) AS amenity_low_priority
     properties:
