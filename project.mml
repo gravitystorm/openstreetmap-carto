@@ -1402,8 +1402,8 @@ Layer:
           FROM planet_osm_polygon
           WHERE way && !bbox!
             AND man_made = 'bridge'
-            AND way_area > 62.5*POW(!scale_denominator!*0.001*0.28,2)
-            AND way_area < 64000*POW(!scale_denominator!*0.001*0.28,2)
+            AND way_area > 125*POW(!scale_denominator!*0.001*0.28,2)
+            AND way_area < 768000*POW(!scale_denominator!*0.001*0.28,2)
           ORDER BY way_area DESC
         ) AS bridge_text
     properties:

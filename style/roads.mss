@@ -2709,7 +2709,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
 #bridge-text  {
   [man_made = 'bridge'] {
-    [zoom >= 12][way_pixels > 62.5][way_pixels <= 64000] {
+    [zoom >= 12][way_pixels > 125][way_pixels <= 768000] {
       text-name: "[name]";
       text-size: 10;
       text-wrap-width: 30; // 3 em
