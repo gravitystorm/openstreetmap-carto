@@ -611,7 +611,7 @@ Layer:
         (SELECT
             way, "natural", man_made
           FROM planet_osm_line
-          WHERE "natural" = 'cliff' OR man_made = 'embankment'
+          WHERE "natural" IN ('arete', 'cliff', 'ridge') OR man_made = 'embankment'
         ) AS cliffs
     properties:
       cache-features: true
@@ -1981,7 +1981,7 @@ Layer:
           FROM planet_osm_line
           WHERE (man_made IN ('pier', 'breakwater', 'groyne', 'embankment')
               OR waterway IN ('dam', 'weir')
-              OR "natural" IN ('cliff'))
+              OR "natural" IN ('arete', 'cliff', 'ridge'))
             AND name IS NOT NULL
         ) AS text_line
     properties:
