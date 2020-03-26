@@ -2686,9 +2686,7 @@
   }
 
   [feature = 'power_plant'][is_building = 'no'][zoom >= 10],
-  [feature = 'power_station'][is_building = 'no'][zoom >= 10],
   [feature = 'power_generator'][is_building = 'no']["generator:source" != 'wind'][zoom >= 10],
-  [feature = 'power_sub_station'][is_building = 'no'][zoom >= 13],
   [feature = 'power_substation'][is_building = 'no'][zoom >= 13]{
     [way_pixels > 3000],
     [zoom >= 17] {
