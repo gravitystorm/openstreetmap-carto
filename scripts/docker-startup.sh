@@ -54,7 +54,7 @@ EOF
 
 kosmtik)
   # Downloading needed shapefiles
-  python3 scripts/get-shapefiles.py -n
+  scripts/get-external-data.py
 
   # Creating default Kosmtik settings file
   if [ ! -e ".kosmtik-config.yml" ]; then
