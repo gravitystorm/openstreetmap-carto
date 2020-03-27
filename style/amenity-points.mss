@@ -1381,6 +1381,11 @@
     marker-clip: false;
   }
 
+  [feature = 'natural_spring'][zoom >= 14] {
+    marker-file: url('symbols/spring.svg');
+    marker-clip: false;
+  }
+
   [feature = 'natural_cave_entrance'][zoom >= 15] {
     marker-file: url('symbols/natural/cave.svg');
     marker-clip: false;

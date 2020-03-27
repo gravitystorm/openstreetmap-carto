@@ -341,33 +341,6 @@ Layer:
         ) AS water_barriers_poly
     properties:
       minzoom: 13
-  - id: springs
-    geometry: point
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            "natural"
-          FROM
-          (SELECT
-              ST_PointOnSurface(way) AS way,
-              "natural"
-            FROM planet_osm_polygon
-            WHERE way && !bbox!
-            AND way_area < 768000*POW(!scale_denominator!*0.001*0.28,2)
-          UNION ALL
-          SELECT
-              way,
-              "natural"
-            FROM planet_osm_point
-            WHERE way && !bbox!
-            ) _
-          WHERE "natural" IN ('spring')
-        ) AS springs
-    properties:
-      minzoom: 14
   - id: piers-poly
     geometry: polygon
     <<: *extents
