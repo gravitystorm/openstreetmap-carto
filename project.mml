@@ -1280,7 +1280,7 @@ Layer:
             way_area DESC
         ) AS county_names
     properties:
-      minzoom: 4
+      minzoom: 8
   - id: placenames-small
     geometry: point
     <<: *extents
