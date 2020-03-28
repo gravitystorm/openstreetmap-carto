@@ -45,20 +45,28 @@
 #state-names {
   [zoom >= 5][zoom < 7][way_pixels > 3000],
   [zoom >= 7][way_pixels > 3000][way_pixels < 196000] {
-    text-name: "[name]";
-    text-size: 10;
-    text-wrap-width: 30; // 3.0 em
-    text-line-spacing: -1.5; // -0.15 em
-    text-margin: 7.0; // 0.7 em
-    text-fill: @state-labels;
-    text-face-name: @oblique-fonts;
-    text-halo-fill: @standard-halo-fill;
-    text-halo-radius: @standard-halo-radius * 1.5;
-    [zoom >= 7] {
-      text-size: 11;
-      text-wrap-width: 50; // 4.5 em
-      text-line-spacing: -0.6; // -0.05 em
-      text-margin: 7.7; // 0.7 em
+    [admin_level = '4'][zoom >= 5],
+    [admin_level = '5'][zoom >= 8],
+    [admin_level = '6'][zoom >= 10] {
+      text-name: "[name]";
+      text-size: 10;
+      text-wrap-width: 30; // 3.0 em
+      text-line-spacing: -1.5; // -0.15 em
+      text-margin: 7.0; // 0.7 em
+      text-fill: @state-labels;
+      text-face-name: @oblique-fonts;
+      text-halo-fill: @standard-halo-fill;
+      text-halo-radius: @standard-halo-radius * 1.5;
+      [admin_level = '4'][zoom >= 7],
+      [admin_level = '5'][zoom >= 10] {
+        text-size: 11;
+        text-wrap-width: 50; // 4.5 em
+        text-line-spacing: -0.6; // -0.05 em
+        text-margin: 7.7; // 0.7 em
+        [zoom >= 10] {
+          text-size: 12;
+        }
+      }
     }
   }
 }
@@ -258,6 +266,30 @@
     }
   }
 }
+
+#county-names {
+  [zoom >= 8][way_pixels > 3000][way_pixels < 196000] {
+    [admin_level = '5'][zoom >= 8],
+    [admin_level = '6'][zoom >= 10] {
+      text-name: "[name]";
+      text-size: 10;
+      text-wrap-width: 30; // 3.0 em
+      text-line-spacing: -1.5; // -0.15 em
+      text-margin: 7.0; // 0.7 em
+      text-fill: @state-labels;
+      text-face-name: @oblique-fonts;
+      text-halo-fill: @standard-halo-fill;
+      text-halo-radius: @standard-halo-radius * 1.5;
+      [admin_level = '5'][zoom >= 10] {
+        text-size: 11;
+        text-wrap-width: 50; // 4.5 em
+        text-line-spacing: -0.6; // -0.05 em
+        text-margin: 7.7; // 0.7 em
+      }
+    }
+  }
+}
+
 
 #placenames-medium::low-importance {
   [category = 2] {
