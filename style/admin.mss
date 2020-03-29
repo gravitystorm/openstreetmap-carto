@@ -426,7 +426,7 @@ overlapping borders correctly.
   [zoom >= 17] {
     text-name: "[name]";
     text-face-name: @book-fonts;
-    text-fill: @admin-boundaries;
+    text-fill: @state-labels;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-largest-bbox-only: false;
