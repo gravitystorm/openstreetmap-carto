@@ -1,4 +1,4 @@
-@admin-boundaries: #ac46ac;
+@admin-boundaries: #965b95; // Lch(47,40,327)
 
 @admin-simplify: 4;
 @admin-simplify-algorithm: visvalingam-whyatt;
@@ -427,6 +427,7 @@ overlapping borders correctly.
     text-name: "[name]";
     text-face-name: @book-fonts;
     text-fill: @state-labels;
+    [admin_level = '6'] { text-fill: @county-labels; }
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-largest-bbox-only: false;
