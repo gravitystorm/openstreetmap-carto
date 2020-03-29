@@ -1,4 +1,4 @@
-@admin-boundaries: #965b95; // Lch(47,40,327)
+@admin-boundaries: #3c7a72; // Lch(47,22,185)
 
 @admin-simplify: 4;
 @admin-simplify-algorithm: visvalingam-whyatt;
@@ -120,6 +120,7 @@ overlapping borders correctly.
       thin/line-join: bevel;
       thin/line-color: black;
       thin/line-width: 0.8;
+      thin/line-dasharray: 0,1,6,1;
       thin/line-simplify: @admin-simplify;
       thin/line-simplify-algorithm: @admin-simplify-algorithm;
     }
@@ -133,13 +134,12 @@ overlapping borders correctly.
       line-width: 4.0;
       line-dasharray: 0,1.5,9,1.5;
       thin/line-width: 1.0;
-      line-dasharray: 0,1.5,9,1.5;
+      thin/line-dasharray: 0,1.5,9,1.5;
     }
     [zoom >= 13] {
       background/line-width: 5;
       line-width: 5;
       thin/line-width: 1.2;
-      thin/line-dasharray: 0,1.5,10,1.5;
     }
     [zoom >= 15] {
       background/line-width: 6;
@@ -374,6 +374,25 @@ overlapping borders correctly.
   [admin_level = '9'] {
     background/line-join: bevel;
     background/line-color: white;
+    background/line-width: 1.0;
+    background/line-simplify: @admin-simplify;
+    background/line-simplify-algorithm: @admin-simplify-algorithm;
+    line-join: bevel;
+    line-color: @admin-boundaries;
+    line-width: 1.0;
+    line-simplify: @admin-simplify;
+    line-simplify-algorithm: @admin-simplify-algorithm;
+    line-dasharray: 0,3,2,2,2,2,2,2,2,3;
+    line-clip: false;
+    [zoom >= 15] {
+      background/line-width: 1.2;
+      line-width: 1.2;
+      line-dasharray: 0,4,3,3,3,3,3,3,3,4;
+    }
+  }
+  [admin_level = '10'][zoom >= 14] {
+    background/line-join: bevel;
+    background/line-color: white;
     background/line-width: 0.8;
     background/line-simplify: @admin-simplify;
     background/line-simplify-algorithm: @admin-simplify-algorithm;
@@ -382,30 +401,11 @@ overlapping borders correctly.
     line-width: 0.8;
     line-simplify: @admin-simplify;
     line-simplify-algorithm: @admin-simplify-algorithm;
-    line-dasharray: 0,3,2,2,2,2,2,2,2,3;
-    line-clip: false;
-    [zoom >= 15] {
-      background/line-width: 1.0;
-      line-width: 1.0;
-      line-dasharray: 0,4,3,3,3,3,3,3,3,4;
-    }
-  }
-  [admin_level = '10'][zoom >= 14] {
-    background/line-join: bevel;
-    background/line-color: white;
-    background/line-width: 0.6;
-    background/line-simplify: @admin-simplify;
-    background/line-simplify-algorithm: @admin-simplify-algorithm;
-    line-join: bevel;
-    line-color: @admin-boundaries;
-    line-width: 0.6;
-    line-simplify: @admin-simplify;
-    line-simplify-algorithm: @admin-simplify-algorithm;
     line-dasharray: 0,3,2,2,2,2,2,3;
     line-clip: false;
     [zoom >= 15] {
-      background/line-width: 0.8;
-      line-width: 0.8;
+      background/line-width: 1;
+      line-width: 1;
       line-dasharray: 0,4,3,3,3,3,3,4;
     }
   }
