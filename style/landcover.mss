@@ -662,6 +662,7 @@
   }
 
   [feature = 'leisure_sports_centre'],
+  [feature = 'leisure_water_park'],
   [feature = 'leisure_stadium'] {
     [zoom >= 10] {
       polygon-fill: @stadium;
