@@ -2577,22 +2577,11 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
 
-  [feature = 'highway_pedestrian'],
-  [feature = 'highway_footway'],
-  [feature = 'highway_cycleway'],
-  [feature = 'highway_path'] {
+  [feature = 'highway_pedestrian'] {
     [zoom >= 15] {
       line-color: grey;
       line-width: 1;
     }
-  }
-
-  [feature = 'highway_track'][zoom >= 15] {
-    line-color: @track-fill;
-    line-width: 1;
-    line-dasharray: 5,4,2,4;
-    line-cap: round;
-    line-join: round;
   }
 
   [feature = 'highway_platform'],
@@ -2617,17 +2606,10 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
 
-  [feature = 'highway_pedestrian'],
-  [feature = 'highway_footway'],
-  [feature = 'highway_cycleway'],
-  [feature = 'highway_path'] {
+  [feature = 'highway_pedestrian'] {
     [zoom >= 15] {
       polygon-fill: @pedestrian-fill;
     }
-  }
-
-  [feature = 'highway_track'][zoom >= 15] {
-    polygon-fill: #cdbea0;
   }
 
   [feature = 'highway_platform'],
