@@ -110,7 +110,7 @@
       marker-file: url('symbols/amenity/restaurant.svg');
     }
     [feature = 'amenity_ice_cream'][zoom >= 18] {
-      marker-file: url('symbols/shop/ice_cream.svg');
+      marker-file: url('symbols/amenity/ice_cream.svg');
     }
     [feature = 'amenity_pub'][zoom >= 18] {
       marker-file: url('symbols/amenity/pub.svg');
@@ -1018,10 +1018,6 @@
 
     [shop = 'houseware'][zoom >= 18] {
       marker-file: url('symbols/shop/houseware.svg');
-    }
-
-    [shop = 'ice_cream'][zoom >= 18] {
-      marker-file: url('symbols/shop/ice_cream.svg');
     }
 
     [shop = 'car'][zoom >= 18] {
