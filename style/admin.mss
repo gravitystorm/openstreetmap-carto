@@ -106,7 +106,7 @@ overlapping borders correctly.
       thin/line-join: bevel;
       thin/line-color: black;
       thin/line-width: 0.8;
-      thin/line-dasharray: 0,1,3,1;
+      thin/line-dasharray: 0,1,6,1;
     }
     [zoom >= 11] {
       background/line-width: 3.5;
@@ -141,6 +141,7 @@ overlapping borders correctly.
       line-color: @admin-boundaries;
       line-join: bevel;
       line-width: 0.4;
+      line-dasharray: 3,1;
       line-clip: false;
     }
     [zoom >= 5] {
@@ -150,21 +151,22 @@ overlapping borders correctly.
     [zoom >= 6] {
       background/line-width: 0.8;
       line-width: 0.8;
+      line-dasharray: 4,1.5;
     }
     [zoom >= 7] {
       background/line-width: 1;
       line-width: 1;
-      line-dasharray: 4,2;
+      line-dasharray: 6,2;
     }
     [zoom >= 8] {
       background/line-width: 1.2;
       line-width: 1.2;
-      line-dasharray: 6,2;
+      line-dasharray: 8,2;
     }
     [zoom >= 9] {
       background/line-width: 1.8;
       line-width: 1.8;
-      line-dasharray: 8,3;
+      line-dasharray: 0,1.5,10,1.5;
     }
     [zoom >= 10] {
       background/line-width: 2.0;
@@ -249,7 +251,7 @@ overlapping borders correctly.
     [zoom >= 15] {
       background/line-width: 2.5;
       line-width: 2.5;
-      line-dasharray: 24,2,3,2;
+      line-dasharray: 20,2,3,2;
     }
   }
   [admin_level = '6'][zoom >= 10] {
@@ -277,7 +279,7 @@ overlapping borders correctly.
     [zoom >= 15] {
       background/line-width: 2.0;
       line-width: 2.0;
-      line-dasharray: 18,2,3,2,3,2;
+      line-dasharray: 16,2,3,2,3,2;
     }
   }
   [admin_level = '7'] {
@@ -302,7 +304,7 @@ overlapping borders correctly.
     [zoom >= 15] {
       background/line-width: 1.8;
       line-width: 1.8;
-      line-dasharray: 12,2,3,2,3,2,3,2;
+      line-dasharray: 12,2,3,2,2,2,3,2;
     }
   }
  [admin_level = '8'] {
@@ -313,7 +315,7 @@ overlapping borders correctly.
       line-join: bevel;
       line-color: @admin-boundaries;
       line-width: 1;
-      line-dasharray: 6,2,2,2,2,2,2,2,2,2;
+      line-dasharray: 6,2,3,2,2,2,2,2,3,2;
       line-clip: false;
     }
     [zoom >= 13] {
@@ -323,7 +325,7 @@ overlapping borders correctly.
     [zoom >= 15] {
       background/line-width: 1.5;
       line-width: 1.5;
-      line-dasharray: 9,2,3,2,3,2,3,2,3,2;
+      line-dasharray: 10,2,2,2,3,2,3,2,2,2;
     }
   }
   opacity: 0.5;
