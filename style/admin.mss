@@ -2,8 +2,10 @@
 
 /* For performance reasons, the admin border layers are split into three groups
 for low, middle and high zoom levels.
-For each zoomlevel, all borders come from a single attachment, to handle
-overlapping borders correctly.
+Three attachments are used, with minor borders before major ones, and the thin centerline last, to handle
+overlapping borders correctly and allow each type to have a different level of opacity.
+Overlapping borders are hidden by a white background line, rendered before each line.
+Then all three layers are added to the rendering with comp-op: darken, so that the white lines will not show
 */
 
 #admin-low-zoom[zoom < 8],
@@ -78,7 +80,7 @@ overlapping borders correctly.
       background/line-color: white;
       background/line-width: 0.6;
       thin/line-join: bevel;
-      thin/line-color: darken(@admin-boundaries, 10%);
+      thin/line-color: darken(@admin-boundaries, 5%);
       thin/line-width: 0.6;
     }
     [zoom >= 9] {
@@ -97,7 +99,7 @@ overlapping borders correctly.
     [zoom >= 12] {
       background/line-width: 1.8;
       thin/line-width: 1.8;
-      thin/line-color: darken(@admin-boundaries, 5%);
+      thin/line-color: @admin-boundaries;
       thin/line-dasharray: 26,2,2,2,2,2;
     }
     [zoom >= 13] {
@@ -183,14 +185,12 @@ overlapping borders correctly.
       background/line-color: white;
       background/line-width: 0.4;
       thin/line-join: bevel;
-      thin/line-color: darken(@admin-boundaries, 10%);
+      thin/line-color: darken(@admin-boundaries, 5%);
       thin/line-width: 0.4;
-      thin/line-dasharray: 4.5,1,4.5,1,1,1;
     }
     [zoom >= 9] {
       background/line-width: 0.6;
       thin/line-width: 0.6;
-      thin/line-dasharray: 5.5,1.2,5.5,1.2,1.2,1.2;
     }
     [zoom >= 10] {
       background/line-width: 1;
@@ -204,7 +204,7 @@ overlapping borders correctly.
     [zoom >= 12] {
       background/line-width: 1.5;
       thin/line-width: 1.5;
-      thin/line-color: darken(@admin-boundaries, 5%);
+      thin/line-color: @admin-boundaries;
       thin/line-dasharray: 0,1.5,10,2,2,2,10,1.5;
     }
     [zoom >= 13] {
@@ -259,17 +259,17 @@ overlapping borders correctly.
     [zoom >= 8] {
       background/line-width: 1.5;
       line-width: 1.5;
-      line-dasharray: 0,1.2,8,1.2;
+      line-dasharray: 0,1,8,1;
     }
     [zoom >= 9] {
       background/line-width: 2;
       line-width: 2;
-      line-dasharray: 0,1.5,10,1.5;
+      line-dasharray: 0,1,10,1;
     }
     [zoom >= 10] {
       background/line-width: 2.5;
       line-width: 2.5;
-      line-dasharray: 0,1.2,12,1.2;
+      line-dasharray: 0,1.5,12,1.5;
     }
     [zoom >= 11] {
       background/line-width: 3;
@@ -291,30 +291,23 @@ overlapping borders correctly.
     }
   }
   [admin_level = '4']::narrowline {
-    [zoom >= 8] {
+    [zoom >= 10] {
       background/line-join: bevel;
       background/line-color: white;
-      background/line-width: 0.4;
-      thin/line-join: bevel;
-      thin/line-color: darken(@admin-boundaries, 10%);
-      thin/line-width: 0.4;
-      thin/line-dasharray: 0,1,8,1;
-    }
-    [zoom >= 9] {
       background/line-width: 0.6;
+      thin/line-color: darken(@admin-boundaries, 5%);
       thin/line-width: 0.6;
-      thin/line-dasharray: 0,1,10,1;
+      thin/line-dasharray: 0,2,4,3,4,2;
     }
-    [zoom >= 10] {
+    [zoom >= 11] {
       background/line-width: 0.8;
       thin/line-width: 0.8;
-      thin/line-dasharray: 0,1.2,5,2,5,1.2;
     }
     [zoom >= 12] {
       background/line-width: 1;
-      thin/line-color: darken(@admin-boundaries, 5%);
       thin/line-width: 1;
-      thin/line-dasharray: 0,1.5,7.5,3,7.5,1.5;
+      thin/line-color: @admin-boundaries;
+      thin/line-dasharray: 0,2,6.5,4,6.5,2,;
     }
     [zoom >= 13] {
       background/line-width: 1.2;
@@ -323,16 +316,18 @@ overlapping borders correctly.
     [zoom >= 15] {
       background/line-width: 1.5;
       thin/line-width: 1.5;
-      thin/line-dasharray: 0,2,10,4,10,2;
+      thin/line-dasharray: 0,3,9,4,9,3;
     }
   }
-  ::firstline { opacity: 0.5; }
+  ::firstline { opacity: 0.4;
+    [zoom >= 10] { opacity: 0.5; }
+  }
   ::wideline { opacity: 0.4;
     [zoom >= 10] { opacity: 0.35; }
     [zoom >= 12] { opacity: 0.3; }
   }
-  ::narrowline { opacity: 0.7;
-    [zoom >= 10] { opacity: 0.65; }
+  ::narrowline { opacity: 0.6;
+    [zoom >= 10] { opacity: 0.6; }
     [zoom >= 12] { opacity: 0.6; }
   }
   /*
