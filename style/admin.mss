@@ -343,7 +343,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     line-join: bevel;
     line-color: @admin-boundaries;
     line-width: 0.6;
-    line-dasharray: 10,1.5,1.5,1.5;
+    line-dasharray: 10,2,2,2;
     line-clip: false;
     [zoom >= 9] {
       background/line-width: 0.8;
