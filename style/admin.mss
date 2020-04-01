@@ -211,6 +211,8 @@ overlapping borders correctly.
   admin_level is rendered on top, and therefore the only visible boundary.
   */
   opacity: 0.4;
+  [zoom >= 10] { opacity: 0.35; }
+  [zoom >= 12] { opacity: 0.3; }
   comp-op: darken;
 }
 
