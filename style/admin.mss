@@ -143,58 +143,57 @@ overlapping borders correctly.
     }
     [zoom >= 7] {
       background/line-width: 1.5;
-      line-width: 1.2;
+      line-width: 1.5;
     }
     [zoom >= 8] {
       background/line-width: 2.1;
-      line-width: 1.5;
+      line-width: 2.1;
     }
     [zoom >= 9] {
       background/line-width: 2.7;
-      line-width: 2;
+      line-width: 2.7;
     }
     [zoom >= 10] {
       background/line-width: 3.5;
-      line-width: 3;
+      line-width: 3.5;
       line-dasharray: 0,1,17.5,1;
     }
     [zoom >= 11] {
       background/line-width: 4;
-      line-width: 3.5;
+      line-width: 4;
     }
     [zoom >= 12] {
       background/line-width: 4.5;
-      line-width: 4.0;
+      line-width: 4.5;
       line-dasharray: 0,1.5,26,1.5;
     }
     [zoom >= 13] {
       background/line-width: 5;
-      line-width: 4.5;
+      line-width: 5;
     }
     [zoom >= 15] {
       background/line-width: 5.5;
-      line-width: 5;
+      line-width: 5.5;
       line-dasharray: 0,2,35,2;
     }
   }
   [admin_level = '3']::narrowline {
     [zoom >= 8] {
+      background/line-join: bevel;
+      background/line-color: white;
+      background/line-width: 0.4;
       thin/line-join: bevel;
       thin/line-color: darken(@admin-boundaries, 10%);
       thin/line-width: 0.4;
       thin/line-dasharray: 4.5,1,4.5,1,1,1;
     }
     [zoom >= 9] {
+      background/line-width: 0.6;
       thin/line-width: 0.6;
       thin/line-dasharray: 5.5,1.2,5.5,1.2,1.2,1.2;
-
     }
     [zoom >= 10] {
-      background/line-join: bevel;
-      background/line-color: white;
       background/line-width: 1;
-      thin/line-join: bevel;
-      thin/line-color: darken(@admin-boundaries, 10%);
       thin/line-width: 1;
       thin/line-dasharray: 0,1,6.5,1.5,1.5,1.5,6.5,1;
     }
@@ -204,7 +203,7 @@ overlapping borders correctly.
     }
     [zoom >= 12] {
       background/line-width: 1.5;
-      thin/line-width: 1.2;
+      thin/line-width: 1.5;
       thin/line-color: darken(@admin-boundaries, 5%);
       thin/line-dasharray: 0,1.5,10,2,2,2,10,1.5;
     }
@@ -240,32 +239,32 @@ overlapping borders correctly.
       line-color: @admin-boundaries;
       line-join: bevel;
       line-width: 0.4;
-      line-dasharray: 3,1;
       line-clip: false;
     }
     [zoom >= 5] {
       background/line-width: 0.6;
       line-width: 0.6;
+      line-dasharray: 4,1;
     }
     [zoom >= 6] {
       background/line-width: 0.8;
       line-width: 0.8;
-      line-dasharray: 4,1.5;
+      line-dasharray: 5,1.5;
     }
     [zoom >= 7] {
       background/line-width: 1;
       line-width: 1;
-      line-dasharray: 6,1.5;
+      line-dasharray: 6,2;
     }
     [zoom >= 8] {
       background/line-width: 1.5;
       line-width: 1.5;
-      line-dasharray: 0,1,8,1;
+      line-dasharray: 0,1.2,8,1.2;
     }
     [zoom >= 9] {
       background/line-width: 2;
       line-width: 2;
-      line-dasharray: 0,1,10,1;
+      line-dasharray: 0,1.5,10,1.5;
     }
     [zoom >= 10] {
       background/line-width: 2.5;
@@ -293,28 +292,36 @@ overlapping borders correctly.
   }
   [admin_level = '4']::narrowline {
     [zoom >= 8] {
+      background/line-join: bevel;
+      background/line-color: white;
+      background/line-width: 0.4;
       thin/line-join: bevel;
       thin/line-color: darken(@admin-boundaries, 10%);
       thin/line-width: 0.4;
-      thin/line-dasharray: 0,1,3,2,3,1;
+      thin/line-dasharray: 0,1,8,1;
     }
     [zoom >= 9] {
+      background/line-width: 0.6;
       thin/line-width: 0.6;
-      thin/line-dasharray: 0,1,4,2,4,1;
+      thin/line-dasharray: 0,1,10,1;
     }
     [zoom >= 10] {
+      background/line-width: 0.8;
       thin/line-width: 0.8;
       thin/line-dasharray: 0,1.2,5,2,5,1.2;
     }
     [zoom >= 12] {
+      background/line-width: 1;
+      thin/line-color: darken(@admin-boundaries, 5%);
       thin/line-width: 1;
       thin/line-dasharray: 0,1.5,7.5,3,7.5,1.5;
     }
     [zoom >= 13] {
-      thin/line-color: darken(@admin-boundaries, 5%);
+      background/line-width: 1.2;
       thin/line-width: 1.2;
     }
     [zoom >= 15] {
+      background/line-width: 1.5;
       thin/line-width: 1.5;
       thin/line-dasharray: 0,2,10,4,10,2;
     }
@@ -324,8 +331,8 @@ overlapping borders correctly.
     [zoom >= 10] { opacity: 0.35; }
     [zoom >= 12] { opacity: 0.3; }
   }
-  ::narrowline { opacity: 0.8;
-    [zoom >= 10] { opacity: 0.7; }
+  ::narrowline { opacity: 0.7;
+    [zoom >= 10] { opacity: 0.65; }
     [zoom >= 12] { opacity: 0.6; }
   }
   /*
@@ -458,10 +465,10 @@ overlapping borders correctly.
   [admin_level = '9'][zoom >= 13]::firstline {
     background/line-join: bevel;
     background/line-color: white;
-    background/line-width: 1.0;
+    background/line-width: 1;
     line-join: bevel;
     line-color: @admin-boundaries;
-    line-width: 1.0;
+    line-width: 1;
     line-dasharray: 0,3,2,2,2,2,2,2,2,3;
     line-clip: false;
     [zoom >= 15] {
@@ -471,12 +478,16 @@ overlapping borders correctly.
     }
   }
   [admin_level = '10'][zoom >= 14]::firstline {
+    background/line-join: bevel;
+    background/line-color: white;
+    background/line-width: 0.8;
     line-join: bevel;
     line-color: @admin-boundaries;
     line-width: 0.8;
     line-dasharray: 0,4,3,2,3,2,3,4;
     line-clip: false;
     [zoom >= 15] {
+      background/line-width: 1;
       line-width: 1;
       line-dasharray: 0,6,3,3,2,3,3,6;
     }
