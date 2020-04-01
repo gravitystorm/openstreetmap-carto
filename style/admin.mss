@@ -167,7 +167,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     [zoom >= 12] {
       background/line-width: 4.5;
       line-width: 4.5;
-      line-dasharray: 26,3;
+      line-dasharray: 24,3;
     }
     [zoom >= 13] {
       background/line-width: 5;
@@ -176,7 +176,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     [zoom >= 15] {
       background/line-width: 5.5;
       line-width: 5.5;
-      line-dasharray: 35,4;
+      line-dasharray: 33,3;
     }
   }
   [admin_level = '3']::narrowline {
@@ -197,7 +197,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
       background/line-width: 1.5;
       thin/line-width: 1.5;
       thin/line-color: @admin-boundaries;
-      thin/line-dasharray: 10,2,2,2,10,3;
+      thin/line-dasharray: 9,2,2,2,9,3;
     }
     [zoom >= 13] {
       background/line-width: 1.8;
@@ -206,7 +206,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     [zoom >= 15] {
       background/line-width: 2;
       thin/line-width: 2;
-      thin/line-dasharray: 13,3,3,3,13,4;
+      thin/line-dasharray: 12,3,3,3,12,3;
     }
   }
 
@@ -241,27 +241,26 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     [zoom >= 6] {
       background/line-width: 0.8;
       line-width: 0.8;
-      line-dasharray: 5,1.5;
+      line-dasharray: 4,1.5;
     }
     [zoom >= 7] {
       background/line-width: 1;
       line-width: 1;
-      line-dasharray: 6,2;
+      line-dasharray: 5,1.5;
     }
     [zoom >= 8] {
       background/line-width: 1.5;
       line-width: 1.5;
-      line-dasharray: 8,2;
+      line-dasharray: 6,2;
     }
     [zoom >= 9] {
       background/line-width: 2;
       line-width: 2;
-      line-dasharray: 10,2;
     }
     [zoom >= 10] {
       background/line-width: 2.5;
       line-width: 2.5;
-      line-dasharray: 12,3;
+      line-dasharray: 8,2;
     }
     [zoom >= 11] {
       background/line-width: 3;
@@ -270,7 +269,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     [zoom >= 12] {
       background/line-width: 3.5;
       line-width: 3.5;
-      line-dasharray: 18,3;
+      line-dasharray: 10,3;
     }
     [zoom >= 13] {
       background/line-width: 4;
@@ -279,7 +278,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     [zoom >= 15] {
       background/line-width: 4.5;
       line-width: 4;
-      line-dasharray: 24,4;
+      line-dasharray: 12,3;
     }
   }
   [admin_level = '4']::narrowline {
@@ -289,7 +288,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
       background/line-width: 0.6;
       thin/line-color: darken(@admin-boundaries, 5%);
       thin/line-width: 0.6;
-      thin/line-dasharray: 0,0.5,4,3,4,3.5;
+      thin/line-dasharray: 0,1,6,3;
     }
     [zoom >= 11] {
       background/line-width: 0.8;
@@ -299,7 +298,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
       background/line-width: 1;
       thin/line-width: 1;
       thin/line-color: @admin-boundaries;
-      thin/line-dasharray: 0,0.5,6.5,4,6.5,3.5;
+      thin/line-dasharray: 0,1,8,4;
     }
     [zoom >= 13] {
       background/line-width: 1.2;
@@ -308,7 +307,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     [zoom >= 15] {
       background/line-width: 1.5;
       thin/line-width: 1.5;
-      thin/line-dasharray: 0,1,9,4,9,5;
+      thin/line-dasharray: 0,1.5,9,4.5;
     }
   }
   ::firstline { opacity: 0.4;
@@ -344,7 +343,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     line-join: bevel;
     line-color: @admin-boundaries;
     line-width: 0.6;
-    line-dasharray: 6,1.5,1.5,1.5;
+    line-dasharray: 10,1.5,1.5,1.5;
     line-clip: false;
     [zoom >= 9] {
       background/line-width: 0.8;
@@ -353,7 +352,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     [zoom >= 10] {
       background/line-width: 1.0;
       line-width: 1.0;
-      line-dasharray: 10,2,2,2;
+      line-dasharray: 12,2,2,2;
     }
     [zoom >= 11] {
       background/line-width: 1.2;
