@@ -9,7 +9,7 @@ overlapping borders correctly.
 #admin-low-zoom[zoom < 8],
 #admin-mid-zoom[zoom >= 8][zoom < 13],
 #admin-high-zoom[zoom >= 13] {
-  [admin_level = '2'] {
+  [admin_level = '2']::wideline  {
     [zoom >= 4] {
       background/line-join: bevel;
       background/line-color: white;
@@ -41,36 +41,53 @@ overlapping borders correctly.
     [zoom >= 10] {
       background/line-width: 4;
       line-width: 4;
-      thin/line-width: 0.8;
-      thin/line-join: bevel;
-      thin/line-color: black;
-      thin/line-width: 0.8;
-      thin/line-dasharray: 18,1.5,1.5,1.5;
     }
     [zoom >= 11] {
       background/line-width: 4.5;
       line-width: 4.5;
-      thin/line-width: 1;
     }
     [zoom >= 12] {
       background/line-width: 5;
       line-width: 5;
-      thin/line-width: 1.2;
-      thin/line-dasharray: 24,2,2,2;
     }
     [zoom >= 13] {
       background/line-width: 6;
       line-width: 6;
-      thin/line-width: 1.5;
     }
     [zoom >= 15] {
       background/line-width: 7.5;
       line-width: 7.5;
+    }
+  }
+
+  [admin_level = '2']::narrowline  {
+    [zoom >= 8] {
+      thin/line-join: bevel;
+      thin/line-color: darken(@admin-boundaries, 10%);
+      thin/line-width: 0.6;
+      thin/line-dasharray: 12,1,1,1;
+    }
+    [zoom >= 10] {
+      thin/line-width: 0.8;
+      thin/line-dasharray: 18,1.5,1.5,1.5;
+    }
+    [zoom >= 11] {
+      thin/line-width: 1;
+    }
+    [zoom >= 12] {
+      thin/line-width: 1.2;
+      thin/line-color: darken(@admin-boundaries, 5%);
+      thin/line-dasharray: 24,2,2,2;
+    }
+    [zoom >= 13] {
+      thin/line-width: 1.5;
+    }
+    [zoom >= 15] {
       thin/line-width: 1.8;
     }
   }
 
-  [admin_level = '3'] {
+  [admin_level = '3']::wideline {
     [zoom >= 4] {
       background/line-join: bevel;
       background/line-color: white;
@@ -103,22 +120,15 @@ overlapping borders correctly.
       background/line-width: 3;
       line-width: 3;
       line-dasharray: 0,1,17,1;
-      thin/line-join: bevel;
-      thin/line-color: black;
-      thin/line-width: 0.8;
-      thin/line-dasharray: 0,1,4.75,1.5,1.5,1.5,1.5,1.5,4.75,1;
     }
     [zoom >= 11] {
       background/line-width: 3.5;
       line-width: 3.5;
-      thin/line-width: 1;
     }
     [zoom >= 12] {
       background/line-width: 4;
       line-width: 4.0;
       line-dasharray: 0,1.5,26,1.5;
-      thin/line-width: 1.2;
-      thin/line-dasharray: 0,1.5,8,2,2,2,2,2,8,1.5;
     }
     [zoom >= 13] {
       background/line-width: 4.5;
@@ -128,12 +138,30 @@ overlapping borders correctly.
       background/line-width: 5;
       line-width: 5;
       line-dasharray: 0,2,35,2;
+    }
+  }
+  [admin_level = '3']::narrowline {
+    [zoom >= 10] {
+      thin/line-join: bevel;
+      thin/line-color: darken(@admin-boundaries, 10%);
+      thin/line-width: 0.8;
+      thin/line-dasharray: 0,1,4.75,1.5,1.5,1.5,1.5,1.5,4.75,1;
+    }
+    [zoom >= 11] {
+      thin/line-width: 1;
+    }
+    [zoom >= 12] {
+      thin/line-width: 1.2;
+      thin/line-color: darken(@admin-boundaries, 5%);
+      thin/line-dasharray: 0,1.5,8,2,2,2,2,2,8,1.5;
+    }
+    [zoom >= 15] {
       thin/line-width: 1.5;
       thin/line-dasharray: 0,2,10,3,3,3,3,3,10,2;
     }
   }
 
-  [admin_level = '4'] {
+  [admin_level = '4']::wideline {
     [zoom >= 4] {
       background/line-join: bevel;
       background/line-color: white;
@@ -181,20 +209,34 @@ overlapping borders correctly.
       background/line-width: 3;
       line-width: 3;
       line-dasharray: 0,2,18,2;
-      thin/line-join: bevel;
-      thin/line-color: black;
-      thin/line-width: 0.8;
-      thin/line-dasharray: 1,3,3,3,2,3,3,3,1,0;
     }
     [zoom >= 13] {
       background/line-width: 3.5;
       line-width: 3.5;
-      thin/line-width: 1.0;
     }
     [zoom >= 15] {
       background/line-width: 4;
       line-width: 4;
       line-dasharray: 0,3,24,3;
+    }
+  }
+
+  [admin_level = '4']::narrowline {
+    [zoom >= 10] {
+      thin/line-join: bevel;
+      thin/line-color: darken(@admin-boundaries, 10%);
+      thin/line-width: 0.6;
+      thin/line-dasharray: 0,2.5,2,2,2,2,2,2.5;
+    }
+    [zoom >= 12] {
+      thin/line-width: 0.8;
+      thin/line-dasharray: 1,3,3,3,2,3,3,3,1,0;
+    }
+    [zoom >= 13] {
+      thin/line-color: darken(@admin-boundaries, 5%);
+      thin/line-width: 1.0;
+    }
+    [zoom >= 15] {
       thin/line-width: 1.2;
       thin/line-dasharray: 1.5,4,4,4,3,4,4,4,1.5,0;
     }
@@ -211,8 +253,10 @@ overlapping borders correctly.
   admin_level is rendered on top, and therefore the only visible boundary.
   */
   opacity: 0.4;
-  [zoom >= 10] { opacity: 0.35; }
-  [zoom >= 12] { opacity: 0.3; }
+  [zoom >= 10]::wideline { opacity: 0.35; }
+  [zoom >= 10]::narrowline { opacity: 0.8; }
+  [zoom >= 12]::wideline { opacity: 0.3; }
+  [zoom >= 12]::narrowline { opacity: 0.6; }
   comp-op: darken;
 }
 
