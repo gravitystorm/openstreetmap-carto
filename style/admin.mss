@@ -90,7 +90,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     [zoom >= 10] {
       background/line-width: 1.2;
       thin/line-width: 1.2;
-      thin/line-dasharray: 22,1.5,1.5,1.5,1.5,1.5;
+      thin/line-dasharray: 20,1.5,1.5,1.5,1.5,1.5;
     }
     [zoom >= 11] {
       background/line-width: 1.5;
@@ -109,7 +109,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     [zoom >= 15] {
       background/line-width: 2.2;
       thin/line-width: 2.2;
-      thin/line-dasharray: 39,3,3,3,3,3;
+      thin/line-dasharray: 36,3,3,3,3,3;
     }
   }
 
