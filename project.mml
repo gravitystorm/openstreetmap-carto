@@ -1467,8 +1467,8 @@ Layer:
                                                     'greenhouse_horticulture', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill',
                                                     'construction', 'salt_pond', 'military', 'plant_nursery') THEN landuse END,
                 'natural_' || CASE WHEN "natural" IN ('peak', 'volcano', 'saddle', 'cave_entrance') AND way_area IS NULL THEN "natural" END,
-                'natural_' || CASE WHEN "natural" IN ('wood', 'peak', 'volcano', 'saddle', 'cave_entrance', 'water', 'mud', 'wetland', 'bay', 'spring',
-                                                      'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier', 'tree', 'strait', 'cape')
+                'natural_' || CASE WHEN "natural" IN ('wood', 'water', 'mud', 'wetland', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath',
+                                                      'grassland', 'scrub', 'beach', 'glacier', 'tree', 'strait', 'cape')
                                                       THEN "natural" END,
                 'waterway_' || CASE WHEN "waterway" IN ('waterfall') AND way_area IS NULL THEN waterway END,
                 'place_' || CASE WHEN place IN ('island', 'islet') THEN place END,
