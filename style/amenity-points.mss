@@ -3039,7 +3039,7 @@
       dash/line-width: 3.5;
       dash/line-join: round;
       dash/line-color: #999999;
-      dash/line-dasharray: 12,6;
+      dash/line-dasharray: 6,6;
       dash/line-clip: false;
       [zoom >= 17] {
         text-name: "[name]";
