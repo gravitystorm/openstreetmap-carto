@@ -3034,11 +3034,11 @@
       line/line-width: 1;
       line/line-join: round;
       line/line-cap: round;
-      line/line-color: #808080;
+      line/line-color: #999999;
 
       dash/line-width: 3.5;
       dash/line-join: round;
-      dash/line-color: #707070;
+      dash/line-color: #999999;
       dash/line-dasharray: 6,6;
       dash/line-clip: false;
       [zoom >= 17] {
