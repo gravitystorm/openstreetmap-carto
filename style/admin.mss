@@ -1,4 +1,6 @@
-@admin-boundaries: #ac46ac; // Lch(47,65,327)
+@admin-boundaries: #8d618b; // Lch(47,30,327)
+@admin-boundaries-narrow: #884e87; // Lch(42,40,327)
+@admin-boundaries-wide: #90738f; // Lch(52,20,327)
 
 /* For performance reasons, the admin border layers are split into three groups
 for low, middle and high zoom levels.
@@ -30,7 +32,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
       background/line-color: white;
       background/line-width: 1.2;
       line-join: bevel;
-      line-color: @admin-boundaries;
+      line-color: @admin-boundaries-wide;
       line-width: 1.2;
     }
     [zoom >= 5] {
@@ -80,7 +82,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
       background/line-color: white;
       background/line-width: 0.6;
       thin/line-join: bevel;
-      thin/line-color: darken(@admin-boundaries, 5%);
+      thin/line-color: @admin-boundaries-narrow;
       thin/line-width: 0.6;
     }
     [zoom >= 9] {
@@ -99,7 +101,6 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     [zoom >= 12] {
       background/line-width: 1.8;
       thin/line-width: 1.8;
-      thin/line-color: @admin-boundaries;
       thin/line-dasharray: 26,2,2,2,2,2;
     }
     [zoom >= 13] {
@@ -132,7 +133,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
       background/line-color: white;
       background/line-width: 0.6;
       line-join: bevel;
-      line-color: @admin-boundaries;
+      line-color: @admin-boundaries-wide;
       line-width: 0.6;
     }
     [zoom >= 5] {
@@ -185,7 +186,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
       background/line-color: white;
       background/line-width: 1;
       thin/line-join: bevel;
-      thin/line-color: darken(@admin-boundaries, 5%);
+      thin/line-color: @admin-boundaries-narrow;
       thin/line-width: 1;
       thin/line-dasharray: 6.5,1.5,1.5,1.5,6.5,2;
     }
@@ -196,7 +197,6 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     [zoom >= 12] {
       background/line-width: 1.5;
       thin/line-width: 1.5;
-      thin/line-color: @admin-boundaries;
       thin/line-dasharray: 9,2,2,2,9,3;
     }
     [zoom >= 13] {
@@ -228,7 +228,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
       background/line-join: bevel;
       background/line-color: white;
       background/line-width: 0.4;
-      line-color: @admin-boundaries;
+      line-color: @admin-boundaries-wide;
       line-join: bevel;
       line-width: 0.4;
       line-clip: false;
@@ -286,9 +286,9 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
       background/line-join: bevel;
       background/line-color: white;
       background/line-width: 0.6;
-      thin/line-color: darken(@admin-boundaries, 5%);
+      thin/line-color: @admin-boundaries-narrow;
       thin/line-width: 0.6;
-      thin/line-dasharray: 0,1,6,3;
+      thin/line-dasharray: 8,2;
     }
     [zoom >= 11] {
       background/line-width: 0.8;
@@ -297,8 +297,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     [zoom >= 12] {
       background/line-width: 1;
       thin/line-width: 1;
-      thin/line-color: @admin-boundaries;
-      thin/line-dasharray: 0,1,8,4;
+      thin/line-dasharray: 10,3;
     }
     [zoom >= 13] {
       background/line-width: 1.2;
@@ -307,19 +306,12 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     [zoom >= 15] {
       background/line-width: 1.5;
       thin/line-width: 1.5;
-      thin/line-dasharray: 0,1.5,9,4.5;
+      thin/line-dasharray: 12,3;
     }
   }
-  ::firstline { opacity: 0.4;
-    [zoom >= 10] { opacity: 0.5; }
-  }
-  ::wideline { opacity: 0.4;
-    [zoom >= 10] { opacity: 0.35; }
-    [zoom >= 12] { opacity: 0.3; }
-  }
-  ::narrowline { opacity: 0.6;
-    [zoom >= 10] { opacity: 0.6; }
-    [zoom >= 12] { opacity: 0.6; }
+  ::firstline { opacity: 0.5; }
+  ::wideline { opacity: 0.5; }
+  ::narrowline { opacity: 0.6; }
   }
   /*
   The following code prevents admin boundaries from being rendered on top of
