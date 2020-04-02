@@ -1,7 +1,7 @@
 @placenames: #222;
 @placenames-light: #777777;
 @country-labels: darken(@admin-boundaries-narrow, 10%);
-@state-labels: desaturate(@admin-boundaries-narrow, 5%), 15%);
+@state-labels: desaturate(@admin-boundaries-narrow, 10%);
 @county-labels: @admin-boundaries-wide;
 
 #country-names {

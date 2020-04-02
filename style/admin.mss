@@ -312,7 +312,6 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   ::firstline { opacity: 0.5; }
   ::wideline { opacity: 0.5; }
   ::narrowline { opacity: 0.6; }
-  }
   /*
   The following code prevents admin boundaries from being rendered on top of
   each other. Comp-op works on the entire attachment, not on the individual
