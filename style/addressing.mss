@@ -45,7 +45,7 @@
       ["addr_flats" != null] {
         text-name: [addr_housenumber] + " " + [addr_flats];
         ["addr_housename" != null] {
-          text-name: [addr_housenumber] + "\n" + [addr_flats] + "\n" + [addr_housename];
+          text-name: [addr_housenumber] + " " + [addr_flats] + "\n" + [addr_housename];
         }
       }
     }
