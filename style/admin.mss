@@ -466,13 +466,10 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   }
 }
 
-#admin-text[zoom >= 11][way_pixels >= 48000] {
+#admin-text[zoom >= 11][way_pixels >= 196000] {
   [admin_level = '1'][way_pixels >= 360000],
   [admin_level = '2'][way_pixels >= 360000],
-  [admin_level = '3'][way_pixels >= 196000],
-  [admin_level = '4'][way_pixels >= 196000],
-  [admin_level = '5'][way_pixels >= 196000],
-  [zoom >= 12][admin_level = '6'][way_pixels >= 196000],
+  [zoom >= 12][admin_level = '6'],
   [zoom >= 13][admin_level = '7'],
   [zoom >= 14][admin_level = '8'],
   [zoom >= 15][admin_level = '9'],

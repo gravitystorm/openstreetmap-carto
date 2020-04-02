@@ -2127,6 +2127,7 @@ Layer:
             AND admin_level IN ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
             AND name IS NOT NULL
             AND osm_id < 0
+            AND way_area > 196000*POW(!scale_denominator!*0.001*0.28,2)
           ORDER BY admin_level::integer ASC, way_area DESC
         ) AS admin_text
     properties:
