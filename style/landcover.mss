@@ -477,6 +477,12 @@
     }
   }
 
+  [feature = 'landuse_salt_pond'][zoom >= 10] {
+    polygon-fill: @water-color;
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
   [feature = 'natural_bare_rock'][zoom >= 5] {
     polygon-fill: @bare_ground;
     polygon-pattern-file: url('symbols/rock_overlay.png');
@@ -757,6 +763,10 @@
     [int_wetland = 'fen'],
     [int_wetland = 'string_bog'] {
       polygon-pattern-file: url('symbols/wetland_bog.png');
+      polygon-pattern-alignment: global;
+    }
+    [landuse = 'salt_pond'] {
+      polygon-pattern-file: url('symbols/salt_pond.png');
       polygon-pattern-alignment: global;
     }
     [natural = 'beach'],
