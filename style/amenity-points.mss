@@ -3020,6 +3020,18 @@
       text-dy: 8;
     }
   }
+
+  [feature = 'leisure_slipway'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: @transportation-text;
+    text-dy: 13;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+  }
 }
 
 #trees [zoom >= 16] {

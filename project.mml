@@ -1970,7 +1970,7 @@ Layer:
                  OR bridge IN ('yes', 'aqueduct', 'cantilever', 'covered', 'trestle', 'viaduct'))
               OR tags @> 'attraction=>water_slide'
               OR aerialway IN ('cable_car', 'gondola', 'mixed_lift', 'goods', 'chair_lift', 'drag_lift', 't-bar', 'j-bar', 'platter', 'rope_tow', 'zip_line')
-              OR leisure = 'track'
+              OR leisure IN ('slipway', 'track')
               OR waterway IN ('dam', 'weir')
               OR "natural" IN ('arete', 'cliff', 'ridge'))
             AND name IS NOT NULL
