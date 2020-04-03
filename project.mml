@@ -1611,8 +1611,6 @@ Layer:
       table: |-
         (SELECT
           way,
-          name,
-          layer,
           COALESCE(
            'highway_' || CASE WHEN tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones' THEN 'ford' END,
            'leisure_' || CASE WHEN leisure IN ('slipway', 'track') THEN leisure END,
