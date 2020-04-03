@@ -1956,7 +1956,7 @@ Layer:
         (SELECT
           way,
             NULL as way_pixels,
-            COALESCE('aerialway_' || aerialway, 'man_made_' || man_made, 'waterway_' || waterway, 'natural_' || "natural") AS feature,
+            COALESCE('aerialway_' || aerialway, 'attraction_' || CASE WHEN tags @> 'attraction=>water_slide' THEN 'water_slide' END, 'leisure_' || leisure, 'man_made_' || man_made, 'waterway_' || waterway, 'natural_' || "natural") AS feature,
             access,
             name,
             tags->'operator' as operator,
@@ -1968,7 +1968,9 @@ Layer:
               OR (man_made = 'pipeline'
                  AND tags-> 'location' IN ('overground', 'overhead', 'surface', 'outdoor')
                  OR bridge IN ('yes', 'aqueduct', 'cantilever', 'covered', 'trestle', 'viaduct'))
+              OR tags @> 'attraction=>water_slide'
               OR aerialway IN ('cable_car', 'gondola', 'mixed_lift', 'goods', 'chair_lift', 'drag_lift', 't-bar', 'j-bar', 'platter', 'rope_tow', 'zip_line')
+              OR leisure = 'track'
               OR waterway IN ('dam', 'weir')
               OR "natural" IN ('arete', 'cliff', 'ridge'))
             AND name IS NOT NULL
