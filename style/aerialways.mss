@@ -14,24 +14,6 @@
       dash/line-color: black;
       dash/line-dasharray: 0.4,13;
       dash/line-clip: false;
-      [zoom >= 17] {
-        text-name: "[name]";
-        text-fill: #666666;
-        text-size: 10;
-        text-dy: 4;
-        text-spacing: 900;
-        text-clip: false;
-        text-placement: line;
-        text-repeat-distance: 200;
-        text-margin: 18;
-        text-face-name: @book-fonts;
-        text-halo-radius: @standard-halo-radius;
-        text-halo-fill: @standard-halo-fill;
-      }
-      [zoom >= 19] {
-        text-size: 11;
-        text-dy: 5;
-      }
     }
   }
 
@@ -47,24 +29,6 @@
       dash/line-color: #707070;
       dash/line-dasharray: 6,25;
       dash/line-clip: false;
-      [zoom >= 17] {
-        text-name: "[name]";
-        text-fill: #666666;
-        text-size: 10;
-        text-dy: 4;
-        text-spacing: 900;
-        text-clip: false;
-        text-placement: line;
-        text-repeat-distance: 200;
-        text-margin: 18;
-        text-face-name: @book-fonts;
-        text-halo-radius: @standard-halo-radius;
-        text-halo-fill: @standard-halo-fill;
-      }
-      [zoom >= 19] {
-        text-size: 11;
-        text-dy: 5;
-      }
     }
   }
 
@@ -86,24 +50,6 @@
       dash/line-color: black;
       dash/line-dasharray: 1,30;
       dash/line-clip: false;
-      [zoom >= 17] {
-        text-name: "[name]";
-        text-fill: #666666;
-        text-size: 10;
-        text-dy: 4;
-        text-spacing: 900;
-        text-clip: false;
-        text-placement: line;
-        text-repeat-distance: 200;
-        text-margin: 18;
-        text-face-name: @book-fonts;
-        text-halo-radius: @standard-halo-radius;
-        text-halo-fill: @standard-halo-fill;
-      }
-      [zoom >= 19] {
-        text-size: 11;
-        text-dy: 5;
-      }
     }
   }
 
@@ -141,21 +87,8 @@
         [substance = 'water'] { center/line-color: @water-color; }
         [substance = 'gas'] { center/line-color: #c1c1c1; } // Lch(78,0,0)
         [substance = 'oil'] { center/line-color: #cfbfa5; } // Lch(78,15,83)
-        text-name: "[name]";
-        text-fill: #666666;
-        text-size: 10;
-        text-dy: 6;
-        text-spacing: 900;
-        text-clip: false;
-        text-placement: line;
-        text-repeat-distance: 200;
-        text-margin: 18;
-        text-face-name: @book-fonts;
-        text-halo-radius: @standard-halo-radius;
-        text-halo-fill: @standard-halo-fill;
       }
       [zoom >= 18] {
-        text-dy: 7;
         line/line-width: 3;
         line/line-dasharray: 0,1,30,1;
         dash/line-width: 5;
@@ -164,14 +97,51 @@
         center/line-dasharray: 0,2,28,2;
       }
       [zoom >= 19] {
-        text-size: 11;
-        text-dy: 8;
         line/line-width: 4;
         line/line-dasharray: 0,1,36,1;
         dash/line-width: 6;
         dash/line-dasharray: 0,1,1,34,1,1;
         center/line-width: 3;
         center/line-dasharray: 0,2,34,2;
+      }
+    }
+  }
+}
+
+#text-line {
+  [feature = 'aerialway_cable_car'],
+  [feature = 'aerialway_gondola'],
+  [feature = 'aerialway_mixed_lift'],
+  [feature = 'aerialway_goods'],
+  [feature = 'aerialway_chair_lift'],
+  [feature = 'aerialway_drag_lift'],
+  [feature = 'aerialway_t-bar'],
+  [feature = 'aerialway_j-bar'],
+  [feature = 'aerialway_platter'],
+  [feature = 'aerialway_rope_tow'],
+  [feature = 'aerialway_zip_line'],
+  [feature = 'man_made_pipeline'] {
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-fill: #666666;
+      text-size: 10;
+      text-dy: 4;
+      text-spacing: 900;
+      text-clip: false;
+      text-placement: line;
+      text-repeat-distance: 200;
+      text-margin: 18;
+      text-face-name: @book-fonts;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      [zoom >= 19] {
+        text-size: 11;
+        text-dy: 5;
+      }
+      [feature = 'man_made_pipeline'] {
+        text-dy: 6;
+        [zoom >= 18] { text-dy: 7; }
+        [zoom >= 19] { text-dy: 8; }
       }
     }
   }
