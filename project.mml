@@ -1968,7 +1968,7 @@ Layer:
             NULL AS way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
           FROM planet_osm_line
-          WHERE (man_made IN ('pier', 'breakwater', 'groyne', 'embankment', 'goods_conveyor')
+          WHERE (man_made IN ('pier', 'breakwater', 'groyne', 'embankment')
               OR waterway IN ('dam', 'weir')
               OR "natural" IN ('arete', 'cliff', 'ridge'))
             AND name IS NOT NULL
