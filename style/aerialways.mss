@@ -108,7 +108,7 @@
   }
 
   [man_made = 'goods_conveyor'] {
-    [zoom >= 12] {
+    [zoom >= 14] {
       line/line-width: 1;
       line/line-join: round;
       line/line-cap: round;
