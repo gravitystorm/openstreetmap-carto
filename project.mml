@@ -818,8 +818,10 @@ Layer:
           WHERE aerialway IS NOT NULL
             OR (man_made = 'pipeline'
                 AND tags-> 'location' IN ('overground', 'overhead', 'surface', 'outdoor')
-                OR man_made = 'goods_conveyor'
                 OR bridge IN ('yes', 'aqueduct', 'cantilever', 'covered', 'trestle', 'viaduct'))
+            OR (man_made = 'goods_conveyor'
+                AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
+                AND (tunnel NOT IN ('yes') OR tunnel IS NULL))
           ORDER BY
             CASE
               WHEN man_made IN ('goods_conveyor', 'pipeline') THEN 1
@@ -1616,7 +1618,7 @@ Layer:
           name,
           layer,
           COALESCE(
-           'highway_' || CASE WHEN tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones' THEN 'ford' ELSE NULL END,
+           'highway_' || CASE WHEN tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones' THEN 'ford' END,
            'leisure_' || CASE WHEN leisure IN ('slipway', 'track') THEN leisure ELSE NULL END,
            'attraction_' || CASE WHEN tags @> 'attraction=>water_slide' THEN 'water_slide' ELSE NULL END
             ) AS feature
