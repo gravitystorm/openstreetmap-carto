@@ -110,7 +110,7 @@
       marker-file: url('symbols/amenity/restaurant.svg');
     }
     [feature = 'amenity_ice_cream'][zoom >= 18] {
-      marker-file: url('symbols/shop/ice_cream.svg');
+      marker-file: url('symbols/amenity/ice_cream.svg');
     }
     [feature = 'amenity_pub'][zoom >= 18] {
       marker-file: url('symbols/amenity/pub.svg');
@@ -386,8 +386,7 @@
       marker-fill: @amenity-brown;
     }
     [information = 'map'],
-    [information = 'tactile_map'],
-    [information = 'tactile_model'] {
+    [information = 'tactile_map'] {
       marker-file: url('symbols/tourism/map.svg');
     }
     [information = 'terminal'] {
@@ -1021,10 +1020,6 @@
       marker-file: url('symbols/shop/houseware.svg');
     }
 
-    [shop = 'ice_cream'][zoom >= 18] {
-      marker-file: url('symbols/shop/ice_cream.svg');
-    }
-
     [shop = 'car'][zoom >= 18] {
       marker-file: url('symbols/shop/car.svg');
     }
@@ -1379,6 +1374,11 @@
   [feature = 'natural_saddle'][zoom >= 15] {
     marker-file: url('symbols/natural/saddle.svg');
     marker-fill: @landform-color;
+    marker-clip: false;
+  }
+
+  [feature = 'natural_spring'][zoom >= 14] {
+    marker-file: url('symbols/spring.svg');
     marker-clip: false;
   }
 
@@ -2151,6 +2151,7 @@
   [feature = 'landuse_brownfield'],
   [feature = 'landuse_landfill'],
   [feature = 'landuse_construction'],
+  [feature = 'landuse_salt_pond'],
   [feature = 'tourism_theme_park'],
   [feature = 'tourism_zoo'],
   [feature = 'amenity_kindergarten'],
@@ -2194,7 +2195,8 @@
       text-halo-fill: @standard-halo-fill;
       [feature = 'natural_reef'],
       [feature = 'natural_wetland'],
-      [feature = 'natural_mud'] {
+      [feature = 'natural_mud'],
+      [feature = 'landuse_salt_pond'] {
         text-fill: @wetland-text;
       }
       [feature = 'leisure_park'],
@@ -2686,9 +2688,7 @@
   }
 
   [feature = 'power_plant'][is_building = 'no'][zoom >= 10],
-  [feature = 'power_station'][is_building = 'no'][zoom >= 10],
   [feature = 'power_generator'][is_building = 'no']["generator:source" != 'wind'][zoom >= 10],
-  [feature = 'power_sub_station'][is_building = 'no'][zoom >= 13],
   [feature = 'power_substation'][is_building = 'no'][zoom >= 13]{
     [way_pixels > 3000],
     [zoom >= 17] {

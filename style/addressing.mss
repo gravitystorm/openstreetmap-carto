@@ -18,12 +18,7 @@
       ["addr_housename" != null] {
         text-name: [addr_housenumber] + "\n" + [addr_housename];
       }
-      ["addr_unit" != null] {
-        text-name: [addr_housenumber] + " " + [addr_unit];
-        ["addr_housename" != null] {
-          text-name: [addr_housenumber] + " " + [addr_unit] + "\n" + [addr_housename];
-        }
-      }
+
     }
     text-face-name: @book-fonts;
     text-fill: @address-color;
@@ -37,6 +32,21 @@
       text-halo-radius: @standard-halo-radius * 1.25;
       ["addr_unit" != null]["addr_housenumber" = null] {
         text-name: [addr_unit];
+      }
+      ["addr_flats" != null]["addr_housenumber" = null] {
+        text-name: [addr_flats];
+      }
+      ["addr_unit" != null] {
+        text-name: [addr_housenumber] + " " + [addr_unit];
+        ["addr_housename" != null] {
+          text-name: [addr_housenumber] + " " + [addr_unit] + "\n" + [addr_housename];
+        }
+      }
+      ["addr_flats" != null] {
+        text-name: [addr_housenumber] + " " + [addr_flats];
+        ["addr_housename" != null] {
+          text-name: [addr_housenumber] + " " + [addr_flats] + "\n" + [addr_housename];
+        }
       }
     }
     [zoom >= 20] {

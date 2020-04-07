@@ -3,6 +3,16 @@
 ### Changes
 - Remove way_area filtering for low zoom water (#4060)
 - Move small amenities to z18 (#4044)
+- Add rendering for man_made=pipeline ways (#4070)
+- Add line rendering plus name labels for ridges and aretes (#3767)
+- Remove power=sub_station/station rendering, add power=plant fill color (#4088)
+- Remove duplicate selection of natural = cave_entrance, peak, volcano, saddle (#4068)
+- Move natural=spring back to amenity-points layer (#4069)
+- Change quarry outline to 10% darkened quarry color (#4063)
+- Change bridge-text way_pixels minimum and maximum (#4066)
+- Remove information=tactile_model rendering (#4086)
+- Update Dockerfile keyserver URL for osmadmins PPA (#4079)
+- Code clean-ups (#4080, #4081, #4083)
 
 ## [v5.0.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.25.0...v5.0.0) - 2020-03-18
 
