@@ -816,8 +816,9 @@ Layer:
             name
           FROM planet_osm_line
           WHERE aerialway IS NOT NULL
-            OR (man_made IN ('goods_conveyor', 'pipeline')
+            OR (man_made = 'pipeline'
                 AND tags-> 'location' IN ('overground', 'overhead', 'surface', 'outdoor')
+                OR man_made = 'goods_conveyor'
                 OR bridge IN ('yes', 'aqueduct', 'cantilever', 'covered', 'trestle', 'viaduct'))
           ORDER BY
             CASE
