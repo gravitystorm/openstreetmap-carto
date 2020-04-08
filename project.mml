@@ -1619,8 +1619,8 @@ Layer:
           layer,
           COALESCE(
            'highway_' || CASE WHEN tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones' THEN 'ford' END,
-           'leisure_' || CASE WHEN leisure IN ('slipway', 'track') THEN leisure ELSE NULL END,
-           'attraction_' || CASE WHEN tags @> 'attraction=>water_slide' THEN 'water_slide' ELSE NULL END
+           'leisure_' || CASE WHEN leisure IN ('slipway', 'track') THEN leisure END,
+           'attraction_' || CASE WHEN tags @> 'attraction=>water_slide' THEN 'water_slide' END
             ) AS feature
           FROM planet_osm_line
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
