@@ -256,8 +256,7 @@ overlapping borders correctly.
       opacity: 0.25;
       line-width: 1.2;
       line-color: @protected-area;
-      [boundary='aboriginal_lands'],
-      [boundary='protected_area'][protect_class='24'] {
+      [boundary = 'aboriginal_lands'] {
         line-color: @aboriginal;
       }
       [zoom >= 9] {
@@ -277,8 +276,7 @@ overlapping borders correctly.
         // line-offset is always an offset to the inner side of the polygon.
         line-offset: -0.9;
         line-color: @protected-area;
-        [boundary='aboriginal_lands'],
-        [boundary='protected_area'][protect_class='24'] {
+        [boundary = 'aboriginal_lands'] {
           line-color: @aboriginal;
         }
         line-join: round;
@@ -297,8 +295,7 @@ overlapping borders correctly.
         opacity: 0.15;
         line-width: 1.8;
         line-color: @protected-area;
-        [boundary='aboriginal_lands'],
-        [boundary='protected_area'][protect_class='24'] {
+        [boundary = 'aboriginal_lands'] {
           line-color: @aboriginal;
         }
         line-join: round;
