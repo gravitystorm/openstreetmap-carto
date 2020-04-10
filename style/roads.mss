@@ -2577,6 +2577,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
 
+  [feature = 'highway_footway'],
   [feature = 'highway_pedestrian'] {
     [zoom >= 15] {
       line-color: grey;
@@ -2606,6 +2607,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
 
+  [feature = 'highway_footway'],
   [feature = 'highway_pedestrian'] {
     [zoom >= 15] {
       polygon-fill: @pedestrian-fill;
