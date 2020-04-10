@@ -1,4 +1,6 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.0.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.1.0...master)
+
+## [v5.1.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.0.0...v5.1.0) - 2020-04-10
 
 ### Changes
 - Remove way_area filtering for low zoom water (#4060)
