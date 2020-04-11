@@ -11,7 +11,6 @@
 - Add line rendering plus name labels for ridges and aretes (#3767)
 - Add rendering for landuse=salt_pond (#4059)
 - Remove power=sub_station/station rendering, add power=plant fill color (#4088)
-- Remove rendering of residential/unclassified, track, foot/cycleway highway areas (#4096)
 - Remove icon for shop=ice_cream (#4093)
 - Remove information=tactile_model rendering (#4086)
 - Remove duplicate selection of natural = cave_entrance, peak, volcano, saddle (#4068)
