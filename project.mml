@@ -1758,7 +1758,7 @@ Layer:
             name
           FROM planet_osm_polygon
           WHERE way && !bbox!
-            AND (highway IN ('pedestrian', 'service', 'living_street', 'platform')
+            AND (highway IN ('pedestrian', 'footway', 'service', 'living_street', 'platform')
               OR (railway IN ('platform')
                   AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
                   AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
