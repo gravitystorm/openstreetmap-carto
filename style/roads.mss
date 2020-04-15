@@ -2570,8 +2570,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 }
 
 #highway-area-casing {
-  [feature = 'highway_residential'],
-  [feature = 'highway_unclassified'],
   [feature = 'highway_service'] {
     [zoom >= 14] {
       line-color: #999;
@@ -2579,22 +2577,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
 
-  [feature = 'highway_pedestrian'],
   [feature = 'highway_footway'],
-  [feature = 'highway_cycleway'],
-  [feature = 'highway_path'] {
+  [feature = 'highway_pedestrian'] {
     [zoom >= 15] {
       line-color: grey;
       line-width: 1;
     }
-  }
-
-  [feature = 'highway_track'][zoom >= 15] {
-    line-color: @track-fill;
-    line-width: 1;
-    line-dasharray: 5,4,2,4;
-    line-cap: round;
-    line-join: round;
   }
 
   [feature = 'highway_platform'],
@@ -2613,25 +2601,17 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     polygon-fill: @living-street-fill;
   }
 
-  [feature = 'highway_residential'],
-  [feature = 'highway_unclassified'],
   [feature = 'highway_service'] {
     [zoom >= 14] {
       polygon-fill: #fff;
     }
   }
 
-  [feature = 'highway_pedestrian'],
   [feature = 'highway_footway'],
-  [feature = 'highway_cycleway'],
-  [feature = 'highway_path'] {
+  [feature = 'highway_pedestrian'] {
     [zoom >= 15] {
       polygon-fill: @pedestrian-fill;
     }
-  }
-
-  [feature = 'highway_track'][zoom >= 15] {
-    polygon-fill: #cdbea0;
   }
 
   [feature = 'highway_platform'],
