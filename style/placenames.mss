@@ -490,6 +490,14 @@
   }
 }
 
+#placenames-no-name {
+  [zoom >= 12] {
+    marker-file: url('symbols/place/place-no-name.svg');
+    marker-line-color: @placenames-light;
+    marker-width: 5;
+  }
+}
+
 #county-names {
   [zoom >= 8][way_pixels > 12000][way_pixels < 196000] {
     [admin_level = '5'][zoom >= 8],

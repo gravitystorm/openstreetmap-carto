@@ -1292,6 +1292,24 @@ Layer:
     properties:
       cache-features: true
       minzoom: 12
+  - id: placenames-no-name
+    geometry: point
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            place,
+            leisure,
+            name
+          FROM planet_osm_point
+          WHERE place IN ('city', 'town', 'village', 'hamlet', 'isolated_dwelling')
+             AND name IS NULL
+        ) AS placenames_no_name
+    properties:
+      cache-features: true
+      minzoom: 12
   - id: stations
     geometry: point
     <<: *extents
