@@ -1438,7 +1438,8 @@ Layer:
                     WHEN (tags ? 'ele') AND tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$'
                       AND ("natural" IN ('peak', 'volcano', 'saddle')
                         OR tourism = 'alpine_hut' OR (tourism = 'information' AND tags->'information' = 'guidepost')
-                        OR amenity = 'shelter')
+                        OR amenity = 'shelter'
+                        OR tags->'mountain_pass' = 'yes')
                     THEN CONCAT(REPLACE(ROUND((tags->'ele')::NUMERIC)::TEXT, '-', U&'\2212'), U&'\00A0', 'm') END,
                   CASE
                     WHEN (tags ? 'height') AND tags->'height' ~ '^\d{1,3}(\.\d+)?$'
@@ -1446,7 +1447,7 @@ Layer:
                     THEN CONCAT(ROUND((tags->'height')::NUMERIC)::TEXT, U&'\00A0', 'm') END
                   )
                 ) AS name,
-                tags->'parking' as "parking",
+              tags->'parking' as "parking",
               COALESCE(
                 'aeroway_' || CASE WHEN aeroway IN ('gate', 'apron', 'helipad', 'aerodrome') THEN aeroway END,
                 'tourism_' || CASE WHEN tourism IN ('alpine_hut', 'apartment', 'artwork', 'camp_site', 'caravan_site', 'chalet', 'gallery', 'guest_house',
@@ -1483,6 +1484,8 @@ Layer:
                 'natural_' || CASE WHEN "natural" IN ('wood', 'water', 'mud', 'wetland', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath',
                                                       'grassland', 'scrub', 'beach', 'glacier', 'tree', 'strait', 'cape')
                                                       THEN "natural" END,
+                -- mountain_pass come after the natural=saddle, to give priority to nodes being both a mountain_pass and a saddle
+                'mountain_pass' || CASE WHEN tags->'mountain_pass' IN ('yes') THEN '' END,
                 'waterway_' || CASE WHEN "waterway" IN ('waterfall') AND way_area IS NULL THEN waterway END,
                 'place_' || CASE WHEN place IN ('island', 'islet') THEN place END,
                 'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate')
@@ -1509,7 +1512,8 @@ Layer:
               ) AS feature,
               access,
               CASE
-                WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
+                WHEN "natural" IN ('peak', 'volcano', 'saddle') 
+                     OR tags->'mountain_pass' = 'yes' THEN
                   CASE
                     WHEN tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'ele')::NUMERIC
                   END
@@ -1561,6 +1565,7 @@ Layer:
                                 ELSE 'other' END AS shop,
               CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building,
               tags->'operator' AS operator,
+              tags->'mountain_pass' AS mountain_pass,
               ref,
               way_area,
               COALESCE(way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0), 0) AS way_pixels
