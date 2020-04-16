@@ -1380,6 +1380,7 @@
   
   [feature = 'mountain_pass'][zoom >= 15] {
     marker-file: url('symbols/mountain_pass.svg');
+    marker-fill: none;
     marker-line-color: @transportation-icon;
     marker-clip: false;
   }
