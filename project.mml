@@ -1447,7 +1447,7 @@ Layer:
                     THEN CONCAT(ROUND((tags->'height')::NUMERIC)::TEXT, U&'\00A0', 'm') END
                   )
                 ) AS name,
-              tags->'parking' as "parking",
+                tags->'parking' as "parking",
               COALESCE(
                 'aeroway_' || CASE WHEN aeroway IN ('gate', 'apron', 'helipad', 'aerodrome') THEN aeroway END,
                 'tourism_' || CASE WHEN tourism IN ('alpine_hut', 'apartment', 'artwork', 'camp_site', 'caravan_site', 'chalet', 'gallery', 'guest_house',
@@ -1484,8 +1484,7 @@ Layer:
                 'natural_' || CASE WHEN "natural" IN ('wood', 'water', 'mud', 'wetland', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath',
                                                       'grassland', 'scrub', 'beach', 'glacier', 'tree', 'strait', 'cape')
                                                       THEN "natural" END,
-                -- mountain_pass come after the natural=saddle, to give priority to nodes being both a mountain_pass and a saddle
-                'mountain_pass' || CASE WHEN tags->'mountain_pass' IN ('yes') THEN '' END,
+                'mountain_pass' || CASE WHEN tags->'mountain_pass' IN ('yes') THEN '' END, -- after natural=saddle to give priority to that tag on the same node
                 'waterway_' || CASE WHEN "waterway" IN ('waterfall') AND way_area IS NULL THEN waterway END,
                 'place_' || CASE WHEN place IN ('island', 'islet') THEN place END,
                 'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate')
