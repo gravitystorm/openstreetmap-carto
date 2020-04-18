@@ -491,10 +491,22 @@
 }
 
 #placenames-no-name {
-  [zoom >= 12] {
+  [place = 'city'][zoom >= 11] {
+    marker-file: url('symbols/place/place-no-name-city.svg');
+    marker-width: 6;
+  }
+  [place = 'town'][zoom >= 12] {
+    marker-file: url('symbols/place/place-no-name-town.svg');
+    marker-width: 6;
+  }
+  [place = 'village'][zoom >= 12],
+  [place = 'hamlet'][zoom >= 14],
+  [place = 'isolated_dwelling'][zoom >= 15],
+  [place = 'farm'][zoom >= 15] {
     marker-file: url('symbols/place/place-no-name.svg');
-    marker-line-color: @placenames-light;
-    marker-width: 5;
+    marker-width: 4;
+    [place = 'village'][zoom >= 13][zoom < 14] { marker-width: 5; }
+    [place = 'village'][zoom >= 14] { marker-width: 6; }
   }
 }
 

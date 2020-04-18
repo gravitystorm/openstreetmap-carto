@@ -1,0 +1,8 @@
+<svg
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="20"
+   height="20">
+  <circle cx="10" cy="10" r="5" style="fill:#fdfdfc;stroke:#525244;stroke-width:1.5" />
+  <circle cx="10" cy="10" r="1" style="fill:#525244" />
+</svg> 

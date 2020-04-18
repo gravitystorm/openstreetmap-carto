@@ -1301,7 +1301,6 @@ Layer:
         (SELECT
             way,
             place,
-            leisure,
             name
           FROM planet_osm_point
           WHERE place IN ('city', 'town', 'village', 'hamlet', 'isolated_dwelling', 'farm')

@@ -2,7 +2,7 @@
 <svg
    xmlns="http://www.w3.org/2000/svg"
    version="1.1"
-   width="10"
-   height="10">
-    <circle cx="5" cy="5" r="3" stroke-width="2" />
+   width="20"
+   height="20">
+  <circle cx="10" cy="10" r="5" style="fill:#525244;stroke:#fdfdfc;stroke-width:2" />
 </svg> 
