@@ -1304,7 +1304,7 @@ Layer:
             leisure,
             name
           FROM planet_osm_point
-          WHERE place IN ('city', 'town', 'village', 'hamlet', 'isolated_dwelling')
+          WHERE place IN ('city', 'town', 'village', 'hamlet', 'isolated_dwelling', 'farm')
              AND name IS NULL
         ) AS placenames_no_name
     properties:
