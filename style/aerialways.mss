@@ -107,6 +107,26 @@
     }
   }
 
+  [man_made = 'goods_conveyor'] {
+    [zoom >= 14] {
+      line/line-width: 0.7;
+      line/line-join: round;
+      line/line-cap: round;
+      line/line-color: #999999;
+
+      dash/line-width: 2;
+      dash/line-join: round;
+      dash/line-color: #999999;
+      dash/line-dasharray: 4,6;
+
+      [zoom >= 16] {
+        line/line-width: 1;
+        dash/line-width: 3;
+        dash/line-dasharray: 6,6;
+      }
+    }
+  }
+
   [man_made = 'pipeline'] {
     [zoom >= 14] {
       line/line-width: .7;

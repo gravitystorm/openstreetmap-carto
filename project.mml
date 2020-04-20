@@ -819,9 +819,12 @@ Layer:
             OR (man_made = 'pipeline'
                 AND tags-> 'location' IN ('overground', 'overhead', 'surface', 'outdoor')
                 OR bridge IN ('yes', 'aqueduct', 'cantilever', 'covered', 'trestle', 'viaduct'))
+            OR (man_made = 'goods_conveyor'
+                AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
+                AND (tunnel NOT IN ('yes') OR tunnel IS NULL))
           ORDER BY
             CASE
-              WHEN man_made = 'pipeline' THEN 1
+              WHEN man_made IN ('goods_conveyor', 'pipeline') THEN 1
               WHEN tags-> 'location' = 'overhead' THEN 2
               WHEN bridge IS NOT NULL THEN 3
               WHEN aerialway IS NOT NULL THEN 4
