@@ -492,60 +492,91 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   text-dy: -10;
 }
 
+@protected-area-width-z8: 0.8;
+@protected-area-width-z9: 1;
+@protected-area-width-z10: 1.4;
+@protected-area-width-z11: 2.2;
+@protected-area-width-z12: 3.2;
+@protected-area-width-z14: 4;
+@protected-area-width-z16: 5;
+@protected-area-thin-width-z11: 0.8; // 2/5 of full width
+@protected-area-thin-width-z12: 1.2; // 2/5
+@protected-area-thin-width-z14: 1.4; // 2/5
+@protected-area-thin-width-z16: 1.8; // 2/5
+
 #protected-areas {
-  [way_pixels > 750] {
-    [zoom >= 8][zoom < 10] {
-      opacity: 0.25;
-      line-width: 1.2;
+  ::lowzoom {
+    [zoom >= 8][zoom < 10][way_pixels > 3000],
+    [zoom >= 10][zoom < 11][way_pixels > 750] {
       line-color: @protected-area;
-      [boundary = 'aboriginal_lands'] {
-        line-color: @aboriginal;
+      line-width: @protected-area-width-z8;
+      [zoom >= 9] { line-width: @protected-area-width-z9; }
+      [zoom >= 10] { line-width: @protected-area-width-z10; }
+      [boundary='aboriginal_lands'] { line-color: @aboriginal; }
+    }
+  }
+
+  ::wideline { // inner wide line
+    [zoom >= 11][way_pixels > 750] {
+      line-color: @protected-area;
+      line-join: round;
+      line-width: @protected-area-width-z11;
+      line-offset: (@protected-area-thin-width-z11/2 - @protected-area-width-z11/2);
+      [boundary='aboriginal_lands'] { line-color: @aboriginal; }
+      [zoom >= 12] {
+        line-width: @protected-area-width-z12;
+        line-offset: (@protected-area-thin-width-z12/2 - @protected-area-width-z12/2);
       }
-      [zoom >= 9] {
-        line-width: 1.5;
+      [zoom >= 14] {
+        line-width: @protected-area-width-z14;
+        line-offset: (@protected-area-thin-width-z14/2 - @protected-area-width-z14/2);
+      }
+      [zoom >= 16] {
+        line-width: @protected-area-width-z16;
+        line-offset: (@protected-area-thin-width-z16/2 - @protected-area-width-z16/2);
       }
     }
-    [zoom >= 10] {
-      // inner line
-      ::wideline {
-        opacity: 0.15;
-        line-width: 3.6;
-        // Unlike planet_osm_line, planet_osm_polygon does not preserves the
-        // original direction of the OSM way: Following OGS at
-        // https://www.opengeospatial.org/standards/sfa always at the left
-        // is the interior and at the right the exterior of the polygon.(This
-        // also applies to inner rings of multipolygons.) So a negative
-        // line-offset is always an offset to the inner side of the polygon.
-        line-offset: -0.9;
-        line-color: @protected-area;
-        [boundary = 'aboriginal_lands'] {
-          line-color: @aboriginal;
-        }
-        line-join: round;
-        line-cap: round;
-        [zoom >= 12] {
-          line-width: 4;
-          line-offset: -1;
-        }
-        [zoom >= 14] {
-          line-width: 6;
-          line-offset: -2;
-        }
+  }
+
+  ::narrowline { // outer thin line
+    [zoom >= 11][way_pixels > 750] {
+      background/line-color: white;
+      background/line-join: round;
+      background/line-width: @protected-area-thin-width-z11;
+      line-color: @protected-area;
+      line-join: round;
+      line-width: @protected-area-thin-width-z11;
+      line-dasharray: 3,0.5;
+      [boundary='aboriginal_lands'] { line-color: @aboriginal; }
+      [zoom >= 12] {
+        background/line-width: @protected-area-thin-width-z12;
+        line-width: @protected-area-thin-width-z12;
       }
-      // outer line
-      ::narrowline {
-        opacity: 0.15;
-        line-width: 1.8;
-        line-color: @protected-area;
-        [boundary = 'aboriginal_lands'] {
-          line-color: @aboriginal;
-        }
-        line-join: round;
-        line-cap: round;
-        [zoom >= 12] {
-            line-width: 2;
-        }
+      [zoom >= 14] {
+        background/line-width: @protected-area-thin-width-z14;
+        line-width: @protected-area-thin-width-z14;
+      }
+      [zoom >= 16] {
+        background/line-width: @protected-area-thin-width-z16;
+        line-width: @protected-area-thin-width-z16;
       }
     }
+  }
+  ::lowzoom { opacity: 0.4 }
+  ::wideline { opacity: 0.3 }
+  ::narrowline {
+    opacity: 0.4;
+    /*
+    The following code prevents protected area boundaries from being rendered on top of
+    each other. Comp-op works on the entire attachment, not on the individual
+    border. Therefore, this code generates an attachment containing a set of
+    colored dashed lines and white lines (of which only the top one is visible),
+    and with `comp-op: darken` the white part is ignored, while the
+    @admin-boundaries colored part is rendered (as long as the background is not
+    darker than @protected_area color).
+    The SQL has `ORDER BY admin_level`, so the boundary with the lowest
+    admin_level is rendered on top, and therefore the only visible boundary.
+    */
+    comp-op: darken;
   }
 }
