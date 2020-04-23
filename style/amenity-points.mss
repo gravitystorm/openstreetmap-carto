@@ -20,8 +20,6 @@
 @barrier-icon: #3f3f3f;
 @landform-color: #d08f55;
 @leisure-green: darken(@park, 60%);
-@protected-area: #008000;
-@aboriginal: #82643a;
 @religious-icon: #000000;
 
 @landcover-font-size: 10;
