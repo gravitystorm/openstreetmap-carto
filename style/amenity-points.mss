@@ -2062,7 +2062,7 @@
   [feature = 'leisure_nature_reserve'],
   [feature = 'boundary_protected_area'] {
     [zoom >= 8][way_pixels > 12000][is_building = 'no']
-    [zoom >= 10][way_pixels > 3000][is_building = 'no'],
+    [zoom >= 9][way_pixels > 3000][is_building = 'no'],
     [zoom >= 17][way_pixels > 750] {
       text-name: "[name]";
       text-size: @landcover-font-size;
