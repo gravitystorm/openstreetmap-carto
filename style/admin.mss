@@ -476,10 +476,9 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
 #protected-areas-text[zoom >= 13][way_pixels > 192000] {
   text-name: "[name]";
   text-face-name: @book-fonts;
-  text-fill: @protected-area;
-  [boundary='aboriginal_lands'],
-  [boundary='protected_area'][protect_class='24'] {
-    text-fill: @aboriginal;
+  text-fill: darken(@protected-area, 3%);
+  [boundary='aboriginal_lands'] {
+    text-fill: darken(@aboriginal, 3%);
   }
   text-halo-radius: @standard-halo-radius;
   text-halo-fill: @standard-halo-fill;
