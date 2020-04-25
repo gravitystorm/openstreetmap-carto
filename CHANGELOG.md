@@ -1,5 +1,11 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.1.0...master)
 
+### Changes
+- Tunnel style rendering of waterway=canal with tunnel=flooded (#4087)
+- Move place=square to amenity-points layer with placenames text style from z17 (#4085)
+- Change wetland pattern initial zoom level back to z10 (#4094)
+- Render bare_rock pattern from z13, same as shingle and scree (#4072)
+
 ## [v5.1.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.0.0...v5.1.0) - 2020-04-10
 
 ### Changes
