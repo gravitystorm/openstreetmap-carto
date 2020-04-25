@@ -173,7 +173,9 @@ Layer:
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
               THEN 'yes' ELSE 'no' END AS int_intermittent,
-            CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel
+            CASE WHEN tunnel IN ('yes', 'culvert') 
+              OR waterway='canal' AND tunnel = 'flooded'
+              THEN 'yes' ELSE 'no' END AS int_tunnel
           FROM planet_osm_line
           WHERE waterway IN ('stream', 'drain', 'ditch')
         ) AS water_lines_casing
@@ -210,7 +212,9 @@ Layer:
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
               THEN 'yes' ELSE 'no' END AS int_intermittent,
-            CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel,
+            CASE WHEN tunnel IN ('yes', 'culvert') 
+              OR waterway = 'canal' AND tunnel = 'flooded'
+              THEN 'yes' ELSE 'no' END AS int_tunnel,
             'no' AS bridge
           FROM planet_osm_line
           WHERE waterway IN ('river', 'canal', 'stream', 'drain', 'ditch')
@@ -876,7 +880,9 @@ Layer:
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
               THEN 'yes' ELSE 'no' END AS int_intermittent,
-            CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel,
+            CASE WHEN tunnel IN ('yes', 'culvert') 
+              OR waterway = 'canal' AND tunnel = 'flooded'
+              THEN 'yes' ELSE 'no' END AS int_tunnel,
             'yes' AS bridge
           FROM planet_osm_line
           WHERE waterway IN ('river', 'canal', 'stream', 'drain', 'ditch')
@@ -2085,11 +2091,13 @@ Layer:
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
               THEN 'yes' ELSE 'no' END AS int_intermittent,
-            CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel
+            CASE WHEN tunnel IN ('yes', 'culvert') 
+              OR waterway = 'canal' AND tunnel = 'flooded'
+              THEN 'yes' ELSE 'no' END AS int_tunnel
           FROM planet_osm_line
           WHERE (waterway IN ('river', 'canal', 'stream', 'drain', 'ditch')
                  OR "natural" IN ('bay', 'strait'))
-            AND (tunnel IS NULL or tunnel != 'culvert')
+            AND (tunnel IS NULL OR tunnel != 'culvert')
             AND name IS NOT NULL
           ORDER BY COALESCE(layer,0)
         ) AS water_lines_text
