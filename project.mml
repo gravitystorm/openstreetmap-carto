@@ -292,7 +292,7 @@ Layer:
         ) AS landcover_area_symbols
     properties:
       cache-features: true
-      minzoom: 5
+      minzoom: 9
   - id: icesheet-outlines
     geometry: linestring
     <<: *extents
