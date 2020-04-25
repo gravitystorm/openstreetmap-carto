@@ -50,7 +50,7 @@ def generate_colours(settings, section):
     max_h = settings['hue'][1]
 
     delta_h = (max_h - min_h) / colour_divisions
-    
+
     h = min_h
     for name in road_classes:
         hues[name] = h
