@@ -1,7 +1,9 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.1.0...master)
 
 ### Changes
+- Add rendering for man_made=goods_conveyor (#4102)
 - Tunnel style rendering of waterway=canal with tunnel=flooded (#4087)
+- Remove rendering of residential, unclassified, cycleway, path, track highway areas (#4096)
 - Move place=square to amenity-points layer with placenames text style from z17 (#4085)
 - Change wetland pattern initial zoom level back to z10 (#4094)
 - Render bare_rock pattern from z13, same as shingle and scree (#4072)
