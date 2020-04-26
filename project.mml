@@ -173,7 +173,9 @@ Layer:
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
               THEN 'yes' ELSE 'no' END AS int_intermittent,
-            CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel
+            CASE WHEN tunnel IN ('yes', 'culvert') 
+              OR waterway='canal' AND tunnel = 'flooded'
+              THEN 'yes' ELSE 'no' END AS int_tunnel
           FROM planet_osm_line
           WHERE waterway IN ('stream', 'drain', 'ditch')
         ) AS water_lines_casing
@@ -210,7 +212,9 @@ Layer:
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
               THEN 'yes' ELSE 'no' END AS int_intermittent,
-            CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel,
+            CASE WHEN tunnel IN ('yes', 'culvert') 
+              OR waterway = 'canal' AND tunnel = 'flooded'
+              THEN 'yes' ELSE 'no' END AS int_tunnel,
             'no' AS bridge
           FROM planet_osm_line
           WHERE waterway IN ('river', 'canal', 'stream', 'drain', 'ditch')
@@ -292,7 +296,7 @@ Layer:
         ) AS landcover_area_symbols
     properties:
       cache-features: true
-      minzoom: 5
+      minzoom: 9
   - id: icesheet-outlines
     geometry: linestring
     <<: *extents
@@ -897,7 +901,9 @@ Layer:
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
               THEN 'yes' ELSE 'no' END AS int_intermittent,
-            CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel,
+            CASE WHEN tunnel IN ('yes', 'culvert') 
+              OR waterway = 'canal' AND tunnel = 'flooded'
+              THEN 'yes' ELSE 'no' END AS int_tunnel,
             'yes' AS bridge
           FROM planet_osm_line
           WHERE waterway IN ('river', 'canal', 'stream', 'drain', 'ditch')
@@ -1269,25 +1275,21 @@ Layer:
         (SELECT
             way,
             place,
-            leisure,
             name
           FROM planet_osm_point
           WHERE place IN ('village', 'hamlet')
              AND name IS NOT NULL
              AND NOT tags @> 'capital=>yes'
              OR (place IN ('suburb', 'quarter', 'neighbourhood', 'isolated_dwelling', 'farm')
-                 OR (place IN ('square')
-                     AND (leisure is NULL OR NOT leisure IN ('park', 'recreation_ground', 'garden')))
              ) AND name IS NOT NULL
           ORDER BY CASE
-              WHEN place = 'suburb' THEN 8
-              WHEN place = 'village' THEN 7
-              WHEN place = 'hamlet' THEN 6
-              WHEN place = 'quarter' THEN 5
-              WHEN place = 'neighbourhood' THEN 4
-              WHEN place = 'isolated_dwelling' THEN 3
-              WHEN place = 'farm' THEN 2
-              WHEN place = 'square' THEN 1
+              WHEN place = 'suburb' THEN 7
+              WHEN place = 'village' THEN 6
+              WHEN place = 'hamlet' THEN 5
+              WHEN place = 'quarter' THEN 4
+              WHEN place = 'neighbourhood' THEN 3
+              WHEN place = 'isolated_dwelling' THEN 2
+              WHEN place = 'farm' THEN 1
             END DESC,
             length(name) DESC,
             name
@@ -1487,7 +1489,7 @@ Layer:
                                                       'grassland', 'scrub', 'beach', 'glacier', 'tree', 'strait', 'cape')
                                                       THEN "natural" END,
                 'waterway_' || CASE WHEN "waterway" IN ('waterfall') AND way_area IS NULL THEN waterway END,
-                'place_' || CASE WHEN place IN ('island', 'islet') THEN place END,
+                'place_' || CASE WHEN place IN ('island', 'islet', 'square') THEN place END,
                 'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate')
                               THEN historic END,
                 'military_'|| CASE WHEN military IN ('danger_area', 'bunker') THEN military END,
@@ -1784,8 +1786,6 @@ Layer:
             ST_PointOnSurface(way) AS way,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             highway,
-            place,
-            leisure,
             name
           FROM planet_osm_polygon
           WHERE way && !bbox!
@@ -1793,9 +1793,7 @@ Layer:
               OR (railway IN ('platform')
                   AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
                   AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
-                  AND (covered NOT IN ('yes') OR covered IS NULL))
-              OR (place IN ('square')
-                  AND (leisure IS NULL OR NOT leisure IN ('park', 'recreation_ground', 'garden'))))
+                  AND (covered NOT IN ('yes') OR covered IS NULL)))
             AND name IS NOT NULL
             AND way_area > 3000*POW(!scale_denominator!*0.001*0.28,2)
             AND way_area < 768000*POW(!scale_denominator!*0.001*0.28,2)
@@ -2093,11 +2091,13 @@ Layer:
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
               THEN 'yes' ELSE 'no' END AS int_intermittent,
-            CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel
+            CASE WHEN tunnel IN ('yes', 'culvert') 
+              OR waterway = 'canal' AND tunnel = 'flooded'
+              THEN 'yes' ELSE 'no' END AS int_tunnel
           FROM planet_osm_line
           WHERE (waterway IN ('river', 'canal', 'stream', 'drain', 'ditch')
                  OR "natural" IN ('bay', 'strait'))
-            AND (tunnel IS NULL or tunnel != 'culvert')
+            AND (tunnel IS NULL OR tunnel != 'culvert')
             AND name IS NOT NULL
           ORDER BY COALESCE(layer,0)
         ) AS water_lines_text
