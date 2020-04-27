@@ -452,15 +452,6 @@ function isarea (tags)
     return false
 end
 
-function is_in (needle, haystack)
-    for index, value in ipairs (haystack) do
-        if value == needle then
-            return true
-        end
-    end
-    return false
-end
-
 --- Normalizes layer tags
 -- @param v The layer tag value
 -- @return An integer for the layer tag
