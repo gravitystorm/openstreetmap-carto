@@ -5,161 +5,148 @@ local tables = {}
 
 -- A list of columns per table, replacing the osm2pgsql .style file
 -- These need to be ordered, so that means a list
-local point_columns = {
-    'access',
-    'addr:housename',
-    'addr:housenumber',
-    'admin_level',
-    'aerialway',
-    'aeroway',
-    'amenity',
-    'barrier',
-    'boundary',
-    'building',
-    'highway',
-    'historic',
-    'junction',
-    'landuse',
-    'leisure',
-    'lock',
-    'man_made',
-    'military',
-    'name',
-    'natural',
-    'oneway',
-    'place',
-    'power',
-    'railway',
-    'ref',
-    'religion',
-    'shop',
-    'tourism',
-    'water',
-    'waterway' }
-
-local line_columns = {
-    'access',
-    'addr:housename',
-    'addr:housenumber',
-    'addr:interpolation',
-    'admin_level',
-    'aerialway',
-    'aeroway',
-    'amenity',
-    'barrier',
-    'bicycle',
-    'bridge',
-    'boundary',
-    'building',
-    'construction',
-    'covered',
-    'foot',
-    'highway',
-    'historic',
-    'horse',
-    'junction',
-    'landuse',
-    'leisure',
-    'lock',
-    'man_made',
-    'military',
-    'name',
-    'natural',
-    'oneway',
-    'place',
-    'power',
-    'railway',
-    'ref',
-    'religion',
-    'route',
-    'service',
-    'shop',
-    'surface',
-    'tourism',
-    'tracktype',
-    'tunnel',
-    'water',
-    'waterway'}
-
--- These are the same for now
-local polygon_columns = line_columns
-local road_columns = line_columns
-
--- Process the columns above
-local point_col_def = {
-    { column = 'way', type = 'point' },
-    { column = 'tags', type = 'hstore' },
-    { column = 'layer', type = 'int4' }
+local pg_cols = {
+    point = {
+        'access',
+        'addr:housename',
+        'addr:housenumber',
+        'admin_level',
+        'aerialway',
+        'aeroway',
+        'amenity',
+        'barrier',
+        'boundary',
+        'building',
+        'highway',
+        'historic',
+        'junction',
+        'landuse',
+        'leisure',
+        'lock',
+        'man_made',
+        'military',
+        'name',
+        'natural',
+        'oneway',
+        'place',
+        'power',
+        'railway',
+        'ref',
+        'religion',
+        'shop',
+        'tourism',
+        'water',
+        'waterway'
+    },
+    line = {
+        'access',
+        'addr:housename',
+        'addr:housenumber',
+        'addr:interpolation',
+        'admin_level',
+        'aerialway',
+        'aeroway',
+        'amenity',
+        'barrier',
+        'bicycle',
+        'bridge',
+        'boundary',
+        'building',
+        'construction',
+        'covered',
+        'foot',
+        'highway',
+        'historic',
+        'horse',
+        'junction',
+        'landuse',
+        'leisure',
+        'lock',
+        'man_made',
+        'military',
+        'name',
+        'natural',
+        'oneway',
+        'place',
+        'power',
+        'railway',
+        'ref',
+        'religion',
+        'route',
+        'service',
+        'shop',
+        'surface',
+        'tourism',
+        'tracktype',
+        'tunnel',
+        'water',
+        'waterway'
+    }
 }
 
-local point_columns_map = {}
-for _, key in ipairs(point_columns) do
-    table.insert(point_col_def, {column = key, type = "text"})
-    point_columns_map[key] = true
+pg_cols.roads = pg_cols.line
+pg_cols.polygon = pg_cols.line
+
+-- These columns aren't text columns
+col_definitions = {
+    point = {
+        { column = 'way', type = 'point' },
+        { column = 'tags', type = 'hstore' },
+        { column = 'layer', type = 'int4' }
+    },
+    line = {
+        { column = 'way', type = 'linestring' },
+        { column = 'tags', type = 'hstore' },
+        { column = 'layer', type = 'int4' },
+        { column = 'z_order', type = 'int4' }
+    },
+    roads = {
+        { column = 'way', type = 'linestring' },
+        { column = 'tags', type = 'hstore' },
+        { column = 'layer', type = 'int4' },
+        { column = 'z_order', type = 'int4' }
+    },
+    polygon = {
+        { column = 'way', type = 'geometry' },
+        { column = 'tags', type = 'hstore' },
+        { column = 'layer', type = 'int4' },
+        { column = 'z_order', type = 'int4' },
+        { column = 'way_area', type = 'area' }    
+    }
+}
+
+-- Combine the two sets of columns and create a map with column names.
+-- The latter is needed for quick lookup to see if a tag has a column.
+local columns_map = {}
+for tablename, columns in pairs(pg_cols) do
+    columns_map[tablename] = {}
+    for _, key in ipairs(columns) do
+        table.insert(col_definitions[tablename], {column = key, type = "text"})
+        columns_map[tablename][key] = true
+    end
 end
 
 tables.point = osm2pgsql.define_table{
     name = 'planet_osm_point',
     ids = { type = 'node', id_column = 'osm_id' },
-    columns = point_col_def
+    columns = col_definitions.point
 }
-
-local line_col_def = {
-    { column = 'way', type = 'linestring' },
-    { column = 'tags', type = 'hstore' },
-    { column = 'layer', type = 'int4' },
-    { column = 'z_order', type = 'int4' }
-}
-
-local line_columns_map = {}
-for _, key in ipairs(line_columns) do
-    table.insert(line_col_def, {column = key, type = "text"})
-    line_columns_map[key] = true
-end
 
 tables.line = osm2pgsql.define_table{
     name = 'planet_osm_line',
     ids = { type = 'way', id_column = 'osm_id' },
-    columns = line_col_def
+    columns = col_definitions.line
 }
-
-local roads_col_def = {
-    { column = 'way', type = 'linestring' },
-    { column = 'tags', type = 'hstore' },
-    { column = 'layer', type = 'int4' },
-    { column = 'z_order', type = 'int4' }
-}
-
-local roads_columns_map = {}
-for _, key in ipairs(road_columns) do
-    table.insert(roads_col_def, {column = key, type = "text"})
-    roads_columns_map[key] = true
-end
 
 tables.roads = osm2pgsql.define_table{
     name = 'planet_osm_roads',
     ids = { type = 'way', id_column = 'osm_id' },
-    columns = roads_col_def
+    columns = col_definitions.roads
 }
-
-local polygon_col_def = {
-    { column = 'way', type = 'geometry' },
-    { column = 'tags', type = 'hstore' },
-    { column = 'layer', type = 'int4' },
-    { column = 'z_order', type = 'int4' },
-    { column = 'way_area', type = 'area' }
-}
-
-local polygon_columns_map = {}
-for _, key in ipairs(polygon_columns) do
-    table.insert(polygon_col_def, {column = key, type = "text"})
-    polygon_columns_map[key] = true
-end
-
 tables.polygon = osm2pgsql.define_table{
     name = 'planet_osm_polygon',
     ids = { type = 'way', id_column = 'osm_id' },
-    columns = polygon_col_def
+    columns = col_definitions.polygon
 }
 
 -- Objects with any of the following keys will be treated as polygon
@@ -521,13 +508,13 @@ function split_tags(tags, tag_map)
 end
 
 function add_point(tags)
-    local cols = split_tags(tags, point_columns_map)
+    local cols = split_tags(tags, columns_map.point)
     cols['layer'] = layer(tags['layer'])
     tables.point:add_row(cols)
 end
 
 function add_line(tags)
-    local cols = split_tags(tags, line_columns_map)
+    local cols = split_tags(tags, columns_map.line)
     cols['layer'] = layer(tags['layer'])
     cols['z_order'] = z_order(tags)
     cols.way = { create = 'line', split_at = 100000 }
@@ -535,7 +522,7 @@ function add_line(tags)
 end
 
 function add_roads(tags)
-    local cols = split_tags(tags, roads_columns_map)
+    local cols = split_tags(tags, columns_map.roads)
     cols['layer'] = layer(tags['layer'])
     cols['z_order'] = z_order(tags)
     cols.way = { create = 'line', split_at = 100000 }
@@ -543,7 +530,7 @@ function add_roads(tags)
 end
 
 function add_polygon(tags)
-    local cols = split_tags(tags, polygon_columns_map)
+    local cols = split_tags(tags, columns_map.polygon)
     cols['layer'] = layer(tags['layer'])
     cols['z_order'] = z_order(tags)
     cols.way = { create = 'area', multi = true }
