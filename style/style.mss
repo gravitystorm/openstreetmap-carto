@@ -4,9 +4,9 @@ Map {
 
 @land-color: #f2efe9;
 
-@water-color: #aad3df;     // Lch(82,15,224)
-@ocean-color: #b9d3dc;     // Lch(83,10,227)
-@river-color: #97c9d8;     // Lch(78,18,225)
+@water-color: #a2d1e0;     // Lch(81,17,227)
+@ocean-color: #b5d7e3;     // Lch(84,13,227)
+@river-color: #8fcadd;     // Lch(78,21,227)
 
 @standard-halo-radius: 1;
 @standard-halo-fill: rgba(255,255,255,0.6);
