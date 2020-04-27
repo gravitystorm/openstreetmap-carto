@@ -3,7 +3,7 @@
 This document describes how to manually configure your system for running OpenStreetMap Carto. If you prefer quick, platform independent setup for a development environment, without the need to install and configure tools by hand, follow a Docker installation guide in [DOCKER.md](https://github.com/gravitystorm/openstreetmap-carto/blob/master/DOCKER.md).
 
 ## OpenStreetMap data
-You need OpenStreetMap data loaded into a PostGIS database (see below for [dependencies](#dependencies)). These stylesheets expect a database generated with osm2pgsql using the pgsql backend (table names of `planet_osm_point`, etc), the default database name (`gis`), and the [lua transforms](https://github.com/openstreetmap/osm2pgsql/blob/master/docs/lua.md) documented in the instructions below.
+You need OpenStreetMap data loaded into a PostGIS database (see below for [dependencies](#dependencies)). These stylesheets expect a database generated with osm2pgsql using the flex backend and the default database name (`gis`). This requires osm2pgsql built from source.
 
 Start by creating a database
 
@@ -21,7 +21,7 @@ psql -d gis -c 'CREATE EXTENSION postgis; CREATE EXTENSION hstore;'
 then grab some OSM data. It's probably easiest to grab an PBF of OSM data from [Geofabrik](https://download.geofabrik.de/). Once you've done that, import with osm2pgsql:
 
 ```
-osm2pgsql -G --hstore --style openstreetmap-carto.style --tag-transform-script openstreetmap-carto.lua -d gis ~/path/to/data.osm.pbf
+osm2pgsql --output flex --style openstreetmap-carto.lua -d gis ~/path/to/data.osm.pbf
 ```
 
 You can find a more detailed guide to setting up a database and loading data with osm2pgsql at [switch2osm.org](https://switch2osm.org/manually-building-a-tile-server-16-04-2-lts/).

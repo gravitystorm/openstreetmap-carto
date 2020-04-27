@@ -1,6 +1,167 @@
 -- For documentation of Lua tag transformations, see:
 -- https://github.com/openstreetmap/osm2pgsql/blob/master/docs/lua.md
 
+local tables = {}
+
+-- A list of columns per table, replacing the osm2pgsql .style file
+-- These need to be ordered, so that means a list
+local point_columns = {
+    'access',
+    'addr:housename',
+    'addr:housenumber',
+    'admin_level',
+    'aerialway',
+    'aeroway',
+    'amenity',
+    'barrier',
+    'boundary',
+    'building',
+    'highway',
+    'historic',
+    'junction',
+    'landuse',
+    'leisure',
+    'lock',
+    'man_made',
+    'military',
+    'name',
+    'natural',
+    'oneway',
+    'place',
+    'power',
+    'railway',
+    'ref',
+    'religion',
+    'shop',
+    'tourism',
+    'water',
+    'waterway' }
+
+local line_columns = {
+    'access',
+    'addr:housename',
+    'addr:housenumber',
+    'addr:interpolation',
+    'admin_level',
+    'aerialway',
+    'aeroway',
+    'amenity',
+    'barrier',
+    'bicycle',
+    'bridge',
+    'boundary',
+    'building',
+    'construction',
+    'covered',
+    'foot',
+    'highway',
+    'historic',
+    'horse',
+    'junction',
+    'landuse',
+    'leisure',
+    'lock',
+    'man_made',
+    'military',
+    'name',
+    'natural',
+    'oneway',
+    'place',
+    'power',
+    'railway',
+    'ref',
+    'religion',
+    'route',
+    'service',
+    'shop',
+    'surface',
+    'tourism',
+    'tracktype',
+    'tunnel',
+    'water',
+    'waterway'}
+
+-- These are the same for now
+local polygon_columns = line_columns
+local road_columns = line_columns
+
+-- Process the columns above
+local point_col_def = {
+    { column = 'way', type = 'point' },
+    { column = 'tags', type = 'hstore' },
+    { column = 'layer', type = 'int4' }
+}
+
+local point_columns_map = {}
+for _, key in ipairs(point_columns) do
+    table.insert(point_col_def, {column = key, type = "text"})
+    point_columns_map[key] = true
+end
+
+tables.point = osm2pgsql.define_table{
+    name = 'planet_osm_point',
+    ids = { type = 'node', id_column = 'osm_id' },
+    columns = point_col_def
+}
+
+local line_col_def = {
+    { column = 'way', type = 'linestring' },
+    { column = 'tags', type = 'hstore' },
+    { column = 'layer', type = 'int4' },
+    { column = 'z_order', type = 'int4' }
+}
+
+local line_columns_map = {}
+for _, key in ipairs(line_columns) do
+    table.insert(line_col_def, {column = key, type = "text"})
+    line_columns_map[key] = true
+end
+
+tables.line = osm2pgsql.define_table{
+    name = 'planet_osm_line',
+    ids = { type = 'way', id_column = 'osm_id' },
+    columns = line_col_def
+}
+
+local roads_col_def = {
+    { column = 'way', type = 'linestring' },
+    { column = 'tags', type = 'hstore' },
+    { column = 'layer', type = 'int4' },
+    { column = 'z_order', type = 'int4' }
+}
+
+local roads_columns_map = {}
+for _, key in ipairs(road_columns) do
+    table.insert(roads_col_def, {column = key, type = "text"})
+    roads_columns_map[key] = true
+end
+
+tables.roads = osm2pgsql.define_table{
+    name = 'planet_osm_roads',
+    ids = { type = 'way', id_column = 'osm_id' },
+    columns = roads_col_def
+}
+
+local polygon_col_def = {
+    { column = 'way', type = 'geometry' },
+    { column = 'tags', type = 'hstore' },
+    { column = 'layer', type = 'int4' },
+    { column = 'z_order', type = 'int4' },
+    { column = 'way_area', type = 'area' }
+}
+
+local polygon_columns_map = {}
+for _, key in ipairs(polygon_columns) do
+    table.insert(polygon_col_def, {column = key, type = "text"})
+    polygon_columns_map[key] = true
+end
+
+tables.polygon = osm2pgsql.define_table{
+    name = 'planet_osm_polygon',
+    ids = { type = 'way', id_column = 'osm_id' },
+    columns = polygon_col_def
+}
+
 -- Objects with any of the following keys will be treated as polygon
 local polygon_keys = {
     'abandoned:aeroway',
@@ -265,133 +426,18 @@ end
 
 --- Gets the roads table status for a set of tags
 -- @param tags OSM tags
--- @return 1 if it belongs in the roads table, 0 otherwise
+-- @return true if it belongs in the roads table, false otherwise
 function roads(tags)
     for k, v in pairs(tags) do
         if roads_info[k] and roads_info[k][v] and roads_info[k][v].roads then
             if not (k ~= 'railway' or tags.service) then
-                return 1
+                return true
             elseif not excluded_railway_service[tags.service] then
-                return 1
+                return true
             end
         end
     end
-    return 0
-end
-
---- Generic filtering of OSM tags
--- @param tags Raw OSM tags
--- @return Filtered OSM tags
-function filter_tags_generic(tags)
-    -- Short-circuit for untagged objects
-    if next(tags) == nil then
-        return 1, {}
-    end
-
-    -- Delete tags listed in delete_tags
-    for _, d in ipairs(delete_tags) do
-        tags[d] = nil
-    end
-
-    -- By using a second loop for wildcards we avoid checking already deleted tags
-    for tag, _ in pairs (tags) do
-        for _, d in ipairs(delete_prefixes) do
-            if string.sub(tag, 1, string.len(d)) == d then
-                tags[tag] = nil
-                break
-            end
-        end
-    end
-
-   -- Filter out objects that have no tags after deleting
-    if next(tags) == nil then
-        return 1, {}
-    end
-
-    -- Convert layer to an integer
-    tags['layer'] = layer(tags['layer'])
-    return 0, tags
-end
-
--- Filtering on nodes
-function filter_tags_node (keyvalues, numberofkeys)
-    return filter_tags_generic(keyvalues)
-end
-
--- Filtering on relations
-function filter_basic_tags_rel (keyvalues, numberofkeys)
-    -- Filter out objects that are filtered out by filter_tags_generic
-    local filter, keyvalues = filter_tags_generic(keyvalues)
-    if filter == 1 then
-        return 1, keyvalues
-    end
-
-    -- Filter out all relations except route, multipolygon and boundary relations
-    if ((keyvalues["type"] ~= "route") and (keyvalues["type"] ~= "multipolygon") and (keyvalues["type"] ~= "boundary")) then
-        return 1, keyvalues
-    end
-
-    return 0, keyvalues
-end
-
--- Filtering on ways
-function filter_tags_way (keyvalues, numberofkeys)
-    local filter = 0  -- Will object be filtered out?
-    local polygon = 0 -- Will object be treated as polygon?
-
-    -- Filter out objects that are filtered out by filter_tags_generic
-    filter, keyvalues = filter_tags_generic(keyvalues)
-    if filter == 1 then
-        return filter, keyvalues, polygon, roads
-    end
-
-    polygon = isarea(keyvalues)
-
-    -- Add z_order column
-    keyvalues["z_order"] = z_order(keyvalues)
-
-    return filter, keyvalues, polygon, roads(keyvalues)
-end
-
---- Handling for relation members and multipolygon generation
--- @param keyvalues OSM tags, after processing by relation transform
--- @param keyvaluemembers OSM tags of relation members, after processing by way transform
--- @param roles OSM roles of relation members
--- @param membercount number of members
--- @return filter, cols, member_superseded, boundary, polygon, roads
-function filter_tags_relation_member (keyvalues, keyvaluemembers, roles, membercount)
-    local members_superseded = {}
-
-    -- Start by assuming that this not an old-style MP
-    for i = 1, membercount do
-        members_superseded[i] = 0
-    end
-
-    local type = keyvalues["type"]
-
-    -- Remove type key
-    keyvalues["type"] = nil
-
-    -- Filter out relations with just a type tag or no tags
-    if next(keyvalues) == nil then
-        return 1, keyvalues, members_superseded, 0, 0, 0
-    end
-
-    if type == "boundary" or (type == "multipolygon" and keyvalues["boundary"]) then
-        keyvalues.z_order = z_order(keyvalues)
-        return 0, keyvalues, members_superseded, 1, 0, roads(keyvalues)
-    -- For multipolygons...
-    elseif (type == "multipolygon") then
-        -- Multipolygons by definition are polygons, so we know roads = linestring = 0, polygon = 1
-        keyvalues.z_order = z_order(keyvalues)
-        return 0, keyvalues, members_superseded, 0, 1, 0
-    elseif type == "route" then
-        keyvalues.z_order = z_order(keyvalues)
-        return 0, keyvalues, members_superseded, 1, 0, roads(keyvalues)
-    end
-
-    -- Unknown type of relation or no type tag
-    return 1, keyvalues, members_superseded, 0, 0, 0
+    return false
 end
 
 --- Check if an object with given tags should be treated as polygon
@@ -400,7 +446,7 @@ end
 function isarea (tags)
     -- Treat objects tagged as area=yes polygon, other area as no
     if tags["area"] then
-        return tags["area"] == "yes" and 1 or 0
+        return tags["area"] == "yes" and true or false
     end
 
    -- Search through object's tags
@@ -408,15 +454,15 @@ function isarea (tags)
         -- Check if it has a polygon key and not a linestring override, or a polygon k=v
         for _, ptag in ipairs(polygon_keys) do
             if k == ptag and v ~= "no" and not (linestring_values[k] and linestring_values[k][v]) then
-                return 1
+                return true
             end
         end
 
         if (polygon_values[k] and polygon_values[k][v]) then
-            return 1
+            return true
         end
     end
-    return 0
+    return false
 end
 
 function is_in (needle, haystack)
@@ -433,4 +479,127 @@ end
 -- @return An integer for the layer tag
 function layer (v)
     return v and string.find(v, "^-?%d+$") and tonumber(v) < 100 and tonumber(v) > -100 and v or nil
+end
+
+--- Clean tags of deleted tags
+-- @return True if no tags are left after cleaning
+function clean_tags(tags)
+    -- Short-circuit for untagged objects
+    if next(tags) == nil then
+        return true
+    end
+
+    -- Delete tags listed in delete_tags
+    for _, d in ipairs(delete_tags) do
+        tags[d] = nil
+    end
+    -- By using a second loop for wildcards we avoid checking already deleted tags
+    for tag, _ in pairs (tags) do
+        for _, d in ipairs(delete_prefixes) do
+            if string.sub(tag, 1, string.len(d)) == d then
+                tags[tag] = nil
+                break
+            end
+        end
+    end
+
+    return next(tags) == nil
+end
+
+--- Splits a tag into tags and hstore tags
+-- @return columns, hstore tags
+function split_tags(tags, tag_map)
+    local cols = {tags = {}}
+    for key, value in pairs(tags) do
+        if tag_map[key] then
+            cols[key] = value
+        else
+            cols.tags[key] = value
+        end
+    end
+    return cols
+end
+
+function add_point(tags)
+    local cols = split_tags(tags, point_columns_map)
+    cols['layer'] = layer(tags['layer'])
+    tables.point:add_row(cols)
+end
+
+function add_line(tags)
+    local cols = split_tags(tags, line_columns_map)
+    cols['layer'] = layer(tags['layer'])
+    cols['z_order'] = z_order(tags)
+    cols.way = { create = 'line', split_at = 100000 }
+    tables.line:add_row(cols)
+end
+
+function add_roads(tags)
+    local cols = split_tags(tags, roads_columns_map)
+    cols['layer'] = layer(tags['layer'])
+    cols['z_order'] = z_order(tags)
+    cols.way = { create = 'line', split_at = 100000 }
+    tables.roads:add_row(cols)
+end
+
+function add_polygon(tags)
+    local cols = split_tags(tags, polygon_columns_map)
+    cols['layer'] = layer(tags['layer'])
+    cols['z_order'] = z_order(tags)
+    cols.way = { create = 'area', multi = true }
+    tables.polygon:add_row(cols)
+end
+
+function osm2pgsql.process_node(object)
+    if clean_tags(object.tags) then
+        return
+    end
+
+    add_point(object.tags)
+end
+
+function osm2pgsql.process_way(object)
+    if clean_tags(object.tags) then
+        return
+    end
+
+    local area_tags = isarea(object.tags)
+    if object.is_closed and area_tags then
+        add_polygon(object.tags)
+    else
+        add_line(object.tags)
+
+        if roads(object.tags) then
+            add_roads(object.tags)
+        end
+    end
+end
+
+function osm2pgsql.process_relation(object)
+    -- grab the type tag before filtering tags
+    local type = object.tags.type
+    object.tags.type = nil
+
+    if clean_tags(object.tags) then
+        return
+    end
+    if type == "boundary" or (type == "multipolygon" and object.tags["boundary"]) then
+        add_line(object.tags)
+
+        if roads(object.tags) then
+            add_roads(object.tags)
+        end
+
+        add_polygon(object.tags)
+
+    elseif type == "multipolygon" then
+        add_polygon(object.tags)
+    elseif type == "route" then
+        add_line(object.tags)
+
+        -- TODO: Remove this, roads tags don't belong on route relations
+        if roads(object.tags) then
+            add_roads(object.tags)
+        end
+    end
 end
