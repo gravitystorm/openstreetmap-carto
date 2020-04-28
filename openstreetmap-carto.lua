@@ -81,6 +81,11 @@ local pg_cols = {
         'tunnel',
         'water',
         'waterway'
+    },
+    route = {
+        'route',
+        'ref',
+        'network'
     }
 }
 
@@ -112,6 +117,11 @@ col_definitions = {
         { column = 'layer', type = 'int4' },
         { column = 'z_order', type = 'int4' },
         { column = 'way_area', type = 'area' }    
+    },
+    route = {
+        { column = 'member_id', type = 'int8' },
+        { column = 'member_position', type = 'int4' },
+        { column = 'tags', type = 'hstore' }
     }
 }
 
@@ -143,10 +153,17 @@ tables.roads = osm2pgsql.define_table{
     ids = { type = 'way', id_column = 'osm_id' },
     columns = col_definitions.roads
 }
+
 tables.polygon = osm2pgsql.define_table{
     name = 'planet_osm_polygon',
     ids = { type = 'way', id_column = 'osm_id' },
     columns = col_definitions.polygon
+}
+
+tables.route = osm2pgsql.define_table{
+    name = 'planet_osm_route',
+    ids = { type = 'relation', id_column = 'osm_id' },
+    columns = col_definitions.route
 }
 
 -- Objects with any of the following keys will be treated as polygon
@@ -498,6 +515,8 @@ function split_tags(tags, tag_map)
     return cols
 end
 
+
+-- TODO: Make add_* take object, not object.tags
 function add_point(tags)
     local cols = split_tags(tags, columns_map.point)
     cols['layer'] = layer(tags['layer'])
@@ -526,6 +545,17 @@ function add_polygon(tags)
     cols['z_order'] = z_order(tags)
     cols.way = { create = 'area', multi = true }
     tables.polygon:add_row(cols)
+end
+
+function add_route(object)
+    for i, member in ipairs(object.members) do
+        if member.type == 'w' then
+            local cols = split_tags(object.tags, columns_map.roads)
+            cols.member_id = member.ref
+            cols.member_position = i
+            tables.route:add_row(cols)
+        end
+    end
 end
 
 function osm2pgsql.process_node(object)
@@ -574,7 +604,7 @@ function osm2pgsql.process_relation(object)
         add_polygon(object.tags)
     elseif type == "route" then
         add_line(object.tags)
-
+        add_route(object)
         -- TODO: Remove this, roads tags don't belong on route relations
         if roads(object.tags) then
             add_roads(object.tags)

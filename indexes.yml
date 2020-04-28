@@ -40,3 +40,7 @@ roads:
     where: boundary = 'administrative'
   roads_ref:
     where: highway IS NOT NULL AND ref IS NOT NULL
+route:
+  # The route table has no geospatial data, so it's index is a btree
+  member_id:
+    column: btree (member_id)

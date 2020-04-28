@@ -69,6 +69,13 @@ assert(deepcompare(table_definitions.planet_osm_polygon.columns[4], { column = '
 assert(deepcompare(table_definitions.planet_osm_polygon.columns[5], { column = 'way_area', type = 'area' }), "planet_osm_polygon way_area column")
 assert(deepcompare(table_definitions.planet_osm_polygon.columns[6], { column = 'access', type = 'text' }), "planet_osm_polygon access column")
 
+assert(deepcompare(table_definitions.planet_osm_route.ids, { type = 'relation', id_column = 'osm_id' }), "planet_osm_route id column")
+assert(deepcompare(table_definitions.planet_osm_route.columns[1], { column = 'member_id', type = 'int8' }), "planet_osm_route member_id column")
+assert(deepcompare(table_definitions.planet_osm_route.columns[2], { column = 'member_position', type = 'int4' }), "planet_osm_route member_position column")
+assert(deepcompare(table_definitions.planet_osm_route.columns[3], { column = 'tags', type = 'hstore' }), "planet_osm_route tags column")
+assert(deepcompare(table_definitions.planet_osm_route.columns[4], { column = 'route', type = 'text' }), "planet_osm_route route column")
+
+
 print("TESTING: z_order")
 
 assert(z_order({}) == nil, "test failed: no tags")
@@ -193,6 +200,22 @@ table_contents.planet_osm_polygon = {}
 add_polygon({foo = "bar"})
 assert(deepcompare(table_contents.planet_osm_polygon[1], {tags = {foo = "bar"}, way = { create = 'area', multi=true }}), "hstore only")
 
+
+print("TESTING: add_route")
+table_contents.planet_osm_route = {}
+add_route({tags = {route = "unicycle"}, members = {{type = 'w', ref = 1234, role = 'foo'}}})
+assert(deepcompare(table_contents.planet_osm_route[1], {route = "unicycle", member_id = 1234, member_position = 1, tags = {}}), "Route with 1 way")
+
+table_contents.planet_osm_route = {}
+add_route({tags = {route = "unicycle"}, members = {{type = 'w', ref = 1234, role = 'foo'}, {type = 'n', ref = 1235, role = 'foo'}, }})
+assert(deepcompare(table_contents.planet_osm_route[1], {route = "unicycle", member_id = 1234, member_position = 1, tags = {}}), "Route with 1 way + 1 node")
+
+table_contents.planet_osm_route = {}
+add_route({tags = {route = "unicycle"}, members = {{type = 'w', ref = 1234, role = 'foo'}, {type = 'w', ref = 1235, role = 'foo'}}})
+assert(deepcompare(table_contents.planet_osm_route[1], {route = "unicycle", member_id = 1234, member_position = 1, tags = {}}), "Route with 2 ways")
+assert(deepcompare(table_contents.planet_osm_route[2], {route = "unicycle", member_id = 1235, member_position = 2, tags = {}}), "Route with 2 ways")
+
+
 print("TESTING: osm2pgsql.process_node")
 table_contents.planet_osm_point = {}
 osm2pgsql.process_node({tags = {}})
@@ -255,6 +278,7 @@ print("TESTING: osm2pgsql.process_relation")
 table_contents.planet_osm_line = {}
 table_contents.planet_osm_roads = {}
 table_contents.planet_osm_polygon = {}
+table_contents.planet_osm_route = {}
 
 osm2pgsql.process_relation({tags = {}})
 assert(deepcompare(table_contents.planet_osm_line, {}), "Untagged line")
@@ -298,12 +322,13 @@ assert(deepcompare(table_contents.planet_osm_roads, {}), "MP roads")
 assert(deepcompare(table_contents.planet_osm_polygon[1], table_contents.planet_osm_polygon[2]), "admin boundary polygon")
 table_contents.planet_osm_polygon = {}
 
-osm2pgsql.process_relation({tags = {type = "route", route = "road"}})
+osm2pgsql.process_relation({tags = {type = "route", route = "road"}, members = {{type = 'w', ref = 1234, role = 'forward'}}})
 add_line({route = "road"})
-
+add_route({tags = { route = "road"}, members = {{type = 'w', ref = 1234, role = 'forward'}}})
 assert(deepcompare(table_contents.planet_osm_line[1], table_contents.planet_osm_line[2]), "route line")
 assert(deepcompare(table_contents.planet_osm_roads, {}), "route roads")
 assert(deepcompare(table_contents.planet_osm_polygon, {}), "route polygon")
+assert(deepcompare(table_contents.planet_osm_route[1], table_contents.planet_osm_route[2]), "route route")
 table_contents.planet_osm_line = {}
 table_contents.planet_osm_polygon = {}
 table_contents.planet_osm_roads = {}

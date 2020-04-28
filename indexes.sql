@@ -43,3 +43,5 @@ CREATE INDEX planet_osm_roads_admin_low
 CREATE INDEX planet_osm_roads_roads_ref
   ON planet_osm_roads USING GIST (way)
   WHERE highway IS NOT NULL AND ref IS NOT NULL;
+CREATE INDEX planet_osm_route_member_id
+  ON planet_osm_route USING btree (member_id);
