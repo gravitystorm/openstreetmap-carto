@@ -2,7 +2,7 @@
 @admin-boundaries-narrow: #845283; // Lch(42,35,327)
 @admin-boundaries-wide: #a37da1; // Lch(57,25,327)
 
-@protected-area: #4c8b24; // Lch(52,60,130)
+@protected-area: #308e35; // Lch(52,60,140)
 @aboriginal: #a76f56; // Lch(52,30,50)
 
 /* For performance reasons, the admin border layers are split into three groups
