@@ -495,17 +495,17 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   text-dy: -10;
 }
 
-@protected-area-width-z8: 0.8;
-@protected-area-width-z9: 1;
-@protected-area-width-z10: 1.4;
-@protected-area-width-z11: 2.2;
-@protected-area-width-z12: 3.2;
-@protected-area-width-z14: 4;
-@protected-area-width-z16: 5;
-@protected-area-thin-width-z11: 0.8; // 2/5 of full width
-@protected-area-thin-width-z12: 1.2; // 2/5
-@protected-area-thin-width-z14: 1.4; // 2/5
-@protected-area-thin-width-z16: 1.8; // 2/5
+@protected-area-width-z8: 1;
+@protected-area-width-z9: 1.3;
+@protected-area-width-z10: 1.8;
+@protected-area-width-z11: 2.4;
+@protected-area-width-z12: 3;
+@protected-area-width-z14: 3.6;
+@protected-area-width-z16: 4.8;
+@protected-area-thin-width-z11: 0.8; // 1/3 of full width
+@protected-area-thin-width-z12: 1; // 1/3
+@protected-area-thin-width-z14: 1.2; // 1/3
+@protected-area-thin-width-z16: 1.6; // 1/3
 
 #protected-areas {
   ::lowzoom {
@@ -549,7 +549,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
       line-color: @protected-area;
       line-join: round;
       line-width: @protected-area-thin-width-z11;
-      line-dasharray: 3,0.5;
+      line-dasharray: 3,0.3;
       [boundary='aboriginal_lands'] { line-color: @aboriginal; }
       [zoom >= 12] {
         background/line-width: @protected-area-thin-width-z12;
