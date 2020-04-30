@@ -2,7 +2,7 @@
 @admin-boundaries-narrow: #845283; // Lch(42,35,327)
 @admin-boundaries-wide: #a37da1; // Lch(57,25,327)
 
-@protected-area: #308e35; // Lch(52,60,140)
+@protected-area: #3f9b41; // Lch(57,60,140)
 @aboriginal: #a76f56; // Lch(52,30,50)
 
 /* For performance reasons, the admin border layers are split into three groups
@@ -496,15 +496,15 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
 }
 
 @protected-area-width-z8: 1.2;
-@protected-area-width-z9: 1.5;
-@protected-area-width-z10: 1.8;
-@protected-area-width-z11: 2.1;
+@protected-area-width-z9: 1.2;
+@protected-area-width-z10: 1.5;
+@protected-area-width-z11: 1.8;
 @protected-area-width-z12: 2.4;
 @protected-area-width-z14: 3;
 @protected-area-thin-width-z8: 0.4; // 1/3 of full width
-@protected-area-thin-width-z9: 0.5; // 1/3
-@protected-area-thin-width-z10: 0.6; // 1/3
-@protected-area-thin-width-z11: 0.7; // 1/3
+@protected-area-thin-width-z9: 0.4; // 1/3
+@protected-area-thin-width-z10: 0.5; // 1/3
+@protected-area-thin-width-z11: 0.6; // 1/3
 @protected-area-thin-width-z12: 0.8; // 1/3
 @protected-area-thin-width-z14: 1; // 1/3
 
@@ -565,5 +565,5 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     }
   }
   ::wideline { opacity: 0.3 }
-  ::narrowline { opacity: 0.4; }
+  ::narrowline { opacity: 0.3; }
 }
