@@ -565,5 +565,5 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     }
   }
   ::wideline { opacity: 0.3 }
-  ::narrowline { opacity: 0.3; }
+  ::narrowline { opacity: 0.4; }
 }
