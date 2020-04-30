@@ -495,37 +495,40 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   text-dy: -10;
 }
 
-@protected-area-width-z8: 1;
-@protected-area-width-z9: 1.3;
+@protected-area-width-z8: 1.2;
+@protected-area-width-z9: 1.5;
 @protected-area-width-z10: 1.8;
-@protected-area-width-z11: 2.4;
-@protected-area-width-z12: 3;
-@protected-area-width-z14: 3.6;
-@protected-area-width-z16: 4.8;
-@protected-area-thin-width-z11: 0.8; // 1/3 of full width
-@protected-area-thin-width-z12: 1; // 1/3
-@protected-area-thin-width-z14: 1.2; // 1/3
-@protected-area-thin-width-z16: 1.6; // 1/3
+@protected-area-width-z11: 2.1;
+@protected-area-width-z12: 2.4;
+@protected-area-width-z14: 3;
+@protected-area-thin-width-z8: 0.4; // 1/3 of full width
+@protected-area-thin-width-z9: 0.5; // 1/3
+@protected-area-thin-width-z10: 0.6; // 1/3
+@protected-area-thin-width-z11: 0.7; // 1/3
+@protected-area-thin-width-z12: 0.8; // 1/3
+@protected-area-thin-width-z14: 1; // 1/3
 
 #protected-areas {
-  ::lowzoom {
-    [zoom >= 8][zoom < 10][way_pixels > 3000],
-    [zoom >= 10][zoom < 11][way_pixels > 750] {
-      line-color: @protected-area;
-      line-width: @protected-area-width-z8;
-      [zoom >= 9] { line-width: @protected-area-width-z9; }
-      [zoom >= 10] { line-width: @protected-area-width-z10; }
-      [boundary='aboriginal_lands'] { line-color: @aboriginal; }
-    }
-  }
-
   ::wideline { // inner wide line
-    [zoom >= 11][way_pixels > 750] {
+    [zoom >= 8][zoom < 10][way_pixels > 3000],
+    [zoom >= 10][way_pixels > 750] {
       line-color: @protected-area;
       line-join: round;
-      line-width: @protected-area-width-z11;
-      line-offset: (@protected-area-thin-width-z11/2 - @protected-area-width-z11/2);
+      line-width: @protected-area-width-z8;
+      line-offset: (@protected-area-thin-width-z8/2 - @protected-area-width-z8/2);
       [boundary='aboriginal_lands'] { line-color: @aboriginal; }
+      [zoom >= 9] {
+        line-width: @protected-area-width-z9;
+        line-offset: (@protected-area-thin-width-z9/2 - @protected-area-width-z9/2);
+      }
+      [zoom >= 10] {
+        line-width: @protected-area-width-z10;
+        line-offset: (@protected-area-thin-width-z10/2 - @protected-area-width-z10/2);
+      }
+      [zoom >= 11] {
+        line-width: @protected-area-width-z11;
+        line-offset: (@protected-area-thin-width-z11/2 - @protected-area-width-z11/2);
+      }
       [zoom >= 12] {
         line-width: @protected-area-width-z12;
         line-offset: (@protected-area-thin-width-z12/2 - @protected-area-width-z12/2);
@@ -534,52 +537,33 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
         line-width: @protected-area-width-z14;
         line-offset: (@protected-area-thin-width-z14/2 - @protected-area-width-z14/2);
       }
-      [zoom >= 16] {
-        line-width: @protected-area-width-z16;
-        line-offset: (@protected-area-thin-width-z16/2 - @protected-area-width-z16/2);
-      }
     }
   }
 
   ::narrowline { // outer thin line
-    [zoom >= 11][way_pixels > 750] {
-      background/line-color: white;
-      background/line-join: round;
-      background/line-width: @protected-area-thin-width-z11;
+    [zoom >= 8][zoom < 10][way_pixels > 3000],
+    [zoom >= 10][way_pixels > 750] {
       line-color: @protected-area;
       line-join: round;
-      line-width: @protected-area-thin-width-z11;
-      line-dasharray: 3,0.3;
+      line-width: @protected-area-thin-width-z8;
       [boundary='aboriginal_lands'] { line-color: @aboriginal; }
+      [zoom >= 9] {
+        line-width: @protected-area-thin-width-z9;
+      }
+      [zoom >= 10] {
+        line-width: @protected-area-thin-width-z10;
+      }
+      [zoom >= 11] {
+        line-width: @protected-area-thin-width-z11;
+      }
       [zoom >= 12] {
-        background/line-width: @protected-area-thin-width-z12;
         line-width: @protected-area-thin-width-z12;
       }
       [zoom >= 14] {
-        background/line-width: @protected-area-thin-width-z14;
         line-width: @protected-area-thin-width-z14;
-      }
-      [zoom >= 16] {
-        background/line-width: @protected-area-thin-width-z16;
-        line-width: @protected-area-thin-width-z16;
       }
     }
   }
-  ::lowzoom { opacity: 0.4 }
   ::wideline { opacity: 0.3 }
-  ::narrowline {
-    opacity: 0.4;
-    /*
-    The following code prevents protected area boundaries from being rendered on top of
-    each other. Comp-op works on the entire attachment, not on the individual
-    border. Therefore, this code generates an attachment containing a set of
-    colored dashed lines and white lines (of which only the top one is visible),
-    and with `comp-op: darken` the white part is ignored, while the
-    @admin-boundaries colored part is rendered (as long as the background is not
-    darker than @protected_area color).
-    The SQL has `ORDER BY admin_level`, so the boundary with the lowest
-    admin_level is rendered on top, and therefore the only visible boundary.
-    */
-    comp-op: darken;
-  }
+  ::narrowline { opacity: 0.4; }
 }
