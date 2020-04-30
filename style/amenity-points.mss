@@ -2993,19 +2993,6 @@
       line-width: 1;
       [zoom >= 18] { line-width: 2; }
       [zoom >= 19] { line-width: 4; }
-
-      [zoom >= 19] {
-        text-name: "[name]";
-        text-size: 10;
-        text-face-name: @oblique-fonts;
-        text-fill: darken(@pitch, 40%);
-        text-halo-radius: @standard-halo-radius;
-        text-halo-fill: @standard-halo-fill;
-        text-placement: line;
-        text-vertical-alignment: middle;
-        text-repeat-distance: @waterway-text-repeat-distance;
-        text-dy: 8;
-      }
     }
   }
 
@@ -3024,20 +3011,37 @@
       line-width: 1;
       [zoom >= 18] { line-width: 2; }
       [zoom >= 19] { line-width: 4; }
-
-      [zoom >= 19] {
-        text-name: "[name]";
-        text-size: 10;
-        text-face-name: @oblique-fonts;
-        text-fill: darken(@pitch, 40%);
-        text-halo-radius: @standard-halo-radius;
-        text-halo-fill: @standard-halo-fill;
-        text-placement: line;
-        text-vertical-alignment: middle;
-        text-repeat-distance: @waterway-text-repeat-distance;
-        text-dy: 8;
-      }
     }
+  }
+}
+
+#text-line {
+  [feature = 'leisure_track'],
+  [feature = 'attraction_water_slide'] {
+    [zoom >= 19] {
+      text-name: "[name]";
+      text-size: 10;
+      text-face-name: @oblique-fonts;
+      text-fill: darken(@pitch, 40%);
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: line;
+      text-vertical-alignment: middle;
+      text-repeat-distance: @waterway-text-repeat-distance;
+      text-dy: 8;
+    }
+  }
+
+  [feature = 'leisure_slipway'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: @transportation-text;
+    text-dy: 13;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
   }
 }
 
