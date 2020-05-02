@@ -23,8 +23,7 @@
 @protected-area: #008000;
 @aboriginal: #82643a;
 @religious-icon: #000000;
-@mountain-pass-icon: #545454;
-@mountain-pass-text: darken(@mountain-pass-icon, 30%);
+@mountain-pass: #333;
 
 @landcover-font-size: 10;
 @landcover-wrap-width-size: 30; // 3 em
@@ -1382,7 +1381,7 @@
   
   [feature = 'mountain_pass'][zoom >= 15] {
     marker-file: url('symbols/mountain_pass.svg');
-    marker-fill: @mountain-pass-icon;
+    marker-fill: @mountain-pass;
     marker-clip: false;
   }
 
@@ -1835,7 +1834,7 @@
     text-line-spacing: @standard-line-spacing-size;
     text-fill: darken(@landform-color, 30%);
     [feature = 'natural_volcano'] { text-fill: #d40000; }
-    [feature = 'mountain_pass'] { text-fill: @mountain-pass-text; }
+    [feature = 'mountain_pass'] { text-fill: @mountain-pass; }
     text-dy: 7;
     [feature = 'tourism_viewpoint'] { text-dy: 11; }
     text-face-name: @standard-font;
