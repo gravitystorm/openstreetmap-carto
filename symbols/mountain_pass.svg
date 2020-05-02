@@ -1,28 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <svg width="14" height="14" version="1.1" viewBox="0 0 3.7042 3.7042" xmlns="http://www.w3.org/2000/svg">
-<g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1"
-     transform="translate(0,-293.29582)">
-    <g
-       id="g3721">
-      <g
-         id="g4603"
-         transform="matrix(0.92221026,0,0,0.92221026,0.33621382,23.089838)">
-        <path
-           sodipodi:nodetypes="ccc"
-           inkscape:connector-curvature="0"
-           id="path3717"
-           d="m 2.9448869,293.75175 c 0,0 -0.5826047,0.30087 -0.5728701,1.2993 0.040033,0.99968 0.561058,1.24616 0.561058,1.24616"
-           style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-        <path
-           style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           d="m 0.45342312,293.75175 c 0,0 0.58260468,0.30087 0.57287008,1.2993 -0.040033,0.99968 -0.56105798,1.24616 -0.56105798,1.24616"
-           id="path4599"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="ccc" />
-      </g>
+    <g transform="translate(0,-293.29582)">
+        <path d="m 0.74467548,293.51937 c 0,0 0.42024792,0.7103 0.42024792,1.66546 0,0.86161 -0.42024792,1.59161 -0.42024792,1.59161 0,0 0.74730112,-0.69857 0.73464372,-1.60331 -0.012657,-0.90475 -0.73464372,-1.65376 -0.73464372,-1.65376 z" />
+        <path d="m 2.9594912,293.51937 c 0,0 -0.4202479,0.7103 -0.4202479,1.66546 0,0.86161 0.4202479,1.59161 0.4202479,1.59161 0,0 -0.7473011,-0.69857 -0.7346437,-1.60331 0.012657,-0.90475 0.7346437,-1.65376 0.7346437,-1.65376 z" />
     </g>
-  </g>
 </svg>
