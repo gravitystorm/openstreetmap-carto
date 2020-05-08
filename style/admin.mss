@@ -448,6 +448,9 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
 #admin-text[zoom >= 11][way_pixels >= 196000] {
   [admin_level = '1'][way_pixels >= 360000],
   [admin_level = '2'][way_pixels >= 360000],
+  [zoom >= 11][admin_level = '3'],
+  [zoom >= 11][admin_level = '4'],
+  [zoom >= 11][admin_level = '5'],
   [zoom >= 12][admin_level = '6'],
   [zoom >= 13][admin_level = '7'],
   [zoom >= 14][admin_level = '8'],
@@ -496,8 +499,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
       opacity: 0.25;
       line-width: 1.2;
       line-color: @protected-area;
-      [boundary='aboriginal_lands'],
-      [boundary='protected_area'][protect_class='24'] {
+      [boundary = 'aboriginal_lands'] {
         line-color: @aboriginal;
       }
       [zoom >= 9] {
@@ -517,8 +519,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
         // line-offset is always an offset to the inner side of the polygon.
         line-offset: -0.9;
         line-color: @protected-area;
-        [boundary='aboriginal_lands'],
-        [boundary='protected_area'][protect_class='24'] {
+        [boundary = 'aboriginal_lands'] {
           line-color: @aboriginal;
         }
         line-join: round;
@@ -537,8 +538,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
         opacity: 0.15;
         line-width: 1.8;
         line-color: @protected-area;
-        [boundary='aboriginal_lands'],
-        [boundary='protected_area'][protect_class='24'] {
+        [boundary = 'aboriginal_lands'] {
           line-color: @aboriginal;
         }
         line-join: round;

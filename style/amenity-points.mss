@@ -1621,6 +1621,17 @@
     }
   }
 
+  [feature = 'place_square'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: 11;
+    text-face-name: @book-fonts;
+    text-halo-fill: @standard-halo-fill;
+    text-halo-radius: @standard-halo-radius * 1.5;
+    text-wrap-width: 45; // 4.5 em
+    text-line-spacing: -0.8; // -0.08 em
+    text-margin: 7.0; // 0.7 em
+  }
+
   [feature = 'amenity_pub'][zoom >= 18],
   [feature = 'amenity_restaurant'][zoom >= 18],
   [feature = 'amenity_food_court'][zoom >= 17],
@@ -2982,19 +2993,6 @@
       line-width: 1;
       [zoom >= 18] { line-width: 2; }
       [zoom >= 19] { line-width: 4; }
-
-      [zoom >= 19] {
-        text-name: "[name]";
-        text-size: 10;
-        text-face-name: @oblique-fonts;
-        text-fill: darken(@pitch, 40%);
-        text-halo-radius: @standard-halo-radius;
-        text-halo-fill: @standard-halo-fill;
-        text-placement: line;
-        text-vertical-alignment: middle;
-        text-repeat-distance: @waterway-text-repeat-distance;
-        text-dy: 8;
-      }
     }
   }
 
@@ -3013,20 +3011,37 @@
       line-width: 1;
       [zoom >= 18] { line-width: 2; }
       [zoom >= 19] { line-width: 4; }
-
-      [zoom >= 19] {
-        text-name: "[name]";
-        text-size: 10;
-        text-face-name: @oblique-fonts;
-        text-fill: darken(@pitch, 40%);
-        text-halo-radius: @standard-halo-radius;
-        text-halo-fill: @standard-halo-fill;
-        text-placement: line;
-        text-vertical-alignment: middle;
-        text-repeat-distance: @waterway-text-repeat-distance;
-        text-dy: 8;
-      }
     }
+  }
+}
+
+#text-line {
+  [feature = 'leisure_track'],
+  [feature = 'attraction_water_slide'] {
+    [zoom >= 19] {
+      text-name: "[name]";
+      text-size: 10;
+      text-face-name: @oblique-fonts;
+      text-fill: darken(@pitch, 40%);
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: line;
+      text-vertical-alignment: middle;
+      text-repeat-distance: @waterway-text-repeat-distance;
+      text-dy: 8;
+    }
+  }
+
+  [feature = 'leisure_slipway'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: @transportation-text;
+    text-dy: 13;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
   }
 }
 
