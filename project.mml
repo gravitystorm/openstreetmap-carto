@@ -24,10 +24,6 @@ _parts:
     extent: *world
     srs-name: "900913"
     srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  extents84: &extents84
-    extent: *world
-    srs-name: "WGS84"
-    srs: "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
   osm2pgsql: &osm2pgsql
     type: "postgis"
     dbname: "gis"
@@ -157,8 +153,12 @@ Layer:
     geometry: polygon
     <<: *extents
     Datasource:
-      file: data/antarctica-icesheet-polygons-3857/icesheet_polygons.shp
-      type: shape
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way
+          FROM icesheet_polygons
+        ) AS icesheet_polygons
     properties:
       minzoom: 5
   - id: water-lines-casing
@@ -255,16 +255,24 @@ Layer:
     geometry: polygon
     <<: *extents
     Datasource:
-      file: data/simplified-water-polygons-split-3857/simplified_water_polygons.shp
-      type: shape
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way
+          FROM simplified_water_polygons
+        ) AS ocean_lz
     properties:
       maxzoom: 9
   - id: ocean
     geometry: polygon
     <<: *extents
     Datasource:
-      file: data/water-polygons-split-3857/water_polygons.shp
-      type: shape
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way
+          FROM water_polygons
+        ) AS ocean
     properties:
       minzoom: 10
   - id: landcover-area-symbols
@@ -301,8 +309,13 @@ Layer:
     geometry: linestring
     <<: *extents
     Datasource:
-      file: data/antarctica-icesheet-outlines-3857/icesheet_outlines.shp
-      type: shape
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            ice_edge
+          FROM icesheet_outlines
+        ) AS icesheet_outlines
     properties:
       minzoom: 5
   - id: marinas-area
@@ -1026,10 +1039,14 @@ Layer:
       minzoom: 11
   - id: necountries
     geometry: linestring
-    <<: *extents84
+    <<: *extents
     Datasource:
-      file: data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp
-      type: shape
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way
+          FROM ne_110m_admin_0_boundary_lines_land
+        ) AS necountries
     properties:
       minzoom: 1
       maxzoom: 3
