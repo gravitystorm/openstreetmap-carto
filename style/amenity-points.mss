@@ -1372,8 +1372,7 @@
     marker-clip: false;
   }
 
-  [feature = 'natural_saddle'][zoom >= 15],
-  [feature = 'natural_saddle'][mountain_pass = 'yes'][zoom >= 14] {
+  [feature = 'natural_saddle'][zoom >= 15] {
     marker-file: url('symbols/natural/saddle.svg');
     marker-fill: @landform-color;
     marker-clip: false;
@@ -1825,7 +1824,6 @@
   [feature = 'natural_peak'][zoom >= 13],
   [feature = 'natural_volcano'][zoom >= 13],
   [feature = 'natural_saddle'][zoom >= 15],
-  [feature = 'natural_saddle'][mountain_pass = 'yes'][zoom >= 14],
   [feature = 'mountain_pass'][zoom >= 15],
   [feature = 'tourism_viewpoint'][zoom >= 16] {
     text-name: "[name]";
