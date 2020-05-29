@@ -142,6 +142,7 @@ def main():
                         help="Override database server host or socket directory")
     parser.add_argument("-p", "--port", action="store", help="Override database server port")
     parser.add_argument("-U", "--username", action="store", help="Override database user name")
+    parser.add_argument("-P", "--password", action="store", help="Override database user password")
     parser.add_argument("-v", "--verbose", action="store_true", help="Be more verbose. Overrides -q")
     parser.add_argument("-q", "--quiet", action="store_true", help="Only report serious problems")
 
@@ -165,10 +166,11 @@ def main():
         host = opts.host or config["settings"].get("host")
         port = opts.port or config["settings"].get("port")
         user = opts.username or config["settings"].get("username")
+        password = opts.password or config["settings"].get("password")
         with requests.Session() as s, \
             psycopg2.connect(database=database,
                              host=host, port=port,
-                             user=user) as conn:
+                             user=user, password=password) as conn:
 
             s.headers.update({'User-Agent': 'get-external-data.py/osm-carto'})
 
@@ -221,6 +223,8 @@ def main():
                         ogrpg = ogrpg + " port={}".format(port)
                     if user is not None:
                         ogrpg = ogrpg + " user={}".format(user)
+                    if password is not None:
+                        ogrpg = ogrpg + " password={}".format(password)
                     if host is not None:
                         ogrpg = ogrpg + " host={}".format(host)
 
