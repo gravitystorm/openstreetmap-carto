@@ -531,10 +531,14 @@ Layer:
             way,
             landuse,
             military,
+            amenity,
+            "natural",
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
           WHERE (landuse = 'military'
             OR military = 'danger_area')
+            OR ("natural" = 'scrub'
+            OR amenity = 'prison')
             AND building IS NULL
         ) AS landuse_overlay
     properties:

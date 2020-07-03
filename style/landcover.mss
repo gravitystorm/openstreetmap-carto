@@ -821,6 +821,19 @@
       line-offset: -1.0;
     }
   }
+  [natural = 'scrub'][zoom >= 8][way_pixels > 900],
+  [natural = 'scrub'][zoom >= 13],
+  [amenity = 'prison'][zoom >= 10] {
+    [zoom >= 15] {
+      [amenity = 'prison'][zoom >= 10][way_pixels > 75] {
+        polygon-pattern-file: url('symbols/grey_vertical_hatch.png');
+        polygon-pattern-alignment: global;
+        line-color: #888;
+        line-width: 3;
+        line-opacity: 0.329;
+      }
+    }
+  }
 }
 
 #cliffs {
