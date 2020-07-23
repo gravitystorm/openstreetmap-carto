@@ -9,7 +9,7 @@ sources:
     # The type of file this source is
     type: shp
     # Where to get it
-    url: https://osmdata.openstreetmap.de/download/simplified-water-polygons-split-3857.zip
+    url: https://osmdata.openstreetmap.de/new/simplified-water-polygons-split-3857.zip
     # The location within the archive
     file: simplified-water-polygons-split-3857/simplified_water_polygons.shp
     archive:
@@ -23,7 +23,7 @@ sources:
         - simplified-water-polygons-split-3857/simplified_water_polygons.shx
   water_polygons:
     type: shp
-    url: https://osmdata.openstreetmap.de/download/water-polygons-split-3857.zip
+    url: https://osmdata.openstreetmap.de/new/water-polygons-split-3857.zip
     file: water-polygons-split-3857/water_polygons.shp
     archive:
       format: zip
