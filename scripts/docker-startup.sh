@@ -52,7 +52,7 @@ EOF
   $OSM2PGSQL_DATAFILE
 
   # Downloading needed shapefiles
-  scripts/get-external-data.py
+  python3 scripts/get-external-data.py
   ;;
 
 kosmtik)
