@@ -2,7 +2,7 @@ language: node_js
 dist: bionic
 sudo: false
 node_js:
-  - "10"
+  - "14"
 services:
   - postgresql
 addons:
