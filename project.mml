@@ -1476,7 +1476,7 @@ Layer:
                 'amenity_' || CASE WHEN amenity IN ('arts_centre', 'atm', 'bank', 'bar', 'bbq', 'bicycle_rental',
                                                     'bicycle_repair_station','biergarten', 'boat_rental', 'bureau_de_change', 'bus_station', 'cafe',
                                                     'car_rental', 'car_wash', 'casino', 'charging_station', 'childcare', 'cinema', 'clinic', 'college',
-                                                    'community_centre', 'courthouse', 'dentist', 'doctors', 'drinking_water', 'driving_school', 'embassy',
+                                                    'community_centre', 'courthouse', 'dentist', 'doctors', 'drinking_water', 'driving_school',
                                                     'fast_food', 'ferry_terminal', 'fire_station', 'food_court', 'fountain', 'fuel', 'grave_yard',
                                                     'hospital', 'hunting_stand', 'ice_cream', 'internet_cafe', 'kindergarten', 'library', 'marketplace',
                                                     'nightclub', 'nursing_home', 'pharmacy', 'place_of_worship', 'police', 'post_box',
@@ -1485,6 +1485,7 @@ Layer:
                                                     'university', 'vehicle_inspection', 'veterinary') THEN amenity END,
                 'amenity_' || CASE WHEN amenity IN ('waste_disposal') AND way_area IS NOT NULL THEN amenity END, -- Waste disposal points are rendered in the low priority layer
                 'amenity_' || CASE WHEN amenity IN ('vending_machine') AND tags->'vending' IN ('excrement_bags', 'parking_tickets', 'public_transport_tickets') THEN amenity END,
+                'diplomatic_'|| CASE WHEN tags->'office' IN ('diplomatic') AND tags->'diplomatic' IN ('embassy', 'consulate') THEN tags->'diplomatic' ELSE NULL END,
                 'advertising_' || CASE WHEN tags->'advertising' in ('column') THEN tags->'advertising' END,
                 'emergency_' || CASE WHEN tags->'emergency' IN ('phone') AND way_area IS NULL THEN tags->'emergency' END,
                 'shop' || CASE WHEN shop IN ('yes', 'no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE '' END,
