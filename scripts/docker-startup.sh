@@ -50,15 +50,15 @@ EOF
   --style openstreetmap-carto.style \
   --tag-transform-script openstreetmap-carto.lua \
   $OSM2PGSQL_DATAFILE
+
+  # Downloading needed shapefiles
+  scripts/get-external-data.py
   ;;
 
 kosmtik)
-  # Downloading needed shapefiles
-  python scripts/get-shapefiles.py -n
-
   # Creating default Kosmtik settings file
   if [ ! -e ".kosmtik-config.yml" ]; then
-    cp /tmp/.kosmtik-config.yml .kosmtik-config.yml  
+    cp /tmp/.kosmtik-config.yml .kosmtik-config.yml
   fi
   export KOSMTIK_CONFIGPATH=".kosmtik-config.yml"
 

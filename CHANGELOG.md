@@ -1,4 +1,18 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.1.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.2.0...master)
+
+## [v5.2.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.1.0...v5.2.0) - 2020-05-8
+
+### Changes
+- Add rendering for man_made=goods_conveyor (#4102)
+- Tunnel style rendering of waterway=canal with tunnel=flooded (#4087)
+- Remove rendering of residential, unclassified, cycleway, path, track highway areas (#4096)
+- Remove rendering of protect_class = 7, 24, 97, 98, 99 boundary=protected_area features (#4113)
+- Move place=square to amenity-points layer with placenames text style from z17 (#4085)
+- Change wetland pattern initial zoom level back to z10 (#4094)
+- Render bare_rock pattern from z13, same as shingle and scree (#4072)
+- Restore admin-text rendering for admin_level 3 to 5 (#4126)
+- Move aerialways and amenity-line layers text labels to text-line layer (#4107)
+- Fix python3 installation for Docker (#4125)
 
 ## [v5.1.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.0.0...v5.1.0) - 2020-04-10
 
@@ -78,15 +92,15 @@
 ### Changes
 - Create darker river-color for river & canal areas and waterway lines (#3930)
 
-    The color of river, canal, ditch and drain waterway lines 
-    and river and canal areas is changed to `#8fcadd` (Lch78,21,227) 
-    
+    The color of river, canal, ditch and drain waterway lines
+    and river and canal areas is changed to `#8fcadd` (Lch78,21,227)
+
 - Fix rendering of water body labels (#3919)
 
     Restores rendering of water body labels on points (node features)
     Fixes rendering of natural=bay to use italic font at all z levels
     Cleans up duplicate natural=strait code in water.mss
-    
+
 - Precedence of junctions over POIs (#3915)
 
     Junction=yes, =motorway and man_made=bridge labels now render before amenity-points
@@ -94,15 +108,15 @@
 
 - Remove rendering of waterway=wadi (#3931)
 
-    The tag waterway=wadi is deprecated, suggested replacement: 
+    The tag waterway=wadi is deprecated, suggested replacement:
     waterway=river/stream + intermittent=yes OR natural=valley
-    
+
 - Move parking to amenity-points layers, change way_pixels limit and initial zoom level (#3923)
 
     Moved parking features back to amenity-points layers
     Changed parking text intial zoom to z14, as planned in PR #3612
     Change way_pixels limit for parking icon (750) and text (3000)
-    
+
 - Don't use classes anymore (#3912)
 - Convert state & country layers to ST_PointOnSurface (#3920)
 - Convert addresses to use ST_PointOnSurface (#3898)
@@ -111,8 +125,8 @@
     The 4 changes above are needed to allow use of vector tiles
     ST_PointOnSurface is used to generate a point for labeling
     Classes are removed, replaced with the layer id
-    
-- Documentation updates (#3911) & (#3910) 
+
+- Documentation updates (#3911) & (#3910)
 - Code clean-up (#3899) & (#3922)
 
     Document inner line rendering, update docker documentation
@@ -167,7 +181,7 @@
 
   Noto has renamed Noto Sans Tibetan to Noto Serif Tibetan. The old name is
   still supported.
-  
+
 - Add adjustments for `highway=motorway` and `highway=service` width at z20 (#3763)
 
 - Code cleanups to increase reuse and improve consistency (#3735, #3760, #3771, #3773, #3774)
@@ -183,7 +197,7 @@
   The script will handle the change automatically, but if manually downloading
   or using a different method, you will need to adjust paths.
 
-- Change from land to ocean polygons and render water areas above landcover 
+- Change from land to ocean polygons and render water areas above landcover
 
 - Started using ST_PointOnSurface for some label placements
 
@@ -230,7 +244,7 @@
 ## [v4.19.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.18.0...v4.19.0) - 2019-01-18
 ## Changes
 - Adding rendering for boundary=protected_area (#3509)
-- Nature reserve boundaries revision (#3574) 
+- Nature reserve boundaries revision (#3574)
 - Adding support of amenity=vending_machine (#3601)
 - Adding more barrier icons (#3602)
 - Changing allotments color and adding outline (#3625)
@@ -238,7 +252,7 @@
 - Changing tourism outline color (#3582)
 - Making country borders thicker at z8 and z9 (#3563)
 - Rendering parking from z14 (#3612)
-- Starting to render most patterns at z13 instead of z14 (#3610) 
+- Starting to render most patterns at z13 instead of z14 (#3610)
 - Changing zoom level and text size for place=hamlet (#3626)
 - Rendering airport gate refs black instead of purple (#3620)
 - Updating zoom levels by height for masts, towers and telescopes (#3536)

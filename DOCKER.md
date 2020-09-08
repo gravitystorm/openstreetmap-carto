@@ -61,7 +61,7 @@ Depending on your machine and the size of the extract the import can take a whil
 ## Test rendering
 
 After you have the necessary data available you can start Kosmtik to produce a test rendering. For that you run `docker-compose up kosmtik` in the openstreetmap-carto directory. This starts a container with Kosmtik and also starts the PostgreSQL database container if it is not already running. The Kosmtik container is built the first time you run that command if it not exists.
-At startup of the container the script `scripts/docker-startup.sh` is invoked which downloads necessary shapefiles with `scripts/get-shapefiles.py` (if they are not already present) and indexes them. It afterwards runs Kosmtik. If you have to customize anything, you can do so in the script. The Kosmtik config file can be found in `.kosmtik-config.yml`.
+At startup of the container the script `scripts/docker-startup.sh` is invoked which downloads necessary shapefiles with `scripts/get-external-data.py` (if they are not already present). It afterwards runs Kosmtik. If you have to customize anything, you can do so in the script. The Kosmtik config file can be found in `.kosmtik-config.yml`.
 If you want to have a [local configuration](https://github.com/kosmtik/kosmtik#local-config) for our `project.mml` you can place a `localconfig.js` or `localconfig.json` file into the openstreetmap-carto directory.
 
 The shapefile data that is downloaded is owned by the user with UID 1000. If you have another default user id on your system, consider changing the line `USER 1000` in the file `Dockerfile`.
