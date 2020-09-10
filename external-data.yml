@@ -62,7 +62,7 @@ sources:
 
   ne_110m_admin_0_boundary_lines_land:
     type: shp
-    url: http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip
+    url: https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip
     file: ne_110m_admin_0_boundary_lines_land.shp
     ogropts: &ne_opts
       - "--config"
