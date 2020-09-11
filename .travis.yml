@@ -17,7 +17,7 @@ addons:
     - postgresql-9.5-postgis-2.4
     - osm2pgsql
 env:
-  - CARTO=1.2.0 MAPNIK='3.0.0 3.0.12'
+  - CARTO=1.2.0 MAPNIK='3.0.22'
 install:
   - npm install carto@$CARTO
   - pip3 install --user colormath

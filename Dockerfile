@@ -1,14 +1,15 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
 
 # Style dependencies
 RUN apt-get update && apt-get install --no-install-recommends -y \
     ca-certificates curl gnupg postgresql-client python3 python3-distutils \
     fonts-hanazono fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted \
-    mapnik-utils nodejs npm ttf-unifont unzip && rm -rf /var/lib/apt/lists/*
+    mapnik-utils nodejs npm ttf-unifont unzip git && rm -rf /var/lib/apt/lists/*
 
-# Kosmtik with plugins, forcing prefix to /usr because bionic sets
+# Kosmtik with plugins, forcing prefix to /usr because Ubuntu sets
 # npm prefix to /usr/local, which breaks the install
-RUN npm set prefix /usr && npm install -g kosmtik
+# We install kosmtik not from release channel, but directly from a specific commit on github.
+RUN npm set prefix /usr && npm install -g "git+https://git@github.com/kosmtik/kosmtik.git#f176c4c"
 
 WORKDIR /usr/lib/node_modules/kosmtik/
 RUN kosmtik plugins --install kosmtik-overpass-layer \
