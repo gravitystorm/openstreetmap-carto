@@ -915,6 +915,7 @@ Layer:
             horse,
             foot,
             bicycle,
+            bridge,
             tracktype,
             int_surface,
             access,
@@ -929,6 +930,7 @@ Layer:
                 horse,
                 foot,
                 bicycle,
+                bridge,
                 tracktype,
                 CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
                                       'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow') THEN 'unpaved'
@@ -962,6 +964,7 @@ Layer:
                 horse,
                 foot,
                 bicycle,
+                bridge,
                 tracktype,
                 'null',
                 CASE

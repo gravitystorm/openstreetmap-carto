@@ -681,8 +681,9 @@
     [feature = 'highway_footway'],
     [feature = 'highway_path'][bicycle != 'designated'][horse != 'designated'] {
       #bridges {
-        [zoom >= 14][access != 'no'],
-        [zoom >= 15] {
+        [zoom >= 14][access != 'no'][bridge != 'boardwalk'],
+        [zoom >= 15][bridge != 'boardwalk'],
+        [zoom >= 16] {
           line-width: @footway-width-z14 + 2 * (@paths-background-width + @paths-bridge-casing-width);
           [zoom >= 15] { line-width: @footway-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
           [zoom >= 16] { line-width: @footway-width-z16 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
@@ -886,8 +887,9 @@
     [feature = 'highway_footway'],
     [feature = 'highway_path'][bicycle != 'designated'][horse != 'designated'] {
       #bridges {
-        [zoom >= 14][access != 'no'],
-        [zoom >= 15] {
+        [zoom >= 14][access != 'no'][bridge != 'boardwalk'],
+        [zoom >= 15][bridge != 'boardwalk'],
+        [zoom >= 16] {
           line-width: @footway-width-z14 + 2 * @paths-background-width;
           [zoom >= 15] { line-width: @footway-width-z15 + 2 * @paths-background-width; }
           [zoom >= 16] { line-width: @footway-width-z16 + 2 * @paths-background-width; }
@@ -1850,7 +1852,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'highway_path'][bicycle != 'designated'][horse != 'designated'] {
       [zoom >= 14][access != 'no'],
       [zoom >= 15] {
-        #roads-fill[zoom >= 15] {
+        #roads-fill[zoom >= 15],
+        #bridges[zoom >= 14][zoom <= 15][bridge = 'boardwalk'] {
           background/line-color: @footway-casing;
           background/line-cap: round;
           background/line-join: round;
