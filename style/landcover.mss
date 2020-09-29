@@ -40,7 +40,7 @@
 // --- Other ----
 
 @bare_ground: #eee5dc;
-@campsite: #def6c0; // also caravan_site, picnic_site
+@campsite: #def6c0; // also caravan_site, picnic_site, golf_course
 @cemetery: #aacbaf; // also grave_yard
 @construction: #c7c7b4; // also brownfield
 @heath: #d6d99f;
@@ -66,7 +66,6 @@
 @pitch: #aae0cb;           // Lch(85,22,168) also track
 @track: @pitch;
 @stadium: @leisure; // also sports_centre
-@golf_course: #b5e3b5;
 
 #landcover-low-zoom[zoom < 10],
 #landcover[zoom >= 10] {
@@ -277,7 +276,7 @@
 
   [feature = 'leisure_golf_course'][zoom >= 10],
   [feature = 'leisure_miniature_golf'][zoom >= 15] {
-    polygon-fill: @golf_course;
+    polygon-fill: @campsite;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
