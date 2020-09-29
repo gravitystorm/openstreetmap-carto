@@ -49,6 +49,7 @@ Stylesheet:
   - style/aerialways.mss
   - style/admin.mss
   - style/addressing.mss
+  - style/golf.mss
 Layer:
   - id: landcover-low-zoom
     geometry: polygon
@@ -87,10 +88,11 @@ Layer:
       table: |-
         (SELECT
             way, name, religion, way_pixels, is_building,
-            COALESCE(aeroway, amenity, wetland, power, landuse, leisure, man_made, "natural", shop, tourism, highway, railway) AS feature
+            COALESCE(aeroway, golf, amenity, wetland, power, landuse, leisure, man_made, "natural", shop, tourism, highway, railway) AS feature
           FROM (SELECT
               way, COALESCE(name, '') AS name,
               ('aeroway_' || (CASE WHEN aeroway IN ('apron', 'aerodrome') THEN aeroway END)) AS aeroway,
+              ('golf_' || (CASE WHEN (tags->'golf') IN ('rough', 'fairway', 'driving_range', 'water_hazard', 'green', 'bunker', 'tee') THEN tags->'golf' ELSE NULL END)) AS golf,
               ('amenity_' || (CASE WHEN amenity IN ('bicycle_parking', 'motorcycle_parking', 'university', 'college', 'school', 'taxi',
                                                     'hospital', 'kindergarten', 'grave_yard', 'prison', 'place_of_worship', 'clinic', 'ferry_terminal',
                                                     'marketplace', 'community_centre', 'social_facility', 'arts_centre', 'parking_space', 'bus_station',
@@ -119,6 +121,7 @@ Layer:
             WHERE (landuse IS NOT NULL
               OR leisure IS NOT NULL
               OR aeroway IN ('apron', 'aerodrome')
+              OR (tags->'golf') IS NOT NULL
               OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'taxi', 'university', 'college', 'school', 'hospital', 'kindergarten',
                              'grave_yard', 'place_of_worship', 'prison', 'clinic', 'ferry_terminal', 'marketplace', 'community_centre', 'social_facility',
                              'arts_centre', 'parking_space', 'bus_station', 'fire_station', 'police')
@@ -1044,6 +1047,32 @@ Layer:
     properties:
       cache-features: true
       minzoom: 11
+  - id: golf-lines
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way, geo, golf, ref, name
+          FROM
+            (SELECT
+                way, tags->'golf' AS golf, name, ref, 0 AS prio, 'polygon' AS geo
+              FROM planet_osm_polygon
+              WHERE (tags->'golf') IS NOT NULL AND way && !bbox!
+            UNION ALL
+            SELECT
+                p.way, p.tags->'golf' AS golf, p.name, coalesce(p.ref,l.ref) AS ref, 0 AS prio, 'point' AS geo
+              FROM planet_osm_point p LEFT JOIN planet_osm_line l ON (ST_Intersects(p.way, l.way) AND (l.tags->'golf') IS NOT NULL)
+              WHERE p.tags ? 'golf' AND p.way && !bbox!
+            UNION ALL
+            SELECT
+                way, tags->'golf' AS golf, name, ref, 1 AS prio, 'line' AS geo
+              FROM planet_osm_line WHERE (tags->'golf') IS NOT NULL AND way && !bbox!
+            ) AS golf
+          ORDER BY prio
+        ) AS golf_lines
+    properties:
+      minzoom: 16
   - id: necountries
     geometry: linestring
     <<: *extents
