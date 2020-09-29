@@ -23,7 +23,7 @@
     line-color: darken(@golf_course, 40%);
     line-width: 0.5;
     line-dasharray: 6, 2;
-    [name = ''][ref != ''] {
+    [ref != ''] {
       text-placement: line;
       text-name: "[ref]";
       text-size: 11;
@@ -46,7 +46,7 @@
     }
   }
   [golf = 'tee'] {
-    marker-fill: grey;
+    marker-fill: darken(@golf_course, 40%);
     marker-width: 3;
     marker-height: 3;
     [ref != ''] {
@@ -56,5 +56,11 @@
       text-halo-radius: 1;
       text-halo-fill: fadeout(white, 30%);
     }
+  }
+}
+
+#golf-lines[zoom >= 17] {
+  [golf = 'hole'][geo = 'line'][ref != ''] {
+    text-size: 14;
   }
 }
