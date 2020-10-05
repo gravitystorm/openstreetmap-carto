@@ -1047,30 +1047,17 @@ Layer:
     properties:
       cache-features: true
       minzoom: 11
-  - id: golf-lines
+  - id: golf-line
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, geo, golf, ref, name
-          FROM
-            (SELECT
-                way, tags->'golf' AS golf, name, ref, 0 AS prio, 'polygon' AS geo
-              FROM planet_osm_polygon
-              WHERE (tags->'golf') IS NOT NULL AND way && !bbox!
-            UNION ALL
-            SELECT
-                p.way, p.tags->'golf' AS golf, p.name, coalesce(p.ref,l.ref) AS ref, 0 AS prio, 'point' AS geo
-              FROM planet_osm_point p LEFT JOIN planet_osm_line l ON (ST_Intersects(p.way, l.way) AND (l.tags->'golf') IS NOT NULL)
-              WHERE p.tags ? 'golf' AND p.way && !bbox!
-            UNION ALL
-            SELECT
-                way, tags->'golf' AS golf, name, ref, 1 AS prio, 'line' AS geo
-              FROM planet_osm_line WHERE (tags->'golf') IS NOT NULL AND way && !bbox!
-            ) AS golf
-          ORDER BY prio
-        ) AS golf_lines
+            way, tags->'golf' AS golf, ref, name
+          FROM planet_osm_line
+          WHERE tags->'golf' = 'hole' AND way && !bbox!
+        ) AS golf_line
     properties:
       minzoom: 16
   - id: necountries
@@ -1565,7 +1552,8 @@ Layer:
                                         AND way_area IS NULL
                                    THEN amenity END,
                 'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism END,
-                'place_' || CASE WHEN place IN ('locality') AND way_area IS NULL THEN place END
+                'place_' || CASE WHEN place IN ('locality') AND way_area IS NULL THEN place END,
+                'golf_' || CASE WHEN tags->'golf' IN ('hole', 'pin') THEN tags->'golf' END
               ) AS feature,
               access,
               CASE
@@ -2036,7 +2024,7 @@ Layer:
         (SELECT
           way,
             NULL as way_pixels,
-            COALESCE('aerialway_' || aerialway, 'attraction_' || CASE WHEN tags @> 'attraction=>water_slide' THEN 'water_slide' END, 'leisure_' || leisure, 'man_made_' || man_made, 'waterway_' || waterway, 'natural_' || "natural") AS feature,
+            COALESCE('aerialway_' || aerialway, 'attraction_' || CASE WHEN tags @> 'attraction=>water_slide' THEN 'water_slide' END, 'leisure_' || leisure, 'man_made_' || man_made, 'waterway_' || waterway, 'natural_' || "natural", CASE WHEN tags @> 'golf=>hole' THEN 'golf_hole' END) AS feature,
             access,
             name,
             tags->'operator' as operator,
@@ -2044,7 +2032,7 @@ Layer:
             NULL AS way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
           FROM planet_osm_line
-          WHERE (man_made IN ('pier', 'breakwater', 'groyne', 'embankment')
+          WHERE ((man_made IN ('pier', 'breakwater', 'groyne', 'embankment')
               OR (man_made = 'pipeline'
                  AND tags-> 'location' IN ('overground', 'overhead', 'surface', 'outdoor')
                  OR bridge IN ('yes', 'aqueduct', 'cantilever', 'covered', 'trestle', 'viaduct'))
@@ -2053,7 +2041,8 @@ Layer:
               OR leisure IN ('slipway', 'track')
               OR waterway IN ('dam', 'weir')
               OR "natural" IN ('arete', 'cliff', 'ridge'))
-            AND name IS NOT NULL
+            AND name IS NOT NULL)
+            OR tags @> 'golf=>hole'
         ) AS text_line
     properties:
       minzoom: 10
