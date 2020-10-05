@@ -17,29 +17,36 @@
     [feature = 'golf_rough'] {
       polygon-fill: @grass;
       polygon-pattern-file: url('symbols/golf_rough.svg');
+      polygon-pattern-opacity: 0.2;
     }
   }
 }
 
-#golf-lines[zoom >= 16] {
-  [golf = 'hole'][geo = 'line'] {
+#golf-line[zoom >= 16] {
+  [golf = 'hole'] {
     line-color: @leisure-green;
     line-width: 0.5;
-    [ref != ''] {
-      text-placement: line;
-      text-name: "[ref]";
-      text-size: 11;
-      text-fill: @leisure-green;
-      text-face-name: @book-fonts;
-      text-halo-radius: 1.5;
-      text-halo-fill: fadeout(white, 30%);
-      [zoom >= 17] {
-        text-size: 13;
-      }
+  }
+}
+
+#text-line[zoom >= 16] {
+  [feature = 'golf_hole'][ref != ''] {
+    text-placement: line;
+    text-name: "[ref]";
+    text-size: 11;
+    text-fill: @leisure-green;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1.5;
+    text-halo-fill: fadeout(white, 30%);
+    [zoom >= 17] {
+      text-size: 13;
     }
   }
-  [golf = 'hole'][geo = 'point'],
-  [golf = 'pin'] {
+}
+
+#amenity-points[zoom >= 16] {
+  [feature = 'golf_hole'],
+  [feature = 'golf_pin'] {
     marker-file: url('symbols/golf_pin.svg');
     marker-fill: @leisure-green;
     [ref != ''] {
@@ -51,17 +58,4 @@
       text-halo-fill: fadeout(white, 30%);
     }
   }
-  [golf = 'tee'] {
-    marker-fill: @leisure-green;
-    marker-width: 3;
-    marker-height: 3;
-    [ref != ''] {
-      text-name: "[ref]";
-      text-face-name: @book-fonts;
-      text-dy: 6;
-      text-halo-radius: 1;
-      text-halo-fill: fadeout(white, 30%);
-    }
-  }
 }
-
