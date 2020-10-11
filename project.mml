@@ -628,7 +628,8 @@ Layer:
       <<: *osm2pgsql
       table: &turning-circle_sql |-
         (SELECT DISTINCT ON (p.way)
-            p.way AS way, l.highway AS int_tc_type,
+            p.way AS way,
+            l.highway AS int_tc_type,
             CASE WHEN l.service IN ('parking_aisle', 'drive-through', 'driveway')
               THEN 'INT-minor'::text
               ELSE 'INT-normal'::text
@@ -637,16 +638,21 @@ Layer:
             JOIN planet_osm_line l
               ON ST_DWithin(p.way, l.way, 0.1) -- Assumes Mercator
             JOIN (VALUES
-              ('tertiary', 1),
-              ('unclassified', 2),
-              ('residential', 3),
-              ('living_street', 4),
-              ('service', 5),
-              ('track', 6)
+                ('primary', 1),
+                ('secondary', 2),
+                ('tertiary', 3),
+                ('unclassified', 4),
+                ('residential', 5),
+                ('living_street', 6),
+                ('service', 7),
+                ('track', 8)
               ) AS v (highway, prio)
-              ON v.highway=l.highway
-          WHERE p.highway = 'turning_circle'
-            OR p.highway = 'turning_loop'
+              ON v.highway = l.highway
+          WHERE p.highway IN (
+            'turning_circle',
+            'turning_loop',
+            'mini_roundabout'
+          )
           ORDER BY p.way, v.prio
         ) AS turning_circle_sql
     properties:
