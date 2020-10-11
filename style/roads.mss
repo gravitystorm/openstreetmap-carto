@@ -283,6 +283,8 @@
 @paths-bridge-casing-width:       0.5;
 @paths-tunnel-casing-width:       1;
 
+@mini-roundabout-width:           4;
+
 @junction-text-color:             #960000;
 @halo-color-for-minor-road:       white;
 @lowzoom-halo-color:              white;
@@ -2656,6 +2658,21 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     marker-allow-overlap: true;
     marker-ignore-placement: true;
     marker-line-width: 0;
+  }
+
+  [type = 'mini_roundabout']::circle {
+    marker-width: @mini-roundabout-width;
+    marker-allow-overlap: true;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
+
+    [int_tc_type = 'primary'] { marker-fill: @primary-casing; }
+    [int_tc_type = 'secondary'] { marker-fill: @secondary-casing; }
+    [int_tc_type = 'tertiary'] { marker-fill: @primary-casing; }
+    [int_tc_type = 'residential'] { marker-fill: @residential-casing; }
+    [int_tc_type = 'living_street'] { marker-fill: @living-street-casing; }
+    [int_tc_type = 'service'] { marker-fill: @service-casing; }
+    [int_tc_type = 'track'] { marker-fill: @track-casing; }
   }
 }
 

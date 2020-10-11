@@ -629,6 +629,7 @@ Layer:
       table: &turning-circle_sql |-
         (SELECT DISTINCT ON (p.way)
             p.way AS way,
+            p.highway AS type,
             l.highway AS int_tc_type,
             CASE WHEN l.service IN ('parking_aisle', 'drive-through', 'driveway')
               THEN 'INT-minor'::text
@@ -2197,7 +2198,6 @@ Layer:
             way,
             name,
             COALESCE(
-              'highway_' || CASE WHEN highway IN ('mini_roundabout') AND way_area IS NULL THEN highway END,
               'railway_' || CASE WHEN railway IN ('level_crossing', 'crossing') AND way_area IS NULL THEN railway END,
               'amenity_' || CASE WHEN amenity IN ('bench', 'waste_basket', 'waste_disposal') AND way_area IS NULL THEN amenity END,
               'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') AND way_area IS NULL THEN historic END,
@@ -2239,8 +2239,7 @@ Layer:
                 FROM planet_osm_point
                 WHERE way && !bbox!
               ) _
-            WHERE highway IN ('mini_roundabout')
-               OR railway IN ('level_crossing', 'crossing')
+            WHERE railway IN ('level_crossing', 'crossing')
                OR amenity IN ('bench', 'waste_basket', 'waste_disposal')
                OR historic IN ('wayside_cross', 'wayside_shrine')
                OR man_made IN ('cross')
