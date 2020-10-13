@@ -1,8 +1,8 @@
 #landcover[zoom >= 14] {
   ::high-zoom[zoom >= 12] {
     [feature = 'golf_green'] {
-      polygon-fill: lighten(@grass, 5%);
-      line-width: 1;
+      polygon-fill: @campsite;
+      line-width: 2;
       line-color: @grass;
     }
     [feature = 'golf_tee'],
@@ -12,7 +12,6 @@
     }
     [feature = 'golf_bunker'] {
       polygon-fill: @sand;
-      polygon-pattern-file: url('symbols/beach.png');
     }
     [feature = 'golf_rough'] {
       polygon-fill: @grass;
