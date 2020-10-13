@@ -173,7 +173,7 @@ Layer:
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
               THEN 'yes' ELSE 'no' END AS int_intermittent,
-            CASE WHEN tunnel IN ('yes', 'culvert') 
+            CASE WHEN tunnel IN ('yes', 'culvert')
               OR waterway='canal' AND tunnel = 'flooded'
               THEN 'yes' ELSE 'no' END AS int_tunnel
           FROM planet_osm_line
@@ -212,7 +212,7 @@ Layer:
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
               THEN 'yes' ELSE 'no' END AS int_intermittent,
-            CASE WHEN tunnel IN ('yes', 'culvert') 
+            CASE WHEN tunnel IN ('yes', 'culvert')
               OR waterway = 'canal' AND tunnel = 'flooded'
               THEN 'yes' ELSE 'no' END AS int_tunnel,
             'no' AS bridge
@@ -892,7 +892,7 @@ Layer:
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
               THEN 'yes' ELSE 'no' END AS int_intermittent,
-            CASE WHEN tunnel IN ('yes', 'culvert') 
+            CASE WHEN tunnel IN ('yes', 'culvert')
               OR waterway = 'canal' AND tunnel = 'flooded'
               THEN 'yes' ELSE 'no' END AS int_tunnel,
             'yes' AS bridge
@@ -1507,7 +1507,7 @@ Layer:
                                                       THEN "natural" END,
                 'waterway_' || CASE WHEN "waterway" IN ('waterfall') AND way_area IS NULL THEN waterway END,
                 'place_' || CASE WHEN place IN ('island', 'islet', 'square') THEN place END,
-                'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate')
+                'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate', 'airfield')
                               THEN historic END,
                 'military_'|| CASE WHEN military IN ('danger_area', 'bunker') THEN military END,
                 'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator', 'traffic_signals') THEN highway END,
@@ -2112,7 +2112,7 @@ Layer:
             CASE WHEN tags->'intermittent' IN ('yes')
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
               THEN 'yes' ELSE 'no' END AS int_intermittent,
-            CASE WHEN tunnel IN ('yes', 'culvert') 
+            CASE WHEN tunnel IN ('yes', 'culvert')
               OR waterway = 'canal' AND tunnel = 'flooded'
               THEN 'yes' ELSE 'no' END AS int_tunnel
           FROM planet_osm_line
