@@ -1,20 +1,18 @@
 #landcover[zoom >= 14] {
   ::high-zoom[zoom >= 12] {
     [feature = 'golf_green'] {
-      polygon-fill: @campsite;
-      line-width: 2;
-      line-color: @grass;
+      polygon-fill: @grass;
     }
     [feature = 'golf_tee'],
     [feature = 'golf_fairway'],
     [feature = 'golf_driving_range'] {
-      polygon-fill: @grass;
+      polygon-fill: @pitch;
     }
     [feature = 'golf_bunker'] {
       polygon-fill: @sand;
     }
     [feature = 'golf_rough'] {
-      polygon-fill: @grass;
+      polygon-fill: @pitch;
       polygon-pattern-file: url('symbols/golf_rough.svg');
       polygon-pattern-opacity: 0.2;
     }
