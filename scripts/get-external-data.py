@@ -236,6 +236,8 @@ def main():
                         ogrpg = ogrpg + " user={}".format(user)
                     if host is not None:
                         ogrpg = ogrpg + " host={}".format(host)
+                    if password is not None:
+                        ogrpg = ogrpg + " password={}".format(password)
 
                     ogrcommand = ["ogr2ogr",
                                   '-f', 'PostgreSQL',
