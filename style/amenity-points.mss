@@ -1383,9 +1383,9 @@
     marker-fill: @landform-color;
     marker-clip: false;
   }
-  
+
   [feature = 'mountain_pass'][zoom >= 15] {
-    marker-file: url('symbols/mountain_pass.svg');
+    marker-file: url('symbols/natural/saddle.svg');
     marker-fill: @mountain-pass;
     marker-clip: false;
   }
