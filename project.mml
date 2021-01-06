@@ -91,7 +91,7 @@ Layer:
           FROM (SELECT
               way, COALESCE(name, '') AS name,
               ('aeroway_' || (CASE WHEN aeroway IN ('apron', 'aerodrome') THEN aeroway END)) AS aeroway,
-              ('amenity_' || (CASE WHEN amenity IN ('bicycle_parking', 'motorcycle_parking', 'university', 'college', 'school', 'taxi',
+              ('amenity_' || (CASE WHEN amenity IN ('bicycle_parking', 'motorcycle_parking', 'university', 'research_institute', 'college', 'school', 'taxi',
                                                     'hospital', 'kindergarten', 'grave_yard', 'prison', 'place_of_worship', 'clinic', 'ferry_terminal',
                                                     'marketplace', 'community_centre', 'social_facility', 'arts_centre', 'parking_space', 'bus_station',
                                                     'fire_station', 'police')
@@ -119,7 +119,7 @@ Layer:
             WHERE (landuse IS NOT NULL
               OR leisure IS NOT NULL
               OR aeroway IN ('apron', 'aerodrome')
-              OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'taxi', 'university', 'college', 'school', 'hospital', 'kindergarten',
+              OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'taxi', 'university', 'research_institute', 'college', 'school', 'hospital', 'kindergarten',
                              'grave_yard', 'place_of_worship', 'prison', 'clinic', 'ferry_terminal', 'marketplace', 'community_centre', 'social_facility',
                              'arts_centre', 'parking_space', 'bus_station', 'fire_station', 'police')
               OR man_made IN ('works', 'wastewater_plant','water_works')
@@ -1482,7 +1482,7 @@ Layer:
                                                     'nightclub', 'nursing_home', 'pharmacy', 'place_of_worship', 'police', 'post_box',
                                                     'post_office', 'prison', 'pub', 'public_bath', 'public_bookcase', 'recycling', 'restaurant', 'school',
                                                     'shelter', 'shower', 'social_facility', 'taxi', 'telephone', 'theatre', 'toilets', 'townhall',
-                                                    'university', 'vehicle_inspection', 'veterinary') THEN amenity END,
+                                                    'university', 'research_institute', 'vehicle_inspection', 'veterinary') THEN amenity END,
                 'amenity_' || CASE WHEN amenity IN ('waste_disposal') AND way_area IS NOT NULL THEN amenity END, -- Waste disposal points are rendered in the low priority layer
                 'amenity_' || CASE WHEN amenity IN ('vending_machine') AND tags->'vending' IN ('excrement_bags', 'parking_tickets', 'public_transport_tickets') THEN amenity END,
                 'diplomatic_'|| CASE WHEN tags->'office' IN ('diplomatic') AND tags->'diplomatic' IN ('embassy', 'consulate') THEN tags->'diplomatic' ELSE NULL END,

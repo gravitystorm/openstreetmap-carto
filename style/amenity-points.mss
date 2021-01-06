@@ -2173,6 +2173,7 @@
   [feature = 'amenity_school'],
   [feature = 'amenity_college'],
   [feature = 'amenity_university'],
+  [feature = 'amenity_research_institute'],
   [feature = 'landuse_religious'],
   [feature = 'natural_heath'],
   [feature = 'natural_scrub'],
@@ -2285,6 +2286,9 @@
       [feature = 'amenity_school'],
       [feature = 'amenity_college'],
       [feature = 'amenity_university'] {
+        text-fill: darken(@societal_amenities, 80%);
+      }
+	  [feature = 'amenity_research_institute'] {
         text-fill: darken(@societal_amenities, 80%);
       }
       [feature = 'landuse_religious'] {
