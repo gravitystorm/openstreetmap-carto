@@ -2282,15 +2282,13 @@
         text-fill: @tourism;
         text-face-name: @bold-fonts; /*rendered bold to improve visibility since theme parks tend to have crowded backgrounds*/
       }
-      [feature = 'amenity_kindergarten'],
       [feature = 'amenity_school'],
-      [feature = 'amenity_college'],
-      [feature = 'amenity_university'] {
-        text-fill: darken(@societal_amenities, 80%);
-      }
-	  [feature = 'amenity_research_institute'] {
-        text-fill: darken(@societal_amenities, 80%);
-      }
+        [feature = 'amenity_kindergarten'],
+        [feature = 'amenity_college'],
+        [feature = 'amenity_university'],
+        [feature = 'amenity_research_institute'] {
+          text-fill: darken(@societal_amenities, 80%);
+        }
       [feature = 'landuse_religious'] {
         text-fill: darken(@place_of_worship, 50%);
       }
