@@ -15,6 +15,7 @@ Some implicit assumptions are
 
 import yaml
 import os
+import os.path
 import re
 import argparse
 import shutil
@@ -23,6 +24,8 @@ import shutil
 import zipfile
 import requests
 import io
+import time
+import email.utils
 
 # modules for converting and postgres loading
 import subprocess
@@ -64,6 +67,7 @@ class Table:
             results = cur.fetchone()
             if results is not None:
                 return results[0]
+        return ''
 
     def index(self):
         with self._conn.cursor() as cur:
@@ -127,11 +131,32 @@ class Table:
         self._conn.commit()
 
 
+def should_redownload(req, url, file_name):
+    if not os.path.isfile(file_name):
+        return True
+    download_head = req.head(url, allow_redirects=True)
+    if 'last-modified' in download_head.headers:
+        last_modified = time.mktime(email.utils.parsedate(download_head.headers['last-modified']))
+        if last_modified > os.path.getmtime(file_name):
+            logging.debug('Will redownload {} due to modification on server'.format(file_name))
+            return True
+    if 'content-length' in download_head.headers:
+        file_size = int(download_head.headers['content-length'])
+        if file_size != os.path.getsize(file_name):
+            logging.debug('Will redownload {} due to size mismatch'.format(file_name))
+            return True
+        else:
+            return False
+    logging.debug('Will redownload {} due to missing Content-Length header'.format(file_name))
+    return True
+
+
 def main():
     # parse options
     parser = argparse.ArgumentParser(description="Load external data into a database")
 
-    parser.add_argument("-f", "--force", action="store_true", help="Download new data, even if not required")
+    parser.add_argument("-r", "--redownload", action="store_true", help="Redownload external files, even if not required")
+    parser.add_argument("-f", "--force", action="store_true", help="Recreate database objects, even if not required")
 
     parser.add_argument("-c", "--config", action="store", default="external-data.yml",
                         help="Name of configuration file (default external-data.yml)")
@@ -197,21 +222,31 @@ def main():
                                    config["settings"]["metadata_table"])
                 this_table.clean_temp()
 
-                if not opts.force:
-                    headers = {'If-Modified-Since': this_table.last_modified()}
-                else:
-                    headers = {}
+                file_name = os.path.join(data_dir, os.path.basename(source["url"]))
+                last_modified = None
+                if opts.redownload or should_redownload(s, source["url"], file_name):
+                    logging.info("Downloading file {}".format(file_name))
+                    download = s.get(source["url"], stream=True)
+                    download.raise_for_status()
+                    with open(file_name, "wb") as f:
+                        for chunk in download.iter_content(chunk_size=8388608):
+                            f.write(chunk)
+                    try:
+                        last_modified = time.mktime(email.utils.parsedate(download.headers['last-modified']))
+                        os.utime(file_name, (time.time(), last_modified))
+                    except (KeyError, TypeError, OverflowError, ValueError):
+                        # KeyError will be raised if Last-Modified header is missing
+                        # TypeError will be raised if header did not contain a valid date
+                        # OverflowError/ValueError may come from mktime invocation
+                        pass
 
-                download = s.get(source["url"], headers=headers)
-                download.raise_for_status()
+                if last_modified is None:
+                    last_modified = os.path.getmtime(file_name)
 
-                if (download.status_code == 200):
-                    if "Last-Modified" in download.headers:
-                        new_last_modified = download.headers["Last-Modified"]
-                    else:
-                        new_last_modified = None
+                if opts.force or str(last_modified) != this_table.last_modified():
                     if "archive" in source and source["archive"]["format"] == "zip":
-                        zip = zipfile.ZipFile(io.BytesIO(download.content))
+                        logging.info("Extracting files from archive {}".format(file_name))
+                        zip = zipfile.ZipFile(file_name, "r")
                         for member in source["archive"]["files"]:
                             zip.extract(member, workingdir)
 
@@ -236,6 +271,7 @@ def main():
 
                     ogrcommand += [ogrpg, os.path.join(workingdir, source["file"])]
 
+                    logging.info("Importing data from file {}".format(source["file"]))
                     logging.debug("running {}".format(subprocess.list2cmdline(ogrcommand)))
 
                     # ogr2ogr can raise errors here, so they need to be caught
@@ -245,13 +281,14 @@ def main():
                         # Add more detail on stdout for the logs
                         logging.critical("ogr2ogr returned {} with layer {}".format(e.returncode, name))
                         logging.critical("Command line was {}".format(subprocess.list2cmdline(e.cmd)))
-                        logging.critical("Output was\n{}".format(e.output))
+                        logging.critical("stdout:\n{}".format(e.output))
+                        logging.critical("stderr:\n{}".format(e.stderr))
                         raise RuntimeError("ogr2ogr error when loading table {}".format(name))
 
                     this_table.index()
-                    this_table.replace(new_last_modified)
+                    this_table.replace(str(last_modified))
                 else:
-                    logging.info("Table {} did not require updating".format(name))
+                    logging.info("Table {} is up to date".format(name))
 
 
 if __name__ == '__main__':
