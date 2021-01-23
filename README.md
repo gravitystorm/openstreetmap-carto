@@ -4,6 +4,8 @@
 
 These are the CartoCSS map stylesheets for the Standard map layer on [OpenStreetMap.org](https://www.openstreetmap.org).
 
+The general purpose, the cartographic design goals and guidelines for this style are outlined in [CARTOGRAPHY.md](CARTOGRAPHY.md).
+
 These stylesheets can be used in your own cartography projects, and are designed
 to be easily customised. They work with [Kosmtik](https://github.com/kosmtik/kosmtik)
  and also with the command-line [CartoCSS](https://github.com/mapbox/carto) processor.
