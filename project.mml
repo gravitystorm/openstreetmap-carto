@@ -1180,10 +1180,10 @@ Layer:
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             name
           FROM planet_osm_polygon
-          WHERE way && !bbox!
+          WHERE ST_PointOnSurface(way) && !bbox!
+            AND name IS NOT NULL
             AND boundary = 'administrative'
             AND admin_level = '2'
-            AND name IS NOT NULL
             AND way_area > 100*POW(!scale_denominator!*0.001*0.28,2)
             AND way_area < 4000000*POW(!scale_denominator!*0.001*0.28,2)
             AND osm_id < 0
@@ -1226,10 +1226,10 @@ Layer:
             admin_level,
             ref
           FROM planet_osm_polygon
-          WHERE way && !bbox!
+          WHERE ST_PointOnSurface(way) && !bbox!
+            AND name IS NOT NULL
             AND boundary = 'administrative'
             AND admin_level = '4'
-            AND name IS NOT NULL
             AND way_area > 3000*POW(!scale_denominator!*0.001*0.28,2)
             AND way_area < 4000000*POW(!scale_denominator!*0.001*0.28,2)
             AND osm_id < 0
@@ -1336,7 +1336,7 @@ Layer:
               tags->'station' AS station,
               way_area
             FROM planet_osm_polygon
-            WHERE way && !bbox!
+            WHERE way && !bbox! -- Not ST_PointOnSurface(way) because name might be NULL
               AND way_area < 768000*POW(!scale_denominator!*0.001*0.28,2)
           UNION ALL
           SELECT
@@ -1389,7 +1389,7 @@ Layer:
             name,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
-          WHERE way && !bbox!
+          WHERE way && !bbox! -- Not ST_PointOnSurface(way) because name might be NULL
             AND junction = 'yes'
             AND way_area < 768000*POW(!scale_denominator!*0.001*0.28,2)
           ORDER BY way_pixels DESC NULLS LAST
@@ -1408,7 +1408,8 @@ Layer:
             man_made,
             name
           FROM planet_osm_polygon
-          WHERE way && !bbox!
+          WHERE ST_PointOnSurface(way) && !bbox!
+            AND name IS NOT NULL
             AND man_made = 'bridge'
             AND way_area > 125*POW(!scale_denominator!*0.001*0.28,2)
             AND way_area < 768000*POW(!scale_denominator!*0.001*0.28,2)
@@ -1428,10 +1429,10 @@ Layer:
             name,
             admin_level
           FROM planet_osm_polygon
-          WHERE way && !bbox!
+          WHERE ST_PointOnSurface(way) && !bbox!
+            AND name IS NOT NULL
             AND boundary = 'administrative'
             AND admin_level IN ('5', '6')
-            AND name IS NOT NULL
             AND way_area > 12000*POW(!scale_denominator!*0.001*0.28,2)
             AND way_area < 196000*POW(!scale_denominator!*0.001*0.28,2)
             AND osm_id < 0
@@ -1614,7 +1615,7 @@ Layer:
                   tags,
                   way_area
                 FROM planet_osm_polygon
-                WHERE way && !bbox!
+                WHERE way && !bbox! -- Not ST_PointOnSurface(way) because name might be NULL
                   AND way_area < 768000*POW(!scale_denominator!*0.001*0.28,2)
               UNION ALL
               SELECT
@@ -1803,13 +1804,13 @@ Layer:
             highway,
             name
           FROM planet_osm_polygon
-          WHERE way && !bbox!
+          WHERE ST_PointOnSurface(way) && !bbox!
+            AND name IS NOT NULL
             AND (highway IN ('pedestrian', 'footway', 'service', 'living_street', 'platform')
               OR (railway IN ('platform')
                   AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
                   AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
                   AND (covered NOT IN ('yes') OR covered IS NULL)))
-            AND name IS NOT NULL
             AND way_area > 3000*POW(!scale_denominator!*0.001*0.28,2)
             AND way_area < 768000*POW(!scale_denominator!*0.001*0.28,2)
           ORDER BY way_area DESC
@@ -1973,7 +1974,8 @@ Layer:
             name,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building -- always no with the where conditions
           FROM planet_osm_polygon
-          WHERE way && !bbox!
+          WHERE ST_PointOnSurface(way) && !bbox!
+            AND name IS NOT NULL
             AND (landuse IN ('forest', 'military', 'farmland')
               OR military IN ('danger_area')
               OR "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock', 'water', 'bay', 'strait')
@@ -1982,7 +1984,6 @@ Layer:
               OR (boundary = 'protected_area' AND tags->'protect_class' IN ('1','1a','1b','2','3','4','5','6'))
               OR leisure IN ('nature_reserve'))
             AND building IS NULL
-            AND name IS NOT NULL
             AND way_area > 100*POW(!scale_denominator!*0.001*0.28,2)
             AND way_area < 768000*POW(!scale_denominator!*0.001*0.28,2)
           ORDER BY way_area DESC
@@ -2041,10 +2042,10 @@ Layer:
             ST_PointOnSurface(way) AS way,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
-          WHERE way && !bbox!
+          WHERE ST_PointOnSurface(way) && !bbox!
+            AND name IS NOT NULL
             AND building IS NOT NULL
             AND building NOT IN ('no')
-            AND name IS NOT NULL
             AND way_area < 4000000*POW(!scale_denominator!*0.001*0.28,2)
           ORDER BY way_area DESC
         ) AS building_text
@@ -2077,7 +2078,7 @@ Layer:
             tags->'addr:flats' AS addr_flats,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
-          WHERE way && !bbox!
+          WHERE way && !bbox! -- Not ST_PointOnSurface(way) because name might be NULL
             AND (("addr:housenumber" IS NOT NULL) OR ("addr:housename" IS NOT NULL) OR ((tags->'addr:unit') IS NOT NULL) OR ((tags->'addr:flats') IS NOT NULL))
             AND building IS NOT NULL
             AND way_area < 4000000*POW(!scale_denominator!*0.001*0.28,2)
@@ -2215,7 +2216,7 @@ Layer:
                   tags,
                   way_area
                 FROM planet_osm_polygon
-                WHERE way && !bbox!
+                WHERE way && !bbox! -- Not ST_PointOnSurface(way) because name might be NULL
                   AND way_area < 768000*POW(!scale_denominator!*0.001*0.28,2)
               UNION ALL
               SELECT

@@ -27,7 +27,7 @@ osm2pgsql -G --hstore --style openstreetmap-carto.style --tag-transform-script o
 You can find a more detailed guide to setting up a database and loading data with osm2pgsql at [switch2osm.org](https://switch2osm.org/manually-building-a-tile-server-16-04-2-lts/).
 
 ### Custom indexes
-Custom indexes are not required, but will speed up rendering, particularly for full planet databases, heavy load, or other production environments. They will not be as helpful with development using small extracts.
+Custom indexes are required for rendering performance and are essential on full planet databases.
 
 ```
 psql -d gis -f indexes.sql
