@@ -11,6 +11,9 @@ CREATE INDEX planet_osm_line_name
 CREATE INDEX planet_osm_line_river
   ON planet_osm_line USING GIST (way)
   WHERE waterway = 'river';
+CREATE INDEX planet_osm_line_waterway
+  ON planet_osm_line USING GIST (way)
+  WHERE waterway IN ('river', 'canal', 'stream', 'drain', 'ditch');
 CREATE INDEX planet_osm_point_place
   ON planet_osm_point USING GIST (way)
   WHERE place IS NOT NULL AND name IS NOT NULL;
