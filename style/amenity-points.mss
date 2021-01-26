@@ -1490,11 +1490,6 @@
     }
   }
 
-  [feature = 'highway_mini_roundabout'][zoom >= 17]::highway {
-    marker-file: url('symbols/highway/mini_roundabout.svg');
-    marker-clip: false;
-  }
-
   [feature = 'barrier_gate']::barrier {
     [zoom >= 17] {
       marker-file: url('symbols/barrier/gate.svg');

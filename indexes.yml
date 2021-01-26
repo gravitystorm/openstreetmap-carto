@@ -13,6 +13,8 @@ line:
     where: route = 'ferry' AND osm_id > 0
   river:
     where: waterway = 'river'
+  waterway:
+    where: waterway IN ('river', 'canal', 'stream', 'drain', 'ditch')
 polygon:
   # The polygon table is by far the largest, and generally the slowest
   name:

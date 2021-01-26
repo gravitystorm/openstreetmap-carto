@@ -33,11 +33,11 @@ import logging
 
 def database_setup(conn, temp_schema, schema, metadata_table):
     with conn.cursor() as cur:
-            cur.execute('''CREATE SCHEMA IF NOT EXISTS {temp_schema};'''
-                        .format(temp_schema=temp_schema))
-            cur.execute(('''CREATE TABLE IF NOT EXISTS "{schema}"."{metadata_table}"'''
-                         ''' (name text primary key, last_modified text);''')
-                        .format(schema=schema, metadata_table=metadata_table))
+        cur.execute('''CREATE SCHEMA IF NOT EXISTS {temp_schema};'''
+                    .format(temp_schema=temp_schema))
+        cur.execute(('''CREATE TABLE IF NOT EXISTS "{schema}"."{metadata_table}"'''
+                     ''' (name text primary key, last_modified text);''')
+                    .format(schema=schema, metadata_table=metadata_table))
     conn.commit()
 
 
@@ -117,7 +117,7 @@ class Table:
                         [self._name])
             if cur.rowcount == 0:
                 cur.execute(('''INSERT INTO "{schema}"."{metadata_table}" '''
-                            '''(name, last_modified) VALUES (%s, %s)''')
+                             '''(name, last_modified) VALUES (%s, %s)''')
                             .format(schema=self._dst_schema, metadata_table=self._metadata_table),
                             [self._name, new_last_modified])
             else:
@@ -129,21 +129,31 @@ class Table:
 
 def main():
     # parse options
-    parser = argparse.ArgumentParser(description="Load external data into a database")
+    parser = argparse.ArgumentParser(
+        description="Load external data into a database")
 
-    parser.add_argument("-f", "--force", action="store_true", help="Download new data, even if not required")
+    parser.add_argument("-f", "--force", action="store_true",
+                        help="Download new data, even if not required")
 
     parser.add_argument("-c", "--config", action="store", default="external-data.yml",
                         help="Name of configuration file (default external-data.yml)")
-    parser.add_argument("-D", "--data", action="store", help="Override data download directory")
+    parser.add_argument("-D", "--data", action="store",
+                        help="Override data download directory")
 
-    parser.add_argument("-d", "--database", action="store", help="Override database name to connect to")
+    parser.add_argument("-d", "--database", action="store",
+                        help="Override database name to connect to")
     parser.add_argument("-H", "--host", action="store",
                         help="Override database server host or socket directory")
-    parser.add_argument("-p", "--port", action="store", help="Override database server port")
-    parser.add_argument("-U", "--username", action="store", help="Override database user name")
-    parser.add_argument("-v", "--verbose", action="store_true", help="Be more verbose. Overrides -q")
-    parser.add_argument("-q", "--quiet", action="store_true", help="Only report serious problems")
+    parser.add_argument("-p", "--port", action="store",
+                        help="Override database server port")
+    parser.add_argument("-U", "--username", action="store",
+                        help="Override database user name")
+    parser.add_argument("-v", "--verbose", action="store_true",
+                        help="Be more verbose. Overrides -q")
+    parser.add_argument("-q", "--quiet", action="store_true",
+                        help="Only report serious problems")
+    parser.add_argument("-w", "--password", action="store",
+                        help="Override database password")
 
     opts = parser.parse_args()
 
@@ -165,10 +175,12 @@ def main():
         host = opts.host or config["settings"].get("host")
         port = opts.port or config["settings"].get("port")
         user = opts.username or config["settings"].get("username")
+        password = opts.password or config["settings"].get("password")
         with requests.Session() as s, \
             psycopg2.connect(database=database,
                              host=host, port=port,
-                             user=user) as conn:
+                             user=user,
+                             password=password) as conn:
 
             s.headers.update({'User-Agent': 'get-external-data.py/osm-carto'})
 
@@ -183,7 +195,8 @@ def main():
                 # Even if there was code to escape them properly here, you don't want
                 # in a style with all the quoting headaches
                 if not re.match('''^[a-zA-Z0-9_]+$''', name):
-                    raise RuntimeError("Only ASCII alphanumeric table are names supported")
+                    raise RuntimeError(
+                        "Only ASCII alphanumeric table are names supported")
 
                 workingdir = os.path.join(data_dir, name)
                 # Clean up anything left over from an aborted run
@@ -223,6 +236,8 @@ def main():
                         ogrpg = ogrpg + " user={}".format(user)
                     if host is not None:
                         ogrpg = ogrpg + " host={}".format(host)
+                    if password is not None:
+                        ogrpg = ogrpg + " password={}".format(password)
 
                     ogrcommand = ["ogr2ogr",
                                   '-f', 'PostgreSQL',
@@ -234,24 +249,31 @@ def main():
                     if "ogropts" in source:
                         ogrcommand += source["ogropts"]
 
-                    ogrcommand += [ogrpg, os.path.join(workingdir, source["file"])]
+                    ogrcommand += [ogrpg,
+                                   os.path.join(workingdir, source["file"])]
 
-                    logging.debug("running {}".format(subprocess.list2cmdline(ogrcommand)))
+                    logging.debug("running {}".format(
+                        subprocess.list2cmdline(ogrcommand)))
 
                     # ogr2ogr can raise errors here, so they need to be caught
                     try:
-                        subprocess.check_output(ogrcommand, stderr=subprocess.PIPE, universal_newlines=True)
+                        subprocess.check_output(
+                            ogrcommand, stderr=subprocess.PIPE, universal_newlines=True)
                     except subprocess.CalledProcessError as e:
                         # Add more detail on stdout for the logs
-                        logging.critical("ogr2ogr returned {} with layer {}".format(e.returncode, name))
-                        logging.critical("Command line was {}".format(subprocess.list2cmdline(e.cmd)))
+                        logging.critical(
+                            "ogr2ogr returned {} with layer {}".format(e.returncode, name))
+                        logging.critical("Command line was {}".format(
+                            subprocess.list2cmdline(e.cmd)))
                         logging.critical("Output was\n{}".format(e.output))
-                        raise RuntimeError("ogr2ogr error when loading table {}".format(name))
+                        raise RuntimeError(
+                            "ogr2ogr error when loading table {}".format(name))
 
                     this_table.index()
                     this_table.replace(new_last_modified)
                 else:
-                    logging.info("Table {} did not require updating".format(name))
+                    logging.info(
+                        "Table {} did not require updating".format(name))
 
 
 if __name__ == '__main__':
