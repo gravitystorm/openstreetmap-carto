@@ -1535,6 +1535,7 @@ Layer:
                                         AND way_area IS NULL
                                    THEN amenity END,
                 'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism END,
+                'healthcare_' || CASE WHEN tags->'healthcare' in ('vaccination_centre') then tags->'healthcare' END,
                 'place_' || CASE WHEN place IN ('locality') AND way_area IS NULL THEN place END
               ) AS feature,
               access,
