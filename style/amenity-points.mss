@@ -1385,7 +1385,7 @@
 
   [feature = 'mountain_pass'][zoom >= 15] {
     marker-file: url('symbols/natural/saddle.svg');
-    marker-fill: @transportation-text;
+    marker-fill: @transportation-icon;
     marker-clip: false;
   }
 
