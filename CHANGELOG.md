@@ -4,10 +4,10 @@
 
 ### Major Changes
 - External shapefiles for coastline and other data are now loaded into the database with a provided script. (#4092)
-- The recommended indexes are now required. Attempting to render without them will result in abymsal performance.
+- The recommended indexes are now required. Attempting to render without them will result in abysmal performance.
 
 ### Changes
-- amenity=embassy is no longer rendered, and office=diplomatic with diplomatic=embassy or diplomatic=consoluate is instead (#4168)
+- amenity=embassy is no longer rendered, and office=diplomatic with diplomatic=embassy or diplomatic=consulate is instead (#4168)
 - Mini-roundabouts are rendered like a turning circle (#4218)
 - There is a new partial index for waterways
 
