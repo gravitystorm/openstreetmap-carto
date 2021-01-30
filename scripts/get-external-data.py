@@ -65,6 +65,12 @@ class Table:
             if results is not None:
                 return results[0]
 
+    def grant_access(self, user):
+        with self._conn.cursor() as cur:
+            cur.execute('''GRANT SELECT ON "{temp_schema}"."{name}" TO "{user}";'''
+                        .format(name=self._name, temp_schema=self._temp_schema, user=user))
+            self._conn.commit()
+
     def index(self):
         with self._conn.cursor() as cur:
             # Disable autovacuum while manipulating the table, since it'll get clustered towards the end.
@@ -155,6 +161,9 @@ def main():
     parser.add_argument("-w", "--password", action="store",
                         help="Override database password")
 
+    parser.add_argument("-R", "--renderuser", action="store",
+                        help="User to grant access for rendering")
+
     opts = parser.parse_args()
 
     if opts.verbose:
@@ -176,6 +185,9 @@ def main():
         port = opts.port or config["settings"].get("port")
         user = opts.username or config["settings"].get("username")
         password = opts.password or config["settings"].get("password")
+
+        renderuser = opts.renderuser or config["settings"].get("renderuser")
+
         with requests.Session() as s, \
             psycopg2.connect(database=database,
                              host=host, port=port,
@@ -270,6 +282,8 @@ def main():
                             "ogr2ogr error when loading table {}".format(name))
 
                     this_table.index()
+                    if renderuser is not None:
+                        this_table.grant_access(renderuser)
                     this_table.replace(new_last_modified)
                 else:
                     logging.info(
