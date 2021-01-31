@@ -1,5 +1,4 @@
--- These are optional but suggested indexes for rendering OpenStreetMap Carto
--- with a full planet database.
+-- These are indexes for rendering performance with OpenStreetMap Carto.
 -- This file is generated with scripts/indexes.py
 
 CREATE INDEX planet_osm_line_ferry

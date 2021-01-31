@@ -42,7 +42,7 @@ To download them and import them into the database you can run the following scr
 scripts/get-external-data.py
 ```
 
-This script downloads necessary files, generates and populates the *data* directory with all needed shapefiles, including indexing them through *shapeindex*.
+The script downloads shapefiles, loads them into the database and sets up the tables for rendering. Additional script option documentation can be seen with `scripts/get-external-data.py --help`.
 
 ## Fonts
 The stylesheet uses Noto, an openly licensed font family from Google with support for multiple scripts. The stylesheet uses Noto's "Sans" style where available. If not available, this stylesheet uses another appropriate style of the Noto family. The "UI" version is used where available, with its vertical metrics which fit better with Latin text.
