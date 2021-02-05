@@ -2,7 +2,7 @@ language: node_js
 dist: bionic
 sudo: false
 node_js:
-  - "10"
+  - "14"
 services:
   - postgresql
 addons:
@@ -17,12 +17,10 @@ addons:
     - postgresql-9.5-postgis-2.4
     - osm2pgsql
 env:
-  - CARTO=1.2.0 MAPNIK='3.0.0 3.0.12'
+  - CARTO=1.2.0 MAPNIK='3.0.0 3.0.12 3.0.22'
 install:
   - npm install carto@$CARTO
   - pip3 install --user colormath
-  - mkdir -p data/simplified-water-polygons-split-3857 data/ne_110m_admin_0_boundary_lines_land data/water-polygons-split-3857
-  - touch data/simplified-water-polygons-split-3857/simplified_water_polygons.shp data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp data/water-polygons-split-3857/water_polygons.shp
   - createdb -w -E utf8 -U postgres gis && psql -Xq -d gis -U postgres -w -c "CREATE EXTENSION postgis; CREATE EXTENSION hstore;"
 script:
   # We're using pipes in the checks, so fail if any part fails

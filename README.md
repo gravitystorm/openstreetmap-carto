@@ -4,6 +4,8 @@
 
 These are the CartoCSS map stylesheets for the Standard map layer on [OpenStreetMap.org](https://www.openstreetmap.org).
 
+The general purpose, the cartographic design goals and guidelines for this style are outlined in [CARTOGRAPHY.md](CARTOGRAPHY.md).
+
 These stylesheets can be used in your own cartography projects, and are designed
 to be easily customised. They work with [Kosmtik](https://github.com/kosmtik/kosmtik)
  and also with the command-line [CartoCSS](https://github.com/mapbox/carto) processor.
@@ -69,7 +71,7 @@ The v4.x series includes [osm2pgsql lua transforms](https://github.com/openstree
 and a hstore column with all other tags, allowing use of more OpenStreetMap data. Users need
 to reload their databases, v3.x compatibility is not maintained.
 
-There are over [300 open requests][issues], some that have been open for years.
+There are over [400 open requests][issues], some that have been open for years.
 These need reviewing and dividing into obvious fixes, or additional new features
 that need some cartographic judgement.
 

@@ -1,4 +1,18 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.2.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.3.0...master)
+### Changes
+- Natural Earth URL changed to directly point at the NACIS CDN (#4306)
+- Added an option to the external data loader to grant SELECT permissions on the tables (#4307)
+
+## [v5.3.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.2.0...v5.3.0) - 2021-01-28
+
+### Major Changes
+- External shapefiles for coastline and other data are now loaded into the database with a provided script. (#4092)
+- The recommended indexes are now required. Attempting to render without them will result in abysmal performance.
+
+### Changes
+- amenity=embassy is no longer rendered, and office=diplomatic with diplomatic=embassy or diplomatic=consulate is instead (#4168)
+- Mini-roundabouts are rendered like a turning circle (#4218)
+- There is a new partial index for waterways
 
 ## [v5.2.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.1.0...v5.2.0) - 2020-05-8
 
