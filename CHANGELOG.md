@@ -1,4 +1,6 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.3.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.3.1...master)
+
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.3.0...v5.3.1) - 2021-02-04
 ### Changes
 - Natural Earth URL changed to directly point at the NACIS CDN (#4306)
 - Added an option to the external data loader to grant SELECT permissions on the tables (#4307)
