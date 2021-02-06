@@ -1,12 +1,101 @@
--- For documentation of Lua tag transformations, see:
--- https://github.com/openstreetmap/osm2pgsql/blob/master/docs/lua.md
+-- IMPORTANT NOTICE:
+-- This is an osm2pgsql 'flex output' Lua file, and requires a minimum version of 
+-- osm2pgsql of >=1.3.0 to work, but >=1.4.1 is highly recommended. This Lua file will not
+-- work with older versions of osm2pgsql, nor will it work with 'pgsql output' options on
+-- the command line.
+
+-- For documentation of the osm2pgsql flex output based on Lua, see:
+-- https://osm2pgsql.org/doc/manual.html#the-flex-output
+
+-- The top section of this Lua file contains configuration settings that affect the schema
+-- of the resulting database created by osm2pgsql. Deviating from the default settings, that
+-- have been adjusted to maintain compatibility with the 'openstreetmap-carto' style and
+-- associated rendering tools like 'mod_tile' and 'Mapnik', will likely lead to a failure to 
+-- render tiles.
+-- Only change these settings if you have a specific secondary purpose for using the osm2pgsql
+-- generated schema, e.g. for using the tables in a GIS like QGIS, use against another style
+-- designed differently, or want to use the resulting data for statistical analysis.
+
+-- *** BEGIN CONFIGURATION ************
+
+-- ## Prefix ##
+-- Set this to the table name prefix (what used to be option -p|--prefix).
+local prefix = 'planet_osm'
+
+-- ## The output projection to use ## 
+-- Set this to 4326 if you were using the -l|--latlong option or to the EPSG
+-- code if you were using the -E|-proj option.
+local srid = 3857
+
+-- ## Multipolygon or Polygon ##
+-- Set this to true if multipolygons should be written as multipolygons into
+-- db (what used to be option -G|--multi-geometry).
+local multi_geometry = true
+
+-- ## 'roads' and 'route' table ##
+-- You can configure whether or not to add a separate 'roads' table for low zoom, small scale,
+-- rendering, and / or adding a 'route' table that will store membership of line objects in
+-- OpenStreetMap routes, and that can be used to display specific routes based on SQL selections.
+--
+-- Note: the 'route' table is a non-spatial table and does not contain the geometry objects
+-- of the routes themselves, only way membership. You need to join this table with the
+-- 'planet_osm_line' table in order to display routes in your map.
+local add_roads_table = true
+local add_route_table = true
+
+-- ## Z-order and way_area columns ##
+-- You can suppress the creation of a 'z-order' or 'way_area' column if you don't need them
+-- for your purpose, e.g. when using the resulting spatial tables in a GIS like QGIS,
+-- where z-order may be defined by adjusting the stacking of layers in the Table Of Contents,
+-- and symbol levels.
+local add_z_order_col = true
+local add_way_area_col = true
+
+-- ## Explicitely defined columns ##:
+-- If 'true', you must set or change the lists of column names per table as defined in this style,
+-- see below in this file.
+-- If 'false', only a small default set of columns ('osm_id','way','tags','layer') will be added
+-- including a hstore column ('tags') containing all tags, and any SQL query you define against
+-- the resulting database will need to use a hstore lookup (e.g. "tags -> 'healthcare'") to
+-- access tags and do selections on the resulting tables.
+--
+-- Note: the 'route' table, as being a table with a specialized function, always uses a 
+-- fixed set of explicitely defined columns!
+local explicit_columns = true
+
+-- ## Table spaces ##
+-- PostgreSQL tables spaces for data and indexes can be specified separately
+local point_data_tablespace = 'pg_default'
+local point_index_tablespace = 'pg_default'
+local line_data_tablespace = 'pg_default'
+local line_index_tablespace = 'pg_default'
+local roads_data_tablespace = 'pg_default'
+local roads_index_tablespace = 'pg_default'
+local polygon_data_tablespace = 'pg_default'
+local polygon_index_tablespace = 'pg_default'
+local route_data_tablespace = 'pg_default'
+local route_index_tablespace = 'pg_default'
+
+-- *** END CONFIGURATION **********************
+
+local max_length
+
+-- Used for splitting up long linestrings
+if srid == 4326 then
+    max_length = 1
+else
+    max_length = 100000
+end
 
 local tables = {}
+local pg_cols
 
 -- A list of columns per table, replacing the osm2pgsql .style file
 -- These need to be ordered, so that means a list
-local pg_cols = {
-    point = {
+if explicit_columns then
+    pg_cols = {
+    	-- *** Point table columns ***
+        point = {
         'access',
         'addr:housename',
         'addr:housenumber',
@@ -37,8 +126,9 @@ local pg_cols = {
         'tourism',
         'water',
         'waterway'
-    },
-    line = {
+        },
+        -- *** Line table columns ***
+        line = {
         'access',
         'addr:housename',
         'addr:housenumber',
@@ -81,16 +171,122 @@ local pg_cols = {
         'tunnel',
         'water',
         'waterway'
-    },
-    route = {
+        },
+        -- *** Polygon table columns ***
+        polygon = {
+        'access',
+        'addr:housename',
+        'addr:housenumber',
+        'addr:interpolation',
+        'admin_level',
+        'aerialway',
+        'aeroway',
+        'amenity',
+        'barrier',
+        'bicycle',
+        'bridge',
+        'boundary',
+        'building',
+        'construction',
+        'covered',
+        'foot',
+        'highway',
+        'historic',
+        'horse',
+        'junction',
+        'landuse',
+        'leisure',
+        'lock',
+        'man_made',
+        'military',
+        'name',
+        'natural',
+        'oneway',
+        'place',
+        'power',
+        'railway',
+        'ref',
+        'religion',
+        'route',
+        'service',
+        'shop',
+        'surface',
+        'tourism',
+        'tracktype',
+        'tunnel',
+        'water',
+        'waterway'
+        }       
+    }
+    -- *** Roads table columns ***
+    if add_roads_table then
+        pg_cols.roads = {
+        'access',
+        'addr:housename',
+        'addr:housenumber',
+        'addr:interpolation',
+        'admin_level',
+        'aerialway',
+        'aeroway',
+        'amenity',
+        'barrier',
+        'bicycle',
+        'bridge',
+        'boundary',
+        'building',
+        'construction',
+        'covered',
+        'foot',
+        'highway',
+        'historic',
+        'horse',
+        'junction',
+        'landuse',
+        'leisure',
+        'lock',
+        'man_made',
+        'military',
+        'name',
+        'natural',
+        'oneway',
+        'place',
+        'power',
+        'railway',
+        'ref',
+        'religion',
+        'route',
+        'service',
+        'shop',
+        'surface',
+        'tourism',
+        'tracktype',
+        'tunnel',
+        'water',
+        'waterway'
+        }
+    end
+else
+    -- In case the option to set explicit columns was not chosen, set all column
+    -- lists to empty ones. Only a small default set of columns will be added.
+    pg_cols = {
+        point = {},
+        line = {},
+        polygon = {}
+    }  
+    if add_roads_table then
+        pg_cols.roads = {}  
+    end
+end
+
+-- *** Route table columns ***
+-- Note: the 'route' table always uses explicit columns!
+if add_route_table then
+    pg_cols.route = {
         'route',
         'ref',
         'network'
-    }
-}
-
-pg_cols.roads = pg_cols.line
-pg_cols.polygon = pg_cols.line
+    }  
+end    
 
 -- These columns aren't text columns
 col_definitions = {
@@ -102,29 +298,52 @@ col_definitions = {
     line = {
         { column = 'way', type = 'linestring' },
         { column = 'tags', type = 'hstore' },
-        { column = 'layer', type = 'int4' },
-        { column = 'z_order', type = 'int4' }
-    },
-    roads = {
-        { column = 'way', type = 'linestring' },
-        { column = 'tags', type = 'hstore' },
-        { column = 'layer', type = 'int4' },
-        { column = 'z_order', type = 'int4' }
-    },
+        { column = 'layer', type = 'int4' }
+    },    
     polygon = {
         { column = 'way', type = 'geometry' },
         { column = 'tags', type = 'hstore' },
         { column = 'layer', type = 'int4' },
-        { column = 'z_order', type = 'int4' },
-        { column = 'way_area', type = 'area' }    
-    },
-    route = {
+    }
+}
+
+if add_roads_table then
+    col_definitions.roads = {
+        { column = 'way', type = 'linestring' },
+        { column = 'tags', type = 'hstore' },
+        { column = 'layer', type = 'int4' },
+    }
+end
+
+if add_route_table then
+    col_definitions.route = {
         { column = 'member_id', type = 'int8' },
         { column = 'member_position', type = 'int4' },
         { column = 'tags', type = 'hstore' }
     }
-}
+end
 
+-- Set projection of geometry column
+col_definitions.point[1].projection = srid
+col_definitions.line[1].projection = srid
+if add_roads_table then
+    col_definitions.roads[1].projection = srid
+end
+col_definitions.polygon[1].projection = srid
+
+-- Add 'z-order' and 'way_area' columns
+if add_z_order_col then
+    table.insert(col_definition["line"], { column = 'z_order', type = 'int4' })
+    if add_roads_table then
+        table.insert(col_definition["roads"], { column = 'z_order', type = 'int4' })
+    end
+    table.insert(col_definition["polygon"], { column = 'z_order', type = 'int4' })
+end
+
+if add_way_area_col then
+    table.insert(col_definition["polygon"], { column = 'way_area', type = 'area' })
+end
+            
 -- Combine the two sets of columns and create a map with column names.
 -- The latter is needed for quick lookup to see if a tag has a column.
 local columns_map = {}
@@ -137,34 +356,48 @@ for tablename, columns in pairs(pg_cols) do
 end
 
 tables.point = osm2pgsql.define_table{
-    name = 'planet_osm_point',
+    name = prefix .. '_point',
     ids = { type = 'node', id_column = 'osm_id' },
-    columns = col_definitions.point
+    columns = col_definitions.point,
+    data_tablespace = point_data_tablespace,
+    index_tablespace = point_index_tablespace
 }
 
 tables.line = osm2pgsql.define_table{
-    name = 'planet_osm_line',
+    name = prefix .. '_line',
     ids = { type = 'way', id_column = 'osm_id' },
-    columns = col_definitions.line
+    columns = col_definitions.line,
+    data_tablespace = line_data_tablespace,
+    index_tablespace = line_index_tablespace
 }
 
-tables.roads = osm2pgsql.define_table{
-    name = 'planet_osm_roads',
-    ids = { type = 'way', id_column = 'osm_id' },
-    columns = col_definitions.roads
-}
+if add_roads_table then
+    tables.roads = osm2pgsql.define_table{
+        name = prefix .. '_roads',
+        ids = { type = 'way', id_column = 'osm_id' },
+        columns = col_definitions.roads,
+        data_tablespace = roads_data_tablespace,
+        index_tablespace = roads_index_tablespace
+    }
+end
 
 tables.polygon = osm2pgsql.define_table{
-    name = 'planet_osm_polygon',
+    name = prefix .. '_polygon',
     ids = { type = 'way', id_column = 'osm_id' },
-    columns = col_definitions.polygon
+    columns = col_definitions.polygon,
+    data_tablespace = polygon_data_tablespace,
+    index_tablespace = polygon_index_tablespace    
 }
 
-tables.route = osm2pgsql.define_table{
-    name = 'planet_osm_route',
-    ids = { type = 'relation', id_column = 'osm_id' },
-    columns = col_definitions.route
-}
+if add_route_table then
+    tables.route = osm2pgsql.define_table{
+        name = prefix .. '_route',
+        ids = { type = 'relation', id_column = 'osm_id' },
+        columns = col_definitions.route,
+        data_tablespace = route_data_tablespace,
+        index_tablespace = route_index_tablespace
+    }
+end
 
 -- Objects with any of the following keys will be treated as polygon
 local polygon_keys = {
@@ -218,10 +451,10 @@ local linestring_values = {
 -- Objects with any of the following key/value combinations will be treated as polygon
 local polygon_values = {
     aerialway = {station = true},
-    boundary = {aboriginal_lands = true, national_park = true, protected_area= true},
+    boundary = {aboriginal_lands = true, national_park = true, protected_area = true},
     highway = {services = true, rest_area = true},
     junction = {yes = true},
-    railway = {station = true}
+    railway = {station = true, traverser = true, turntable = true, wash = true}
 }
 
 -- The following keys will be deleted
@@ -406,6 +639,7 @@ local excluded_railway_service = {
     siding = true,
     yard = true
 }
+
 --- Gets the z_order for a set of tags
 -- @param tags OSM tags
 -- @return z_order if an object with z_order, otherwise nil
@@ -515,75 +749,101 @@ function split_tags(tags, tag_map)
     return cols
 end
 
-
--- TODO: Make add_* take object, not object.tags
-function add_point(tags)
+-- Functions to add point, line, polygon and route objects to database
+function add_point(object)
+    local tags = object.tags
     local cols = split_tags(tags, columns_map.point)
     cols['layer'] = layer(tags['layer'])
     tables.point:add_row(cols)
 end
 
-function add_line(tags)
+function add_line(object)
+    local tags = object.tags
     local cols = split_tags(tags, columns_map.line)
     cols['layer'] = layer(tags['layer'])
-    cols['z_order'] = z_order(tags)
-    cols.way = { create = 'line', split_at = 100000 }
+    if add_z_order_col then
+        cols['z_order'] = z_order(tags)
+    end
+    cols.way = { create = 'line', split_at = max_length }
     tables.line:add_row(cols)
 end
 
-function add_roads(tags)
+function add_roads(object)
+    local tags = object.tags
     local cols = split_tags(tags, columns_map.roads)
     cols['layer'] = layer(tags['layer'])
-    cols['z_order'] = z_order(tags)
-    cols.way = { create = 'line', split_at = 100000 }
+    if add_z_order_col then
+        cols['z_order'] = z_order(tags)
+    end
+    cols.way = { create = 'line', split_at = max_length }
     tables.roads:add_row(cols)
 end
 
-function add_polygon(tags)
+function add_polygon(object)
+    local tags = object.tags
     local cols = split_tags(tags, columns_map.polygon)
     cols['layer'] = layer(tags['layer'])
-    cols['z_order'] = z_order(tags)
-    cols.way = { create = 'area', multi = true }
+    if add_z_order_col then
+        cols['z_order'] = z_order(tags)
+    end
+    cols.way = { create = 'area'}
+    if not multi_geometry then
+        cols.way.split_at = 'multi'
+    end    
     tables.polygon:add_row(cols)
 end
 
 function add_route(object)
+    local tags = object.tags
     for i, member in ipairs(object.members) do
         if member.type == 'w' then
-            local cols = split_tags(object.tags, columns_map.roads)
+            local cols = split_tags(tags, columns_map.line)
             cols.member_id = member.ref
             cols.member_position = i
+            cols.route = tags['route']            
+            cols.ref = tags['ref']
+            cols.network = tags['network']
             tables.route:add_row(cols)
         end
     end
 end
 
+-- Process nodes
 function osm2pgsql.process_node(object)
+
     if clean_tags(object.tags) then
         return
     end
 
-    add_point(object.tags)
+    add_point(object)
+    
 end
 
+-- Process ways
 function osm2pgsql.process_way(object)
+
     if clean_tags(object.tags) then
         return
     end
 
     local area_tags = isarea(object.tags)
     if object.is_closed and area_tags then
-        add_polygon(object.tags)
+--    if object.is_closed and object.tags["area"] ~= "no" then
+        add_polygon(object)
     else
-        add_line(object.tags)
-
-        if roads(object.tags) then
-            add_roads(object.tags)
+        add_line(object)
+        if add_roads_table then
+            if roads(object.tags) then
+                add_roads(object)
+            end
         end
     end
+
 end
 
+-- Process relations
 function osm2pgsql.process_relation(object)
+
     -- grab the type tag before filtering tags
     local type = object.tags.type
     object.tags.type = nil
@@ -591,23 +851,32 @@ function osm2pgsql.process_relation(object)
     if clean_tags(object.tags) then
         return
     end
+
     if type == "boundary" or (type == "multipolygon" and object.tags["boundary"]) then
-        add_line(object.tags)
 
-        if roads(object.tags) then
-            add_roads(object.tags)
-        end
-
-        add_polygon(object.tags)
+        add_line(object)
+        
+        if add_roads_table then
+            if roads(object.tags) then
+                add_roads(object)
+            end
+	end
+	
+        add_polygon(object)
 
     elseif type == "multipolygon" then
-        add_polygon(object.tags)
-    elseif type == "route" then
-        add_line(object.tags)
+
+        add_polygon(object)
+
+    elseif type == "route" and add_route_table then
+
+        add_line(object)
+        
         add_route(object)
-        -- TODO: Remove this, roads tags don't belong on route relations
-        if roads(object.tags) then
-            add_roads(object.tags)
-        end
+--        -- TODO: Remove this, roads tags don't belong on route relations
+--        if roads(object.tags) then
+--            add_roads(object)
+       
     end
+
 end
