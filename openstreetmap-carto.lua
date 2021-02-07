@@ -1,6 +1,6 @@
 -- IMPORTANT NOTICE:
 -- This is an osm2pgsql 'flex output' Lua file, and requires a minimum version of 
--- osm2pgsql of >=1.3.0 to work, but >=1.4.1 is highly recommended. This Lua file will not
+-- osm2pgsql of >=1.4.0 to work, but >=1.4.1 is highly recommended. This Lua file will not
 -- work with older versions of osm2pgsql, nor will it work with 'pgsql output' options on
 -- the command line.
 
@@ -89,6 +89,7 @@ end
 
 local tables = {}
 local pg_cols
+local col_definitions
 
 -- A list of columns per table, replacing the osm2pgsql .style file
 -- These need to be ordered, so that means a list
