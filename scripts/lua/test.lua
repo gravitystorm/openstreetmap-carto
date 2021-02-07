@@ -129,6 +129,14 @@ assert(not isarea({building = "no"}), "test failed: building=no")
 assert(isarea({building = "no", area = "yes"}), "test failed: building=no with area tag")
 assert(isarea({building = "no", landuse = "forest"}), "test failed: building=no with other area tag")
 
+print("TESTING: layer")
+assert(layer("foo") == nil, "non-numeric layer")
+assert(layer("0") == "0", "0 layer")
+assert(layer("3") == "3", "3 layer")
+assert(layer("-3") == "-3", "-3 layer")
+assert(layer("300") == nil, "large layer")
+assert(layer("3.5") == nil, "non-integer layer")
+
 print("TESTING: clean_tags")
 assert(clean_tags({}), "Untagged")
 
