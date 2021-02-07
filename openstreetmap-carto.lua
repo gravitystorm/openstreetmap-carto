@@ -543,7 +543,7 @@ function add_polygon(tags)
     local cols = split_tags(tags, columns_map.polygon)
     cols['layer'] = layer(tags['layer'])
     cols['z_order'] = z_order(tags)
-    cols.way = { create = 'area', multi = true }
+    cols.way = { create = 'area', split_at = nil }
     tables.polygon:add_row(cols)
 end
 

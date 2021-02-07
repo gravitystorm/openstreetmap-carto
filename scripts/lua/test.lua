@@ -190,15 +190,15 @@ assert(deepcompare(table_contents.planet_osm_roads[1], {tags = {foo = "bar"}, wa
 print("TESTING: add_polygon")
 table_contents.planet_osm_polygon = {}
 add_polygon({natural = "wood"})
-assert(deepcompare(table_contents.planet_osm_polygon[1], {natural = "wood", tags = {}, way = { create = 'area', multi=true }}), "Tag with column")
+assert(deepcompare(table_contents.planet_osm_polygon[1], {natural = "wood", tags = {}, way = { create = 'area', split_at = nil }}), "Tag with column")
 
 table_contents.planet_osm_polygon = {}
 add_polygon({natural = "wood", foo = "bar"})
-assert(deepcompare(table_contents.planet_osm_polygon[1], {natural = "wood", tags = {foo = "bar"}, way = { create = 'area', multi=true }}), "Tag with column + hstore")
+assert(deepcompare(table_contents.planet_osm_polygon[1], {natural = "wood", tags = {foo = "bar"}, way = { create = 'area', split_at = nil }}), "Tag with column + hstore")
 
 table_contents.planet_osm_polygon = {}
 add_polygon({foo = "bar"})
-assert(deepcompare(table_contents.planet_osm_polygon[1], {tags = {foo = "bar"}, way = { create = 'area', multi=true }}), "hstore only")
+assert(deepcompare(table_contents.planet_osm_polygon[1], {tags = {foo = "bar"}, way = { create = 'area', split_at = nil }}), "hstore only")
 
 
 print("TESTING: add_route")
