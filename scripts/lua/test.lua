@@ -215,6 +215,9 @@ add_route({tags = {route = "unicycle"}, members = {{type = 'w', ref = 1234, role
 assert(deepcompare(table_contents.planet_osm_route[1], {route = "unicycle", member_id = 1234, member_position = 1, tags = {}}), "Route with 2 ways")
 assert(deepcompare(table_contents.planet_osm_route[2], {route = "unicycle", member_id = 1235, member_position = 2, tags = {}}), "Route with 2 ways")
 
+table_contents.planet_osm_route = {}
+add_route({tags = {route = "unicycle", network = "clown"}, members = {{type = 'w', ref = 1234, role = 'foo'}}})
+assert(deepcompare(table_contents.planet_osm_route[1], {route = "unicycle", network="clown", member_id = 1234, member_position = 1, tags = {}}), "Route with network")
 
 print("TESTING: osm2pgsql.process_node")
 table_contents.planet_osm_point = {}

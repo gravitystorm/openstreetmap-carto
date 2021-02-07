@@ -550,7 +550,7 @@ end
 function add_route(object)
     for i, member in ipairs(object.members) do
         if member.type == 'w' then
-            local cols = split_tags(object.tags, columns_map.roads)
+            local cols = split_tags(object.tags, columns_map.route)
             cols.member_id = member.ref
             cols.member_position = i
             tables.route:add_row(cols)
