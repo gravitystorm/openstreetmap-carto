@@ -334,15 +334,15 @@ col_definitions.polygon[1].projection = srid
 
 -- Add 'z-order' and 'way_area' columns
 if add_z_order_col then
-    table.insert(col_definition["line"], { column = 'z_order', type = 'int4' })
+    table.insert(col_definitions["line"], { column = 'z_order', type = 'int4' })
     if add_roads_table then
-        table.insert(col_definition["roads"], { column = 'z_order', type = 'int4' })
+        table.insert(col_definitions["roads"], { column = 'z_order', type = 'int4' })
     end
-    table.insert(col_definition["polygon"], { column = 'z_order', type = 'int4' })
+    table.insert(col_definitions["polygon"], { column = 'z_order', type = 'int4' })
 end
 
 if add_way_area_col then
-    table.insert(col_definition["polygon"], { column = 'way_area', type = 'area' })
+    table.insert(col_definitions["polygon"], { column = 'way_area', type = 'area' })
 end
             
 -- Combine the two sets of columns and create a map with column names.
