@@ -19,31 +19,85 @@
 -- *** BEGIN CONFIGURATION ************
 
 -- ## Prefix ##
+--
 -- Set this to the table name prefix (what used to be option -p|--prefix).
 local prefix = 'planet_osm'
 
 -- ## The output projection to use ## 
+--
 -- Set this to 4326 if you were using the -l|--latlong option or to the EPSG
 -- code if you were using the -E|-proj option.
 local srid = 3857
 
 -- ## Multipolygon or Polygon ##
--- Set this to true if multipolygons should be written as multipolygons into
+--
+-- Set this to 'true' if multipolygons should be written as multipolygons into
 -- db (what used to be option -G|--multi-geometry).
+--
+-- Note: 
+-- * Setting this option to 'false' will cause non-unique OSM IDs to be written
+--   to the database, as one OSM 'multipolygon relation' will end up as multipe Simple
+--   Feature 'Polygon' objects in the database
 local multi_geometry = true
 
+-- ## Geometry column type ##
+--
+-- Simple Features representing areas can be represented in a PostGIS database using 
+-- different geometry types, stored in columns of type 'geometry', 'multipolygon' or 'polygon':
+-- * The 'geometry' column type allows a mixture of 'polygons' and 'multipolygons' as generated
+--   by osm2pgsql to be stored. This is the default.
+-- * The 'multipolygon' column type only allows 'multipolygons' to be stored, see the notes below.
+-- * The 'polygon' column type only allows 'polygons' to be stored, and is incompatible with
+--   the 'multi_geometry' configuration setting listed above. Also see the notes below.
+--
+-- Note: 
+-- * If you set the 'area_geometry_column_type' to 'multipolygon', any area object that could be 
+--   represented by a simpler Simple Feature 'polygon' object, will be automatically converted
+--   to a 'multipolygon' by osm2pgsql (version >= 1.4.0).
+-- * If you set the 'area_geometry_column_type' to 'polygon', the 'multi_geometry' configuration
+--   setting will auto-convert to 'false', as Simple Feature 'multipolygons' cannot be stored 
+--   in a 'polygon' type geometry column. Any SF 'multipolygon' will consequently be broken up
+--   into multiple SF 'polygon' objects by osm2pgsql, and added as separate records in the
+--   database with a non-unique OSM ID.
+-- * Although you can safely change the 'geometry' column type into 'multipolygon', you should 
+--   be very careful in deciding to choose 'polygon' as the column type. If you choose
+--   'polygon', any SF 'multipolygon' will be broken up into individual 'polygon' parts. 
+--   If the SF 'multipolygon' represents an area object with many different parts, this will
+--   result in a significant rise in the record number of the resulting table, especially if
+--   many of such complex 'multipolygon' area objects are present in your OpenStreetMap extract.
+--   In addition, it may result in poor labeling results, as each part may receive a 
+--   duplicate label.
+local area_geometry_column_type = 'geometry' -- 'geometry' / 'multipolygon' / 'polygon'
+
+-- ## Split long linestrings ##
+--
+-- By default, the style will split long LineString objects. The split length is 1 degree
+-- for WGS1984, 100k meters for Web Mercator, or 100k units in whatever projection you set
+-- for the 'srid' configuration. 
+--
+-- Note: 
+-- * The default setting of 'true' will cause non-unique OSM IDs to be written
+--   to the database, as one OSM 'way' will end up as multipe Simple Feature 'LineString'
+--   objects in the database.
+--   Setting this value to 'false' may cause performance issues in rendering due to overly
+--   long way objects. Evaluate performance after making this change.
+local split_long_linestring = true
+
 -- ## 'roads' and 'route' table ##
+--
 -- You can configure whether or not to add a separate 'roads' table for low zoom, small scale,
 -- rendering, and / or adding a 'route' table that will store membership of line objects in
 -- OpenStreetMap routes, and that can be used to display specific routes based on SQL selections.
 --
--- Note: the 'route' table is a non-spatial table and does not contain the geometry objects
--- of the routes themselves, only way membership. You need to join this table with the
--- 'planet_osm_line' table in order to display routes in your map.
+-- Note: 
+-- * The 'route' table is a non-spatial table and does not contain the geometry objects
+--   of the routes themselves, only way membership. You need to join this table with the
+--   'planet_osm_line' table in order to display routes in your map.
 local add_roads_table = true
 local add_route_table = true
 
 -- ## Z-order and way_area columns ##
+--
 -- You can suppress the creation of a 'z-order' or 'way_area' column if you don't need them
 -- for your purpose, e.g. when using the resulting spatial tables in a GIS like QGIS,
 -- where z-order may be defined by adjusting the stacking of layers in the Table Of Contents,
@@ -52,6 +106,7 @@ local add_z_order_col = true
 local add_way_area_col = true
 
 -- ## Explicitely defined columns ##:
+--
 -- If 'true', you must set or change the lists of column names per table as defined in this style,
 -- see below in this file.
 -- If 'false', only a small default set of columns ('osm_id','way','tags','layer') will be added
@@ -59,11 +114,18 @@ local add_way_area_col = true
 -- the resulting database will need to use a hstore lookup (e.g. "tags -> 'healthcare'") to
 -- access tags and do selections on the resulting tables.
 --
--- Note: the 'route' table, as being a table with a specialized function, always uses a 
--- fixed set of explicitely defined columns!
+-- Note: 
+-- * The 'route' table, as being a table with a specialized function, always uses a 
+--   fixed set of explicitely defined columns!
 local explicit_columns = true
 
+-- ## Database schema ##
+--
+-- The PostgreSQL schema to be used for the created tables.
+local db_schema = 'public'
+
 -- ## Table spaces ##
+--
 -- PostgreSQL tables spaces for data and indexes can be specified separately
 local point_data_tablespace = 'pg_default'
 local point_index_tablespace = 'pg_default'
@@ -85,6 +147,10 @@ if srid == 4326 then
     max_length = 1
 else
     max_length = 100000
+end
+
+if area_geometry_column_type == 'polygon' then
+    multi_geometry = false
 end
 
 local tables = {}
@@ -302,7 +368,7 @@ col_definitions = {
         { column = 'layer', type = 'int4' }
     },    
     polygon = {
-        { column = 'way', type = 'geometry' },
+        { column = 'way', type = area_geometry_column_type },
         { column = 'tags', type = 'hstore' },
         { column = 'layer', type = 'int4' },
     }
@@ -356,12 +422,14 @@ for tablename, columns in pairs(pg_cols) do
     end
 end
 
+-- Define the tables to create
 tables.point = osm2pgsql.define_table{
     name = prefix .. '_point',
     ids = { type = 'node', id_column = 'osm_id' },
     columns = col_definitions.point,
     data_tablespace = point_data_tablespace,
-    index_tablespace = point_index_tablespace
+    index_tablespace = point_index_tablespace,
+    schema = db_schema
 }
 
 tables.line = osm2pgsql.define_table{
@@ -369,7 +437,8 @@ tables.line = osm2pgsql.define_table{
     ids = { type = 'way', id_column = 'osm_id' },
     columns = col_definitions.line,
     data_tablespace = line_data_tablespace,
-    index_tablespace = line_index_tablespace
+    index_tablespace = line_index_tablespace,
+    schema = db_schema
 }
 
 if add_roads_table then
@@ -378,7 +447,8 @@ if add_roads_table then
         ids = { type = 'way', id_column = 'osm_id' },
         columns = col_definitions.roads,
         data_tablespace = roads_data_tablespace,
-        index_tablespace = roads_index_tablespace
+        index_tablespace = roads_index_tablespace,
+        schema = db_schema
     }
 end
 
@@ -387,7 +457,8 @@ tables.polygon = osm2pgsql.define_table{
     ids = { type = 'way', id_column = 'osm_id' },
     columns = col_definitions.polygon,
     data_tablespace = polygon_data_tablespace,
-    index_tablespace = polygon_index_tablespace    
+    index_tablespace = polygon_index_tablespace,
+    schema = db_schema
 }
 
 if add_route_table then
@@ -396,7 +467,8 @@ if add_route_table then
         ids = { type = 'relation', id_column = 'osm_id' },
         columns = col_definitions.route,
         data_tablespace = route_data_tablespace,
-        index_tablespace = route_index_tablespace
+        index_tablespace = route_index_tablespace,
+        schema = db_schema
     }
 end
 
@@ -765,7 +837,10 @@ function add_line(object)
     if add_z_order_col then
         cols['z_order'] = z_order(tags)
     end
-    cols.way = { create = 'line', split_at = max_length }
+    cols.way = { create = 'line' }
+    if split_long_linestring then
+        cols.way.split_at = max_length
+    end
     tables.line:add_row(cols)
 end
 
@@ -776,7 +851,10 @@ function add_roads(object)
     if add_z_order_col then
         cols['z_order'] = z_order(tags)
     end
-    cols.way = { create = 'line', split_at = max_length }
+    cols.way = { create = 'line' }
+    if split_long_linestring then
+        cols.way.split_at = max_length
+    end
     tables.roads:add_row(cols)
 end
 
@@ -798,12 +876,9 @@ function add_route(object)
     local tags = object.tags
     for i, member in ipairs(object.members) do
         if member.type == 'w' then
-            local cols = split_tags(tags, columns_map.line)
+            local cols = split_tags(tags, columns_map.route)         
             cols.member_id = member.ref
             cols.member_position = i
-            cols.route = tags['route']            
-            cols.ref = tags['ref']
-            cols.network = tags['network']
             tables.route:add_row(cols)
         end
     end
