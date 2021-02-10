@@ -1,2 +1,0 @@
-# Force the following filetypes to have unix eols, so Windows does not break them
-*.py text eol=lf
