@@ -527,7 +527,7 @@ local polygon_values = {
     boundary = {aboriginal_lands = true, national_park = true, protected_area = true},
     highway = {services = true, rest_area = true},
     junction = {yes = true},
-    railway = {station = true, traverser = true, turntable = true, wash = true}
+    railway = {station = true}
 }
 
 -- The following keys will be deleted
@@ -904,7 +904,6 @@ function osm2pgsql.process_way(object)
 
     local area_tags = isarea(object.tags)
     if object.is_closed and area_tags then
---    if object.is_closed and object.tags["area"] ~= "no" then
         add_polygon(object)
     else
         add_line(object)
