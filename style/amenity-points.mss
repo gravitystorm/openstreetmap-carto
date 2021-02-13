@@ -1372,7 +1372,7 @@
   }
 
   [feature = 'natural_volcano'][zoom >= 11] {
-    marker-file: url('symbols/natural/peak.svg');
+    marker-file: url('symbols/natural/volcano.svg');
     marker-fill: #d40000;
     marker-clip: false;
   }
