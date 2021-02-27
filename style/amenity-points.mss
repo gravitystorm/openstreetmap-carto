@@ -1365,16 +1365,19 @@
     marker-fill: @man-made-icon;
   }
 
-  [feature = 'natural_peak'][zoom >= 11] {
-    marker-file: url('symbols/natural/peak.svg');
+  [feature = 'natural_peak'][zoom >= 10],
+  [feature = 'natural_volcano'][zoom >= 10] {
     marker-fill: @landform-color;
     marker-clip: false;
-  }
-
-  [feature = 'natural_volcano'][zoom >= 11] {
-    marker-file: url('symbols/natural/volcano.svg');
-    marker-fill: #d40000;
-    marker-clip: false;
+    [feature = 'natural_peak'] {
+      marker-file: url('symbols/natural/peak.svg');    
+    }
+    [feature = 'natural_volcano'] {
+      marker-file: url('symbols/natural/volcano.svg');    
+    }
+    [zoom = 10] {
+      marker-width: 4;
+    }
   }
 
   [feature = 'natural_saddle'][zoom >= 15] {
@@ -1833,7 +1836,6 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: darken(@landform-color, 30%);
-    [feature = 'natural_volcano'] { text-fill: #d40000; }
     text-dy: 7;
     [feature = 'tourism_viewpoint'] { text-dy: 11; }
     text-face-name: @standard-font;
