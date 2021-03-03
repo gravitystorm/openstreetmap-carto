@@ -44,7 +44,7 @@ CREATE INDEX planet_osm_roads_admin
   WHERE boundary = 'administrative';
 CREATE INDEX planet_osm_roads_admin_low
   ON planet_osm_roads USING GIST (way)
-  WHERE boundary = 'administrative' AND admin_level IN ('0', '1', '2', '3', '4');
+  WHERE boundary = 'administrative' AND admin_level IN ('0', '1', '2', '3', '4') AND osm_id < 0;
 CREATE INDEX planet_osm_roads_roads_ref
   ON planet_osm_roads USING GIST (way)
   WHERE highway IS NOT NULL AND ref IS NOT NULL;
