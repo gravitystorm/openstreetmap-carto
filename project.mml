@@ -1035,6 +1035,7 @@ Layer:
         (SELECT
             way,
             aeroway,
+            runway,
             bridge,
             width,
             GREATEST(width::real/sf, 2) AS area_width,
@@ -1043,6 +1044,7 @@ Layer:
           (SELECT
               way,
               aeroway,
+              tags->'runway' AS runway,
               bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct') AS bridge,
               -- Convert valid length units into metres. Fall back to a sensible default if no valid value was set.
               GREATEST(
@@ -1804,13 +1806,20 @@ Layer:
                 SELECT
                     osm_id,
                     way,
-                    COALESCE(
-                      CASE WHEN highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary') THEN highway END,
-                      CASE WHEN aeroway IN ('runway', 'taxiway') THEN aeroway END
-                    ) AS highway,
+                    highway,
                     string_to_array(ref, ';') AS refs
                   FROM planet_osm_line
-                  WHERE (highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary') OR aeroway IN ('runway', 'taxiway'))
+                  WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary')
+                    AND ref IS NOT NULL
+                UNION ALL
+                SELECT
+                    osm_id,
+                    way,
+                    aeroway AS highway,
+                    string_to_array(ref, ';') AS refs
+                  FROM planet_osm_line
+                  WHERE aeroway IN ('runway', 'taxiway')
+                    AND NOT tags @> '"runway"=>"displaced_threshold"'
                     AND ref IS NOT NULL
               ) AS p) AS q
           WHERE height <= 4 AND width <= 11

@@ -2987,6 +2987,14 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         [zoom >= 18] { line-dasharray: 84,56; }
         [zoom >= 19] { line-dasharray: 168,112; }
         [zoom >= 20] { line-dasharray: 336,224; }
+        [runway = "displaced_threshold"] {
+          line-width: 0;
+          marker-placement: line;
+          marker-fill: white;
+          marker-width: [line_width] * 16;
+          marker-spacing: [line_width] * 50;
+          marker-file: url('symbols/displaced_threshold.svg');
+        }
       }
     }
   }
