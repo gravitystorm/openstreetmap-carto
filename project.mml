@@ -1035,11 +1035,43 @@ Layer:
         (SELECT
             way,
             aeroway,
-            bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct') AS bridge
-          FROM planet_osm_line
-          WHERE aeroway IN ('runway', 'taxiway')
-          ORDER BY bridge NULLS FIRST,
-            CASE WHEN aeroway = 'runway' THEN 1 ELSE 0 END
+            bridge,
+            width,
+            GREATEST(width::real/sf, 2) AS area_width,
+            1/sf AS line_width
+          FROM
+          (SELECT
+              way,
+              aeroway,
+              bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct') AS bridge,
+              -- Convert valid length units into metres. Fall back to a sensible default if no valid value was set.
+              GREATEST(
+                  CASE
+                      -- Metric:
+                      WHEN tags->'width' ~ '^[0-9]*[.]?[0-9]+ m$' THEN LEFT(tags->'width', -2)::real
+                      WHEN tags->'width' ~ '^[0-9]*[.]?[0-9]+$' THEN (tags->'width')::real
+                      -- Feet:
+                      WHEN tags->'width' ~ '^[0-9]+''$' THEN LEFT(tags->'width', -1)::real * 12 * 0.0254
+                      -- The case-branches below work, but we assume that runway widths will always be
+                      -- specified in metres or (rarely) feet, so for performance reasons these are left out:
+                      --   Kilometres:
+                      --   WHEN tags->'width' ~ '^[0-9]*[.]?[0-9]+ km$' THEN LEFT(tags->'width',-3)::real * 1000
+                      --   Miles and nautical miles:
+                      --   WHEN tags->'width' ~ '^[0-9]*[.]?[0-9]+ mi$' THEN LEFT(tags->'width', -3)::real * 1609.344
+                      --   WHEN tags->'width' ~ '^[0-9]*[.]?[0-9]+ nmi$' THEN LEFT(tags->'width', -4)::real * 1852
+                      --   Remaining feet and inches:
+                      --   WHEN tags->'width' ~ '^[0-9]+''[0-9]+"$' THEN (SPLIT_PART(tags->'width', '''', 1)::real * 12 + LEFT(SPLIT_PART(tags->'width', '''', 2), -1)::real) * 0.0254
+                      --   WHEN tags->'width' ~ '^[0-9]+"$' THEN LEFT(tags->'width', -1)::real * 0.0254
+                      ELSE NULL
+                  END,
+                  20
+              ) as width,
+              NULLIF(scale_factor(way)*!scale_denominator!*0.001*0.28, 0) AS sf
+            FROM planet_osm_line
+            WHERE aeroway IN ('runway', 'taxiway')
+            ORDER BY bridge NULLS FIRST,
+              CASE WHEN aeroway = 'runway' THEN 1 ELSE 0 END
+            ) _
         ) AS aeroways
     properties:
       cache-features: true

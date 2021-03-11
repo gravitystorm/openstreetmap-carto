@@ -2729,10 +2729,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
 
-  [feature = 'aeroway_runway'][zoom >= 11] {
-    polygon-fill: @runway-fill;
-  }
-
   [feature = 'aeroway_taxiway'][zoom >= 13] {
     polygon-fill: @taxiway-fill;
   }
@@ -2975,12 +2971,22 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
       ::fill {
         line-color: @runway-fill;
-        line-width: 2;
-        [zoom >= 12] { line-width: 4; }
-        [zoom >= 13] { line-width: 6; }
-        [zoom >= 14] { line-width: 12; }
-        [zoom >= 15] { line-width: 18; }
-        [zoom >= 16] { line-width: 24; }
+        /* 
+          Take the computed width from the `width` tagged on the runway, if present. 
+          A default value is set if this tag is missing. 
+        */
+        line-width: [area_width];
+      }
+      ::centerline[zoom >=15] {
+        line-width: [line_width];
+        line-color: white;
+        /* Keeps the dash-pattern roughly in sync with the line-width. */
+        line-dasharray: 12,8;
+        [zoom >= 16] { line-dasharray: 21,14; }
+        [zoom >= 17] { line-dasharray: 42,28; }
+        [zoom >= 18] { line-dasharray: 84,56; }
+        [zoom >= 19] { line-dasharray: 168,112; }
+        [zoom >= 20] { line-dasharray: 336,224; }
       }
     }
   }
@@ -3128,18 +3134,44 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
   }
-  [highway = 'runway'],
+  [highway = 'runway'] {
+    [zoom >= 15] {
+      text-name: "[refs]";
+      text-size: 12;
+      [zoom >= 16] { text-size: 18; }
+      [zoom >= 17] { text-size: 24; }
+      [zoom >= 18] { text-size: 32; }
+      [zoom >= 19] { text-size: 40; }
+      text-fill: white;
+      text-spacing: 0;
+      text-clip: false;
+      text-placement: line;
+      text-face-name: @bold-fonts;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: #666;
+      text-repeat-distance: @minor-highway-text-repeat-distance;
+      [height >= 2] {
+        /*
+           The vast majority of runway-refs is in a short form like 05/23 or 09L/27R, but for
+           multi-line exceptions we adjust the text. The query already leaves out any refs
+           longer than 11 characters.
+        */
+        text-size: 10;
+        text-face-name: @book-fonts;
+      }
+    }
+  }
   [highway = 'taxiway'] {
     [zoom >= 15] {
       text-name: "[refs]";
       text-size: 10;
-      text-fill: #333;
-      text-spacing: 750;
+      text-fill: white;
+      text-spacing: 0;
       text-clip: false;
       text-placement: line;
-      text-face-name: @oblique-fonts;
+      text-face-name: @bold-fonts;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill;
+      text-halo-fill: #666;
       text-repeat-distance: @minor-highway-text-repeat-distance;
     }
   }
