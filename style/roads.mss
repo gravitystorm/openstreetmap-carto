@@ -19,6 +19,7 @@
 @track-fill-noaccess: #e2c5bb;
 @aeroway-fill: #bbc;
 @runway-fill: @aeroway-fill;
+@stopway-fill: lighten(@aeroway-fill, 5%);
 @taxiway-fill: @aeroway-fill;
 @helipad-fill: @aeroway-fill;
 @access-marking: #eaeaea;
@@ -2997,6 +2998,13 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         }
       }
     }
+  }
+  [aeroway = 'stopway'] {
+      ::fill {
+        line-color: @stopway-fill;
+        /* Same as aeroway=runway. */
+        line-width: [area_width];
+      }
   }
   [aeroway = 'taxiway'] {
     [zoom >= 11] {

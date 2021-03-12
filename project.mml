@@ -1070,7 +1070,7 @@ Layer:
               ) as width,
               NULLIF(scale_factor(way)*!scale_denominator!*0.001*0.28, 0) AS sf
             FROM planet_osm_line
-            WHERE aeroway IN ('runway', 'taxiway')
+            WHERE aeroway IN ('runway', 'taxiway', 'stopway')
             ORDER BY bridge NULLS FIRST,
               CASE WHEN aeroway = 'runway' THEN 1 ELSE 0 END
             ) _
