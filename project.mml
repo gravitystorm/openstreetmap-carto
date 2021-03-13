@@ -1037,6 +1037,7 @@ Layer:
             aeroway,
             runway,
             bridge,
+            int_surface,
             width,
             GREATEST(width::real/sf, 2) AS area_width,
             1/sf AS line_width
@@ -1046,6 +1047,10 @@ Layer:
               aeroway,
               tags->'runway' AS runway,
               bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct') AS bridge,
+              CASE
+                  WHEN surface IN ('paved', 'asphalt', 'concrete', 'concrete:lanes', 'concrete:plates', 'metal') THEN 'paved'
+                  ELSE 'unpaved'
+              END AS int_surface,
               -- Convert valid length units into metres. Fall back to a sensible default if no valid value was set.
               GREATEST(
                   CASE
