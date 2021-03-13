@@ -30,6 +30,12 @@
 @unpaved-taxiway-fill: @unpaved-aeroway-fill;
 @unpaved-helipad-fill: @unpaved-aeroway-fill;
 @unpaved-aeroway-runway-centreline: darken(@unpaved-aeroway-fill, 10%);
+@grass-aeroway-fill: #d2dcab;
+@grass-runway-fill: @grass-aeroway-fill;
+@grass-stopway-fill: lighten(@grass-aeroway-fill, 5%);
+@grass-taxiway-fill: @grass-aeroway-fill;
+@grass-helipad-fill: @grass-aeroway-fill;
+@grass-aeroway-runway-centreline: darken(@grass-aeroway-fill, 10%);
 
 @access-marking: #eaeaea;
 @access-marking-living-street: #cccccc;
@@ -2982,6 +2988,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       ::fill {
         line-color: @runway-fill;
         [int_surface = 'unpaved'] { line-color: @unpaved-runway-fill; }
+        [int_surface = 'grass'] { line-color: @grass-runway-fill; }
         /* 
           Take the computed width from the `width` tagged on the runway, if present. 
           A default value is set if this tag is missing. 
@@ -2992,6 +2999,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         line-width: [line_width];
         line-color: @aeroway-runway-centreline;
         [int_surface = 'unpaved'] { line-color: @unpaved-aeroway-runway-centreline; }
+        [int_surface = 'grass'] { line-color: @grass-aeroway-runway-centreline; }
         /* Keeps the dash-pattern roughly in sync with the line-width. */
         line-dasharray: 12,8;
         [zoom >= 16] { line-dasharray: 21,14; }
@@ -3004,6 +3012,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           marker-placement: line;
           marker-fill: @aeroway-runway-centreline;
           [int_surface = 'unpaved'] { marker-fill: @unpaved-aeroway-runway-centreline; }
+          /* Not likely with surface=grass, but for consistency's sake: */
+          [int_surface = 'grass'] { marker-fill: @grass-aeroway-runway-centreline; }
           marker-width: [line_width] * 16;
           marker-spacing: [line_width] * 50;
           marker-file: url('symbols/displaced_threshold.svg');
@@ -3015,6 +3025,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       ::fill {
         line-color: @stopway-fill;
         [int_surface = 'unpaved'] { line-color: @unpaved-stopway-fill; }
+        [int_surface = 'grass'] { line-color: @grass-stopway-fill; }
         /* Same as aeroway=runway. */
         line-width: [area_width];
       }
@@ -3033,6 +3044,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       ::fill {
         line-color: @taxiway-fill;
         [int_surface = 'unpaved'] { line-color: @unpaved-taxiway-fill; }
+        [int_surface = 'grass'] { line-color: @grass-taxiway-fill; }
         line-width: 1;
         [zoom >= 13] { line-width: 2; }
         [zoom >= 14] { line-width: 4; }

@@ -1049,6 +1049,7 @@ Layer:
               bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct') AS bridge,
               CASE
                   WHEN surface IN ('paved', 'asphalt', 'concrete', 'concrete:lanes', 'concrete:plates', 'metal') THEN 'paved'
+                  WHEN surface IN ('grass') THEN 'grass'
                   ELSE 'unpaved'
               END AS int_surface,
               -- Convert valid length units into metres. Fall back to a sensible default if no valid value was set.
