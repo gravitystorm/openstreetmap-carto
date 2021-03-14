@@ -780,6 +780,31 @@ Layer:
     properties:
       cache-features: true
       minzoom: 10
+  - id: aeroway-area-fill
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            CASE
+                WHEN surface IN ('paved', 'asphalt', 'concrete', 'concrete:lanes', 'concrete:plates', 'metal') THEN 'paved'
+                WHEN surface IN ('grass') THEN 'grass'
+                ELSE 'unpaved'
+            END AS int_surface,
+            COALESCE(
+              (('aeroway_' || CASE
+                                WHEN aeroway IN ('helipad') THEN aeroway
+                                WHEN tags->'area:aeroway' IN ('runway', 'taxiway', 'stopway') THEN tags->'area:aeroway'
+                              END))
+            ) AS feature
+          FROM planet_osm_polygon
+          WHERE aeroway IN ('helipad')
+            OR tags->'area:aeroway' IN ('runway', 'taxiway', 'stopway')
+          ORDER BY COALESCE(layer,0), way_area desc
+        ) AS highway_area_fill
+    properties:
+      minzoom: 14
   - id: highway-area-fill
     # FIXME: No geometry?
     <<: *extents
@@ -795,8 +820,7 @@ Layer:
                               AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
                               AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
                               AND (covered NOT IN ('yes') OR covered IS NULL))
-                              THEN railway END)),
-              (('aeroway_' || CASE WHEN aeroway IN ('runway', 'taxiway', 'helipad') THEN aeroway END))
+                              THEN railway END))
             ) AS feature
           FROM planet_osm_polygon
           WHERE highway IN ('pedestrian', 'footway', 'service', 'living_street', 'platform', 'services')
@@ -804,7 +828,6 @@ Layer:
                 AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
                 AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
                 AND (covered NOT IN ('yes') OR covered IS NULL))
-            OR aeroway IN ('runway', 'taxiway', 'helipad')
           ORDER BY COALESCE(layer,0), way_area desc
         ) AS highway_area_fill
     properties:
@@ -1072,7 +1095,11 @@ Layer:
                       --   WHEN tags->'width' ~ '^[0-9]+"$' THEN LEFT(tags->'width', -1)::real * 0.0254
                       ELSE NULL
                   END,
-                  20
+                   -- Default to a small standard width for runways and a matching taxiway width.
+                  CASE
+                      WHEN aeroway IN ('runway') THEN 18
+                      ELSE 7.5
+                  END
               ) as width,
               NULLIF(scale_factor(way)*!scale_denominator!*0.001*0.28, 0) AS sf
             FROM planet_osm_line

@@ -19,23 +19,26 @@
 @track-fill-noaccess: #e2c5bb;
 
 @aeroway-fill: #bbc;
-@runway-fill: @aeroway-fill;
-@stopway-fill: lighten(@aeroway-fill, 5%);
-@taxiway-fill: @aeroway-fill;
-@helipad-fill: @aeroway-fill;
+@runway-fill: #9a9ab4;
+@taxiway-fill: #aaaac0;
+@stopway-fill: @taxiway-fill;
+@helipad-fill: @runway-fill;
 @aeroway-runway-centreline: white;
+@aeroway-taxiway-centreline: #f1fa4a;
 @unpaved-aeroway-fill: #dcbeab;
-@unpaved-runway-fill: @unpaved-aeroway-fill;
-@unpaved-stopway-fill: lighten(@unpaved-aeroway-fill, 5%);
-@unpaved-taxiway-fill: @unpaved-aeroway-fill;
+@unpaved-runway-fill: #cb9e81;
+@unpaved-taxiway-fill: #d3ae97;
+@unpaved-stopway-fill: @unpaved-taxiway-fill;
 @unpaved-helipad-fill: @unpaved-aeroway-fill;
-@unpaved-aeroway-runway-centreline: darken(@unpaved-aeroway-fill, 10%);
-@grass-aeroway-fill: #d2dcab;
-@grass-runway-fill: @grass-aeroway-fill;
-@grass-stopway-fill: lighten(@grass-aeroway-fill, 5%);
-@grass-taxiway-fill: @grass-aeroway-fill;
+@unpaved-aeroway-runway-centreline: #efdccf;
+@unpaved-aeroway-taxiway-centreline: darken(@unpaved-aeroway-runway-centreline, 5%);
+@grass-aeroway-fill: #dce3bd;
+@grass-runway-fill: #d2dcab;
+@grass-taxiway-fill: lighten(@grass-runway-fill, 2%);
+@grass-stopway-fill: @grass-taxiway-fill;
 @grass-helipad-fill: @grass-aeroway-fill;
-@grass-aeroway-runway-centreline: darken(@grass-aeroway-fill, 10%);
+@grass-aeroway-runway-centreline: @aeroway-fill;
+@grass-aeroway-taxiway-centreline: @grass-aeroway-runway-centreline;
 
 @access-marking: #eaeaea;
 @access-marking-living-street: #cccccc;
@@ -2719,6 +2722,30 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   }
 }
 
+#aeroway-area-fill {
+  [feature = 'aeroway_runway'][zoom >= 14] {
+    polygon-fill: @aeroway-fill;
+    [int_surface = 'unpaved'] { polygon-fill: @unpaved-aeroway-fill; }
+    [int_surface = 'grass'] { polygon-fill: @grass-aeroway-fill; }
+  }
+
+  [feature = 'aeroway_taxiway'][zoom >= 14] {
+    polygon-fill: @aeroway-fill;
+    [int_surface = 'unpaved'] { polygon-fill: @unpaved-aeroway-fill; }
+    [int_surface = 'grass'] { polygon-fill: @grass-aeroway-fill; }
+  }
+
+  [feature = 'aeroway_stopway'][zoom >= 14] {
+    polygon-fill: @stopway-fill;
+    [int_surface = 'unpaved'] { polygon-fill: @unpaved-stopway-fill; }
+    [int_surface = 'grass'] { polygon-fill: @grass-stopway-fill; }
+  }
+
+  [feature = 'aeroway_helipad'][zoom >= 16] {
+    polygon-fill: @helipad-fill;
+  }
+}
+
 #highway-area-fill {
   [feature = 'highway_living_street'][zoom >= 14] {
     polygon-fill: @living-street-fill;
@@ -2743,14 +2770,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       polygon-fill: #bbbbbb;
       polygon-gamma: 0.65;
     }
-  }
-
-  [feature = 'aeroway_taxiway'][zoom >= 13] {
-    polygon-fill: @taxiway-fill;
-  }
-
-  [feature = 'aeroway_helipad'][zoom >= 16] {
-    polygon-fill: @helipad-fill;
   }
 }
 
@@ -3045,11 +3064,23 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         line-color: @taxiway-fill;
         [int_surface = 'unpaved'] { line-color: @unpaved-taxiway-fill; }
         [int_surface = 'grass'] { line-color: @grass-taxiway-fill; }
-        line-width: 1;
+        line-width: [area_width];
+        /*line-width: 1;
         [zoom >= 13] { line-width: 2; }
         [zoom >= 14] { line-width: 4; }
         [zoom >= 15] { line-width: 6; }
         [zoom >= 16] { line-width: 8; }
+        [zoom >= 17] { line-width: 12; }
+        [zoom >= 18] { line-width: 24; }*/
+      }
+      ::centerline[zoom >= 15] {
+        line-color: @aeroway-taxiway-centreline;
+        [int_surface = 'unpaved'] { line-color: @unpaved-aeroway-taxiway-centreline; }
+        [int_surface = 'grass'] { line-color: @grass-aeroway-taxiway-centreline; }
+        line-width: 0.3;
+        [zoom >= 16] { line-width: 0.5; }
+        [zoom >= 17] { line-width: 1; }
+        [zoom >= 18] { line-width: 2; }
       }
     }
   }
