@@ -787,6 +787,7 @@ Layer:
       table: |-
         (SELECT
             way,
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             CASE
                 WHEN surface IN ('paved', 'asphalt', 'concrete', 'concrete:lanes', 'concrete:plates', 'metal') THEN 'paved'
                 WHEN surface IN ('grass') THEN 'grass'
@@ -794,12 +795,12 @@ Layer:
             END AS int_surface,
             COALESCE(
               (('aeroway_' || CASE
-                                WHEN aeroway IN ('helipad') THEN aeroway
+                                WHEN aeroway IN ('helipad', 'apron') THEN aeroway
                                 WHEN tags->'area:aeroway' IN ('runway', 'taxiway', 'stopway') THEN tags->'area:aeroway'
                               END))
             ) AS feature
           FROM planet_osm_polygon
-          WHERE aeroway IN ('helipad')
+          WHERE aeroway IN ('helipad', 'apron')
             OR tags->'area:aeroway' IN ('runway', 'taxiway', 'stopway')
           ORDER BY COALESCE(layer,0), way_area desc
         ) AS highway_area_fill
@@ -1103,7 +1104,7 @@ Layer:
               ) as width,
               NULLIF(scale_factor(way)*!scale_denominator!*0.001*0.28, 0) AS sf
             FROM planet_osm_line
-            WHERE aeroway IN ('runway', 'taxiway', 'stopway')
+            WHERE aeroway IN ('runway', 'taxiway', 'taxilane', 'stopway', 'parking_position')
             ORDER BY bridge NULLS FIRST,
               CASE WHEN aeroway = 'runway' THEN 1 ELSE 0 END
             ) _
@@ -1851,7 +1852,7 @@ Layer:
                     aeroway AS highway,
                     string_to_array(ref, ';') AS refs
                   FROM planet_osm_line
-                  WHERE aeroway IN ('runway', 'taxiway')
+                  WHERE aeroway IN ('runway', 'taxiway', 'taxilane', 'parking_position')
                     AND NOT tags @> '"runway"=>"displaced_threshold"'
                     AND ref IS NOT NULL
               ) AS p) AS q
@@ -1865,6 +1866,8 @@ Layer:
               WHEN highway = 'tertiary' THEN 34
               WHEN highway = 'runway' THEN 6
               WHEN highway = 'taxiway' THEN 5
+              WHEN highway = 'parking_position' THEN 4
+              WHEN highway = 'taxilane' THEN 3
             END DESC NULLS LAST,
             height DESC,
             width DESC,
