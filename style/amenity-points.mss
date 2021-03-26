@@ -435,6 +435,13 @@
     marker-clip: false;
   }
 
+  [feature = 'man_made_manhole'][zoom >= 19] {
+    marker-file: url('symbols/man_made/manhole.svg');
+    marker-fill: @man-made-icon;
+    opacity: 0.5;
+    marker-clip: false;
+  }
+
   [feature = 'man_made_mast']["tower:type" != 'lighting'],
   [feature = 'man_made_mast']["tower:type" = 'lighting'][zoom >= 18]   {
     [zoom >= 14][height >= 160],
