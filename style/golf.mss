@@ -18,14 +18,14 @@
   ::high-zoom[zoom >= 15] {
     [feature = 'golf_rough'] {
       polygon-pattern-file: url('symbols/golf_rough.svg');
-      polygon-pattern-opacity: 0.2;
+      polygon-pattern-comp-op: soft-light;
     }
   }
 }
 
 #golf-line[zoom >= 16] {
   [golf = 'hole'] {
-    line-color: @leisure-green;
+    line-color: @admin-boundaries;
     line-width: 0.5;
   }
 }
@@ -35,7 +35,7 @@
     text-placement: line;
     text-name: "[ref]";
     text-size: 11;
-    text-fill: @leisure-green;
+    text-fill: @admin-boundaries;
     text-face-name: @book-fonts;
     text-halo-radius: 1.5;
     text-halo-fill: fadeout(white, 30%);
@@ -49,7 +49,7 @@
   [feature = 'golf_hole'],
   [feature = 'golf_pin'] {
     marker-file: url('symbols/golf_pin.svg');
-    marker-fill: @leisure-green;
+    marker-fill: @admin-boundaries;
     [ref != ''] {
       text-fill: #444;
       text-name: "[ref]";
@@ -58,5 +58,9 @@
       text-halo-radius: 1.5;
       text-halo-fill: fadeout(white, 30%);
     }
+  }
+  [zoom >= 17][feature = 'golf_hole'],
+  [zoom >= 17][feature = 'golf_pin'] {
+    marker-transform: scale(1.5, 1.5);
   }
 }
