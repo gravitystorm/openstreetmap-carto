@@ -1226,14 +1226,14 @@
     }
   }
 
-  [feature = 'leisure_dog_park'][zoom >= 17] {
-    marker-file: url('symbols/shop/pet.svg');
-    marker-fill: @leisure-green;
-    marker-clip: false;
-  }
-
+  [feature = 'leisure_dog_park'][zoom >= 17],
   [feature = 'leisure_playground'][zoom >= 17] {
-    marker-file: url('symbols/leisure/playground.svg');
+    [feature = 'leisure_playground'] {
+      marker-file: url('symbols/leisure/playground.svg');
+    }
+    [feature = 'leisure_dog_park'] {
+      marker-file: url('symbols/shop/pet.svg');
+    }
     marker-fill: @leisure-green;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
@@ -2210,6 +2210,7 @@
         text-fill: @wetland-text;
       }
       [feature = 'leisure_park'],
+      [feature = 'leisure_dog_park'],
       [feature = 'leisure_recreation_ground'],
       [feature = 'landuse_recreation_ground'],
       [feature = 'landuse_village_green'],
@@ -2306,11 +2307,6 @@
           text-opacity: 0.33;
           text-halo-radius: 0;
         }
-      }
-      [feature = 'leisure_dog_park'] {
-        text-fill: @leisure-green;
-        text-halo-radius: @standard-halo-radius * 1.5; /* Extra halo needed to stand out from paw pattern. */
-        text-halo-fill: @standard-halo-fill;
       }
       [feature = 'leisure_track'] {
         text-fill: darken(@track, 40%);
