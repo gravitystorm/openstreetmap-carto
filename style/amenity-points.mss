@@ -171,14 +171,11 @@
       // use colors from SVG to allow for white background
       marker-clip: false;
     }
-    [zoom < 16][zoom >= 12] {
+    [zoom < 16][zoom >=13] {
       marker-file: url('symbols/square.svg');
       marker-fill: @transportation-icon;
       marker-clip: false;
       marker-width: 4;
-      [zoom >= 13] {
-        marker-width: 6; 
-      }
       [zoom >= 15] {
         marker-width: 6;
       }
