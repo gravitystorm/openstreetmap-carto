@@ -1005,7 +1005,7 @@ Layer:
         (SELECT
             way
           FROM planet_osm_line
-          WHERE highway = 'bus_guideway'
+          WHERE highway IN ('bus_guideway', 'busway')
         ) AS guideways
     properties:
       minzoom: 11
