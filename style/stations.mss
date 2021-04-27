@@ -22,12 +22,11 @@
     marker-file: url('symbols/square.svg');
     marker-fill: @station-color;
     marker-clip: false;
-    [station != 'subway'],
-    [zoom >= 14][station = 'subway'] {
+    [station != 'subway'] {
       marker-width: 4;
     }
     [zoom >= 13][station != 'subway'],
-    [zoom >= 15][station = 'subway'] {
+    [zoom >= 14][station = 'subway'] {
       marker-width: 6;
     }
     [zoom >= 14][station !='subway'],
