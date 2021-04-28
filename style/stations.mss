@@ -41,8 +41,7 @@
       text-wrap-width: 30; // 3 em
       text-line-spacing: -1.5; // -0.15 em
     }
-    [zoom >= 15][station != 'subway'],
-    [zoom >= 16] {
+    [zoom >= 15] {
       marker-width: 9;
       text-size: 11;
       text-wrap-width: 33; // 3 em
