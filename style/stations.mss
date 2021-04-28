@@ -29,8 +29,7 @@
     [zoom >= 14][station = 'subway'] {
       marker-width: 6;
     }
-    [zoom >= 14][station !='subway'],
-    [zoom >=15] {
+    [zoom >= 14] {
       text-name: "[name]";
       text-face-name: @bold-fonts;
       text-size: 10;
