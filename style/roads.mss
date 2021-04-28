@@ -2944,12 +2944,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 #guideways {
   [zoom >= 11][zoom < 13] {
     line-width: 0.6;
-    line-color: #6699ff;
+    line-color: #7981b0;
     [zoom >= 12] { line-width: 1; }
   }
   [zoom >= 13] {
     line-width: 3;
-    line-color: #6699ff;
+    line-color: #7981b0;
     line-join: round;
     b/line-width: 1;
     b/line-color: white;
