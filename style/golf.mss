@@ -31,17 +31,20 @@
 }
 
 #text-line[zoom >= 16] {
-  [feature = 'golf_hole'][ref != ''] {
+  [feature = 'golf_hole'][ref != ''],
+  [feature = 'golf_hole'][name != ''] {
     text-placement: line;
-    text-name: "[ref]";
     text-size: 11;
     text-fill: @admin-boundaries;
     text-face-name: @book-fonts;
-    text-halo-radius: 1.5;
-    text-halo-fill: fadeout(white, 30%);
-    [zoom >= 17] {
-      text-size: 13;
-    }
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-name: "";
+
+    [ref != ''] { text-name: "[ref]"; }
+    [name != ''] { text-name: "[name]"; }
+
+    [zoom >= 17] { text-size: 13; }
   }
 }
 
@@ -50,17 +53,24 @@
   [feature = 'golf_pin'] {
     marker-file: url('symbols/golf_pin.svg');
     marker-fill: @admin-boundaries;
-    [ref != ''] {
-      text-fill: #444;
-      text-name: "[ref]";
-      text-face-name: @book-fonts;
-      text-dy: -10;
-      text-halo-radius: 1.5;
-      text-halo-fill: fadeout(white, 30%);
-    }
+    marker-transform: translate(2, -5);
   }
   [zoom >= 17][feature = 'golf_hole'],
   [zoom >= 17][feature = 'golf_pin'] {
-    marker-transform: scale(1.5, 1.5);
+    marker-transform: "scale(1.5) translate(2, -5)";
+  }
+}
+
+#text-point[zoom >= 17] {
+  [feature = 'golf_pin'][ref != ''] {
+    text-name: "[ref]";
+    text-size: @standard-font-size;
+    text-fill: @admin-boundaries;
+    text-face-name: @book-fonts;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-horizontal-alignment: middle;
+    text-dx: 1;
+    text-dy: 6;
   }
 }

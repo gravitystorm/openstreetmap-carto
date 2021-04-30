@@ -4,8 +4,6 @@
     xmlns:svg="http://www.w3.org/2000/svg"
     xmlns="http://www.w3.org/2000/svg"
     width="9"
-    height="23">
+    height="13">
    <path d="M 4 1 L 4 10.773438 A 2.107161 0.75 0 0 0 2.3925781 11.5 A 2.107161 0.75 0 0 0 4.5 12.25 A 2.107161 0.75 0 0 0 6.6074219 11.5 A 2.107161 0.75 0 0 0 5 10.773438 L 5 4 L 9 2.5566406 L 5 1 L 4 1 z"/>
-   <!-- workaround for mapnik issue #1122 - does not render -->
-   <rect style="fill:none;stroke:none" width="9" height="23" x="0" y="0" />
 </svg>
