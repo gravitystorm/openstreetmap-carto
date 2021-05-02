@@ -25,7 +25,7 @@
 
 #golf-line[zoom >= 16] {
   [golf = 'hole'] {
-    line-color: @admin-boundaries;
+    line-color: @address-color;
     line-width: 0.5;
   }
 }
@@ -35,7 +35,7 @@
   [feature = 'golf_hole'][name != ''] {
     text-placement: line;
     text-size: 11;
-    text-fill: @admin-boundaries;
+    text-fill: @address-color;
     text-face-name: @book-fonts;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
@@ -52,7 +52,7 @@
   [feature = 'golf_hole'],
   [feature = 'golf_pin'] {
     marker-file: url('symbols/golf_pin.svg');
-    marker-fill: @admin-boundaries;
+    marker-fill: @address-color;
     marker-transform: translate(2, -5);
   }
   [zoom >= 17][feature = 'golf_hole'],
@@ -65,7 +65,7 @@
   [feature = 'golf_pin'][ref != ''] {
     text-name: "[ref]";
     text-size: @standard-font-size;
-    text-fill: @admin-boundaries;
+    text-fill: @address-color;
     text-face-name: @book-fonts;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
