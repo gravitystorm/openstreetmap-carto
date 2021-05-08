@@ -617,7 +617,6 @@
     marker-clip: false;
   }
 
-
   [feature = 'amenity_place_of_worship'][zoom >= 16] {
     marker-file: url('symbols/amenity/place_of_worship.svg');
     marker-fill: @religious-icon;
