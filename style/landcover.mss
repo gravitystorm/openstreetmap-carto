@@ -77,7 +77,7 @@
   ::high-zoom[zoom >= 12] {
 
   [feature = 'leisure_swimming_pool'][zoom >= 14] {
-    polygon-fill: @water-color;
+    polygon-fill: @ocean-color;
     [zoom >= 17] {
       line-width: 0.5;
       line-color: saturate(darken(@water-color, 20%), 20%);
