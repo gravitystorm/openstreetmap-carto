@@ -809,6 +809,13 @@
     marker-clip: false;
   }
 
+  [feature = 'historic_aircraft'][zoom >= 18] {
+    marker-file: url('symbols/historic/aircraft.svg');
+    marker-fill: @memorials;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'historic_castle'][castle_type != 'stately'][castle_type != 'manor'][zoom >= 15],
   [feature = 'historic_castle'][castle_type = 'stately'][zoom >= 16],
   [feature = 'historic_castle'][castle_type = 'manor'][zoom >= 16],
@@ -1942,7 +1949,8 @@
   [feature = 'historic_monument'][zoom >= 16],
   [feature = 'historic_fort'][zoom >= 16],
   [feature = 'historic_castle'][zoom >= 16],
-  [feature = 'historic_manor'][zoom >= 16] {
+  [feature = 'historic_manor'][zoom >= 16],
+  [feature = 'historic_aircraft'][zoom >= 18] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
