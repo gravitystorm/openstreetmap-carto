@@ -66,7 +66,7 @@
 @pitch: #aae0cb;           // Lch(85,22,168) also track
 @track: @pitch;
 @stadium: @leisure; // also sports_centre
-@golf_course: #b5e3b5;
+@golf_course: @campsite;
 
 #landcover-low-zoom[zoom < 10],
 #landcover[zoom >= 10] {
