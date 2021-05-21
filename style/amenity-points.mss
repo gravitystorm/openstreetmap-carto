@@ -593,6 +593,13 @@
     marker-clip: false;
   }
 
+  [feature = 'healthcare_vaccination_centre'][zoom >= 15] {
+    marker-file: url('symbols/amenity/hospital.svg');
+    marker-width: 10;
+    marker-fill: @health-color;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_pharmacy'][zoom >= 17] {
     marker-file: url('symbols/amenity/pharmacy.svg');
     marker-fill: @health-color;
