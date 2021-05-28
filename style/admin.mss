@@ -2,6 +2,9 @@
 @admin-boundaries-narrow: #845283; // Lch(42,35,327)
 @admin-boundaries-wide: #a37da1; // Lch(57,25,327)
 
+@protected-area: #3f9b41; // Lch(57,60,140)
+@aboriginal: #a76f56; // Lch(52,30,50)
+
 /* For performance reasons, the admin border layers are split into three groups
 for low, middle and high zoom levels.
 Three attachments are used, with minor borders before major ones, and the thin centerline last, to handle
@@ -476,10 +479,9 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
 #protected-areas-text[zoom >= 13][way_pixels > 192000] {
   text-name: "[name]";
   text-face-name: @book-fonts;
-  text-fill: @protected-area;
-  [boundary='aboriginal_lands'],
-  [boundary='protected_area'][protect_class='24'] {
-    text-fill: @aboriginal;
+  text-fill: darken(@protected-area, 3%);
+  [boundary='aboriginal_lands'] {
+    text-fill: darken(@aboriginal, 3%);
   }
   text-halo-radius: @standard-halo-radius;
   text-halo-fill: @standard-halo-fill;
@@ -493,60 +495,75 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   text-dy: -10;
 }
 
+@protected-area-width-z8: 1.2;
+@protected-area-width-z9: 1.2;
+@protected-area-width-z10: 1.5;
+@protected-area-width-z11: 1.8;
+@protected-area-width-z12: 2.4;
+@protected-area-width-z14: 3;
+@protected-area-thin-width-z8: 0.4; // 1/3 of full width
+@protected-area-thin-width-z9: 0.4; // 1/3
+@protected-area-thin-width-z10: 0.5; // 1/3
+@protected-area-thin-width-z11: 0.6; // 1/3
+@protected-area-thin-width-z12: 0.8; // 1/3
+@protected-area-thin-width-z14: 1; // 1/3
+
 #protected-areas {
-  [way_pixels > 750] {
-    [zoom >= 8][zoom < 10] {
-      opacity: 0.25;
-      line-width: 1.2;
+  ::wideline { // inner wide line
+    [zoom >= 8][zoom < 10][way_pixels > 3000],
+    [zoom >= 10][way_pixels > 750] {
       line-color: @protected-area;
-      [boundary = 'aboriginal_lands'] {
-        line-color: @aboriginal;
-      }
+      line-join: round;
+      line-width: @protected-area-width-z8;
+      line-offset: (@protected-area-thin-width-z8/2 - @protected-area-width-z8/2);
+      [boundary='aboriginal_lands'] { line-color: @aboriginal; }
       [zoom >= 9] {
-        line-width: 1.5;
+        line-width: @protected-area-width-z9;
+        line-offset: (@protected-area-thin-width-z9/2 - @protected-area-width-z9/2);
       }
-    }
-    [zoom >= 10] {
-      // inner line
-      ::wideline {
-        opacity: 0.15;
-        line-width: 3.6;
-        // Unlike planet_osm_line, planet_osm_polygon does not preserves the
-        // original direction of the OSM way: Following OGS at
-        // https://www.opengeospatial.org/standards/sfa always at the left
-        // is the interior and at the right the exterior of the polygon.(This
-        // also applies to inner rings of multipolygons.) So a negative
-        // line-offset is always an offset to the inner side of the polygon.
-        line-offset: -0.9;
-        line-color: @protected-area;
-        [boundary = 'aboriginal_lands'] {
-          line-color: @aboriginal;
-        }
-        line-join: round;
-        line-cap: round;
-        [zoom >= 12] {
-          line-width: 4;
-          line-offset: -1;
-        }
-        [zoom >= 14] {
-          line-width: 6;
-          line-offset: -2;
-        }
+      [zoom >= 10] {
+        line-width: @protected-area-width-z10;
+        line-offset: (@protected-area-thin-width-z10/2 - @protected-area-width-z10/2);
       }
-      // outer line
-      ::narrowline {
-        opacity: 0.15;
-        line-width: 1.8;
-        line-color: @protected-area;
-        [boundary = 'aboriginal_lands'] {
-          line-color: @aboriginal;
-        }
-        line-join: round;
-        line-cap: round;
-        [zoom >= 12] {
-            line-width: 2;
-        }
+      [zoom >= 11] {
+        line-width: @protected-area-width-z11;
+        line-offset: (@protected-area-thin-width-z11/2 - @protected-area-width-z11/2);
+      }
+      [zoom >= 12] {
+        line-width: @protected-area-width-z12;
+        line-offset: (@protected-area-thin-width-z12/2 - @protected-area-width-z12/2);
+      }
+      [zoom >= 14] {
+        line-width: @protected-area-width-z14;
+        line-offset: (@protected-area-thin-width-z14/2 - @protected-area-width-z14/2);
       }
     }
   }
+
+  ::narrowline { // outer thin line
+    [zoom >= 8][zoom < 10][way_pixels > 3000],
+    [zoom >= 10][way_pixels > 750] {
+      line-color: @protected-area;
+      line-join: round;
+      line-width: @protected-area-thin-width-z8;
+      [boundary='aboriginal_lands'] { line-color: @aboriginal; }
+      [zoom >= 9] {
+        line-width: @protected-area-thin-width-z9;
+      }
+      [zoom >= 10] {
+        line-width: @protected-area-thin-width-z10;
+      }
+      [zoom >= 11] {
+        line-width: @protected-area-thin-width-z11;
+      }
+      [zoom >= 12] {
+        line-width: @protected-area-thin-width-z12;
+      }
+      [zoom >= 14] {
+        line-width: @protected-area-thin-width-z14;
+      }
+    }
+  }
+  ::wideline { opacity: 0.3 }
+  ::narrowline { opacity: 0.4; }
 }
