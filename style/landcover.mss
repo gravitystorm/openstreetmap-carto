@@ -88,6 +88,7 @@
 
   [feature = 'leisure_recreation_ground'][zoom >= 10],
   [feature = 'landuse_recreation_ground'][zoom >= 10],
+  [feature = 'leisure_dog_park'][zoom >= 13],
   [feature = 'leisure_playground'][zoom >= 13],
   [feature = 'leisure_fitness_station'][zoom >= 13] {
     polygon-fill: @leisure;
@@ -258,20 +259,6 @@
       line-color: saturate(darken(@pitch, 30%), 20%);
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
-    }
-  }
-
-  [feature = 'leisure_dog_park'] {
-    [zoom >= 10] {
-      polygon-fill: @leisure;
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
-    }
-    [zoom >= 16] {
-      polygon-pattern-file: url('symbols/dog_park.png');
-      polygon-pattern-alignment: global;
-      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
   }
 
