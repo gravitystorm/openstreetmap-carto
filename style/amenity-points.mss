@@ -54,6 +54,10 @@
     [feature = 'amenity_shelter'] {
       marker-fill: @man-made-icon;
     }
+    [shelter_type = 'public_transport'] {
+      marker-file: url('symbols/amenity/shelter_public_transport.svg');
+      marker-fill: @transportation-icon;
+    }
     marker-fill: @accommodation-icon;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
