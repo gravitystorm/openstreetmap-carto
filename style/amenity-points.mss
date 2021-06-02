@@ -1383,6 +1383,12 @@
     marker-clip: false;
   }
 
+  [feature = 'mountain_pass'][zoom >= 15] {
+    marker-file: url('symbols/natural/saddle.svg');
+    marker-fill: @transportation-icon;
+    marker-clip: false;
+  }
+
   [feature = 'natural_spring'][zoom >= 14] {
     marker-file: url('symbols/spring.svg');
     marker-clip: false;
@@ -1831,6 +1837,7 @@
   [feature = 'natural_peak'][zoom >= 13],
   [feature = 'natural_volcano'][zoom >= 13],
   [feature = 'natural_saddle'][zoom >= 15],
+  [feature = 'mountain_pass'][zoom >= 15],
   [feature = 'tourism_viewpoint'][zoom >= 16] {
     text-name: "[name]";
     text-size: @standard-font-size;
@@ -1838,6 +1845,7 @@
     text-line-spacing: @standard-line-spacing-size;
     text-fill: darken(@landform-color, 30%);
     [feature = 'natural_volcano'] { text-fill: #d40000; }
+    [feature = 'mountain_pass'] { text-fill: @transportation-text; }
     text-dy: 7;
     [feature = 'tourism_viewpoint'] { text-dy: 11; }
     text-face-name: @standard-font;
