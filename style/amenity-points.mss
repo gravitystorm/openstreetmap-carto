@@ -369,7 +369,7 @@
     marker-fill: @accommodation-icon;
   }
 
- [feature = 'tourism_information'][zoom >= 19],
+  [feature = 'tourism_information'][zoom >= 19],
   [feature = 'tourism_information']["information"='office'][zoom >= 17] {
     [information = 'audioguide'] {
       marker-file: url('symbols/tourism/audioguide.svg');
