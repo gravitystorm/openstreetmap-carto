@@ -369,31 +369,39 @@
     marker-fill: @accommodation-icon;
   }
 
-  [feature = 'tourism_information'][zoom >= 19],
+ [feature = 'tourism_information'][zoom >= 19],
   [feature = 'tourism_information']["information"='office'][zoom >= 17] {
-    marker-file: url('symbols/tourism/information.svg');
     [information = 'audioguide'] {
       marker-file: url('symbols/tourism/audioguide.svg');
+      marker-fill: @man-made-icon;
+      marker-clip: false;
     }
     [information = 'board'] {
       marker-file: url('symbols/tourism/board.svg');
+      marker-fill: @man-made-icon;
+      marker-clip: false;
     }
     [information = 'guidepost'] {
       marker-file: url('symbols/tourism/guidepost.svg');
+      marker-fill: @man-made-icon;
+      marker-clip: false;
     }
     [information = 'office'] {
       marker-file: url('symbols/tourism/office.svg');
       marker-fill: @amenity-brown;
+      marker-clip: false;
     }
     [information = 'map'],
     [information = 'tactile_map'] {
       marker-file: url('symbols/tourism/map.svg');
+      marker-fill: @man-made-icon;
+      marker-clip: false;
     }
     [information = 'terminal'] {
       marker-file: url('symbols/tourism/terminal.svg');
-    }
       marker-fill: @man-made-icon;
       marker-clip: false;
+    }
   }
 
   [feature = 'amenity_library'][zoom >= 16] {
