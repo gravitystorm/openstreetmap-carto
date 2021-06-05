@@ -1864,7 +1864,12 @@
     text-halo-fill: @standard-halo-fill;
   }
 
-  [feature = 'tourism_information'][zoom >= 19],
+  [feature = 'tourism_information'][information = 'audioguide'][zoom >= 19],
+  [feature = 'tourism_information'][information = 'board'][zoom >= 19],
+  [feature = 'tourism_information'][information = 'guidepost'][zoom >= 19],
+  [feature = 'tourism_information'][information = 'map'][zoom >= 19],
+  [feature = 'tourism_information'][information = 'tactile_map'][zoom >= 19],
+  [feature = 'tourism_information'][information = 'terminal'][zoom >= 19],
   [feature = 'tourism_information']["information"='office'][zoom >= 17] {
       text-name: "[name]";
       text-size: @standard-font-size;
