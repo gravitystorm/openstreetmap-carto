@@ -214,14 +214,6 @@
     }
   }
 
-  [feature = 'amenity_prison'][zoom >= 10][way_pixels > 75] {
-    polygon-pattern-file: url('symbols/grey_vertical_hatch.png');
-    polygon-pattern-alignment: global;
-    line-color: #888;
-    line-width: 3;
-    line-opacity: 0.329;
-  }
-
   [feature = 'landuse_residential'][zoom >= 8] {
     polygon-fill: @built-up-lowzoom;
     [zoom >= 12] { polygon-fill: @built-up-z12; }
@@ -819,6 +811,19 @@
       }
       line-width: 2;
       line-offset: -1.0;
+    }
+  }
+  [natural = 'scrub'][zoom >= 8][way_pixels > 900],
+  [natural = 'scrub'][zoom >= 13],
+  [amenity = 'prison'][zoom >= 10] {
+    [zoom >= 15] {
+      [amenity = 'prison'][zoom >= 10][way_pixels > 75] {
+        polygon-pattern-file: url('symbols/grey_vertical_hatch.png');
+        polygon-pattern-alignment: global;
+        line-color: #888;
+        line-width: 3;
+        line-opacity: 0.329;
+      }
     }
   }
 }
