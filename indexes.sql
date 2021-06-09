@@ -30,9 +30,12 @@ CREATE INDEX planet_osm_polygon_nobuilding
   WHERE building IS NULL;
 CREATE INDEX planet_osm_polygon_water
   ON planet_osm_polygon USING GIST (way)
-  WHERE waterway IN ('dock', 'riverbank', 'canal')
-    OR landuse IN ('reservoir', 'basin')
-    OR "natural" IN ('water', 'glacier');
+  WHERE (
+      waterway IN ('dock', 'riverbank', 'canal')
+      OR landuse IN ('reservoir', 'basin')
+      OR "natural" IN ('water', 'glacier')
+    ) AND
+      building IS NULL;
 CREATE INDEX planet_osm_polygon_way_area_z10
   ON planet_osm_polygon USING GIST (way)
   WHERE way_area > 23300;
@@ -44,7 +47,7 @@ CREATE INDEX planet_osm_roads_admin
   WHERE boundary = 'administrative';
 CREATE INDEX planet_osm_roads_admin_low
   ON planet_osm_roads USING GIST (way)
-  WHERE boundary = 'administrative' AND admin_level IN ('0', '1', '2', '3', '4');
+  WHERE boundary = 'administrative' AND admin_level IN ('0', '1', '2', '3', '4') AND osm_id < 0;
 CREATE INDEX planet_osm_roads_roads_ref
   ON planet_osm_roads USING GIST (way)
   WHERE highway IS NOT NULL AND ref IS NOT NULL;
