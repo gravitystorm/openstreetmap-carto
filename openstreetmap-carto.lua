@@ -639,7 +639,7 @@ end
 function osm2pgsql.select_relation_members(relation)
     if relation.tags.type == 'boundary'
        and relation.tags.boundary == 'administrative' then
-        local admin = admin_level(relation.tags.admin_level)
+        local admin = tonumber(admin_level(relation.tags.admin_level))
         if admin ~= nil then
             for _, ref in ipairs(osm2pgsql.way_member_ids(relation)) do
                 -- Store the lowest admin_level, and how many relations it used in

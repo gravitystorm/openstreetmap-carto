@@ -457,11 +457,11 @@ end
 
 -- Because everything is done in a fixed order we can use that to figure out which row is which. This is important because the add_row method doesn't take in the osm_id, and osm2pgsql tracks it separately
 
-assert(deepcompare(table_contents.planet_osm_admin[1], {admin_level = "2", multiple_relations = true, geom = {create = "line" } }), "row 1")
-assert(deepcompare(table_contents.planet_osm_admin[2], {admin_level = "2", multiple_relations = true, geom = {create = "line" } }), "row 2")
-assert(deepcompare(table_contents.planet_osm_admin[3], {admin_level = "2", multiple_relations = false, geom = {create = "line" } }), "row 3")
-assert(deepcompare(table_contents.planet_osm_admin[4], {admin_level = "4", multiple_relations = false, geom = {create = "line" } }), "row 4")
-assert(deepcompare(table_contents.planet_osm_admin[5], {admin_level = "2", multiple_relations = false, geom = {create = "line" } }), "row 5")
-assert(deepcompare(table_contents.planet_osm_admin[6], {admin_level = "2", multiple_relations = false, geom = {create = "line" } }), "row 6")
-assert(deepcompare(table_contents.planet_osm_admin[7], {admin_level = "2", multiple_relations = true, geom = {create = "line" } }), "row 7")
-assert(deepcompare(table_contents.planet_osm_admin[8], {admin_level = "2", multiple_relations = true, geom = {create = "line" } }), "row 8")
+assert(deepcompare(table_contents.planet_osm_admin[1], {admin_level = 2, multiple_relations = true, geom = {create = "line" } }), "row 1")
+assert(deepcompare(table_contents.planet_osm_admin[2], {admin_level = 2, multiple_relations = true, geom = {create = "line" } }), "row 2")
+assert(deepcompare(table_contents.planet_osm_admin[3], {admin_level = 2, multiple_relations = false, geom = {create = "line" } }), "row 3")
+assert(deepcompare(table_contents.planet_osm_admin[4], {admin_level = 4, multiple_relations = false, geom = {create = "line" } }), "row 4")
+assert(deepcompare(table_contents.planet_osm_admin[5], {admin_level = 2, multiple_relations = false, geom = {create = "line" } }), "row 5")
+assert(deepcompare(table_contents.planet_osm_admin[6], {admin_level = 2, multiple_relations = false, geom = {create = "line" } }), "row 6")
+assert(deepcompare(table_contents.planet_osm_admin[7], {admin_level = 2, multiple_relations = true, geom = {create = "line" } }), "row 7")
+assert(deepcompare(table_contents.planet_osm_admin[8], {admin_level = 2, multiple_relations = true, geom = {create = "line" } }), "row 8")
