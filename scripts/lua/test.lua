@@ -24,9 +24,25 @@ function deepcompare(t1,t2)
     return true
 end
 
--- Before testing we need to mock the supplied osm2pgsql object
-osm2pgsql = { srid = 3857 }
+--- See http://lua-users.org/wiki/CopyTable
+function deepcopy(orig)
+    local orig_type = type(orig)
+    local copy
+    if orig_type == 'table' then
+        copy = {}
+        for orig_key, orig_value in next, orig, nil do
+            copy[deepcopy(orig_key)] = deepcopy(orig_value)
+        end
+        setmetatable(copy, deepcopy(getmetatable(orig)))
+    else -- number, string, boolean, etc
+        copy = orig
+    end
+    return copy
+end
 
+
+-- Before testing we need to mock the supplied osm2pgsql object
+osm2pgsql = { srid = 3857, stage = 1 }
 -- 
 local table_definitions = {}
 local table_contents = {}
@@ -37,6 +53,17 @@ function osm2pgsql.define_table(definition)
     return {add_row = function(self, obj) table.insert(table_contents[definition.name], obj) end}
 end
 
+function osm2pgsql.way_member_ids(relation)
+    local members = {}
+    if relation.members ~= nil then
+        for _, member in ipairs(relation.members) do
+            if member.type == 'w' then
+                table.insert(members, member.ref)
+            end
+        end
+    end
+    return members
+end
 require ("openstreetmap-carto")
 
 print("TESTING: define_table")
@@ -75,6 +102,10 @@ assert(deepcompare(table_definitions.planet_osm_route.columns[2], { column = 'me
 assert(deepcompare(table_definitions.planet_osm_route.columns[3], { column = 'tags', type = 'hstore' }), "planet_osm_route tags column")
 assert(deepcompare(table_definitions.planet_osm_route.columns[4], { column = 'route', type = 'text' }), "planet_osm_route route column")
 
+assert(deepcompare(table_definitions.planet_osm_admin.ids, { type = 'way', id_column = 'osm_id' }), "planet_osm_admin id column")
+assert(deepcompare(table_definitions.planet_osm_admin.columns[1], { column = 'way', type = 'linestring' }), "planet_osm_admin way column")
+assert(deepcompare(table_definitions.planet_osm_admin.columns[2], { column = 'admin_level', type = 'int2' }), "planet_osm_admin admin_level column")
+assert(deepcompare(table_definitions.planet_osm_admin.columns[3], { column = 'multiple_relations', type = 'boolean' }), "planet_osm_admin multiple_relations column")
 
 print("TESTING: z_order")
 
@@ -136,6 +167,14 @@ assert(layer("3") == "3", "3 layer")
 assert(layer("-3") == "-3", "-3 layer")
 assert(layer("300") == nil, "large layer")
 assert(layer("3.5") == nil, "non-integer layer")
+
+print("TESTING: admin_level")
+assert(admin_level("foo") == nil, "non-numeric admin_level")
+assert(admin_level("0") == nil, "0 admin_level")
+assert(admin_level("3") == "3", "3 admin_level")
+assert(admin_level("-3") == nil, "-3 admin_level")
+assert(admin_level("300") == nil, "large admin_level")
+assert(admin_level("3.5") == nil, "non-integer admin_level")
 
 print("TESTING: clean_tags")
 assert(clean_tags({}), "Untagged")
@@ -343,3 +382,86 @@ assert(deepcompare(table_contents.planet_osm_route[1], table_contents.planet_osm
 table_contents.planet_osm_line = {}
 table_contents.planet_osm_polygon = {}
 table_contents.planet_osm_roads = {}
+
+-- Testing of phase 2
+
+--[[
+    This sets up an
+    1. admin_level=2 relation with ways 1, 2, 3, 5, 7, 8
+    2. admin_level=2 relation with ways 1, 2, 6, 7, 8
+    3. admin_level=4 relation with ways 1, 3, 4
+
+    The ways have correct tags except for 7 and 8
+]]
+
+-- Currently in phase 1
+
+local test_ways = {
+    { id = 1, tags = { boundary = "administrative", admin_level = "2"} },
+    { id = 2, tags = { boundary = "administrative", admin_level = "2"} },
+    { id = 3, tags = { boundary = "administrative", admin_level = "2"} },
+    { id = 4, tags = { boundary = "administrative", admin_level = "4"} },
+    { id = 5, tags = { boundary = "administrative", admin_level = "2"} },
+    { id = 6, tags = { boundary = "administrative", admin_level = "2"} },
+    { id = 7, tags = { boundary = "administrative", admin_level = "3"} }, -- incorrect tags
+    { id = 8, tags = { } } -- incorrect tags
+}
+-- add another way that isn't part of a relation
+local test_relations = {
+    { id = 1,
+      tags = {type = "boundary", boundary = "administrative", admin_level = "2"},
+      members = { {type = 'w', ref = 1, role = "outer"},
+                  {type = 'w', ref = 2, role = "outer"},
+                  {type = 'w', ref = 3, role = "outer"},
+                  {type = 'w', ref = 5, role = "outer"},
+                  {type = 'w', ref = 7, role = "outer"},
+                  {type = 'w', ref = 8, role = "outer"} } },
+    { id = 2, tags = {type = "boundary", boundary = "administrative", admin_level = "2"},
+      members = { {type = 'w', ref = 1, role = "outer"},
+                  {type = 'w', ref = 2, role = "outer"},
+                  {type = 'w', ref = 6, role = "outer"},
+                  {type = 'w', ref = 7, role = "outer"},
+                  {type = 'w', ref = 8, role = "outer"} } },
+    { id = 3, tags = {type = "boundary", boundary = "administrative", admin_level = "4"},
+      members = { {type = 'w', ref = 1, role = "outer"},
+                  {type = 'w', ref = 3, role = "outer"},
+                  {type = 'w', ref = 4, role = "outer"} } }
+}
+for _, way in ipairs(test_ways) do
+    osm2pgsql.process_way(way)
+end
+
+local pending_ways = {}
+
+function table.clone(org)
+    return {table.unpack(org)}
+end
+
+for _, relation in ipairs(test_relations) do
+    osm2pgsql.process_relation(deepcopy(relation))
+    local ret = osm2pgsql.select_relation_members(relation)
+    if ret ~= nil then
+        for _, ref in ipairs(ret.ways) do
+            pending_ways[ref] = true
+        end
+    end
+end
+
+osm2pgsql.stage = 2
+
+for _, way in ipairs(test_ways) do
+    if pending_ways[way.id] then
+        osm2pgsql.process_way(way)
+    end
+end
+
+-- Because everything is done in a fixed order we can use that to figure out which row is which. This is important because the add_row method doesn't take in the osm_id, and osm2pgsql tracks it separately
+
+assert(deepcompare(table_contents.planet_osm_admin[1], {admin_level = "2", multiple_relations = true, geom = {create = "line" } }), "row 1")
+assert(deepcompare(table_contents.planet_osm_admin[2], {admin_level = "2", multiple_relations = true, geom = {create = "line" } }), "row 2")
+assert(deepcompare(table_contents.planet_osm_admin[3], {admin_level = "2", multiple_relations = false, geom = {create = "line" } }), "row 3")
+assert(deepcompare(table_contents.planet_osm_admin[4], {admin_level = "4", multiple_relations = false, geom = {create = "line" } }), "row 4")
+assert(deepcompare(table_contents.planet_osm_admin[5], {admin_level = "2", multiple_relations = false, geom = {create = "line" } }), "row 5")
+assert(deepcompare(table_contents.planet_osm_admin[6], {admin_level = "2", multiple_relations = false, geom = {create = "line" } }), "row 6")
+assert(deepcompare(table_contents.planet_osm_admin[7], {admin_level = "2", multiple_relations = true, geom = {create = "line" } }), "row 7")
+assert(deepcompare(table_contents.planet_osm_admin[8], {admin_level = "2", multiple_relations = true, geom = {create = "line" } }), "row 8")

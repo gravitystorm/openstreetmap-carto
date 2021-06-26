@@ -122,6 +122,11 @@ col_definitions = {
         { column = 'member_id', type = 'int8' },
         { column = 'member_position', type = 'int4' },
         { column = 'tags', type = 'hstore' }
+    },
+    admin = {
+        { column = 'way', type = 'linestring' },
+        { column = 'admin_level', type = 'int2' },
+        { column = 'multiple_relations', type = 'boolean' }
     }
 }
 
@@ -164,6 +169,12 @@ tables.route = osm2pgsql.define_table{
     name = 'planet_osm_route',
     ids = { type = 'relation', id_column = 'osm_id' },
     columns = col_definitions.route
+}
+
+tables.admin = osm2pgsql.define_table{
+    name = 'planet_osm_admin',
+    ids = { type = 'way', id_column = 'osm_id' },
+    columns = col_definitions.admin
 }
 
 -- Objects with any of the following keys will be treated as polygon
@@ -476,6 +487,10 @@ function layer (v)
     return v and string.find(v, "^-?%d+$") and tonumber(v) < 100 and tonumber(v) > -100 and v or nil
 end
 
+function admin_level (v)
+    return v and string.find(v, "^-?%d+$") and tonumber(v) < 100 and tonumber(v) > 0 and v or nil
+end
+
 --- Clean tags of deleted tags
 -- @return True if no tags are left after cleaning
 function clean_tags(tags)
@@ -515,6 +530,7 @@ function split_tags(tags, tag_map)
     return cols
 end
 
+phase2_admin_ways = {}
 
 -- TODO: Make add_* take object, not object.tags
 function add_point(tags)
@@ -567,18 +583,26 @@ function osm2pgsql.process_node(object)
 end
 
 function osm2pgsql.process_way(object)
-    if clean_tags(object.tags) then
-        return
-    end
+    if osm2pgsql.stage ==  1 then
+        if clean_tags(object.tags) then
+            return
+        end
 
-    local area_tags = isarea(object.tags)
-    if object.is_closed and area_tags then
-        add_polygon(object.tags)
-    else
-        add_line(object.tags)
+        local area_tags = isarea(object.tags)
+        if object.is_closed and area_tags then
+            add_polygon(object.tags)
+        else
+            add_line(object.tags)
 
-        if roads(object.tags) then
-            add_roads(object.tags)
+            if roads(object.tags) then
+                add_roads(object.tags)
+            end
+        end
+    elseif osm2pgsql.stage == 2 then
+        -- Stage two processing is called on ways that are part of admin boundary relations
+        local props = phase2_admin_ways[object.id]
+        if props ~= nil then
+            tables.admin:add_row({admin_level = props.level, multiple_relations = (props.parents > 1), geom = { create = 'line' }})
         end
     end
 end
@@ -608,6 +632,28 @@ function osm2pgsql.process_relation(object)
         -- TODO: Remove this, roads tags don't belong on route relations
         if roads(object.tags) then
             add_roads(object.tags)
+        end
+    end
+end
+
+function osm2pgsql.select_relation_members(relation)
+    if relation.tags.type == 'boundary'
+       and relation.tags.boundary == 'administrative' then
+        local admin = admin_level(relation.tags.admin_level)
+        if admin ~= nil then
+            for _, ref in ipairs(osm2pgsql.way_member_ids(relation)) do
+                -- Store the lowest admin_level, and how many relations it used in
+                if phase2_admin_ways[ref] == nil then
+                    phase2_admin_ways[ref] = {level = admin, parents = 1}
+                else
+                    if phase2_admin_ways[ref].level == admin then
+                        phase2_admin_ways[ref].parents = phase2_admin_ways[ref].parents + 1
+                    elseif admin < phase2_admin_ways[ref].level then
+                        phase2_admin_ways[ref] = {level = admin, parents = 1}
+                    end
+                end
+            end
+            return { ways = osm2pgsql.way_member_ids(relation) }
         end
     end
 end
