@@ -100,6 +100,24 @@ local pg_cols = {
         'tracktype',
         'tunnel'
     },
+    transport_polygon = {
+        'access',
+        'bicycle',
+        'bridge',
+        'construction',
+        'covered',
+        'foot',
+        'highway',
+        'horse',
+        'name',
+        'oneway',
+        'railway',
+        'ref',
+        'service',
+        'surface',
+        'tracktype',
+        'tunnel'
+    },
     route = {
         'route',
         'ref',
@@ -128,6 +146,13 @@ col_definitions = {
         { column = 'tags', type = 'hstore' },
         { column = 'layer', type = 'int4' },
         { column = 'z_order', type = 'int4' }
+    },
+    transport_polygon = {
+        { column = 'way', type = 'geometry' },
+        { column = 'tags', type = 'hstore' },
+        { column = 'layer', type = 'int4' },
+        { column = 'z_order', type = 'int4' },
+        { column = 'way_area', type = 'area' }
     },
     roads = {
         { column = 'way', type = 'linestring' },
@@ -193,6 +218,12 @@ tables.polygon = osm2pgsql.define_table{
     name = 'planet_osm_polygon',
     ids = { type = 'way', id_column = 'osm_id' },
     columns = col_definitions.polygon
+}
+
+tables.transport_polygon = osm2pgsql.define_table{
+    name = 'planet_osm_transport_polygon',
+    ids = { type = 'way', id_column = 'osm_id' },
+    columns = col_definitions.transport_polygon
 }
 
 tables.route = osm2pgsql.define_table{
@@ -601,6 +632,14 @@ function add_polygon(tags)
     tables.polygon:add_row(cols)
 end
 
+function add_transport_polygon(tags)
+    local cols = split_tags(tags, columns_map.polygon)
+    cols['layer'] = layer(tags['layer'])
+    cols['z_order'] = z_order(tags)
+    cols.way = { create = 'area', split_at = nil }
+    tables.transport_polygon:add_row(cols)
+end
+
 function add_route(object)
     for i, member in ipairs(object.members) do
         if member.type == 'w' then
@@ -629,6 +668,10 @@ function osm2pgsql.process_way(object)
         local area_tags = isarea(object.tags)
         if object.is_closed and area_tags then
             add_polygon(object.tags)
+
+            if z_order(object.tags) ~= nil then
+                add_transport_polygon(object.tags)
+            end
         else
             add_line(object.tags)
 
@@ -668,6 +711,10 @@ function osm2pgsql.process_relation(object)
 
     elseif type == "multipolygon" then
         add_polygon(object.tags)
+
+        if z_order(object.tags) ~= nil then
+            add_transport_polygon(object.tags)
+        end
     elseif type == "route" then
         add_line(object.tags)
         add_route(object)

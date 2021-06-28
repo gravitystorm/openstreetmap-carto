@@ -103,6 +103,14 @@ assert(deepcompare(table_definitions.planet_osm_polygon.columns[4], { column = '
 assert(deepcompare(table_definitions.planet_osm_polygon.columns[5], { column = 'way_area', type = 'area' }), "planet_osm_polygon way_area column")
 assert(deepcompare(table_definitions.planet_osm_polygon.columns[6], { column = 'access', type = 'text' }), "planet_osm_polygon access column")
 
+assert(deepcompare(table_definitions.planet_osm_transport_polygon.ids, { type = 'way', id_column = 'osm_id' }), "planet_osm_transport_polygon id column")
+assert(deepcompare(table_definitions.planet_osm_transport_polygon.columns[1], { column = 'way', type = 'geometry' }), "planet_osm_transport_polygon way column")
+assert(deepcompare(table_definitions.planet_osm_transport_polygon.columns[2], { column = 'tags', type = 'hstore' }), "planet_osm_transport_polygon tags column")
+assert(deepcompare(table_definitions.planet_osm_transport_polygon.columns[3], { column = 'layer', type = 'int4' }), "planet_osm_transport_polygon layer column")
+assert(deepcompare(table_definitions.planet_osm_transport_polygon.columns[4], { column = 'z_order', type = 'int4' }), "planet_osm_transport_polygon z_order column")
+assert(deepcompare(table_definitions.planet_osm_transport_polygon.columns[5], { column = 'way_area', type = 'area' }), "planet_osm_transport_polygon way_area column")
+assert(deepcompare(table_definitions.planet_osm_transport_polygon.columns[6], { column = 'access', type = 'text' }), "planet_osm_transport_polygon access column")
+
 assert(deepcompare(table_definitions.planet_osm_route.ids, { type = 'relation', id_column = 'osm_id' }), "planet_osm_route id column")
 assert(deepcompare(table_definitions.planet_osm_route.columns[1], { column = 'member_id', type = 'int8' }), "planet_osm_route member_id column")
 assert(deepcompare(table_definitions.planet_osm_route.columns[2], { column = 'member_position', type = 'int4' }), "planet_osm_route member_position column")
@@ -268,6 +276,18 @@ table_contents.planet_osm_polygon = {}
 add_polygon({foo = "bar"})
 assert(deepcompare(table_contents.planet_osm_polygon[1], {tags = {foo = "bar"}, way = { create = 'area', split_at = nil }}), "hstore only")
 
+print("TESTING: add_transport_polygon")
+table_contents.planet_osm_transport_polygon = {}
+add_transport_polygon({natural = "wood"})
+assert(deepcompare(table_contents.planet_osm_transport_polygon[1], {natural = "wood", tags = {}, way = { create = 'area', split_at = nil }}), "Tag with column")
+
+table_contents.planet_osm_transport_polygon = {}
+add_transport_polygon({natural = "wood", foo = "bar"})
+assert(deepcompare(table_contents.planet_osm_transport_polygon[1], {natural = "wood", tags = {foo = "bar"}, way = { create = 'area', split_at = nil }}), "Tag with column + hstore")
+
+table_contents.planet_osm_transport_polygon = {}
+add_transport_polygon({foo = "bar"})
+assert(deepcompare(table_contents.planet_osm_transport_polygon[1], {tags = {foo = "bar"}, way = { create = 'area', split_at = nil }}), "hstore only")
 
 print("TESTING: add_route")
 table_contents.planet_osm_route = {}
@@ -296,7 +316,8 @@ osm2pgsql.process_node({tags = {odbl = "yes"}})
 assert(deepcompare(table_contents.planet_osm_point, {}), "Deleted tag")
 
 -- By running process_node then manually running add_point the first and second entry
--- in the output tables should be the same.
+-- in the output tables should be the same. A cleaner way would be to mock the add_* functions
+-- and then check if they are called.
 osm2pgsql.process_node({tags = {natural = "tree", foo = "bar"}})
 add_point({natural = "tree", foo = "bar"})
 assert(deepcompare(table_contents.planet_osm_point[1], table_contents.planet_osm_point[2]), "Accepted tag")
@@ -306,18 +327,21 @@ table_contents.planet_osm_line = {}
 table_contents.planet_osm_transport_line = {}
 table_contents.planet_osm_roads = {}
 table_contents.planet_osm_polygon = {}
+table_contents.planet_osm_transport_polygon = {}
 
 osm2pgsql.process_way({tags = {}})
 assert(deepcompare(table_contents.planet_osm_line, {}), "Untagged line")
 assert(deepcompare(table_contents.planet_osm_transport_line, {}), "Untagged transport_line")
 assert(deepcompare(table_contents.planet_osm_roads, {}), "Untagged roads")
 assert(deepcompare(table_contents.planet_osm_polygon, {}), "Untagged polygon")
+assert(deepcompare(table_contents.planet_osm_transport_polygon, {}), "Untagged transport_polygon")
 
 osm2pgsql.process_way({tags = {odbl = "yes"}})
 assert(deepcompare(table_contents.planet_osm_line, {}), "Deleted tag line")
 assert(deepcompare(table_contents.planet_osm_transport_line, {}), "Deleted tag transport_line")
 assert(deepcompare(table_contents.planet_osm_roads, {}), "Deleted tag roads")
 assert(deepcompare(table_contents.planet_osm_polygon, {}), "Deleted tag polygon")
+assert(deepcompare(table_contents.planet_osm_transport_polygon, {}), "Deleted tag transport_polygon")
 
 osm2pgsql.process_way({is_closed = false, tags = { highway = "road"}})
 -- Add something to compare against. We know add_line and add_transport_line are okay since we tested them above
@@ -327,6 +351,7 @@ assert(deepcompare(table_contents.planet_osm_line[1], table_contents.planet_osm_
 assert(deepcompare(table_contents.planet_osm_transport_line[1], table_contents.planet_osm_transport_line[2]), "Line tag, open way, transport_line table")
 assert(deepcompare(table_contents.planet_osm_roads, {}), "Line tag, open way, roads table")
 assert(deepcompare(table_contents.planet_osm_polygon, {}), "Line tag, open way, polygon table")
+assert(deepcompare(table_contents.planet_osm_transport_polygon, {}), "Line tag, open way, transport_polygon table")
 table_contents.planet_osm_line = {}
 table_contents.planet_osm_transport_line = {}
 
@@ -338,6 +363,7 @@ assert(deepcompare(table_contents.planet_osm_line[1], table_contents.planet_osm_
 assert(deepcompare(table_contents.planet_osm_transport_line[1], table_contents.planet_osm_transport_line[2]), "Line tag, closed way, transport_line table")
 assert(deepcompare(table_contents.planet_osm_roads[1], table_contents.planet_osm_roads[2]), "Line tag, closed way, roads table")
 assert(deepcompare(table_contents.planet_osm_polygon, {}), "Line tag, closed way, polygon table")
+assert(deepcompare(table_contents.planet_osm_transport_polygon, {}), "Line tag, closed way, transport_polygon table")
 table_contents.planet_osm_line = {}
 table_contents.planet_osm_transport_line = {}
 table_contents.planet_osm_roads = {}
@@ -348,6 +374,7 @@ assert(deepcompare(table_contents.planet_osm_line[1], table_contents.planet_osm_
 assert(deepcompare(table_contents.planet_osm_transport_line, {}), "area tag, open way, transport_line table")
 assert(deepcompare(table_contents.planet_osm_roads, {}), "area tag, open way, roads table")
 assert(deepcompare(table_contents.planet_osm_polygon, {}), "area tag, open way, polygon table")
+assert(deepcompare(table_contents.planet_osm_transport_polygon, {}), "area tag, open way, transport_polygon table")
 table_contents.planet_osm_line = {}
 
 osm2pgsql.process_way({is_closed = true, tags = { natural = "wood"}})
@@ -356,11 +383,24 @@ assert(deepcompare(table_contents.planet_osm_line, {}), "area tag, closed way, l
 assert(deepcompare(table_contents.planet_osm_transport_line, {}), "area tag, closed way, transport_line table")
 assert(deepcompare(table_contents.planet_osm_roads, {}), "area tag, closed way, roads table")
 assert(deepcompare(table_contents.planet_osm_polygon[1], table_contents.planet_osm_polygon[2]), "area tag, closed way, polygon table")
+assert(deepcompare(table_contents.planet_osm_transport_polygon, {}), "area tag, closed way, transport_polygon table")
+table_contents.planet_osm_polygon = {}
+
+osm2pgsql.process_way({is_closed = true, tags = { railway = "platform", area = "yes"}})
+add_polygon({railway = "platform", area = "yes"})
+add_transport_polygon({railway = "platform", area = "yes"})
+assert(deepcompare(table_contents.planet_osm_line, {}), "area tag, closed way, line table")
+assert(deepcompare(table_contents.planet_osm_transport_line, {}), "area tag, closed way, transport_line table")
+assert(deepcompare(table_contents.planet_osm_roads, {}), "area tag, closed way, roads table")
+assert(deepcompare(table_contents.planet_osm_polygon[1], table_contents.planet_osm_polygon[2]), "area tag, closed way, polygon table")
+assert(deepcompare(table_contents.planet_osm_transport_polygon[1], table_contents.planet_osm_transport_polygon[2]), "area tag, closed way, transport_polygon table")
 
 print("TESTING: osm2pgsql.process_relation")
 table_contents.planet_osm_line = {}
+table_contents.planet_osm_transport_line = {}
 table_contents.planet_osm_roads = {}
 table_contents.planet_osm_polygon = {}
+table_contents.planet_osm_transport_polygon = {}
 table_contents.planet_osm_route = {}
 
 osm2pgsql.process_relation({tags = {}})
@@ -368,18 +408,21 @@ assert(deepcompare(table_contents.planet_osm_line, {}), "Untagged line")
 assert(deepcompare(table_contents.planet_osm_transport_line, {}), "Untagged transport_line")
 assert(deepcompare(table_contents.planet_osm_roads, {}), "Untagged roads")
 assert(deepcompare(table_contents.planet_osm_polygon, {}), "Untagged polygon")
+assert(deepcompare(table_contents.planet_osm_transport_polygon, {}), "Untagged transport_polygon")
 
 osm2pgsql.process_relation({tags = {odbl = "yes"}})
 assert(deepcompare(table_contents.planet_osm_line, {}), "Deleted tag line")
 assert(deepcompare(table_contents.planet_osm_transport_line, {}), "Deleted tag transport_line")
 assert(deepcompare(table_contents.planet_osm_roads, {}), "Deleted tag roads")
 assert(deepcompare(table_contents.planet_osm_polygon, {}), "Deleted tag polygon")
+assert(deepcompare(table_contents.planet_osm_transport_polygon, {}), "Deleted tag transport_polygon")
 
 osm2pgsql.process_relation({tags = {type = "multipolygon", odbl = "yes"}})
 assert(deepcompare(table_contents.planet_osm_line, {}), "Deleted tag line with type")
 assert(deepcompare(table_contents.planet_osm_transport_line, {}), "Deleted tag transport_line with type")
 assert(deepcompare(table_contents.planet_osm_roads, {}), "Deleted tag roads with type")
 assert(deepcompare(table_contents.planet_osm_polygon, {}), "Deleted tag polygon with type")
+assert(deepcompare(table_contents.planet_osm_transport_polygon, {}), "Deleted tag transport_polygon with type")
 
 osm2pgsql.process_relation({tags = {type = "boundary", boundary = "foo"}})
 add_line({boundary = "foo"})
@@ -388,6 +431,7 @@ assert(deepcompare(table_contents.planet_osm_line[1], table_contents.planet_osm_
 assert(deepcompare(table_contents.planet_osm_transport_line, {}), "Boundary transport_line")
 assert(deepcompare(table_contents.planet_osm_roads, {}), "Boundary roads")
 assert(deepcompare(table_contents.planet_osm_polygon[1], table_contents.planet_osm_polygon[2]), "Boundary polygon")
+assert(deepcompare(table_contents.planet_osm_transport_polygon, {}), "Boundary transport_polygon")
 table_contents.planet_osm_line = {}
 table_contents.planet_osm_polygon = {}
 
@@ -399,6 +443,7 @@ assert(deepcompare(table_contents.planet_osm_line[1], table_contents.planet_osm_
 assert(deepcompare(table_contents.planet_osm_transport_line, {}), "admin boundary transport_line")
 assert(deepcompare(table_contents.planet_osm_roads[1], table_contents.planet_osm_roads[2]), "admin boundary roads")
 assert(deepcompare(table_contents.planet_osm_polygon[1], table_contents.planet_osm_polygon[2]), "admin boundary polygon")
+assert(deepcompare(table_contents.planet_osm_transport_polygon, {}), "admin boundary transport_polygon")
 table_contents.planet_osm_line = {}
 table_contents.planet_osm_polygon = {}
 table_contents.planet_osm_roads = {}
@@ -408,8 +453,20 @@ add_polygon({natural = "tree"})
 assert(deepcompare(table_contents.planet_osm_line, {}), "MP line")
 assert(deepcompare(table_contents.planet_osm_transport_line, {}), "MP transport_line")
 assert(deepcompare(table_contents.planet_osm_roads, {}), "MP roads")
-assert(deepcompare(table_contents.planet_osm_polygon[1], table_contents.planet_osm_polygon[2]), "admin boundary polygon")
+assert(deepcompare(table_contents.planet_osm_polygon[1], table_contents.planet_osm_polygon[2]), "MP boundary polygon")
+assert(deepcompare(table_contents.planet_osm_transport_polygon, {}), "MP transport_polygon")
 table_contents.planet_osm_polygon = {}
+
+osm2pgsql.process_relation({tags = {type = "multipolygon", highway = "motorway"}})
+add_polygon({highway = "motorway"})
+add_transport_polygon({highway = "motorway"})
+assert(deepcompare(table_contents.planet_osm_line, {}), "MP highway line")
+assert(deepcompare(table_contents.planet_osm_transport_line, {}), "MP highway transport_line")
+assert(deepcompare(table_contents.planet_osm_roads, {}), "MP highway roads")
+assert(deepcompare(table_contents.planet_osm_polygon[1], table_contents.planet_osm_polygon[2]), "MP highway polygon")
+assert(deepcompare(table_contents.planet_osm_transport_polygon[1], table_contents.planet_osm_transport_polygon[2]), "MP highway transport_polygon")
+table_contents.planet_osm_polygon = {}
+table_contents.planet_osm_transport_polygon = {}
 
 osm2pgsql.process_relation({tags = {type = "route", route = "road"}, members = {{type = 'w', ref = 1234, role = 'forward'}}})
 add_line({route = "road"})
@@ -418,6 +475,7 @@ assert(deepcompare(table_contents.planet_osm_line[1], table_contents.planet_osm_
 assert(deepcompare(table_contents.planet_osm_transport_line, {}), "route transport_line")
 assert(deepcompare(table_contents.planet_osm_roads, {}), "route roads")
 assert(deepcompare(table_contents.planet_osm_polygon, {}), "route polygon")
+assert(deepcompare(table_contents.planet_osm_transport_polygon, {}), "route transport_polygon")
 assert(deepcompare(table_contents.planet_osm_route[1], table_contents.planet_osm_route[2]), "route route")
 table_contents.planet_osm_line = {}
 table_contents.planet_osm_polygon = {}
