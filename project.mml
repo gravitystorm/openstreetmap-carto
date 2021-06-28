@@ -2082,11 +2082,11 @@ Layer:
             "addr:housenumber" AS addr_housenumber,
             "addr:housename" AS addr_housename,
             tags->'addr:unit' AS addr_unit,
-            tags->'addr:flats' AS addr_flats,
+            CASE char_length(tags->'addr:flats') <= 7 WHEN TRUE THEN tags->'addr:flats' ELSE NULL END AS addr_flats,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
           WHERE way && !bbox! -- Not ST_PointOnSurface(way) because name might be NULL
-            AND (("addr:housenumber" IS NOT NULL) OR ("addr:housename" IS NOT NULL) OR ((tags->'addr:unit') IS NOT NULL) OR ((tags->'addr:flats') IS NOT NULL AND char_length(tags->'addr:flats') <= 7))
+            AND (("addr:housenumber" IS NOT NULL) OR ("addr:housename" IS NOT NULL) OR ((tags->'addr:unit') IS NOT NULL) OR ((tags->'addr:flats') IS NOT NULL))
             AND building IS NOT NULL
             AND way_area < 4000000*POW(!scale_denominator!*0.001*0.28,2)
         UNION ALL
@@ -2095,11 +2095,11 @@ Layer:
             "addr:housenumber" AS addr_housenumber,
             "addr:housename" AS addr_housename,
             tags->'addr:unit' AS addr_unit,
-            tags->'addr:flats' AS addr_flats,
+            CASE char_length(tags->'addr:flats') <= 7 WHEN TRUE THEN tags->'addr:flats' ELSE NULL END AS addr_flats,
             NULL AS way_pixels
           FROM planet_osm_point
           WHERE way && !bbox!
-            AND (("addr:housenumber" IS NOT NULL) OR ("addr:housename" IS NOT NULL) OR ((tags->'addr:unit') IS NOT NULL) OR ((tags->'addr:flats') IS NOT NULL AND char_length(tags->'addr:flats') <= 7))
+            AND (("addr:housenumber" IS NOT NULL) OR ("addr:housename" IS NOT NULL) OR ((tags->'addr:unit') IS NOT NULL) OR ((tags->'addr:flats') IS NOT NULL))
           ORDER BY way_pixels DESC NULLS LAST
         ) AS addresses
     properties:
