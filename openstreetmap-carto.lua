@@ -82,6 +82,24 @@ local pg_cols = {
         'water',
         'waterway'
     },
+    transport_line = {
+        'access',
+        'bicycle',
+        'bridge',
+        'construction',
+        'covered',
+        'foot',
+        'highway',
+        'horse',
+        'name',
+        'oneway',
+        'railway',
+        'ref',
+        'service',
+        'surface',
+        'tracktype',
+        'tunnel'
+    },
     route = {
         'route',
         'ref',
@@ -100,6 +118,12 @@ col_definitions = {
         { column = 'layer', type = 'int4' }
     },
     line = {
+        { column = 'way', type = 'linestring' },
+        { column = 'tags', type = 'hstore' },
+        { column = 'layer', type = 'int4' },
+        { column = 'z_order', type = 'int4' }
+    },
+    transport_line = {
         { column = 'way', type = 'linestring' },
         { column = 'tags', type = 'hstore' },
         { column = 'layer', type = 'int4' },
@@ -151,6 +175,12 @@ tables.line = osm2pgsql.define_table{
     name = 'planet_osm_line',
     ids = { type = 'way', id_column = 'osm_id' },
     columns = col_definitions.line
+}
+
+tables.transport_line = osm2pgsql.define_table{
+    name = 'planet_osm_transport_line',
+    ids = { type = 'way', id_column = 'osm_id' },
+    columns = col_definitions.transport_line
 }
 
 tables.roads = osm2pgsql.define_table{
@@ -457,7 +487,7 @@ end
 
 --- Check if an object with given tags should be treated as polygon
 -- @param tags OSM tags
--- @return 1 if area, 0 if linear
+-- @return true if area, false if linear
 function isarea (tags)
     -- Treat objects tagged as area=yes polygon, other area as no
     if tags["area"] then
@@ -547,6 +577,14 @@ function add_line(tags)
     tables.line:add_row(cols)
 end
 
+function add_transport_line(tags)
+    local cols = split_tags(tags, columns_map.line)
+    cols['layer'] = layer(tags['layer'])
+    cols['z_order'] = z_order(tags)
+    cols.way = { create = 'line', split_at = 100000 }
+    tables.transport_line:add_row(cols)
+end
+
 function add_roads(tags)
     local cols = split_tags(tags, columns_map.roads)
     cols['layer'] = layer(tags['layer'])
@@ -593,6 +631,10 @@ function osm2pgsql.process_way(object)
             add_polygon(object.tags)
         else
             add_line(object.tags)
+
+            if z_order(object.tags) ~= nil then
+                add_transport_line(object.tags)
+            end
 
             if roads(object.tags) then
                 add_roads(object.tags)
