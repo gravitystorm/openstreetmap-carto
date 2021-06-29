@@ -604,6 +604,7 @@ function add_line(tags)
     local cols = split_tags(tags, columns_map.line)
     cols['layer'] = layer(tags['layer'])
     cols['z_order'] = z_order(tags)
+    cols.tags['layer'] = nil
     cols.way = { create = 'line', split_at = 100000 }
     tables.line:add_row(cols)
 end
@@ -612,6 +613,7 @@ function add_transport_line(tags)
     local cols = split_tags(tags, columns_map.line)
     cols['layer'] = layer(tags['layer'])
     cols['z_order'] = z_order(tags)
+    cols.tags['layer'] = nil
     cols.way = { create = 'line', split_at = 100000 }
     tables.transport_line:add_row(cols)
 end
@@ -620,6 +622,7 @@ function add_roads(tags)
     local cols = split_tags(tags, columns_map.roads)
     cols['layer'] = layer(tags['layer'])
     cols['z_order'] = z_order(tags)
+    cols.tags['layer'] = nil
     cols.way = { create = 'line', split_at = 100000 }
     tables.roads:add_row(cols)
 end

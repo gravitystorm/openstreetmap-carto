@@ -233,6 +233,10 @@ add_line({highway = "road", foo = "bar"})
 assert(deepcompare(table_contents.planet_osm_line[1], {highway = "road", z_order = 330, tags = {foo = "bar"}, way = { create = 'line', split_at = 100000 }}), "Tag with column + hstore")
 
 table_contents.planet_osm_line = {}
+add_line({highway = "road", foo = "bar", layer = "5"})
+assert(deepcompare(table_contents.planet_osm_line[1], {highway = "road", z_order = 330, layer = "5", tags = {foo = "bar"}, way = { create = 'line', split_at = 100000 }}), "Tag with column + hstore + layer")
+
+table_contents.planet_osm_line = {}
 add_line({foo = "bar"})
 assert(deepcompare(table_contents.planet_osm_line[1], {tags = {foo = "bar"}, way = { create = 'line', split_at = 100000 }}), "hstore only")
 
@@ -250,6 +254,10 @@ table_contents.planet_osm_transport_line = {}
 add_transport_line({foo = "bar"})
 assert(deepcompare(table_contents.planet_osm_transport_line[1], {tags = {foo = "bar"}, way = { create = 'line', split_at = 100000 }}), "hstore only")
 
+table_contents.planet_osm_transport_line = {}
+add_transport_line({highway = "road", foo = "bar", layer = "5"})
+assert(deepcompare(table_contents.planet_osm_transport_line[1], {highway = "road", z_order = 330, layer = "5", tags = {foo = "bar"}, way = { create = 'line', split_at = 100000 }}), "Tag with column + hstore + layer")
+
 print("TESTING: add_roads")
 table_contents.planet_osm_roads = {}
 add_roads({highway = "road"})
@@ -258,6 +266,10 @@ assert(deepcompare(table_contents.planet_osm_roads[1], {highway = "road", z_orde
 table_contents.planet_osm_roads = {}
 add_roads({highway = "road", foo = "bar"})
 assert(deepcompare(table_contents.planet_osm_roads[1], {highway = "road", z_order = 330, tags = {foo = "bar"}, way = { create = 'line', split_at = 100000 }}), "Tag with column + hstore")
+
+table_contents.planet_osm_roads = {}
+add_roads({highway = "road", layer = "5", foo = "bar"})
+assert(deepcompare(table_contents.planet_osm_roads[1], {highway = "road", z_order = 330, layer = "5", tags = {foo = "bar"}, way = { create = 'line', split_at = 100000 }}), "Tag with column + hstore")
 
 table_contents.planet_osm_roads = {}
 add_roads({foo = "bar"})
