@@ -13,7 +13,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
 #admin-low-zoom[zoom < 8],
 #admin-mid-zoom[zoom >= 8][zoom < 13],
 #admin-high-zoom[zoom >= 13] {
-  [admin_level = '2']::firstline {
+  [admin_level = 2]::firstline {
     [zoom >= 8] {
       background/line-join: bevel;
       background/line-color: white;
@@ -26,7 +26,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     [zoom >= 13] { background/line-width: 7; }
     [zoom >= 14] { background/line-width: 8; }
   }
-  [admin_level = '2']::wideline {
+  [admin_level = 2]::wideline {
     [zoom >= 4] {
       background/line-join: bevel;
       background/line-color: white;
@@ -77,7 +77,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
       line-width: 8;
     }
   }
-  [admin_level = '2']::narrowline {
+  [admin_level = 2]::narrowline {
     [zoom >= 8] {
       background/line-join: bevel;
       background/line-color: white;
@@ -115,7 +115,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     }
   }
 
-  [admin_level = '3']::firstline {
+  [admin_level = 3]::firstline {
     [zoom >= 8] {
       background/line-join: bevel;
       background/line-color: white;
@@ -128,7 +128,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     [zoom >= 13] { background/line-width: 5; }
     [zoom >= 14] { background/line-width: 5.5; }
   }
-  [admin_level = '3']::wideline {
+  [admin_level = 3]::wideline {
     [zoom >= 4] {
       background/line-join: bevel;
       background/line-color: white;
@@ -179,7 +179,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
       line-width: 5.5;
     }
   }
-  [admin_level = '3']::narrowline {
+  [admin_level = 3]::narrowline {
     [zoom >= 10] {
       background/line-join: bevel;
       background/line-color: white;
@@ -209,7 +209,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     }
   }
 
-  [admin_level = '4']::firstline {
+  [admin_level = 4]::firstline {
     [zoom >= 8] {
       background/line-join: bevel;
       background/line-color: white;
@@ -222,7 +222,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     [zoom >= 13] { background/line-width: 3.5; }
     [zoom >= 14] { background/line-width: 4; }
   }
-  [admin_level = '4']::wideline {
+  [admin_level = 4]::wideline {
     [zoom >= 4] {
       background/line-join: bevel;
       background/line-color: white;
@@ -274,7 +274,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
       line-width: 4;
     }
   }
-  [admin_level = '4']::narrowline {
+  [admin_level = 4]::narrowline {
     [zoom >= 10] {
       background/line-join: bevel;
       background/line-color: white;
@@ -320,7 +320,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   ::wideline,
   ::narrowline { comp-op: darken; }
 
-  [admin_level = '5'][zoom >= 8]::firstline {
+  [admin_level = 5][zoom >= 8]::firstline {
     background/line-join: bevel;
     background/line-color: white;
     background/line-width: 0.6;
@@ -354,7 +354,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
       line-dasharray: 20,2,8,2;
     }
   }
-  [admin_level = '6'][zoom >= 10]::firstline {
+  [admin_level = 6][zoom >= 10]::firstline {
     background/line-join: bevel;
     background/line-color: white;
     background/line-width: 1;
@@ -378,7 +378,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
       line-dasharray: 16,2,3,2;
     }
   }
-  [admin_level = '7']::firstline {
+  [admin_level = 7]::firstline {
     [zoom >= 11] {
       background/line-join: bevel;
       background/line-color: white;
@@ -400,7 +400,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
       line-dasharray: 12,2,3,2,3,2;
     }
   }
-  [admin_level = '8']::firstline {
+  [admin_level = 8]::firstline {
     [zoom >= 12] {
       background/line-join: bevel;
       background/line-color: white;
@@ -418,7 +418,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
     }
   }
 
-  [admin_level = '9'][zoom >= 13]::firstline {
+  [admin_level = 9][zoom >= 13]::firstline {
     background/line-join: bevel;
     background/line-color: white;
     background/line-width: 1.2;
@@ -433,7 +433,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
       line-dasharray: 0,4,2,2,3,2,2,4;
     }
   }
-  [admin_level = '10'][zoom >= 14]::firstline {
+  [admin_level = 10][zoom >= 14]::firstline {
     background/line-join: bevel;
     background/line-color: white;
     background/line-width: 1.2;
@@ -446,20 +446,20 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
 }
 
 #admin-text[zoom >= 11][way_pixels >= 196000] {
-  [admin_level = '1'][way_pixels >= 360000],
-  [admin_level = '2'][way_pixels >= 360000],
-  [zoom >= 11][admin_level = '3'],
-  [zoom >= 11][admin_level = '4'],
-  [zoom >= 11][admin_level = '5'],
-  [zoom >= 12][admin_level = '6'],
-  [zoom >= 13][admin_level = '7'],
-  [zoom >= 14][admin_level = '8'],
-  [zoom >= 15][admin_level = '9'],
+  [admin_level = 1][way_pixels >= 360000],
+  [admin_level = 2][way_pixels >= 360000],
+  [zoom >= 11][admin_level = 3],
+  [zoom >= 11][admin_level = 4],
+  [zoom >= 11][admin_level = 5],
+  [zoom >= 12][admin_level = 6],
+  [zoom >= 13][admin_level = 7],
+  [zoom >= 14][admin_level = 8],
+  [zoom >= 15][admin_level = 9],
   [zoom >= 16] {
     text-name: "[name]";
     text-face-name: @book-fonts;
     text-fill: @state-labels;
-    [admin_level = '6'] { text-fill: @county-labels; }
+    [admin_level = 6] { text-fill: @county-labels; }
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-largest-bbox-only: false;
