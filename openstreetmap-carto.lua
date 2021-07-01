@@ -610,7 +610,7 @@ function add_line(tags)
 end
 
 function add_transport_line(tags)
-    local cols = split_tags(tags, columns_map.line)
+    local cols = split_tags(tags, columns_map.transport_line)
     cols['layer'] = layer(tags['layer'])
     cols['z_order'] = z_order(tags)
     cols.tags['layer'] = nil
@@ -636,7 +636,7 @@ function add_polygon(tags)
 end
 
 function add_transport_polygon(tags)
-    local cols = split_tags(tags, columns_map.polygon)
+    local cols = split_tags(tags, columns_map.transport_polygon)
     cols['layer'] = layer(tags['layer'])
     cols['z_order'] = z_order(tags)
     cols.way = { create = 'area', split_at = nil }
