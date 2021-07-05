@@ -21,6 +21,7 @@ import)
   psql -c "SELECT 1 FROM pg_database WHERE datname = 'gis';" | grep -q 1 || createdb gis && \
   psql -d gis -c 'CREATE EXTENSION IF NOT EXISTS postgis;' && \
   psql -d gis -c 'CREATE EXTENSION IF NOT EXISTS hstore;' && \
+  psql -d gis -f functions.sql && \
 
   # Creating default import settings file editable by user and passing values for osm2pgsql
   if [ ! -e ".env" ]; then

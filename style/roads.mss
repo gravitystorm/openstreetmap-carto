@@ -17,10 +17,30 @@
 @bridleway-fill-noaccess: #aaddaa;
 @track-fill: #996600;
 @track-fill-noaccess: #e2c5bb;
+
 @aeroway-fill: #bbc;
-@runway-fill: @aeroway-fill;
-@taxiway-fill: @aeroway-fill;
-@helipad-fill: @aeroway-fill;
+@runway-fill: #9a9ab4;
+@taxiway-fill: #aaaac0;
+@stopway-fill: @taxiway-fill;
+@helipad-fill: @runway-fill;
+@aeroway-apron: #cdcdda;
+@aeroway-runway-centreline: white;
+@aeroway-taxiway-centreline: #f1fa4a;
+@unpaved-aeroway-fill: #dcbeab;
+@unpaved-runway-fill: #cb9e81;
+@unpaved-taxiway-fill: #d3ae97;
+@unpaved-stopway-fill: @unpaved-taxiway-fill;
+@unpaved-helipad-fill: @unpaved-aeroway-fill;
+@unpaved-aeroway-runway-centreline: #efdccf;
+@unpaved-aeroway-taxiway-centreline: darken(@unpaved-aeroway-runway-centreline, 5%);
+@grass-aeroway-fill: #dce3bd;
+@grass-runway-fill: #d2dcab;
+@grass-taxiway-fill: lighten(@grass-runway-fill, 2%);
+@grass-stopway-fill: @grass-taxiway-fill;
+@grass-helipad-fill: @grass-aeroway-fill;
+@grass-aeroway-runway-centreline: @aeroway-fill;
+@grass-aeroway-taxiway-centreline: @grass-aeroway-runway-centreline;
+
 @access-marking: #eaeaea;
 @access-marking-living-street: #cccccc;
 
@@ -2703,6 +2723,37 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   }
 }
 
+#aeroway-area-fill {
+  [feature = 'aeroway_runway'][zoom >= 14] {
+    polygon-fill: @aeroway-fill;
+    [int_surface = 'unpaved'] { polygon-fill: @unpaved-aeroway-fill; }
+    [int_surface = 'grass'] { polygon-fill: @grass-aeroway-fill; }
+  }
+
+  [feature = 'aeroway_taxiway'][zoom >= 14] {
+    polygon-fill: @aeroway-fill;
+    [int_surface = 'unpaved'] { polygon-fill: @unpaved-aeroway-fill; }
+    [int_surface = 'grass'] { polygon-fill: @grass-aeroway-fill; }
+  }
+
+  [feature = 'aeroway_stopway'][zoom >= 14] {
+    polygon-fill: @stopway-fill;
+    [int_surface = 'unpaved'] { polygon-fill: @unpaved-stopway-fill; }
+    [int_surface = 'grass'] { polygon-fill: @grass-stopway-fill; }
+  }
+
+  [feature = 'aeroway_helipad'][zoom >= 16] {
+    polygon-fill: @helipad-fill;
+  }
+
+  [feature = 'aeroway_apron'][zoom >= 14] {
+    polygon-fill: @apron;
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
+}
+
 #highway-area-fill {
   [feature = 'highway_living_street'][zoom >= 14] {
     polygon-fill: @living-street-fill;
@@ -2727,18 +2778,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       polygon-fill: #bbbbbb;
       polygon-gamma: 0.65;
     }
-  }
-
-  [feature = 'aeroway_runway'][zoom >= 11] {
-    polygon-fill: @runway-fill;
-  }
-
-  [feature = 'aeroway_taxiway'][zoom >= 13] {
-    polygon-fill: @taxiway-fill;
-  }
-
-  [feature = 'aeroway_helipad'][zoom >= 16] {
-    polygon-fill: @helipad-fill;
   }
 }
 
@@ -2975,14 +3014,48 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
       ::fill {
         line-color: @runway-fill;
-        line-width: 2;
-        [zoom >= 12] { line-width: 4; }
-        [zoom >= 13] { line-width: 6; }
-        [zoom >= 14] { line-width: 12; }
-        [zoom >= 15] { line-width: 18; }
-        [zoom >= 16] { line-width: 24; }
+        [int_surface = 'unpaved'] { line-color: @unpaved-runway-fill; }
+        [int_surface = 'grass'] { line-color: @grass-runway-fill; }
+        /* 
+          Take the computed width from the `width` tagged on the runway, if present. 
+          A default value is set if this tag is missing. 
+        */
+        line-width: [area_width];
+      }
+      ::centerline[zoom >=15] {
+        line-width: [line_width];
+        line-color: @aeroway-runway-centreline;
+        [int_surface = 'unpaved'] { line-color: @unpaved-aeroway-runway-centreline; }
+        [int_surface = 'grass'] { line-color: @grass-aeroway-runway-centreline; }
+        /* Keeps the dash-pattern roughly in sync with the line-width. */
+        line-dasharray: 12,8;
+        [zoom >= 16] { line-dasharray: 21,14; }
+        [zoom >= 17] { line-dasharray: 42,28; }
+        [zoom >= 18] { line-dasharray: 84,56; }
+        [zoom >= 19] { line-dasharray: 168,112; }
+        [zoom >= 20] { line-dasharray: 336,224; }
+        [runway = "displaced_threshold"] {
+          line-width: 0;
+          marker-placement: line;
+          marker-fill: @aeroway-runway-centreline;
+          [int_surface = 'unpaved'] { marker-fill: @unpaved-aeroway-runway-centreline; }
+          /* Not likely with surface=grass, but for consistency's sake: */
+          [int_surface = 'grass'] { marker-fill: @grass-aeroway-runway-centreline; }
+          marker-width: [line_width] * 16;
+          marker-spacing: [line_width] * 50;
+          marker-file: url('symbols/displaced_threshold.svg');
+        }
       }
     }
+  }
+  [aeroway = 'stopway'] {
+      ::fill {
+        line-color: @stopway-fill;
+        [int_surface = 'unpaved'] { line-color: @unpaved-stopway-fill; }
+        [int_surface = 'grass'] { line-color: @grass-stopway-fill; }
+        /* Same as aeroway=runway. */
+        line-width: [area_width];
+      }
   }
   [aeroway = 'taxiway'] {
     [zoom >= 11] {
@@ -2996,12 +3069,49 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         [zoom >= 18] { line-width: 8 + 2*@secondary-casing-width-z18; }
       }
       ::fill {
-        line-color: @taxiway-fill ;
-        line-width: 1;
-        [zoom >= 13] { line-width: 2; }
-        [zoom >= 14] { line-width: 4; }
+        line-color: @taxiway-fill;
+        [int_surface = 'unpaved'] { line-color: @unpaved-taxiway-fill; }
+        [int_surface = 'grass'] { line-color: @grass-taxiway-fill; }
+        line-width: 2;
+        [zoom >= 14] { line-width: 3; }
         [zoom >= 15] { line-width: 6; }
-        [zoom >= 16] { line-width: 8; }
+        [zoom >= 16] { line-width: 7; }
+        [zoom >= 17] { line-width: 8; }
+        [zoom >= 18] { line-width: 16; }
+        line-cap: round;
+      }
+      ::centerline[zoom >= 15] {
+        line-color: @aeroway-taxiway-centreline;
+        [int_surface = 'unpaved'] { line-color: @unpaved-aeroway-taxiway-centreline; }
+        [int_surface = 'grass'] { line-color: @grass-aeroway-taxiway-centreline; }
+        line-width: 0.3;
+        [zoom >= 16] { line-width: 0.5; }
+        [zoom >= 17] { line-width: 1; }
+        [zoom >= 18] { line-width: 2; }
+      }
+    }
+  }
+  [aeroway = 'parking_position'],
+  [aeroway = 'taxilane'] {
+    [zoom >= 16] {
+      ::centerline[zoom >= 15] {
+        line-color: @aeroway-taxiway-centreline;
+        [int_surface = 'unpaved'] { line-color: @unpaved-aeroway-taxiway-centreline; }
+        [int_surface = 'grass'] { line-color: @grass-aeroway-taxiway-centreline; }
+        line-width: 0.5;
+        [zoom >= 17] { line-width: 1; }
+        [zoom >= 18] { line-width: 2; }
+
+        [aeroway = 'parking_position'] {
+          marker-placement: vertex-last;
+          marker-fill: @aeroway-taxiway-centreline;
+          [int_surface = 'unpaved'] { marker-fill: @unpaved-aeroway-taxiway-centreline; }
+          [int_surface = 'grass'] { marker-fill: @grass-aeroway-taxiway-centreline; }
+          marker-height: 3;
+          [zoom >= 17] { marker-height: 6; }
+          [zoom >= 18] { marker-height: 12; }
+          marker-file: url('symbols/aeroway_parking_position_stop.svg');
+        }
       }
     }
   }
@@ -3128,19 +3238,62 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
   }
-  [highway = 'runway'],
+  [highway = 'runway'] {
+    [zoom >= 15] {
+      text-name: "[refs]";
+      text-size: 12;
+      [zoom >= 16] { text-size: 18; }
+      [zoom >= 17] { text-size: 24; }
+      [zoom >= 18] { text-size: 32; }
+      [zoom >= 19] { text-size: 40; }
+      text-fill: white;
+      text-spacing: 0;
+      text-clip: false;
+      text-placement: line;
+      text-face-name: @bold-fonts;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: #666;
+      text-repeat-distance: @minor-highway-text-repeat-distance;
+      [height >= 2] {
+        /*
+           The vast majority of runway-refs is in a short form like 05/23 or 09L/27R, but for
+           multi-line exceptions we adjust the text. The query already leaves out any refs
+           longer than 11 characters.
+        */
+        text-size: 10;
+        text-face-name: @book-fonts;
+      }
+    }
+  }
   [highway = 'taxiway'] {
     [zoom >= 15] {
       text-name: "[refs]";
       text-size: 10;
-      text-fill: #333;
-      text-spacing: 750;
+      text-fill: white;
+      text-spacing: 0;
       text-clip: false;
       text-placement: line;
-      text-face-name: @oblique-fonts;
+      text-face-name: @bold-fonts;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill;
+      text-halo-fill: #666;
       text-repeat-distance: @minor-highway-text-repeat-distance;
+    }
+  }
+  [highway = 'taxilane'],
+  [highway = 'parking_position'] {
+    [zoom >= 18] {
+      text-name: "[refs]";
+      text-size: 10;
+      text-fill: black;
+      text-spacing: 0;
+      text-clip: false;
+      text-placement: line;
+      text-face-name: @book-fonts;
+      text-halo-radius: @standard-halo-radius * 0.7;
+      text-halo-fill: #fcf8a1;
+      text-repeat-distance: @minor-highway-text-repeat-distance;
+      text-vertical-alignment: middle;
+      text-dy: 7;
     }
   }
 }
