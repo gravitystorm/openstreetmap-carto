@@ -145,6 +145,8 @@ def main():
                         help="Name of configuration file (default external-data.yml)")
     parser.add_argument("-D", "--data", action="store",
                         help="Override data download directory")
+    parser.add_argument("-l", "--local", action="store_true",
+                        help="Expect files to exist locally in the data download directory. With this option, external downloads will not attempt to be retrieved from the internet. Instead they will simply be imported into the database.")
 
     parser.add_argument("-d", "--database", action="store",
                         help="Override database name to connect to")
@@ -212,7 +214,8 @@ def main():
 
                 workingdir = os.path.join(data_dir, name)
                 # Clean up anything left over from an aborted run
-                shutil.rmtree(workingdir, ignore_errors=True)
+                if not opts.local:
+                    shutil.rmtree(workingdir, ignore_errors=True)
 
                 os.makedirs(workingdir, exist_ok=True)
 
@@ -227,15 +230,16 @@ def main():
                 else:
                     headers = {}
 
-                download = s.get(source["url"], headers=headers)
-                download.raise_for_status()
+                if not opts.local:
+                    download = s.get(source["url"], headers=headers)
+                    download.raise_for_status()
 
-                if (download.status_code == 200):
-                    if "Last-Modified" in download.headers:
+                if opts.local or (download.status_code == 200):
+                    if not opts.local and "Last-Modified" in download.headers:
                         new_last_modified = download.headers["Last-Modified"]
                     else:
                         new_last_modified = None
-                    if "archive" in source and source["archive"]["format"] == "zip":
+                    if not opts.local and "archive" in source and source["archive"]["format"] == "zip":
                         zip = zipfile.ZipFile(io.BytesIO(download.content))
                         for member in source["archive"]["files"]:
                             zip.extract(member, workingdir)
