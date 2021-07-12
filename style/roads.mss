@@ -324,6 +324,8 @@
 
 @railway-text-repeat-distance: 200;
 
+@phantom-line-text-threshold: 2.1;
+
 #roads-casing, #bridges, #tunnels {
   ::casing {
     [zoom >= 12] {
@@ -3199,6 +3201,88 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-spacing: 760;
       text-repeat-distance: @major-highway-text-repeat-distance;
       text-vertical-alignment: middle;
+    }
+  }
+}
+
+
+#roads-text-name-phantom {
+  [highway = 'motorway'],
+  [highway = 'trunk'],
+  [highway = 'primary'],
+  [highway = 'construction'][construction = 'motorway'],
+  [highway = 'construction'][construction = 'trunk'],
+  [highway = 'construction'][construction = 'primary'],
+
+  [highway = 'secondary'],
+  [highway = 'construction'][construction = 'secondary']  {
+    [zoom = 13][char_per_pixel > @phantom-line-text-threshold/8],
+    [zoom = 14][char_per_pixel > @phantom-line-text-threshold/9],
+    [zoom >= 15][zoom < 17][char_per_pixel > @phantom-line-text-threshold/10],
+    [zoom >= 17][zoom < 19][char_per_pixel > @phantom-line-text-threshold/11],
+    [zoom >= 19][char_per_pixel > @phantom-line-text-threshold/12] {
+      text-name: "B";
+      text-size: 1;
+      text-opacity: 0;
+      text-face-name: @book-fonts;
+    }
+  }
+
+  [highway = 'tertiary'],
+  [highway = 'construction'][construction = 'tertiary'] {
+    [zoom >= 14][zoom < 17][char_per_pixel > @phantom-line-text-threshold/9],
+    [zoom >= 17][zoom >= 17][zoom < 19][char_per_pixel > @phantom-line-text-threshold/11],
+    [zoom >= 19][char_per_pixel > @phantom-line-text-threshold/12] {
+      text-name: "B";
+      text-size: 1;
+      text-opacity: 0;
+      text-face-name: @book-fonts;
+    }
+  }
+
+  [highway = 'construction'][construction = null][zoom >= 16] {
+    [zoom = 16][char_per_pixel > @phantom-line-text-threshold/9],
+    [zoom >= 17][zoom >= 17][zoom < 19][char_per_pixel > @phantom-line-text-threshold/11],
+    [zoom >= 19][char_per_pixel > @phantom-line-text-threshold/12] {
+      text-name: "B";
+      text-size: 1;
+      text-opacity: 0;
+      text-face-name: @book-fonts;
+    }
+  }
+
+  [highway = 'residential'],
+  [highway = 'unclassified'],
+  [highway = 'road'],
+  [highway = 'construction'][construction = null],
+  [highway = 'construction'][construction = 'residential'],
+  [highway = 'construction'][construction = 'unclassified'],
+  [highway = 'construction'][construction = 'road'],
+  [highway = 'living_street'],
+  [highway = 'pedestrian'],
+  [highway = 'construction'][construction = 'living_street'][zoom >= 16],
+  [highway = 'construction'][construction = 'pedestrian'][zoom >= 16] {
+    [zoom = 15][char_per_pixel > @phantom-line-text-threshold/8],
+    [zoom = 16][char_per_pixel > @phantom-line-text-threshold/9],
+    [zoom >= 17][zoom < 19][char_per_pixel > @phantom-line-text-threshold/11],
+    [zoom >= 19][char_per_pixel > @phantom-line-text-threshold/12] {
+      text-name: "B";
+      text-size: 1;
+      text-opacity: 0;
+      text-face-name: @book-fonts;
+    }
+  }
+
+  [highway = 'raceway'],
+  [highway = 'service'],
+  [highway = 'construction'][construction = 'raceway'],
+  [highway = 'construction'][construction = 'service'][zoom >= 17] {
+    [zoom = 16][char_per_pixel > @phantom-line-text-threshold/9],
+    [zoom >= 17][char_per_pixel > @phantom-line-text-threshold/11] {
+      text-name: "B";
+      text-size: 1;
+      text-opacity: 0;
+      text-face-name: @book-fonts;
     }
   }
 }

@@ -1822,6 +1822,32 @@ Layer:
         ) AS roads_area_text_name
     properties:
       minzoom: 15
+  - id: roads-text-name-phantom
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            CASE WHEN substr(highway, length(highway)-4, 5) = '_link' THEN substr(highway, 0, length(highway)-4) ELSE highway END,
+            construction,
+            length(name)*!scale_denominator!*0.001*0.28/st_length(way) as char_per_pixel
+          FROM planet_osm_line l
+          WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary',
+                            'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction')
+            AND name IS NOT NULL
+            AND bridge IN ('yes', 'aqueduct', 'cantilever', 'covered', 'trestle', 'viaduct')
+          ORDER BY
+            z_order DESC, -- put important roads first
+            COALESCE(layer, 0), -- put top layered roads first
+            length(name) DESC, -- Try to fit big labels in first
+            name DESC, -- Force a consistent ordering between differently named streets
+            l.osm_id DESC -- Force an ordering for streets of the same name, e.g. dualized roads
+        ) AS roads_text_name_phantom
+    properties:
+      cache-features: true
+      minzoom: 13
   - id: roads-text-name
     geometry: linestring
     <<: *extents
