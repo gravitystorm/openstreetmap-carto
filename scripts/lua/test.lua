@@ -290,12 +290,12 @@ assert(deepcompare(table_contents.planet_osm_polygon[1], {tags = {foo = "bar"}, 
 
 print("TESTING: add_transport_polygon")
 table_contents.planet_osm_transport_polygon = {}
-add_transport_polygon({natural = "wood"})
-assert(deepcompare(table_contents.planet_osm_transport_polygon[1], {natural = "wood", tags = {}, way = { create = 'area', split_at = nil }}), "Tag with column")
+add_transport_polygon({highway = "service"})
+assert(deepcompare(table_contents.planet_osm_transport_polygon[1], {highway = "service", z_order = 150, tags = {}, way = { create = 'area' }}), "Tag with column")
 
 table_contents.planet_osm_transport_polygon = {}
-add_transport_polygon({natural = "wood", foo = "bar"})
-assert(deepcompare(table_contents.planet_osm_transport_polygon[1], {natural = "wood", tags = {foo = "bar"}, way = { create = 'area', split_at = nil }}), "Tag with column + hstore")
+add_transport_polygon({highway = "service", foo = "bar"})
+assert(deepcompare(table_contents.planet_osm_transport_polygon[1], {highway = "service", z_order = 150, tags = {foo = "bar"}, way = { create = 'area' }}), "Tag with column + hstore")
 
 table_contents.planet_osm_transport_polygon = {}
 add_transport_polygon({foo = "bar"})
@@ -479,19 +479,6 @@ assert(deepcompare(table_contents.planet_osm_polygon[1], table_contents.planet_o
 assert(deepcompare(table_contents.planet_osm_transport_polygon[1], table_contents.planet_osm_transport_polygon[2]), "MP highway transport_polygon")
 table_contents.planet_osm_polygon = {}
 table_contents.planet_osm_transport_polygon = {}
-
-osm2pgsql.process_relation({tags = {type = "route", route = "road"}, members = {{type = 'w', ref = 1234, role = 'forward'}}})
-add_line({route = "road"})
-add_route({tags = { route = "road"}, members = {{type = 'w', ref = 1234, role = 'forward'}}})
-assert(deepcompare(table_contents.planet_osm_line[1], table_contents.planet_osm_line[2]), "route line")
-assert(deepcompare(table_contents.planet_osm_transport_line, {}), "route transport_line")
-assert(deepcompare(table_contents.planet_osm_roads, {}), "route roads")
-assert(deepcompare(table_contents.planet_osm_polygon, {}), "route polygon")
-assert(deepcompare(table_contents.planet_osm_transport_polygon, {}), "route transport_polygon")
-assert(deepcompare(table_contents.planet_osm_route[1], table_contents.planet_osm_route[2]), "route route")
-table_contents.planet_osm_line = {}
-table_contents.planet_osm_polygon = {}
-table_contents.planet_osm_roads = {}
 
 -- Testing of phase 2
 
