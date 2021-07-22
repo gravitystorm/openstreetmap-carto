@@ -84,6 +84,7 @@ local pg_cols = {
     },
     transport_line = {
         'access',
+        'aeroway',
         'bicycle',
         'bridge',
         'construction',
@@ -719,12 +720,7 @@ function osm2pgsql.process_relation(object)
             add_transport_polygon(object.tags)
         end
     elseif type == "route" then
-        add_line(object.tags)
         add_route(object)
-        -- TODO: Remove this, roads tags don't belong on route relations
-        if roads(object.tags) then
-            add_roads(object.tags)
-        end
     end
 end
 

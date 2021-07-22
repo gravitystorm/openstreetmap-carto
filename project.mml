@@ -481,7 +481,7 @@ Layer:
                 END AS link,
                 COALESCE(layer,0) AS layernotnull,
                 z_order
-              FROM planet_osm_line
+              FROM planet_osm_transport_line
               WHERE (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes')
                 AND highway IS NOT NULL -- end of road select
             UNION ALL
@@ -505,7 +505,7 @@ Layer:
                 'no' AS link,
                 COALESCE(layer,0) AS layernotnull,
                 z_order
-              FROM planet_osm_line
+              FROM planet_osm_transport_line
               WHERE (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes')
                 AND (railway NOT IN ('platform') AND railway IS NOT NULL) -- end of rail select
             ) AS features
@@ -725,7 +725,7 @@ Layer:
                 END AS access,
                 construction,
                 CASE
-                  WHEN service IN ('parking_aisle', 'drive-through', 'driveway') OR leisure IN ('slipway') THEN 'INT-minor'::text
+                  WHEN service IN ('parking_aisle', 'drive-through', 'driveway') OR tags->'leisure' IN ('slipway') THEN 'INT-minor'::text
                   ELSE 'INT-normal'::text
                 END AS service,
                 CASE
@@ -735,7 +735,7 @@ Layer:
                 COALESCE(layer,0) AS layernotnull,
                 osm_id,
                 z_order
-              FROM planet_osm_line
+              FROM planet_osm_transport_line
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
                 AND (covered IS NULL OR NOT covered = 'yes')
                 AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
@@ -757,12 +757,12 @@ Layer:
                   WHEN access IN ('no', 'private') THEN 'no'::text
                 END AS access,
                 construction,
-                CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') OR leisure IN ('slipway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
+                CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') OR tags->'leisure' IN ('slipway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 'no' AS link,
                 COALESCE(layer,0) AS layernotnull,
                 osm_id,
                 z_order
-              FROM planet_osm_line
+              FROM planet_osm_transport_line
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
                 AND (covered IS NULL OR NOT covered = 'yes')
                 AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
@@ -876,7 +876,7 @@ Layer:
               WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
                                   'concrete:plates', 'paving_stones', 'metal', 'wood', 'unhewn_cobblestone') THEN 'paved'
             END AS int_surface
-          FROM planet_osm_roads
+          FROM planet_osm_transport_line
           WHERE highway IS NOT NULL
             OR (railway IS NOT NULL AND railway != 'preserved'
               AND (service IS NULL OR service NOT IN ('spur', 'siding', 'yard')))
@@ -956,7 +956,7 @@ Layer:
                 END AS link,
                 COALESCE(layer,0) AS layernotnull,
                 z_order
-              FROM planet_osm_line
+              FROM planet_osm_transport_line
               WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
                 AND highway IS NOT NULL -- end of road select
             UNION ALL
@@ -980,7 +980,7 @@ Layer:
                 'no' AS link,
                 COALESCE(layer,0) AS layernotnull,
                 z_order
-              FROM planet_osm_line
+              FROM planet_osm_transport_line
               WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
                 AND railway IS NOT NULL -- end of rail select
             ) AS features
@@ -1722,7 +1722,7 @@ Layer:
                     osm_id,
                     highway,
                     string_to_array(ref, ';') AS refs
-                FROM planet_osm_roads
+                FROM planet_osm_transport_line
                   WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary')
                   AND ref IS NOT NULL
               ) AS p) AS q
@@ -1832,21 +1832,21 @@ Layer:
             name,
             CASE
               WHEN oneway IN ('yes', '-1') THEN oneway
-              WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
+              WHEN tags->'junction' IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
             END AS oneway,
             horse, bicycle
-          FROM planet_osm_line l
+          FROM planet_osm_transport_line
           WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary',
                             'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction')
             AND (name IS NOT NULL
               OR oneway IN ('yes', '-1')
-              OR junction IN ('roundabout'))
+              OR tags->'junction' IN ('roundabout'))
           ORDER BY
             z_order DESC, -- put important roads first
             COALESCE(layer, 0), -- put top layered roads first
             length(name) DESC, -- Try to fit big labels in first
             name DESC, -- Force a consistent ordering between differently named streets
-            l.osm_id DESC -- Force an ordering for streets of the same name, e.g. dualized roads
+            osm_id DESC -- Force an ordering for streets of the same name, e.g. dualized roads
         ) AS roads_text_name
     properties:
       cache-features: true
@@ -1864,15 +1864,15 @@ Layer:
             name,
             CASE
               WHEN oneway IN ('yes', '-1') THEN oneway
-              WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
+              WHEN tags->'junction' IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
             END AS oneway,
             horse,
             bicycle
-          FROM planet_osm_line
+          FROM planet_osm_transport_line
           WHERE highway IN ('bridleway', 'footway', 'cycleway', 'path', 'track', 'steps', 'construction')
             AND (name IS NOT NULL
               OR oneway IN ('yes', '-1')
-              OR junction IN ('roundabout'))
+              OR tags->'junction' IN ('roundabout'))
         ) AS paths_text_name
     properties:
       cache-features: true
@@ -1893,7 +1893,7 @@ Layer:
             tags->'usage' as usage,
             construction,
             name
-          FROM planet_osm_line l
+          FROM planet_osm_transport_line
           WHERE railway IN ('rail', 'subway', 'narrow_gauge', 'light_rail', 'preserved', 'funicular',
                             'monorail', 'miniature', 'tram', 'disused', 'construction')
             AND (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
@@ -1904,7 +1904,7 @@ Layer:
             COALESCE(layer, 0), -- put top layered rails first
             length(name) DESC, -- Try to fit big labels in first
             name DESC, -- Force a consistent ordering between differently named railways
-            l.osm_id DESC -- Force an ordering for railways of the same name, e.g. dualized rails
+            osm_id DESC -- Force an ordering for railways of the same name, e.g. dualized rails
         ) AS railways_text_name
     properties:
       minzoom: 11
@@ -1934,7 +1934,7 @@ Layer:
                     way,
                     CASE WHEN highway IN ('unclassified', 'residential', 'track') THEN highway END AS highway,
                     string_to_array(ref, ';') AS refs
-                  FROM planet_osm_line
+                  FROM planet_osm_transport_line
                   WHERE highway IN ('unclassified', 'residential', 'track')
                     AND ref IS NOT NULL
               ) AS p) AS q
