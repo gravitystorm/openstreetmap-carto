@@ -555,6 +555,27 @@ Layer:
         ) AS tourism_boundary
     properties:
       minzoom: 10
+  - id: protected-areas
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            boundary,
+            tags->'protect_class' AS protect_class,
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
+          FROM planet_osm_polygon
+          WHERE (boundary IN ('aboriginal_lands', 'national_park')
+                 OR leisure = 'nature_reserve'
+                 OR (boundary = 'protected_area' AND tags->'protect_class' IN ('1','1a','1b','2','3','4','5','6')))
+            AND building IS NULL
+            AND way_area > 1*!pixel_width!::real*!pixel_height!::real
+        ) AS protected_areas
+    properties:
+      cache-features: true
+      minzoom: 8
   - id: barriers
     geometry: linestring
     <<: *extents
@@ -1136,27 +1157,6 @@ Layer:
         ) AS power_line
     properties:
       minzoom: 14
-  - id: protected-areas
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            boundary,
-            tags->'protect_class' AS protect_class,
-            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
-          FROM planet_osm_polygon
-          WHERE (boundary IN ('aboriginal_lands', 'national_park')
-                 OR leisure = 'nature_reserve'
-                 OR (boundary = 'protected_area' AND tags->'protect_class' IN ('1','1a','1b','2','3','4','5','6')))
-            AND building IS NULL
-            AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-        ) AS protected_areas
-    properties:
-      cache-features: true
-      minzoom: 8
   - id: trees
     geometry: polygon
     <<: *extents
