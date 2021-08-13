@@ -40,7 +40,7 @@ Stylesheet:
   - style/water-features.mss
   - style/road-colors-generated.mss
   - style/roads.mss
-  - style/power.mss
+#  - style/power.mss
   - style/placenames.mss
   - style/buildings.mss
   - style/stations.mss
