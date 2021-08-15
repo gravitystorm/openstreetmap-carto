@@ -3064,9 +3064,9 @@
 
 #trees [zoom >= 16] {
   ::canopy {
-    opacity: 0.3;
+    opacity: 0.6;
     [natural = 'tree_row'] {
-      line-color: green;
+      line-color: darken(@forest,10%);
       line-cap: round;
       line-width: 2.5;
       [zoom >= 17] {
@@ -3083,11 +3083,17 @@
       }
     }
     [natural = 'tree'] {
+      marker-fill: darken(@forest,10%);
+      marker-allow-overlap: true;
+      marker-line-width: 0;
+      marker-ignore-placement: true;
+      marker-width: 2.5;
+      marker-height: 2.5;
+      [zoom >= 17] {
+        marker-width: 5;
+        marker-height: 5;
+      }
       [zoom >= 18] {
-        marker-fill: green;
-        marker-allow-overlap: true;
-        marker-line-width: 0;
-        marker-ignore-placement: true;
         marker-width: 10;
         marker-height: 10;
       }
@@ -3103,7 +3109,8 @@
   }
   [natural = 'tree']::trunk {
     [zoom >= 18] {
-      trunk/marker-fill: #b27f36;
+      trunk/opacity: 0.4;
+      trunk/marker-fill: #6b8d5e; // Same opacity and color as forest svg patterns
       trunk/marker-allow-overlap: true;
       trunk/marker-line-width: 0;
       trunk/marker-width: 2;
