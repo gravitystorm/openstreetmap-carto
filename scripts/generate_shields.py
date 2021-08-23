@@ -84,9 +84,9 @@ def main():
                     shield_height = 2 * vars['padding_y'] + math.ceil(vars['font_height'] * height)
 
                     svg = lxml.etree.Element('svg', nsmap=svgnsmap)
-                    svg.set('width', '100%')
-                    svg.set('height', '100%')
-                    svg.set('viewBox', '0 0 ' + str(shield_width    + vars['stroke_width']) + ' ' + str(shield_height + vars['stroke_width']))
+                    svg.set('width', str(shield_width + vars['stroke_width']))
+                    svg.set('height', str(shield_height + vars['stroke_width']))
+                    svg.set('viewBox', '0 0 ' + str(shield_width + vars['stroke_width']) + ' ' + str(shield_height + vars['stroke_width']))
 
                     if vars['stroke_width'] > 0:
                         offset_x = vars['stroke_width'] / 2.0
@@ -103,13 +103,13 @@ def main():
                     if vars['rounded_corners'] > 0:
                         shield.set('rx', str(vars['rounded_corners']))
                         shield.set('ry', str(vars['rounded_corners']))
-                    shield.set('id', 'shield')
+
+                    shield.set('fill', vars['fill'])
 
                     stroke = ''
                     if vars['stroke_width'] > 0:
-                        stroke = 'stroke:' + vars['stroke_fill'] + ';stroke-width:' + str(vars['stroke_width']) + ';'
-
-                    shield.set('style', 'fill:' + vars['fill'] + ';' + stroke)
+                        shield.set('stroke', vars['stroke_fill'])
+                        shield.set('stroke-width', str(vars['stroke_width']))
 
                     svg.append(shield)
 
