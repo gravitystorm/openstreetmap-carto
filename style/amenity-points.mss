@@ -145,22 +145,23 @@
   }
 
   [feature = 'highway_bus_stop'] {
-    [zoom >= 16] {
+    [zoom >= 16][zoom < 17] {
       marker-file: url('symbols/square.svg');
       marker-fill: @transportation-icon;
       marker-width: 6;
       marker-clip: false;
     }
     [zoom >= 17] {
-      marker-file: url('symbols/highway/bus_stop.12.svg');
-      marker-width: 12;
+      marker-file: url('symbols/highway/bus_stop.svg');
+      marker-fill: @transportation-icon;
+      marker-clip: false;
     }
   }
 
   [feature = 'highway_elevator'][zoom >= 18] {
     [access = null],
     [access = 'yes'] {
-      marker-file: url('symbols/highway/elevator.12.svg');
+      marker-file: url('symbols/highway/elevator.svg');
       marker-fill: @transportation-icon;
     }
   }
@@ -192,7 +193,7 @@
   }
 
   [feature = 'highway_traffic_signals'][zoom >= 17] {
-    marker-file: url('symbols/highway/traffic_light.13.svg');
+    marker-file: url('symbols/highway/traffic_light.svg');
     marker-fill: #545454;
     marker-clip: false;
   }
