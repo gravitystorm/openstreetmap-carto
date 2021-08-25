@@ -3,7 +3,7 @@
 
 #stations {
   [railway = 'subway_entrance'][zoom >= 18] {
-    marker-file: url('symbols/entrance.10.svg');
+    marker-file: url('symbols/amenity/entrance.svg');
     marker-fill: @transportation-icon;
     marker-clip: false;
     [zoom >= 19] {

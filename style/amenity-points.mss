@@ -1100,7 +1100,7 @@
     }
 
     [shop = 'motorcycle'][zoom >= 18] {
-      marker-file: url('symbols/motorcycle.svg');
+      marker-file: url('symbols/shop/motorcycle.svg');
     }
 
     [shop = 'music'][zoom >= 18] {
@@ -1183,7 +1183,7 @@
   }
 
   [feature = 'advertising_column'][zoom >= 19]{
-      marker-file: url('symbols/advertising_column.svg');
+      marker-file: url('symbols/amenity/advertising_column.svg');
       marker-fill: @advertising-grey;
       marker-clip: false;
   }
@@ -1336,7 +1336,7 @@
   }
 
   [feature = 'aeroway_helipad'][zoom >= 16] {
-    marker-file: url('symbols/helipad.16.svg');
+    marker-file: url('symbols/amenity/helipad.svg');
     marker-clip: false;
     marker-fill: @airtransport;
   }
@@ -1347,7 +1347,7 @@
   [feature = 'aeroway_aerodrome']['iata' = null][zoom >= 12][zoom < 18] {
     [way_pixels <= 192000],
     [way_pixels = null] {
-      marker-file: url('symbols/aerodrome.12.svg');
+      marker-file: url('symbols/amenity/aerodrome.svg');
       marker-clip: false;
       marker-fill: @airtransport;
     }
@@ -1384,7 +1384,7 @@
   }
 
   [feature = 'natural_spring'][zoom >= 14] {
-    marker-file: url('symbols/spring.svg');
+    marker-file: url('symbols/natural/spring.svg');
     marker-clip: false;
   }
 
@@ -1398,14 +1398,14 @@
     [zoom >= 14][height > 10],
     [zoom >= 15][name != null],
     [zoom >= 16] {
-      marker-file: url('symbols/waterfall.svg');
+      marker-file: url('symbols/natural/waterfall.svg');
       marker-clip: false;
       marker-fill: @water-text;
     }
   }
 
   [feature = 'military_bunker'][zoom >= 17] {
-    marker-file: url('symbols/bunker.svg');
+    marker-file: url('symbols/man_made/bunker.svg');
     marker-fill: @man-made-icon;
     marker-clip: false;
   }
@@ -1414,7 +1414,7 @@
     [zoom >= 15][location != 'rooftop'][location != 'roof'],
     [zoom >= 15][location = null],
     [zoom >= 19] {
-      marker-file: url('symbols/generator_wind.svg');
+      marker-file: url('symbols/man_made/generator_wind.svg');
       marker-fill: @man-made-icon;
       marker-clip: false;
     }
@@ -1481,9 +1481,9 @@
 
   [feature = 'railway_level_crossing'][zoom >= 14]::railway,
   [feature = 'railway_crossing'][zoom >= 15]::railway{
-    marker-file: url('symbols/level_crossing.svg');
+    marker-file: url('symbols/barrier/level_crossing.svg');
     [zoom >= 16] {
-      marker-file: url('symbols/level_crossing2.svg');
+      marker-file: url('symbols/barrier/level_crossing2.svg');
     }
   }
 
