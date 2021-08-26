@@ -1483,6 +1483,8 @@
   [feature = 'railway_level_crossing'][zoom >= 14]::railway,
   [feature = 'railway_crossing'][zoom >= 15]::railway{
     marker-file: url('symbols/barrier/level_crossing.svg');
+    marker-fill: #4d4d4d;
+    marker-clip: false;
     [zoom >= 16] {
       marker-file: url('symbols/barrier/level_crossing2.svg');
     }
