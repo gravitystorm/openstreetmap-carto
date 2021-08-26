@@ -1385,6 +1385,7 @@
 
   [feature = 'natural_spring'][zoom >= 14] {
     marker-file: url('symbols/natural/spring.svg');
+    marker-fill: #7abcec;
     marker-clip: false;
   }
 
