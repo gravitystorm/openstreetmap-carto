@@ -2,7 +2,7 @@ settings:
   temp_schema: loading
   schema: public
   data_dir: data
-  database: gis
+  database: flex
   metadata_table: external_data
 sources:
   simplified_water_polygons:

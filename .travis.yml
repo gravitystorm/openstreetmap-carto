@@ -21,7 +21,7 @@ env:
 install:
   - npm install carto@$CARTO
   - pip3 install --user colormath
-  - createdb -w -E utf8 -U postgres gis && psql -Xq -d gis -U postgres -w -c "CREATE EXTENSION postgis; CREATE EXTENSION hstore;"
+  - createdb -w -E utf8 -U postgres flex && psql -Xq -d flex -U postgres -w -c "CREATE EXTENSION postgis; CREATE EXTENSION hstore;"
 script:
   # We're using pipes in the checks, so fail if any part fails
   - set -o pipefail
@@ -39,8 +39,8 @@ script:
   - diff -qu <(scripts/generate_road_colours.py) style/road-colors-generated.mss
   # Skip the next two steps because they required a more recent version of osm2pgsql
   # Create the PostgreSQL tables
-  # - osm2pgsql -G --hstore --style openstreetmap-carto.style --tag-transform-script openstreetmap-carto.lua -U postgres -d gis -r xml <(echo '<osm version="0.6"/>')
+  # - osm2pgsql -G --hstore --style openstreetmap-carto.style --tag-transform-script openstreetmap-carto.lua -U postgres -d flex -r xml <(echo '<osm version="0.6"/>')
   # Apply the custom indexes
-  # - psql -1Xq -v ON_ERROR_STOP=1 -d gis -f indexes.sql
+  # - psql -1Xq -v ON_ERROR_STOP=1 -d flex -f indexes.sql
   # Test for classes in project.mml (not supported in vector tiles)
   - '! grep "class:" project.mml > /dev/null'
