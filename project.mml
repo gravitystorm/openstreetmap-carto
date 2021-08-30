@@ -1056,7 +1056,7 @@ Layer:
         (SELECT
             way, tags->'golf' AS golf, ref, name
           FROM planet_osm_line
-          WHERE tags->'golf' = 'hole'
+          WHERE tags @> 'golf=>hole'
         ) AS golf_line
     properties:
       minzoom: 16

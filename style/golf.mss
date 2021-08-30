@@ -39,9 +39,8 @@
     text-face-name: @book-fonts;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
-    text-name: "";
+    text-name: "[ref]";
 
-    [ref != ''] { text-name: "[ref]"; }
     [name != ''] { text-name: "[name]"; }
 
     [zoom >= 17] { text-size: 13; }
@@ -53,11 +52,7 @@
   [feature = 'golf_pin'] {
     marker-file: url('symbols/golf_pin.svg');
     marker-fill: @address-color;
-    marker-transform: translate(2, -5);
-  }
-  [zoom >= 17][feature = 'golf_hole'],
-  [zoom >= 17][feature = 'golf_pin'] {
-    marker-transform: "scale(1.5) translate(2, -5)";
+    marker-geometry-transform: translate(2, -5);
   }
 }
 
