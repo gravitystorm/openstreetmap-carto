@@ -189,10 +189,10 @@
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
     [zoom >= 13] {
-      [religion = 'jewish'] { polygon-pattern-file: url('symbols/grave_yard_jewish.svg'); }
-      [religion = 'christian'] { polygon-pattern-file: url('symbols/grave_yard_christian.svg'); }
-      [religion = 'muslim'] { polygon-pattern-file: url('symbols/grave_yard_muslim.svg'); }
-      [religion = 'INT-generic'] { polygon-pattern-file: url('symbols/grave_yard_generic.svg'); }
+      [religion = 'jewish'] { polygon-pattern-file: url('patterns/grave_yard_jewish.svg'); }
+      [religion = 'christian'] { polygon-pattern-file: url('patterns/grave_yard_christian.svg'); }
+      [religion = 'muslim'] { polygon-pattern-file: url('patterns/grave_yard_muslim.svg'); }
+      [religion = 'INT-generic'] { polygon-pattern-file: url('patterns/grave_yard_generic.svg'); }
       [religion = 'jewish'],
       [religion = 'christian'],
       [religion = 'muslim'],
