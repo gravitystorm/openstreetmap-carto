@@ -116,7 +116,7 @@
 
   [feature = 'landuse_quarry'][zoom >= 10] {
     polygon-fill: @quarry;
-    polygon-pattern-file: url('symbols/quarry.svg');
+    polygon-pattern-file: url('patterns/quarry.svg');
     [zoom >= 13] {
       line-width: 0.5;
       line-color: darken(@quarry, 10%);
@@ -563,7 +563,7 @@
     [zoom >= 5] {
       polygon-fill: @grass;
       [feature = 'wetland_saltmarsh'][zoom >= 13] {
-        polygon-pattern-file: url('symbols/salt-dots-2.png');
+        polygon-pattern-file: url('patterns/salt_dots.svg');
         polygon-pattern-alignment: global;
         [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
         [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
@@ -767,7 +767,7 @@
       polygon-pattern-alignment: global;
     }
     [landuse = 'salt_pond'] {
-      polygon-pattern-file: url('symbols/salt_pond.png');
+      polygon-pattern-file: url('patterns/salt_pond.svg');
       polygon-pattern-alignment: global;
     }
     [natural = 'beach'],
@@ -788,7 +788,7 @@
       }
     }
     [natural = 'scrub'] {
-      polygon-pattern-file: url('symbols/scrub.png');
+      polygon-pattern-file: url('patterns/scrub.svg');
       polygon-pattern-alignment: global;
     }
   }
