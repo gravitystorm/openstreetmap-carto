@@ -754,7 +754,7 @@
   }
 
   [int_wetland != null][zoom >= 10] {
-    polygon-pattern-file: url('symbols/wetland.png');
+    polygon-pattern-file: url('patterns/wetland.svg');
     polygon-pattern-alignment: global;
   }
   [natural = 'reef'][zoom >= 10] {
@@ -765,25 +765,25 @@
     [int_wetland = 'marsh'],
     [int_wetland = 'saltmarsh'],
     [int_wetland = 'wet_meadow'] {
-      polygon-pattern-file: url('symbols/wetland_marsh.png');
+      polygon-pattern-file: url('patterns/wetland_marsh.svg');
       polygon-pattern-alignment: global;
     }
     [int_wetland = 'reedbed'] {
-      polygon-pattern-file: url('symbols/wetland_reed.png');
+      polygon-pattern-file: url('patterns/wetland_reed.svg');
       polygon-pattern-alignment: global;
     }
     [int_wetland = 'mangrove'] {
-      polygon-pattern-file: url('symbols/wetland_mangrove.png');
+      polygon-pattern-file: url('patterns/wetland_mangrove.svg');
       polygon-pattern-alignment: global;
     }
     [int_wetland = 'swamp'] {
-      polygon-pattern-file: url('symbols/wetland_swamp.png');
+      polygon-pattern-file: url('patterns/wetland_swamp.svg');
       polygon-pattern-alignment: global;
     }
     [int_wetland = 'bog'],
     [int_wetland = 'fen'],
     [int_wetland = 'string_bog'] {
-      polygon-pattern-file: url('symbols/wetland_bog.png');
+      polygon-pattern-file: url('patterns/wetland_bog.svg');
       polygon-pattern-alignment: global;
     }
     [landuse = 'salt_pond'] {
