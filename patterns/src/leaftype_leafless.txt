@@ -1,9 +1,7 @@
 Size: 256
+Workaround: -1,-66 canvas
 Style: stroke-width="1" stroke="#6b8d5e" stroke-linecap="round"
 Path: m.5,1.5 v4 m0,0 h3 m0,0 v6.5 v-11.5 m0,8 h3 m0,0 v-5
-245,-12
-187,-10
-151,-8
 113,4
 47,6
 10,11
