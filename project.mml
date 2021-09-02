@@ -2042,7 +2042,7 @@ Layer:
               OR waterway IN ('dam', 'weir')
               OR "natural" IN ('arete', 'cliff', 'ridge'))
             AND name IS NOT NULL)
-            OR tags @> 'golf=>hole'
+            OR (tags @> 'golf=>hole' AND ref IS NOT NULL)
         ) AS text_line
     properties:
       minzoom: 10
