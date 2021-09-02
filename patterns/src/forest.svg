@@ -16,11 +16,11 @@
   <use xlink:href="#grid"/>
 </g>
 <g id="mixed1" transform="translate(25,5)">
-  <path d="m2.5,10 v-3.5 m-2,0 v-.4189 l1.8604,-5.5811 h.2792 l1.8604,5.5811 v.4189 z m7,3.5 v-4.5 a2,2.5 0 0 1 0,-5 2,2.5 0 0 1 0,5" stroke-width="1" stroke="#000" fill="none"/>
+  <path d="m1.5,11 v-3.5 m-2,0 v-.4189 l1.8604,-5.5811 h.2792 l1.8604,5.5811 v.4189 z m7,3.5 v-4.5 a2,2.5 0 0 1 0,-5 2,2.5 0 0 1 0,5" stroke-width="1" stroke="#000" fill="none"/>
   <use xlink:href="#grid"/>
 </g>
 <g id="mixed2" transform="translate(25,25)">
-  <path d="m7.5,10 v-3.5 m-2,0 v-.4189 l1.8604,-5.5811 h.2792 l1.8604,5.5811 v.4189 z m-3,3.5 v-4.5 a2,2.5 0 0 1 0,-5 2,2.5 0 0 1 0,5" stroke-width="1" stroke="#000" fill="none"/>
+  <path d="m6.5,11 v-3.5 m-2,0 v-.4189 l1.8604,-5.5811 h.2792 l1.8604,5.5811 v.4189 z m-3,3.5 v-4.5 a2,2.5 0 0 1 0,-5 2,2.5 0 0 1 0,5" stroke-width="1" stroke="#000" fill="none"/>
   <use xlink:href="#grid"/>
 </g>
 <g id="leafless1" transform="translate(45,5)">
