@@ -50,9 +50,9 @@
 #amenity-points[zoom >= 16] {
   [feature = 'golf_hole'],
   [feature = 'golf_pin'] {
-    marker-file: url('symbols/golf_pin.svg');
+    marker-file: url('symbols/leisure/golf_pin.svg');
     marker-fill: @address-color;
-    marker-geometry-transform: translate(2, -5);
+    marker-clip: false;
   }
 }
 
