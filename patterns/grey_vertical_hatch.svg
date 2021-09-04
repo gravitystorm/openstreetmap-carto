@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#8e8e8e" opacity=".14"/>
+  <rect id="mapnik_workaround" width="32" height="32" fill="none"/>
   <path d="m6.5,0 v32 m16,0 v-32" stroke-width="3" stroke="#8e8e8e" opacity=".329"/>
 </svg>

@@ -215,6 +215,8 @@
   }
 
   [feature = 'amenity_prison'][zoom >= 10][way_pixels > 75] {
+    polygon-fill: #8e8e8e;
+    polygon-opacity: 0.14;
     polygon-pattern-file: url('patterns/grey_vertical_hatch.svg');
     polygon-pattern-alignment: global;
     line-color: #888;
@@ -805,6 +807,8 @@
 #landuse-overlay {
   [landuse = 'military'][zoom >= 8][way_pixels > 900],
   [landuse = 'military'][zoom >= 13] {
+    polygon-fill: #ff5555;
+    polygon-opacity: 0.08;
     polygon-pattern-file: url('patterns/military_red_hatch.svg');
     polygon-pattern-alignment: global;
     line-color: @military;
@@ -818,6 +822,8 @@
   }
 
   [military = 'danger_area'][zoom >= 9] {
+    polygon-fill: #ff5555;
+    polygon-opacity: 0.1;
     polygon-pattern-file: url('patterns/danger_red_hatch.svg');
     polygon-pattern-alignment: global;
     line-color: @military;
