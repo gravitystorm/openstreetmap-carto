@@ -321,6 +321,20 @@ Layer:
         ) AS icesheet_outlines
     properties:
       minzoom: 5
+  - id: cliffs
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way, "natural", man_made
+          FROM planet_osm_line
+          WHERE "natural" IN ('arete', 'cliff', 'ridge') OR man_made = 'embankment'
+        ) AS cliffs
+    properties:
+      cache-features: true
+      minzoom: 13
   - id: marinas-area
     geometry: polygon
     <<: *extents
@@ -508,20 +522,6 @@ Layer:
         ) AS line_barriers
     properties:
       minzoom: 15
-  - id: cliffs
-    geometry: linestring
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way, "natural", man_made
-          FROM planet_osm_line
-          WHERE "natural" IN ('arete', 'cliff', 'ridge') OR man_made = 'embankment'
-        ) AS cliffs
-    properties:
-      cache-features: true
-      minzoom: 13
   - id: ferry-routes
     geometry: linestring
     <<: *extents
