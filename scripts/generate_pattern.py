@@ -232,9 +232,15 @@ for pattern in patterns:
         # Can we easily determine the end coordinate of the path?
         if re.fullmatch('[vh] *-?[0-9]*\.?[0-9]+', path):
             if path.startswith('h'):
-                end = (float(path[1:].lstrip()), 0)
+                length = float(path[1:].lstrip())
+                if length == 0:
+                    length = 0.0001 # mapnik fails to render zero-length (sub)paths
+                end = (length, 0)
             elif path.startswith('v'):
-                end = (0, float(path[1:].lstrip()))
+                length = float(path[1:].lstrip())
+                if length == 0:
+                    length = 0.0001 # mapnik fails to render zero-length (sub)paths
+                end = (0, length)
             for (x, y) in pattern['points']:
                 d += moveto(x + mx, y + my)
                 d += lineto(x + mx + end[0], y + my + end[1])
