@@ -829,35 +829,6 @@ Layer:
       table: *turning-circle_sql
     properties:
       minzoom: 15
-  - id: aerialways
-    geometry: linestring
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            aerialway,
-            man_made,
-            tags->'substance' AS substance
-          FROM planet_osm_line
-          WHERE aerialway IS NOT NULL
-            OR (man_made = 'pipeline'
-                AND tags-> 'location' IN ('overground', 'overhead', 'surface', 'outdoor')
-                OR bridge IN ('yes', 'aqueduct', 'cantilever', 'covered', 'trestle', 'viaduct'))
-            OR (man_made = 'goods_conveyor'
-                AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
-                AND (tunnel NOT IN ('yes') OR tunnel IS NULL))
-          ORDER BY
-            CASE
-              WHEN man_made IN ('goods_conveyor', 'pipeline') THEN 1
-              WHEN tags-> 'location' = 'overhead' THEN 2
-              WHEN bridge IS NOT NULL THEN 3
-              WHEN aerialway IS NOT NULL THEN 4
-            END
-        ) AS aerialways
-    properties:
-      minzoom: 12
   - id: roads-low-zoom
     geometry: linestring
     <<: *extents
@@ -1030,6 +1001,35 @@ Layer:
     properties:
       cache-features: true
       minzoom: 11
+  - id: aerialways
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            aerialway,
+            man_made,
+            tags->'substance' AS substance
+          FROM planet_osm_line
+          WHERE aerialway IS NOT NULL
+            OR (man_made = 'pipeline'
+                AND tags-> 'location' IN ('overground', 'overhead', 'surface', 'outdoor')
+                OR bridge IN ('yes', 'aqueduct', 'cantilever', 'covered', 'trestle', 'viaduct'))
+            OR (man_made = 'goods_conveyor'
+                AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
+                AND (tunnel NOT IN ('yes') OR tunnel IS NULL))
+          ORDER BY
+            CASE
+              WHEN man_made IN ('goods_conveyor', 'pipeline') THEN 1
+              WHEN tags-> 'location' = 'overhead' THEN 2
+              WHEN bridge IS NOT NULL THEN 3
+              WHEN aerialway IS NOT NULL THEN 4
+            END
+        ) AS aerialways
+    properties:
+      minzoom: 12
   - id: golf-line
     geometry: linestring
     <<: *extents
