@@ -890,29 +890,6 @@ Layer:
       cache-features: true
       minzoom: 6
       maxzoom: 9
-  - id: waterway-bridges
-    geometry: linestring
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            waterway,
-            CASE WHEN tags->'intermittent' IN ('yes')
-              OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
-              THEN 'yes' ELSE 'no' END AS int_intermittent,
-            CASE WHEN tunnel IN ('yes', 'culvert') 
-              OR waterway = 'canal' AND tunnel = 'flooded'
-              THEN 'yes' ELSE 'no' END AS int_tunnel,
-            'yes' AS bridge
-          FROM planet_osm_line
-          WHERE waterway IN ('river', 'canal', 'stream', 'drain', 'ditch')
-            AND bridge IN ('yes', 'aqueduct')
-          ORDER BY COALESCE(layer,0)
-        ) AS waterway_bridges
-    properties:
-      minzoom: 12
   - id: bridges
     geometry: linestring
     <<: *extents
@@ -1012,6 +989,29 @@ Layer:
         ) AS guideways
     properties:
       minzoom: 11
+  - id: waterway-bridges
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            waterway,
+            CASE WHEN tags->'intermittent' IN ('yes')
+              OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
+              THEN 'yes' ELSE 'no' END AS int_intermittent,
+            CASE WHEN tunnel IN ('yes', 'culvert') 
+              OR waterway = 'canal' AND tunnel = 'flooded'
+              THEN 'yes' ELSE 'no' END AS int_tunnel,
+            'yes' AS bridge
+          FROM planet_osm_line
+          WHERE waterway IN ('river', 'canal', 'stream', 'drain', 'ditch')
+            AND bridge IN ('yes', 'aqueduct')
+          ORDER BY COALESCE(layer,0)
+        ) AS waterway_bridges
+    properties:
+      minzoom: 12
   - id: entrances
     geometry: point
     <<: *extents
