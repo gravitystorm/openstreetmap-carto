@@ -7,8 +7,8 @@ point:
   place:
     where: place IS NOT NULL AND name IS NOT NULL
 line:
-  name:
-    where: name IS NOT NULL
+  label:
+    where: name IS NOT NULL OR ref IS NOT NULL
   ferry:
     where: route = 'ferry' AND osm_id > 0
   river:
