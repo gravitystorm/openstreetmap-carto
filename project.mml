@@ -2024,7 +2024,7 @@ Layer:
         (SELECT
           way,
             NULL as way_pixels,
-            COALESCE('aerialway_' || aerialway, 'attraction_' || CASE WHEN tags @> 'attraction=>water_slide' THEN 'water_slide' END, 'leisure_' || leisure, 'man_made_' || man_made, 'waterway_' || waterway, 'natural_' || "natural", CASE WHEN tags @> 'golf=>hole' THEN 'golf_hole' END) AS feature,
+            COALESCE('aerialway_' || aerialway, 'attraction_' || CASE WHEN tags @> 'attraction=>water_slide' THEN 'water_slide' END, 'leisure_' || leisure, 'man_made_' || man_made, 'waterway_' || waterway, 'natural_' || "natural", 'golf_' || tags->'golf') AS feature,
             access,
             name,
             tags->'operator' as operator,
