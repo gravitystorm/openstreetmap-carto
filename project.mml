@@ -1054,7 +1054,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, tags->'golf' AS golf, ref, name
+            way, tags->'golf' AS golf
           FROM planet_osm_line
           WHERE tags @> 'golf=>hole'
         ) AS golf_line
