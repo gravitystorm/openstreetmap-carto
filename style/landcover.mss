@@ -66,12 +66,14 @@
 @pitch: #aae0cb;           // Lch(85,22,168) also track
 @track: @pitch;
 @stadium: @leisure; // also sports_centre
-@golf_course: #b5e3b5;
+@golf_course: @campsite;
 
 #landcover-low-zoom[zoom < 10],
 #landcover[zoom >= 10] {
-  ::low-zoom[zoom < 12] { image-filters: scale-hsla(0,1,0,1,0.2,1,0,1); }
-  ::high-zoom[zoom >= 12]                 { image-filters: scale-hsla(0,1,0,1,0,  1,   0,1); }
+  ::low-zoom[zoom < 12] {
+    // Increase the lightness of the map by scaling color lightness to be in the 20%-100% range
+    image-filters: scale-hsla(0,1, 0,1, 0.2,1, 0,1);
+  }
 
   ::low-zoom[zoom < 12],
   ::high-zoom[zoom >= 12] {

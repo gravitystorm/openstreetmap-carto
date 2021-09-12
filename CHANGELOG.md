@@ -1,5 +1,18 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.3.1...master)
 
+### Changes
+- Fix type in text-line-spacing (#4455)
+- Shield dimensions (#4453)
+- Updated to work with pyscopg2 version 2.9.1 (#4451)
+- Fix advertising column shape (#4424)
+- Simplified version fixing tourism=information (#4420)
+- Make text for subway stations render at z>=15 (#4392)
+- Update README.md on v5 (#4357)
+- Windows line ending fix (#4330)
+- Documentation fixes (#4310)
+- De-emphasize parking=street_side (#4301)
+- Update DB dockerfile to use the postgis image (#4294)
+
 ## [v5.3.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.3.0...v5.3.1) - 2021-02-04
 ### Changes
 - Natural Earth URL changed to directly point at the NACIS CDN (#4306)
