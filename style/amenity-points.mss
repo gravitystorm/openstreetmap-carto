@@ -1364,16 +1364,19 @@
     marker-fill: @man-made-icon;
   }
 
-  [feature = 'natural_peak'][zoom >= 10],
+  [feature = 'natural_peak'][zoom >= 10] {
+    marker-fill: @landform-color;
+    marker-clip: false;
+    marker-file: url('symbols/natural/peak.svg');    
+    [zoom = 10] {
+      marker-width: 4;
+    }
+  }
+
   [feature = 'natural_volcano'][zoom >= 10] {
     marker-fill: @landform-color;
     marker-clip: false;
-    [feature = 'natural_peak'] {
-      marker-file: url('symbols/natural/peak.svg');    
-    }
-    [feature = 'natural_volcano'] {
-      marker-file: url('symbols/natural/volcano.svg');    
-    }
+    marker-file: url('symbols/natural/volcano.svg');    
     [zoom = 10] {
       marker-width: 4;
     }
