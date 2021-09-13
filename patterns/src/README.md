@@ -81,6 +81,12 @@ Based on `scree.svg`, color: `#549ccd`.
 Tiles of 256×256px.
 Based on `scree.svg`, color: `#969696`.
 
+### `golf_rough.svg`
+Tiles of 128×128px.
+Dots in a random pattern (color: `#a5d979`).
+Positions based on `beach`, size and shape of dots based on `scree`.
+Final svg generated with `generate_pattern.py` from `golf_rough.txt`.
+
 
 ## Patterns with symbols, rectangular grid
 
