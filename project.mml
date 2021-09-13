@@ -1012,23 +1012,6 @@ Layer:
         ) AS waterway_bridges
     properties:
       minzoom: 12
-  - id: entrances
-    geometry: point
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            tags->'entrance' AS entrance,
-            access
-          FROM planet_osm_point
-          WHERE (tags->'entrance') IS NOT NULL AND
-            (tags->'indoor' = 'no'
-            OR (tags->'indoor') IS NULL))
-        AS entrances
-    properties:
-      minzoom: 18
   - id: aeroways
     geometry: linestring
     <<: *extents
@@ -1465,6 +1448,23 @@ Layer:
         ) AS county_names
     properties:
       minzoom: 8
+  - id: entrances
+    geometry: point
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            tags->'entrance' AS entrance,
+            access
+          FROM planet_osm_point
+          WHERE (tags->'entrance') IS NOT NULL AND
+            (tags->'indoor' = 'no'
+            OR (tags->'indoor') IS NULL))
+        AS entrances
+    properties:
+      minzoom: 18
   - id: amenity-points
     geometry: point
     <<: *extents
