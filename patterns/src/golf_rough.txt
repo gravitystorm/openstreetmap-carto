@@ -1,7 +1,7 @@
 Size: 128
 Workaround: -55,9 canvas
 Path: m0,0 h0
-Style: stroke-linecap="round" stroke-width=".85" stroke="#685d45" opacity=".4"
+Style: stroke-linecap="round" stroke-width="1" stroke="#a5d979"
 7.93,90.94
 18.48,77.05
 21.12,58.63
@@ -2071,7 +2071,7 @@ Style: stroke-linecap="round" stroke-width=".85" stroke="#685d45" opacity=".4"
 125.02,93.01
 126.21,110.70
 Path: m0,0 h0
-Style: stroke-linecap="round" stroke-width="1" stroke="#685d45" opacity=".4"
+Style: stroke-linecap="round" stroke-width="1.2" stroke="#a5d979"
 12.23,115.68
 14.79,46.05
 16.37,67.60
@@ -2617,8 +2617,8 @@ Style: stroke-linecap="round" stroke-width="1" stroke="#685d45" opacity=".4"
 122.03,90.59
 123.00,30.62
 125.42,28.77
-Path: m0,0 h0
-Style: stroke-linecap="round" stroke-width=".8" stroke="#685d45" opacity=".4"
+Path: m.3,-.4 l.1,.4
+Style: stroke-linecap="round" stroke-width=".8" stroke="#a5d979"
 2.27,75.07
 2.47,44.11
 3.18,115.85
