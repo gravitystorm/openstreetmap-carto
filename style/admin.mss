@@ -2,21 +2,31 @@
 @admin-boundaries-narrow: #845283; // Lch(42,35,327)
 @admin-boundaries-wide: #a37da1; // Lch(57,25,327)
 
-/* For performance reasons, the admin border layers are split into three groups
-for low, middle and high zoom levels.
-Three attachments are used, with minor borders before major ones, and the thin centerline last, to handle
-overlapping borders correctly and allow each type to have a different level of opacity.
-Overlapping borders are hidden by a white background line, rendered before each line.
-Then all three layers are added to the rendering with comp-op: darken, so that the white lines will not show
-*/
+// For performance reasons the admin border layers are split into three groups
+// for low, middle and high zoom levels.
+//
+// The SQL has `ORDER BY admin_level DESC`, so the boundary with the lowest
+// admin_level is rendered on top.
+//
+// Three attachments are used, with minor borders before major ones, and the
+// thin centerline last, to handle overlapping borders correctly and allow each
+// type to have a different level of opacity.
+//
+// Where borders overlap, the overlapping border maskes the one below it. This
+// is done by drawing a background line behind each boundary line with
+// comp-op: dst-out.
 
 #admin-low-zoom[zoom < 8],
 #admin-mid-zoom[zoom >= 8][zoom < 13],
 #admin-high-zoom[zoom >= 13] {
+  ::firstline { opacity: 0.5; }
+  ::wideline { opacity: 0.5; }
+  ::narrowline { opacity: 0.6; }
+
   [admin_level = '2']::firstline {
     [zoom >= 8] {
       background/line-join: bevel;
-      background/line-color: white;
+      background/line-comp-op: dst-out;
       background/line-width: 3;
     }
     [zoom >= 9] { background/line-width: 3.5; }
@@ -29,7 +39,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   [admin_level = '2']::wideline {
     [zoom >= 4] {
       background/line-join: bevel;
-      background/line-color: white;
+      background/line-comp-op: dst-out;
       background/line-width: 1.2;
       line-join: bevel;
       line-color: @admin-boundaries;
@@ -80,7 +90,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   [admin_level = '2']::narrowline {
     [zoom >= 8] {
       background/line-join: bevel;
-      background/line-color: white;
+      background/line-comp-op: dst-out;
       background/line-width: 0.6;
       thin/line-join: bevel;
       thin/line-color: @admin-boundaries-narrow;
@@ -118,7 +128,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   [admin_level = '3']::firstline {
     [zoom >= 8] {
       background/line-join: bevel;
-      background/line-color: white;
+      background/line-comp-op: dst-out;
       background/line-width: 1.8;
     }
     [zoom >= 9] { background/line-width: 2.5; }
@@ -182,7 +192,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   [admin_level = '3']::narrowline {
     [zoom >= 10] {
       background/line-join: bevel;
-      background/line-color: white;
+      background/line-comp-op: dst-out;
       background/line-width: 0.8;
       thin/line-join: bevel;
       thin/line-color: @admin-boundaries-narrow;
@@ -212,7 +222,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   [admin_level = '4']::firstline {
     [zoom >= 8] {
       background/line-join: bevel;
-      background/line-color: white;
+      background/line-comp-op: dst-out;
       background/line-width: 1;
     }
     [zoom >= 9] { background/line-width: 1.5; }
@@ -225,7 +235,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   [admin_level = '4']::wideline {
     [zoom >= 4] {
       background/line-join: bevel;
-      background/line-color: white;
+      background/line-comp-op: dst-out;
       background/line-width: 0.4;
       line-color: @admin-boundaries;
       line-join: bevel;
@@ -277,7 +287,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   [admin_level = '4']::narrowline {
     [zoom >= 10] {
       background/line-join: bevel;
-      background/line-color: white;
+      background/line-comp-op: dst-out;
       background/line-width: 0.6;
       thin/line-color: @admin-boundaries-narrow;
       thin/line-width: 0.6;
@@ -302,27 +312,10 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
       thin/line-dasharray: 16,4,3,4,3,4;
     }
   }
-  ::firstline { opacity: 0.5; }
-  ::wideline { opacity: 0.5; }
-  ::narrowline { opacity: 0.6; }
-  /*
-  The following code prevents admin boundaries from being rendered on top of
-  each other. Comp-op works on the entire attachment, not on the individual
-  border. Therefore, this code generates an attachment containing a set of
-  @admin-boundaries/white dashed lines (of which only the top one is visible),
-  and with `comp-op: darken` the white part is ignored, while the
-  @admin-boundaries colored part is rendered (as long as the background is not
-  darker than @admin-boundaries).
-  The SQL has `ORDER BY admin_level`, so the boundary with the lowest
-  admin_level is rendered on top, and therefore the only visible boundary.
-  */
-  ::firstline,
-  ::wideline,
-  ::narrowline { comp-op: darken; }
 
   [admin_level = '5'][zoom >= 8]::firstline {
     background/line-join: bevel;
-    background/line-color: white;
+    background/line-comp-op: dst-out;
     background/line-width: 0.6;
     line-join: bevel;
     line-color: @admin-boundaries;
@@ -356,7 +349,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   }
   [admin_level = '6'][zoom >= 10]::firstline {
     background/line-join: bevel;
-    background/line-color: white;
+    background/line-comp-op: dst-out;
     background/line-width: 1;
     line-join: bevel;
     line-color: @admin-boundaries;
@@ -381,7 +374,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   [admin_level = '7']::firstline {
     [zoom >= 11] {
       background/line-join: bevel;
-      background/line-color: white;
+      background/line-comp-op: dst-out;
       background/line-width: 1.2;
       line-join: bevel;
       line-color: @admin-boundaries;
@@ -403,7 +396,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   [admin_level = '8']::firstline {
     [zoom >= 12] {
       background/line-join: bevel;
-      background/line-color: white;
+      background/line-comp-op: dst-out;
       background/line-width: 1.4;
       line-join: bevel;
       line-color: @admin-boundaries;
@@ -420,7 +413,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
 
   [admin_level = '9'][zoom >= 13]::firstline {
     background/line-join: bevel;
-    background/line-color: white;
+    background/line-comp-op: dst-out;
     background/line-width: 1.2;
     line-join: bevel;
     line-color: @admin-boundaries;
@@ -435,7 +428,7 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   }
   [admin_level = '10'][zoom >= 14]::firstline {
     background/line-join: bevel;
-    background/line-color: white;
+    background/line-comp-op: dst-out;
     background/line-width: 1.2;
     line-join: bevel;
     line-color: @admin-boundaries;
