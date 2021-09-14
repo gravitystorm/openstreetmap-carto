@@ -22,6 +22,7 @@ import shutil
 # modules for getting data
 import zipfile
 import requests
+from requests_file import FileAdapter
 import io
 
 # modules for converting and postgres loading
@@ -196,6 +197,7 @@ def main():
                              user=user,
                              password=password)
 
+            s.mount('file://', FileAdapter())
             s.headers.update({'User-Agent': 'get-external-data.py/osm-carto'})
 
             # DB setup
