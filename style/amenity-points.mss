@@ -2338,7 +2338,7 @@
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
-    text-dy: 6;
+    text-dy: 7;
   }
 
   [feature = 'amenity_atm'][zoom >= 19],
