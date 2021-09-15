@@ -8,9 +8,10 @@
 // The SQL has `ORDER BY admin_level DESC`, so the boundary with the lowest
 // admin_level is rendered on top.
 //
-// Where borders overlap, the overlapping border maskes the one below it. This
-// is done by drawing a background line behind each boundary line with
-// comp-op: dst-out.
+// Where borders overlap the simple case is that a border is just drawn on top.
+// If the overlapping border is a dashed line, it first draws a continuous
+// background line with comp-op: dst-out to mask out the line below, and then
+// draws the dashed line on top.
 
 #admin-low-zoom[zoom < 8],
 #admin-mid-zoom[zoom >= 8][zoom < 13],
@@ -20,54 +21,23 @@
 
   [admin_level = '2']::fill {
     [zoom >= 4] {
-      background/line-join: bevel;
-      background/line-comp-op: dst-out;
-      background/line-width: 1.2;
       line-join: bevel;
       line-color: @admin-boundaries;
       line-width: 1.2;
     }
-    [zoom >= 5] {
-      background/line-width: 1.5;
-      line-width: 1.5;
-    }
-    [zoom >= 6] {
-      background/line-width: 1.8;
-      line-width: 1.8;
-    }
-    [zoom >= 7] {
-      background/line-width: 2.2;
-      line-width: 2.2;
-    }
-    [zoom >= 8] {
-      background/line-width: 3;
-      line-width: 3;
-    }
-    [zoom >= 9] {
-      background/line-width: 3.5;
-      line-width: 3.5;
-    }
+    [zoom >= 5] { line-width: 1.5; }
+    [zoom >= 6] { line-width: 1.8; }
+    [zoom >= 7] { line-width: 2.2; }
+    [zoom >= 8] { line-width: 3; }
+    [zoom >= 9] { line-width: 3.5; }
     [zoom >= 10] {
-      background/line-width: 4.5;
       line-color: @admin-boundaries-wide;
       line-width: 4.5;
     }
-    [zoom >= 11] {
-      background/line-width: 5.5;
-      line-width: 5;
-    }
-    [zoom >= 12] {
-      background/line-width: 6;
-      line-width: 6;
-    }
-    [zoom >= 13] {
-      background/line-width: 7;
-      line-width: 7;
-    }
-    [zoom >= 14] {
-      background/line-width: 8;
-      line-width: 8;
-    }
+    [zoom >= 11] { line-width: 5; }
+    [zoom >= 12] { line-width: 6; }
+    [zoom >= 13] { line-width: 7; }
+    [zoom >= 14] { line-width: 8; }
   }
   [admin_level = '2']::centerline {
     [zoom >= 8] {
@@ -109,54 +79,23 @@
 
   [admin_level = '3']::fill {
     [zoom >= 4] {
-      background/line-join: bevel;
-      background/line-color: white;
-      background/line-width: 0.6;
       line-join: bevel;
       line-color: @admin-boundaries;
       line-width: 0.6;
     }
-    [zoom >= 5] {
-      background/line-width: 0.8;
-      line-width: 0.8;
-    }
-    [zoom >= 6] {
-      background/line-width: 1;
-      line-width: 1;
-    }
-    [zoom >= 7] {
-      background/line-width: 1.2;
-      line-width: 1.2;
-    }
-    [zoom >= 8] {
-      background/line-width: 1.8;
-      line-width: 1.8;
-    }
-    [zoom >= 9] {
-      background/line-width: 2.5;
-      line-width: 2.5;
-    }
+    [zoom >= 5] { line-width: 0.8; }
+    [zoom >= 6] { line-width: 1; }
+    [zoom >= 7] { line-width: 1.2; }
+    [zoom >= 8] { line-width: 1.8; }
+    [zoom >= 9] { line-width: 2.5; }
     [zoom >= 10] {
-      background/line-width: 3.2;
       line-color: @admin-boundaries-wide;
       line-width: 3.2;
     }
-    [zoom >= 11] {
-      background/line-width: 4;
-      line-width: 4;
-    }
-    [zoom >= 12] {
-      background/line-width: 4.5;
-      line-width: 4.5;
-    }
-    [zoom >= 13] {
-      background/line-width: 5;
-      line-width: 5;
-    }
-    [zoom >= 14] {
-      background/line-width: 5.5;
-      line-width: 5.5;
-    }
+    [zoom >= 11] { line-width: 4; }
+    [zoom >= 12] { line-width: 4.5; }
+    [zoom >= 13] { line-width: 5; }
+    [zoom >= 14] { line-width: 5.5; }
   }
   [admin_level = '3']::centerline {
     [zoom >= 10] {
@@ -190,55 +129,24 @@
 
   [admin_level = '4']::fill {
     [zoom >= 4] {
-      background/line-join: bevel;
-      background/line-comp-op: dst-out;
-      background/line-width: 0.4;
       line-color: @admin-boundaries;
       line-join: bevel;
       line-width: 0.4;
       line-clip: false;
     }
-    [zoom >= 5] {
-      background/line-width: 0.5;
-      line-width: 0.5;
-    }
-    [zoom >= 6] {
-      background/line-width: 0.6;
-      line-width: 0.6;
-    }
-    [zoom >= 7] {
-      background/line-width: 0.8;
-      line-width: 0.8;
-    }
-    [zoom >= 8] {
-      background/line-width: 1;
-      line-width: 1;
-    }
-    [zoom >= 9] {
-      background/line-width: 1.5;
-      line-width: 1.5;
-    }
+    [zoom >= 5] { line-width: 0.5; }
+    [zoom >= 6] { line-width: 0.6; }
+    [zoom >= 7] { line-width: 0.8; }
+    [zoom >= 8] { line-width: 1; }
+    [zoom >= 9] { line-width: 1.5; }
     [zoom >= 10] {
-      background/line-width: 2;
       line-color: @admin-boundaries-wide;
       line-width: 2;
     }
-    [zoom >= 11] {
-      background/line-width: 2.5;
-      line-width: 2.8;
-    }
-    [zoom >= 12] {
-      background/line-width: 3;
-      line-width: 3;
-    }
-    [zoom >= 13] {
-      background/line-width: 3.5;
-      line-width: 3.5;
-    }
-    [zoom >= 14] {
-      background/line-width: 4;
-      line-width: 4;
-    }
+    [zoom >= 11] { line-width: 2.8; }
+    [zoom >= 12] { line-width: 3; }
+    [zoom >= 13] { line-width: 3.5; }
+    [zoom >= 14] { line-width: 4; }
   }
   [admin_level = '4']::centerline {
     [zoom >= 10] {
