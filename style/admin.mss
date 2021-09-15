@@ -8,10 +8,6 @@
 // The SQL has `ORDER BY admin_level DESC`, so the boundary with the lowest
 // admin_level is rendered on top.
 //
-// Three attachments are used, with minor borders before major ones, and the
-// thin centerline last, to handle overlapping borders correctly and allow each
-// type to have a different level of opacity.
-//
 // Where borders overlap, the overlapping border maskes the one below it. This
 // is done by drawing a background line behind each boundary line with
 // comp-op: dst-out.
@@ -19,24 +15,10 @@
 #admin-low-zoom[zoom < 8],
 #admin-mid-zoom[zoom >= 8][zoom < 13],
 #admin-high-zoom[zoom >= 13] {
-  ::firstline { opacity: 0.5; }
-  ::wideline { opacity: 0.5; }
-  ::narrowline { opacity: 0.6; }
+  ::fill { opacity: 0.5; }
+  ::centerline { opacity: 0.6; }
 
-  [admin_level = '2']::firstline {
-    [zoom >= 8] {
-      background/line-join: bevel;
-      background/line-comp-op: dst-out;
-      background/line-width: 3;
-    }
-    [zoom >= 9] { background/line-width: 3.5; }
-    [zoom >= 10] { background/line-width: 4.5; }
-    [zoom >= 11] { background/line-width: 5.5; }
-    [zoom >= 12] { background/line-width: 6; }
-    [zoom >= 13] { background/line-width: 7; }
-    [zoom >= 14] { background/line-width: 8; }
-  }
-  [admin_level = '2']::wideline {
+  [admin_level = '2']::fill {
     [zoom >= 4] {
       background/line-join: bevel;
       background/line-comp-op: dst-out;
@@ -87,7 +69,7 @@
       line-width: 8;
     }
   }
-  [admin_level = '2']::narrowline {
+  [admin_level = '2']::centerline {
     [zoom >= 8] {
       background/line-join: bevel;
       background/line-comp-op: dst-out;
@@ -125,20 +107,7 @@
     }
   }
 
-  [admin_level = '3']::firstline {
-    [zoom >= 8] {
-      background/line-join: bevel;
-      background/line-comp-op: dst-out;
-      background/line-width: 1.8;
-    }
-    [zoom >= 9] { background/line-width: 2.5; }
-    [zoom >= 10] { background/line-width: 3.2; }
-    [zoom >= 11] { background/line-width: 4; }
-    [zoom >= 12] { background/line-width: 4.5; }
-    [zoom >= 13] { background/line-width: 5; }
-    [zoom >= 14] { background/line-width: 5.5; }
-  }
-  [admin_level = '3']::wideline {
+  [admin_level = '3']::fill {
     [zoom >= 4] {
       background/line-join: bevel;
       background/line-color: white;
@@ -189,7 +158,7 @@
       line-width: 5.5;
     }
   }
-  [admin_level = '3']::narrowline {
+  [admin_level = '3']::centerline {
     [zoom >= 10] {
       background/line-join: bevel;
       background/line-comp-op: dst-out;
@@ -219,20 +188,7 @@
     }
   }
 
-  [admin_level = '4']::firstline {
-    [zoom >= 8] {
-      background/line-join: bevel;
-      background/line-comp-op: dst-out;
-      background/line-width: 1;
-    }
-    [zoom >= 9] { background/line-width: 1.5; }
-    [zoom >= 10] { background/line-width: 2; }
-    [zoom >= 11] { background/line-width: 2.5; }
-    [zoom >= 12] { background/line-width: 3; }
-    [zoom >= 13] { background/line-width: 3.5; }
-    [zoom >= 14] { background/line-width: 4; }
-  }
-  [admin_level = '4']::wideline {
+  [admin_level = '4']::fill {
     [zoom >= 4] {
       background/line-join: bevel;
       background/line-comp-op: dst-out;
@@ -284,7 +240,7 @@
       line-width: 4;
     }
   }
-  [admin_level = '4']::narrowline {
+  [admin_level = '4']::centerline {
     [zoom >= 10] {
       background/line-join: bevel;
       background/line-comp-op: dst-out;
@@ -313,7 +269,7 @@
     }
   }
 
-  [admin_level = '5'][zoom >= 8]::firstline {
+  [admin_level = '5'][zoom >= 8]::fill {
     background/line-join: bevel;
     background/line-comp-op: dst-out;
     background/line-width: 0.6;
@@ -347,7 +303,7 @@
       line-dasharray: 20,2,8,2;
     }
   }
-  [admin_level = '6'][zoom >= 10]::firstline {
+  [admin_level = '6'][zoom >= 10]::fill {
     background/line-join: bevel;
     background/line-comp-op: dst-out;
     background/line-width: 1;
@@ -371,7 +327,7 @@
       line-dasharray: 16,2,3,2;
     }
   }
-  [admin_level = '7']::firstline {
+  [admin_level = '7']::fill {
     [zoom >= 11] {
       background/line-join: bevel;
       background/line-comp-op: dst-out;
@@ -393,7 +349,7 @@
       line-dasharray: 12,2,3,2,3,2;
     }
   }
-  [admin_level = '8']::firstline {
+  [admin_level = '8']::fill {
     [zoom >= 12] {
       background/line-join: bevel;
       background/line-comp-op: dst-out;
@@ -411,7 +367,7 @@
     }
   }
 
-  [admin_level = '9'][zoom >= 13]::firstline {
+  [admin_level = '9'][zoom >= 13]::fill {
     background/line-join: bevel;
     background/line-comp-op: dst-out;
     background/line-width: 1.2;
@@ -426,7 +382,7 @@
       line-dasharray: 0,4,2,2,3,2,2,4;
     }
   }
-  [admin_level = '10'][zoom >= 14]::firstline {
+  [admin_level = '10'][zoom >= 14]::fill {
     background/line-join: bevel;
     background/line-comp-op: dst-out;
     background/line-width: 1.2;
