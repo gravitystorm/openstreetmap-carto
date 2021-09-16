@@ -11,7 +11,8 @@
 // Where borders overlap the simple case is that a border is just drawn on top.
 // If the overlapping border is a dashed line, it first draws a continuous
 // background line with comp-op: dst-out to mask out the line below, and then
-// draws the dashed line on top.
+// draws the dashed line on top. The mask line uses `gamma: 0` to prevent
+// aliasing issues.
 
 #admin-low-zoom[zoom < 8],
 #admin-mid-zoom[zoom >= 8][zoom < 13],
@@ -43,6 +44,7 @@
     [zoom >= 8] {
       mask/line-join: bevel;
       mask/line-comp-op: dst-out;
+      mask/line-gamma: 0;
       mask/line-width: 0.6;
       line-join: bevel;
       line-color: @admin-boundaries-narrow;
@@ -101,6 +103,7 @@
     [zoom >= 10] {
       mask/line-join: bevel;
       mask/line-comp-op: dst-out;
+      mask/line-gamma: 0;
       mask/line-width: 0.8;
       line-join: bevel;
       line-color: @admin-boundaries-narrow;
@@ -152,6 +155,7 @@
     [zoom >= 10] {
       mask/line-join: bevel;
       mask/line-comp-op: dst-out;
+      mask/line-gamma: 0;
       mask/line-width: 0.6;
       line-color: @admin-boundaries-narrow;
       line-width: 0.6;
@@ -180,6 +184,7 @@
   [admin_level = '5'][zoom >= 8]::fill {
     mask/line-join: bevel;
     mask/line-comp-op: dst-out;
+    mask/line-gamma: 0;
     mask/line-width: 0.6;
     line-join: bevel;
     line-color: @admin-boundaries;
@@ -214,6 +219,7 @@
   [admin_level = '6'][zoom >= 10]::fill {
     mask/line-join: bevel;
     mask/line-comp-op: dst-out;
+    mask/line-gamma: 0;
     mask/line-width: 1;
     line-join: bevel;
     line-color: @admin-boundaries;
@@ -239,6 +245,7 @@
     [zoom >= 11] {
       mask/line-join: bevel;
       mask/line-comp-op: dst-out;
+      mask/line-gamma: 0;
       mask/line-width: 1.2;
       line-join: bevel;
       line-color: @admin-boundaries;
@@ -261,6 +268,7 @@
     [zoom >= 12] {
       mask/line-join: bevel;
       mask/line-comp-op: dst-out;
+      mask/line-gamma: 0;
       mask/line-width: 1.4;
       line-join: bevel;
       line-color: @admin-boundaries;
@@ -278,6 +286,7 @@
   [admin_level = '9'][zoom >= 13]::fill {
     mask/line-join: bevel;
     mask/line-comp-op: dst-out;
+    mask/line-gamma: 0;
     mask/line-width: 1.2;
     line-join: bevel;
     line-color: @admin-boundaries;
@@ -293,6 +302,7 @@
   [admin_level = '10'][zoom >= 14]::fill {
     mask/line-join: bevel;
     mask/line-comp-op: dst-out;
+    mask/line-gamma: 0;
     mask/line-width: 1.2;
     line-join: bevel;
     line-color: @admin-boundaries;
