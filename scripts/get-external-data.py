@@ -244,10 +244,10 @@ def main():
                     logging.info("  Download complete ({} bytes)".format(len(download.content)))
 
                     if "archive" in source and source["archive"]["format"] == "zip":
+                        logging.info("  Decompressing file")
                         zip = zipfile.ZipFile(io.BytesIO(download.content))
                         for member in source["archive"]["files"]:
                             zip.extract(member, workingdir)
-                        logging.info("  File decompressed")
 
                     ogrpg = "PG:dbname={}".format(database)
 
