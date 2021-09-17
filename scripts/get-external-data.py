@@ -174,6 +174,8 @@ def main():
     else:
         logging.basicConfig(level=logging.INFO)
 
+    logging.info("Starting load of external data into database")
+
     with open(opts.config) as config_file:
         config = yaml.safe_load(config_file)
         data_dir = opts.data or config["settings"]["data_dir"]
@@ -229,18 +231,23 @@ def main():
                 else:
                     headers = {}
 
+                logging.info("  Fetching {}".format(source["url"]))
                 download = s.get(source["url"], headers=headers)
                 download.raise_for_status()
 
-                if (download.status_code == 200):
+                if download.status_code == requests.codes.ok:
                     if "Last-Modified" in download.headers:
                         new_last_modified = download.headers["Last-Modified"]
                     else:
                         new_last_modified = None
+
+                    logging.info("  Download complete ({} bytes)".format(len(download.content)))
+
                     if "archive" in source and source["archive"]["format"] == "zip":
                         zip = zipfile.ZipFile(io.BytesIO(download.content))
                         for member in source["archive"]["files"]:
                             zip.extract(member, workingdir)
+                        logging.info("  File decompressed")
 
                     ogrpg = "PG:dbname={}".format(database)
 
@@ -266,6 +273,7 @@ def main():
                     ogrcommand += [ogrpg,
                                    os.path.join(workingdir, source["file"])]
 
+                    logging.info("  Importing into database")
                     logging.debug("running {}".format(
                         subprocess.list2cmdline(ogrcommand)))
 
@@ -283,13 +291,18 @@ def main():
                         raise RuntimeError(
                             "ogr2ogr error when loading table {}".format(name))
 
+                    logging.info("  Import complete")
+
                     this_table.index()
                     if renderuser is not None:
                         this_table.grant_access(renderuser)
                     this_table.replace(new_last_modified)
+                elif download.status_code == requests.codes.not_modified:
+                    logging.info("  Table {} did not require updating".format(name))
                 else:
-                    logging.info(
-                        "Table {} did not require updating".format(name))
+                    logging.critical("  Unexpected response code ({}".format(download.status_code))
+                    logging.critical("  Table {} was not updated".format(name))
+
             if conn:
                 conn.close()
 
