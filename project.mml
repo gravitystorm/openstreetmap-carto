@@ -164,26 +164,6 @@ Layer:
         ) AS icesheet_polygons
     properties:
       minzoom: 5
-  - id: water-lines-casing
-    geometry: linestring
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            waterway,
-            CASE WHEN tags->'intermittent' IN ('yes')
-              OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
-              THEN 'yes' ELSE 'no' END AS int_intermittent,
-            CASE WHEN tunnel IN ('yes', 'culvert') 
-              OR waterway='canal' AND tunnel = 'flooded'
-              THEN 'yes' ELSE 'no' END AS int_tunnel
-          FROM planet_osm_line
-          WHERE waterway IN ('stream', 'drain', 'ditch')
-        ) AS water_lines_casing
-    properties:
-      minzoom: 13
   - id: water-lines-low-zoom
     geometry: linestring
     <<: *extents
