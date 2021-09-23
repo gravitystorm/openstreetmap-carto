@@ -1,5 +1,6 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.3.1...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.4.0...master)
 
+## [v5.4.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.3.1...v5.4.0) - 2021-09-22
 ### Changes
 - Added a new `planet_osm_line_label` index (#4381)
 - Updated Docker development setup to use offical PostGIS images (#4294)
