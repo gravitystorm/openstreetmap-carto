@@ -1,17 +1,17 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.3.1...master)
 
 ### Changes
-- Fix type in text-line-spacing (#4455)
-- Shield dimensions (#4453)
-- Updated to work with pyscopg2 version 2.9.1 (#4451)
-- Fix advertising column shape (#4424)
-- Simplified version fixing tourism=information (#4420)
-- Make text for subway stations render at z>=15 (#4392)
-- Update README.md on v5 (#4357)
-- Windows line ending fix (#4330)
-- Documentation fixes (#4310)
-- De-emphasize parking=street_side (#4301)
-- Update DB dockerfile to use the postgis image (#4294)
+- Added a new `planet_osm_line_label` index (#4381)
+- Updated Docker development setup to use offical PostGIS images (#4294)
+- Fixed endline conversion issues with python setup scripts on Windows (#4330)
+- Added detailed rendering of golf courses (#4381, #4467)
+- De-emphasized street-side parking (#4301)
+- Changed subway stations to start text rendering at z15 (#4392)
+- Updated road shield generation scripts to Python 3 (#4453)
+- Updated external data loading script to support pyscopg2 2.9.1 (#4451)
+- Stopped displaying tourism=information with unknown information values
+- Switched the Natural Earth URL to point at its new location (#4466)
+- Added more logging to the external data loading script (#4472)
 
 ## [v5.3.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.3.0...v5.3.1) - 2021-02-04
 ### Changes
