@@ -693,6 +693,9 @@ function osm2pgsql.process_way(object)
         if props ~= nil then
             tables.admin:add_row({admin_level = props.level, multiple_relations = (props.parents > 1), geom = { create = 'line' }})
         end
+        if z_order(object.tags) ~= nil then
+            add_transport_line(object.tags)
+        end       
     end
 end
 
