@@ -49,7 +49,7 @@ class Table:
         self._dst_schema = schema
         self._metadata_table = metadata_table
 
-    # Clean up the temporary schema in preperation for loading
+    # Clean up the temporary schema in preparation for loading
     def clean_temp(self):
         with self._conn.cursor() as cur:
             cur.execute('''DROP TABLE IF EXISTS "{temp_schema}"."{name}"'''
