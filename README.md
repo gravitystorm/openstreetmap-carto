@@ -37,7 +37,7 @@ cartographic project you can expect the following:
   shapefiles and fonts but will not contain changes that require software or
   database upgrades.
 * MAJOR: Any change the requires reloading a database, or upgrading software
-  dependecies will trigger a major version change.
+  dependencies will trigger a major version change.
 
 # Roadmap
 

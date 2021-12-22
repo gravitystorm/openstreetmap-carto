@@ -121,7 +121,7 @@ local delete_tags = {
     'dcgis:gis_id',
     -- Building Identification Number (New York, US)
     'nycdoitt:bin',
-    -- Chicago Building Inport (US)
+    -- Chicago Building Import (US)
     'chicago:building_id',
     -- Louisville, Kentucky/Building Outlines Import (US)
     'lojic:bgnum',

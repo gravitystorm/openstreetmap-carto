@@ -51,7 +51,7 @@ DejaVu Sans is used as an optional fallback font for systems without Noto Sans. 
 
 Hanazono is used a fallback for seldom used CJK characters that are not covered by Noto.
 
-Unifont is used as a last resort fallback, with it's excellent coverage, common presence on machines, and ugly look. For compatibility reasons, we support two Linux-distributions-specific versions of Unifont, therefor it's expected that you *always* get a warning about a missing Unifont version.
+Unifont is used as a last resort fallback, with it's excellent coverage, common presence on machines, and ugly look. For compatibility reasons, we support two Linux-distributions-specific versions of Unifont, therefore it's expected that you *always* get a warning about a missing Unifont version.
 
 If you do not install all the fonts, the rendering itself will not break, but missing glyphs will be ugly.
 
