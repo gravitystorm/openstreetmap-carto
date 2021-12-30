@@ -168,7 +168,7 @@ text-line-spacing: -1.5; // -0.15 em
 ```
 - The text-size is 10, so we have: 1 em = 10
 - The text-wrap-width should be 3.0 em, so we have: 3.0 * 10 = 30
-- The text-linze-spacing should be -0.15 em, so we have: -0.15 * 10 = -1.5
+- The text-line-spacing should be -0.15 em, so we have: -0.15 * 10 = -1.5
 
 If text-size increases on higher zoom levels the other parameters also have
 to be adjusted to guarantee the same line wrap and same relative line spacing:

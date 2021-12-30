@@ -71,6 +71,11 @@ The v4.x series includes [osm2pgsql lua transforms](https://github.com/openstree
 and a hstore column with all other tags, allowing use of more OpenStreetMap data. Users need
 to reload their databases, v3.x compatibility is not maintained.
 
+## Database schema change (v5.x)
+
+The v5.x series updates Lua tag transforms, linestring and polygon decisions have changed.
+
+
 There are over [400 open requests][issues], some that have been open for years.
 These need reviewing and dividing into obvious fixes, or additional new features
 that need some cartographic judgement.

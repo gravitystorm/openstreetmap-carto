@@ -54,7 +54,7 @@ class Table:
         with self._conn.cursor() as cur:
             cur.execute('''DROP TABLE IF EXISTS "{temp_schema}"."{name}"'''
                         .format(name=self._name, temp_schema=self._temp_schema))
-        self._conn.commit()
+            self._conn.commit()
 
     # get the last modified date from the metadata table
     def last_modified(self):
@@ -64,6 +64,7 @@ class Table:
             results = cur.fetchone()
             if results is not None:
                 return results[0]
+            self._conn.commit()
 
     def grant_access(self, user):
         with self._conn.cursor() as cur:
@@ -98,7 +99,7 @@ class Table:
             # matter since it'll never need a vacuum.
             cur.execute('''ALTER TABLE "{temp_schema}"."{name}" RESET ( autovacuum_enabled );'''
                         .format(name=self._name, temp_schema=self._temp_schema))
-        self._conn.commit()
+            self._conn.commit()
 
         # VACUUM can't be run in transaction, so autocommit needs to be turned on
         old_autocommit = self._conn.autocommit
@@ -173,6 +174,8 @@ def main():
     else:
         logging.basicConfig(level=logging.INFO)
 
+    logging.info("Starting load of external data into database")
+
     with open(opts.config) as config_file:
         config = yaml.safe_load(config_file)
         data_dir = opts.data or config["settings"]["data_dir"]
@@ -188,11 +191,12 @@ def main():
 
         renderuser = opts.renderuser or config["settings"].get("renderuser")
 
-        with requests.Session() as s, \
-            psycopg2.connect(database=database,
+        with requests.Session() as s:
+            conn = None
+            conn = psycopg2.connect(database=database,
                              host=host, port=port,
                              user=user,
-                             password=password) as conn:
+                             password=password)
 
             s.headers.update({'User-Agent': 'get-external-data.py/osm-carto'})
 
@@ -227,15 +231,20 @@ def main():
                 else:
                     headers = {}
 
+                logging.info("  Fetching {}".format(source["url"]))
                 download = s.get(source["url"], headers=headers)
                 download.raise_for_status()
 
-                if (download.status_code == 200):
+                if download.status_code == requests.codes.ok:
                     if "Last-Modified" in download.headers:
                         new_last_modified = download.headers["Last-Modified"]
                     else:
                         new_last_modified = None
+
+                    logging.info("  Download complete ({} bytes)".format(len(download.content)))
+
                     if "archive" in source and source["archive"]["format"] == "zip":
+                        logging.info("  Decompressing file")
                         zip = zipfile.ZipFile(io.BytesIO(download.content))
                         for member in source["archive"]["files"]:
                             zip.extract(member, workingdir)
@@ -264,6 +273,7 @@ def main():
                     ogrcommand += [ogrpg,
                                    os.path.join(workingdir, source["file"])]
 
+                    logging.info("  Importing into database")
                     logging.debug("running {}".format(
                         subprocess.list2cmdline(ogrcommand)))
 
@@ -281,13 +291,20 @@ def main():
                         raise RuntimeError(
                             "ogr2ogr error when loading table {}".format(name))
 
+                    logging.info("  Import complete")
+
                     this_table.index()
                     if renderuser is not None:
                         this_table.grant_access(renderuser)
                     this_table.replace(new_last_modified)
+                elif download.status_code == requests.codes.not_modified:
+                    logging.info("  Table {} did not require updating".format(name))
                 else:
-                    logging.info(
-                        "Table {} did not require updating".format(name))
+                    logging.critical("  Unexpected response code ({}".format(download.status_code))
+                    logging.critical("  Table {} was not updated".format(name))
+
+            if conn:
+                conn.close()
 
 
 if __name__ == '__main__':

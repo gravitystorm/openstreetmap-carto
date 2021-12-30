@@ -28,7 +28,7 @@
       [way_pixels >= 64] { polygon-gamma: 0.6; }
     }
     [int_intermittent = 'yes'] {
-      polygon-pattern-file: url('symbols/intermittent_water.png');
+      polygon-pattern-file: url('patterns/intermittent_water.svg');
       [way_pixels >= 4] { polygon-pattern-gamma: 0.75; }
       [way_pixels >= 64] { polygon-pattern-gamma: 0.6; }
     }

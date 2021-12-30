@@ -290,8 +290,7 @@
   text-name: "[name]";
   text-face-name: @book-fonts;
   text-fill: @protected-area;
-  [boundary='aboriginal_lands'],
-  [boundary='protected_area'][protect_class='24'] {
+  [boundary='aboriginal_lands'] {
     text-fill: @aboriginal;
   }
   text-halo-radius: @standard-halo-radius;
