@@ -441,6 +441,7 @@ local roads_info = {
         primary_link    = {z = 220, roads = true},
         secondary_link  = {z = 210, roads = true},
         tertiary_link   = {z = 200, roads = false},
+        busway          = {z = 170, roads = false},
         service         = {z = 150, roads = false},
         track           = {z = 110, roads = false},
         path            = {z = 100, roads = false},
