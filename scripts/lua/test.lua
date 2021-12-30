@@ -484,11 +484,11 @@ table_contents.planet_osm_transport_polygon = {}
 
 --[[
     This sets up an
-    1. admin_level=2 relation with ways 1, 2, 3, 5, 7, 8
+    1. admin_level=2 relation with ways 1, 2, 3, 5, 7, 8, 9
     2. admin_level=2 relation with ways 1, 2, 6, 7, 8
     3. admin_level=4 relation with ways 1, 3, 4
 
-    The ways have correct tags except for 7 and 8
+    The ways have correct tags except for 7 and 8. Way 9 also has road tags.
 ]]
 
 -- Currently in phase 1
@@ -501,7 +501,8 @@ local test_ways = {
     { id = 5, tags = { boundary = "administrative", admin_level = "2"} },
     { id = 6, tags = { boundary = "administrative", admin_level = "2"} },
     { id = 7, tags = { boundary = "administrative", admin_level = "3"} }, -- incorrect tags
-    { id = 8, tags = { } } -- incorrect tags
+    { id = 8, tags = { } }, -- incorrect tags
+    { id = 9, tags = { boundary = "administrative", admin_level = "2", highway = "road"} }
 }
 -- add another way that isn't part of a relation
 local test_relations = {
@@ -512,7 +513,8 @@ local test_relations = {
                   {type = 'w', ref = 3, role = "outer"},
                   {type = 'w', ref = 5, role = "outer"},
                   {type = 'w', ref = 7, role = "outer"},
-                  {type = 'w', ref = 8, role = "outer"} } },
+                  {type = 'w', ref = 8, role = "outer"},
+                  {type = 'w', ref = 9, role = "outer"} } },
     { id = 2, tags = {type = "boundary", boundary = "administrative", admin_level = "2"},
       members = { {type = 'w', ref = 1, role = "outer"},
                   {type = 'w', ref = 2, role = "outer"},
@@ -546,6 +548,8 @@ end
 
 osm2pgsql.stage = 2
 
+-- This process should really delete from the planet_osm_line table, but there's no way to do that with the data we're collecting.
+-- osm2pgsql itself has access to more data
 for _, way in ipairs(test_ways) do
     if pending_ways[way.id] then
         osm2pgsql.process_way(way)
@@ -562,3 +566,4 @@ assert(deepcompare(table_contents.planet_osm_admin[5], {admin_level = 2, multipl
 assert(deepcompare(table_contents.planet_osm_admin[6], {admin_level = 2, multiple_relations = false, geom = {create = "line" } }), "row 6")
 assert(deepcompare(table_contents.planet_osm_admin[7], {admin_level = 2, multiple_relations = true, geom = {create = "line" } }), "row 7")
 assert(deepcompare(table_contents.planet_osm_admin[8], {admin_level = 2, multiple_relations = true, geom = {create = "line" } }), "row 8")
+assert(deepcompare(table_contents.planet_osm_admin[9], {admin_level = 2, multiple_relations = false, geom = {create = "line" } }), "row 9")

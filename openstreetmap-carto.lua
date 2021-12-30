@@ -664,34 +664,33 @@ function osm2pgsql.process_node(object)
 end
 
 function osm2pgsql.process_way(object)
-    if osm2pgsql.stage ==  1 then
-        if clean_tags(object.tags) then
-            return
-        end
-
-        local area_tags = isarea(object.tags)
-        if object.is_closed and area_tags then
-            add_polygon(object.tags)
-
-            if z_order(object.tags) ~= nil then
-                add_transport_polygon(object.tags)
-            end
-        else
-            add_line(object.tags)
-
-            if z_order(object.tags) ~= nil then
-                add_transport_line(object.tags)
-            end
-
-            if roads(object.tags) then
-                add_roads(object.tags)
-            end
-        end
-    elseif osm2pgsql.stage == 2 then
+    if osm2pgsql.stage == 2 then
         -- Stage two processing is called on ways that are part of admin boundary relations
         local props = phase2_admin_ways[object.id]
         if props ~= nil then
             tables.admin:add_row({admin_level = props.level, multiple_relations = (props.parents > 1), geom = { create = 'line' }})
+        end
+    end
+    if clean_tags(object.tags) then
+        return
+    end
+
+    local area_tags = isarea(object.tags)
+    if object.is_closed and area_tags then
+        add_polygon(object.tags)
+
+        if z_order(object.tags) ~= nil then
+            add_transport_polygon(object.tags)
+        end
+    else
+        add_line(object.tags)
+
+        if z_order(object.tags) ~= nil then
+            add_transport_line(object.tags)
+        end
+
+        if roads(object.tags) then
+            add_roads(object.tags)
         end
     end
 end
