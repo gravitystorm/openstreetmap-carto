@@ -1080,10 +1080,12 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way,
+            ST_LineMerge(ST_Collect(way)) AS way,
             admin_level
           FROM planet_osm_admin
           WHERE admin_level BETWEEN 0 AND 4
+            AND way && !BBOX!
+          GROUP BY admin_level
           ORDER BY admin_level DESC
         ) AS admin_low_zoom
     properties:
@@ -1096,10 +1098,12 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way,
+            ST_LineMerge(ST_Collect(way)) AS way,
             admin_level
           FROM planet_osm_admin
           WHERE admin_level BETWEEN 0 AND 8
+            AND way && !BBOX!
+          GROUP BY admin_level
           ORDER BY admin_level DESC
         ) AS admin_mid_zoom
     properties:
@@ -1112,10 +1116,12 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way,
+            ST_LineMerge(ST_Collect(way)) AS way,
             admin_level
           FROM planet_osm_admin
           WHERE admin_level BETWEEN 0 AND 10
+            AND way && !BBOX!
+          GROUP BY admin_level
           ORDER BY admin_level DESC
         ) AS admin_high_zoom
     properties:
