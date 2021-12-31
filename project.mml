@@ -1084,7 +1084,7 @@ Layer:
             admin_level
           FROM planet_osm_admin
           WHERE admin_level BETWEEN 0 AND 4
-            AND way && !BBOX!
+            AND way && !bbox!
           GROUP BY admin_level
           ORDER BY admin_level DESC
         ) AS admin_low_zoom
@@ -1102,7 +1102,7 @@ Layer:
             admin_level
           FROM planet_osm_admin
           WHERE admin_level BETWEEN 0 AND 8
-            AND way && !BBOX!
+            AND way && !bbox!
           GROUP BY admin_level
           ORDER BY admin_level DESC
         ) AS admin_mid_zoom
@@ -1120,7 +1120,7 @@ Layer:
             admin_level
           FROM planet_osm_admin
           WHERE admin_level BETWEEN 0 AND 10
-            AND way && !BBOX!
+            AND way && !bbox!
           GROUP BY admin_level
           ORDER BY admin_level DESC
         ) AS admin_high_zoom
