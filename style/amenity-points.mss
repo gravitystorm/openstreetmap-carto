@@ -192,6 +192,27 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_parcel_locker'] {
+    marker-fill: @amenity-brown;
+    [zoom = 17] {
+      marker-width: 4;
+      marker-line-width: 0;
+    }
+    [zoom >= 18] {
+      marker-file: url('symbols/amenity/parcel_locker.svg');
+      marker-clip: false;
+      text-name: "[name]";
+      text-dy: 10;
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-fill: @amenity-brown;
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+    }
+  }
+
   [feature = 'highway_traffic_signals'][zoom >= 17] {
     marker-file: url('symbols/highway/traffic_light.svg');
     marker-fill: #545454;
