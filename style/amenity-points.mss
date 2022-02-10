@@ -192,24 +192,15 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_parcel_locker'] {
+  [feature = 'amenity_parcel_locker'][zoom >= 17] {
     marker-fill: @amenity-brown;
-    [zoom = 17] {
+    [zoom >= 17][zoom < 18] {
       marker-width: 4;
       marker-line-width: 0;
     }
     [zoom >= 18] {
       marker-file: url('symbols/amenity/parcel_locker.svg');
       marker-clip: false;
-      text-name: "[name]";
-      text-dy: 10;
-      text-size: @standard-font-size;
-      text-wrap-width: @standard-wrap-width;
-      text-line-spacing: @standard-line-spacing-size;
-      text-fill: @amenity-brown;
-      text-face-name: @standard-font;
-      text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill;
     }
   }
 
@@ -2988,6 +2979,18 @@
       [feature = 'amenity_bicycle_parking'],
       [feature = 'amenity_motorcycle_parking'] { text-dy: 12; }
     }
+  }
+
+  [feature = 'amenity_parcel_locker'][zoom >= 18] {
+    text-name: "[name]";
+    text-dy: 10;
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: @amenity-brown;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
   }
 }
 
