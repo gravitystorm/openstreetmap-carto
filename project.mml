@@ -1478,7 +1478,7 @@ Layer:
               way,
               CASE
                 WHEN amenity = 'parcel_locker'
-                THEN CONCAT(COALESCE(tags->'brand', tags->'operator', name), E'\n' || ref)
+                THEN CONCAT_WS(E'\n', COALESCE(tags->'brand', tags->'operator', name), ref)
                 ELSE 
                   CONCAT(
                     name,
