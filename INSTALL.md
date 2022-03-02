@@ -62,7 +62,7 @@ For more details, see the documentation at [fonts.mss](style/fonts.mss).
 On Ubuntu 16.04 or Debian Testing you can download and install most of the required fonts
 
 ```
-sudo apt-get install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted fonts-hanazono ttf-unifont
+sudo apt-get install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted fonts-hanazono fonts-unifont
 ```
 
 Noto Emoji Regular (*not* Noto Color Emoji) can be downloaded [from the Noto Emoji repository](https://github.com/googlei18n/noto-emoji).
