@@ -582,7 +582,8 @@
   [feature = 'amenity_kindergarten'],
   [feature = 'amenity_community_centre'],
   [feature = 'amenity_social_facility'],
-  [feature = 'amenity_arts_centre'] {
+  [feature = 'amenity_arts_centre'],
+  [feature = 'landuse_education'] {
     [zoom >= 10] {
       polygon-fill: @built-up-lowzoom;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }

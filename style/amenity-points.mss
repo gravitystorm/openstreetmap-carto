@@ -2175,6 +2175,7 @@
   [feature = 'amenity_school'],
   [feature = 'amenity_college'],
   [feature = 'amenity_university'],
+  [feature = 'landuse_education'],
   [feature = 'landuse_religious'],
   [feature = 'natural_heath'],
   [feature = 'natural_scrub'],
@@ -2286,7 +2287,8 @@
       [feature = 'amenity_kindergarten'],
       [feature = 'amenity_school'],
       [feature = 'amenity_college'],
-      [feature = 'amenity_university'] {
+      [feature = 'amenity_university'],
+      [feature = 'landuse_education'] {
         text-fill: darken(@societal_amenities, 80%);
       }
       [feature = 'landuse_religious'] {
