@@ -8,6 +8,7 @@
 @allotments: #c9e1bf;   // Lch(87,20,135)
 @orchard: #aedfa3; // also vineyard, plant_nursery
 @hedge: @forest;       // Lch(80,30,135)
+@shrubbery: #b4d7a2;
 
 // --- "Base" landuses ---
 
@@ -791,6 +792,21 @@
     [natural = 'scrub'] {
       polygon-pattern-file: url('symbols/scrub.png');
       polygon-pattern-alignment: global;
+    }
+    [natural = 'shrubbery'] {
+      polygon-fill: @shrubbery;
+      [density = 'sparse'] {
+        polygon-pattern-file: url('symbols/shrubbery/sparse.svg');
+        polygon-pattern-alignment: global;
+      }
+      [density = 'medium'] {
+        polygon-pattern-file: url('symbols/shrubbery/medium.svg');
+        polygon-pattern-alignment: global;
+      }
+      [density = 'dense'] {
+        polygon-pattern-file: url('symbols/shrubbery/dense.svg');
+        polygon-pattern-alignment: global;
+      }
     }
   }
 
