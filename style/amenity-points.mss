@@ -847,7 +847,7 @@
   }
 
   [feature = 'shop'] {
-    [shop != 'mall'][shop != 'massage'][zoom >= 17],
+    [shop != 'mall'][shop != 'massage'][shop != 'car_repair'][zoom >= 17],
     [shop = 'supermarket'][zoom >= 16],
     [shop = 'department_store'][zoom >= 16] {
       marker-clip: false;
@@ -1022,9 +1022,11 @@
       marker-file: url('symbols/shop/car_parts.svg');
     }
 
-    [shop = 'car_repair'][zoom >= 18] {
-      marker-file: url('symbols/shop/car_repair.svg');
+    [shop = 'car_repair'][zoom >= 17] {
       marker-fill: @amenity-brown;
+      [zoom >= 18] {
+        marker-file: url('symbols/shop/car_repair.svg');
+      }
     }
 
     [shop = 'dairy'][zoom >= 18] {
