@@ -1024,7 +1024,6 @@
 
     [shop = 'car_repair'][zoom >= 18] {
       marker-file: url('symbols/shop/car_repair.svg');
-      marker-fill: @amenity-brown;
     }
 
     [shop = 'dairy'][zoom >= 18] {
@@ -2604,9 +2603,6 @@
       text-face-name: @standard-font;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255, 255, 255, 0.6);
-      [shop = 'car_repair'] {
-        text-fill: @amenity-brown;
-      }
       [shop = 'massage'] {
         text-fill: @leisure-green;
       }
