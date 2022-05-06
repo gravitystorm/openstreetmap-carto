@@ -477,7 +477,8 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
   text-name: "[name]";
   text-face-name: @book-fonts;
   text-fill: @protected-area;
-  [boundary='aboriginal_lands'] {
+  [boundary='aboriginal_lands'],
+  [boundary='protected_area'][protect_class='22'] {
     text-fill: @aboriginal;
   }
   text-halo-radius: @standard-halo-radius;
@@ -498,7 +499,8 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
       opacity: 0.25;
       line-width: 1.2;
       line-color: @protected-area;
-      [boundary = 'aboriginal_lands'] {
+      [boundary = 'aboriginal_lands'],
+      [boundary = 'protected_area'][protect_class = '22'] {
         line-color: @aboriginal;
       }
       [zoom >= 9] {
@@ -518,7 +520,8 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
         // line-offset is always an offset to the inner side of the polygon.
         line-offset: -0.9;
         line-color: @protected-area;
-        [boundary = 'aboriginal_lands'] {
+        [boundary = 'aboriginal_lands'],
+        [boundary = 'protected_area'][protect_class = '22'] {
           line-color: @aboriginal;
         }
         line-join: round;
@@ -537,7 +540,8 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
         opacity: 0.15;
         line-width: 1.8;
         line-color: @protected-area;
-        [boundary = 'aboriginal_lands'] {
+        [boundary = 'aboriginal_lands'],
+        [boundary = 'protected_area'][protect_class = '22'] {
           line-color: @aboriginal;
         }
         line-join: round;

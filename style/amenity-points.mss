@@ -2050,7 +2050,15 @@
   [feature = 'boundary_national_park'],
   [feature = 'leisure_nature_reserve'],
   [feature = 'boundary_aboriginal_lands'],
-  [feature = 'boundary_protected_area'] {
+  [feature = 'boundary_protected_area_1'],
+  [feature = 'boundary_protected_area_1a'],
+  [feature = 'boundary_protected_area_1b'],
+  [feature = 'boundary_protected_area_2'],
+  [feature = 'boundary_protected_area_3'],
+  [feature = 'boundary_protected_area_4'],
+  [feature = 'boundary_protected_area_5'],
+  [feature = 'boundary_protected_area_6']
+  [feature = 'boundary_protected_area_22'] {
     [zoom >= 8][way_pixels > 3000][is_building = 'no'],
     [zoom >= 17] {
       text-name: "[name]";
@@ -2073,7 +2081,8 @@
       [feature = 'landuse_military'] {
         text-fill: darken(@military, 40%);
       }
-      [feature = 'boundary_aboriginal_lands'] {
+      [feature = 'boundary_aboriginal_lands'],
+      [feature = 'boundary_protected_area_22'] {
         text-fill: @aboriginal;
       }
       [feature = 'natural_wood'],
@@ -2082,7 +2091,14 @@
       }
       [feature = 'boundary_national_park'],
       [feature = 'leisure_nature_reserve'],
-      [feature = 'boundary_protected_area'] {
+      [feature = 'boundary_protected_area_1'],
+      [feature = 'boundary_protected_area_1a'],
+      [feature = 'boundary_protected_area_1b'],
+      [feature = 'boundary_protected_area_2'],
+      [feature = 'boundary_protected_area_3'],
+      [feature = 'boundary_protected_area_4'],
+      [feature = 'boundary_protected_area_5'],
+      [feature = 'boundary_protected_area_6'] {
         text-fill: @protected-area;
       }
     }
