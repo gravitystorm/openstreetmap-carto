@@ -704,7 +704,7 @@ function osm2pgsql.process_relation(object)
     if clean_tags(object.tags) then
         return
     end
-    if type == "boundary" or (type == "multipolygon" and object.tags["boundary"]) then
+    if (type == "boundary" or (type == "multipolygon" and object.tags["boundary"])) and object.tags.boundary == 'administrative' then
         add_line(object.tags)
 
         if roads(object.tags) then
