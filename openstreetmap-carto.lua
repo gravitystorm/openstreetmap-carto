@@ -40,6 +40,7 @@ local polygon_keys = {
 -- Objects with any of the following key/value combinations will be treated as linestring
 local linestring_values = {
     golf = {cartpath = true, hole = true, path = true}, 
+    disc_golf = {hole = true},
     emergency = {designated = true, destination = true, no = true, official = true, yes = true},
     historic = {citywalls = true},
     leisure = {track = true, slipway = true},

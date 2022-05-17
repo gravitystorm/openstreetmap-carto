@@ -1054,9 +1054,9 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, tags->'golf' AS golf
+            way, tags->'golf' AS golf, tags->'disc_golf' AS disc_golf
           FROM planet_osm_line
-          WHERE tags @> 'golf=>hole'
+          WHERE (tags @> 'golf=>hole' OR tags @> 'disc_golf=>hole')
         ) AS golf_line
     properties:
       minzoom: 16
@@ -1553,7 +1553,8 @@ Layer:
                                    THEN amenity END,
                 'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism END,
                 'place_' || CASE WHEN place IN ('locality') AND way_area IS NULL THEN place END,
-                'golf_' || CASE WHEN tags->'golf' IN ('hole', 'pin') THEN tags->'golf' END
+                'golf_' || CASE WHEN tags->'golf' IN ('hole', 'pin') THEN tags->'golf' END,
+                'disc_golf_' || CASE WHEN tags->'disc_golf' IN ('hole', 'basket') THEN tags->'disc_golf' END
               ) AS feature,
               access,
               CASE
@@ -2024,7 +2025,7 @@ Layer:
         (SELECT
           way,
             NULL as way_pixels,
-            COALESCE('aerialway_' || aerialway, 'attraction_' || CASE WHEN tags @> 'attraction=>water_slide' THEN 'water_slide' END, 'leisure_' || leisure, 'man_made_' || man_made, 'waterway_' || waterway, 'natural_' || "natural", 'golf_' || (tags->'golf')) AS feature,
+            COALESCE('aerialway_' || aerialway, 'attraction_' || CASE WHEN tags @> 'attraction=>water_slide' THEN 'water_slide' END, 'leisure_' || leisure, 'man_made_' || man_made, 'waterway_' || waterway, 'natural_' || "natural", 'golf_' || (tags->'golf'), 'disc_golf_' || (tags->'disc_golf')) AS feature,
             access,
             name,
             tags->'operator' as operator,
@@ -2042,7 +2043,7 @@ Layer:
               OR waterway IN ('dam', 'weir')
               OR "natural" IN ('arete', 'cliff', 'ridge'))
             AND name IS NOT NULL)
-            OR (tags @> 'golf=>hole' AND ref IS NOT NULL)
+            OR ((tags @> 'golf=>hole' OR tags @> 'disc_golf=>hole') AND ref IS NOT NULL)
         ) AS text_line
     properties:
       minzoom: 10

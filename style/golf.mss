@@ -25,7 +25,8 @@
 }
 
 #golf-line[zoom >= 16] {
-  [golf = 'hole'] {
+  [golf = 'hole'],
+  [disc_golf = 'hole'] {
     line-color: @golf-color;
     line-width: 0.5;
   }
@@ -33,7 +34,9 @@
 
 #text-line[zoom >= 16] {
   [feature = 'golf_hole'][ref != ''],
-  [feature = 'golf_hole'][name != ''] {
+  [feature = 'golf_hole'][name != ''],
+  [feature = 'disc_golf_hole'][ref != ''],
+  [feature = 'disc_golf_hole'][name != ''] {
     text-placement: line;
     text-size: 11;
     text-fill: @golf-color;
@@ -50,7 +53,9 @@
 
 #amenity-points[zoom >= 16] {
   [feature = 'golf_hole'],
-  [feature = 'golf_pin'] {
+  [feature = 'golf_pin'],
+  [feature = 'disc_golf_hole'],
+  [feature = 'disc_golf_basket'] {
     marker-file: url('symbols/leisure/golf_pin.svg');
     marker-fill: @golf-color;
     marker-clip: false;
@@ -58,7 +63,8 @@
 }
 
 #text-point[zoom >= 17] {
-  [feature = 'golf_pin'][ref != ''] {
+  [feature = 'golf_pin'][ref != ''],
+  [feature = 'disc_golf_basket'][ref != ''] {
     text-name: "[ref]";
     text-size: @standard-font-size;
     text-fill: @golf-color;
