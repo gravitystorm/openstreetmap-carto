@@ -1253,6 +1253,12 @@
     marker-clip: false;
   }
 
+  [feature = 'leisure_disc_golf_course'][zoom >= 15] {
+    marker-file: url('symbols/leisure/golf.svg');  /* TODO change to basket */
+    marker-fill: @leisure-green;
+    marker-clip: false;
+  }
+
   [feature = 'tourism_picnic_site'][zoom >= 16] {
     marker-file: url('symbols/tourism/picnic.svg');
     marker-fill: @leisure-green;
@@ -1970,7 +1976,8 @@
   }
 
   [feature = 'leisure_miniature_golf'][zoom >= 17],
-  [feature = 'leisure_golf_course'][zoom >= 15] {
+  [feature = 'leisure_golf_course'][zoom >= 15],
+  [feature = 'leisure_disc_golf_course'][zoom >= 15] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
