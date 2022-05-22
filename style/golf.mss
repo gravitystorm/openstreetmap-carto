@@ -53,10 +53,17 @@
 
 #amenity-points[zoom >= 16] {
   [feature = 'golf_hole'],
-  [feature = 'golf_pin'],
+  [feature = 'golf_pin'] {
+    marker-file: url('symbols/leisure/golf_pin.svg');
+    marker-fill: @golf-color;
+    marker-clip: false;
+  }
+}
+
+#amenity-points[zoom >= 17] {
   [feature = 'disc_golf_hole'],
   [feature = 'disc_golf_basket'] {
-    marker-file: url('symbols/leisure/golf_pin.svg');
+    marker-file: url('symbols/leisure/disc_golf_basket.svg');
     marker-fill: @golf-color;
     marker-clip: false;
   }

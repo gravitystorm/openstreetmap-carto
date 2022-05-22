@@ -1254,7 +1254,7 @@
   }
 
   [feature = 'leisure_disc_golf_course'][zoom >= 15] {
-    marker-file: url('symbols/leisure/golf.svg');  /* TODO change to basket */
+    marker-file: url('symbols/leisure/disc_golf_basket.svg');
     marker-fill: @leisure-green;
     marker-clip: false;
   }
