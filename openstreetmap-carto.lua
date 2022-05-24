@@ -17,6 +17,7 @@ local polygon_keys = {
     'building:part',
     'club',
     'golf',
+    'disc_golf',
     'emergency',
     'harbour',
     'healthcare',

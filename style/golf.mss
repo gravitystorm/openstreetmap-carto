@@ -22,6 +22,11 @@
       polygon-pattern-file: url('symbols/golf_rough.svg');
     }
   }
+  ::high-zoom[zoom >= 17] {
+    [feature = 'disc_golf_tee'] {
+      polygon-fill: @golf-color;
+    }
+  }
 }
 
 #golf-line[zoom >= 16] {
