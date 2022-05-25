@@ -103,3 +103,4 @@ maps using Mapnik, many based on this project. Some alternatives are:
 ## Previous maintainers
 
 * Matthijs Melissen [@matthijsmelissen](https://github.com/matthijsmelissen/)
+* Michael Glanznig [@nebulon42](https://github.com/nebulon42)
