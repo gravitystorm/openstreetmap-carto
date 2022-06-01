@@ -101,6 +101,6 @@ maps using Mapnik, many based on this project. Some alternatives are:
 
 ## Previous maintainers
 
-* Matthijs Melissen [@matthijsmelissen](https://github.com/matthijsmelissen/)
 * Michael Glanznig [@nebulon42](https://github.com/nebulon42)
+* Matthijs Melissen [@matthijsmelissen](https://github.com/matthijsmelissen/)
 * Mateusz Konieczny [@matkoniecz](https://github.com/matkoniecz/)
