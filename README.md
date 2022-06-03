@@ -76,7 +76,7 @@ to reload their databases, v3.x compatibility is not maintained.
 The v5.x series updates Lua tag transforms, linestring and polygon decisions have changed.
 
 
-There are over [400 open requests][issues], some that have been open for years.
+There are over [500 open requests][issues], some that have been open for years.
 These need reviewing and dividing into obvious fixes, or additional new features
 that need some cartographic judgement.
 
@@ -93,10 +93,14 @@ maps using Mapnik, many based on this project. Some alternatives are:
 # Maintainers
 
 * Andy Allan [@gravitystorm](https://github.com/gravitystorm/)
-* Matthijs Melissen [@matthijsmelissen](https://github.com/matthijsmelissen/)
 * Paul Norman [@pnorman](https://github.com/pnorman/)
-* Mateusz Konieczny [@matkoniecz](https://github.com/matkoniecz/)
 * Daniel Koć [@kocio-pl](https://github.com/kocio-pl)
 * Christoph Hormann [@imagico](https://github.com/imagico)
 * Lukas Sommer [@sommerluk](https://github.com/sommerluk)
 * Joseph Eisenberg [@jeisenbe](https://github.com/jeisenbe)
+
+## Previous maintainers
+
+* Michael Glanznig [@nebulon42](https://github.com/nebulon42)
+* Matthijs Melissen [@matthijsmelissen](https://github.com/matthijsmelissen/)
+* Mateusz Konieczny [@matkoniecz](https://github.com/matkoniecz/)
