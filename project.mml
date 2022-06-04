@@ -235,6 +235,7 @@ Layer:
         (SELECT
             way,
             "natural",
+            water,
             waterway,
             landuse,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
