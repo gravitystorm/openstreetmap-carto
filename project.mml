@@ -2082,7 +2082,7 @@ Layer:
             "addr:housenumber" AS addr_housenumber,
             "addr:housename" AS addr_housename,
             tags->'addr:unit' AS addr_unit,
-            CASE char_length(tags->'addr:flats') <= 7 WHEN TRUE THEN tags->'addr:flats' ELSE NULL END AS addr_flats,
+            CASE char_length(tags->'addr:flats') <= 9 WHEN TRUE THEN tags->'addr:flats' ELSE NULL END AS addr_flats,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
           WHERE way && !bbox! -- Not ST_PointOnSurface(way) because name might be NULL
@@ -2095,7 +2095,7 @@ Layer:
             "addr:housenumber" AS addr_housenumber,
             "addr:housename" AS addr_housename,
             tags->'addr:unit' AS addr_unit,
-            CASE char_length(tags->'addr:flats') <= 7 WHEN TRUE THEN tags->'addr:flats' ELSE NULL END AS addr_flats,
+            CASE char_length(tags->'addr:flats') <= 9 WHEN TRUE THEN tags->'addr:flats' ELSE NULL END AS addr_flats,
             NULL AS way_pixels
           FROM planet_osm_point
           WHERE way && !bbox!
