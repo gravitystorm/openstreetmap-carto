@@ -34,13 +34,13 @@ images might not be sufficient and a demo layer is necessary. pnorman has a serv
 
 ## Easy pickings
 
-Some [easy issues](labels/good%20first%20issue) have been selected
+Some [easy issues](https://github.com/gravitystorm/openstreetmap-carto/labels/good%20first%20issue) have been selected
 that are particularly suitable for new contributors to get familiar with the project's code base and the contribution process.
 
 ## Editing layers
 
 OpenStreetMap Carto uses a YAML file for defining layers, because it [works much
-better for big projects](issues/711).
+better for big projects](https://github.com/gravitystorm/openstreetmap-carto/issues/711).
 This requires CartoCSS 0.18.0 or later. If you need JSON MML, you can generate it
 with `python -c 'import sys, yaml, json; json.dump(yaml.safe_load(sys.stdin), sys.stdout)' < project.mml > project.json`
 or the equivalent in a different language.
