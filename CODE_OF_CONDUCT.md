@@ -77,6 +77,6 @@ Changes to the Code of Conduct should be proposed as pull requests.
 
 ## Acknowledgements
 
-This document is based on the [Go Code of Conduct](https://golang.org/conduct), which in turn has parts derived from the Code of Conduct documents of the Django, FreeBSD, and Rust projects.
+This document is based on the [Go Community Code of Conduct](https://go.dev/conduct), which in turn has parts derived from the Code of Conduct documents of the Django, FreeBSD, and Rust projects.
 
 This documented is licensed under the Creative Commons Attribution 3.0 License.
