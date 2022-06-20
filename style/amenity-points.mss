@@ -145,22 +145,23 @@
   }
 
   [feature = 'highway_bus_stop'] {
-    [zoom >= 16] {
+    [zoom >= 16][zoom < 17] {
       marker-file: url('symbols/square.svg');
       marker-fill: @transportation-icon;
       marker-width: 6;
       marker-clip: false;
     }
     [zoom >= 17] {
-      marker-file: url('symbols/highway/bus_stop.12.svg');
-      marker-width: 12;
+      marker-file: url('symbols/highway/bus_stop.svg');
+      marker-fill: @transportation-icon;
+      marker-clip: false;
     }
   }
 
   [feature = 'highway_elevator'][zoom >= 18] {
     [access = null],
     [access = 'yes'] {
-      marker-file: url('symbols/highway/elevator.12.svg');
+      marker-file: url('symbols/highway/elevator.svg');
       marker-fill: @transportation-icon;
     }
   }
@@ -192,7 +193,7 @@
   }
 
   [feature = 'highway_traffic_signals'][zoom >= 17] {
-    marker-file: url('symbols/highway/traffic_light.13.svg');
+    marker-file: url('symbols/highway/traffic_light.svg');
     marker-fill: #545454;
     marker-clip: false;
   }
@@ -1023,7 +1024,6 @@
 
     [shop = 'car_repair'][zoom >= 18] {
       marker-file: url('symbols/shop/car_repair.svg');
-      marker-fill: @amenity-brown;
     }
 
     [shop = 'dairy'][zoom >= 18] {
@@ -1099,7 +1099,7 @@
     }
 
     [shop = 'motorcycle'][zoom >= 18] {
-      marker-file: url('symbols/motorcycle.svg');
+      marker-file: url('symbols/shop/motorcycle.svg');
     }
 
     [shop = 'music'][zoom >= 18] {
@@ -1182,7 +1182,7 @@
   }
 
   [feature = 'advertising_column'][zoom >= 19]{
-      marker-file: url('symbols/advertising_column.svg');
+      marker-file: url('symbols/amenity/advertising_column.svg');
       marker-fill: @advertising-grey;
       marker-clip: false;
   }
@@ -1335,7 +1335,7 @@
   }
 
   [feature = 'aeroway_helipad'][zoom >= 16] {
-    marker-file: url('symbols/helipad.16.svg');
+    marker-file: url('symbols/amenity/helipad.svg');
     marker-clip: false;
     marker-fill: @airtransport;
   }
@@ -1346,7 +1346,7 @@
   [feature = 'aeroway_aerodrome']['iata' = null][zoom >= 12][zoom < 18] {
     [way_pixels <= 192000],
     [way_pixels = null] {
-      marker-file: url('symbols/aerodrome.12.svg');
+      marker-file: url('symbols/amenity/aerodrome.svg');
       marker-clip: false;
       marker-fill: @airtransport;
     }
@@ -1382,8 +1382,15 @@
     marker-clip: false;
   }
 
+  [feature = 'mountain_pass'][zoom >= 15] {
+    marker-file: url('symbols/natural/saddle.svg');
+    marker-fill: @transportation-icon;
+    marker-clip: false;
+  }
+
   [feature = 'natural_spring'][zoom >= 14] {
-    marker-file: url('symbols/spring.svg');
+    marker-file: url('symbols/natural/spring.svg');
+    marker-fill: #7abcec;
     marker-clip: false;
   }
 
@@ -1397,14 +1404,14 @@
     [zoom >= 14][height > 10],
     [zoom >= 15][name != null],
     [zoom >= 16] {
-      marker-file: url('symbols/waterfall.svg');
+      marker-file: url('symbols/natural/waterfall.svg');
       marker-clip: false;
       marker-fill: @water-text;
     }
   }
 
   [feature = 'military_bunker'][zoom >= 17] {
-    marker-file: url('symbols/bunker.svg');
+    marker-file: url('symbols/man_made/bunker.svg');
     marker-fill: @man-made-icon;
     marker-clip: false;
   }
@@ -1413,7 +1420,7 @@
     [zoom >= 15][location != 'rooftop'][location != 'roof'],
     [zoom >= 15][location = null],
     [zoom >= 19] {
-      marker-file: url('symbols/generator_wind.svg');
+      marker-file: url('symbols/man_made/generator_wind.svg');
       marker-fill: @man-made-icon;
       marker-clip: false;
     }
@@ -1480,9 +1487,11 @@
 
   [feature = 'railway_level_crossing'][zoom >= 14]::railway,
   [feature = 'railway_crossing'][zoom >= 15]::railway{
-    marker-file: url('symbols/level_crossing.svg');
+    marker-file: url('symbols/barrier/level_crossing.svg');
+    marker-fill: #4d4d4d;
+    marker-clip: false;
     [zoom >= 16] {
-      marker-file: url('symbols/level_crossing2.svg');
+      marker-file: url('symbols/barrier/level_crossing2.svg');
     }
   }
 
@@ -1830,6 +1839,7 @@
   [feature = 'natural_peak'][zoom >= 13],
   [feature = 'natural_volcano'][zoom >= 13],
   [feature = 'natural_saddle'][zoom >= 15],
+  [feature = 'mountain_pass'][zoom >= 15],
   [feature = 'tourism_viewpoint'][zoom >= 16] {
     text-name: "[name]";
     text-size: @standard-font-size;
@@ -1837,6 +1847,7 @@
     text-line-spacing: @standard-line-spacing-size;
     text-fill: darken(@landform-color, 30%);
     [feature = 'natural_volcano'] { text-fill: #d40000; }
+    [feature = 'mountain_pass'] { text-fill: @transportation-text; }
     text-dy: 7;
     [feature = 'tourism_viewpoint'] { text-dy: 11; }
     text-face-name: @standard-font;
@@ -2334,7 +2345,7 @@
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
-    text-dy: 6;
+    text-dy: 7;
   }
 
   [feature = 'amenity_atm'][zoom >= 19],
@@ -2600,9 +2611,6 @@
       text-face-name: @standard-font;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255, 255, 255, 0.6);
-      [shop = 'car_repair'] {
-        text-fill: @amenity-brown;
-      }
       [shop = 'massage'] {
         text-fill: @leisure-green;
       }

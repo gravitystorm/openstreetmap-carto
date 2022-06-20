@@ -1,13 +1,13 @@
 # Running OpenStreetMap Carto with Docker
 
-[Docker](https://docker.com) is a virtualized environment running a [_Docker demon_](https://docs.docker.com/engine/docker-overview), in which you can run software without altering your host system permanently. The software components run in _containers_ that are easy to setup and tear down individually. The Docker demon can use operating-system-level virtualization (Linux, Windows) or a virtual machine (macOS, Windows).
+[Docker](https://www.docker.com/) is a virtualized environment running a [_Docker demon_](https://docs.docker.com/get-started/overview/), in which you can run software without altering your host system permanently. The software components run in _containers_ that are easy to setup and tear down individually. The Docker demon can use operating-system-level virtualization (Linux, Windows) or a virtual machine (macOS, Windows).
 
 This allows to set up a development environment for OpenStreetMap Carto easily. Specifically, this environment consists of a
 PostgreSQL database to store the OpenStreetMap data and [Kosmtik](https://github.com/kosmtik/kosmtik) for previewing the style.
 
 ## Prerequisites
 
-Docker is available for Linux, macOS and Windows. [Install](https://www.docker.com/get-docker) the software packaged for your host system in order
+Docker is available for Linux, macOS and Windows. [Install](https://www.docker.com/products/docker-desktop/) the software packaged for your host system in order
 to be able to run Docker containers. You also need Docker Compose, which should be available once you installed
 Docker itself. Otherwise you need to [install Docker Compose manually](https://docs.docker.com/compose/install/).
 
@@ -29,7 +29,7 @@ Read on below to get the details.
 
 ## Repositories
 
-Instructions above will clone main OpenStreetMap Carto repository. To test your own changes you should [fork](https://help.github.com/articles/fork-a-repo/) gravitystorm/openstreetmap-carto repository and [clone your fork](https://help.github.com/articles/cloning-a-repository/).
+Instructions above will clone main OpenStreetMap Carto repository. To test your own changes you should [fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) gravitystorm/openstreetmap-carto repository and [clone your fork](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 
 This OpenStreetMap Carto repository needs to be a directory that is shared between your host system and the Docker virtual machine. Home directories are shared by default; if your repository is in another place you need to add this to the Docker sharing list (e.g. macOS: Docker Preferences > File Sharing; Windows: Docker Settings > Shared Drives).
 

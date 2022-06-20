@@ -34,7 +34,7 @@ images might not be sufficient and a demo layer is necessary. pnorman has a serv
 
 ## Easy pickings
 
-Some [easy issues](https://github.com/gravitystorm/openstreetmap-carto/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) have been selected
+Some [easy issues](https://github.com/gravitystorm/openstreetmap-carto/labels/good%20first%20issue) have been selected
 that are particularly suitable for new contributors to get familiar with the project's code base and the contribution process.
 
 ## Editing layers
@@ -148,8 +148,8 @@ Because SQL within JSON or YAML will not generally be syntax highlighted, indent
 ### External icon design resources
 The project's goals and design philsophy are different from other projects, but some external resources with general information about icon design are:
 
-* [Maki Icons Design Guidelines](https://www.mapbox.com/maki-icons/guidelines/)
-* [GNOME Icon Design Guildelines](https://developer.gnome.org/hig/stable/icons-and-artwork.html.en)
+* [Maki Icons Design Guidelines](https://labs.mapbox.com/maki-icons/guidelines/)
+* [GNOME Icon Design Guildelines](https://developer.gnome.org/hig/guidelines/ui-icons.html)
 
 ## Typography
 
