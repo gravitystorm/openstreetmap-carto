@@ -135,6 +135,52 @@ class Table:
         self._conn.commit()
 
 
+class Downloader:
+    def __init__(self):
+        self.session = requests.Session()
+        self.session.mount('file://', FileAdapter())
+        self.session.headers.update({'User-Agent': 'get-external-data.py/osm-carto'})
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args, **kwargs):
+        self.session.close()
+
+    def _download(self, url, headers=None):
+        response = self.session.get(url, headers=headers)
+        response.raise_for_status()
+        return response
+
+    @staticmethod
+    def _return_or_raise(response):
+        if response.status_code != requests.codes.ok:
+            raise RuntimeError('Unsupported HTTP response code {}, expected {} OK'.format(
+                response.status_code, requests.codes.ok))
+        return DownloadResult(status_code = response.status_code, content = response.content,
+                              last_modified = response.headers.get('Last-Modified', None))
+
+    def download(self, url):
+        response = self._download(url)
+        return self._return_or_raise(response)
+
+    def download_if_newer(self, url, last_modified):
+        headers = {}
+        if last_modified:
+            headers['If-Modified-Since'] = last_modified
+        response = self._download(url, headers)
+        if response.status_code == requests.codes.not_modified:
+            return None
+        return self._return_or_raise(response)
+
+
+class DownloadResult:
+    def __init__(self, status_code, content, last_modified=None):
+        self.status_code = status_code
+        self.content = content
+        self.last_modified = last_modified
+
+
 def main():
     # parse options
     parser = argparse.ArgumentParser(
@@ -192,15 +238,12 @@ def main():
 
         renderuser = opts.renderuser or config["settings"].get("renderuser")
 
-        with requests.Session() as s:
+        with Downloader() as d:
             conn = None
             conn = psycopg2.connect(database=database,
                              host=host, port=port,
                              user=user,
                              password=password)
-
-            s.mount('file://', FileAdapter())
-            s.headers.update({'User-Agent': 'get-external-data.py/osm-carto'})
 
             # DB setup
             database_setup(conn, config["settings"]["temp_schema"],
@@ -228,21 +271,14 @@ def main():
                                    config["settings"]["metadata_table"])
                 this_table.clean_temp()
 
-                if not opts.force:
-                    headers = {'If-Modified-Since': this_table.last_modified()}
+                if opts.force:
+                    download = d.download(source["url"])
                 else:
-                    headers = {}
+                    download = d.download_if_newer(source["url"], this_table.last_modified())
 
-                logging.info("  Fetching {}".format(source["url"]))
-                download = s.get(source["url"], headers=headers)
-                download.raise_for_status()
-
-                if download.status_code == requests.codes.ok:
-                    if "Last-Modified" in download.headers:
-                        new_last_modified = download.headers["Last-Modified"]
-                    else:
-                        new_last_modified = None
-
+                if download is None:
+                    logging.info("  Table {} did not require updating".format(name))
+                else:
                     logging.info("  Download complete ({} bytes)".format(len(download.content)))
 
                     if "archive" in source and source["archive"]["format"] == "zip":
@@ -299,12 +335,7 @@ def main():
                     this_table.index()
                     if renderuser is not None:
                         this_table.grant_access(renderuser)
-                    this_table.replace(new_last_modified)
-                elif download.status_code == requests.codes.not_modified:
-                    logging.info("  Table {} did not require updating".format(name))
-                else:
-                    logging.critical("  Unexpected response code ({}".format(download.status_code))
-                    logging.critical("  Table {} was not updated".format(name))
+                    this_table.replace(download.last_modified)
 
             if conn:
                 conn.close()
