@@ -175,6 +175,37 @@ class Downloader:
             return None
         return self._return_or_raise(response)
 
+    def download_cache(self, url, last_modified):
+        filename = os.path.basename(url)
+        filename_lastmod = filename + '.lastmod'
+
+        # Check if cached version exists
+        if os.path.exists(filename) and os.path.exists(filename_lastmod):
+            with open(filename_lastmod, 'r') as fp:
+                lastmod = fp.read()
+            # Revalidate cache entry
+            result = self.download_if_newer(url, lastmod)
+
+            # Check if cache is up to date and DB last modified differs
+            if result is None and lastmod != last_modified:
+                with open(filename, 'rb') as fp:
+                    # Return cached document
+                    return DownloadResult(status_code = 200, content = fp.read(),
+                                          last_modified = lastmod)
+        else:
+            # Download a file normally, no cached version
+            result = self.download(url)
+
+        # We had a cache miss or nothing in cache
+        if result is not None and result.last_modified is not None:
+            # Cache downloaded file
+            with open(filename, 'wb') as fp:
+                fp.write(result.content)
+            with open(filename_lastmod, 'w') as fp:
+                fp.write(result.last_modified)
+
+        return result
+
 
 class DownloadResult:
     def __init__(self, status_code, content, last_modified=None):
@@ -190,6 +221,8 @@ def main():
 
     parser.add_argument("-f", "--force", action="store_true",
                         help="Download new data, even if not required")
+    parser.add_argument("-C", "--cache", action="store_true",
+                        help="Cache downloaded data and use cache if possible")
 
     parser.add_argument("-c", "--config", action="store", default="external-data.yml",
                         help="Name of configuration file (default external-data.yml)")
@@ -275,6 +308,8 @@ def main():
 
                 if opts.force:
                     download = d.download(source["url"])
+                elif opts.cache:
+                    download = d.download_cache(source["url"], this_table.last_modified())
                 else:
                     download = d.download_if_newer(source["url"], this_table.last_modified())
 
