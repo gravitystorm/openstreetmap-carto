@@ -22,7 +22,6 @@ import shutil
 # modules for getting data
 import zipfile
 import requests
-from requests_file import FileAdapter
 import io
 
 # modules for converting and postgres loading
@@ -138,7 +137,6 @@ class Table:
 class Downloader:
     def __init__(self):
         self.session = requests.Session()
-        self.session.mount('file://', FileAdapter())
         self.session.headers.update({'User-Agent': 'get-external-data.py/osm-carto'})
 
     def __enter__(self):
@@ -148,17 +146,21 @@ class Downloader:
         self.session.close()
 
     def _download(self, url, headers=None):
+        if url.startswith('file://'):
+            with open(url[7:], 'rb') as fp:
+                return DownloadResult(status_code = 200, content = fp.read(),
+                                      last_modified = str(os.fstat(fp.fileno()).st_mtime))
         response = self.session.get(url, headers=headers)
         response.raise_for_status()
-        return response
+        return DownloadResult(status_code = response.status_code, content = response.content,
+                              last_modified = response.headers.get('Last-Modified', None))
 
     @staticmethod
     def _return_or_raise(response):
         if response.status_code != requests.codes.ok:
             raise RuntimeError('Unsupported HTTP response code {}, expected {} OK'.format(
                 response.status_code, requests.codes.ok))
-        return DownloadResult(status_code = response.status_code, content = response.content,
-                              last_modified = response.headers.get('Last-Modified', None))
+        return response
 
     def download(self, url):
         response = self._download(url)
