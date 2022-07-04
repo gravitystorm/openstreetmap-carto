@@ -422,7 +422,7 @@ delete_prefixes = {
 }
 
 -- Big table for z_order and roads status for certain tags. z=0 is turned into
--- nil by the z_order function
+-- nil by the z_order function. Road values are divided by 10 for construction, so must be multiples of 10
 local roads_info = {
     highway = {
         motorway        = {z = 380, roads = true},
@@ -495,7 +495,8 @@ function z_order(tags)
         if tags["construction"] and roads_info["highway"][tags["construction"]] then
             z = math.max(z, roads_info["highway"][tags["construction"]].z/10)
         else
-            z = math.max(z, 33)
+            -- For unknown roads, assume highway=road
+            z = math.max(z, roads_info["highway"]["road"].z/10)
         end
     end
 
