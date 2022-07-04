@@ -1,4 +1,10 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.4.0...master)
+### Changes
+- Fixed colour mismatch of car repair shop icon and text (#4535)
+- Cleaned up SVG files to better align with Mapnik requirements (#4457)
+- Allow Docker builds on ARM machines (e.g. new Apple laptops) (#4539)
+- Allow file:// URLs in external data config (#4468)
+- Render mountain passes (#4121)
 
 ## [v5.4.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.3.1...v5.4.0) - 2021-09-22
 ### Changes
