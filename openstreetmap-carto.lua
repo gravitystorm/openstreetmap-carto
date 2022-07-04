@@ -583,6 +583,7 @@ end
 -- @return columns, hstore tags
 function split_tags(tags, tag_map)
     local cols = {tags = {}}
+
     for key, value in pairs(tags) do
         if tag_map[key] then
             cols[key] = value
@@ -590,6 +591,11 @@ function split_tags(tags, tag_map)
             cols.tags[key] = value
         end
     end
+
+    -- layer is a special tag. After setting the columns, we have to go back and set it after making sure it's an integer, and remove it from tags
+    cols['layer'] = layer(tags['layer'])
+    cols.tags['layer'] = nil
+
     return cols
 end
 
@@ -598,40 +604,32 @@ phase2_admin_ways = {}
 -- TODO: Make add_* take object, not object.tags
 function add_point(object)
     local cols = split_tags(object.tags, columns_map.point)
-    cols['layer'] = layer(object.tags['layer'])
     tables.point:add_row(cols)
 end
 
 function add_line(object)
     local cols = split_tags(object.tags, columns_map.line)
-    cols['layer'] = layer(object.tags['layer'])
     cols['z_order'] = z_order(object.tags)
-    cols.tags['layer'] = nil
     cols.way = { create = 'line', split_at = 100000 }
     tables.line:add_row(cols)
 end
 
 function add_transport_line(object)
     local cols = split_tags(object.tags, columns_map.transport_line)
-    cols['layer'] = layer(object.tags['layer'])
     cols['z_order'] = z_order(object.tags)
-    cols.tags['layer'] = nil
     cols.way = { create = 'line', split_at = 100000 }
     tables.transport_line:add_row(cols)
 end
 
 function add_roads(object)
     local cols = split_tags(object.tags, columns_map.roads)
-    cols['layer'] = layer(object.tags['layer'])
     cols['z_order'] = z_order(object.tags)
-    cols.tags['layer'] = nil
     cols.way = { create = 'line', split_at = 100000 }
     tables.roads:add_row(cols)
 end
 
 function add_polygon(object)
     local cols = split_tags(object.tags, columns_map.polygon)
-    cols['layer'] = layer(object.tags['layer'])
     cols['z_order'] = z_order(object.tags)
     cols.way = { create = 'area', split_at = nil }
     tables.polygon:add_row(cols)
@@ -639,7 +637,6 @@ end
 
 function add_transport_polygon(object)
     local cols = split_tags(object.tags, columns_map.transport_polygon)
-    cols['layer'] = layer(object.tags['layer'])
     cols['z_order'] = z_order(object.tags)
     cols.way = { create = 'area', split_at = nil }
     tables.transport_polygon:add_row(cols)
