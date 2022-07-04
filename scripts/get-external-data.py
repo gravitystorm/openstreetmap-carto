@@ -147,7 +147,11 @@ class Downloader:
 
     def _download(self, url, headers=None):
         if url.startswith('file://'):
-            with open(url[7:], 'rb') as fp:
+            filename = url[7:]
+            if headers and 'If-Modified-Since' in headers and os.path.exists(filename):
+                if str(os.path.getmtime(filename)) == headers['If-Modified-Since']:
+                    return DownloadResult(status_code = requests.codes.not_modified)
+            with open(filename, 'rb') as fp:
                 return DownloadResult(status_code = 200, content = fp.read(),
                                       last_modified = str(os.fstat(fp.fileno()).st_mtime))
         response = self.session.get(url, headers=headers)
@@ -208,7 +212,7 @@ class Downloader:
 
 
 class DownloadResult:
-    def __init__(self, status_code, content, last_modified=None):
+    def __init__(self, status_code, content=None, last_modified=None):
         self.status_code = status_code
         self.content = content
         self.last_modified = last_modified
