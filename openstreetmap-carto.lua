@@ -596,51 +596,51 @@ end
 phase2_admin_ways = {}
 
 -- TODO: Make add_* take object, not object.tags
-function add_point(tags)
-    local cols = split_tags(tags, columns_map.point)
-    cols['layer'] = layer(tags['layer'])
+function add_point(object)
+    local cols = split_tags(object.tags, columns_map.point)
+    cols['layer'] = layer(object.tags['layer'])
     tables.point:add_row(cols)
 end
 
-function add_line(tags)
-    local cols = split_tags(tags, columns_map.line)
-    cols['layer'] = layer(tags['layer'])
-    cols['z_order'] = z_order(tags)
+function add_line(object)
+    local cols = split_tags(object.tags, columns_map.line)
+    cols['layer'] = layer(object.tags['layer'])
+    cols['z_order'] = z_order(object.tags)
     cols.tags['layer'] = nil
     cols.way = { create = 'line', split_at = 100000 }
     tables.line:add_row(cols)
 end
 
-function add_transport_line(tags)
-    local cols = split_tags(tags, columns_map.transport_line)
-    cols['layer'] = layer(tags['layer'])
-    cols['z_order'] = z_order(tags)
+function add_transport_line(object)
+    local cols = split_tags(object.tags, columns_map.transport_line)
+    cols['layer'] = layer(object.tags['layer'])
+    cols['z_order'] = z_order(object.tags)
     cols.tags['layer'] = nil
     cols.way = { create = 'line', split_at = 100000 }
     tables.transport_line:add_row(cols)
 end
 
-function add_roads(tags)
-    local cols = split_tags(tags, columns_map.roads)
-    cols['layer'] = layer(tags['layer'])
-    cols['z_order'] = z_order(tags)
+function add_roads(object)
+    local cols = split_tags(object.tags, columns_map.roads)
+    cols['layer'] = layer(object.tags['layer'])
+    cols['z_order'] = z_order(object.tags)
     cols.tags['layer'] = nil
     cols.way = { create = 'line', split_at = 100000 }
     tables.roads:add_row(cols)
 end
 
-function add_polygon(tags)
-    local cols = split_tags(tags, columns_map.polygon)
-    cols['layer'] = layer(tags['layer'])
-    cols['z_order'] = z_order(tags)
+function add_polygon(object)
+    local cols = split_tags(object.tags, columns_map.polygon)
+    cols['layer'] = layer(object.tags['layer'])
+    cols['z_order'] = z_order(object.tags)
     cols.way = { create = 'area', split_at = nil }
     tables.polygon:add_row(cols)
 end
 
-function add_transport_polygon(tags)
-    local cols = split_tags(tags, columns_map.transport_polygon)
-    cols['layer'] = layer(tags['layer'])
-    cols['z_order'] = z_order(tags)
+function add_transport_polygon(object)
+    local cols = split_tags(object.tags, columns_map.transport_polygon)
+    cols['layer'] = layer(object.tags['layer'])
+    cols['z_order'] = z_order(object.tags)
     cols.way = { create = 'area', split_at = nil }
     tables.transport_polygon:add_row(cols)
 end
@@ -661,7 +661,7 @@ function osm2pgsql.process_node(object)
         return
     end
 
-    add_point(object.tags)
+    add_point(object)
 end
 
 function osm2pgsql.process_way(object)
@@ -678,20 +678,20 @@ function osm2pgsql.process_way(object)
 
     local area_tags = isarea(object.tags)
     if object.is_closed and area_tags then
-        add_polygon(object.tags)
+        add_polygon(object)
 
         if z_order(object.tags) ~= nil then
-            add_transport_polygon(object.tags)
+            add_transport_polygon(object)
         end
     else
-        add_line(object.tags)
+        add_line(object)
 
         if z_order(object.tags) ~= nil then
-            add_transport_line(object.tags)
+            add_transport_line(object)
         end
 
         if roads(object.tags) then
-            add_roads(object.tags)
+            add_roads(object)
         end
     end
 end
@@ -705,19 +705,19 @@ function osm2pgsql.process_relation(object)
         return
     end
     if type == "boundary" or (type == "multipolygon" and object.tags["boundary"]) then
-        add_line(object.tags)
+        add_line(object)
 
         if roads(object.tags) then
-            add_roads(object.tags)
+            add_roads(object)
         end
 
-        add_polygon(object.tags)
+        add_polygon(object)
 
     elseif type == "multipolygon" then
-        add_polygon(object.tags)
+        add_polygon(object)
 
         if z_order(object.tags) ~= nil then
-            add_transport_polygon(object.tags)
+            add_transport_polygon(object)
         end
     elseif type == "route" then
         add_route(object)
