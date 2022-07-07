@@ -611,7 +611,11 @@
     marker-clip: false;
     [religion = 'christian'] {
       marker-file: url('symbols/religion/christian.svg');
-      [denomination = 'jehovahs_witness']{
+      // Some Christian denominations do not use a cross, so reset them to the default marker
+      [denomination = 'jehovahs_witness'],
+      [denomination = 'la_luz_del_mundo'],
+      [denomination = 'iglesia_ni_cristo'],
+      [denomination = 'mormon'] {
         marker-file: url('symbols/amenity/place_of_worship.svg');
       }
     }
