@@ -21,8 +21,8 @@ jobs:
       run: set -o pipefail
     - name: Validate YAML files
       run: |
-        find . \( -type f -name '*.yaml' -o -name '*.yml' -o -name '*.mml' \) \
-        -exec python -c "from yaml import safe_load; safe_load(file('{}'))" \;
+        find . \( -type f -name '*.yaml' -o -name '*.yml' -o -name '*.mml' \) -print0 \
+        | xargs -0 -I '{}' python3 -c 'from yaml import safe_load; safe_load(open("{}"))'
     - name: Validate SVGs for valid XML
       run: find symbols/ -name '*.svg' | xargs xmllint --noout
     - name: Check indexes are up to date
