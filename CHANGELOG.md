@@ -3,7 +3,7 @@
 - Fixed colour mismatch of car repair shop icon and text (#4535)
 - Cleaned up SVG files to better align with Mapnik requirements (#4457)
 - Allow Docker builds on ARM machines (e.g. new Apple laptops) (#4539)
-- Allow file:// URLs in external data config (#4468)
+- Allow file:// URLs in external data config and caching of downloaded files (#4468, #4153, #4584)
 - Render mountain passes (#4121)
 - Don't use a cross symbol for more Christian denominations that don't use a cross (#4587)
 
