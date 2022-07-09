@@ -134,6 +134,13 @@ Because SQL within JSON or YAML will not generally be syntax highlighted, indent
 * Hstore queries tested for NULL should be enclosed in parentheses, e.g. `(tags->'foo') IS NULL`.
 * To check if a tag is in the tags hstore, use `tags @> 'foo=>bar'`, relying on automatic conversion from `text` to `hstore`.
 
+## Lua style guidelines
+
+* Four space indents, no tabs
+* No external dependencies
+* Use `a["name"]` where name is a tag key, and `a.name` otherwise.
+
+
 ## Map icon guidelines
 
 * All new icons must be SVG format only.  The SVG must be saved as standards compliant SVG without any proprietary tags. In Inkscape software, you will need to "Save As..." and choose the format Optimized SVG (preferable) or Plain SVG.

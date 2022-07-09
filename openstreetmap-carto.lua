@@ -1,10 +1,11 @@
 -- For documentation of Lua tag transformations, see:
--- https://github.com/openstreetmap/osm2pgsql/blob/master/docs/lua.md
+-- https://osm2pgsql.org/doc/manual.html#the-flex-output
 
 local tables = {}
 
--- A list of columns per table, replacing the osm2pgsql .style file
--- These need to be ordered, so that means a list
+-- A list of text columns per table, replacing the osm2pgsql .style file
+-- These are inserted into the table list of columns in the same order as the lists here
+-- Non-text columns are defined in col_definitions. Because the
 local pg_cols = {
     point = {
         'access',
@@ -123,9 +124,11 @@ local pg_cols = {
         'route',
         'ref',
         'network'
-    }
+    },
+    admin = {}
 }
 
+-- The roads and polygon columns are the same as the line columns
 pg_cols.roads = pg_cols.line
 pg_cols.polygon = pg_cols.line
 
@@ -544,15 +547,22 @@ function isarea (tags)
     return false
 end
 
---- Normalizes layer tags
+--- Normalizes layer tags to integers
 -- @param v The layer tag value
--- @return An integer for the layer tag
+-- @return The input value if it is an integer between -100 and 100, or nil otherwise
 function layer (v)
-    return v and string.find(v, "^-?%d+$") and tonumber(v) < 100 and tonumber(v) > -100 and v or nil
+    return v and -- Check that layer is non-nil
+        string.find(v, "^-?%d+$") and tonumber(v) < 100 and tonumber(v) > -100 and -- Enforce numeric and range
+        v or nil -- return v, or nil if fails to match
 end
 
+--- Normalizes admin_level tags
+-- @param v The admin_level tag value
+-- @return The input value if it is an integer between 0 and 100, or nil otherwise
 function admin_level (v)
-    return v and string.find(v, "^-?%d+$") and tonumber(v) < 100 and tonumber(v) > 0 and v or nil
+    return v and -- Check that admin_level is non-nil
+        string.find(v, "^%d+$") and tonumber(v) < 100 and tonumber(v) > 0 and -- Enforce numeric range
+        v or nil -- return v, or nil if fails to match
 end
 
 --- Clean tags of deleted tags
