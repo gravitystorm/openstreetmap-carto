@@ -3,9 +3,10 @@
 
 local tables = {}
 
--- A list of text columns per table, replacing the osm2pgsql .style file
--- These are inserted into the table list of columns in the same order as the lists here
--- Non-text columns are defined in col_definitions. Because the
+-- A list of text columns per table, replacing the legacy osm2pgsql 'pgsql output' .style file.
+-- These are inserted into the table list of columns in the same order as lists here,
+-- and thus determine column order in the final tables.
+-- Non-text columns are defined in col_definitions.
 local pg_cols = {
     point = {
         'access',
