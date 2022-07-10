@@ -567,7 +567,8 @@ function admin_level (v)
 end
 
 --- Clean tags of deleted tags
--- @return True if no tags are left after cleaning
+-- @param tags OSM tags
+-- @return true if no tags are left after cleaning
 function clean_tags(tags)
     -- Short-circuit for untagged objects
     if next(tags) == nil then
@@ -592,6 +593,8 @@ function clean_tags(tags)
 end
 
 --- Splits a tag into tags and hstore tags
+-- @param tags OSM tags
+-- @param tag_map Lua table that contains the OSM tags that will get a dedicated column
 -- @return columns, hstore tags
 function split_tags(tags, tag_map)
     local cols = {tags = {}}
