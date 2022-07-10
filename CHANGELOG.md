@@ -1,4 +1,6 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.4.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.5.0...master)
+
+## [v5.5.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.4.0...v5.5.0) - 2022-07-09
 ### Changes
 - Fixed colour mismatch of car repair shop icon and text (#4535)
 - Cleaned up SVG files to better align with Mapnik requirements (#4457)
