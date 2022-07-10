@@ -485,8 +485,8 @@ local excluded_railway_service = {
     yard = true
 }
 --- Gets the z_order for a set of tags
--- @param tags OSM tags
--- @return z_order if an object with z_order, otherwise nil
+-- @param tags: OSM tags
+-- @return: z_order if an object with z_order, otherwise nil
 function z_order(tags)
     local z = 0
     for k, v in pairs(tags) do
@@ -508,8 +508,8 @@ function z_order(tags)
 end
 
 --- Gets the roads table status for a set of tags
--- @param tags OSM tags
--- @return true if it belongs in the roads table, false otherwise
+-- @param tags: OSM tags
+-- @return: true if it belongs in the roads table, false otherwise
 function roads(tags)
     for k, v in pairs(tags) do
         if roads_info[k] and roads_info[k][v] and roads_info[k][v].roads then
@@ -524,8 +524,8 @@ function roads(tags)
 end
 
 --- Check if an object with given tags should be treated as polygon
--- @param tags OSM tags
--- @return true if area, false if linear
+-- @param tags: OSM tags
+-- @return: true if area, false if linear
 function isarea (tags)
     -- Treat objects tagged as area=yes polygon, other area as no
     if tags["area"] then
@@ -549,8 +549,8 @@ function isarea (tags)
 end
 
 --- Normalizes layer tags to integers
--- @param v The layer tag value
--- @return The input value if it is an integer between -100 and 100, or nil otherwise
+-- @param v: The layer tag value
+-- @return: The input value if it is an integer between -100 and 100, or nil otherwise
 function layer (v)
     return v and -- Check that layer is non-nil
         string.find(v, "^-?%d+$") and tonumber(v) < 100 and tonumber(v) > -100 and -- Enforce numeric and range
@@ -558,8 +558,8 @@ function layer (v)
 end
 
 --- Normalizes admin_level tags
--- @param v The admin_level tag value
--- @return The input value if it is an integer between 0 and 100, or nil otherwise
+-- @param v: The admin_level tag value
+-- @return: The input value if it is an integer between 0 and 100, or nil otherwise
 function admin_level (v)
     return v and -- Check that admin_level is non-nil
         string.find(v, "^%d+$") and tonumber(v) < 100 and tonumber(v) > 0 and -- Enforce numeric range
@@ -567,7 +567,8 @@ function admin_level (v)
 end
 
 --- Clean tags of deleted tags
--- @return True if no tags are left after cleaning
+-- @param tags: OSM tags
+-- @return: true if no tags are left after cleaning
 function clean_tags(tags)
     -- Short-circuit for untagged objects
     if next(tags) == nil then
@@ -592,7 +593,9 @@ function clean_tags(tags)
 end
 
 --- Splits a tag into tags and hstore tags
--- @return columns, hstore tags
+-- @param tags: OSM tags
+-- @param tag_map: Lua table that contains the OSM tags that will get a dedicated column
+-- @return: columns, hstore tags
 function split_tags(tags, tag_map)
     local cols = {tags = {}}
 
