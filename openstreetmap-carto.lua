@@ -613,7 +613,9 @@ end
 
 phase2_admin_ways = {}
 
--- TODO: Make add_* take object, not object.tags
+--- Functions to add point, line, polygon and route objects as rows to tables in the database.
+-- These functions will be called by the osm2pgsql 'flex output' processing callback functions,
+-- that are defined in the final section of this style file.
 function add_point(object)
     local cols = split_tags(object.tags, columns_map.point)
     tables.point:add_row(cols)
@@ -665,6 +667,8 @@ function add_route(object)
     end
 end
 
+--- osm2pgsql 'processing callback' functions (https://osm2pgsql.org/doc/manual.html#processing-callbacks)
+-- Process nodes
 function osm2pgsql.process_node(object)
     if clean_tags(object.tags) then
         return
@@ -673,6 +677,7 @@ function osm2pgsql.process_node(object)
     add_point(object)
 end
 
+-- Process ways
 function osm2pgsql.process_way(object)
     if osm2pgsql.stage == 2 then
         -- Stage two processing is called on ways that are part of admin boundary relations
@@ -705,6 +710,7 @@ function osm2pgsql.process_way(object)
     end
 end
 
+-- Process relations
 function osm2pgsql.process_relation(object)
     -- grab the type tag before filtering tags
     local type = object.tags.type
