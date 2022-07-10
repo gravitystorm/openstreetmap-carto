@@ -49,7 +49,7 @@ def reindex_cb(table, name, function, where):
     if not args.concurrent:
         print('REINDEX planet_osm_{table}_{name};'.format(table=table, name=name))
     else:
-        # Rebuilding indexes concurently requires making a new index, dropping the old one, and renaming.
+        # Rebuilding indexes concurrently requires making a new index, dropping the old one, and renaming.
         print('ALTER INDEX planet_osm_{table}_{name} RENAME TO planet_osm_{table}_{name}_old;'.format(table=table, name=name))
         cb(table, name, function, where)
         print('DROP INDEX planet_osm_{table}_{name}_old;\n'.format(table=table, name=name))

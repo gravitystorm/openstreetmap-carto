@@ -164,26 +164,6 @@ Layer:
         ) AS icesheet_polygons
     properties:
       minzoom: 5
-  - id: water-lines-casing
-    geometry: linestring
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            waterway,
-            CASE WHEN tags->'intermittent' IN ('yes')
-              OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
-              THEN 'yes' ELSE 'no' END AS int_intermittent,
-            CASE WHEN tunnel IN ('yes', 'culvert') 
-              OR waterway='canal' AND tunnel = 'flooded'
-              THEN 'yes' ELSE 'no' END AS int_tunnel
-          FROM planet_osm_line
-          WHERE waterway IN ('stream', 'drain', 'ditch')
-        ) AS water_lines_casing
-    properties:
-      minzoom: 13
   - id: water-lines-low-zoom
     geometry: linestring
     <<: *extents
@@ -1483,7 +1463,8 @@ Layer:
                     WHEN (tags ? 'ele') AND tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$'
                       AND ("natural" IN ('peak', 'volcano', 'saddle')
                         OR tourism = 'alpine_hut' OR (tourism = 'information' AND tags->'information' = 'guidepost')
-                        OR amenity = 'shelter')
+                        OR amenity = 'shelter'
+                        OR tags->'mountain_pass' = 'yes')
                     THEN CONCAT(REPLACE(ROUND((tags->'ele')::NUMERIC)::TEXT, '-', U&'\2212'), U&'\00A0', 'm') END,
                   CASE
                     WHEN (tags ? 'height') AND tags->'height' ~ '^\d{1,3}(\.\d+)?$'
@@ -1529,6 +1510,7 @@ Layer:
                 'natural_' || CASE WHEN "natural" IN ('wood', 'water', 'mud', 'wetland', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath',
                                                       'grassland', 'scrub', 'beach', 'glacier', 'tree', 'strait', 'cape')
                                                       THEN "natural" END,
+                'mountain_pass' || CASE WHEN tags->'mountain_pass' IN ('yes') THEN '' END, -- after natural=saddle to give priority to that tag on the same node
                 'waterway_' || CASE WHEN "waterway" IN ('waterfall') AND way_area IS NULL THEN waterway END,
                 'place_' || CASE WHEN place IN ('island', 'islet', 'square') THEN place END,
                 'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'fort', 'castle', 'manor', 'city_gate')
@@ -1557,7 +1539,8 @@ Layer:
               ) AS feature,
               access,
               CASE
-                WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
+                WHEN "natural" IN ('peak', 'volcano', 'saddle') 
+                     OR tags->'mountain_pass' = 'yes' THEN
                   CASE
                     WHEN tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'ele')::NUMERIC
                   END

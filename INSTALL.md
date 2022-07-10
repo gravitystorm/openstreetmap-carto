@@ -1,6 +1,6 @@
 # Installation
 
-This document describes how to manually configure your system for running OpenStreetMap Carto. If you prefer quick, platform independent setup for a development environment, without the need to install and configure tools by hand, follow a Docker installation guide in [DOCKER.md](https://github.com/gravitystorm/openstreetmap-carto/blob/master/DOCKER.md).
+This document describes how to manually configure your system for running OpenStreetMap Carto. If you prefer quick, platform independent setup for a development environment, without the need to install and configure tools by hand, follow a Docker installation guide in [DOCKER.md](DOCKER.md).
 
 ## OpenStreetMap data
 You need OpenStreetMap data loaded into a PostGIS database (see below for [dependencies](#dependencies)). These stylesheets expect a database generated with osm2pgsql using the flex backend with the supplied Lua scripts. This requires osm2pgsql 1.4.1 or later.
@@ -24,7 +24,7 @@ then grab some OSM data. It's probably easiest to grab an PBF of OSM data from [
 osm2pgsql --output flex --style openstreetmap-carto.lua -d flex ~/path/to/data.osm.pbf
 ```
 
-You can find a more detailed guide to setting up a database and loading data with osm2pgsql at [switch2osm.org](https://switch2osm.org/manually-building-a-tile-server-16-04-2-lts/).
+You can find a more detailed guide to setting up a database and loading data with osm2pgsql at [switch2osm.org](https://switch2osm.org/serving-tiles/manually-building-a-tile-server-16-04-2-lts/).
 
 ### Custom indexes
 Custom indexes are required for rendering performance and are essential on full planet databases.
@@ -51,7 +51,7 @@ DejaVu Sans is used as an optional fallback font for systems without Noto Sans. 
 
 Hanazono is used a fallback for seldom used CJK characters that are not covered by Noto.
 
-Unifont is used as a last resort fallback, with it's excellent coverage, common presence on machines, and ugly look. For compatibility reasons, we support two Linux-distributions-specific versions of Unifont, therefor it's expected that you *always* get a warning about a missing Unifont version.
+Unifont is used as a last resort fallback, with it's excellent coverage, common presence on machines, and ugly look. For compatibility reasons, we support two Linux-distributions-specific versions of Unifont, therefore it's expected that you *always* get a warning about a missing Unifont version.
 
 If you do not install all the fonts, the rendering itself will not break, but missing glyphs will be ugly.
 
@@ -65,9 +65,9 @@ On Ubuntu 16.04 or Debian Testing you can download and install most of the requi
 sudo apt-get install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted fonts-hanazono ttf-unifont
 ```
 
-Noto Emoji Regular (*not* Noto Color Emoji) can be downloaded [from the Noto Emoji repository](https://github.com/googlei18n/noto-emoji).
+Noto Emoji Regular (*not* Noto Color Emoji) can be downloaded [from the Noto Emoji repository](https://github.com/googlefonts/noto-emoji).
 
-It might be useful to have a more recent version of the fonts for [rare non-latin scripts](#non-latin-scripts). The current upstream font release has also some more scripts and style variants than in the Ubuntu package. It can be installed [from source](https://github.com/googlei18n/noto-fonts/blob/master/FAQ.md#where-are-the-fonts).
+It might be useful to have a more recent version of the fonts for [rare non-latin scripts](#non-latin-scripts). The current upstream font release has also some more scripts and style variants than in the Ubuntu package. It can be installed [from source](https://github.com/googlefonts/noto-fonts/blob/master/FAQ.md#where-are-the-fonts).
 
 DejaVu is packaged as `fonts-dejavu-core`.
 
@@ -75,8 +75,8 @@ DejaVu is packaged as `fonts-dejavu-core`.
 
 The fonts can be downloaded here:
 
-* [Noto homepage](https://www.google.com/get/noto/) and [Noto github repositories](https://github.com/googlei18n?utf8=%E2%9C%93&q=noto)
-* [DejaVu homepage](http://dejavu-fonts.org/)
+* [Noto homepage](https://www.google.com/get/noto/) and [Noto github repositories](https://github.com/googlefonts?utf8=%E2%9C%93&q=noto)
+* [DejaVu homepage](https://dejavu-fonts.org/)
 * [Hanazono homepage](http://fonts.jp/hanazono/)
 * [Unifont homepage](http://unifoundry.com/)
 
@@ -101,8 +101,16 @@ To display any map a database containing OpenStreetMap data and some utilities a
 
 * [PostgreSQL](https://www.postgresql.org/)
 * [PostGIS](https://postgis.net/)
+<<<<<<< HEAD
 * [osm2pgsql](https://github.com/openstreetmap/osm2pgsql#installing) 1.4.1 or later to import your data into a PostGIS database
 * Python 3 with the psycopg2, yaml, and requests libraries (`python3-psycopg2` `python3-yaml` `python3-requests` packages on Debian-derived systems)
+||||||| db9abe26
+* [osm2pgsql](https://github.com/openstreetmap/osm2pgsql#installing) to [import your data](https://switch2osm.org/loading-osm-data/) into a PostGIS database
+* Python 3 with the psycopg2, yaml, and requests libraries (`python3-psycopg2` `python3-yaml` `python3-requests` packages on Debian-derived systems)
+=======
+* [osm2pgsql](https://github.com/openstreetmap/osm2pgsql#installing) to [import your data](https://switch2osm.org/serving-tiles/updating-as-people-edit/) into a PostGIS database
+* Python 3 with the psycopg2, yaml, and requests libraries (`python3-psycopg2`, `python3-yaml`, `python3-requests` packages on Debian-derived systems)
+>>>>>>> v5.5.0
 * `ogr2ogr` for loading shapefiles into the database (`gdal-bin` on Debian-derived systems)
 
 ### Optional development dependencies
@@ -110,7 +118,7 @@ To display any map a database containing OpenStreetMap data and some utilities a
 Some colours, SVGs and other files are generated with helper scripts. Not all users will need these dependencies
 
 * Python and Ruby to run helper scripts
-* [Color Math](https://github.com/gtaylor/python-colormath) and [numpy](http://www.numpy.org/) if running generate_road_colors.py helper script (may be obtained with `pip install colormath numpy`)
+* [Color Math](https://github.com/gtaylor/python-colormath) and [numpy](https://numpy.org/) if running generate_road_colors.py helper script (may be obtained with `pip install colormath numpy`)
 
 ### Additional deployment dependencies
 

@@ -35,7 +35,22 @@
   }
 }
 
-#water-lines-casing {
+#water-lines-low-zoom {
+  [waterway = 'river'][zoom >= 8][zoom < 12] {
+    [int_intermittent = 'yes'] {
+      line-dasharray: 8,4;
+      line-cap: butt;
+      line-join: round;
+      line-clip: false;
+    }
+    line-color: @water-color;
+    line-width: 0.7;
+    [zoom >= 9] { line-width: 1.2; }
+    [zoom >= 10] { line-width: 1.6; }
+  }
+}
+
+#water-lines::casing {
   [waterway = 'stream'],
   [waterway = 'ditch'],
   [waterway = 'drain'] {
@@ -55,21 +70,6 @@
         }
       }
     }
-  }
-}
-
-#water-lines-low-zoom {
-  [waterway = 'river'][zoom >= 8][zoom < 12] {
-    [int_intermittent = 'yes'] {
-      line-dasharray: 8,4;
-      line-cap: butt;
-      line-join: round;
-      line-clip: false;
-    }
-    line-color: @water-color;
-    line-width: 0.7;
-    [zoom >= 9] { line-width: 1.2; }
-    [zoom >= 10] { line-width: 1.6; }
   }
 }
 
