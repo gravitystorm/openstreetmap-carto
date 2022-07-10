@@ -424,8 +424,12 @@ delete_prefixes = {
     'mvdgis:'
 }
 
--- Big table for z_order and roads status for certain tags. z=0 is turned into
--- nil by the z_order function. Road values are divided by 10 for construction, so must be multiples of 10
+-- Big table for z_order and roads status for certain tags. 
+-- The road status (true/false) determines whether or not the feature will be
+-- included in the legacy 'roads' table.
+-- z=0 is turned into nil by the z_order function.
+-- Road z values are divided by 10 for objects additionally tagged as construction,
+-- so must be multiples of 10.
 local roads_info = {
     highway = {
         motorway        = {z = 380, roads = true},
