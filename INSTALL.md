@@ -26,6 +26,14 @@ osm2pgsql -G --hstore --style openstreetmap-carto.style --tag-transform-script o
 
 You can find a more detailed guide to setting up a database and loading data with osm2pgsql at [switch2osm.org](https://switch2osm.org/serving-tiles/manually-building-a-tile-server-16-04-2-lts/).
 
+### Disable JIT
+
+We do not recommend [PostgreSQL JIT](https://www.postgresql.org/docs/current/jit-reason.html), which is on by default in PostgreSQL 12 and higher. JIT is benifitial for slow queries where executing the SQL takes substantial time and that time is not spent in function calls. This is not the case for rendering, where most time is spent either fetching from disk, in PostGIS functions, or the query is fast. In theory, the query planner will only use JIT on slower queries, but it is known to get the type of queries map rendering requries wrong.
+
+Disabling JIT is **essential** for use with Kosmtik and other style development tools.
+
+JIT can be disabled with `psql -d gis -c 'ALTER SYSTEM SET jit=off; SELECT pg_reload_conf();'` or any other means of adjusting the PostgreSQL config.
+
 ### Custom indexes
 Custom indexes are required for rendering performance and are essential on full planet databases.
 
