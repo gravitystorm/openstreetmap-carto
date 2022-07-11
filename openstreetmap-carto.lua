@@ -620,12 +620,17 @@ end
 
 phase2_admin_ways = {}
 
--- TODO: Make add_* take object, not object.tags
+-- Processing callbacks (https://osm2pgsql.org/doc/manual.html#processing-callbacks) and functions that directly support them
+
+--- Add an object to the point table
+-- @param object parameter table supplied by osm2pgsql
 function add_point(object)
     local cols = split_tags(object.tags, columns_map.point)
     tables.point:add_row(cols)
 end
 
+--- Add an object to the line table
+-- @param object parameter table supplied by osm2pgsql
 function add_line(object)
     local cols = split_tags(object.tags, columns_map.line)
     cols['z_order'] = z_order(object.tags)
@@ -633,6 +638,8 @@ function add_line(object)
     tables.line:add_row(cols)
 end
 
+--- Add an object to the transport_line table
+-- @param object parameter table supplied by osm2pgsql
 function add_transport_line(object)
     local cols = split_tags(object.tags, columns_map.transport_line)
     cols['z_order'] = z_order(object.tags)
@@ -640,6 +647,8 @@ function add_transport_line(object)
     tables.transport_line:add_row(cols)
 end
 
+--- Add an object to the roads table
+-- @param object parameter table supplied by osm2pgsql
 function add_roads(object)
     local cols = split_tags(object.tags, columns_map.roads)
     cols['z_order'] = z_order(object.tags)
@@ -647,6 +656,8 @@ function add_roads(object)
     tables.roads:add_row(cols)
 end
 
+--- Add an object to the polygon table
+-- @param object parameter table supplied by osm2pgsql
 function add_polygon(object)
     local cols = split_tags(object.tags, columns_map.polygon)
     cols['z_order'] = z_order(object.tags)
@@ -654,6 +665,8 @@ function add_polygon(object)
     tables.polygon:add_row(cols)
 end
 
+--- Add an object to the transport_polygon table
+-- @param object parameter table supplied by osm2pgsql
 function add_transport_polygon(object)
     local cols = split_tags(object.tags, columns_map.transport_polygon)
     cols['z_order'] = z_order(object.tags)
@@ -661,6 +674,8 @@ function add_transport_polygon(object)
     tables.transport_polygon:add_row(cols)
 end
 
+--- Add an object to the route table
+-- @param object parameter table supplied by osm2pgsql
 function add_route(object)
     for i, member in ipairs(object.members) do
         if member.type == 'w' then
