@@ -557,8 +557,7 @@ end
 -- @return The input value if it is an integer between -100 and 100, or nil otherwise
 function layer (v)
     return v and -- Check that layer is non-nil
-        string.find(v, "^-?%d+$") and tonumber(v) < 100 and tonumber(v) > -100 and -- Enforce numeric and range
-        v or nil -- return v, or nil if fails to match
+        string.find(v, "^-?%d+$") and tonumber(v) < 100 and tonumber(v) > -100 and v or nil -- Enforce numeric limits and return v, or nil if fails to meet limits
 end
 
 --- Normalizes admin_level tags
@@ -566,8 +565,7 @@ end
 -- @return The input value if it is an integer between 0 and 100, or nil otherwise
 function admin_level (v)
     return v and -- Check that admin_level is non-nil
-        string.find(v, "^%d+$") and tonumber(v) < 100 and tonumber(v) > 0 and -- Enforce numeric range
-        v or nil -- return v, or nil if fails to match
+        string.find(v, "^%d+$") and tonumber(v) < 100 and tonumber(v) > 0 and v or nil -- Enforce numeric limits and return v, or nil if fails to meet limits
 end
 
 --- Clean tags of deleted tags
