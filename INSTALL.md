@@ -100,7 +100,7 @@ For development, a style design studio is needed.
 To display any map a database containing OpenStreetMap data and some utilities are required
 
 * [PostgreSQL](https://www.postgresql.org/)
-* [PostGIS](https://postgis.net/)
+* [PostGIS](https://postgis.net/) 3.1.0 or later with GEOS 3.9.0 or later
 * [osm2pgsql](https://github.com/openstreetmap/osm2pgsql#installing) 1.4.1 or later to import your data into a PostGIS database
 * Python 3 with the psycopg2, yaml, and requests libraries (`python3-psycopg2` `python3-yaml` `python3-requests` packages on Debian-derived systems)
 * `ogr2ogr` for loading shapefiles into the database (`gdal-bin` on Debian-derived systems)
