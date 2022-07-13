@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.5.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.5.1...master)
+
+## [v5.5.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.5.0...v5.5.1) - 2022-07-13
+### Changes
+- Fix unintentional colour change of gates
 
 ## [v5.5.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.4.0...v5.5.0) - 2022-07-09
 ### Changes
