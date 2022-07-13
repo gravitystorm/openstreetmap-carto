@@ -635,8 +635,9 @@ Layer:
           WHERE p.highway IN (
             'turning_circle',
             'turning_loop',
-            'mini_roundabout'
-          )
+            'mini_roundabout')
+            AND l.way && !bbox!
+            AND p.way && !bbox! -- Both conditions are necessary for good index usage, even with the DWithin above
           ORDER BY p.way, v.prio
         ) AS turning_circle_sql
     properties:
