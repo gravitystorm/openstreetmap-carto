@@ -2202,8 +2202,8 @@
   [feature = 'leisure_pitch'] {
     [zoom >= 10][way_pixels > 3000][is_building = 'no'],
     [zoom >= 17][is_building = 'no'],
-    [zoom >= 10][way_pixels > 3000][shop = 'mall'],
-    [zoom >= 17][shop = 'mall'] {
+    [zoom >= 10][way_pixels > 3000][feature = 'shop'][shop = 'mall'],
+    [zoom >= 17][feature = 'shop'][shop = 'mall'] {
       text-name: "[name]";
       text-size: @landcover-font-size;
       text-wrap-width: @landcover-wrap-width-size;
