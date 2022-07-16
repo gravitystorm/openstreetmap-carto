@@ -53,6 +53,9 @@ EOF
 
   # Downloading needed shapefiles
   scripts/get-external-data.py
+
+  # Download fonts
+  scripts/get-fonts.sh
   ;;
 
 kosmtik)
