@@ -17,10 +17,6 @@
 @bridleway-fill-noaccess: #aaddaa;
 @track-fill: #996600;
 @track-fill-noaccess: #e2c5bb;
-@aeroway-fill: #bbc;
-@runway-fill: @aeroway-fill;
-@taxiway-fill: @aeroway-fill;
-@helipad-fill: @aeroway-fill;
 @access-marking: #eaeaea;
 @access-marking-living-street: #cccccc;
 
@@ -2728,18 +2724,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       polygon-gamma: 0.65;
     }
   }
-
-  [feature = 'aeroway_runway'][zoom >= 11] {
-    polygon-fill: @runway-fill;
-  }
-
-  [feature = 'aeroway_taxiway'][zoom >= 13] {
-    polygon-fill: @taxiway-fill;
-  }
-
-  [feature = 'aeroway_helipad'][zoom >= 16] {
-    polygon-fill: @helipad-fill;
-  }
 }
 
 #junctions {
@@ -2961,51 +2945,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   }
 }
 
-#aeroways {
-  [aeroway = 'runway'] {
-    [zoom >= 11] {
-      ::casing[bridge = true][zoom >= 14] {
-        line-width: 12 + 2*@major-casing-width-z14;
-        line-color: @bridge-casing;
-        line-join: round;
-        [zoom >= 15] { line-width: 18 + 2*@major-casing-width-z15; }
-        [zoom >= 16] { line-width: 24 + 2*@major-casing-width-z16; }
-        [zoom >= 17] { line-width: 24 + 2*@major-casing-width-z17; }
-        [zoom >= 18] { line-width: 24 + 2*@major-casing-width-z18; }
-      }
-      ::fill {
-        line-color: @runway-fill;
-        line-width: 2;
-        [zoom >= 12] { line-width: 4; }
-        [zoom >= 13] { line-width: 6; }
-        [zoom >= 14] { line-width: 12; }
-        [zoom >= 15] { line-width: 18; }
-        [zoom >= 16] { line-width: 24; }
-      }
-    }
-  }
-  [aeroway = 'taxiway'] {
-    [zoom >= 11] {
-      ::casing[bridge = true][zoom >= 14] {
-        line-width: 4 + 2*@secondary-casing-width-z14;
-        line-color: @bridge-casing;
-        line-join: round;
-        [zoom >= 15] { line-width: 6 + 2*@secondary-casing-width-z15; }
-        [zoom >= 16] { line-width: 8 + 2*@secondary-casing-width-z16; }
-        [zoom >= 17] { line-width: 8 + 2*@secondary-casing-width-z17; }
-        [zoom >= 18] { line-width: 8 + 2*@secondary-casing-width-z18; }
-      }
-      ::fill {
-        line-color: @taxiway-fill ;
-        line-width: 1;
-        [zoom >= 13] { line-width: 2; }
-        [zoom >= 14] { line-width: 4; }
-        [zoom >= 15] { line-width: 6; }
-        [zoom >= 16] { line-width: 8; }
-      }
-    }
-  }
-}
 
 #roads-text-ref-low-zoom[zoom < 13] {
   [highway = 'motorway'][zoom >= 10],
@@ -3126,21 +3065,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           shield-file: url("symbols/shields/tertiary_[width]x[height]_z18.svg");
         }
       }
-    }
-  }
-  [highway = 'runway'],
-  [highway = 'taxiway'] {
-    [zoom >= 15] {
-      text-name: "[refs]";
-      text-size: 10;
-      text-fill: #333;
-      text-spacing: 750;
-      text-clip: false;
-      text-placement: line;
-      text-face-name: @oblique-fonts;
-      text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill;
-      text-repeat-distance: @minor-highway-text-repeat-distance;
     }
   }
 }
