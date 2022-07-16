@@ -55,48 +55,15 @@ The script downloads shapefiles, loads them into the database and sets up the ta
 ## Fonts
 The stylesheet uses Noto, an openly licensed font family from Google with support for multiple scripts. The stylesheet uses Noto's "Sans" style where available. If not available, this stylesheet uses another appropriate style of the Noto family. The "UI" version is used where available, with its vertical metrics which fit better with Latin text.
 
-DejaVu Sans is used as an optional fallback font for systems without Noto Sans. If all the Noto fonts are installed, it should never be used.
-
 Hanazono is used a fallback for seldom used CJK characters that are not covered by Noto.
-
-Unifont is used as a last resort fallback, with it's excellent coverage, common presence on machines, and ugly look. For compatibility reasons, we support two Linux-distributions-specific versions of Unifont, therefore it's expected that you *always* get a warning about a missing Unifont version.
-
-If you do not install all the fonts, the rendering itself will not break, but missing glyphs will be ugly.
 
 For more details, see the documentation at [fonts.mss](style/fonts.mss).
 
-### Installation on Ubuntu/Debian
-
-On Ubuntu 16.04 or Debian Testing you can download and install most of the required fonts
+To download the fonts, run the following script
 
 ```
-sudo apt-get install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted fonts-hanazono ttf-unifont
+scripts/get-fonts.sh
 ```
-
-Noto Emoji Regular (*not* Noto Color Emoji) can be downloaded [from the Noto Emoji repository](https://github.com/googlefonts/noto-emoji).
-
-It might be useful to have a more recent version of the fonts for [rare non-latin scripts](#non-latin-scripts). The current upstream font release has also some more scripts and style variants than in the Ubuntu package. It can be installed [from source](https://github.com/googlefonts/noto-fonts/blob/master/FAQ.md#where-are-the-fonts).
-
-DejaVu is packaged as `fonts-dejavu-core`.
-
-### Installation on other operating systems
-
-The fonts can be downloaded here:
-
-* [Noto homepage](https://www.google.com/get/noto/) and [Noto github repositories](https://github.com/googlefonts?utf8=%E2%9C%93&q=noto)
-* [DejaVu homepage](https://dejavu-fonts.org/)
-* [Hanazono homepage](http://fonts.jp/hanazono/)
-* [Unifont homepage](http://unifoundry.com/)
-
-After the download, you have to install the font files in the usual way of your operating system.
-
-### Non-latin scripts
-
-For proper rendering of non-latin scripts, particularly those with complicated diacritics and tone marks the requirements are
-
-* FreeType 2.6.2 or later for CJK characters
-
-* A recent enough version of Noto with coverage for the scripts needed.
 
 ## Dependencies
 
@@ -128,9 +95,3 @@ For deployment, CartoCSS and Mapnik are required.
 * [Mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 3.0
 
 With CartoCSS you compile these sources into a Mapnik compatible XML file. When running CartoCSS, specify the Mapnik API version you are using (at least 3.0.0: `carto -a "3.0.0"`).
-
-If you're calling Mapnik in your own program, remember to load the XML file in non strict mode. This way, fonts declared with alternative names will only generate warnings, not errors. For instance, using the Python bindings, this becomes:
-
-```python
-mapnik.load_map(mapnik.Map(width, height), xml_filename, False)  # False for non-strict mode
-```
