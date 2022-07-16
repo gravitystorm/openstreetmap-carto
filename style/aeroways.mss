@@ -1,7 +1,4 @@
 @aeroway-fill: #bbc;
-@runway-fill: @aeroway-fill;
-@taxiway-fill: @aeroway-fill;
-@helipad-fill: @aeroway-fill;
 
 
 #aeroway-ref {
@@ -23,16 +20,10 @@
 }
 
 #aeroway-area-fill {
-  [aeroway = 'runway'][zoom >= 11] {
-    polygon-fill: @runway-fill;
-  }
-
-  [aeroway = 'taxiway'][zoom >= 13] {
-    polygon-fill: @taxiway-fill;
-  }
-
+  [aeroway = 'runway'][zoom >= 11],
+  [aeroway = 'taxiway'][zoom >= 13],
   [aeroway = 'helipad'][zoom >= 16] {
-    polygon-fill: @helipad-fill;
+    polygon-fill: @aeroway-fill;
   }
 }
 
@@ -45,17 +36,42 @@
         line-join: round;
         [zoom >= 15] { line-width: 18 + 2*@major-casing-width-z15; }
         [zoom >= 16] { line-width: 24 + 2*@major-casing-width-z16; }
-        [zoom >= 17] { line-width: 24 + 2*@major-casing-width-z17; }
-        [zoom >= 18] { line-width: 24 + 2*@major-casing-width-z18; }
+        [zoom >= 17] { line-width: 40 + 2*@major-casing-width-z17; }
+        [zoom >= 18] { line-width: 56 + 2*@major-casing-width-z18; }
+        [zoom >= 19] { line-width: 72 + 2*@major-casing-width-z19; }
       }
       ::fill {
-        line-color: @runway-fill;
+        line-color: @aeroway-fill;
         line-width: 2;
         [zoom >= 12] { line-width: 4; }
         [zoom >= 13] { line-width: 6; }
         [zoom >= 14] { line-width: 12; }
         [zoom >= 15] { line-width: 18; }
         [zoom >= 16] { line-width: 24; }
+        [zoom >= 17] { line-width: 40; }
+        [zoom >= 18] { line-width: 56; }
+        [zoom >= 19] { line-width: 72; }
+      }
+      ::center[runway != 'displaced_threshold'][runway != 'blast_pad'][zoom >= 15] {
+        line-color: #ddd;
+        line-width: 1.5;
+        line-dasharray: 18,12;
+        [zoom >= 16] {
+          line-width: 2;
+          line-dasharray: 24,16;
+        }
+        [zoom >= 17] {
+          line-width: 3.3;
+          line-dasharray: 40,27;
+        }
+        [zoom >= 18] {
+          line-width: 4.5;
+          line-dasharray: 56,37;
+        }
+        [zoom >= 19] {
+          line-width: 6;
+          line-dasharray: 72,48;
+        }
       }
     }
   }
@@ -67,16 +83,20 @@
         line-join: round;
         [zoom >= 15] { line-width: 6 + 2*@secondary-casing-width-z15; }
         [zoom >= 16] { line-width: 8 + 2*@secondary-casing-width-z16; }
-        [zoom >= 17] { line-width: 8 + 2*@secondary-casing-width-z17; }
-        [zoom >= 18] { line-width: 8 + 2*@secondary-casing-width-z18; }
+        [zoom >= 17] { line-width: 11 + 2*@secondary-casing-width-z17; }
+        [zoom >= 18] { line-width: 16 + 2*@secondary-casing-width-z18; }
+        [zoom >= 19] { line-width: 22 + 2*@secondary-casing-width-z19; }
       }
       ::fill {
-        line-color: @taxiway-fill ;
+        line-color: @aeroway-fill ;
         line-width: 1;
         [zoom >= 13] { line-width: 2; }
         [zoom >= 14] { line-width: 4; }
         [zoom >= 15] { line-width: 6; }
         [zoom >= 16] { line-width: 8; }
+        [zoom >= 17] { line-width: 11; }
+        [zoom >= 18] { line-width: 16; }
+        [zoom >= 19] { line-width: 22; }
       }
     }
   }

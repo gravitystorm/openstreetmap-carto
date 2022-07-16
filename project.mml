@@ -1032,6 +1032,7 @@ Layer:
         (SELECT
             way,
             aeroway,
+            tags->'runway' AS runway,
             bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct') AS bridge
           FROM planet_osm_line
           WHERE aeroway IN ('runway', 'taxiway')
