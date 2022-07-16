@@ -20,8 +20,6 @@
 }
 
 #aeroway-area-fill {
-  [aeroway = 'runway'][zoom >= 11],
-  [aeroway = 'taxiway'][zoom >= 13],
   [aeroway = 'helipad'][zoom >= 16] {
     polygon-fill: @aeroway-fill;
   }

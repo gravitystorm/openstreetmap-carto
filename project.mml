@@ -1019,7 +1019,7 @@ Layer:
             way,
             aeroway
           FROM planet_osm_polygon
-          WHERE aeroway IN ('runway', 'taxiway', 'helipad')
+          WHERE aeroway IN ('helipad')
         ) AS aeroway_area_fill
     properties:
       minzoom: 11
