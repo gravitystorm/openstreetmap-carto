@@ -699,7 +699,7 @@ function osm2pgsql.process_way(object)
         if phase2_admin_ways_level[object.id] then
             tables.admin:add_row({admin_level = phase2_admin_ways_level[object.id],
                                   multiple_relations = (phase2_admin_ways_parents[object.id] > 1),
-                                  geom = { create = 'line' }})
+                                  way = { create = 'line' }})
         end
     end
     if clean_tags(object.tags) then
