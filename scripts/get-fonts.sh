@@ -20,7 +20,6 @@ REGULAR_BOLD_ITALIC="NotoSans"
 REGULAR_BOLD="NotoSansAdlam
 NotoSansAdlamUnjoined
 NotoSansArabicUI
-NotoNaskhArabicUI
 NotoSansArmenian
 NotoSansBalinese
 NotoSansBamum

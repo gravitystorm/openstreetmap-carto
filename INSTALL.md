@@ -55,7 +55,7 @@ The script downloads shapefiles, loads them into the database and sets up the ta
 ## Fonts
 The stylesheet uses Noto, an openly licensed font family from Google with support for multiple scripts. The stylesheet uses Noto's "Sans" style where available. If not available, this stylesheet uses another appropriate style of the Noto family. The "UI" version is used where available, with its vertical metrics which fit better with Latin text.
 
-DejaVu Sans is used as an optional fallback font for systems without Noto Sans. If all the Noto fonts are installed, it should never be used. Noto Naskh Arabic UI is used an an optional fallback font for systems without Noto Sans Arabic.
+DejaVu Sans is used as an optional fallback font for systems without Noto Sans. If all the Noto fonts are installed, it should never be used.
 
 Hanazono is used a fallback for seldom used CJK characters that are not covered by Noto.
 
