@@ -1,4 +1,8 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.5.1...master)
+### Changes
+- Code and performance improvements (#4591, #4601)
+- Recommend disabling PostgreSQL JIT for rendering (#4592)
+- Change tree and tree row colours to the same colour as areas with trees (#4448)
 
 ## [v5.5.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.5.0...v5.5.1) - 2022-07-13
 ### Changes
