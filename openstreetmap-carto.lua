@@ -615,7 +615,8 @@ function split_tags(tags, tag_map)
     return cols
 end
 
-phase2_admin_ways = {}
+phase2_admin_ways_level = {}
+phase2_admin_ways_parents = {}
 
 -- Processing callbacks (https://osm2pgsql.org/doc/manual.html#processing-callbacks) and functions that directly support them
 
@@ -695,9 +696,10 @@ end
 function osm2pgsql.process_way(object)
     if osm2pgsql.stage == 2 then
         -- Stage two processing is called on ways that are part of admin boundary relations
-        local props = phase2_admin_ways[object.id]
-        if props ~= nil then
-            tables.admin:add_row({admin_level = props.level, multiple_relations = (props.parents > 1), geom = { create = 'line' }})
+        if phase2_admin_ways_level[object.id] then
+            tables.admin:add_row({admin_level = phase2_admin_ways_level[object.id],
+                                  multiple_relations = (phase2_admin_ways_parents[object.id] > 1),
+                                  geom = { create = 'line' }})
         end
     end
     if clean_tags(object.tags) then
@@ -759,13 +761,15 @@ function osm2pgsql.select_relation_members(relation)
         if admin ~= nil then
             for _, ref in ipairs(osm2pgsql.way_member_ids(relation)) do
                 -- Store the lowest admin_level, and how many relations it used in
-                if phase2_admin_ways[ref] == nil then
-                    phase2_admin_ways[ref] = {level = admin, parents = 1}
+                if not phase2_admin_ways_level[ref] then
+                    phase2_admin_ways_level[ref] = admin
+                    phase2_admin_ways_parents[ref] = 1
                 else
-                    if phase2_admin_ways[ref].level == admin then
-                        phase2_admin_ways[ref].parents = phase2_admin_ways[ref].parents + 1
-                    elseif admin < phase2_admin_ways[ref].level then
-                        phase2_admin_ways[ref] = {level = admin, parents = 1}
+                    if phase2_admin_ways_level[ref] == admin then
+                        phase2_admin_ways_parents[ref] = phase2_admin_ways_parents[ref] + 1
+                    elseif admin < phase2_admin_ways_level[ref] then
+                        phase2_admin_ways_level[ref] = admin
+                        phase2_admin_ways_parents[ref] = 1
                     end
                 end
             end
