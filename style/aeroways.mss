@@ -1,7 +1,7 @@
-@aeroway-fill: #b1b9c7; // lch(75,8,270)
-@aeroway-center: #dfe3ea; // lch(90,4,270)
-@aeroway-text: #f2f4f7; // lch(96,2,270)
-@aeroway-text-halo: #6c788b; // lch(50,12,270)
+@aeroway-fill: #babacb; // lch(76,9,290)
+@aeroway-center: #e2e2e9; // lch(90,4,270)
+@aeroway-text: #f3f3f7; // lch(96,2,270)
+@aeroway-text-halo: #75758a; // lch(50,12,270)
 
 #aeroway-ref {
   [aeroway = 'runway'] {
