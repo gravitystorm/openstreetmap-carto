@@ -1728,8 +1728,11 @@ Layer:
             aeroway,
             ref
           FROM planet_osm_line
-          WHERE aeroway IN ('runway', 'taxiway')
-            AND ref IS NOT NULL
+          WHERE ref IS NOT NULL
+            AND (aeroway = 'taxiway'
+              OR (aeroway = 'runway'
+                AND NOT tags @> 'runway=>displaced_threshold'
+                AND NOT tags @> 'runway=>blast_pad'))
           ORDER BY CASE aeroway
             WHEN 'runway' THEN 2
             WHEN 'taxiway' THEN 1
