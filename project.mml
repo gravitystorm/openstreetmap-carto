@@ -1731,8 +1731,7 @@ Layer:
           WHERE ref IS NOT NULL
             AND (aeroway = 'taxiway'
               OR (aeroway = 'runway'
-                AND NOT tags @> 'runway=>displaced_threshold'
-                AND NOT tags @> 'runway=>blast_pad'))
+                AND NOT tags @> 'runway=>displaced_threshold'))
           ORDER BY CASE aeroway
             WHEN 'runway' THEN 2
             WHEN 'taxiway' THEN 1

@@ -70,7 +70,7 @@
         [zoom >= 18] { line-width: 46; }
         [zoom >= 19] { line-width: 68; }
       }
-      ::center[runway != 'displaced_threshold'][runway != 'blast_pad'][zoom >= 15] {
+      ::center[runway != 'displaced_threshold'][zoom >= 15] {
         line-color: @aeroway-center;
         line-width: 1.5;
         line-dasharray: 12,8;
