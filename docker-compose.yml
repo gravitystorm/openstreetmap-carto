@@ -2,6 +2,7 @@ version: '2'
 services:
   kosmtik:
     image: kosmtik:v1
+    platform: linux/amd64
     build:
       context: .
       dockerfile: Dockerfile

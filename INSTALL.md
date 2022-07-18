@@ -1,9 +1,9 @@
 # Installation
 
-This document describes how to manually configure your system for running OpenStreetMap Carto. If you prefer quick, platform independent setup for a development environment, without the need to install and configure tools by hand, follow a Docker installation guide in [DOCKER.md](https://github.com/gravitystorm/openstreetmap-carto/blob/master/DOCKER.md).
+This document describes how to manually configure your system for running OpenStreetMap Carto. If you prefer quick, platform independent setup for a development environment, without the need to install and configure tools by hand, follow a Docker installation guide in [DOCKER.md](DOCKER.md).
 
 ## OpenStreetMap data
-You need OpenStreetMap data loaded into a PostGIS database (see below for [dependencies](#dependencies)). These stylesheets expect a database generated with osm2pgsql using the pgsql backend (table names of `planet_osm_point`, etc), the default database name (`gis`), and the [lua transforms](https://github.com/openstreetmap/osm2pgsql/blob/master/docs/lua.md) documented in the instructions below.
+You need OpenStreetMap data loaded into a PostGIS database (see below for [dependencies](#dependencies)). These stylesheets expect a database generated with osm2pgsql using the pgsql backend (table names of `planet_osm_point`, etc), the default database name (`gis`), and the [lua transforms](https://osm2pgsql.org/doc/manual.html#lua-tag-transformations) documented in the instructions below.
 
 Start by creating a database
 
@@ -24,7 +24,15 @@ then grab some OSM data. It's probably easiest to grab an PBF of OSM data from [
 osm2pgsql -G --hstore --style openstreetmap-carto.style --tag-transform-script openstreetmap-carto.lua -d gis ~/path/to/data.osm.pbf
 ```
 
-You can find a more detailed guide to setting up a database and loading data with osm2pgsql at [switch2osm.org](https://switch2osm.org/manually-building-a-tile-server-16-04-2-lts/).
+You can find a more detailed guide to setting up a database and loading data with osm2pgsql at [switch2osm.org](https://switch2osm.org/serving-tiles/manually-building-a-tile-server-16-04-2-lts/).
+
+### Disable JIT
+
+We do not recommend [PostgreSQL JIT](https://www.postgresql.org/docs/current/jit-reason.html), which is on by default in PostgreSQL 12 and higher. JIT is benifitial for slow queries where executing the SQL takes substantial time and that time is not spent in function calls. This is not the case for rendering, where most time is spent either fetching from disk, in PostGIS functions, or the query is fast. In theory, the query planner will only use JIT on slower queries, but it is known to get the type of queries map rendering requries wrong.
+
+Disabling JIT is **essential** for use with Kosmtik and other style development tools.
+
+JIT can be disabled with `psql -d gis -c 'ALTER SYSTEM SET jit=off; SELECT pg_reload_conf();'` or any other means of adjusting the PostgreSQL config.
 
 ### Custom indexes
 Custom indexes are required for rendering performance and are essential on full planet databases.
@@ -65,9 +73,9 @@ On Ubuntu 16.04 or Debian Testing you can download and install most of the requi
 sudo apt-get install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted fonts-hanazono ttf-unifont
 ```
 
-Noto Emoji Regular (*not* Noto Color Emoji) can be downloaded [from the Noto Emoji repository](https://github.com/googlei18n/noto-emoji).
+Noto Emoji Regular (*not* Noto Color Emoji) can be downloaded [from the Noto Emoji repository](https://github.com/googlefonts/noto-emoji).
 
-It might be useful to have a more recent version of the fonts for [rare non-latin scripts](#non-latin-scripts). The current upstream font release has also some more scripts and style variants than in the Ubuntu package. It can be installed [from source](https://github.com/googlei18n/noto-fonts/blob/master/FAQ.md#where-are-the-fonts).
+It might be useful to have a more recent version of the fonts for [rare non-latin scripts](#non-latin-scripts). The current upstream font release has also some more scripts and style variants than in the Ubuntu package. It can be installed [from source](https://github.com/googlefonts/noto-fonts/blob/master/FAQ.md#where-are-the-fonts).
 
 DejaVu is packaged as `fonts-dejavu-core`.
 
@@ -75,8 +83,8 @@ DejaVu is packaged as `fonts-dejavu-core`.
 
 The fonts can be downloaded here:
 
-* [Noto homepage](https://www.google.com/get/noto/) and [Noto github repositories](https://github.com/googlei18n?utf8=%E2%9C%93&q=noto)
-* [DejaVu homepage](http://dejavu-fonts.org/)
+* [Noto homepage](https://www.google.com/get/noto/) and [Noto github repositories](https://github.com/googlefonts?utf8=%E2%9C%93&q=noto)
+* [DejaVu homepage](https://dejavu-fonts.org/)
 * [Hanazono homepage](http://fonts.jp/hanazono/)
 * [Unifont homepage](http://unifoundry.com/)
 
@@ -101,8 +109,8 @@ To display any map a database containing OpenStreetMap data and some utilities a
 
 * [PostgreSQL](https://www.postgresql.org/)
 * [PostGIS](https://postgis.net/)
-* [osm2pgsql](https://github.com/openstreetmap/osm2pgsql#installing) to [import your data](https://switch2osm.org/loading-osm-data/) into a PostGIS database
-* Python 3 with the psycopg2, yaml, and requests libraries (`python3-psycopg2` `python3-yaml` `python3-requests` packages on Debian-derived systems)
+* [osm2pgsql](https://github.com/openstreetmap/osm2pgsql#installing) to [import your data](https://switch2osm.org/serving-tiles/updating-as-people-edit/) into a PostGIS database
+* Python 3 with the psycopg2, yaml, and requests libraries (`python3-psycopg2`, `python3-yaml`, `python3-requests` packages on Debian-derived systems)
 * `ogr2ogr` for loading shapefiles into the database (`gdal-bin` on Debian-derived systems)
 
 ### Optional development dependencies
@@ -110,7 +118,7 @@ To display any map a database containing OpenStreetMap data and some utilities a
 Some colours, SVGs and other files are generated with helper scripts. Not all users will need these dependencies
 
 * Python and Ruby to run helper scripts
-* [Color Math](https://github.com/gtaylor/python-colormath) and [numpy](http://www.numpy.org/) if running generate_road_colors.py helper script (may be obtained with `pip install colormath numpy`)
+* [Color Math](https://github.com/gtaylor/python-colormath) and [numpy](https://numpy.org/) if running generate_road_colors.py helper script (may be obtained with `pip install colormath numpy`)
 
 ### Additional deployment dependencies
 

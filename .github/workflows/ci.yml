@@ -13,16 +13,14 @@ jobs:
     - name: Set up Python
       run: |
         python -m pip install pyyaml colormath
-    - name: Set up apt
-      run: sudo apt-get update -qq
     - name: Set up xmllint
       run: sudo apt-get install -qq --no-install-recommends libxml2-utils
     - name: Set up shell
       run: set -o pipefail
     - name: Validate YAML files
       run: |
-        find . \( -type f -name '*.yaml' -o -name '*.yml' -o -name '*.mml' \) \
-        -exec python -c "from yaml import safe_load; safe_load(file('{}'))" \;
+        find . \( -type f -name '*.yaml' -o -name '*.yml' -o -name '*.mml' \) -print0 \
+        | xargs -0 -I '{}' python3 -c 'from yaml import safe_load; safe_load(open("{}"))'
     - name: Validate SVGs for valid XML
       run: find symbols/ -name '*.svg' | xargs xmllint --noout
     - name: Check indexes are up to date
@@ -31,3 +29,19 @@ jobs:
       run: diff -qu <(scripts/generate_road_colours.py) style/road-colors-generated.mss
     - name: Check for unsupported class usage
       run: '! grep "class:" project.mml > /dev/null'
+  import:
+    needs: [syntax]
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install osm2pgsql and database
+      run: sudo apt-get install -qq --no-install-recommends osm2pgsql postgresql-14-postgis-3
+    - name: Wait for database
+      run : sudo pg_ctlcluster 14 main start; until pg_isready; do sleep 0.5; done
+    - name: Setup database
+      run: sudo -i -u postgres createuser -s $USER && createdb -E utf8 gis && psql -Xq -d gis -c "CREATE EXTENSION postgis; CREATE EXTENSION hstore;"
+    - name: Import empty file
+      run: |
+        osm2pgsql -G --hstore --style openstreetmap-carto.style --tag-transform-script openstreetmap-carto.lua -d gis -r xml <(echo '<osm version="0.6"/>')
+    - name: Create indexes
+      run: psql -1Xq -v ON_ERROR_STOP=1 -d gis -f indexes.sql
