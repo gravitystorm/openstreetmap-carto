@@ -14,6 +14,7 @@ Some implicit assumptions are
 '''
 
 import yaml
+from urllib.parse import urlparse
 import os
 import re
 import argparse
@@ -148,9 +149,6 @@ class Downloader:
     def _download(self, url, headers=None):
         if url.startswith('file://'):
             filename = url[7:]
-            if not os.path.exists(filename):
-                logging.critical("  Filename {} specified in external-data.yml does not exist".format(filename))
-                raise RuntimeError("Error while loading {}. Does not exist".format(filename))
             if headers and 'If-Modified-Since' in headers:
                 if str(os.path.getmtime(filename)) == headers['If-Modified-Since']:
                     return DownloadResult(status_code = requests.codes.not_modified)
@@ -163,14 +161,14 @@ class Downloader:
                               last_modified = response.headers.get('Last-Modified', None))
 
     def download(self, url, name, opts, data_dir, table_last_modified):
-        filename = os.path.join(data_dir, os.path.basename(url))
+        filename = os.path.join(data_dir, os.path.basename(urlparse(url).path))
         filename_lastmod = filename + '.lastmod'
         if os.path.exists(filename) and os.path.exists(filename_lastmod):
             with open(filename_lastmod, 'r') as fp:
                 lastmod_cache = fp.read()
             with open(filename, 'rb') as fp:
                 cached_data = DownloadResult(status_code = 200, content = fp.read(),
-                                        last_modified = lastmod_cache)
+                                             last_modified = lastmod_cache)
         else:
             cached_data = None
             lastmod_cache = None
@@ -334,7 +332,7 @@ def main():
                 this_table.clean_temp()
 
                 # This will fetch data needed for import
-                download = d.download(source["url"], name,opts,data_dir, this_table.last_modified())
+                download = d.download(source["url"], name, opts, data_dir, this_table.last_modified())
 
                 # Check if there is need to import
                 if download == None or (not opts.force and not opts.force_import and this_table.last_modified() == download.last_modified):
