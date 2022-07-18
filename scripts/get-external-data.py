@@ -319,12 +319,6 @@ def main():
                     raise RuntimeError(
                         "Only ASCII alphanumeric table are names supported")
 
-                workingdir = os.path.join(data_dir, name)
-                # Clean up anything left over from an aborted run
-                shutil.rmtree(workingdir, ignore_errors=True)
-
-                os.makedirs(workingdir, exist_ok=True)
-
                 this_table = Table(name, conn,
                                    config["settings"]["temp_schema"],
                                    config["settings"]["schema"],
@@ -340,6 +334,7 @@ def main():
                     continue
 
 
+                workingdir = os.path.join(data_dir, name)
                 shutil.rmtree(workingdir, ignore_errors=True)
                 os.makedirs(workingdir, exist_ok=True)
                 if "archive" in source and source["archive"]["format"] == "zip":
