@@ -278,7 +278,7 @@ def main():
         logging.basicConfig(level=logging.INFO)
 
     if opts.force and opts.no_update:
-        opts.no_update = false
+        opts.no_update = False
         logging.warning("Force (-f) flag overrides --no-update flag")
 
     logging.info("Starting load of external data into database")
