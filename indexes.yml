@@ -20,6 +20,9 @@ polygon:
   name:
     function: ST_PointOnSurface(way)
     where: name IS NOT NULL
+  name_z6:
+    function: ST_PointOnSurface(way)
+    where: name IS NOT NULL AND way_area > 5980000
   admin:
     function: ST_PointOnSurface(way)
     where: name IS NOT NULL AND boundary = 'administrative' AND admin_level IN ('0', '1', '2', '3', '4')

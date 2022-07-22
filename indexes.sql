@@ -25,6 +25,9 @@ CREATE INDEX planet_osm_polygon_military
 CREATE INDEX planet_osm_polygon_name
   ON planet_osm_polygon USING GIST (ST_PointOnSurface(way))
   WHERE name IS NOT NULL;
+CREATE INDEX planet_osm_polygon_name_z6
+  ON planet_osm_polygon USING GIST (ST_PointOnSurface(way))
+  WHERE name IS NOT NULL AND way_area > 5980000;
 CREATE INDEX planet_osm_polygon_nobuilding
   ON planet_osm_polygon USING GIST (way)
   WHERE building IS NULL;
