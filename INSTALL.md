@@ -44,7 +44,7 @@ psql -d gis -f indexes.sql
 The indexes can be created in parallel with
 
 ```sh
-scripts/indexes.py -0 | xargs -0 -I{} psql -d gis -c "{}"
+scripts/indexes.py -0 | xargs -0 -P0 -I{} psql -d gis -c "{}"
 ```
 
 ## Scripted download
