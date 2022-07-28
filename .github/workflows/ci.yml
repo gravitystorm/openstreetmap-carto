@@ -47,8 +47,8 @@ jobs:
         scripts/indexes.py --reindex > /dev/null &&
         scripts/indexes.py --concurrent --reindex > /dev/null &&
         scripts/indexes.py --notexist > /dev/null &&
-        scripts/indexes.py --zero > /dev/null &&
-        scripts/indexes.py --zero > /dev/null
+        scripts/indexes.py --null > /dev/null &&
+        scripts/indexes.py --null > /dev/null
   import:
     needs: [syntax]
     runs-on: ubuntu-22.04

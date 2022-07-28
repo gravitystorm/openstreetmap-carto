@@ -14,10 +14,10 @@ parser.add_argument('--fillfactor', help='Custom fillfactor to use')
 parser.add_argument('--notexist', help='Use IF NOT EXISTS (requires 9.5)', action='store_true', default=False)
 parser.add_argument('--osm2pgsql', help='Include indexes normally built by osm2pgsql', action='store_true', default=False)
 parser.add_argument('--reindex', help='Rebuild existing indexes', action='store_true', default=False)
-parser.add_argument('--zero', '-0', help='Emit zero-separated index statements for use with xargs', action='store_true', default=False)
+parser.add_argument('--null', '-0', help='SQL statements are terminated by a null character instead of whitespace for use with xargs', action='store_true', default=False)
 args = parser.parse_args()
 
-separator = '\0' if args.zero else '\n'
+separator = '\0' if args.null else '\n'
 
 def index_statement(table, name, function, conditions=None, concurrent=False,notexist=False, fillfactor=None):
     options = ' CONCURRENTLY' if concurrent else ''
