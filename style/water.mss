@@ -287,12 +287,12 @@
 #text-poly-low-zoom[zoom < 10],
 #text-point[zoom >= 10] {
   [feature = 'natural_water'],
-  [feature = 'natural_bay'],
-  [feature = 'natural_strait'],
   [feature = 'landuse_reservoir'],
   [feature = 'landuse_basin'],
-  [feature = 'waterway_dock'] {
-    [zoom >= 0][way_pixels > 3000][way_pixels <= 768000],
+  [feature = 'waterway_dock'],
+  [feature = 'natural_strait'],
+  [feature = 'natural_bay'] {
+    [zoom >= 5][way_pixels > 3000][way_pixels <= 768000],
     [zoom >= 14][way_pixels <= 768000][feature = 'natural_bay'],
     [zoom >= 14][way_pixels <= 768000][feature = 'natural_strait'],
     [zoom >= 17][way_pixels <= 768000] {
@@ -301,6 +301,7 @@
       text-wrap-width: 25; // 2.5 em
       text-line-spacing: -1.5; // -0.15 em
       [way_pixels > 12000],
+      [zoom >= 15][feature = 'natural_strait'],
       [zoom >= 15][feature = 'natural_strait'] {
         text-size: 12;
         text-wrap-width: 37; // 3.1 em
