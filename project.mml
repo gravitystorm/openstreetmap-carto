@@ -1457,23 +1457,28 @@ Layer:
           FROM
           (SELECT -- This subselect allows filtering on the feature column
               way,
-              CONCAT(
-                name,
-                E'\n' || CONCAT( -- by doing this with a || if both the ele and height branches are null, this entire expression is null and only name is used
-                  CASE
-                    WHEN (tags ? 'ele') AND tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$'
-                      AND ("natural" IN ('peak', 'volcano', 'saddle')
-                        OR tourism = 'alpine_hut' OR (tourism = 'information' AND tags->'information' = 'guidepost')
-                        OR (amenity = 'shelter' AND tags->'shelter_type' NOT IN ('public_transport', 'picnic_shelter'))
-                        OR tags->'mountain_pass' = 'yes')
-                    THEN CONCAT(REPLACE(ROUND((tags->'ele')::NUMERIC)::TEXT, '-', U&'\2212'), U&'\00A0', 'm') END,
-                  CASE
-                    WHEN (tags ? 'height') AND tags->'height' ~ '^\d{1,3}(\.\d+)?$'
-                      AND waterway = 'waterfall'
-                    THEN CONCAT(ROUND((tags->'height')::NUMERIC)::TEXT, U&'\00A0', 'm') END
+              CASE
+                WHEN amenity = 'parcel_locker'
+                THEN CONCAT_WS(E'\n', COALESCE(tags->'brand', tags->'operator', name), ref)
+                ELSE
+                CONCAT(
+                  name,
+                  E'\n' || CONCAT( -- by doing this with a || if both the ele and height branches are null, this entire expression is null and only name is used
+                    CASE
+                      WHEN (tags ? 'ele') AND tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$'
+                        AND ("natural" IN ('peak', 'volcano', 'saddle')
+                          OR tourism = 'alpine_hut' OR (tourism = 'information' AND tags->'information' = 'guidepost')
+                          OR (amenity = 'shelter' AND tags->'shelter_type' NOT IN ('public_transport', 'picnic_shelter'))
+                          OR tags->'mountain_pass' = 'yes')
+                      THEN CONCAT(REPLACE(ROUND((tags->'ele')::NUMERIC)::TEXT, '-', U&'\2212'), U&'\00A0', 'm') END,
+                    CASE
+                      WHEN (tags ? 'height') AND tags->'height' ~ '^\d{1,3}(\.\d+)?$'
+                        AND waterway = 'waterfall'
+                      THEN CONCAT(ROUND((tags->'height')::NUMERIC)::TEXT, U&'\00A0', 'm') END
+                    )
                   )
-                ) AS name,
-                tags->'parking' as "parking",
+                END AS name,
+              tags->'parking' as "parking",
               COALESCE(
                 'aeroway_' || CASE WHEN aeroway IN ('gate', 'apron', 'helipad', 'aerodrome') THEN aeroway END,
                 'tourism_' || CASE WHEN tourism IN ('alpine_hut', 'apartment', 'artwork', 'camp_site', 'caravan_site', 'chalet', 'gallery', 'guest_house',
@@ -1491,6 +1496,7 @@ Layer:
                                                     'university', 'vehicle_inspection', 'veterinary') THEN amenity END,
                 'amenity_' || CASE WHEN amenity IN ('waste_disposal') AND way_area IS NOT NULL THEN amenity END, -- Waste disposal points are rendered in the low priority layer
                 'amenity_' || CASE WHEN amenity IN ('vending_machine') AND tags->'vending' IN ('excrement_bags', 'parking_tickets', 'public_transport_tickets') THEN amenity END,
+                'amenity_' || CASE WHEN amenity IN ('parcel_locker') THEN amenity END,
                 'diplomatic_'|| CASE WHEN tags->'office' IN ('diplomatic') AND tags->'diplomatic' IN ('embassy', 'consulate') THEN tags->'diplomatic' ELSE NULL END,
                 'advertising_' || CASE WHEN tags->'advertising' in ('column') THEN tags->'advertising' END,
                 'emergency_' || CASE WHEN tags->'emergency' IN ('phone') AND way_area IS NULL THEN tags->'emergency' END,
