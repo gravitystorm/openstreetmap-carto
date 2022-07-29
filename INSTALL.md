@@ -32,7 +32,7 @@ We do not recommend [PostgreSQL JIT](https://www.postgresql.org/docs/current/jit
 
 Disabling JIT is **essential** for use with Kosmtik and other style development tools.
 
-JIT can be disabled with `psql -d gis -c 'ALTER SYSTEM SET jit=off; SELECT pg_reload_conf();'` or any other means of adjusting the PostgreSQL config.
+JIT can be disabled with `psql -d gis -c 'ALTER SYSTEM SET jit=off;' -c 'SELECT pg_reload_conf();'` or any other means of adjusting the PostgreSQL config.
 
 ### Custom indexes
 Custom indexes are required for rendering performance and are essential on full planet databases.
