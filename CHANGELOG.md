@@ -11,7 +11,6 @@
 - Don't label public transport shelters with elevation (#4313)
 - Update code of conduct to explicitly prohibit doxxing (#4554)
 - Add parcel lockers (#4512)
-- Render single trees and tree rows more similarly to forests (#4448)
 - Render name labels of bays and straights from z14 only, and lakes from z5 (#3750)
 
 ## [v5.5.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.5.0...v5.5.1) - 2022-07-13
