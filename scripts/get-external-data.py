@@ -14,6 +14,7 @@ Some implicit assumptions are
 '''
 
 import yaml
+from urllib.parse import urlparse
 import os
 import re
 import argparse
@@ -148,7 +149,7 @@ class Downloader:
     def _download(self, url, headers=None):
         if url.startswith('file://'):
             filename = url[7:]
-            if headers and 'If-Modified-Since' in headers and os.path.exists(filename):
+            if headers and 'If-Modified-Since' in headers:
                 if str(os.path.getmtime(filename)) == headers['If-Modified-Since']:
                     return DownloadResult(status_code = requests.codes.not_modified)
             with open(filename, 'rb') as fp:
@@ -159,54 +160,65 @@ class Downloader:
         return DownloadResult(status_code = response.status_code, content = response.content,
                               last_modified = response.headers.get('Last-Modified', None))
 
-    @staticmethod
-    def _return_or_raise(response):
-        if response.status_code != requests.codes.ok:
-            raise RuntimeError('Unsupported HTTP response code {}, expected {} OK'.format(
-                response.status_code, requests.codes.ok))
-        return response
-
-    def download(self, url):
-        response = self._download(url)
-        return self._return_or_raise(response)
-
-    def download_if_newer(self, url, last_modified):
-        headers = {}
-        if last_modified:
-            headers['If-Modified-Since'] = last_modified
-        response = self._download(url, headers)
-        if response.status_code == requests.codes.not_modified:
-            return None
-        return self._return_or_raise(response)
-
-    def download_cache(self, url, last_modified):
-        filename = os.path.basename(url)
+    def download(self, url, name, opts, data_dir, table_last_modified):
+        filename = os.path.join(data_dir, os.path.basename(urlparse(url).path))
         filename_lastmod = filename + '.lastmod'
-
-        # Check if cached version exists
         if os.path.exists(filename) and os.path.exists(filename_lastmod):
             with open(filename_lastmod, 'r') as fp:
-                lastmod = fp.read()
-            # Revalidate cache entry
-            result = self.download_if_newer(url, lastmod)
-
-            # Check if cache is up to date and DB last modified differs
-            if result is None and lastmod != last_modified:
-                with open(filename, 'rb') as fp:
-                    # Return cached document
-                    return DownloadResult(status_code = 200, content = fp.read(),
-                                          last_modified = lastmod)
+                lastmod_cache = fp.read()
+            with open(filename, 'rb') as fp:
+                cached_data = DownloadResult(status_code = 200, content = fp.read(),
+                                             last_modified = lastmod_cache)
         else:
-            # Download a file normally, no cached version
-            result = self.download(url)
+            cached_data = None
+            lastmod_cache = None
 
-        # We had a cache miss or nothing in cache
-        if result is not None and result.last_modified is not None:
-            # Cache downloaded file
-            with open(filename, 'wb') as fp:
-                fp.write(result.content)
-            with open(filename_lastmod, 'w') as fp:
-                fp.write(result.last_modified)
+        result = None
+        # Variable used to tell if we downloaded something
+        download_happened = False
+
+        if opts.no_update and (cached_data or table_last_modified):
+            # It is ok if this returns None, because for this to be None, 
+            # we need to have something in table and therefore need not import (since we are opts.no-update)
+            result = cached_data
+        else:
+            if opts.force:
+                headers = {}
+            else:
+                # If none of those 2 exist, value will be None and it will have the same effect as not having If-Modified-Since set
+                headers = {'If-Modified-Since': table_last_modified or lastmod_cache}
+
+            response = self._download(url, headers)
+            # Check status codes
+            if response.status_code == requests.codes.ok:
+                logging.info("  Download complete ({} bytes)".format(len(response.content)))
+                download_happened = True
+                if opts.cache:
+                    # Write to cache
+                    with open(filename, 'wb') as fp:
+                        fp.write(response.content)
+                    with open(filename_lastmod, 'w') as fp:
+                        fp.write(response.last_modified)
+                result = response
+            elif response.status_code == requests.codes.not_modified:
+                # Now we need to figure out if our not modified data came from table or cache
+                if os.path.exists(filename) and os.path.exists(filename_lastmod):
+                    logging.info("  Cached file {} did not require updating".format(url))
+                    result = cached_data
+                else:
+                    result = None
+            else:
+                logging.critical("  Unexpected response code ({}".format(response.status_code))
+                logging.critical("  Content {} was not downloaded".format(name))
+                return None
+
+
+        if opts.delete_cache or (not opts.cache and download_happened):
+            try:
+                os.remove(filename)
+                os.remove(filename_lastmod)
+            except FileNotFoundError:
+                pass
 
         return result
 
@@ -224,9 +236,16 @@ def main():
         description="Load external data into a database")
 
     parser.add_argument("-f", "--force", action="store_true",
-                        help="Download new data, even if not required")
+                        help="Download and import new data, even if not required.")
     parser.add_argument("-C", "--cache", action="store_true",
-                        help="Cache downloaded data and use cache if possible")
+                        help="Cache downloaded data. Useful if you'll have your database volume deleted in the future")
+    parser.add_argument("--no-update", action="store_true",
+                        help="Don't download newer data than what is locally available (either in cache or table). Overridden by --force")
+
+    parser.add_argument("--delete-cache", action="store_true",
+                        help="Execute as usual, but delete cached data")
+    parser.add_argument("--force-import", action="store_true",
+                        help="Import data into table even if may not be needed")
 
     parser.add_argument("-c", "--config", action="store", default="external-data.yml",
                         help="Name of configuration file (default external-data.yml)")
@@ -259,6 +278,10 @@ def main():
         logging.basicConfig(level=logging.WARNING)
     else:
         logging.basicConfig(level=logging.INFO)
+
+    if opts.force and opts.no_update:
+        opts.no_update = False
+        logging.warning("Force (-f) flag overrides --no-update flag")
 
     logging.info("Starting load of external data into database")
 
@@ -298,85 +321,81 @@ def main():
                     raise RuntimeError(
                         "Only ASCII alphanumeric table are names supported")
 
-                workingdir = os.path.join(data_dir, name)
-                # Clean up anything left over from an aborted run
-                shutil.rmtree(workingdir, ignore_errors=True)
-
-                os.makedirs(workingdir, exist_ok=True)
-
                 this_table = Table(name, conn,
                                    config["settings"]["temp_schema"],
                                    config["settings"]["schema"],
                                    config["settings"]["metadata_table"])
                 this_table.clean_temp()
 
-                if opts.force:
-                    download = d.download(source["url"])
-                elif opts.cache:
-                    download = d.download_cache(source["url"], this_table.last_modified())
-                else:
-                    download = d.download_if_newer(source["url"], this_table.last_modified())
+                # This will fetch data needed for import
+                download = d.download(source["url"], name, opts, data_dir, this_table.last_modified())
 
-                if download is None:
+                # Check if there is need to import
+                if download == None or (not opts.force and not opts.force_import and this_table.last_modified() == download.last_modified):
                     logging.info("  Table {} did not require updating".format(name))
-                else:
-                    logging.info("  Download complete ({} bytes)".format(len(download.content)))
+                    continue
 
-                    if "archive" in source and source["archive"]["format"] == "zip":
-                        logging.info("  Decompressing file")
-                        zip = zipfile.ZipFile(io.BytesIO(download.content))
-                        for member in source["archive"]["files"]:
-                            zip.extract(member, workingdir)
 
-                    ogrpg = "PG:dbname={}".format(database)
+                workingdir = os.path.join(data_dir, name)
+                shutil.rmtree(workingdir, ignore_errors=True)
+                os.makedirs(workingdir, exist_ok=True)
+                if "archive" in source and source["archive"]["format"] == "zip":
+                    logging.info("  Decompressing file")
+                    zip = zipfile.ZipFile(io.BytesIO(download.content))
+                    for member in source["archive"]["files"]:
+                        zip.extract(member, workingdir)
 
-                    if port is not None:
-                        ogrpg = ogrpg + " port={}".format(port)
-                    if user is not None:
-                        ogrpg = ogrpg + " user={}".format(user)
-                    if host is not None:
-                        ogrpg = ogrpg + " host={}".format(host)
-                    if password is not None:
-                        ogrpg = ogrpg + " password={}".format(password)
+                ogrpg = "PG:dbname={}".format(database)
 
-                    ogrcommand = ["ogr2ogr",
-                                  '-f', 'PostgreSQL',
-                                  '-lco', 'GEOMETRY_NAME=way',
-                                  '-lco', 'SPATIAL_INDEX=FALSE',
-                                  '-lco', 'EXTRACT_SCHEMA_FROM_LAYER_NAME=YES',
-                                  '-nln', "{}.{}".format(config["settings"]["temp_schema"], name)]
+                if port is not None:
+                    ogrpg = ogrpg + " port={}".format(port)
+                if user is not None:
+                    ogrpg = ogrpg + " user={}".format(user)
+                if host is not None:
+                    ogrpg = ogrpg + " host={}".format(host)
+                if password is not None:
+                    ogrpg = ogrpg + " password={}".format(password)
 
-                    if "ogropts" in source:
-                        ogrcommand += source["ogropts"]
+                ogrcommand = ["ogr2ogr",
+                                '-f', 'PostgreSQL',
+                                '-lco', 'GEOMETRY_NAME=way',
+                                '-lco', 'SPATIAL_INDEX=FALSE',
+                                '-lco', 'EXTRACT_SCHEMA_FROM_LAYER_NAME=YES',
+                                '-nln', "{}.{}".format(config["settings"]["temp_schema"], name)]
 
-                    ogrcommand += [ogrpg,
-                                   os.path.join(workingdir, source["file"])]
+                if "ogropts" in source:
+                    ogrcommand += source["ogropts"]
 
-                    logging.info("  Importing into database")
-                    logging.debug("running {}".format(
-                        subprocess.list2cmdline(ogrcommand)))
+                ogrcommand += [ogrpg,
+                                os.path.join(workingdir, source["file"])]
 
-                    # ogr2ogr can raise errors here, so they need to be caught
-                    try:
-                        subprocess.check_output(
-                            ogrcommand, stderr=subprocess.PIPE, universal_newlines=True)
-                    except subprocess.CalledProcessError as e:
-                        # Add more detail on stdout for the logs
-                        logging.critical(
-                            "ogr2ogr returned {} with layer {}".format(e.returncode, name))
-                        logging.critical("Command line was {}".format(
-                            subprocess.list2cmdline(e.cmd)))
-                        logging.critical("Output was\n{}".format(e.output))
-                        logging.critical("Error was\n{}".format(e.stderr))
-                        raise RuntimeError(
-                            "ogr2ogr error when loading table {}".format(name))
+                logging.info("  Importing into database")
+                logging.debug("running {}".format(
+                    subprocess.list2cmdline(ogrcommand)))
 
-                    logging.info("  Import complete")
+                # ogr2ogr can raise errors here, so they need to be caught
+                try:
+                    subprocess.check_output(
+                        ogrcommand, stderr=subprocess.PIPE, universal_newlines=True)
+                except subprocess.CalledProcessError as e:
+                    # Add more detail on stdout for the logs
+                    logging.critical(
+                        "ogr2ogr returned {} with layer {}".format(e.returncode, name))
+                    logging.critical("Command line was {}".format(
+                        subprocess.list2cmdline(e.cmd)))
+                    logging.critical("Output was\n{}".format(e.output))
+                    logging.critical("Error was\n{}".format(e.stderr))
+                    raise RuntimeError(
+                        "ogr2ogr error when loading table {}".format(name))
 
-                    this_table.index()
-                    if renderuser is not None:
-                        this_table.grant_access(renderuser)
-                    this_table.replace(download.last_modified)
+                logging.info("  Import complete")
+
+                this_table.index()
+                if renderuser is not None:
+                    this_table.grant_access(renderuser)
+                this_table.replace(download.last_modified)
+
+                shutil.rmtree(workingdir, ignore_errors=True)
 
             if conn:
                 conn.close()

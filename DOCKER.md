@@ -21,7 +21,7 @@ Read on below to get the details.
 * `git clone https://github.com/gravitystorm/openstreetmap-carto.git` to clone openstreetmap-carto repository into a directory on your host system
 * download OpenStreetMap data in osm.pbf format to a file `data.osm.pbf` and place it within the openstreetmap-carto directory (for example some small area from [Geofabrik](https://download.geofabrik.de/))
 * If necessary, `sudo service postgresql stop` to make sure you don't have currently running a native PostgreSQL server which would conflict with Docker's PostgreSQL server.
-* `docker-compose up import` to import the data (only necessary the first time or when you change the data file)
+* `docker-compose up import` to import the data (only necessary the first time or when you change the data file). Additionally you can set import options through [environment variables](#Importing-data). More on that [later](#Hands-on-approach)
 * `docker-compose up kosmtik` to run the style preview application
 * browse to [http://localhost:6789](http://localhost:6789) to view the output of Kosmtik
 * Ctrl+C to stop the style preview application
@@ -39,11 +39,24 @@ OpenStreetMap Carto needs a database populated with rendering data to work. You 
 It's probably easiest to grab an PBF of OSM data from [Geofabrik](https://download.geofabrik.de/).
 Once you have that file put it into the openstreetmap-carto directory and run `docker-compose up import` in the openstreetmap-carto directory.
 This starts the PostgreSQL container (downloads it if it not exists) and starts a container that runs [osm2pgsql](https://github.com/openstreetmap/osm2pgsql) to import the data. The container is built the first time you run that command if it not exists.
-At startup of the container the script `scripts/docker-startup.sh` is invoked which prepares the database and itself starts osm2pgsql for importing the data.
+At startup of the container the script `scripts/docker-startup.sh` is invoked which prepares the database and itself starts osm2pgsql for importing the data. Then the `scripts/get-external-data.py` is called to download and import needed shapefiles.
 
-osm2pgsql has a few [command line options](https://manpages.debian.org/testing/osm2pgsql/osm2pgsql.1.en.html) and the import by default uses a RAM cache of 512 MB, 1 worker and expects the import file to be named `data.osm.pbf`. If you want to customize any of these parameters you have to set the environment variables `OSM2PGSQL_CACHE` (e.g. `export OSM2PGSQL_CACHE=1024` on Linux to set the cache to 1 GB) for the RAM cache (the value depends on the amount of RAM you have available, the more you can use here the faster the import may be), `OSM2PGSQL_NUMPROC` for the number of workers (this depends on the number of processors you have and whether your harddisk is fast enough e.g. is a SSD), or `OSM2PGSQL_DATAFILE` if your file has a different name.
+### Supplying command line options as environment variables
 
-You can also [tune the PostgreSQL](https://wiki.postgresql.org/wiki/Tuning_Your_PostgreSQL_Server) during the import phases, with `PG_WORK_MEM` (default to 16MB) and `PG_MAINTENANCE_WORK_MEM` (default to 256MB), which will eventually write `work_mem` and `maintenance_work_mem` to the `postgresql.auto.conf` once, making them applied each time the database started. Note that unlike osm2pgsql variables, once thay are set, you can only change them by running `ALTER SYSTEM` on your own, changing `postgresql.auto.conf` or remove the database volume by `docker-compose down -v && docker-compose rm -v` and import again.
+**osm2pgsql** has a few [command line options](https://manpages.debian.org/testing/osm2pgsql/osm2pgsql.1.en.html) and the import by default uses a RAM cache of 512 MB, 1 worker and expects the import file to be named `data.osm.pbf`. If you want to customize any of these parameters you have to set the environment variables `OSM2PGSQL_CACHE` (e.g. `export OSM2PGSQL_CACHE=1024` on Linux to set the cache to 1 GB) for the RAM cache (the value depends on the amount of RAM you have available, the more you can use here the faster the import may be), `OSM2PGSQL_NUMPROC` for the number of workers (this depends on the number of processors you have and whether your harddisk is fast enough e.g. is a SSD), or `OSM2PGSQL_DATAFILE` if your file has a different name.
+
+You can also [tune the **PostgreSQL**](https://wiki.postgresql.org/wiki/Tuning_Your_PostgreSQL_Server) during the import phases, with `PG_WORK_MEM` (default to 16MB) and `PG_MAINTENANCE_WORK_MEM` (default to 256MB), which will eventually write `work_mem` and `maintenance_work_mem` to the `postgresql.auto.conf` once, making them applied each time the database started. Note that unlike osm2pgsql variables, once thay are set, you can only change them by running `ALTER SYSTEM` on your own, changing `postgresql.auto.conf` or remove the database volume by `docker-compose down -v && docker-compose rm -v` and import again.
+
+**get-external-data.py script** has option `-C (--cache)` to save data after download (useful when you are tinkering with docker and ending up deleting volumes).
+It also has option `--no-update` to stop program from downloading newer versions of shapefiles if you don't deem updating them necessary. Best used in conjunction with `-C`.
+If everything goes out of the window, option `--force` will forcefully download data and import it. Option `--force-import` will try to force just import part.
+Use `EXTERNAL_DATA_SCRIPT_FLAGS` env variable to pass those options. For example:
+```
+EXTERNAL_DATA_SCRIPT_FLAGS="--cache --no-update"
+```
+will keep data you downloaded and not update them (saving you on bandwidth) until you change this options.
+
+### Hands on approach
 
 If you want to customize and remember the values, supply it during your first import:
 
@@ -51,10 +64,13 @@ If you want to customize and remember the values, supply it during your first im
 PG_WORK_MEM=128MB PG_MAINTENANCE_WORK_MEM=2GB \
 OSM2PGSQL_CACHE=2048 OSM2PGSQL_NUMPROC=4 \
 OSM2PGSQL_DATAFILE=taiwan.osm.pbf \
+EXTERNAL_DATA_SCRIPT_FLAGS="--cache --no-update" \
 docker-compose up import
 ```
 
-Variables will be remembered in `.env` if you don't have that file, and values in the file will be applied unless you manually assign them.
+Note that on Linux you need to export those environment variables before calling docker-compose. If you are using sudo to call docker (because your user is not in the docker group (which we don't recommend)), you need to also use sudo -E option
+
+Variables will be remembered in `.env` if you don't have that file, and values in the file will be applied unless you manually assign them. Keep in mind this means if you change your `.env` file, but keep your environment variables untouched (you haven't unset them or you haven't rebooted your host), they will be used instead of anything that you changed in `.env`.
 
 Depending on your machine and the size of the extract the import can take a while. When it is finished you should have the data necessary to render it with OpenStreetMap Carto.
 
