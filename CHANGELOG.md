@@ -1,4 +1,7 @@
 ## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.5.1...master)
+### Major Changes
+- The style now uses locally installed fonts, using `scripts/get-fonts.sh` to download the fonts.
+
 ### Changes
 - Code and performance improvements (#4591, #4601)
 - Recommend disabling PostgreSQL JIT for rendering (#4592)
