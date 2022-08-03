@@ -1,4 +1,6 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.5.1...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.6.0...master)
+
+## [v5.6.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.5.1...v5.6.0) - 2022-08-03
 ### Major Changes
 - The style now uses locally installed fonts, using `scripts/get-fonts.sh` to download the fonts.
 
