@@ -233,7 +233,7 @@ Layer:
         ) AS water_areas
     properties:
       cache-features: true
-      minzoom: 5
+      minzoom: 0
   - id: ocean-lz
     geometry: polygon
     <<: *extents
