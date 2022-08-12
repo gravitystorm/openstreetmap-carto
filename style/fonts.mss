@@ -15,11 +15,11 @@ but there are some exceptions.
 
   - Noto Sans is before all other fonts
 
-  - Noto Arabic and Noto CJK JP are placed behind sans fonts because commonly
-    used signs like parenthesis or quotation marks, and their design should
-    not overwrite the standard design.
+  - Noto Sans Arabic and Noto Sanc CJK JP are placed behind sans fonts because
+    commonly used signs like parenthesis or quotation marks, and their design
+    should not overwrite the standard design.
 
-3. The used CJK font covers all CJK languages, but defaults to the Japanese
+The used CJK font covers all CJK languages, but defaults to the Japanese
 glyph style if various glyph styles are available. We have to default to one
 of JP, KR, SC, TC because this style has no knowledge about what language the
 “names” tag contains. As in Korea Han characters are not so widely used, it is
@@ -27,21 +27,20 @@ better to default to either Chinese or Japanese. As Chinese exists in the two
 variants SC/TC, it won’t be a uniform rendering anyway. So we default to
 Japanese. However, this choice stays somewhat arbitrary and subjective.
 
-4. Similar to CJK Han Unification, there are multiple scripts for Arabic
-scripts, and the style has no way to know what language the text is in. This
-style uses Noto Sans Arabic UI because it’s consistent with the other Sans
+Noto provides multiple designs for the Arabic script. This style uses
+Noto Sans Arabic UI because it’s consistent with the other Sans
 fonts and legible.
 
-5. Noto Serif is used for scripts that are not supported by Noto Sans. Currently
+2. Noto Serif is used for scripts that are not supported by Noto Sans. Currently
 this is only Tibetan: The old Noto Sans Tibetan has been renamed to Noto Serif
 Tibetan in 2015, since then only Noto Serif Tibetan gets updated.
 
-6. Noto provides two variants of Emoji: Noto Color Emoji and Noto Emoji. The
+3. Noto provides two variants of Emoji: Noto Color Emoji and Noto Emoji. The
 colour variant is a SVG flavoured OpenType font that contains coloured emojis.
 This is not useful in cartography, so we use the “normal” monochromatic
 Noto Emoji.
 
-7. Fallback fonts. Hanazono covers almost all CJK characters, even in Unicode
+4. Fallback fonts. Hanazono covers almost all CJK characters, even in Unicode
 Plane 2.
 */
 
@@ -111,7 +110,6 @@ A regular style.
                 "Noto Sans Tifinagh Regular",
                 "Noto Sans Vai Regular",
                 "Noto Sans Yi Regular",
-
                 "Noto Sans CJK JP Regular",
                 "Noto Sans Arabic UI Regular",
                 
@@ -160,17 +158,18 @@ regular text and can be used for emphasis. Fallback is a regular style.
                 "Noto Sans Telugu UI Bold",
                 "Noto Sans Thaana Bold",
                 "Noto Sans Thai UI Bold",
-
                 "Noto Sans CJK JP Bold",
                 "Noto Sans Arabic UI Bold",
 
                 "Noto Serif Tibetan Bold",
+
                 "Noto Emoji Bold",
 
                 @book-fonts;
 
 /*
-Italics are only available for the base font, not the other scripts.
+Italics are only available for the (Latin-Greek-Cyrillic) base font, not the other scripts.
+(Apart from that, only Noto Tamil has an Italic style, but just for Serif, not for Sans.)
 For a considerable number of labels this style will make no difference to the regular style.
 */
 @oblique-fonts: "Noto Sans Italic", @book-fonts;
