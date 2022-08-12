@@ -1,4 +1,8 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.6.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.6.1...master)
+
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.6.0...v5.6.1) - 2022-08-12
+### Changes
+- Rendering of water areas on zooms 0 to 4 fixed (#4640)
 
 ## [v5.6.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.5.1...v5.6.0) - 2022-08-03
 ### Major Changes
