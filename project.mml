@@ -1178,13 +1178,20 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
+      # By splitting MPs into polygons, finding the largest in real area, and
+      # finding a label point in 4326 we get better labeling points. 4326 does
+      # distort the placement, but it does so in a way that results in better
+      # results for most countries.
       table: |-
         (SELECT
-            ST_PointOnSurface(way) AS way,
+            (SELECT ST_Transform(ST_PointOnSurface(geom),3857)
+              FROM ST_Dump(ST_Transform(way,4326))
+              ORDER BY ST_Area(geom::geography) DESC
+              LIMIT 1) AS way,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             name
           FROM planet_osm_polygon
-          WHERE ST_PointOnSurface(way) && !bbox!
+          WHERE way && !bbox!
             AND name IS NOT NULL
             AND boundary = 'administrative'
             AND admin_level = '2'
