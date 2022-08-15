@@ -1475,6 +1475,7 @@ Layer:
                       WHEN (tags ? 'ele') AND tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$'
                         AND ("natural" IN ('peak', 'volcano', 'saddle')
                           OR tourism = 'alpine_hut' OR (tourism = 'information' AND tags->'information' = 'guidepost')
+                          OR tourism = 'wilderness_hut'
                           OR (amenity = 'shelter' AND tags->'shelter_type' NOT IN ('public_transport', 'picnic_shelter'))
                           OR tags->'mountain_pass' = 'yes')
                       THEN CONCAT(REPLACE(ROUND((tags->'ele')::NUMERIC)::TEXT, '-', U&'\2212'), U&'\00A0', 'm') END,
