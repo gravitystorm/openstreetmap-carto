@@ -1882,15 +1882,18 @@
     text-halo-fill: @standard-halo-fill;
   }
 
-  [feature = 'tourism_information'][zoom >= 19],
-  [feature = 'tourism_information']["information"='office'][zoom >= 17] {
+  [feature = 'tourism_information'][information = 'audioguide'][zoom >= 19],
+  [feature = 'tourism_information'][information = 'guidepost'][zoom >= 19],
+  [feature = 'tourism_information'][information = 'map'][zoom >= 19],
+  [feature = 'tourism_information'][information = 'office'][zoom >= 17]
+  [feature = 'tourism_information'][information = 'tactile_map'][zoom >= 19],
+  [feature = 'tourism_information'][information = 'terminal'][zoom >= 19] {
       text-name: "[name]";
       text-size: @standard-font-size;
       text-wrap-width: @standard-wrap-width;
       text-line-spacing: @standard-line-spacing-size;
       text-fill: darken(black, 30%);
       [information = 'office'] { text-fill: @amenity-brown; }
-      [information = 'board'] { text-name: ''; }
       text-face-name: @standard-font;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
