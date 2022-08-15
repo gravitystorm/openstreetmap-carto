@@ -1584,6 +1584,14 @@
     }
   }
 
+  [feature = 'amenity_lounger'][zoom >= 19]::amenity {
+    marker-file: url('symbols/amenity/lounger.svg');
+    marker-fill: @man-made-icon;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
+  }
+
   [feature = 'amenity_waste_basket'][zoom >= 19]::amenity {
     marker-file: url('symbols/amenity/waste_basket.svg');
     marker-fill: @man-made-icon;

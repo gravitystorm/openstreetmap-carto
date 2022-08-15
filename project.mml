@@ -2214,7 +2214,7 @@ Layer:
             name,
             COALESCE(
               'railway_' || CASE WHEN railway IN ('level_crossing', 'crossing') AND way_area IS NULL THEN railway END,
-              'amenity_' || CASE WHEN amenity IN ('bench', 'waste_basket', 'waste_disposal') AND way_area IS NULL THEN amenity END,
+              'amenity_' || CASE WHEN amenity IN ('bench', 'waste_basket', 'waste_disposal', 'lounger') AND way_area IS NULL THEN amenity END,
               'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') AND way_area IS NULL THEN historic END,
               'man_made_' || CASE WHEN man_made IN ('cross') AND way_area IS NULL THEN man_made END,
               'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile', 'motorcycle_barrier', 'cycle_barrier', 'full-height_turnstile', 'turnstile', 'kissing_gate') THEN barrier END
@@ -2255,7 +2255,7 @@ Layer:
                 WHERE way && !bbox!
               ) _
             WHERE railway IN ('level_crossing', 'crossing')
-               OR amenity IN ('bench', 'waste_basket', 'waste_disposal')
+               OR amenity IN ('bench', 'waste_basket', 'waste_disposal', 'lounger')
                OR historic IN ('wayside_cross', 'wayside_shrine')
                OR man_made IN ('cross')
                OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile', 'motorcycle_barrier', 'cycle_barrier', 'full-height_turnstile', 'turnstile', 'kissing_gate')
@@ -2264,6 +2264,7 @@ Layer:
                 WHEN 'waste_basket' THEN 1
                 WHEN 'waste_disposal' THEN 1
                 WHEN 'bench' THEN 2
+                WHEN 'lounger' THEN 2
                 WHEN NULL THEN 3
               END DESC,
               way_pixels DESC NULLS LAST
