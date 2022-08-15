@@ -1885,7 +1885,7 @@
   [feature = 'tourism_information'][information = 'audioguide'][zoom >= 19],
   [feature = 'tourism_information'][information = 'guidepost'][zoom >= 19],
   [feature = 'tourism_information'][information = 'map'][zoom >= 19],
-  [feature = 'tourism_information'][information = 'office'][zoom >= 17]
+  [feature = 'tourism_information'][information = 'office'][zoom >= 17],
   [feature = 'tourism_information'][information = 'tactile_map'][zoom >= 19],
   [feature = 'tourism_information'][information = 'terminal'][zoom >= 19] {
       text-name: "[name]";
