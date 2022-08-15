@@ -1890,6 +1890,7 @@
       text-line-spacing: @standard-line-spacing-size;
       text-fill: darken(black, 30%);
       [information = 'office'] { text-fill: @amenity-brown; }
+      [information = 'board'] { text-name: ''; }
       text-face-name: @standard-font;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
