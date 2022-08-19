@@ -41,6 +41,7 @@ Stylesheet:
   - style/water-features.mss
   - style/road-colors-generated.mss
   - style/roads.mss
+  - style/aeroways.mss
   - style/power.mss
   - style/placenames.mss
   - style/buildings.mss
@@ -780,8 +781,7 @@ Layer:
                               AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
                               AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
                               AND (covered NOT IN ('yes') OR covered IS NULL))
-                              THEN railway END)),
-              (('aeroway_' || CASE WHEN aeroway IN ('runway', 'taxiway', 'helipad') THEN aeroway END))
+                              THEN railway END))
             ) AS feature
           FROM planet_osm_polygon
           WHERE highway IN ('pedestrian', 'footway', 'service', 'living_street', 'platform', 'services')
@@ -789,7 +789,6 @@ Layer:
                 AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
                 AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
                 AND (covered NOT IN ('yes') OR covered IS NULL))
-            OR aeroway IN ('runway', 'taxiway', 'helipad')
           ORDER BY COALESCE(layer,0), way_area desc
         ) AS highway_area_fill
     properties:
@@ -1011,6 +1010,20 @@ Layer:
         AS entrances
     properties:
       minzoom: 18
+  - id: aeroway-area-fill
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            aeroway
+          FROM planet_osm_polygon
+          WHERE aeroway IN ('helipad')
+        ) AS aeroway_area_fill
+    properties:
+      minzoom: 11
   - id: aeroways
     geometry: linestring
     <<: *extents
@@ -1020,6 +1033,7 @@ Layer:
         (SELECT
             way,
             aeroway,
+            tags->'runway' AS runway,
             bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct') AS bridge
           FROM planet_osm_line
           WHERE aeroway IN ('runway', 'taxiway')
@@ -1718,6 +1732,30 @@ Layer:
         ) AS power_towers
     properties:
       minzoom: 14
+  - id: aeroway-ref
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            aeroway,
+            ref
+          FROM planet_osm_line
+          WHERE ref IS NOT NULL
+            AND (aeroway = 'taxiway'
+              OR (aeroway = 'runway'
+                AND NOT tags @> 'runway=>displaced_threshold'))
+          ORDER BY CASE aeroway
+            WHEN 'runway' THEN 2
+            WHEN 'taxiway' THEN 1
+            END DESC,
+            ref,
+            osm_id
+        ) AS aeroway_ref
+    properties:
+      minzoom: 15
   - id: roads-text-ref-low-zoom
     geometry: linestring
     <<: *extents
@@ -1788,13 +1826,10 @@ Layer:
                 SELECT
                     osm_id,
                     way,
-                    COALESCE(
-                      CASE WHEN highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary') THEN highway END,
-                      CASE WHEN aeroway IN ('runway', 'taxiway') THEN aeroway END
-                    ) AS highway,
+                    highway,
                     string_to_array(ref, ';') AS refs
                   FROM planet_osm_line
-                  WHERE (highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary') OR aeroway IN ('runway', 'taxiway'))
+                  WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary')
                     AND ref IS NOT NULL
               ) AS p) AS q
           WHERE height <= 4 AND width <= 11
@@ -1805,8 +1840,6 @@ Layer:
               WHEN highway = 'primary' THEN 36
               WHEN highway = 'secondary' THEN 35
               WHEN highway = 'tertiary' THEN 34
-              WHEN highway = 'runway' THEN 6
-              WHEN highway = 'taxiway' THEN 5
             END DESC NULLS LAST,
             height DESC,
             width DESC,
