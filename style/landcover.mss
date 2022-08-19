@@ -29,7 +29,7 @@
 // --- Transport ----
 
 @transportation-area: #e9e7e2;
-@apron: #dadae0;
+@apron: #cdcdda;
 @garages: #dfddce;
 @parking: #eeeeee;
 @parking-outline: saturate(darken(@parking, 40%), 20%);
@@ -630,12 +630,6 @@
   [feature = 'amenity_parking_space'][zoom >= 18] {
     line-width: 0.3;
     line-color: mix(@parking-outline, @parking, 50%);
-  }
-
-  [feature = 'aeroway_apron'][zoom >= 10] {
-    polygon-fill: @apron;
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
   [feature = 'aeroway_aerodrome'][zoom >= 10],

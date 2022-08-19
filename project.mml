@@ -765,6 +765,32 @@ Layer:
     properties:
       cache-features: true
       minzoom: 10
+  - id: aeroway-area-fill
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
+            CASE
+                WHEN surface IN ('paved', 'asphalt', 'concrete', 'concrete:lanes', 'concrete:plates', 'metal') THEN 'paved'
+                WHEN surface IN ('grass') THEN 'grass'
+                ELSE 'unpaved'
+            END AS int_surface,
+            COALESCE(
+              (('aeroway_' || CASE
+                                WHEN aeroway IN ('helipad', 'apron') THEN aeroway
+                                WHEN tags->'area:aeroway' IN ('runway', 'taxiway', 'stopway') THEN tags->'area:aeroway'
+                              END))
+            ) AS feature
+          FROM planet_osm_polygon
+          WHERE aeroway IN ('helipad', 'apron')
+            OR tags->'area:aeroway' IN ('runway', 'taxiway', 'stopway')
+          ORDER BY COALESCE(layer,0), way_area desc
+        ) AS highway_area_fill
+    properties:
+      minzoom: 14
   - id: highway-area-fill
     # FIXME: No geometry?
     <<: *extents
@@ -780,8 +806,7 @@ Layer:
                               AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
                               AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
                               AND (covered NOT IN ('yes') OR covered IS NULL))
-                              THEN railway END)),
-              (('aeroway_' || CASE WHEN aeroway IN ('runway', 'taxiway', 'helipad') THEN aeroway END))
+                              THEN railway END))
             ) AS feature
           FROM planet_osm_polygon
           WHERE highway IN ('pedestrian', 'footway', 'service', 'living_street', 'platform', 'services')
@@ -789,7 +814,6 @@ Layer:
                 AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
                 AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
                 AND (covered NOT IN ('yes') OR covered IS NULL))
-            OR aeroway IN ('runway', 'taxiway', 'helipad')
           ORDER BY COALESCE(layer,0), way_area desc
         ) AS highway_area_fill
     properties:
@@ -1020,11 +1044,55 @@ Layer:
         (SELECT
             way,
             aeroway,
-            bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct') AS bridge
-          FROM planet_osm_line
-          WHERE aeroway IN ('runway', 'taxiway')
-          ORDER BY bridge NULLS FIRST,
-            CASE WHEN aeroway = 'runway' THEN 1 ELSE 0 END
+            runway,
+            bridge,
+            int_surface,
+            width,
+            GREATEST(width::real/sf, 2) AS area_width,
+            1/sf AS line_width
+          FROM
+          (SELECT
+              way,
+              aeroway,
+              tags->'runway' AS runway,
+              bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct') AS bridge,
+              CASE
+                  WHEN surface IN ('paved', 'asphalt', 'concrete', 'concrete:lanes', 'concrete:plates', 'metal') THEN 'paved'
+                  WHEN surface IN ('grass') THEN 'grass'
+                  ELSE 'unpaved'
+              END AS int_surface,
+              -- Convert valid length units into metres. Fall back to a sensible default if no valid value was set.
+              GREATEST(
+                  CASE
+                      -- Metric:
+                      WHEN tags->'width' ~ '^[0-9]*[.]?[0-9]+ m$' THEN LEFT(tags->'width', -2)::real
+                      WHEN tags->'width' ~ '^[0-9]*[.]?[0-9]+$' THEN (tags->'width')::real
+                      -- Feet:
+                      WHEN tags->'width' ~ '^[0-9]+''$' THEN LEFT(tags->'width', -1)::real * 12 * 0.0254
+                      -- The case-branches below work, but we assume that runway widths will always be
+                      -- specified in metres or (rarely) feet, so for performance reasons these are left out:
+                      --   Kilometres:
+                      --   WHEN tags->'width' ~ '^[0-9]*[.]?[0-9]+ km$' THEN LEFT(tags->'width',-3)::real * 1000
+                      --   Miles and nautical miles:
+                      --   WHEN tags->'width' ~ '^[0-9]*[.]?[0-9]+ mi$' THEN LEFT(tags->'width', -3)::real * 1609.344
+                      --   WHEN tags->'width' ~ '^[0-9]*[.]?[0-9]+ nmi$' THEN LEFT(tags->'width', -4)::real * 1852
+                      --   Remaining feet and inches:
+                      --   WHEN tags->'width' ~ '^[0-9]+''[0-9]+"$' THEN (SPLIT_PART(tags->'width', '''', 1)::real * 12 + LEFT(SPLIT_PART(tags->'width', '''', 2), -1)::real) * 0.0254
+                      --   WHEN tags->'width' ~ '^[0-9]+"$' THEN LEFT(tags->'width', -1)::real * 0.0254
+                      ELSE NULL
+                  END,
+                   -- Default to a small standard width for runways and a matching taxiway width.
+                  CASE
+                      WHEN aeroway IN ('runway') THEN 18
+                      ELSE 7.5
+                  END
+              ) as width,
+              NULLIF(scale_factor(way)*!scale_denominator!*0.001*0.28, 0) AS sf
+            FROM planet_osm_line
+            WHERE aeroway IN ('runway', 'taxiway', 'taxilane', 'stopway', 'parking_position')
+            ORDER BY bridge NULLS FIRST,
+              CASE WHEN aeroway = 'runway' THEN 1 ELSE 0 END
+            ) _
         ) AS aeroways
     properties:
       cache-features: true
@@ -1788,13 +1856,20 @@ Layer:
                 SELECT
                     osm_id,
                     way,
-                    COALESCE(
-                      CASE WHEN highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary') THEN highway END,
-                      CASE WHEN aeroway IN ('runway', 'taxiway') THEN aeroway END
-                    ) AS highway,
+                    highway,
                     string_to_array(ref, ';') AS refs
                   FROM planet_osm_line
-                  WHERE (highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary') OR aeroway IN ('runway', 'taxiway'))
+                  WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary')
+                    AND ref IS NOT NULL
+                UNION ALL
+                SELECT
+                    osm_id,
+                    way,
+                    aeroway AS highway,
+                    string_to_array(ref, ';') AS refs
+                  FROM planet_osm_line
+                  WHERE aeroway IN ('runway', 'taxiway', 'taxilane', 'parking_position')
+                    AND NOT tags @> '"runway"=>"displaced_threshold"'
                     AND ref IS NOT NULL
               ) AS p) AS q
           WHERE height <= 4 AND width <= 11
@@ -1807,6 +1882,8 @@ Layer:
               WHEN highway = 'tertiary' THEN 34
               WHEN highway = 'runway' THEN 6
               WHEN highway = 'taxiway' THEN 5
+              WHEN highway = 'parking_position' THEN 4
+              WHEN highway = 'taxilane' THEN 3
             END DESC NULLS LAST,
             height DESC,
             width DESC,
