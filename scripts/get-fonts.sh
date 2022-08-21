@@ -17,8 +17,7 @@ download() {
 REGULAR_BOLD_ITALIC="NotoSans"
 
 # Fonts available in regular and bold
-REGULAR_BOLD="NotoSansAdlam
-NotoSansAdlamUnjoined
+REGULAR_BOLD="NotoSansAdlamUnjoined
 NotoSansArabicUI
 NotoSansArmenian
 NotoSansBalinese
