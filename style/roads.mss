@@ -2144,7 +2144,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
 
-    [feature = 'highway_pedestrian'][int_surface != 'unpaved'] {
+    #roads-fill[feature = 'highway_pedestrian'][int_surface != 'unpaved'],
+    #bridges[feature = 'highway_pedestrian'][int_surface != 'unpaved'],
+    #tunnels[feature = 'highway_pedestrian'] {
       [zoom >= 14] {
         line-width: @pedestrian-width-z14 - 2 * @casing-width-z14;
         [zoom >= 15] { line-width: @pedestrian-width-z15 - 2 * @casing-width-z15; }
@@ -2166,7 +2168,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
 
-    [feature = 'highway_pedestrian'][int_surface = 'unpaved'] {
+    #roads-fill[feature = 'highway_pedestrian'][int_surface = 'unpaved'],
+    #bridges[feature = 'highway_pedestrian'][int_surface = 'unpaved'] {
       [zoom >= 14] {
         line-pattern-width: @pedestrian-width-z14 - 2 * @casing-width-z14;
         [zoom >= 15] { line-pattern-width: @pedestrian-width-z15 - 2 * @casing-width-z15; }
