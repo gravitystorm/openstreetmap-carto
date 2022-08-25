@@ -1833,7 +1833,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
     #roads-fill[feature = 'highway_tertiary'][int_surface = 'unpaved'],
     #bridges[feature = 'highway_tertiary'][int_surface = 'unpaved'] {
-        [zoom >= 12] {
+        [zoom >= 13] {
           line-pattern-type: repeat;
           line-pattern-alignment: global;
           line-pattern-width: @tertiary-width-z12 - 2 * @casing-width-z12;
@@ -1918,7 +1918,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     #bridges[feature = 'highway_residential'][int_surface = 'unpaved'],
     #roads-fill[feature = 'highway_unclassified'][int_surface = 'unpaved'],
     #bridges[feature = 'highway_unclassified'][int_surface = 'unpaved'] {
-      [zoom >= 13] {
+      [zoom >= 14] {
         line-pattern-width: @residential-width-z13 - 2 * @residential-casing-width-z13;
         [zoom >= 14] { line-pattern-width: @residential-width-z14 - 2 * @casing-width-z14; }
         [zoom >= 15] { line-pattern-width: @residential-width-z15 - 2 * @casing-width-z15; }
@@ -2033,7 +2033,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
     #roads-fill[feature = 'highway_road'][int_surface = 'unpaved'],
     #bridges[feature = 'highway_road'][int_surface = 'unpaved'] {
-      [zoom >= 14] {
+      [zoom >= 16] {
         line-pattern-join: round;
         line-pattern-cap: round;
         line-pattern-width: @road-width-z14 - 2 * @casing-width-z14;
@@ -2054,8 +2054,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
 
-    #roads-fill[feature = 'highway_service'][int_surface != 'unpaved'],
-    #bridges[feature = 'highway_service'][int_surface != 'unpaved'],
+    #roads-fill[feature = 'highway_service'],
+    #bridges[feature = 'highway_service'],
     #tunnels[feature = 'highway_service'] {
       [zoom >= 14][service = 'INT-normal'],
       [zoom >= 16][service = 'INT-minor'] {
@@ -2102,8 +2102,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
     #roads-fill[feature = 'highway_service'][int_surface = 'unpaved'],
     #bridges[feature = 'highway_service'][int_surface = 'unpaved'] {
-      [zoom >= 14][service = 'INT-normal'],
-      [zoom >= 16][service = 'INT-minor'] {
+      [zoom >= 16][service = 'INT-normal'],
+      [zoom >= 17][service = 'INT-minor'] {
         line-pattern-type: repeat;
         line-pattern-alignment: global;
         line-pattern-file: url("symbols/unpaved/unpaved_residential-fill.svg"); 
@@ -3353,7 +3353,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
     [feature = 'highway_road'],
     [feature = 'highway_service'][service = 'INT-normal'] {
-      [zoom >= 15] {
+      [zoom >= 16] {
         access/line-color: @access-marking;
         access/line-join: round;
         access/line-cap: round;
@@ -3366,7 +3366,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
     [feature = 'highway_service'][service = 'INT-minor'] {
-      [zoom >= 16] {
+      [zoom >= 17] {
         access/line-color: @access-marking;
         access/line-join: round;
         access/line-cap: round;
@@ -3404,7 +3404,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
     [feature = 'highway_road'],
     [feature = 'highway_service'][service = 'INT-normal'] {
-      [zoom >= 15] {
+      [zoom >= 16] {
         access/line-color: @access-marking;
         access/line-join: round;
         access/line-cap: round;
@@ -3416,7 +3416,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         }
       }
     }
-    [feature = 'highway_service'][service = 'INT-minor'][zoom >= 16] {
+    [feature = 'highway_service'][service = 'INT-minor'][zoom >= 17] {
       access/line-color: @access-marking;
       access/line-join: round;
       access/line-cap: round;
