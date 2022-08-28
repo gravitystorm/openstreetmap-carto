@@ -1005,6 +1005,23 @@ Layer:
         ) AS guideways
     properties:
       minzoom: 11
+  - id: roller-coaster
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            roller_coaster,
+            CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
+            name
+          FROM planet_osm_line l
+          ORDER BY
+            COALESCE(layer, 0) -- put top layered track first
+        ) AS roller_coaster
+    properties:
+      minzoom: 11
   - id: entrances
     geometry: point
     <<: *extents
@@ -1948,6 +1965,22 @@ Layer:
             name DESC, -- Force a consistent ordering between differently named railways
             l.osm_id DESC -- Force an ordering for railways of the same name, e.g. dualized rails
         ) AS railways_text_name
+    properties:
+      minzoom: 11
+  - id: roller-coaster-text-name
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            roller_coaster,
+            name
+          FROM planet_osm_line l
+          ORDER BY
+            COALESCE(layer, 0) -- put top layered track first
+        ) AS roller_coaster_text_name
     properties:
       minzoom: 11
   - id: roads-text-ref-minor

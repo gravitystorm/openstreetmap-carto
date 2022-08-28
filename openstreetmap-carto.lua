@@ -227,6 +227,9 @@ local roads_info = {
         construction    = {z = 400, roads = false},
         platform        = {z = 90,  roads = false},
     },
+    roller_coaster = {
+        track           = {z = 300, roads = true},
+    },
     aeroway = {
         runway          = {z = 60,  roads = false},
         taxiway         = {z = 50,  roads = false},
