@@ -1002,7 +1002,7 @@ Layer:
             way
           FROM planet_osm_line
           WHERE highway = 'bus_guideway'
-      ) AS guideways
+        ) AS guideways
     properties:
       minzoom: 11
   - id: roller-coaster
