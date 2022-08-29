@@ -3521,15 +3521,24 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 }
 
 #roller-coaster {
-  [roller_coaster = 'track'] {
-    [zoom >= 15] {
-      line-width: 2;
+  [roller_coaster = 'track'][railway = null] {
+    [zoom >= 14] {
+      line-width: 1;
       line-color: #707070;
       line-join: round;
-      b/line-width: 1;
+      b/line-width: 0.5;
       b/line-color: @road-fill;
-      b/line-dasharray: 0,0.2,1,0.2;
+      b/line-dasharray: 0,0.1,0.5,0.1;
       b/line-join: round;
+      [tunnel = 'yes'] { 
+        line-color: lighten(#707070, 20%);
+        b/line-color: lighten(@road-fill, 5%);
+      }
+    }
+    [zoom >= 15] {
+      line-width: 2;
+      b/line-width: 1;
+      b/line-dasharray: 0,0.2,1,0.2;
     }
     [zoom >= 16] {
       line-width: 3;
@@ -3547,18 +3556,14 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       b/line-dasharray: 0,0.6,6,0.6;
     }
     [zoom >= 19] {
-      line-width: 7.5;
-      b/line-width: 3.75;
-      b/line-dasharray: 0,0.75,7.5,0.75;
+      line-width: 8;
+      b/line-width: 4;
+      b/line-dasharray: 0,0.8,8,0.8;
     }
     [zoom >= 20] {
-      line-width: 10;
-      b/line-width: 5;
-      b/line-dasharray: 0,1,10,1;
-    }
-    [tunnel = 'yes'] { 
-      line-color: lighten(#707070, 10%);
-      b/line-color: lighten(@road-fill, 5%);
+      line-width: 12;
+      b/line-width: 6;
+      b/line-dasharray: 0,1.2,12,1.2;
     }
   }
 }
@@ -4230,28 +4235,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   [railway = 'miniature'],
   [railway = 'disused'],
   [railway = 'construction'] {
-    [zoom >= 17] {
-      text-name: "[name]";
-      text-fill: #666666;
-      text-size: 10;
-      text-dy: 6;
-      text-spacing: 900;
-      text-clip: false;
-      text-placement: line;
-      text-face-name: @book-fonts;
-      text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill;
-      text-repeat-distance: @railway-text-repeat-distance;
-    }
-    [zoom >= 19] {
-      text-size: 11;
-      text-dy: 7;
-    }
-  }
-}
-
-#roller-coaster-text-name {
-  [roller_coaster = 'track'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-fill: #666666;
