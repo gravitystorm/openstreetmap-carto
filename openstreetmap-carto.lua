@@ -46,6 +46,7 @@ local linestring_values = {
     man_made = {breakwater = true, cutline = true, embankment = true, groyne = true, pipeline = true},
     natural = {cliff = true, earth_bank = true, tree_row = true, ridge = true, arete = true},
     power = {cable = true, line = true, minor_line = true},
+    roller_coaster = {track = true},
     tourism = {yes = true},
     waterway = {canal = true, derelict_canal = true, ditch = true, drain = true, river = true, stream = true, tidal_channel = true, wadi = true, weir = true}
 }
@@ -226,9 +227,6 @@ local roads_info = {
         disused         = {z = 400, roads = false},
         construction    = {z = 400, roads = false},
         platform        = {z = 90,  roads = false},
-    },
-    roller_coaster = {
-        track           = {z = 300, roads = true},
     },
     aeroway = {
         runway          = {z = 60,  roads = false},

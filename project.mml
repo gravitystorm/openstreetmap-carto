@@ -1014,11 +1014,10 @@ Layer:
         (SELECT
             way,
             roller_coaster,
-            CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
-            name
-          FROM planet_osm_line l
+            CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel
+          FROM planet_osm_line
           ORDER BY
-            COALESCE(layer, 0) -- put top layered track first
+            COALESCE(layer, 0) -- put bottom layered track first
         ) AS roller_coaster
     properties:
       minzoom: 11
@@ -1977,9 +1976,9 @@ Layer:
             way,
             roller_coaster,
             name
-          FROM planet_osm_line l
+          FROM planet_osm_line
           ORDER BY
-            COALESCE(layer, 0) -- put top layered track first
+            COALESCE(layer, 0) DESC -- put top layered track first
         ) AS roller_coaster_text_name
     properties:
       minzoom: 11
