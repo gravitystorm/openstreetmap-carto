@@ -18,7 +18,7 @@ jobs:
     - name: Set up xmllint
       run: sudo apt-get install -qq --no-install-recommends libxml2-utils
     - name: Set up CartoCSS
-      run: npm install -g carto
+      run: npm install -g carto@1.2.0
     - name: Set up shell
       run: set -o pipefail
     - name: Validate YAML files
@@ -34,7 +34,7 @@ jobs:
     - name: Check for unsupported class usage
       run: '! grep "class:" project.mml > /dev/null'
     - name: Validate with CartoCSS
-      run: 'carto project.mml --quiet > /dev/null'
+      run: 'carto project.mml --api 3.0.22 --quiet > /dev/null'
   import:
     needs: [syntax]
     runs-on: ubuntu-22.04
