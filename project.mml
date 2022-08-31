@@ -1013,7 +1013,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            roller_coaster,
+            tags->'roller_coaster' AS roller_coaster,
             railway,
             CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel
           FROM planet_osm_line
