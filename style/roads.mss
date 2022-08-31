@@ -3520,33 +3520,33 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   }
 }
 
-#roller-coaster::casing[roller_coaster = 'track'][bridge = 'yes'][zoom >= 14] {
-  line-width: 1 + 2*@casing-width-z14;
-  line-color: darken(#707070, 20%);
-  line-join: round;
-  line-cap: round;
-  [zoom >= 15] { line-width: 2 + 2*@casing-width-z15; }
-  [zoom >= 16] { line-width: 3 + 2*@casing-width-z16; }
-  [zoom >= 17] { line-width: 4.5 + 2*@casing-width-z17; }
-  [zoom >= 18] { line-width: 6 + 2*@casing-width-z18; }
-  [zoom >= 19] { line-width: 8 + 2*@casing-width-z19; }
-  [zoom >= 20] { line-width: 12 + 2*@casing-width-z20; }
-}
-
-#roller-coaster::background[roller_coaster = 'track'][zoom >= 14] {
-  line-width: 1;
-  line-color: #707070;
-  line-join: round;
-  line-cap: round;
-  [zoom >= 15] { line-width: 2; }
-  [zoom >= 16] { line-width: 3; }
-  [zoom >= 17] { line-width: 4.5; }
-  [zoom >= 18] { line-width: 6; }
-  [zoom >= 19] { line-width: 8; }
-  [zoom >= 20] { line-width: 12; }
-}
-
 #roller-coaster[roller_coaster = 'track'][zoom >= 14] {
+  ::bridges[bridge = 'yes'] {
+    line-width: 1 + 2*@casing-width-z14;
+    line-color: darken(#707070, 20%);
+    line-join: round;
+    line-cap: round;
+    [zoom >= 15] { line-width: 2 + 2*@casing-width-z15; }
+    [zoom >= 16] { line-width: 3 + 2*@casing-width-z16; }
+    [zoom >= 17] { line-width: 4.5 + 2*@casing-width-z17; }
+    [zoom >= 18] { line-width: 6 + 2*@casing-width-z18; }
+    [zoom >= 19] { line-width: 8 + 2*@casing-width-z19; }
+    [zoom >= 20] { line-width: 12 + 2*@casing-width-z20; }
+  }
+
+  ::background {
+    line-width: 1;
+    line-color: #707070;
+    line-join: round;
+    line-cap: round;
+    [zoom >= 15] { line-width: 2; }
+    [zoom >= 16] { line-width: 3; }
+    [zoom >= 17] { line-width: 4.5; }
+    [zoom >= 18] { line-width: 6; }
+    [zoom >= 19] { line-width: 8; }
+    [zoom >= 20] { line-width: 12; }
+  }
+  
   line-width: 1;
   line-color: #707070;
   line-join: round;
