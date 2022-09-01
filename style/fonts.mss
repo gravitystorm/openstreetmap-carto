@@ -45,7 +45,9 @@ Plane 2.
 */
 
 /* Use vendored fonts. This allows for more recent versions and better coverage */
-font-directory: url('fonts');
+Map {
+  font-directory: url('fonts');
+}
 
 /*
 A regular style.
