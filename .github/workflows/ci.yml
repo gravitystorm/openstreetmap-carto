@@ -29,8 +29,13 @@ jobs:
       run: find symbols/ -name '*.svg' | xargs xmllint --noout
     - name: Check indexes are up to date
       run: diff -qu <(scripts/indexes.py) indexes.sql
-    - name: Check road colours are up to date
+    - name: Check colors of paved roads are up to date
       run: diff -qu <(scripts/generate_road_colours.py) style/road-colors-generated.mss
+    - name: Check colors of unpaved roads are up to date
+      run: |
+        cp -r symbols/unpaved temp
+        scripts/generate_unpaved_patterns.py
+        diff -qu temp symbols/unpaved
     - name: Check for unsupported class usage
       run: '! grep "class:" project.mml > /dev/null'
     - name: Validate with CartoCSS
