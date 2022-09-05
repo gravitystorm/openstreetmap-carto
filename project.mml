@@ -1,28 +1,16 @@
-scale: 1
-metatile: 2
-name: OpenStreetMap Carto
-description: A general-purpose OpenStreetMap mapnik style, in CartoCSS
-bounds: &world
-  - -180
-  - -85.05112877980659
-  - 180
-  - 85.05112877980659
-center:
-  - 0
-  - 0
-  - 4
-format: png
-interactivity: false
-minzoom: 0
-maxzoom: 22
-srs: &srs "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-
 # Various parts to be included later on
 _parts:
+  srid: &srid "3857"
+  srs: &srs "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+  world: &world
+    - -180
+    - -85.05112877980659
+    - 180
+    - 85.05112877980659
   # Extents are used for tilemill, and don't actually make it to the generated XML
   extents: &extents
     extent: *world
-    srs-name: &srid "3857"
+    srs-name: *srid
     srs: *srs
   osm2pgsql: &osm2pgsql
     type: "postgis"
@@ -31,6 +19,21 @@ _parts:
     geometry_field: "way"
     srid: *srid
     extent: "-20037508,-20037508,20037508,20037508"
+
+scale: 1
+metatile: 2
+name: OpenStreetMap Carto
+description: A general-purpose OpenStreetMap mapnik style, in CartoCSS
+bounds: *world
+center:
+  - 0
+  - 0
+  - 4
+format: png
+interactivity: false
+minzoom: 0
+maxzoom: 22
+srs: *srs
 
 Stylesheet:
   - style/style.mss
