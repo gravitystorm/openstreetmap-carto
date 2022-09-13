@@ -6,4 +6,4 @@
 *.py text eol=lf
 
 # YAML highlighting on GitHub webpage for CartoCSS MML files.
-*.mml linguist-language=YAML
+*.mml linguist-language=YAML linguist-detectable
