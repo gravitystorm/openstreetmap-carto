@@ -51,6 +51,7 @@ Stylesheet:
   - style/admin.mss
   - style/addressing.mss
   - style/golf.mss
+  - style/tourism.mss
 Layer:
   - id: landcover-low-zoom
     geometry: polygon
@@ -1020,7 +1021,8 @@ Layer:
           FROM planet_osm_line
           WHERE railway IS NULL
           ORDER BY
-            COALESCE(layer, 0) -- put bottom layered track first
+            COALESCE(layer, 0), -- put bottom layered track first
+            ST_Length(way) -- put short track first
         ) AS roller_coaster
     properties:
       minzoom: 14
