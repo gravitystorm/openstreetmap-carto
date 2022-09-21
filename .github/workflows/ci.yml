@@ -40,6 +40,15 @@ jobs:
       run: '! grep "class:" project.mml > /dev/null'
     - name: Validate with CartoCSS
       run: 'carto project.mml --api 3.0.22 --quiet > /dev/null'
+    - name: Check that index script works without errors
+      run: |
+        scripts/indexes.py --fillfactor 100 > /dev/null &&
+        scripts/indexes.py --concurrent > /dev/null &&
+        scripts/indexes.py --reindex > /dev/null &&
+        scripts/indexes.py --concurrent --reindex > /dev/null &&
+        scripts/indexes.py --notexist > /dev/null &&
+        scripts/indexes.py --null > /dev/null &&
+        scripts/indexes.py --null > /dev/null
   import:
     needs: [syntax]
     runs-on: ubuntu-22.04
