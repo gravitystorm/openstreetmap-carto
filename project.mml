@@ -1006,6 +1006,25 @@ Layer:
         ) AS guideways
     properties:
       minzoom: 11
+  - id: roller-coaster-casing
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            COALESCE(layer,0) AS layernotnull,
+            tags->'roller_coaster' AS roller_coaster,
+            railway,
+            CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
+            CASE WHEN (bridge = 'yes' OR bridge = 'covered' OR bridge = 'viaduct') THEN 'yes' ELSE 'no' END AS bridge
+          FROM planet_osm_line
+          WHERE railway IS NULL
+        ) AS roller_coaster
+    properties:
+      group-by: layernotnull
+      minzoom: 14
   - id: roller-coaster
     geometry: linestring
     <<: *extents
@@ -1014,17 +1033,17 @@ Layer:
       table: |-
         (SELECT
             way,
+            COALESCE(layer,0) AS layernotnull,
             tags->'roller_coaster' AS roller_coaster,
             railway,
-            CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
-            CASE WHEN (bridge = 'yes' OR bridge = 'covered' OR bridge = 'viaduct') THEN 'yes' ELSE 'no' END AS bridge
+            CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel
           FROM planet_osm_line
           WHERE railway IS NULL
           ORDER BY
-            COALESCE(layer, 0), -- put bottom layered track first
-            ST_Length(way) -- put short track first
+            layernotnull -- put bottom layered track first
         ) AS roller_coaster
     properties:
+      group-by: layernotnull
       minzoom: 14
   - id: entrances
     geometry: point
