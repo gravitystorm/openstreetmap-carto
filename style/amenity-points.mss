@@ -2460,7 +2460,7 @@
       [feature = 'highway_bus_stop'] {
         text-dy: 9;
       }
-      [access != ''][access != 'permissive'][access != 'yes'] {
+      [feature = 'amenity_charging_station'][access != ''][access != 'permissive'][access != 'yes'] {
         text-opacity: 0.33;
         text-halo-radius: 0;
       }
