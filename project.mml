@@ -356,6 +356,12 @@ Layer:
             way, man_made
           FROM planet_osm_polygon
           WHERE man_made IN ('pier', 'breakwater', 'groyne')
+          ORDER BY CASE
+              WHEN man_made = 'pier' THEN 3
+              WHEN man_made = 'groyne' THEN 2
+              WHEN man_made = 'breakwater' THEN 1
+              ELSE 0
+            END ASC
         ) AS piers_poly
     properties:
       minzoom: 12
@@ -369,6 +375,12 @@ Layer:
             way, man_made
           FROM planet_osm_line
           WHERE man_made IN ('pier', 'breakwater', 'groyne')
+          ORDER BY CASE
+              WHEN man_made = 'pier' THEN 3
+              WHEN man_made = 'groyne' THEN 2
+              WHEN man_made = 'breakwater' THEN 1
+              ELSE 0
+            END ASC
         ) AS piers_line
     properties:
       minzoom: 12
