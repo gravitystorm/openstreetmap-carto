@@ -23,13 +23,13 @@ case "$1" in
     sed -i "s/Noto Sans CJK (JP|KR|SC|TC|HK)/Noto Sans CJK KR/g" ./style/fonts.mss
     ;;
   "TC"|"tc")
-    download "${FONTDIR}/NotoSansCJKsc-Regular.otf" "https://github.com/googlefonts/noto-cjk/raw/main/Sans/OTF/SimplifiedChinese/NotoSansCJKsc-Regular.otf"
-    download "${FONTDIR}/NotoSansCJKsc-Bold.otf" "https://github.com/googlefonts/noto-cjk/raw/main/Sans/OTF/SimplifiedChinese/NotoSansCJKsc-Bold.otf"
+    download "${FONTDIR}/NotoSansCJKsc-Regular.otf" "https://github.com/googlefonts/noto-cjk/raw/main/Sans/OTF/SimplifiedChinese/NotoSansCJKtc-Regular.otf"
+    download "${FONTDIR}/NotoSansCJKsc-Bold.otf" "https://github.com/googlefonts/noto-cjk/raw/main/Sans/OTF/SimplifiedChinese/NotoSansCJKtc-Bold.otf"
     sed -i "s/Noto Sans CJK (JP|KR|SC|TC|HK)/Noto Sans CJK TC/g" ./style/fonts.mss
     ;;
   "SC"|"sc")
-    download "${FONTDIR}/NotoSansCJKtc-Regular.otf" "https://github.com/googlefonts/noto-cjk/raw/main/Sans/OTF/TraditionalChinese/NotoSansCJKtc-Regular.otf"
-    download "${FONTDIR}/NotoSansCJKtc-Bold.otf" "https://github.com/googlefonts/noto-cjk/raw/main/Sans/OTF/TraditionalChinese/NotoSansCJKtc-Bold.otf"
+    download "${FONTDIR}/NotoSansCJKtc-Regular.otf" "https://github.com/googlefonts/noto-cjk/raw/main/Sans/OTF/TraditionalChinese/NotoSansCJKsc-Regular.otf"
+    download "${FONTDIR}/NotoSansCJKtc-Bold.otf" "https://github.com/googlefonts/noto-cjk/raw/main/Sans/OTF/TraditionalChinese/NotoSansCJKsc-Bold.otf"
     sed -i "s/Noto Sans CJK (JP|KR|SC|TC|HK)/Noto Sans CJK SC/g" ./style/fonts.mss
     ;;
   "HK"|"hk")
