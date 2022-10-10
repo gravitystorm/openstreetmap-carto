@@ -557,7 +557,8 @@
       }
     }
 
-    [feature = 'highway_service'] {
+    [feature = 'highway_service'],
+    [feature = 'highway_busway'] {
       [zoom >= 14][service = 'INT-normal'],
       [zoom >= 16][service = 'INT-minor'] {
         line-color: @service-casing;
@@ -2060,7 +2061,10 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
     #roads-fill[feature = 'highway_service'],
     #bridges[feature = 'highway_service'],
-    #tunnels[feature = 'highway_service'] {
+    #tunnels[feature = 'highway_service'],
+    #roads-fill[feature = 'highway_busway'],
+    #bridges[feature = 'highway_busway'],
+    #tunnels[feature = 'highway_busway'] {
       [zoom >= 14][service = 'INT-normal'],
       [zoom >= 16][service = 'INT-minor'] {
         line-color: @service-fill;
@@ -3394,6 +3398,25 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         [zoom >= 17] {
           access/line-width: 2;
         }
+      }
+    }
+  }
+  [feature = 'highway_busway'] {
+    [zoom >= 16] {
+      access/line-color: @access-marking;
+      [int_surface = 'unpaved'] {
+        access/line-color: @access-marking-white-unpaved;
+      }
+      [feature = 'highway_road'] {
+        access/line-color: @access-marking-road;
+      }
+      access/line-join: round;
+      access/line-cap: round;
+      access/line-width: 2;
+      access/line-dasharray: 6,8;
+      [zoom >= 17] {
+        access/line-width: 3;
+        access/line-dasharray: 8,10;
       }
     }
   }
