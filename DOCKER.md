@@ -74,8 +74,6 @@ Variables will be remembered in `.env` if you don't have that file, and values i
 
 Depending on your machine and the size of the extract the import can take a while. When it is finished you should have the data necessary to render it with OpenStreetMap Carto.
 
-On Windows / PowerShell, trying to set the variables as per above snippet won't work. You can copy the snippet (excluding last line and last but one `\` char) to `.env` file.
-
 ## Test rendering
 
 After you have the necessary data available you can start Kosmtik to produce a test rendering. For that you run `docker-compose up kosmtik` in the openstreetmap-carto directory. This starts a container with Kosmtik and also starts the PostgreSQL database container if it is not already running. The Kosmtik container is built the first time you run that command if it not exists.

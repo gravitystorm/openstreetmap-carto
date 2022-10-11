@@ -1,7 +1,7 @@
 FROM ubuntu:focal
 
 # Style dependencies
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install --no-install-recommends -y \
+RUN apt-get update && apt-get install --no-install-recommends -y \
     ca-certificates curl gnupg postgresql-client python3 python3-distutils \
     fonts-hanazono fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted \
     mapnik-utils nodejs npm ttf-unifont unzip git && rm -rf /var/lib/apt/lists/*
