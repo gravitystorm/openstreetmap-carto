@@ -3407,9 +3407,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [int_surface = 'unpaved'] {
         access/line-color: @access-marking-white-unpaved;
       }
-      [feature = 'highway_road'] {
-        access/line-color: @access-marking-road;
-      }
       access/line-join: round;
       access/line-cap: round;
       access/line-width: 2;
@@ -4058,7 +4055,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [highway = 'road'],
     [highway = 'service'],
     [highway = 'pedestrian'],
-    [highway = 'raceway'] {
+    [highway = 'raceway'],
+    [highway = 'busway'] {
       [oneway = 'yes'],
       [oneway = '-1'] {
         marker-placement: line;
@@ -4092,7 +4090,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         [highway = 'residential'],
         [highway = 'unclassified'],
         [highway = 'road'],
-        [highway = 'service'] {
+        [highway = 'service'],
+        [highway = 'busway'] {
           marker-fill: @residential-oneway-arrow-color;
         }
         [highway = 'living_street'] {
