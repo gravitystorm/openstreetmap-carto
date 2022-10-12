@@ -5,11 +5,10 @@
 
 #roller-coaster-casing[zoom >= 15] {
   ::bridges[bridge = 'yes'] {
-    line-width: 0.5 + 2*@casing-width-z14;
+    line-width: 1 + 2*@casing-width-z15;
     line-color: darken(@track-casing, 20%);
     line-join: round;
     line-cap: round;
-    [zoom >= 15] { line-width: 1 + 2*@casing-width-z15; }
     [zoom >= 16] { line-width: 2.5 + 2*@casing-width-z16; }
     [zoom >= 17] { line-width: 4 + 2*@casing-width-z17; }
     [zoom >= 18] { line-width: 6 + 2*@casing-width-z18; }
