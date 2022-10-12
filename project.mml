@@ -1017,7 +1017,7 @@ Layer:
             CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes' OR indoor = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
             CASE WHEN (bridge = 'yes' OR bridge = 'covered' OR bridge = 'viaduct') THEN 'yes' ELSE 'no' END AS bridge
           FROM planet_osm_line
-          WHERE tags->'roller_coaster' = 'track' AND railway IS NULL
+          WHERE tags @> 'roller_coaster=>track' AND railway IS NULL
         ) AS roller_coaster
     properties:
       minzoom: 15
