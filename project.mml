@@ -1006,7 +1006,7 @@ Layer:
         ) AS guideways
     properties:
       minzoom: 11
-  - id: roller-coaster-casing
+  - id: roller-coaster-gap-fill
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1030,7 +1030,8 @@ Layer:
         (SELECT
             way,
             COALESCE(layer,0) AS layernotnull,
-            CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes' OR tags->'indoor' = 'yes') THEN 'yes' ELSE 'no' END AS tunnel
+            CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes' OR tags->'indoor' = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
+            CASE WHEN (bridge = 'yes' OR bridge = 'covered' OR bridge = 'viaduct') THEN 'yes' ELSE 'no' END AS bridge
           FROM planet_osm_line
           WHERE tags @> 'roller_coaster=>track' AND railway IS NULL
           ORDER BY
