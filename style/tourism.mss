@@ -34,7 +34,7 @@
       line-join: round;
 
       [tunnel = 'yes'][zoom >= 16] {
-        line-color: lighten(#707070, 20%);
+        line-color: lighten(@track-casing, 20%);
       }
       [zoom >= 16] { 
         line-color: @track-casing;
