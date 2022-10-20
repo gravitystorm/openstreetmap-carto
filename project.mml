@@ -774,7 +774,7 @@ Layer:
       cache-features: true
       minzoom: 10
   - id: highway-area-fill
-    # FIXME: No geometry?
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
