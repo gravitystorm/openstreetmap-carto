@@ -50,27 +50,22 @@
       line-width: 1.25;
       line-color: @track-fill;
       line-join: round;
-      line-dasharray: 2.5,0.5;
 
       [tunnel = 'yes'] {
         line-color: lighten(@track-fill, 5%);
       }
-      [zoom >= 17] {
-        line-width: 2;
-        line-dasharray: 4,0.8;
-      }
-      [zoom >= 18] {
-        line-width: 3;
-        line-dasharray: 6,1.2;
-      }
-      [zoom >= 19] {
-        line-width: 4;
-        line-dasharray: 8,1.6;
-      }
-      [zoom >= 20] {
-        line-width: 6;
-        line-dasharray: 12,2.4;
-      }
+      [zoom >= 17] { line-width: 2; }
+      [zoom >= 18] { line-width: 3; }
+      [zoom >= 19] { line-width: 4; }
+      [zoom >= 20] { line-width: 6; }
     }
   }
+}
+
+#roller-coaster::fill[zoom >= 16] {
+  line-dasharray: 2.5,0.5;
+  [zoom >= 17] { line-dasharray: 4,0.8; }
+  [zoom >= 18] { line-dasharray: 6,1.2; }
+  [zoom >= 19] { line-dasharray: 8,1.6; }
+  [zoom >= 20] { line-dasharray: 12,2.4; }
 }
