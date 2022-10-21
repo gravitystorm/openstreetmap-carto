@@ -12,20 +12,17 @@
 
 #roller-coaster, #roller-coaster-gap-fill {
   [zoom >= 15] {
-    ::bridges[bridge = 'yes'] {
-      line-width: 1 + 2*@casing-width-z15;
+    ::bridges[bridge = 'yes'][zoom >= 16] {
+      line-width: 2.5 + @bridge-casing-width-z16;
       line-color: #000;
       line-join: round;
       
-      [tunnel = 'yes'][zoom >= 16] {
-        line-color: lighten(#000, 20%);
-      }
+      [tunnel = 'yes'] { line-color: lighten(#000, 20%); }
 
-      [zoom >= 16] { line-width: 2.5 + 2*@casing-width-z16; }
-      [zoom >= 17] { line-width: 4 + 2*@casing-width-z17; }
-      [zoom >= 18] { line-width: 6 + 2*@casing-width-z18; }
-      [zoom >= 19] { line-width: 8 + 2*@casing-width-z19; }
-      [zoom >= 20] { line-width: 12 + 2*@casing-width-z20; }
+      [zoom >= 17] { line-width: 4 + @bridge-casing-width-z17; }
+      [zoom >= 18] { line-width: 6 + 1.5 * @bridge-casing-width-z18; }
+      [zoom >= 19] { line-width: 8 + 2 * @bridge-casing-width-z19; }
+      [zoom >= 20] { line-width: 12 + 2 * @bridge-casing-width-z20; }
     }
 
     ::casing {
