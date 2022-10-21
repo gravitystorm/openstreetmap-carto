@@ -40,6 +40,8 @@
 @standard-line-spacing-size: -1.5; // -0.15 em
 @standard-font: @book-fonts;
 
+@private-opacity: 0.33;
+
 #amenity-points {
   [feature = 'tourism_alpine_hut'][zoom >= 13],
   [feature = 'tourism_wilderness_hut'][zoom >= 13],
@@ -57,7 +59,7 @@
     marker-fill: @accommodation-icon;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
-      marker-opacity: 0.33;
+      marker-opacity: @private-opacity;
     }
   }
 
@@ -128,7 +130,7 @@
     marker-fill: @amenity-brown;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
-      marker-opacity: 0.33;
+      marker-opacity: @private-opacity;
     }
   }
 
@@ -321,7 +323,7 @@
     marker-fill: @transportation-icon;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
-      marker-opacity: 0.33;
+      marker-opacity: @private-opacity;
     }
   }
 
@@ -348,7 +350,7 @@
     marker-fill: @amenity-brown;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
-      marker-opacity: 0.33;
+      marker-opacity: @private-opacity;
     }
   }
 
@@ -431,7 +433,7 @@
     marker-fill: @amenity-brown;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
-      marker-opacity: 0.33;
+      marker-opacity: @private-opacity;
     }
   }
 
@@ -691,7 +693,7 @@
     marker-fill: @amenity-brown;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
-      marker-opacity: 0.33;
+      marker-opacity: @private-opacity;
     }
   }
 
@@ -726,7 +728,7 @@
       marker-fill: @amenity-brown;
       marker-clip: false;
       [access != ''][access != 'permissive'][access != 'yes'] {
-        marker-opacity: 0.33;
+        marker-opacity: @private-opacity;
       }
     }
   }
@@ -736,7 +738,7 @@
     marker-fill: @amenity-brown;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
-      marker-opacity: 0.33;
+      marker-opacity: @private-opacity;
     }
   }
 
@@ -1237,7 +1239,7 @@
     marker-fill: @leisure-green;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
-      marker-opacity: 0.33;
+      marker-opacity: @private-opacity;
     }
   }
 
@@ -1252,7 +1254,7 @@
     marker-fill: @leisure-green;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
-      marker-opacity: 0.33;
+      marker-opacity: @private-opacity;
     }
   }
 
@@ -1273,7 +1275,7 @@
     marker-fill: @leisure-green;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
-      marker-opacity: 0.33;
+      marker-opacity: @private-opacity;
     }
   }
 
@@ -1282,7 +1284,7 @@
     marker-fill: @man-made-icon;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
-      marker-opacity: 0.33;
+      marker-opacity: @private-opacity;
     }
   }
 
@@ -1291,7 +1293,7 @@
     marker-fill: @amenity-brown;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
-      marker-opacity: 0.33;
+      marker-opacity: @private-opacity;
     }
   }
 
@@ -1482,7 +1484,7 @@
       [feature = 'amenity_parking_entrance']["parking"='multi-storey'] { marker-file: url('symbols/amenity/parking_entrance_multistorey.svg'); }
       marker-clip: false;
       marker-fill: @transportation-icon;
-      [access != ''][access != 'permissive'][access != 'yes'] { marker-opacity: 0.33; }
+      [access != ''][access != 'permissive'][access != 'yes'] { marker-opacity: @private-opacity; }
     }
   }
 }
@@ -1580,7 +1582,7 @@
     marker-file: url('symbols/amenity/bench.svg');
     marker-fill: @man-made-icon;
     [access != ''][access != 'permissive'][access != 'yes'] {
-      marker-opacity: 0.33;
+      marker-opacity: @private-opacity;
     }
   }
 
@@ -1588,7 +1590,7 @@
     marker-file: url('symbols/amenity/waste_basket.svg');
     marker-fill: @man-made-icon;
     [access != ''][access != 'permissive'][access != 'yes'] {
-      marker-opacity: 0.33;
+      marker-opacity: @private-opacity;
     }
   }
 
@@ -1821,7 +1823,7 @@
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     [access != ''][access != 'permissive'][access != 'yes'] {
-      text-opacity: 0.33;
+      text-opacity: @private-opacity;
       text-halo-radius: 0;
     }
   }
@@ -2331,7 +2333,7 @@
       [feature = 'leisure_fitness_station'] {
         text-fill: @leisure-green;
         [access != ''][access != 'permissive'][access != 'yes'] {
-          text-opacity: 0.33;
+          text-opacity: @private-opacity;
           text-halo-radius: 0;
         }
       }
@@ -2425,7 +2427,7 @@
     [feature = 'tourism_wilderness_hut'],
     [feature = 'amenity_shelter'] {
       [access != ''][access != 'permissive'][access != 'yes'] {
-        text-opacity: 0.33;
+        text-opacity: @private-opacity;
         text-halo-radius: 0;
       }
     }
@@ -2461,7 +2463,7 @@
         text-dy: 9;
       }
       [feature = 'amenity_charging_station'][access != ''][access != 'permissive'][access != 'yes'] {
-        text-opacity: 0.33;
+        text-opacity: @private-opacity;
         text-halo-radius: 0;
       }
     }
@@ -2958,7 +2960,7 @@
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       [access != ''][access != 'permissive'][access != 'yes'] {
-        text-opacity: 0.33;
+        text-opacity: @private-opacity;
         text-halo-radius: 0;
       }
       [feature = 'amenity_bicycle_parking'],
