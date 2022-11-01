@@ -193,3 +193,11 @@ to be rendered without collisions. But the line spacing is too large for
 cartographic usage; therefore we reduce the line spacing. Currently, the
 line spacing ranges from -0.15 em to -0.05 em. (Even at -0.15 em, collisions
 are seldom and even then the text stays legible).
+
+## Syntax highlighting
+
+Most of the style development happens within CartoCSS MSS and MML files. Syntax highlighting can make editing more pleasant.
+
+Editors based on KDE Frameworks (Kate, KWrite, KDevelop…) provide syntax highlighting for CartoCSS MSS out-of-the-box, and starting with KF 5.100 also for CartoCSS MML including SQL highlighting within the YAML structure.
+
+Also, Yohan Boniface [has developed](https://github.com/yohanboniface/carto-atom) highlighting for CartoCSS MSS for editors that use the TextMate Language Grammar for syntax highlighting: Atom (install package “language-carto”), Visual Studio Code, Jetbrains…
