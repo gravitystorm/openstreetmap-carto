@@ -2,7 +2,6 @@ FROM ubuntu:focal
 
 # https://serverfault.com/questions/949991/how-to-install-tzdata-on-a-ubuntu-docker-image
 ARG DEBIAN_FRONTEND=noninteractive
-ENV TZ=Europe/Berlin
 
 # Style dependencies
 RUN apt-get update && apt-get install --no-install-recommends -y \
