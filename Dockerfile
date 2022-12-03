@@ -1,5 +1,8 @@
 FROM ubuntu:focal
 
+# https://serverfault.com/questions/949991/how-to-install-tzdata-on-a-ubuntu-docker-image
+ARG DEBIAN_FRONTEND=noninteractive
+
 # Style dependencies
 RUN apt-get update && apt-get install --no-install-recommends -y \
     ca-certificates curl gnupg postgresql-client python3 python3-distutils \
@@ -9,7 +12,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 # Kosmtik with plugins, forcing prefix to /usr because Ubuntu sets
 # npm prefix to /usr/local, which breaks the install
 # We install kosmtik not from release channel, but directly from a specific commit on github.
-RUN npm set prefix /usr && npm install -g "git+https://git@github.com/kosmtik/kosmtik.git#f176c4c"
+RUN npm set prefix /usr && npm install -g --unsafe-perm "git+https://git@github.com/kosmtik/kosmtik.git"
 
 WORKDIR /usr/lib/node_modules/kosmtik/
 RUN kosmtik plugins --install kosmtik-overpass-layer \

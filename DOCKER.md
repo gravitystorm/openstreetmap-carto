@@ -23,7 +23,7 @@ Read on below to get the details.
 * If necessary, `sudo service postgresql stop` to make sure you don't have currently running a native PostgreSQL server which would conflict with Docker's PostgreSQL server.
 * `docker-compose up import` to import the data (only necessary the first time or when you change the data file). Additionally you can set import options through [environment variables](#Importing-data). More on that [later](#Hands-on-approach)
 * `docker-compose up kosmtik` to run the style preview application
-* browse to [http://localhost:6789](http://localhost:6789) to view the output of Kosmtik
+* browse to [http://127.0.0.1:6789](http://127.0.0.1:6789) to view the output of Kosmtik
 * Ctrl+C to stop the style preview application
 * `docker-compose stop db` to stop the database container
 
@@ -82,7 +82,7 @@ If you want to have a [local configuration](https://github.com/kosmtik/kosmtik#l
 
 The shapefile data that is downloaded is owned by the user with UID 1000. If you have another default user id on your system, consider changing the line `USER 1000` in the file `Dockerfile`.
 
-After startup is complete you can browse to [http://localhost:6789](http://localhost:6789) to view the output of Kosmtik. By pressing Ctrl+C on the command line you can stop the container. The PostgreSQL database container is still running then (you can check with `docker ps`). If you want to stop the database container as well you can do so by running `docker-compose stop db` in the openstreetmap-carto directory.
+After startup is complete you can browse to [http://127.0.0.1:6789](http://127.0.0.1:6789) to view the output of Kosmtik. By pressing Ctrl+C on the command line you can stop the container. The PostgreSQL database container is still running then (you can check with `docker ps`). If you want to stop the database container as well you can do so by running `docker-compose stop db` in the openstreetmap-carto directory.
 
 ## Troubleshooting
 
