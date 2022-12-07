@@ -93,3 +93,11 @@ Docker copies log files from the virtual machine into the host system, their [lo
 While installing software in the containers and populating the database, the disk image of the virtual machine grows in size, by Docker allocating more clusters. When the disk on the host system is full (only a few MB remaining), Docker can appear stuck. Watch the system log files of your host system for failed allocations.
 
 Docker stores its disk image by default in the home directories of the user. If you don't have enough space here, you can move it elsewhere. (E.g. macOS: Docker > Preferences > Disk).
+
+## Style Debugging
+
+When working with the style's database tables after an import, it can be helpful to log in at the [console](https://www.postgresql.org/docs/current/app-psql.html) to inspect the table structure or view imported data. The following command will open a psql console on the database:
+
+```
+docker-compose exec -e PGUSER=postgres db psql
+```
