@@ -28,7 +28,7 @@ You can find a more detailed guide to setting up a database and loading data wit
 
 ### Disable JIT
 
-We do not recommend [PostgreSQL JIT](https://www.postgresql.org/docs/current/jit-reason.html), which is on by default in PostgreSQL 12 and higher. JIT is benifitial for slow queries where executing the SQL takes substantial time and that time is not spent in function calls. This is not the case for rendering, where most time is spent either fetching from disk, in PostGIS functions, or the query is fast. In theory, the query planner will only use JIT on slower queries, but it is known to get the type of queries map rendering requries wrong.
+We do not recommend [PostgreSQL JIT](https://www.postgresql.org/docs/current/jit-reason.html), which is on by default in PostgreSQL 12 and higher. JIT is benifitial for slow queries where executing the SQL takes substantial time and that time is not spent in function calls. This is not the case for rendering, where most time is spent either fetching from disk, in PostGIS functions, or the query is fast. In theory, the query planner will only use JIT on slower queries, but it is known to get the type of queries map rendering requires wrong.
 
 Disabling JIT is **essential** for use with Kosmtik and other style development tools.
 
