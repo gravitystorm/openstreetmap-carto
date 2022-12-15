@@ -16,7 +16,7 @@ jobs:
     - name: Install python dependencies
       run: pip install pyyaml colormath
     - name: Set up xmllint
-      run: sudo apt-get install -qq --no-install-recommends libxml2-utils
+      run: sudo apt-get update -qq && sudo apt-get install -qq --no-install-recommends libxml2-utils
     - name: Set up CartoCSS
       run: npm install -g carto@1.2.0
     - name: Set up shell
@@ -55,7 +55,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Install osm2pgsql and database
-      run: sudo apt-get install -qq --no-install-recommends osm2pgsql postgresql-14-postgis-3 gdal-bin
+      run: sudo apt-get update -qq && sudo apt-get install -qq --no-install-recommends osm2pgsql postgresql-14-postgis-3 gdal-bin
     - name: Wait for database
       run : sudo pg_ctlcluster 14 main start; until pg_isready; do sleep 0.5; done
     - name: Setup database
