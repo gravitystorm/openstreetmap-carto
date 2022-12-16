@@ -99,5 +99,5 @@ Docker stores its disk image by default in the home directories of the user. If 
 When working with the style's database tables after an import, it can be helpful to log in at the [console](https://www.postgresql.org/docs/current/app-psql.html) to inspect the table structure or view imported data. The following command will open a psql console on the database:
 
 ```
-docker-compose exec -e PGUSER=postgres db psql
+docker-compose exec -e PGUSER=postgres -e PGDATABASE=gis db psql
 ```
