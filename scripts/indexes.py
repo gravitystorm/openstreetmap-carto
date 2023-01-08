@@ -37,10 +37,10 @@ def parse(index_function):
 
 # The same as parse, but for osm2pgsql-built indexes
 def osm2pgsql_parse(index_function):
-    print(index_function('point', 'index', None, None), end=separator)
-    print(index_function('line', 'index', None, None), end=separator)
-    print(index_function('polygon', 'index', None, None), end=separator)
-    print(index_function('roads', 'index', None, None), end=separator)
+    print(index_function('point', 'way_idx', 'way', None), end=separator)
+    print(index_function('line', 'way_idx', 'way', None), end=separator)
+    print(index_function('polygon', 'way_idx', 'way', None), end=separator)
+    print(index_function('roads', 'way_idx', 'way', None), end=separator)
 
 def generate_statement(table, name, function, where):
     return index_statement(table, name, function, where, args.concurrent, args.notexist, args.fillfactor)
