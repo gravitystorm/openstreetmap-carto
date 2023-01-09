@@ -696,7 +696,7 @@ end
 function osm2pgsql.process_way(object)
     if osm2pgsql.stage == 2 then
         -- Stage two processing is called on ways that are part of admin boundary relations
-        if phase2_admin_ways_level[object.id] then
+        if object.tags.closure_segment ~= 'yes' and phase2_admin_ways_level[object.id] then
             tables.admin:add_row({admin_level = phase2_admin_ways_level[object.id],
                                   multiple_relations = (phase2_admin_ways_parents[object.id] > 1),
                                   way = { create = 'line' }})
