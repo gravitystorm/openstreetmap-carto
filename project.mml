@@ -1226,11 +1226,11 @@ Layer:
               LIMIT 1) AS way,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             name,
-            tags['name:en']
+            tags['name:en'] AS name_en
           FROM planet_osm_polygon
           WHERE way && !bbox!
-            AND name IS NOT NULL
             AND tags['name:en'] IS NOT NULL
+            AND name IS NOT NULL
             AND boundary = 'administrative'
             AND admin_level = '2'
             AND way_area > 100*POW(!scale_denominator!*0.001*0.28,2)
@@ -1249,12 +1249,14 @@ Layer:
         (SELECT
             way,
             name,
+            tags['name:en'] AS name_en,
             CASE
               WHEN (tags->'population' ~ '^[0-9]{1,8}$') THEN (tags->'population')::INTEGER ELSE 0
             END as population,
             round(ascii(md5(osm_id::text)) / 55) AS dir -- base direction factor on geometry to be consistent across metatiles
           FROM planet_osm_point
           WHERE place IN ('city', 'town', 'village', 'hamlet')
+            AND tags['name:en'] IS NOT NULL
             AND name IS NOT NULL
             AND tags @> 'capital=>yes'
           ORDER BY population DESC
@@ -1272,10 +1274,12 @@ Layer:
             ST_PointOnSurface(way) AS way,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             name,
+            tags['name:en'] AS name_en,
             admin_level,
             ref
           FROM planet_osm_polygon
           WHERE ST_PointOnSurface(way) && !bbox!
+            AND tags['name:en'] IS NOT NULL
             AND name IS NOT NULL
             AND boundary = 'administrative'
             AND admin_level = '4'

@@ -51,7 +51,7 @@
 #state-names {
   [zoom >= 5][zoom < 7][way_pixels > 3000],
   [zoom >= 7][way_pixels > 3000][way_pixels < 196000] {
-    text-name: "[name]";
+    text-name: "[name_en]";
     text-size: 10;
     text-wrap-width: 35; // 3.5 em
     text-line-spacing: -1.5; // -0.15 em
@@ -94,7 +94,7 @@
     shield-file: url('symbols/place/place-capital-6.svg');
     shield-text-dx: 6;
     shield-text-dy: 6;
-    shield-name: '[name]';
+    shield-name: '[name_en]';
     shield-face-name: @book-fonts;
     shield-fill: @placenames;
     shield-size: 11;
@@ -485,7 +485,7 @@
   [zoom >= 8][way_pixels > 12000][way_pixels < 196000] {
     [admin_level = '5'][zoom >= 8],
     [admin_level = '6'][zoom >= 10] {
-      text-name: "[name]";
+      text-name: "[name_en]";
       text-size: 10;
       text-wrap-width: 30; // 3.0 em
       text-line-spacing: -1.5; // -0.15 em
