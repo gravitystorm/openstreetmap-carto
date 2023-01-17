@@ -611,8 +611,14 @@ Layer:
       <<: *osm2pgsql
       table: &turning-circle_sql |-
         (SELECT DISTINCT ON (p.way)
-            p.way AS way,
+            -- Valid line geometry requires at least two points that are NOT identical, therefore moving them slightly.
+            ST_MakeLine(ST_Translate(p.way, -0.0001, -0.0001), ST_Translate(p.way, 0.0001, 0.0001)) AS way,
             p.highway AS type,
+            CASE WHEN l.surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
+                                    'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow') THEN 'unpaved'
+              WHEN l.surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
+                                    'concrete:plates', 'paving_stones', 'metal', 'wood', 'unhewn_cobblestone') THEN 'paved'
+            END AS int_surface,
             l.highway AS int_tc_type,
             CASE WHEN l.service IN ('parking_aisle', 'drive-through', 'driveway')
               THEN 'INT-minor'::text
@@ -638,7 +644,11 @@ Layer:
             'mini_roundabout')
             AND l.way && !bbox!
             AND p.way && !bbox! -- Both conditions are necessary for good index usage, even with the DWithin above
-          ORDER BY p.way, v.prio
+          ORDER BY
+            p.way,
+            v.prio,
+            CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
+                                  'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow') THEN 0 ELSE 1 END DESC
         ) AS turning_circle_sql
     properties:
       minzoom: 15
