@@ -39,9 +39,9 @@ jobs:
     - name: Wait for database
       run : sudo pg_ctlcluster 14 main start; until pg_isready; do sleep 0.5; done
     - name: Setup database
-      run: sudo -i -u postgres createuser -s $USER && createdb -E utf8 gis && psql -Xq -d gis -c "CREATE EXTENSION postgis; CREATE EXTENSION hstore;"
+      run: sudo -i -u postgres createuser -s $USER && createdb -E utf8 flex && psql -Xq -d flex -c "CREATE EXTENSION postgis; CREATE EXTENSION hstore;"
     - name: Import empty file
       run: |
-        osm2pgsql -G --hstore --style openstreetmap-carto.style --tag-transform-script openstreetmap-carto.lua -d gis -r xml <(echo '<osm version="0.6"/>')
+        osm2pgsql --output flex --style openstreetmap-carto.lua -d flex -r xml <(echo '<osm version="0.6"/>')
     - name: Create indexes
-      run: psql -1Xq -v ON_ERROR_STOP=1 -d gis -f indexes.sql
+      run: psql -1Xq -v ON_ERROR_STOP=1 -d flex -f indexes.sql
