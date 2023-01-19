@@ -11,7 +11,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
     --recv A438A16C88C6BE41CB1616B8D57F48750AC4F2CB
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
-    osm2pgsql gdal-bin python3-psycopg2 python3-yaml \
+    osm2pgsql gdal-bin python3-psycopg2 python3-yaml unzip \
     python3-requests postgresql-client && rm -rf /var/lib/apt/lists/*
 
 ADD openstreetmap-carto.style /

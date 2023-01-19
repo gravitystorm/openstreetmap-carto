@@ -6,7 +6,14 @@ design across various scripts. We use Noto for most text and some fallback fonts
 
 By order:
 
-1. Noto Sans is available for most scripts and it is used as a first choice.
+1. Noto Sans:
+
+Noto Sans is available for most scripts and it is used as a first choice. Noto
+provides also a Serif style for quite a few scripts, Rashi for Hebrew, Nask
+for Arabic. This CartoCSS style uses the Sans style because it’s the most
+consistent and the most legible choice. Also, the other styles might redefine
+parts of the Latin script, which is not desired.
+
 Where available the UI version of the fonts – which provides tighter vertical
 metrics – is used. We intent to have all scripts of Noto in
 our list except dead (historic) scripts of whom we assume that they are not
@@ -15,9 +22,8 @@ but there are some exceptions.
 
   - Noto Sans is before all other fonts
 
-  - Noto Sans Arabic and Noto Sanc CJK JP are placed behind sans fonts because
-    commonly used signs like parenthesis or quotation marks, and their design
-    should not overwrite the standard design.
+  - Noto Sanc CJK JP is placed behind the other fonts because it redefines the
+    Latin script, and their design should not overwrite the standard design.
 
 The used CJK font covers all CJK languages, but defaults to the Japanese
 glyph style if various glyph styles are available. We have to default to one
@@ -27,32 +33,32 @@ better to default to either Chinese or Japanese. As Chinese exists in the two
 variants SC/TC, it won’t be a uniform rendering anyway. So we default to
 Japanese. However, this choice stays somewhat arbitrary and subjective.
 
-Noto provides multiple designs for the Arabic script. This style uses
-Noto Sans Arabic UI because it’s consistent with the other Sans
-fonts and legible.
+2. Noto fonts that are not available in a Sans style:
 
-2. Noto Serif is used for scripts that are not supported by Noto Sans. Currently
-this is only Tibetan: The old Noto Sans Tibetan has been renamed to Noto Serif
+The old Noto Sans Tibetan has been renamed to Noto Serif
 Tibetan in 2015, since then only Noto Serif Tibetan gets updated.
 
-3. Noto provides two variants of Emoji: Noto Color Emoji and Noto Emoji. The
+Noto provides two variants of Emoji: Noto Color Emoji and Noto Emoji. The
 colour variant is a SVG flavoured OpenType font that contains coloured emojis.
 This is not useful in cartography, so we use the “normal” monochromatic
 Noto Emoji.
 
-4. Fallback fonts. Hanazono covers almost all CJK characters, even in Unicode
-Plane 2.
+3. Fallback fonts:
+
+Hanazono covers almost all CJK characters, even in Unicode Plane 2.
 */
 
 /* Use vendored fonts. This allows for more recent versions and better coverage */
-font-directory: url('fonts');
+Map {
+  font-directory: url('fonts');
+}
 
 /*
 A regular style.
 */
 @book-fonts:    "Noto Sans Regular",
-                "Noto Sans Adlam Regular",
                 "Noto Sans Adlam Unjoined Regular",
+                "Noto Sans Arabic UI Regular",
                 "Noto Sans Armenian Regular",
                 "Noto Sans Balinese Regular",
                 "Noto Sans Bamum Regular",
@@ -111,10 +117,8 @@ A regular style.
                 "Noto Sans Vai Regular",
                 "Noto Sans Yi Regular",
                 "Noto Sans CJK JP Regular",
-                "Noto Sans Arabic UI Regular",
                 
                 "Noto Serif Tibetan Regular",
-
                 "Noto Emoji Regular",
 
                 "HanaMinA Regular", "HanaMinB Regular";
@@ -124,8 +128,8 @@ A bold style is available for almost all scripts. Bold text is heavier than
 regular text and can be used for emphasis. Fallback is a regular style.
 */
 @bold-fonts:    "Noto Sans Bold",
-                "Noto Sans Adlam Bold",
                 "Noto Sans Adlam Unjoined Bold",
+                "Noto Sans Arabic UI Bold",
                 "Noto Sans Armenian Bold",
                 "Noto Sans Balinese Bold",
                 "Noto Sans Bamum Bold",
@@ -159,10 +163,8 @@ regular text and can be used for emphasis. Fallback is a regular style.
                 "Noto Sans Thaana Bold",
                 "Noto Sans Thai UI Bold",
                 "Noto Sans CJK JP Bold",
-                "Noto Sans Arabic UI Bold",
 
                 "Noto Serif Tibetan Bold",
-
                 "Noto Emoji Bold",
 
                 @book-fonts;

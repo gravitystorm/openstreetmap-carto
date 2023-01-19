@@ -1,6 +1,12 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.6.1...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.6.2...master)
+### Changes
+- Unpaved roads are now indicated on the map
 
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.6.0...v5.6.1) - 2022-08-12
+## [v5.6.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.6.1...v5.6.2) - 2022-11-10
+### Changes
+- Locally installed fonts fixed
+
+## [v5.6.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.6.0...v5.6.1) - 2022-08-12
 ### Changes
 - Rendering of water areas on zooms 0 to 4 fixed (#4640)
 

@@ -72,7 +72,6 @@ to reload their databases, v3.x compatibility is not maintained.
 
 The v5.x series updates Lua tag transforms, linestring and polygon decisions have changed.
 
-
 There are over [500 open requests](https://github.com/gravitystorm/openstreetmap-carto/issues), some that have been open for years.
 These need reviewing and dividing into obvious fixes, or additional new features
 that need some cartographic judgement.
