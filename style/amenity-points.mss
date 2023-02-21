@@ -1605,6 +1605,8 @@
 #text-point[zoom >= 10] {
   [feature = 'place_island'][zoom >= 4][way_pixels > 3000],
   [feature = 'place_island'][zoom >= 16],
+  [feature = 'natural_peninsula'][zoom >= 4][way_pixels > 3000],
+  [feature = 'natural_peninsula'][zoom >= 16],
   [feature = 'place_islet'][zoom >= 11][way_pixels > 3000],
   [feature = 'place_islet'][zoom >= 17] {
     text-name: "[name]";
