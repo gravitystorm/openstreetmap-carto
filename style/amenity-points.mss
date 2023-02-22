@@ -237,7 +237,7 @@
   }
 
   [feature = 'leisure_resort'][zoom >= 16] {
-    marker-file: url('symbols/tourism/chalet.svg');
+    marker-file: url('symbols/leisure/resort.svg');
     marker-fill: @accommodation-icon;
     marker-clip: false;
   }
