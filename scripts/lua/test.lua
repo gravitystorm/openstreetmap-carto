@@ -487,7 +487,7 @@ table_contents.planet_osm_transport_polygon = {}
 
 --[[
     This sets up an
-    1. admin_level=2 relation with ways 1, 2, 3, 5, 7, 8, 9
+    1. admin_level=2 relation with ways 1, 2, 3, 5, 7, 8, 9, 10
     2. admin_level=2 relation with ways 1, 2, 6, 7, 8
     3. admin_level=4 relation with ways 1, 3, 4
 
@@ -505,7 +505,8 @@ local test_ways = {
     { id = 6, tags = { boundary = "administrative", admin_level = "2"} },
     { id = 7, tags = { boundary = "administrative", admin_level = "3"} }, -- incorrect tags
     { id = 8, tags = { } }, -- incorrect tags
-    { id = 9, tags = { boundary = "administrative", admin_level = "2", highway = "road"} }
+    { id = 9, tags = { boundary = "administrative", admin_level = "2", highway = "road"} },
+    { id = 10, tags = { boundary = "administrative", admin_level = "2", closure_segment = "yes"} } -- closure segments are used on the antimeridian
 }
 -- add another way that isn't part of a relation
 local test_relations = {
@@ -517,7 +518,8 @@ local test_relations = {
                   {type = 'w', ref = 5, role = "outer"},
                   {type = 'w', ref = 7, role = "outer"},
                   {type = 'w', ref = 8, role = "outer"},
-                  {type = 'w', ref = 9, role = "outer"} } },
+                  {type = 'w', ref = 9, role = "outer"},
+                  {type = 'w', ref = 10, role = "outer"} } },
     { id = 2, tags = {type = "boundary", boundary = "administrative", admin_level = "2"},
       members = { {type = 'w', ref = 1, role = "outer"},
                   {type = 'w', ref = 2, role = "outer"},
