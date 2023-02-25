@@ -558,6 +558,7 @@ function layer (v)
     if v and string.find(v, "^-?%d+$") and tonumber(v) < 100 and tonumber(v) > -100 then -- check if value exists, is numeric, and is in range
         return v
     end
+    return nil
 end
 
 --- Normalizes admin_level tags
@@ -567,6 +568,7 @@ function admin_level (v)
     if v and string.find(v, "^%d+$") and tonumber(v) < 100 and tonumber(v) > 0 then
         return v
     end
+    return nil
 end
 
 --- Clean tags of deleted tags
