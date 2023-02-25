@@ -64,14 +64,8 @@ jobs:
       run: |
         osm2pgsql --output flex --style openstreetmap-carto.lua -d flex -r xml <(echo '<osm version="0.6"/>')
     - name: Create indexes
-<<<<<<< HEAD
       run: psql -1Xq -v ON_ERROR_STOP=1 -d flex -f indexes.sql
-||||||| 117df85a
-      run: psql -1Xq -v ON_ERROR_STOP=1 -d gis -f indexes.sql
-=======
-      run: psql -1Xq -v ON_ERROR_STOP=1 -d gis -f indexes.sql
     - name: Load empty shapefiles
       run: scripts/get-external-data.py --no-update --cache -D scripts/empty_files
     - name: Test queries are valid
       run: scripts/test-queries.py project.mml
->>>>>>> v5.7.0
