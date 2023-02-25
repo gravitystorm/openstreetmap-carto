@@ -45,12 +45,13 @@ def osm2pgsql_parse(index_function):
 def generate_statement(table, name, function, type, where):
     return index_statement(table, name, function, type, where, args.concurrent, args.notexist, args.fillfactor)
 
-def generate_reindex_statement(table, name, function, where):
+def generate_reindex_statement(table, name, function, type, where):
     if not args.concurrent:
         return f'REINDEX planet_osm_{table}_{name};'
     else:
         # Rebuilding indexes concurrently requires making a new index, dropping the old one, and renaming.
-        return f'ALTER INDEX planet_osm_{table}_{name} RENAME TO planet_osm_{table}_{name}_old; {generate_statement(table, name, function, where)} + DROP INDEX planet_osm_{table}_{name}_old;'
+        return (f'ALTER INDEX planet_osm_{table}_{name} RENAME TO planet_osm_{table}_{name}_old; {generate_statement(table, name, function, type, where)} '
+                f'DROP INDEX planet_osm_{table}_{name}_old;')
 
 print('-- These are indexes for rendering performance with OpenStreetMap Carto.', end=separator)
 print('-- This file is generated with {}'.format(' '.join(sys.argv)), end=separator)
