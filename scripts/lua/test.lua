@@ -518,7 +518,7 @@ local test_relations = {
                   {type = 'w', ref = 5, role = "outer"},
                   {type = 'w', ref = 7, role = "outer"},
                   {type = 'w', ref = 8, role = "outer"},
-                  {type = 'w', ref = 9, role = "outer"}
+                  {type = 'w', ref = 9, role = "outer"},
                   {type = 'w', ref = 10, role = "outer"} } },
     { id = 2, tags = {type = "boundary", boundary = "administrative", admin_level = "2"},
       members = { {type = 'w', ref = 1, role = "outer"},
