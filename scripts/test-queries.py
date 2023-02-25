@@ -41,7 +41,7 @@ def main():
              description="Test CartoCSS project queries against a database")
 
 
-    parser.add_argument("-d", "--database", action="store", default="gis",
+    parser.add_argument("-d", "--database", action="store", default="flex",
                         help="Override database name to connect to")
     parser.add_argument("-H", "--host", action="store",
                         help="Override database server host or socket directory")
