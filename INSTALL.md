@@ -18,7 +18,7 @@ Enable PostGIS and hstore extensions with
 psql -d gis -c 'CREATE EXTENSION postgis; CREATE EXTENSION hstore;'
 ```
 
-then grab some OSM data. It's probably easiest to grab an PBF of OSM data from [Geofabrik](https://download.geofabrik.de/). Once you've done that, import with osm2pgsql:
+Then, grab some OSM data; It's probably easiest to grab an PBF of OSM data from [Geofabrik](https://download.geofabrik.de/). Once you've done that, import with osm2pgsql:
 
 ```sh
 osm2pgsql -G --hstore --style openstreetmap-carto.style --tag-transform-script openstreetmap-carto.lua -d gis ~/path/to/data.osm.pbf
@@ -50,16 +50,16 @@ scripts/indexes.py -0 | xargs -0 -P0 -I{} psql -d gis -c "{}"
 ## Scripted download
 Some features are rendered using preprocessed shapefiles.
 
-To download them and import them into the database you can run the following script
+To download them and import them into the database you can run the following script:
 
 ```sh
 scripts/get-external-data.py
 ```
 
-The script downloads shapefiles, loads them into the database and sets up the tables for rendering. Additional script option documentation can be seen with `scripts/get-external-data.py --help`.
+The script downloads shapefiles, loads them into the database, and sets up the tables for rendering. Additional script options and corresponding documentation is available by invoking `scripts/get-external-data.py --help`.
 
 ## Fonts
-The stylesheet uses Noto, an openly licensed font family from Google with support for multiple scripts. The stylesheet uses Noto's "Sans" style where available. If not available, this stylesheet uses another appropriate style of the Noto family. The "UI" version is used where available, with its vertical metrics which fit better with Latin text.
+The stylesheet uses Noto, an openly licensed font family from Google with support for multiple scripts. The stylesheet uses Noto's "Sans" style where available. If not available, this stylesheet uses another appropriate style from the Noto family. The "UI" version is used where available, as its vertical metrics fit better with Latin text.
 
 Hanazono is used a fallback for seldom used CJK characters that are not covered by Noto.
 
@@ -74,11 +74,11 @@ scripts/get-fonts.sh
 ## Dependencies
 
 For development, a style design studio is needed.
-* [Kosmtik](https://github.com/kosmtik/kosmtik) - Kosmtik can be launched with `node index.js serve path/to/openstreetmap-carto/project.mml` The 0.0.17 release of Kosmtik is not enough because we need up-to-date CartoCSS and Mapnik versions. To install the current master branch of Kosmtik, you can clone the Kosmtik repository and execute `npm install` within it.
+* [Kosmtik](https://github.com/kosmtik/kosmtik) - Kosmtik can be launched with `node index.js serve path/to/openstreetmap-carto/project.mml`
+	* The 0.0.17 release of Kosmtik is not enough because we need up-to-date CartoCSS and Mapnik versions. To install the current master branch of Kosmtik, you can clone the Kosmtik repository and execute `npm install` within it.
+* [TileMill](https://tilemill-project.github.io/tilemill/) is not officially supported, but you may be able to use a recent TileMill version by copying or symlinking the project directly into your Mapbox/project directory.
 
-[TileMill](https://tilemill-project.github.io/tilemill/) is not officially supported, but you may be able to use a recent TileMill version by copying or symlinking the project directly into your Mapbox/project directory.
-
-To display any map a database containing OpenStreetMap data and some utilities are required
+To display *any* map, a database containing OpenStreetMap data and some utilities are required:
 
 * [PostgreSQL](https://www.postgresql.org/)
 * [PostGIS](https://postgis.net/)
@@ -91,7 +91,7 @@ To display any map a database containing OpenStreetMap data and some utilities a
 Some colours, SVGs and other files are generated with helper scripts. Not all users will need these dependencies
 
 * Python and Ruby to run helper scripts
-* [Color Math](https://github.com/gtaylor/python-colormath) and [numpy](https://numpy.org/) if running generate_road_colors.py helper script (may be obtained with `pip install colormath numpy`)
+* [Color Math](https://github.com/gtaylor/python-colormath) and [numpy](https://numpy.org/) (if running) feature a  `generate_road_colors.py` helper script, which may be obtained with `pip install colormath numpy`)
 
 ### Additional deployment dependencies
 
@@ -100,4 +100,4 @@ For deployment, CartoCSS and Mapnik are required.
 * [CartoCSS](https://github.com/mapbox/carto) >= 1.2.0 *(we're using YAML)*
 * [Mapnik](https://github.com/mapnik/mapnik/wiki/Mapnik-Installation) >= 3.0.22
 
-With CartoCSS you compile these sources into a Mapnik compatible XML file. When running CartoCSS, specify the Mapnik API version you are using (at least 3.0.22: `carto -a "3.0.22"`).
+With CartoCSS, these sources are compiled into a Mapnik compatible XML file. When running CartoCSS, specify the Mapnik API version you are using (at least 3.0.22: `carto -a "3.0.22"`).
