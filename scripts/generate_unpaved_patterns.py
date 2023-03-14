@@ -100,7 +100,8 @@ def main():
         'pedestrian-fill',
         'living-street-fill',
         'raceway-fill',
-        'residential-fill'
+        'residential-fill',
+        'busway-fill'
         }
 
     # List of names of mss files in which we search for color variables
