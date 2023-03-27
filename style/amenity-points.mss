@@ -384,7 +384,8 @@
   }
 
   [feature = 'tourism_information'][zoom >= 19],
-  [feature = 'tourism_information']["information"='office'][zoom >= 17] {
+  [feature = 'tourism_information']["information"='office'][zoom >= 17],
+  [feature = 'tourism_information']["information"='visitor_centre'][zoom >= 17] {
     [information = 'audioguide'] {
       marker-file: url('symbols/tourism/audioguide.svg');
     }
@@ -396,6 +397,10 @@
     }
     [information = 'office'] {
       marker-file: url('symbols/tourism/office.svg');
+      marker-fill: @amenity-brown;
+    }
+    [information = 'visitor_centre'] {
+      marker-file: url('symbols/tourism/visitor_centre.svg');
       marker-fill: @amenity-brown;
     }
     [information = 'map'],
