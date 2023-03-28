@@ -2151,6 +2151,7 @@ Layer:
           FROM planet_osm_point
           WHERE way && !bbox!
             AND (("addr:housenumber" IS NOT NULL) OR ("addr:housename" IS NOT NULL) OR ((tags->'addr:unit') IS NOT NULL) OR ((tags->'addr:flats') IS NOT NULL))
+            AND ((tags->'disused:shop') IS NULL)
           ORDER BY way_pixels DESC NULLS LAST
         ) AS addresses
     properties:
