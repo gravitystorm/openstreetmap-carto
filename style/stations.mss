@@ -120,3 +120,25 @@
     }
   }
 }
+
+#stop-positions {
+  [public_transport = 'stop_position'][zoom >= 18] {
+    text-name: [ref];
+    [local_ref != null] {
+      text-name: [local_ref];
+    }
+    text-face-name: @bold-fonts;
+    text-fill: @transportation-icon;
+    text-halo-radius: @standard-halo-radius * 1.5;
+    text-halo-fill: @standard-halo-fill;
+    text-wrap-width: 0;
+    text-size: 11;
+    [zoom >= 19] {
+      text-size: 13;
+      text-halo-radius: @standard-halo-radius * 2.0;
+    }
+    [zoom >= 20] {
+      text-size: 15;
+    }
+  }
+}
