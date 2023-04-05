@@ -122,7 +122,7 @@
 }
 
 #stop-positions {
-  [public_transport = 'stop_position'][zoom >= 18] {
+  [zoom >= 18] {
     text-name: [ref];
     [local_ref != null] {
       text-name: [local_ref];

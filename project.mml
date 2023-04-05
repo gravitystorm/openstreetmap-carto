@@ -1418,12 +1418,17 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-          way, 
-          tags->'public_transport' as public_transport,
+          way,
           ref,
           tags->'local_ref' as local_ref
         FROM planet_osm_point
-        WHERE (tags->'public_transport' = 'stop_position') AND (tags->'train' = 'yes') AND ((ref IS NOT NULL) OR ((tags->'local_ref') IS NOT NULL))
+        WHERE (tags->'public_transport' = 'stop_position')
+          AND (tags->'train' = 'yes')
+          AND ((ref IS NOT NULL) OR ((tags->'local_ref') IS NOT NULL))
+        ORDER BY
+          CASE (tags->'public_transport')
+            WHEN 'stop_position' THEN 1
+          END ASC
         ) AS stop_positions
     properties:
       minzoom: 18
