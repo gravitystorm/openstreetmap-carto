@@ -1500,6 +1500,7 @@ Layer:
           FROM
           (SELECT -- This subselect allows filtering on the feature column
               way,
+              osm_id,
               CASE
                 WHEN amenity = 'parcel_locker'
                 THEN CONCAT_WS(E'\n', COALESCE(tags->'brand', tags->'operator', name), ref)
@@ -1545,6 +1546,7 @@ Layer:
                 'advertising_' || CASE WHEN tags->'advertising' in ('column') THEN tags->'advertising' END,
                 'emergency_' || CASE WHEN tags->'emergency' IN ('phone') AND way_area IS NULL THEN tags->'emergency' END,
                 'shop' || CASE WHEN shop IN ('yes', 'no', 'vacant', 'closed', 'disused', 'empty') OR shop IS NULL THEN NULL ELSE '' END,
+                'craft' || CASE WHEN craft IN ('no', 'vacant', 'closed', 'disused', 'empty') OR craft IS NULL THEN NULL ELSE '' END,
                 'leisure_' || CASE WHEN leisure IN ('amusement_arcade', 'beach_resort', 'bird_hide', 'bowling_alley', 'dog_park', 'firepit', 'fishing',
                                                     'fitness_centre', 'fitness_station', 'garden', 'golf_course', 'ice_rink', 'marina', 'miniature_golf',
                                                     'outdoor_seating', 'park', 'picnic_table', 'pitch', 'playground',
@@ -1641,6 +1643,7 @@ Layer:
                                 'music', 'medical_supply', 'dairy', 'video_games', 'houseware', 'ticket', 'charity', 'second_hand',
                                 'interior_decoration', 'video', 'paint', 'massage', 'trade', 'wholesale') THEN shop
                                 ELSE 'other' END AS shop,
+              craft,
               CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building,
               tags->'operator' AS operator,
               ref,
@@ -1649,6 +1652,7 @@ Layer:
             FROM
               (SELECT
                   ST_PointOnSurface(way) AS way,
+                  osm_id,
                   name,
                   access,
                   aeroway,
@@ -1668,6 +1672,7 @@ Layer:
                   ref,
                   religion,
                   shop,
+                  craft,
                   tourism,
                   waterway,
                   tags,
@@ -1678,6 +1683,7 @@ Layer:
               UNION ALL
               SELECT
                   way,
+                  osm_id,
                   name,
                   access,
                   aeroway,
@@ -1697,6 +1703,7 @@ Layer:
                   ref,
                   religion,
                   shop,
+                  craft,
                   tourism,
                   waterway,
                   tags,
