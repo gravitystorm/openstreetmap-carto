@@ -2,8 +2,8 @@
 @wetland-text: darken(#4aa5fa, 25%); /* Also for mud */
 @shop-icon: #ac39ac;
 @shop-text: #939;
-@craft-icon: #9c01fe;
-@craft-text: #9c01fe;
+@craft-icon: #8000ff;
+@craft-text: #8000ff;
 @transportation-icon: #0092da;
 @transportation-text: #0066ff;
 @accommodation-icon: @transportation-icon;
@@ -1210,11 +1210,19 @@
       marker-width: 4;
       marker-line-width: 0;
     }
-    [craft = 'plumber'][zoom >= 18] {
-      marker-file: url('symbols/craft/plumber.svg');
+
+    [craft = 'shoemaker'][zoom >= 18] {
+      marker-file: url('symbols/craft/shoemaker.svg');
     }
-    [zoom >= 18][craft != 'plumber']{
+
+    [craft = 'tailor'][zoom >= 18],
+    [craft = 'dressmaker'][zoom >= 18] {
+      marker-file: url('symbols/craft/tailor.svg');
+    }
+
+    [zoom >= 18][craft != 'shoemaker'][craft != 'tailor'][craft != 'dressmaker']{
       marker-width: 6;
+      marker-line-width: 0;
     }
   }
 

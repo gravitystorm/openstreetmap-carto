@@ -1500,7 +1500,6 @@ Layer:
           FROM
           (SELECT -- This subselect allows filtering on the feature column
               way,
-              osm_id,
               CASE
                 WHEN amenity = 'parcel_locker'
                 THEN CONCAT_WS(E'\n', COALESCE(tags->'brand', tags->'operator', name), ref)
@@ -1652,7 +1651,6 @@ Layer:
             FROM
               (SELECT
                   ST_PointOnSurface(way) AS way,
-                  osm_id,
                   name,
                   access,
                   aeroway,
@@ -1683,7 +1681,6 @@ Layer:
               UNION ALL
               SELECT
                   way,
-                  osm_id,
                   name,
                   access,
                   aeroway,
