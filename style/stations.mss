@@ -121,12 +121,9 @@
   }
 }
 
-#stop-positions {
+#train-stop-positions {
   [zoom >= 18] {
     text-name: [ref];
-    [local_ref != null] {
-      text-name: [local_ref];
-    }
     text-face-name: @bold-fonts;
     text-fill: @transportation-icon;
     text-halo-radius: @standard-halo-radius * 1.5;

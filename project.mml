@@ -1411,23 +1411,6 @@ Layer:
     properties:
       cache-features: true
       minzoom: 12
-  - id: stop-positions
-    geometry: point
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-          way,
-          ref,
-          tags->'local_ref' as local_ref
-        FROM planet_osm_point
-        WHERE (tags->'public_transport' = 'stop_position')
-          AND (tags->'train' = 'yes')
-          AND ((ref IS NOT NULL) OR ((tags->'local_ref') IS NOT NULL))
-        ) AS stop_positions
-    properties:
-      minzoom: 18
   - id: junctions
     geometry: point
     <<: *extents
@@ -2257,6 +2240,22 @@ Layer:
         ) AS protected_areas_text
     properties:
       minzoom: 13
+  - id: train-stop-positions
+    geometry: point
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+          way,
+          ref
+        FROM planet_osm_point
+        WHERE tags @> 'public_transport=>stop_position'
+          AND tags @> 'train=>yes'
+          AND ref IS NOT NULL
+        ) AS stop_positions
+    properties:
+      minzoom: 18
   - id: amenity-low-priority
     geometry: point
     <<: *extents
