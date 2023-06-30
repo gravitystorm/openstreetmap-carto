@@ -1634,6 +1634,7 @@ Layer:
                   CASE
                     WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?( m)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)( m)?$'))::NUMERIC
                   END
+                WHEN "highway" IN ('bus_stop') THEN 0 --renders bus stops above other amenity points, such as bus shelters
               END AS score,
               religion,
               tags->'denomination' as denomination,
