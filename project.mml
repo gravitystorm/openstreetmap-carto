@@ -1562,9 +1562,9 @@ Layer:
                                 'landuse_landfill', 'landuse_construction', 'landuse_salt_pond', 'tourism_theme_park', 'tourism_zoo', 'amenity_kindergarten',
                                 'amenity_school', 'amenity_college', 'amenity_university', 'landuse_religious', 'natural_heath', 'natural_scrub', 'natural_beach',
                                 'natural_shoal', 'natural_reef', 'leisure_fitness_centre', 'leisure_fitness_station', 'leisure_sports_centre', 'leisure_stadium',
-                                'leisure_track', 'leisure_dog_park', 'leisure_ice_rink', 'leisure_pitch)
+                                'leisure_track', 'leisure_dog_park', 'leisure_ice_rink', 'leisure_pitch')
                 AND way_pixels > 3000
-                And is_building = 'no'
+                AND is_building = 'no'
               THEN 10
               WHEN feature in ('shop')
                 AND shop = 'mall'
@@ -1576,7 +1576,7 @@ Layer:
                 AND way_pixels > 3000
               THEN 10
               WHEN feature IN ('power_generator')
-                AND generator:source != 'wind'
+                AND "generator:source" != 'wind'
                 AND is_building = 'no'
               THEN 10
               WHEN feature IN ('natural_glacier')
@@ -1596,11 +1596,11 @@ Layer:
               THEN 13
               WHEN feature IN ('tourism_alpine_hut', 'tourism_wilderness_hut')
               THEN 13
-              WHEN feature IN ('landuse_garages, 'power_substation')
+              WHEN feature IN ('landuse_garages', 'power_substation')
                 AND is_building = 'no'
                 AND way_pixels > 3000
               THEN 13
-              WHEN feature IN ('man_made_mast")
+              WHEN feature IN ('man_made_mast')
                 AND "tower:type" != 'lighting'
                 AND height >= 160
               THEN 14
@@ -1634,7 +1634,7 @@ Layer:
                 AND sport = 'swimming'
                 AND way_pixels > 3000
               THEN 14
-              WHEN feature IN ('man_made_mast")
+              WHEN feature IN ('man_made_mast')
                 AND "tower:type" != 'lighting'
                 AND height >= 80
               THEN 15
@@ -1657,11 +1657,12 @@ Layer:
               THEN 15
               WHEN feature IN ('waterway_waterfall')
                 AND name IS NOT NULL
+              THEN 15
               WHEN feature IN ('power_generator')
                 AND "generator:source" = 'wind'
                 AND (location IS NULL OR location NOT IN ('rooftop', 'roof'))
               THEN 15
-            END AS minzoom,
+            END AS minzoom
           FROM
           (SELECT -- This subselect allows filtering on the feature column
               way,
