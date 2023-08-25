@@ -738,7 +738,28 @@ function osm2pgsql.process_relation(object)
     if clean_tags(object.tags) then
         return
     end
+    
     if type == "boundary" then
+        if object.tags.boundary == 'administrative' then
+            local admin = tonumber(admin_level(object.tags.admin_level))
+            if admin ~= nil then
+                for _, ref in ipairs(osm2pgsql.way_member_ids(object)) do
+                    -- Store the lowest admin_level, and how many relations it used in
+                    if not phase2_admin_ways_level[ref] then
+                        phase2_admin_ways_level[ref] = admin
+                        phase2_admin_ways_parents[ref] = 1
+                    else
+                        if phase2_admin_ways_level[ref] == admin then
+                            phase2_admin_ways_parents[ref] = phase2_admin_ways_parents[ref] + 1
+                        elseif admin < phase2_admin_ways_level[ref] then
+                            phase2_admin_ways_level[ref] = admin
+                            phase2_admin_ways_parents[ref] = 1
+                        end
+                    end
+                end
+            end
+        end
+            
         add_line(object)
 
         if roads(object.tags) then
@@ -756,6 +777,7 @@ function osm2pgsql.process_relation(object)
     elseif type == "route" then
         add_route(object)
     end
+    
 end
 
 function osm2pgsql.select_relation_members(relation)
@@ -763,20 +785,6 @@ function osm2pgsql.select_relation_members(relation)
        and relation.tags.boundary == 'administrative' then
         local admin = tonumber(admin_level(relation.tags.admin_level))
         if admin ~= nil then
-            for _, ref in ipairs(osm2pgsql.way_member_ids(relation)) do
-                -- Store the lowest admin_level, and how many relations it used in
-                if not phase2_admin_ways_level[ref] then
-                    phase2_admin_ways_level[ref] = admin
-                    phase2_admin_ways_parents[ref] = 1
-                else
-                    if phase2_admin_ways_level[ref] == admin then
-                        phase2_admin_ways_parents[ref] = phase2_admin_ways_parents[ref] + 1
-                    elseif admin < phase2_admin_ways_level[ref] then
-                        phase2_admin_ways_level[ref] = admin
-                        phase2_admin_ways_parents[ref] = 1
-                    end
-                end
-            end
             return { ways = osm2pgsql.way_member_ids(relation) }
         end
     end
