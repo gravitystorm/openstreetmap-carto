@@ -1561,6 +1561,7 @@
   }
 
   [feature = 'barrier_bollard'],
+  [feature = 'barrier_planter'],
   [feature = 'barrier_block'],
   [feature = 'barrier_log'],
   [feature = 'barrier_turnstile'] {
