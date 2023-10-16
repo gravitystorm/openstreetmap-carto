@@ -81,7 +81,7 @@ that need some cartographic judgement.
 There are many open-source stylesheets written for creating OpenStreetMap-based
 maps using Mapnik, many based on this project. Some alternatives are:
 
-* [OSM Bright](https://github.com/mapbox/osm-bright)
+* [OSM Bright](https://github.com/geofabrik/osm-bright)
 * [XML-based stylesheets](https://github.com/openstreetmap/mapnik-stylesheets)
 * [OpenStreetMap "FR" Carto](https://github.com/cquest/osmfr-cartocss)
 * [OpenStreetMap Carto German](https://github.com/giggls/openstreetmap-carto-de)
