@@ -127,6 +127,6 @@ unzip -oqq "${TMPDIR}/Noto_Emoji.zip" static/NotoEmoji-Regular.ttf static/NotoEm
 mv "${FONTDIR}/static/NotoEmoji-Regular.ttf" "${FONTDIR}"
 mv "${FONTDIR}/static/NotoEmoji-Bold.ttf" "${FONTDIR}"
 
-curl --fail -A "get-fonts.sh/osm-carto" -o "${TMPDIR}/hanazono.zip" -L 'https://osdn.net/frs/redir.php?f=hanazono-font%2F68253%2Fhanazono-20170904.zip'
+curl --fail -A "get-fonts.sh/osm-carto" -o "${TMPDIR}/hanazono.zip" -L 'https://mirrors.dotsrc.org/osdn/hanazono-font/68253/hanazono-20170904.zip'
 
 unzip -oqq "${TMPDIR}/hanazono.zip" HanaMinA.ttf HanaMinB.ttf -d "${FONTDIR}"
