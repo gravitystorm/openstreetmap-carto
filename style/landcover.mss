@@ -168,6 +168,20 @@
     }
   }
 
+  [feature = 'landuse_flowerbed'] {
+    [zoom >= 11] {
+      polygon-fill: @grass;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+    [zoom >= 13] {
+      polygon-pattern-file: url('symbols/flowerbed.svg');
+      polygon-pattern-alignment: global;
+      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+    }
+  }
+
   [feature = 'landuse_plant_nursery'] {
     [zoom >= 10] {
       polygon-fill: @orchard;

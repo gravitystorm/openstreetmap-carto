@@ -106,7 +106,7 @@ Layer:
               ('landuse_' || (CASE WHEN landuse IN ('quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'meadow', 'grass',
                                                     'allotments', 'forest', 'farmyard', 'farmland', 'greenhouse_horticulture',
                                                     'recreation_ground', 'village_green', 'retail', 'industrial', 'railway', 'commercial',
-                                                    'brownfield', 'landfill', 'salt_pond', 'construction', 'plant_nursery', 'religious') THEN landuse END)) AS landuse,
+                                                    'brownfield', 'landfill', 'salt_pond', 'construction', 'plant_nursery', 'religious', 'flowerbed') THEN landuse END)) AS landuse,
               ('shop_' || (CASE WHEN shop IN ('mall') AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL) THEN shop END)) AS shop,
               ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'garden',
                                                     'golf_course', 'miniature_golf', 'sports_centre', 'stadium', 'pitch', 'ice_rink',
@@ -285,7 +285,7 @@ Layer:
             tags->'leaf_type' AS leaf_type,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
-          WHERE ("natural" IN ('mud', 'wetland', 'wood', 'beach', 'shoal', 'reef', 'scrub') OR landuse IN ('forest', 'salt_pond'))
+          WHERE ("natural" IN ('mud', 'wetland', 'wood', 'beach', 'shoal', 'reef', 'scrub') OR landuse IN ('forest', 'salt_pond', 'flowerbed'))
             AND building IS NULL
             AND way_area > 1*!pixel_width!::real*!pixel_height!::real
           ORDER BY COALESCE(layer,0), way_area DESC
