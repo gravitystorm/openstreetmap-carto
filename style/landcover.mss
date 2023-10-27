@@ -169,7 +169,7 @@
   }
 
   [feature = 'landuse_flowerbed'] {
-    [zoom >= 11] {
+    [zoom >= 10] {
       polygon-fill: @grass;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
