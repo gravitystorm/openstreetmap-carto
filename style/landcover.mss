@@ -168,6 +168,26 @@
     }
   }
 
+  [feature = 'landuse_flowerbed'] {
+    [zoom >= 10] {
+      polygon-fill: @grass;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+    [zoom >= 15] {
+      polygon-pattern-file: url('symbols/flowerbed_mid_zoom.svg');
+      polygon-pattern-alignment: global;
+      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+    }
+    [zoom >= 17] {
+      polygon-pattern-file: url('symbols/flowerbed_high_zoom.svg');
+      polygon-pattern-alignment: global;
+      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+    }
+  }
+
   [feature = 'landuse_plant_nursery'] {
     [zoom >= 10] {
       polygon-fill: @orchard;

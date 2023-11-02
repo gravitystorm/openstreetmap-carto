@@ -106,7 +106,7 @@ Layer:
               ('landuse_' || (CASE WHEN landuse IN ('quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'meadow', 'grass',
                                                     'allotments', 'forest', 'farmyard', 'farmland', 'greenhouse_horticulture',
                                                     'recreation_ground', 'village_green', 'retail', 'industrial', 'railway', 'commercial',
-                                                    'brownfield', 'landfill', 'salt_pond', 'construction', 'plant_nursery', 'religious') THEN landuse END)) AS landuse,
+                                                    'brownfield', 'landfill', 'salt_pond', 'construction', 'plant_nursery', 'religious', 'flowerbed') THEN landuse END)) AS landuse,
               ('shop_' || (CASE WHEN shop IN ('mall') AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL) THEN shop END)) AS shop,
               ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'garden',
                                                     'golf_course', 'miniature_golf', 'sports_centre', 'stadium', 'pitch', 'ice_rink',
