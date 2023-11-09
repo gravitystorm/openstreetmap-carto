@@ -1,7 +1,7 @@
 /* For tourism features like roller coasters */
 
-@track-casing: #707070;
-@track-fill: #ddd;
+@roller-coaster-casing: #707070;
+@roller-coaster-fill: #ddd;
 
 /* The purpose of “roller-coaster-gap-fill” layer is to fill in the gaps between sections of roller coaster track. */
 #roller-coaster-gap-fill[zoom >= 15] {
@@ -27,14 +27,14 @@
 
     ::casing {
       line-width: 1;
-      line-color: mix(@track-casing, @track-fill, 50%);
+      line-color: mix(@roller-coaster-casing, @roller-coaster-fill, 50%);
       line-join: round;
 
       [tunnel = 'yes'][zoom >= 16] {
-        line-color: lighten(@track-casing, 20%);
+        line-color: lighten(@roller-coaster-casing, 20%);
       }
       [zoom >= 16] { 
-        line-color: @track-casing;
+        line-color: @roller-coaster-casing;
         line-width: 2.5;
       }
       [zoom >= 17] { line-width: 4; }
@@ -45,11 +45,11 @@
 
     ::fill[zoom >= 16] {
       line-width: 1.25;
-      line-color: @track-fill;
+      line-color: @roller-coaster-fill;
       line-join: round;
 
       [tunnel = 'yes'] {
-        line-color: lighten(@track-fill, 5%);
+        line-color: lighten(@roller-coaster-fill, 5%);
       }
       [zoom >= 17] { line-width: 2; }
       [zoom >= 18] { line-width: 3; }
