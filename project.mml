@@ -629,8 +629,10 @@ Layer:
                 ('unclassified', 4),
                 ('residential', 5),
                 ('living_street', 6),
-                ('service', 7),
-                ('track', 8)
+                ('busway', 7),
+                ('bus_guideway', 8),
+                ('service', 9),
+                ('track', 10)
               ) AS v (highway, prio)
               ON v.highway = l.highway
           WHERE p.highway IN (
@@ -705,6 +707,8 @@ Layer:
                 END AS int_surface,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
+                  -- highway=busway and highway=bus_guideway are access=no/bus=designated by default.
+                  WHEN highway IN ('busway', 'bus_guideway') AND access IS NULL THEN 'no'::text
                 END AS access,
                 construction,
                 CASE
@@ -989,19 +993,6 @@ Layer:
       cache-features: true
       group-by: layernotnull
       minzoom: 10
-  - id: guideways
-    geometry: linestring
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way
-          FROM planet_osm_line
-          WHERE highway = 'bus_guideway'
-        ) AS guideways
-    properties:
-      minzoom: 11
   - id: roller-coaster-gap-fill
     geometry: linestring
     <<: *extents
@@ -1926,7 +1917,7 @@ Layer:
             horse, bicycle
           FROM planet_osm_line l
           WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary',
-                            'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction')
+                            'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'busway', 'bus_guideway', 'pedestrian', 'raceway', 'living_street', 'construction')
             AND (name IS NOT NULL
               OR oneway IN ('yes', '-1')
               OR junction IN ('roundabout'))
@@ -2021,10 +2012,10 @@ Layer:
                 SELECT
                     osm_id,
                     way,
-                    CASE WHEN highway IN ('unclassified', 'residential', 'track') THEN highway END AS highway,
+                    CASE WHEN highway IN ('unclassified', 'residential', 'track', 'busway', 'bus_guideway') THEN highway END AS highway,
                     string_to_array(ref, ';') AS refs
                   FROM planet_osm_line
-                  WHERE highway IN ('unclassified', 'residential', 'track')
+                  WHERE highway IN ('unclassified', 'residential', 'track', 'busway', 'bus_guideway')
                     AND ref IS NOT NULL
               ) AS p) AS q
           WHERE height <= 4 AND width <= 11
@@ -2032,6 +2023,8 @@ Layer:
             CASE
               WHEN highway = 'unclassified' THEN 33
               WHEN highway = 'residential' THEN 32
+              WHEN highway = 'busway' THEN 31
+              WHEN highway = 'bus_guideway' THEN 31
               WHEN highway = 'track' THEN 30
             END DESC NULLS LAST,
             height DESC,
