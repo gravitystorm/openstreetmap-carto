@@ -3133,7 +3133,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
     [int_tc_type = 'primary'] { marker-fill: @primary-casing; }
     [int_tc_type = 'secondary'] { marker-fill: @secondary-casing; }
-    [int_tc_type = 'tertiary'] { marker-fill: @primary-casing; }
+    [int_tc_type = 'tertiary'] { marker-fill: @tertiary-casing; }
+    [int_tc_type = 'unclassified'] { marker-fill: @residential-casing; }
     [int_tc_type = 'residential'] { marker-fill: @residential-casing; }
     [int_tc_type = 'living_street'] { marker-fill: @living-street-casing; }
     [int_tc_type = 'service'] { marker-fill: @service-casing; }
