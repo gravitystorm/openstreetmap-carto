@@ -2780,21 +2780,42 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 }
 
 #turning-circle-casing {
-  [int_tc_type = 'primary'][zoom >= 15] {
-    marker-fill: @primary-casing;
-    marker-width: @primary-width-z15 * 1.6 + 2 * @casing-width-z15;
-    marker-height: @primary-width-z15 * 1.6 + 2 * @casing-width-z15;
+  [int_tc_type = 'trunk'][zoom >= 15] {
+    marker-fill: @trunk-casing;
+    marker-width: @trunk-width-z15 * 1.6 + 2 * @major-casing-width-z15;
+    marker-height: @trunk-width-z15 * 1.6 + 2 * @major-casing-width-z15;
     [zoom >= 17] {
-      marker-width: @primary-width-z17 * 1.6 + 2 * @casing-width-z17;
-      marker-height: @primary-width-z17 * 1.6 + 2 * @casing-width-z17;
+      marker-width: @trunk-width-z17 * 1.6 + 2 * @major-casing-width-z17;
+      marker-height: @trunk-width-z17 * 1.6 + 2 * @major-casing-width-z17;
     }
     [zoom >= 18] {
-      marker-width: @primary-width-z18 * 1.6 + 2 * @casing-width-z18;
-      marker-height: @primary-width-z18 * 1.6 + 2 * @casing-width-z18;
+      marker-width: @trunk-width-z18 * 1.6 + 2 * @major-casing-width-z18;
+      marker-height: @trunk-width-z18 * 1.6 + 2 * @major-casing-width-z18;
     }
     [zoom >= 19] {
-      marker-width: @primary-width-z19 * 1.6 + 2 * @casing-width-z19;
-      marker-height: @primary-width-z19 * 1.6 + 2 * @casing-width-z19;
+      marker-width: @trunk-width-z19 * 1.6 + 2 * @major-casing-width-z19;
+      marker-height: @trunk-width-z19 * 1.6 + 2 * @major-casing-width-z19;
+    }
+    marker-allow-overlap: true;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
+  }
+
+  [int_tc_type = 'primary'][zoom >= 15] {
+    marker-fill: @primary-casing;
+    marker-width: @primary-width-z15 * 1.6 + 2 * @major-casing-width-z15;
+    marker-height: @primary-width-z15 * 1.6 + 2 * @major-casing-width-z15;
+    [zoom >= 17] {
+      marker-width: @primary-width-z17 * 1.6 + 2 * @major-casing-width-z17;
+      marker-height: @primary-width-z17 * 1.6 + 2 * @major-casing-width-z17;
+    }
+    [zoom >= 18] {
+      marker-width: @primary-width-z18 * 1.6 + 2 * @major-casing-width-z18;
+      marker-height: @primary-width-z18 * 1.6 + 2 * @major-casing-width-z18;
+    }
+    [zoom >= 19] {
+      marker-width: @primary-width-z19 * 1.6 + 2 * @major-casing-width-z19;
+      marker-height: @primary-width-z19 * 1.6 + 2 * @major-casing-width-z19;
     }
     marker-allow-overlap: true;
     marker-ignore-placement: true;
@@ -2803,23 +2824,23 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
   [int_tc_type = 'secondary'][zoom >= 15] {
     marker-fill: @secondary-casing;
-    marker-width: @secondary-width-z15 * 1.6 + 2 * @casing-width-z15;
-    marker-height: @secondary-width-z15 * 1.6 + 2 * @casing-width-z15;
+    marker-width: @secondary-width-z15 * 1.6 + 2 * @secondary-casing-width-z15;
+    marker-height: @secondary-width-z15 * 1.6 + 2 * @secondary-casing-width-z15;
     [zoom >= 16] {
-      marker-width: @secondary-width-z16 * 1.6 + 2 * @casing-width-z16;
-      marker-height: @secondary-width-z16 * 1.6 + 2 * @casing-width-z16;
+      marker-width: @secondary-width-z16 * 1.6 + 2 * @secondary-casing-width-z16;
+      marker-height: @secondary-width-z16 * 1.6 + 2 * @secondary-casing-width-z16;
     }
     [zoom >= 17] {
-      marker-width: @secondary-width-z17 * 1.6 + 2 * @casing-width-z17;
-      marker-height: @secondary-width-z17 * 1.6 + 2 * @casing-width-z17;
+      marker-width: @secondary-width-z17 * 1.6 + 2 * @secondary-casing-width-z17;
+      marker-height: @secondary-width-z17 * 1.6 + 2 * @secondary-casing-width-z17;
     }
     [zoom >= 18] {
-      marker-width: @secondary-width-z18 * 1.6 + 2 * @casing-width-z18;
-      marker-height: @secondary-width-z18 * 1.6 + 2 * @casing-width-z18;
+      marker-width: @secondary-width-z18 * 1.6 + 2 * @secondary-casing-width-z18;
+      marker-height: @secondary-width-z18 * 1.6 + 2 * @secondary-casing-width-z18;
     }
     [zoom >= 19] {
-      marker-width: @secondary-width-z19 * 1.6 + 2 * @casing-width-z19;
-      marker-height: @secondary-width-z19 * 1.6 + 2 * @casing-width-z19;
+      marker-width: @secondary-width-z19 * 1.6 + 2 * @secondary-casing-width-z19;
+      marker-height: @secondary-width-z19 * 1.6 + 2 * @secondary-casing-width-z19;
     }
     marker-allow-overlap: true;
     marker-ignore-placement: true;
@@ -2946,6 +2967,27 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 }
 
 #turning-circle-fill {
+  [int_tc_type = 'trunk'][zoom >= 15] {
+    marker-fill: @trunk-fill;
+    marker-width: @trunk-width-z15 * 1.6;
+    marker-height: @trunk-width-z15 * 1.6;
+    [zoom >= 17] {
+      marker-width: @trunk-width-z17 * 1.6;
+      marker-height: @trunk-width-z17 * 1.6;
+    }
+    [zoom >= 18] {
+      marker-width: @trunk-width-z18 * 1.6;
+      marker-height: @trunk-width-z18 * 1.6;
+    }
+    [zoom >= 19] {
+      marker-width: @trunk-width-z19 * 1.6;
+      marker-height: @trunk-width-z19 * 1.6;
+    }
+    marker-allow-overlap: true;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
+  }
+
   [int_tc_type = 'primary'][zoom >= 15] {
     marker-fill: @primary-fill;
     marker-width: @primary-width-z15 * 1.6;
@@ -3131,9 +3173,11 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     marker-ignore-placement: true;
     marker-line-width: 0;
 
+    [int_tc_type = 'trunk'] { marker-fill: @trunk-casing; }
     [int_tc_type = 'primary'] { marker-fill: @primary-casing; }
     [int_tc_type = 'secondary'] { marker-fill: @secondary-casing; }
-    [int_tc_type = 'tertiary'] { marker-fill: @primary-casing; }
+    [int_tc_type = 'tertiary'] { marker-fill: @tertiary-casing; }
+    [int_tc_type = 'unclassified'] { marker-fill: @residential-casing; }
     [int_tc_type = 'residential'] { marker-fill: @residential-casing; }
     [int_tc_type = 'living_street'] { marker-fill: @living-street-casing; }
     [int_tc_type = 'service'] { marker-fill: @service-casing; }

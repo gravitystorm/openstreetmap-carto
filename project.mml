@@ -623,14 +623,15 @@ Layer:
             JOIN planet_osm_line l
               ON ST_DWithin(p.way, l.way, 0.1) -- Assumes Mercator
             JOIN (VALUES
-                ('primary', 1),
-                ('secondary', 2),
-                ('tertiary', 3),
-                ('unclassified', 4),
-                ('residential', 5),
-                ('living_street', 6),
-                ('service', 7),
-                ('track', 8)
+                ('trunk', 1),
+                ('primary', 2),
+                ('secondary', 3),
+                ('tertiary', 4),
+                ('unclassified', 5),
+                ('residential', 6),
+                ('living_street', 7),
+                ('service', 8),
+                ('track', 9)
               ) AS v (highway, prio)
               ON v.highway = l.highway
           WHERE p.highway IN (
