@@ -1,4 +1,15 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.7.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.8.0...master)
+
+## [v5.8.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.7.0...v5.8.0) - 2023-11-26
+### Changes
+- Changing color of leisure=pitch to be more distinct and less similar to the water color (#4480)
+- Fixing color of ref label for railway=subway_entrance (#4835)
+- Fixes for highway=mini_roundabout rendering on various road types (#4904)
+- Fixing merge error in previous change of rendering natural=bay/natural=strait (#4841)
+- Removing point symbol rendering for golf=hole (#4857)
+- Restoring rendering for railway=platform + covered=yes (#4797)
+- Adding rendering of roller_coaster=track (#4666)
+- Adding rendering of landuse=flowerbed (#4889)
 
 ## [v5.7.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.6.2...v5.7.0) - 2023-01-11
 ### Changes
