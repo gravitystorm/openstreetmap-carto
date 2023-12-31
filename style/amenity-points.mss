@@ -1631,6 +1631,8 @@
     text-halo-fill: @standard-halo-fill;
   }
 
+  [feature = 'natural_peninsula'][zoom >= 10][way_pixels > 3000],
+  [feature = 'natural_peninsula'][zoom >= 16],
   [feature = 'place_locality'][zoom >= 16] {
     text-name: "[name]";
     text-size: 10;
