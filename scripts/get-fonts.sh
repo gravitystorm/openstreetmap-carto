@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-FONTDIR="./fonts"
+FONTDIR="${FONTDIR:-./fonts}"
 
 mkdir -p "${FONTDIR}"
 
