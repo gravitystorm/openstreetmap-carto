@@ -1567,7 +1567,6 @@
   [feature = 'barrier_bollard'],
   [feature = 'barrier_block'],
   [feature = 'barrier_log'],
-  [feature = 'barrier_jersey_barrier'],
   [feature = 'barrier_turnstile'] {
     [zoom >= 17] {
       marker-width: 3;
