@@ -570,7 +570,7 @@ Layer:
                   WHERE way && !bbox!
                 ) _
               WHERE barrier IN ('chain', 'city_wall', 'ditch', 'fence', 'guard_rail',
-                  'handrail', 'hedge', 'retaining_wall', 'wall')
+                  'handrail', 'hedge', 'retaining_wall', 'wall', 'jersey_barrier')
               OR historic = 'citywalls'
               AND (waterway IS NULL OR waterway NOT IN ('river', 'canal', 'stream', 'drain', 'ditch'))
           ) AS features
