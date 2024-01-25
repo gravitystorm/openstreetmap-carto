@@ -52,6 +52,7 @@
 
 #water-lines::casing {
   [waterway = 'stream'],
+  [waterway = 'fish_pass'],
   [waterway = 'ditch'],
   [waterway = 'drain'] {
     [int_tunnel = 'no'] {
@@ -144,6 +145,7 @@
   }
 
   [waterway = 'stream'],
+  [waterway = 'fish_pass'],
   [waterway = 'ditch'],
   [waterway = 'drain'] {
     [int_intermittent != 'yes'][zoom >= 14],
@@ -174,23 +176,27 @@
         water/line-clip: false;
       }
 
-      [waterway = 'stream'][zoom >= 15] {
+      [waterway = 'stream'][zoom >= 15],
+      [waterway = 'fish_pass'][zoom >= 15] {
         water/line-width: 3;
 
         [int_tunnel = 'yes'] {
           background/line-width: 3;
         }
       }
+
       [int_tunnel = 'yes'][zoom >= 15] {
         background/line-width: 3.5;
         water/line-width: 3.5;
-        [waterway = 'stream'] {
+        [waterway = 'stream'],
+        [waterway = 'fish_pass'] {
           background/line-width: 4.5;
           water/line-width: 4.5;
         }
         water/line-dasharray: 4,2;
         tunnelfill/line-width: 1;
         [waterway = 'stream'] { tunnelfill/line-width: 2; }
+        [waterway = 'fish_pass'] { tunnelfill/line-width: 2; }
         tunnelfill/line-color: #f3f7f7;
       }
     }
@@ -235,22 +241,10 @@
       text-repeat-distance: @waterway-text-repeat-distance;
     }
 
-    [waterway = 'stream'][zoom >= 15] {
-      text-name: "[name]";
-      text-size: 10;
-      text-face-name: @oblique-fonts;
-      text-fill: @water-text;
-      text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill;
-      text-spacing: 600;
-      text-placement: line;
-      text-vertical-alignment: middle;
-      text-dy: 8;
-      text-repeat-distance: @waterway-text-repeat-distance;
-    }
-
     [waterway = 'drain'],
-    [waterway = 'ditch'] {
+    [waterway = 'ditch'],
+    [waterway = 'stream'],
+    [waterway = 'fish_pass'] {
       [zoom >= 15] {
         text-name: "[name]";
         text-size: 10;
