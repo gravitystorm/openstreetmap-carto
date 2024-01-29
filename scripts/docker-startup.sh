@@ -56,7 +56,7 @@ EOF
   scripts/get-external-data.py $EXTERNAL_DATA_SCRIPT_FLAGS
 
   # Download fonts
-  scripts/get-fonts.sh
+  scripts/get-fonts.py
   ;;
 
 kosmtik)

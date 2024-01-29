@@ -8,7 +8,7 @@ mkdir -p "${FONTDIR}"
 # download filename url
 download() {
   ## Download if newer, and if curl fails, clean up and exit
-  curl --fail --compressed -A "get-fonts.sh/osm-carto" -o "$1" -z "$1" -L "$2" || { echo "Failed to download $1 $2"; rm -f "$1"; exit 1; }
+  curl --fail --compressed -A "change-fonts-cjk.sh/osm-carto" -o "$1" -z "$1" -L "$2" || { echo "Failed to download $1 $2"; rm -f "$1"; exit 1; }
 }
 
 case "$1" in

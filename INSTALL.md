@@ -68,7 +68,7 @@ For more details, see the documentation at [fonts.mss](style/fonts.mss).
 To download the fonts, run the following script
 
 ```
-scripts/get-fonts.sh
+scripts/get-fonts.py
 ```
 
 ## Dependencies
