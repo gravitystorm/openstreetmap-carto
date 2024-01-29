@@ -120,14 +120,16 @@ NOTO_REPO_FOR_FONT = {
 def findFontUrl(fontName, modifier):
     # remove 'UI' from South Asian font names (not consistent with Arabic, Khmer, Thai)
     if fontName.replace("NotoSans", "") in SOUTH_ASIAN_UI_FONTS:
-        fontName = fontName.replace("UI", "")
+        subfolder = fontName.replace("UI", "")
+    else:
+        subfolder = fontName
 
     # pick up regular and irregular repo names for path
     repo = NOTO_REPO_FOR_FONT.get(
         fontName, fontName.replace("NotoSans", "").replace("UI", "").lower()
     )
 
-    return f"{repo}/fonts/{fontName}/hinted/ttf/{fontName}-{modifier}.ttf"
+    return f"{repo}/fonts/{subfolder}/hinted/ttf/{fontName}-{modifier}.ttf"
 
 
 def downloadToFile(url, destination, dir=FONTDIR):
@@ -189,7 +191,10 @@ with zipfile.ZipFile(emojiPath, "r") as zip_ref:
     for file in emojiExtract:
         source = zip_ref.getinfo(file)
         zip_ref.extract(source, FONTDIR)
-        # move from FONTDIR/static/x to FONTDIR
+        # move from FONTDIR/static/x to overwrite FONTDIR/x
+        unzipSrc = os.path.join(FONTDIR, file)
+        if os.path.exists(unzipSrc):
+            os.remove(unzipSrc)
         shutil.move(os.path.join(FONTDIR, file), FONTDIR)
 
 downloadToFile(
