@@ -23,7 +23,7 @@ REGULAR_BOLD_ITALIC = ["NotoSans"]
 REGULAR_BOLD = [
     "NotoSansAdlamUnjoined",
     "NotoSansArabicUI",
-    "NotoSerifArmenian",
+    "NotoSansArmenian",
     "NotoSansBalinese",
     "NotoSansBamum",
     "NotoSansBengaliUI",
