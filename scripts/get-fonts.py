@@ -137,7 +137,17 @@ def downloadToFile(url, destination, dir=FONTDIR):
     try:
         r = requests.get(url, headers=headers)
         if r.status_code != 200:
-            raise Exception
+            if "notofonts.github.io" in url:
+                warnings.warn(
+                    f"Failed to download {url}, retrying with raw.githubusercontent.com"
+                )
+                modurl = (
+                    "https://raw.githubusercontent.com/notofonts/notofonts.github.io/main"
+                    + url[url.index("/fonts") :]
+                )
+                downloadToFile(modurl, destination, dir=dir)
+            else:
+                raise Exception
         with open(os.path.join(dir, destination), "wb") as f:
             f.write(r.content)
     except:
@@ -186,16 +196,16 @@ downloadToFile(
     dir=TMPDIR,
 )
 emojiPath = os.path.join(TMPDIR, "Noto_Emoji.zip")
-emojiExtract = ["static/NotoEmoji-Regular.ttf", "static/NotoEmoji-Bold.ttf"]
+emojiExtract = ["NotoEmoji-Regular.ttf", "NotoEmoji-Bold.ttf"]
 with zipfile.ZipFile(emojiPath, "r") as zip_ref:
     for file in emojiExtract:
-        source = zip_ref.getinfo(file)
+        source = zip_ref.getinfo(f"static/{file}")
         zip_ref.extract(source, FONTDIR)
         # move from FONTDIR/static/x to overwrite FONTDIR/x
         unzipSrc = os.path.join(FONTDIR, file)
         if os.path.exists(unzipSrc):
             os.remove(unzipSrc)
-        shutil.move(os.path.join(FONTDIR, file), FONTDIR)
+        shutil.move(os.path.join(FONTDIR, "static", file), FONTDIR)
 
 downloadToFile(
     "https://mirrors.dotsrc.org/osdn/hanazono-font/68253/hanazono-20170904.zip",
