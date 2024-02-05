@@ -22,7 +22,7 @@ REGULAR_BOLD_ITALIC = ["NotoSans"]
 # Fonts available in regular and bold
 REGULAR_BOLD = [
     "NotoSansAdlamUnjoined",
-    "NotoSansArabicUI",
+    "NotoSansArabic",
     "NotoSansArmenian",
     "NotoSansBalinese",
     "NotoSansBamum",
@@ -91,6 +91,7 @@ REGULAR = [
 
 SOUTH_ASIAN_UI_FONTS = [
     "BengaliUI",
+    "DevanagariUI",
     "GujaratiUI",
     "GurmukhiUI",
     "KannadaUI",
@@ -112,13 +113,13 @@ NOTO_REPO_FOR_FONT = {
     "NotoSansTaiLe": "tai-le",
     "NotoSansTaiTham": "tai-tham",
     "NotoSansTaiViet": "tai-viet",
-    "NotoSerifArmenian": "armenian",
     "NotoSerifTibetan": "tibetan",
 }
 
+
 # Download the fonts in the lists above
-def findFontUrl(fontName, modifier):
-    # remove 'UI' from South Asian font names (not consistent with Arabic, Khmer, Thai)
+def findFontUrls(fontName, modifier, useRepo=False):
+    # remove 'UI' from South Asian font names for subfolder name
     if fontName.replace("NotoSans", "") in SOUTH_ASIAN_UI_FONTS:
         subfolder = fontName.replace("UI", "")
     else:
@@ -129,23 +130,21 @@ def findFontUrl(fontName, modifier):
         fontName, fontName.replace("NotoSans", "").replace("UI", "").lower()
     )
 
-    return f"{repo}/fonts/{subfolder}/hinted/ttf/{fontName}-{modifier}.ttf"
+    return [
+        f"https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/{subfolder}/hinted/ttf/{fontName}-{modifier}.ttf",
+        f"https://notofonts.github.io/{repo}/fonts/{subfolder}/hinted/ttf/{fontName}-{modifier}.ttf",
+    ]
 
 
-def downloadToFile(url, destination, dir=FONTDIR):
+def downloadToFile(urls, destination, dir=FONTDIR):
     headers = {"User-Agent": "get-fonts.py/osm-carto"}
+
     try:
-        r = requests.get(url, headers=headers)
+        r = requests.get(urls[0], headers=headers)
         if r.status_code != 200:
-            if "notofonts.github.io" in url:
-                warnings.warn(
-                    f"Failed to download {url}, retrying with raw.githubusercontent.com"
-                )
-                modurl = (
-                    "https://raw.githubusercontent.com/notofonts/notofonts.github.io/main"
-                    + url[url.index("/fonts") :]
-                )
-                downloadToFile(modurl, destination, dir=dir)
+            if len(urls) > 1:
+                warnings.warn(f"Failed to download {urls[0]}, retrying with repo HEAD")
+                downloadToFile(urls[1:], destination, dir=dir)
             else:
                 raise Exception
         with open(os.path.join(dir, destination), "wb") as f:
@@ -155,34 +154,34 @@ def downloadToFile(url, destination, dir=FONTDIR):
 
 
 for font in REGULAR_BOLD + REGULAR_BOLD_ITALIC + REGULAR_BLACK + REGULAR:
-    regular = f"{font}-Regular.ttf"
-    regularFontUrl = findFontUrl(font, "Regular")
-    downloadToFile(f"https://notofonts.github.io/{regularFontUrl}", regular)
+    regularFontUrls = findFontUrls(font, "Regular")
+    downloadToFile(regularFontUrls, f"{font}-Regular.ttf")
 
     if (font in REGULAR_BOLD) or (font in REGULAR_BOLD_ITALIC):
-        bold = f"{font}-Bold.ttf"
-        boldFontUrl = findFontUrl(font, "Bold")
-        downloadToFile(f"https://notofonts.github.io/{boldFontUrl}", bold)
+        boldFontUrls = findFontUrls(font, "Bold")
+        downloadToFile(boldFontUrls, f"{font}-Bold.ttf")
 
     if font in REGULAR_BOLD_ITALIC:
-        italic = f"{font}-Italic.ttf"
-        italicFontUrl = findFontUrl(font, "Italic")
-        downloadToFile(f"https://notofonts.github.io/{italicFontUrl}", italic)
+        italicFontUrls = findFontUrls(font, "Italic")
+        downloadToFile(italicFontUrls, f"{font}-Italic.ttf")
 
     if font in REGULAR_BLACK:
-        black = f"{font}-Black.ttf"
-        blackFontUrl = findFontUrl(font, "Black")
-        downloadToFile(f"https://notofonts.github.io/{blackFontUrl}", black)
+        blackFontUrls = findFontUrls(font, "Black")
+        downloadToFile(blackFontUrls, f"{font}-Black.ttf")
 
 # Other noto fonts which don't follow the URL pattern above
 
 # CJK fonts
 downloadToFile(
-    "https://github.com/notofonts/noto-cjk/raw/main/Sans/OTF/Japanese/NotoSansCJKjp-Regular.otf",
+    [
+        "https://github.com/notofonts/noto-cjk/raw/main/Sans/OTF/Japanese/NotoSansCJKjp-Regular.otf"
+    ],
     "NotoSansCJKjp-Regular.otf",
 )
 downloadToFile(
-    "https://github.com/notofonts/noto-cjk/raw/main/Sans/OTF/Japanese/NotoSansCJKjp-Bold.otf",
+    [
+        "https://github.com/notofonts/noto-cjk/raw/main/Sans/OTF/Japanese/NotoSansCJKjp-Bold.otf"
+    ],
     "NotoSansCJKjp-Bold.otf",
 )
 
@@ -191,7 +190,7 @@ TMPDIR = tempfile.mkdtemp(prefix="get-fonts.")
 
 # Noto Emoji B&W isn't available as a separate download, so we need to download the package and unzip it
 downloadToFile(
-    "https://fonts.google.com/download?family=Noto%20Emoji",
+    ["https://fonts.google.com/download?family=Noto%20Emoji"],
     "Noto_Emoji.zip",
     dir=TMPDIR,
 )
@@ -208,7 +207,7 @@ with zipfile.ZipFile(emojiPath, "r") as zip_ref:
         shutil.move(os.path.join(FONTDIR, "static", file), FONTDIR)
 
 downloadToFile(
-    "https://mirrors.dotsrc.org/osdn/hanazono-font/68253/hanazono-20170904.zip",
+    ["https://mirrors.dotsrc.org/osdn/hanazono-font/68253/hanazono-20170904.zip"],
     "hanazono.zip",
     dir=TMPDIR,
 )
