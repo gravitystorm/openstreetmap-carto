@@ -1775,9 +1775,10 @@ Layer:
       table: |-
         (SELECT
             way,
-            power
+            power,
+            man_made
         FROM planet_osm_point
-        WHERE power IN ('tower', 'pole')
+        WHERE power IN ('tower', 'pole') OR man_made in ('utility_pole')
         ORDER BY
           CASE power
             WHEN 'tower' THEN 2

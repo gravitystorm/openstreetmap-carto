@@ -51,4 +51,9 @@
     marker-fill: #928f8f;
     marker-width: 3;
   }
+  [man_made = 'utility_pole'][zoom >= 16] {
+    marker-file: url('symbols/square.svg');
+    marker-fill: #928f8f;
+    marker-width: 3;
+  }
 }
