@@ -23,6 +23,22 @@ SELECT
 END
 $$;
 
+/* Try to promote path to cycleway (if bicycle allowed), then bridleway (if horse)
+   This duplicates existing behaviour where designated access is required */
+CREATE OR REPLACE FUNCTION carto_path_primary_mode(bicycle text, horse text)
+	RETURNS text
+	LANGUAGE SQL
+	IMMUTABLE PARALLEL SAFE
+AS $$
+SELECT
+	CASE
+		WHEN bicycle IN ('designated') THEN 'bicycle'
+		WHEN horse IN ('designated') THEN 'horse'
+		ELSE 'foot'
+	END
+END
+$$;
+
 /* Classify highways into access categories which will be treated in the same way
    Default is NULL in which case only the access tag will be used (e.g. highway=track)
    Note that bicycle, horse arguments are only relevant if considering highway=path */
