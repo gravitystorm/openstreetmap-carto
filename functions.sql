@@ -14,10 +14,10 @@ CREATE OR REPLACE FUNCTION carto_int_access(primary_mode text, accesstag text)
 AS $$
 SELECT
 	CASE
-	WHEN accesstag IN ('yes', 'designated', 'permissive', 'customers') THEN 'yes'
-	WHEN accesstag IN ('destination',  'delivery', 'permit') THEN
+	WHEN accesstag IN ('yes', 'designated', 'permissive') THEN 'yes'
+	WHEN accesstag IN ('destination',  'delivery', 'customers') THEN
 		CASE WHEN primary_mode IN ('motorcar', 'pedestrian') THEN 'restricted' ELSE 'no' END
-	WHEN accesstag IN ('no', 'private', 'agricultural', 'forestry', 'agricultural;forestry') THEN 'no'
+	WHEN accesstag IN ('no', 'private', 'permit', 'agricultural', 'forestry', 'agricultural;forestry') THEN 'no'
 	ELSE NULL
 	END
 END
