@@ -2,12 +2,12 @@
 
 /* Access functions below adapted from https://github.com/imagico/osm-carto-alternative-colors/tree/591c861112b4e5d44badd108f4cd1409146bca0b/sql/roads.sql */
 
-
-/* Simplified 'yes', 'restricted', 'no', NULL scale for access restriction 
-  'no' is returned if the rendering for highway category does not support 'destination'.
+/* Simplified 'yes', 'destination', 'no', 'unknown', NULL scale for access restriction 
+  'no' is returned if the rendering for highway category does not support 'restricted'.
   NULL is functionally equivalent to 'yes', but indicates the absence of a restriction 
-  rather than a positive access = yes */
-CREATE OR REPLACE FUNCTION carto_int_access(primary_mode text, accesstag text)
+  rather than a positive access = yes. 'unknown' corresponds to an uninterpretable 
+  access restriction e.g. access=unknown or motorcar=occasionally  */
+CREATE OR REPLACE FUNCTION carto_int_access(int_highway text, accesstag text)
 	RETURNS text
 	LANGUAGE SQL
 	IMMUTABLE PARALLEL SAFE
@@ -16,33 +16,33 @@ SELECT
 	CASE
 	WHEN accesstag IN ('yes', 'designated', 'permissive') THEN 'yes'
 	WHEN accesstag IN ('destination',  'delivery', 'customers') THEN
-		CASE WHEN primary_mode IN ('motorcar', 'pedestrian') THEN 'restricted' ELSE 'no' END
-	WHEN accesstag IN ('no', 'private', 'permit', 'agricultural', 'forestry', 'agricultural;forestry') THEN 'no'
-	ELSE NULL
+		CASE WHEN int_highway IN ('road', 'pedestrian') THEN 'restricted' ELSE 'no' END
+	WHEN accesstag IN ('no', 'permit', 'private', 'agricultural', 'forestry', 'agricultural;forestry') THEN 'no'
+	WHEN NULL THEN NULL
+	ELSE 'unknown'
 	END
 END
 $$;
 
 /* Try to promote path to cycleway (if bicycle allowed), then bridleway (if horse)
    This duplicates existing behaviour where designated access is required */
-CREATE OR REPLACE FUNCTION carto_path_primary_mode(bicycle text, horse text)
+CREATE OR REPLACE FUNCTION carto_path_type(bicycle text, horse text)
 	RETURNS text
 	LANGUAGE SQL
 	IMMUTABLE PARALLEL SAFE
 AS $$
 SELECT
 	CASE
-		WHEN bicycle IN ('designated') THEN 'bicycle'
-		WHEN horse IN ('designated') THEN 'horse'
-		ELSE 'foot'
+		WHEN bicycle IN ('designated') THEN 'cycleway'
+		WHEN horse IN ('designated') THEN 'bridleway'
+		ELSE 'path'
 	END
 END
 $$;
 
-/* Classify highways into access categories which will be treated in the same way
-   Default is NULL in which case only the access tag will be used (e.g. highway=track)
+/* Coalesce highways that will be treated in the same way, e.g. all roads become 'road'
    Note that bicycle, horse arguments are only relevant if considering highway=path */
-CREATE OR REPLACE FUNCTION carto_highway_primary_mode(highway text, bicycle text, horse text)
+CREATE OR REPLACE FUNCTION carto_highway_int_highway(highway text, bicycle text, horse text)
 	RETURNS text
 	LANGUAGE SQL
 	IMMUTABLE PARALLEL SAFE
@@ -50,13 +50,10 @@ AS $$
 SELECT
 	CASE 
     WHEN highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary',
-                 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'living_street', 'service', 'road') THEN 'motorcar'
-	WHEN highway = 'pedestrian' THEN 'pedestrian'
-	WHEN highway IN ('footway', 'steps') THEN 'foot'
-	WHEN highway = 'bridleway' THEN 'horse'
-	WHEN highway = 'cycleway' THEN 'bicycle'
-	WHEN highway = 'path' THEN carto_path_primary_mode(bicycle, horse)
-	ELSE NULL
+                 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'living_street', 'service', 'road') THEN 'road'
+	WHEN highway IN ('footway', 'steps') THEN 'footway'
+	WHEN highway = 'path' THEN carto_path_type(bicycle, horse)
+	ELSE highway
 	END
 END
 $$;
@@ -69,17 +66,17 @@ CREATE OR REPLACE FUNCTION carto_highway_int_access(highway text, "access" text,
   IMMUTABLE PARALLEL SAFE
 AS $$
 SELECT
-	CASE carto_highway_primary_mode(highway, bicycle, horse)
-	WHEN 'motorcar' THEN
-		carto_int_access('motorcar', CASE
-			WHEN motorcar IN ('yes', 'designated', 'permissive', 'no', 'private', 'destination', 'customers', 'delivery', 'permit') THEN motorcar
-			WHEN motor_vehicle IN ('yes', 'designated', 'permissive', 'no', 'private', 'destination', 'customers', 'delivery', 'permit') THEN motor_vehicle
-			WHEN vehicle IN ('yes', 'designated', 'permissive', 'no', 'private', 'destination', 'customers', 'delivery', 'permit') THEN vehicle
+	CASE carto_highway_int_highway(highway, bicycle, horse)
+	WHEN 'road' THEN
+		carto_int_access('road', CASE
+			WHEN motorcar <> 'unknown' THEN motorcar
+			WHEN motor_vehicle <> 'unknown' THEN motor_vehicle
+			WHEN vehicle <> 'unknown' THEN vehicle
 			ELSE "access" END)
 	WHEN 'pedestrian' THEN carto_int_access('pedestrian', 'no')
-	WHEN 'foot' THEN carto_int_access('foot', CASE WHEN foot IN ('yes', 'designated', 'permissive', 'no', 'private', 'destination', 'customers', 'delivery', 'permit') THEN foot ELSE "access" END)
-	WHEN 'bicycle' THEN carto_int_access('bicycle', CASE WHEN bicycle IN ('yes', 'designated', 'permissive', 'no', 'private', 'destination', 'customers', 'delivery', 'permit') THEN bicycle ELSE "access" END)
-	WHEN 'horse' THEN carto_int_access('horse', CASE WHEN horse IN ('yes', 'designated', 'permissive', 'no', 'private', 'destination', 'customers', 'delivery', 'permit') THEN horse ELSE "access" END)
+	WHEN 'footway' THEN carto_int_access('footway', CASE WHEN foot <> 'unknown' THEN foot ELSE "access" END)
+	WHEN 'cycleway' THEN carto_int_access('cycleway', CASE WHEN bicycle <> 'unknown' THEN bicycle ELSE "access" END)
+	WHEN 'brideway' THEN carto_int_access('bridleway', CASE WHEN horse <> 'unknown' THEN horse ELSE "access" END)
 	ELSE carto_int_access(NULL, "access")
 	END
 END

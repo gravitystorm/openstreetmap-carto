@@ -663,8 +663,7 @@
       }
     }
 
-    [feature = 'highway_bridleway'],
-    [feature = 'highway_path'][horse = 'designated'] {
+    [feature = 'highway_bridleway'] {
       #bridges {
         [zoom >= 14][int_access != 'no'],
         [zoom >= 15] {
@@ -685,8 +684,7 @@
       }
     }
 
-    [feature = 'highway_footway'],
-    [feature = 'highway_path'][bicycle != 'designated'][horse != 'designated'] {
+    [feature = 'highway_footway'] {
       #bridges {
         [zoom >= 14][int_access != 'no'],
         [zoom >= 15] {
@@ -713,8 +711,7 @@
       }
     }
 
-    [feature = 'highway_cycleway'],
-    [feature = 'highway_path'][bicycle = 'designated'] {
+    [feature = 'highway_cycleway'] {
       #bridges {
         [zoom >= 14][int_access != 'no'],
         [zoom >= 15] {
@@ -867,8 +864,7 @@
   }
 
   ::bridges_and_tunnels_background {
-    [feature = 'highway_bridleway'],
-    [feature = 'highway_path'][horse = 'designated'] {
+    [feature = 'highway_bridleway'] {
       #bridges {
         [zoom >= 14][int_access != 'no'],
         [zoom >= 15] {
@@ -891,7 +887,7 @@
     }
 
     [feature = 'highway_footway'],
-    [feature = 'highway_path'][bicycle != 'designated'][horse != 'designated'] {
+    [feature = 'highway_path'] {
       #bridges {
         [zoom >= 14][int_access != 'no'],
         [zoom >= 15] {
@@ -919,8 +915,7 @@
       }
     }
 
-    [feature = 'highway_cycleway'],
-    [feature = 'highway_path'][bicycle = 'designated'] {
+    [feature = 'highway_cycleway'] {
       #bridges {
         [zoom >= 14][int_access != 'no'],
         [zoom >= 15] {
@@ -2275,8 +2270,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
 
-    [feature = 'highway_bridleway'],
-    [feature = 'highway_path'][horse = 'designated'] {
+    [feature = 'highway_bridleway'] {
       [zoom >= 13][int_access != 'no'],
       [zoom >= 15] {
         #roads-fill[zoom >= 15] {
@@ -2299,7 +2293,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
 
     [feature = 'highway_footway'],
-    [feature = 'highway_path'][bicycle != 'designated'][horse != 'designated'] {
+    [feature = 'highway_path'] {
       [zoom >= 14][int_access != 'no'],
       [zoom >= 15] {
         #roads-fill[zoom >= 15] {
@@ -2379,8 +2373,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
 
-    [feature = 'highway_cycleway'],
-    [feature = 'highway_path'][bicycle = 'designated'] {
+    [feature = 'highway_cycleway'] {
       [zoom >= 13][int_access != 'no'],
       [zoom >= 15] {
         #roads-fill[zoom >= 15] {
@@ -4152,17 +4145,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           text-upright: left;
           text-dy: -3;
         }
+        [highway = 'path'],
         [highway = 'footway'] {
           text-fill: @footway-oneway-arrow-color;
-        }
-        [highway = 'path'] {
-          text-fill: @footway-oneway-arrow-color;
-          [horse = 'designated'] {
-            text-fill: @bridleway-oneway-arrow-color;
-          }
-          [bicycle = 'designated'] {
-            text-fill: @cycleway-oneway-arrow-color;
-          }
         }
         [highway = 'steps'] {
           text-fill: @steps-oneway-arrow-color;
