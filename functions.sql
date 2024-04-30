@@ -73,7 +73,7 @@ SELECT
 			WHEN motor_vehicle <> 'unknown' THEN motor_vehicle
 			WHEN vehicle <> 'unknown' THEN vehicle
 			ELSE "access" END)
-	WHEN 'pedestrian' THEN carto_int_access('pedestrian', 'no')
+	WHEN 'pedestrian' THEN carto_int_access('pedestrian', CASE WHEN foot <> 'unknown' THEN foot ELSE "access" END)
 	WHEN 'footway' THEN carto_int_access('footway', CASE WHEN foot <> 'unknown' THEN foot ELSE "access" END)
 	WHEN 'cycleway' THEN carto_int_access('cycleway', CASE WHEN bicycle <> 'unknown' THEN bicycle ELSE "access" END)
 	WHEN 'brideway' THEN carto_int_access('bridleway', CASE WHEN horse <> 'unknown' THEN horse ELSE "access" END)
