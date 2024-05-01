@@ -21,7 +21,6 @@ SELECT
 	WHEN NULL THEN NULL
 	ELSE 'unknown'
 	END
-END
 $$;
 
 /* Try to promote path to cycleway (if bicycle allowed), then bridleway (if horse)
@@ -37,7 +36,6 @@ SELECT
 		WHEN horse IN ('designated') THEN 'bridleway'
 		ELSE 'path'
 	END
-END
 $$;
 
 /* Coalesce highways that will be treated in the same way, e.g. all roads become 'road'
@@ -55,7 +53,6 @@ SELECT
 	WHEN highway = 'path' THEN carto_path_type(bicycle, horse)
 	ELSE highway
 	END
-END
 $$;
 
 /* Return int_access value which will be used to determine access marking.
@@ -79,7 +76,6 @@ SELECT
 	WHEN 'bridleway' THEN carto_int_access('bridleway', CASE WHEN horse <> 'unknown' THEN horse ELSE "access" END)
 	ELSE carto_int_access(NULL, "access")
 	END
-END
 $$;
 
 /* Uncomment lines below to create generated column for int_access 
