@@ -18,7 +18,7 @@ SELECT
 	WHEN accesstag IN ('destination',  'delivery', 'customers') THEN
 		CASE WHEN int_highway IN ('road', 'pedestrian') THEN 'restricted' ELSE 'no' END
 	WHEN accesstag IN ('no', 'permit', 'private', 'agricultural', 'forestry', 'agricultural;forestry') THEN 'no'
-	WHEN NULL THEN NULL
+	WHEN accesstag IS NULL THEN NULL
 	ELSE 'unknown'
 	END
 $$;
