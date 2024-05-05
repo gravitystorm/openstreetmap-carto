@@ -487,8 +487,8 @@ Layer:
             UNION ALL
             SELECT
                 way,
-                'railway_' || (CASE WHEN (railway = 'preserved' OR tags->'railway:preserved' = 'yes') AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
-                                 WHEN tags->'railway:preserved' = 'yes' THEN 'preserved'
+                'railway_' || (CASE WHEN (railway = 'preserved' OR (railway = 'rail' AND tags->'railway:preserved' = 'yes')) AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
+                                 WHEN (railway = 'rail' AND tags->'railway:preserved' = 'yes') THEN 'preserved'
                                  WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
                                  WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service'
                                  ELSE railway END) AS feature,
@@ -728,8 +728,8 @@ Layer:
             UNION ALL
             SELECT
                 way,
-                ('railway_' || (CASE WHEN (railway = 'preserved' OR tags->'railway:preserved' = 'yes') AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
-                                     WHEN tags->'railway:preserved' = 'yes' THEN 'preserved'
+                ('railway_' || (CASE WHEN (railway = 'preserved' OR (railway = 'rail' AND tags->'railway:preserved' = 'yes')) AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
+                                     WHEN (railway = 'rail' AND tags->'railway:preserved' = 'yes') THEN 'preserved'
                                      WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
                                      WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service'
                                      ELSE railway END)) AS feature,
@@ -958,8 +958,8 @@ Layer:
             UNION ALL
             SELECT
                 way,
-                'railway_' || (CASE WHEN (railway = 'preserved' OR tags->'railway:preserved' = 'yes') AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
-                                 WHEN tags->'railway:preserved' = 'yes' THEN 'preserved'
+                'railway_' || (CASE WHEN (railway = 'preserved' OR (railway = 'rail' AND tags->'railway:preserved' = 'yes')) AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
+                                 WHEN (railway = 'rail' AND tags->'railway:preserved' = 'yes') THEN 'preserved'
                                  WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
                                  WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service'
                                  ELSE railway END) AS feature,
@@ -1978,8 +1978,8 @@ Layer:
       table: |-
         (SELECT
             way,
-            CASE WHEN (railway = 'preserved' OR tags->'railway:preserved' = 'yes') AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
-                 WHEN tags->'railway:preserved' = 'yes' THEN 'preserved'
+            CASE WHEN (railway = 'preserved' OR (railway = 'rail' AND tags->'railway:preserved' = 'yes')) AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
+                 WHEN (railway = 'rail' AND tags->'railway:preserved' = 'yes') = 'yes' THEN 'preserved'
                  WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
                  WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service' ELSE railway END AS railway,
             CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
