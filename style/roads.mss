@@ -793,7 +793,9 @@
 
 
     [feature = 'railway_tram'],
-    [feature = 'railway_tram-service'][zoom >= 15] {
+    [feature = 'railway_tram_preserved'],
+    [feature = 'railway_tram-service'][zoom >= 15],
+    [feature = 'railway_tram-service_preserved'][zoom >= 15] {
       #bridges {
         [zoom >= 13] {
           line-width: 4;
@@ -819,7 +821,8 @@
 
     [feature = 'railway_light_rail'],
     [feature = 'railway_funicular'],
-    [feature = 'railway_narrow_gauge'] {
+    [feature = 'railway_narrow_gauge'],
+    [feature = 'railway_narrow_gauge_preserved'] {
       #bridges {
         [zoom >= 14] {
           line-width: 5.5;
@@ -830,7 +833,7 @@
     }
 
     [feature = 'railway_rail'],
-    [feature = 'railway_preserved'],
+    [feature = 'railway_rail_preserved'],
     [feature = 'railway_monorail'][zoom >= 14] {
       #bridges {
         [zoom >= 13] {
@@ -841,7 +844,8 @@
       }
     }
 
-    [feature = 'railway_INT-spur-siding-yard'] {
+    [feature = 'railway_INT-spur-siding-yard'],
+    [feature = 'railway_INT-spur-siding-yard_preserved'] {
       #bridges {
         [zoom >= 13] {
           line-width: 5.7;
@@ -853,8 +857,7 @@
 
     [feature = 'railway_disused'][zoom >= 15],
     [feature = 'railway_construction'][construction != 'subway'],
-    [feature = 'railway_miniature'][zoom >= 15],
-    [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
+    [feature = 'railway_miniature'][zoom >= 15] {
       #bridges {
         [zoom >= 13] {
           line-width: 6;
@@ -1025,7 +1028,7 @@
     }
 
     [feature = 'railway_rail'][zoom >= 13],
-    [feature = 'railway_preserved'][zoom >= 13],
+    [feature = 'railway_rail_preserved'][zoom >= 13],
     [feature = 'railway_monorail'][zoom >= 14] {
       #bridges {
         line-width: 5;
@@ -1034,7 +1037,8 @@
       }
     }
 
-    [feature = 'railway_INT-spur-siding-yard'] {
+    [feature = 'railway_INT-spur-siding-yard'],
+    [feature = 'railway_INT-spur-siding-yard_preserved'] {
       #bridges {
         [zoom >= 13] {
           line-width: 4;
@@ -1046,8 +1050,7 @@
 
     [feature = 'railway_disused'][zoom >= 15],
     [feature = 'railway_construction'][construction != 'subway'],
-    [feature = 'railway_miniature'][zoom >= 15],
-    [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
+    [feature = 'railway_miniature'][zoom >= 15] {
       #bridges {
         [zoom >= 13] {
           line-width: 4.5;
@@ -1058,7 +1061,9 @@
     }
 
     [feature = 'railway_tram'],
-    [feature = 'railway_tram-service'][zoom >= 15] {
+    [feature = 'railway_tram_preserved'],
+    [feature = 'railway_tram-service'][zoom >= 15],
+    [feature = 'railway_tram-service_preserved'][zoom >= 15] {
       #bridges {
         [zoom >= 13] {
           line-width: 3;
@@ -1083,7 +1088,8 @@
 
     [feature = 'railway_light_rail'],
     [feature = 'railway_funicular'],
-    [feature = 'railway_narrow_gauge'] {
+    [feature = 'railway_narrow_gauge'],
+    [feature = 'railway_narrow_gauge_preserved'] {
       #bridges {
         [zoom >= 14] {
           line-width: 4;
@@ -4183,14 +4189,13 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
 #railways-text-name {
   /* Mostly started from z17. */
-  [railway = 'rail'],
+  [railway = 'rail'][preserved != 'yes'],
   [railway = 'subway'],
-  [railway = 'narrow_gauge'],
+  [railway = 'narrow_gauge'][preserved != 'yes'],
   [railway = 'light_rail'],
-  [railway = 'preserved'],
   [railway = 'funicular'],
   [railway = 'monorail'],
-  [railway = 'tram'] {
+  [railway = 'tram'][preserved != 'yes'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-fill: #666666;
@@ -4266,9 +4271,14 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
   }
-  /* Other minor railway styles. For service rails, see:
-     https://github.com/gravitystorm/openstreetmap-carto/pull/2687 */
-  [railway = 'preserved'],
+
+  /*
+  Other minor railway styles. For service rails, see:
+  https://github.com/gravitystorm/openstreetmap-carto/pull/2687
+  */
+  [railway = 'rail'][preserved = 'yes'],
+  [railway = 'narrow_gauge'][preserved = 'yes'],
+  [railway = 'tram'][preserved = 'yes'],
   [railway = 'miniature'],
   [railway = 'disused'],
   [railway = 'construction'] {
