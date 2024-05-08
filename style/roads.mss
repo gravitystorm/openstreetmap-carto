@@ -2603,7 +2603,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         [zoom >= 13] { line-color: #666; }
         line-width: 1;
         [zoom >= 13] { line-width: 2; }
-        [feature = 'railway_narrow_gauge'][preserved = 'yes'][zoom >= 13] {
+        [preserved = 'yes'][zoom >= 13] {
           dark/line-width: 3;
           dark/line-color: #999999;
           light/line-width: 1;
@@ -2624,6 +2624,13 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         dashes/line-width: 3;
         dashes/line-color: #999;
         dashes/line-dasharray: 1,10;
+        dashes/line-join: round;
+
+        [preserved = 'yes'] {
+          line/line-color: #999999;
+          dashes/line-color: white;
+          dashes/line-dasharray: 0,1,8,1;
+        }
       }
     }
 
@@ -2657,7 +2664,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
             line-width: 2;
           }
         }
-        [feature = 'railway_tram'][preserved = 'yes'][zoom >= 13] {
+        [preserved = 'yes'] {
           dark/line-width: 3;
           dark/line-color: #999999;
           light/line-width: 1;
@@ -2675,6 +2682,14 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 12] {
         line-width: 2;
         line-color: #999;
+        [preserved = 'yes'] {
+          dark/line-width: 3;
+          dark/line-color: #999999;
+          light/line-width: 1;
+          light/line-color: white;
+          light/line-dasharray: 0,1,8,1;
+          light/line-join: round;
+        }
         #tunnels {
           line-dasharray: 5,3;
         }
@@ -2699,6 +2714,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         line/line-dasharray: 2,3;
         line/line-cap: round;
         line/line-join: round;
+
+        [preserved = 'yes'] {
+          background/line-color: #999999;
+          line/line-color: white;
+          line/line-dasharray: 0,1,8,1;
+        }
       }
     }
 
@@ -2724,6 +2745,14 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         line-width: 2;
         line-dasharray: 2,4;
         line-join: round;
+        [preserved = 'yes'] {
+          dark/line-width: 3;
+          dark/line-color: #999999;
+          light/line-width: 1;
+          light/line-color: white;
+          light/line-dasharray: 0,1,8,1;
+          light/line-join: round;
+        }
       }
     }
 
@@ -4168,13 +4197,13 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
 #railways-text-name {
   /* Mostly started from z17. */
-  [railway = 'rail'][preserved != 'yes'],
+  [railway = 'rail'],
   [railway = 'subway'],
-  [railway = 'narrow_gauge'][preserved != 'yes'],
+  [railway = 'narrow_gauge'],
   [railway = 'light_rail'],
   [railway = 'funicular'],
   [railway = 'monorail'],
-  [railway = 'tram'][preserved != 'yes'] {
+  [railway = 'tram'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-fill: #666666;
@@ -4255,9 +4284,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   Other minor railway styles. For service rails, see:
   https://github.com/gravitystorm/openstreetmap-carto/pull/2687
   */
-  [railway = 'rail'][preserved = 'yes'],
-  [railway = 'narrow_gauge'][preserved = 'yes'],
-  [railway = 'tram'][preserved = 'yes'],
   [railway = 'miniature'],
   [railway = 'disused'],
   [railway = 'construction'] {
