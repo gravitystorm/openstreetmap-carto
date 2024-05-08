@@ -2549,7 +2549,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
               dark/line-width: 3;
               light/line-width: 1;
             }
-            [zoom >= 15] {
+            [zoom >= 15][preserved != 'yes'] {
               light/line-dasharray: 0,8,8,1;
             }
             [zoom >= 18] {
@@ -2568,7 +2568,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
             }
           }
           [preserved = 'yes'] {
+            dark/line-width: 3;
             dark/line-color: #999999;
+            light/line-width: 1;
             light/line-color: white;
             light/line-dasharray: 0,1,8,1;
           }
