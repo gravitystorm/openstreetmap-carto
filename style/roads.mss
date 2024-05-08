@@ -2627,9 +2627,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         dashes/line-join: round;
 
         [preserved = 'yes'] {
+          line/line-width: 3;
           line/line-color: #999999;
+          dashes/line-width: 1;
           dashes/line-color: white;
           dashes/line-dasharray: 0,1,8,1;
+          dashes/line-join: round;
         }
       }
     }
@@ -2716,9 +2719,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         line/line-join: round;
 
         [preserved = 'yes'] {
-          background/line-color: #999999;
-          line/line-color: white;
-          line/line-dasharray: 0,1,8,1;
+          line/line-color: #999999;
+          background/line-color: white;
+          background/line-dasharray: 0,1,8,1;
         }
       }
     }
@@ -2745,14 +2748,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         line-width: 2;
         line-dasharray: 2,4;
         line-join: round;
-        [preserved = 'yes'] {
-          dark/line-width: 3;
-          dark/line-color: #999999;
-          light/line-width: 1;
-          light/line-color: white;
-          light/line-dasharray: 0,1,8,1;
-          light/line-join: round;
-        }
       }
     }
 
