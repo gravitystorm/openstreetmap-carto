@@ -2569,7 +2569,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           }
           [preserved = 'yes'] {
             dark/line-width: 3;
-            dark/line-color: #999999;
+            dark/line-color: #666;
             light/line-width: 1;
             light/line-color: white;
             light/line-dasharray: 0,1,8,1;
@@ -2606,12 +2606,14 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         line-width: 1;
         [zoom >= 13] { line-width: 2; }
         [preserved = 'yes'][zoom >= 13] {
-          dark/line-width: 3;
-          dark/line-color: #666;
-          light/line-width: 1;
-          light/line-color: white;
-          light/line-dasharray: 0,1,8,1;
-          light/line-join: round;
+          #roads-fill, #bridges {
+            dark/line-width: 3;
+            dark/line-color: #999;
+            light/line-width: 1;
+            light/line-color: white;
+            light/line-dasharray: 0,1,8,1;
+            light/line-join: round;
+          }
         }
         #tunnels {
           line-dasharray: 5,3;
@@ -2630,7 +2632,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
         [preserved = 'yes'] {
           line/line-width: 3;
-          line/line-color: #999999;
+          line/line-color: #bbb;
           dashes/line-width: 1;
           dashes/line-color: white;
           dashes/line-dasharray: 0,1,8,1;
@@ -2670,12 +2672,14 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           }
         }
         [preserved = 'yes'][zoom >= 15] {
-          dark/line-width: 3;
-          dark/line-color: #6E6E6E;
-          light/line-width: 1;
-          light/line-color: white;
-          light/line-dasharray: 0,1,8,1;
-          light/line-join: round;
+          #roads-fill, #bridges {
+            dark/line-width: 3;
+            dark/line-color: #999;
+            light/line-width: 1;
+            light/line-color: white;
+            light/line-dasharray: 0,1,8,1;
+            light/line-join: round;
+          }
         }
         #tunnels {
           line-dasharray: 5,3;
@@ -2688,12 +2692,14 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         line-width: 2;
         line-color: #999;
         [preserved = 'yes'][zoom >= 15] {
-          dark/line-width: 3;
-          dark/line-color: #999999;
-          light/line-width: 1;
-          light/line-color: white;
-          light/line-dasharray: 0,1,8,1;
-          light/line-join: round;
+          #roads-fill, #bridges {
+            dark/line-width: 3;
+            dark/line-color: #999999;
+            light/line-width: 1;
+            light/line-color: white;
+            light/line-dasharray: 0,1,8,1;
+            light/line-join: round;
+          }
         }
         #tunnels {
           line-dasharray: 5,3;
@@ -2724,6 +2730,10 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           line/line-color: #999999;
           background/line-color: white;
           background/line-dasharray: 0,1,8,1;
+        }
+
+        #tunnels {
+          line/line-dasharray: 3,4;
         }
       }
     }
