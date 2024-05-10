@@ -506,7 +506,7 @@ Layer:
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 'no' AS link,
                 (CASE
-                  WHEN railway IN ('rail', 'light_rail', 'funicular', 'narrow_gauge', 'miniature', 'subway', 'tram', 'monorail', 'disused') AND tags->'railway:preserved' = 'yes' THEN 'yes'
+                  WHEN tags->'railway:preserved' = 'yes' THEN 'yes'
                   ELSE 'no'
                 END) AS preserved,
                 COALESCE(layer,0) AS layernotnull,
@@ -757,7 +757,7 @@ Layer:
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') OR leisure IN ('slipway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 'no' AS link,
                 (CASE
-                  WHEN railway IN ('rail', 'light_rail', 'funicular', 'narrow_gauge', 'miniature', 'subway', 'tram', 'monorail', 'disused') AND tags->'railway:preserved' = 'yes' THEN 'yes'
+                  WHEN tags->'railway:preserved' = 'yes' THEN 'yes'
                   ELSE 'no'
                 END) AS preserved,
                 COALESCE(layer,0) AS layernotnull,
@@ -986,7 +986,7 @@ Layer:
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 'no' AS link,
                 (CASE
-                  WHEN railway IN ('rail', 'light_rail', 'funicular', 'narrow_gauge', 'miniature', 'subway', 'tram', 'monorail', 'disused') AND tags->'railway:preserved' = 'yes' THEN 'yes'
+                  WHEN tags->'railway:preserved' = 'yes' THEN 'yes'
                   ELSE 'no'
                 END) AS preserved,
                 COALESCE(layer,0) AS layernotnull,
