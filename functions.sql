@@ -16,7 +16,7 @@ SELECT
 	CASE
 	WHEN accesstag IN ('yes', 'designated', 'permissive') THEN 'yes'
 	WHEN accesstag IN ('destination',  'delivery', 'customers') THEN
-		CASE WHEN int_highway IN ('road', 'pedestrian') THEN 'restricted' ELSE 'no' END
+		CASE WHEN int_highway IN ('road', 'pedestrian') THEN 'restricted' ELSE 'yes' END
 	WHEN accesstag IN ('no', 'permit', 'private', 'agricultural', 'forestry', 'agricultural;forestry') THEN 'no'
 	WHEN accesstag IS NULL THEN NULL
 	ELSE 'unknown'
