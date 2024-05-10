@@ -33,7 +33,7 @@
       [tunnel = 'yes'][zoom >= 16] {
         line-color: lighten(@roller-coaster-casing, 20%);
       }
-      [zoom >= 16] { 
+      [zoom >= 16] {
         line-color: @roller-coaster-casing;
         line-width: 2.5;
       }
