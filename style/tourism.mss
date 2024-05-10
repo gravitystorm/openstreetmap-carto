@@ -16,7 +16,7 @@
       line-width: 2.5 + @bridge-casing-width-z16;
       line-color: #000;
       line-join: round;
-      
+
       [tunnel = 'yes'] { line-color: lighten(#000, 20%); }
 
       [zoom >= 17] { line-width: 4 + @bridge-casing-width-z17; }
