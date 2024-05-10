@@ -49,6 +49,9 @@ jobs:
         scripts/indexes.py --notexist > /dev/null &&
         scripts/indexes.py --null > /dev/null &&
         scripts/indexes.py --null > /dev/null
+    - name: Check for trailing whitespace
+      run: |
+        ! grep --quiet ' $' style/*.mss project.mml
   import:
     needs: [syntax]
     runs-on: ubuntu-22.04
