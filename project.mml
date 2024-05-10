@@ -490,8 +490,7 @@ Layer:
             SELECT
                 way,
                 'railway_' || (CASE
-                                 WHEN (railway IN ('rail', 'preserved') AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
-                                 WHEN railway = 'preserved' THEN 'rail'
+                                 WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
                                  WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service'
                                  ELSE railway END) AS feature,
                 horse,
@@ -507,7 +506,7 @@ Layer:
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 'no' AS link,
                 (CASE
-                  WHEN railway IN ('rail', 'light_rail', 'funicular', 'narrow_gauge', 'miniature', 'preserved', 'subway', 'tram', 'monorail', 'disused') AND tags->'railway:preserved' = 'yes' THEN 'yes'
+                  WHEN railway IN ('rail', 'light_rail', 'funicular', 'narrow_gauge', 'miniature', 'subway', 'tram', 'monorail', 'disused') AND tags->'railway:preserved' = 'yes' THEN 'yes'
                   ELSE 'no'
                 END) AS preserved,
                 COALESCE(layer,0) AS layernotnull,
@@ -737,8 +736,7 @@ Layer:
             SELECT
                 way,
                 'railway_' || (CASE
-                                 WHEN (railway IN ('rail', 'preserved') AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
-                                 WHEN railway = 'preserved' THEN 'rail'
+                                 WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
                                  WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service'
                                  ELSE railway END) AS feature,
                 horse,
@@ -759,7 +757,7 @@ Layer:
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') OR leisure IN ('slipway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 'no' AS link,
                 (CASE
-                  WHEN railway IN ('rail', 'light_rail', 'funicular', 'narrow_gauge', 'miniature', 'preserved', 'subway', 'tram', 'monorail', 'disused') AND tags->'railway:preserved' = 'yes' THEN 'yes'
+                  WHEN railway IN ('rail', 'light_rail', 'funicular', 'narrow_gauge', 'miniature', 'subway', 'tram', 'monorail', 'disused') AND tags->'railway:preserved' = 'yes' THEN 'yes'
                   ELSE 'no'
                 END) AS preserved,
                 COALESCE(layer,0) AS layernotnull,
@@ -972,8 +970,7 @@ Layer:
             SELECT
                 way,
                 'railway_' || (CASE
-                                 WHEN (railway IN ('rail', 'preserved') AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
-                                 WHEN railway = 'preserved' THEN 'rail'
+                                 WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
                                  WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service'
                                  ELSE railway END) AS feature,
                 horse,
@@ -989,7 +986,7 @@ Layer:
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 'no' AS link,
                 (CASE
-                  WHEN railway IN ('rail', 'light_rail', 'funicular', 'narrow_gauge', 'miniature', 'preserved', 'subway', 'tram', 'monorail', 'disused') AND tags->'railway:preserved' = 'yes' THEN 'yes'
+                  WHEN railway IN ('rail', 'light_rail', 'funicular', 'narrow_gauge', 'miniature', 'subway', 'tram', 'monorail', 'disused') AND tags->'railway:preserved' = 'yes' THEN 'yes'
                   ELSE 'no'
                 END) AS preserved,
                 COALESCE(layer,0) AS layernotnull,
@@ -1996,8 +1993,7 @@ Layer:
         (SELECT
             way,
             CASE
-              WHEN (railway IN ('rail', 'preserved') AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
-              WHEN railway = 'preserved' THEN 'rail'
+              WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
               WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service'
               ELSE railway
             END AS railway,
@@ -2007,12 +2003,11 @@ Layer:
             construction,
             name,
             (CASE
-              WHEN railway IN ('rail', 'light_rail', 'funicular', 'narrow_gauge', 'miniature', 'preserved', 'subway', 'tram', 'monorail', 'disused') AND tags->'railway:preserved' = 'yes' THEN 'yes'
+              WHEN railway IN ('rail', 'light_rail', 'funicular', 'narrow_gauge', 'miniature', 'subway', 'tram', 'monorail', 'disused') AND tags->'railway:preserved' = 'yes' THEN 'yes'
               ELSE 'no'
             END) AS preserved
           FROM planet_osm_line l
-          WHERE railway IN ('rail', 'subway', 'narrow_gauge', 'light_rail', 'preserved', 'funicular',
-                            'monorail', 'miniature', 'tram', 'disused', 'construction')
+          WHERE railway IN ('rail', 'subway', 'narrow_gauge', 'light_rail', 'funicular', 'monorail', 'miniature', 'tram', 'disused', 'construction')
             AND (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
             AND highway IS NULL -- Prevent duplicate rendering
             AND name IS NOT NULL
