@@ -59,7 +59,7 @@ jobs:
         scripts/indexes.py --null > /dev/null &&
         scripts/indexes.py --null > /dev/null
     - name: Validate conformation to editorconfig
-      uses: bin/editorconfig-checker
+      run: bin/editorconfig-checker
 
   import:
     needs: [syntax]
