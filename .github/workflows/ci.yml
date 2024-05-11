@@ -21,6 +21,15 @@ jobs:
       run: npm install -g carto@1.2.0
     - name: Set up shell
       run: set -o pipefail
+    - name: Cache editorconfig checker
+      id: cache-editorconfig-checker
+      uses: actions/cache@v4
+      with:
+        path: bin/ec-linux-amd64
+        key: linux-amd64-editorconfig-checker-v3.0.1
+    - name: Set up editorconfig-checker
+      if: steps.cache-editorconfig-checker.outputs.cache-hit != 'true'
+      run: curl -O -L -C - https://github.com/editorconfig-checker/editorconfig-checker/releases/download/v3.0.1/ec-linux-amd64.tar.gz && tar xzf ec-linux-amd64.tar.gz
     - name: Validate YAML files
       run: |
         find . \( -type f -name '*.yaml' -o -name '*.yml' -o -name '*.mml' \) -print0 \
@@ -50,7 +59,7 @@ jobs:
         scripts/indexes.py --null > /dev/null &&
         scripts/indexes.py --null > /dev/null
     - name: Validate conformation to editorconfig
-      uses: zbeekman/EditorConfig-Action@master
+      uses: bin/editorconfig-checker
 
   import:
     needs: [syntax]
