@@ -65,7 +65,7 @@ jobs:
       env:
         VALIDATE_ALL_CODEBASE: true
         APPLY_FIXES: true
-        DISABLE: 'COPYPASTE,SPELL'
+        EDITORCONFIG: 'EDITORCONFIG'
         FILEIO_REPORTER: false
         SHOW_ELAPSED_TIME: true
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
