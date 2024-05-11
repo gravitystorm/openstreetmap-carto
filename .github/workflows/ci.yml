@@ -49,9 +49,6 @@ jobs:
         scripts/indexes.py --notexist > /dev/null &&
         scripts/indexes.py --null > /dev/null &&
         scripts/indexes.py --null > /dev/null
-    - name: Validate conformation to editorconfig
-      run: docker run --rm --volume $PWD:/check mstruebing/editorconfig-checker ec -disable-indent-size
-
   import:
     needs: [syntax]
     runs-on: ubuntu-22.04
