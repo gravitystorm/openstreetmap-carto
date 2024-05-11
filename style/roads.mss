@@ -2523,7 +2523,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
 
-    [feature = 'railway_rail'][zoom >= 8],
+    [feature = 'railway_rail'][zoom >= 8][zoom < 10],
+    [feature = 'railway_rail'][preserved != 'yes'][zoom >= 10][zoom < 12],
+    [feature = 'railway_rail'][zoom >= 12],
     [feature = 'railway_INT-spur-siding-yard'][zoom >= 13] {
       [zoom < 13] {
         line-color: #787878;
@@ -2599,7 +2601,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'railway_light_rail'],
     [feature = 'railway_funicular'],
     [feature = 'railway_narrow_gauge'] {
-      [zoom >= 8] {
+      [zoom >= 8][zoom < 10],
+      [preserved != 'yes'][zoom >= 10][zoom < 12],
+      [zoom >= 12] {
         line-color: #ccc;
         [zoom >= 10] { line-color: #aaa; }
         [zoom >= 13] { line-color: #666; }
