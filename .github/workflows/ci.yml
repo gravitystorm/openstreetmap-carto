@@ -58,17 +58,8 @@ jobs:
         scripts/indexes.py --notexist > /dev/null &&
         scripts/indexes.py --null > /dev/null &&
         scripts/indexes.py --null > /dev/null
-#    - name: Validate conformation to editorconfig
-#      run: bin/editorconfig-checker
-    - name: MegaLinter
-      uses: oxsecurity/megalinter@v7
-      env:
-        VALIDATE_ALL_CODEBASE: true
-        APPLY_FIXES: true
-        EDITORCONFIG: 'EDITORCONFIG'
-        FILEIO_REPORTER: false
-        SHOW_ELAPSED_TIME: true
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Validate conformation to editorconfig
+      run: docker run --rm --volume $PWD:/check mstruebing/editorconfig-checker
 
   import:
     needs: [syntax]
