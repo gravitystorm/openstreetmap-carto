@@ -50,7 +50,7 @@ jobs:
         scripts/indexes.py --null > /dev/null &&
         scripts/indexes.py --null > /dev/null
     - name: Validate conformation to editorconfig
-      uses: zbeekman/EditorConfig-Action
+      uses: zbeekman/EditorConfig-Action@master
 
   import:
     needs: [syntax]
