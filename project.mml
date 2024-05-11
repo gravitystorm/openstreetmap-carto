@@ -884,6 +884,7 @@ Layer:
           FROM planet_osm_roads
           WHERE highway IS NOT NULL
             OR (railway IN ('rail', 'tram', 'light_rail', 'funicular', 'narrow_gauge')
+              AND (tags->'railway:preserved' IS NULL OR tags->'railway:preserved' != 'yes')
               AND (service IS NULL OR service NOT IN ('spur', 'siding', 'yard')))
           ORDER BY
             z_order
