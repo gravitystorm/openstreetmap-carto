@@ -2004,7 +2004,7 @@ Layer:
             construction,
             name,
             (CASE
-              WHEN railway IN ('rail', 'light_rail', 'funicular', 'narrow_gauge', 'miniature', 'subway', 'tram', 'monorail', 'disused') AND tags->'railway:preserved' = 'yes' THEN 'yes'
+              WHEN tags->'railway:preserved' = 'yes' THEN 'yes'
               ELSE 'no'
             END) AS preserved
           FROM planet_osm_line l
