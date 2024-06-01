@@ -190,7 +190,7 @@ TMPDIR = tempfile.mkdtemp(prefix="get-fonts.")
 
 # Noto Emoji B&W isn't available as a separate download, so we need to download the package and unzip it
 downloadToFile(
-    ["https://fonts.google.com/download?family=Noto%20Emoji"],
+    ["https://archive.org/download/noto-emoji/Noto_Emoji.zip"],
     "Noto_Emoji.zip",
     dir=TMPDIR,
 )
