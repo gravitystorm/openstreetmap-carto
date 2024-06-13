@@ -453,6 +453,7 @@ Layer:
             construction,
             service,
             link,
+            preserved,
             layernotnull
           FROM ( -- subselect that contains both roads and rail
             SELECT
@@ -479,6 +480,7 @@ Layer:
                   WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link') THEN 'yes'
                   ELSE 'no'
                 END AS link,
+                'no' as preserved,
                 COALESCE(layer,0) AS layernotnull,
                 z_order
               FROM planet_osm_line
@@ -487,7 +489,7 @@ Layer:
             UNION ALL
             SELECT
                 way,
-                'railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
+                'railway_' || (CASE
                                  WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
                                  WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service'
                                  ELSE railway END) AS feature,
@@ -503,6 +505,10 @@ Layer:
                 construction,
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 'no' AS link,
+                (CASE
+                  WHEN tags->'railway:preserved' = 'yes' THEN 'yes'
+                  ELSE 'no'
+                END) AS preserved,
                 COALESCE(layer,0) AS layernotnull,
                 z_order
               FROM planet_osm_line
@@ -513,7 +519,7 @@ Layer:
             layernotnull,
             z_order,
             CASE WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
-            CASE WHEN feature IN ('railway_INT-preserved-ssy', 'railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
+            CASE WHEN feature IN ('railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
             CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END,
             CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 1 END
         ) AS tunnels
@@ -690,6 +696,7 @@ Layer:
             construction,
             service,
             link,
+            preserved,
             layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
@@ -716,6 +723,7 @@ Layer:
                   WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link') THEN 'yes'
                   ELSE 'no'
                 END AS link,
+                'no' AS preserved,
                 COALESCE(layer,0) AS layernotnull,
                 osm_id,
                 z_order
@@ -727,10 +735,10 @@ Layer:
             UNION ALL
             SELECT
                 way,
-                ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
-                                     WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
-                                     WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service'
-                                     ELSE railway END)) AS feature,
+                'railway_' || (CASE
+                                 WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
+                                 WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service'
+                                 ELSE railway END) AS feature,
                 horse,
                 foot,
                 bicycle,
@@ -748,6 +756,10 @@ Layer:
                 construction,
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') OR leisure IN ('slipway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 'no' AS link,
+                (CASE
+                  WHEN tags->'railway:preserved' = 'yes' THEN 'yes'
+                  ELSE 'no'
+                END) AS preserved,
                 COALESCE(layer,0) AS layernotnull,
                 osm_id,
                 z_order
@@ -762,7 +774,7 @@ Layer:
             layernotnull,
             z_order,
             CASE WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
-            CASE WHEN feature IN ('railway_INT-preserved-ssy', 'railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
+            CASE WHEN feature IN ('railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
             CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END,
             CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 1 END,
             osm_id
@@ -860,8 +872,7 @@ Layer:
             COALESCE(
               ('highway_' || (CASE WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link')
                                      THEN substr(highway, 0, length(highway)-4) ELSE highway end)),
-              ('railway_' || (CASE WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
-                                   WHEN railway IN ('rail', 'tram', 'light_rail', 'funicular', 'narrow_gauge') THEN railway END))
+              ('railway_' || railway)
             ) AS feature,
             CASE WHEN tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes' THEN 'yes' ELSE 'no' END AS int_tunnel,
             CASE WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link') THEN 'yes' ELSE 'no' END AS link,
@@ -872,7 +883,8 @@ Layer:
             END AS int_surface
           FROM planet_osm_roads
           WHERE highway IS NOT NULL
-            OR (railway IS NOT NULL AND railway != 'preserved'
+            OR (railway IN ('rail', 'light_rail', 'funicular', 'narrow_gauge')
+              AND (tags->'railway:preserved' IS NULL OR tags->'railway:preserved' != 'yes')
               AND (service IS NULL OR service NOT IN ('spur', 'siding', 'yard')))
           ORDER BY
             z_order
@@ -922,6 +934,7 @@ Layer:
             construction,
             service,
             link,
+            preserved,
             layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
@@ -948,6 +961,7 @@ Layer:
                   WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link') THEN 'yes'
                   ELSE 'no'
                 END AS link,
+                'no' AS preserved,
                 COALESCE(layer,0) AS layernotnull,
                 z_order
               FROM planet_osm_line
@@ -956,7 +970,7 @@ Layer:
             UNION ALL
             SELECT
                 way,
-                'railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
+                'railway_' || (CASE
                                  WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
                                  WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service'
                                  ELSE railway END) AS feature,
@@ -972,6 +986,10 @@ Layer:
                 construction,
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 'no' AS link,
+                (CASE
+                  WHEN tags->'railway:preserved' = 'yes' THEN 'yes'
+                  ELSE 'no'
+                END) AS preserved,
                 COALESCE(layer,0) AS layernotnull,
                 z_order
               FROM planet_osm_line
@@ -982,7 +1000,7 @@ Layer:
             layernotnull,
             z_order,
             CASE WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
-            CASE WHEN feature IN ('railway_INT-preserved-ssy', 'railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
+            CASE WHEN feature IN ('railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
             CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END,
             CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 1 END
         ) AS bridges
@@ -1975,17 +1993,22 @@ Layer:
       table: |-
         (SELECT
             way,
-            CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
-                 WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
-                 WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service' ELSE railway END AS railway,
+            CASE
+              WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
+              WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service'
+              ELSE railway
+            END AS railway,
             CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
             tags->'highspeed' as highspeed,
             tags->'usage' as usage,
             construction,
-            name
+            name,
+            (CASE
+              WHEN tags->'railway:preserved' = 'yes' THEN 'yes'
+              ELSE 'no'
+            END) AS preserved
           FROM planet_osm_line l
-          WHERE railway IN ('rail', 'subway', 'narrow_gauge', 'light_rail', 'preserved', 'funicular',
-                            'monorail', 'miniature', 'tram', 'disused', 'construction')
+          WHERE railway IN ('rail', 'subway', 'narrow_gauge', 'light_rail', 'funicular', 'monorail', 'miniature', 'tram', 'disused', 'construction')
             AND (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
             AND highway IS NULL -- Prevent duplicate rendering
             AND name IS NOT NULL
