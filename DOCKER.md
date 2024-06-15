@@ -12,9 +12,9 @@ to be able to run Docker containers. You also need Docker Compose, which should 
 Docker itself. Otherwise, you need to [install Docker Compose manually](https://docs.docker.com/compose/install/).
 
 * You need sufficient disk space of _several Gigabytes_. 
-	* Docker creates a disk image for its virtual machine that holds the virtualised operating system and the containers. 
-	* The format (Docker.raw, Docker.qcow2, \*.vhdx, etc.) depends on the host system. It can be a sparse file allocating large amounts of disk space, but still the physical size starts with 2-3 GB for the virtual OS and grows to 6-7 GB when filled with the containers needed for the database, Kosmtik, and a chosen small region of OSM data. 
-	* An additional 1-2 GB are needed for shapefiles to be downloaded and stored in the openstreetmap-carto/data repository.
+  * Docker creates a disk image for its virtual machine that holds the virtualised operating system and the containers. 
+  * The format (Docker.raw, Docker.qcow2, \*.vhdx, etc.) depends on the host system. It can be a sparse file allocating large amounts of disk space, but still the physical size starts with 2-3 GB for the virtual OS and grows to 6-7 GB when filled with the containers needed for the database, Kosmtik, and a chosen small region of OSM data.
+  * An additional 1-2 GB are needed for shapefiles to be downloaded and stored in the openstreetmap-carto/data repository.
 
 ## Quick start
 

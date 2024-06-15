@@ -39,7 +39,7 @@ local polygon_keys = {
 
 -- Objects with any of the following key/value combinations will be treated as linestring
 local linestring_values = {
-    golf = {cartpath = true, hole = true, path = true}, 
+    golf = {cartpath = true, hole = true, path = true},
     emergency = {designated = true, destination = true, no = true, official = true, yes = true},
     historic = {citywalls = true},
     leisure = {track = true, slipway = true},
@@ -303,7 +303,7 @@ function filter_tags_generic(tags)
         end
     end
 
-   -- Filter out objects that have no tags after deleting
+    -- Filter out objects that have no tags after deleting
     if next(tags) == nil then
         return 1, {}
     end
@@ -403,7 +403,7 @@ function isarea (tags)
         return tags["area"] == "yes" and 1 or 0
     end
 
-   -- Search through object's tags
+    -- Search through object's tags
     for k, v in pairs(tags) do
         -- Check if it has a polygon key and not a linestring override, or a polygon k=v
         for _, ptag in ipairs(polygon_keys) do
