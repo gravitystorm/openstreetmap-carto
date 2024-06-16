@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     osm2pgsql gdal-bin python3-psycopg2 python3-yaml unzip \
     python3-requests postgresql-client && rm -rf /var/lib/apt/lists/*
 
-ADD openstreetmap-carto.style /
+ADD openstreetmap-carto-flex.lua /
 
 RUN mkdir -p /openstreetmap-carto
 WORKDIR /openstreetmap-carto
