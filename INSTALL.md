@@ -21,7 +21,7 @@ psql -d gis -c 'CREATE EXTENSION postgis; CREATE EXTENSION hstore;'
 Then, grab some OSM data; It's probably easiest to grab an PBF of OSM data from [Geofabrik](https://download.geofabrik.de/). Once you've done that, import with osm2pgsql:
 
 ```sh
-osm2pgsql -G --hstore --style openstreetmap-carto.style --tag-transform-script openstreetmap-carto.lua -d gis ~/path/to/data.osm.pbf
+osm2pgsql -O flex -S openstreetmap-carto-flex.lua -d gis ~/path/to/data.osm.pbf
 ```
 
 You can find a more detailed guide to setting up a database and loading data with osm2pgsql at [switch2osm.org](https://switch2osm.org/serving-tiles/manually-building-a-tile-server-16-04-2-lts/).
