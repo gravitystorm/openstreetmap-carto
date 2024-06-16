@@ -43,13 +43,11 @@ EOF
   osm2pgsql \
   --cache $OSM2PGSQL_CACHE \
   --number-processes $OSM2PGSQL_NUMPROC \
-  --hstore \
-  --multi-geometry \
   --database gis \
   --slim \
   --drop \
-  --style openstreetmap-carto.style \
-  --tag-transform-script openstreetmap-carto.lua \
+  --output flex \
+  --style openstreetmap-carto-flex.style \
   $OSM2PGSQL_DATAFILE
 
   # Downloading and importing needed shapefiles
