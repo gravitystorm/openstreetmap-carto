@@ -14,12 +14,12 @@ CREATE OR REPLACE FUNCTION carto_int_access(accesstag text, allow_restricted boo
 AS $$
 SELECT
 	CASE
-	WHEN accesstag IN ('yes', 'designated', 'permissive') THEN 'yes'
-	WHEN accesstag IN ('destination',  'delivery', 'customers') THEN
-		CASE WHEN allow_restricted = TRUE  THEN 'restricted' ELSE 'yes' END
-	WHEN accesstag IN ('no', 'permit', 'private', 'agricultural', 'forestry', 'agricultural;forestry') THEN 'no'
-	WHEN accesstag IS NULL THEN NULL
-	ELSE 'unknown'
+		WHEN accesstag IN ('yes', 'designated', 'permissive') THEN 'yes'
+		WHEN accesstag IN ('destination',  'delivery', 'customers') THEN
+			CASE WHEN allow_restricted = TRUE  THEN 'restricted' ELSE 'yes' END
+		WHEN accesstag IN ('no', 'permit', 'private', 'agricultural', 'forestry', 'agricultural;forestry') THEN 'no'
+		WHEN accesstag IS NULL THEN NULL
+		ELSE 'unknown'
 	END
 $$;
 
@@ -46,22 +46,23 @@ CREATE OR REPLACE FUNCTION carto_highway_int_access(highway text, "access" text,
 AS $$
 SELECT
 	CASE
-	WHEN highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary',
-                 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'living_street', 'service', 'road') THEN
-		carto_int_access(CASE
-			WHEN motorcar <> 'unknown' THEN motorcar
-			WHEN motor_vehicle <> 'unknown' THEN motor_vehicle
-			WHEN vehicle <> 'unknown' THEN vehicle
-			ELSE "access" END, TRUE)
-	WHEN highway = 'path' THEN
-		CASE carto_path_type(bicycle, horse)
-		WHEN 'cycleway' THEN carto_int_access(CASE WHEN bicycle <> 'unknown' THEN bicycle ELSE "access" END, FALSE)
-		WHEN 'bridleway' THEN carto_int_access(CASE WHEN horse <> 'unknown' THEN horse ELSE "access" END, FALSE)
-		ELSE carto_int_access(CASE WHEN foot <> 'unknown' THEN foot ELSE "access" END, FALSE)
-		END
-	WHEN highway IN ('pedestrian', 'footway', 'steps') THEN carto_int_access(CASE WHEN foot <> 'unknown' THEN foot ELSE "access" END, FALSE)
-	WHEN highway = 'cycleway' THEN carto_int_access(CASE WHEN bicycle <> 'unknown' THEN bicycle ELSE "access" END, FALSE)
-	WHEN highway = 'bridleway' THEN carto_int_access(CASE WHEN horse <> 'unknown' THEN horse ELSE "access" END, FALSE)
-	ELSE carto_int_access("access", TRUE)
+		WHEN highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary',
+					 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'living_street', 'service', 'road') THEN
+			carto_int_access(
+				COALESCE(
+					NULLIF(motorcar, 'unknown'),
+					NULLIF(motor_vehicle, 'unknown'),
+					NULLIF(vehicle, 'unknown'),
+					"access"), TRUE)
+		WHEN highway = 'path' THEN
+			CASE carto_path_type(bicycle, horse)
+				WHEN 'cycleway' THEN carto_int_access(COALESCE(NULLIF(bicycle, 'unknown'), "access"), FALSE)
+				WHEN 'bridleway' THEN carto_int_access(COALESCE(NULLIF(horse, 'unknown'), "access"), FALSE)
+				ELSE carto_int_access(COALESCE(NULLIF(foot, 'unknown'), "access"), FALSE)
+			END
+		WHEN highway IN ('pedestrian', 'footway', 'steps') THEN carto_int_access(COALESCE(NULLIF(foot, 'unknown'), "access"), FALSE)
+		WHEN highway = 'cycleway' THEN carto_int_access(COALESCE(NULLIF(bicycle, 'unknown'), "access"), FALSE)
+		WHEN highway = 'bridleway' THEN carto_int_access(COALESCE(NULLIF(horse, 'unknown'), "access"), FALSE)
+		ELSE carto_int_access("access", TRUE)
 	END
 $$;
