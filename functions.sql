@@ -7,18 +7,18 @@
   NULL is functionally equivalent to 'yes', but indicates the absence of a restriction 
   rather than a positive access = yes. 'unknown' corresponds to an uninterpretable 
   access restriction e.g. access=unknown or motorcar=occasionally */
-CREATE OR REPLACE FUNCTION carto_int_access(accesstag text, allow_restricted boolean)
+CREATE OR REPLACE FUNCTION carto_int_access(accessvalue text, allow_restricted boolean)
 	RETURNS text
 	LANGUAGE SQL
 	IMMUTABLE PARALLEL SAFE
 AS $$
 SELECT
 	CASE
-		WHEN accesstag IN ('yes', 'designated', 'permissive') THEN 'yes'
-		WHEN accesstag IN ('destination',  'delivery', 'customers') THEN
+		WHEN accessvalue IN ('yes', 'designated', 'permissive') THEN 'yes'
+		WHEN accessvalue IN ('destination',  'delivery', 'customers') THEN
 			CASE WHEN allow_restricted = TRUE  THEN 'restricted' ELSE 'yes' END
-		WHEN accesstag IN ('no', 'permit', 'private', 'agricultural', 'forestry', 'agricultural;forestry') THEN 'no'
-		WHEN accesstag IS NULL THEN NULL
+		WHEN accessvalue IN ('no', 'permit', 'private', 'agricultural', 'forestry', 'agricultural;forestry') THEN 'no'
+		WHEN accessvalue IS NULL THEN NULL
 		ELSE 'unknown'
 	END
 $$;
@@ -38,7 +38,8 @@ SELECT
 	END
 $$;
 
-/* Return int_access value which will be used to determine access marking */
+/* Return int_access value which will be used to determine access marking.
+   Return values are documented above for carto_int_access function */
 CREATE OR REPLACE FUNCTION carto_highway_int_access(highway text, "access" text, foot text, bicycle text, horse text, motorcar text, motor_vehicle text, vehicle text)
   RETURNS text
   LANGUAGE SQL
@@ -56,8 +57,8 @@ SELECT
 					"access"), TRUE)
 		WHEN highway = 'path' THEN
 			CASE carto_path_type(bicycle, horse)
-				WHEN 'cycleway' THEN carto_int_access(COALESCE(NULLIF(bicycle, 'unknown'), "access"), FALSE)
-				WHEN 'bridleway' THEN carto_int_access(COALESCE(NULLIF(horse, 'unknown'), "access"), FALSE)
+				WHEN 'cycleway' THEN carto_int_access(bicycle, FALSE)
+				WHEN 'bridleway' THEN carto_int_access(horse, FALSE)
 				ELSE carto_int_access(COALESCE(NULLIF(foot, 'unknown'), "access"), FALSE)
 			END
 		WHEN highway IN ('pedestrian', 'footway', 'steps') THEN carto_int_access(COALESCE(NULLIF(foot, 'unknown'), "access"), FALSE)
