@@ -2188,6 +2188,10 @@
   [feature = 'man_made_water_works'],
   [feature = 'man_made_wastewater_plant'],
   [feature = 'landuse_commercial'],
+  [feature = 'landuse_civic_admin'],
+  [feature = 'landuse_institutional'],
+  [feature = 'landuse_government'],
+  [feature = 'landuse_governmental'],
   [feature = 'landuse_brownfield'],
   [feature = 'landuse_landfill'],
   [feature = 'landuse_construction'],
@@ -2289,6 +2293,12 @@
       }
       [feature = 'landuse_commercial'] {
         text-fill: darken(@commercial, 60%);
+      }
+      [feature = 'landuse_civic_admin'],
+      [feature = 'landuse_institutional'],
+      [feature = 'landuse_government'],
+      [feature = 'landuse_governmental'], {
+        text-fill: darken(@civic_admin, 60%);
       }
       [feature = 'landuse_brownfield'],
       [feature = 'landuse_landfill'],

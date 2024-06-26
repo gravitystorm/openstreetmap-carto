@@ -19,6 +19,8 @@
 @retail-line: #d99c95;      // Lch(70,25,30)
 @commercial: #f2dad9;       // Lch(89,8.5,25)
 @commercial-line: #d1b2b0;  // Lch(75,12,25)
+@civic_admin: #00b8c7;       // (also  used for institutional, government, governmental
+@civic_admin-line: #32a8e0;
 @industrial: #ebdbe8;       // Lch(89,9,330) (Also used for railway, wastewater_plant)
 @industrial-line: #c6b3c3;  // Lch(75,11,330) (Also used for railway-line, wastewater_plant-line)
 @farmland: #eef0d5;         // Lch(94,14,112)
@@ -492,10 +494,10 @@
     }
   }
 
+  [feature = 'landuse_civic_admin'],
   [feature = 'landuse_institutional'],
   [feature = 'landuse_government'],
-  [feature = 'landuse_governmental'],
-  [feature = 'landuse_civic_admin'] {
+  [feature = 'landuse_governmental'] {
     [zoom >= 14] {
         a/line-width: 1;
         a/line-offset: -0.5;
@@ -503,12 +505,12 @@
         a/line-opacity: 0.5;
         a/line-join: round;
         a/line-cap: round;
-        polygon-fill: #00b8c7;
+        polygon-fill: @civic_admin;
         polygon-opacity: 0.1;
         [zoom >= 17] {
             b/line-width: 4;
             b/line-offset: -2;
-            b/line-color: #32a8e0;
+            b/line-color: @civic_admin-line;
             b/line-opacity: 0.3;
             b/line-join: round;
             b/line-cap: round;

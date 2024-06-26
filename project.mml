@@ -68,13 +68,15 @@ Layer:
           FROM (SELECT
               way,
               ('landuse_' || (CASE WHEN landuse IN ('forest', 'farmland', 'residential', 'commercial', 'retail', 'industrial',
+                                                    'civic_admin', 'institutional', 'government', 'governmental',
                                                     'meadow', 'grass', 'village_green', 'vineyard', 'orchard') THEN landuse END)) AS landuse,
               ('natural_' || (CASE WHEN "natural" IN ('wood', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland', 'scrub') THEN "natural" END)) AS "natural",
               ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'mud') THEN (CASE WHEN "natural" IN ('mud') THEN "natural" ELSE tags->'wetland' END) END)) AS wetland,
               way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
               way_area
             FROM planet_osm_polygon
-            WHERE (landuse IN ('forest', 'farmland', 'residential', 'commercial', 'retail', 'industrial', 'meadow', 'grass', 'village_green', 'vineyard', 'orchard')
+            WHERE (landuse IN ('forest', 'farmland', 'residential', 'commercial', 'retail', 'industrial', 'civic_admin', 'institutional', 'government', 'governmental',
+                               'meadow', 'grass', 'village_green', 'vineyard', 'orchard')
               OR "natural" IN ('wood', 'wetland', 'mud', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland', 'scrub'))
               AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
               AND building IS NULL
@@ -107,7 +109,7 @@ Layer:
                                                     'allotments', 'forest', 'farmyard', 'farmland', 'greenhouse_horticulture',
                                                     'recreation_ground', 'village_green', 'retail', 'industrial', 'railway', 'commercial',
                                                     'brownfield', 'landfill', 'salt_pond', 'construction', 'plant_nursery', 'religious', 'flowerbed',
-                                                    'institutional', 'civic_admin', 'government', 'governmental') THEN landuse END)) AS landuse,
+                                                    'civic_admin', 'institutional', 'government', 'governmental') THEN landuse END)) AS landuse,
               ('shop_' || (CASE WHEN shop IN ('mall') AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL) THEN shop END)) AS shop,
               ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'garden',
                                                     'golf_course', 'miniature_golf', 'sports_centre', 'stadium', 'pitch', 'ice_rink',
@@ -1607,8 +1609,9 @@ Layer:
                                             AND (tags->'location' NOT IN ('roof', 'rooftop') OR NOT (tags ? 'location'))) THEN man_made END,
                 'landuse_' || CASE WHEN landuse IN ('reservoir', 'basin', 'recreation_ground', 'village_green', 'quarry', 'vineyard', 'orchard', 'cemetery',
                                                     'residential', 'garages', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farmland',
-                                                    'greenhouse_horticulture', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill',
-                                                    'construction', 'salt_pond', 'military', 'plant_nursery') THEN landuse END,
+                                                    'greenhouse_horticulture', 'retail', 'industrial', 'railway', 'commercial',
+                                                    'brownfield', 'landfill','construction', 'salt_pond', 'military', 'plant_nursery',
+                                                    'civic_admin', 'institutional', 'government', 'governmental') THEN landuse END,
                 'natural_' || CASE WHEN "natural" IN ('peak', 'volcano', 'saddle', 'cave_entrance') AND way_area IS NULL THEN "natural" END,
                 'natural_' || CASE WHEN "natural" IN ('wood', 'water', 'mud', 'wetland', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath',
                                                       'grassland', 'scrub', 'beach', 'glacier', 'tree', 'strait', 'cape', 'reef')
