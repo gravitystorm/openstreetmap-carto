@@ -492,6 +492,36 @@
     }
   }
 
+  [feature = 'landuse_institutional'],
+  [feature = 'landuse_government'],
+  [feature = 'landuse_governmental'],
+  [feature = 'landuse_civic_admin'] {
+    [zoom >= 14] {
+        a/line-width: 1;
+        a/line-offset: -0.5;
+        a/line-color: #0093D9;
+        a/line-opacity: 0.5;
+        a/line-join: round;
+        a/line-cap: round;
+        polygon-fill: #00b8c7;
+        polygon-opacity: 0.1;
+        [zoom >= 17] {
+            b/line-width: 4;
+            b/line-offset: -2;
+            b/line-color: #32a8e0;
+            b/line-opacity: 0.3;
+            b/line-join: round;
+            b/line-cap: round;
+
+            a/line-width: 2;
+            a/line-offset: -1;
+            b/line-width: 6;
+            b/line-offset: -3;
+        }
+    }
+  }
+
+
   [feature = 'landuse_landfill'] {
     [zoom >= 10] {
       polygon-fill: #b6b592;
