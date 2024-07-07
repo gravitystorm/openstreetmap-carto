@@ -47,7 +47,7 @@ local linestring_values = {
     natural = {cliff = true, earth_bank = true, tree_row = true, ridge = true, arete = true},
     power = {cable = true, line = true, minor_line = true},
     tourism = {yes = true},
-    waterway = {canal = true, derelict_canal = true, ditch = true, drain = true, river = true, stream = true, tidal_channel = true, wadi = true, weir = true}
+    waterway = {canal = true, derelict_canal = true, ditch = true, drain = true, river = true, stream = true, fish_pass = true, tidal_channel = true, wadi = true, weir = true}
 }
 
 -- Objects with any of the following key/value combinations will be treated as polygon
