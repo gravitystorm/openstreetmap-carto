@@ -47,7 +47,7 @@ EOF
   --slim \
   --drop \
   --output flex \
-  --style openstreetmap-carto-flex.style \
+  --style openstreetmap-carto-flex.lua \
   $OSM2PGSQL_DATAFILE
 
   # Downloading and importing needed shapefiles
