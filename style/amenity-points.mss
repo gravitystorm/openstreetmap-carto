@@ -1138,8 +1138,7 @@
       }
     }
 
-    [shop = 'jewelry'],
-    [shop = 'jewellery'] {
+    [shop = 'jewelry'] {
       [zoom >= 18] {
         marker-file: url('symbols/shop/jewelry.svg');
       }
