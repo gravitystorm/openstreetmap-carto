@@ -117,7 +117,7 @@ A regular style.
                 "Noto Sans Vai Regular",
                 "Noto Sans Yi Regular",
                 "Noto Sans CJK JP Regular",
-                
+
                 "Noto Serif Tibetan Regular",
                 "Noto Emoji Regular",
 
