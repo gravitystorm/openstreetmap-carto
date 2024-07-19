@@ -2,6 +2,8 @@
 @wetland-text: darken(#4aa5fa, 25%); /* Also for mud */
 @shop-icon: #ac39ac;
 @shop-text: #939;
+@craft-icon: #8000ff;
+@craft-text: #8000ff;
 @transportation-icon: #0092da;
 @transportation-text: #0066ff;
 @accommodation-icon: @transportation-icon;
@@ -1198,6 +1200,32 @@
 
     [shop = 'video_games'][zoom >= 18] {
       marker-file: url('symbols/shop/video_games.svg');
+    }
+  }
+
+  [feature='craft']{
+    [zoom >= 17]{
+      marker-fill: @craft-icon;
+      marker-placement: interior;
+      marker-clip: false;
+    }
+    [zoom >= 17][zoom < 18]{
+      marker-width: 4;
+      marker-line-width: 0;
+    }
+
+    [craft = 'shoemaker'][zoom >= 18] {
+      marker-file: url('symbols/craft/shoemaker.svg');
+    }
+
+    [craft = 'tailor'][zoom >= 18],
+    [craft = 'dressmaker'][zoom >= 18] {
+      marker-file: url('symbols/craft/tailor.svg');
+    }
+
+    [zoom >= 18][craft != 'shoemaker'][craft != 'tailor'][craft != 'dressmaker']{
+      marker-width: 6;
+      marker-line-width: 0;
     }
   }
 
@@ -2606,6 +2634,21 @@
       [shop = 'massage'] {
         text-fill: @leisure-green;
       }
+    }
+  }
+
+  [feature = 'craft'] {
+    [zoom >= 18] {
+      text-name: "[name]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-dy: 12;
+      text-fill: @craft-text;
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: rgba(255, 255, 255, 0.6);
+      text-clip: false;
     }
   }
 
