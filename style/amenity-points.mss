@@ -1341,6 +1341,12 @@
      marker-clip: false;
   }
 
+  [feature = 'leisure_dance'][zoom >= 17] {
+     marker-file: url('symbols/leisure/dance.svg');
+     marker-fill: @leisure-green;
+     marker-clip: false;
+  }
+
   // Slipway tagging on points - slipway on lines is defined later
   [feature = 'leisure_slipway'][zoom >= 17] {
     marker-file: url('symbols/leisure/slipway.svg');
@@ -1720,7 +1726,8 @@
     text-halo-fill: @standard-halo-fill;
   }
 
-  [feature = 'leisure_sauna'][zoom >= 17] {
+  [feature = 'leisure_sauna'][zoom >= 17],
+  [feature = 'leisure_dance'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
