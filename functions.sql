@@ -2,10 +2,10 @@
 
 /* Access functions below adapted from https://github.com/imagico/osm-carto-alternative-colors/tree/591c861112b4e5d44badd108f4cd1409146bca0b/sql/roads.sql */
 
-/* Simplified 'yes', 'destination', 'no', 'unknown', NULL scale for access restriction 
+/* Simplified 'yes', 'destination', 'no', 'unrecognised', NULL scale for access restriction 
   'no' is returned if the rendering for highway category does not support 'restricted'.
   NULL is functionally equivalent to 'yes', but indicates the absence of a restriction 
-  rather than a positive access = yes. 'unknown' corresponds to an uninterpretable 
+  rather than a positive access = yes. 'unrecognised' corresponds to an uninterpretable 
   access restriction e.g. access=unknown or motorcar=occasionally */
 CREATE OR REPLACE FUNCTION carto_int_access(accessvalue text, allow_restricted boolean)
 	RETURNS text
@@ -19,7 +19,7 @@ SELECT
 			CASE WHEN allow_restricted = TRUE  THEN 'restricted' ELSE 'yes' END
 		WHEN accessvalue IN ('no', 'permit', 'private', 'agricultural', 'forestry', 'agricultural;forestry') THEN 'no'
 		WHEN accessvalue IS NULL THEN NULL
-		ELSE 'unknown'
+		ELSE 'unrecognised'
 	END
 $$;
 
