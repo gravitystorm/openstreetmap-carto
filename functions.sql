@@ -39,7 +39,12 @@ SELECT
 $$;
 
 /* Return int_access value which will be used to determine access marking.
-   Return values are documented above for carto_int_access function */
+   Return values are documented above for carto_int_access function.
+
+   Note that the code handling the promotion of highway=path assumes that
+   promotion to cycleway or bridleway is based on the value of bicycle or
+   horse respectively. A more general formulation would be, for example,
+   WHEN 'cycleway' THEN carto_int_access(COALESCE(NULLIF(bicycle, 'unknown'), "access"), FALSE) */
 CREATE OR REPLACE FUNCTION carto_highway_int_access(highway text, "access" text, foot text, bicycle text, horse text, motorcar text, motor_vehicle text, vehicle text)
   RETURNS text
   LANGUAGE SQL
