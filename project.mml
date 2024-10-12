@@ -151,9 +151,17 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way
+            way,
+            COALESCE(
+               'leisure_' || CASE WHEN leisure = 'track' THEN 'track' END,
+               'attraction_' || CASE WHEN tags @> 'attraction=>water_slide' THEN 'water_slide' END,
+               'man_made_' || CASE WHEN man_made = 'cutline' THEN 'cutline' END
+            ) AS feature
           FROM planet_osm_line
-          WHERE man_made = 'cutline'
+          WHERE leisure = 'track'
+            OR tags @> 'attraction=>water_slide'
+            OR man_made = 'cutline'
+          ORDER BY COALESCE(layer,0)
         ) AS landcover_line
     properties:
       minzoom: 14
@@ -1772,15 +1780,13 @@ Layer:
         (SELECT
           way,
           COALESCE(
-           'highway_' || CASE WHEN tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones' THEN 'ford' END,
-           'leisure_' || CASE WHEN leisure IN ('slipway', 'track') THEN leisure END,
-           'attraction_' || CASE WHEN tags @> 'attraction=>water_slide' THEN 'water_slide' END
-            ) AS feature
+           'highway_' || CASE WHEN tags -> 'ford' IN ('yes', 'stepping_stones') THEN 'ford' END,
+           'leisure_' || CASE WHEN leisure IN ('slipway') THEN leisure END
+            ) AS feature,
           FROM planet_osm_line
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
-          WHERE tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones'
-            OR leisure IN ('slipway', 'track')
-            OR tags @> 'attraction=>water_slide'
+          WHERE tags -> 'ford' IN ('yes', 'stepping_stones')
+            OR leisure = 'slipway'
           ORDER BY COALESCE(layer,0)
         ) AS amenity_line
     properties:

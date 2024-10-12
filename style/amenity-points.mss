@@ -3006,42 +3006,6 @@
     marker-file: url('symbols/leisure/slipway.svg');
     marker-fill: @transportation-icon;
   }
-
-  [feature = 'leisure_track'] {
-    [zoom >= 16] {
-      [zoom >= 17] {
-        bridgecasing/line-color: saturate(darken(@pitch, 30%), 20%);
-        bridgecasing/line-join: round;
-        bridgecasing/line-width: 1.25;
-        [zoom >= 18] { bridgecasing/line-width: 2.5; }
-        [zoom >= 19] { bridgecasing/line-width: 5; }
-      }
-      line-color: @pitch;
-      line-join: round;
-      line-cap: round;
-      line-width: 1;
-      [zoom >= 18] { line-width: 2; }
-      [zoom >= 19] { line-width: 4; }
-    }
-  }
-
-  [feature = 'attraction_water_slide'] {
-    [zoom >= 16] {
-      [zoom >= 17] {
-        bridgecasing/line-color: black;
-        bridgecasing/line-join: round;
-        bridgecasing/line-width: 1.25;
-        [zoom >= 18] { bridgecasing/line-width: 2.5; }
-        [zoom >= 19] { bridgecasing/line-width: 5; }
-      }
-      line-color: @pitch;
-      line-join: round;
-      line-cap: round;
-      line-width: 1;
-      [zoom >= 18] { line-width: 2; }
-      [zoom >= 19] { line-width: 4; }
-    }
-  }
 }
 
 #text-line {
