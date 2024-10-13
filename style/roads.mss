@@ -684,7 +684,8 @@
       }
     }
 
-    [feature = 'highway_footway'] {
+    [feature = 'highway_footway'],
+    [feature = 'highway_path'] {
       #bridges {
         [zoom >= 14][int_access != 'no'],
         [zoom >= 15] {
