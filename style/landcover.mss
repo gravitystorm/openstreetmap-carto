@@ -518,6 +518,7 @@
   }
 
   [feature = 'natural_scree'],
+  [feature = 'natural_blockfield'],
   [feature = 'natural_shingle'] {
     [zoom >= 5] {
       polygon-fill: @bare_ground;

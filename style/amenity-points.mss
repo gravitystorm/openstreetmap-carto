@@ -2742,6 +2742,7 @@
   }
 
   [feature = 'natural_scree'][zoom >= 9],
+  [feature = 'natural_blockfield'][zoom >= 9],
   [feature = 'natural_shingle'][zoom >= 9],
   [feature = 'natural_bare_rock'],
   [feature = 'natural_sand'] {
@@ -2765,6 +2766,7 @@
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       [feature = 'natural_scree'],
+      [feature = 'natural_blockfield'],
       [feature = 'natural_shingle'],
       [feature = 'natural_bare_rock'] {
         text-fill: darken(@bare_ground, 50%);
