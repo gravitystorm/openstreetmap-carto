@@ -65,6 +65,8 @@ jobs:
         osm2pgsql -G --hstore --style openstreetmap-carto.style --tag-transform-script openstreetmap-carto.lua -d gis -r xml <(echo '<osm version="0.6"/>')
     - name: Create indexes
       run: psql -1Xq -v ON_ERROR_STOP=1 -d gis -f indexes.sql
+    - name: Load functions
+      run: psql -1Xq -v ON_ERROR_STOP=1 -d gis -f functions.sql
     - name: Load empty shapefiles
       run: scripts/get-external-data.py --no-update --cache -D scripts/empty_files
     - name: Test queries are valid
