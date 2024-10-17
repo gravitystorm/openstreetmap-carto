@@ -1,4 +1,14 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.8.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.9.0...master)
+
+## [v5.9.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.8.0...v5.9.0) - 2024-10-17
+### Changes
+- Adding rendering of shop=hearing_aids with a dedicated symbol (#4909)
+- Restoring rendering of name labels for natural=reef (#4918)
+- Adding rendering of lines with barrier=jersey_barrier (#4923)
+- Removing rendering of railway=preserved in favor of interpreting railway:preserved=yes on other railway=* (#4965)
+- Removing rendering of shop=jewellery as synonym for shop=jewelry (#4988)
+- Adding rendering of leisure=dance with a point symbol and label (#4996)
+- Interpretation of transport mode specific access tags on roads/paths (#4952)
 
 ## [v5.8.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v5.7.0...v5.8.0) - 2023-11-26
 ### Changes
