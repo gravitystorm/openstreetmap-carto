@@ -919,17 +919,17 @@ and there are now three classes: paved, unpaved and unknown surface
 
 - Unification of footway/path and rendering surface of them
 
-   The mess that is highway=path is well-known, and it is necessary
-   to do some kind of processing as a data consumer. A distinction is
-   now made between paved and unpaved footways.
+  The mess that is highway=path is well-known, and it is necessary
+  to do some kind of processing as a data consumer. A distinction is
+  now made between paved and unpaved footways.
 
 
 ### Changes
 - Mapnik 3 preperations
 
-   The style is not yet fullly tested with Mapnik 3 and we don't claim to
-   support it, but several bugs were fixed. Most of the work was done on
-   the Mapnik side
+  The style is not yet fullly tested with Mapnik 3 and we don't claim to
+  support it, but several bugs were fixed. Most of the work was done on
+  the Mapnik side
 
 - Power area colour adjusted
 
@@ -942,9 +942,9 @@ Shapefiles are now used for Antartic ice sheets
 
 - Rendering minor roads and service rail later for mid-zoom clarity
 
-   As all residential, unclassified, and service roads in a city became
-   mapped the rendered view became over-crowded, bloblike, and difficult
-   to read.
+  As all residential, unclassified, and service roads in a city became
+  mapped the rendered view became over-crowded, bloblike, and difficult
+  to read.
 
 - Rendering of Antartic ice sheets from shapefiles
 

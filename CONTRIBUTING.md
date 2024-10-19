@@ -29,8 +29,8 @@ but to provide an overview.
 
 Some changes benefit from a review over a wider area and many zooms, where static
 images might not be sufficient and a demo layer is necessary. pnorman has a server
- which can host layers and has some data from parts of the world loaded. Before
- requesting this in a pull request, make sure that it is in a stable condition.
+which can host layers and has some data from parts of the world loaded. Before
+requesting this in a pull request, make sure that it is in a stable condition.
 
 ## Easy pickings
 

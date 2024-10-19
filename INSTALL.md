@@ -82,7 +82,7 @@ scripts/get-fonts.sh
 
 For development, a style design studio is needed.
 * [Kosmtik](https://github.com/kosmtik/kosmtik) - Kosmtik can be launched with `node index.js serve path/to/openstreetmap-carto/project.mml`
-	* The 0.0.17 release of Kosmtik is not enough because we need up-to-date CartoCSS and Mapnik versions. To install the current master branch of Kosmtik, you can clone the Kosmtik repository and execute `npm install` within it.
+  * The 0.0.17 release of Kosmtik is not enough because we need up-to-date CartoCSS and Mapnik versions. To install the current master branch of Kosmtik, you can clone the Kosmtik repository and execute `npm install` within it.
 * [TileMill](https://tilemill-project.github.io/tilemill/) is not officially supported, but you may be able to use a recent TileMill version by copying or symlinking the project directly into your Mapbox/project directory.
 
 To display *any* map, a database containing OpenStreetMap data and some utilities are required:
