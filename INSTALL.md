@@ -90,7 +90,10 @@ To display *any* map, a database containing OpenStreetMap data and some utilitie
 * [PostgreSQL](https://www.postgresql.org/)
 * [PostGIS](https://postgis.net/)
 * [osm2pgsql](https://github.com/openstreetmap/osm2pgsql#installing) to [import your data](https://switch2osm.org/serving-tiles/updating-as-people-edit/) into a PostGIS database
-* Python 3 with the psycopg2, yaml, and requests libraries (`python3-psycopg2`, `python3-yaml`, `python3-requests` packages on Debian-derived systems)
+* Python 3 with the `psycopg2`, `pyyaml`, and `requests` libraries (`python3-psycopg2`, `python3-pyyaml`, `python3-requests` packages on Debian-derived systems)
+  ```bash
+  python3 -m pip install --break-system-packages --user pyyaml requests psycopg2
+  ```
 * `ogr2ogr` for loading shapefiles into the database (`gdal-bin` on Debian-derived systems)
 
 ### Optional development dependencies
