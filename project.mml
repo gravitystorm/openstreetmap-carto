@@ -701,7 +701,7 @@ Layer:
                   WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link') THEN 'yes'
                   ELSE 'no'
                 END AS link,
-                'no' AS preserved,
+                NULL AS preserved,
                 COALESCE(layer,0) AS layernotnull,
                 osm_id,
                 z_order
