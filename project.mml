@@ -665,6 +665,10 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
+      # NOTE: There are 3 similar queries: here and in the tunnels and bridges layers. Any change introduced
+      # in this query must be considered for inclusion in the other two. Changes in the WHERE clause should be
+      # particularly thought through.
+
       # This is one of the most complex layers, so it bears explaining in some detail
       # It is necessary to
       # - Have roads and railways in the same layer to get ordering right
