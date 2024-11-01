@@ -723,10 +723,10 @@ Layer:
                 construction,
                 NULL AS service,
                 NULL AS link,
-                (CASE
+                CASE
                   WHEN tags->'railway:preserved' = 'yes' THEN 'yes'
                   ELSE 'no'
-                END) AS preserved,
+                END AS preserved,
                 COALESCE(layer,0) AS layernotnull,
                 osm_id,
                 z_order
