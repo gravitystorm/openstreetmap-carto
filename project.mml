@@ -719,7 +719,7 @@ Layer:
                                  ELSE railway END) AS feature,
                 tracktype,
                 NULL AS int_surface,
-                NULL,
+                NULL AS access,
                 construction,
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') OR leisure IN ('slipway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 'no' AS link,
