@@ -791,6 +791,7 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
+      # see layer roads-casing
       table: *roads_sql
     properties:
       cache-features: true
