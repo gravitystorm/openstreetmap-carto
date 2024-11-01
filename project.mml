@@ -722,7 +722,7 @@ Layer:
                 NULL AS access,
                 construction,
                 NULL AS service,
-                'no' AS link,
+                NULL AS link,
                 (CASE
                   WHEN tags->'railway:preserved' = 'yes' THEN 'yes'
                   ELSE 'no'
