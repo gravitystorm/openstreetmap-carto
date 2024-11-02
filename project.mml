@@ -902,6 +902,14 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
+      # NOTE: There are 3 similar queries: here and in the roads-casing and bridges layers. Any change introduced
+      # in this query must be considered for inclusion in the other two. Changes in the WHERE clause should be
+      # particularly thought through.
+
+      # This is one of the most complex layers, so it bears explaining in some detail
+      # It is necessary to
+      # - Have roads and railways in the same layer to get ordering right
+      # - Return two linestrings for ways which are both a road and railway
       table: |-
         (SELECT
             way,
@@ -921,21 +929,22 @@ Layer:
                 tracktype,
                 CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
                                       'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow') THEN 'unpaved'
-                  WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
+                     WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
                                       'concrete:plates', 'paving_stones', 'metal', 'wood', 'unhewn_cobblestone') THEN 'paved'
                 END AS int_surface,
                 carto_highway_int_access(highway, access, foot, bicycle, horse, tags->'motorcar', tags->'motor_vehicle', tags->'vehicle') AS int_access,
                 construction,
                 CASE
-                  WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
+                  WHEN service IN ('parking_aisle', 'drive-through', 'driveway') OR leisure IN ('slipway') THEN 'INT-minor'::text
                   ELSE 'INT-normal'::text
                 END AS service,
                 CASE
                   WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link') THEN 'yes'
                   ELSE 'no'
                 END AS link,
-                'no' AS preserved,
+                NULL AS preserved,
                 COALESCE(layer,0) AS layernotnull,
+                osm_id,
                 z_order
               FROM planet_osm_line
               WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
@@ -948,16 +957,17 @@ Layer:
                                  WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service'
                                  ELSE railway END) AS feature,
                 tracktype,
-                'null',
-                NULL,
+                NULL AS int_surface,
+                NULL AS access,
                 construction,
-                CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
-                'no' AS link,
-                (CASE
+                NULL AS service,
+                NULL AS link,
+                CASE
                   WHEN tags->'railway:preserved' = 'yes' THEN 'yes'
                   ELSE 'no'
-                END) AS preserved,
+                END AS preserved,
                 COALESCE(layer,0) AS layernotnull,
+                osm_id,
                 z_order
               FROM planet_osm_line
               WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
