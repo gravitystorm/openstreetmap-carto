@@ -480,7 +480,7 @@ Layer:
                   ELSE 'no'
                 END AS link,
                 NULL AS preserved,
-                COALESCE(layer, 0) AS layernotnull,
+                COALESCE(layer,0) AS layernotnull,
                 osm_id,
                 z_order
               FROM planet_osm_line
@@ -503,7 +503,7 @@ Layer:
                   WHEN tags->'railway:preserved' = 'yes' THEN 'yes'
                   ELSE 'no'
                 END AS preserved,
-                COALESCE(layer, 0) AS layernotnull,
+                COALESCE(layer,0) AS layernotnull,
                 osm_id,
                 z_order
               FROM planet_osm_line
