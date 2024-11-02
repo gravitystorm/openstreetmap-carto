@@ -460,7 +460,6 @@ Layer:
             layernotnull
           FROM ( -- subselect that contains both roads and rail
             SELECT
-            SELECT
                 way,
                 'highway_' || (CASE WHEN highway = 'path' THEN carto_path_type(bicycle, horse) ELSE highway END) AS feature,
                 tracktype,
