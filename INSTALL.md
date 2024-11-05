@@ -84,11 +84,11 @@ To display *any* map, a database containing OpenStreetMap data and some utilitie
 * [PostgreSQL](https://www.postgresql.org/)
 * [PostGIS](https://postgis.net/)
 * [`osm2pgsql`](https://github.com/openstreetmap/osm2pgsql#installing)>=`1.8.0` to [import your data](https://switch2osm.org/serving-tiles/updating-as-people-edit-osm2pgsql-replication/) into a PostGIS database
-* Python 3 with the `psycopg2`, `pyyaml`, and `requests` libraries (`python3-psycopg2`, `python3-pyyaml`, `python3-requests` packages on Debian-derived systems)
+* [Python 3](https://www.python.org/downloads/) with the `psycopg2`, `pyyaml`, and `requests` libraries (`python3-psycopg2`, `python3-pyyaml`, `python3-requests` packages on Debian-derived systems)
   ```bash
   python3 -m pip install --break-system-packages --user pyyaml requests psycopg2
   ```
-* [`ogr2ogr`](https://www.npmjs.com/package/ogr2ogr) for loading shapefiles into the database (`gdal-bin` on Debian-derived systems)
+* [`ogr2ogr`](https://gdal.org/en/latest/download.html) for loading shapefiles into the database (`gdal-bin` on Debian-derived systems)
 
 ### For development (style design studio)
 
@@ -111,10 +111,10 @@ To display *any* map, a database containing OpenStreetMap data and some utilitie
 
 Some colours, SVGs and other files are generated with helper scripts. Not all users will need these dependencies.
 
-* Python and Ruby to run helper scripts
-* [Color Math](https://github.com/gtaylor/python-colormath) and [`numpy`](https://numpy.org/) (if running) feature a `generate_road_colors.py` helper script, which may be obtained with:
+* [Python](https://www.python.org/downloads/)
+* [`generate_road_colors.py`](./scripts/generate_road_colors.py) and [`generate_unpaved_patterns.py`](./scripts/generate_unpaved_patterns.py) depend on [Color Math](https://github.com/gtaylor/python-colormath) and [`numpy`](https://numpy.org/). To install these, run:
     ```bash
-    pip install colormath numpy
+    python3 -m pip install --break-system-packages --user colormath numpy
     ```
 
 ### For deployment
