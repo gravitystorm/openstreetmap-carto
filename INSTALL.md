@@ -112,7 +112,7 @@ To display *any* map, a database containing OpenStreetMap data and some utilitie
 Some colours, SVGs and other files are generated with helper scripts. Not all users will need these dependencies.
 
 * [Python](https://www.python.org/downloads/)
-* [`generate_road_colors.py`](./scripts/generate_road_colors.py) and [`generate_unpaved_patterns.py`](./scripts/generate_unpaved_patterns.py) depend on [Color Math](https://github.com/gtaylor/python-colormath) and [`numpy`](https://numpy.org/). To install these, run:
+* [`generate_road_colours.py`](./scripts/generate_road_colours.py) and [`generate_unpaved_patterns.py`](./scripts/generate_unpaved_patterns.py) depend on [Color Math](https://github.com/gtaylor/python-colormath) and [`numpy`](https://numpy.org/). To install these, run:
     ```bash
     python3 -m pip install --break-system-packages --user colormath numpy
     ```
