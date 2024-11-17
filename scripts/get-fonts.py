@@ -150,7 +150,7 @@ def downloadToFile(urls, destination, dir=FONTDIR):
         with open(os.path.join(dir, destination), "wb") as f:
             f.write(r.content)
     except:
-        raise Exception(f"Failed to download {url}")
+        raise Exception(f"Failed to download {urls}")
 
 
 for font in REGULAR_BOLD + REGULAR_BOLD_ITALIC + REGULAR_BLACK + REGULAR:
