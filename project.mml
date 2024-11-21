@@ -513,6 +513,20 @@ Layer:
       cache-features: true
       group-by: layernotnull
       minzoom: 10
+  - id: leisure-track
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+          way
+          FROM planet_osm_line
+          WHERE leisure = 'track'
+          ORDER BY COALESCE(layer,0)
+        ) AS leisure_track
+    properties:
+      minzoom: 16
   - id: landuse-overlay
     geometry: polygon
     <<: *extents
@@ -804,35 +818,6 @@ Layer:
       table: *turning-circle_sql
     properties:
       minzoom: 15
-  - id: aerialways
-    geometry: linestring
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            aerialway,
-            man_made,
-            tags->'substance' AS substance
-          FROM planet_osm_line
-          WHERE aerialway IS NOT NULL
-            OR (man_made = 'pipeline'
-                AND tags-> 'location' IN ('overground', 'overhead', 'surface', 'outdoor')
-                OR bridge IN ('yes', 'aqueduct', 'cantilever', 'covered', 'trestle', 'viaduct'))
-            OR (man_made = 'goods_conveyor'
-                AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
-                AND (tunnel NOT IN ('yes') OR tunnel IS NULL))
-          ORDER BY
-            CASE
-              WHEN man_made IN ('goods_conveyor', 'pipeline') THEN 1
-              WHEN tags-> 'location' = 'overhead' THEN 2
-              WHEN bridge IS NOT NULL THEN 3
-              WHEN aerialway IS NOT NULL THEN 4
-            END
-        ) AS aerialways
-    properties:
-      minzoom: 12
   - id: roads-low-zoom
     geometry: linestring
     <<: *extents
@@ -865,29 +850,19 @@ Layer:
       cache-features: true
       minzoom: 6
       maxzoom: 9
-  - id: waterway-bridges
+  - id: guideways
     geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way,
-            waterway,
-            CASE WHEN tags->'intermittent' IN ('yes')
-              OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
-              THEN 'yes' ELSE 'no' END AS int_intermittent,
-            CASE WHEN tunnel IN ('yes', 'culvert') 
-              OR waterway = 'canal' AND tunnel = 'flooded'
-              THEN 'yes' ELSE 'no' END AS int_tunnel,
-            'yes' AS bridge
+            way
           FROM planet_osm_line
-          WHERE waterway IN ('river', 'canal', 'stream', 'drain', 'ditch')
-            AND bridge IN ('yes', 'aqueduct')
-          ORDER BY COALESCE(layer,0)
-        ) AS waterway_bridges
+          WHERE highway = 'bus_guideway'
+        ) AS guideways
     properties:
-      minzoom: 12
+      minzoom: 11
   - id: bridges
     geometry: linestring
     <<: *extents
@@ -966,7 +941,57 @@ Layer:
       cache-features: true
       group-by: layernotnull
       minzoom: 10
-  - id: guideways
+  - id: aeroways
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            aeroway,
+            bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct') AS bridge,
+            CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
+                                  'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow') THEN 'unpaved'
+              WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
+                                  'concrete:plates', 'paving_stones', 'metal', 'wood', 'unhewn_cobblestone') THEN 'paved'
+              ELSE NULL
+            END AS int_surface
+          FROM planet_osm_line
+          WHERE aeroway IN ('runway', 'taxiway')
+          ORDER BY
+            bridge NULLS FIRST,
+            CASE WHEN aeroway = 'runway' THEN 1 ELSE 0 END,
+            CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
+                                  'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow') THEN 0 ELSE 1 END
+        ) AS aeroways
+    properties:
+      cache-features: true
+      minzoom: 11
+  - id: waterway-bridges
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            waterway,
+            CASE WHEN tags->'intermittent' IN ('yes')
+              OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
+              THEN 'yes' ELSE 'no' END AS int_intermittent,
+            CASE WHEN tunnel IN ('yes', 'culvert') 
+              OR waterway = 'canal' AND tunnel = 'flooded'
+              THEN 'yes' ELSE 'no' END AS int_tunnel,
+            'yes' AS bridge
+          FROM planet_osm_line
+          WHERE waterway IN ('river', 'canal', 'stream', 'drain', 'ditch')
+            AND bridge IN ('yes', 'aqueduct')
+          ORDER BY COALESCE(layer,0)
+        ) AS waterway_bridges
+    properties:
+      minzoom: 12
+  - id: waterslide
     geometry: linestring
     <<: *extents
     Datasource:
@@ -975,10 +1000,11 @@ Layer:
         (SELECT
             way
           FROM planet_osm_line
-          WHERE highway = 'bus_guideway'
-        ) AS guideways
+          WHERE tags @> 'attraction=>water_slide'
+          ORDER BY COALESCE(layer,0)
+        ) AS waterslide
     properties:
-      minzoom: 11
+      minzoom: 16
   - id: roller-coaster-gap-fill
     geometry: linestring
     <<: *extents
@@ -1013,6 +1039,35 @@ Layer:
     properties:
       group-by: layernotnull
       minzoom: 15
+  - id: aerialways
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            aerialway,
+            man_made,
+            tags->'substance' AS substance
+          FROM planet_osm_line
+          WHERE aerialway IS NOT NULL
+            OR (man_made = 'pipeline'
+                AND tags-> 'location' IN ('overground', 'overhead', 'surface', 'outdoor')
+                OR bridge IN ('yes', 'aqueduct', 'cantilever', 'covered', 'trestle', 'viaduct'))
+            OR (man_made = 'goods_conveyor'
+                AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL)
+                AND (tunnel NOT IN ('yes') OR tunnel IS NULL))
+          ORDER BY
+            CASE
+              WHEN man_made IN ('goods_conveyor', 'pipeline') THEN 1
+              WHEN tags-> 'location' = 'overhead' THEN 2
+              WHEN bridge IS NOT NULL THEN 3
+              WHEN aerialway IS NOT NULL THEN 4
+            END
+        ) AS aerialways
+    properties:
+      minzoom: 12
   - id: entrances
     geometry: point
     <<: *extents
@@ -1030,33 +1085,6 @@ Layer:
         AS entrances
     properties:
       minzoom: 18
-  - id: aeroways
-    geometry: linestring
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            aeroway,
-            bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct') AS bridge,
-            CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
-                                  'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow') THEN 'unpaved'
-              WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
-                                  'concrete:plates', 'paving_stones', 'metal', 'wood', 'unhewn_cobblestone') THEN 'paved'
-              ELSE NULL
-            END AS int_surface
-          FROM planet_osm_line
-          WHERE aeroway IN ('runway', 'taxiway')
-          ORDER BY
-            bridge NULLS FIRST,
-            CASE WHEN aeroway = 'runway' THEN 1 ELSE 0 END,
-            CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
-                                  'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow') THEN 0 ELSE 1 END
-        ) AS aeroways
-    properties:
-      cache-features: true
-      minzoom: 11
   - id: golf-line
     geometry: linestring
     <<: *extents
@@ -1577,7 +1605,7 @@ Layer:
                               THEN historic END,
                 'military_'|| CASE WHEN military IN ('danger_area', 'bunker') THEN military END,
                 'highway_' || CASE WHEN highway IN ('services', 'rest_area', 'bus_stop', 'elevator', 'traffic_signals') THEN highway END,
-                'highway_'|| CASE WHEN tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones' AND way_area IS NULL THEN 'ford' END,
+                'highway_'|| CASE WHEN tags->'ford' IN ('yes', 'stepping_stones') AND way_area IS NULL THEN 'ford' END,
                 'boundary_' || CASE WHEN boundary IN ('aboriginal_lands', 'national_park')
                                           OR (boundary = 'protected_area' AND tags->'protect_class' IN ('1','1a','1b','2','3','4','5','6'))
                                           THEN boundary END,
@@ -1730,15 +1758,13 @@ Layer:
         (SELECT
           way,
           COALESCE(
-           'highway_' || CASE WHEN tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones' THEN 'ford' END,
-           'leisure_' || CASE WHEN leisure IN ('slipway', 'track') THEN leisure END,
-           'attraction_' || CASE WHEN tags @> 'attraction=>water_slide' THEN 'water_slide' END
+           'highway_' || CASE WHEN tags->'ford' IN ('yes', 'stepping_stones') THEN 'ford' END,
+           'leisure_' || CASE WHEN leisure = 'slipway' THEN leisure END
             ) AS feature
           FROM planet_osm_line
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
-          WHERE tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones'
-            OR leisure IN ('slipway', 'track')
-            OR tags @> 'attraction=>water_slide'
+          WHERE tags->'ford' IN ('yes', 'stepping_stones')
+            OR leisure = 'slipway'
           ORDER BY COALESCE(layer,0)
         ) AS amenity_line
     properties:
