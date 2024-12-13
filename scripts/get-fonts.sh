@@ -125,7 +125,7 @@ TMPDIR=$(mktemp -d -t get-fonts.XXXXXXXXX)
 trap "rm -rf ${TMPDIR} ${FONTDIR}/static" EXIT
 
 # Noto Emoji B&W isn't available as a separate download, so we need to download the package and unzip it
-download "${TMPDIR}/Noto_Emoji.zip" 'https://fonts.google.com/download?family=Noto%20Emoji'
+download "${TMPDIR}/Noto_Emoji.zip" 'https://archive.org/download/noto-emoji/Noto_Emoji.zip'
 
 unzip -oqq "${TMPDIR}/Noto_Emoji.zip" static/NotoEmoji-Regular.ttf static/NotoEmoji-Bold.ttf -d "${FONTDIR}"
 mv "${FONTDIR}/static/NotoEmoji-Regular.ttf" "${FONTDIR}"
