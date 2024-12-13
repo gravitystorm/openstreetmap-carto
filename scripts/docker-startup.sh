@@ -18,6 +18,7 @@ test $i -gt $MAXCOUNT && echo "Timeout while waiting for PostgreSQL to be runnin
 case "$1" in
 import)
   # Creating default database
+  echo "Creating database"
   psql -c "SELECT 1 FROM pg_database WHERE datname = 'gis';" | grep -q 1 || createdb gis
   psql -d gis -c 'CREATE EXTENSION IF NOT EXISTS postgis;'
   psql -d gis -c 'CREATE EXTENSION IF NOT EXISTS hstore;'
@@ -41,6 +42,7 @@ EOF
   fi
 
   # Importing data to a database
+  echo "Importing data from $OSM2PGSQL_DATAFILE"
   osm2pgsql \
   --cache $OSM2PGSQL_CACHE \
   --number-processes $OSM2PGSQL_NUMPROC \
@@ -52,6 +54,7 @@ EOF
   $OSM2PGSQL_DATAFILE
 
   # Setting up indexes and functions
+  echo "Setting up indexes and functions"
   psql -d gis -f indexes.sql
   psql -d gis -f functions.sql
 
