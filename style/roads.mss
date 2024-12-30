@@ -3397,6 +3397,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 #roads-fill::fill,
 #bridges::fill {
   [int_access = 'restricted'] {
+    [feature = 'highway_motorway'],
+    [feature = 'highway_trunk'],
+    [feature = 'highway_primary'],
     [feature = 'highway_secondary'],
     [feature = 'highway_tertiary'],
     [feature = 'highway_unclassified'],
@@ -3406,6 +3409,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         access/line-color: @access-marking;
         [int_surface = 'unpaved'] {
           access/line-color: @access-marking-white-unpaved;
+        }
+        [feature = 'highway_primary'] {
+          access/line-color: @access-marking-primary;
         }
         [feature = 'highway_secondary'] {
           access/line-color: @access-marking-secondary;
