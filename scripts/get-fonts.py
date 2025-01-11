@@ -120,10 +120,11 @@ NOTO_DIRECTORY_FOR_FONT = {
 }
 
 
-# Download the fonts in the lists above
+# Attempt to download the font from repos in this order
 def findFontUrls(fontName, modifier):
     return [
         f"https://github.com/notofonts/noto-fonts/raw/main/hinted/ttf/{fontName}/{fontName}-{modifier}.ttf",
+        # currently only sourcing from one repo
     ]
 
 
@@ -134,7 +135,7 @@ def downloadToFile(urls, destination, dir=FONTDIR):
         r = requests.get(urls[0], headers=headers)
         if r.status_code != 200:
             if len(urls) > 1:
-                warnings.warn(f"Failed to download {urls[0]}, retrying with repo HEAD")
+                warnings.warn(f"Failed to download {urls[0]}, retrying with next font source")
                 downloadToFile(urls[1:], destination, dir=dir)
             else:
                 raise Exception
