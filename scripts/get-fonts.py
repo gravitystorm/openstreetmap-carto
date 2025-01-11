@@ -90,35 +90,6 @@ REGULAR = [
     "NotoSansYi",
 ]
 
-SOUTH_ASIAN_UI_FONTS = [
-    "ArabicUI",
-    "BengaliUI",
-    "DevanagariUI",
-    "GujaratiUI",
-    "GurmukhiUI",
-    "KannadaUI",
-    "MalayalamUI",
-    "OriyaUI",
-    "SinhalaUI",
-    "TamilUI",
-    "TeluguUI",
-]
-
-# hyphenated or irregular Noto diretory names
-NOTO_DIRECTORY_FOR_FONT = {
-    "NotoSans": "latin-greek-cyrillic",
-    "NotoSansAdlamUnjoined": "adlam",
-    "NotoSansCanadianAboriginal": "canadian-aboriginal",
-    "NotoSansKayahLi": "kayah-li",
-    "NotoSansNewTaiLue": "new-tai-lue",
-    "NotoSansOlChiki": "ol-chiki",
-    "NotoSansSymbols2": "symbols",
-    "NotoSansTaiLe": "tai-le",
-    "NotoSansTaiTham": "tai-tham",
-    "NotoSansTaiViet": "tai-viet",
-    "NotoSerifTibetan": "tibetan",
-}
-
 
 # Attempt to download the font from repos in this order
 def findFontUrls(fontName, modifier):
