@@ -58,7 +58,7 @@ A regular style.
 */
 @book-fonts:    "Noto Sans Regular",
                 "Noto Sans Adlam Unjoined Regular",
-                "Noto Sans Arabic UI Regular",
+                "Noto Sans Arabic Regular",
                 "Noto Sans Armenian Regular",
                 "Noto Sans Balinese Regular",
                 "Noto Sans Bamum Regular",
@@ -129,7 +129,7 @@ regular text and can be used for emphasis. Fallback is a regular style.
 */
 @bold-fonts:    "Noto Sans Bold",
                 "Noto Sans Adlam Unjoined Bold",
-                "Noto Sans Arabic UI Bold",
+                "Noto Sans Arabic Bold",
                 "Noto Sans Armenian Bold",
                 "Noto Sans Balinese Bold",
                 "Noto Sans Bamum Bold",
