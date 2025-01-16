@@ -23,10 +23,10 @@
 @taxiway-fill: @aeroway-fill;
 @helipad-fill: @aeroway-fill;
 @access-marking: #eaeaea;
-@access-marking-primary: #f0f0f0;
+/* access-marking-light is used on some darker highways for better contrast */
+@access-marking-light: #f0f0f0;
 @access-marking-secondary: #e4e4e4;
 @access-marking-white-unpaved: #e0e0e0;
-@access-marking-road: #f0f0f0;
 @access-marking-living-street: #d4d4d4;
 
 @default-casing: white;
@@ -3397,15 +3397,23 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 #roads-fill::fill,
 #bridges::fill {
   [int_access = 'restricted'] {
+    [feature = 'highway_motorway'],
+    [feature = 'highway_trunk'],
+    [feature = 'highway_primary'],
     [feature = 'highway_secondary'],
     [feature = 'highway_tertiary'],
     [feature = 'highway_unclassified'],
     [feature = 'highway_residential'],
+    [feature = 'highway_pedestrian'], 
     [feature = 'highway_living_street'] {
       [zoom >= 15] {
         access/line-color: @access-marking;
         [int_surface = 'unpaved'] {
           access/line-color: @access-marking-white-unpaved;
+        }
+        [feature = 'highway_primary'],
+		[feature = 'highway_pedestrian'] {
+          access/line-color: @access-marking-light;
         }
         [feature = 'highway_secondary'] {
           access/line-color: @access-marking-secondary;
@@ -3431,7 +3439,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           access/line-color: @access-marking-white-unpaved;
         }
         [feature = 'highway_road'] {
-          access/line-color: @access-marking-road;
+          access/line-color: @access-marking-light;
         }
         access/line-join: round;
         access/line-cap: round;
@@ -3467,6 +3475,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'highway_tertiary'],
     [feature = 'highway_unclassified'],
     [feature = 'highway_residential'],
+    [feature = 'highway_pedestrian'], 
     [feature = 'highway_living_street'] {
       [zoom >= 15] {
         access/line-color: @access-marking;
@@ -3477,8 +3486,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
             access/line-color: @access-marking-white-unpaved;
           }
         }
-        [feature = 'highway_primary'] {
-          access/line-color: @access-marking-primary;
+        [feature = 'highway_primary'],
+		[feature = 'highway_pedestrian'] {
+          access/line-color: @access-marking-light;
         }
         [feature = 'highway_secondary'] {
           access/line-color: @access-marking-secondary;
@@ -3504,7 +3514,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           access/line-color: @access-marking-white-unpaved;
         }
         [feature = 'highway_road'] {
-          access/line-color: @access-marking-road;
+          access/line-color: @access-marking-light;
         }
         access/line-join: round;
         access/line-cap: round;

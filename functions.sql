@@ -66,7 +66,8 @@ SELECT
 				WHEN 'bridleway' THEN carto_int_access(horse, FALSE)
 				ELSE carto_int_access(COALESCE(NULLIF(foot, 'unknown'), "access"), FALSE)
 			END
-		WHEN highway IN ('pedestrian', 'footway', 'steps') THEN carto_int_access(COALESCE(NULLIF(foot, 'unknown'), "access"), FALSE)
+		WHEN highway = 'pedestrian' THEN carto_int_access(COALESCE(NULLIF(foot, 'unknown'), "access"), TRUE)
+		WHEN highway IN ('footway', 'steps') THEN carto_int_access(COALESCE(NULLIF(foot, 'unknown'), "access"), FALSE)
 		WHEN highway = 'cycleway' THEN carto_int_access(COALESCE(NULLIF(bicycle, 'unknown'), "access"), FALSE)
 		WHEN highway = 'bridleway' THEN carto_int_access(COALESCE(NULLIF(horse, 'unknown'), "access"), FALSE)
 		ELSE carto_int_access("access", TRUE)
