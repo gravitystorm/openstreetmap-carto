@@ -1,4 +1,5 @@
 #!/bin/sh
+# NOTE: deprecated; get-fonts.py recommended for future changes
 set -e
 
 FONTDIR="./fonts"
