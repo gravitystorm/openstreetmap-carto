@@ -2368,7 +2368,6 @@
     text-dy: 7;
   }
 
-  [feature = 'amenity_atm'][zoom >= 19],
   [feature = 'amenity_vending_machine'][vending = 'public_transport_tickets'][zoom >= 19] {
     text-name: "[operator]";
     text-size: @standard-font-size;
