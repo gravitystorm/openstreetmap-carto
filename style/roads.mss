@@ -65,6 +65,9 @@
 @residential-tunnel-fill: darken(@residential-fill, 5%);
 @living-street-tunnel-fill: lighten(@living-street-fill, 3%);
 
+@bus-guideway-fill: #6699ff;
+@bus-guideway-tunnel-fill: lighten(desaturate(@bus-guideway-fill, 20%), 8%);
+
 @motorway-width-z6:               0.4;
 @trunk-width-z6:                  0.4;
 
@@ -789,6 +792,13 @@
       }
     }
 
+    [feature = 'highway_bus_guideway'][zoom >= 13] {
+      #bridges {
+        line-width: 6.5;
+        line-color: @bridge-casing;
+        line-join: round;
+      }
+    }
 
     [feature = 'railway_tram'],
     [feature = 'railway_tram-service'][zoom >= 15] {
@@ -1017,6 +1027,14 @@
         }
       }
     }
+
+    [feature = 'highway_bus_guideway'][zoom >= 13] {
+      #bridges {
+        line-width: 5;
+        line-color: white;
+        line-join: round;
+      }
+	  }
 
     [feature = 'railway_rail'][zoom >= 13],
     [feature = 'railway_monorail'][zoom >= 14] {
@@ -2513,6 +2531,41 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           [tracktype = 'grade5'] {
             line/line-dasharray: 2,8;
           }
+        }
+      }
+    }
+	
+    [feature = 'highway_bus_guideway'][zoom >= 11] {
+      [zoom < 13] {
+        line-width: 0.6;
+        [zoom >= 12] { line-width: 1; }
+        #roads-fill, #bridges {
+        line-color: @bus-guideway-fill;
+        }
+        #tunnels {
+        line-color: @bus-guideway-tunnel-fill;
+        line-dasharray: 5,2;
+        }
+      }
+      [zoom >= 13] {
+        line-width: 3;
+        line-join: round;
+        #roads-fill, #bridges {
+          line-color: @bus-guideway-fill;
+        }
+        #tunnels {
+          line-color: @bus-guideway-tunnel-fill;
+        }
+        b/line-width: 1;
+        b/line-color: white;
+        b/line-dasharray: 8,12;
+        b/line-join: round;
+        [zoom >= 14] {
+          b/line-dasharray: 0,11,8,1;
+        }
+        [zoom >= 17] {
+          line-width: 5;
+          b/line-width: 2.5;
         }
       }
     }
