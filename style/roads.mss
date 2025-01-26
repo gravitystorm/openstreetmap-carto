@@ -2564,10 +2564,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         [zoom >= 14] {
           b/line-dasharray: 0,11,8,1;
         }
-        [zoom >= 17] {
-          line-width: 5;
-          b/line-width: 2.5;
-        }
       }
     }
 
