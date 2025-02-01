@@ -270,51 +270,16 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, name, religion, way_pixels, is_building,
-            COALESCE(aeroway, golf, amenity, wetland, power, landuse, leisure, man_made, "natural", shop, tourism, highway, railway) AS feature
+            way, way_pixels,
+            COALESCE(wetland, "natural") AS feature
           FROM (SELECT
-              way, COALESCE(name, '') AS name,
-              ('aeroway_' || (CASE WHEN aeroway IN ('apron', 'aerodrome') THEN aeroway END)) AS aeroway,
-              ('golf_' || (CASE WHEN (tags->'golf') IN ('rough', 'fairway', 'driving_range', 'water_hazard', 'green', 'bunker', 'tee') THEN tags->'golf' ELSE NULL END)) AS golf,
-              ('amenity_' || (CASE WHEN amenity IN ('bicycle_parking', 'motorcycle_parking', 'university', 'college', 'school', 'taxi',
-                                                    'hospital', 'kindergarten', 'grave_yard', 'prison', 'place_of_worship', 'clinic', 'ferry_terminal',
-                                                    'marketplace', 'community_centre', 'social_facility', 'arts_centre', 'parking_space', 'bus_station',
-                                                    'fire_station', 'police')
-                              OR amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL) THEN amenity END)) AS amenity,
-              ('landuse_' || (CASE WHEN landuse IN ('quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'meadow', 'grass',
-                                                    'allotments', 'forest', 'farmyard', 'farmland', 'greenhouse_horticulture',
-                                                    'recreation_ground', 'village_green', 'retail', 'industrial', 'railway', 'commercial',
-                                                    'brownfield', 'landfill', 'salt_pond', 'construction', 'plant_nursery', 'religious', 'flowerbed') THEN landuse END)) AS landuse,
-              ('shop_' || (CASE WHEN shop IN ('mall') AND (tags->'location' NOT IN ('underground') OR (tags->'location') IS NULL) THEN shop END)) AS shop,
-              ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'garden',
-                                                    'golf_course', 'miniature_golf', 'sports_centre', 'stadium', 'pitch', 'ice_rink',
-                                                    'track', 'dog_park', 'fitness_station', 'water_park') THEN leisure END)) AS leisure,
-              ('man_made_' || (CASE WHEN man_made IN ('works', 'wastewater_plant', 'water_works') THEN man_made END)) AS man_made,
+              way,
               ('natural_' || (CASE WHEN "natural" IN ('beach', 'shoal', 'heath', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub') THEN "natural" END)) AS "natural",
               ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'mud') THEN (CASE WHEN "natural" = 'mud' THEN "natural" ELSE tags->'wetland' END) END)) AS wetland,
-              ('power_' || (CASE WHEN power IN ('plant', 'substation', 'generator') THEN power END)) AS power,
-              ('tourism_' || (CASE WHEN tourism IN ('camp_site', 'caravan_site', 'picnic_site') THEN tourism END)) AS tourism,
-              ('highway_' || (CASE WHEN highway IN ('services', 'rest_area') THEN highway END)) AS highway,
-              ('railway_' || (CASE WHEN railway = 'station' THEN railway END)) AS railway,
-              CASE WHEN religion IN ('christian', 'jewish', 'muslim') THEN religion ELSE 'INT-generic'::text END AS religion,
               way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
-              CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building,
               way_area
             FROM planet_osm_polygon
-            WHERE (landuse IS NOT NULL
-              OR leisure IS NOT NULL
-              OR aeroway IN ('apron', 'aerodrome')
-              OR (tags->'golf') IS NOT NULL
-              OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'taxi', 'university', 'college', 'school', 'hospital', 'kindergarten',
-                             'grave_yard', 'place_of_worship', 'prison', 'clinic', 'ferry_terminal', 'marketplace', 'community_centre', 'social_facility',
-                             'arts_centre', 'parking_space', 'bus_station', 'fire_station', 'police')
-              OR man_made IN ('works', 'wastewater_plant','water_works')
-              OR "natural" IN ('beach', 'shoal', 'heath', 'mud', 'wetland', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub')
-              OR power IN ('plant', 'substation', 'generator')
-              OR shop IN ('mall')
-              OR tourism IN ('camp_site', 'caravan_site', 'picnic_site')
-              OR highway IN ('services', 'rest_area')
-              OR railway = 'station')
+            WHERE ("natural" IN ('beach', 'shoal', 'heath', 'mud', 'wetland', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub'))
               AND way_area > 1*!pixel_width!::real*!pixel_height!::real
           ) AS landcover
           ORDER BY way_area DESC, feature
