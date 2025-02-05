@@ -81,7 +81,7 @@ that need some cartographic judgement.
 There are many open-source stylesheets written for creating OpenStreetMap-based
 maps using Mapnik, many based on this project. Some alternatives are:
 
-* [OSM Bright](https://github.com/mapbox/osm-bright)
+* [OSM Bright](https://github.com/geofabrik/osm-bright)
 * [XML-based stylesheets](https://github.com/openstreetmap/mapnik-stylesheets)
 * [OpenStreetMap "FR" Carto](https://github.com/cquest/osmfr-cartocss)
 * [OpenStreetMap Carto German](https://github.com/giggls/openstreetmap-carto-de)
@@ -89,7 +89,6 @@ maps using Mapnik, many based on this project. Some alternatives are:
 # Maintainers
 
 * Andy Allan [@gravitystorm](https://github.com/gravitystorm)
-* Paul Norman [@pnorman](https://github.com/pnorman)
 * Daniel Koć [@kocio-pl](https://github.com/kocio-pl)
 * Christoph Hormann [@imagico](https://github.com/imagico)
 * Lukas Sommer [@sommerluk](https://github.com/sommerluk)
@@ -97,6 +96,7 @@ maps using Mapnik, many based on this project. Some alternatives are:
 
 ## Previous maintainers
 
+* Paul Norman [@pnorman](https://github.com/pnorman)
 * Michael Glanznig [@nebulon42](https://github.com/nebulon42)
 * Matthijs Melissen [@matthijsmelissen](https://github.com/matthijsmelissen)
 * Mateusz Konieczny [@matkoniecz](https://github.com/matkoniecz)

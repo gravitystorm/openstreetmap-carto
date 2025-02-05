@@ -63,7 +63,7 @@
 
 // --- Sports ---
 
-@pitch: #aae0cb;           // Lch(85,22,168) also track
+@pitch: #88e0be;           // Lch(83,35,166) also track
 @track: @pitch;
 @stadium: @leisure; // also sports_centre
 @golf_course: @campsite;
@@ -162,6 +162,26 @@
     [zoom >= 13] {
       polygon-pattern-file: url('patterns/plant_nursery.svg');
       polygon-pattern-opacity: 0.6;
+      polygon-pattern-alignment: global;
+      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+    }
+  }
+
+  [feature = 'landuse_flowerbed'] {
+    [zoom >= 10] {
+      polygon-fill: @grass;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+    [zoom >= 15] {
+      polygon-pattern-file: url('symbols/flowerbed_mid_zoom.svg');
+      polygon-pattern-alignment: global;
+      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+    }
+    [zoom >= 17] {
+      polygon-pattern-file: url('symbols/flowerbed_high_zoom.svg');
       polygon-pattern-alignment: global;
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
@@ -796,10 +816,10 @@
   //Also landuse = forest, converted in the SQL
   [natural = 'wood'][zoom >= 13]::wood {
     polygon-pattern-file: url('symbols/leaftype_unknown.svg'); // Lch(55,30,135)
-    [leaf_type = "broadleaved"] { polygon-pattern-file: url('symbols/leaftype_broadleaved.svg'); }
-    [leaf_type = "needleleaved"] { polygon-pattern-file: url('symbols/leaftype_needleleaved.svg'); }
-    [leaf_type = "mixed"] { polygon-pattern-file: url('symbols/leaftype_mixed.svg'); }
-    [leaf_type = "leafless"] { polygon-pattern-file: url('symbols/leaftype_leafless.svg'); }
+    [leaf_type = 'broadleaved'] { polygon-pattern-file: url('symbols/leaftype_broadleaved.svg'); }
+    [leaf_type = 'needleleaved'] { polygon-pattern-file: url('symbols/leaftype_needleleaved.svg'); }
+    [leaf_type = 'mixed'] { polygon-pattern-file: url('symbols/leaftype_mixed.svg'); }
+    [leaf_type = 'leafless'] { polygon-pattern-file: url('symbols/leaftype_leafless.svg'); }
     polygon-pattern-alignment: global;
     opacity: 0.4; // The entire layer has opacity to handle overlapping forests
   }

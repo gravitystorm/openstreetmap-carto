@@ -1090,6 +1090,10 @@
       marker-file: url('symbols/shop/optician.svg');
     }
 
+    [shop = 'hearing_aids'][zoom >= 18] {
+      marker-file: url('symbols/shop/hearing_aids.svg');
+    }
+
     [shop = 'outdoor'][zoom >= 18] {
       marker-file: url('symbols/shop/outdoor.svg');
     }
@@ -1134,8 +1138,7 @@
       }
     }
 
-    [shop = 'jewelry'],
-    [shop = 'jewellery'] {
+    [shop = 'jewelry'] {
       [zoom >= 18] {
         marker-file: url('symbols/shop/jewelry.svg');
       }
@@ -1338,6 +1341,12 @@
      marker-clip: false;
   }
 
+  [feature = 'leisure_dance'][zoom >= 17] {
+     marker-file: url('symbols/leisure/dance.svg');
+     marker-fill: @leisure-green;
+     marker-clip: false;
+  }
+
   // Slipway tagging on points - slipway on lines is defined later
   [feature = 'leisure_slipway'][zoom >= 17] {
     marker-file: url('symbols/leisure/slipway.svg');
@@ -1357,10 +1366,10 @@
     marker-fill: @airtransport;
   }
 
-  [feature = 'aeroway_aerodrome']['int_access' = 'yes']['icao' != null]['iata' != null][zoom >= 10][zoom < 17],
-  [feature = 'aeroway_aerodrome']['int_access' = 'restricted'][zoom >= 12][zoom < 18],
-  [feature = 'aeroway_aerodrome']['icao' = null][zoom >= 12][zoom < 18],
-  [feature = 'aeroway_aerodrome']['iata' = null][zoom >= 12][zoom < 18] {
+  [feature = 'aeroway_aerodrome'][int_access = 'yes'][icao != null][iata != null][zoom >= 10][zoom < 17],
+  [feature = 'aeroway_aerodrome'][int_access = 'restricted'][zoom >= 12][zoom < 18],
+  [feature = 'aeroway_aerodrome'][icao = null][zoom >= 12][zoom < 18],
+  [feature = 'aeroway_aerodrome'][iata = null][zoom >= 12][zoom < 18] {
     [way_pixels <= 192000],
     [way_pixels = null] {
       marker-file: url('symbols/amenity/aerodrome.svg');
@@ -1433,7 +1442,7 @@
     marker-clip: false;
   }
 
-  [feature = 'power_generator']['generator:source' = 'wind'] {
+  [feature = 'power_generator']["generator:source" = 'wind'] {
     [zoom >= 15][location != 'rooftop'][location != 'roof'],
     [zoom >= 15][location = null],
     [zoom >= 19] {
@@ -1719,7 +1728,8 @@
     text-halo-fill: @standard-halo-fill;
   }
 
-  [feature = 'leisure_sauna'][zoom >= 17] {
+  [feature = 'leisure_sauna'][zoom >= 17],
+  [feature = 'leisure_dance'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
@@ -1912,9 +1922,9 @@
     }
   }
 
-  [feature = 'power_generator']['generator:source' = 'wind'][location != 'rooftop'][location != 'roof'][zoom >= 17],
-  [feature = 'power_generator']['generator:source' = 'wind'][location = null][zoom >= 17],
-  [feature = 'power_generator']['generator:source' = 'wind'][zoom >= 19],
+  [feature = 'power_generator']["generator:source" = 'wind'][location != 'rooftop'][location != 'roof'][zoom >= 17],
+  [feature = 'power_generator']["generator:source" = 'wind'][location = null][zoom >= 17],
+  [feature = 'power_generator']["generator:source" = 'wind'][zoom >= 19],
   [feature = 'historic_city_gate'][zoom >= 17],
   [feature = 'natural_cave_entrance'][zoom >= 15],
   [feature = 'man_made_mast'][zoom >= 18],
@@ -1933,7 +1943,7 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: darken(@man-made-icon, 20%);
-    [feature = 'power_generator']['generator:source' = 'wind'],
+    [feature = 'power_generator']["generator:source" = 'wind'],
     [feature = 'historic_city_gate'],
     [feature = 'man_made_mast'],
     [feature = 'man_made_tower'],
@@ -2270,7 +2280,6 @@
       [feature = 'landuse_farmyard'] {
         text-fill: darken(@farmyard, 50%);
       }
-      [feature = 'landuse_farm'],
       [feature = 'landuse_farmland'],
       [feature = 'landuse_greenhouse_horticulture'] {
         text-fill: darken(@farmland, 50%);
@@ -2861,10 +2870,10 @@
     text-halo-fill: @standard-halo-fill;
   }
 
-  [feature = 'aeroway_aerodrome']['int_access' = 'yes']['icao' != null]['iata' != null][zoom >= 11][zoom < 17],
-  [feature = 'aeroway_aerodrome']['int_access' = 'restricted'][zoom >= 13][zoom < 18],
-  [feature = 'aeroway_aerodrome']['icao' = null][zoom >= 13][zoom < 18],
-  [feature = 'aeroway_aerodrome']['iata' = null][zoom >= 13][zoom < 18] {
+  [feature = 'aeroway_aerodrome'][int_access = 'yes'][icao != null][iata != null][zoom >= 11][zoom < 17],
+  [feature = 'aeroway_aerodrome'][int_access = 'restricted'][zoom >= 13][zoom < 18],
+  [feature = 'aeroway_aerodrome'][icao = null][zoom >= 13][zoom < 18],
+  [feature = 'aeroway_aerodrome'][iata = null][zoom >= 13][zoom < 18] {
     [way_pixels <= 192000],
     [way_pixels = null] {
       text-name: "[name]";
@@ -3006,42 +3015,38 @@
     marker-file: url('symbols/leisure/slipway.svg');
     marker-fill: @transportation-icon;
   }
+}
 
-  [feature = 'leisure_track'] {
-    [zoom >= 16] {
-      [zoom >= 17] {
-        bridgecasing/line-color: saturate(darken(@pitch, 30%), 20%);
-        bridgecasing/line-join: round;
-        bridgecasing/line-width: 1.25;
-        [zoom >= 18] { bridgecasing/line-width: 2.5; }
-        [zoom >= 19] { bridgecasing/line-width: 5; }
-      }
-      line-color: @pitch;
-      line-join: round;
-      line-cap: round;
-      line-width: 1;
-      [zoom >= 18] { line-width: 2; }
-      [zoom >= 19] { line-width: 4; }
-    }
+#leisure-track {
+  [zoom >= 17] {
+	bridgecasing/line-color: saturate(darken(@pitch, 30%), 20%);
+	bridgecasing/line-join: round;
+	bridgecasing/line-width: 1.25;
+	[zoom >= 18] { bridgecasing/line-width: 2.5; }
+	[zoom >= 19] { bridgecasing/line-width: 5; }
   }
+  line-color: @pitch;
+  line-join: round;
+  line-cap: round;
+  line-width: 1;
+  [zoom >= 18] { line-width: 2; }
+  [zoom >= 19] { line-width: 4; }
+}
 
-  [feature = 'attraction_water_slide'] {
-    [zoom >= 16] {
-      [zoom >= 17] {
-        bridgecasing/line-color: black;
-        bridgecasing/line-join: round;
-        bridgecasing/line-width: 1.25;
-        [zoom >= 18] { bridgecasing/line-width: 2.5; }
-        [zoom >= 19] { bridgecasing/line-width: 5; }
-      }
-      line-color: @pitch;
-      line-join: round;
-      line-cap: round;
-      line-width: 1;
-      [zoom >= 18] { line-width: 2; }
-      [zoom >= 19] { line-width: 4; }
-    }
+#waterslide {
+  [zoom >= 17] {
+	bridgecasing/line-color: black;
+	bridgecasing/line-join: round;
+	bridgecasing/line-width: 1.25;
+	[zoom >= 18] { bridgecasing/line-width: 2.5; }
+	[zoom >= 19] { bridgecasing/line-width: 5; }
   }
+  line-color: @pitch;
+  line-join: round;
+  line-cap: round;
+  line-width: 1;
+  [zoom >= 18] { line-width: 2; }
+  [zoom >= 19] { line-width: 4; }
 }
 
 #text-line {
