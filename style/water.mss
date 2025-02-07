@@ -4,7 +4,27 @@
 
 @waterway-text-repeat-distance: 200;
 
+#water-areas-cutout {
+  comp-op: dst-out;
+
+  [waterway = 'dock'],
+  [landuse = 'basin'],
+  [natural = 'water'],
+  [landuse = 'reservoir'],
+  [waterway = 'riverbank'] {
+    [int_intermittent = 'no'] {
+      polygon-fill: black;
+    }
+    [int_intermittent = 'yes'] {
+      polygon-pattern-file: url('patterns/intermittent_water.svg');
+      polygon-pattern-comp-op: src;
+    }
+  }
+}
+
 #water-areas {
+  comp-op: dst-over;
+
   [natural = 'glacier']::natural {
     [zoom >= 5] {
       line-width: 1.0;
@@ -51,6 +71,8 @@
 }
 
 #water-lines::casing {
+  comp-op: src-atop;
+
   [waterway = 'stream'],
   [waterway = 'ditch'],
   [waterway = 'drain'] {
@@ -75,6 +97,8 @@
 
 #water-lines,
 #waterway-bridges {
+  comp-op: src-atop;
+
   [waterway = 'canal'][zoom >= 12],
   [waterway = 'river'][zoom >= 12] {
     // the additional line of land color is used to provide a background for dashed casings
