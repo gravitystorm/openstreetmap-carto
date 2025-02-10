@@ -449,7 +449,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            (CASE WHEN feature IN ('highway_motorway_link', 'highway_trunk_link', 'highway_primary_link', 'highway_secondary_link', 'highway_tertiary_link') THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
+            CASE WHEN link = 'yes' THEN substr(feature, 0, length(feature)-4) ELSE feature END AS feature,
             tracktype,
             int_surface,
             int_access,
@@ -698,7 +698,7 @@ Layer:
       table: &roads_sql |-
         (SELECT
             way,
-            (CASE WHEN feature IN ('highway_motorway_link', 'highway_trunk_link', 'highway_primary_link', 'highway_secondary_link', 'highway_tertiary_link') THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
+            CASE WHEN link = 'yes' THEN substr(feature, 0, length(feature)-4) ELSE feature END AS feature,
             tracktype,
             int_surface,
             int_access,
@@ -858,19 +858,6 @@ Layer:
       cache-features: true
       minzoom: 6
       maxzoom: 9
-  - id: guideways
-    geometry: linestring
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way
-          FROM planet_osm_line
-          WHERE highway = 'bus_guideway'
-        ) AS guideways
-    properties:
-      minzoom: 11
   - id: bridges
     geometry: linestring
     <<: *extents
@@ -887,7 +874,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            (CASE WHEN feature IN ('highway_motorway_link', 'highway_trunk_link', 'highway_primary_link', 'highway_secondary_link', 'highway_tertiary_link') THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
+            CASE WHEN link = 'yes' THEN substr(feature, 0, length(feature)-4) ELSE feature END AS feature,
             tracktype,
             int_surface,
             int_access,
@@ -1946,7 +1933,7 @@ Layer:
             END AS oneway
           FROM planet_osm_line l
           WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary',
-                            'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction')
+                            'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction', 'bus_guideway')
             AND (name IS NOT NULL
               OR oneway IN ('yes', '-1')
               OR junction IN ('roundabout'))

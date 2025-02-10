@@ -65,6 +65,9 @@
 @residential-tunnel-fill: darken(@residential-fill, 5%);
 @living-street-tunnel-fill: lighten(@living-street-fill, 3%);
 
+@bus-guideway-fill: #6699ff;
+@bus-guideway-tunnel-fill: lighten(desaturate(@bus-guideway-fill, 20%), 8%);
+
 @motorway-width-z6:               0.4;
 @trunk-width-z6:                  0.4;
 
@@ -303,6 +306,7 @@
 @residential-oneway-arrow-color:  darken(@residential-casing, 40%);
 @living-street-oneway-arrow-color: darken(@residential-casing, 30%);
 @pedestrian-oneway-arrow-color:   darken(@pedestrian-casing, 25%);
+@bus-guideway-oneway-arrow-color: darken(@bus-guideway-fill, 25%);
 @raceway-oneway-arrow-color:      darken(@raceway-fill, 50%);
 @footway-oneway-arrow-color:      darken(@footway-fill, 35%);
 @steps-oneway-arrow-color:        darken(@steps-fill, 35%);
@@ -789,6 +793,13 @@
       }
     }
 
+    [feature = 'highway_bus_guideway'][zoom >= 13] {
+      #bridges {
+        line-width: 6.5;
+        line-color: @bridge-casing;
+        line-join: round;
+      }
+    }
 
     [feature = 'railway_tram'],
     [feature = 'railway_tram-service'][zoom >= 15] {
@@ -1017,6 +1028,14 @@
         }
       }
     }
+
+    [feature = 'highway_bus_guideway'][zoom >= 13] {
+      #bridges {
+        line-width: 5;
+        line-color: white;
+        line-join: round;
+      }
+	  }
 
     [feature = 'railway_rail'][zoom >= 13],
     [feature = 'railway_monorail'][zoom >= 14] {
@@ -2516,6 +2535,37 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         }
       }
     }
+	
+    [feature = 'highway_bus_guideway'][zoom >= 11] {
+      [zoom < 13] {
+        line-width: 0.6;
+        [zoom >= 12] { line-width: 1; }
+        #roads-fill, #bridges {
+        line-color: @bus-guideway-fill;
+        }
+        #tunnels {
+        line-color: @bus-guideway-tunnel-fill;
+        line-dasharray: 5,2;
+        }
+      }
+      [zoom >= 13] {
+        line-width: 3;
+        line-join: round;
+        #roads-fill, #bridges {
+          line-color: @bus-guideway-fill;
+        }
+        #tunnels {
+          line-color: @bus-guideway-tunnel-fill;
+        }
+        b/line-width: 1;
+        b/line-color: white;
+        b/line-dasharray: 8,12;
+        b/line-join: round;
+        [zoom >= 14] {
+          b/line-dasharray: 0,11,8,1;
+        }
+      }
+    }
 
     [feature = 'railway_rail'][zoom >= 8][zoom < 10],
     [feature = 'railway_rail'][preserved != 'yes'][zoom >= 10][zoom < 12],
@@ -3542,26 +3592,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   }
 }
 
-#guideways {
-  [zoom >= 11][zoom < 13] {
-    line-width: 0.6;
-    line-color: #6699ff;
-    [zoom >= 12] { line-width: 1; }
-  }
-  [zoom >= 13] {
-    line-width: 3;
-    line-color: #6699ff;
-    line-join: round;
-    b/line-width: 1;
-    b/line-color: white;
-    b/line-dasharray: 8,12;
-    b/line-join: round;
-  }
-  [zoom >= 14] {
-    b/line-dasharray: 0,11,8,1;
-  }
-}
-
 #aeroways {
   [aeroway = 'runway'] {
     [zoom >= 11] {
@@ -4104,12 +4134,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [highway = 'residential'],
     [highway = 'unclassified'],
     [highway = 'living_street'],
+    [highway = 'bus_guideway'],
     [highway = 'road'],
     [highway = 'service'],
     [highway = 'pedestrian'],
     [highway = 'raceway'] {
-      [oneway = 'yes'],
-      [oneway = '-1'] {
+      [oneway != null] {
         marker-placement: line;
         marker-spacing: 180;
         marker-max-error: 0.5;
@@ -4144,6 +4174,10 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         [highway = 'service'] {
           marker-fill: @residential-oneway-arrow-color;
         }
+        [highway = 'bus_guideway'] {
+          marker-fill: @bus-guideway-oneway-arrow-color;
+          marker-offset: 7;
+        }
         [highway = 'living_street'] {
           marker-fill: @living-street-oneway-arrow-color;
         }
@@ -4162,8 +4196,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [highway = 'path'],
     [highway = 'track'],
     [highway = 'bridleway'] {
-      [oneway = 'yes'],
-      [oneway = '-1'] {
+      [oneway != null] {
         text-name: "'🠖'";
         text-size: 15;
         text-clip: false;
