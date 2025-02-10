@@ -2076,7 +2076,7 @@ Layer:
             COALESCE(
               'landuse_' || CASE WHEN landuse IN ('forest', 'military', 'farmland') THEN landuse END,
               'military_' || CASE WHEN military IN ('danger_area') THEN military END,
-              'natural_' || CASE WHEN "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock', 'water', 'peninsula') THEN "natural" END,
+              'natural_' || CASE WHEN "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock', 'water') THEN "natural" END,
               'place_' || CASE WHEN place IN ('island') THEN place END,
               'boundary_' || CASE WHEN boundary IN ('aboriginal_lands', 'national_park')
                                        OR (boundary = 'protected_area' AND tags->'protect_class' IN ('1','1a','1b','2','3','4','5','6'))
@@ -2090,7 +2090,7 @@ Layer:
             AND name IS NOT NULL
             AND (landuse IN ('forest', 'military', 'farmland')
               OR military IN ('danger_area')
-              OR "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock', 'water', 'peninsula')
+              OR "natural" IN ('wood', 'glacier', 'sand', 'scree', 'shingle', 'bare_rock', 'water')
               OR "place" IN ('island')
               OR boundary IN ('aboriginal_lands', 'national_park')
               OR (boundary = 'protected_area' AND tags->'protect_class' IN ('1','1a','1b','2','3','4','5','6'))
