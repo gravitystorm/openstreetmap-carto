@@ -3592,26 +3592,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   }
 }
 
-#guideways {
-  [zoom >= 11][zoom < 13] {
-    line-width: 0.6;
-    line-color: #6699ff;
-    [zoom >= 12] { line-width: 1; }
-  }
-  [zoom >= 13] {
-    line-width: 3;
-    line-color: #6699ff;
-    line-join: round;
-    b/line-width: 1;
-    b/line-color: white;
-    b/line-dasharray: 8,12;
-    b/line-join: round;
-  }
-  [zoom >= 14] {
-    b/line-dasharray: 0,11,8,1;
-  }
-}
-
 #aeroways {
   [aeroway = 'runway'] {
     [zoom >= 11] {
