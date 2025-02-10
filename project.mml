@@ -1614,7 +1614,7 @@ Layer:
                                                     'construction', 'salt_pond', 'military', 'plant_nursery') THEN landuse END,
                 'natural_' || CASE WHEN "natural" IN ('peak', 'volcano', 'saddle', 'cave_entrance') AND way_area IS NULL THEN "natural" END,
                 'natural_' || CASE WHEN "natural" IN ('wood', 'water', 'mud', 'wetland', 'bay', 'spring', 'scree', 'shingle', 'bare_rock', 'sand', 'heath',
-                                                      'grassland', 'scrub', 'beach', 'glacier', 'tree', 'strait', 'cape', 'reef')
+                                                      'grassland', 'scrub', 'beach', 'glacier', 'tree', 'strait', 'cape', 'reef', 'peninsula')
                                                       THEN "natural" END,
                 'mountain_pass' || CASE WHEN tags->'mountain_pass' IN ('yes') THEN '' END, -- after natural=saddle to give priority to that tag on the same node
                 'waterway_' || CASE WHEN "waterway" IN ('waterfall') AND way_area IS NULL THEN waterway END,
