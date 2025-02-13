@@ -112,7 +112,7 @@ Layer:
                                                     'golf_course', 'miniature_golf', 'sports_centre', 'stadium', 'pitch', 'ice_rink',
                                                     'track', 'dog_park', 'fitness_station', 'water_park') THEN leisure END)) AS leisure,
               ('man_made_' || (CASE WHEN man_made IN ('works', 'wastewater_plant', 'water_works') THEN man_made END)) AS man_made,
-              ('natural_' || (CASE WHEN "natural" IN ('beach', 'shoal', 'heath', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub') THEN "natural" END)) AS "natural",
+              ('natural_' || (CASE WHEN "natural" IN ('beach', 'shoal', 'heath', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub', 'glacier') THEN "natural" END)) AS "natural",
               ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'mud') THEN (CASE WHEN "natural" = 'mud' THEN "natural" ELSE tags->'wetland' END) END)) AS wetland,
               ('power_' || (CASE WHEN power IN ('plant', 'substation', 'generator') THEN power END)) AS power,
               ('tourism_' || (CASE WHEN tourism IN ('camp_site', 'caravan_site', 'picnic_site') THEN tourism END)) AS tourism,
@@ -131,7 +131,7 @@ Layer:
                              'grave_yard', 'place_of_worship', 'prison', 'clinic', 'ferry_terminal', 'marketplace', 'community_centre', 'social_facility',
                              'arts_centre', 'parking_space', 'bus_station', 'fire_station', 'police')
               OR man_made IN ('works', 'wastewater_plant','water_works')
-              OR "natural" IN ('beach', 'shoal', 'heath', 'mud', 'wetland', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub')
+              OR "natural" IN ('beach', 'shoal', 'heath', 'mud', 'wetland', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub', 'glacier')
               OR power IN ('plant', 'substation', 'generator')
               OR shop IN ('mall')
               OR tourism IN ('camp_site', 'caravan_site', 'picnic_site')

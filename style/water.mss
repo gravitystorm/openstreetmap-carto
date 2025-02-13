@@ -1,6 +1,4 @@
 @water-text: #4d80b3;
-@glacier: #ddecec;
-@glacier-line: #9cf;
 
 @waterway-text-repeat-distance: 200;
 
@@ -24,18 +22,6 @@
 
 #water-areas {
   comp-op: dst-over;
-
-  [natural = 'glacier']::natural {
-    [zoom >= 5] {
-      line-width: 1.0;
-      line-color: @glacier-line;
-      polygon-fill: @glacier;
-      [zoom >= 10] {
-        line-dasharray: 4,2;
-        line-width: 1.5;
-      }
-    }
-  }
 
   [waterway = 'dock'],
   [landuse = 'basin'],
