@@ -157,6 +157,26 @@ Layer:
         ) AS landcover_line
     properties:
       minzoom: 14
+  - id: glaciers
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            "natural",
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
+          FROM planet_osm_polygon
+          WHERE
+            "natural" = 'glacier'
+            AND building IS NULL
+            AND way_area > 1*!pixel_width!::real*!pixel_height!::real
+          ORDER BY COALESCE(layer,0), way_area DESC
+        ) AS glaciers
+    properties:
+      cache-features: true
+      minzoom: 5
   - id: icesheet-poly
     geometry: polygon
     <<: *extents

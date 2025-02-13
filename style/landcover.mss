@@ -47,6 +47,8 @@
 @campsite: #def6c0; // also caravan_site, picnic_site
 @cemetery: #aacbaf; // also grave_yard
 @construction: #c7c7b4; // also brownfield
+@glacier: #ddecec;
+@glacier-line: #9cf;
 @heath: #d6d99f;
 @heath-tidal: #b4d4ce;
 @mud: #e6dcd1;
@@ -733,6 +735,18 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 }
+}
+
+#glaciers {
+  [zoom >= 5] {
+    line-width: 1.0;
+    line-color: @glacier-line;
+    polygon-fill: @glacier;
+    [zoom >= 10] {
+      line-dasharray: 4,2;
+      line-width: 1.5;
+    }
+  }
 }
 
 #landcover-tidal[zoom >= 10] {
