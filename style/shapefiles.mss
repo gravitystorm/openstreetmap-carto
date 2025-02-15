@@ -11,9 +11,16 @@
   }
 }
 
-#ocean-lz,
+#ocean-low-zoom-cutout,
+#ocean-cutout {
+  polygon-fill: black;
+  comp-op: dst-out;
+}
+
+#ocean-low-zoom,
 #ocean {
   polygon-fill: @water-color;
+  comp-op: dst-over;
 }
 
 #icesheet-poly {
