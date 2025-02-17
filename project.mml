@@ -69,13 +69,13 @@ Layer:
               way,
               ('landuse_' || (CASE WHEN landuse IN ('forest', 'farmland', 'residential', 'commercial', 'retail', 'industrial',
                                                     'meadow', 'grass', 'village_green', 'vineyard', 'orchard') THEN landuse END)) AS landuse,
-              ('natural_' || (CASE WHEN "natural" IN ('wood', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland', 'scrub') THEN "natural" END)) AS "natural",
+              ('natural_' || (CASE WHEN "natural" IN ('wood', 'sand', 'beach', 'shoal', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland', 'scrub') THEN "natural" END)) AS "natural",
               ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'mud') THEN (CASE WHEN "natural" IN ('mud') THEN "natural" ELSE tags->'wetland' END) END)) AS wetland,
               way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
               way_area
             FROM planet_osm_polygon
             WHERE (landuse IN ('forest', 'farmland', 'residential', 'commercial', 'retail', 'industrial', 'meadow', 'grass', 'village_green', 'vineyard', 'orchard')
-              OR "natural" IN ('wood', 'wetland', 'mud', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland', 'scrub'))
+              OR "natural" IN ('wood', 'wetland', 'mud', 'beach', 'shoal', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland', 'scrub'))
               AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
               AND building IS NULL
           ) AS features
@@ -262,7 +262,7 @@ Layer:
         ) AS features
     properties:
       cache-features: true
-      minzoom: 10
+      minzoom: 5
   - id: water-lines-low-zoom
     geometry: linestring
     <<: *extents

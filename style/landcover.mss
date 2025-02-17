@@ -674,8 +674,8 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [feature = 'natural_beach'][zoom >= 10],
-  [feature = 'natural_shoal'][zoom >= 10] {
+  [feature = 'natural_beach'][zoom >= 9],
+  [feature = 'natural_shoal'][zoom >= 9] {
     polygon-fill: @beach;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
@@ -742,7 +742,7 @@
   }
 }
 
-#landcover-tidal[zoom >= 10] {
+#landcover-tidal {
   ::low-zoom[zoom < 12] {
     // Increase the lightness of the map by scaling color lightness to be in the 20%-100% range
     image-filters: scale-hsla(0,1, 0,1, 0.2,1, 0,1);
@@ -822,8 +822,8 @@
     }
   }
 
-  [feature = 'natural_beach'][zoom >= 10],
-  [feature = 'natural_shoal'][zoom >= 10] {
+  [feature = 'natural_beach'][zoom >= 9],
+  [feature = 'natural_shoal'][zoom >= 9] {
     polygon-fill: @tidal;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
