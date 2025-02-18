@@ -2,13 +2,30 @@
 
 @waterway-text-repeat-distance: 200;
 
-#water-areas-cutout {
-  comp-op: dst-out;
-
+#water-areas {
   [waterway = 'dock'],
   [landuse = 'basin'],
   [natural = 'water'],
   [landuse = 'reservoir'],
+  [waterway = 'riverbank'] {
+    [int_intermittent = 'no'] {
+      polygon-fill: @water-color;
+      [way_pixels >= 4] { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.6; }
+    }
+    [int_intermittent = 'yes'] {
+      polygon-pattern-file: url('patterns/intermittent_water.svg');
+      [way_pixels >= 4] { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.6; }
+    }
+  }
+}
+
+#tidal-water-areas-cutout {
+  comp-op: dst-out;
+
+  [waterway = 'dock'],
+  [natural = 'water'],
   [waterway = 'riverbank'] {
     [int_intermittent = 'no'] {
       polygon-fill: black;
@@ -20,7 +37,7 @@
   }
 }
 
-#water-areas-backdrop {
+#tidal-water-areas-backdrop {
   comp-op: dst-over;
   polygon-fill: @water-color;
 }
