@@ -3056,7 +3056,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     marker-line-width: 0;
   }
 
-  [int_tc_type = 'primary'][zoom >= 15] {
+  [int_tc_type = 'primary'][zoom >= 15][int_surface != 'unpaved'] {
     marker-fill: @primary-fill;
     marker-width: @primary-width-z15 * 1.6;
     marker-height: @primary-width-z15 * 1.6;
@@ -3076,8 +3076,25 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     marker-ignore-placement: true;
     marker-line-width: 0;
   }
+  [int_tc_type = 'primary'][zoom >= 15][int_surface = 'unpaved'] {
+    line-pattern-type: repeat;
+    line-pattern-alignment: global;
+    line-pattern-width: @primary-width-z15 * 1.6;
+    line-pattern-file: url("symbols/unpaved/unpaved_primary-fill.svg");
+    [zoom >= 17] {
+      line-pattern-width: @primary-width-z17 * 1.6;
+    }
+    [zoom >= 18] {
+      line-pattern-width: @primary-width-z18 * 1.6;
+    }
+    [zoom >= 19] {
+      line-pattern-width: @primary-width-z19 * 1.6;
+    }
+    line-pattern-cap: round;
+    line-pattern-join: round;
+  }
 
-  [int_tc_type = 'secondary'][zoom >= 15] {
+  [int_tc_type = 'secondary'][zoom >= 15][int_surface != 'unpaved'] {
     marker-fill: @secondary-fill;
     marker-width: @secondary-width-z15 * 1.6;
     marker-height: @secondary-width-z15 * 1.6;
@@ -3101,8 +3118,28 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     marker-ignore-placement: true;
     marker-line-width: 0;
   }
+  [int_tc_type = 'secondary'][zoom >= 15][int_surface = 'unpaved'] {
+    line-pattern-type: repeat;
+    line-pattern-alignment: global;
+    line-pattern-width: @secondary-width-z15 * 1.6;
+    line-pattern-file: url("symbols/unpaved/unpaved_secondary-fill.svg");
+    [zoom >= 16] {
+      line-pattern-width: @secondary-width-z16 * 1.6;
+    }
+    [zoom >= 17] {
+      line-pattern-width: @secondary-width-z17 * 1.6;
+    }
+    [zoom >= 18] {
+      line-pattern-width: @secondary-width-z18 * 1.6;
+    }
+    [zoom >= 19] {
+      line-pattern-width: @secondary-width-z19 * 1.6;
+    }
+    line-pattern-cap: round;
+    line-pattern-join: round;
+  }
 
-  [int_tc_type = 'tertiary'][zoom >= 15] {
+  [int_tc_type = 'tertiary'][zoom >= 15][int_surface != 'unpaved'] {
     marker-fill: @tertiary-fill;
     marker-width: @tertiary-width-z15 * 1.6;
     marker-height: @tertiary-width-z15 * 1.6;
@@ -3126,9 +3163,29 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     marker-ignore-placement: true;
     marker-line-width: 0;
   }
+  [int_tc_type = 'tertiary'][zoom >= 15][int_surface = 'unpaved'] {
+    line-pattern-type: repeat;
+    line-pattern-alignment: global;
+    line-pattern-width: @tertiary-width-z15 * 1.6;
+    line-pattern-file: url("symbols/unpaved/unpaved_residential-fill.svg");
+    [zoom >= 16] {
+      line-pattern-width: @tertiary-width-z16 * 1.6;
+    }
+    [zoom >= 17] {
+      line-pattern-width: @tertiary-width-z17 * 1.6;
+    }
+    [zoom >= 18] {
+      line-pattern-width: @tertiary-width-z18 * 1.6;
+    }
+    [zoom >= 19] {
+      line-pattern-width: @tertiary-width-z19 * 1.6;
+    }
+    line-pattern-cap: round;
+    line-pattern-join: round;
+  }
 
-  [int_tc_type = 'residential'],
-  [int_tc_type = 'unclassified'] {
+  [int_tc_type = 'residential'][int_surface != 'unpaved'],
+  [int_tc_type = 'unclassified'][int_surface != 'unpaved'] {
     [zoom >= 15] {
       marker-fill: @residential-fill;
       marker-width: @residential-width-z15 * 1.6;
@@ -3154,8 +3211,31 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       marker-line-width: 0;
     }
   }
+  [int_tc_type = 'residential'][int_surface = 'unpaved'],
+  [int_tc_type = 'unclassified'][int_surface = 'unpaved'] {
+    [zoom >= 15] {
+      line-pattern-type: repeat;
+      line-pattern-alignment: global;
+      line-pattern-width: @residential-width-z15 * 1.6;
+      line-pattern-file: url("symbols/unpaved/unpaved_residential-fill.svg");
+      [zoom >= 16] {
+        line-pattern-width: @residential-width-z16 * 1.6;
+      }
+      [zoom >= 17] {
+        line-pattern-width: @residential-width-z17 * 1.6;
+      }
+      [zoom >= 18] {
+        line-pattern-width: @residential-width-z18 * 1.6;
+      }
+      [zoom >= 19] {
+        line-pattern-width: @residential-width-z19 * 1.6;
+      }
+      line-pattern-cap: round;
+      line-pattern-join: round;
+    }
+  }
 
-  [int_tc_type = 'living_street'][zoom >= 15] {
+  [int_tc_type = 'living_street'][zoom >= 15][int_surface != 'unpaved'] {
     marker-fill: @living-street-fill;
     marker-width: @living-street-width-z15 * 1.6;
     marker-height: @living-street-width-z15 * 1.6;
@@ -3179,8 +3259,28 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     marker-ignore-placement: true;
     marker-line-width: 0;
   }
+  [int_tc_type = 'living_street'][zoom >= 15][int_surface = 'unpaved'] {
+    line-pattern-type: repeat;
+    line-pattern-alignment: global;
+    line-pattern-width: @living-street-width-z15 * 1.6;
+    line-pattern-file: url("symbols/unpaved/unpaved_living-street-fill.svg");
+    [zoom >= 16] {
+      line-pattern-width: @living-street-width-z16 * 1.6;
+    }
+    [zoom >= 17] {
+      line-pattern-width: @living-street-width-z17 * 1.6;
+    }
+    [zoom >= 18] {
+      line-pattern-width: @living-street-width-z18 * 1.6;
+    }
+    [zoom >= 19] {
+      line-pattern-width: @living-street-width-z19 * 1.6;
+    }
+    line-pattern-cap: round;
+    line-pattern-join: round;
+  }
 
-  [int_tc_type = 'service'][int_tc_service = 'INT-normal'][zoom >= 16] {
+  [int_tc_type = 'service'][int_tc_service = 'INT-normal'][zoom >= 16][int_surface != 'unpaved'] {
     marker-fill: @service-fill;
     marker-width: @service-width-z16 * 1.6;
     marker-height: @service-width-z16 * 1.6;
@@ -3204,8 +3304,28 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     marker-ignore-placement: true;
     marker-line-width: 0;
   }
+  [int_tc_type = 'service'][int_tc_service = 'INT-normal'][zoom >= 16][int_surface = 'unpaved'] {
+    line-pattern-type: repeat;
+    line-pattern-alignment: global;
+    line-pattern-width: @service-width-z16 * 1.6;
+    line-pattern-file: url("symbols/unpaved/unpaved_residential-fill.svg");
+    [zoom >= 17] {
+      line-pattern-width: @service-width-z17 * 1.6;
+    }
+    [zoom >= 18] {
+      line-pattern-width: @service-width-z18 * 1.6;
+    }
+    [zoom >= 19] {
+      line-pattern-width: @service-width-z19 * 1.6;
+    }
+    [zoom >= 20] {
+      line-pattern-width: @service-width-z20 * 1.6;
+    }
+    line-pattern-cap: round;
+    line-pattern-join: round;
+  }
 
-  [int_tc_type = 'service'][int_tc_service = 'INT-minor'][zoom >= 18] {
+  [int_tc_type = 'service'][int_tc_service = 'INT-minor'][zoom >= 18][int_surface != 'unpaved'] {
     marker-fill: @service-fill;
     marker-width: @minor-service-width-z18 * 1.6;
     marker-height: @minor-service-width-z18 * 1.6;
@@ -3220,6 +3340,20 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     marker-allow-overlap: true;
     marker-ignore-placement: true;
     marker-line-width: 0;
+  }
+  [int_tc_type = 'service'][int_tc_service = 'INT-minor'][zoom >= 18][int_surface = 'unpaved'] {
+    line-pattern-type: repeat;
+    line-pattern-alignment: global;
+    line-pattern-width: @minor-service-width-z18 * 1.6;
+    line-pattern-file: url("symbols/unpaved/unpaved_residential-fill.svg");
+    [zoom >= 19] {
+      line-pattern-width: @minor-service-width-z19 * 1.6;
+    }
+    [zoom >= 20] {
+      line-pattern-width: @minor-service-width-z20 * 1.6;
+    }
+    line-pattern-cap: round;
+    line-pattern-join: round;
   }
 
   [int_tc_type = 'track'][zoom >= 15] {
