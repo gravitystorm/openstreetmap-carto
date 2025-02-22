@@ -642,16 +642,14 @@ Layer:
           FROM planet_osm_point p
             JOIN planet_osm_line l
               ON ST_DWithin(p.way, l.way, 0.1) -- Assumes Mercator
-          WHERE p.highway IN (
-            'turning_circle',
-            'turning_loop',
-            'mini_roundabout')
+          WHERE p.highway IN ('turning_circle', 'turning_loop', 'mini_roundabout')
             AND l.way && !bbox!
             AND p.way && !bbox! -- Both conditions are necessary for good index usage, even with the DWithin above
           ORDER BY
             p.way,
             l.z_order DESC,
-            CASE WHEN int_surface = 'unpaved' THEN 1 ELSE 0 END 
+            CASE WHEN  l.surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
+                                    'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow') THEN 1 ELSE 0 END 
         ) AS turning_circle_sql
     properties:
       minzoom: 15
