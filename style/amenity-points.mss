@@ -1347,6 +1347,12 @@
      marker-clip: false;
   }
 
+  [feature = 'leisure_escape_game'][zoom >= 17] {
+     marker-file: url('symbols/leisure/escape_game.svg');
+     marker-fill: @leisure-green;
+     marker-clip: false;
+  }
+
   // Slipway tagging on points - slipway on lines is defined later
   [feature = 'leisure_slipway'][zoom >= 17] {
     marker-file: url('symbols/leisure/slipway.svg');
@@ -1728,6 +1734,7 @@
   }
 
   [feature = 'leisure_sauna'][zoom >= 17],
+  [feature = 'leisure_escape_game'][zoom >= 17],
   [feature = 'leisure_dance'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
