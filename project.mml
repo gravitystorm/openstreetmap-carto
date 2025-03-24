@@ -69,13 +69,13 @@ Layer:
               way,
               ('landuse_' || (CASE WHEN landuse IN ('forest', 'farmland', 'residential', 'commercial', 'retail', 'industrial',
                                                     'meadow', 'grass', 'village_green', 'vineyard', 'orchard') THEN landuse END)) AS landuse,
-              ('natural_' || (CASE WHEN "natural" IN ('wood', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland', 'scrub') THEN "natural" END)) AS "natural",
+              ('natural_' || (CASE WHEN "natural" IN ('wood', 'sand', 'beach', 'shoal', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland', 'scrub') THEN "natural" END)) AS "natural",
               ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'mud') THEN (CASE WHEN "natural" IN ('mud') THEN "natural" ELSE tags->'wetland' END) END)) AS wetland,
               way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
               way_area
             FROM planet_osm_polygon
             WHERE (landuse IN ('forest', 'farmland', 'residential', 'commercial', 'retail', 'industrial', 'meadow', 'grass', 'village_green', 'vineyard', 'orchard')
-              OR "natural" IN ('wood', 'wetland', 'mud', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland', 'scrub'))
+              OR "natural" IN ('wood', 'wetland', 'mud', 'beach', 'shoal', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland', 'scrub'))
               AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
               AND building IS NULL
           ) AS features
@@ -157,6 +157,26 @@ Layer:
         ) AS landcover_line
     properties:
       minzoom: 14
+  - id: glaciers
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            "natural",
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
+          FROM planet_osm_polygon
+          WHERE
+            "natural" = 'glacier'
+            AND building IS NULL
+            AND way_area > 1*!pixel_width!::real*!pixel_height!::real
+          ORDER BY COALESCE(layer,0), way_area DESC
+        ) AS glaciers
+    properties:
+      cache-features: true
+      minzoom: 5
   - id: icesheet-poly
     geometry: polygon
     <<: *extents
@@ -168,6 +188,106 @@ Layer:
           FROM icesheet_polygons
         ) AS icesheet_polygons
     properties:
+      minzoom: 5
+  - id: water-areas
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            "natural",
+            waterway,
+            landuse,
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
+            CASE WHEN tags->'intermittent' IN ('yes')
+              OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
+              OR tags->'basin' IN ('detention', 'infiltration')
+              THEN 'yes' ELSE 'no' END AS int_intermittent
+          FROM planet_osm_polygon
+          WHERE
+            (waterway IN ('dock', 'riverbank')
+              OR landuse IN ('reservoir', 'basin')
+              OR "natural" = 'water')
+            AND building IS NULL
+            AND ((tags->'tidal') IS NULL OR tags->'tidal' NOT IN ('yes'))
+          ORDER BY COALESCE(layer,0), way_area DESC
+        ) AS water_areas
+    properties:
+      cache-features: true
+      minzoom: 0
+  - id: tidal-water-areas-cutout
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            "natural",
+            waterway,
+            CASE WHEN tags->'intermittent' IN ('yes')
+              OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
+              THEN 'yes' ELSE 'no' END AS int_intermittent
+          FROM planet_osm_polygon
+          WHERE
+            (waterway IN ('dock', 'riverbank')
+              OR "natural" = 'water')
+            AND building IS NULL
+            AND tags->'tidal' IN ('yes')
+          ORDER BY COALESCE(layer,0), way_area DESC
+        ) AS water_areas
+    properties:
+      cache-features: true
+      minzoom: 0
+  - id: ocean-low-zoom-cutout
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way
+          FROM simplified_water_polygons
+        ) AS ocean_lz
+    properties:
+      maxzoom: 9
+  - id: ocean-cutout
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way
+          FROM water_polygons
+        ) AS ocean
+    properties:
+      minzoom: 10
+  - id: landcover-tidal
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way, way_pixels,
+            COALESCE(wetland, "natural") AS feature
+          FROM (SELECT
+              way,
+              ('natural_' || (CASE WHEN "natural" IN ('beach', 'shoal', 'heath', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub') THEN "natural" END)) AS "natural",
+              ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'mud') THEN (CASE WHEN "natural" = 'mud' THEN "natural" ELSE tags->'wetland' END) END)) AS wetland,
+              way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
+              way_area
+            FROM planet_osm_polygon
+            WHERE ("natural" IN ('beach', 'shoal', 'heath', 'mud', 'wetland', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub'))
+              AND way_area > 1*!pixel_width!::real*!pixel_height!::real
+          ) AS landcover
+          ORDER BY way_area DESC, feature
+        ) AS features
+    properties:
+      cache-features: true
       minzoom: 5
   - id: water-lines-low-zoom
     geometry: linestring
@@ -211,35 +331,18 @@ Layer:
         ) AS water_lines
     properties:
       minzoom: 12
-  - id: water-areas
+  - id: tidal-water-areas-backdrop
     geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way,
-            "natural",
-            waterway,
-            landuse,
-            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
-            CASE WHEN tags->'intermittent' IN ('yes')
-              OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
-              OR tags->'basin' IN ('detention', 'infiltration')
-              THEN 'yes' ELSE 'no' END AS int_intermittent
-          FROM planet_osm_polygon
-          WHERE
-            (waterway IN ('dock', 'riverbank')
-              OR landuse IN ('reservoir', 'basin')
-              OR "natural" IN ('water', 'glacier'))
-            AND building IS NULL
-            AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-          ORDER BY COALESCE(layer,0), way_area DESC
+            ST_MakeEnvelope(-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244, 3857) AS way
         ) AS water_areas
     properties:
-      cache-features: true
-      minzoom: 0
-  - id: ocean-lz
+      minzoom: 7
+  - id: ocean-low-zoom
     geometry: polygon
     <<: *extents
     Datasource:
