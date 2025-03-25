@@ -8,8 +8,9 @@ mkdir -p "${FONTDIR}"
 
 # download filename url
 download() {
+  echo "Downloading file $2"
   ## Download if newer, and if curl fails, clean up and exit
-  curl --fail --compressed -A "get-fonts.sh/osm-carto" -o "$1" -z "$1" -L "$2" || { echo "Failed to download $1 $2"; rm -f "$1"; exit 1; }
+  curl --fail -s --compressed -A "get-fonts.sh/osm-carto" -o "$1" -z "$1" -L "$2" || { echo "Failed to download $1 $2"; rm -f "$1"; exit 1; }
 }
 
 # TTF Hinted Noto Fonts
@@ -85,6 +86,8 @@ NotoSansYi"
 
 # Download the fonts in the lists above
 
+echo "Downloading fonts"
+
 for font in $REGULAR_BOLD_ITALIC; do
   regular="$font-Regular.ttf"
   bold="$font-Bold.ttf"
@@ -122,12 +125,12 @@ TMPDIR=$(mktemp -d -t get-fonts.XXXXXXXXX)
 trap "rm -rf ${TMPDIR} ${FONTDIR}/static" EXIT
 
 # Noto Emoji B&W isn't available as a separate download, so we need to download the package and unzip it
-curl --fail -A "get-fonts.sh/osm-carto" -o "${TMPDIR}/Noto_Emoji.zip" -L 'https://fonts.google.com/download?family=Noto%20Emoji'
+download "${TMPDIR}/Noto_Emoji.zip" 'https://archive.org/download/noto-emoji/Noto_Emoji.zip'
 
 unzip -oqq "${TMPDIR}/Noto_Emoji.zip" static/NotoEmoji-Regular.ttf static/NotoEmoji-Bold.ttf -d "${FONTDIR}"
 mv "${FONTDIR}/static/NotoEmoji-Regular.ttf" "${FONTDIR}"
 mv "${FONTDIR}/static/NotoEmoji-Bold.ttf" "${FONTDIR}"
 
-curl --fail -A "get-fonts.sh/osm-carto" -o "${TMPDIR}/hanazono.zip" -L 'https://mirrors.dotsrc.org/osdn/hanazono-font/68253/hanazono-20170904.zip'
+download "${TMPDIR}/hanazono.zip" 'https://mirrors.dotsrc.org/osdn/hanazono-font/68253/hanazono-20170904.zip'
 
 unzip -oqq "${TMPDIR}/hanazono.zip" HanaMinA.ttf HanaMinB.ttf -d "${FONTDIR}"
