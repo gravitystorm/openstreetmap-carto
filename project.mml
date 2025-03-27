@@ -620,41 +620,41 @@ Layer:
     properties:
       minzoom: 8
   - id: turning-circle-casing
-    geometry: point
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: &turning-circle_sql |-
-        (SELECT DISTINCT ON (p.way)
-            p.way AS way,
-            p.highway AS type,
-            l.highway AS int_tc_type,
-            CASE WHEN l.service IN ('parking_aisle', 'drive-through', 'driveway')
-              THEN 'INT-minor'::text
-              ELSE 'INT-normal'::text
-            END AS int_tc_service
-          FROM planet_osm_point p
-            JOIN planet_osm_line l
-              ON ST_DWithin(p.way, l.way, 0.1) -- Assumes Mercator
-            JOIN (VALUES
-                ('trunk', 1),
-                ('primary', 2),
-                ('secondary', 3),
-                ('tertiary', 4),
-                ('unclassified', 5),
-                ('residential', 6),
-                ('living_street', 7),
-                ('service', 8),
-                ('track', 9)
-              ) AS v (highway, prio)
-              ON v.highway = l.highway
-          WHERE p.highway IN (
-            'turning_circle',
-            'turning_loop',
-            'mini_roundabout')
-            AND l.way && !bbox!
-            AND p.way && !bbox! -- Both conditions are necessary for good index usage, even with the DWithin above
-          ORDER BY p.way, v.prio
+        (SELECT DISTINCT ON (way)
+            way, type, int_surface, int_tc_type, int_tc_service
+            FROM
+              (SELECT
+                -- Valid line geometry requires at least two points that are NOT identical, therefore moving them slightly.
+                ST_MakeLine(ST_Translate(p.way, -0.0001, -0.0001), ST_Translate(p.way, 0.0001, 0.0001)) AS way,
+                p.highway AS type,
+                CASE WHEN l.surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
+                     'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow') THEN 'unpaved'
+                  WHEN l.surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
+                  'concrete:plates', 'paving_stones', 'metal', 'wood', 'unhewn_cobblestone') THEN 'paved'
+                END AS int_surface,
+                l.highway AS int_tc_type,
+                CASE WHEN l.service IN ('parking_aisle', 'drive-through', 'driveway')
+                  THEN 'INT-minor'
+                  ELSE 'INT-normal'
+                END AS int_tc_service,
+                l.z_order AS z_order
+              FROM planet_osm_point p
+                JOIN planet_osm_line l
+                  ON ST_DWithin(p.way, l.way, 0.1) -- Assumes Mercator
+              WHERE p.highway IN ('turning_circle', 'turning_loop', 'mini_roundabout')
+                AND l.highway IN ('trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential', 'living_street', 'service', 'track')
+                AND l.way && !bbox!
+                AND p.way && !bbox! -- Both conditions are necessary for good index usage, even with the DWithin above
+              ) _
+          ORDER BY
+            way,
+            z_order DESC,
+            CASE WHEN int_surface = 'unpaved' THEN 1 ELSE 0 END 
         ) AS turning_circle_sql
     properties:
       minzoom: 15
