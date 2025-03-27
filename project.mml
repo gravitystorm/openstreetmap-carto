@@ -647,7 +647,7 @@ Layer:
                 JOIN planet_osm_line l
                   ON ST_DWithin(p.way, l.way, 0.1) -- Assumes Mercator
               WHERE p.highway IN ('turning_circle', 'turning_loop', 'mini_roundabout')
-                AND l.z_order IS NOT NULL -- Needed to filter out spatial matches that are not highways
+                AND l.highway IN ('trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential', 'living_street', 'service', 'track')
                 AND l.way && !bbox!
                 AND p.way && !bbox! -- Both conditions are necessary for good index usage, even with the DWithin above
               ) _
