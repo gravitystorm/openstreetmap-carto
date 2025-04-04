@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # This script downloads several Noto fonts from https://github.com/notofonts/noto-fonts
 # That repo was archived in 2023 and is no longer updated.
-# Additional fonts can be found on https://notofonts.github.io
+# Fonts in the NEWER_REPO list are downloaded from Noto's CDN or individual repos.
 
 import os
 import requests
@@ -17,13 +17,19 @@ try:
 except FileExistsError:
     warnings.warn("Font directory already exists")
 
+# Fonts to source from CDN linked by https://notofonts.github.io
+# Includes updates after 2023.
+NEWER_REPO = [
+    "NotoSansArabic",
+]
+
 # Fonts to download in regular, bold, and italic
 REGULAR_BOLD_ITALIC = ["NotoSans"]
 
 # Fonts to download in regular and bold
 REGULAR_BOLD = [
     "NotoSansAdlamUnjoined",
-    "NotoSansArabicUI",
+    "NotoSansArabic",
     "NotoSansArmenian",
     "NotoSansBalinese",
     "NotoSansBamum",
@@ -90,13 +96,18 @@ REGULAR = [
     "NotoSansYi",
 ]
 
-
 # Attempt to download the font from repos in this order
 def findFontUrls(fontName, modifier):
-    return [
-        f"https://github.com/notofonts/noto-fonts/raw/main/hinted/ttf/{fontName}/{fontName}-{modifier}.ttf",
-        # currently only sourcing from one repo
-    ]
+    if fontName in NEWER_REPO:
+        subDir = fontName.replace("NotoSans", "").replace("UI", "").lower()
+        return [
+            f"https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/{fontName}/hinted/ttf/{fontName}-{modifier}.ttf",
+            f"https://notofonts.github.io/{subDir}/fonts/{fontName}/hinted/ttf/{fontName}-{modifier}.ttf",
+        ]
+    else:
+        return [
+            f"https://github.com/notofonts/noto-fonts/raw/main/hinted/ttf/{fontName}/{fontName}-{modifier}.ttf",
+        ]
 
 
 def downloadToFile(urls, destination, dir=FONTDIR):
