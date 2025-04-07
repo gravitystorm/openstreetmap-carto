@@ -26,7 +26,10 @@
 @farmyard: #f5dcba;         // Lch(89,20,80)
 @farmyard-line: #d1b48c;    // Lch(75,25,80)
 
-@landuse-outline-width: 0.5; // line width used for most (larger) landuses
+// line width used for faint outline of larger landuses, i.e. where outline is not an 
+// intrinsic part of design. Should not appear at lower zoom levels than typical barriers
+// and needs to be sufficiently narrow that it does not interfere with barrier render.
+@landuse-faint-outline-width: 0.5; 
 
 // --- Transport ----
 
@@ -120,7 +123,7 @@
     polygon-fill: @quarry;
     polygon-pattern-file: url('symbols/quarry.svg');
     [zoom >= 13] {
-      line-width: @landuse-outline-width;
+      line-width: 0.5;
       line-color: darken(@quarry, 10%);
     }
     [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
@@ -252,7 +255,7 @@
     [zoom >= 12] { polygon-fill: @built-up-z12; }
     [zoom >= 13] { polygon-fill: @residential; }
     [zoom >= 16] {
-      line-width: @landuse-outline-width;
+      line-width: @landuse-faint-outline-width;
       line-color: @residential-line;
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -317,7 +320,7 @@
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
     [zoom >= 16] {
-      line-width: @landuse-outline-width;
+      line-width: @landuse-faint-outline-width;
       line-color: desaturate(darken(@allotments, 10%), 10%);
     }
   }
@@ -334,7 +337,7 @@
   [feature = 'landuse_farmyard'][zoom >= 10] {
     polygon-fill: @farmyard;
       [zoom >= 16] {
-        line-width: @landuse-outline-width;
+        line-width: @landuse-faint-outline-width;
         line-color: @farmyard-line;
       }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -346,7 +349,7 @@
     [zoom >= 5] {
       polygon-fill: @farmland;
       [zoom >= 16] {
-        line-width: @landuse-outline-width;
+        line-width: @landuse-faint-outline-width;
         line-color: @farmland-line;
       }
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -371,7 +374,7 @@
       [zoom >= 12] { polygon-fill: @built-up-z12; }
       [zoom >= 13] { polygon-fill: @retail; }
       [zoom >= 16] {
-        line-width: @landuse-outline-width;
+        line-width: @landuse-faint-outline-width;
         line-color: @retail-line;
       }
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -384,7 +387,7 @@
     [zoom >= 12] { polygon-fill: @built-up-z12; }
     [zoom >= 13] { polygon-fill: @industrial; }
     [zoom >= 16] {
-      line-width: @landuse-outline-width;
+      line-width: @landuse-faint-outline-width;
       line-color: @industrial-line;
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -392,14 +395,14 @@
   }
 
   [feature = 'man_made_works'][zoom >= 16] {
-    line-width: @landuse-outline-width;
+    line-width: @landuse-faint-outline-width;
     line-color: @industrial-line;
   }
 
   [feature = 'man_made_wastewater_plant'] {
     polygon-fill: @wastewater_plant;
     [zoom >= 16] {
-      line-width: @landuse-outline-width;
+      line-width: @landuse-faint-outline-width;
       line-color: @wastewater_plant-line;
     }
   }
@@ -407,17 +410,13 @@
   [feature = 'man_made_water_works'] {
     polygon-fill: @water_works;
     [zoom >= 16] {
-      line-width: @landuse-outline-width;
+      line-width: @landuse-faint-outline-width;
       line-color: @water_works-line;
     }
   }
 
   [feature = 'landuse_railway'][zoom >= 10] {
     polygon-fill: @railway;
-    [zoom >= 16] {
-      line-width: @landuse-outline-width;
-      line-color: @railway-line;
-    }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
@@ -430,7 +429,7 @@
       polygon-fill: @power;
     }
     [zoom >= 16] {
-      line-width: @landuse-outline-width;
+      line-width: @landuse-faint-outline-width;
       line-color: @power-line;
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -442,7 +441,7 @@
     [zoom >= 12] { polygon-fill: @built-up-z12; }
     [zoom >= 13] { polygon-fill: @commercial; }
     [zoom >= 16] {
-      line-width: @landuse-outline-width;
+      line-width: @landuse-faint-outline-width;
       line-color: @commercial-line;
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
