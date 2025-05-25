@@ -326,6 +326,14 @@
     }
   }
 
+  [feature = 'man_made_charge_point'][zoom >= 17] {
+    marker-fill: @transportation-icon;
+    marker-clip: false;
+    [int_access = 'restricted'] {
+      marker-opacity: @private-opacity;
+    }
+  }
+
   [feature = 'amenity_fuel'][zoom >= 17] {
     marker-file: url('symbols/amenity/fuel.svg');
     marker-fill: @transportation-icon;
