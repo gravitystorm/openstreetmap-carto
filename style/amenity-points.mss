@@ -1934,7 +1934,7 @@
   [feature = 'man_made_tower'][zoom >= 17],
   [feature = 'man_made_storage_tank'][zoom >= 18],
   [feature = 'man_made_silo'][zoom >= 18],
-  [feature = 'man_made_communications_tower'][zoom >= 17],
+  [feature = 'man_made_communications_tower'][zoom >= 12],
   [feature = 'man_made_telescope']["telescope:type" != 'optical']["telescope:type" != null][zoom >= 16],
   [feature = 'man_made_telescope'][zoom >= 17],
   [feature = 'man_made_water_tower'][zoom >= 17],
