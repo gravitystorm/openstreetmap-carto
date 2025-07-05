@@ -19,9 +19,15 @@ except FileExistsError:
 
 # Fonts to source from CDN linked by https://notofonts.github.io
 # Includes updates after 2023.
-NEWER_REPO = [
-    "NotoSansArabic",
-]
+NEWER_NOTO_REPO = []
+
+# Special location of font after Noto stopped updating UI fonts
+REDIRECT_FONTS = {
+    "NotoSansArabic": {
+        "Regular": ["https://github.com/mapmeld/arabic/raw/refs/heads/main/fonts/NotoSansArabicUI/hinted/ttf/NotoSansArabicUI-Regular.ttf"],
+            "Bold": ["https://github.com/mapmeld/arabic/raw/refs/heads/main/fonts/NotoSansArabicUI/hinted/ttf/NotoSansArabicUI-Bold.ttf"]
+    }
+}
 
 # Fonts to download in regular, bold, and italic
 REGULAR_BOLD_ITALIC = ["NotoSans"]
@@ -98,7 +104,11 @@ REGULAR = [
 
 # Attempt to download the font from repos in this order
 def findFontUrls(fontName, modifier):
-    if fontName in NEWER_REPO:
+    if fontName in REDIRECT_FONTS:
+        return REDIRECT_FONTS[fontName][modifier] + [
+            f"https://github.com/notofonts/noto-fonts/raw/main/hinted/ttf/{fontName}/{fontName}-{modifier}.ttf",
+        ]
+    elif fontName in NEWER_NOTO_REPO:
         subDir = fontName.replace("NotoSans", "").replace("UI", "").lower()
         return [
             f"https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/{fontName}/hinted/ttf/{fontName}-{modifier}.ttf",
