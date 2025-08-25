@@ -1,33 +1,46 @@
-FROM ubuntu:focal
+FROM ubuntu:22.04
 
-# https://serverfault.com/questions/949991/how-to-install-tzdata-on-a-ubuntu-docker-image
+# Prevent interactive prompts during package installation
 ARG DEBIAN_FRONTEND=noninteractive
 
-# Style dependencies
+# Install system dependencies as per the tutorial
 RUN apt-get update && apt-get install --no-install-recommends -y \
-    ca-certificates curl gnupg postgresql-client python3 python3-distutils \
-    fonts-hanazono fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted \
-    mapnik-utils nodejs npm ttf-unifont unzip git && rm -rf /var/lib/apt/lists/*
+    ca-certificates \
+    gnupg \
+    curl \
+    unzip \
+    gdal-bin \
+    tar \
+    wget \
+    bzip2 \
+    build-essential \
+    clang \
+    python3-psycopg2 \
+    python3-yaml \
+    python3-requests \
+    postgresql-client \
+    git && rm -rf /var/lib/apt/lists/*
 
-# Kosmtik with plugins, forcing prefix to /usr because Ubuntu sets
-# npm prefix to /usr/local, which breaks the install
-# We install kosmtik not from release channel, but directly from a specific commit on github.
-RUN npm set prefix /usr && npm install -g --unsafe-perm "git+https://git@github.com/kosmtik/kosmtik.git"
+# Install Mapnik system packages BEFORE Node.js (this prevents compilation issues)
+RUN apt-get update && apt-get install -y \
+    mapnik-utils \
+    libmapnik-dev \
+    fonts-unifont && rm -rf /var/lib/apt/lists/*
 
+# Install Node.js 18.x (LTS) from NodeSource
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs && rm -rf /var/lib/apt/lists/*
+
+# Install kosmtik from source (as recommended in issue #352)
+RUN git clone https://github.com/kosmtik/kosmtik.git && \
+    cd kosmtik && \
+    npm install -g
+
+# Set working directory
 WORKDIR /usr/lib/node_modules/kosmtik/
-RUN kosmtik plugins --install kosmtik-overpass-layer \
-                    --install kosmtik-fetch-remote \
-                    --install kosmtik-overlay \
-                    --install kosmtik-open-in-josm \
-                    --install kosmtik-map-compare \
-                    --install kosmtik-osm-data-overlay \
-                    --install kosmtik-mapnik-reference \
-                    --install kosmtik-geojson-overlay \
-    && cp /root/.config/kosmtik.yml /tmp/.kosmtik-config.yml
 
-# Closing section
-RUN mkdir -p /openstreetmap-carto
-WORKDIR /openstreetmap-carto
+# Expose kosmtik port
+EXPOSE 6789
 
-USER 1000
-CMD sh scripts/docker-startup.sh kosmtik
+# Default command
+CMD ["kosmtik", "serve", "project.mml"]
