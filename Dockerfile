@@ -44,4 +44,4 @@ WORKDIR /openstreetmap-carto
 EXPOSE 6789
 
 # Default command
-CMD ["kosmtik", "serve", "project.mml"]
+CMD ["kosmtik", "serve", "project.mml", "--host", "0.0.0.0"]
