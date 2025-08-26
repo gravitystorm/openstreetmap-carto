@@ -55,6 +55,9 @@ EOF
 
   # Download fonts
   scripts/get-fonts.py
+
+  # Apply custom SQL functions
+  psql -d gis -f /openstreetmap-carto/functions.sql
   ;;
 
 kosmtik)
