@@ -1,3 +1,4 @@
 *
 !scripts/tune-postgis.sh
 !openstreetmap-carto.style
+!openstreetmap-carto-flex.lua

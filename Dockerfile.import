@@ -1,4 +1,7 @@
-FROM ubuntu:bionic
+FROM ubuntu:20.04
+
+# Prevent interactive prompts during package installation
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     ca-certificates curl gnupg && rm -rf /var/lib/apt/lists/*
@@ -10,9 +13,45 @@ deb-src http://ppa.launchpad.net/osmadmins/ppa/ubuntu bionic main' > \
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
     --recv A438A16C88C6BE41CB1616B8D57F48750AC4F2CB
 
-RUN apt-get update && apt-get install --no-install-recommends -y \
-    osm2pgsql gdal-bin python3-psycopg2 python3-yaml unzip \
-    python3-requests postgresql-client && rm -rf /var/lib/apt/lists/*
+# Install osm2pgsql from source (newer version with flex support)
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    libboost-dev \
+    libboost-filesystem-dev \
+    libboost-system-dev \
+    libboost-thread-dev \
+    libexpat1-dev \
+    libbz2-dev \
+    libpq-dev \
+    libproj-dev \
+    postgresql-server-dev-all \
+    zlib1g-dev \
+    lua5.2-dev \
+    postgresql-client \
+    python3-yaml \
+    python3-requests \
+    python3-psycopg2 \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install nlohmann-json from source
+RUN git clone https://github.com/nlohmann/json.git && \
+    cd json && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    make install
+
+# Clone and build osm2pgsql with flex support
+RUN git clone https://github.com/openstreetmap/osm2pgsql.git && \
+    cd osm2pgsql && \
+    git checkout 1.7.0 && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    make && \
+    make install
 
 ADD openstreetmap-carto-flex.lua /
 

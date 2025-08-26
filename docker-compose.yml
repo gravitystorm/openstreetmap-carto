@@ -1,4 +1,3 @@
-version: '2'
 services:
   kosmtik:
     image: kosmtik:v1
