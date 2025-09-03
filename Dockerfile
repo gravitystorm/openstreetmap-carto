@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:noble
 
 # Prevent interactive prompts during package installation
 ARG DEBIAN_FRONTEND=noninteractive
@@ -22,11 +22,9 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     git \
     mapnik-utils \
     libmapnik-dev \
-    fonts-unifont && rm -rf /var/lib/apt/lists/*
-
-# Install Node.js 18.x (LTS) from NodeSource
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs && rm -rf /var/lib/apt/lists/*
+    fonts-unifont \
+    nodejs \
+    npm && rm -rf /var/lib/apt/lists/*
 
 # Install kosmtik from source with dependencies (as recommended in issue #352)
 RUN git clone https://github.com/kosmtik/kosmtik.git && \
