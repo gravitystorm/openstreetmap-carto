@@ -3,8 +3,9 @@ FROM ubuntu:noble
 # Prevent interactive prompts during package installation
 ENV DEBIAN_FRONTEND=noninteractive
 
+# Install required packages for repository setup
 RUN apt-get update && apt-get install --no-install-recommends -y \
-    ca-certificates curl gnupg && rm -rf /var/lib/apt/lists/*
+    ca-certificates curl gnupg lsb-release wget && rm -rf /var/lib/apt/lists/*
 
 # Install osm2pgsql from source (newer version with flex support)
 RUN apt-get update && apt-get install -y \
@@ -30,15 +31,12 @@ RUN apt-get update && apt-get install -y \
     nlohmann-json3-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Clone and build osm2pgsql with flex support
-RUN git clone https://github.com/openstreetmap/osm2pgsql.git && \
-    cd osm2pgsql && \
-    git checkout 1.7.0 && \
-    mkdir build && \
-    cd build && \
-    cmake .. && \
-    make && \
-    make install
+# Add OpenStreetMap APT repository and install osm2pgsql
+RUN wget -qO - https://apt.openstreetmap.org/gpg.key | gpg --dearmor -o /usr/share/keyrings/osm.gpg && \
+    echo "deb [signed-by=/usr/share/keyrings/osm.gpg] http://apt.openstreetmap.org/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/osm.list && \
+    apt-get update && \
+    apt-get install --no-install-recommends -y osm2pgsql && \
+    rm -rf /var/lib/apt/lists/*
 
 ADD openstreetmap-carto-flex.lua /
 
