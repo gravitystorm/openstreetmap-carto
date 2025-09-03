@@ -27,15 +27,8 @@ RUN apt-get update && apt-get install -y \
     python3-psycopg2 \
     gdal-bin \
     git \
+    nlohmann-json3-dev \
     && rm -rf /var/lib/apt/lists/*
-
-# Install nlohmann-json from source
-RUN git clone https://github.com/nlohmann/json.git && \
-    cd json && \
-    mkdir build && \
-    cd build && \
-    cmake .. && \
-    make install
 
 # Clone and build osm2pgsql with flex support
 RUN git clone https://github.com/openstreetmap/osm2pgsql.git && \
