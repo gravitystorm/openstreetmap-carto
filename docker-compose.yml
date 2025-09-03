@@ -5,8 +5,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        - USER_ID=${UID}
     volumes:
       - .:/openstreetmap-carto
     depends_on:

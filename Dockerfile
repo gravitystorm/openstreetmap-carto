@@ -35,7 +35,15 @@ RUN git clone https://github.com/kosmtik/kosmtik.git && \
 # Set working directory to where project files are mounted
 WORKDIR /openstreetmap-carto
 
-USER ${USER_ID}
+# The following line sets the user inside the container to UID 1000.
+# This UID of 1000 is commonly used because many Linux distributions create the first user with UID 1000.
+# This container will write tiles to the tmp directory in the local filesystem as this UID.
+# 
+# If your local user on the host machine does NOT have UID 1000, you may encounter file permission problems
+# (e.g., files created by the container may be owned by UID 1000, of you may not be able to write at all.
+# 
+# To fix this, run the "id -u" command on your host machine and use that number instead of 1000 and rebuild.
+USER 1000
 
 # Expose kosmtik port
 EXPOSE 6789
