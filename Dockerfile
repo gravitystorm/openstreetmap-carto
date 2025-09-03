@@ -19,10 +19,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     python3-yaml \
     python3-requests \
     postgresql-client \
-    git && rm -rf /var/lib/apt/lists/*
-
-# Install Mapnik system packages BEFORE Node.js (this prevents compilation issues)
-RUN apt-get update && apt-get install -y \
+    git \
     mapnik-utils \
     libmapnik-dev \
     fonts-unifont && rm -rf /var/lib/apt/lists/*
