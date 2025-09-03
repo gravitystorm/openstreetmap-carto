@@ -40,6 +40,8 @@ RUN git clone https://github.com/kosmtik/kosmtik.git && \
 # Set working directory to where project files are mounted
 WORKDIR /openstreetmap-carto
 
+USER ${USER_ID}
+
 # Expose kosmtik port
 EXPOSE 6789
 
