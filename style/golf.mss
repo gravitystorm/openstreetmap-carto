@@ -42,7 +42,7 @@
     text-halo-fill: @standard-halo-fill;
     text-name: "[ref]";
 
-    [name != ''] { text-name: "[name]"; }
+    [name != ''] { text-name: "[ref]. [name]"; }
 
     [zoom >= 17] { text-size: 13; }
   }
