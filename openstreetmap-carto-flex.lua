@@ -252,7 +252,7 @@ local polygon_values = {
     junction  = { yes = true },
     railway   = { station = true },
     waterway  = { boatyard = true, dam = true, dock = true, fuel = true,
-                  lock_gate = true, riverbank = true, weir = true },
+                  riverbank = true },
 }
 
 -- Tags with the following keys will be igored
