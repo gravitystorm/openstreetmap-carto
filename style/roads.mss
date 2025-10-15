@@ -2984,7 +2984,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 }
 
 #turning-circle-fill {
-  [int_tc_type = 'trunk'][zoom >= 15] {
+  [int_tc_type = 'trunk'][zoom >= 15][int_surface != 'unpaved'] {
     line-color: @trunk-fill;
     line-width: @trunk-width-z15 * @turning-circle-factor;
     [zoom >= 17] {
@@ -2997,6 +2997,23 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       line-width: @trunk-width-z19 * @turning-circle-factor;
     }
     line-cap: round;
+  }
+  [int_tc_type = 'trunk'][zoom >= 15][int_surface = 'unpaved'] {
+    line-pattern-type: repeat;
+    line-pattern-alignment: global;
+    line-pattern-width: @primary-width-z15 * @turning-circle-factor;
+    line-pattern-file: url("symbols/unpaved/unpaved_trunk-fill.svg");
+    line-width: @trunk-width-z15 * @turning-circle-factor;
+    [zoom >= 17] {
+      line-width: @trunk-width-z17 * @turning-circle-factor;
+    }
+    [zoom >= 18] {
+      line-width: @trunk-width-z18 * @turning-circle-factor;
+    }
+    [zoom >= 19] {
+      line-width: @trunk-width-z19 * @turning-circle-factor;
+    }
+    line-pattern-cap: round;
   }
 
   [int_tc_type = 'primary'][zoom >= 15][int_surface != 'unpaved'] {
