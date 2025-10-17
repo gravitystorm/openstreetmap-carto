@@ -225,7 +225,6 @@ local polygon_keys = {
     'shop',
     'tourism',
     'water',
-    'waterway',
     'wetland',
 }
 
@@ -242,9 +241,6 @@ local linestring_values = {
                   ridge = true, arete = true },
     power     = { cable = true, line = true, minor_line = true },
     tourism   = { yes = true },
-    waterway  = { canal = true, derelict_canal = true, ditch = true,
-                  drain = true, river = true, stream = true,
-                  tidal_channel = true, wadi = true, weir = true },
 }
 
 -- Objects with any of the following key/value combinations will be treated as polygon
@@ -255,6 +251,8 @@ local polygon_values = {
     highway   = { services = true, rest_area = true },
     junction  = { yes = true },
     railway   = { station = true },
+    waterway  = { boatyard = true, dam = true, dock = true, fuel = true,
+                  riverbank = true },
 }
 
 -- Tags with the following keys will be igored
