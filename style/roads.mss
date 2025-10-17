@@ -3001,7 +3001,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   [int_tc_type = 'trunk'][zoom >= 15][int_surface = 'unpaved'] {
     line-pattern-type: repeat;
     line-pattern-alignment: global;
-    line-pattern-width: @primary-width-z15 * @turning-circle-factor;
+    line-pattern-width: @trunk-width-z15 * @turning-circle-factor;
     line-pattern-file: url("symbols/unpaved/unpaved_trunk-fill.svg");
     line-width: @trunk-width-z15 * @turning-circle-factor;
     [zoom >= 17] {
