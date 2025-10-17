@@ -26,6 +26,11 @@
 @farmyard: #f5dcba;         // Lch(89,20,80)
 @farmyard-line: #d1b48c;    // Lch(75,25,80)
 
+// line width used for faint outline of larger landuses, i.e. where outline is not an 
+// intrinsic part of design. Should not appear at lower zoom levels than typical barriers
+// and needs to be sufficiently narrow that it does not interfere with barrier render.
+@landuse-faint-outline-width: 0.5; 
+
 // --- Transport ----
 
 @transportation-area: #e9e7e2;
@@ -250,11 +255,8 @@
     [zoom >= 12] { polygon-fill: @built-up-z12; }
     [zoom >= 13] { polygon-fill: @residential; }
     [zoom >= 16] {
-      line-width: .5;
+      line-width: @landuse-faint-outline-width;
       line-color: @residential-line;
-      [name != ''] {
-        line-width: 0.7;
-      }
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
@@ -318,11 +320,8 @@
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
     [zoom >= 16] {
-      line-width: 0.5;
+      line-width: @landuse-faint-outline-width;
       line-color: desaturate(darken(@allotments, 10%), 10%);
-      [name != null] {
-        line-width: 0.7;
-      }
     }
   }
 
@@ -338,11 +337,8 @@
   [feature = 'landuse_farmyard'][zoom >= 10] {
     polygon-fill: @farmyard;
       [zoom >= 16] {
-        line-width: 0.5;
+        line-width: @landuse-faint-outline-width;
         line-color: @farmyard-line;
-        [name != ''] {
-          line-width: 0.7;
-        }
       }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
@@ -353,7 +349,7 @@
     [zoom >= 5] {
       polygon-fill: @farmland;
       [zoom >= 16] {
-        line-width: .5;
+        line-width: @landuse-faint-outline-width;
         line-color: @farmland-line;
       }
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -378,14 +374,11 @@
       [zoom >= 12] { polygon-fill: @built-up-z12; }
       [zoom >= 13] { polygon-fill: @retail; }
       [zoom >= 16] {
-        line-width: 0.5;
+        line-width: @landuse-faint-outline-width;
         line-color: @retail-line;
-        [name != ''] {
-          line-width: 0.7;
-        }
-        [way_pixels >= 4]  { polygon-gamma: 0.75; }
-        [way_pixels >= 64] { polygon-gamma: 0.3;  }
       }
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
   }
 
@@ -394,58 +387,36 @@
     [zoom >= 12] { polygon-fill: @built-up-z12; }
     [zoom >= 13] { polygon-fill: @industrial; }
     [zoom >= 16] {
-      line-width: .5;
+      line-width: @landuse-faint-outline-width;
       line-color: @industrial-line;
-      [name != ''] {
-        line-width: 0.7;
-      }
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
   [feature = 'man_made_works'][zoom >= 16] {
-    line-width: .5;
+    line-width: @landuse-faint-outline-width;
     line-color: @industrial-line;
-    [name != ''] {
-      line-width: 0.7;
-    }
   }
 
   [feature = 'man_made_wastewater_plant'] {
-    polygon-fill: @industrial;
-    [zoom >= 15] {
-      polygon-fill: @wastewater_plant;
-    }
+    polygon-fill: @wastewater_plant;
     [zoom >= 16] {
-      line-width: 0.5;
+      line-width: @landuse-faint-outline-width;
       line-color: @wastewater_plant-line;
-      [name != ''] {
-        line-width: 0.7;
-      }
     }
   }
 
   [feature = 'man_made_water_works'] {
-    polygon-fill: @industrial;
-    [zoom >= 15] {
-      polygon-fill: @water_works;
-    }
+    polygon-fill: @water_works;
     [zoom >= 16] {
-      line-width: 0.5;
+      line-width: @landuse-faint-outline-width;
       line-color: @water_works-line;
-      [name != ''] {
-        line-width: 0.7;
-      }
     }
   }
 
   [feature = 'landuse_railway'][zoom >= 10] {
     polygon-fill: @railway;
-    [zoom >= 16][name != ''] {
-      line-width: 0.7;
-      line-color: @railway-line;
-    }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
@@ -458,11 +429,8 @@
       polygon-fill: @power;
     }
     [zoom >= 16] {
-      line-width: 0.5;
+      line-width: @landuse-faint-outline-width;
       line-color: @power-line;
-      [name != ''] {
-        line-width: 0.7;
-      }
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
@@ -473,11 +441,8 @@
     [zoom >= 12] { polygon-fill: @built-up-z12; }
     [zoom >= 13] { polygon-fill: @commercial; }
     [zoom >= 16] {
-      line-width: 0.5;
+      line-width: @landuse-faint-outline-width;
       line-color: @commercial-line;
-      [name != ''] {
-        line-width: 0.7;
-      }
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }

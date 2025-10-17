@@ -11,9 +11,9 @@ PostgreSQL database to store the OpenStreetMap data and [Kosmtik](https://github
 to be able to run Docker containers. You also need Docker Compose, which should be available once you install
 Docker itself. Otherwise, you need to [install Docker Compose manually](https://docs.docker.com/compose/install/).
 
-* You need sufficient disk space of _several Gigabytes_. 
-	* Docker creates a disk image for its virtual machine that holds the virtualised operating system and the containers. 
-	* The format (Docker.raw, Docker.qcow2, \*.vhdx, etc.) depends on the host system. It can be a sparse file allocating large amounts of disk space, but still the physical size starts with 2-3 GB for the virtual OS and grows to 6-7 GB when filled with the containers needed for the database, Kosmtik, and a chosen small region of OSM data. 
+* You need sufficient disk space of _several Gigabytes_.
+	* Docker creates a disk image for its virtual machine that holds the virtualised operating system and the containers.
+	* The format (Docker.raw, Docker.qcow2, \*.vhdx, etc.) depends on the host system. It can be a sparse file allocating large amounts of disk space, but still the physical size starts with 2-3 GB for the virtual OS and grows to 6-7 GB when filled with the containers needed for the database, Kosmtik, and a chosen small region of OSM data.
 	* An additional 1-2 GB are needed for shapefiles to be downloaded and stored in the openstreetmap-carto/data repository.
 
 ## Quick start
@@ -23,7 +23,7 @@ If you are eager to get started, here is an overview over the necessary steps:
 * `git clone https://github.com/gravitystorm/openstreetmap-carto.git` to clone openstreetmap-carto repository into a directory on your host system
 * Download OpenStreetMap data in osm.pbf format to a file `data.osm.pbf` and place it within the openstreetmap-carto directory (for example some small area from [Geofabrik](https://download.geofabrik.de/))
 * If necessary, `sudo service postgresql stop` to make sure you don't have a currently-running native PostgreSQL server which would conflict with Docker's PostgreSQL server.
-* `docker-compose up import` to import the data (only necessary the first time or when you change the data file). Additionally, you can set import options through [environment variables](#Importing-data). More on that [later](#Hands-on-approach)
+* `docker-compose up import` to import the osm.pbf data file and download additional external data (only necessary the first time or when you change the data file). Additionally, you can set import options through [environment variables](#Importing-data). More on that [later](#Hands-on-approach)
 * `docker-compose up kosmtik` to run the style preview application
 * Browse to [http://127.0.0.1:6789](http://127.0.0.1:6789) to view the output of Kosmtik
 * Ctrl+C to stop the style preview application
@@ -45,7 +45,7 @@ At startup of the container the script `scripts/docker-startup.sh` is invoked wh
 
 ### Supplying command line options as environment variables
 
-**osm2pgsql** has a few [command line options](https://manpages.debian.org/testing/osm2pgsql/osm2pgsql.1.en.html) and the import by default uses a RAM cache of 512 MB, 1 worker, **and expects the import file to be named `data.osm.pbf`**. 
+**osm2pgsql** has a few [command line options](https://manpages.debian.org/testing/osm2pgsql/osm2pgsql.1.en.html) and the import by default uses a RAM cache of 512 MB, 1 worker, **and expects the import file to be named `data.osm.pbf`**.
 If you want to customize any of these parameters, you have to set any number of the following environment variables:
 * `OSM2PGSQL_CACHE` (e.g. `export OSM2PGSQL_CACHE=1024` on Linux to set the cache to 1 GB) for the RAM cache (the value depends on the amount of RAM you have available - the more you can use here the faster the import may be)
 * `OSM2PGSQL_NUMPROC` for the number of workers (this depends on the number of processors you have and whether your hard disk is fast enough e.g. is a SSD)
@@ -74,7 +74,7 @@ EXTERNAL_DATA_SCRIPT_FLAGS="--cache --no-update" \
 docker-compose up import
 ```
 
-Note that on Linux you need to export those environment variables before calling docker-compose. If you are using sudo to call docker (because your user is not in the docker group (which we don't recommend)), you need to also use sudo -E option
+Note that on Linux you need to export those environment variables before calling `docker-compose`. If you are using sudo to call docker (because your user is not in the docker group (which we don't recommend)), you need to also use sudo -E option
 
 Variables will be remembered in `.env` if you don't have that file, and values in the file will be applied unless you manually assign them. Keep in mind this means if you change your `.env` file, but keep your environment variables untouched (you haven't unset them or you haven't rebooted your host), they will be used instead of anything that you changed in `.env`.
 
