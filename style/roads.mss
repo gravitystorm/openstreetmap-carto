@@ -3005,13 +3005,13 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     line-pattern-file: url("symbols/unpaved/unpaved_trunk-fill.svg");
     line-width: @trunk-width-z15 * @turning-circle-factor;
     [zoom >= 17] {
-      line-width: @trunk-width-z17 * @turning-circle-factor;
+      line-pattern-width: @trunk-width-z17 * @turning-circle-factor;
     }
     [zoom >= 18] {
-      line-width: @trunk-width-z18 * @turning-circle-factor;
+      line-pattern-width: @trunk-width-z18 * @turning-circle-factor;
     }
     [zoom >= 19] {
-      line-width: @trunk-width-z19 * @turning-circle-factor;
+      line-pattern-width: @trunk-width-z19 * @turning-circle-factor;
     }
     line-pattern-cap: round;
   }
