@@ -292,6 +292,7 @@
 @paths-tunnel-casing-width:       1;
 
 @mini-roundabout-width:           4;
+@turning-circle-factor:           1.6;
 
 @junction-text-color:             #960000;
 @halo-color-for-minor-road:       white;
@@ -2849,407 +2850,440 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
 #turning-circle-casing {
   [int_tc_type = 'trunk'][zoom >= 15] {
-    marker-fill: @trunk-casing;
-    marker-width: @trunk-width-z15 * 1.6 + 2 * @major-casing-width-z15;
-    marker-height: @trunk-width-z15 * 1.6 + 2 * @major-casing-width-z15;
+    line-color: @trunk-casing;
+    line-width: @trunk-width-z15 * @turning-circle-factor + 2 * @major-casing-width-z15;
     [zoom >= 17] {
-      marker-width: @trunk-width-z17 * 1.6 + 2 * @major-casing-width-z17;
-      marker-height: @trunk-width-z17 * 1.6 + 2 * @major-casing-width-z17;
+      line-width: @trunk-width-z17 * @turning-circle-factor + 2 * @major-casing-width-z17;
     }
     [zoom >= 18] {
-      marker-width: @trunk-width-z18 * 1.6 + 2 * @major-casing-width-z18;
-      marker-height: @trunk-width-z18 * 1.6 + 2 * @major-casing-width-z18;
+      line-width: @trunk-width-z18 * @turning-circle-factor + 2 * @major-casing-width-z18;
     }
     [zoom >= 19] {
-      marker-width: @trunk-width-z19 * 1.6 + 2 * @major-casing-width-z19;
-      marker-height: @trunk-width-z19 * 1.6 + 2 * @major-casing-width-z19;
+      line-width: @trunk-width-z19 * @turning-circle-factor + 2 * @major-casing-width-z19;
     }
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
+    line-cap: round;
   }
 
   [int_tc_type = 'primary'][zoom >= 15] {
-    marker-fill: @primary-casing;
-    marker-width: @primary-width-z15 * 1.6 + 2 * @major-casing-width-z15;
-    marker-height: @primary-width-z15 * 1.6 + 2 * @major-casing-width-z15;
+    line-color: @primary-casing;
+    line-width: @primary-width-z15 * @turning-circle-factor + 2 * @major-casing-width-z15;
     [zoom >= 17] {
-      marker-width: @primary-width-z17 * 1.6 + 2 * @major-casing-width-z17;
-      marker-height: @primary-width-z17 * 1.6 + 2 * @major-casing-width-z17;
+      line-width: @primary-width-z17 * @turning-circle-factor + 2 * @major-casing-width-z17;
     }
     [zoom >= 18] {
-      marker-width: @primary-width-z18 * 1.6 + 2 * @major-casing-width-z18;
-      marker-height: @primary-width-z18 * 1.6 + 2 * @major-casing-width-z18;
+      line-width: @primary-width-z18 * @turning-circle-factor + 2 * @major-casing-width-z18;
     }
     [zoom >= 19] {
-      marker-width: @primary-width-z19 * 1.6 + 2 * @major-casing-width-z19;
-      marker-height: @primary-width-z19 * 1.6 + 2 * @major-casing-width-z19;
+      line-width: @primary-width-z19 * @turning-circle-factor + 2 * @major-casing-width-z19;
     }
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
+    line-cap: round;
   }
 
   [int_tc_type = 'secondary'][zoom >= 15] {
-    marker-fill: @secondary-casing;
-    marker-width: @secondary-width-z15 * 1.6 + 2 * @secondary-casing-width-z15;
-    marker-height: @secondary-width-z15 * 1.6 + 2 * @secondary-casing-width-z15;
+    line-color: @secondary-casing;
+    line-width: @secondary-width-z15 * @turning-circle-factor + 2 * @secondary-casing-width-z15;
     [zoom >= 16] {
-      marker-width: @secondary-width-z16 * 1.6 + 2 * @secondary-casing-width-z16;
-      marker-height: @secondary-width-z16 * 1.6 + 2 * @secondary-casing-width-z16;
+      line-width: @secondary-width-z16 * @turning-circle-factor + 2 * @secondary-casing-width-z16;
     }
     [zoom >= 17] {
-      marker-width: @secondary-width-z17 * 1.6 + 2 * @secondary-casing-width-z17;
-      marker-height: @secondary-width-z17 * 1.6 + 2 * @secondary-casing-width-z17;
+      line-width: @secondary-width-z17 * @turning-circle-factor + 2 * @secondary-casing-width-z17;
     }
     [zoom >= 18] {
-      marker-width: @secondary-width-z18 * 1.6 + 2 * @secondary-casing-width-z18;
-      marker-height: @secondary-width-z18 * 1.6 + 2 * @secondary-casing-width-z18;
+      line-width: @secondary-width-z18 * @turning-circle-factor + 2 * @secondary-casing-width-z18;
     }
     [zoom >= 19] {
-      marker-width: @secondary-width-z19 * 1.6 + 2 * @secondary-casing-width-z19;
-      marker-height: @secondary-width-z19 * 1.6 + 2 * @secondary-casing-width-z19;
+      line-width: @secondary-width-z19 * @turning-circle-factor + 2 * @secondary-casing-width-z19;
     }
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
+    line-cap: round;
   }
 
   [int_tc_type = 'tertiary'][zoom >= 15] {
-    marker-fill: @tertiary-casing;
-    marker-width: @tertiary-width-z15 * 1.6 + 2 * @casing-width-z15;
-    marker-height: @tertiary-width-z15 * 1.6 + 2 * @casing-width-z15;
+    line-color: @tertiary-casing;
+    line-width: @tertiary-width-z15 * @turning-circle-factor + 2 * @casing-width-z15;
     [zoom >= 16] {
-      marker-width: @tertiary-width-z16 * 1.6 + 2 * @casing-width-z16;
-      marker-height: @tertiary-width-z16 * 1.6 + 2 * @casing-width-z16;
+      line-width: @tertiary-width-z16 * @turning-circle-factor + 2 * @casing-width-z16;
     }
     [zoom >= 17] {
-      marker-width: @tertiary-width-z17 * 1.6 + 2 * @casing-width-z17;
-      marker-height: @tertiary-width-z17 * 1.6 + 2 * @casing-width-z17;
+      line-width: @tertiary-width-z17 * @turning-circle-factor + 2 * @casing-width-z17;
     }
     [zoom >= 18] {
-      marker-width: @tertiary-width-z18 * 1.6 + 2 * @casing-width-z18;
-      marker-height: @tertiary-width-z18 * 1.6 + 2 * @casing-width-z18;
+      line-width: @tertiary-width-z18 * @turning-circle-factor + 2 * @casing-width-z18;
     }
     [zoom >= 19] {
-      marker-width: @tertiary-width-z19 * 1.6 + 2 * @casing-width-z19;
-      marker-height: @tertiary-width-z19 * 1.6 + 2 * @casing-width-z19;
+      line-width: @tertiary-width-z19 * @turning-circle-factor + 2 * @casing-width-z19;
     }
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
+    line-cap: round;
   }
 
   [int_tc_type = 'residential'][zoom >= 15],
   [int_tc_type = 'unclassified'][zoom >= 15] {
-    marker-fill: @residential-casing;
-    marker-width: @residential-width-z15 * 1.6 + 2 * @casing-width-z15;
-    marker-height: @residential-width-z15 * 1.6 + 2 * @casing-width-z15;
+    line-color: @residential-casing;
+    line-width: @residential-width-z15 * @turning-circle-factor + 2 * @casing-width-z15;
     [zoom >= 16] {
-      marker-width: @residential-width-z16 * 1.6 + 2 * @casing-width-z16;
-      marker-height: @residential-width-z16 * 1.6 + 2 * @casing-width-z16;
+      line-width: @residential-width-z16 * @turning-circle-factor + 2 * @casing-width-z16;
     }
     [zoom >= 17] {
-      marker-width: @residential-width-z17 * 1.6 + 2 * @casing-width-z17;
-      marker-height: @residential-width-z17 * 1.6 + 2 * @casing-width-z17;
+      line-width: @residential-width-z17 * @turning-circle-factor + 2 * @casing-width-z17;
     }
     [zoom >= 18] {
-      marker-width: @residential-width-z18 * 1.6 + 2 * @casing-width-z18;
-      marker-height: @residential-width-z18 * 1.6 + 2 * @casing-width-z18;
+      line-width: @residential-width-z18 * @turning-circle-factor + 2 * @casing-width-z18;
     }
     [zoom >= 19] {
-      marker-width: @residential-width-z19 * 1.6 + 2 * @casing-width-z19;
-      marker-height: @residential-width-z19 * 1.6 + 2 * @casing-width-z19;
+      line-width: @residential-width-z19 * @turning-circle-factor + 2 * @casing-width-z19;
     }
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
+    line-cap: round;
   }
 
   [int_tc_type = 'living_street'][zoom >= 15] {
-    marker-fill: @living-street-casing;
-    marker-width: @living-street-width-z15 * 1.6 + 2 * @casing-width-z15;
-    marker-height: @living-street-width-z15 * 1.6 + 2 * @casing-width-z15;
+    line-color: @living-street-casing;
+    line-width: @living-street-width-z15 * @turning-circle-factor + 2 * @casing-width-z15;
     [zoom >= 16] {
-      marker-width: @living-street-width-z16 * 1.6 + 2 * @casing-width-z16;
-      marker-height: @living-street-width-z16 * 1.6 + 2 * @casing-width-z16;
+      line-width: @living-street-width-z16 * @turning-circle-factor + 2 * @casing-width-z16;
     }
     [zoom >= 17] {
-      marker-width: @living-street-width-z17 * 1.6 + 2 * @casing-width-z17;
-      marker-height: @living-street-width-z17 * 1.6 + 2 * @casing-width-z17;
+      line-width: @living-street-width-z17 * @turning-circle-factor + 2 * @casing-width-z17;
     }
     [zoom >= 18] {
-      marker-width: @living-street-width-z18 * 1.6 + 2 * @casing-width-z18;
-      marker-height: @living-street-width-z18 * 1.6 + 2 * @casing-width-z18;
+      line-width: @living-street-width-z18 * @turning-circle-factor + 2 * @casing-width-z18;
     }
     [zoom >= 19] {
-      marker-width: @living-street-width-z19 * 1.6 + 2 * @casing-width-z19;
-      marker-height: @living-street-width-z19 * 1.6 + 2 * @casing-width-z19;
+      line-width: @living-street-width-z19 * @turning-circle-factor + 2 * @casing-width-z19;
     }
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
+    line-cap: round;
   }
 
   [int_tc_type = 'service'][int_tc_service = 'INT-normal'][zoom >= 16] {
-    marker-fill: @service-casing;
-    marker-width: @service-width-z16 * 1.6 + 2 * @casing-width-z16;
-    marker-height: @service-width-z16 * 1.6 + 2 * @casing-width-z16;
+    line-color: @service-casing;
+    line-width: @service-width-z16 * @turning-circle-factor + 2 * @casing-width-z16;
     [zoom >= 17] {
-      marker-width: @service-width-z17 * 1.6 + 2 * @casing-width-z17;
-      marker-height: @service-width-z17 * 1.6 + 2 * @casing-width-z17;
+      line-width: @service-width-z17 * @turning-circle-factor + 2 * @casing-width-z17;
     }
     [zoom >= 18] {
-      marker-width: @service-width-z18 * 1.6 + 2 * @casing-width-z18;
-      marker-height: @service-width-z18 * 1.6 + 2 * @casing-width-z18;
+      line-width: @service-width-z18 * @turning-circle-factor + 2 * @casing-width-z18;
     }
     [zoom >= 19] {
-      marker-width: @service-width-z19 * 1.6 + 2 * @casing-width-z19;
-      marker-height: @service-width-z19 * 1.6 + 2 * @casing-width-z19;
+      line-width: @service-width-z19 * @turning-circle-factor + 2 * @casing-width-z19;
     }
     [zoom >= 20] {
-      marker-width: @service-width-z20 * 1.6 + 2 * @casing-width-z20;
-      marker-height: @service-width-z20 * 1.6 + 2 * @casing-width-z20;
+      line-width: @service-width-z20 * @turning-circle-factor + 2 * @casing-width-z20;
     }
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
+    line-cap: round;
   }
 
   [int_tc_type = 'service'][int_tc_service = 'INT-minor'][zoom >= 18] {
-    marker-fill: @service-casing;
-    marker-width: @minor-service-width-z18 * 1.6 + 2 * @casing-width-z18;
-    marker-height: @minor-service-width-z18 * 1.6 + 2 * @casing-width-z18;
+    line-color: @service-casing;
+    line-width: @minor-service-width-z18 * @turning-circle-factor + 2 * @casing-width-z18;
     [zoom >= 19] {
-      marker-width: @minor-service-width-z19 * 1.6 + 2 * @casing-width-z19;
-      marker-height: @minor-service-width-z19 * 1.6 + 2 * @casing-width-z19;
+      line-width: @minor-service-width-z19 * @turning-circle-factor + 2 * @casing-width-z19;
     }
     [zoom >= 20] {
-      marker-width: @minor-service-width-z20 * 1.6 + 2 * @casing-width-z20;
-      marker-height: @minor-service-width-z20 * 1.6 + 2 * @casing-width-z20;
+      line-width: @minor-service-width-z20 * @turning-circle-factor + 2 * @casing-width-z20;
     }
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
+    line-cap: round;
   }
 }
 
 #turning-circle-fill {
-  [int_tc_type = 'trunk'][zoom >= 15] {
-    marker-fill: @trunk-fill;
-    marker-width: @trunk-width-z15 * 1.6;
-    marker-height: @trunk-width-z15 * 1.6;
+  [int_tc_type = 'trunk'][zoom >= 15][int_surface != 'unpaved'] {
+    line-color: @trunk-fill;
+    line-width: @trunk-width-z15 * @turning-circle-factor;
     [zoom >= 17] {
-      marker-width: @trunk-width-z17 * 1.6;
-      marker-height: @trunk-width-z17 * 1.6;
+      line-width: @trunk-width-z17 * @turning-circle-factor;
     }
     [zoom >= 18] {
-      marker-width: @trunk-width-z18 * 1.6;
-      marker-height: @trunk-width-z18 * 1.6;
+      line-width: @trunk-width-z18 * @turning-circle-factor;
     }
     [zoom >= 19] {
-      marker-width: @trunk-width-z19 * 1.6;
-      marker-height: @trunk-width-z19 * 1.6;
+      line-width: @trunk-width-z19 * @turning-circle-factor;
     }
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
+    line-cap: round;
   }
-
-  [int_tc_type = 'primary'][zoom >= 15] {
-    marker-fill: @primary-fill;
-    marker-width: @primary-width-z15 * 1.6;
-    marker-height: @primary-width-z15 * 1.6;
+  [int_tc_type = 'trunk'][zoom >= 15][int_surface = 'unpaved'] {
+    line-pattern-type: repeat;
+    line-pattern-alignment: global;
+    line-pattern-width: @trunk-width-z15 * @turning-circle-factor;
+    line-pattern-file: url("symbols/unpaved/unpaved_trunk-fill.svg");
     [zoom >= 17] {
-      marker-width: @primary-width-z17 * 1.6;
-      marker-height: @primary-width-z17 * 1.6;
+      line-pattern-width: @trunk-width-z17 * @turning-circle-factor;
     }
     [zoom >= 18] {
-      marker-width: @primary-width-z18 * 1.6;
-      marker-height: @primary-width-z18 * 1.6;
+      line-pattern-width: @trunk-width-z18 * @turning-circle-factor;
     }
     [zoom >= 19] {
-      marker-width: @primary-width-z19 * 1.6;
-      marker-height: @primary-width-z19 * 1.6;
+      line-pattern-width: @trunk-width-z19 * @turning-circle-factor;
     }
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
+    line-pattern-cap: round;
   }
 
-  [int_tc_type = 'secondary'][zoom >= 15] {
-    marker-fill: @secondary-fill;
-    marker-width: @secondary-width-z15 * 1.6;
-    marker-height: @secondary-width-z15 * 1.6;
+  [int_tc_type = 'primary'][zoom >= 15][int_surface != 'unpaved'] {
+    line-color: @primary-fill;
+    line-width: @primary-width-z15 * @turning-circle-factor;
+    [zoom >= 17] {
+      line-width: @primary-width-z17 * @turning-circle-factor;
+    }
+    [zoom >= 18] {
+      line-width: @primary-width-z18 * @turning-circle-factor;
+    }
+    [zoom >= 19] {
+      line-width: @primary-width-z19 * @turning-circle-factor;
+    }
+    line-cap: round;
+  }
+  [int_tc_type = 'primary'][zoom >= 15][int_surface = 'unpaved'] {
+    line-pattern-type: repeat;
+    line-pattern-alignment: global;
+    line-pattern-width: @primary-width-z15 * @turning-circle-factor;
+    line-pattern-file: url("symbols/unpaved/unpaved_primary-fill.svg");
+    [zoom >= 17] {
+      line-pattern-width: @primary-width-z17 * @turning-circle-factor;
+    }
+    [zoom >= 18] {
+      line-pattern-width: @primary-width-z18 * @turning-circle-factor;
+    }
+    [zoom >= 19] {
+      line-pattern-width: @primary-width-z19 * @turning-circle-factor;
+    }
+    line-pattern-cap: round;
+  }
+
+  [int_tc_type = 'secondary'][zoom >= 15][int_surface != 'unpaved'] {
+    line-color: @secondary-fill;
+    line-width: @secondary-width-z15 * @turning-circle-factor;
     [zoom >= 16] {
-      marker-width: @secondary-width-z16 * 1.6;
-      marker-height: @secondary-width-z16 * 1.6;
+      line-width: @secondary-width-z16 * @turning-circle-factor;
     }
     [zoom >= 17] {
-      marker-width: @secondary-width-z17 * 1.6;
-      marker-height: @secondary-width-z17 * 1.6;
+      line-width: @secondary-width-z17 * @turning-circle-factor;
     }
     [zoom >= 18] {
-      marker-width: @secondary-width-z18 * 1.6;
-      marker-height: @secondary-width-z18 * 1.6;
+      line-width: @secondary-width-z18 * @turning-circle-factor;
     }
     [zoom >= 19] {
-      marker-width: @secondary-width-z19 * 1.6;
-      marker-height: @secondary-width-z19 * 1.6;
+      line-width: @secondary-width-z19 * @turning-circle-factor;
     }
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
+    line-cap: round;
   }
-
-  [int_tc_type = 'tertiary'][zoom >= 15] {
-    marker-fill: @tertiary-fill;
-    marker-width: @tertiary-width-z15 * 1.6;
-    marker-height: @tertiary-width-z15 * 1.6;
+  [int_tc_type = 'secondary'][zoom >= 15][int_surface = 'unpaved'] {
+    line-pattern-type: repeat;
+    line-pattern-alignment: global;
+    line-pattern-width: @secondary-width-z15 * @turning-circle-factor;
+    line-pattern-file: url("symbols/unpaved/unpaved_secondary-fill.svg");
     [zoom >= 16] {
-      marker-width: @tertiary-width-z16 * 1.6;
-      marker-height: @tertiary-width-z16 * 1.6;
+      line-pattern-width: @secondary-width-z16 * @turning-circle-factor;
     }
     [zoom >= 17] {
-      marker-width: @tertiary-width-z17 * 1.6;
-      marker-height: @tertiary-width-z17 * 1.6;
+      line-pattern-width: @secondary-width-z17 * @turning-circle-factor;
     }
     [zoom >= 18] {
-      marker-width: @tertiary-width-z18 * 1.6;
-      marker-height: @tertiary-width-z18 * 1.6;
+      line-pattern-width: @secondary-width-z18 * @turning-circle-factor;
     }
     [zoom >= 19] {
-      marker-width: @tertiary-width-z19 * 1.6;
-      marker-height: @tertiary-width-z19 * 1.6;
+      line-pattern-width: @secondary-width-z19 * @turning-circle-factor;
     }
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
+    line-pattern-cap: round;
   }
 
-  [int_tc_type = 'residential'],
-  [int_tc_type = 'unclassified'] {
+  [int_tc_type = 'tertiary'][zoom >= 15][int_surface != 'unpaved'] {
+    line-color: @tertiary-fill;
+    line-width: @tertiary-width-z15 * @turning-circle-factor;
+    [zoom >= 16] {
+      line-width: @tertiary-width-z16 * @turning-circle-factor;
+    }
+    [zoom >= 17] {
+      line-width: @tertiary-width-z17 * @turning-circle-factor;
+    }
+    [zoom >= 18] {
+      line-width: @tertiary-width-z18 * @turning-circle-factor;
+    }
+    [zoom >= 19] {
+      line-width: @tertiary-width-z19 * @turning-circle-factor;
+    }
+    line-cap: round;
+  }
+  [int_tc_type = 'tertiary'][zoom >= 15][int_surface = 'unpaved'] {
+    line-pattern-type: repeat;
+    line-pattern-alignment: global;
+    line-pattern-width: @tertiary-width-z15 * 1.6;
+    line-pattern-file: url("symbols/unpaved/unpaved_residential-fill.svg");
+    [zoom >= 16] {
+      line-pattern-width: @tertiary-width-z16 * @turning-circle-factor;
+    }
+    [zoom >= 17] {
+      line-pattern-width: @tertiary-width-z17 * @turning-circle-factor;
+    }
+    [zoom >= 18] {
+      line-pattern-width: @tertiary-width-z18 * @turning-circle-factor;
+    }
+    [zoom >= 19] {
+      line-pattern-width: @tertiary-width-z19 * @turning-circle-factor;
+    }
+    line-pattern-cap: round;
+  }
+
+  [int_tc_type = 'residential'][int_surface != 'unpaved'],
+  [int_tc_type = 'unclassified'][int_surface != 'unpaved'] {
     [zoom >= 15] {
-      marker-fill: @residential-fill;
-      marker-width: @residential-width-z15 * 1.6;
-      marker-height: @residential-width-z15 * 1.6;
+      line-color: @residential-fill;
+      line-width: @residential-width-z15 * @turning-circle-factor;
       [zoom >= 16] {
-        marker-width: @residential-width-z16 * 1.6;
-        marker-height: @residential-width-z16 * 1.6;
+        line-width: @residential-width-z16 * @turning-circle-factor;
       }
       [zoom >= 17] {
-        marker-width: @residential-width-z17 * 1.6;
-        marker-height: @residential-width-z17 * 1.6;
+        line-width: @residential-width-z17 * @turning-circle-factor;
       }
       [zoom >= 18] {
-        marker-width: @residential-width-z18 * 1.6;
-        marker-height: @residential-width-z18 * 1.6;
+        line-width: @residential-width-z18 * @turning-circle-factor;
       }
       [zoom >= 19] {
-        marker-width: @residential-width-z19 * 1.6;
-        marker-height: @residential-width-z19 * 1.6;
+        line-width: @residential-width-z19 * @turning-circle-factor;
       }
-      marker-allow-overlap: true;
-      marker-ignore-placement: true;
-      marker-line-width: 0;
+      line-cap: round;
+    }
+  }
+  [int_tc_type = 'residential'][int_surface = 'unpaved'],
+  [int_tc_type = 'unclassified'][int_surface = 'unpaved'] {
+    [zoom >= 15] {
+      line-pattern-type: repeat;
+      line-pattern-alignment: global;
+      line-pattern-width: @residential-width-z15 * @turning-circle-factor;
+      line-pattern-file: url("symbols/unpaved/unpaved_residential-fill.svg");
+      [zoom >= 16] {
+        line-pattern-width: @residential-width-z16 * @turning-circle-factor;
+      }
+      [zoom >= 17] {
+        line-pattern-width: @residential-width-z17 * @turning-circle-factor;
+      }
+      [zoom >= 18] {
+        line-pattern-width: @residential-width-z18 * @turning-circle-factor;
+      }
+      [zoom >= 19] {
+        line-pattern-width: @residential-width-z19 * @turning-circle-factor;
+      }
+      line-pattern-cap: round;
     }
   }
 
-  [int_tc_type = 'living_street'][zoom >= 15] {
-    marker-fill: @living-street-fill;
-    marker-width: @living-street-width-z15 * 1.6;
-    marker-height: @living-street-width-z15 * 1.6;
+  [int_tc_type = 'living_street'][zoom >= 15][int_surface != 'unpaved'] {
+    line-color: @living-street-fill;
+    line-width: @living-street-width-z15 * @turning-circle-factor;
     [zoom >= 16] {
-      marker-width: @living-street-width-z16 * 1.6;
-      marker-height: @living-street-width-z16 * 1.6;
+      line-width: @living-street-width-z16 * @turning-circle-factor;
     }
     [zoom >= 17] {
-      marker-width: @living-street-width-z17 * 1.6;
-      marker-height: @living-street-width-z17 * 1.6;
+      line-width: @living-street-width-z17 * @turning-circle-factor;
     }
     [zoom >= 18] {
-      marker-width: @living-street-width-z18 * 1.6;
-      marker-height: @living-street-width-z18 * 1.6;
+      line-width: @living-street-width-z18 * @turning-circle-factor;
     }
     [zoom >= 19] {
-      marker-width: @living-street-width-z19 * 1.6;
-      marker-height: @living-street-width-z19 * 1.6;
+      line-width: @living-street-width-z19 * @turning-circle-factor;
     }
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
+    line-cap: round;
   }
-
-  [int_tc_type = 'service'][int_tc_service = 'INT-normal'][zoom >= 16] {
-    marker-fill: @service-fill;
-    marker-width: @service-width-z16 * 1.6;
-    marker-height: @service-width-z16 * 1.6;
+  [int_tc_type = 'living_street'][zoom >= 15][int_surface = 'unpaved'] {
+    line-pattern-type: repeat;
+    line-pattern-alignment: global;
+    line-pattern-width: @living-street-width-z15 * @turning-circle-factor;
+    line-pattern-file: url("symbols/unpaved/unpaved_living-street-fill.svg");
+    [zoom >= 16] {
+      line-pattern-width: @living-street-width-z16 * @turning-circle-factor;
+    }
     [zoom >= 17] {
-      marker-width: @service-width-z17 * 1.6;
-      marker-height: @service-width-z17 * 1.6;
+      line-pattern-width: @living-street-width-z17 * @turning-circle-factor;
     }
     [zoom >= 18] {
-      marker-width: @service-width-z18 * 1.6;
-      marker-height: @service-width-z18 * 1.6;
+      line-pattern-width: @living-street-width-z18 * @turning-circle-factor;
     }
     [zoom >= 19] {
-      marker-width: @service-width-z19 * 1.6;
-      marker-height: @service-width-z19 * 1.6;
+      line-pattern-width: @living-street-width-z19 * @turning-circle-factor;
     }
-    [zoom >= 20] {
-      marker-width: @service-width-z20 * 1.6;
-      marker-height: @service-width-z20 * 1.6;
-    }
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
+    line-pattern-cap: round;
   }
 
-  [int_tc_type = 'service'][int_tc_service = 'INT-minor'][zoom >= 18] {
-    marker-fill: @service-fill;
-    marker-width: @minor-service-width-z18 * 1.6;
-    marker-height: @minor-service-width-z18 * 1.6;
+  [int_tc_type = 'service'][int_tc_service = 'INT-normal'][zoom >= 16][int_surface != 'unpaved'] {
+    line-color: @service-fill;
+    line-width: @service-width-z16 * @turning-circle-factor;
+    [zoom >= 17] {
+      line-width: @service-width-z17 * @turning-circle-factor;
+    }
+    [zoom >= 18] {
+      line-width: @service-width-z18 * @turning-circle-factor;
+    }
     [zoom >= 19] {
-      marker-width: @minor-service-width-z19 * 1.6;
-      marker-height: @minor-service-width-z19 * 1.6;
+      line-width: @service-width-z19 * @turning-circle-factor;
     }
     [zoom >= 20] {
-      marker-width: @minor-service-width-z20 * 1.6;
-      marker-height: @minor-service-width-z20 * 1.6;
+      line-width: @service-width-z20 * @turning-circle-factor;
     }
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
+    line-cap: round;
+  }
+  [int_tc_type = 'service'][int_tc_service = 'INT-normal'][zoom >= 16][int_surface = 'unpaved'] {
+    line-pattern-type: repeat;
+    line-pattern-alignment: global;
+    line-pattern-width: @service-width-z16 * @turning-circle-factor;
+    line-pattern-file: url("symbols/unpaved/unpaved_residential-fill.svg");
+    [zoom >= 17] {
+      line-pattern-width: @service-width-z17 * @turning-circle-factor;
+    }
+    [zoom >= 18] {
+      line-pattern-width: @service-width-z18 * @turning-circle-factor;
+    }
+    [zoom >= 19] {
+      line-pattern-width: @service-width-z19 * @turning-circle-factor;
+    }
+    [zoom >= 20] {
+      line-pattern-width: @service-width-z20 * @turning-circle-factor;
+    }
+    line-pattern-cap: round;
+  }
+
+  [int_tc_type = 'service'][int_tc_service = 'INT-minor'][zoom >= 18][int_surface != 'unpaved'] {
+    line-color: @service-fill;
+    line-width: @minor-service-width-z18 * @turning-circle-factor;
+    [zoom >= 19] {
+      line-width: @minor-service-width-z19 * @turning-circle-factor;
+    }
+    [zoom >= 20] {
+      line-width: @minor-service-width-z20 * @turning-circle-factor;
+    }
+    line-cap: round;
+  }
+  [int_tc_type = 'service'][int_tc_service = 'INT-minor'][zoom >= 18][int_surface = 'unpaved'] {
+    line-pattern-type: repeat;
+    line-pattern-alignment: global;
+    line-pattern-width: @minor-service-width-z18 * @turning-circle-factor;
+    line-pattern-file: url("symbols/unpaved/unpaved_residential-fill.svg");
+    [zoom >= 19] {
+      line-pattern-width: @minor-service-width-z19 * @turning-circle-factor;
+    }
+    [zoom >= 20] {
+      line-pattern-width: @minor-service-width-z20 * @turning-circle-factor;
+    }
+    line-pattern-cap: round;
   }
 
   [int_tc_type = 'track'][zoom >= 15] {
-    marker-fill: @track-fill;
-    marker-width: 6;
-    marker-height: 6;
+    line-color: @track-fill;
+    line-width: 6;
     [zoom >= 17] {
-      marker-width: 10;
-      marker-height: 10;
+      line-width: 10;
     }
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
+    line-cap: round;
   }
 
   [type = 'mini_roundabout']::circle {
-    marker-width: @mini-roundabout-width;
-    marker-allow-overlap: true;
-    marker-ignore-placement: true;
-    marker-line-width: 0;
+    line-width: @mini-roundabout-width;
+    line-cap: round;
 
-    [int_tc_type = 'trunk'] { marker-fill: @trunk-casing; }
-    [int_tc_type = 'primary'] { marker-fill: @primary-casing; }
-    [int_tc_type = 'secondary'] { marker-fill: @secondary-casing; }
-    [int_tc_type = 'tertiary'] { marker-fill: @tertiary-casing; }
-    [int_tc_type = 'unclassified'] { marker-fill: @residential-casing; }
-    [int_tc_type = 'residential'] { marker-fill: @residential-casing; }
-    [int_tc_type = 'living_street'] { marker-fill: @living-street-casing; }
-    [int_tc_type = 'service'] { marker-fill: @service-casing; }
-    [int_tc_type = 'track'] { marker-fill: @track-casing; }
+    [int_tc_type = 'trunk'] { line-color: @trunk-casing; }
+    [int_tc_type = 'primary'] { line-color: @primary-casing; }
+    [int_tc_type = 'secondary'] { line-color: @secondary-casing; }
+    [int_tc_type = 'tertiary'] { line-color: @tertiary-casing; }
+    [int_tc_type = 'unclassified'],
+    [int_tc_type = 'residential'] { line-color: @residential-casing; }
+    [int_tc_type = 'living_street'] { line-color: @living-street-casing; }
+    [int_tc_type = 'service'] { line-color: @service-casing; }
+    [int_tc_type = 'track'] { line-color: @track-casing; }
   }
 }
 
